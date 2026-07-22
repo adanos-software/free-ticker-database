@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -16,6 +17,8 @@ README = ROOT / "README.md"
 COVERAGE_REPORT_JSON = ROOT / "data" / "reports" / "coverage_report.json"
 SOURCE_INVENTORY_JSON = ROOT / "data" / "reports" / "source_inventory_gap.json"
 ENTRY_QUALITY_JSON = ROOT / "data" / "reports" / "entry_quality.json"
+TICKERS_CSV = ROOT / "data" / "tickers.csv"
+ALIASES_CSV = ROOT / "data" / "aliases.csv"
 
 
 SNAPSHOT_METRICS = {
@@ -115,6 +118,30 @@ def expected_source_status_values(source_inventory: dict[str, Any]) -> dict[str,
     }
 
 
+def generated_primary_snapshot_values(tickers_csv: Path, aliases_csv: Path) -> dict[str, int]:
+    with tickers_csv.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    with aliases_csv.open(newline="", encoding="utf-8") as handle:
+        alias_count = sum(1 for _ in csv.DictReader(handle))
+    return {
+        "Primary tickers": len(rows),
+        "Stocks": sum(row["asset_type"] == "Stock" for row in rows),
+        "ETFs": sum(row["asset_type"] == "ETF" for row in rows),
+        "Countries": len({row["country"] for row in rows if row.get("country")}),
+        "Aliases": alias_count,
+        "ISIN coverage": sum(bool(row.get("isin")) for row in rows),
+        "Sector/category coverage": sum(
+            bool(row.get("stock_sector") or row.get("etf_category")) for row in rows
+        ),
+        "Stock sector coverage": sum(
+            row["asset_type"] == "Stock" and bool(row.get("stock_sector")) for row in rows
+        ),
+        "ETF category coverage": sum(
+            row["asset_type"] == "ETF" and bool(row.get("etf_category")) for row in rows
+        ),
+    }
+
+
 def parse_source_status_values(readme: str) -> dict[str, int] | None:
     match = SOURCE_STATUS_PATTERN.search(readme)
     if not match:
@@ -131,6 +158,8 @@ def check_readme_snapshot(
     coverage_report_json: Path = COVERAGE_REPORT_JSON,
     source_inventory_json: Path = SOURCE_INVENTORY_JSON,
     entry_quality_json: Path = ENTRY_QUALITY_JSON,
+    tickers_csv: Path = TICKERS_CSV,
+    aliases_csv: Path = ALIASES_CSV,
 ) -> list[str]:
     readme = readme_path.read_text(encoding="utf-8")
     snapshot = parse_snapshot_table(readme)
@@ -140,6 +169,7 @@ def check_readme_snapshot(
         source_inventory,
         load_json(entry_quality_json),
     )
+    expected.update(generated_primary_snapshot_values(tickers_csv, aliases_csv))
     expected_source_status = expected_source_status_values(source_inventory)
 
     errors: list[str] = []
@@ -182,6 +212,8 @@ def main() -> int:
     parser.add_argument("--coverage-report-json", type=Path, default=COVERAGE_REPORT_JSON)
     parser.add_argument("--source-inventory-json", type=Path, default=SOURCE_INVENTORY_JSON)
     parser.add_argument("--entry-quality-json", type=Path, default=ENTRY_QUALITY_JSON)
+    parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
+    parser.add_argument("--aliases-csv", type=Path, default=ALIASES_CSV)
     args = parser.parse_args()
 
     errors = check_readme_snapshot(
@@ -189,6 +221,8 @@ def main() -> int:
         coverage_report_json=args.coverage_report_json,
         source_inventory_json=args.source_inventory_json,
         entry_quality_json=args.entry_quality_json,
+        tickers_csv=args.tickers_csv,
+        aliases_csv=args.aliases_csv,
     )
     if errors:
         for error in errors:

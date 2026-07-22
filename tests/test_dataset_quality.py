@@ -238,6 +238,33 @@ def test_country_examples_corrected():
     assert ticker_row("A1CR34") is None
 
 
+def test_issue_137_reviewed_country_and_identifier_exceptions():
+    expected = {
+        ("AMRRY", "OTC"): ("Australia", "US02925A1051"),
+        ("ARRNF", "OTC"): ("Australia", "NZARRE0004S7"),
+        ("BABA", "NYSE"): ("China", "US01609W1027"),
+        ("BABAN", "BMV"): ("China", "US01609W1027"),
+        ("BHVN", "NYSE"): ("British Virgin Islands", "VGG1110E1079"),
+        ("CBUIF", "OTC"): ("Bahamas", "BS2026601063"),
+        ("GOFPY", "OTC"): ("Switzerland", "US3924831031"),
+        ("ITNF", "OTC"): ("United States", "US4609461060"),
+        ("KDOZF", "OTC"): ("Canada", "AIG5259K1050"),
+        ("RETDF", "OTC"): ("Israel", "US2043191079"),
+        ("SNYXF", "OTC"): ("Canada", "CA92847K1093"),
+        ("TSGTF", "OTC"): ("China", "USY8997D1029"),
+        ("TYIDY", "OTC"): ("Japan", "US8923301019"),
+    }
+
+    for listing_key, (country, isin) in expected.items():
+        row = listing_ticker_exchange_row(*listing_key)
+        assert row["country"] == country
+        assert row["isin"] == isin
+
+    # tickers.csv has one primary row per security; the corrected OTC line remains
+    # addressable through listings.csv/cross_listings.csv while TSXV VUX is primary.
+    assert ticker_row("SNYXF") is None
+
+
 def test_country_from_isin_handles_vietnam_prefix():
     from scripts.rebuild_dataset import country_from_isin
 
@@ -258,6 +285,92 @@ def test_country_from_isin_handles_common_global_prefixes():
     assert country_from_isin("US60687Y1091") == "United States"
     assert country_from_isin("LT0000131872") == "Lithuania"
     assert country_from_isin("MHY8564W1030") == "Marshall Islands"
+
+
+def test_country_from_isin_handles_issue_137_offshore_prefixes():
+    from scripts.rebuild_dataset import country_from_isin
+
+    assert country_from_isin("VGG8849D1289") == "British Virgin Islands"
+    assert country_from_isin("BSP736841136") == "Bahamas"
+    assert country_from_isin("PAP310761054") == "Panama"
+    assert country_from_isin("PR3186727065") == "Puerto Rico"
+    assert country_from_isin("XS2337090851") is None
+
+
+def test_depositary_country_reconciliation_uses_unique_foreign_issuer_peer():
+    from scripts.rebuild_dataset import reconcile_depositary_issuer_countries
+
+    rows = [
+        {
+            "ticker": "ABEV",
+            "name": "Ambev S.A.",
+            "exchange": "NYSE",
+            "asset_type": "Stock",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "US02319V1035",
+        },
+        {
+            "ticker": "ABEV3",
+            "name": "AMBEV S.A.",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "country": "Brazil",
+            "country_code": "BR",
+            "isin": "BRABEVACNOR1",
+        },
+        {
+            "ticker": "ABEVN",
+            "name": "Ambev secondary line",
+            "exchange": "LSE",
+            "asset_type": "Stock",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "US02319V1035",
+        },
+    ]
+
+    reconciled = reconcile_depositary_issuer_countries(rows, {("ABEV", "NYSE")})
+
+    assert reconciled[0]["country"] == "Brazil"
+    assert reconciled[0]["country_code"] == "BR"
+    assert reconciled[2]["country"] == "Brazil"
+    assert reconciled[2]["country_code"] == "BR"
+
+
+def test_depositary_country_reconciliation_preserves_common_stock_and_review_overrides():
+    from scripts.rebuild_dataset import reconcile_depositary_issuer_countries
+
+    rows = [
+        {
+            "ticker": "ALV",
+            "name": "Autoliv Inc",
+            "exchange": "NYSE",
+            "asset_type": "Stock",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "US0528001094",
+        },
+        {
+            "ticker": "ALIV-SDB",
+            "name": "Autoliv Inc.",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "country": "Sweden",
+            "country_code": "SE",
+            "isin": "SE0021309614",
+        },
+    ]
+
+    unconfirmed = reconcile_depositary_issuer_countries(rows, set())
+    protected = reconcile_depositary_issuer_countries(
+        rows,
+        {("ALV", "NYSE")},
+        {("ALV", "NYSE")},
+    )
+
+    assert unconfirmed[0]["country"] == "United States"
+    assert protected[0]["country"] == "United States"
 
 
 def test_normalize_input_row_repairs_mojibake_name():

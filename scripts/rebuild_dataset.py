@@ -396,6 +396,11 @@ DEPOSITARY_PATTERN = re.compile(
     r"\bdepositary (?:shares?|receipts?)\b",
     re.IGNORECASE,
 )
+OFFICIAL_DEPOSITARY_PATTERN = re.compile(
+    r"(?:\bamerican depositary\b|\bdepositary (?:shares?|receipts?)\b|"
+    r"\bnew york registry shares?\b|\s-\sADS(?:\s*,|\s*$))",
+    re.IGNORECASE,
+)
 US_CORP_NAME_RE = re.compile(
     r"\b(inc|incorporated|corporation|corp|company|co)\b",
     re.IGNORECASE,
@@ -496,16 +501,19 @@ TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "banque cantonale du valais": {"walliser kantonalbank"},
 }
 ISIN_PREFIX_COUNTRIES = {
+    "AI": "Anguilla",
     "AT": "Austria",
     "AU": "Australia",
     "BE": "Belgium",
     "BG": "Bulgaria",
     "BM": "Bermuda",
     "BR": "Brazil",
+    "BS": "Bahamas",
     "CA": "Canada",
     "CH": "Switzerland",
     "CL": "Chile",
     "CN": "China",
+    "CO": "Colombia",
     "CY": "Cyprus",
     "CZ": "Czech Republic",
     "DE": "Germany",
@@ -519,6 +527,7 @@ ISIN_PREFIX_COUNTRIES = {
     "GB": "United Kingdom",
     "GG": "Guernsey",
     "GH": "Ghana",
+    "GI": "Gibraltar",
     "GR": "Greece",
     "HK": "Hong Kong",
     "HU": "Hungary",
@@ -546,11 +555,14 @@ ISIN_PREFIX_COUNTRIES = {
     "NG": "Nigeria",
     "NO": "Norway",
     "NZ": "New Zealand",
+    "PA": "Panama",
     "PE": "Peru",
+    "PG": "Papua New Guinea",
     "PH": "Philippines",
     "PK": "Pakistan",
     "PL": "Poland",
     "PT": "Portugal",
+    "PR": "Puerto Rico",
     "QA": "Qatar",
     "RO": "Romania",
     "SE": "Sweden",
@@ -560,6 +572,7 @@ ISIN_PREFIX_COUNTRIES = {
     "TR": "Turkey",
     "TW": "Taiwan",
     "US": "United States",
+    "VG": "British Virgin Islands",
     "VN": "Vietnam",
     "ZA": "South Africa",
     "ZW": "Zimbabwe",
@@ -1537,6 +1550,25 @@ def load_active_official_sector_fallbacks() -> dict[tuple[str, str, str], str]:
 
 
 @lru_cache(maxsize=None)
+def load_active_official_depositary_listing_keys() -> set[tuple[str, str]]:
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return set()
+
+    listing_keys: set[tuple[str, str]] = set()
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("official") != "true" or row.get("listing_status") != "active":
+                continue
+            if row.get("asset_type") != "Stock" or not OFFICIAL_DEPOSITARY_PATTERN.search(row.get("name", "")):
+                continue
+            ticker = row.get("ticker", "").strip().upper()
+            exchange = EXCHANGE_ALIASES.get(row.get("exchange", "").strip(), row.get("exchange", "").strip())
+            if ticker and exchange:
+                listing_keys.add((ticker, exchange))
+    return listing_keys
+
+
+@lru_cache(maxsize=None)
 def load_active_jpx_listed_issue_asset_types() -> dict[tuple[str, str], str]:
     grouped: dict[tuple[str, str], set[str]] = defaultdict(set)
     if not MASTERFILE_REFERENCE_CSV.exists():
@@ -2072,6 +2104,104 @@ def country_from_isin(isin: str) -> str | None:
     return ISIN_PREFIX_COUNTRIES.get(prefix)
 
 
+def is_probable_foreign_depositary_listing(
+    row: dict[str, str],
+    official_depositary_listing_keys: set[tuple[str, str]],
+) -> bool:
+    listing_key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+    if listing_key in official_depositary_listing_keys or is_depositary_row(row):
+        return True
+    return bool(
+        row.get("exchange") in OTC_EXCHANGES
+        and row.get("ticker", "").upper().endswith(("F", "Y"))
+    )
+
+
+def build_unique_foreign_issuer_country_lookup(rows: list[dict[str, str]]) -> dict[str, str]:
+    countries_by_name: dict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        if row.get("asset_type") != "Stock" or row.get("exchange") in US_EXCHANGES | GENERIC_US_EXCHANGES:
+            continue
+        isin = row.get("isin", "").strip().upper()
+        inferred_country = country_from_isin(isin)
+        if (
+            not is_valid_isin(isin)
+            or not inferred_country
+            or inferred_country == "United States"
+            or row.get("country") != inferred_country
+        ):
+            continue
+        name_key = normalized_compact(row.get("name", ""))
+        if name_key:
+            countries_by_name[name_key].add(inferred_country)
+
+    return {
+        name_key: next(iter(countries))
+        for name_key, countries in countries_by_name.items()
+        if len(countries) == 1
+    }
+
+
+def reconcile_depositary_issuer_countries(
+    rows: list[dict[str, str]],
+    official_depositary_listing_keys: set[tuple[str, str]],
+    protected_listing_keys: set[tuple[str, str]] | None = None,
+) -> list[dict[str, str]]:
+    """Replace a depositary receipt's listing country with its issuer country.
+
+    The match is intentionally conservative: the target must be identifiable as a
+    depositary/foreign OTC line, and an exact normalized issuer name must resolve to
+    one foreign country across valid non-US ISIN peers. Explicit review overrides win.
+    """
+    protected_listing_keys = protected_listing_keys or set()
+    country_by_name = build_unique_foreign_issuer_country_lookup(rows)
+    reconciled: list[dict[str, str]] = []
+    corrected_countries_by_isin: dict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        listing_key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+        country = country_by_name.get(normalized_compact(row.get("name", "")))
+        if (
+            listing_key not in protected_listing_keys
+            and row.get("asset_type") == "Stock"
+            and row.get("country") == "United States"
+            and row.get("isin", "").startswith("US")
+            and country
+            and is_probable_foreign_depositary_listing(row, official_depositary_listing_keys)
+        ):
+            corrected = dict(row)
+            corrected["country"] = country
+            corrected["country_code"] = COUNTRY_TO_ISO.get(country, "")
+            reconciled.append(corrected)
+            isin = corrected.get("isin", "").strip().upper()
+            if is_valid_isin(isin):
+                corrected_countries_by_isin[isin].add(country)
+        else:
+            reconciled.append(row)
+
+    unique_corrected_countries = {
+        isin: next(iter(countries))
+        for isin, countries in corrected_countries_by_isin.items()
+        if len(countries) == 1
+    }
+    consistent_rows: list[dict[str, str]] = []
+    for row in reconciled:
+        listing_key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+        country = unique_corrected_countries.get(row.get("isin", "").strip().upper())
+        if (
+            listing_key not in protected_listing_keys
+            and row.get("asset_type") == "Stock"
+            and country
+            and row.get("country") != country
+        ):
+            corrected = dict(row)
+            corrected["country"] = country
+            corrected["country_code"] = COUNTRY_TO_ISO.get(country, "")
+            consistent_rows.append(corrected)
+        else:
+            consistent_rows.append(row)
+    return consistent_rows
+
+
 def load_data():
     source_path = LISTINGS_CSV if LISTINGS_CSV.exists() else TICKERS_CSV
     with source_path.open(newline="") as handle:
@@ -2403,6 +2533,16 @@ def cleaned_rows():
             )
         )
 
+    protected_country_listing_keys = {
+        row_key
+        for row_key, overrides in review_metadata_updates.items()
+        if "country" in overrides or "country_code" in overrides
+    }
+    output_rows = reconcile_depositary_issuer_countries(
+        output_rows,
+        load_active_official_depositary_listing_keys(),
+        protected_country_listing_keys,
+    )
     output_rows = drop_duplicate_ticker_aliases(output_rows)
     return sorted(output_rows, key=lambda row: row["ticker"]), alias_type_lookup
 

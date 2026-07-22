@@ -2,7 +2,13 @@ from __future__ import annotations
 
 from collections import Counter
 
-from scripts.update_readme_snapshot import update_snapshot_table, update_sources_status_paragraph, update_top_exchange_table
+from scripts.update_readme_snapshot import (
+    load_primary_metrics,
+    load_row_count,
+    update_snapshot_table,
+    update_sources_status_paragraph,
+    update_top_exchange_table,
+)
 
 
 def test_update_snapshot_table_replaces_first_metric_number_only():
@@ -15,6 +21,7 @@ def test_update_snapshot_table_replaces_first_metric_number_only():
             "| Metric | Value | Meaning |",
             "|---|---:|---|",
             "| Core listings | 1,000 | Rows in `data/core_listings.csv`; one row. |",
+            "| Countries | 88 | Distinct non-empty countries. |",
             "| ISIN coverage | 900 (90.0%) | Primary ticker rows with ISIN. |",
             "",
             "## Next",
@@ -24,11 +31,36 @@ def test_update_snapshot_table_replaces_first_metric_number_only():
 
     updated = update_snapshot_table(
         readme,
-        {"Core listings": 1001, "ISIN coverage": 901, "Primary tickers": 1001},
+        {"Core listings": 1001, "Countries": 102, "ISIN coverage": 901, "Primary tickers": 1001},
     )
 
     assert "| Core listings | 1,001 | Rows in `data/core_listings.csv`; one row. |" in updated
+    assert "| Countries | 102 | Distinct non-empty countries. |" in updated
     assert "| ISIN coverage | 901 (90.0%) | Primary ticker rows with ISIN. |" in updated
+
+
+def test_load_primary_metrics_uses_generated_ticker_rows(tmp_path):
+    tickers = tmp_path / "tickers.csv"
+    tickers.write_text(
+        "ticker,asset_type,country,isin,stock_sector,etf_category,exchange\n"
+        "AAA,Stock,Canada,CA0000000001,Materials,,TSX\n"
+        "BBB,ETF,United States,,,Equity,NASDAQ\n",
+        encoding="utf-8",
+    )
+    aliases = tmp_path / "aliases.csv"
+    aliases.write_text("ticker,alias\nAAA,alpha\nBBB,beta\n", encoding="utf-8")
+
+    assert load_primary_metrics(tickers) == {
+        "Primary tickers": 2,
+        "Stocks": 1,
+        "ETFs": 1,
+        "Countries": 2,
+        "ISIN coverage": 1,
+        "Sector/category coverage": 2,
+        "Stock sector coverage": 1,
+        "ETF category coverage": 1,
+    }
+    assert load_row_count(aliases) == 2
 
 
 def test_update_top_exchange_table_replaces_existing_counts():
