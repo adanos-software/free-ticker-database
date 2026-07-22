@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-22T07:03:27Z",
+    "generated_at": "2026-07-22T07:18:25Z",
     "rows": 74707,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67706,
-      "source_gap": 6927,
+      "pass": 67714,
+      "source_gap": 6919,
       "warn": 74
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5045,
-      "official_reference": 68467,
+      "identifier_enriched": 5037,
+      "official_reference": 68475,
       "scoped_source_gap": 263,
       "valid_isin": 932
     },
     "severity_counts": {
       "high": 67,
       "medium": 7,
-      "source_gap": 7110
+      "source_gap": 7102
     },
     "issue_counts": {
-      "official_reference_gap": 6240,
+      "official_reference_gap": 6232,
       "expected_missing_primary_isin": 754,
       "missing_etf_category": 94,
       "country_isin_mismatch": 65,
@@ -57,15 +57,15 @@
         "warn": 1
       },
       {
-        "exchange": "LSE",
-        "pass": 6358,
-        "warn": 60,
-        "source_gap": 140
-      },
-      {
         "exchange": "TSX",
         "pass": 1704,
         "source_gap": 199
+      },
+      {
+        "exchange": "LSE",
+        "pass": 6366,
+        "warn": 60,
+        "source_gap": 132
       },
       {
         "exchange": "NYSE ARCA",
@@ -1336,24 +1336,6 @@
     {
       "listing_key": "LSE::0EIE",
       "ticker": "0EIE",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "LSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0GA3",
-      "ticker": "0GA3",
       "exchange": "LSE",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -18268,6 +18250,24 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NYSE ARCA::BKFI",
+      "ticker": "BKFI",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
         }
       ]
     }

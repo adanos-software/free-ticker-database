@@ -15302,6 +15302,88 @@ def test_merge_reference_rows_preserves_unavailable_selected_sources() -> None:
     ]
 
 
+def test_merge_reference_rows_preserves_selected_source_when_refresh_is_empty() -> None:
+    existing_row = {
+        "source_key": "lse_company_reports",
+        "ticker": "LSEG",
+        "exchange": "LSE",
+        "listing_status": "active",
+        "reference_scope": "listed_companies_subset",
+    }
+
+    merged = merge_reference_rows(
+        [existing_row],
+        [],
+        source_keys={"lse_company_reports"},
+    )
+
+    assert merged == [existing_row]
+
+
+def test_main_marks_empty_partial_refresh_unavailable_and_preserves_rows(tmp_path, monkeypatch) -> None:
+    reference_path = tmp_path / "reference.csv"
+    summary_path = tmp_path / "summary.json"
+    existing_row = {
+        "source_key": "lse_company_reports",
+        "provider": "LSE",
+        "source_url": "https://example.test/lse",
+        "ticker": "LSEG",
+        "name": "London Stock Exchange Group plc",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "listed_companies_subset",
+        "official": "true",
+    }
+    fetch_exchange_masterfiles.write_csv(
+        reference_path,
+        fetch_exchange_masterfiles.MASTERFILE_FIELDNAMES,
+        [existing_row],
+    )
+    summary_path.write_text(
+        json.dumps(
+            {
+                "source_modes": {"lse_company_reports": "cache"},
+                "source_details": {
+                    "lse_company_reports": {
+                        "mode": "cache",
+                        "generated_at": "2026-07-20T09:00:00Z",
+                    }
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_REFERENCE_CSV", reference_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_SUMMARY_JSON", summary_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ROOT", tmp_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "persist_source_metadata", lambda: None)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_all_sources",
+        lambda **_kwargs: (
+            [],
+            {
+                "generated_at": "2026-07-22T09:00:00Z",
+                "source_modes": {"lse_company_reports": "network"},
+            },
+        ),
+    )
+
+    fetch_exchange_masterfiles.main(["--source", "lse_company_reports", "--no-manual"])
+
+    assert fetch_exchange_masterfiles.load_csv(reference_path) == [
+        {field: existing_row.get(field, "") for field in fetch_exchange_masterfiles.MASTERFILE_FIELDNAMES}
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["source_modes"]["lse_company_reports"] == "unavailable"
+    assert summary["source_details"]["lse_company_reports"]["rows"] == 1
+    assert summary["source_details"]["lse_company_reports"]["generated_at"] == "2026-07-20T09:00:00Z"
+    assert summary["source_details"]["lse_company_reports"]["last_error"] == (
+        "Empty refresh result; preserved 1 existing rows"
+    )
+
+
 def test_merge_summary_errors_preserves_unrefreshed_source_errors() -> None:
     merged = merge_summary_errors(
         existing_errors=[

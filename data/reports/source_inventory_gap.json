@@ -1190,11 +1190,11 @@
       "missing_sector_or_category": 291,
       "notes": "Implemented via the official Price Explorer pages API with categories=EQUITY,ETFS; bonds and other instruments are intentionally excluded from the Stock/ETF masterfile scope.",
       "official_full_upgrade_plan": "complete_official_exchange_directory_present",
-      "official_source_count": 1,
+      "official_source_count": 3,
       "priority": "high",
       "priority_rank": 43,
       "provider": "LSE",
-      "reference_scopes": "exchange_directory",
+      "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": false,
       "source_last_error": "",
       "source_mode": "",
@@ -1921,7 +1921,7 @@
       "official_full": 34,
       "official_partial": 33
     },
-    "generated_at": "2026-07-22T07:03:22Z",
+    "generated_at": "2026-07-22T07:18:21Z",
     "global_expansion_candidates": 0,
     "high_priority_rows": 24,
     "official_full_upgrade_plan_counts": {

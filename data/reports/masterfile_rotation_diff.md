@@ -1,8 +1,8 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-07-21T08:48:04Z`
+- Generated at: `2026-07-22T07:17:17Z`
 - New rows: `152`
-- Vanished rows: `12841`
+- Vanished rows: `70`
 - Changed rows: `118`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
@@ -44,5 +44,3 @@
 | jse_etf_list | 1 |
 | krx_etf_finder | 4 |
 | krx_listed_companies | 2 |
-| lse_company_reports | 12707 |
-| lse_instrument_directory | 64 |

@@ -331,11 +331,11 @@
       "field": "missing_isin_primary",
       "missing_count": 1,
       "notes": "Source research needed before applying.",
-      "official_source_count": 1,
+      "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 18,
       "recommended_source": "Official exchange masterfile or reviewed secondary identifier source.",
-      "reference_scopes": "exchange_directory",
+      "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_eodhd_metadata.py",
       "stock_missing_count": 1,
@@ -487,7 +487,7 @@
       "missing_isin_primary": 754,
       "missing_sector_stock": 22
     },
-    "generated_at": "2026-07-22T07:03:28Z",
+    "generated_at": "2026-07-22T07:18:27Z",
     "legacy_primary_ticker_collision_rows": 2022,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
