@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-22T07:18:25Z",
-    "rows": 74707,
+    "generated_at": "2026-07-22T09:14:11Z",
+    "rows": 74711,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,27 +14,27 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67714,
-      "source_gap": 6919,
+      "pass": 67709,
+      "source_gap": 6928,
       "warn": 74
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5037,
-      "official_reference": 68475,
+      "identifier_enriched": 5041,
+      "official_reference": 68474,
       "scoped_source_gap": 263,
-      "valid_isin": 932
+      "valid_isin": 933
     },
     "severity_counts": {
       "high": 67,
       "medium": 7,
-      "source_gap": 7102
+      "source_gap": 7115
     },
     "issue_counts": {
-      "official_reference_gap": 6232,
-      "expected_missing_primary_isin": 754,
-      "missing_etf_category": 94,
+      "official_reference_gap": 6237,
+      "expected_missing_primary_isin": 758,
+      "missing_etf_category": 95,
       "country_isin_mismatch": 65,
-      "missing_stock_sector": 22,
+      "missing_stock_sector": 25,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
     },
@@ -52,8 +52,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4511,
-        "source_gap": 203,
+        "pass": 4509,
+        "source_gap": 209,
         "warn": 1
       },
       {
@@ -69,8 +69,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2495,
-        "source_gap": 187
+        "pass": 2494,
+        "source_gap": 188
       },
       {
         "exchange": "BMV",
@@ -78,8 +78,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1137,
-        "source_gap": 160
+        "pass": 1136,
+        "source_gap": 161
       },
       {
         "exchange": "ASX",
@@ -129,8 +129,8 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1981,
-        "source_gap": 65
+        "pass": 1980,
+        "source_gap": 66
       },
       {
         "exchange": "CSE_MA",

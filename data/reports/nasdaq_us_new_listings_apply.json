@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-07-21T09:13:46Z",
+    "generated_at": "2026-07-22T09:12:47Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,23 +8,21 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 5,
-    "accepted_rows": 2,
-    "skipped_rows": 3,
+    "new_supported_rows": 10,
+    "accepted_rows": 4,
+    "skipped_rows": 6,
     "accepted_by_exchange": {
-      "NASDAQ": 1,
-      "NYSE ARCA": 1
+      "NASDAQ": 4
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 1,
-      "not_stock_like_name": 1,
-      "ticker_collision": 1
+      "excluded_non_common_stock": 4,
+      "ticker_collision": 2
     }
   },
   "accepted": [
     {
-      "ticker": "CIGL",
-      "name": "Concorde International Group Ltd - Class A Ordinary Shares",
+      "ticker": "CHGA",
+      "name": "Change Agents Corporation  - Common Stock",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -37,44 +35,96 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "AIHY",
-      "name": "Defiance AI Hyperscale Leaders ETF",
-      "exchange": "NYSE ARCA",
+      "ticker": "CPTL",
+      "name": "Global X Morningstar Capital Allocation Leaders ETF",
+      "exchange": "NASDAQ",
       "asset_type": "ETF",
       "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "FRNM",
+      "name": "Freenome, Inc. - Common stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "PWCM",
+      "name": "PowerCompute, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "reference_scope": "exchange_directory"
     }
   ],
   "skipped": [
     {
-      "ticker": "BID",
+      "ticker": "BRTMU",
       "exchange": "NASDAQ",
-      "name": "Tribeca Strategic Acquisition Corp. - Class A Ordinary Shares",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "BIDWR",
-      "exchange": "NASDAQ",
-      "name": "Tribeca Strategic Acquisition Corp. - Rights",
+      "name": "B&R Technology Merger Corp. - Units",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "CUVL",
+      "ticker": "HLTH",
       "exchange": "NASDAQ",
-      "name": "Clinuvel Pharmaceuticals Limited - American Depositary Shares",
+      "name": "Tema Healthcare AI ETF",
+      "asset_type": "ETF",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "MEDS",
+      "exchange": "NASDAQ",
+      "name": "DataMeds AI, Inc. - Common Stock",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
-      "skip_reason": "not_stock_like_name"
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "NCOOU",
+      "exchange": "NASDAQ",
+      "name": "Southern Cross Acquisition I Corp. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "PSA$T",
+      "exchange": "NYSE",
+      "name": "Public Storage 6.000% Cumulative Preferred Shares of beneficial interest, Series T",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "PSA$U",
+      "exchange": "NYSE",
+      "name": "Public Storage 6.000% Cumulative Preferred Shares of Beneficial Interest, Series U",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
     }
   ]
 }
