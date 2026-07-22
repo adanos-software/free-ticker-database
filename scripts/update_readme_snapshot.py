@@ -32,6 +32,7 @@ COVERAGE_REPORT_JSON = ROOT / "data" / "reports" / "coverage_report.json"
 SOURCE_INVENTORY_JSON = ROOT / "data" / "reports" / "source_inventory_gap.json"
 ENTRY_QUALITY_JSON = ROOT / "data" / "reports" / "entry_quality.json"
 TICKERS_CSV = ROOT / "data" / "tickers.csv"
+ALIASES_CSV = ROOT / "data" / "aliases.csv"
 
 
 def format_count(value: int) -> str:
@@ -84,6 +85,32 @@ def update_snapshot_table(readme: str, expected: dict[str, int]) -> str:
 def load_exchange_counts(tickers_csv: Path) -> Counter[str]:
     with tickers_csv.open(newline="", encoding="utf-8") as handle:
         return Counter(row["exchange"] for row in csv.DictReader(handle))
+
+
+def load_primary_metrics(tickers_csv: Path) -> dict[str, int]:
+    with tickers_csv.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    return {
+        "Primary tickers": len(rows),
+        "Stocks": sum(row["asset_type"] == "Stock" for row in rows),
+        "ETFs": sum(row["asset_type"] == "ETF" for row in rows),
+        "Countries": len({row["country"] for row in rows if row.get("country")}),
+        "ISIN coverage": sum(bool(row.get("isin")) for row in rows),
+        "Sector/category coverage": sum(
+            bool(row.get("stock_sector") or row.get("etf_category")) for row in rows
+        ),
+        "Stock sector coverage": sum(
+            row["asset_type"] == "Stock" and bool(row.get("stock_sector")) for row in rows
+        ),
+        "ETF category coverage": sum(
+            row["asset_type"] == "ETF" and bool(row.get("etf_category")) for row in rows
+        ),
+    }
+
+
+def load_row_count(csv_path: Path) -> int:
+    with csv_path.open(newline="", encoding="utf-8") as handle:
+        return sum(1 for _ in csv.DictReader(handle))
 
 
 def update_top_exchange_table(readme: str, exchange_counts: Counter[str]) -> str:
@@ -169,9 +196,12 @@ def update_readme_snapshot(
     source_inventory_json: Path = SOURCE_INVENTORY_JSON,
     entry_quality_json: Path = ENTRY_QUALITY_JSON,
     tickers_csv: Path = TICKERS_CSV,
+    aliases_csv: Path = ALIASES_CSV,
 ) -> dict[str, Any]:
     source_inventory = load_json(source_inventory_json)
     expected = expected_values(coverage_report_json, source_inventory_json, entry_quality_json)
+    expected.update(load_primary_metrics(tickers_csv))
+    expected["Aliases"] = load_row_count(aliases_csv)
     original = readme_path.read_text(encoding="utf-8")
     updated = update_snapshot_table(original, expected)
     updated = update_top_exchange_table(updated, load_exchange_counts(tickers_csv))
@@ -190,6 +220,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--source-inventory-json", type=Path, default=SOURCE_INVENTORY_JSON)
     parser.add_argument("--entry-quality-json", type=Path, default=ENTRY_QUALITY_JSON)
     parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
+    parser.add_argument("--aliases-csv", type=Path, default=ALIASES_CSV)
     return parser.parse_args(argv)
 
 
@@ -201,6 +232,7 @@ def main(argv: list[str] | None = None) -> int:
         source_inventory_json=args.source_inventory_json,
         entry_quality_json=args.entry_quality_json,
         tickers_csv=args.tickers_csv,
+        aliases_csv=args.aliases_csv,
     )
     return 0
 

@@ -113,6 +113,8 @@ ATT,LSE,grupa azoty,Yahoo alias verification marked `grupa azoty` as likely_othe
 AUAU,NYSE ARCA,allegiant gold,Current AUAU row is an ETF; Allegiant Gold is an unrelated issuer alias contamination.,0.95
 BAT,STO,batero gold,Yahoo alias verification marked `batero gold` as likely_other_entity.,
 BAT,STO,brait,Yahoo alias verification marked `brait` as likely_other_entity.,
+BHVN,NYSE,biohaven pharmaceutical holding,"Issue #137 current-security correction: predecessor-only issuer name must not resolve to the active Biohaven Ltd. security.",0.99
+BHVN,NYSE,biohaven pharmaceutical,"Issue #137 current-security correction: predecessor-only issuer name must not resolve to the active Biohaven Ltd. security.",0.99
 BID,HOSE,bid corporation,Bid Corporation is a South African JSE-listed company; it has no relation to the Joint Stock Commercial Bank for Investment and Development of Vietnam (BIDV).,0.82
 BIMBOA,BMV,bimbo,"Production Reddit false-positive audit: generic noun/slur usage, not Grupo Bimbo.",0.98
 BIRD,NASDAQ,blackbird,Yahoo alias verification marked `blackbird` as likely_other_entity.,
