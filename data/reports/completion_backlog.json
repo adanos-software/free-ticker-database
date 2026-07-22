@@ -3,10 +3,10 @@
     {
       "asset_type": "All",
       "confidence_policy": "Broker/API candidates must write audit reports and pass venue, type, name, expected US prefix, numeric-token, and checksum gates before reviewed apply.",
-      "etf_missing_count": 36,
+      "etf_missing_count": 37,
       "exchange": "NASDAQ",
       "field": "missing_isin_primary",
-      "missing_count": 120,
+      "missing_count": 124,
       "notes": "Residual US gaps are mostly ETF tails; keep in small batches.",
       "official_source_count": 3,
       "priority_bucket": "top_impact",
@@ -15,7 +15,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-      "stock_missing_count": 84,
+      "stock_missing_count": 87,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -367,7 +367,7 @@
       "etf_missing_count": 0,
       "exchange": "NASDAQ",
       "field": "missing_sector_stock",
-      "missing_count": 16,
+      "missing_count": 19,
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -376,7 +376,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 16,
+      "stock_missing_count": 19,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -459,10 +459,10 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 17,
+      "etf_missing_count": 18,
       "exchange": "NASDAQ",
       "field": "missing_etf_category",
-      "missing_count": 17,
+      "missing_count": 18,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -483,11 +483,11 @@
       "missing_sector_stock": 3
     },
     "field_totals": {
-      "missing_etf_category": 94,
-      "missing_isin_primary": 754,
-      "missing_sector_stock": 22
+      "missing_etf_category": 95,
+      "missing_isin_primary": 758,
+      "missing_sector_stock": 25
     },
-    "generated_at": "2026-07-22T07:18:27Z",
+    "generated_at": "2026-07-22T09:14:15Z",
     "legacy_primary_ticker_collision_rows": 2022,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -519,10 +519,10 @@
       {
         "action_rank": 1,
         "confidence_policy": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-        "etf_missing_count": 36,
+        "etf_missing_count": 37,
         "exchange": "NASDAQ",
         "field": "missing_isin_primary",
-        "missing_count": 120,
+        "missing_count": 124,
         "official_source_count": 3,
         "recommended_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "residual_gate": "source_gap_classification_blocks_direct_apply",
@@ -530,8 +530,8 @@
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
         "source_gap_class": "official_identifier_not_exposed_source_gap",
-        "source_gap_rows": 80,
-        "stock_missing_count": 84,
+        "source_gap_rows": 83,
+        "stock_missing_count": 87,
         "target_field": "isin",
         "venue_status": "official_full",
         "why_next": "source-gap classification review-gated workflow"
@@ -788,7 +788,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 11537,
+    "official_masterfile_collisions": 11539,
     "rows": 25
   }
 }

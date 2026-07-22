@@ -1,20 +1,20 @@
 # Completion Backlog
 
-Generated at: `2026-07-22T07:18:27Z`
+Generated at: `2026-07-22T09:14:15Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `754`
-- Missing stock sectors: `22`
-- Missing ETF categories: `94`
-- Official symbol collisions tracked in exchange references: `11537`
+- Missing primary ISIN rows: `758`
+- Missing stock sectors: `25`
+- Missing ETF categories: `95`
+- Official symbol collisions tracked in exchange references: `11539`
 - Core rows hidden only by the legacy global-ticker compatibility export: `2022`
 
 ## Next Safe Batches
 
 | Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NASDAQ | missing_isin_primary | 120 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
+| 1 | NASDAQ | missing_isin_primary | 124 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
 | 2 | ASX | missing_isin_primary | 99 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
 | 3 | TSX | missing_isin_primary | 90 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 4 | TSXV | missing_isin_primary | 80 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
@@ -33,7 +33,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NASDAQ | All | 120 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 1 | NASDAQ | All | 124 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 2 | ASX | All | 99 | official_partial | Official ASX ISIN workbook. | no |
 | 3 | TSX | All | 90 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 4 | TSXV | All | 80 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
@@ -50,7 +50,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NASDAQ | Stock | 16 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 1 | NASDAQ | Stock | 19 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 2 | NYSE | Stock | 5 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 3 | B3 | Stock | 1 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 
@@ -60,14 +60,14 @@ These are orchestration candidates only. They do not authorize direct data chang
 |---|---|---|---:|---|---|---|
 | 1 | BATS | ETF | 53 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 2 | NYSE ARCA | ETF | 24 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 3 | NASDAQ | ETF | 17 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 3 | NASDAQ | ETF | 18 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 
 ## Combined Sector/ETF Category Priority
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
 | 1 | BATS | 53 | 0 | 53 | official_full |
-| 2 | NASDAQ | 33 | 16 | 17 | official_full |
+| 2 | NASDAQ | 37 | 19 | 18 | official_full |
 | 3 | NYSE ARCA | 24 | 0 | 24 | official_full |
 | 4 | NYSE | 5 | 5 | 0 | official_full |
 | 5 | B3 | 1 | 1 | 0 | official_full |
