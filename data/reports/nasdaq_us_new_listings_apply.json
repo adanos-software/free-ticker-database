@@ -1,19 +1,80 @@
 {
   "summary": {
-    "generated_at": "2026-07-21T08:48:07Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-07-21T09:13:46Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "supported_asset_types": [
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
-    "skipped_rows": 0,
-    "accepted_by_exchange": {},
-    "skipped_by_reason": {}
+    "new_supported_rows": 5,
+    "accepted_rows": 2,
+    "skipped_rows": 3,
+    "accepted_by_exchange": {
+      "NASDAQ": 1,
+      "NYSE ARCA": 1
+    },
+    "skipped_by_reason": {
+      "excluded_non_common_stock": 1,
+      "not_stock_like_name": 1,
+      "ticker_collision": 1
+    }
   },
-  "accepted": [],
-  "skipped": []
+  "accepted": [
+    {
+      "ticker": "CIGL",
+      "name": "Concorde International Group Ltd - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "AIHY",
+      "name": "Defiance AI Hyperscale Leaders ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "BID",
+      "exchange": "NASDAQ",
+      "name": "Tribeca Strategic Acquisition Corp. - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "BIDWR",
+      "exchange": "NASDAQ",
+      "name": "Tribeca Strategic Acquisition Corp. - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "CUVL",
+      "exchange": "NASDAQ",
+      "name": "Clinuvel Pharmaceuticals Limited - American Depositary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    }
+  ]
 }

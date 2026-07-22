@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-21T08:50:44Z",
-    "rows": 74705,
+    "generated_at": "2026-07-22T07:03:27Z",
+    "rows": 74707,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,26 +15,26 @@
   "summary": {
     "status_counts": {
       "pass": 67706,
-      "source_gap": 6925,
+      "source_gap": 6927,
       "warn": 74
     },
     "evidence_level_counts": {
       "identifier_enriched": 5045,
-      "official_reference": 68465,
+      "official_reference": 68467,
       "scoped_source_gap": 263,
       "valid_isin": 932
     },
     "severity_counts": {
       "high": 67,
       "medium": 7,
-      "source_gap": 7106
+      "source_gap": 7110
     },
     "issue_counts": {
       "official_reference_gap": 6240,
-      "expected_missing_primary_isin": 752,
-      "missing_etf_category": 93,
+      "expected_missing_primary_isin": 754,
+      "missing_etf_category": 94,
       "country_isin_mismatch": 65,
-      "missing_stock_sector": 21,
+      "missing_stock_sector": 22,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
     },
@@ -53,7 +53,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4511,
-        "source_gap": 202,
+        "source_gap": 203,
         "warn": 1
       },
       {
@@ -70,7 +70,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2495,
-        "source_gap": 186
+        "source_gap": 187
       },
       {
         "exchange": "BMV",
@@ -8032,6 +8032,31 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NYSE ARCA::AIHY",
+      "ticker": "AIHY",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -18243,24 +18268,6 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "NYSE ARCA::BKFI",
-      "ticker": "BKFI",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
         }
       ]
     }

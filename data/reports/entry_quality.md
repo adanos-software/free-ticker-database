@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-07-21T08:50:44Z`
+Generated at: `2026-07-22T07:03:27Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | pass | 67,706 |
-| source_gap | 6,925 |
+| source_gap | 6,927 |
 | warn | 74 |
 
 ## Issue Counts
@@ -15,10 +15,10 @@ Generated at: `2026-07-21T08:50:44Z`
 | Issue | Rows |
 |---|---:|
 | official_reference_gap | 6,240 |
-| expected_missing_primary_isin | 752 |
-| missing_etf_category | 93 |
+| expected_missing_primary_isin | 754 |
+| missing_etf_category | 94 |
 | country_isin_mismatch | 65 |
-| missing_stock_sector | 21 |
+| missing_stock_sector | 22 |
 | official_name_mismatch | 7 |
 | official_isin_mismatch | 2 |
 
@@ -28,10 +28,10 @@ Generated at: `2026-07-21T08:50:44Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,899 | 0 | 3,170 | 7 | 0 |
 | B3 | 672 | 0 | 909 | 0 | 0 |
-| NASDAQ | 4,511 | 0 | 202 | 1 | 0 |
+| NASDAQ | 4,511 | 0 | 203 | 1 | 0 |
 | LSE | 6,358 | 0 | 140 | 60 | 0 |
 | TSX | 1,704 | 0 | 199 | 0 | 0 |
-| NYSE ARCA | 2,495 | 0 | 186 | 0 | 0 |
+| NYSE ARCA | 2,495 | 0 | 187 | 0 | 0 |
 | BMV | 0 | 0 | 179 | 0 | 0 |
 | BATS | 1,137 | 0 | 160 | 0 | 0 |
 | ASX | 1,491 | 0 | 134 | 0 | 0 |
