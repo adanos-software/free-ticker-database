@@ -2820,11 +2820,38 @@ def merge_reference_rows(
     source_keys: Iterable[str],
     preserve_source_keys: Iterable[str] | None = None,
 ) -> list[dict[str, str]]:
+    existing_rows = list(existing_rows)
+    refreshed_rows = list(refreshed_rows)
     selected_source_keys = set(source_keys)
-    preserved_source_keys = set(preserve_source_keys or ())
+    preserved_source_keys = set(preserve_source_keys or ()) | set(
+        empty_refresh_source_counts(existing_rows, refreshed_rows, selected_source_keys)
+    )
     replace_source_keys = selected_source_keys - preserved_source_keys
     preserved_rows = [row for row in existing_rows if row.get("source_key", "") not in replace_source_keys]
     return dedupe_rows([*preserved_rows, *refreshed_rows])
+
+
+def empty_refresh_source_counts(
+    existing_rows: Iterable[dict[str, str]],
+    refreshed_rows: Iterable[dict[str, str]],
+    source_keys: Iterable[str],
+) -> dict[str, int]:
+    selected_source_keys = set(source_keys)
+    existing_counts: dict[str, int] = {}
+    refreshed_source_keys: set[str] = set()
+    for row in existing_rows:
+        source_key = row.get("source_key", "")
+        if source_key in selected_source_keys:
+            existing_counts[source_key] = existing_counts.get(source_key, 0) + 1
+    for row in refreshed_rows:
+        source_key = row.get("source_key", "")
+        if source_key in selected_source_keys:
+            refreshed_source_keys.add(source_key)
+    return {
+        source_key: count
+        for source_key, count in existing_counts.items()
+        if source_key not in refreshed_source_keys
+    }
 
 
 def load_manual_masterfiles(manual_dir: Path) -> list[dict[str, str]]:
@@ -18995,6 +19022,15 @@ def main(argv: list[str] | None = None) -> None:
     partial_refresh = bool(args.sources or args.rotation_batch_size)
     if partial_refresh and MASTERFILE_REFERENCE_CSV.exists():
         existing_rows = load_csv(MASTERFILE_REFERENCE_CSV)
+        empty_source_counts = empty_refresh_source_counts(existing_rows, rows, selected_source_keys)
+        for source_key, existing_count in empty_source_counts.items():
+            summary.setdefault("source_modes", {})[source_key] = "unavailable"
+            summary.setdefault("errors", []).append(
+                {
+                    "source_key": source_key,
+                    "error": f"Empty refresh result; preserved {existing_count} existing rows",
+                }
+            )
         unavailable_source_keys = {
             source_key
             for source_key, mode in summary.get("source_modes", {}).items()
