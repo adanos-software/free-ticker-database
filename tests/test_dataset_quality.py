@@ -260,6 +260,11 @@ def test_issue_137_reviewed_country_and_identifier_exceptions():
         assert row["country"] == country
         assert row["isin"] == isin
 
+    bhvn_aliases = set(listing_ticker_exchange_row("BHVN", "NYSE")["aliases"].split("|"))
+    assert "biohaven" in bhvn_aliases
+    assert "biohaven pharmaceutical holding" not in bhvn_aliases
+    assert "biohaven pharmaceutical" not in bhvn_aliases
+
     # tickers.csv has one primary row per security; the corrected OTC line remains
     # addressable through listings.csv/cross_listings.csv while TSXV VUX is primary.
     assert ticker_row("SNYXF") is None
