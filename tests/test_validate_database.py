@@ -723,6 +723,46 @@ def test_validation_report_fails_unreviewed_country_isin_prefix_mismatch():
     assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 2
 
 
+def test_validation_report_allows_reconciled_adr_and_same_isin_peer():
+    foreign = ticker("BECO", isin="BE0003797140")
+    foreign.update(
+        name="Example Holdings SA",
+        exchange="Euronext",
+        country="Belgium",
+        country_code="BE",
+    )
+    adr = ticker("EXMPY", isin="US03524A1088")
+    adr.update(
+        name="Example Holdings SA",
+        exchange="OTC",
+        country="Belgium",
+        country_code="BE",
+    )
+    same_isin_peer = ticker("EXMPL", isin="US03524A1088")
+    same_isin_peer.update(
+        name="Example Holdings secondary line",
+        exchange="LSE",
+        country="Belgium",
+        country_code="BE",
+    )
+
+    report = build_validation_report(
+        tickers=[adr],
+        listings=[listing(foreign), listing(adr), listing(same_isin_peer)],
+        instrument_scopes=[scope(adr)],
+        adanos_reference=[adanos_reference(adr)],
+        entry_quality=[entry_quality(adr)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 3}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 0
+
+
 def test_validation_report_ignores_blank_country_when_isin_prefix_is_not_mappable():
     bad = ticker(isin="XS2691037282")
     bad["country"] = ""

@@ -18,7 +18,16 @@ if str(ROOT) not in sys.path:
 from scripts.alias_policy import is_common_single_word_alias, normalize_alias_text
 from scripts.check_entry_quality_gate import allowed_warn_keys, check_entry_quality_gate
 from scripts.lib.dataio import is_well_formed_metadata_update
-from scripts.rebuild_dataset import COUNTRY_TO_ISO, country_from_isin, is_valid_isin, normalize_sector
+from scripts.rebuild_dataset import (
+    COUNTRY_TO_ISO,
+    build_unique_foreign_issuer_country_lookup,
+    country_from_isin,
+    is_probable_foreign_depositary_listing,
+    is_valid_isin,
+    load_active_official_depositary_listing_keys,
+    normalize_sector,
+    normalized_compact,
+)
 
 DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
@@ -399,7 +408,9 @@ def rows_with_unreviewed_country_isin_prefix_mismatch(
     rows: list[dict[str, str]],
     id_field: str,
     reviewed_country_overrides: set[tuple[str, str]],
+    reconciled_country_isin_pairs: set[tuple[str, str]] | None = None,
 ) -> list[str]:
+    reconciled_country_isin_pairs = reconciled_country_isin_pairs or set()
     invalid: list[str] = []
     for row in rows:
         isin = row.get("isin", "").strip().upper()
@@ -411,8 +422,39 @@ def rows_with_unreviewed_country_isin_prefix_mismatch(
             continue
         if (row.get("ticker", ""), row.get("exchange", "")) in reviewed_country_overrides:
             continue
+        if (isin, country) in reconciled_country_isin_pairs:
+            continue
         invalid.append(row.get(id_field, ""))
     return invalid
+
+
+def reviewed_reconciled_country_isin_pairs(
+    rows: list[dict[str, str]],
+    official_depositary_listing_keys: set[tuple[str, str]] | None = None,
+) -> set[tuple[str, str]]:
+    """Return country/ISIN pairs proven by the conservative ADR reconciliation.
+
+    A confirmed depositary or foreign-OTC row must still resolve by exact normalized
+    issuer name to one valid non-US listing country. Once confirmed, identical-ISIN
+    venue peers are covered by the same reviewed pair.
+    """
+    official_depositary_listing_keys = (
+        load_active_official_depositary_listing_keys()
+        if official_depositary_listing_keys is None
+        else official_depositary_listing_keys
+    )
+    country_by_name = build_unique_foreign_issuer_country_lookup(rows)
+    reviewed_pairs: set[tuple[str, str]] = set()
+    for row in rows:
+        isin = row.get("isin", "").strip().upper()
+        country = row.get("country", "").strip()
+        if not isin or not country or country == country_from_isin(isin):
+            continue
+        if not is_probable_foreign_depositary_listing(row, official_depositary_listing_keys):
+            continue
+        if country_by_name.get(normalized_compact(row.get("name", ""))) == country:
+            reviewed_pairs.add((isin, country))
+    return reviewed_pairs
 
 
 def rows_with_country_code_mismatch(rows: list[dict[str, str]], id_field: str) -> list[str]:
@@ -858,6 +900,7 @@ def build_validation_report(
     identifier_summary_diffs = identifier_summary_mismatches(identifiers_extended, identifier_summary)
     figi_collision_rows = figi_cross_isin_collisions(identifiers_extended)
     reviewed_country_overrides = reviewed_country_override_keys(review_metadata_updates)
+    reconciled_country_isin_pairs = reviewed_reconciled_country_isin_pairs(listings)
     typed_rows = tickers + listings + core_listings
     stock_etf_category_rows = (
         stock_rows_with_etf_category(tickers, "ticker")
@@ -880,9 +923,15 @@ def build_validation_report(
         + rows_with_noncanonical_etf_category(core_listings, "listing_key")
     )
     unreviewed_country_mismatch_rows = (
-        rows_with_unreviewed_country_isin_prefix_mismatch(tickers, "ticker", reviewed_country_overrides)
-        + rows_with_unreviewed_country_isin_prefix_mismatch(listings, "listing_key", reviewed_country_overrides)
-        + rows_with_unreviewed_country_isin_prefix_mismatch(core_listings, "listing_key", reviewed_country_overrides)
+        rows_with_unreviewed_country_isin_prefix_mismatch(
+            tickers, "ticker", reviewed_country_overrides, reconciled_country_isin_pairs
+        )
+        + rows_with_unreviewed_country_isin_prefix_mismatch(
+            listings, "listing_key", reviewed_country_overrides, reconciled_country_isin_pairs
+        )
+        + rows_with_unreviewed_country_isin_prefix_mismatch(
+            core_listings, "listing_key", reviewed_country_overrides, reconciled_country_isin_pairs
+        )
     )
     country_code_mismatch_rows = (
         rows_with_country_code_mismatch(tickers, "ticker")
