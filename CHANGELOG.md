@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.32.04] - 2026-07-23
+
+### Summary
+
+**Scheduled-pipeline reliability and ADR data-quality release.** Publishes the automated listing, symbol-change, masterfile, drift, and delisting refreshes accumulated since v3.32.03, together with fixes that keep those pipelines fail-closed and make ADR validation issuer-aware.
+
+### Changed
+
+- Refreshed daily symbol changes, Nasdaq US new listings, official exchange masterfiles, weekly drift/freshness data, and delisting-candidate evidence.
+- Corrected issuer-country metadata for reviewed ADR listings and regenerated the canonical listing, identifier, alias, coverage, entry-quality, and validation outputs.
+- Made ADR entry-quality checks use issuer identity instead of depositary boilerplate while preserving strict country and instrument-type validation.
+
+### Fixed
+
+- Repaired scheduled-workflow authentication and report dependency ordering, including generating entry-quality inputs before downstream coverage checks.
+- Preserved previously verified masterfile sources when an upstream refresh returns no usable rows, and installed the browser runtime required by browser-backed rotations.
+- Enforced exact entry-quality warning allowlist maintenance so unexpected and stale exceptions both fail CI.
+
+### Verification
+
+- `python -m pytest tests/ -q`: 1659 passed. `scripts/validate_database.py`: 84/84 error gates passed. `scripts/check_entry_quality_gate.py`: 21 reviewed warnings allowed, 0 unexpected, 0 stale. Entry-quality coverage: 74,722/74,722 listings.
+
 ## [3.32.03] - 2026-07-13
 
 ### Summary
