@@ -32,6 +32,20 @@ def test_ci_supports_explicit_dispatch() -> None:
     assert 'description="Full dispatched CI: $CI_STATE"' in workflow
 
 
+def test_ci_rebuilds_entry_quality_from_current_data_before_the_gate() -> None:
+    workflow = (WORKFLOW_DIR / "ci.yml").read_text(encoding="utf-8")
+
+    dataset_rebuild = workflow.index("python scripts/rebuild_dataset.py")
+    entry_quality_rebuild = workflow.index("python scripts/build_entry_quality_report.py")
+    test_suite = workflow.index("python -m pytest tests/ -q")
+    entry_quality_gate = workflow.index("python scripts/check_entry_quality_gate.py")
+
+    assert dataset_rebuild < entry_quality_rebuild < test_suite < entry_quality_gate
+    assert "--csv-out /tmp/entry-quality.csv" in workflow
+    assert "--entry-quality-csv /tmp/entry-quality.csv" in workflow
+    assert "--no-json-out" in workflow
+
+
 def test_automation_workflows_use_scoped_token_and_dispatch_real_ci() -> None:
     for filename, branch in AUTOMATION_BRANCHES.items():
         workflow = (WORKFLOW_DIR / filename).read_text(encoding="utf-8")

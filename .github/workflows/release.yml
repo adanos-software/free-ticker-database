@@ -34,9 +34,9 @@ jobs:
             python scripts/verify_stock_masterfiles.py --asset-type Stock --chunk-index "$i" --chunk-count 8 --output-dir data/stock_verification/run-release
             python scripts/verify_stock_masterfiles.py --asset-type ETF --chunk-index "$i" --chunk-count 8 --output-dir data/etf_verification/run-release
           done
+          python scripts/build_entry_quality_report.py
           python scripts/build_coverage_report.py
           python scripts/build_source_inventory.py
-          python scripts/build_entry_quality_report.py
           python scripts/build_source_gap_classification.py
           python scripts/build_source_of_truth_decisions.py
           python scripts/build_completion_backlog.py

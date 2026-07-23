@@ -16,17 +16,15 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.alias_policy import is_common_single_word_alias, normalize_alias_text
-from scripts.check_entry_quality_gate import allowed_warn_keys, check_entry_quality_gate
+from scripts.build_entry_quality_report import build_confirmed_depositary_listing_tuples
+from scripts.check_entry_quality_gate import check_entry_quality_gate
 from scripts.lib.dataio import is_well_formed_metadata_update
 from scripts.rebuild_dataset import (
     COUNTRY_TO_ISO,
-    build_unique_foreign_issuer_country_lookup,
+    MASTERFILE_REFERENCE_CSV,
     country_from_isin,
-    is_probable_foreign_depositary_listing,
     is_valid_isin,
-    load_active_official_depositary_listing_keys,
     normalize_sector,
-    normalized_compact,
 )
 
 DATA_DIR = ROOT / "data"
@@ -48,6 +46,7 @@ DEFAULT_ADANOS_ALIAS_AUDIT_CSV = REPORTS_DIR / "adanos_alias_audit.csv"
 DEFAULT_REVIEW_REMOVE_ALIASES_CSV = DATA_DIR / "review_overrides" / "remove_aliases.csv"
 DEFAULT_REVIEW_METADATA_UPDATES_CSV = DATA_DIR / "review_overrides" / "metadata_updates.csv"
 DEFAULT_FOREIGN_ISIN_REVIEWED_CSV = DATA_DIR / "review_overrides" / "foreign_isin_reviewed.csv"
+DEFAULT_MASTERFILE_REFERENCE_CSV = MASTERFILE_REFERENCE_CSV
 DEFAULT_COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV = REPORTS_DIR / "source_gap_classification.csv"
 DEFAULT_SOURCE_OF_TRUTH_DECISIONS_CSV = REPORTS_DIR / "source_of_truth_decisions.csv"
@@ -393,24 +392,11 @@ def rows_missing_country_metadata_despite_isin(rows: list[dict[str, str]], id_fi
     return invalid
 
 
-def reviewed_country_override_keys(metadata_updates: list[dict[str, str]]) -> set[tuple[str, str]]:
-    return {
-        (row.get("ticker", ""), row.get("exchange", ""))
-        for row in metadata_updates
-        if row.get("field") == "country"
-        and row.get("decision") == "update"
-        and row.get("proposed_value")
-        and row.get("reason")
-    }
-
-
 def rows_with_unreviewed_country_isin_prefix_mismatch(
     rows: list[dict[str, str]],
     id_field: str,
-    reviewed_country_overrides: set[tuple[str, str]],
-    reconciled_country_isin_pairs: set[tuple[str, str]] | None = None,
+    reviewed_listing_keys: set[str],
 ) -> list[str]:
-    reconciled_country_isin_pairs = reconciled_country_isin_pairs or set()
     invalid: list[str] = []
     for row in rows:
         isin = row.get("isin", "").strip().upper()
@@ -420,41 +406,10 @@ def rows_with_unreviewed_country_isin_prefix_mismatch(
         inferred_country = country_from_isin(isin)
         if not inferred_country or country == inferred_country:
             continue
-        if (row.get("ticker", ""), row.get("exchange", "")) in reviewed_country_overrides:
-            continue
-        if (isin, country) in reconciled_country_isin_pairs:
+        if listing_key(row) in reviewed_listing_keys:
             continue
         invalid.append(row.get(id_field, ""))
     return invalid
-
-
-def reviewed_reconciled_country_isin_pairs(
-    rows: list[dict[str, str]],
-    official_depositary_listing_keys: set[tuple[str, str]] | None = None,
-) -> set[tuple[str, str]]:
-    """Return country/ISIN pairs proven by the conservative ADR reconciliation.
-
-    A confirmed depositary or foreign-OTC row must still resolve by exact normalized
-    issuer name to one valid non-US listing country. Once confirmed, identical-ISIN
-    venue peers are covered by the same reviewed pair.
-    """
-    official_depositary_listing_keys = (
-        load_active_official_depositary_listing_keys()
-        if official_depositary_listing_keys is None
-        else official_depositary_listing_keys
-    )
-    country_by_name = build_unique_foreign_issuer_country_lookup(rows)
-    reviewed_pairs: set[tuple[str, str]] = set()
-    for row in rows:
-        isin = row.get("isin", "").strip().upper()
-        country = row.get("country", "").strip()
-        if not isin or not country or country == country_from_isin(isin):
-            continue
-        if not is_probable_foreign_depositary_listing(row, official_depositary_listing_keys):
-            continue
-        if country_by_name.get(normalized_compact(row.get("name", ""))) == country:
-            reviewed_pairs.add((isin, country))
-    return reviewed_pairs
 
 
 def rows_with_country_code_mismatch(rows: list[dict[str, str]], id_field: str) -> list[str]:
@@ -850,6 +805,7 @@ def build_validation_report(
     entry_quality: list[dict[str, str]],
     allowed_warns: set[str],
     adanos_alias_findings: list[dict[str, str]],
+    allowed_country_mismatch_warns: set[str] | None = None,
     identifiers: list[dict[str, str]] | None = None,
     identifiers_extended: list[dict[str, str]] | None = None,
     identifier_summary: dict[str, Any] | None = None,
@@ -858,6 +814,7 @@ def build_validation_report(
     cross_listings: list[dict[str, str]] | None = None,
     review_remove_aliases: list[dict[str, str]] | None = None,
     review_metadata_updates: list[dict[str, str]] | None = None,
+    masterfiles: list[dict[str, str]] | None = None,
     source_gap_classifications: list[dict[str, str]] | None = None,
     source_of_truth_decisions: list[dict[str, str]] | None = None,
     coverage_report: dict[str, Any] | None = None,
@@ -869,6 +826,7 @@ def build_validation_report(
     path_to_columns = path_to_columns or {}
     review_remove_aliases = review_remove_aliases or []
     review_metadata_updates = review_metadata_updates or []
+    masterfiles = masterfiles or []
     source_gap_classifications = source_gap_classifications or []
     source_of_truth_decisions = source_of_truth_decisions or []
     identifiers = identifiers or []
@@ -877,6 +835,7 @@ def build_validation_report(
     core_listings = core_listings or []
     listing_index = listing_index or []
     cross_listings = cross_listings or []
+    allowed_country_mismatch_warns = allowed_country_mismatch_warns or set()
 
     listing_keys = {row["listing_key"] for row in listings if row.get("listing_key")}
     identifiers_extended_keys = {row["listing_key"] for row in identifiers_extended if row.get("listing_key")}
@@ -899,8 +858,16 @@ def build_validation_report(
     public_alias_duplicates = duplicate_public_aliases(tickers)
     identifier_summary_diffs = identifier_summary_mismatches(identifiers_extended, identifier_summary)
     figi_collision_rows = figi_cross_isin_collisions(identifiers_extended)
-    reviewed_country_overrides = reviewed_country_override_keys(review_metadata_updates)
-    reconciled_country_isin_pairs = reviewed_reconciled_country_isin_pairs(listings)
+    confirmed_depositary_listing_tuples = build_confirmed_depositary_listing_tuples(
+        listings,
+        scopes=instrument_scopes,
+        identifiers=identifiers_extended,
+        masterfiles=masterfiles,
+        metadata_updates=review_metadata_updates,
+    )
+    reviewed_country_mismatch_listing_keys = allowed_country_mismatch_warns | {
+        f"{exchange}::{ticker}" for ticker, exchange, _isin, _country in confirmed_depositary_listing_tuples
+    }
     typed_rows = tickers + listings + core_listings
     stock_etf_category_rows = (
         stock_rows_with_etf_category(tickers, "ticker")
@@ -924,13 +891,13 @@ def build_validation_report(
     )
     unreviewed_country_mismatch_rows = (
         rows_with_unreviewed_country_isin_prefix_mismatch(
-            tickers, "ticker", reviewed_country_overrides, reconciled_country_isin_pairs
+            tickers, "ticker", reviewed_country_mismatch_listing_keys
         )
         + rows_with_unreviewed_country_isin_prefix_mismatch(
-            listings, "listing_key", reviewed_country_overrides, reconciled_country_isin_pairs
+            listings, "listing_key", reviewed_country_mismatch_listing_keys
         )
         + rows_with_unreviewed_country_isin_prefix_mismatch(
-            core_listings, "listing_key", reviewed_country_overrides, reconciled_country_isin_pairs
+            core_listings, "listing_key", reviewed_country_mismatch_listing_keys
         )
     )
     country_code_mismatch_rows = (
@@ -1462,6 +1429,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--adanos-alias-audit-csv", type=Path, default=DEFAULT_ADANOS_ALIAS_AUDIT_CSV)
     parser.add_argument("--review-remove-aliases-csv", type=Path, default=DEFAULT_REVIEW_REMOVE_ALIASES_CSV)
     parser.add_argument("--review-metadata-updates-csv", type=Path, default=DEFAULT_REVIEW_METADATA_UPDATES_CSV)
+    parser.add_argument("--masterfile-reference-csv", type=Path, default=DEFAULT_MASTERFILE_REFERENCE_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=DEFAULT_COVERAGE_REPORT_JSON)
     parser.add_argument("--source-gap-classification-csv", type=Path, default=DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV)
     parser.add_argument("--source-of-truth-decisions-csv", type=Path, default=DEFAULT_SOURCE_OF_TRUTH_DECISIONS_CSV)
@@ -1505,6 +1473,7 @@ def main(argv: list[str] | None = None) -> int:
         args.source_of_truth_decisions_csv: SOURCE_OF_TRUTH_DECISION_COLUMNS,
     }
     coverage_report = load_json(args.coverage_report_json) if args.coverage_report_json.exists() else None
+    warn_allowlist_rows = load_csv(args.warn_allowlist_csv) if args.warn_allowlist_csv.exists() else []
     payload = build_validation_report(
         tickers=load_csv(args.tickers_csv),
         listings=load_csv(args.listings_csv),
@@ -1517,7 +1486,13 @@ def main(argv: list[str] | None = None) -> int:
         cross_listings=load_csv(args.cross_listings_csv),
         adanos_reference=load_csv(args.adanos_reference_csv),
         entry_quality=load_csv(args.entry_quality_csv),
-        allowed_warns=allowed_warn_keys(args.warn_allowlist_csv),
+        allowed_warns={row["listing_key"] for row in warn_allowlist_rows if row.get("listing_key")},
+        allowed_country_mismatch_warns={
+            row["listing_key"]
+            for row in warn_allowlist_rows
+            if row.get("listing_key")
+            and "country_isin_mismatch" in row.get("issue_types", "").split("|")
+        },
         adanos_alias_findings=load_csv(args.adanos_alias_audit_csv) if args.adanos_alias_audit_csv.exists() else [],
         review_remove_aliases=(
             load_csv(args.review_remove_aliases_csv) if args.review_remove_aliases_csv.exists() else []
@@ -1525,6 +1500,7 @@ def main(argv: list[str] | None = None) -> int:
         review_metadata_updates=(
             load_csv(args.review_metadata_updates_csv) if args.review_metadata_updates_csv.exists() else []
         ),
+        masterfiles=(load_csv(args.masterfile_reference_csv) if args.masterfile_reference_csv.exists() else []),
         source_gap_classifications=(
             load_csv(args.source_gap_classification_csv) if args.source_gap_classification_csv.exists() else []
         ),

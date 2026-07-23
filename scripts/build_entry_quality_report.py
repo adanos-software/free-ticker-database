@@ -17,22 +17,28 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.rebuild_dataset import (
+    active_official_depositary_listing_keys,
     CORE_LISTINGS_CSV,
     COUNTRY_TO_ISO,
     EXCHANGE_TICKER_RE,
     IDENTIFIERS_EXTENDED_CSV,
     LISTINGS_CSV,
     MASTERFILE_REFERENCE_CSV,
+    REVIEWED_DEPOSITARY_PATTERN,
     REVIEW_METADATA_UPDATES_CSV,
     VALID_ETF_SECTORS,
     VALID_STOCK_SECTORS,
     alias_matches_company,
+    build_unique_foreign_issuer_country_lookup,
     country_from_isin,
     has_wrapper_term,
     is_blocked_alias,
     is_valid_isin,
     looks_like_identifier,
     normalize_tokens,
+    normalized_compact,
+    reviewed_country_isin_override_listing_keys,
+    reviewed_depositary_country_isin_listing_keys,
     split_aliases,
 )
 
@@ -834,6 +840,8 @@ def assess_entry(
     otc_review_decision: dict[str, str],
     venue_status: str,
     alias_context: dict[str, set[str]],
+    reviewed_depositary_listing_keys: set[tuple[str, str, str, str]],
+    confirmed_depositary_listing_tuples: set[tuple[str, str, str, str]],
 ) -> EntryQualityRow:
     issues: list[EntryIssue] = []
     listing_key = row.get("listing_key", "")
@@ -948,7 +956,19 @@ def assess_entry(
             "Core primary listing is explicitly scoped as missing ISIN.",
         )
     inferred_country = country_from_isin(isin) if isin else None
-    if inferred_country and row.get("country") and inferred_country != row["country"]:
+    reviewed_listing_tuple = (
+        row.get("ticker", "").strip().upper(),
+        row.get("exchange", "").strip(),
+        isin.strip().upper(),
+        row.get("country", "").strip(),
+    )
+    if (
+        inferred_country
+        and row.get("country")
+        and inferred_country != row["country"]
+        and reviewed_listing_tuple not in reviewed_depositary_listing_keys
+        and reviewed_listing_tuple not in confirmed_depositary_listing_tuples
+    ):
         add_issue(
             issues,
             "country_isin_mismatch",
@@ -1095,6 +1115,123 @@ def assess_entry(
     )
 
 
+def build_confirmed_depositary_listing_tuples(
+    listings: list[dict[str, str]],
+    *,
+    scopes: list[dict[str, str]],
+    identifiers: list[dict[str, str]],
+    masterfiles: list[dict[str, str]],
+    metadata_updates: list[dict[str, str]] | None = None,
+) -> set[tuple[str, str, str, str]]:
+    """Build affirmative, listing- and identifier-bound depositary evidence."""
+    scope_lookup = build_scope_lookup(scopes)
+    identifier_lookup = build_identifier_lookup(identifiers)
+    official_lookup = build_official_reference_lookup(masterfiles)
+    official_depositary_listing_keys = active_official_depositary_listing_keys(
+        masterfiles,
+        REVIEWED_DEPOSITARY_PATTERN,
+    )
+    confirmed = reviewed_depositary_country_isin_listing_keys(
+        listings,
+        metadata_updates or [],
+        official_depositary_listing_keys,
+    )
+    confirmed |= reviewed_country_isin_override_listing_keys(
+        listings,
+        metadata_updates or [],
+    )
+    reviewed_country_overrides = {
+        (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip()): row.get(
+            "proposed_value", ""
+        ).strip()
+        for row in metadata_updates or []
+        if row.get("field") == "country"
+        and row.get("decision") == "update"
+        and row.get("proposed_value", "").strip()
+        and row.get("reason", "").strip()
+    }
+    foreign_country_by_name = build_unique_foreign_issuer_country_lookup(listings)
+    listings_by_key = {row.get("listing_key", ""): row for row in listings}
+    for row in listings:
+        isin = row.get("isin", "")
+        country = row.get("country", "")
+        key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+        listing_tuple = (*key, isin.strip().upper(), country.strip())
+        is_foreign_us_security = bool(
+            country
+            and country != "United States"
+            and country_from_isin(isin) == "United States"
+        )
+        is_depositary_candidate = key in official_depositary_listing_keys or (
+            row.get("exchange") == "OTC" and row.get("ticker", "").endswith("Y")
+        )
+        is_cins_identifier = bool(isin.startswith("US") and len(isin) > 2 and isin[2].isalpha())
+        has_country_evidence = bool(
+            reviewed_country_overrides.get(key) == country
+            or foreign_country_by_name.get(normalized_compact(row.get("name", ""))) == country
+        )
+        identifier_isin = identifier_lookup.get(row.get("listing_key", ""), {}).get("isin", "")
+        official_isins = {
+            candidate.get("isin", "").strip().upper()
+            for candidate in official_lookup.get((*key, row.get("asset_type", "")), [])
+            if candidate.get("isin", "").strip()
+        }
+        has_listing_bound_identifier = bool(
+            isin
+            and (
+                identifier_isin.strip().upper() == isin.strip().upper()
+                or isin.strip().upper() in official_isins
+            )
+        )
+        if (
+            is_foreign_us_security
+            and (is_depositary_candidate or is_cins_identifier)
+            and has_listing_bound_identifier
+            and has_country_evidence
+        ):
+            confirmed.add(listing_tuple)
+    for row in listings:
+        key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+        row_tuple = (*key, row.get("isin", "").strip().upper(), row.get("country", "").strip())
+        if row_tuple not in confirmed:
+            continue
+        scope = scope_lookup.get(row.get("listing_key", ""), {})
+        primary = listings_by_key.get(scope.get("primary_listing_key", ""), {})
+        primary_key = (
+            primary.get("ticker", "").strip().upper(),
+            primary.get("exchange", "").strip(),
+        )
+        if (
+            primary
+            and row.get("isin") == primary.get("isin")
+            and row.get("country") == primary.get("country")
+            and not (primary.get("exchange") == "OTC" and primary.get("ticker", "").endswith("F"))
+        ):
+            confirmed.add(
+                (*primary_key, primary.get("isin", "").strip().upper(), primary.get("country", "").strip())
+            )
+    for row in listings:
+        key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+        scope = scope_lookup.get(row.get("listing_key", ""), {})
+        primary = listings_by_key.get(scope.get("primary_listing_key", ""), {})
+        primary_tuple = (
+            primary.get("ticker", "").strip().upper(),
+            primary.get("exchange", "").strip(),
+            primary.get("isin", "").strip().upper(),
+            primary.get("country", "").strip(),
+        )
+        is_foreign_ordinary = row.get("exchange") == "OTC" and row.get("ticker", "").endswith("F")
+        if (
+            scope.get("scope_reason") == "secondary_cross_listing"
+            and primary_tuple in confirmed
+            and row.get("isin") == primary.get("isin")
+            and row.get("country") == primary.get("country")
+            and not is_foreign_ordinary
+        ):
+            confirmed.add((*key, row.get("isin", "").strip().upper(), row.get("country", "").strip()))
+    return confirmed
+
+
 def assess_entries(
     listings: list[dict[str, str]],
     *,
@@ -1116,6 +1253,14 @@ def assess_entries(
     scope_lookup = build_scope_lookup(scopes)
     identifier_lookup = build_identifier_lookup(identifiers)
     official_lookup = build_official_reference_lookup(masterfiles)
+    confirmed_depositary_listing_tuples = build_confirmed_depositary_listing_tuples(
+        listings,
+        scopes=scopes,
+        identifiers=identifiers,
+        masterfiles=masterfiles,
+        metadata_updates=metadata_updates,
+    )
+    reviewed_depositary_listing_keys = confirmed_depositary_listing_tuples
     same_isin_lookup = build_same_isin_listing_lookup(listings)
     alias_context = build_alias_context(listings)
     reviewed_name_overrides = build_reviewed_name_override_lookup(metadata_updates or [])
@@ -1140,6 +1285,8 @@ def assess_entries(
                 otc_review_decision=otc_review_decision_lookup.get((row.get("ticker", ""), row.get("exchange", "")), {}),
                 venue_status=venue_lookup.get(row.get("exchange", ""), ""),
                 alias_context=alias_context,
+                reviewed_depositary_listing_keys=reviewed_depositary_listing_keys,
+                confirmed_depositary_listing_tuples=confirmed_depositary_listing_tuples,
             )
         )
     return rows

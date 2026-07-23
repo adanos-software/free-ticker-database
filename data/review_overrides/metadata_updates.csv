@@ -1,28 +1,139 @@
 ticker,exchange,field,decision,proposed_value,confidence,reason
+SAABF,OTC,country,update,Sweden,0.99,"Foreign-ordinary review: SAABF represents Saab AB Series B ordinary shares and retains the Swedish issuer domicile."
+SAABF,OTC,isin,update,SE0021921269,0.99,"Security-class correction: SAABF represents Saab Series B ordinary shares under current ISIN SE0021921269, not SAABY's ADR."
+SAABY,OTC,country,update,Sweden,0.99,"ADR domicile review: SAABY is Saab AB's unsponsored ADR while the issuer remains Sweden-domiciled."
+SAABY,OTC,isin,update,US78516J1016,0.99,"Security-class correction: SAABY is the unsponsored ADR under ISIN US78516J1016 and must remain distinct from Saab Series B ordinary shares."
+0A2L,LSE,isin,update,US4593481082,0.99,"Identifier-bound depositary review: the official LSE record and listing-bound identifier identify 0A2L under US4593481082."
+0A2X,LSE,isin,update,US8740801043,0.99,"Identifier-bound ADS cross-listing review: LSE 0A2X carries TAL Education ADS ISIN US8740801043."
+0A32,LSE,isin,update,US91531W1062,0.99,"Identifier-bound ADS cross-listing review: LSE 0A32 carries UP Fintech ADS ISIN US91531W1062."
+0A3T,LSE,isin,update,US81141R1005,0.99,"Identifier-bound ADS cross-listing review: LSE 0A3T carries Sea Limited ADS ISIN US81141R1005."
+0A6U,LSE,isin,update,US54951L1098,0.99,"Identifier-bound ADS cross-listing review: LSE 0A6U carries Luckin Coffee ADS ISIN US54951L1098."
+0I74,LSE,isin,update,US23703Q2030,0.99,"Identifier-bound ADS cross-listing review: LSE 0I74 carries Daqo New Energy ADS ISIN US23703Q2030."
+0JOQ,LSE,isin,update,US47215P1066,0.99,"Identifier-bound ADS cross-listing review: LSE 0JOQ carries JD.com ADS ISIN US47215P1066."
+0LEA,LSE,isin,update,US88032Q1094,0.99,"Identifier-bound depositary review: LSE 0LEA carries Tencent Holdings DR ISIN US88032Q1094."
+DQ,NYSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Daqo New Energy is incorporated in the Cayman Islands; China describes operations, not incorporation."
+DQ,NYSE,isin,update,US23703Q2030,0.99,"Identifier-bound ADS review: NYSE DQ is Daqo New Energy's ADS under ISIN US23703Q2030."
+JD,NASDAQ,country,update,Cayman Islands,0.99,"Issuer-domicile review: JD.com is incorporated in the Cayman Islands; China describes operations, not incorporation."
+JD,NASDAQ,isin,update,US47215P1066,0.99,"Identifier-bound ADS review: NASDAQ JD is JD.com's ADS under ISIN US47215P1066."
+LKNCY,OTC,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Luckin Coffee is incorporated in the Cayman Islands; China describes operations, not incorporation."
+LKNCY,OTC,isin,update,US54951L1098,0.99,"Identifier-bound ADR review: OTC LKNCY is Luckin Coffee's depositary receipt under ISIN US54951L1098."
+MONRY,OTC,country,update,Italy,0.99,"ADR domicile review: MONRY is Moncler's unsponsored ADR while the issuer remains Italy-domiciled."
+MONRY,OTC,isin,update,US60919T1007,0.99,"Security-class correction: MONRY is the ADR under ISIN US60919T1007 and must remain distinct from MONRF ordinary shares under IT0004965148."
+PBR-A,NYSE,country,update,Brazil,0.99,"ADR domicile correction: PBR-A is Petrobras's preferred ADR class and shares the Brazilian issuer domicile with PBR."
+PBR-A,NYSE,isin,update,US71654V1017,0.99,"Identifier-bound ADR review: NYSE PBR-A retains preferred ADR ISIN US71654V1017 while preserving Petrobras's Brazilian domicile."
+SE,NYSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Sea Limited is incorporated in the Cayman Islands; Singapore describes headquarters and operations, not incorporation."
+SE,NYSE,isin,update,US81141R1005,0.99,"Identifier-bound ADS review: NYSE SE is Sea Limited's ADS under ISIN US81141R1005."
+TAL,NYSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: TAL Education Group is incorporated in the Cayman Islands; China describes operations, not incorporation."
+TAL,NYSE,isin,update,US8740801043,0.99,"Identifier-bound ADS review: NYSE TAL is TAL Education's ADS under ISIN US8740801043."
+TIGR,NASDAQ,country,update,Cayman Islands,0.99,"Issuer-domicile correction: UP Fintech Holding is incorporated in the Cayman Islands; China describes operations, not incorporation."
+TIGR,NASDAQ,isin,update,US91531W1062,0.99,"Identifier-bound ADS review: NASDAQ TIGR is UP Fintech's ADS under ISIN US91531W1062."
+WILWY,OTC,country,update,Norway,0.99,"ADR domicile review: WILWY is Wallenius Wilhelmsen's unsponsored ADR while the issuer remains Norway-domiciled."
+WILWY,OTC,isin,update,US9324261091,0.99,"Security-class correction: WILWY is the 2:1 ADR under ISIN US9324261091 and must remain distinct from WAWI/WAWIF ordinary shares under NO0010571680."
+06288,HKEX,country,update,Japan,0.99,"DRS domicile review: HKEX 06288 is a depositary-receipt security for Japan-domiciled Fast Retailing; the US ISIN does not change issuer domicile."
+06288,HKEX,isin,update,US31188H2004,0.99,"Identifier-bound DRS review: HKEX 06288 carries depositary-receipt ISIN US31188H2004 while retaining Fast Retailing's Japanese issuer domicile."
 AMRRY,OTC,country,update,Australia,0.99,"Issue #137 reviewed ADR domicile: American Rare Earths' 2025 annual report states that the issuer is incorporated in Australia; its ADR peer must not restore the former New Zealand domicile."
+AMRRY,OTC,isin,update,US02925A1051,0.99,"Identifier-bound ADR review: BNY's depositary-receipt directory identifies AMRRY, CUSIP 02925A105, and DR ISIN US02925A1051 as the Australia-country sponsored ADR."
+AAPG,NASDAQ,country,update,Cayman Islands,0.99,"Identifier-bound ADS review: Ascentage Pharma Group International remains Cayman Islands incorporated; the NASDAQ security is the ADS rather than the Hong Kong ordinary share."
+AAPG,NASDAQ,isin,update,US04390B1052,0.99,"Security-class correction: NASDAQ AAPG is the ADS under ISIN US04390B1052 and must remain distinct from ordinary-share ISIN KYG0519B1023 used by HKEX 06855 and OTC ASPHF."
+AAVXF,OTC,country,update,France,0.99,"Foreign-ordinary identifier review: AAVXF represents France-domiciled Abivax S.A.; issuer domicile remains France."
+AAVXF,OTC,isin,update,FR0012333284,0.99,"Foreign-ordinary identifier correction: AAVXF is the ordinary Abivax S.A. line identified by LSE 0RA9 and XETRA 2X1 under ISIN FR0012333284; US00370M1036 belongs to NASDAQ ADR ABVX."
 ARRNF,OTC,country,update,Australia,0.99,"Issue #137 reviewed foreign-ordinary domicile: ARRNF represents the same Australia-incorporated American Rare Earths issuer as ASX ARR and ADR AMRRY."
+ARRNF,OTC,isin,update,NZARRE0004S7,0.99,"Identifier-bound foreign-ordinary review: ARRNF uses underlying ordinary-share ISIN NZARRE0004S7 while the issuer's reviewed current domicile is Australia."
+AAUKF,OTC,country,update,United Kingdom,0.99,"Current-security review: AAUKF is the active OTC foreign-ordinary line of United Kingdom-domiciled Anglo American plc."
+AAUKF,OTC,isin,update,GB00BTK05J60,0.99,"Post-consolidation correction: Anglo American's June 2025 share consolidation replaced retired ISIN GB00B1XZS820 with GB00BTK05J60; active AAUKF must not canonicalize to historical AAUKD."
+AIMUF,OTC,country,update,Cayman Islands,0.99,"Security-class review: AIMUF is a distinct Cayman Islands unit security and must not inherit AIMTF's Class A-and-warrant bundle identifier by exact issuer name."
+AIMUF,OTC,isin,update,USG0135E1004,0.99,"Identifier-bound CINS review: retain AIMUF's own foreign-security identifier USG0135E1004 so it remains distinct from AIMTF under KYG0135E1420."
+ASPHF,OTC,country,update,Cayman Islands,0.99,"Foreign-ordinary review: ASPHF represents Ascentage Pharma Group International ordinary shares and retains the Cayman Islands issuer domicile."
+ASPHF,OTC,isin,update,KYG0519B1023,0.99,"Security-class correction: ASPHF is the ordinary-share line under ISIN KYG0519B1023 and must remain distinct from NASDAQ AAPG ADS ISIN US04390B1052."
 BHVN,NYSE,country,update,British Virgin Islands,0.99,"Issue #137 reviewed current issuer domicile: the active NYSE BHVN is Biohaven Ltd., a British Virgin Islands company, rather than its retired predecessor."
 BHVN,NYSE,isin,update,VGG1110E1079,0.99,"Issue #137 current-security correction: replace the predecessor's retired ISIN with the active NYSE Biohaven Ltd. identifier."
 BHVN,NYSE,name,update,Biohaven Ltd.,0.99,"Issue #137 current-security correction: replace the predecessor name acquired and delisted in 2022 with the active NYSE issuer."
-BABAN,BMV,country,update,China,0.99,"Issue #137 reviewed cross-listing domicile: BABAN shares BABA's ADR ISIN and must retain the same China issuer country across venues."
+BOMBF,OTC,country,update,Canada,0.99,"Identifier-bound preferred-share review: BOMBF is Bombardier Inc. Series 3 preferred stock and retains the Canadian issuer domicile."
+BOMBF,OTC,isin,update,CA0977516065,0.99,"Preferred-share identifier correction: Bombardier's shareholder FAQ identifies Series 3 as CUSIP 097751606; the corresponding valid Canadian ISIN is CA0977516065, not US0977516063."
+BCHPY,OTC,country,update,Australia,0.99,"Identifier-bound ADR review: BCHPY is BrainChip Holdings' sponsored ADR, while the issuer domicile remains Australia."
+BCHPY,OTC,isin,update,US10488Q1022,0.99,"Security-class correction: BCHPY is the sponsored ADR with US ISIN US10488Q1022 and must remain distinct from BRCHF/ASX BRN ordinary shares under AU000000BRN8."
+BECTY,OTC,country,update,Germany,0.99,"ADR domicile review: BECTY is the unsponsored depositary receipt for Germany-domiciled Bechtle AG; the US DR ISIN does not change issuer domicile."
+BECTY,OTC,isin,update,US07558Q1031,0.99,"Identifier-bound ADR review: BECTY retains depositary-receipt ISIN US07558Q1031 and remains distinct from Bechtle ordinary shares."
+BICEY,OTC,country,update,France,0.99,"ADR domicile review: BICEY is the unsponsored depositary receipt for France-domiciled BIC SA; the US DR ISIN does not change issuer domicile."
+BICEY,OTC,isin,update,US0887361030,0.99,"Identifier-bound ADR review: BICEY retains depositary-receipt ISIN US0887361030 while preserving the French issuer domicile."
+BRCHF,OTC,country,update,Australia,0.99,"Foreign-ordinary review: BRCHF represents BrainChip Holdings ordinary shares and retains the Australian issuer domicile."
+BRCHF,OTC,isin,update,AU000000BRN8,0.99,"Security-class correction: BRCHF is the ordinary-share line under AU000000BRN8 and must not canonicalize to the 40:1 BCHPY ADR."
+BABAN,BMV,country,update,Cayman Islands,0.99,"Identifier-bound cross-listing review: BABAN shares the NYSE BABA ADR ISIN US01609W1027; Alibaba's FY2026 Form 20-F identifies the issuer's jurisdiction of incorporation as the Cayman Islands."
+BABAN,BMV,isin,update,US01609W1027,0.99,"Identifier-bound ADR cross-listing review: BMV BABAN is the local cross-listing of the NYSE BABA depositary receipt and carries the same reviewed DR ISIN US01609W1027."
 CBUIF,OTC,country,update,Bahamas,0.99,"Issue #137 reviewed identifier reconciliation: CBUIF and BS2026601063 identify the Bahamian Commodore International issuer."
 CBUIF,OTC,name,update,Commodore International Ltd.,0.99,"Issue #137 reviewed identifier reconciliation: replace the colliding C=Holdings name with the issuer represented by ticker CBUIF and ISIN BS2026601063."
 CEPU,NYSE,country,update,Argentina,0.99,"Issue #137 reviewed issuer domicile: Central Puerto is an Argentine issuer; the AR ISIN is corroborated by issuer identity rather than trusted generically."
+CFRUY,OTC,country,update,Switzerland,0.99,"ADR domicile review: CFRUY is the depositary receipt for Switzerland-domiciled Compagnie Financiere Richemont; the US DR ISIN does not change issuer domicile."
+CFRUY,OTC,isin,update,US2043191079,0.99,"Identifier-bound ADR review: CFRUY retains depositary-receipt ISIN US2043191079 while preserving the Swiss issuer domicile."
+CJPRY,OTC,country,update,Japan,0.99,"ADR domicile review: CJPRY is the depositary receipt for Japan-domiciled Central Japan Railway; the US DR ISIN does not change issuer domicile."
+CJPRY,OTC,isin,update,US1537661001,0.99,"Identifier-bound ADR review: CJPRY retains depositary-receipt ISIN US1537661001 while preserving the Japanese issuer domicile."
+CLPBY,OTC,country,update,Denmark,0.99,"ADR domicile review: CLPBY is the sponsored depositary receipt for Denmark-domiciled Coloplast; the US DR ISIN does not change issuer domicile."
+CLPBY,OTC,isin,update,US19624Y2000,0.99,"Identifier-bound ADR review: CLPBY retains depositary-receipt ISIN US19624Y2000 while preserving the Danish issuer domicile."
+CLZNY,OTC,country,update,Switzerland,0.99,"ADR domicile review: CLZNY is the unsponsored depositary receipt for Switzerland-domiciled Clariant; the US DR ISIN does not change issuer domicile."
+CLZNY,OTC,isin,update,US18047P1012,0.99,"Identifier-bound ADR review: CLZNY retains depositary-receipt ISIN US18047P1012 while preserving the Swiss issuer domicile."
+CRRFY,OTC,country,update,France,0.99,"ADR domicile review: CRRFY is the depositary receipt for France-domiciled Carrefour; the US DR ISIN does not change issuer domicile."
+CRRFY,OTC,isin,update,US1444302046,0.99,"Identifier-bound ADR review: CRRFY retains depositary-receipt ISIN US1444302046 while preserving the French issuer domicile."
 CVVIF,OTC,country,update,Argentina,0.97,"Issue #137 reviewed issuer domicile: OTC CVVIF is the foreign ordinary line of Argentine issuer Sociedad Comercial del Plata (BCBA COME)."
 EDCFF,OTC,country,update,Argentina,0.97,"Issue #137 reviewed issuer domicile: OTC EDCFF is the foreign ordinary line of Argentine issuer Enel Generacion Costanera (BCBA CECO2)."
 GCLAF,OTC,country,update,Argentina,0.97,"Issue #137 reviewed issuer domicile: OTC GCLAF is the foreign ordinary line of Argentine issuer Grupo Clarin (BCBA GCLA)."
 GOFPY,OTC,country,update,Switzerland,0.99,"Issue #137 reviewed current domicile: Allwyn completed its re-domiciliation to Switzerland on May 29, 2026."
+GOFPY,OTC,isin,update,US3924831031,0.99,"Identifier-bound ADR review: the active OTC Markets security profile for GOFPY identifies Allwyn AG under ISIN US3924831031, while the official stock directory classifies the same listing as UNSP/ADR."
+EPIAF,OTC,country,update,Sweden,0.99,"Foreign-ordinary identifier review: EPIAF is Epiroc AB Series A and retains the Swedish issuer domicile."
+EPIAF,OTC,isin,update,SE0015658109,0.99,"Foreign-ordinary identifier correction: OTC Markets identifies EPIAF as Epiroc Class A; STO EPI-A and LSE 0YSU identify that class under ISIN SE0015658109."
+EPIPF,OTC,country,update,Sweden,0.99,"Foreign-ordinary identifier review: EPIPF is Epiroc AB Series B and retains the Swedish issuer domicile."
+EPIPF,OTC,isin,update,SE0015658117,0.99,"Foreign-ordinary identifier correction: OTC Markets identifies EPIPF as Epiroc Class B; STO EPI-B and LSE 0YSV identify that class under ISIN SE0015658117."
+ESLOY,OTC,name,update,EssilorLuxottica SA,0.99,"Current-name correction: Citi's depositary-receipt record identifies ESLOY as EssilorLuxottica and records the 2018 change from predecessor name Essilor International."
+ESLOY,OTC,country,update,France,0.99,"ADR domicile review: ESLOY is the depositary receipt for France-domiciled EssilorLuxottica; the US DR ISIN does not change issuer domicile."
+ESLOY,OTC,isin,update,US2972842007,0.99,"Identifier-bound ADR review: Citi's ESLOY depositary-receipt record identifies the security under ISIN US2972842007."
+HAIUF,OTC,country,update,Cayman Islands,0.99,"Security-class review: HAIUF is Healthcare AI Acquisition's Cayman Islands unit security, distinct from HAIAF Class A ordinary shares."
+HAIUF,OTC,isin,update,KYG4373K1250,0.99,"Unit identifier correction: HAIUF units use ISIN KYG4373K1250 and must remain distinct from HAIAF Class A ordinary shares under KYG4373K1094."
 ITNF,OTC,country,update,United States,0.99,"Issue #137 reviewed name-collision exception: OTC Markets identifies ITNF and CUSIP 460946106 as Nevada-incorporated Internet Infinity, not the separate Japanese issuer with the same normalized name."
+ITNF,OTC,isin,update,US4609461060,0.99,"Issue #137 identifier-bound name-collision exception: OpenFIGI and the reviewed OTC source data identify Internet Infinity ITNF with CUSIP 460946106; retain the corresponding US ISIN instead of inheriting Japanese issuer 6545's ISIN by normalized name."
+IBDRY,OTC,country,update,Spain,0.99,"ADR domicile review: IBDRY is the sponsored depositary receipt for Spain-domiciled Iberdrola; the US DR ISIN does not change issuer domicile."
+IBDRY,OTC,isin,update,US4507371015,0.99,"Identifier-bound ADR review: IBDRY retains depositary-receipt ISIN US4507371015 while preserving the Spanish issuer domicile."
 KDOZF,OTC,country,update,Canada,0.99,"Issue #137 reviewed current domicile: Kidoz continued into Canada under the Canada Business Corporations Act effective January 1, 2023."
+KDOZF,OTC,isin,update,CA4939471054,0.99,"Identifier correction: Computershare's Kidoz security-holder notice identifies Kidoz common stock under CUSIP 493947105 and ISIN CA4939471054."
+LUFTH,BSE_HU,country,update,Germany,0.99,"Cross-listing correction: Budapest LUFTH is a foreign listing of Germany-domiciled Deutsche Lufthansa AG, not a US issuer."
+LUFTH,BSE_HU,isin,update,DE0008232125,0.99,"Cross-listing identifier correction: Budapest LUFTH belongs to Lufthansa's German ordinary-share group under ISIN DE0008232125 and must resolve to XETRA LHA."
+LTOD,LSE,country,update,India,0.99,"Depositary-receipt domicile review: LSE LTOD represents India-domiciled Larsen & Toubro; its USY CINS identifier does not change issuer domicile."
+LTOD,LSE,isin,update,USY5217N1183,0.99,"Identifier-bound CINS review: LSE LTOD retains USY5217N1183 while preserving Larsen & Toubro's Indian issuer domicile."
+MHID,LSE,country,update,India,0.99,"Depositary-receipt domicile review: LSE MHID represents India-domiciled Mahindra & Mahindra; its USY CINS identifier does not change issuer domicile."
+MHID,LSE,isin,update,USY541641194,0.99,"Identifier-bound CINS review: LSE MHID retains USY541641194 while preserving Mahindra & Mahindra's Indian issuer domicile."
+MUFG,NYSE,country,update,Japan,0.99,"Identifier-bound ADR review: MUFG is the sponsored NYSE depositary receipt for Japan-domiciled Mitsubishi UFJ Financial Group."
+MUFG,NYSE,isin,update,US6068221042,0.99,"Identifier-bound ADR review: BNY's depositary-receipt directory identifies NYSE MUFG under DR ISIN US6068221042 and underlying ISIN JP3902900004."
 MOPLF,OTC,country,update,Argentina,0.97,"Issue #137 reviewed issuer domicile: OTC MOPLF is the foreign ordinary line of Argentine issuer Molinos Rio de la Plata (BCBA MOLI5)."
 PPENF,OTC,country,update,Argentina,0.97,"Issue #137 reviewed issuer domicile: OTC PPENF is the foreign ordinary line of Argentine issuer Pampa Energia (BCBA PAMP)."
+PBSFY,OTC,name,update,ProSiebenSat.1 Media SE,0.99,"Current legal-name correction: ProSiebenSat.1's official imprint identifies the issuer as ProSiebenSat.1 Media SE, replacing the obsolete AG legal form."
+PHYTF,OTC,country,update,Cayman Islands,0.99,"Security-class review: PHYTF is Pyrophyte Acquisition's Cayman Islands Class A ordinary-share line, distinct from PHYUF units."
+PHYTF,OTC,isin,update,KYG7308P1019,0.99,"Class A identifier correction: PHYTF ordinary shares use ISIN KYG7308P1019 and must remain distinct from PHYUF units under KYG7308P1191."
+POAHY,OTC,name,update,Porsche Automobil Holding SE,0.99,"Legal-name spelling correction: Porsche SE's official imprint identifies the issuer as Porsche Automobil Holding SE, not Porsche Automobile Holding SE."
 RETDF,OTC,country,update,Israel,0.99,"Issue #137 reviewed collision exception: RETDF is the OTC line of Israeli issuer REIT 1 Ltd.; its unrelated colliding US ISIN must not inherit another issuer's country."
+RETDF,OTC,isin,update,IL0010989205,0.99,"Foreign-ordinary identifier correction: the Tel Aviv Stock Exchange identifies REIT 1 ordinary shares under ISIN IL0010989205; US2043191079 belongs to Richemont ADR CFRUY."
+REPYY,OTC,country,update,Spain,0.99,"ADR domicile review: REPYY is the sponsored depositary receipt for Spain-domiciled Repsol; the US DR ISIN does not change issuer domicile."
+REPYY,OTC,isin,update,US76026T2050,0.99,"Identifier-bound ADR review: REPYY retains depositary-receipt ISIN US76026T2050 while preserving the Spanish issuer domicile."
 SNYXF,OTC,country,update,Canada,0.99,"Issue #137 reviewed issuer domicile: SNYXF represents Canadian Vital Energy Inc., not the unrelated United States issuer associated with the prior identifier."
 SNYXF,OTC,isin,update,CA92847K1093,0.99,"Issue #137 identifier-collision correction: replace the unrelated Vital Energy US ISIN with the Canadian SNYXF security's ISIN."
 SUPV,NYSE,country,update,Argentina,0.99,"Issue #137 reviewed issuer domicile: Grupo Supervielle is an Argentine issuer; the AR ISIN is corroborated by issuer identity rather than trusted generically."
 TSGTF,OTC,country,update,China,0.97,"Issue #137 reviewed foreign-ordinary domicile: TSGTF represents China-domiciled Tsingtao Brewery despite the legal-suffix variation from its foreign listing peer."
+TEUCF,OTC,country,update,Marshall Islands,0.99,"Security-class review: TEUCF is Box Ships Series C preferred stock and retains the Marshall Islands issuer domicile."
+TEUCF,OTC,isin,update,MHY096751448,0.99,"Preferred-share identifier correction: TEUCF Series C preferred shares use ISIN MHY096751448 and must remain distinct from TEUFF common shares under MHY096752016."
 TYIDY,OTC,country,update,Japan,0.97,"Issue #137 reviewed ADR domicile: TYIDY represents Japan-domiciled Toyota Industries despite the legal-suffix variation from its Tokyo listing peer."
+TYIDY,OTC,isin,update,US8923301019,0.99,"Identifier-bound ADR review: Citi's depositary-receipt record identifies TYIDY, CUSIP 892330101, and US ISIN US8923301019 as the Japan-country unsponsored ADR."
 VIST,NYSE,country,update,Mexico,0.99,"Issue #137 reviewed issuer domicile: Vista Energy is organized under Mexican law and domiciled in Mexico City; its Argentine CEDEAR peer must not set issuer country."
+VIST,NYSE,isin,update,US92837L1098,0.99,"Identifier-bound ADR review: BNY's depositary-receipt directory identifies VIST, CUSIP 92837L109, and DR ISIN US92837L1098 as the sponsored NYSE ADR."
+PBSFF,OTC,isin,update,DE000PSM7770,0.99,"Foreign-ordinary identifier correction: PBSFF is the ordinary ProSiebenSat.1 Media SE line; XETRA PSM and LSE 0QG9 identify the underlying ordinary share as DE000PSM7770, while US7434762024 belongs to ADR PBSFY."
+POAHF,OTC,isin,update,DE000PAH0038,0.99,"Foreign-ordinary identifier correction: POAHF is the ordinary Porsche Automobil Holding SE line; the exact-name LSE 0JHU peer identifies the underlying share as DE000PAH0038, while US73328P1066 belongs to ADR POAHY."
+POAHY,OTC,country,update,Germany,0.99,"Identifier-bound ADR review: POAHY is the depositary receipt for Germany-domiciled Porsche Automobil Holding SE; the US listing and DR ISIN do not change the issuer domicile."
+POAHY,OTC,isin,update,US73328P1066,0.99,"Identifier-bound ADR review: the POAHY depositary receipt is identified by DR ISIN US73328P1066 and is distinct from ordinary-share ISIN DE000PAH0038 used by POAHF."
+SALRF,OTC,isin,update,NO0010310956,0.99,"Foreign-ordinary identifier correction: SALRF is the ordinary SalMar ASA line; the exact-name LSE 0FWY peer identifies the underlying share as NO0010310956, while US79547H1068 belongs to ADR SALRY."
+SALRY,OTC,country,update,Norway,0.99,"Identifier-bound ADR review: SALRY is the unsponsored depositary receipt for Norway-domiciled SalMar ASA; the US listing and DR ISIN do not change the issuer domicile."
+SALRY,OTC,isin,update,US79547H1068,0.99,"Identifier-bound ADR review: the SALRY depositary receipt is identified by DR ISIN US79547H1068 and is distinct from ordinary-share ISIN NO0010310956 used by SALRF."
+SMTGF,OTC,isin,update,DE000A0DJ6J9,0.99,"Foreign-ordinary identifier correction: SMTGF is the ordinary SMA Solar Technology AG line; the exact-name LSE 0NIF peer identifies the underlying share as DE000A0DJ6J9, while US78446M1099 belongs to ADR SMTGY."
+SSAAF,OTC,country,update,Sweden,0.99,"Foreign-ordinary identifier review: OTC Markets identifies SSAAF as SSAB Swedish Steel Class A; issuer domicile remains Sweden."
+SSAAF,OTC,isin,update,SE0000171100,0.99,"Foreign-ordinary identifier correction: STO SSAB-A and LSE 0KII identify SSAB Class A under ISIN SE0000171100; the distinct Class B uses SE0000120669."
+WBRBF,OTC,isin,update,AT0000831706,0.99,"Foreign-ordinary identifier correction: WBRBF is the ordinary Wienerberger AG line; XETRA WIB and VSE WIE identify the underlying share as AT0000831706, while US9676621074 belongs to ADR WBRBY."
+WELUF,OTC,country,update,Cayman Islands,0.99,"Security-class review: WELUF is Integrated Wellness Acquisition's Cayman Islands unit security, distinct from WELNF Class A ordinary shares."
+WELUF,OTC,isin,update,KYG4828B1260,0.99,"Unit identifier correction: WELUF units use ISIN KYG4828B1260 and must remain distinct from WELNF Class A ordinary shares under KYG4828B1005."
 VLPNY,OTC,country,update,Austria,0.97,"Issue #137 reviewed issuer domicile: VLPNY and VLPNF are OTC lines of Austrian issuer Voestalpine AG and share US9285781038."
 00001,HKEX,stock_sector,update,Industrials,0.88,Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset peer sectors to normalize to one value.
 00002,HKEX,stock_sector,update,Utilities,0.88,Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset peer sectors to normalize to one value.
@@ -3322,15 +3433,15 @@ VLPNY,OTC,country,update,Austria,0.97,"Issue #137 reviewed issuer domicile: VLPN
 0A2T,LSE,stock_sector,update,Financials,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 0A2V,LSE,country,update,France,1.0,Sanofi is a French pharmaceutical company; LSE listing uses US ADR ISIN.
 0A2W,LSE,country,update,Germany,1.0,SAP SE is a German company; LSE listing uses US ADR ISIN.
-0A2X,LSE,country,update,China,1.0,TAL Education is a Chinese company; LSE listing uses US ADR ISIN.
+0A2X,LSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: TAL Education Group is incorporated in the Cayman Islands; China describes operations, not incorporation."
 0A2X,LSE,stock_sector,update,Consumer Discretionary,0.98,"Education companies belong to GICS Consumer Discretionary sector (Education Services subcategory), not Consumer Staples. Affects: TAL Education Group."
 0A2Y,LSE,country,update,Spain,1.0,Telefónica is a Spanish company; LSE listing uses US ADR ISIN.
 0A2Y,LSE,stock_sector,update,Communication Services,0.88,Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset peer sectors to normalize to one value.
-0A32,LSE,country,update,China,1.0,UP Fintech (Tiger Brokers) is a Chinese fintech company; LSE listing uses US ADR ISIN.
-0A3T,LSE,country,update,Singapore,1.0,Sea Limited is a Singaporean technology company; LSE listing uses US ADR ISIN.
+0A32,LSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: UP Fintech Holding is incorporated in the Cayman Islands; China describes operations, not incorporation."
+0A3T,LSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Sea Limited is incorporated in the Cayman Islands; Singapore describes headquarters and operations, not incorporation."
 0A56,LSE,country,update,South Africa,1.0,Sibanye Stillwater is a South African mining company; LSE listing uses US ADR ISIN.
 0A6Q,LSE,country,update,Hong Kong,1.0,AIA Group is a Hong Kong-based insurance company; LSE listing uses US ADR ISIN.
-0A6U,LSE,country,update,China,1.0,Luckin Coffee is a Chinese company; LSE listing uses US ADR ISIN.
+0A6U,LSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Luckin Coffee is incorporated in the Cayman Islands; China describes operations, not incorporation."
 0A6W,LSE,country,update,Switzerland,1.0,ABB Ltd is a Swiss engineering company; LSE listing uses US ADR ISIN.
 0A6X,LSE,country,update,Brazil,1.0,Ambev is a Brazilian brewing company; LSE listing uses US ADR ISIN.
 0A6Y,LSE,stock_sector,update,Information Technology,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0A6Y/
@@ -3448,7 +3559,7 @@ VLPNY,OTC,country,update,Austria,0.97,"Issue #137 reviewed issuer domicile: VLPN
 0I4W,LSE,stock_sector,update,Real Estate,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0I4W/
 0I6Q,LSE,stock_sector,update,Utilities,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0I6Q/
 0I6U,LSE,stock_sector,update,Information Technology,0.72,"TradingView free scanner supplied a stock sector mapped to canonical GICS; accepted only after exact scanner exchange, symbol, stock asset type, issuer-name, and canonical-sector gates matched."
-0I74,LSE,country,update,China,1.0,Daqo New Energy is a Chinese solar company; LSE listing uses US ADR ISIN.
+0I74,LSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Daqo New Energy is incorporated in the Cayman Islands; China describes operations, not incorporation."
 0I9F,LSE,stock_sector,update,Real Estate,0.72,"TradingView free scanner supplied a stock sector mapped to canonical GICS; accepted only after exact scanner exchange, symbol, stock asset type, issuer-name, and canonical-sector gates matched."
 0IC7,LSE,stock_sector,update,Consumer Discretionary,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0IC7/
 0IC8,LSE,stock_sector,update,Consumer Discretionary,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0IC8/
@@ -3484,7 +3595,7 @@ VLPNY,OTC,country,update,Austria,0.97,"Issue #137 reviewed issuer domicile: VLPN
 0JDP,LSE,stock_sector,update,Real Estate,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0JDP/
 0JEV,LSE,stock_sector,update,Information Technology,0.72,"TradingView free scanner supplied a stock sector mapped to canonical GICS; accepted only after exact scanner exchange, symbol, stock asset type, issuer-name, and canonical-sector gates matched."
 0JHU,LSE,country,update,Germany,0.93,"Manual data-quality review: US-prefix ADR/GDR ISIN identifies a depositary receipt, so country is set to the underlying issuer domicile rather than ISIN prefix."
-0JOQ,LSE,country,update,China,0.93,"Manual data-quality review: US-prefix ADR/GDR ISIN identifies a depositary receipt, so country is set to the underlying issuer domicile rather than ISIN prefix."
+0JOQ,LSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: JD.com is incorporated in the Cayman Islands; China describes operations, not incorporation."
 0JPB,LSE,stock_sector,update,Real Estate,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0JPB/
 0JPO,LSE,stock_sector,update,Information Technology,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0JPO/
 0JQQ,LSE,stock_sector,update,Materials,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0JQQ/
@@ -3563,7 +3674,7 @@ VLPNY,OTC,country,update,Austria,0.97,"Issue #137 reviewed issuer domicile: VLPN
 0LBY,LSE,stock_sector,update,Real Estate,0.88,Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset peer sectors to normalize to one value.
 0LCX,LSE,stock_sector,update,Information Technology,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0LCX/
 0LD8,LSE,stock_sector,update,Consumer Discretionary,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0LD8/
-0LEA,LSE,country,update,China,1.0,Tencent Holdings is a Chinese technology company; LSE listing uses US ADR ISIN.
+0LEA,LSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Tencent Holdings is incorporated in the Cayman Islands; China describes operations, not incorporation."
 0LER,LSE,country,update,Israel,0.93,"Manual data-quality review: US-prefix ADR/GDR ISIN identifies a depositary receipt, so country is set to the underlying issuer domicile rather than ISIN prefix."
 0LF8,LSE,stock_sector,update,Consumer Discretionary,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/lon/0LF8/
 0LG5,LSE,country,update,Japan,0.93,"Manual data-quality review: US-prefix ADR/GDR ISIN identifies a depositary receipt, so country is set to the underlying issuer domicile rather than ISIN prefix."
@@ -12354,7 +12465,7 @@ BA29,LSE,stock_sector,update,Materials,0.72,"TradingView free scanner supplied a
 BA69,LSE,stock_sector,update,Financials,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 BAAA,TSX,isin,update,CA11222G1037,0.78,"TradingView free scanner supplied a valid ISIN for a row without ISIN; accepted only after exact scanner exchange, symbol normalization, asset type, issuer/product-name, existing-ISIN peer, and ISIN-checksum gates matched."
 BAAA.U,TSX,isin,update,CA11222G2027,0.78,"TradingView free scanner supplied a valid ISIN for a row without ISIN; accepted only after exact scanner exchange, symbol normalization, asset type, issuer/product-name, existing-ISIN peer, and ISIN-checksum gates matched."
-BABA,NYSE,country,update,China,0.99,"Issue #137 ADR domicile correction: Alibaba's NYSE ADR is a depositary receipt for the China-domiciled issuer; the US listing and US ADR ISIN must not set issuer country."
+BABA,NYSE,country,update,Cayman Islands,0.99,"Issuer-domicile correction: Alibaba's FY2026 Form 20-F identifies Alibaba Group Holding Limited as a Cayman Islands company; China is its principal operating market, not its jurisdiction of incorporation."
 BABA,NYSE,isin,update,US01609W1027,0.93,"Collision sweep: stored ISIN belonged to a same-ticker foreign namesake. Stored ARBCOM4601T8 is the Argentine CEDEAR instrument for Alibaba (a separate local depositary receipt), not the NYSE-listed security. The NYSE ADR (the row) is ISIN "
 BABA,NYSE,stock_sector,update,Consumer Discretionary,0.9,Sector correction (2026-06 multi-agent audit follow-up): a market-data source proposed a GICS sector differing from the stored value and an independent agent confirmed it against the issuer's actual business; only confirmed corrections applied (stockanalysis/TradingView candidate + agent verification).
 BABAFP,NSE_IN,stock_sector,update,Consumer Staples,0.9,Sector correction (2026-06 multi-agent audit follow-up): a market-data source proposed a GICS sector differing from the stored value and an independent agent confirmed it against the issuer's actual business; only confirmed corrections applied (stockanalysis/TradingView candidate + agent verification).
@@ -22797,8 +22908,8 @@ PCEM14,B3,stock_sector,update,Utilities,0.85,Sector fill 2026-06 (multi-agent): 
 PCEM15,B3,stock_sector,update,Utilities,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 PCEM16,B3,stock_sector,update,Utilities,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 PCEM17,B3,stock_sector,update,Utilities,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
-PCFBF,OTC,country,update,Bermuda,0.95,"Issue #137 XS-ISIN review: Pacific Basin Shipping's OTC foreign ordinary line belongs to the Bermuda-incorporated issuer represented by HKEX 02343; XS is not a country and the OTC venue must not set issuer country."
-PCFBF,OTC,isin,update,XS0493723968,0.76,"StockAnalysis exchange list screener supplied a valid ISIN for a row missing ISIN; accepted as reviewed secondary metadata after exact exchange/symbol match, issuer-name gate, and ISIN checksum. Source: https://stockanalysis.com/quote/otc/PCFBF/"
+PCFBF,OTC,country,update,Bermuda,0.99,"Equity identity review: Pacific Basin Shipping is Bermuda-incorporated; the prior XS identifier was a debt security, not the ordinary equity."
+PCFBF,OTC,isin,update,BMG684371393,0.99,"Security-type correction: PCFBF ordinary equity uses ISIN BMG684371393; XS0493723968 was a convertible bond due 2016 that has been fully redeemed."
 PCFV4,B3,stock_sector,update,Consumer Discretionary,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 PCGR,OTC,name,update,Pc Group Inc.,0.91,Twelve Data source adjudication apply-ready name update: OpenFIGI supports Twelve Data name; FIGI relation=local_figi_match. decision=apply_twelvedata_name_identifier_supported; evidence_tier=identifier; figi_relation=local_figi_match; review_batch=batch_a_us_core.
 PCH,HNX,stock_sector,update,Industrials,0.9,Sector correction (2026-06 multi-agent audit follow-up): a market-data source proposed a GICS sector differing from the stored value and an independent agent confirmed it against the issuer's actual business; only confirmed corrections applied (stockanalysis/TradingView candidate + agent verification).
@@ -24505,6 +24616,7 @@ SANWARIA,BSE_IN,stock_sector,update,Consumer Staples,0.78,"FinanceDatabase suppl
 SANY6,B3,stock_sector,update,Consumer Discretionary,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 SAO,TSXV,isin,update,CA83636L1013,0.78,"TradingView free scanner supplied a valid ISIN for a row without ISIN; accepted only after exact scanner exchange, symbol normalization, asset type, issuer/product-name, existing-ISIN peer, and ISIN-checksum gates matched."
 SAP,NYSE,country,update,Germany,0.99,"Issue #137 ADR domicile correction: SAP's NYSE ADS represents the Germany-domiciled issuer; the US listing and US ADR ISIN must not set issuer country."
+SAP,NYSE,isin,update,US8030542042,0.99,"Identifier-bound ADR review: BNY's SAP depositary-receipt record identifies the NYSE ADS under CUSIP 803054204, corresponding to valid DR ISIN US8030542042."
 SAPG,NEO,stock_sector,update,Information Technology,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 SAPI11,B3,etf_category,update,Real Estate,0.68,"Deterministic ETF-name classifier mapped the product name to 'Real Estate' via rule 'brazil_real_estate_funds'. This is an etf_category fill, not a stock-sector assertion."
 SAPPL,BSE_IN,stock_sector,update,Materials,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
@@ -26909,6 +27021,7 @@ TSLU,TSX,isin,update,CA54315B7144,0.78,"TradingView free scanner supplied a vali
 TSLV,BATS,isin,update,US45259A3813,0.86,"Yahoo Finance returned a valid ISIN for a row without ISIN; accepted only after exact Yahoo venue, quote type, expected ISIN country prefix, strict issuer/product-name, numeric-token, and ISIN-checksum gates matched."
 TSLVF,OTC,stock_sector,update,Materials,0.74,StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. Source: https://stockanalysis.com/quote/otc/TSLVF/
 TSM,NYSE,country,update,Taiwan,0.99,"Issue #137 ADR domicile correction: TSM's NYSE ADR represents Taiwan Semiconductor Manufacturing, a Taiwan-domiciled issuer; the US listing and US ADR ISIN must not set issuer country."
+TSM,NYSE,isin,update,US8740391003,0.99,"Identifier-bound ADR review: BNY's depositary-receipt directory identifies TSM, CUSIP 874039100, and DR ISIN US8740391003 as the Taiwan-country sponsored NYSE ADR."
 TSML.N0000,CSE_LK,stock_sector,update,Consumer Staples,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 TSNC11,B3,etf_category,update,Real Estate,0.68,"Deterministic ETF-name classifier mapped the product name to 'Real Estate' via rule 'brazil_real_estate_funds'. This is an etf_category fill, not a stock-sector assertion."
 TSNF,NYSE ARCA,etf_category,update,Equity,0.74,"TradingView free scanner supplied an ETF asset-class code mapped to a canonical category; accepted only after exact scanner exchange, ETF asset type, product-name, and supported asset-class gates matched."
@@ -28635,3 +28748,25 @@ ZYUS,TSXV,isin,update,CA9899601095,0.78,"TradingView free scanner supplied a val
 ZYUS,TSXV,stock_sector,update,Health Care,0.72,"TradingView free scanner supplied a stock sector mapped to canonical GICS; accepted only after exact scanner exchange, symbol, stock asset type, issuer-name, and canonical-sector gates matched."
 ZZD,JSE,isin,update,ZAE000315768,0.92,Reviewed exact-listing source evidence mapped JSE::ZZD isin to ZAE000315768. Evidence: Official JSE issuer profile for Zeda Limited lists instrument ZZD with ISIN ZAE000315768. Source: https://clientportal.jse.co.za/companies-and-financial-instruments/issuer-profile?issuermasterid=5764
 ZZE-H,TSXV,isin,update,CA98953U2039,0.78,"TradingView free scanner supplied a valid ISIN for a row without ISIN; accepted only after exact scanner exchange, symbol normalization, asset type, issuer/product-name, existing-ISIN peer, and ISIN-checksum gates matched."
+AAGIY,OTC,country,update,Hong Kong,0.99,Reviewed issuer-domicile correction for the exact AIA Group sponsored ADR listing; the US ISIN identifies the depositary security rather than a US issuer.
+ABBNY,OTC,country,update,Switzerland,0.99,Reviewed issuer-domicile correction for the exact ABB sponsored ADR listing; the US ISIN identifies the depositary security rather than a US issuer.
+BUD,NYSE,country,update,Belgium,0.99,Reviewed issuer-domicile correction for the exact Anheuser-Busch InBev sponsored ADR listing; the US ISIN identifies the depositary security rather than a US issuer.
+EQNR,NYSE,country,update,Norway,0.99,Reviewed issuer-domicile correction for the exact Equinor ADR listing; the US ISIN identifies the depositary security rather than a US issuer.
+ICAGY,OTC,country,update,Spain,0.99,Reviewed issuer-domicile correction for the exact International Consolidated Airlines Group ADR listing; the US ISIN identifies the depositary security rather than a US issuer.
+PHG,NYSE,country,update,Netherlands,0.99,Reviewed issuer-domicile correction for the exact Philips NY registry share listing; the US ISIN identifies the depositary security rather than a US issuer.
+SBSW,NYSE,country,update,South Africa,0.99,Reviewed issuer-domicile correction for the exact Sibanye Stillwater ADS listing; the US ISIN identifies the depositary security rather than a US issuer.
+ABEVN,BMV,country,update,Brazil,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Ambev ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+BHPN,BMV,country,update,Australia,0.99,Reviewed issuer-domicile correction for the exact BMV-traded BHP ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+GSKN,BMV,country,update,United Kingdom,0.99,Reviewed issuer-domicile correction for the exact BMV-traded GSK ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+LYGN,BMV,country,update,United Kingdom,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Lloyds ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+NION,BMV,country,update,Cayman Islands,0.99,Reviewed issuer-domicile correction for the exact BMV-traded NIO ADS line; the US ISIN identifies the depositary security rather than a US issuer.
+NOKN,BMV,country,update,Finland,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Nokia ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+NTESN,BMV,country,update,Cayman Islands,0.99,Reviewed issuer-domicile correction for the exact BMV-traded NetEase ADS line; the US ISIN identifies the depositary security rather than a US issuer.
+SNYN,BMV,country,update,France,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Sanofi ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+VALEN,BMV,country,update,Brazil,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Vale ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+VODN,BMV,country,update,United Kingdom,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Vodafone ADR line; the US ISIN identifies the depositary security rather than a US issuer.
+AGFB,Euronext,stock_sector,update,Industrials,0.99,Reviewed sector correction for Agfa-Gevaert's Euronext Brussels home listing; the issuer is an industrial imaging technology company and the same-ISIN peer rows use Industrials.
+SONY,NYSE,country,update,Japan,0.99,Reviewed issuer-domicile correction for the exact Sony ADR listing; Sony Group is a Japanese issuer and the US ISIN identifies its depositary security.
+PBRN,BMV,country,update,Brazil,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Petrobras ADR line; it shares the security and canonical issuer with NYSE PBR.
+ZHEXF,OTC,isin,update,CNE1000004S4,0.99,Reviewed equity identity correction: OTC ZHEXF is Zhejiang Expressway's foreign ordinary share linked to HKEX 00576; XS2354248606 identifies a bond and must not be used on a Stock row.
+SONYN,BMV,country,update,Japan,0.99,Reviewed issuer-domicile correction for the exact BMV-traded Sony ADR line; it shares the security and canonical issuer with NYSE SONY.

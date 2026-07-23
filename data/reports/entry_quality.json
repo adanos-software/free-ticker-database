@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-22T09:14:11Z",
-    "rows": 74711,
+    "generated_at": "2026-07-23T15:59:26Z",
+    "rows": 74722,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,36 +14,36 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67709,
-      "source_gap": 6928,
-      "warn": 74
+      "pass": 67772,
+      "source_gap": 6929,
+      "warn": 21
     },
     "evidence_level_counts": {
       "identifier_enriched": 5041,
-      "official_reference": 68474,
+      "official_reference": 68484,
       "scoped_source_gap": 263,
-      "valid_isin": 933
+      "valid_isin": 934
     },
     "severity_counts": {
-      "high": 67,
+      "high": 14,
       "medium": 7,
-      "source_gap": 7115
+      "source_gap": 7116
     },
     "issue_counts": {
-      "official_reference_gap": 6237,
-      "expected_missing_primary_isin": 758,
+      "official_reference_gap": 6238,
+      "expected_missing_primary_isin": 757,
       "missing_etf_category": 95,
-      "country_isin_mismatch": 65,
-      "missing_stock_sector": 25,
+      "missing_stock_sector": 26,
+      "country_isin_mismatch": 12,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7899,
+        "pass": 7903,
         "source_gap": 3170,
-        "warn": 7
+        "warn": 5
       },
       {
         "exchange": "B3",
@@ -52,20 +52,14 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4509,
+        "pass": 4508,
         "source_gap": 209,
         "warn": 1
       },
       {
         "exchange": "TSX",
         "pass": 1704,
-        "source_gap": 199
-      },
-      {
-        "exchange": "LSE",
-        "pass": 6366,
-        "warn": 60,
-        "source_gap": 132
+        "source_gap": 200
       },
       {
         "exchange": "NYSE ARCA",
@@ -80,6 +74,12 @@
         "exchange": "BATS",
         "pass": 1136,
         "source_gap": 161
+      },
+      {
+        "exchange": "LSE",
+        "pass": 6418,
+        "source_gap": 132,
+        "warn": 9
       },
       {
         "exchange": "ASX",
@@ -98,12 +98,12 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 3730,
+        "pass": 3731,
         "source_gap": 115
       },
       {
         "exchange": "Euronext",
-        "pass": 982,
+        "pass": 984,
         "source_gap": 99
       },
       {
@@ -129,8 +129,8 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1980,
-        "source_gap": 66
+        "pass": 1985,
+        "source_gap": 65
       },
       {
         "exchange": "CSE_MA",
@@ -794,6 +794,24 @@
       ]
     },
     {
+      "listing_key": "HKEX::06855",
+      "ticker": "06855",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
       "listing_key": "HKEX::08048",
       "ticker": "08048",
       "exchange": "HKEX",
@@ -938,222 +956,6 @@
       ]
     },
     {
-      "listing_key": "LSE::0A22",
-      "ticker": "0A22",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Belgium",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2B",
-      "ticker": "0A2B",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Spain",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2K",
-      "ticker": "0A2K",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Netherlands",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2L",
-      "ticker": "0A2L",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Spain",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2M",
-      "ticker": "0A2M",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Netherlands",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2V",
-      "ticker": "0A2V",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "France",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2W",
-      "ticker": "0A2W",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2X",
-      "ticker": "0A2X",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A2Y",
-      "ticker": "0A2Y",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Spain",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A32",
-      "ticker": "0A32",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A3T",
-      "ticker": "0A3T",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Singapore",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A56",
-      "ticker": "0A56",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "South Africa",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::0A5I",
       "ticker": "0A5I",
       "exchange": "LSE",
@@ -1168,96 +970,6 @@
           "field": "exchange",
           "value": "LSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A6Q",
-      "ticker": "0A6Q",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Hong Kong",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A6U",
-      "ticker": "0A6U",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A6W",
-      "ticker": "0A6W",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Switzerland",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A6X",
-      "ticker": "0A6X",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Brazil",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0A7F",
-      "ticker": "0A7F",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Norway",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -1294,24 +1006,6 @@
           "field": "exchange",
           "value": "LSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0ACX",
-      "ticker": "0ACX",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "United Kingdom",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -1370,78 +1064,6 @@
       ]
     },
     {
-      "listing_key": "LSE::0HKY",
-      "ticker": "0HKY",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0HL8",
-      "ticker": "0HL8",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Brazil",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0HLE",
-      "ticker": "0HLE",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Spain",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0HN3",
-      "ticker": "0HN3",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Australia",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::0HRZ",
       "ticker": "0HRZ",
       "exchange": "LSE",
@@ -1456,150 +1078,6 @@
           "field": "exchange",
           "value": "LSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0I3G",
-      "ticker": "0I3G",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Mexico",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0I4T",
-      "ticker": "0I4T",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "France",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0I74",
-      "ticker": "0I74",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0ICU",
-      "ticker": "0ICU",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "South Africa",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0IID",
-      "ticker": "0IID",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Sweden",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0IVW",
-      "ticker": "0IVW",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Jersey",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0IYR",
-      "ticker": "0IYR",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "South Africa",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0J39",
-      "ticker": "0J39",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "South Africa",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -1622,24 +1100,6 @@
       ]
     },
     {
-      "listing_key": "LSE::0J5T",
-      "ticker": "0J5T",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Japan",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::0JGL",
       "ticker": "0JGL",
       "exchange": "LSE",
@@ -1658,42 +1118,6 @@
       ]
     },
     {
-      "listing_key": "LSE::0JOQ",
-      "ticker": "0JOQ",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0K1Y",
-      "ticker": "0K1Y",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Japan",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::0K75",
       "ticker": "0K75",
       "exchange": "LSE",
@@ -1707,96 +1131,6 @@
           "severity": "high",
           "field": "country",
           "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0K85",
-      "ticker": "0K85",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Japan",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0K8D",
-      "ticker": "0K8D",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Finland",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0K9E",
-      "ticker": "0K9E",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Switzerland",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0KHP",
-      "ticker": "0KHP",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Brazil",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0KWZ",
-      "ticker": "0KWZ",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "United Kingdom",
           "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
@@ -1834,132 +1168,6 @@
           "field": "exchange",
           "value": "LSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0L7L",
-      "ticker": "0L7L",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Japan",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0L9Y",
-      "ticker": "0L9Y",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Netherlands",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0LBF",
-      "ticker": "0LBF",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Brazil",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0LEA",
-      "ticker": "0LEA",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "China",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0LER",
-      "ticker": "0LER",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Israel",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0LG5",
-      "ticker": "0LG5",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Japan",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0M42",
-      "ticker": "0M42",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Netherlands",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -2032,114 +1240,6 @@
           "field": "exchange",
           "value": "LSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0S2J",
-      "ticker": "0S2J",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "South Africa",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0TD2",
-      "ticker": "0TD2",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Italy",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0TDD",
-      "ticker": "0TDD",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Denmark",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0TDF",
-      "ticker": "0TDF",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Switzerland",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0TDG",
-      "ticker": "0TDG",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Chile",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0TGA",
-      "ticker": "0TGA",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Italy",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -15702,6 +14802,24 @@
       ]
     },
     {
+      "listing_key": "TSX::BBD.PR.D",
+      "ticker": "BBD.PR.D",
+      "exchange": "TSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::BBDA",
       "ticker": "BBDA",
       "exchange": "OTC",
@@ -18268,6 +17386,888 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BKMP",
+      "ticker": "BKMP",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "BATS::BKNU",
+      "ticker": "BKNU",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BATS",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BKRP",
+      "ticker": "BKRP",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "VSE::BKS",
+      "ticker": "BKS",
+      "exchange": "VSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "VSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BKSLF",
+      "ticker": "BKSLF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BKUH",
+      "ticker": "BKUH",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BLAU3",
+      "ticker": "BLAU3",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NASDAQ::BLCN",
+      "ticker": "BLCN",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NASDAQ",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLDC",
+      "ticker": "BLDC",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLDV",
+      "ticker": "BLDV",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "ATHEX::BLEKEDROS",
+      "ticker": "BLEKEDROS",
+      "exchange": "ATHEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "ATHEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLFE",
+      "ticker": "BLFE",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLFR",
+      "ticker": "BLFR",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XETRA::BLH",
+      "ticker": "BLH",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLIAQ",
+      "ticker": "BLIAQ",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLIBQ",
+      "ticker": "BLIBQ",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLITF",
+      "ticker": "BLITF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLKCF",
+      "ticker": "BLKCF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLMC",
+      "ticker": "BLMC",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLMS",
+      "ticker": "BLMS",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLPFF",
+      "ticker": "BLPFF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLRZD",
+      "ticker": "BLRZD",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLSP",
+      "ticker": "BLSP",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "BATS::BLSX",
+      "ticker": "BLSX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BATS",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "AMS::BLTN",
+      "ticker": "BLTN",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "AMS",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLUAF",
+      "ticker": "BLUAF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BLUE11",
+      "ticker": "BLUE11",
+      "exchange": "B3",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "STO::BLUEL",
+      "ticker": "BLUEL",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "STO",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLUU",
+      "ticker": "BLUU",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLUVF",
+      "ticker": "BLUVF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLVDF",
+      "ticker": "BLVDF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NYSE::BLX",
+      "ticker": "BLX",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BLYQ",
+      "ticker": "BLYQ",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NASDAQ::BMAX",
+      "ticker": "BMAX",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NASDAQ",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "CSE_MA::BMCI",
+      "ticker": "BMCI",
+      "exchange": "CSE_MA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "CSE_MA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BMCS",
+      "ticker": "BMCS",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BMEB3",
+      "ticker": "BMEB3",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "ASX::BMG",
+      "ticker": "BMG",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "ASX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BMGB3",
+      "ticker": "BMGB3",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BMGB4",
+      "ticker": "BMGB4",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BMGP",
+      "ticker": "BMGP",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BMIN4",
+      "ticker": "BMIN4",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BMLT11",
+      "ticker": "BMLT11",
+      "exchange": "B3",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NASDAQ::BMM",
+      "ticker": "BMM",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BMOB3",
+      "ticker": "BMOB3",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BMOOF",
+      "ticker": "BMOOF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BMTLF",
+      "ticker": "BMTLF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "BMV::BMWM5N",
+      "ticker": "BMWM5N",
+      "exchange": "BMV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BMV",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BNAC3",
+      "ticker": "BNAC3",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }
