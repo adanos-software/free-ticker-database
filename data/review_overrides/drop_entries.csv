@@ -1,5 +1,6 @@
 ticker,exchange,confidence,reason
 CGBI,AMS,0.99,Official TMX listed-issuers workbook shows CGBI as a TSX ETF while the current AMS core row carries a Canadian ISIN and is a wrong-venue contamination.
+RDZNW,NASDAQ,0.99,Roadzen's SEC filings identify RDZNW as a warrant; the Stock/ETF schema cannot represent warrants safely, so exclude this derivative from the equity dataset.
 A1G,ASX,0.95,"JP/AU delisting-staleness 2026-06-19: acquired_taken_private (absent from current JPX/ASX master, web+adversarial verified)"
 AHX,ASX,0.95,"JP/AU delisting-staleness 2026-06-19: acquired_taken_private (absent from current JPX/ASX master, web+adversarial verified)"
 AKP,ASX,0.95,"JP/AU delisting-staleness 2026-06-19: delisted_defunct (absent from current JPX/ASX master, web+adversarial verified)"

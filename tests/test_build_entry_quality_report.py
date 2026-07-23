@@ -89,6 +89,18 @@ def official_ref(
     }
 
 
+def metadata_update(ticker: str, exchange: str, field: str, value: str) -> dict[str, str]:
+    return {
+        "ticker": ticker,
+        "exchange": exchange,
+        "field": field,
+        "decision": "update",
+        "proposed_value": value,
+        "confidence": "0.99",
+        "reason": f"Reviewed exact {field} evidence.",
+    }
+
+
 def test_entry_quality_marks_pass_source_gap_warn_and_quarantine():
     listings = [
         row("NASDAQ::MSFT", "MSFT", "NASDAQ", "Microsoft Corporation", isin="US5949181045", aliases="microsoft"),
@@ -206,6 +218,419 @@ def test_entry_quality_writes_complete_csv_and_markdown_summary(tmp_path):
     assert csv_rows[0]["listing_key"] == "NASDAQ::MSFT"
     assert csv_rows[0]["quality_status"] == "pass"
     assert "Entry Quality Report" in md_path.read_text()
+
+
+def test_entry_quality_accepts_official_depositary_but_not_unconfirmed_peer():
+    foreign = row(
+        "Euronext::BECO",
+        "BECO",
+        "Euronext",
+        "Example Holdings SA",
+        isin="BE0003797140",
+        country="Belgium",
+        country_code="BE",
+    )
+    adr = row(
+        "OTC::EXMPY",
+        "EXMPY",
+        "OTC",
+        "Example Holdings SA",
+        isin="US03524A1088",
+        country="Belgium",
+        country_code="BE",
+    )
+    same_isin_peer = row(
+        "LSE::EXMPL",
+        "EXMPL",
+        "LSE",
+        "Example Holdings secondary line",
+        isin="US03524A1088",
+        country="Belgium",
+        country_code="BE",
+    )
+    listings = [foreign, adr, same_isin_peer]
+
+    report_rows = assess_entries(
+        listings,
+        tickers=listings,
+        scopes=[
+            scope(item["listing_key"], item["ticker"], item["exchange"], isin=item["isin"])
+            for item in listings
+        ],
+        identifiers=[],
+        masterfiles=[
+            official_ref("BECO", "Euronext", "Example Holdings SA", "BE0003797140"),
+            official_ref("EXMPY", "OTC", "Example Holdings SA - ADS", "US03524A1088"),
+            official_ref("EXMPL", "LSE", "Example Holdings secondary line", "US03524A1088"),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["Euronext::BECO"].issues)
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["OTC::EXMPY"].issues)
+    assert any(issue.issue_type == "country_isin_mismatch" for issue in by_key["LSE::EXMPL"].issues)
+
+
+def test_entry_quality_keeps_unreviewed_country_isin_mismatch_visible():
+    listing = row(
+        "NASDAQ::EXMP",
+        "EXMP",
+        "NASDAQ",
+        "Example Holdings Inc",
+        isin="US03524A1088",
+        country="Belgium",
+        country_code="BE",
+    )
+
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("NASDAQ::EXMP", "EXMP", "NASDAQ", isin="US03524A1088")],
+        identifiers=[],
+        masterfiles=[official_ref("EXMP", "NASDAQ", "Example Holdings Inc", "US03524A1088")],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert any(issue.issue_type == "country_isin_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_reviewed_us_depositary_country_override():
+    listing = row(
+        "NYSE::EXMP",
+        "EXMP",
+        "NYSE",
+        "Example Holdings A/S",
+        isin="US03524A1088",
+        country="Denmark",
+        country_code="DK",
+    )
+    secondary = row(
+        "BMV::EXMPN",
+        "EXMPN",
+        "BMV",
+        "Example Holdings A/S",
+        isin="US03524A1088",
+        country="Denmark",
+        country_code="DK",
+    )
+
+    report_rows = assess_entries(
+        [listing, secondary],
+        tickers=[listing],
+        scopes=[
+            scope("NYSE::EXMP", "EXMP", "NYSE", isin="US03524A1088"),
+            scope(
+                "BMV::EXMPN",
+                "EXMPN",
+                "BMV",
+                isin="US03524A1088",
+                instrument_scope="extended",
+                scope_reason="secondary_cross_listing",
+                primary_listing_key="NYSE::EXMP",
+            ),
+        ],
+        identifiers=[],
+        masterfiles=[
+            official_ref("EXMP", "NYSE", "Example Holdings A/S Common Stock", "US03524A1088"),
+            official_ref("EXMPN", "BMV", "Example Holdings A/S", "US03524A1088"),
+        ],
+        metadata_updates=[
+            {
+                "ticker": "EXMP",
+                "exchange": "NYSE",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "Denmark",
+                "reason": "Reviewed ADR issuer domicile",
+            },
+            {
+                "ticker": "EXMP",
+                "exchange": "NYSE",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US03524A1088",
+                "reason": "Reviewed exact ADR identifier",
+            },
+            {
+                "ticker": "EXMPN",
+                "exchange": "BMV",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "Denmark",
+                "reason": "Reviewed ADR cross-listing domicile",
+            },
+            {
+                "ticker": "EXMPN",
+                "exchange": "BMV",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US03524A1088",
+                "reason": "Reviewed exact ADR cross-listing identifier",
+            },
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    for quality_row in report_rows:
+        assert all(issue.issue_type != "country_isin_mismatch" for issue in quality_row.issues)
+
+
+def test_entry_quality_accepts_official_ads_with_reviewed_country_override():
+    listing = row(
+        "NYSE::EXMP",
+        "EXMP",
+        "NYSE",
+        "Example Holdings SE",
+        isin="US03524A1088",
+        country="Germany",
+        country_code="DE",
+    )
+
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("NYSE::EXMP", "EXMP", "NYSE", isin="US03524A1088")],
+        identifiers=[],
+        masterfiles=[official_ref("EXMP", "NYSE", "Example Holdings SE ADS", "US03524A1088")],
+        metadata_updates=[
+            {
+                "ticker": "EXMP",
+                "exchange": "NYSE",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "Germany",
+                "reason": "Reviewed issuer domicile",
+            },
+            {
+                "ticker": "EXMP",
+                "exchange": "NYSE",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US03524A1088",
+                "reason": "Reviewed exact ADS identifier",
+            },
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_official_drs_name():
+    listing = row(
+        "HKEX::06288",
+        "06288",
+        "HKEX",
+        "Fast Retailing DRS",
+        isin="US31188H2004",
+        country="Japan",
+        country_code="JP",
+    )
+
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("HKEX::06288", "06288", "HKEX", isin="US31188H2004")],
+        identifiers=[],
+        masterfiles=[official_ref("06288", "HKEX", "Fast Retailing DRS", "US31188H2004")],
+        metadata_updates=[metadata_update("06288", "HKEX", "country", "Japan")],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_reviewed_foreign_us_cins_identifier():
+    listing = row(
+        "OTC::EXMPF",
+        "EXMPF",
+        "OTC",
+        "Example Holdings Ltd",
+        isin="USG1234A1070",
+        country="Bermuda",
+        country_code="BM",
+    )
+
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::EXMPF", "EXMPF", "OTC", isin="USG1234A1070")],
+        identifiers=[],
+        masterfiles=[official_ref("EXMPF", "OTC", "Example Holdings Ltd", "USG1234A1070")],
+        metadata_updates=[
+            metadata_update("EXMPF", "OTC", "country", "Bermuda"),
+            metadata_update("EXMPF", "OTC", "isin", "USG1234A1070"),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_flags_unreviewed_foreign_us_cins_country():
+    listing = row(
+        "OTC::EXMPF",
+        "EXMPF",
+        "OTC",
+        "Example Holdings Ltd",
+        isin="USG1234A1070",
+        country="Bermuda",
+        country_code="BM",
+    )
+
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::EXMPF", "EXMPF", "OTC", isin="USG1234A1070")],
+        identifiers=[],
+        masterfiles=[],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert any(issue.issue_type == "country_isin_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_primary_confirmed_by_otc_y_depositary():
+    primary = row(
+        "LSE::EXMP",
+        "EXMP",
+        "LSE",
+        "Example Holdings Ltd",
+        isin="US03524A1088",
+        country="India",
+        country_code="IN",
+    )
+    depositary = row(
+        "OTC::EXMPY",
+        "EXMPY",
+        "OTC",
+        "Example Holdings Ltd",
+        isin="US03524A1088",
+        country="India",
+        country_code="IN",
+    )
+
+    report_rows = assess_entries(
+        [primary, depositary],
+        tickers=[primary],
+        scopes=[
+            scope("LSE::EXMP", "EXMP", "LSE", isin="US03524A1088"),
+            scope(
+                "OTC::EXMPY",
+                "EXMPY",
+                "OTC",
+                isin="US03524A1088",
+                instrument_scope="extended",
+                scope_reason="secondary_cross_listing",
+                primary_listing_key="LSE::EXMP",
+            ),
+        ],
+        identifiers=[],
+        masterfiles=[
+            official_ref("EXMP", "LSE", "Example Holdings Ltd", "US03524A1088"),
+            official_ref("EXMPY", "OTC", "Example Holdings Ltd", "US03524A1088"),
+        ],
+        metadata_updates=[metadata_update("EXMPY", "OTC", "country", "India")],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert all(
+        issue.issue_type != "country_isin_mismatch"
+        for quality_row in report_rows
+        for issue in quality_row.issues
+    )
+
+
+def test_entry_quality_rechecks_depositary_when_current_isin_differs_from_review():
+    listing = row(
+        "NYSE::EXMP",
+        "EXMP",
+        "NYSE",
+        "Example Holdings A/S",
+        isin="US0378331005",
+        country="Denmark",
+        country_code="DK",
+    )
+
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("NYSE::EXMP", "EXMP", "NYSE", isin="US0378331005")],
+        identifiers=[],
+        masterfiles=[official_ref("EXMP", "NYSE", "Example Holdings A/S Common Stock", "")],
+        metadata_updates=[
+            {
+                "ticker": "EXMP",
+                "exchange": "NYSE",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "Denmark",
+                "reason": "Reviewed ADR issuer domicile",
+            },
+            {
+                "ticker": "EXMP",
+                "exchange": "NYSE",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US03524A1088",
+                "reason": "Reviewed exact ADR identifier",
+            },
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert any(issue.issue_type == "country_isin_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_keeps_reviewed_country_override_visible_for_identifier_review():
+    listing = row(
+        "SZSE::001289",
+        "001289",
+        "SZSE",
+        "China Longyuan Power Group Corporation Limited",
+        isin="US16890R1095",
+        country="China",
+        country_code="CN",
+    )
+
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("SZSE::001289", "001289", "SZSE", isin="US16890R1095")],
+        identifiers=[],
+        masterfiles=[
+            official_ref(
+                "001289",
+                "SZSE",
+                "China Longyuan Power Group Corporation Limited",
+                "",
+            )
+        ],
+        metadata_updates=[
+            {
+                "ticker": "001289",
+                "exchange": "SZSE",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "China",
+                "reason": "Reviewed issuer domicile; the US-prefix ADR/GDR ISIN still needs identifier review",
+            }
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    assert any(issue.issue_type == "country_isin_mismatch" for issue in report_rows[0].issues)
 
 
 def test_entry_quality_does_not_flag_local_script_official_names_as_mismatch():

@@ -32,11 +32,21 @@ jobs:
       - name: Rebuild source-derived artifacts
         run: python scripts/rebuild_dataset.py
 
+      - name: Rebuild entry quality report for current data
+        run: |
+          python scripts/build_entry_quality_report.py \
+            --csv-out /tmp/entry-quality.csv \
+            --json-out /tmp/entry-quality.json \
+            --md-out /tmp/entry-quality.md
+
       - name: Run test suite
         run: python -m pytest tests/ -q
 
       - name: Check entry quality gate
-        run: python scripts/check_entry_quality_gate.py
+        run: |
+          python scripts/check_entry_quality_gate.py \
+            --entry-quality-csv /tmp/entry-quality.csv \
+            --no-json-out
 
       - name: Check README snapshot
         run: python scripts/check_readme_snapshot.py

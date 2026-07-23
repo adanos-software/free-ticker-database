@@ -666,7 +666,7 @@ def test_validation_report_checks_malformed_metadata_override_rows():
     assert gates["metadata_updates_malformed_rows"]["actual"] == 3
 
 
-def test_validation_report_allows_review_gated_country_isin_prefix_mismatch():
+def test_validation_report_does_not_accept_country_only_metadata_override():
     adr = ticker()
     adr["country"] = "Belgium"
     adr["country_code"] = "BE"
@@ -696,7 +696,7 @@ def test_validation_report_allows_review_gated_country_isin_prefix_mismatch():
     )
 
     gates = {gate["name"]: gate for gate in report["gates"]}
-    assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 0
+    assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 2
 
 
 def test_validation_report_fails_unreviewed_country_isin_prefix_mismatch():
@@ -710,7 +710,12 @@ def test_validation_report_fails_unreviewed_country_isin_prefix_mismatch():
         listings=[listing(bad)],
         instrument_scopes=[scope(bad)],
         adanos_reference=[adanos_reference(bad)],
-        entry_quality=[entry_quality(bad)],
+        entry_quality=[
+            {
+                **entry_quality(bad, quality_status="warn"),
+                "issue_types": "country_isin_mismatch",
+            }
+        ],
         allowed_warns=set(),
         adanos_alias_findings=[],
         review_remove_aliases=[],
@@ -723,7 +728,7 @@ def test_validation_report_fails_unreviewed_country_isin_prefix_mismatch():
     assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 2
 
 
-def test_validation_report_allows_reconciled_adr_and_same_isin_peer():
+def test_validation_report_allows_explicitly_allowlisted_adr_and_same_isin_peer():
     foreign = ticker("BECO", isin="BE0003797140")
     foreign.update(
         name="Example Holdings SA",
@@ -751,11 +756,100 @@ def test_validation_report_allows_reconciled_adr_and_same_isin_peer():
         listings=[listing(foreign), listing(adr), listing(same_isin_peer)],
         instrument_scopes=[scope(adr)],
         adanos_reference=[adanos_reference(adr)],
-        entry_quality=[entry_quality(adr)],
-        allowed_warns=set(),
+        entry_quality=[
+            entry_quality(foreign),
+            {**entry_quality(adr, quality_status="warn"), "issue_types": "country_isin_mismatch"},
+            {
+                **entry_quality(same_isin_peer, quality_status="warn"),
+                "issue_types": "country_isin_mismatch",
+            },
+        ],
+        allowed_warns={"OTC::EXMPY", "LSE::EXMPL"},
+        allowed_country_mismatch_warns={"OTC::EXMPY", "LSE::EXMPL"},
         adanos_alias_findings=[],
         review_remove_aliases=[],
         coverage_report={"global": {"tickers": 1, "listing_keys": 3}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 0
+
+
+def test_validation_report_does_not_use_unrelated_allowlist_issue_for_country_mismatch():
+    bad = ticker()
+    bad["country"] = "Belgium"
+    bad["country_code"] = "BE"
+    bad["isin"] = "US03524A1088"
+    key = "NASDAQ::MSFT"
+
+    report = build_validation_report(
+        tickers=[bad],
+        listings=[listing(bad)],
+        instrument_scopes=[scope(bad)],
+        adanos_reference=[adanos_reference(bad)],
+        entry_quality=[
+            {**entry_quality(bad, quality_status="warn"), "issue_types": "official_name_mismatch"}
+        ],
+        allowed_warns={key},
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 2
+
+
+def test_validation_report_accepts_exact_country_metadata_review_evidence():
+    reviewed = ticker("EXMPY", isin="US03524A1088")
+    reviewed.update(
+        name="Example Holdings SA ADR",
+        exchange="OTC",
+        country="Belgium",
+        country_code="BE",
+    )
+
+    report = build_validation_report(
+        tickers=[reviewed],
+        listings=[listing(reviewed)],
+        core_listings=[{**listing(reviewed), "instrument_group_key": reviewed["isin"], "scope_reason": "primary_listing"}],
+        instrument_scopes=[scope(reviewed)],
+        adanos_reference=[adanos_reference(reviewed)],
+        entry_quality=[entry_quality(reviewed)],
+        allowed_warns=set(),
+        identifiers_extended=[
+            {
+                "listing_key": "OTC::EXMPY",
+                "ticker": "EXMPY",
+                "exchange": "OTC",
+                "isin": "US03524A1088",
+            }
+        ],
+        review_metadata_updates=[
+            {
+                "ticker": "EXMPY",
+                "exchange": "OTC",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "Belgium",
+                "confidence": "0.99",
+                "reason": "Reviewed exact ADR issuer domicile.",
+            },
+            {
+                "ticker": "EXMPY",
+                "exchange": "OTC",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US03524A1088",
+                "confidence": "0.99",
+                "reason": "Reviewed exact ADR identifier.",
+            },
+        ],
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
         generated_at="2026-04-22T00:00:00Z",
     )
 
@@ -783,6 +877,47 @@ def test_validation_report_ignores_blank_country_when_isin_prefix_is_not_mappabl
 
     gates = {gate["name"]: gate for gate in report["gates"]}
     assert gates["rows_missing_country_metadata_despite_isin"]["actual"] == 0
+
+
+def test_validation_report_accepts_reviewed_foreign_us_cins_identifier():
+    foreign = ticker("EXMPF", isin="USG1234A1070")
+    foreign.update(exchange="OTC", country="Bermuda", country_code="BM")
+
+    report = build_validation_report(
+        tickers=[foreign],
+        listings=[listing(foreign)],
+        instrument_scopes=[scope(foreign)],
+        adanos_reference=[adanos_reference(foreign)],
+        entry_quality=[entry_quality(foreign)],
+        allowed_warns=set(),
+        review_metadata_updates=[
+            {
+                "ticker": "EXMPF",
+                "exchange": "OTC",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "Bermuda",
+                "confidence": "0.99",
+                "reason": "Reviewed exact CINS issuer domicile.",
+            },
+            {
+                "ticker": "EXMPF",
+                "exchange": "OTC",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "USG1234A1070",
+                "confidence": "0.99",
+                "reason": "Reviewed exact CINS identifier.",
+            },
+        ],
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 0
 
 
 def test_validation_report_fails_rows_with_mojibake_names():

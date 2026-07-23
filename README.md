@@ -9,28 +9,28 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 57,731 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,241 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 74,711 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,504 | Primary ticker rows where `asset_type=Stock`. |
+| Core listings | 57,727 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 63,164 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 74,722 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 47,427 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 15,737 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 81 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 125,092 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 61,763 (97.7%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 65,733 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 63,121 (99.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 47,479 | Primary ticker rows with a non-empty `stock_sector`. |
+| Aliases | 125,035 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 61,687 (97.7%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 65,730 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 63,043 (99.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 47,401 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 15,642 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 57,731 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 56,973 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 758 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,980 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Core listing-scope rows | 57,727 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 56,970 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 757 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 16,995 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 34 | Current-scope source inventory rows marked `official_full`. |
 | Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
 | Missing current-scope exchanges | 0 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 6,928 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
-| Entry quality warn rows | 74 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
+| Entry quality source-gap rows | 6,929 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality warn rows | 21 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
 
@@ -177,20 +177,20 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 7,532 |
+| OTC | 7,465 |
 | NASDAQ | 4,594 |
-| LSE | 3,812 |
+| LSE | 3,797 |
 | TSE | 3,201 |
 | SZSE | 3,083 |
-| HKEX | 2,840 |
+| HKEX | 2,841 |
 | SSE | 2,787 |
 | BSE_IN | 2,635 |
 | NYSE ARCA | 2,612 |
 | NSE_IN | 2,383 |
-| XETRA | 2,283 |
-| NYSE | 1,969 |
+| XETRA | 2,282 |
+| NYSE | 1,972 |
 | KRX | 1,796 |
-| TSX | 1,631 |
+| TSX | 1,632 |
 | KOSDAQ | 1,578 |
 | B3 | 1,578 |
 | ASX | 1,300 |
@@ -198,6 +198,7 @@ Top exchanges by primary ticker count:
 For full exchange, country, source, and verification coverage, use:
 
 ```bash
+python3 scripts/build_entry_quality_report.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
 python3 scripts/build_etf_universe_completeness.py
@@ -213,7 +214,6 @@ python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 1
 python3 scripts/build_alias_quality_report.py
 python3 scripts/build_adanos_ticker_reference.py
 python3 scripts/simulate_adanos_detection.py
-python3 scripts/build_entry_quality_report.py
 python3 scripts/validate_database.py
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/fetch_symbol_changes.py
@@ -233,6 +233,7 @@ Quick rebuild:
 ```bash
 python3 scripts/rebuild_dataset.py
 python3 scripts/build_listing_history.py
+python3 scripts/build_entry_quality_report.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
 python3 scripts/build_etf_universe_completeness.py
@@ -248,7 +249,6 @@ python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 1
 python3 scripts/build_alias_quality_report.py
 python3 scripts/build_adanos_ticker_reference.py
 python3 scripts/simulate_adanos_detection.py
-python3 scripts/build_entry_quality_report.py
 python3 scripts/validate_database.py
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/fetch_symbol_changes.py

@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 79821,
-    "matched": 52769,
-    "collisions": 11539,
-    "missing": 15513
+    "matched": 52778,
+    "collisions": 11535,
+    "missing": 15508
   },
   "exchanges": [
     {
@@ -1774,8 +1774,8 @@
     {
       "exchange": "Euronext",
       "official_symbols": 2007,
-      "matched": 963,
-      "collisions": 672,
+      "matched": 965,
+      "collisions": 670,
       "missing": 372,
       "collision_examples": [
         {
@@ -2544,8 +2544,8 @@
     {
       "exchange": "LSE",
       "official_symbols": 11021,
-      "matched": 6419,
-      "collisions": 1108,
+      "matched": 6420,
+      "collisions": 1107,
       "missing": 3494,
       "collision_examples": [
         {
@@ -2796,9 +2796,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5711,
-      "matched": 4631,
+      "matched": 4630,
       "collisions": 56,
-      "missing": 1024,
+      "missing": 1025,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -3372,9 +3372,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3909,
-      "matched": 2034,
-      "collisions": 500,
-      "missing": 1375,
+      "matched": 2038,
+      "collisions": 499,
+      "missing": 1372,
       "collision_examples": [
         {
           "ticker": "ACCS",
@@ -4030,9 +4030,9 @@
     {
       "exchange": "OTC",
       "official_symbols": 11925,
-      "matched": 7675,
+      "matched": 7677,
       "collisions": 38,
-      "missing": 4212,
+      "missing": 4210,
       "collision_examples": [
         {
           "ticker": "AEAE",
@@ -4127,11 +4127,6 @@
           "exchange": "OTC"
         },
         {
-          "ticker": "AAGIY",
-          "name": "AIA GROUP LTD S/ADR",
-          "exchange": "OTC"
-        },
-        {
           "ticker": "AAGRY",
           "name": "ASTRA AGRO LESTR UNSP/ADR",
           "exchange": "OTC"
@@ -4164,6 +4159,11 @@
         {
           "ticker": "AAXBF",
           "name": "AIRASIA X BHD",
+          "exchange": "OTC"
+        },
+        {
+          "ticker": "ABAKF",
+          "name": "ABRDN ASIA-PAC INCOME FD",
           "exchange": "OTC"
         }
       ]
@@ -4326,6 +4326,7 @@
           "name": "Agro Allianz Limited",
           "target_exchange": "PSX",
           "existing_exchanges": [
+            "LSE",
             "NASDAQ"
           ]
         },
@@ -4503,8 +4504,8 @@
       "exchange": "SET",
       "official_symbols": 944,
       "matched": 545,
-      "collisions": 347,
-      "missing": 52,
+      "collisions": 348,
+      "missing": 51,
       "collision_examples": [
         {
           "ticker": "A",
@@ -5614,8 +5615,8 @@
     {
       "exchange": "XETRA",
       "official_symbols": 5076,
-      "matched": 3657,
-      "collisions": 858,
+      "matched": 3658,
+      "collisions": 857,
       "missing": 561,
       "collision_examples": [
         {

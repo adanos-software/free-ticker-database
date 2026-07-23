@@ -242,14 +242,14 @@ def test_issue_137_reviewed_country_and_identifier_exceptions():
     expected = {
         ("AMRRY", "OTC"): ("Australia", "US02925A1051"),
         ("ARRNF", "OTC"): ("Australia", "NZARRE0004S7"),
-        ("BABA", "NYSE"): ("China", "US01609W1027"),
-        ("BABAN", "BMV"): ("China", "US01609W1027"),
+        ("BABA", "NYSE"): ("Cayman Islands", "US01609W1027"),
+        ("BABAN", "BMV"): ("Cayman Islands", "US01609W1027"),
         ("BHVN", "NYSE"): ("British Virgin Islands", "VGG1110E1079"),
         ("CBUIF", "OTC"): ("Bahamas", "BS2026601063"),
         ("GOFPY", "OTC"): ("Switzerland", "US3924831031"),
         ("ITNF", "OTC"): ("United States", "US4609461060"),
-        ("KDOZF", "OTC"): ("Canada", "AIG5259K1050"),
-        ("RETDF", "OTC"): ("Israel", "US2043191079"),
+        ("KDOZF", "OTC"): ("Canada", "CA4939471054"),
+        ("RETDF", "OTC"): ("Israel", "IL0010989205"),
         ("SNYXF", "OTC"): ("Canada", "CA92847K1093"),
         ("TSGTF", "OTC"): ("China", "USY8997D1029"),
         ("TYIDY", "OTC"): ("Japan", "US8923301019"),
@@ -2879,6 +2879,50 @@ def test_instrument_scopes_split_core_and_extended_listings():
     assert {row["scope_reason"] for row in otc_rows} == {"otc_listing"}
 
 
+def test_reviewed_foreign_ordinaries_resolve_to_home_primary_listings():
+    by_key = {row["listing_key"]: row for row in load_csv("instrument_scopes.csv")}
+    expected = {
+        "OTC::AAUKF": "LSE::AAL",
+        "OTC::AAVXF": "Euronext::ABVX",
+        "OTC::BICEF": "Euronext::BB",
+        "OTC::BNTGF": "XETRA::BNR",
+        "OTC::AFGVF": "Euronext::AGFB",
+        "OTC::ZHEXF": "HKEX::00576",
+        "OTC::BOMBF": "TSX::BBD.PR.D",
+    }
+
+    assert {
+        listing_key: by_key[listing_key]["primary_listing_key"]
+        for listing_key in expected
+    } == expected
+
+
+def test_warrants_are_not_published_as_core_stocks():
+    listing_keys = {row["listing_key"] for row in load_csv("listings.csv")}
+
+    assert "NASDAQ::RDZNW" not in listing_keys
+
+
+def test_reviewed_depositary_primaries_preserve_issuer_domicile():
+    by_key = {row["listing_key"]: row for row in load_csv("listings.csv")}
+    expected = {
+        "OTC::AAGIY": ("Hong Kong", "HK"),
+        "OTC::ABBNY": ("Switzerland", "CH"),
+        "NYSE::BUD": ("Belgium", "BE"),
+        "NYSE::EQNR": ("Norway", "NO"),
+        "OTC::ICAGY": ("Spain", "ES"),
+        "NYSE::PHG": ("Netherlands", "NL"),
+        "NYSE::SBSW": ("South Africa", "ZA"),
+        "BMV::PBRN": ("Brazil", "BR"),
+        "BMV::SONYN": ("Japan", "JP"),
+    }
+
+    assert {
+        listing_key: (by_key[listing_key]["country"], by_key[listing_key]["country_code"])
+        for listing_key in expected
+    } == expected
+
+
 def test_instrument_scope_rows_flag_core_primary_without_isin():
     from scripts.rebuild_dataset import build_instrument_scope_rows
 
@@ -3065,7 +3109,7 @@ def test_freshness_timestamps_are_coherent():
     assert freshness["source_gap_classification_age_hours"] >= 0
     assert freshness["source_gap_classification_rows"] >= 0
     assert freshness["entry_quality_age_hours"] >= 0
-    assert freshness["entry_quality_rows"] >= 0
+    assert freshness["entry_quality_rows"] == len(load_csv("listings.csv"))
     assert freshness["masterfile_collision_review_age_hours"] >= 0
     assert freshness["masterfile_collision_review_rows"] >= 0
     assert freshness["ohlcv_plausibility_age_hours"] >= 0

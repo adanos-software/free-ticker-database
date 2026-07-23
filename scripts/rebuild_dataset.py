@@ -63,6 +63,7 @@ REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
 REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
 REVIEW_DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
+PRIMARY_LISTING_OVERRIDES_CSV = REVIEW_OVERRIDES_DIR / "primary_listing_overrides.csv"
 # (ticker, exchange) pairs that are exchange-listed preferreds/notes or common-stock
 # names that the non-common-stock name filters would otherwise drop as false positives
 # (e.g. "Preferred Bank"). Reviewed and admitted per the preferred/notes scope policy.
@@ -399,6 +400,14 @@ DEPOSITARY_PATTERN = re.compile(
 OFFICIAL_DEPOSITARY_PATTERN = re.compile(
     r"(?:\bamerican depositary\b|\bdepositary (?:shares?|receipts?)\b|"
     r"\bnew york registry shares?\b|\s-\sADS(?:\s*,|\s*$))",
+    re.IGNORECASE,
+)
+REVIEWED_DEPOSITARY_PATTERN = re.compile(
+    rf"(?:{OFFICIAL_DEPOSITARY_PATTERN.pattern}|\b(?:ADR|ADS|DRS)\b)",
+    re.IGNORECASE,
+)
+REVIEWED_DEPOSITARY_REASON_PATTERN = re.compile(
+    r"\b(?:ADR|ADS|depositary)\b",
     re.IGNORECASE,
 )
 US_CORP_NAME_RE = re.compile(
@@ -1549,23 +1558,33 @@ def load_active_official_sector_fallbacks() -> dict[tuple[str, str, str], str]:
     }
 
 
+def active_official_depositary_listing_keys(
+    rows: Iterable[dict[str, str]],
+    depositary_pattern: re.Pattern[str] = OFFICIAL_DEPOSITARY_PATTERN,
+) -> set[tuple[str, str]]:
+    listing_keys: set[tuple[str, str]] = set()
+    for row in rows:
+        if row.get("official") != "true" or row.get("listing_status") != "active":
+            continue
+        if row.get("asset_type") != "Stock" or not depositary_pattern.search(row.get("name", "")):
+            continue
+        ticker = row.get("ticker", "").strip().upper()
+        exchange = EXCHANGE_ALIASES.get(row.get("exchange", "").strip(), row.get("exchange", "").strip())
+        if ticker and exchange:
+            listing_keys.add((ticker, exchange))
+    return listing_keys
+
+
 @lru_cache(maxsize=None)
 def load_active_official_depositary_listing_keys() -> set[tuple[str, str]]:
     if not MASTERFILE_REFERENCE_CSV.exists():
         return set()
 
-    listing_keys: set[tuple[str, str]] = set()
     with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
-        for row in csv.DictReader(handle):
-            if row.get("official") != "true" or row.get("listing_status") != "active":
-                continue
-            if row.get("asset_type") != "Stock" or not OFFICIAL_DEPOSITARY_PATTERN.search(row.get("name", "")):
-                continue
-            ticker = row.get("ticker", "").strip().upper()
-            exchange = EXCHANGE_ALIASES.get(row.get("exchange", "").strip(), row.get("exchange", "").strip())
-            if ticker and exchange:
-                listing_keys.add((ticker, exchange))
-    return listing_keys
+        return active_official_depositary_listing_keys(
+            csv.DictReader(handle),
+            REVIEWED_DEPOSITARY_PATTERN,
+        )
 
 
 @lru_cache(maxsize=None)
@@ -2142,6 +2161,86 @@ def build_unique_foreign_issuer_country_lookup(rows: list[dict[str, str]]) -> di
     }
 
 
+def reviewed_depositary_country_isin_listing_keys(
+    rows: Iterable[dict[str, str]],
+    metadata_updates: Iterable[dict[str, str]],
+    official_depositary_listing_keys: set[tuple[str, str]],
+) -> set[tuple[str, str, str, str]]:
+    """Return identifier-bound reviewed US depositary listing tuples.
+
+    Country review and depositary status alone do not validate an identifier.
+    Both the current country and current ISIN must have listing-keyed review
+    evidence, and the listing must independently be identified as a depositary.
+    """
+    country_overrides = {
+        (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip()): row
+        for row in metadata_updates
+        if row.get("field") == "country"
+        and row.get("decision") == "update"
+        and row.get("proposed_value", "").strip()
+        and row.get("reason", "").strip()
+    }
+    isin_overrides = {
+        (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip()): row
+        for row in metadata_updates
+        if row.get("field") == "isin"
+        and row.get("decision") == "update"
+        and row.get("proposed_value", "").strip()
+        and row.get("reason", "").strip()
+    }
+    reviewed_keys: set[tuple[str, str, str, str]] = set()
+    for row in rows:
+        key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+        country_override = country_overrides.get(key)
+        isin_override = isin_overrides.get(key)
+        isin = row.get("isin", "").strip().upper()
+        country = row.get("country", "").strip()
+        if (
+            not country_override
+            or not isin_override
+            or country_override.get("proposed_value", "").strip() != country
+            or isin_override.get("proposed_value", "").strip().upper() != isin
+            or row.get("asset_type") != "Stock"
+            or country_from_isin(isin) != "United States"
+            or country == "United States"
+        ):
+            continue
+        reason_identifies_depositary = bool(
+            REVIEWED_DEPOSITARY_REASON_PATTERN.search(country_override.get("reason", ""))
+            or REVIEWED_DEPOSITARY_REASON_PATTERN.search(isin_override.get("reason", ""))
+        )
+        if key in official_depositary_listing_keys or reason_identifies_depositary:
+            reviewed_keys.add((*key, isin, country))
+    return reviewed_keys
+
+
+def reviewed_country_isin_override_listing_keys(
+    rows: Iterable[dict[str, str]],
+    metadata_updates: Iterable[dict[str, str]],
+) -> set[tuple[str, str, str, str]]:
+    """Return listing tuples whose current country and ISIN were both reviewed."""
+    overrides: dict[tuple[str, str], dict[str, str]] = defaultdict(dict)
+    for update in metadata_updates:
+        if (
+            update.get("field") in {"country", "isin"}
+            and update.get("decision") == "update"
+            and update.get("proposed_value", "").strip()
+            and update.get("reason", "").strip()
+        ):
+            key = (update.get("ticker", "").strip().upper(), update.get("exchange", "").strip())
+            overrides[key][update["field"]] = update.get("proposed_value", "").strip()
+
+    reviewed: set[tuple[str, str, str, str]] = set()
+    for row in rows:
+        key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+        evidence = overrides.get(key, {})
+        isin = row.get("isin", "").strip().upper()
+        country = row.get("country", "").strip()
+        if evidence.get("country") == country and evidence.get("isin", "").upper() == isin:
+            reviewed.add((*key, isin, country))
+    return reviewed
+
+
 def reconcile_depositary_issuer_countries(
     rows: list[dict[str, str]],
     official_depositary_listing_keys: set[tuple[str, str]],
@@ -2426,6 +2525,7 @@ def cleaned_rows():
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
     official_isin_fallbacks = load_active_official_isin_fallbacks()
     official_sector_fallbacks = load_active_official_sector_fallbacks()
+    official_depositary_listing_keys = load_active_official_depositary_listing_keys()
 
     prepared_rows: list[dict[str, str]] = []
     for row in ticker_rows:
@@ -2465,7 +2565,12 @@ def cleaned_rows():
             if official_isin and merged.get("isin") != official_isin:
                 merged["isin"] = official_isin
                 inferred_country = country_from_isin(official_isin)
-                if inferred_country:
+                preserve_depositary_domicile = bool(
+                    row_key in official_depositary_listing_keys
+                    and merged.get("country")
+                    and merged.get("country") != "United States"
+                )
+                if inferred_country and not preserve_depositary_domicile:
                     merged["country"] = inferred_country
                     merged["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
         if not merged.get("isin") and "isin" not in review_metadata_updates.get(row_key, {}):
@@ -2503,7 +2608,12 @@ def cleaned_rows():
         isin, aliases = clean_aliases(row, aliases, wkns, alias_context)
         country = row["country"]
         inferred_country = country_from_isin(isin) if isin else None
-        if inferred_country:
+        preserve_depositary_domicile = bool(
+            row_key in official_depositary_listing_keys
+            and country
+            and country != "United States"
+        )
+        if inferred_country and not preserve_depositary_domicile:
             country = inferred_country
 
         output_row = {
@@ -3178,7 +3288,6 @@ EXCHANGE_ISIN_PREFIX: dict[str, str] = {
     "TSXV": "CA", "TWSE": "TW", "UPCOM": "VN", "USE_UG": "UG", "VSE": "AT", "WSE": "PL",
     "XETRA": "DE", "ZSE": "HR", "ZSE_ZW": "ZW",
 }
-
 # Preference order: home exchange first, then major exchanges, then rest.
 EXCHANGE_RANK: dict[str, int] = {
     "NYSE": 1, "NASDAQ": 2, "NYSE ARCA": 3, "LSE": 4, "XETRA": 5,
@@ -3187,11 +3296,24 @@ EXCHANGE_RANK: dict[str, int] = {
 }
 
 
-def cross_listing_sort_key(isin: str, row: dict[str, str]) -> tuple[int, int, str, str]:
+@lru_cache(maxsize=None)
+def load_primary_listing_overrides() -> dict[str, str]:
+    if not PRIMARY_LISTING_OVERRIDES_CSV.exists():
+        return {}
+    with PRIMARY_LISTING_OVERRIDES_CSV.open(newline="", encoding="utf-8") as handle:
+        return {
+            row["isin"].strip().upper(): row["listing_key"].strip()
+            for row in csv.DictReader(handle)
+            if row.get("isin", "").strip() and row.get("listing_key", "").strip()
+        }
+
+
+def cross_listing_sort_key(isin: str, row: dict[str, str]) -> tuple[int, int, int, str, str]:
     exchange = row["exchange"]
+    is_reviewed_primary = 1 if load_primary_listing_overrides().get(isin) == row_listing_key(row) else 0
     is_home = 1 if EXCHANGE_ISIN_PREFIX.get(exchange) == isin[:2] else 0
     rank = EXCHANGE_RANK.get(exchange, 99)
-    return (-is_home, rank, row["ticker"], exchange)
+    return (-is_reviewed_primary, -is_home, rank, row["ticker"], exchange)
 
 
 def primary_ticker_collision_sort_key(row: dict[str, str]) -> tuple[int, int, int, str, str]:
