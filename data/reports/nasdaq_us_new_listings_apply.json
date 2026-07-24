@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-07-22T09:12:47Z",
+    "generated_at": "2026-07-24T09:06:00Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,35 +8,37 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 10,
-    "accepted_rows": 4,
+    "new_supported_rows": 12,
+    "accepted_rows": 6,
     "skipped_rows": 6,
     "accepted_by_exchange": {
-      "NASDAQ": 4
+      "BATS": 1,
+      "NASDAQ": 4,
+      "NYSE ARCA": 1
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 4,
-      "ticker_collision": 2
+      "excluded_non_common_stock": 2,
+      "ticker_collision": 4
     }
   },
   "accepted": [
     {
-      "ticker": "CHGA",
-      "name": "Change Agents Corporation  - Common Stock",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
+      "ticker": "RAML",
+      "name": "Leverage Shares 2X Long Memory Daily ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
       "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "CPTL",
-      "name": "Global X Morningstar Capital Allocation Leaders ETF",
+      "ticker": "AAUB",
+      "name": "Alpha Architect US Equity 4 ETF",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "sector": "",
@@ -49,8 +51,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "FRNM",
-      "name": "Freenome, Inc. - Common stock",
+      "ticker": "GRSD",
+      "name": "Grandstand Limited - Ordinary Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -63,8 +65,22 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "PWCM",
-      "name": "PowerCompute, Inc. - Common Stock",
+      "ticker": "HWIV",
+      "name": "Hotchkis & Wiley International Value Fund",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "VLOS",
+      "name": "Velos Acquisition I Corp. - Class A Ordinary shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -74,56 +90,70 @@
       "aliases": "",
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "PMTL",
+      "name": "First Trust Indxx Quality Precious Metals Miners ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory"
     }
   ],
   "skipped": [
     {
-      "ticker": "BRTMU",
+      "ticker": "CAE",
       "exchange": "NASDAQ",
-      "name": "B&R Technology Merger Corp. - Units",
+      "name": "CAE Inc - Common Shares",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
+      "skip_reason": "ticker_collision"
     },
     {
-      "ticker": "HLTH",
+      "ticker": "EQQQ",
       "exchange": "NASDAQ",
-      "name": "Tema Healthcare AI ETF",
+      "name": "ProShares Ultra QQQ Equal Weight",
       "asset_type": "ETF",
       "source_key": "nasdaq_listed",
       "skip_reason": "ticker_collision"
     },
     {
-      "ticker": "MEDS",
+      "ticker": "HWO",
       "exchange": "NASDAQ",
-      "name": "DataMeds AI, Inc. - Common Stock",
+      "name": "Hotchkis & Wiley Opportunities Fund",
+      "asset_type": "ETF",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "VIP",
+      "exchange": "NASDAQ",
+      "name": "Vulcan Infrastructure and Power Inc. - Class A Common Stock",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "ticker_collision"
     },
     {
-      "ticker": "NCOOU",
+      "ticker": "VLOSU",
       "exchange": "NASDAQ",
-      "name": "Southern Cross Acquisition I Corp. - Units",
+      "name": "Velos Acquisition I Corp. - Units",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "PSA$T",
-      "exchange": "NYSE",
-      "name": "Public Storage 6.000% Cumulative Preferred Shares of beneficial interest, Series T",
+      "ticker": "VLOSW",
+      "exchange": "NASDAQ",
+      "name": "Velos Acquisition I Corp. - Warrant",
       "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "PSA$U",
-      "exchange": "NYSE",
-      "name": "Public Storage 6.000% Cumulative Preferred Shares of Beneficial Interest, Series U",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
+      "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     }
   ]
