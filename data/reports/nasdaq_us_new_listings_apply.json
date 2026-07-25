@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-07-24T09:06:00Z",
+    "generated_at": "2026-07-25T08:33:34Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,51 +8,21 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 12,
-    "accepted_rows": 6,
-    "skipped_rows": 6,
+    "new_supported_rows": 5,
+    "accepted_rows": 1,
+    "skipped_rows": 4,
     "accepted_by_exchange": {
-      "BATS": 1,
-      "NASDAQ": 4,
-      "NYSE ARCA": 1
+      "NASDAQ": 1
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 2,
-      "ticker_collision": 4
+      "excluded_non_common_stock": 3,
+      "ticker_collision": 1
     }
   },
   "accepted": [
     {
-      "ticker": "RAML",
-      "name": "Leverage Shares 2X Long Memory Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "AAUB",
-      "name": "Alpha Architect US Equity 4 ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "GRSD",
-      "name": "Grandstand Limited - Ordinary Shares",
+      "ticker": "SCTX",
+      "name": "Scribe Therapeutics Inc. - Common Stock",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -62,96 +32,38 @@
       "aliases": "",
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "HWIV",
-      "name": "Hotchkis & Wiley International Value Fund",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "VLOS",
-      "name": "Velos Acquisition I Corp. - Class A Ordinary shares",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "PMTL",
-      "name": "First Trust Indxx Quality Precious Metals Miners ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory"
     }
   ],
   "skipped": [
     {
-      "ticker": "CAE",
+      "ticker": "BIOT",
       "exchange": "NASDAQ",
-      "name": "CAE Inc - Common Shares",
+      "name": "Instinct Bio Technical Company Holdings Inc. - Common stock",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "ticker_collision"
     },
     {
-      "ticker": "EQQQ",
+      "ticker": "BIOTW",
       "exchange": "NASDAQ",
-      "name": "ProShares Ultra QQQ Equal Weight",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "HWO",
-      "exchange": "NASDAQ",
-      "name": "Hotchkis & Wiley Opportunities Fund",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "VIP",
-      "exchange": "NASDAQ",
-      "name": "Vulcan Infrastructure and Power Inc. - Class A Common Stock",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "VLOSU",
-      "exchange": "NASDAQ",
-      "name": "Velos Acquisition I Corp. - Units",
+      "name": "Instinct Bio Technical Company Holdings Inc. - Warrants",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "VLOSW",
+      "ticker": "MTAKU",
       "exchange": "NASDAQ",
-      "name": "Velos Acquisition I Corp. - Warrant",
+      "name": "Market Technology Acquisition Corp - Unit",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "PLCIU",
+      "exchange": "NASDAQ",
+      "name": "Pelican Acquisition II Corporation - Unit",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"

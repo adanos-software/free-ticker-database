@@ -1,25 +1,20 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-07-24T09:06:00Z`
-- New supported rows: `12`
-- Accepted rows: `6`
-- Skipped rows: `6`
+- Generated at: `2026-07-25T08:33:34Z`
+- New supported rows: `5`
+- Accepted rows: `1`
+- Skipped rows: `4`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
 | Ticker | Exchange | Name | Asset type | Source |
 |---|---|---|---|---|
-| RAML | BATS | Leverage Shares 2X Long Memory Daily ETF | ETF | nasdaq_other_listed |
-| AAUB | NASDAQ | Alpha Architect US Equity 4 ETF | ETF | nasdaq_listed |
-| GRSD | NASDAQ | Grandstand Limited - Ordinary Shares | Stock | nasdaq_listed |
-| HWIV | NASDAQ | Hotchkis & Wiley International Value Fund | ETF | nasdaq_listed |
-| VLOS | NASDAQ | Velos Acquisition I Corp. - Class A Ordinary shares | Stock | nasdaq_listed |
-| PMTL | NYSE ARCA | First Trust Indxx Quality Precious Metals Miners ETF | ETF | nasdaq_other_listed |
+| SCTX | NASDAQ | Scribe Therapeutics Inc. - Common Stock | Stock | nasdaq_listed |
 
 ## Skipped
 
 | Reason | Rows |
 |---|---:|
-| excluded_non_common_stock | 2 |
-| ticker_collision | 4 |
+| excluded_non_common_stock | 3 |
+| ticker_collision | 1 |
