@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-07-24T09:07:25Z",
-    "rows": 7129,
+    "generated_at": "2026-07-25T08:35:04Z",
+    "rows": 7131,
     "field_totals": {
       "missing_etf_category": 99,
-      "missing_isin_primary": 763,
-      "missing_sector_stock": 28,
+      "missing_isin_primary": 764,
+      "missing_sector_stock": 29,
       "official_reference_gap": 6239
     },
     "class_totals": {
@@ -18,9 +18,9 @@
       "fund_or_trust_identifier_gap": 336,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 248,
+      "official_identifier_not_exposed_source_gap": 249,
       "official_identifier_reference_unmatched_gap": 5,
-      "official_industry_taxonomy_unavailable_gap": 19,
+      "official_industry_taxonomy_unavailable_gap": 20,
       "official_product_taxonomy_unavailable_gap": 82,
       "official_reference_symbol_collision_gap": 704,
       "official_reference_unmatched_source_gap": 5535,
@@ -37,9 +37,9 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 336,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 248,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 249,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 5,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 19,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 20,
       "missing_sector_stock:shell_or_cpc_sector_gap": 9,
       "official_reference_gap:official_reference_symbol_collision_gap": 704,
       "official_reference_gap:official_reference_unmatched_source_gap": 5535
@@ -62,7 +62,7 @@
       "missing_isin_primary": [
         {
           "exchange": "NASDAQ",
-          "rows": 128
+          "rows": 129
         },
         {
           "exchange": "ASX",
@@ -104,7 +104,7 @@
       "missing_sector_stock": [
         {
           "exchange": "NASDAQ",
-          "rows": 21
+          "rows": 22
         },
         {
           "exchange": "NYSE",
@@ -231,7 +231,7 @@
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NASDAQ",
-        "rows": 85,
+        "rows": 86,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -7382,6 +7382,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::SATA;exchange=NASDAQ;ticker=SATA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::SCTX",
+      "ticker": "SCTX",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Scribe Therapeutics Inc. - Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::SCTX;exchange=NASDAQ;ticker=SCTX;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -15321,6 +15338,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NASDAQ::RACD;exchange=NASDAQ;ticker=RACD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::SCTX",
+      "ticker": "SCTX",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Scribe Therapeutics Inc. - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::SCTX;exchange=NASDAQ;ticker=SCTX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
