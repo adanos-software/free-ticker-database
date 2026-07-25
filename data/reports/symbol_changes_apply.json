@@ -1,13 +1,13 @@
 {
   "summary": {
-    "generated_at": "2026-07-24T08:40:53Z",
+    "generated_at": "2026-07-25T08:22:36Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 310,
+    "blocked_rows": 311,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 33,
+      "blocked_new_symbol_collision": 34,
       "blocked_old_symbol_not_unique_in_us_scope": 240,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 34,
@@ -16,6 +16,14 @@
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "568d692c4472a8db",
+      "effective_date": "2026-07-24",
+      "old_symbol": "GREE",
+      "new_symbol": "VIP",
+      "new_company_name": "Vulcan Infrastructure & Power Inc",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "4bfbd41226cf63f0",
       "effective_date": "2026-07-22",
