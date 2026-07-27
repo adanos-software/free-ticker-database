@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-07-27T10:10:57Z",
-    "rows": 7442,
+    "generated_at": "2026-07-27T10:29:34Z",
+    "rows": 7459,
     "field_totals": {
-      "missing_etf_category": 99,
-      "missing_isin_primary": 764,
-      "missing_sector_stock": 29,
-      "official_reference_gap": 6550
+      "missing_etf_category": 104,
+      "missing_isin_primary": 771,
+      "missing_sector_stock": 31,
+      "official_reference_gap": 6553
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
@@ -15,40 +15,42 @@
       "debt_or_securitized_identifier_gap": 79,
       "digital_asset_etf_category_gap": 2,
       "equity_etf_category_gap": 13,
-      "fund_or_trust_identifier_gap": 336,
+      "fixed_income_etf_category_gap": 1,
+      "fund_or_trust_identifier_gap": 341,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 249,
+      "official_identifier_not_exposed_source_gap": 251,
       "official_identifier_reference_unmatched_gap": 5,
-      "official_industry_taxonomy_unavailable_gap": 20,
-      "official_product_taxonomy_unavailable_gap": 82,
-      "official_reference_symbol_collision_gap": 706,
-      "official_reference_unmatched_source_gap": 5844,
-      "shell_or_cpc_sector_gap": 9
+      "official_industry_taxonomy_unavailable_gap": 21,
+      "official_product_taxonomy_unavailable_gap": 86,
+      "official_reference_symbol_collision_gap": 708,
+      "official_reference_unmatched_source_gap": 5845,
+      "shell_or_cpc_sector_gap": 10
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 2,
       "missing_etf_category:digital_asset_etf_category_gap": 2,
       "missing_etf_category:equity_etf_category_gap": 13,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 82,
+      "missing_etf_category:fixed_income_etf_category_gap": 1,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 86,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 43,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 79,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 336,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 341,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 249,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 251,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 5,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 20,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 9,
-      "official_reference_gap:official_reference_symbol_collision_gap": 706,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5844
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 21,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 10,
+      "official_reference_gap:official_reference_symbol_collision_gap": 708,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5845
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
         {
           "exchange": "BATS",
-          "rows": 54
+          "rows": 59
         },
         {
           "exchange": "NYSE ARCA",
@@ -73,6 +75,10 @@
           "rows": 90
         },
         {
+          "exchange": "BATS",
+          "rows": 80
+        },
+        {
           "exchange": "TSXV",
           "rows": 80
         },
@@ -81,12 +87,8 @@
           "rows": 76
         },
         {
-          "exchange": "BATS",
-          "rows": 75
-        },
-        {
           "exchange": "NYSE",
-          "rows": 53
+          "rows": 54
         },
         {
           "exchange": "NEO",
@@ -108,7 +110,7 @@
         },
         {
           "exchange": "NYSE",
-          "rows": 5
+          "rows": 6
         },
         {
           "exchange": "B3",
@@ -116,6 +118,10 @@
         },
         {
           "exchange": "HKEX",
+          "rows": 1
+        },
+        {
+          "exchange": "NYSE MKT",
           "rows": 1
         }
       ],
@@ -146,7 +152,7 @@
         },
         {
           "exchange": "NYSE ARCA",
-          "rows": 125
+          "rows": 126
         },
         {
           "exchange": "TSX",
@@ -260,6 +266,14 @@
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
+        "field": "missing_isin_primary",
+        "gap_class": "fund_or_trust_identifier_gap",
+        "exchange": "BATS",
+        "rows": 78,
+        "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+        "source_gate": "Exact fund/trust symbol and product name with checksum."
+      },
+      {
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "BATS",
@@ -272,14 +286,6 @@
         "gap_class": "fund_or_trust_identifier_gap",
         "exchange": "NYSE ARCA",
         "rows": 74,
-        "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-        "source_gate": "Exact fund/trust symbol and product name with checksum."
-      },
-      {
-        "field": "missing_isin_primary",
-        "gap_class": "fund_or_trust_identifier_gap",
-        "exchange": "BATS",
-        "rows": 73,
         "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
@@ -435,6 +441,57 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "BATS::BAGX",
+      "ticker": "BAGX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "EA Bridgeway Aggressive Investors ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::BAGX;exchange=BATS;ticker=BAGX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::BGFI",
+      "ticker": "BGFI",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "BNY Mellon Global Fixed Income ETF",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=BATS::BGFI;exchange=BATS;ticker=BGFI;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::BMSI",
+      "ticker": "BMSI",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "BNY Mellon Muti-Sector Income ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::BMSI;exchange=BATS;ticker=BMSI;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "BATS::BNMC",
       "ticker": "BNMC",
       "exchange": "BATS",
@@ -463,6 +520,40 @@
       "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
       "source_gap_context": "listing_key=BATS::BRKL;exchange=BATS;ticker=BRKL;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::BRSV",
+      "ticker": "BRSV",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "EA Bridgeway Select Small-Cap Value ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::BRSV;exchange=BATS;ticker=BRSV;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::BUSM",
+      "ticker": "BUSM",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "EA Bridgeway Ultra-Small Company Market ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::BUSM;exchange=BATS;ticker=BUSM;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
     },
@@ -4005,6 +4096,57 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::BAGX",
+      "ticker": "BAGX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "EA Bridgeway Aggressive Investors ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::BAGX;exchange=BATS;ticker=BAGX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::BGFI",
+      "ticker": "BGFI",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "BNY Mellon Global Fixed Income ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::BGFI;exchange=BATS;ticker=BGFI;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::BMSI",
+      "ticker": "BMSI",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "BNY Mellon Muti-Sector Income ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::BMSI;exchange=BATS;ticker=BMSI;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::BNMC",
       "ticker": "BNMC",
       "exchange": "BATS",
@@ -4033,6 +4175,40 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=BATS::BRKL;exchange=BATS;ticker=BRKL;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::BRSV",
+      "ticker": "BRSV",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "EA Bridgeway Select Small-Cap Value ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::BRSV;exchange=BATS;ticker=BRSV;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::BUSM",
+      "ticker": "BUSM",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "EA Bridgeway Ultra-Small Company Market ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::BUSM;exchange=BATS;ticker=BUSM;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -8816,6 +8992,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NYSE::FTRA",
+      "ticker": "FTRA",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "name": "FutureCorp Space Acquisition 1 Class A Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NYSE::FTRA;exchange=NYSE;ticker=FTRA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NYSE::GAP",
       "ticker": "GAP",
       "exchange": "NYSE",
@@ -10731,6 +10924,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE MKT::SLSR;exchange=NYSE MKT;ticker=SLSR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NYSE MKT::TONT",
+      "ticker": "TONT",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "name": "Graf Global Corp. Class A ordinary shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NYSE MKT::TONT;exchange=NYSE MKT;ticker=TONT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -15446,6 +15656,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "NYSE::FTRA",
+      "ticker": "FTRA",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "name": "FutureCorp Space Acquisition 1 Class A Ordinary Shares",
+      "gap_class": "shell_or_cpc_sector_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Current issuer business description or official industry classification.",
+      "source_gate": "Canonical sector requires active operating-business evidence.",
+      "source_gap_context": "listing_key=NYSE::FTRA;exchange=NYSE;ticker=FTRA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "NYSE::OGG",
       "ticker": "OGG",
       "exchange": "NYSE",
@@ -15493,6 +15720,23 @@
       "source_gap_context": "listing_key=NYSE::VII;exchange=NYSE;ticker=VII;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NYSE MKT::TONT",
+      "ticker": "TONT",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "name": "Graf Global Corp. Class A ordinary shares",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NYSE MKT::TONT;exchange=NYSE MKT;ticker=TONT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "official_reference_gap",
@@ -39773,6 +40017,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "BATS::MAGA",
+      "ticker": "MAGA",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Point Bridge GOP Stock Tracker ETF",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=BATS::MAGA;exchange=BATS;ticker=MAGA;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "BATS::MAGO",
       "ticker": "MAGO",
       "exchange": "BATS",
@@ -61312,6 +61573,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NYSE::MVO",
+      "ticker": "MVO",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "name": "MV Oil Trust",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NYSE::MVO;exchange=NYSE;ticker=MVO;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NYSE::NOTE",
       "ticker": "NOTE",
       "exchange": "NYSE",
@@ -61563,6 +61841,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::CCMG;exchange=NYSE ARCA;ticker=CCMG;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE ARCA::CRED",
+      "ticker": "CRED",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Columbia Research Enhanced Real Estate ETF",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::CRED;exchange=NYSE ARCA;ticker=CRED;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",
