@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-07-26T08:47:43Z`
+Generated at: `2026-07-27T10:10:51Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 67,470 |
-| source_gap | 7,238 |
+| pass | 67,460 |
+| source_gap | 7,248 |
 | warn | 21 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,540 |
+| official_reference_gap | 6,550 |
 | expected_missing_primary_isin | 764 |
 | missing_etf_category | 99 |
 | missing_stock_sector | 29 |
@@ -37,7 +37,7 @@ Generated at: `2026-07-26T08:47:43Z`
 | ASX | 1,491 | 0 | 134 | 0 | 0 |
 | NSE_IN | 2,369 | 0 | 134 | 0 | 0 |
 | BME | 90 | 0 | 131 | 0 | 0 |
-| XETRA | 3,731 | 0 | 115 | 0 | 0 |
+| XETRA | 3,725 | 0 | 121 | 0 | 0 |
 | Euronext | 984 | 0 | 99 | 0 | 0 |
 | TSXV | 970 | 0 | 97 | 2 | 0 |
 | AMS | 241 | 0 | 90 | 0 | 0 |
@@ -45,7 +45,7 @@ Generated at: `2026-07-26T08:47:43Z`
 | TASE | 597 | 0 | 75 | 0 | 0 |
 | NYSE | 1,985 | 0 | 65 | 0 | 0 |
 | CSE_MA | 1 | 0 | 65 | 0 | 0 |
-| BSE_IN | 2,580 | 0 | 57 | 0 | 0 |
+| BSE_IN | 2,576 | 0 | 61 | 0 | 0 |
 
 ## Notes
 

@@ -506,7 +506,7 @@
       "missing_isin_primary": 764,
       "missing_sector_stock": 29
     },
-    "generated_at": "2026-07-26T08:47:53Z",
+    "generated_at": "2026-07-27T10:10:58Z",
     "legacy_primary_ticker_collision_rows": 2028,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -529,7 +529,6 @@
       "ungated_review_policy": 3
     },
     "next_action_source_gap_class_totals": {
-      "debt_or_securitized_identifier_gap": 1,
       "fund_or_trust_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 1
     },
@@ -571,8 +570,6 @@
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_asx_isins.py",
-        "source_gap_class": "debt_or_securitized_identifier_gap",
-        "source_gap_rows": 57,
         "stock_missing_count": 19,
         "target_field": "isin",
         "venue_status": "official_partial",
@@ -807,7 +804,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 11540,
+    "official_masterfile_collisions": 11534,
     "rows": 26
   }
 }
