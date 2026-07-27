@@ -1,237 +1,223 @@
 {
   "summary": {
-    "generated_at": "2026-07-20T10:30:14Z",
+    "generated_at": "2026-07-27T10:56:36Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "applied_rows": 0,
     "drafted_rows": 0,
-    "blocked_rows": 0,
-    "manual_rows": 643,
+    "blocked_rows": 25,
+    "manual_rows": 135,
     "status_counts": {
-      "manual_rename_vs_delisting_required": 643
+      "blocked_suspended_kept_by_policy": 25,
+      "manual_rename_vs_delisting_required": 135
     }
   },
   "applied": [],
   "drafted": [],
-  "blocked": [],
+  "blocked": [
+    {
+      "exchange": "BSE_IN",
+      "ticker": "ALSTONE",
+      "name": "Alstone Textiles (India) Ltd",
+      "isin": "INE184S01024",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "ASHIS",
+      "name": "Ashiana Ispat Ltd",
+      "isin": "INE587D01012",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "BCCPP",
+      "name": "BCC Fuba India Ltd",
+      "isin": "IN9788D01014",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "CHARMS",
+      "name": "Charms Industries Ltd",
+      "isin": "INE442C01012",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "GGENG",
+      "name": "G G Engineering Ltd",
+      "isin": "INE694X01030",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "GOLKONDA",
+      "name": "Golkonda Aluminium Extrusions Ltd-$",
+      "isin": "INE327C01031",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "INRADIA",
+      "name": "India Radiators Ltd",
+      "isin": "INE461Y01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "KEDIACN",
+      "name": "Kedia Construction Company Ltd",
+      "isin": "INE511J01027",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "KRISHPP",
+      "name": "KRISHIVAL FOODS Ltd",
+      "isin": "IN90GGO01013",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "OMKARCHEM",
+      "name": "Omkar Speciality Chemicals Ltd",
+      "isin": "INE474L01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "PRABHAPP",
+      "name": "Prabha Energy Ltd",
+      "isin": "IN90I0M01014",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "PRESSURS",
+      "name": "Pressure Sensitive Systems India Ltd",
+      "isin": "INE891E01024",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "PVVIPP",
+      "name": "PVV Infra Ltd",
+      "isin": "IN9428B01029",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "RAMASIGNS",
+      "name": "Ramasigns Industries Ltd",
+      "isin": "INE650D01026",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SELLWIN",
+      "name": "Sellwin Traders Ltd",
+      "isin": "INE195F01027",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SIKOZY",
+      "name": "Sikozy Realtors Ltd",
+      "isin": "INE528E01022",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SILVERLINE",
+      "name": "Silverline Technologies Ltd",
+      "isin": "INE368A01021",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SIPTL",
+      "name": "Sharanam Infraproject and Trading Ltd",
+      "isin": "INE104S01022",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SSLEL",
+      "name": "Sir Shadi Lal Enterprises Ltd",
+      "isin": "INE117H01019",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SUUMAYA",
+      "name": "Suumaya Corporation Ltd",
+      "isin": "INE0EMB01015",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "TIAANC",
+      "name": "Tiaan Consumer Ltd",
+      "isin": "INE864T01011",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "TRUSTWAVE",
+      "name": "Trustwave Securities Ltd",
+      "isin": "INE668Y01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "VASUDHAGAM",
+      "name": "Vasudhagama Enterprises Ltd",
+      "isin": "INE583K01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "WIMPLAST",
+      "name": "Wim Plast Ltd-$",
+      "isin": "INE015B01018",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "YARNPP",
+      "name": "Yarn Syndicate Ltd",
+      "isin": "IN9564C01011",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    }
+  ],
   "manual": [
-    {
-      "exchange": "ASX",
-      "ticker": "5EA",
-      "name": "5E ADVANCED MATERIALS INC.",
-      "isin": "AU0000186207",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "ADG",
-      "name": "ADELONG GOLD LIMITED",
-      "isin": "AU0000248288",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "AQI",
-      "name": "ALICANTO MINERALS LIMITED",
-      "isin": "AU000000AQI2",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "ASK",
-      "name": "ABACUS STORAGE KING",
-      "isin": "AU0000286213",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "AUK",
-      "name": "Aumake Ltd",
-      "isin": "AU0000123432",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "BCB",
-      "name": "BOWEN COKING COAL LIMITED",
-      "isin": "AU000000BCB5",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "BMG",
-      "name": "BMG RESOURCES LIMITED",
-      "isin": "AU000000BMG3",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "BXN",
-      "name": "BIOXYNE LIMITED",
-      "isin": "AU000000BXN6",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "CR9",
-      "name": "CORELLA RESOURCES LTD",
-      "isin": "AU0000147811",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "EEL",
-      "name": "Enrg Elements Ltd",
-      "isin": "AU0000234676",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "EMS",
-      "name": "Eastern Metals Ltd",
-      "isin": "AU0000173304",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "ERM",
-      "name": "EMMERSON RESOURCES LIMITED",
-      "isin": "AU000000ERM4",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "HCD",
-      "name": "HYDROCARBON DYNAMICS LIMITED",
-      "isin": "AU0000074742",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "HHR",
-      "name": "HARTSHEAD RESOURCES NL",
-      "isin": "AU0000154148",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "HNG",
-      "name": "Hancock & Gore Ltd",
-      "isin": "AU000000HNG8",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "HRZ",
-      "name": "HORIZON MINERALS LIMITED",
-      "isin": "AU0000053373",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "IRX",
-      "name": "Inhalerx Ltd",
-      "isin": "AU0000179475",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "MAUCA",
-      "name": "Magnetic Resources NL",
-      "isin": "AU0000MAUCA0",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "MFGO",
-      "name": "Magellan Financial Group Ltd",
-      "isin": "AU0000215808",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "MRI",
-      "name": "My Rewards International Ltd",
-      "isin": "AU0000187940",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "NFNG",
-      "name": "Nufarm Finance (NZ) Ltd",
-      "isin": "NZFCND0004S9",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "PVW",
-      "name": "PVW Resources Ltd",
-      "isin": "AU0000135188",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "RA2",
-      "name": "RESIMAC PREMIER SERIES 2020-1",
-      "isin": "",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "SHP",
-      "name": "South HARZ Potash Ltd",
-      "isin": "AU0000151680",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "TI1",
-      "name": "Tombador Iron Ltd",
-      "isin": "AU0000107211",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "TOE",
-      "name": "TORO ENERGY LIMITED",
-      "isin": "AU000000TOE6",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "ASX",
-      "ticker": "WFE",
-      "name": "WOLFE ENERGY LIMITED",
-      "isin": "AU0000458358",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
     {
       "exchange": "NASDAQ",
       "ticker": "ABVE",
@@ -245,6 +231,14 @@
       "ticker": "ADTX",
       "name": "Aditxt Inc. ",
       "isin": "US0070258696",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ALBT",
+      "name": "Avalon GloboCare Corp.",
+      "isin": "US05344R3021",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -330,6 +324,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "CCRN",
+      "name": "Cross Country Healthcare Inc",
+      "isin": "US2274831047",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "CEPT",
       "name": "Cantor Equity Partners II, Inc.",
       "isin": "KYG1827K1076",
@@ -378,6 +380,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "CREG",
+      "name": "Smart Powerr Corp",
+      "isin": "US1689133098",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "CULL",
       "name": "Cullman Bancorp Inc.",
       "isin": "US2301531081",
@@ -389,6 +399,14 @@
       "ticker": "DEVS",
       "name": "DevvStream Corp. Common Stock",
       "isin": "CA25189R1001",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "EMPG",
+      "name": "Empro Group Inc. Ordinary shares",
+      "isin": "KYG3041J1067",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -426,6 +444,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "GAMB",
+      "name": "Gambling.com Group Ltd",
+      "isin": "JE00BL970N11",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "GBNY",
       "name": "Generations Bancorp NY Inc",
       "isin": "US37149G1085",
@@ -458,6 +484,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "GREE",
+      "name": "Greenidge Generation Holdings Inc",
+      "isin": "US39531G3083",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ISRL",
       "name": "Israel Acquisitions Corp Class A",
       "isin": "KYG496671010",
@@ -477,6 +511,14 @@
       "ticker": "LIXT",
       "name": "Lixte Biotechnology Holdings Inc",
       "isin": "US5393192027",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LMFA",
+      "name": "LM Funding America Inc",
+      "isin": "US5020744042",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -546,9 +588,25 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "NFBK",
+      "name": "Northfield Bancorp Inc",
+      "isin": "US66611T1088",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "NUVL",
       "name": "Nuvalent Inc",
       "isin": "US6707031075",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "NVVE",
+      "name": "Nuvve Holding Corp",
+      "isin": "US67079Y4070",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -581,6 +639,14 @@
       "ticker": "PAIYY",
       "name": "Aesthetic Medical International Holdings Group Limited",
       "isin": "US00809M1045",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "PCSC",
+      "name": "Perceptive Capital Solutions Corp Class A Ordinary Shares",
+      "isin": "KYG700771051",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -653,6 +719,14 @@
       "ticker": "SGMO",
       "name": "Sangamo Therapeutics Inc",
       "isin": "US8006771062",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SGRP",
+      "name": "SPAR Group Inc",
+      "isin": "US7849331035",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -746,6 +820,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "VSTD",
+      "name": "Vestand Inc.",
+      "isin": "US98740Y3027",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "VVPR",
       "name": "VivoPower International PLC",
       "isin": "GB00BD3VDH82",
@@ -765,6 +847,14 @@
       "ticker": "WAI",
       "name": "Top KingWin Ltd",
       "isin": "KYG8923U1296",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "WGRX",
+      "name": "Wellgistics Health, Inc. Common Stock",
+      "isin": "US9495032057",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -794,6 +884,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "YOOV",
+      "name": "Concorde International Group Ltd",
+      "isin": "VGG2452S1002",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ZBAI",
       "name": "ATIF Holdings Limited",
       "isin": "VGG0602B1186",
@@ -818,1705 +916,9 @@
     },
     {
       "exchange": "NSE_IN",
-      "ticker": "AAKAAR",
-      "name": "Aakaar Medical Technologies Limited",
-      "isin": "INE1GYP01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AARADHYA",
-      "name": "Aaradhya Disposal Industries Limited",
-      "isin": "INE124401014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AATMAJ",
-      "name": "Aatmaj Healthcare Limited",
-      "isin": "INE0OB201016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ABHAPOWER",
-      "name": "Abha Power and Steel Limited",
-      "isin": "INE0UYG01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ABSMARINE",
-      "name": "ABS Marine Services Limited",
-      "isin": "INE0QRV01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ACCENTMIC",
-      "name": "Accent Microcell Limited",
-      "isin": "INE0Q5D01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ACCORD",
-      "name": "Accord Synergy Limited",
-      "isin": "INE113X01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ACCPL",
-      "name": "Accretion Pharmaceuticals Limited",
-      "isin": "INE0T8T01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ACETEC",
-      "name": "Acetech E-Commerce Limited",
-      "isin": "INE1J6M01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ACTIVEINFR",
-      "name": "Active Infrastructures Limited",
-      "isin": "INE0KLO01025",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ADDICTIVE",
-      "name": "Addictive Learning Technology Limited",
-      "isin": "INE0RDH01021",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AERON",
-      "name": "Aeron Composite Limited",
-      "isin": "INE0WL801011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AESTHETIK",
-      "name": "Aesthetik Engineers Limited",
-      "isin": "INE0TSF01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AGARWALFT",
-      "name": "Agarwal Float Glass India Limited",
-      "isin": "INE0MLA01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AGARWALTUF",
-      "name": "Agarwal Toughened Glass India Limited",
-      "isin": "INE0P8X01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AGNI",
-      "name": "Agni Green Power Limited",
-      "isin": "INE0LF301013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AGUL",
-      "name": "A G Universal Limited",
-      "isin": "INE0O6N01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AHIMSA",
-      "name": "Ahimsa Industries Limited",
-      "isin": "INE136T01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AILIMITED",
-      "name": "Abhishek Integrations Limited",
-      "isin": "INE0CAJ01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AIMTRON",
-      "name": "Aimtron Electronics Limited",
-      "isin": "INE0RUV01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AISL",
-      "name": "ANI Integrated Services Limited",
-      "isin": "INE635Y01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AKANKSHA",
-      "name": "Akanksha Power and Infrastructure Limited",
-      "isin": "INE0PCY01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AKIKO",
-      "name": "Akiko Global Services Limited",
-      "isin": "INE0PMR01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ALCODIS",
-      "name": "Alcokraft Distilleries Limited",
-      "isin": "INE448V01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ALLETEC",
-      "name": "All E Technologies Limited",
-      "isin": "INE0M2X01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ALPEXSOLAR",
-      "name": "Alpex Solar Limited",
-      "isin": "INE0R4701017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ALUWIND",
-      "name": "ALUWIND INFRA-TECH LIMITED",
-      "isin": "INE0STM01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AMBANIORGO",
-      "name": "AMBANI ORGOCHEM LIMITED",
-      "isin": "INE00C501018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AMBEY",
-      "name": "Ambey Laboratories Limited",
-      "isin": "INE0M3I01029",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AMCL",
-      "name": "ANB Metal Cast Limited",
-      "isin": "INE0VG001016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AMEYA",
-      "name": "Ameya Precision Engineers Limited",
-      "isin": "INE0KT901015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AMIABLE",
-      "name": "Amiable Logistics (India) Limited",
-      "isin": "INE0MTP01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ANLON",
-      "name": "Anlon Technology Solutions Limited",
-      "isin": "INE0LR101013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ANNAPURNA",
-      "name": "Annapurna Swadisht Limited",
-      "isin": "INE0MGM01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ANONDITA",
-      "name": "Anondita Medicare Limited",
-      "isin": "INE0VTV01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ANYA",
-      "name": "Anya Polytech & Fertilizers Limited",
-      "isin": "INE0SI601032",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "APEXECO",
-      "name": "Apex Ecotech Limited",
-      "isin": "INE0T4V01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "APRAMEYA",
-      "name": "Aprameya Engineering Limited",
-      "isin": "INE0LQG01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "APSISAERO",
-      "name": "Apsis Aerocom Limited",
-      "isin": "INE1OOJ01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARABIAN",
-      "name": "Arabian Petroleum Limited",
-      "isin": "INE08NJ01024",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARCIIL",
-      "name": "ARC Insulation & Insulators Limited",
-      "isin": "INE0YDV01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARHAM",
-      "name": "Arham Technologies Limited",
-      "isin": "INE0L2Y01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARIHANTACA",
-      "name": "Arihant Academy Limited",
-      "isin": "INE0NCC01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARISTO",
-      "name": "Aristo Bio-Tech And Lifescience Limited",
-      "isin": "INE082101010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARMOUR",
-      "name": "Armour Security (India) Limited",
-      "isin": "INE0TZX01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARUNAYA",
-      "name": "Arunaya Organics Limited",
-      "isin": "INE0TTG01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ARVINDPORT",
-      "name": "ARVIND PORT AND INFRA LIMITED",
-      "isin": "INE0P4T01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ASCOM",
-      "name": "Ascom Leasing & Investments Limited",
-      "isin": "INE08KD01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ASHALOG",
-      "name": "Ashapura Logistics Limited",
-      "isin": "INE0LAA01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ASHWINI",
-      "name": "Ashwini Container Movers Limited",
-      "isin": "INE1A6Q01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ASLIND",
-      "name": "ASL Industries Limited",
-      "isin": "INE617I01024",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ASPIRE",
-      "name": "Aspire & Innovative Advertising Limited",
-      "isin": "INE0S7801010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ATCENERGY",
-      "name": "ATC Energies System Limited",
-      "isin": "INE0V0Q01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ATMASTCO",
-      "name": "Atmastco Limited",
-      "isin": "INE05DH01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
       "ticker": "AURIGROW",
       "name": "Auri Grow India Limited",
       "isin": "INE925Y01036",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AUROIMPEX",
-      "name": "Auro Impex  & Chemicals Limited",
-      "isin": "INE0NUL01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AUSL",
-      "name": "Aditya Ultra Steel Limited",
-      "isin": "INE01YQ01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AVANA",
-      "name": "Avana Electrosystems Limited",
-      "isin": "INE1KU201016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AVIANSH",
-      "name": "Avi Ansh Textile Limited",
-      "isin": "INE0TFB01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AVPINFRA",
-      "name": "AVP Infracon Limited",
-      "isin": "INE0R9401019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "AVSL",
-      "name": "AVSL Industries Limited",
-      "isin": "INE522V01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BABAFP",
-      "name": "Baba Food Processing (India) Limited",
-      "isin": "INE0QW501012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BAGDIGITAL",
-      "name": "B.A.G. Convergence Limited",
-      "isin": "INE17CQ01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BAHETI",
-      "name": "Baheti Recycling Industries Limited",
-      "isin": "INE029Q01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BALAJIPHOS",
-      "name": "Balaji Phosphates Limited",
-      "isin": "INE0PQ601019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BARFLEX",
-      "name": "Barflex Polyfilms Limited",
-      "isin": "INE0QX401014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BASILIC",
-      "name": "Basilic Fly Studio Limited",
-      "isin": "INE0OCC01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BAWEJA",
-      "name": "Baweja Studios Limited",
-      "isin": "INE0JFJ01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BEACON",
-      "name": "Beacon Trusteeship Limited",
-      "isin": "INE639X01027",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BEWLTD",
-      "name": "BEW Engineering Limited",
-      "isin": "INE0HQI01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BHADORA",
-      "name": "Bhadora Industries Limited",
-      "isin": "INE0ZRC01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BIKEWO",
-      "name": "Bikewo Green Tech Limited",
-      "isin": "INE0SQH01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BIOPOL",
-      "name": "Biopol Chemicals Limited",
-      "isin": "INE0XW001014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BIRDYS",
-      "name": "Grill Splendour Services Limited",
-      "isin": "INE0PC901019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BLUEPEBBLE",
-      "name": "Blue Pebble Limited",
-      "isin": "INE0SAK01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BLUEWATER",
-      "name": "Blue Water Logistics Limited",
-      "isin": "INE0X3M01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BMETRICS",
-      "name": "Bombay Metrics Supply Chain Limited",
-      "isin": "INE0I3Y01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BRACEPORT",
-      "name": "Brace Port Logistics Limited",
-      "isin": "INE0R4Z01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BRANDMAN",
-      "name": "Brandman Retail Limited",
-      "isin": "INE0XUD01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "BULKCORP",
-      "name": "Bulkcorp International Limited",
-      "isin": "INE0SZ301012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "C2C",
-      "name": "C2C Advanced Systems Limited",
-      "isin": "INE0U7V01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CADSYS",
-      "name": "Cadsys (India) Limited",
-      "isin": "INE090Y01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CANARYS",
-      "name": "Canarys Automations Limited",
-      "isin": "INE0QG301017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CBAZAAR",
-      "name": "Net Avenue Technologies Limited",
-      "isin": "INE518X01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CEDAAR",
-      "name": "Cedaar Textile Limited",
-      "isin": "INE11J101017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CELLECOR",
-      "name": "Cellecor Gadgets Limited",
-      "isin": "INE0OMO01025",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CELLPOINT",
-      "name": "Cell Point (India) Limited",
-      "isin": "INE0O0001013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CGRAPHICS",
-      "name": "Creative Graphics Solutions India Limited",
-      "isin": "INE0R7401011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CHAMUNDA",
-      "name": "Chamunda Electrical Limited",
-      "isin": "INE11HG01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CHANDAN",
-      "name": "Chandan Healthcare Limited",
-      "isin": "INE0B2N01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CHAVDA",
-      "name": "Chavda Infra Limited",
-      "isin": "INE0PT101017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CHETANA",
-      "name": "Chetana Education Limited",
-      "isin": "INE0U1T01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CKKRETAIL",
-      "name": "C K K Retail Mart Limited",
-      "isin": "INE0SMX01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CLASSICEIL",
-      "name": "Classic Electrodes (India) Limited",
-      "isin": "INE0UQ601012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CLSL",
-      "name": "Crop Life Science Limited",
-      "isin": "INE00NH01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CMNL",
-      "name": "Chaman Metallics Limited",
-      "isin": "INE06PV01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CMRSL",
-      "name": "Cyber Media Research & Services Limited",
-      "isin": "INE075Z01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "COMMITTED",
-      "name": "Committed Cargo Care Limited",
-      "isin": "INE597Z01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CONNPLEX",
-      "name": "Connplex Cinemas Limited",
-      "isin": "INE0EAS01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CONTI",
-      "name": "Continental Seeds and Chemicals Limited",
-      "isin": "INE340Z01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "COOLCAPS",
-      "name": "Cool Caps Industries Limited",
-      "isin": "INE0HS001028",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CRAYONS",
-      "name": "Crayons Advertising Limited",
-      "isin": "INE0OFK01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CSSL",
-      "name": "Clear Secured Services Limited",
-      "isin": "INE1EF801010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CUDML",
-      "name": "Cash Ur Drive Marketing Limited",
-      "isin": "INE0WL201014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CURIS",
-      "name": "Curis Lifesciences Limited",
-      "isin": "INE1BZN01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "CURRENT",
-      "name": "Current Infraprojects Limited",
-      "isin": "INE1CRQ01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DANISH",
-      "name": "Danish Power Limited",
-      "isin": "INE0YU901016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DCCL",
-      "name": "Dar Credit & Capital Limited",
-      "isin": "INE04Q901010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DECCANTRAN",
-      "name": "Deccan Transcon Leasing Limited",
-      "isin": "INE0S7C01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DEEM",
-      "name": "Deem Roll Tech Limited",
-      "isin": "INE586O01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DELAPLEX",
-      "name": "Delaplex Limited",
-      "isin": "INE0SK801018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DELTIC",
-      "name": "Delta Autocorp Limited",
-      "isin": "INE0XRN01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DENEERS",
-      "name": "De Neers Tools Limited",
-      "isin": "INE0JWV01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DENTALKART",
-      "name": "Vasa Denticity Limited",
-      "isin": "INE0N5801013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DESTINY",
-      "name": "Destiny Logistics & Infra Limited",
-      "isin": "INE0IGO01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DHANLAXMI",
-      "name": "Dhanlaxmi Crop Science Limited",
-      "isin": "INE0V9V01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DHARARAIL",
-      "name": "Dhara Rail Projects Limited",
-      "isin": "INE2HJL01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DHARIWAL",
-      "name": "Dhariwalcorp Limited",
-      "isin": "INE0YRN01025",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DHTL",
-      "name": "Docmode Health Technologies Limited",
-      "isin": "INE0OGG01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DIGIKORE",
-      "name": "Digikore Studios Limited",
-      "isin": "INE0QJ901011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DIRL",
-      "name": "Dhanuka Infra Realty Limited",
-      "isin": "INE704V01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DIVINEHIRA",
-      "name": "Divine Hira Jewellers Limited",
-      "isin": "INE0NA501011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DIVYADHAN",
-      "name": "Divyadhan Recycling Industries Limited",
-      "isin": "INE0QYI01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DKEGL",
-      "name": "D.K. Enterprises Global Limited",
-      "isin": "INE0GN101014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DOLLEX",
-      "name": "Dollex Agrotech Limited",
-      "isin": "INE0JHH01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DPEL",
-      "name": "Divine Power Energy Limited",
-      "isin": "INE0SCO01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DRONE",
-      "name": "Drone Destination Limited",
-      "isin": "INE0P7201019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DRSCARGO",
-      "name": "DRS Cargo Movers Limited",
-      "isin": "INE0QZM01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DRSDILIP",
-      "name": "DRS Dilip Roadlines Limited",
-      "isin": "INE02CV01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DUCOL",
-      "name": "Ducol Organics And Colours Limited",
-      "isin": "INE0LZO01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DUGLOBAL",
-      "name": "DUDIGITAL GLOBAL LIMITED",
-      "isin": "INE0HPK01020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DURLAX",
-      "name": "Durlax Top Surface Limited",
-      "isin": "INE0OUW01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "DYNAMIC",
-      "name": "Dynamic Services & Security Limited",
-      "isin": "INE0DZ701010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "E2ERAIL",
-      "name": "E To E Transportation Infrastructure Limited",
-      "isin": "INE1CEJ01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ECOLINE",
-      "name": "Ecoline Exim Limited",
-      "isin": "INE0VBS01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EEPL",
-      "name": "Eppeltone Engineers Limited",
-      "isin": "INE11HF01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EFACTOR",
-      "name": "E Factor Experiences Limited",
-      "isin": "INE0KFF01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EFFWA",
-      "name": "Effwa Infra & Research Limited",
-      "isin": "INE0U9101019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EFORCE",
-      "name": "Electro Force (India) Limited",
-      "isin": "INE0Q1W01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ELGNZ",
-      "name": "Eleganz Interiors Limited",
-      "isin": "INE0R9101015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EMAPARTNER",
-      "name": "EMA Partners India Limited",
-      "isin": "INE0ZOL01023",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EMKAYTOOLS",
-      "name": "Emkay Taps and Cutting Tools Limited",
-      "isin": "INE332S01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EMMIL",
-      "name": "Energy Mission Machineries (India) Limited",
-      "isin": "INE0S1L01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ENCOMPAS",
-      "name": "Encompass Design India Limited",
-      "isin": "INE433T01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ENFUSE",
-      "name": "Enfuse Solutions Limited",
-      "isin": "INE0S3X01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ENSER",
-      "name": "Enser Communications Limited",
-      "isin": "INE0R9I01021",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ENVIRO",
-      "name": "Envirotech Systems Limited",
-      "isin": "INE0SUH01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EPWINDIA",
-      "name": "EPW India Limited",
-      "isin": "INE1KEC01023",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ESCONET",
-      "name": "Esconet Technologies Limited",
-      "isin": "INE0RQZ01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ESFL",
-      "name": "Essen Speciality Films Limited",
-      "isin": "INE0ITO01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ESPRIT",
-      "name": "Esprit Stones Limited",
-      "isin": "INE0SBP01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ETML",
-      "name": "Emerald Tyre Manufacturers Limited",
-      "isin": "INE0RHD01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EXCELLENT",
-      "name": "Excellent Wires and Packaging Limited",
-      "isin": "INE0Y4801011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "EXIMROUTES",
-      "name": "Exim Routes Limited",
-      "isin": "INE19I001020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FALCONTECH",
-      "name": "Falcon Technoprojects India Limited",
-      "isin": "INE0PQK01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FELIX",
-      "name": "Felix Industries Limited",
-      "isin": "INE901X01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FIDEL",
-      "name": "Fidel Softech Limited",
-      "isin": "INE0LQQ01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FINBUD",
-      "name": "Finbud Financial Services Limited",
-      "isin": "INE0EDU01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FLYSBS",
-      "name": "FlySBS Aviation Limited",
-      "isin": "INE0VCK01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FOCE",
-      "name": "Foce India Limited",
-      "isin": "INE0I7D01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FONEBOX",
-      "name": "Fonebox Retail Limited",
-      "isin": "INE0Q4701019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FORCAS",
-      "name": "Forcas Studio Limited",
-      "isin": "INE0U2501017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FORGEAUTO",
-      "name": "Forge Auto International Limited",
-      "isin": "INE0YKW01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FRESHARA",
-      "name": "Freshara Agro Exports Limited",
-      "isin": "INE0SFW01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "FWSTC",
-      "name": "Flywings Simulator Training Centre Limited",
-      "isin": "INE0SQZ01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GAJANAND",
-      "name": "Gajanand International Limited",
-      "isin": "INE0QTE01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GANESHIN",
-      "name": "Ganesh Infraworld Limited",
-      "isin": "INE0TVT01024",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GANGABATH",
-      "name": "Ganga Bath Fittings Limited",
-      "isin": "INE0ZI101018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GCHOTELS",
-      "name": "Grand Continent Hotels Limited",
-      "isin": "INE12E301017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GIRIRAJ",
-      "name": "Giriraj Civil Developers Limited",
-      "isin": "INE614Z01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GJL",
-      "name": "Grover Jewells Limited",
-      "isin": "INE1TY801010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GLOBALPET",
-      "name": "Global Pet Industries Limited",
-      "isin": "INE0PS501019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GOLDKART",
-      "name": "Goldkart Jewels Limited",
-      "isin": "INE06MH01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GOLDSTAR",
-      "name": "Goldstar Power Limited",
-      "isin": "INE405Y01021",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GOYALSALT",
-      "name": "Goyal Salt Limited",
-      "isin": "INE0QFE01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GPECO",
-      "name": "GP Eco Solutions India Limited",
-      "isin": "INE0S7E01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GRAPHISAD",
-      "name": "Graphisads Limited",
-      "isin": "INE0POU01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GRCL",
-      "name": "Gayatri Rubbers And Chemicals Limited",
-      "isin": "INE0LVM01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GREENCHEF",
-      "name": "Greenchef Appliances Limited",
-      "isin": "INE0O7P01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GREENLEAF",
-      "name": "Greenleaf Envirotech Limited",
-      "isin": "INE0PLX01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GRETEX",
-      "name": "Gretex Industries Limited",
-      "isin": "INE985P01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GSMFOILS",
-      "name": "GSM Foils Limited",
-      "isin": "INE0SQY01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "GURUNANAK",
-      "name": "Gurunanak Agriculture India Limited",
-      "isin": "INE1CCX01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "HIGREEN",
-      "name": "Hi-Green Carbon Limited",
-      "isin": "INE0PIC01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "HOACFOODS",
-      "name": "Hoac Foods India Limited",
-      "isin": "INE0S6S01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "HOLMARC",
-      "name": "Holmarc Opto-Mechatronics Limited",
-      "isin": "INE0LXA01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "HOMESFY",
-      "name": "Homesfy Realty Limited",
-      "isin": "INE0N7F01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "HPTL",
-      "name": "HP Telecom India Limited",
-      "isin": "INE0VA601019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "HRHNEXT",
-      "name": "HRH Next Services Limited",
-      "isin": "INE0R3501012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "HVAX",
-      "name": "HVAX Technologies Limited",
-      "isin": "INE0TO501019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "IBLFL",
-      "name": "IBL Finance Limited",
-      "isin": "INE0O7401018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "IDEALTECHO",
-      "name": "Ideal Technoplast Industries Limited",
-      "isin": "INE0T9I01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "IDENTICAL",
-      "name": "Identical Brains Studios Limited",
-      "isin": "INE0TD101011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INDIFRA",
-      "name": "Indifra Limited",
-      "isin": "INE0PS301014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INFINIUM",
-      "name": "Infinium Pharmachem Limited",
-      "isin": "INE0MRE01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INFLUX",
-      "name": "Influx Healthtech Limited",
-      "isin": "INE0MYZ01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INFOLLION",
-      "name": "Infollion Research Services Limited",
-      "isin": "INE0NNZ01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INNOMET",
-      "name": "Innomet Advanced Materials Limited",
-      "isin": "INE0S1D01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INSPIRE",
-      "name": "Inspire Films Limited",
-      "isin": "INE0NDX01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INTEGRITY",
-      "name": "Integrity Infrabuild Developers Limited",
-      "isin": "INE0YSH01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "INVICTA",
-      "name": "Invicta Diagnostic Limited",
-      "isin": "INE0XJ501010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "IPHL",
-      "name": "Indian Phosphate Limited",
-      "isin": "INE0DHF01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "IPSL",
-      "name": "Integrated Personnel Services Limited",
-      "isin": "INE02EE01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ISHAN",
-      "name": "Ishan International Limited",
-      "isin": "INE0LCW01025",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ITALIANE",
-      "name": "Italian Edibles Limited",
-      "isin": "INE0R7R01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ITTL",
-      "name": "Innovative Tyres & Tubes Limited",
-      "isin": "INE070Y01023",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "IWARE",
-      "name": "Iware Supplychain Services Limited",
-      "isin": "INE1AII01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JAINAM",
-      "name": "Jainam Ferro Alloys (I) Limited",
-      "isin": "INE02KC01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JAINIK",
-      "name": "Jainik Power Cables Limited",
-      "isin": "INE0XIL01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JAKHARIA",
-      "name": "JAKHARIA FABRIC LIMITED",
-      "isin": "INE00N401018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JALAN",
-      "name": "Jalan Transolutions (India) Limited",
-      "isin": "INE349X01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JAYBEE",
-      "name": "Jay Bee Laminations Limited",
-      "isin": "INE0SMY01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JAYESH",
-      "name": "Jayesh Logistics Limited",
-      "isin": "INE1AE401014",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -2529,2314 +931,10 @@
       "status": "manual_rename_vs_delisting_required"
     },
     {
-      "exchange": "NSE_IN",
-      "ticker": "JETKNIT",
-      "name": "Jet Knitwears Limited",
-      "isin": "INE564T01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JEYYAM",
-      "name": "Jeyyam Global Foods Limited",
-      "isin": "INE0RXB01022",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JFLLIFE",
-      "name": "Jfl Life Sciences Limited",
-      "isin": "INE0LA901015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JIWANRAM",
-      "name": "Jiwanram Sheoduttrai Industries Limited",
-      "isin": "INE0N5H01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "JYOTIGLOBL",
-      "name": "Jyoti Global Plast Limited",
-      "isin": "INE1M3T01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "K2INFRA",
-      "name": "K2 Infragen Limited",
-      "isin": "INE0DEZ01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KALANA",
-      "name": "Kalana Ispat Limited",
-      "isin": "INE0T0L01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KANDARP",
-      "name": "Kandarp Digi Smart BPO Limited",
-      "isin": "INE0MOT01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KARNIKA",
-      "name": "Karnika Industries Limited",
-      "isin": "INE0MGA01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KATARIA",
-      "name": "Kataria Industries Limited",
-      "isin": "INE0SVY01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KAYTEX",
-      "name": "Kaytex Fabrics Limited",
-      "isin": "INE13ZD01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KCEIL",
-      "name": "Kay Cee Energy & Infra Limited",
-      "isin": "INE0RCG01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KCK",
-      "name": "Kck Industries Limited",
-      "isin": "INE0J1E01027",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KDL",
-      "name": "Kore Digital Limited",
-      "isin": "INE0O4R01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KHFM",
-      "name": "Khfm Hospitality And Facility Management Services Limited",
-      "isin": "INE00UG01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KKJEWELS",
-      "name": "Kabra Jewels Limited",
-      "isin": "INE0XOW01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KKVAPOW",
-      "name": "KKV Agro Powers Limited",
-      "isin": "INE239T01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KLL",
-      "name": "Kaushalya Logistics Limited",
-      "isin": "INE0Q2V01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KODYTECH",
-      "name": "Kody Technolab Limited",
-      "isin": "INE0Q7P01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KONSTELEC",
-      "name": "Konstelec Engineers Limited",
-      "isin": "INE0QEI01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KONTOR",
-      "name": "Kontor Space Limited",
-      "isin": "INE0KZ301010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KRISHCA",
-      "name": "Krishca Strapping Solutions Limited",
-      "isin": "INE0NR701018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "KRMAYURVED",
-      "name": "KRM Ayurveda Limited",
-      "isin": "INE1MTV01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "LAKSHYA",
-      "name": "Lakshya Powertech Limited",
-      "isin": "INE0VZS01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "LAMOSAIC",
-      "name": "Lamosaic India Limited",
-      "isin": "INE0R0201012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "LLOYDS",
-      "name": "Lloyds Luxuries Limited",
-      "isin": "INE0DTQ01028",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "LRRPL",
-      "name": "Lead Reclaim And Rubber Products Limited",
-      "isin": "INE0H4B01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MACOBSTECH",
-      "name": "Macobs Technologies Limited",
-      "isin": "INE0R0J01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MADHAVBAUG",
-      "name": "Vaidya Sane Ayurved Laboratories Limited",
-      "isin": "INE0JR301013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MADHUSUDAN",
-      "name": "Madhusudan Masala Limited",
-      "isin": "INE0P6701019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MAGSON",
-      "name": "Magson Retail And Distribution Limited",
-      "isin": "INE0O1S01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MAHICKRA",
-      "name": "Mahickra Chemicals Limited",
-      "isin": "INE961Y01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MAITREYA",
-      "name": "Maitreya Medicare Limited",
-      "isin": "INE0PLQ01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MANAV",
-      "name": "Manav Infra Projects Limited",
-      "isin": "INE104Y01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MANDEEP",
-      "name": "Mandeep Auto Industries Limited",
-      "isin": "INE0R3T01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MANILAM",
-      "name": "Manilam Industries India Limited",
-      "isin": "INE1ERK01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MARCO",
-      "name": "Marco Cables & Conductors Limited",
-      "isin": "INE0QP001012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MARINETRAN",
-      "name": "Marinetrans India Limited",
-      "isin": "INE0P1P01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MARUSHIKA",
-      "name": "Marushika Technology Limited",
-      "isin": "INE0X7G01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MASON",
-      "name": "Mason Infratech Limited",
-      "isin": "INE0SH001010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MAXPOSURE",
-      "name": "Maxposure Limited",
-      "isin": "INE0ECC01022",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MAXVOLT",
-      "name": "Maxvolt Energy Industries Limited",
-      "isin": "INE10A501018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MAYASHEEL",
-      "name": "Mayasheel Ventures Limited",
-      "isin": "INE0ZTO01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MDL",
-      "name": "Marvel Decor Limited",
-      "isin": "INE575Z01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MEDIORG",
-      "name": "Medicamen Organics Limited",
-      "isin": "INE0PE401018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MEDISTEP",
-      "name": "Medistep Healthcare Limited",
-      "isin": "INE0UOY01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MEGAFLEX",
-      "name": "Mega Flex Plastics Limited",
-      "isin": "INE0G1D01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MEGATHERM",
-      "name": "Megatherm Induction Limited",
-      "isin": "INE531R01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MGSL",
-      "name": "Matrix Geo Solutions Limited",
-      "isin": "INE132901013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MHHL",
-      "name": "Mohini Health & Hygiene Limited",
-      "isin": "INE450S01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MICROPRO",
-      "name": "Micropro Software Solutions Limited",
-      "isin": "INE0PZK01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MIEL",
-      "name": "Manglam Infra & Engineering Limited",
-      "isin": "INE0R3101011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MILTON",
-      "name": "Milton Industries Limited",
-      "isin": "INE376Y01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MINDPOOL",
-      "name": "Mindpool Technologies Limited",
-      "isin": "INE00RQ01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MMEL",
-      "name": "Moving Media Entertainment Limited",
-      "isin": "INE0XM301010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MOBILISE",
-      "name": "Mobilise App Lab Limited",
-      "isin": "INE1YNB01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MONOLITH",
-      "name": "Monolithisch India Limited",
-      "isin": "INE1DV401010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MONOPHARMA",
-      "name": "Mono Pharmacare Limited",
-      "isin": "INE0OIP01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MOXSH",
-      "name": "Moxsh Overseas Educon Limited",
-      "isin": "INE0N6D01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MPEL",
-      "name": "Manas Polymers and Energies Limited",
-      "isin": "INE0U4H01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MPTODAY",
-      "name": "Madhya Pradesh Today Media Limited",
-      "isin": "INE105Y01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MRIL",
-      "name": "Mahendra Realtors & Infrastructure Limited",
-      "isin": "INE632Q01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MUNISH",
-      "name": "Munish Forge Limited",
-      "isin": "INE1K8Y01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MVKAGRO",
-      "name": "M.V.K. Agro Food Product Limited",
-      "isin": "INE0SGC01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "MYMUDRA",
-      "name": "My Mudra Fincorp Limited",
-      "isin": "INE0RVQ01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NAMAN",
-      "name": "Naman Industries Proxima Limited",
-      "isin": "INE0RJM01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NAMOEWASTE",
-      "name": "Namo eWaste Management Limited",
-      "isin": "INE08NZ01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NEELAM",
-      "name": "Neelam Linens and Garments (India) Limited",
-      "isin": "INE0N1401016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NEOCHEM",
-      "name": "Neochem Bio Solutions Limited",
-      "isin": "INE21UM01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NEPHROCARE",
-      "name": "Nephro Care India Limited",
-      "isin": "INE0SUN01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NEPTUNE",
-      "name": "Neptune Petrochemicals Limited",
-      "isin": "INE156901014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NEWJAISA",
-      "name": "Newjaisa Technologies Limited",
-      "isin": "INE0PW501021",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NIDAN",
-      "name": "Nidan Laboratories and Healthcare Limited",
-      "isin": "INE0J6L01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NIKITA",
-      "name": "NIKITA GREENTECH RECYCLING LIMITED",
-      "isin": "INE0FLF01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NIRMAN",
-      "name": "Nirman Agri Genetics Limited",
-      "isin": "INE0OK701014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NMSTEEL",
-      "name": "Newmalayalam Steel Limited",
-      "isin": "INE0TP801012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "NRVANDANA",
-      "name": "N R Vandana Tex Industries Limited",
-      "isin": "INE104101014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "OBSCP",
-      "name": "OBSC Perfection Limited",
-      "isin": "INE0YHV01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "OLIL",
-      "name": "Oneclick Logistics India Limited",
-      "isin": "INE0OPS01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "OMFURN",
-      "name": "Omfurn India Limited",
-      "isin": "INE338Y01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ONDOOR",
-      "name": "On Door Concepts Limited",
-      "isin": "INE00ER01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "OPTIVALUE",
-      "name": "Optivalue Tek Consulting Limited",
-      "isin": "INE15B101011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ORIANA",
-      "name": "Oriana Power Limited",
-      "isin": "INE0OUT01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "OSELDEVICE",
-      "name": "Osel Devices Limited",
-      "isin": "INE0RMF01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "OWAIS",
-      "name": "Owais Metal And Mineral Processing Limited",
-      "isin": "INE0R8M01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PARAGON",
-      "name": "Paragon Fine and Speciality Chemical Limited",
-      "isin": "INE0N4G01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PARAMATRIX",
-      "name": "Paramatrix Technologies Limited",
-      "isin": "INE0S2W01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PARAMOUNT",
-      "name": "Paramount Dye Tec Limited",
-      "isin": "INE0TG801013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PARAMPARA",
-      "name": "PARAMPARA DAIRY DELIGHTS LIMITED",
-      "isin": "INE749Y01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PARIN",
-      "name": "Parin Enterprises Limited",
-      "isin": "INE00U801010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PARTH",
-      "name": "Parth Electricals & Engineering Limited",
-      "isin": "INE1H7V01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PARTYCRUS",
-      "name": "Party Cruisers Limited",
-      "isin": "INE06ZX01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PATILAUTOM",
-      "name": "Patil Automation Limited",
-      "isin": "INE17GV01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PATTECH",
-      "name": "Pattech Fitwell Tube Components Limited",
-      "isin": "INE0NZW01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PELATRO",
-      "name": "Pelatro Limited",
-      "isin": "INE0VG601013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PENTAGON",
-      "name": "Pentagon Rubber Limited",
-      "isin": "INE0ORS01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PHANTOMFX",
-      "name": "Phantom Digital Effects Limited",
-      "isin": "INE0MLZ01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PHOGLOBAL",
-      "name": "Phoenix Overseas Limited",
-      "isin": "INE0FPO01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PLADAINFO",
-      "name": "Plada Infotech Services Limited",
-      "isin": "INE0PXD01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "POLYSIL",
-      "name": "Polysil Irrigation Systems Limited",
-      "isin": "INE517M01028",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "POSITRON",
-      "name": "Positron Energy Limited",
-      "isin": "INE0S3H01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PPSL",
-      "name": "Picturepost Studios Limited",
-      "isin": "INE0YAL01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRAMARA",
-      "name": "Pramara Promotions Limited",
-      "isin": "INE0O7A01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRANIK",
-      "name": "Pranik Logistics Limited",
-      "isin": "INE0VJG01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRATHAM",
-      "name": "Pratham EPC Projects Limited",
-      "isin": "INE0QA601016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRECISION",
-      "name": "Precision Metaliks Limited",
-      "isin": "INE0HKW01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PREMIUM",
-      "name": "Premium Plast Limited",
-      "isin": "INE0M1F01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRESSTONIC",
-      "name": "Presstonic Engineering Limited",
-      "isin": "INE0R1601012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRIMECAB",
-      "name": "Prime Cable Industries Limited",
-      "isin": "INE0CQA01020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRITIKA",
-      "name": "Pritika Engineering Components Limited",
-      "isin": "INE0MJQ01020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRIZOR",
-      "name": "Prizor Viztech Limited",
-      "isin": "INE0V9N01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PRLIND",
-      "name": "Premier Roadlines Limited",
-      "isin": "INE0CFG01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PROFX",
-      "name": "Pro FX Tech Limited",
-      "isin": "INE0VJT01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PROLIFE",
-      "name": "Prolife Industries Limited",
-      "isin": "INE994V01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PROPEQUITY",
-      "name": "P. E. Analytics Limited",
-      "isin": "INE0KN801013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PSFL",
-      "name": "Paramount Speciality Forgings Limited",
-      "isin": "INE0Q6001012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PSRAJ",
-      "name": "P S Raj Steels Limited",
-      "isin": "INE0XUS01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PULZ",
-      "name": "Pulz Electronics Limited",
-      "isin": "INE335X01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PURPLEUTED",
-      "name": "Purple United Sales Limited",
-      "isin": "INE0P5R01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PURVFLEXI",
-      "name": "Purv Flexipack Limited",
-      "isin": "INE0R6C01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "PUSHPA",
-      "name": "Pushpa Jewellers Limited",
-      "isin": "INE154801018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "QFIL",
-      "name": "Quality Foils (India) Limited",
-      "isin": "INE0O1M01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "QUADPRO",
-      "name": "Quadpro Ites Limited",
-      "isin": "INE0GOJ01027",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "QUESTLAB",
-      "name": "Quest Laboratories Limited",
-      "isin": "INE0TNW01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "QUICKTOUCH",
-      "name": "Quicktouch Technologies Limited",
-      "isin": "INE0K4D01020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "QVCEL",
-      "name": "QVC Exports Limited",
-      "isin": "INE0KZF01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RADIOWALLA",
-      "name": "Radiowalla Network Limited",
-      "isin": "INE430U01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RAJINDLTD",
-      "name": "Rajputana Industries Limited",
-      "isin": "INE0PCU01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RAPIDFLEET",
-      "name": "Rapid Fleet Management Services Limited",
-      "isin": "INE0QX901013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RAPPID",
-      "name": "Rappid Valves (India) Limited",
-      "isin": "INE0MVO01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RBMINFRA",
-      "name": "Rbm Infracon Limited",
-      "isin": "INE0NA301016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RCDL",
-      "name": "Rajgor Castor Derivatives Limited",
-      "isin": "INE0BZQ01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "READYMIX",
-      "name": "Readymix Construction Machinery Limited",
-      "isin": "INE10QL01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "REFRACTORY",
-      "name": "Refractory Shapes Limited",
-      "isin": "INE0TNX01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "REMUS",
-      "name": "Remus Pharmaceuticals Limited",
-      "isin": "INE0O5T01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "REXPIPES",
-      "name": "Rex Pipes And Cables Industries Limited",
-      "isin": "INE00D001018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "REXPRO",
-      "name": "Rexpro Enterprises Limited",
-      "isin": "INE113601012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RICHA",
-      "name": "Richa Info Systems Limited",
-      "isin": "INE0J1P01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RILINFRA",
-      "name": "Rachana Infrastructure Limited",
-      "isin": "INE02OY01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RITEZONE",
-      "name": "Rite Zone Chemcon India Limited",
-      "isin": "INE0MRA01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RNFI",
-      "name": "RNFI Services Limited",
-      "isin": "INE0SA001017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RNPL",
-      "name": "Renol Polychem Limited",
-      "isin": "INE0VZX01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ROCKINGDCE",
-      "name": "Rockingdeals Circular Economy Limited",
-      "isin": "INE0PTR01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ROXHITECH",
-      "name": "Rox Hi Tech Limited",
-      "isin": "INE0PDJ01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ROYALARC",
-      "name": "Royal Arc Electrodes Limited",
-      "isin": "INE0EO401019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RTL",
-      "name": "Rama Telecom Limited",
-      "isin": "INE14W901010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "RULKA",
-      "name": "Rulka Electricals Limited",
-      "isin": "INE0R7301013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAAKSHI",
-      "name": "Saakshi Medtech and Panels Limited",
-      "isin": "INE0PSK01027",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SABAR",
-      "name": "Sabar Flex India Limited",
-      "isin": "INE0DZ101013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SACHEEROME",
-      "name": "Sacheerome Limited",
-      "isin": "INE1ARD01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SADHAV",
-      "name": "Sadhav Shipping Limited",
-      "isin": "INE0K5H01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAFEENTP",
-      "name": "Safe Enterprises Retail Fixtures Limited",
-      "isin": "INE17D601016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAHAJSOLAR",
-      "name": "Sahaj Solar Limited",
-      "isin": "INE0P4701011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAHANA",
-      "name": "Sahana System Limited",
-      "isin": "INE0LEX01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAHASRA",
-      "name": "Sahasra Electronic Solutions Limited",
-      "isin": "INE0RBQ01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAIFL",
-      "name": "Sameera Agro And Infra Limited",
-      "isin": "INE0PZA01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAJHOTELS",
-      "name": "Saj Hotels Limited",
-      "isin": "INE00MT01022",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAMAY",
-      "name": "Samay Project Services Limited",
-      "isin": "INE124101010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SANGANI",
-      "name": "Sangani Hospitals Limited",
-      "isin": "INE0OVI01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAROJA",
-      "name": "Saroja Pharma Industries India Limited",
-      "isin": "INE0PCL01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SARTELE",
-      "name": "Sar Televenture Limited",
-      "isin": "INE0PUC01020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SATECH",
-      "name": "S A Tech Software India Limited",
-      "isin": "INE0BSN01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SATIPOLY",
-      "name": "Sati Poly Plast Limited",
-      "isin": "INE0RPM01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SATKARTAR",
-      "name": "Sat Kartar Shopping Limited",
-      "isin": "INE0NB801022",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SATTVAENGG",
-      "name": "Sattva Engineering Construction Limited",
-      "isin": "INE14DW01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAVY",
-      "name": "Savy Infra and Logistics Limited",
-      "isin": "INE0UCN01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SAWALIYA",
-      "name": "Sawaliya Food Products Limited",
-      "isin": "INE10VS01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SCML",
-      "name": "Sharp Chucks and Machines Limited",
-      "isin": "INE460Q01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SDREAMS",
-      "name": "S D Retail Limited",
-      "isin": "INE0X6F01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SECL",
-      "name": "Salasar Exteriors and Contour Limited",
-      "isin": "INE00Y701026",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SELLOWRAP",
-      "name": "Sellowrap Industries Limited",
-      "isin": "INE0IJF01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SERVICE",
-      "name": "Service Care Limited",
-      "isin": "INE0P1Q01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SFML",
-      "name": "Supreme Facility Management Limited",
-      "isin": "INE0U6N01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHAIVAL",
-      "name": "Shaival Reality Limited",
-      "isin": "INE262S01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHANTHALA",
-      "name": "Shanthala FMCG Products Limited",
-      "isin": "INE0Q9Q01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHEEL",
-      "name": "Sheel Biotech Limited",
-      "isin": "INE0YJV01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHEETAL",
-      "name": "Sheetal Universal Limited",
-      "isin": "INE04VX01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHERA",
-      "name": "Shera Energy Limited",
-      "isin": "INE0MM001019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHETHJI",
-      "name": "Shreeji Global FMCG Limited",
-      "isin": "INE1FL101016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHIGAN",
-      "name": "Shigan Quantum Technologies Limited",
-      "isin": "INE03KJ01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHIVASHRIT",
-      "name": "Shivashrit Foods Limited",
-      "isin": "INE1DLF01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHKSIL",
-      "name": "Shri Hare-Krishna Sponge Iron Limited",
-      "isin": "INE0NON01025",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHREEKARNI",
-      "name": "Shree Karni Fabcom Limited",
-      "isin": "INE0S4Y01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHREEOSFM",
-      "name": "Shree OSFM E-Mobility Limited",
-      "isin": "INE02S501018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHRIAHIMSA",
-      "name": "Shri Ahimsa Naturals Limited",
-      "isin": "INE0DM401012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHRIKANHA",
-      "name": "Shri Kanha Stainless Limited",
-      "isin": "INE1V4601019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHRITECH",
-      "name": "Shri Techtex Limited",
-      "isin": "INE0OMF01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHUBHLAXMI",
-      "name": "Shubhlaxmi Jewel Art Limited",
-      "isin": "INE01Z401013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHUBHSHREE",
-      "name": "Shubhshree Biofuels Energy Limited",
-      "isin": "INE0UL701015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SHYAMDHANI",
-      "name": "Shyam Dhani Industries Limited",
-      "isin": "INE1CRP01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SIDDHICOTS",
-      "name": "Siddhi Cotspin Limited",
-      "isin": "INE0SVO01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SIDDHIKA",
-      "name": "Siddhika Coatings Limited",
-      "isin": "INE0A1E01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SIGNORIA",
-      "name": "Signoria Creation Limited",
-      "isin": "INE0RDE01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SILKFLEX",
-      "name": "Silkflex Polymers (India) Limited",
-      "isin": "INE0STN01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SILKY",
-      "name": "Silky Overseas Limited",
-      "isin": "INE0SN801015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SJLOGISTIC",
-      "name": "S J Logistics (India) Limited",
-      "isin": "INE0F3301020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SLONE",
-      "name": "Slone Infosystems Limited",
-      "isin": "INE0SMA01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SMARTEN",
-      "name": "Smarten Power Systems Limited",
-      "isin": "INE14GK01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SMVD",
-      "name": "SMVD Poly Pack Limited",
-      "isin": "INE702Y01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SNEHAA",
-      "name": "Snehaa Organics Limited",
-      "isin": "INE1OIC01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SONAMAC",
-      "name": "Sona Machinery Limited",
-      "isin": "INE0Q6H01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SONUINFRA",
-      "name": "Sonu Infratech Limited",
-      "isin": "INE0JZA01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SOTAC",
-      "name": "Sotac Pharmaceuticals Limited",
-      "isin": "INE0O2D01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SPCL",
-      "name": "Shivalic Power Control Limited",
-      "isin": "INE0T7B01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SPCON",
-      "name": "Srinibas Pradhan Constructions Limited",
-      "isin": "INE0TPJ01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SPEB",
-      "name": "Speb Adhesives Limited",
-      "isin": "INE1CW901027",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SPECTSTM",
-      "name": "Spectrum Talent Management Limited",
-      "isin": "INE0OL001018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SPPPOLY",
-      "name": "SPP Polymer Limited",
-      "isin": "INE0QR801013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SPUNWEB",
-      "name": "Spunweb Nonwoven Limited",
-      "isin": "INE19QH01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SRIVASAVI",
-      "name": "Srivasavi Adhesive Tapes Limited",
-      "isin": "INE0NPI01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SSEGL",
-      "name": "Sathlokhar Synergys E&C Global Limited",
-      "isin": "INE0RFP01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SSFL",
-      "name": "Srivari Spices And Foods Limited",
-      "isin": "INE0ON201012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "STRIDERS",
-      "name": "Striders Impex Limited",
-      "isin": "INE1XWN01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "STUDIOLSD",
-      "name": "Studio LSD Limited",
-      "isin": "INE17VO01028",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SUBAHOTELS",
-      "name": "Suba Hotels Limited",
-      "isin": "INE0RYR01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SUNLITE",
-      "name": "Sunlite Recycling Industries Limited",
-      "isin": "INE0U2N01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SUNREST",
-      "name": "Sunrest Lifescience Limited",
-      "isin": "INE0PLZ01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SUNTECH",
-      "name": "Suntech Infra Solutions Limited",
-      "isin": "INE0SGZ01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SUPREMEPWR",
-      "name": "Supreme Power Equipment Limited",
-      "isin": "INE0QHG01026",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SURANI",
-      "name": "Surani Steel Tubes Limited",
-      "isin": "INE01ZJ01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SWARAJ",
-      "name": "Swaraj Suiting Limited",
-      "isin": "INE0GMR01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SWASTIK",
-      "name": "Swastik Pipe Limited",
-      "isin": "INE0DGC01025",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SYLVANPLY",
-      "name": "Sylvan Plyboard (India) Limited",
-      "isin": "INE01IH01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SYNOPTICS",
-      "name": "Synoptics Technologies Limited",
-      "isin": "INE0BTR01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "SYSTANGO",
-      "name": "Systango Technologies Limited",
-      "isin": "INE0O7R01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TANKUP",
-      "name": "Tankup Engineers Limited",
-      "isin": "INE0Z7N01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TAPIFRUIT",
-      "name": "Tapi Fruit Processing Limited",
-      "isin": "INE0M7001010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TAURIAN",
-      "name": "Taurian MPS Limited",
-      "isin": "INE0XWS01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TECHD",
-      "name": "TechD Cybersecurity Limited",
-      "isin": "INE0Y5H01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TECHERA",
-      "name": "TechEra Engineering (India) Limited",
-      "isin": "INE0JQS01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TECHLABS",
-      "name": "Trident Techlabs Limited",
-      "isin": "INE0QD201012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TEJASCARGO",
-      "name": "Tejas Cargo India Limited",
-      "isin": "INE17WC01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "THESL",
-      "name": "Thinking Hats Entertainment Solutions Limited",
-      "isin": "INE0SHE01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TIMESCAN",
-      "name": "Timescan Logistics (India) Limited",
-      "isin": "INE0IJY01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TIRUPATI",
-      "name": "Shree Tirupati Balajee FIBC Limited",
-      "isin": "INE238Y01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TRANSTEEL",
-      "name": "Transteel Seating Technologies Limited",
-      "isin": "INE0NVI01020",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TRANSWIND",
-      "name": "Transwind Infrastructures Limited",
-      "isin": "INE792X01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TRIDHYA",
-      "name": "Tridhya Tech Limited",
-      "isin": "INE0LWY01029",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TROM",
-      "name": "Trom Industries Limited",
-      "isin": "INE0SYV01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TRUST",
-      "name": "Trust Fintech Limited",
-      "isin": "INE0SWN01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "TUNWAL",
-      "name": "Tunwal E-Motors Limited",
-      "isin": "INE0OXV01027",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "UHTL",
-      "name": "United Heat Transfer Limited",
-      "isin": "INE0SMR01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "UMA",
-      "name": "Uma Converter Limited",
-      "isin": "INE067901012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "UNIHEALTH",
-      "name": "Unihealth Hospitals Limited",
-      "isin": "INE0PRF01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "UNILEX",
-      "name": "Unilex Colours and Chemicals Limited",
-      "isin": "INE0B2801011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "URBAN",
-      "name": "Urban Enviro Waste Management Limited",
-      "isin": "INE0O0201019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "USASEEDS",
-      "name": "Upsurge Seeds Of Agriculture Limited",
-      "isin": "INE0CBM01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "USHAFIN",
-      "name": "Usha Financial Services Limited",
-      "isin": "INE0LS001014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "UTSSAV",
-      "name": "Utssav CZ Gold Jewels Limited",
-      "isin": "INE06IJ01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "UWCSL",
-      "name": "Ultra Wiring Connectivity System Limited",
-      "isin": "INE00F301010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VASA",
-      "name": "Vasa Retail and Overseas Ltd",
-      "isin": "INE068Z01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VDEAL",
-      "name": "Vdeal System Limited",
-      "isin": "INE0U2M01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VEEKAYEM",
-      "name": "Veekayem Fashion and Apparels Limited",
-      "isin": "INE0KTW01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VELS",
-      "name": "Vels Film International Limited",
-      "isin": "INE0I3H01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VERITAAS",
-      "name": "Veritaas Advertising Limited",
-      "isin": "INE0SRI01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VERTEXPLUS",
-      "name": "Vertexplus Technologies Limited",
-      "isin": "INE0NLB01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VGINFOTECH",
-      "name": "Virtual Galaxy Infotech Limited",
-      "isin": "INE0VRH01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VIAZ",
-      "name": "Viaz Tyres Limited",
-      "isin": "INE0MO401019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VICTORYEV",
-      "name": "Victory Electric Vehicles International Limited",
-      "isin": "INE0F8901022",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VIESL",
-      "name": "Vision Infra Equipment Solutions Limited",
-      "isin": "INE0TR001017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VIGOR",
-      "name": "Vigor Plast India Limited",
-      "isin": "INE1DM601016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VIJAYPD",
-      "name": "Vijaypd Ceutical Limited",
-      "isin": "INE0WL901019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VILAS",
-      "name": "Vilas Transcore Limited",
-      "isin": "INE0AZY01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VILINBIO",
-      "name": "Vilin Bio Med Limited",
-      "isin": "INE0L4V01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VINSYS",
-      "name": "Vinsys IT Services India Limited",
-      "isin": "INE0OSJ01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VINYAS",
-      "name": "Vinyas Innovative Technologies Limited",
-      "isin": "INE0OLS01010",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VISAMAN",
-      "name": "Visaman Global Sales Limited",
-      "isin": "INE0BHK01012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VISHNUINFR",
-      "name": "Vishnusurya Projects and Infra Limited",
-      "isin": "INE0PQ001012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VISHWAS",
-      "name": "Vishwas Agri Seeds Limited",
-      "isin": "INE0S2E01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VIVIDEL",
-      "name": "Vivid Electromech Limited",
-      "isin": "INE24H301028",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VIVO",
-      "name": "Vivo Collaboration Solutions Limited",
-      "isin": "INE0IA701014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VLINFRA",
-      "name": "V.L.Infraprojects Limited",
-      "isin": "INE0QXL01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VMARCIND",
-      "name": "V Marc India Limited",
-      "isin": "INE0GXK01018",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VOLERCAR",
-      "name": "Voler Car Limited",
-      "isin": "INE241X01014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VR",
-      "name": "V R Infraspace Limited",
-      "isin": "INE0QQM01017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "VSCL",
-      "name": "Vadivarhe Speciality Chemicals Limited",
-      "isin": "INE551Q01028",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "WALPAR",
-      "name": "Walpar Nutritions Limited",
-      "isin": "INE0G2G01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "WHITEFORCE",
-      "name": "Happy Square Outsourcing Services Limited",
-      "isin": "INE0TLP01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "WINNY",
-      "name": "Winny Immigration & Education Services Limited",
-      "isin": "INE0S9101013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "WINSOL",
-      "name": "Winsol Engineers Limited",
-      "isin": "INE0S3D01016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "WOL3D",
-      "name": "Wol 3D India Limited",
-      "isin": "INE0OO201011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "WOMANCART",
-      "name": "Womancart Limited",
-      "isin": "INE0Q9601016",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "WTICAB",
-      "name": "Wise Travel India Limited",
-      "isin": "INE623Y01011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "YAAP",
-      "name": "Yaap Digital Limited",
-      "isin": "INE0U0J01015",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "YASHOPTICS",
-      "name": "Yash Optics & Lens Limited",
-      "isin": "INE0TO601017",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "YCCL",
-      "name": "Yasons Chemex Care Limited",
-      "isin": "INE08S201019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "YUDIZ",
-      "name": "Yudiz Solutions Limited",
-      "isin": "INE09FA01019",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ZENITHDRUG",
-      "name": "Zenith Drugs Limited",
-      "isin": "INE0QWN01013",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NSE_IN",
-      "ticker": "ZTECH",
-      "name": "Z-Tech (India) Limited",
-      "isin": "INE0ISZ01012",
+      "exchange": "NYSE",
+      "ticker": "AVNS",
+      "name": "Avanos Medical Inc",
+      "isin": "US05350V1061",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -4914,6 +1012,14 @@
     },
     {
       "exchange": "NYSE",
+      "ticker": "KORE",
+      "name": "KORE Group Holdings Inc",
+      "isin": "US50066V3050",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
       "ticker": "LEGT",
       "name": "Legato Merger Corp. III",
       "isin": "KYG5451A1031",
@@ -4922,9 +1028,25 @@
     },
     {
       "exchange": "NYSE",
+      "ticker": "MVO",
+      "name": "MV Oil Trust",
+      "isin": "US5538591091",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
       "ticker": "NOTE",
       "name": "FiscalNote Holdings Inc.",
       "isin": "US3376551046",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "NSA",
+      "name": "National Storage Affiliates Trust",
+      "isin": "US6378701063",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -4957,6 +1079,14 @@
       "ticker": "PRA",
       "name": "ProAssurance Corporation",
       "isin": "US74267C1062",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "QBTS",
+      "name": "D-Wave Quantum Inc.",
+      "isin": "US26740W1099",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -4997,6 +1127,14 @@
       "ticker": "STEL",
       "name": "Stellar Bancorp, Inc.",
       "isin": "US8589271068",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "TMHC",
+      "name": "Taylor Morn Home",
+      "isin": "US87724P1066",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
