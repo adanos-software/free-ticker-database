@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-26T08:47:43Z",
+    "generated_at": "2026-07-27T10:10:51Z",
     "rows": 74729,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67470,
-      "source_gap": 7238,
+      "pass": 67460,
+      "source_gap": 7248,
       "warn": 21
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5331,
-      "official_reference": 68189,
+      "identifier_enriched": 5341,
+      "official_reference": 68179,
       "scoped_source_gap": 263,
       "valid_isin": 946
     },
     "severity_counts": {
       "high": 14,
       "medium": 7,
-      "source_gap": 7432
+      "source_gap": 7442
     },
     "issue_counts": {
-      "official_reference_gap": 6540,
+      "official_reference_gap": 6550,
       "expected_missing_primary_isin": 764,
       "missing_etf_category": 99,
       "missing_stock_sector": 29,
@@ -98,8 +98,8 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 3731,
-        "source_gap": 115
+        "pass": 3725,
+        "source_gap": 121
       },
       {
         "exchange": "Euronext",
@@ -139,8 +139,8 @@
       },
       {
         "exchange": "BSE_IN",
-        "pass": 2580,
-        "source_gap": 57
+        "pass": 2576,
+        "source_gap": 61
       }
     ]
   },
@@ -1964,6 +1964,24 @@
       ]
     },
     {
+      "listing_key": "XETRA::3DAX",
+      "ticker": "3DAX",
+      "exchange": "XETRA",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "TPEX::4132",
       "ticker": "4132",
       "exchange": "TPEX",
@@ -3299,6 +3317,24 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "XETRA::724",
+      "ticker": "724",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -11800,6 +11836,24 @@
       ]
     },
     {
+      "listing_key": "BSE_IN::ASHIKA",
+      "ticker": "ASHIKA",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "BSE_IN::ASHIS",
       "ticker": "ASHIS",
       "exchange": "BSE_IN",
@@ -18209,60 +18263,6 @@
     {
       "listing_key": "OTC::BLFE",
       "ticker": "BLFE",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BLFR",
-      "ticker": "BLFR",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::BLH",
-      "ticker": "BLH",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XETRA",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BLIAQ",
-      "ticker": "BLIAQ",
       "exchange": "OTC",
       "asset_type": "Stock",
       "quality_status": "source_gap",
