@@ -9740,7 +9740,7 @@ def parse_hnx_issuer_table_html(
     return rows
 
 
-def cached_hnx_isin_lookup(source: MasterfileSource) -> dict[str, str]:
+def existing_hnx_isin_lookup(source: MasterfileSource) -> dict[str, str]:
     lookup: dict[str, str] = {}
     for path in hnx_securities_cache_paths(source.key):
         if not path.exists():
@@ -9758,9 +9758,19 @@ def cached_hnx_isin_lookup(source: MasterfileSource) -> dict[str, str]:
             name_key = compact_company_name(str(row.get("name", "")))
             isin = str(row.get("isin", "")).strip().upper()
             if ticker and name_key and VSDC_ISIN_RE.fullmatch(isin):
-                lookup[f"{ticker}\t{name_key}"] = isin
-        if lookup:
-            break
+                lookup.setdefault(f"{ticker}\t{name_key}", isin)
+
+    # GitHub-hosted runners start without the ignored masterfile cache. Reuse
+    # identifiers from the tracked reference for an unchanged official listing
+    # instead of making every refresh depend on hundreds of VSDC requests.
+    for row in load_csv(MASTERFILE_REFERENCE_CSV):
+        if row.get("source_key") != source.key:
+            continue
+        ticker = str(row.get("ticker", "")).strip().upper()
+        name_key = compact_company_name(str(row.get("name", "")))
+        isin = str(row.get("isin", "")).strip().upper()
+        if ticker and name_key and VSDC_ISIN_RE.fullmatch(isin):
+            lookup.setdefault(f"{ticker}\t{name_key}", isin)
     return lookup
 
 
@@ -9799,11 +9809,11 @@ def fetch_hnx_issuer_rows(
     payload = response.json()
     content = str(payload.get("Content") or "")
     rows = parse_hnx_issuer_table_html(content, source, exchange=config["exchange"])
-    cached_lookup = cached_hnx_isin_lookup(source)
+    existing_lookup = existing_hnx_isin_lookup(source)
     isin_lookup = {
-        row["ticker"]: cached_lookup[f"{row['ticker']}\t{compact_company_name(row['name'])}"]
+        row["ticker"]: existing_lookup[f"{row['ticker']}\t{compact_company_name(row['name'])}"]
         for row in rows
-        if f"{row['ticker']}\t{compact_company_name(row['name'])}" in cached_lookup
+        if f"{row['ticker']}\t{compact_company_name(row['name'])}" in existing_lookup
     }
     missing_tickers = [row["ticker"] for row in rows if row["ticker"] not in isin_lookup]
     isin_lookup.update(fetch_vsdc_isin_lookup(missing_tickers, session=session))
