@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-07-27T10:28:22Z",
+    "generated_at": "2026-07-28T09:20:38Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,24 +8,23 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 16,
+    "new_supported_rows": 12,
     "accepted_rows": 7,
-    "skipped_rows": 9,
+    "skipped_rows": 5,
     "accepted_by_exchange": {
-      "BATS": 5,
-      "NYSE": 1,
-      "NYSE MKT": 1
+      "BATS": 3,
+      "NASDAQ": 3,
+      "NYSE ARCA": 1
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 5,
-      "temporary_when_issued_line": 1,
-      "ticker_collision": 3
+      "excluded_non_common_stock": 3,
+      "ticker_collision": 2
     }
   },
   "accepted": [
     {
-      "ticker": "BAGX",
-      "name": "EA Bridgeway Aggressive Investors ETF",
+      "ticker": "RAMZ",
+      "name": "T-REX 2X Inverse DRAM Daily Target ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -38,8 +37,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "BGFI",
-      "name": "BNY Mellon Global Fixed Income ETF",
+      "ticker": "SKHA",
+      "name": "Tradr 2X Long SK hynix Daily ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -52,8 +51,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "BMSI",
-      "name": "BNY Mellon Muti-Sector Income ETF",
+      "ticker": "SKHN",
+      "name": "Tradr 2X Short SK hynix Daily ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -66,52 +65,52 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "BRSV",
-      "name": "EA Bridgeway Select Small-Cap Value ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "BUSM",
-      "name": "EA Bridgeway Ultra-Small Company Market ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "FTRA",
-      "name": "FutureCorp Space Acquisition 1 Class A Ordinary Shares",
-      "exchange": "NYSE",
+      "ticker": "IPVV",
+      "name": "InterPrivate Investment Partners V, Inc. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "TONT",
-      "name": "Graf Global Corp. Class A ordinary shares",
-      "exchange": "NYSE MKT",
+      "ticker": "LTGR",
+      "name": "Long Table Growth Corp. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
       "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "YARW",
+      "name": "Yarrow Bioscience, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MSOL",
+      "name": "Morgan Stanley Solana Trust",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
       "sector": "",
       "country": "United States",
       "country_code": "US",
@@ -124,76 +123,44 @@
   ],
   "skipped": [
     {
-      "ticker": "LGHT",
-      "exchange": "BATS",
-      "name": "Langar Global HealthTech ETF",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_other_listed",
+      "ticker": "IPVVW",
+      "exchange": "NASDAQ",
+      "name": "InterPrivate Investment Partners V, Inc. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "LTGRW",
+      "exchange": "NASDAQ",
+      "name": "Long Table Growth Corp. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "QBTS",
+      "exchange": "NASDAQ",
+      "name": "D-Wave Quantum Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
       "skip_reason": "ticker_collision"
     },
     {
-      "ticker": "FTRA.W",
+      "ticker": "MTB$L",
       "exchange": "NYSE",
-      "name": "FutureCorp Space Acquisition 1 Redeemable warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
+      "name": "M&T Bank Corporation Depositary Shares each representing a 1/400th ownership interest in a share of Perpetual 6.625% Non-Cumulative Preferred Stock, Series L",
       "asset_type": "Stock",
       "source_key": "nasdaq_other_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "MUA.V",
-      "exchange": "NYSE",
-      "name": "Blackrock MuniAssets Fund, Inc. Rights (expiring August 20, 2026) Rights when issued",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "temporary_when_issued_line"
-    },
-    {
-      "ticker": "TRIN",
-      "exchange": "NYSE",
-      "name": "Trinity Capital Inc. Common Stock",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "TRNI",
-      "exchange": "NYSE",
-      "name": "Trinity Capital Inc. 7.875% Notes Due 2029",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "TRNZ",
-      "exchange": "NYSE",
-      "name": "Trinity Capital Inc. 7.875% Notes due 2029",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "MAGA",
+      "ticker": "MSSE",
       "exchange": "NYSE ARCA",
-      "name": "Truth Social America First ETF",
+      "name": "Morgan Stanley Ethereum Trust",
       "asset_type": "ETF",
       "source_key": "nasdaq_other_listed",
       "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "TONT.U",
-      "exchange": "NYSE MKT",
-      "name": "Graf Global Corp. Units, each consisting of one Class A ordinary share and one-half of one redeemable warrant",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "TONT.W",
-      "exchange": "NYSE MKT",
-      "name": "Graf Global Corp. Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50 per share",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
     }
   ]
 }
