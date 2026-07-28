@@ -1,1385 +1,553 @@
 {
   "summary": {
-    "generated_at": "2026-07-27T10:09:15Z",
+    "generated_at": "2026-07-28T09:13:56Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 49,
-    "vanished_rows": 29,
-    "changed_rows": 13,
+    "new_rows": 10,
+    "vanished_rows": 9,
+    "changed_rows": 16,
     "new_by_source": {
-      "bse_india_scrips": 18,
-      "bvb_shares_directory": 1,
-      "cse_lk_company_info_summary": 1,
-      "cse_ma_listed_companies": 1,
-      "deutsche_boerse_etfs_etps": 13,
-      "deutsche_boerse_xetra_all_tradable_equities": 15
+      "hkex_securities_list": 2,
+      "krx_etf_finder": 5,
+      "krx_listed_companies": 3
     },
     "vanished_by_source": {
-      "bse_india_scrips": 9,
-      "bvb_shares_directory": 1,
-      "deutsche_boerse_etfs_etps": 8,
-      "deutsche_boerse_xetra_all_tradable_equities": 11
+      "hkex_securities_list": 4,
+      "jpx_tse_stock_detail": 3,
+      "krx_listed_companies": 2
     },
     "changed_by_type": {
-      "isin_change": 6,
-      "name_change": 7
+      "isin_change": 3,
+      "name_change": 16
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "AEROPLANE",
-      "name": "Amir Chand Jagdish Kumar (Exports) Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02991",
+      "name": "POLY XVERSE IT",
+      "exchange": "HKEX",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INE05TO01019",
+      "isin": "BMG9723F1639",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "ALPINETEX",
-      "name": "Alpine Texworld Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08611",
+      "name": "JUFEEL",
+      "exchange": "HKEX",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INE1JCQ01037",
+      "isin": "KYG614201088",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "ASHIKAG",
-      "name": "Ashika Global Securities Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE094B01013",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "AURUS",
-      "name": "Aurus Gem Corporation Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE142K01011",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "BANK10BETF",
-      "name": "Bajaj Finserv BSE Top 10 Banks ETF",
-      "exchange": "BSE_IN",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0214M0",
+      "name": "MIDAS 바이오헬스케어액티브",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INF0QA701CI0",
+      "isin": "KR70214M0000",
       "cfi": "",
       "sector": "Equity"
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "BIRLACOT",
-      "name": "Birla Cotsyn (India) Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE655I01032",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "CMLL",
-      "name": "Caliber Mining And Logistics Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE11XY01018",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "DEVSON",
-      "name": "Devson Catalyst Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE2KRP01017",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "GULFLLOYDS",
-      "name": "Gulf Lloyds (India) Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE1WDC01012",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "KUSUMGAR",
-      "name": "Kusumgar Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE0ISX01025",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "LASERPOWER",
-      "name": "Laser Power & Infra Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE17IR01028",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "MAHESH",
-      "name": "Mahesh Developers Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE01MO01013",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "MEEIND",
-      "name": "Meenakshi India Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE208H01016",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "MILLWORKS",
-      "name": "Millworks Technologies Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE1SRC01010",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "MOMMIDCAP",
-      "name": "Mirae Asset BSE Midcap 150 Momentum 30 ETF",
-      "exchange": "BSE_IN",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0222D0",
+      "name": "KoAct 고배당액티브",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INF769K01RC0",
+      "isin": "KR70222D0001",
       "cfi": "",
       "sector": "Equity"
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "SBIFUNDS",
-      "name": "SBI Funds Management Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE640G01020",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "SOTEFIN",
-      "name": "Sotefin Bharat Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE12Z301012",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "STARBEAM",
-      "name": "Starbeam Ventures Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE924N01024",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bvb_shares_directory",
-      "provider": "BVB",
-      "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=NC",
-      "ticker": "NC",
-      "name": "NOVERE CAPITAL",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "ROX9GQFJ81G8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "cse_lk_company_info_summary",
-      "provider": "CSE Sri Lanka",
-      "source_url": "https://www.cse.lk/api/companyInfoSummery",
-      "ticker": "MBSL.R0001",
-      "name": "MERCHANT BANK OF SRI LANKA & FINANCE PLC",
-      "exchange": "CSE_LK",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LK0186R00012",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "cse_ma_listed_companies",
-      "provider": "Casablanca Stock Exchange",
-      "source_url": "https://www.casablanca-bourse.com/en/live-market/instruments/T2S",
-      "ticker": "T2S",
-      "name": "T2S Group Holding",
-      "exchange": "CSE_MA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "MA0000012858",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "5PSU",
-      "name": "PIMCO Advantage StocksPLUS US Large Cap UCITS ETF USD Accumulation",
-      "exchange": "XETRA",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0223A0",
+      "name": "RISE 코스닥커버드콜액티브",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IE000KR2IEH1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "DXG5",
-      "name": "Leverage Shares 5x Long DAX ETP Securities",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "XS2472331995",
+      "isin": "KR70223A0003",
       "cfi": "",
       "sector": "Alternative"
     },
     {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "DZMU",
-      "name": "DZ BANK MSCI World UCITS ETF",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000B5MAME7",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "DZUU",
-      "name": "DZ BANK S&P 500 UCITS ETF",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000DN1DKF8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "FGZI",
-      "name": "UBS Core EURO STOXX 50 UCITS ETF EUR acc",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "LU0950668367",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "FJ7G",
-      "name": "UmweltBank UCITS-ETF Europe SDG Focus",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "LU3401048544",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "FJ7H",
-      "name": "UmweltBank UCITS-ETF Green & Social Corporate Bonds Euro",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "LU3401048387",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "FJ7I",
-      "name": "UmweltBank UCITS-ETF Green & Social Government Bonds Euro",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "LU3401048460",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "MINE",
-      "name": "CoinShares Bitcoin Mining UCITS ETF - USD Acc",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE0008EKJPN4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "WROE",
-      "name": "BNP PARIBAS EASY II World Active Factor Rotation UCITS ETF EUR H Acc",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE0001858L90",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "WROT",
-      "name": "BNP PARIBAS EASY II World Active Factor Rotation UCITS ETF USD Acc",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE0004GONJX4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "WUSA",
-      "name": "Amundi Core MSCI USA Swap UCITS ETF Acc",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "LU3332965949",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "WUSH",
-      "name": "Amundi Core MSCI USA Swap UCITS ETF EUR Hedged Acc",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "LU3332966160",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "3TSA",
-      "name": "LEVERAGE SHARES -3TAIWETP",
-      "exchange": "XETRA",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0224D0",
+      "name": "KIWOOM 미국CPU반도체TOP4+",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "XS3420363502",
+      "isin": "KR70224D0009",
       "cfi": "",
-      "sector": "Alternative"
+      "sector": "Equity"
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "5PSU",
-      "name": "PIMCO-STKPLS U.E.DLA",
-      "exchange": "XETRA",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0224X0",
+      "name": "1Q 엔비디아알파벳미국채혼합50",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IE000KR2IEH1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "DXG5",
-      "name": "LEVERAGE SHARES 3XGER ETP",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "XS2472331995",
-      "cfi": "",
-      "sector": "Alternative"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "DZMU",
-      "name": "HE2-DZB M.W.U.E. DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000B5MAME7",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "DZUU",
-      "name": "HE2-DZB SP500UE DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000DN1DKF8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "FGZI",
-      "name": "UBS COR.EURO STOXX50 UETF",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU0950668367",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "FJ7G",
-      "name": "UB-EUR.SDG FDS PEOA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3401048544",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "FJ7H",
-      "name": "UB-GR.S.C.B EO PEOD",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3401048387",
+      "isin": "KR70224X0005",
       "cfi": "",
       "sector": "Fixed Income"
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "FJ7I",
-      "name": "UB-GR.S.G.B EO PEOD",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "0156T0",
+      "name": "HL GENOMICS",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "LU3401048460",
+      "isin": "KR70156T0003",
       "cfi": "",
-      "sector": "Fixed Income"
+      "sector": "Health Care"
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "MINE",
-      "name": "CIRCA5000 IC. DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "0218L0",
+      "name": "Neovue",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IE0008EKJPN4",
+      "isin": "KR70218L0007",
       "cfi": "",
-      "sector": ""
+      "sector": "Information Technology"
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "SAMD",
-      "name": "LEVERAGE SHARES -1AMD ETP",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "238540",
+      "name": "NanoSolution",
+      "exchange": "KRX",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "XS3420364062",
+      "isin": "KR7238540009",
       "cfi": "",
-      "sector": "Alternative"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "WROE",
-      "name": "BNPPE2 WACFRE EOA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0001858L90",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "WROT",
-      "name": "BNPPE2 WACFRE DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0004GONJX4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "WUSA",
-      "name": "AIS-ACMUS U.ETFDLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3332965949",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "WUSH",
-      "name": "AIS-ACMUS U.ETF HGDEOA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3332966160",
-      "cfi": "",
-      "sector": ""
+      "sector": "Materials"
     }
   ],
   "vanished": [
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "AMIRCHAND",
-      "name": "Amir Chand Jagdish Kumar (Exports) Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "00495",
+      "name": "PALADIN",
+      "exchange": "HKEX",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INE05TO01019",
+      "isin": "BMG687521317",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "ANNVRPP",
-      "name": "ANNVRRIDHHI VENTURES Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "00834",
+      "name": "KANGDA FOOD",
+      "exchange": "HKEX",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IN9075K01029",
+      "isin": "BMG2110F1023",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "ASHIKA",
-      "name": "Ashika Credit Capital Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02349",
+      "name": "CH CITY INFRA",
+      "exchange": "HKEX",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INE094B01013",
+      "isin": "KYG2118E1070",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "BLUEGOD",
-      "name": "Bluegod Entertainment Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08186",
+      "name": "ALMANA",
+      "exchange": "HKEX",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INE924N01024",
+      "isin": "BMG6315H1025",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "INRADIA",
-      "name": "India Radiators Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "jpx_tse_stock_detail",
+      "provider": "JPX",
+      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=191A",
+      "ticker": "191A",
+      "name": "MIMOSA CO., LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "security_identifier_registry_subset",
+      "official": "true",
+      "isin": "JP3907250009",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "jpx_tse_stock_detail",
+      "provider": "JPX",
+      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=3271",
+      "ticker": "3271",
+      "name": "THE GLOBAL LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "security_identifier_registry_subset",
+      "official": "true",
+      "isin": "JP3345720001",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "jpx_tse_stock_detail",
+      "provider": "JPX",
+      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=5903",
+      "ticker": "5903",
+      "name": "SHINPO CO., LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "security_identifier_registry_subset",
+      "official": "true",
+      "isin": "JP3383600008",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "060240",
+      "name": "STACO",
+      "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INE461Y01016",
+      "isin": "KR7060240009",
       "cfi": "",
-      "sector": ""
+      "sector": "Industrials"
     },
     {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "JBCHEPHARM",
-      "name": "JB Chemicals & Pharmaceuticals Ltd",
-      "exchange": "BSE_IN",
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "467930",
+      "name": "IBKS No.23 SPAC",
+      "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "INE572A01036",
+      "isin": "KR7467930004",
       "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "LYPSAGEMS",
-      "name": "Aurus Gem Corporation Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE142K01011",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "SCBL",
-      "name": "Saptak Chem And Business Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE467X01023",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "provider": "BSE India",
-      "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "ticker": "SIKOZY",
-      "name": "Sikozy Realtors Ltd",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE528E01022",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "bvb_shares_directory",
-      "provider": "BVB",
-      "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=MET",
-      "ticker": "MET",
-      "name": "NOVERE CAPITAL",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "ROX9GQFJ81G8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "3DAX",
-      "name": "Leverage Shares 5x Long DAX ETP Securities",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "XS2472331995",
-      "cfi": "",
-      "sector": "Alternative"
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "AIQT",
-      "name": "BNP Paribas Easy II MSCI Emerging PAB UCITS ETF",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000GLIXPP3",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "AWSU",
-      "name": "BNP Paribas Easy II MSCI World PAB UCITS ETF Distribution USD",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000WZU35H0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "AXQE",
-      "name": "BNP Paribas Easy II MSCI Emerging ex China Min TE UCITS ETF - EUR (H) Acc",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000Y65F5C2",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "AXQT",
-      "name": "BNP Paribas Easy II MSCI Emerging ex China Min TE UCITS ETF Acc USD",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000M4Z0RA5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "AXXT",
-      "name": "BNP Paribas Easy II MSCI Emerging ex China Min TE UCITS ETF - USD Dis",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000G5IRVY3",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "AXXU",
-      "name": "BNP Paribas Easy II MSCI Emerging ex China Min TE UCITS ETF - USD Dis",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IE000G5IRVY3",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "GODE",
-      "name": "ETP on Bountiful Enhancing the Common Developed Europe NTR Index",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "CH1453356367",
-      "cfi": "",
-      "sector": "Alternative"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "3DAX",
-      "name": "LEVERAGE SHARES 3XGER ETP",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "XS2472331995",
-      "cfi": "",
-      "sector": "Alternative"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "724",
-      "name": "C3 AI INC. CL.A  DL -,001",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US12468P1049",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "ADM",
-      "name": "ARCHER DANIELS MIDLAND",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US0394831020",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "CAP",
-      "name": "SCP STAN.CAP.PART. INH ON",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "DE000A12UPJ7",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "DYH",
-      "name": "TARGET CORP.     DL-,0833",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US87612E1064",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "GDX",
-      "name": "GENL DYNAMICS CORP.  DL 1",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US3695501086",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "GODE",
-      "name": "LEON.SEC(GG).O.END ETP Z.",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CH1453356367",
-      "cfi": "",
-      "sector": "Alternative"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "NTH",
-      "name": "NORTHROP GRUMMAN DL 1",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US6668071029",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "ONK",
-      "name": "ONEOK INC. (NEW)   DL-,01",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US6826801036",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "TJX",
-      "name": "TJX COS INC.         DL 1",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US8725401090",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "XGR2",
-      "name": "COMPASS GROUP    LS-,1105",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "GB00BD6K4575",
-      "cfi": "",
-      "sector": ""
+      "sector": "Financials"
     }
   ],
   "changed": [
     {
-      "source_key": "bse_india_scrips",
-      "exchange": "BSE_IN",
-      "ticker": "INDTONER",
+      "source_key": "egx_listed_stocks",
+      "exchange": "EGX",
+      "ticker": "ARVA",
       "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Arab Valves Company",
+          "after": "Arabian Metal Industries And Industrial Investments"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00061",
+      "change_types": [
+        "name_change",
         "isin_change"
       ],
       "changes": {
+        "name": {
+          "before": "GREEN LEADER",
+          "after": "GREEN LEAD-NEW"
+        },
         "isin": {
-          "before": "INE826B01018",
-          "after": "INE826B01026"
+          "before": "BMG4165P1187",
+          "after": "BMG4165P1427"
         }
       }
     },
     {
-      "source_key": "bse_india_scrips",
-      "exchange": "BSE_IN",
-      "ticker": "JLHL",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00108",
       "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "GR LIFE STYLE",
+          "after": "SR MEDICAL"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01340",
+      "change_types": [
+        "name_change",
         "isin_change"
       ],
       "changes": {
+        "name": {
+          "before": "HUISHENG INTL",
+          "after": "HUISHENG I-NEW"
+        },
         "isin": {
-          "before": "INE682M01012",
-          "after": "INE682M01020"
+          "before": "KYG4643W1078",
+          "after": "KYG4643W1318"
         }
       }
     },
     {
-      "source_key": "bse_india_scrips",
-      "exchange": "BSE_IN",
-      "ticker": "KALIND",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02525",
       "change_types": [
+        "name_change",
         "isin_change"
       ],
       "changes": {
+        "name": {
+          "before": "HESAI-W",
+          "after": "HESAI-W-NEW"
+        },
         "isin": {
-          "before": "INE377D01018",
-          "after": "INE377D01026"
+          "before": "KYG4417G1064",
+          "after": "KYG4417G1148"
         }
       }
     },
     {
-      "source_key": "bse_india_scrips",
-      "exchange": "BSE_IN",
-      "ticker": "OBCL",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02986",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Orissa Bengal Carrier Ltd",
-          "after": "OBCL Ltd"
+          "before": "HUISHENG INTL",
+          "after": "HUISHENG I-OLD"
         }
       }
     },
     {
-      "source_key": "bse_india_scrips",
-      "exchange": "BSE_IN",
-      "ticker": "POCL",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "INE063E01053",
-          "after": "INE063E01061"
-        }
-      }
-    },
-    {
-      "source_key": "bse_india_scrips",
-      "exchange": "BSE_IN",
-      "ticker": "SIMPLEXCAS",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "INE658D01011",
-          "after": "INE658D01029"
-        }
-      }
-    },
-    {
-      "source_key": "cse_ma_listed_companies",
-      "exchange": "CSE_MA",
-      "ticker": "MNG",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "MA0000011058",
-          "after": "MA0000012866"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "exchange": "XETRA",
-      "ticker": "KSRE",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02988",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "KraneShares ICBCUBS SSE Star Market 50 Index UCITS ETF",
-          "after": "KraneShares ICBCUBS China Technology & Semiconductor STAR 50 Index UCITS ETF USD-Klasse"
+          "before": "GREEN LEADER",
+          "after": "GREEN LEAD-OLD"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "DRUP",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "03839",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "M.U.L.-AM.GL.ME.CH. UEDLA",
-          "after": "AMUNDI GL.MEM.CHIPS UEDLA"
+          "before": "CT ENTERPRISE",
+          "after": "CPBIO"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "EEGF",
+      "source_key": "hnx_listed_securities",
+      "exchange": "HNX",
+      "ticker": "IVS",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "E.P.-E.E.GL.EQ. EOA",
-          "after": "ERSTE ETF GLOBAL EQ."
+          "before": "Công ty cổ phần Chứng khoán Guotai Junan (Việt Nam)",
+          "after": "Công ty cổ phần Chứng khoán Guotai Haitong (Việt Nam)"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "ESUF",
+      "source_key": "idx_company_profiles",
+      "exchange": "IDX",
+      "ticker": "IATA",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "ETFP-ERS.US EQ DLA",
-          "after": "ERSTE ETF US EQ DLA"
+          "before": "PT MNC Energy Investments Tbk",
+          "after": "PT Karya Pacific Energy Tbk"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "OTUS",
+      "source_key": "idx_company_profiles",
+      "exchange": "IDX",
+      "ticker": "PNGO",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "HANETFLLOYDGREQ EOA",
-          "after": "HANETF-LLOYD INTL EQU.EOA"
+          "before": "PT Pinago Utama Tbk",
+          "after": "PT AEP Pinago Plantations Tbk"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "OTUT",
+      "source_key": "idx_listed_companies",
+      "exchange": "IDX",
+      "ticker": "PNGO",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "HANETFLLOYDGREQ EOA",
-          "after": "HANETF-LLOYD INTL EQU.EOA"
+          "before": "Pinago Utama Tbk.",
+          "after": "AEP Pinago Plantations Tbk."
+        }
+      }
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "exchange": "KOSDAQ",
+      "ticker": "030520",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "HANCOM INC.",
+          "after": "HANCOM"
+        }
+      }
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "exchange": "KOSDAQ",
+      "ticker": "215380",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "WOOJUNG BIO",
+          "after": "KBT"
+        }
+      }
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "exchange": "KOSDAQ",
+      "ticker": "290690",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "SOLUX",
+          "after": "ARIBIO holdings"
+        }
+      }
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "exchange": "KRX",
+      "ticker": "018500",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "DONGWON METAL",
+          "after": "Dongwon Mobility"
         }
       }
     }

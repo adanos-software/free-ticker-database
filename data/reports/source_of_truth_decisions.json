@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-07-27T10:29:34Z",
-    "rows": 7459,
+    "generated_at": "2026-07-28T09:16:55Z",
+    "rows": 7463,
     "outcome_totals": {
       "accepted_source_gap": 1091,
       "core_exclusion_candidate": 523,
-      "official_fill_required": 5845
+      "official_fill_required": 5849
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
@@ -23,7 +23,7 @@
       "official_industry_taxonomy_unavailable_gap": 21,
       "official_product_taxonomy_unavailable_gap": 86,
       "official_reference_symbol_collision_gap": 708,
-      "official_reference_unmatched_source_gap": 5845,
+      "official_reference_unmatched_source_gap": 5849,
       "shell_or_cpc_sector_gap": 10
     },
     "field_outcomes": {
@@ -33,7 +33,7 @@
       "missing_sector_stock:accepted_source_gap": 21,
       "missing_sector_stock:core_exclusion_candidate": 10,
       "official_reference_gap:accepted_source_gap": 708,
-      "official_reference_gap:official_fill_required": 5845
+      "official_reference_gap:official_fill_required": 5849
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -59714,6 +59714,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "HKEX::00495",
+      "ticker": "00495",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "PALADIN",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "HKEX::00724",
       "ticker": "00724",
       "exchange": "HKEX",
@@ -59731,11 +59748,45 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "HKEX::00834",
+      "ticker": "00834",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "KANGDA FOOD",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "HKEX::01396",
       "ticker": "01396",
       "exchange": "HKEX",
       "asset_type": "Stock",
       "name": "GD-HKGBA HLDGS",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "HKEX::02349",
+      "ticker": "02349",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "CH CITY INFRA",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -59867,11 +59918,11 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "HKEX::08603",
-      "ticker": "08603",
+      "listing_key": "HKEX::08186",
+      "ticker": "08186",
       "exchange": "HKEX",
       "asset_type": "Stock",
-      "name": "FAMEGLOW",
+      "name": "ALMANA",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -59884,11 +59935,11 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "HKEX::08611",
-      "ticker": "08611",
+      "listing_key": "HKEX::08603",
+      "ticker": "08603",
       "exchange": "HKEX",
       "asset_type": "Stock",
-      "name": "MINDTELL TECH",
+      "name": "FAMEGLOW",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -61096,6 +61147,23 @@
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "name": "KB No.27 SPAC",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "KOSDAQ::467930",
+      "ticker": "467930",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "name": "IBKS No.23 SPAC",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",

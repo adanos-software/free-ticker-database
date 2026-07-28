@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-07-27T10:29:27Z`
+Generated at: `2026-07-28T09:16:45Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 67,457 |
-| source_gap | 7,258 |
+| pass | 67,453 |
+| source_gap | 7,262 |
 | warn | 21 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,553 |
+| official_reference_gap | 6,557 |
 | expected_missing_primary_isin | 771 |
 | missing_etf_category | 104 |
 | missing_stock_sector | 31 |
