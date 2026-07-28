@@ -1915,6 +1915,7 @@ B3_MASTERFILE_GAP_REQUIRED_ROW_FIELDS = (
     "review_bucket",
     "review_priority",
     "review_strategy",
+    "official_subset_closure_eligibility",
     "apply_eligibility",
     "verification_evidence_required",
     "b3_source_gap_evidence_path",
@@ -4222,12 +4223,17 @@ def evaluate_b3_masterfile_gap_review_gate(review_report: dict[str, Any]) -> dic
         if row.get("active_exchange_directory_match") != "false":
             invalid_fields.append("active_exchange_directory_match")
         source_presence = str(row.get("source_presence", ""))
-        if source_presence == "absent_from_all_b3_masterfile_sources":
-            open_review_rows += 1
-        elif source_presence == "present_only_in_non_exchange_directory_source":
+        if source_presence not in {
+            "absent_from_all_b3_masterfile_sources",
+            "present_only_in_non_exchange_directory_source",
+        }:
+            invalid_fields.append("source_presence")
+        closure_eligibility = str(row.get("official_subset_closure_eligibility", ""))
+        is_closed_no_data_change = closure_eligibility.startswith("closure_ready_")
+        if is_closed_no_data_change:
             closed_no_data_change_rows += 1
         else:
-            invalid_fields.append("source_presence")
+            open_review_rows += 1
         queue = str(row.get("b3_resolution_queue", ""))
         if row.get("review_strategy") != b3_masterfile_gap_review_strategy(queue):
             invalid_fields.append("review_strategy")
@@ -4264,7 +4270,7 @@ def evaluate_b3_masterfile_gap_review_gate(review_report: dict[str, Any]) -> dic
         counters["apply_eligibility_totals"][str(row.get("apply_eligibility", ""))] += 1
         counters["verification_evidence_required_totals"][str(row.get("verification_evidence_required", ""))] += 1
         counters["source_gap_resolution_gate_totals"][str(row.get("source_gap_resolution_gate", ""))] += 1
-        if source_presence == "absent_from_all_b3_masterfile_sources":
+        if not is_closed_no_data_change:
             counters["open_review_source_presence_totals"][source_presence] += 1
             counters["open_review_resolution_queue_totals"][queue] += 1
             counters["open_review_next_source_totals"][str(row.get("recommended_next_source", ""))] += 1
@@ -18425,8 +18431,7 @@ def evaluate_official_name_mismatch_backfill_gate(report: dict[str, Any]) -> dic
         )
     return {
         "passed": (
-            bool(rows)
-            and "OTC" not in supported_exchanges
+            "OTC" not in supported_exchanges
             and not policy_missing_marker_groups
             and not row_gaps
             and not count_gaps

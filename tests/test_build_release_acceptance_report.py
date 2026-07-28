@@ -12451,6 +12451,31 @@ def test_evaluate_official_name_mismatch_backfill_gate_accepts_official_source_r
     assert result["accepted_rows"] == 1
 
 
+def test_evaluate_official_name_mismatch_backfill_gate_accepts_empty_review_queue() -> None:
+    result = evaluate_official_name_mismatch_backfill_gate(
+        {
+            "summary": {
+                "policy": {
+                    "source_authority": "Name candidates require active official masterfile references for the exact ticker and exchange.",
+                    "no_guessing": "Names are not inferred from ticker shape or secondary-only sources.",
+                    "apply_gate": "Report rows are review evidence; updates require --apply through the override workflow.",
+                    "otc_exclusion": "OTC rows use the OTC name-mismatch review workflow.",
+                },
+                "supported_exchanges": ["ASX"],
+                "rows_reviewed": 0,
+                "updates_emitted": 0,
+                "accepted_by_exchange": {},
+                "skipped_by_exchange": {},
+            },
+            "items": [],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["items"] == 0
+    assert result["count_gaps"] == []
+
+
 def test_evaluate_official_name_mismatch_backfill_gate_rejects_unguarded_or_stale_counts() -> None:
     result = evaluate_official_name_mismatch_backfill_gate(
         {
@@ -13422,6 +13447,7 @@ def test_evaluate_b3_masterfile_gap_review_gate_accepts_review_only_rows() -> No
                     "review_bucket": "missing_from_all_b3_masterfile_sources_source_gap",
                     "review_priority": "P3",
                     "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
+                    "official_subset_closure_eligibility": "blocked_until_current_official_active_source_evidence",
                     "apply_eligibility": "source_gap_keep_existing_dataset_row_until_official_active_source_evidence",
                     "verification_evidence_required": (
                         "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key"
@@ -13438,7 +13464,7 @@ def test_evaluate_b3_masterfile_gap_review_gate_accepts_review_only_rows() -> No
                     ),
                     "b3_listing_context": "listing_key=B3::ABCD3;ticker=ABCD3;asset_type=Stock;b3_gap_category=local_share_line;current_etf_category=none",
                     "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=false",
-                    "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=none;official_subset_closure_eligibility=none;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
+                    "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=none;official_subset_closure_eligibility=blocked_until_current_official_active_source_evidence;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
                 },
                 {
                     "listing_key": "B3::BIAU39",
@@ -13456,6 +13482,7 @@ def test_evaluate_b3_masterfile_gap_review_gate_accepts_review_only_rows() -> No
                     "review_bucket": "official_b3_non_directory_source_review",
                     "review_priority": "P2",
                     "review_strategy": "close_bdr_subset_gap_without_data_change_keep_category_source_gap",
+                    "official_subset_closure_eligibility": "closure_ready_official_subset_bdr_without_category_source_gap",
                     "apply_eligibility": "review_scope_or_parser_before_any_data_change",
                     "verification_evidence_required": (
                         "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap"
@@ -13470,7 +13497,7 @@ def test_evaluate_b3_masterfile_gap_review_gate_accepts_review_only_rows() -> No
                     ),
                     "b3_listing_context": "listing_key=B3::BIAU39;ticker=BIAU39;asset_type=ETF;b3_gap_category=bdr_or_foreign_receipt;current_etf_category=Equity",
                     "official_candidate_context": "source_presence=present_only_in_non_exchange_directory_source;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=true",
-                    "review_gate_context": "b3_resolution_queue=official_bdr_subset_without_category_source_gap_closed;residual_decision=official_b3_non_directory_source_requires_scope_or_parser_review;review_bucket=official_b3_non_directory_source_review;official_subset_review_decision=none;official_subset_closure_eligibility=none;apply_eligibility=review_scope_or_parser_before_any_data_change;verification_evidence_required=official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap",
+                    "review_gate_context": "b3_resolution_queue=official_bdr_subset_without_category_source_gap_closed;residual_decision=official_b3_non_directory_source_requires_scope_or_parser_review;review_bucket=official_b3_non_directory_source_review;official_subset_review_decision=none;official_subset_closure_eligibility=closure_ready_official_subset_bdr_without_category_source_gap;apply_eligibility=review_scope_or_parser_before_any_data_change;verification_evidence_required=official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap",
                 },
             ],
         }
