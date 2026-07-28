@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-28T09:22:00Z",
-    "rows": 74743,
+    "generated_at": "2026-07-28T09:16:45Z",
+    "rows": 74736,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67456,
-      "source_gap": 7266,
+      "pass": 67453,
+      "source_gap": 7262,
       "warn": 21
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5345,
-      "official_reference": 68189,
+      "identifier_enriched": 5348,
+      "official_reference": 68179,
       "scoped_source_gap": 263,
       "valid_isin": 946
     },
     "severity_counts": {
       "high": 14,
       "medium": 7,
-      "source_gap": 7474
+      "source_gap": 7463
     },
     "issue_counts": {
-      "official_reference_gap": 6554,
-      "expected_missing_primary_isin": 778,
-      "missing_etf_category": 108,
-      "missing_stock_sector": 34,
+      "official_reference_gap": 6557,
+      "expected_missing_primary_isin": 771,
+      "missing_etf_category": 104,
+      "missing_stock_sector": 31,
       "country_isin_mismatch": 12,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
@@ -53,7 +53,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4508,
-        "source_gap": 217,
+        "source_gap": 214,
         "warn": 1
       },
       {
@@ -64,7 +64,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2492,
-        "source_gap": 191
+        "source_gap": 190
       },
       {
         "exchange": "BMV",
@@ -72,8 +72,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1134,
-        "source_gap": 173
+        "pass": 1135,
+        "source_gap": 169
       },
       {
         "exchange": "LSE",
@@ -308,6 +308,24 @@
       ]
     },
     {
+      "listing_key": "HKEX::00495",
+      "ticker": "00495",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "TWSE::006205",
       "ticker": "006205",
       "exchange": "TWSE",
@@ -472,6 +490,24 @@
     {
       "listing_key": "HKEX::00724",
       "ticker": "00724",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::00834",
+      "ticker": "00834",
       "exchange": "HKEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -686,6 +722,24 @@
       ]
     },
     {
+      "listing_key": "HKEX::02349",
+      "ticker": "02349",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "HKEX::02934",
       "ticker": "02934",
       "exchange": "HKEX",
@@ -884,8 +938,8 @@
       ]
     },
     {
-      "listing_key": "HKEX::08603",
-      "ticker": "08603",
+      "listing_key": "HKEX::08186",
+      "ticker": "08186",
       "exchange": "HKEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -902,8 +956,8 @@
       ]
     },
     {
-      "listing_key": "HKEX::08611",
-      "ticker": "08611",
+      "listing_key": "HKEX::08603",
+      "ticker": "08603",
       "exchange": "HKEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -2301,6 +2355,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "KOSDAQ::467930",
+      "ticker": "467930",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "KOSDAQ",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -18216,78 +18288,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "B3",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "B3::BLCA11",
-      "ticker": "BLCA11",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "B3",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "NASDAQ::BLCN",
-      "ticker": "BLCN",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NASDAQ",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BLDC",
-      "ticker": "BLDC",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BLDV",
-      "ticker": "BLDV",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
