@@ -35,6 +35,9 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     assert "scripts/build_release_artifacts.py" in workflow
     assert "scripts/build_evidence_archive.py" in workflow
     assert "softprops/action-gh-release@v2" in workflow
+    assert "output/evidence_archive/*" not in workflow
+    assert "output/evidence_archive/m2-campaign-evidence.zip" in workflow
+    assert "output/evidence_archive/evidence-manifest.json" in workflow
     assert "PUBLISH_KAGGLE" in workflow
     assert "PUBLISH_HUGGINGFACE" in workflow
 

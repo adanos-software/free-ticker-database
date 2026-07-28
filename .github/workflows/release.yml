@@ -66,7 +66,8 @@ jobs:
           files: |
             output/release/assets/*
             output/release/manifest.json
-            output/evidence_archive/*
+            output/evidence_archive/m2-campaign-evidence.zip
+            output/evidence_archive/evidence-manifest.json
           generate_release_notes: true
 
       - name: Publish Kaggle package
