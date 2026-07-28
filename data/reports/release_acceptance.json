@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-08T04:36:25Z",
+    "generated_at": "2026-07-28T09:35:11Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -247,25 +247,25 @@
     },
     "release_metadata_consistency": {
       "passed": true,
-      "version": "3.32.02",
+      "version": "3.32.05",
       "version_valid": true,
       "changelog_has_version": true,
-      "changelog_section_pattern": "^##\\s+\\[3\\.32\\.02\\]\\s+-\\s+\\d{4}-\\d{2}-\\d{2}\\s*$"
+      "changelog_section_pattern": "^##\\s+\\[3\\.32\\.05\\]\\s+-\\s+\\d{4}-\\d{2}-\\d{2}\\s*$"
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-07-08T04:36:25Z",
+      "release_generated_at": "2026-07-28T09:35:11Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:19Z"
+          "generated_at": "2026-07-28T09:17:45Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:22Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -280,17 +280,17 @@
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:24Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "completion_backlog": {
           "path": "data/reports/completion_backlog.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:07Z"
+          "generated_at": "2026-07-28T09:35:04Z"
         },
         "source_inventory_gap": {
           "path": "data/reports/source_inventory_gap.json",
           "exists": true,
-          "generated_at": "2026-07-07T17:25:57Z"
+          "generated_at": "2026-07-28T09:35:02Z"
         },
         "tse_sector_backfill": {
           "path": "data/reports/tse_sector_backfill.json",
@@ -305,17 +305,17 @@
         "official_name_mismatch_backfill": {
           "path": "data/reports/official_name_mismatch_backfill.json",
           "exists": true,
-          "generated_at": "2026-06-03T03:01:19Z"
+          "generated_at": "2026-07-28T09:15:23Z"
         },
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:03Z"
+          "generated_at": "2026-07-28T09:35:03Z"
         },
         "pending_renames_manual_review": {
           "path": "data/reports/pending_renames_manual_review.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:56Z"
+          "generated_at": "2026-07-27T10:52:33Z"
         },
         "deepseek_review_summary": {
           "path": "data/reports/deepseek_review_summary.json",
@@ -390,7 +390,7 @@
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
           "exists": true,
-          "generated_at": "2026-07-07T12:19:38Z"
+          "generated_at": "2026-07-28T08:49:23Z"
         },
         "otc_name_mismatch_review": {
           "path": "data/reports/otc_name_mismatch_review.json",
@@ -460,7 +460,7 @@
         "b3_masterfile_gap_review": {
           "path": "data/reports/b3_masterfile_gap_review.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:06Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "b3_core_scope_review_queue": {
           "path": "data/reports/b3_core_scope_review_queue.json",
@@ -515,32 +515,32 @@
         "m3_correctness_campaigns": {
           "path": "data/reports/m3_correctness_campaigns.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:24Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "m3_sector_category_campaign": {
           "path": "data/reports/m3_sector_category_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:24Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "m3_name_freshness_campaign": {
           "path": "data/reports/m3_name_freshness_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:24Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "m3_identity_residual_campaign": {
           "path": "data/reports/m3_identity_residual_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:24Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "m3_non_equity_leakage_guard": {
           "path": "data/reports/m3_non_equity_leakage_guard.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:24Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "m3_correctness_audit": {
           "path": "data/reports/m3_correctness_audit.json",
           "exists": true,
-          "generated_at": "2026-07-08T04:36:24Z"
+          "generated_at": "2026-07-28T09:35:09Z"
         },
         "primary_isin_completeness": {
           "path": "data/reports/primary_isin_completeness.json",
@@ -678,10 +678,10 @@
       "invalid_correctness_claims": {},
       "report_row_counts": {
         "m3_correctness_campaigns": 5,
-        "m3_sector_category_campaign": 7079,
-        "m3_name_freshness_campaign": 303,
-        "m3_identity_residual_campaign": 1251,
-        "m3_non_equity_leakage_guard": 227,
+        "m3_sector_category_campaign": 6600,
+        "m3_name_freshness_campaign": 321,
+        "m3_identity_residual_campaign": 1203,
+        "m3_non_equity_leakage_guard": 230,
         "m3_correctness_audit": 4
       },
       "required_campaigns": [
@@ -758,17 +758,17 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-07-08T04:36:22Z",
+      "generated_at": "2026-07-28T09:35:09Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
       "command_report": {
-        "allowed_warn_count": 75,
+        "allowed_warn_count": 21,
         "passed": true,
         "quarantine_count": 0,
         "stale_allowlist_count": 0,
         "unexpected_warn_count": 0,
-        "warn_count": 75
+        "warn_count": 21
       },
       "expected_counts_from_validation": {
         "quarantine_count": 0,
@@ -836,135 +836,142 @@
       "b3_diagnostic_gaps": [],
       "b3_masterfile_diagnostics": {
         "dataset_rows": 1581,
-        "active_exchange_directory_rows": 1315,
-        "matched_dataset_rows": 1245,
-        "missing_dataset_rows": 336,
-        "dataset_match_rate": 78.75,
-        "official_any_source_matched_dataset_rows": 1262,
-        "official_any_source_missing_dataset_rows": 319,
-        "official_any_source_match_rate": 79.82,
+        "active_exchange_directory_rows": 2,
+        "matched_dataset_rows": 2,
+        "missing_dataset_rows": 1579,
+        "dataset_match_rate": 0.13,
+        "official_any_source_matched_dataset_rows": 372,
+        "official_any_source_missing_dataset_rows": 1209,
+        "official_any_source_match_rate": 23.53,
         "missing_category_totals": {
-          "bdr_or_foreign_receipt": 2,
-          "local_share_line": 265,
-          "other": 18,
-          "unit_or_fund_line": 51
+          "bdr_or_foreign_receipt": 220,
+          "local_share_line": 677,
+          "other": 23,
+          "unit_or_fund_line": 659
         },
         "missing_source_presence_totals": {
-          "absent_from_all_b3_masterfile_sources": 319,
-          "present_only_in_non_exchange_directory_source": 17
+          "absent_from_all_b3_masterfile_sources": 1209,
+          "present_only_in_non_exchange_directory_source": 370
         }
       },
       "source_freshness_status_totals": {
-        "fresh": 10,
-        "old": 127
+        "fresh": 32,
+        "old": 88,
+        "stale": 17
       },
       "source_age_bucket_totals": {
-        "age_0_48h": 10,
-        "age_over_336h": 127
+        "age_0_48h": 32,
+        "age_over_336h": 83,
+        "age_168_336h": 5,
+        "age_48_168h": 17
       },
       "source_refresh_priority_totals": {
-        "P4": 10,
-        "P2": 92,
-        "P1": 35
+        "P4": 32,
+        "P2": 86,
+        "P1": 19
       },
       "source_refresh_queue_totals": {
-        "fresh_no_refresh_needed": 10,
-        "refresh_official_subset_before_gap_enrichment": 89,
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 34,
-        "restore_or_replace_unavailable_source_before_data_fill": 4
+        "fresh_no_refresh_needed": 32,
+        "refresh_official_subset_before_gap_enrichment": 76,
+        "restore_or_replace_unavailable_source_before_data_fill": 12,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 17
       },
       "source_refresh_queue_scope_totals": {
         "fresh_no_refresh_needed": {
-          "exchange_directory": 6,
-          "corporate_action_daily_list": 1,
-          "listed_companies_subset": 2,
-          "security_identifier_registry_subset": 1
+          "exchange_directory": 17,
+          "security_identifier_registry_subset": 1,
+          "listed_companies_subset": 12,
+          "security_lookup_subset": 2
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "listed_companies_subset": 82,
-          "security_lookup_subset": 6,
-          "interlisted_subset": 1
-        },
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "exchange_directory": 34
+          "corporate_action_daily_list": 1,
+          "security_lookup_subset": 3,
+          "listed_companies_subset": 66,
+          "interlisted_subset": 1,
+          "exchange_directory": 5
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "listed_companies_subset": 3,
-          "exchange_directory": 1
+          "listed_companies_subset": 9,
+          "security_lookup_subset": 1,
+          "exchange_directory": 2
+        },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "exchange_directory": 17
         }
       },
       "source_refresh_queue_mode_totals": {
         "fresh_no_refresh_needed": {
-          "network": 9,
-          "cache": 1
+          "network": 32
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "cache": 48,
-          "network": 41
-        },
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "network": 13,
-          "cache": 21
+          "network": 43,
+          "cache": 33
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "unavailable": 4
+          "unavailable": 12
+        },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "network": 7,
+          "cache": 10
         }
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 10
+          "P4": 32
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "P2": 89
-        },
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "P1": 34
+          "P2": 76
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "P2": 3,
-          "P1": 1
+          "P2": 10,
+          "P1": 2
+        },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "P1": 17
         }
       },
       "source_refresh_queue_age_bucket_totals": {
         "fresh_no_refresh_needed": {
-          "age_0_48h": 10
+          "age_0_48h": 32
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "age_over_336h": 89
-        },
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "age_over_336h": 34
+          "age_over_336h": 59,
+          "age_48_168h": 17
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "age_over_336h": 4
+          "age_over_336h": 7,
+          "age_168_336h": 5
+        },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "age_over_336h": 17
         }
       },
       "source_refresh_queue_review_strategy_totals": {
         "fresh_no_refresh_needed": {
-          "no_refresh_required": 10
+          "no_refresh_required": 32
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "refresh_official_subset_before_gap_enrichment": 89
-        },
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "refresh_official_exchange_directory_before_identity_or_collision_work": 34
+          "refresh_official_subset_before_gap_enrichment": 76
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "restore_or_replace_unavailable_source_before_data_fill": 4
+          "restore_or_replace_unavailable_source_before_data_fill": 12
+        },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "refresh_official_exchange_directory_before_identity_or_collision_work": 17
         }
       },
       "source_refresh_queue_evidence_required_totals": {
         "fresh_no_refresh_needed": {
-          "fresh_source_generated_at_with_age_under_48h": 10
+          "fresh_source_generated_at_with_age_under_48h": 32
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 89
-        },
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 34
+          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 76
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 4
+          "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 12
+        },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 17
         }
       }
     },
@@ -986,11 +993,11 @@
     },
     "official_name_mismatch_backfill_gate": {
       "passed": true,
-      "rows_reviewed": 14,
-      "items": 14,
-      "updates_emitted": 13,
-      "accepted_rows": 13,
-      "supported_exchange_count": 15,
+      "rows_reviewed": 0,
+      "items": 0,
+      "updates_emitted": 0,
+      "accepted_rows": 0,
+      "supported_exchange_count": 1,
       "policy_missing_marker_groups": [],
       "row_gap_count": 0,
       "row_gaps": [],
@@ -1125,7 +1132,7 @@
     },
     "source_gap_traceability": {
       "passed": true,
-      "rows": 6333,
+      "rows": 7478,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1172,7 +1179,7 @@
       "source_file_mismatches": {},
       "unexpected_source_files": [],
       "policy_missing_markers": [],
-      "rows": 295,
+      "rows": 314,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1644,12 +1651,12 @@
     },
     "b3_masterfile_gap_review_gate": {
       "passed": true,
-      "rows": 336,
-      "row_count": 336,
-      "open_review_rows": 319,
-      "open_review_row_count": 319,
-      "closed_no_data_change_rows": 17,
-      "closed_no_data_change_row_count": 17,
+      "rows": 1579,
+      "row_count": 1579,
+      "open_review_rows": 1238,
+      "open_review_row_count": 1238,
+      "closed_no_data_change_rows": 341,
+      "closed_no_data_change_row_count": 341,
       "coverage_data_change_authorized": false,
       "policy_missing_marker_groups": [],
       "row_gap_count": 0,
@@ -1671,6 +1678,7 @@
         "review_bucket",
         "review_priority",
         "review_strategy",
+        "official_subset_closure_eligibility",
         "apply_eligibility",
         "verification_evidence_required",
         "b3_source_gap_evidence_path",
@@ -2088,8 +2096,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 31603,
-      "computed_next_review_batch_rows": 31603,
+      "summary_next_review_batch_rows": 34010,
+      "computed_next_review_batch_rows": 34010,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",

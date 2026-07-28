@@ -13419,6 +13419,67 @@ def test_fetch_hnx_issuer_rows_reuses_cached_isin_for_same_name(tmp_path, monkey
     assert looked_up == ["NEW"]
 
 
+def test_fetch_hnx_issuer_rows_reuses_tracked_reference_isin_without_cache(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="hnx_listed_securities",
+        provider="HNX",
+        description="Official Hanoi Stock Exchange listed securities directory",
+        source_url="https://www.hnx.vn/cophieu-etfs/chung-khoan-ny.html",
+        format="hnx_listed_securities_json",
+        reference_scope="exchange_directory",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "HNX_LISTED_SECURITIES_CACHE", tmp_path / "missing-cache.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_HNX_LISTED_SECURITIES_CACHE",
+        tmp_path / "missing-legacy-cache.json",
+    )
+    reference_path = tmp_path / "reference.csv"
+    reference_path.write_text(
+        "source_key,ticker,name,isin\n"
+        "hnx_listed_securities,VNR,Tổng CTCP Tái Bảo hiểm Quốc gia Việt Nam,VN000000VNR7\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_REFERENCE_CSV", reference_path)
+    content = """
+    <table>
+      <tr><th>STT</th><th>M&#227; CK</th><th>T&#234;n t&#7893; ch&#7913;c ph&#225;t h&#224;nh</th></tr>
+      <tr><td>1</td><td>VNR</td><td>Tổng CTCP Tái Bảo hiểm Quốc gia Việt Nam</td></tr>
+    </table>
+    """
+
+    class DummyResponse:
+        def __init__(self, *, payload: dict[str, object] | None = None, url: str = ""):
+            self._payload = payload or {}
+            self.url = url
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return self._payload
+
+    class DummySession:
+        def get(self, url: str, **kwargs) -> DummyResponse:
+            return DummyResponse(url="https://www.hnx.vn/vi-vn/cophieu-etfs/chung-khoan-ny.html")
+
+        def post(self, url: str, **kwargs) -> DummyResponse:
+            return DummyResponse(payload={"Content": content})
+
+    looked_up: list[str] = []
+
+    def fake_vsdc_lookup(tickers, session=None):
+        looked_up.extend(list(tickers))
+        return {}
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_vsdc_isin_lookup", fake_vsdc_lookup)
+
+    rows = fetch_hnx_issuer_rows(source, session=DummySession())
+
+    assert rows[0]["isin"] == "VN000000VNR7"
+    assert looked_up == []
+
+
 def test_load_hnx_issuer_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "hnx_listed_securities.json"
     cache_path.write_text(

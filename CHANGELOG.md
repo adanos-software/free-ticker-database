@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.32.05] - 2026-07-28
+
+### Summary
+
+**Resilient HNX identifier refresh and current official-masterfile release.** Prevents transient VSDC lookup failures from dropping already verified HNX/UPCoM ISINs, and publishes the latest validated official exchange refresh.
+
+### Changed
+
+- Reused valid identifiers from the tracked masterfile reference for unchanged HNX and UPCoM listings before requesting missing identifiers from VSDC.
+- Refreshed official HKEX, HNX, IDX, JPX, and KRX masterfile evidence, including 10 new rows, 9 vanished-source rows retained for delisting review, and 16 source-reported name changes.
+- Regenerated canonical listings, identifiers, aliases, coverage, entry-quality, source-gap, validation, and Adanos reference outputs.
+
+### Fixed
+
+- Prevented an isolated VSDC request failure from erasing `HNX::VNR`'s verified ISIN and producing a false `official_name_mismatch` release-gate failure.
+- Added a regression test covering a cacheless CI runner with an unavailable VSDC lookup and a valid tracked HNX identifier.
+
+### Verification
+
+- `python -m pytest tests/ -q`: 1661 passed. `scripts/validate_database.py`: 84/84 error gates passed. `scripts/check_entry_quality_gate.py`: 21 reviewed warnings allowed, 0 unexpected, 0 stale. Entry-quality coverage: 74,743/74,743 listings.
+
 ## [3.32.04] - 2026-07-23
 
 ### Summary

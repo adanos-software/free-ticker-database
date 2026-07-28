@@ -1,34 +1,30 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-07-27T10:09:15Z`
-- New rows: `49`
-- Vanished rows: `29`
-- Changed rows: `13`
+- Generated at: `2026-07-28T09:13:56Z`
+- New rows: `10`
+- Vanished rows: `9`
+- Changed rows: `16`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| isin_change | 6 |
-| name_change | 7 |
+| isin_change | 3 |
+| name_change | 16 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| bse_india_scrips | 18 |
-| bvb_shares_directory | 1 |
-| cse_lk_company_info_summary | 1 |
-| cse_ma_listed_companies | 1 |
-| deutsche_boerse_etfs_etps | 13 |
-| deutsche_boerse_xetra_all_tradable_equities | 15 |
+| hkex_securities_list | 2 |
+| krx_etf_finder | 5 |
+| krx_listed_companies | 3 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| bse_india_scrips | 9 |
-| bvb_shares_directory | 1 |
-| deutsche_boerse_etfs_etps | 8 |
-| deutsche_boerse_xetra_all_tradable_equities | 11 |
+| hkex_securities_list | 4 |
+| jpx_tse_stock_detail | 3 |
+| krx_listed_companies | 2 |
