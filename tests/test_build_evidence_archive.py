@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import zipfile
 from pathlib import Path
 
@@ -21,5 +22,9 @@ def test_build_evidence_archive_excludes_operational_keep_patterns(tmp_path: Pat
     )
 
     assert manifest["files"] == ["data/reports/twelvedata_batch_a_manual_apply.md"]
+    assert json.loads(
+        (root / "output" / "evidence_archive" / "evidence-manifest.json").read_text(encoding="utf-8")
+    ) == manifest
+    assert not (root / "output" / "evidence_archive" / "manifest.json").exists()
     with zipfile.ZipFile(root / manifest["archive"]) as zipped:
         assert zipped.namelist() == ["data/reports/twelvedata_batch_a_manual_apply.md"]

@@ -16,6 +16,7 @@ except ModuleNotFoundError:  # pragma: no cover - script execution path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "output" / "evidence_archive"
 DEFAULT_ARCHIVE_NAME = "m2-campaign-evidence.zip"
+MANIFEST_NAME = "evidence-manifest.json"
 ARCHIVE_PATTERNS = [
     "data/deepseek_review_jobs/*",
     "data/reports/twelvedata_*",
@@ -70,7 +71,7 @@ def build_evidence_archive(
         "files": [path.relative_to(ROOT).as_posix() for path in files],
         "policy": "historical_campaign_evidence_release_asset_not_operational_workflow_input",
     }
-    write_json(output / "manifest.json", manifest)
+    write_json(output / MANIFEST_NAME, manifest)
     return manifest
 
 
