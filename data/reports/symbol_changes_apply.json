@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-07-28T08:49:35Z",
+    "generated_at": "2026-07-29T09:06:56Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 314,
+    "blocked_rows": 316,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 34,
-      "blocked_old_symbol_not_unique_in_us_scope": 240,
+      "blocked_new_symbol_collision": 35,
+      "blocked_old_symbol_not_unique_in_us_scope": 242,
       "manual_isin_not_proven_unchanged": 2,
-      "manual_non_us_or_unscoped_source": 37,
+      "manual_non_us_or_unscoped_source": 36,
       "manual_transition_or_shell_name": 1
     }
   },
@@ -22,7 +22,7 @@
       "old_symbol": "TRINZ",
       "new_symbol": "TRNZ",
       "new_company_name": "Trinity Capital Inc",
-      "status": "manual_non_us_or_unscoped_source"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "dafedc437aafa605",
@@ -30,7 +30,7 @@
       "old_symbol": "TRINI",
       "new_symbol": "TRNI",
       "new_company_name": "Trinity Capital Inc",
-      "status": "manual_non_us_or_unscoped_source"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "91fb16214d1c9ddf",
@@ -118,6 +118,14 @@
       "old_symbol": "WAI",
       "new_symbol": "DPU",
       "new_company_name": "Top Kingwin Ltd.",
+      "status": "blocked_new_symbol_collision"
+    },
+    {
+      "change_id": "40a86466c87bbc3b",
+      "effective_date": "2026-07-13",
+      "old_symbol": "SVAC",
+      "new_symbol": "GFUZ",
+      "new_company_name": "General Fusion Group Ltd.",
       "status": "blocked_new_symbol_collision"
     },
     {
@@ -1542,7 +1550,7 @@
       "old_symbol": "BTCM",
       "new_symbol": "SLAI",
       "new_company_name": "Solai Ltd.",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "3bc4508f5613d5bb",
@@ -1622,6 +1630,14 @@
       "old_symbol": "IROH",
       "new_symbol": "UCFI",
       "new_company_name": "Cn Healthy Food Tech Group Corp",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "42d00d5891f43f11",
+      "effective_date": "2025-09-30",
+      "old_symbol": "SVACU",
+      "new_symbol": "GFUZ",
+      "new_company_name": "General Fusion Group Ltd.",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
