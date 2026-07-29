@@ -476,6 +476,8 @@ CORPORATE_ALIAS_MARKERS = {
     "ventures",
 }
 TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
+    "alba": {"arkadian strategic metals"},
+    "alba mineral resources": {"arkadian strategic metals"},
     "athleta": {"gap", "the gap"},
     "bmw": {"bayerische motoren werke", "bay.motoren werke ag st"},
     "citibank": {"citigroup", "citigroup inc."},
@@ -506,9 +508,13 @@ TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "synthaverse": {"sharehold.val.bet.na o.n.", "synthaverse"},
     "tdg gold": {"tdggf", "tdg gold corp"},
     "t. rowe price group inc": {"t.row.pr.grp", "t rowe price grp", "trowprgrp"},
+    "tiger alpha": {"potentially ai"},
     "tiger brokers": {"up fintech", "up fintech holding ltd", "up fintech holding"},
+    "tiger royalties and investments": {"potentially ai"},
+    "tir": {"potentially ai"},
     "banque cantonale du valais": {"walliser kantonalbank"},
 }
+REVIEWED_HISTORICAL_SYMBOL_ALIASES = {"alba", "tir"}
 ISIN_PREFIX_COUNTRIES = {
     "AI": "Anguilla",
     "AT": "Austria",
@@ -1031,6 +1037,13 @@ def is_trusted_non_lexical_alias(alias: str, company_name: str) -> bool:
         return False
     company_compact = normalized_compact(company_name)
     return any(normalized_compact(candidate) in company_compact for candidate in trusted_companies)
+
+
+def is_reviewed_historical_symbol_alias(alias: str, company_name: str) -> bool:
+    return (
+        alias.lower().strip() in REVIEWED_HISTORICAL_SYMBOL_ALIASES
+        and is_trusted_non_lexical_alias(alias, company_name)
+    )
 
 
 def is_company_style_alias(alias: str) -> bool:
@@ -2030,6 +2043,8 @@ def should_drop_contextual_alias(
     alias: str,
     alias_context: dict[str, dict[str, set[str]]] | None,
 ) -> bool:
+    if is_reviewed_historical_symbol_alias(alias, row["name"]):
+        return False
     if not alias_context:
         return False
 
@@ -2074,7 +2089,10 @@ def clean_aliases(
                 continue
             if has_partial_name_token_alias(alias, row["name"]):
                 continue
-            if should_drop_from_ticker_alias_column(alias=alias, isin=cleaned_isin, wkns=wkns):
+            if (
+                should_drop_from_ticker_alias_column(alias=alias, isin=cleaned_isin, wkns=wkns)
+                and not is_reviewed_historical_symbol_alias(alias, row["name"])
+            ):
                 continue
             if is_blocked_alias(alias):
                 continue
@@ -2819,7 +2837,9 @@ def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[s
         if row["wkn"]:
             all_aliases.append((row["wkn"], "wkn"))
         for alias in row["aliases"]:
-            if is_numeric_exchange_alias(row, alias, wkns, row["isin"]):
+            if is_reviewed_historical_symbol_alias(alias, row.get("name", "")):
+                alias_type = "exchange_ticker"
+            elif is_numeric_exchange_alias(row, alias, wkns, row["isin"]):
                 alias_type = "exchange_ticker"
             elif (row["ticker"], alias) in alias_type_lookup:
                 alias_type = alias_type_lookup[(row["ticker"], alias)]
@@ -2852,7 +2872,9 @@ def build_core_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tu
         if row["wkn"]:
             all_aliases.append((row["wkn"], "wkn"))
         for alias in row["aliases"]:
-            if is_numeric_exchange_alias(row, alias, wkns, row["isin"]):
+            if is_reviewed_historical_symbol_alias(alias, row.get("name", "")):
+                alias_type = "exchange_ticker"
+            elif is_numeric_exchange_alias(row, alias, wkns, row["isin"]):
                 alias_type = "exchange_ticker"
             elif (row["ticker"], alias) in alias_type_lookup:
                 alias_type = alias_type_lookup[(row["ticker"], alias)]

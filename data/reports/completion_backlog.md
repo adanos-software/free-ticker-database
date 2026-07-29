@@ -1,14 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-07-28T09:35:04Z`
+Generated at: `2026-07-29T09:18:26Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `778`
-- Missing stock sectors: `34`
+- Missing stock sectors: `38`
 - Missing ETF categories: `108`
-- Official symbol collisions tracked in exchange references: `11538`
-- Core rows hidden only by the legacy global-ticker compatibility export: `2028`
+- Official symbol collisions tracked in exchange references: `11556`
+- Core rows hidden only by the legacy global-ticker compatibility export: `2030`
 
 ## Next Safe Batches
 
@@ -52,9 +52,12 @@ These are orchestration candidates only. They do not authorize direct data chang
 |---|---|---|---:|---|---|---|
 | 1 | NASDAQ | Stock | 25 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 2 | NYSE | Stock | 6 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 3 | B3 | Stock | 1 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 4 | HKEX | Stock | 1 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 5 | NYSE MKT | Stock | 1 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 3 | LSE | Stock | 2 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 4 | OTC | Stock | 1 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 5 | XETRA | Stock | 1 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 6 | B3 | Stock | 1 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 7 | HKEX | Stock | 1 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 8 | NYSE MKT | Stock | 1 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 
 ## Top Missing ETF Categories
 
@@ -72,9 +75,12 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 2 | NASDAQ | 45 | 25 | 20 | official_full |
 | 3 | NYSE ARCA | 26 | 0 | 26 | official_full |
 | 4 | NYSE | 6 | 6 | 0 | official_full |
-| 5 | B3 | 1 | 1 | 0 | official_full |
-| 6 | HKEX | 1 | 1 | 0 | official_full |
-| 7 | NYSE MKT | 1 | 1 | 0 | official_full |
+| 5 | LSE | 2 | 2 | 0 | official_full |
+| 6 | B3 | 1 | 1 | 0 | official_full |
+| 7 | HKEX | 1 | 1 | 0 | official_full |
+| 8 | NYSE MKT | 1 | 1 | 0 | official_full |
+| 9 | OTC | 1 | 1 | 0 | official_full |
+| 10 | XETRA | 1 | 1 | 0 | official_full |
 
 ## Model Migration Prep
 

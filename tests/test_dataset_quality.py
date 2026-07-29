@@ -1175,9 +1175,36 @@ def test_should_exclude_row_drops_preferred_suffix_even_when_misclassified_as_et
 def test_alias_matches_company_accepts_trusted_non_lexical_renames():
     from scripts.rebuild_dataset import alias_matches_company
 
+    assert alias_matches_company("ALBA", "Arkadian Strategic Metals Plc") is True
+    assert alias_matches_company("Alba Mineral Resources", "Arkadian Strategic Metals Plc") is True
     assert alias_matches_company("Sena J Property PCL", "SEN X PUBLIC COMPANY LIMITED") is True
     assert alias_matches_company("Daetwyl I", "Dätwyler Holding AG") is True
     assert alias_matches_company("CONTRALADORA AXEL SAB", "CONTROLADORA AXTEL, S.A.B. DE C.V.") is True
+    assert alias_matches_company("TIR", "Potentially AI Plc") is True
+    assert alias_matches_company("Tiger Alpha", "Potentially AI Plc") is True
+    assert alias_matches_company("Tiger Royalties and investments", "Potentially AI Plc") is True
+
+
+def test_clean_aliases_retains_reviewed_historical_lse_symbols():
+    from scripts.rebuild_dataset import clean_aliases
+
+    akn = {
+        "ticker": "AKN",
+        "name": "Arkadian Strategic Metals Plc",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "isin": "GB00B06KBB18",
+    }
+    agi = {
+        "ticker": "AGI",
+        "name": "Potentially AI Plc",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "isin": "GB00BTDN2T17",
+    }
+
+    assert clean_aliases(akn, ["ALBA"], set())[1] == ["alba"]
+    assert clean_aliases(agi, ["TIR"], set())[1] == ["tir"]
 
 
 def test_alias_matches_company_handles_xetra_diacritics_and_compact_labels():
