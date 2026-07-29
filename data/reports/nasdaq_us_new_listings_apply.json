@@ -1,19 +1,201 @@
 {
   "summary": {
-    "generated_at": "2026-07-28T09:13:59Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-07-29T09:24:47Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "supported_asset_types": [
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
-    "skipped_rows": 0,
-    "accepted_by_exchange": {},
-    "skipped_by_reason": {}
+    "new_supported_rows": 14,
+    "accepted_rows": 10,
+    "skipped_rows": 4,
+    "accepted_by_exchange": {
+      "BATS": 7,
+      "NASDAQ": 2,
+      "NYSE ARCA": 1
+    },
+    "skipped_by_reason": {
+      "excluded_non_common_stock": 1,
+      "temporary_when_issued_line": 2,
+      "ticker_collision": 1
+    }
   },
-  "accepted": [],
-  "skipped": []
+  "accepted": [
+    {
+      "ticker": "BNAV",
+      "name": "Amplify Fairlead Tactical Bitcoin ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "GOIB",
+      "name": "Direxion GOOGL Defined Income Boost ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MEIB",
+      "name": "Direxion META Defined Income Boost ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MUIB",
+      "name": "Direxion MU Defined Income Boost ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "NVIB",
+      "name": "Direxion NVDA Defined Income Boost ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "PLIB",
+      "name": "Direxion PLTR Defined Income Boost ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "TSIB",
+      "name": "Direxion TSLA Defined Income Boost ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "BGUS",
+      "name": "Baillie Gifford U.S. Equity Growth ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "IOND",
+      "name": "Ionic Digital Inc. - Class A Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "WSMD",
+      "name": "Wasatch Small/Mid Cap ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "CATLU",
+      "exchange": "NASDAQ",
+      "name": "Catalyst Acquisition Corp. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "ADIG.V",
+      "exchange": "NYSE",
+      "name": "ADI Global Distribution Inc. Common Stock When-Issued",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "temporary_when_issued_line"
+    },
+    {
+      "ticker": "REZI.V",
+      "exchange": "NYSE",
+      "name": "Resideo Technologies, Inc. Common Stock When-Issued",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "temporary_when_issued_line"
+    },
+    {
+      "ticker": "IMC",
+      "exchange": "NYSE MKT",
+      "name": "IMC Rare Earths Ltd Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "ticker_collision"
+    }
+  ]
 }
