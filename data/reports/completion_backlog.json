@@ -403,13 +403,70 @@
       "asset_type": "Stock",
       "confidence_policy": "Accept only canonical stock sectors; FinanceDatabase requires exchange/name gates, same-ISIN peers require unanimous same-asset sector.",
       "etf_missing_count": 0,
+      "exchange": "LSE",
+      "field": "missing_sector_stock",
+      "missing_count": 2,
+      "notes": "Good candidate for deterministic local review batches.",
+      "official_source_count": 3,
+      "priority_bucket": "ranked_by_missing_count",
+      "priority_rank": 3,
+      "recommended_source": "FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available.",
+      "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
+      "review_needed": true,
+      "script": "scripts/backfill_financedatabase_metadata.py; scripts/backfill_sector_from_isin_peers.py",
+      "stock_missing_count": 2,
+      "target_field": "stock_sector",
+      "venue_status": "official_full"
+    },
+    {
+      "asset_type": "Stock",
+      "confidence_policy": "Sector must map to canonical stock GICS sector; secondary sources require ticker/exchange/name gates and audit output.",
+      "etf_missing_count": 0,
+      "exchange": "OTC",
+      "field": "missing_sector_stock",
+      "missing_count": 1,
+      "notes": "OTC is noisy; do not apply thin-name sector guesses without issuer evidence.",
+      "official_source_count": 3,
+      "priority_bucket": "ranked_by_missing_count",
+      "priority_rank": 4,
+      "recommended_source": "SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals.",
+      "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
+      "review_needed": true,
+      "script": "scripts/backfill_sec_sic_sectors.py; scripts/backfill_alphavantage_sectors.py; scripts/backfill_financedatabase_metadata.py",
+      "stock_missing_count": 1,
+      "target_field": "stock_sector",
+      "venue_status": "official_full"
+    },
+    {
+      "asset_type": "Stock",
+      "confidence_policy": "Accept only canonical stock sectors; FinanceDatabase requires exchange/name gates, same-ISIN peers require unanimous same-asset sector.",
+      "etf_missing_count": 0,
+      "exchange": "XETRA",
+      "field": "missing_sector_stock",
+      "missing_count": 1,
+      "notes": "Good candidate for deterministic local review batches.",
+      "official_source_count": 3,
+      "priority_bucket": "ranked_by_missing_count",
+      "priority_rank": 5,
+      "recommended_source": "FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available.",
+      "reference_scopes": "exchange_directory|listed_companies_subset",
+      "review_needed": true,
+      "script": "scripts/backfill_financedatabase_metadata.py; scripts/backfill_sector_from_isin_peers.py",
+      "stock_missing_count": 1,
+      "target_field": "stock_sector",
+      "venue_status": "official_full"
+    },
+    {
+      "asset_type": "Stock",
+      "confidence_policy": "Accept only canonical stock sectors; FinanceDatabase requires exchange/name gates, same-ISIN peers require unanimous same-asset sector.",
+      "etf_missing_count": 0,
       "exchange": "B3",
       "field": "missing_sector_stock",
       "missing_count": 1,
       "notes": "Good candidate for deterministic local review batches.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 3,
+      "priority_rank": 6,
       "recommended_source": "FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available.",
       "reference_scopes": "exchange_directory|listed_companies_subset",
       "review_needed": true,
@@ -428,7 +485,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 4,
+      "priority_rank": 7,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -447,7 +504,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 5,
+      "priority_rank": 8,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -518,15 +575,15 @@
     "exchanges_by_field": {
       "missing_etf_category": 3,
       "missing_isin_primary": 19,
-      "missing_sector_stock": 5
+      "missing_sector_stock": 8
     },
     "field_totals": {
-      "missing_etf_category": 117,
-      "missing_isin_primary": 788,
-      "missing_sector_stock": 35
+      "missing_etf_category": 108,
+      "missing_isin_primary": 778,
+      "missing_sector_stock": 38
     },
-    "generated_at": "2026-07-29T09:25:58Z",
-    "legacy_primary_ticker_collision_rows": 2028,
+    "generated_at": "2026-07-29T09:18:26Z",
+    "legacy_primary_ticker_collision_rows": 2030,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",
@@ -823,7 +880,7 @@
         "why_next": "OpenFIGI unsupported-venue residual review-gated workflow"
       }
     ],
-    "official_masterfile_collisions": 11539,
-    "rows": 27
+    "official_masterfile_collisions": 11556,
+    "rows": 30
   }
 }

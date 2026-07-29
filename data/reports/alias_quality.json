@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-29T09:26:03Z",
-    "rows": 125065,
+    "generated_at": "2026-07-29T09:18:29Z",
+    "rows": 125059,
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "aliases_csv": "data/aliases.csv"
@@ -9,30 +9,34 @@
   },
   "summary": {
     "status_counts": {
-      "reject": 66011,
-      "accept": 58590,
-      "review": 464
+      "reject": 66017,
+      "accept": 58576,
+      "review": 466
     },
     "detection_policy_counts": {
-      "identifier_only": 66011,
-      "safe_natural_language": 58590,
-      "symbol_alias_only": 464
+      "identifier_only": 66017,
+      "safe_natural_language": 58576,
+      "symbol_alias_only": 466
     },
     "reason_counts": {
-      "identifier_alias": 66011,
-      "accepted_name_alias": 58590,
-      "same_as_ticker": 464
+      "identifier_alias": 66017,
+      "accepted_name_alias": 58576,
+      "same_as_ticker": 464,
+      "exchange_ticker_alias": 2
     },
     "alias_type_status_counts": {
+      "exchange_ticker": {
+        "review": 2
+      },
       "isin": {
-        "reject": 61687
+        "reject": 61695
       },
       "name": {
-        "accept": 58590,
+        "accept": 58576,
         "review": 464
       },
       "wkn": {
-        "reject": 4324
+        "reject": 4322
       }
     }
   },
@@ -371,6 +375,16 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "AGI",
+        "alias": "tir",
+        "alias_type": "exchange_ticker",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.75",
+        "reason": "exchange_ticker_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "AHASOLAR",
         "alias": "ahasolar",
         "alias_type": "name",
@@ -408,6 +422,16 @@
         "detection_policy": "symbol_alias_only",
         "confidence": "0.80",
         "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "AKN",
+        "alias": "alba",
+        "alias_type": "exchange_ticker",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.75",
+        "reason": "exchange_ticker_alias",
         "duplicate_ticker_count": "1"
       },
       {
@@ -513,26 +537,6 @@
       {
         "ticker": "ANTARCHILE",
         "alias": "antarchile",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "APETIT",
-        "alias": "apetit",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "APOTEA",
-        "alias": "apotea",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",
