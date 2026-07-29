@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-28T09:35:00Z",
+    "generated_at": "2026-07-29T09:18:22Z",
     "rows": 74743,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67452,
-      "source_gap": 7270,
+      "pass": 67451,
+      "source_gap": 7271,
       "warn": 21
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5349,
-      "official_reference": 68185,
+      "identifier_enriched": 5348,
+      "official_reference": 68186,
       "scoped_source_gap": 263,
       "valid_isin": 946
     },
     "severity_counts": {
       "high": 14,
       "medium": 7,
-      "source_gap": 7478
+      "source_gap": 7480
     },
     "issue_counts": {
-      "official_reference_gap": 6558,
+      "official_reference_gap": 6557,
       "expected_missing_primary_isin": 778,
       "missing_etf_category": 108,
-      "missing_stock_sector": 34,
+      "missing_stock_sector": 37,
       "country_isin_mismatch": 12,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
@@ -77,8 +77,8 @@
       },
       {
         "exchange": "LSE",
-        "pass": 6418,
-        "source_gap": 132,
+        "pass": 6417,
+        "source_gap": 133,
         "warn": 9
       },
       {
@@ -1028,6 +1028,24 @@
       ]
     },
     {
+      "listing_key": "LSE::0A6B",
+      "ticker": "0A6B",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0A8Q",
       "ticker": "0A8Q",
       "exchange": "LSE",
@@ -1096,6 +1114,24 @@
           "field": "exchange",
           "value": "LSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0GQU",
+      "ticker": "0GQU",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -18252,42 +18288,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BKUH",
-      "ticker": "BKUH",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "B3::BLAU3",
-      "ticker": "BLAU3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "B3",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
