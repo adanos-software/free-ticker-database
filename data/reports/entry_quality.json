@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-29T09:18:22Z",
-    "rows": 74743,
+    "generated_at": "2026-07-29T09:30:00Z",
+    "rows": 74753,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67451,
-      "source_gap": 7271,
+      "pass": 67439,
+      "source_gap": 7293,
       "warn": 21
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5348,
-      "official_reference": 68186,
+      "identifier_enriched": 5359,
+      "official_reference": 68184,
       "scoped_source_gap": 263,
       "valid_isin": 947
     },
     "severity_counts": {
       "high": 14,
       "medium": 7,
-      "source_gap": 7480
+      "source_gap": 7512
     },
     "issue_counts": {
-      "official_reference_gap": 6557,
-      "expected_missing_primary_isin": 778,
-      "missing_etf_category": 108,
-      "missing_stock_sector": 37,
+      "official_reference_gap": 6569,
+      "expected_missing_primary_isin": 788,
+      "missing_etf_category": 117,
+      "missing_stock_sector": 38,
       "country_isin_mismatch": 12,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
@@ -18295,60 +18295,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "BATS",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BKRP",
-      "ticker": "BKRP",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "VSE::BKS",
-      "ticker": "BKS",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "VSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BKSLF",
-      "ticker": "BKSLF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
