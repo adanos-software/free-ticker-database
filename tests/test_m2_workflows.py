@@ -15,13 +15,17 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "scripts/apply_nasdaq_us_new_listings.py" in workflow
     assert "--asset-type Stock,ETF" in workflow
     rebuild_step = workflow.split("- name: Rebuild derived exports and reports", 1)[1].split(
-        "- name: Validate release gates", 1
+        "- name: Validate technical release gates", 1
     )[0]
-    validation_step = workflow.split("- name: Validate release gates", 1)[1].split(
+    validation_step = workflow.split("- name: Validate technical release gates", 1)[1].split(
         "- name: Detect substantive changes", 1
     )[0]
     assert "if:" not in rebuild_step
-    assert "if:" not in validation_step
+    assert "continue-on-error: true" in validation_step
+    assert "scripts/classify_masterfile_rotation_gates.py" in workflow
+    assert "steps.release.outputs.review_required != 'true'" in workflow
+    assert "draft: ${{ steps.release.outputs.review_required == 'true' }}" in workflow
+    assert 'gh pr ready "${{ steps.cpr.outputs.pull-request-number }}" --undo' in workflow
     assert 'diff_count" = "0"' in workflow
     assert "timestamp-only churn discarded" in workflow
     assert "gh workflow run ci.yml --ref automation/masterfile-rotation" in workflow

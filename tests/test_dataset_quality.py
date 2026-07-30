@@ -1968,6 +1968,41 @@ def test_cleaned_rows_backfills_unique_official_isin(monkeypatch):
     assert cleaned[0]["isin"] == "GB0007655250"
 
 
+def test_cleaned_rows_does_not_backfill_unreviewed_foreign_otc_us_isin(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "EXMPY",
+        "name": "Example Holdings ADR",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "Germany",
+        "country_code": "DE",
+        "isin": "",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_isin_fallbacks",
+        lambda: {("EXMPY", "OTC", "Stock"): "US03524A1088"},
+    )
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["isin"] == ""
+    assert cleaned[0]["country"] == "Germany"
+    assert cleaned[0]["country_code"] == "DE"
+
+
 def test_cleaned_rows_backfills_unique_official_sector(monkeypatch):
     from scripts import rebuild_dataset
 

@@ -68,12 +68,39 @@ jobs:
           python scripts/build_adanos_ticker_reference.py
           python scripts/update_readme_snapshot.py
 
-      - name: Validate release gates
+      - name: Validate technical release gates
         run: |
           python -m pytest tests/ -q
-          python scripts/check_entry_quality_gate.py
           python scripts/check_readme_snapshot.py
+
+      - name: Check entry quality gate
+        id: entry_quality_gate
+        continue-on-error: true
+        run: python scripts/check_entry_quality_gate.py
+
+      - name: Validate database release gates
+        id: database_gates
+        continue-on-error: true
+        run: |
           python scripts/validate_database.py
+
+      - name: Classify release gate result
+        id: release
+        run: |
+          python scripts/classify_masterfile_rotation_gates.py \
+            --entry-quality-gate data/reports/entry_quality_gate.json \
+            --validation-report data/reports/validation_report.json \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Summarize manual data review
+        if: steps.release.outputs.review_required == 'true'
+        run: |
+          {
+            echo "### Masterfile rotation needs data review"
+            echo
+            echo "The refresh completed technically, but introduced ${{ steps.release.outputs.unexpected_warn_count }} new entry-quality warning(s)."
+            echo "A draft pull request will preserve the generated diff; CI and automerge remain disabled until review."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Detect substantive changes
         id: changes
@@ -86,10 +113,12 @@ jobs:
           print(count)
           PY
           diff_count=$(cat /tmp/masterfile-diff-counts)
-          if [ "$diff_count" = "0" ] && [ "${{ steps.apply.outputs.new_listings_applied }}" != "true" ]; then
+          if [ "$diff_count" = "0" ] \
+            && [ "${{ steps.apply.outputs.new_listings_applied }}" != "true" ] \
+            && [ "${{ steps.release.outputs.review_required }}" != "true" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No masterfile row diffs or accepted listings; skipping PR (timestamp-only churn discarded)."
-          elif git diff --quiet -- \
+          elif [ "${{ steps.release.outputs.review_required }}" != "true" ] && git diff --quiet -- \
             data/masterfiles/reference.csv \
             data/masterfiles/sources.json \
             data/masterfiles/supplemental_listings.csv \
@@ -109,7 +138,8 @@ jobs:
           branch: automation/masterfile-rotation
           delete-branch: true
           commit-message: Rotate official masterfile batch
-          title: "Rotate official masterfile batch"
+          title: "${{ steps.release.outputs.review_required == 'true' && 'Review official masterfile rotation' || 'Rotate official masterfile batch' }}"
+          draft: ${{ steps.release.outputs.review_required == 'true' }}
           body: |
             Automated official masterfile rotation.
 
@@ -121,17 +151,34 @@ jobs:
             Vanished listings are reported for delisting classification and are
             never directly deleted by this workflow.
 
+            Entry-quality review required: `${{ steps.release.outputs.review_required }}`
+            Unexpected entry-quality warnings: `${{ steps.release.outputs.unexpected_warn_count }}`
+
+            Draft review PRs are never dispatched to CI or enabled for automerge.
+
             Diff report: `data/reports/masterfile_rotation_diff.md`
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
 
-      - name: Dispatch CI for automation pull request
+      - name: Synchronize pull request review state
         if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          is_draft=$(gh pr view "${{ steps.cpr.outputs.pull-request-number }}" --json isDraft --jq .isDraft)
+          if [ "${{ steps.release.outputs.review_required }}" = "true" ] && [ "$is_draft" != "true" ]; then
+            gh pr ready "${{ steps.cpr.outputs.pull-request-number }}" --undo
+          elif [ "${{ steps.release.outputs.review_required }}" != "true" ] && [ "$is_draft" = "true" ]; then
+            gh pr ready "${{ steps.cpr.outputs.pull-request-number }}"
+          fi
+
+      - name: Dispatch CI for automation pull request
+        if: steps.cpr.outputs.pull-request-number != '' && steps.release.outputs.review_required != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run ci.yml --ref automation/masterfile-rotation
 
       - name: Enable automerge
-        if: steps.cpr.outputs.pull-request-number != ''
+        if: steps.cpr.outputs.pull-request-number != '' && steps.release.outputs.review_required != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash

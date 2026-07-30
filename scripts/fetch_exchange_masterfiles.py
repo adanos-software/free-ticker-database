@@ -3489,6 +3489,22 @@ def fetch_otc_markets_security_profile(
     return sorted(rows, key=lambda row: row["ticker"])
 
 
+def merge_otc_markets_security_profile_rows(
+    existing_rows: Iterable[dict[str, str]],
+    refreshed_rows: Iterable[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Merge point-lookups without treating an omitted response as a deletion."""
+    rows_by_ticker = {
+        row.get("ticker", ""): row
+        for row in existing_rows
+        if row.get("ticker")
+    }
+    for row in refreshed_rows:
+        if row.get("ticker"):
+            rows_by_ticker[row["ticker"]] = row
+    return sorted(rows_by_ticker.values(), key=lambda row: row.get("ticker", ""))
+
+
 def load_otc_markets_security_profile_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -3517,6 +3533,12 @@ def load_otc_markets_security_profile_rows(
         listings_path=listings_path,
         otc_name_mismatch_review_path=otc_name_mismatch_review_path,
     )
+    tracked_rows = [
+        row
+        for row in load_csv(MASTERFILE_REFERENCE_CSV)
+        if row.get("source_key") == source.key
+    ]
+    rows = merge_otc_markets_security_profile_rows(tracked_rows, rows)
     ensure_output_dirs()
     OTC_MARKETS_SECURITY_PROFILE_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"

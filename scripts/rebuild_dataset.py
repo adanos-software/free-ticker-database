@@ -2580,6 +2580,15 @@ def cleaned_rows():
         merged = dict(row)
         if "isin" not in review_metadata_updates.get(row_key, {}):
             official_isin = official_isin_fallbacks.get((row["ticker"], row["exchange"], row["asset_type"]), "")
+            inferred_country = country_from_isin(official_isin)
+            unreviewed_foreign_otc_us_isin = bool(
+                row.get("exchange") == "OTC"
+                and inferred_country == "United States"
+                and merged.get("country")
+                and merged.get("country") != "United States"
+            )
+            if unreviewed_foreign_otc_us_isin:
+                official_isin = ""
             if official_isin and merged.get("isin") != official_isin:
                 merged["isin"] = official_isin
                 inferred_country = country_from_isin(official_isin)
