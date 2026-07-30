@@ -723,6 +723,95 @@ def test_fetch_otc_markets_security_profile_targets_include_missing_isin_and_rev
     assert next(row for row in rows if row["ticker"] == "AAMMF")["isin"] == "CA02028L1076"
 
 
+def test_load_otc_markets_security_profile_rows_preserves_unreturned_tracked_profiles(tmp_path, monkeypatch):
+    source = MasterfileSource(
+        key="otc_markets_security_profile",
+        provider="OTC Markets",
+        description="OTC profile",
+        source_url="https://www.otcmarkets.com/stock/{symbol}/security",
+        format="otc_markets_security_profile_json",
+        reference_scope="security_lookup_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "listing_key,ticker,exchange,name,asset_type,isin\n"
+        "OTC::KEEP,KEEP,OTC,Keep Holdings,Stock,\n"
+        "OTC::UPDATE,UPDATE,OTC,Update Holdings,Stock,\n",
+        encoding="utf-8",
+    )
+    review_path = tmp_path / "review.csv"
+    reference_path = tmp_path / "reference.csv"
+    fetch_exchange_masterfiles.write_csv(
+        reference_path,
+        fetch_exchange_masterfiles.MASTERFILE_FIELDNAMES,
+        [
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": "https://www.otcmarkets.com/stock/KEEP/security",
+                "ticker": "KEEP",
+                "name": "Keep Holdings Ltd",
+                "exchange": "OTC",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": "US1234567890",
+            },
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": "https://www.otcmarkets.com/stock/UPDATE/security",
+                "ticker": "UPDATE",
+                "name": "Old Update Holdings",
+                "exchange": "OTC",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": "",
+            },
+        ],
+    )
+    fresh_update = {
+        "source_key": source.key,
+        "provider": source.provider,
+        "source_url": "https://www.otcmarkets.com/stock/UPDATE/security",
+        "ticker": "UPDATE",
+        "name": "Updated Holdings",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": source.reference_scope,
+        "official": "true",
+        "isin": "US0987654321",
+    }
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_REFERENCE_CSV", reference_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "OTC_MARKETS_SECURITY_PROFILE_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE",
+        tmp_path / "missing-legacy.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_otc_markets_security_profile",
+        lambda *args, **kwargs: [fresh_update],
+    )
+
+    rows, mode = load_otc_markets_security_profile_rows(
+        source,
+        listings_path=listings_path,
+        otc_name_mismatch_review_path=review_path,
+    )
+
+    assert mode == "network"
+    assert {row["ticker"] for row in rows} == {"KEEP", "UPDATE"}
+    assert next(row for row in rows if row["ticker"] == "KEEP")["name"] == "Keep Holdings Ltd"
+    assert next(row for row in rows if row["ticker"] == "UPDATE")["name"] == "Updated Holdings"
+
+
 def test_parse_otc_markets_stock_screener_csv_maps_conservative_equity_rows():
     source = MasterfileSource(
         key="otc_markets_stock_screener",
