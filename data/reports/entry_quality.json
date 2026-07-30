@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-29T09:30:00Z",
-    "rows": 74753,
+    "generated_at": "2026-07-30T09:17:32Z",
+    "rows": 74758,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,25 +15,25 @@
   "summary": {
     "status_counts": {
       "pass": 67439,
-      "source_gap": 7293,
+      "source_gap": 7298,
       "warn": 21
     },
     "evidence_level_counts": {
       "identifier_enriched": 5359,
-      "official_reference": 68184,
+      "official_reference": 68189,
       "scoped_source_gap": 263,
       "valid_isin": 947
     },
     "severity_counts": {
       "high": 14,
       "medium": 7,
-      "source_gap": 7512
+      "source_gap": 7522
     },
     "issue_counts": {
       "official_reference_gap": 6569,
-      "expected_missing_primary_isin": 788,
-      "missing_etf_category": 117,
-      "missing_stock_sector": 38,
+      "expected_missing_primary_isin": 793,
+      "missing_etf_category": 120,
+      "missing_stock_sector": 40,
       "country_isin_mismatch": 12,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
@@ -64,7 +64,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2492,
-        "source_gap": 192
+        "source_gap": 195
       },
       {
         "exchange": "BATS",
@@ -130,7 +130,7 @@
       {
         "exchange": "NYSE",
         "pass": 1984,
-        "source_gap": 67
+        "source_gap": 69
       },
       {
         "exchange": "CSE_MA",
@@ -11163,6 +11163,31 @@
       ]
     },
     {
+      "listing_key": "NYSE ARCA::ARCP",
+      "ticker": "ARCP",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::ARCS",
       "ticker": "ARCS",
       "exchange": "OTC",
@@ -11483,6 +11508,31 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NYSE ARCA::ARMS",
+      "ticker": "ARMS",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -18260,42 +18310,6 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BKMP",
-      "ticker": "BKMP",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "BATS::BKNU",
-      "ticker": "BKNU",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "BATS",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }
