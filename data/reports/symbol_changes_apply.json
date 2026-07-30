@@ -1,13 +1,13 @@
 {
   "summary": {
-    "generated_at": "2026-07-29T09:06:56Z",
+    "generated_at": "2026-07-30T08:47:35Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 316,
+    "blocked_rows": 317,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 35,
+      "blocked_new_symbol_collision": 36,
       "blocked_old_symbol_not_unique_in_us_scope": 242,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 36,
@@ -16,6 +16,14 @@
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "0f417a3a89dcdf1f",
+      "effective_date": "2026-07-29",
+      "old_symbol": "VYNE",
+      "new_symbol": "YARW",
+      "new_company_name": "Yarrow Bioscience Inc",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "df0ce1f20f11b5d6",
       "effective_date": "2026-07-27",
