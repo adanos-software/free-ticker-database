@@ -1,93 +1,19 @@
 {
   "summary": {
-    "generated_at": "2026-07-30T09:16:10Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-07-31T09:23:28Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "supported_asset_types": [
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 5,
-    "accepted_rows": 5,
+    "new_supported_rows": 0,
+    "accepted_rows": 0,
     "skipped_rows": 0,
-    "accepted_by_exchange": {
-      "NYSE": 2,
-      "NYSE ARCA": 3
-    },
+    "accepted_by_exchange": {},
     "skipped_by_reason": {}
   },
-  "accepted": [
-    {
-      "ticker": "JMKE",
-      "name": "Jersey Mike's Subs Inc. Class A Common Stock",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "REF",
-      "name": "Reformation Inc. Common Stock",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "ARCP",
-      "name": "Aristotle Core Plus Income ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "ARMS",
-      "name": "Aristotle Multi-Sector Income ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "SDUR",
-      "name": "Aristotle Short Term Income ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    }
-  ],
+  "accepted": [],
   "skipped": []
 }

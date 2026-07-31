@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 79526,
-    "matched": 52356,
-    "collisions": 11557,
-    "missing": 15613
+    "official_symbols": 79534,
+    "matched": 52353,
+    "collisions": 11560,
+    "missing": 15621
   },
   "exchanges": [
     {
@@ -4457,9 +4457,9 @@
     {
       "exchange": "SET",
       "official_symbols": 944,
-      "matched": 545,
-      "collisions": 348,
-      "missing": 51,
+      "matched": 543,
+      "collisions": 349,
+      "missing": 52,
       "collision_examples": [
         {
           "ticker": "A",
@@ -4574,6 +4574,11 @@
           "exchange": "SET"
         },
         {
+          "ticker": "BANPUU",
+          "name": "BANPU PUBLIC COMPANY LIMITED",
+          "exchange": "SET"
+        },
+        {
           "ticker": "BLISS",
           "name": "BLISS INTELLIGENCE PUBLIC COMPANY LIMITED",
           "exchange": "SET"
@@ -4592,20 +4597,15 @@
           "ticker": "BTSGIF",
           "name": "BTS RAIL MASS TRANSIT GROWTH INFRASTRUCTURE FUND",
           "exchange": "SET"
-        },
-        {
-          "ticker": "BUI",
-          "name": "BANGKOK UNION INSURANCE PUBLIC COMPANY LIMITED",
-          "exchange": "SET"
         }
       ]
     },
     {
       "exchange": "SGX",
-      "official_symbols": 738,
+      "official_symbols": 746,
       "matched": 589,
-      "collisions": 140,
-      "missing": 9,
+      "collisions": 142,
+      "missing": 15,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4637,6 +4637,15 @@
           "target_exchange": "SGX",
           "existing_exchanges": [
             "Euronext"
+          ]
+        },
+        {
+          "ticker": "ALK",
+          "name": "All-Link A&S",
+          "target_exchange": "SGX",
+          "existing_exchanges": [
+            "LSE",
+            "NYSE"
           ]
         },
         {
@@ -4678,20 +4687,22 @@
           "existing_exchanges": [
             "NYSE"
           ]
-        },
-        {
-          "ticker": "AWM",
-          "name": "Shanghai Turbo",
-          "target_exchange": "SGX",
-          "existing_exchanges": [
-            "WSE"
-          ]
         }
       ],
       "missing_examples": [
         {
+          "ticker": "AMQ",
+          "name": "Ambiq Micro",
+          "exchange": "SGX"
+        },
+        {
           "ticker": "BCV",
           "name": "Qian Hu",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "EGX",
+          "name": "EGP ENERGY CORP",
           "exchange": "SGX"
         },
         {
@@ -4715,23 +4726,18 @@
           "exchange": "SGX"
         },
         {
-          "ticker": "QBPR",
-          "name": "SAM Holdings R",
+          "ticker": "UGBD",
+          "name": "Grab US SDR 2to1",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "UGGD",
+          "name": "Sea US SDR 50to1",
           "exchange": "SGX"
         },
         {
           "ticker": "UGS",
           "name": "ULTRAGREEN AI SGD",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "WNH",
-          "name": "Autagco Ltd",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "Y5DR",
-          "name": "SAM Holdings R1",
           "exchange": "SGX"
         }
       ]
@@ -4748,9 +4754,9 @@
     {
       "exchange": "TADAWUL",
       "official_symbols": 412,
-      "matched": 191,
+      "matched": 190,
       "collisions": 217,
-      "missing": 4,
+      "missing": 5,
       "collision_examples": [
         {
           "ticker": "1201",
@@ -4853,6 +4859,11 @@
         {
           "ticker": "7205",
           "name": "DBS",
+          "exchange": "TADAWUL"
+        },
+        {
+          "ticker": "9655",
+          "name": "MSGA",
           "exchange": "TADAWUL"
         }
       ]
