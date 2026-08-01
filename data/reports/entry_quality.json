@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-01T08:36:31Z",
-    "rows": 74752,
+    "generated_at": "2026-08-01T08:56:15Z",
+    "rows": 74760,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67347,
-      "source_gap": 7384,
+      "pass": 67346,
+      "source_gap": 7393,
       "warn": 21
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5444,
-      "official_reference": 68073,
+      "identifier_enriched": 5445,
+      "official_reference": 68080,
       "scoped_source_gap": 285,
       "valid_isin": 950
     },
     "severity_counts": {
       "high": 14,
       "medium": 7,
-      "source_gap": 7630
+      "source_gap": 7647
     },
     "issue_counts": {
-      "official_reference_gap": 6679,
-      "expected_missing_primary_isin": 791,
-      "missing_etf_category": 120,
-      "missing_stock_sector": 40,
+      "official_reference_gap": 6680,
+      "expected_missing_primary_isin": 799,
+      "missing_etf_category": 122,
+      "missing_stock_sector": 46,
       "country_isin_mismatch": 12,
       "official_name_mismatch": 7,
       "official_isin_mismatch": 2
@@ -53,7 +53,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4496,
-        "source_gap": 231,
+        "source_gap": 239,
         "warn": 1
       },
       {
@@ -63,8 +63,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2492,
-        "source_gap": 195
+        "pass": 2491,
+        "source_gap": 196
       },
       {
         "exchange": "BATS",
@@ -129,7 +129,7 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1984,
+        "pass": 1985,
         "source_gap": 69
       },
       {
@@ -10749,6 +10749,31 @@
       ]
     },
     {
+      "listing_key": "NASDAQ::APMD",
+      "ticker": "APMD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::APMLF",
       "ticker": "APMLF",
       "exchange": "OTC",
@@ -18306,24 +18331,6 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BIOAF",
-      "ticker": "BIOAF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }

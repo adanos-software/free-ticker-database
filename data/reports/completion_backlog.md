@@ -1,12 +1,12 @@
 # Completion Backlog
 
-Generated at: `2026-08-01T08:36:41Z`
+Generated at: `2026-08-01T08:56:22Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `791`
-- Missing stock sectors: `41`
-- Missing ETF categories: `120`
+- Missing primary ISIN rows: `799`
+- Missing stock sectors: `47`
+- Missing ETF categories: `122`
 - Official symbol collisions tracked in exchange references: `11563`
 - Core rows hidden only by the legacy global-ticker compatibility export: `2030`
 
@@ -14,7 +14,7 @@ Generated at: `2026-08-01T08:36:41Z`
 
 | Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NASDAQ | missing_isin_primary | 134 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
+| 1 | NASDAQ | missing_isin_primary | 142 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
 | 2 | ASX | missing_isin_primary | 99 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
 | 3 | BATS | missing_isin_primary | 90 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
 | 4 | TSX | missing_isin_primary | 88 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
@@ -24,8 +24,8 @@ Generated at: `2026-08-01T08:36:41Z`
 | 8 | NYSE | missing_isin_primary | 56 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 9 | NEO | missing_isin_primary | 43 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed Canada identifier source exposing a valid ISIN. | yes |
 | 10 | SSE | missing_isin_primary | 35 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
-| 11 | NYSE ARCA | missing_etf_category | 30 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 12 | SSE_CL | missing_isin_primary | 27 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe cannot map this venue; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source before applying ISINs. | yes |
+| 11 | NASDAQ | missing_sector_stock | 32 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 12 | NYSE ARCA | missing_etf_category | 30 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 
@@ -33,7 +33,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NASDAQ | All | 134 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 1 | NASDAQ | All | 142 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 2 | ASX | All | 99 | official_partial | Official ASX ISIN workbook. | no |
 | 3 | BATS | All | 90 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 4 | TSX | All | 88 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
@@ -50,7 +50,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NASDAQ | Stock | 26 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 1 | NASDAQ | Stock | 32 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 2 | NYSE | Stock | 8 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 3 | LSE | Stock | 2 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 4 | OTC | Stock | 1 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
@@ -65,14 +65,14 @@ These are orchestration candidates only. They do not authorize direct data chang
 |---|---|---|---:|---|---|---|
 | 1 | BATS | ETF | 69 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 2 | NYSE ARCA | ETF | 30 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 3 | NASDAQ | ETF | 21 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 3 | NASDAQ | ETF | 23 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 
 ## Combined Sector/ETF Category Priority
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
 | 1 | BATS | 69 | 0 | 69 | official_full |
-| 2 | NASDAQ | 47 | 26 | 21 | official_full |
+| 2 | NASDAQ | 55 | 32 | 23 | official_full |
 | 3 | NYSE ARCA | 30 | 0 | 30 | official_full |
 | 4 | NYSE | 8 | 8 | 0 | official_full |
 | 5 | LSE | 2 | 2 | 0 | official_full |
