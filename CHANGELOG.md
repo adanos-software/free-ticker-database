@@ -11,6 +11,7 @@
 - Removed 205 officially identified units, warrants, notes, preferreds, rights, and fund-instrument rows that had been admitted as `Stock` because generic issuer names hid the security type.
 - Dropped the stale `NYSE::GRTUF` row after official evidence confirmed the NYSE line had ended and `GRTUF` moved to OTCQX; retained the documented SEC-directory false-positive exception for `NYSE::PHXE-P`.
 - Removed the now-stale `OTC::FSLUF` entry-quality warning allowlist row and regenerated extended identifiers, listing index, exports, quality reports, and release acceptance artifacts.
+- Made resumable OHLCV sampling rewrite the completed CSV to the current selection, preventing stale rows from surviving sample-selection changes.
 
 ### Verification
 

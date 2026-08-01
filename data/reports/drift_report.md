@@ -1,7 +1,7 @@
 # Drift / freshness report
 
-Generated: 2026-08-01T16:39:03Z
-Dataset built_at: 2026-08-01T16:34:14Z (0.0 days ago; threshold 45.0)
+Generated: 2026-08-01T16:50:53Z
+Dataset built_at: 2026-08-01T16:49:58Z (0.0 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
@@ -20,46 +20,28 @@ Dataset built_at: 2026-08-01T16:34:14Z (0.0 days ago; threshold 45.0)
 - WW -> WGHTQ (Ww International Inc, 2025-05-15): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 
 ## Quality indicators (release-gate info counts)
-- allowed_warn_rows: 20
-- expected_missing_primary_isin: 771
-- missing_etf_category: 120
-- missing_stock_sector: 42
-- source_gap_rows: 7226
+- allowed_warn_rows: 21
+- expected_missing_primary_isin: 799
+- missing_etf_category: 122
+- missing_stock_sector: 46
+- source_gap_rows: 7393
 
-## Quality regressions: 2
-- missing_stock_sector: 31 -> 42 (+11)
-- missing_etf_category: 104 -> 120 (+16)
+## Quality regressions: 4
+- source_gap_rows: 7226 -> 7393 (+167)
+- expected_missing_primary_isin: 771 -> 799 (+28)
+- missing_stock_sector: 42 -> 46 (+4)
+- missing_etf_category: 120 -> 122 (+2)
 
-## Official recall regressions: 33
-- BHB official_recall_missing: 12 -> 13 (+1)
-- BHB collision_adjusted_recall_missing: 3 -> 4 (+1)
-- Borsa Italiana collision_adjusted_recall_missing: 835 -> 837 (+2)
-- Euronext collision_adjusted_recall_missing: 372 -> 375 (+3)
-- HKEX official_recall_missing: 178 -> 179 (+1)
-- HKEX collision_adjusted_recall_missing: 94 -> 95 (+1)
-- IDX collision_adjusted_recall_missing: 25 -> 26 (+1)
-- KOSDAQ official_recall_missing: 247 -> 248 (+1)
-- KOSDAQ collision_adjusted_recall_missing: 247 -> 248 (+1)
-- KRX official_recall_missing: 323 -> 329 (+6)
-- KRX collision_adjusted_recall_missing: 320 -> 326 (+6)
-- LSE official_recall_missing: 4601 -> 4704 (+103)
-- LSE collision_adjusted_recall_missing: 3494 -> 3581 (+87)
-- NASDAQ official_recall_missing: 1091 -> 1167 (+76)
-- NASDAQ collision_adjusted_recall_missing: 1030 -> 1105 (+75)
-- NYSE official_recall_missing: 1875 -> 1928 (+53)
-- NYSE collision_adjusted_recall_missing: 1375 -> 1426 (+51)
-- NYSE ARCA official_recall_missing: 123 -> 127 (+4)
-- NYSE ARCA collision_adjusted_recall_missing: 92 -> 95 (+3)
-- NYSE MKT official_recall_missing: 82 -> 84 (+2)
-- NYSE MKT collision_adjusted_recall_missing: 54 -> 55 (+1)
-- OTC official_recall_missing: 4248 -> 4249 (+1)
-- OTC collision_adjusted_recall_missing: 4210 -> 4211 (+1)
-- PSE official_recall_missing: 291 -> 293 (+2)
-- PSE collision_adjusted_recall_missing: 109 -> 112 (+3)
-- PSX collision_adjusted_recall_missing: 190 -> 191 (+1)
-- SEM official_recall_missing: 0 -> 1 (+1)
-- SEM collision_adjusted_recall_missing: 0 -> 1 (+1)
-- SET collision_adjusted_recall_missing: 51 -> 53 (+2)
-- TSX collision_adjusted_recall_missing: 8 -> 9 (+1)
+## Official recall regressions: 10
+- NASDAQ official_recall_missing: 1167 -> 1176 (+9)
+- NASDAQ collision_adjusted_recall_missing: 1105 -> 1113 (+8)
+- SET official_recall_missing: 399 -> 401 (+2)
+- SET collision_adjusted_recall_missing: 53 -> 54 (+1)
+- SGX official_recall_missing: 149 -> 157 (+8)
+- SGX collision_adjusted_recall_missing: 9 -> 15 (+6)
+- TADAWUL official_recall_missing: 221 -> 222 (+1)
+- TADAWUL collision_adjusted_recall_missing: 4 -> 5 (+1)
+- TWSE official_recall_missing: 117 -> 121 (+4)
+- TWSE collision_adjusted_recall_missing: 58 -> 59 (+1)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._

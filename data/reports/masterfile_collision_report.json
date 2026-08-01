@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 79458,
-    "matched": 52274,
-    "collisions": 11563,
-    "missing": 15621
+    "matched": 52138,
+    "collisions": 11549,
+    "missing": 15771
   },
   "exchanges": [
     {
@@ -427,9 +427,9 @@
     {
       "exchange": "BHB",
       "official_symbols": 41,
-      "matched": 29,
+      "matched": 28,
       "collisions": 9,
-      "missing": 3,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "ABC",
@@ -505,6 +505,11 @@
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "EBRIT",
+          "name": "Eskan Bank Realty Income Trust",
+          "exchange": "BHB"
+        },
         {
           "ticker": "GFH",
           "name": "GFH Financial Group B.S.C.",
@@ -1243,8 +1248,8 @@
       "exchange": "Borsa Italiana",
       "official_symbols": 2893,
       "matched": 253,
-      "collisions": 1805,
-      "missing": 835,
+      "collisions": 1803,
+      "missing": 837,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1729,8 +1734,8 @@
       "exchange": "Euronext",
       "official_symbols": 2007,
       "matched": 965,
-      "collisions": 670,
-      "missing": 372,
+      "collisions": 667,
+      "missing": 375,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -2155,8 +2160,8 @@
       "exchange": "IDX",
       "official_symbols": 963,
       "matched": 694,
-      "collisions": 244,
-      "missing": 25,
+      "collisions": 243,
+      "missing": 26,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -2498,9 +2503,9 @@
     {
       "exchange": "LSE",
       "official_symbols": 11092,
-      "matched": 6390,
-      "collisions": 1125,
-      "missing": 3577,
+      "matched": 6388,
+      "collisions": 1123,
+      "missing": 3581,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2750,9 +2755,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5739,
-      "matched": 4636,
+      "matched": 4563,
       "collisions": 63,
-      "missing": 1040,
+      "missing": 1113,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -3326,9 +3331,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3917,
-      "matched": 2042,
-      "collisions": 499,
-      "missing": 1376,
+      "matched": 1991,
+      "collisions": 501,
+      "missing": 1425,
       "collision_examples": [
         {
           "ticker": "ACCS",
@@ -3420,6 +3425,11 @@
           "exchange": "NYSE"
         },
         {
+          "ticker": "AB",
+          "name": "AllianceBernstein Holding L.P.  Units",
+          "exchange": "NYSE"
+        },
+        {
           "ticker": "ABR$D",
           "name": "Arbor Realty Trust 6.375% Series D Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per Share",
           "exchange": "NYSE"
@@ -3458,20 +3468,15 @@
           "ticker": "ACHR-WT",
           "name": "Archer Aviation Inc.",
           "exchange": "NYSE"
-        },
-        {
-          "ticker": "ACHR.W",
-          "name": "Archer Aviation Inc. Redeemable Warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50",
-          "exchange": "NYSE"
         }
       ]
     },
     {
       "exchange": "NYSE ARCA",
       "official_symbols": 2697,
-      "matched": 2573,
+      "matched": 2570,
       "collisions": 32,
-      "missing": 92,
+      "missing": 95,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -3610,9 +3615,9 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 308,
-      "matched": 225,
+      "matched": 224,
       "collisions": 29,
-      "missing": 54,
+      "missing": 55,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3984,9 +3989,9 @@
     {
       "exchange": "OTC",
       "official_symbols": 11925,
-      "matched": 7677,
+      "matched": 7676,
       "collisions": 38,
-      "missing": 4210,
+      "missing": 4211,
       "collision_examples": [
         {
           "ticker": "AEAE",
@@ -4125,9 +4130,9 @@
     {
       "exchange": "PSE",
       "official_symbols": 381,
-      "matched": 90,
-      "collisions": 182,
-      "missing": 109,
+      "matched": 88,
+      "collisions": 181,
+      "missing": 112,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -4136,14 +4141,6 @@
           "existing_exchanges": [
             "Euronext",
             "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "AB",
-          "name": "Atok-Big Wedge Co., Inc.",
-          "target_exchange": "PSE",
-          "existing_exchanges": [
-            "NYSE"
           ]
         },
         {
@@ -4213,9 +4210,24 @@
           "existing_exchanges": [
             "ASX"
           ]
+        },
+        {
+          "ticker": "AGI",
+          "name": "Alliance Global Group, Inc.",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "LSE",
+            "NSE_IN",
+            "NYSE"
+          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AB",
+          "name": "Atok-Big Wedge Co., Inc.",
+          "exchange": "PSE"
+        },
         {
           "ticker": "ACENA",
           "name": "ACEN Corporation Perpetual Series A Preferred Shares",
@@ -4260,11 +4272,6 @@
           "ticker": "ALHI",
           "name": "Anchor Land Holdings, Inc.",
           "exchange": "PSE"
-        },
-        {
-          "ticker": "ALTP2",
-          "name": "Alternergy Holdings Corporation Preferred Shares 2 \u2013 Series A",
-          "exchange": "PSE"
         }
       ]
     },
@@ -4272,8 +4279,8 @@
       "exchange": "PSX",
       "official_symbols": 716,
       "matched": 371,
-      "collisions": 155,
-      "missing": 190,
+      "collisions": 154,
+      "missing": 191,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -4448,18 +4455,24 @@
     {
       "exchange": "SEM",
       "official_symbols": 47,
-      "matched": 47,
+      "matched": 46,
       "collisions": 0,
-      "missing": 0,
+      "missing": 1,
       "collision_examples": [],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "LMLC-P",
+          "name": "LES MOULINS DE LA CONCORDE LT",
+          "exchange": "SEM"
+        }
+      ]
     },
     {
       "exchange": "SET",
       "official_symbols": 944,
       "matched": 543,
-      "collisions": 349,
-      "missing": 52,
+      "collisions": 347,
+      "missing": 54,
       "collision_examples": [
         {
           "ticker": "A",
@@ -4594,8 +4607,8 @@
           "exchange": "SET"
         },
         {
-          "ticker": "BTSGIF",
-          "name": "BTS RAIL MASS TRANSIT GROWTH INFRASTRUCTURE FUND",
+          "ticker": "BSM",
+          "name": "BUILDERSMART PUBLIC COMPANY LIMITED",
           "exchange": "SET"
         }
       ]
@@ -5013,8 +5026,8 @@
       "exchange": "TSX",
       "official_symbols": 785,
       "matched": 323,
-      "collisions": 454,
-      "missing": 8,
+      "collisions": 453,
+      "missing": 9,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -5102,6 +5115,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "BEP",
+          "name": "Brookfield Renewable Partners L.P.",
+          "exchange": "TSX"
+        },
+        {
           "ticker": "BITF",
           "name": "Bitfarms Ltd.",
           "exchange": "TSX"
@@ -5146,9 +5164,9 @@
     {
       "exchange": "TSXV",
       "official_symbols": 1518,
-      "matched": 962,
-      "collisions": 544,
-      "missing": 12,
+      "matched": 961,
+      "collisions": 542,
+      "missing": 15,
       "collision_examples": [
         {
           "ticker": "AAG",
@@ -5267,6 +5285,11 @@
           "exchange": "TSXV"
         },
         {
+          "ticker": "KLX",
+          "name": "Carbon Done Right Developments Inc.",
+          "exchange": "TSXV"
+        },
+        {
           "ticker": "MCI",
           "name": "Minnova Corp.",
           "exchange": "TSXV"
@@ -5279,11 +5302,6 @@
         {
           "ticker": "PGZ",
           "name": "Pan Global Resources Inc.",
-          "exchange": "TSXV"
-        },
-        {
-          "ticker": "PX",
-          "name": "Pelangio Exploration Inc.",
           "exchange": "TSXV"
         }
       ]
@@ -5581,8 +5599,8 @@
       "exchange": "XETRA",
       "official_symbols": 5080,
       "matched": 3653,
-      "collisions": 854,
-      "missing": 573,
+      "collisions": 853,
+      "missing": 574,
       "collision_examples": [
         {
           "ticker": "0GZK",

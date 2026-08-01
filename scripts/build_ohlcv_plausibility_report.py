@@ -1744,7 +1744,19 @@ def stream_report(args: argparse.Namespace) -> tuple[list[OhlcvPlausibilityRow],
                     flush=True,
                 )
 
-    report_rows = [*existing_rows, *processed_rows]
+    existing_by_key = {row.listing_key: row for row in existing_rows}
+    processed_by_key = {row.listing_key: row for row in processed_rows}
+    report_rows = [
+        completed_row
+        for selected_row in rows
+        if (
+            completed_row := processed_by_key.get(selected_row.get("listing_key", ""))
+            or existing_by_key.get(selected_row.get("listing_key", ""))
+        )
+    ]
+    # Resume files can contain rows from an older sample selection. Rewrite the
+    # completed report so CSV, JSON, and Markdown describe the same current set.
+    write_csv(args.csv_out, report_rows)
     payload = summarize(
         report_rows,
         utc_now(),

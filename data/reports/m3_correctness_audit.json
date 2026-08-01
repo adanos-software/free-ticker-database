@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-01T16:43:16Z",
+    "generated_at": "2026-08-01T16:55:56Z",
     "rows": 4,
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -23,16 +23,16 @@
     {
       "audit_block": "after_c1_sector_category",
       "campaign": "C1_sector_etf_category_truth",
-      "rows_reviewed": 6600,
-      "manual_review_rows": 6523,
+      "rows_reviewed": 6597,
+      "manual_review_rows": 6520,
       "blocked_rows": 77,
       "applied_rows": 0,
       "changed_rows": 0,
       "adversarial_changed_rows_checked": 0,
       "two_source_possible_rows": 0,
-      "two_source_gap_rows": 6600,
+      "two_source_gap_rows": 6597,
       "full_row_correctness_claim": "not_claimed_from_campaign_report",
-      "metric_context": "rows=6600;manual=6523;blocked=77;applied=0;claim=not_99_percent_without_external_stratified_audit",
+      "metric_context": "rows=6597;manual=6520;blocked=77;applied=0;claim=not_99_percent_without_external_stratified_audit",
       "source_gate": "Audit rows are reproducible campaign checks. They do not claim >=99% correctness without a stratified external audit using independent sources."
     },
     {

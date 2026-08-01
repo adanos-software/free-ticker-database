@@ -1,6 +1,6 @@
 # OHLCV Plausibility Report
 
-Generated at: `2026-08-01T16:41:04Z`
+Generated at: `2026-08-01T16:53:59Z`
 
 This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not fill ISINs, sectors, or ETF categories.
 
@@ -17,22 +17,22 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | Status | Rows |
 |---|---:|
 | not_checked | 3 |
-| notice | 34 |
+| notice | 35 |
 | pass | 33 |
 | source_gap | 28 |
-| warn | 45 |
+| warn | 44 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| short_history | 43 |
+| short_history | 44 |
 | invalid_ohlcv_bar | 38 |
 | no_ohlcv_bars | 28 |
 | ohlcv_fetch_error | 21 |
 | long_zero_volume_streak | 19 |
 | long_stagnant_close_streak | 16 |
-| large_price_jump | 11 |
+| large_price_jump | 10 |
 | no_ohlcv_sample | 3 |
 
 ## Selection Buckets
@@ -166,9 +166,9 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | source_gap:official_identifier_not_exposed_source_gap | pass | 5 |
 | source_gap:official_identifier_reference_unmatched_gap | source_gap | 3 |
 | source_gap:official_identifier_reference_unmatched_gap | warn | 2 |
-| source_gap:official_industry_taxonomy_unavailable_gap | notice | 1 |
+| source_gap:official_industry_taxonomy_unavailable_gap | notice | 2 |
 | source_gap:official_industry_taxonomy_unavailable_gap | source_gap | 1 |
-| source_gap:official_industry_taxonomy_unavailable_gap | warn | 3 |
+| source_gap:official_industry_taxonomy_unavailable_gap | warn | 2 |
 | source_gap:official_product_taxonomy_unavailable_gap | notice | 4 |
 | source_gap:official_product_taxonomy_unavailable_gap | warn | 1 |
 | source_gap:official_reference_symbol_collision_gap | pass | 4 |
@@ -182,9 +182,9 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 
 | Priority | Rows |
 |---|---:|
-| P1 | 45 |
+| P1 | 44 |
 | P2 | 30 |
-| P3 | 35 |
+| P3 | 36 |
 | P4 | 33 |
 
 ## Sampling Coverage
@@ -217,9 +217,9 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 
 | Bucket | Rows |
 |---|---:|
-| checked_low_severity_market_data_notice | 34 |
+| checked_low_severity_market_data_notice | 35 |
 | checked_market_data_source_gap | 28 |
-| checked_ohlcv_anomaly_requires_listing_review | 45 |
+| checked_ohlcv_anomaly_requires_listing_review | 44 |
 | checked_plausible_sample | 33 |
 | not_checked_entry_quality_warn_sample | 2 |
 | not_checked_source_gap_cluster_sample | 1 |
@@ -238,7 +238,7 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | checked_low_severity_market_data_notice | source_gap:digital_asset_etf_category_gap | 3 |
 | checked_low_severity_market_data_notice | source_gap:equity_etf_category_gap | 5 |
 | checked_low_severity_market_data_notice | source_gap:fund_or_trust_identifier_gap | 1 |
-| checked_low_severity_market_data_notice | source_gap:official_industry_taxonomy_unavailable_gap | 1 |
+| checked_low_severity_market_data_notice | source_gap:official_industry_taxonomy_unavailable_gap | 2 |
 | checked_low_severity_market_data_notice | source_gap:official_product_taxonomy_unavailable_gap | 4 |
 | checked_low_severity_market_data_notice | source_gap:shell_or_cpc_sector_gap | 5 |
 | checked_market_data_source_gap | large_exchange:HKEX | 5 |
@@ -260,7 +260,7 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:capital_pool_or_halted_identifier_gap | 3 |
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:fixed_income_etf_category_gap | 1 |
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:official_identifier_reference_unmatched_gap | 2 |
-| checked_ohlcv_anomaly_requires_listing_review | source_gap:official_industry_taxonomy_unavailable_gap | 3 |
+| checked_ohlcv_anomaly_requires_listing_review | source_gap:official_industry_taxonomy_unavailable_gap | 2 |
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:official_product_taxonomy_unavailable_gap | 1 |
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:official_reference_unmatched_source_gap | 5 |
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:otc_sector_source_gap | 4 |
@@ -285,7 +285,7 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 |---|---|---:|
 | checked_low_severity_market_data_notice | BATS | 5 |
 | checked_low_severity_market_data_notice | LSE | 3 |
-| checked_low_severity_market_data_notice | NASDAQ | 11 |
+| checked_low_severity_market_data_notice | NASDAQ | 12 |
 | checked_low_severity_market_data_notice | NYSE | 2 |
 | checked_low_severity_market_data_notice | NYSE ARCA | 5 |
 | checked_low_severity_market_data_notice | OTC | 4 |
@@ -303,7 +303,6 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | checked_ohlcv_anomaly_requires_listing_review | BATS | 2 |
 | checked_ohlcv_anomaly_requires_listing_review | KRX | 5 |
 | checked_ohlcv_anomaly_requires_listing_review | LSE | 13 |
-| checked_ohlcv_anomaly_requires_listing_review | NASDAQ | 1 |
 | checked_ohlcv_anomaly_requires_listing_review | OTC | 8 |
 | checked_ohlcv_anomaly_requires_listing_review | SSE | 5 |
 | checked_ohlcv_anomaly_requires_listing_review | SZSE | 1 |
@@ -327,9 +326,9 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 
 | Review bucket | Strategy | Rows |
 |---|---|---:|
-| checked_low_severity_market_data_notice | review_low_severity_market_data_notice_only_if_prioritized | 34 |
+| checked_low_severity_market_data_notice | review_low_severity_market_data_notice_only_if_prioritized | 35 |
 | checked_market_data_source_gap | resolve_market_data_source_gap_before_interpreting_listing | 28 |
-| checked_ohlcv_anomaly_requires_listing_review | review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions | 45 |
+| checked_ohlcv_anomaly_requires_listing_review | review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions | 44 |
 | checked_plausible_sample | retain_as_plausibility_baseline_no_data_change | 33 |
 | not_checked_entry_quality_warn_sample | collect_ohlcv_sample_then_existing_entry_quality_review | 2 |
 | not_checked_source_gap_cluster_sample | collect_ohlcv_sample_then_source_gap_review | 1 |
@@ -338,9 +337,9 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 
 | Review bucket | Readiness | Rows |
 |---|---|---:|
-| checked_low_severity_market_data_notice | checked_yahoo_sample | 34 |
+| checked_low_severity_market_data_notice | checked_yahoo_sample | 35 |
 | checked_market_data_source_gap | checked_yahoo_sample | 28 |
-| checked_ohlcv_anomaly_requires_listing_review | checked_yahoo_sample | 45 |
+| checked_ohlcv_anomaly_requires_listing_review | checked_yahoo_sample | 44 |
 | checked_plausible_sample | checked_yahoo_sample | 33 |
 | not_checked_entry_quality_warn_sample | needs_ohlcv_sample | 2 |
 | not_checked_source_gap_cluster_sample | needs_ohlcv_sample | 1 |
@@ -364,7 +363,6 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | checked_ohlcv_anomaly_requires_listing_review | entry_quality_warn | TPEX | warn | P1 | review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions | official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change | Official listing status, corporate-action evidence, and independent market-data sample for TPEX. | Do not change listing data until official listing status and corporate-action evidence explain the anomaly. | 1 |
 | checked_ohlcv_anomaly_requires_listing_review | large_exchange:SZSE | SZSE | warn | P1 | review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions | official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change | Official listing status, corporate-action evidence, and independent market-data sample for SZSE. | Do not change listing data until official listing status and corporate-action evidence explain the anomaly. | 1 |
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:fixed_income_etf_category_gap | BATS | warn | P1 | review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions | official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change | Official listing status, corporate-action evidence, and independent market-data sample for BATS. | Do not change listing data until official listing status and corporate-action evidence explain the anomaly. | 1 |
-| checked_ohlcv_anomaly_requires_listing_review | source_gap:official_industry_taxonomy_unavailable_gap | NASDAQ | warn | P1 | review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions | official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change | Official listing status, corporate-action evidence, and independent market-data sample for NASDAQ. | Do not change listing data until official listing status and corporate-action evidence explain the anomaly. | 1 |
 | checked_ohlcv_anomaly_requires_listing_review | source_gap:official_product_taxonomy_unavailable_gap | BATS | warn | P1 | review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions | official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change | Official listing status, corporate-action evidence, and independent market-data sample for BATS. | Do not change listing data until official listing status and corporate-action evidence explain the anomaly. | 1 |
 | checked_market_data_source_gap | large_exchange:HKEX | HKEX | source_gap | P2 | resolve_market_data_source_gap_before_interpreting_listing | alternate_market_data_source_or_official_listing_status_before_interpreting_gap | Alternate market-data source or official listing-status evidence for HKEX. | Do not interpret a market-data gap as a listing problem without an alternate source or official status check. | 5 |
 | checked_market_data_source_gap | large_exchange:XETRA | XETRA | source_gap | P2 | resolve_market_data_source_gap_before_interpreting_listing | alternate_market_data_source_or_official_listing_status_before_interpreting_gap | Alternate market-data source or official listing-status evidence for XETRA. | Do not interpret a market-data gap as a listing problem without an alternate source or official status check. | 5 |
@@ -374,15 +372,16 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | checked_market_data_source_gap | large_exchange:LSE | LSE | source_gap | P2 | resolve_market_data_source_gap_before_interpreting_listing | alternate_market_data_source_or_official_listing_status_before_interpreting_gap | Alternate market-data source or official listing-status evidence for LSE. | Do not interpret a market-data gap as a listing problem without an alternate source or official status check. | 1 |
 | checked_market_data_source_gap | source_gap:capital_pool_or_halted_identifier_gap | TSXV | source_gap | P2 | resolve_market_data_source_gap_before_interpreting_listing | alternate_market_data_source_or_official_listing_status_before_interpreting_gap | Alternate market-data source or official listing-status evidence for TSXV. | Do not interpret a market-data gap as a listing problem without an alternate source or official status check. | 1 |
 | checked_market_data_source_gap | source_gap:inactive_or_legacy_identifier_gap | B3 | source_gap | P2 | resolve_market_data_source_gap_before_interpreting_listing | alternate_market_data_source_or_official_listing_status_before_interpreting_gap | Alternate market-data source or official listing-status evidence for B3. | Do not interpret a market-data gap as a listing problem without an alternate source or official status check. | 1 |
+| checked_market_data_source_gap | source_gap:inactive_or_legacy_identifier_gap | TSXV | source_gap | P2 | resolve_market_data_source_gap_before_interpreting_listing | alternate_market_data_source_or_official_listing_status_before_interpreting_gap | Alternate market-data source or official listing-status evidence for TSXV. | Do not interpret a market-data gap as a listing problem without an alternate source or official status check. | 1 |
 
 ## Plausibility Use
 
 | Use | Rows |
 |---|---:|
-| low_severity_market_data_notice_only | 34 |
+| low_severity_market_data_notice_only | 35 |
 | market_data_plausibility_evidence_only | 33 |
 | market_data_source_gap_only_no_listing_data_change | 28 |
-| review_signal_only_possible_listing_or_corporate_action_issue | 45 |
+| review_signal_only_possible_listing_or_corporate_action_issue | 44 |
 | sampling_queue_for_existing_entry_quality_warn | 2 |
 | sampling_queue_for_existing_source_gap | 1 |
 
@@ -390,8 +389,8 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 
 | Authorization | Rows |
 |---|---:|
-| no_canonical_data_change_authorized | 98 |
-| official_listing_review_required_before_any_canonical_change | 45 |
+| no_canonical_data_change_authorized | 99 |
+| official_listing_review_required_before_any_canonical_change | 44 |
 
 ## Verification Evidence
 
@@ -400,9 +399,9 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 | alternate_market_data_source_or_official_listing_status_before_interpreting_gap | 28 |
 | local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review | 2 |
 | local_or_bounded_network_ohlcv_sample_then_source_gap_review | 1 |
-| market_data_provider_review_if_prioritizing_quality_cleanup | 34 |
+| market_data_provider_review_if_prioritizing_quality_cleanup | 35 |
 | none_no_database_change_authorized | 33 |
-| official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change | 45 |
+| official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change | 44 |
 
 ## Top Flagged Exchanges
 
@@ -410,7 +409,7 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 |---|---:|---:|---:|---:|---:|
 | LSE | 0 | 0 | 3 | 2 | 13 |
 | OTC | 0 | 2 | 4 | 0 | 8 |
-| NASDAQ | 0 | 2 | 11 | 0 | 1 |
+| NASDAQ | 0 | 2 | 12 | 0 | 0 |
 | TSXV | 0 | 1 | 1 | 2 | 7 |
 | ASX | 0 | 0 | 0 | 7 | 0 |
 | BATS | 0 | 0 | 5 | 0 | 2 |
