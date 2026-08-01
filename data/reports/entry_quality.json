@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-31T09:26:13Z",
-    "rows": 74758,
+    "generated_at": "2026-08-01T08:36:31Z",
+    "rows": 74752,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67422,
-      "source_gap": 7315,
+      "pass": 67347,
+      "source_gap": 7384,
       "warn": 21
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5374,
-      "official_reference": 68172,
-      "scoped_source_gap": 263,
-      "valid_isin": 949
+      "identifier_enriched": 5444,
+      "official_reference": 68073,
+      "scoped_source_gap": 285,
+      "valid_isin": 950
     },
     "severity_counts": {
       "high": 14,
       "medium": 7,
-      "source_gap": 7539
+      "source_gap": 7630
     },
     "issue_counts": {
-      "official_reference_gap": 6586,
-      "expected_missing_primary_isin": 793,
+      "official_reference_gap": 6679,
+      "expected_missing_primary_isin": 791,
       "missing_etf_category": 120,
       "missing_stock_sector": 40,
       "country_isin_mismatch": 12,
@@ -58,8 +58,8 @@
       },
       {
         "exchange": "TSX",
-        "pass": 1704,
-        "source_gap": 200
+        "pass": 1696,
+        "source_gap": 202
       },
       {
         "exchange": "NYSE ARCA",
@@ -74,6 +74,12 @@
       {
         "exchange": "BMV",
         "source_gap": 179
+      },
+      {
+        "exchange": "TSXV",
+        "pass": 899,
+        "source_gap": 168,
+        "warn": 2
       },
       {
         "exchange": "LSE",
@@ -107,12 +113,6 @@
         "source_gap": 99
       },
       {
-        "exchange": "TSXV",
-        "pass": 970,
-        "source_gap": 97,
-        "warn": 2
-      },
-      {
         "exchange": "AMS",
         "pass": 241,
         "source_gap": 90
@@ -124,8 +124,8 @@
       },
       {
         "exchange": "TASE",
-        "pass": 597,
-        "source_gap": 75
+        "pass": 594,
+        "source_gap": 78
       },
       {
         "exchange": "NYSE",
@@ -1982,6 +1982,24 @@
       ]
     },
     {
+      "listing_key": "TPEX::3426",
+      "ticker": "3426",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TPEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "TWSE::3454",
       "ticker": "3454",
       "exchange": "TWSE",
@@ -2067,6 +2085,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TPEX::4130",
+      "ticker": "4130",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TPEX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -2288,6 +2324,24 @@
       ]
     },
     {
+      "listing_key": "TPEX::4582",
+      "ticker": "4582",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TPEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "KRX::460280",
       "ticker": "460280",
       "exchange": "KRX",
@@ -2499,6 +2553,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "KRX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TPEX::4987",
+      "ticker": "4987",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TPEX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -3339,6 +3411,24 @@
       ]
     },
     {
+      "listing_key": "TWSE::6806",
+      "ticker": "6806",
+      "exchange": "TWSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TWSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "SSE::688221",
       "ticker": "688221",
       "exchange": "SSE",
@@ -3622,6 +3712,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TPEX::7575",
+      "ticker": "7575",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TPEX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -4301,7 +4409,7 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 90,
+      "quality_score": 80,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
         {
@@ -4310,6 +4418,13 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -4399,24 +4514,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "B3",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "VSE::ABE",
-      "ticker": "ABE",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "VSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -4994,6 +5091,24 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSXV::ACL",
+      "ticker": "ACL",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -6224,6 +6339,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "LSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSXV::AFCC-H",
+      "ticker": "AFCC-H",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -7978,6 +8111,24 @@
       ]
     },
     {
+      "listing_key": "TSXV::AKH-H",
+      "ticker": "AKH-H",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::AKHOF",
       "ticker": "AKHOF",
       "exchange": "OTC",
@@ -8117,6 +8268,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "Borsa Italiana",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSXV::ALAB-P",
+      "ticker": "ALAB-P",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -9920,24 +10089,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "VSE::AMS2",
-      "ticker": "AMS2",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "VSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -12768,24 +12919,6 @@
       ]
     },
     {
-      "listing_key": "VSE::ATH",
-      "ticker": "ATH",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "VSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
       "listing_key": "OTC::ATHC",
       "ticker": "ATHC",
       "exchange": "OTC",
@@ -13285,6 +13418,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "ASX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSXV::AUR-H",
+      "ticker": "AUR-H",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -15105,7 +15256,7 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 90,
+      "quality_score": 80,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
         {
@@ -15114,6 +15265,13 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -15455,6 +15613,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSXV::BAV-H",
+      "ticker": "BAV-H",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -16727,6 +16903,24 @@
       ]
     },
     {
+      "listing_key": "TSXV::BEAR",
+      "ticker": "BEAR",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "NYSE::BEBE",
       "ticker": "BEBE",
       "exchange": "NYSE",
@@ -17010,6 +17204,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "TSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSXV::BER-H",
+      "ticker": "BER-H",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSXV",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -17334,6 +17546,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSX::BGAU",
+      "ticker": "BGAU",
+      "exchange": "TSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -18082,222 +18312,6 @@
     {
       "listing_key": "OTC::BIOAF",
       "ticker": "BIOAF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BIOIF",
-      "ticker": "BIOIF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BIOLQ",
-      "ticker": "BIOLQ",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "B3::BIOM3",
-      "ticker": "BIOM3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "B3",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "CPH::BIOMAR",
-      "ticker": "BIOMAR",
-      "exchange": "CPH",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "CPH",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BIONQ",
-      "ticker": "BIONQ",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TSX::BIP-UN",
-      "ticker": "BIP-UN",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TSX",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "B3::BIPD11",
-      "ticker": "BIPD11",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "B3",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "B3::BIPE11",
-      "ticker": "BIPE11",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "B3",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BIQIF",
-      "ticker": "BIQIF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "NSE_IN::BIRLACABLE",
-      "ticker": "BIRLACABLE",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NSE_IN",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BISA",
-      "ticker": "BISA",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BITCF",
-      "ticker": "BITCF",
       "exchange": "OTC",
       "asset_type": "Stock",
       "quality_status": "source_gap",

@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-07-31T09:26:23Z`
+Generated at: `2026-08-01T08:36:41Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `793`
+- Missing primary ISIN rows: `791`
 - Missing stock sectors: `41`
 - Missing ETF categories: `120`
-- Official symbol collisions tracked in exchange references: `11560`
+- Official symbol collisions tracked in exchange references: `11563`
 - Core rows hidden only by the legacy global-ticker compatibility export: `2030`
 
 ## Next Safe Batches
@@ -16,8 +16,8 @@ Generated at: `2026-07-31T09:26:23Z`
 |---|---|---|---:|---|---|---|
 | 1 | NASDAQ | missing_isin_primary | 134 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
 | 2 | ASX | missing_isin_primary | 99 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
-| 3 | TSX | missing_isin_primary | 90 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
-| 4 | BATS | missing_isin_primary | 90 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
+| 3 | BATS | missing_isin_primary | 90 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
+| 4 | TSX | missing_isin_primary | 88 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 5 | NYSE ARCA | missing_isin_primary | 81 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
 | 6 | TSXV | missing_isin_primary | 80 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 7 | BATS | missing_etf_category | 69 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
@@ -35,8 +35,8 @@ These are orchestration candidates only. They do not authorize direct data chang
 |---|---|---|---:|---|---|---|
 | 1 | NASDAQ | All | 134 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 2 | ASX | All | 99 | official_partial | Official ASX ISIN workbook. | no |
-| 3 | TSX | All | 90 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
-| 4 | BATS | All | 90 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 3 | BATS | All | 90 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 4 | TSX | All | 88 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 5 | NYSE ARCA | All | 81 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 6 | TSXV | All | 80 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 7 | NYSE | All | 56 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
