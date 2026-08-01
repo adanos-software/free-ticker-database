@@ -1,6 +1,6 @@
 # Adanos Detection Simulation
 
-Generated at: `2026-07-08T04:36:11Z`
+Generated at: `2026-08-01T16:34:32Z`
 
 This report smoke-tests natural-language aliases from `data/adanos/ticker_reference.csv` against positive and negative text probes.
 
@@ -8,9 +8,9 @@ This report smoke-tests natural-language aliases from `data/adanos/ticker_refere
 
 | Metric | Value |
 |---|---:|
-| reference_rows | 63,057 |
-| alias_entries | 58,390 |
-| tickers_with_aliases | 52,440 |
+| reference_rows | 63,114 |
+| alias_entries | 58,559 |
+| tickers_with_aliases | 52,599 |
 | positive_probes | 5 |
 | positive_misses | 0 |
 | negative_probes | 5 |

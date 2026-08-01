@@ -1,4 +1,11 @@
+import csv
+from collections import defaultdict
+from pathlib import Path
+
 from scripts.lib.non_equity_guard import classify_non_equity_leakage, is_blocked_non_common_stock
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def stock_row(**overrides: str) -> dict[str, str]:
@@ -68,4 +75,80 @@ def test_guard_queues_ambiguous_closed_end_funds_without_auto_block() -> None:
     assert result["guard_decision"] == "manual_review_ambiguous_stock_classification"
     assert result["source_gate"] == (
         "Queue for manual classification; name shape alone does not authorize a Stock or ETF change."
+    )
+
+
+def test_rebuilt_listings_do_not_retain_officially_blocked_stock_rows() -> None:
+    """Official exchange evidence must reach the rebuild's exclusion seam."""
+
+    with (ROOT / "data" / "listings.csv").open(newline="", encoding="utf-8") as handle:
+        listings = list(csv.DictReader(handle))
+    with (ROOT / "data" / "masterfiles" / "reference.csv").open(
+        newline="", encoding="utf-8"
+    ) as handle:
+        references = list(csv.DictReader(handle))
+    with (ROOT / "data" / "review_overrides" / "preferred_allowlist.csv").open(
+        newline="", encoding="utf-8"
+    ) as handle:
+        preferred_allowlist = {
+            (row["ticker"].strip(), row["exchange"].strip())
+            for row in csv.DictReader(handle)
+            if row.get("ticker", "").strip() and row.get("exchange", "").strip()
+        }
+
+    official_by_key: dict[tuple[str, str, str], list[dict[str, str]]] = defaultdict(list)
+    for reference in references:
+        if (
+            reference.get("official") == "true"
+            and reference.get("listing_status") == "active"
+        ):
+            official_by_key[
+                (reference.get("ticker", ""), reference.get("exchange", ""), reference.get("asset_type", ""))
+            ].append(reference)
+
+    blocked_listing_keys: list[str] = []
+    for listing in listings:
+        if listing.get("asset_type") != "Stock":
+            continue
+        if (listing.get("ticker", ""), listing.get("exchange", "")) in preferred_allowlist:
+            continue
+
+        evidence = dict(listing)
+        references_for_listing = official_by_key.get(
+            (listing.get("ticker", ""), listing.get("exchange", ""), "Stock"),
+            [],
+        )
+        if references_for_listing:
+            evidence.update({key: value for key, value in references_for_listing[0].items() if value})
+
+        if is_blocked_non_common_stock(evidence):
+            blocked_listing_keys.append(f"{listing['exchange']}::{listing['ticker']}")
+
+    assert blocked_listing_keys == []
+
+
+def test_rebuild_uses_same_venue_official_evidence_for_exclusion(monkeypatch) -> None:
+    """A generic issuer name must not hide an official warrant classification."""
+
+    from scripts import rebuild_dataset
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_evidence_rows",
+        lambda: {
+            ("WRTW", "NASDAQ", "Stock"): (
+                {
+                    "ticker": "WRTW",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "name": "Example Holdings, Inc. - Warrant",
+                    "official": "true",
+                    "listing_status": "active",
+                },
+            )
+        },
+    )
+
+    assert rebuild_dataset.should_exclude_row(
+        stock_row(ticker="WRTW", name="Example Holdings, Inc.")
     )

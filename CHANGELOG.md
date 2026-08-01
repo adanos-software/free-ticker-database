@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+### Summary
+
+**Listing-scope leakage cleanup and wrong-venue correction.** The rebuild now applies exact active official listing evidence to the non-equity guard and keeps all listing-keyed identifier bridges synchronized with the canonical exports.
+
+### Fixed
+
+- Removed 205 officially identified units, warrants, notes, preferreds, rights, and fund-instrument rows that had been admitted as `Stock` because generic issuer names hid the security type.
+- Dropped the stale `NYSE::GRTUF` row after official evidence confirmed the NYSE line had ended and `GRTUF` moved to OTCQX; retained the documented SEC-directory false-positive exception for `NYSE::PHXE-P`.
+- Removed the now-stale `OTC::FSLUF` entry-quality warning allowlist row and regenerated extended identifiers, listing index, exports, quality reports, and release acceptance artifacts.
+
+### Verification
+
+- `scripts/validate_database.py`: 84/84 error gates passed; `scripts/check_entry_quality_gate.py --fail-on-stale-allowlist`: 0 unexpected and 0 stale warnings.
+- `scripts/build_release_acceptance_report.py`: 67/67 criteria passed.
+
 ## [3.32.05] - 2026-07-28
 
 ### Summary

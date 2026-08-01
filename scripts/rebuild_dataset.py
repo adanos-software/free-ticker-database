@@ -24,6 +24,7 @@ try:
         should_drop_from_ticker_alias_column,
     )
     from scripts.listing_keys import row_listing_key
+    from scripts.lib.non_equity_guard import is_blocked_non_common_stock
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from alias_policy import (
         is_common_single_word_alias,
@@ -32,6 +33,7 @@ except ModuleNotFoundError:  # pragma: no cover - script execution path
         should_drop_from_ticker_alias_column,
     )
     from listing_keys import row_listing_key
+    from lib.non_equity_guard import is_blocked_non_common_stock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1393,6 +1395,11 @@ def should_exclude_row(
     if (row.get("ticker", "").strip(), row.get("exchange", "").strip()) in load_preferred_allowlist():
         return False
 
+    if asset_type == "Stock" and is_blocked_non_common_stock(
+        official_reference_evidence_for_row(row)
+    ):
+        return True
+
     if exchange == "SET":
         if ticker.startswith("^"):
             return True
@@ -1517,6 +1524,70 @@ def load_active_official_reference_rows() -> dict[tuple[str, str], tuple[dict[st
         )
         for key, rows in grouped.items()
     }
+
+
+@lru_cache(maxsize=None)
+def load_active_official_reference_evidence_rows() -> dict[
+    tuple[str, str, str], tuple[dict[str, str], ...]
+]:
+    """Keep source-file order for exact listing-key evidence selection.
+
+    The M3 non-equity campaign uses the first active official row for a
+    ticker/exchange/asset-type key.  Preserve that order here so the rebuild and
+    the review campaign make the same decision when a generic issuer feed and a
+    venue-specific security directory disagree.
+    """
+
+    grouped: dict[tuple[str, str, str], list[dict[str, str]]] = defaultdict(list)
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return {}
+
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for reference in csv.DictReader(handle):
+            if reference.get("official") != "true" or reference.get("listing_status") != "active":
+                continue
+            key = (
+                reference.get("ticker", ""),
+                reference.get("exchange", ""),
+                reference.get("asset_type", ""),
+            )
+            grouped[key].append(reference)
+
+    return {key: tuple(rows) for key, rows in grouped.items()}
+
+
+def official_reference_evidence_for_row(row: dict[str, str]) -> dict[str, str]:
+    """Overlay the best active same-venue official reference onto a listing.
+
+    Some source layers keep a generic issuer name in the canonical listing while
+    the exchange directory identifies the exact line as a warrant, unit, note,
+    right, or preferred.  The non-equity guard must see that listing-keyed
+    evidence before the row is admitted to the stock/ETF exports.
+    """
+
+    if row.get("asset_type") != "Stock":
+        return row
+
+    references = load_active_official_reference_evidence_rows().get(
+        (
+            row.get("ticker", ""),
+            row.get("exchange", ""),
+            row.get("asset_type", ""),
+        ),
+        (),
+    )
+    if not references:
+        return row
+
+    evidence = dict(row)
+    evidence.update(
+        {
+            key: value
+            for key, value in references[0].items()
+            if value
+        }
+    )
+    return evidence
 
 
 @lru_cache(maxsize=None)

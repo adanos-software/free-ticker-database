@@ -1,7 +1,7 @@
 # Improvement Deltas
 
-Generated: `2026-07-08T04:36:23Z`
-Baseline: `2026-07-08T04:36:23Z`
+Generated: `2026-08-01T16:43:10Z`
+Baseline: `2026-08-01T16:43:07Z`
 
 This report compares current campaign metrics against `data/reports/improvement_baseline.json`.
 
@@ -9,7 +9,7 @@ This report compares current campaign metrics against `data/reports/improvement_
 
 | Metric | Value |
 |---|---:|
-| numeric_delta_rows | 928 |
+| numeric_delta_rows | 933 |
 | changed_numeric_delta_rows | 0 |
 | global_changed_numeric_delta_rows | 0 |
 | campaign_changed_numeric_delta_rows | 0 |
@@ -20,11 +20,11 @@ This report compares current campaign metrics against `data/reports/improvement_
 
 | Acceptance Metric | Baseline | Current | Delta | Review Context |
 |---|---:|---:|---:|---|
-| `isin_delta` | 61764 | 61764 | 0 | `scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
-| `sector_delta` | 47420 | 47420 | 0 | `scope=global;metric=sector_delta;baseline=47420;current=47420;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
-| `category_delta` | 15636 | 15636 | 0 | `scope=global;metric=category_delta;baseline=15636;current=15636;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
-| `source_gap_delta` | 6333 | 6333 | 0 | `scope=global;metric=source_gap_delta;baseline=6333;current=6333;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
-| `warn_delta` | 75 | 75 | 0 | `scope=global;metric=warn_delta;baseline=75;current=75;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `isin_delta` | 61624 | 61624 | 0 | `scope=global;metric=isin_delta;baseline=61624;current=61624;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `sector_delta` | 47304 | 47304 | 0 | `scope=global;metric=sector_delta;baseline=47304;current=47304;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `category_delta` | 15642 | 15642 | 0 | `scope=global;metric=category_delta;baseline=15642;current=15642;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `source_gap_delta` | 7445 | 7445 | 0 | `scope=global;metric=source_gap_delta;baseline=7445;current=7445;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `warn_delta` | 20 | 20 | 0 | `scope=global;metric=warn_delta;baseline=20;current=20;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 | `quarantine_delta` | 0 | 0 | 0 | `scope=global;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 
 ## Changed Exchange Acceptance Deltas
