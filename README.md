@@ -26,9 +26,9 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Core primary rows with ISIN | 56,867 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 777 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 16,910 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
-| Official full exchanges | 34 | Current-scope source inventory rows marked `official_full`. |
-| Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
-| Missing current-scope exchanges | 0 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
+| Official full exchanges | 48 | Exchange codes backed by a complete official exchange directory. |
+| Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
+| Missing current-scope exchanges | 0 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
 | Entry quality source-gap rows | 6,445 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
 | Entry quality warn rows | 20 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
@@ -67,6 +67,8 @@ Reference and audit files:
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | FIGI/CIK/LEI enrichment snapshot |
 | [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | Official exchange-masterfile reference rows |
 | [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) | Official source candidates not yet implemented as parsers |
+| [`data/masterfiles/exchange_scope_decisions.csv`](data/masterfiles/exchange_scope_decisions.csv) | Explicit public-scope decision and promotion evidence required for every official-partial exchange |
+| [`data/masterfiles/commercial_source_options.csv`](data/masterfiles/commercial_source_options.csv) | Review-gated commercial reference-data options, access models, redistribution status, and next actions |
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | Safe official listings added to the core export |
 | [`data/masterfiles/financialdata_isin_supplemental_listings.csv`](data/masterfiles/financialdata_isin_supplemental_listings.csv) | FinancialData-discovered rows accepted only after official ISIN-bearing masterfile match |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | Current listing-status baseline |
@@ -78,6 +80,7 @@ Reference and audit files:
 | [`data/reports/m3_correctness_audit.md`](data/reports/m3_correctness_audit.md) | Re-audit artifact generated after each M3 correctness block; does not claim 99% correctness without external stratified audit evidence |
 | [`data/reports/m3_non_equity_leakage_guard.md`](data/reports/m3_non_equity_leakage_guard.md) | Scheduled guard report for preferreds, warrants, units, rights, notes, CEFs, and other non-common-stock leakage |
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
+| [`data/reports/exchange_source_audit.md`](data/reports/exchange_source_audit.md) | One-row-per-exchange source scope, product-class, denominator, recall, and freshness audit |
 | [`data/reports/etf_universe_completeness.md`](data/reports/etf_universe_completeness.md) | Official ETF-directory comparison against the DB ETF universe; missing rows are gated review candidates |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
 | [`data/reports/primary_isin_completeness.md`](data/reports/primary_isin_completeness.md) | D1 missing primary-ISIN source paths, priority venues, and apply gates |
@@ -201,6 +204,7 @@ For full exchange, country, source, and verification coverage, use:
 python3 scripts/build_entry_quality_report.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
+python3 scripts/build_exchange_source_audit.py
 python3 scripts/build_etf_universe_completeness.py
 python3 scripts/build_completion_backlog.py
 python3 scripts/build_primary_isin_completeness.py
@@ -236,6 +240,7 @@ python3 scripts/build_listing_history.py
 python3 scripts/build_entry_quality_report.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
+python3 scripts/build_exchange_source_audit.py
 python3 scripts/build_etf_universe_completeness.py
 python3 scripts/build_completion_backlog.py
 python3 scripts/build_primary_isin_completeness.py
@@ -304,9 +309,11 @@ python3 scripts/rebuild_dataset.py
 
 ## Sources
 
-Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
+The current universe contains 81 exchanges. Every exchange has official evidence, but the evidence scope is explicit: 48 exchanges are `official_full` and 33 are `official_partial`; a partial listing-company page or security lookup is never presented as a complete exchange directory. Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
 
-Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `0` missing current-scope sources, `0` parser todo rows, `0` real global-expansion candidates, `34` official-full rows, and `33` official-partial rows. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
+Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source coverage status: `0` missing current-scope exchanges, `0` parser todo rows, `0` real global-expansion candidates, `48` official-full exchanges, and `33` official-partial exchanges. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
+
+[`data/reports/exchange_source_audit.md`](data/reports/exchange_source_audit.md) is the one-row-per-exchange operational audit for product-class gaps, source freshness and availability, official denominators, recall, blocker class, and promotion readiness. [`data/masterfiles/exchange_scope_decisions.csv`](data/masterfiles/exchange_scope_decisions.csv) gives every partial exchange a distribution-safe public scope. Commercial products are only evaluation candidates: [`data/masterfiles/commercial_source_options.csv`](data/masterfiles/commercial_source_options.csv) does not grant redistribution rights, and its validator requires explicit contract review or prior written permission.
 
 Secondary/reviewed enrichment inputs include [EODHD](https://eodhd.com/financial-apis/), [FinanceDatabase](https://github.com/JerBouma/FinanceDatabase), official B3 COTAHIST files, NYSE Group Security Master sample files, TradingView free scanner metadata, XTB OMI specification data, Yahoo Finance review helpers, [FinancialData.net](https://financialdata.net/documentation) symbol-universe matching, OpenFIGI, GLEIF, and curated production aliases from [api.adanos.org](https://api.adanos.org).
 

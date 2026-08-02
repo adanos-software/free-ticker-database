@@ -390,6 +390,44 @@ def test_select_rotation_sources_uses_deterministic_date_batch() -> None:
     assert selected == ordered[expected_index * 2:expected_index * 2 + 2]
 
 
+def test_fetch_all_sources_times_out_one_source_and_continues(monkeypatch) -> None:
+    import time
+
+    sources = [
+        MasterfileSource(
+            key="slow",
+            provider="P",
+            description="slow",
+            source_url="https://slow.example",
+            format="test",
+        ),
+        MasterfileSource(
+            key="fast",
+            provider="P",
+            description="fast",
+            source_url="https://fast.example",
+            format="test",
+        ),
+    ]
+
+    def fake_fetch(source, session=None):
+        if source.key == "slow":
+            time.sleep(1)
+        return [], "network"
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_source_rows_with_mode", fake_fetch)
+
+    _rows, summary = fetch_exchange_masterfiles.fetch_all_sources(
+        include_manual=False,
+        sources=sources,
+        source_timeout_seconds=0.05,
+    )
+
+    assert summary["source_modes"] == {"slow": "unavailable", "fast": "network"}
+    assert summary["errors"][0]["source_key"] == "slow"
+    assert "timed out" in summary["errors"][0]["error"]
+
+
 SOURCE = MasterfileSource(
     key="test",
     provider="test",
@@ -15532,6 +15570,11 @@ def test_main_marks_empty_partial_refresh_unavailable_and_preserves_rows(tmp_pat
     assert summary["source_details"]["lse_company_reports"]["last_error"] == (
         "Empty refresh result; preserved 1 existing rows"
     )
+    assert summary["last_refresh"] == {
+        "generated_at": "2026-07-22T09:00:00Z",
+        "selected_source_keys": ["lse_company_reports"],
+        "source_modes": {"lse_company_reports": "unavailable"},
+    }
 
 
 def test_merge_summary_errors_preserves_unrefreshed_source_errors() -> None:

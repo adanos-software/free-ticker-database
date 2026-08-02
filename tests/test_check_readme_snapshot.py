@@ -3,11 +3,56 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.check_readme_snapshot import check_readme_snapshot
+from scripts.check_readme_snapshot import check_readme_snapshot, expected_snapshot_values
 
 
 def write_json(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload), encoding="utf-8")
+
+
+def test_expected_snapshot_uses_all_coverage_venues_for_source_status_counts():
+    coverage = {
+        "global": {
+            "core_listings": 1,
+            "tickers": 1,
+            "listing_keys": 1,
+            "stocks": 1,
+            "etfs": 0,
+            "aliases": 1,
+            "isin_coverage": 1,
+            "figi_coverage": 1,
+            "sector_coverage": 1,
+            "stock_sector_coverage": 1,
+            "etf_category_coverage": 0,
+            "instrument_scope_core": 1,
+            "instrument_scope_primary_listing": 1,
+            "instrument_scope_primary_listing_missing_isin": 0,
+            "instrument_scope_extended": 0,
+        },
+        "by_exchange": [
+            {"exchange": "FULL_A", "venue_status": "official_full"},
+            {"exchange": "FULL_B", "venue_status": "official_full"},
+            {"exchange": "PARTIAL", "venue_status": "official_partial"},
+        ],
+    }
+    candidate_inventory = {
+        "summary": {
+            "current_status_counts": {
+                "official_full": 1,
+                "official_partial": 1,
+            }
+        }
+    }
+
+    expected = expected_snapshot_values(
+        coverage,
+        candidate_inventory,
+        {"summary": {"status_counts": {}}},
+    )
+
+    assert expected["Official full exchanges"] == 2
+    assert expected["Official partial exchanges"] == 1
+    assert expected["Missing current-scope exchanges"] == 0
 
 
 def test_check_readme_snapshot_rejects_stale_sources_missing_count(tmp_path: Path):
@@ -80,7 +125,11 @@ def test_check_readme_snapshot_rejects_stale_sources_missing_count(tmp_path: Pat
                 "instrument_scope_primary_listing": 9,
                 "instrument_scope_primary_listing_missing_isin": 1,
                 "instrument_scope_extended": 0,
-            }
+            },
+            "by_exchange": [
+                {"exchange": "MISSING_A", "venue_status": "missing"},
+                {"exchange": "MISSING_B", "venue_status": "missing"},
+            ],
         },
     )
     write_json(

@@ -61,6 +61,7 @@ jobs:
           python scripts/build_entry_quality_report.py
           python scripts/build_coverage_report.py
           python scripts/build_source_inventory.py
+          python scripts/build_exchange_source_audit.py
           python scripts/build_source_gap_classification.py
           python scripts/build_source_of_truth_decisions.py
           python scripts/build_completion_backlog.py
@@ -72,6 +73,8 @@ jobs:
         run: |
           python -m pytest tests/ -q
           python scripts/check_readme_snapshot.py
+          python scripts/check_commercial_source_options.py
+          python scripts/check_exchange_scope_decisions.py
 
       - name: Check entry quality gate
         id: entry_quality_gate
@@ -90,6 +93,7 @@ jobs:
           python scripts/classify_masterfile_rotation_gates.py \
             --entry-quality-gate data/reports/entry_quality_gate.json \
             --validation-report data/reports/validation_report.json \
+            --masterfile-summary data/masterfiles/summary.json \
             --github-output "$GITHUB_OUTPUT"
 
       - name: Summarize manual data review
@@ -99,6 +103,7 @@ jobs:
             echo "### Masterfile rotation needs data review"
             echo
             echo "The refresh completed technically, but introduced ${{ steps.release.outputs.unexpected_warn_count }} new entry-quality warning(s)."
+            echo "Selected sources requiring review: ${{ steps.release.outputs.source_review_count }} (${{ steps.release.outputs.source_review_keys }})."
             echo "A draft pull request will preserve the generated diff; CI and automerge remain disabled until review."
           } >> "$GITHUB_STEP_SUMMARY"
 

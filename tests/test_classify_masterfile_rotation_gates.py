@@ -50,6 +50,45 @@ def test_classify_gate_results_keeps_quarantine_and_unrelated_gates_fatal() -> N
     assert result["hard_failures"] == ["duplicate_listing_key_count", "entry_quality_quarantine"]
 
 
+def test_classify_gate_results_routes_failed_selected_sources_to_manual_review() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        {
+            "source_details": {
+                "fresh_directory": {
+                    "official": True,
+                    "reference_scope": "exchange_directory",
+                },
+                "failed_directory": {
+                    "official": True,
+                    "reference_scope": "exchange_directory",
+                },
+                "cached_subset": {
+                    "official": True,
+                    "reference_scope": "listed_companies_subset",
+                },
+            },
+            "last_refresh": {
+                "selected_source_keys": [
+                    "fresh_directory",
+                    "failed_directory",
+                    "cached_subset",
+                ],
+                "source_modes": {
+                    "fresh_directory": "network",
+                    "failed_directory": "unavailable",
+                    "cached_subset": "cache",
+                },
+            },
+        },
+    )
+
+    assert result["passed"] is True
+    assert result["review_required"] is True
+    assert result["source_review_keys"] == ["failed_directory"]
+
+
 def test_classify_gate_cli_writes_github_outputs_for_review(tmp_path) -> None:
     entry_path = tmp_path / "entry.json"
     validation_path = tmp_path / "validation.json"
@@ -76,4 +115,6 @@ def test_classify_gate_cli_writes_github_outputs_for_review(tmp_path) -> None:
         "review_required=true",
         "unexpected_warn_count=2",
         "quarantine_count=0",
+        "source_review_count=0",
+        "source_review_keys=",
     ]

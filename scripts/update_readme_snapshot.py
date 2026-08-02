@@ -94,6 +94,7 @@ def load_primary_metrics(tickers_csv: Path) -> dict[str, int]:
         "Primary tickers": len(rows),
         "Stocks": sum(row["asset_type"] == "Stock" for row in rows),
         "ETFs": sum(row["asset_type"] == "ETF" for row in rows),
+        "Exchanges": len({row["exchange"] for row in rows if row.get("exchange")}),
         "Countries": len({row["country"] for row in rows if row.get("country")}),
         "ISIN coverage": sum(bool(row.get("isin")) for row in rows),
         "Sector/category coverage": sum(
@@ -132,25 +133,29 @@ def update_top_exchange_table(readme: str, exchange_counts: Counter[str]) -> str
     return "\n".join(lines) + "\n"
 
 
-def source_status_sentence(source_inventory: dict[str, Any]) -> str:
-    values = expected_source_status_values(source_inventory)
+def source_status_sentence(
+    coverage: dict[str, Any], source_inventory: dict[str, Any]
+) -> str:
+    values = expected_source_status_values(coverage, source_inventory)
     return (
-        "Current source inventory status: "
-        f"`{format_count(values['missing'])}` missing current-scope sources, "
+        "Current source coverage status: "
+        f"`{format_count(values['missing'])}` missing current-scope exchanges, "
         f"`{format_count(values['todo'])}` parser todo rows, "
         f"`{format_count(values['global_expansion'])}` real global-expansion candidates, "
-        f"`{format_count(values['official_full'])}` official-full rows, and "
-        f"`{format_count(values['official_partial'])}` official-partial rows."
+        f"`{format_count(values['official_full'])}` official-full exchanges, and "
+        f"`{format_count(values['official_partial'])}` official-partial exchanges."
     )
 
 
-def update_sources_status_paragraph(readme: str, source_inventory: dict[str, Any]) -> str:
+def update_sources_status_paragraph(
+    readme: str, coverage: dict[str, Any], source_inventory: dict[str, Any]
+) -> str:
     replacement = (
         "Official source candidates and reconciled source gaps are tracked in "
         "[`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) "
         "and summarized by "
         "[`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). "
-        f"{source_status_sentence(source_inventory)} "
+        f"{source_status_sentence(coverage, source_inventory)} "
         "Remaining work includes source-parser backlog plus field-completion and taxonomy coverage."
     )
     if SOURCE_STATUS_PATTERN.search(readme):
@@ -162,7 +167,9 @@ def update_sources_status_paragraph(readme: str, source_inventory: dict[str, Any
         updated, count = paragraph_pattern.subn(replacement, readme, count=1)
         if count:
             return updated
-        return SOURCE_STATUS_PATTERN.sub(source_status_sentence(source_inventory), readme, count=1)
+        return SOURCE_STATUS_PATTERN.sub(
+            source_status_sentence(coverage, source_inventory), readme, count=1
+        )
 
     marker = "## Sources"
     marker_index = readme.find(marker)
@@ -198,6 +205,7 @@ def update_readme_snapshot(
     tickers_csv: Path = TICKERS_CSV,
     aliases_csv: Path = ALIASES_CSV,
 ) -> dict[str, Any]:
+    coverage = load_json(coverage_report_json)
     source_inventory = load_json(source_inventory_json)
     expected = expected_values(coverage_report_json, source_inventory_json, entry_quality_json)
     expected.update(load_primary_metrics(tickers_csv))
@@ -205,7 +213,7 @@ def update_readme_snapshot(
     original = readme_path.read_text(encoding="utf-8")
     updated = update_snapshot_table(original, expected)
     updated = update_top_exchange_table(updated, load_exchange_counts(tickers_csv))
-    updated = update_sources_status_paragraph(updated, source_inventory)
+    updated = update_sources_status_paragraph(updated, coverage, source_inventory)
     readme_path.write_text(updated, encoding="utf-8")
     changed = original != updated
     summary = {"readme": str(readme_path.relative_to(ROOT)), "changed": changed, "metrics": expected}

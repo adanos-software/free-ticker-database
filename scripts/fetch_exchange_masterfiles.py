@@ -6,9 +6,11 @@ import io
 import json
 import os
 import re
+import signal
 import shutil
 import subprocess
 import sys
+import threading
 import tempfile
 import time
 import zipfile
@@ -55,6 +57,7 @@ MASTERFILE_FIELDNAMES = [
     "cfi",
     "sector",
 ]
+DEFAULT_SOURCE_TIMEOUT_SECONDS = 90.0
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
 ETF_VERIFICATION_DIR = DATA_DIR / "etf_verification"
@@ -18949,6 +18952,7 @@ def fetch_all_sources(
     include_manual: bool = True,
     manual_dir: Path | None = None,
     sources: Iterable[MasterfileSource] | None = None,
+    source_timeout_seconds: float = DEFAULT_SOURCE_TIMEOUT_SECONDS,
 ) -> tuple[list[dict[str, str]], dict[str, Any]]:
     ensure_output_dirs()
     session = session or requests.Session()
@@ -18959,7 +18963,27 @@ def fetch_all_sources(
     selected_sources = list(sources or OFFICIAL_SOURCES)
     for source in selected_sources:
         try:
-            source_rows, mode = fetch_source_rows_with_mode(source, session=session)
+            if (
+                hasattr(signal, "SIGALRM")
+                and source_timeout_seconds > 0
+                and threading.current_thread() is threading.main_thread()
+            ):
+                previous_handler = signal.getsignal(signal.SIGALRM)
+
+                def handle_source_timeout(_signum, _frame):
+                    raise requests.Timeout(
+                        f"Source {source.key} timed out after {source_timeout_seconds:g}s"
+                    )
+
+                signal.signal(signal.SIGALRM, handle_source_timeout)
+                signal.setitimer(signal.ITIMER_REAL, source_timeout_seconds)
+                try:
+                    source_rows, mode = fetch_source_rows_with_mode(source, session=session)
+                finally:
+                    signal.setitimer(signal.ITIMER_REAL, 0)
+                    signal.signal(signal.SIGALRM, previous_handler)
+            else:  # pragma: no cover - SIGALRM is available in the Linux/macOS pipeline
+                source_rows, mode = fetch_source_rows_with_mode(source, session=session)
             rows.extend(source_rows)
             source_modes[source.key] = mode
         except requests.RequestException as exc:
@@ -19094,6 +19118,14 @@ def main(argv: list[str] | None = None) -> None:
         )
         if errors:
             summary["errors"] = errors
+    summary["last_refresh"] = {
+        "generated_at": summary.get("generated_at", ""),
+        "selected_source_keys": sorted(selected_source_keys),
+        "source_modes": {
+            source_key: summary.get("source_details", {}).get(source_key, {}).get("mode", "unknown")
+            for source_key in sorted(selected_source_keys)
+        },
+    }
     persist_source_metadata()
     write_csv(
         MASTERFILE_REFERENCE_CSV,
