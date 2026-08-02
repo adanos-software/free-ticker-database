@@ -45,6 +45,14 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     assert "PUBLISH_KAGGLE" in workflow
     assert "PUBLISH_HUGGINGFACE" in workflow
 
+    validation = workflow.index("python scripts/validate_database.py")
+    b3_review = workflow.index("python scripts/build_b3_masterfile_gap_review.py")
+    campaigns = workflow.index("python scripts/build_improvement_campaign_report.py")
+    acceptance = workflow.index("python scripts/build_release_acceptance_report.py --fail-on-failure")
+    release_assets = workflow.index("python scripts/build_release_artifacts.py")
+
+    assert validation < b3_review < campaigns < acceptance < release_assets
+
 
 def test_symbol_change_workflow_skips_timestamp_only_apply_report_churn() -> None:
     workflow = (ROOT / ".github" / "workflows" / "symbol-changes.yml").read_text(encoding="utf-8")

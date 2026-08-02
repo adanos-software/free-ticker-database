@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T14:15:22Z",
+  "generated_at": "2026-08-02T17:48:04Z",
   "summary": {
     "venues": 81,
     "venue_status_counts": {
@@ -8,12 +8,12 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 26,
-      "maintain": 13,
-      "refresh_required": 28,
+      "maintain": 10,
+      "refresh_required": 31,
       "refresh_unavailable": 14
     },
     "unavailable_venues": 14,
-    "nonfresh_venues": 59,
+    "nonfresh_venues": 64,
     "denominator_missing_venues": 33,
     "promotion_ready_venues": 0
   },
@@ -1409,8 +1409,8 @@
       "missing_product_classes": "",
       "official_source_keys": "set_dr_search|set_etf_search|set_listed_companies|set_stock_search",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "set_dr_search|set_etf_search|set_listed_companies|set_stock_search",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 944,
       "official_matches": 543,
       "official_collisions": 347,
@@ -1418,7 +1418,7 @@
       "official_recall_pct": 57.52,
       "collision_adjusted_recall_pct": 90.95,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1432,8 +1432,8 @@
       "missing_product_classes": "",
       "official_source_keys": "sgx_securities_prices",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "sgx_securities_prices",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 746,
       "official_matches": 589,
       "official_collisions": 142,
@@ -1441,7 +1441,7 @@
       "official_recall_pct": 78.95,
       "collision_adjusted_recall_pct": 97.52,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1455,8 +1455,8 @@
       "missing_product_classes": "",
       "official_source_keys": "six_equity_issuers|six_etf_products|six_etp_products",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "six_equity_issuers|six_etf_products|six_etp_products",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1465,7 +1465,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "SSE",
@@ -1478,8 +1478,8 @@
       "missing_product_classes": "",
       "official_source_keys": "sse_a_share_list|sse_etf_list",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "sse_a_share_list|sse_etf_list",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1488,7 +1488,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "SSE_CL",
@@ -1524,8 +1524,8 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities",
-      "source_blocker_classes": "cache_only",
+      "nonfresh_source_keys": "nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory",
+      "source_blocker_classes": "cache_only|stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1547,8 +1547,8 @@
       "missing_product_classes": "",
       "official_source_keys": "szse_a_share_list|szse_b_share_list|szse_etf_list",
       "unavailable_source_keys": "szse_a_share_list",
-      "nonfresh_source_keys": "szse_a_share_list",
-      "source_blocker_classes": "empty_refresh",
+      "nonfresh_source_keys": "szse_a_share_list|szse_b_share_list|szse_etf_list",
+      "source_blocker_classes": "empty_refresh|stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1570,8 +1570,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tadawul_main_market_watch",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "tadawul_main_market_watch",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 412,
       "official_matches": 190,
       "official_collisions": 217,
@@ -1579,7 +1579,7 @@
       "official_recall_pct": 46.12,
       "collision_adjusted_recall_pct": 97.44,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1593,8 +1593,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata",
       "unavailable_source_keys": "tase_foreign_etf_search|tase_participating_unit_search",
-      "nonfresh_source_keys": "tase_foreign_etf_search|tase_participating_unit_search",
-      "source_blocker_classes": "empty_refresh",
+      "nonfresh_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search",
+      "source_blocker_classes": "empty_refresh|stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,

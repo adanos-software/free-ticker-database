@@ -19219,20 +19219,26 @@ def render_markdown(payload: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build release acceptance summary from validation and improvement reports.")
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
-    return parser.parse_args()
+    parser.add_argument(
+        "--fail-on-failure",
+        action="store_true",
+        help="Return a non-zero exit code when any release acceptance criterion fails.",
+    )
+    return parser.parse_args(argv)
 
 
-def main() -> None:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     payload = build_payload()
     args.json_out.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     args.md_out.write_text(render_markdown(payload) + "\n", encoding="utf-8")
     print(json.dumps({"passed": payload["passed"], **payload["summary"]}, indent=2))
+    return 1 if args.fail_on_failure and not payload["passed"] else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

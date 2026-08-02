@@ -46,6 +46,16 @@ def test_ci_rebuilds_entry_quality_from_current_data_before_the_gate() -> None:
     assert "--no-json-out" in workflow
 
 
+def test_ci_rebuilds_coverage_before_exchange_scope_audit_and_gate() -> None:
+    workflow = (WORKFLOW_DIR / "ci.yml").read_text(encoding="utf-8")
+
+    coverage_rebuild = workflow.index("python scripts/build_coverage_report.py")
+    audit_rebuild = workflow.index("python scripts/build_exchange_source_audit.py")
+    scope_gate = workflow.index("python scripts/check_exchange_scope_decisions.py")
+
+    assert coverage_rebuild < audit_rebuild < scope_gate
+
+
 def test_automation_workflows_use_scoped_token_and_dispatch_real_ci() -> None:
     for filename, branch in AUTOMATION_BRANCHES.items():
         workflow = (WORKFLOW_DIR / filename).read_text(encoding="utf-8")

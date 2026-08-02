@@ -43,7 +43,6 @@ jobs:
           python scripts/build_completion_backlog.py
           python scripts/build_alias_quality_report.py
           python scripts/build_adanos_ticker_reference.py
-          python scripts/build_release_acceptance_report.py
           python scripts/update_readme_snapshot.py
 
       - name: Run validation gates
@@ -54,6 +53,9 @@ jobs:
           python scripts/check_commercial_source_options.py
           python scripts/check_exchange_scope_decisions.py
           python scripts/validate_database.py
+          python scripts/build_b3_masterfile_gap_review.py
+          python scripts/build_improvement_campaign_report.py
+          python scripts/build_release_acceptance_report.py --fail-on-failure
 
       - name: Build public dataset packages
         run: python scripts/build_public_dataset_package.py

@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 
 import pytest
 
@@ -14292,3 +14293,29 @@ def test_release_summary_context_is_stable_and_machine_readable() -> None:
         "passed=true;criteria=41;passed_criteria=41;"
         "failed_criteria=0;validation_failed_error_gates=0"
     )
+
+
+def test_main_can_fail_the_release_when_acceptance_is_false(tmp_path: Path, monkeypatch) -> None:
+    payload = {
+        "passed": False,
+        "summary": {
+            "criteria": 1,
+            "passed_criteria": 0,
+            "failed_criteria": 1,
+            "validation_failed_error_gates": 0,
+        },
+    }
+    monkeypatch.setattr(acceptance_report, "build_payload", lambda: payload)
+    monkeypatch.setattr(acceptance_report, "render_markdown", lambda _: "report")
+
+    exit_code = acceptance_report.main(
+        [
+            "--json-out",
+            str(tmp_path / "acceptance.json"),
+            "--md-out",
+            str(tmp_path / "acceptance.md"),
+            "--fail-on-failure",
+        ]
+    )
+
+    assert exit_code == 1

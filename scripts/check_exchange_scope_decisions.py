@@ -72,7 +72,11 @@ def validate(decisions_path: Path, audit_path: Path) -> list[str]:
         if row.get("decision") != "retain_official_partial":
             errors.append(f"line {line_number}: decision must retain official_partial")
         if audit and row.get("reason_code") != audit.get("promotion_readiness"):
-            errors.append(f"line {line_number}: reason_code does not match current audit")
+            errors.append(
+                f"line {line_number}: {exchange} reason_code "
+                f"{row.get('reason_code')!r} does not match current audit "
+                f"{audit.get('promotion_readiness')!r}"
+            )
         if audit and "security_lookup_subset" in audit.get("reference_scopes", ""):
             if public_scope != "official_security_lookup_subset":
                 errors.append(f"line {line_number}: security lookup evidence needs lookup subset scope")
