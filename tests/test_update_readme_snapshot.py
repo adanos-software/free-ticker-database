@@ -54,6 +54,7 @@ def test_load_primary_metrics_uses_generated_ticker_rows(tmp_path):
         "Primary tickers": 2,
         "Stocks": 1,
         "ETFs": 1,
+        "Exchanges": 2,
         "Countries": 2,
         "ISIN coverage": 1,
         "Sector/category coverage": 2,
@@ -113,10 +114,22 @@ def test_update_sources_status_paragraph_uses_source_inventory_summary():
         }
     }
 
-    updated = update_sources_status_paragraph(readme, source_inventory)
+    coverage = {
+        "by_exchange": [
+            *({"exchange": f"FULL_{index}", "venue_status": "official_full"} for index in range(30)),
+            *(
+                {"exchange": f"PARTIAL_{index}", "venue_status": "official_partial"}
+                for index in range(33)
+            ),
+            {"exchange": "MISSING_A", "venue_status": "missing"},
+            {"exchange": "MISSING_B", "venue_status": "missing"},
+        ]
+    }
 
-    assert "`2` missing current-scope sources" in updated
+    updated = update_sources_status_paragraph(readme, coverage, source_inventory)
+
+    assert "`2` missing current-scope exchanges" in updated
     assert "`1` parser todo rows" in updated
-    assert "`30` official-full rows" in updated
-    assert "`33` official-partial rows" in updated
+    assert "`30` official-full exchanges" in updated
+    assert "`33` official-partial exchanges" in updated
     assert "not undiscovered exchange-source inventory" not in updated

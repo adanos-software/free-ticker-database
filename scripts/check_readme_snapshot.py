@@ -45,12 +45,12 @@ SNAPSHOT_METRICS = {
 }
 
 SOURCE_STATUS_PATTERN = re.compile(
-    r"Current source inventory status:\s*"
-    r"`?(?P<missing>\d[\d,]*)`?\s+missing current-scope sources,\s*"
+    r"Current source (?:inventory|coverage) status:\s*"
+    r"`?(?P<missing>\d[\d,]*)`?\s+missing current-scope (?:sources|exchanges),\s*"
     r"`?(?P<todo>\d[\d,]*)`?\s+parser todo rows?,\s*"
     r"`?(?P<global_expansion>\d[\d,]*)`?\s+real global-expansion candidates,\s*"
-    r"`?(?P<official_full>\d[\d,]*)`?\s+official-full rows?,\s+and\s+"
-    r"`?(?P<official_partial>\d[\d,]*)`?\s+official-partial rows?",
+    r"`?(?P<official_full>\d[\d,]*)`?\s+official-full (?:rows?|exchanges),\s+and\s+"
+    r"`?(?P<official_partial>\d[\d,]*)`?\s+official-partial (?:rows?|exchanges)",
     re.IGNORECASE,
 )
 
@@ -90,7 +90,7 @@ def expected_snapshot_values(
     entry_quality: dict[str, Any],
 ) -> dict[str, int]:
     global_metrics = coverage["global"]
-    source_counts = source_inventory["summary"]["current_status_counts"]
+    source_counts = coverage_venue_status_counts(coverage)
     entry_status_counts = entry_quality["summary"]["status_counts"]
 
     expected = {
@@ -106,9 +106,20 @@ def expected_snapshot_values(
     return expected
 
 
-def expected_source_status_values(source_inventory: dict[str, Any]) -> dict[str, int]:
+def coverage_venue_status_counts(coverage: dict[str, Any]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for row in coverage.get("by_exchange", []):
+        status = str(row.get("venue_status", ""))
+        if status:
+            counts[status] = counts.get(status, 0) + 1
+    return counts
+
+
+def expected_source_status_values(
+    coverage: dict[str, Any], source_inventory: dict[str, Any]
+) -> dict[str, int]:
     summary = source_inventory["summary"]
-    source_counts = summary["current_status_counts"]
+    source_counts = coverage_venue_status_counts(coverage)
     return {
         "missing": int(source_counts.get("missing", 0)),
         "todo": int(summary.get("todo_rows", 0)),
@@ -127,6 +138,7 @@ def generated_primary_snapshot_values(tickers_csv: Path, aliases_csv: Path) -> d
         "Primary tickers": len(rows),
         "Stocks": sum(row["asset_type"] == "Stock" for row in rows),
         "ETFs": sum(row["asset_type"] == "ETF" for row in rows),
+        "Exchanges": len({row["exchange"] for row in rows if row.get("exchange")}),
         "Countries": len({row["country"] for row in rows if row.get("country")}),
         "Aliases": alias_count,
         "ISIN coverage": sum(bool(row.get("isin")) for row in rows),
@@ -163,16 +175,26 @@ def check_readme_snapshot(
 ) -> list[str]:
     readme = readme_path.read_text(encoding="utf-8")
     snapshot = parse_snapshot_table(readme)
+    coverage = load_json(coverage_report_json)
     source_inventory = load_json(source_inventory_json)
     expected = expected_snapshot_values(
-        load_json(coverage_report_json),
+        coverage,
         source_inventory,
         load_json(entry_quality_json),
     )
     expected.update(generated_primary_snapshot_values(tickers_csv, aliases_csv))
-    expected_source_status = expected_source_status_values(source_inventory)
+    expected_source_status = expected_source_status_values(coverage, source_inventory)
 
     errors: list[str] = []
+    classified_exchange_count = sum(
+        expected_source_status[key]
+        for key in ("missing", "official_full", "official_partial")
+    )
+    if classified_exchange_count != expected["Exchanges"]:
+        errors.append(
+            "Coverage venue statuses do not classify every ticker exchange: "
+            f"classified={classified_exchange_count:,}, exchanges={expected['Exchanges']:,}"
+        )
     for metric, expected_value in expected.items():
         if metric not in snapshot:
             errors.append(f"README snapshot is missing metric: {metric}")

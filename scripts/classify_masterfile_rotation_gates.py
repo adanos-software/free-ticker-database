@@ -19,6 +19,7 @@ def load_json(path: Path) -> dict[str, Any]:
 def classify_gate_results(
     entry_quality_gate: dict[str, Any],
     validation_report: dict[str, Any],
+    masterfile_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     unexpected_warn_count = int(entry_quality_gate.get("unexpected_warn_count") or 0)
     quarantine_count = int(entry_quality_gate.get("quarantine_count") or 0)
@@ -44,8 +45,24 @@ def classify_gate_results(
     if not validation_report.get("passed") and not failed_error_gates:
         hard_failures.append("unclassified_database_validation_failure")
 
+    masterfile_summary = masterfile_summary or {}
+    source_details = masterfile_summary.get("source_details", {})
+    last_refresh = masterfile_summary.get("last_refresh", {})
+    selected_source_keys = last_refresh.get("selected_source_keys", [])
+    refresh_modes = last_refresh.get("source_modes", {})
+    source_review_keys = sorted(
+        source_key
+        for source_key in selected_source_keys
+        if refresh_modes.get(source_key) == "unavailable"
+        or (
+            source_details.get(source_key, {}).get("official")
+            and source_details.get(source_key, {}).get("reference_scope") == "exchange_directory"
+            and refresh_modes.get(source_key) != "network"
+        )
+    )
+
     hard_failures = sorted(set(hard_failures))
-    review_required = bool(unexpected_warn_count and not hard_failures)
+    review_required = bool((unexpected_warn_count or source_review_keys) and not hard_failures)
     return {
         "passed": not hard_failures,
         "review_required": review_required,
@@ -53,6 +70,8 @@ def classify_gate_results(
         "quarantine_count": quarantine_count,
         "failed_error_gates": failed_error_gates,
         "hard_failures": hard_failures,
+        "source_review_count": len(source_review_keys),
+        "source_review_keys": source_review_keys,
     }
 
 
@@ -62,6 +81,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--entry-quality-gate", type=Path, required=True)
     parser.add_argument("--validation-report", type=Path, required=True)
+    parser.add_argument("--masterfile-summary", type=Path)
     parser.add_argument("--github-output", type=Path)
     return parser.parse_args(argv)
 
@@ -71,12 +91,15 @@ def main(argv: list[str] | None = None) -> int:
     result = classify_gate_results(
         load_json(args.entry_quality_gate),
         load_json(args.validation_report),
+        load_json(args.masterfile_summary) if args.masterfile_summary else None,
     )
     if args.github_output:
         with args.github_output.open("a", encoding="utf-8") as handle:
             handle.write(f"review_required={str(result['review_required']).lower()}\n")
             handle.write(f"unexpected_warn_count={result['unexpected_warn_count']}\n")
             handle.write(f"quarantine_count={result['quarantine_count']}\n")
+            handle.write(f"source_review_count={result['source_review_count']}\n")
+            handle.write(f"source_review_keys={','.join(result['source_review_keys'])}\n")
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0 if result["passed"] else 1
 
