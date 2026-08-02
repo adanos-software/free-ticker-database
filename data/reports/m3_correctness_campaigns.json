@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-28T09:35:09Z",
+    "generated_at": "2026-08-01T16:55:56Z",
     "rows": 5,
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -16,8 +16,8 @@
     "campaigns": 5,
     "required_campaigns_present": true,
     "applied_rows_total": 0,
-    "blocked_rows_total": 288,
-    "manual_review_rows_total": 8066,
+    "blocked_rows_total": 83,
+    "manual_review_rows_total": 8061,
     "correctness_target": "move_measured_full_row_correctness_toward_99_percent",
     "correctness_claim": "not_claimed_99_percent_without_external_stratified_audit"
   },
@@ -25,41 +25,41 @@
     {
       "campaign_key": "C1_sector_etf_category_truth",
       "artifact": "data/reports/m3_sector_category_campaign.json",
-      "rows": 6600,
+      "rows": 6597,
       "applied_rows": 0,
       "blocked_rows": 77,
-      "manual_review_rows": 6523,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "manual_review_rows": 6520,
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C2_name_freshness",
       "artifact": "data/reports/m3_name_freshness_campaign.json",
-      "rows": 321,
+      "rows": 323,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 321,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "manual_review_rows": 323,
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C4_identity_residual_burn_down",
       "artifact": "data/reports/m3_identity_residual_campaign.json",
-      "rows": 1203,
+      "rows": 1199,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 1203,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "manual_review_rows": 1199,
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C5_non_equity_leakage_guard",
       "artifact": "data/reports/m3_non_equity_leakage_guard.json",
-      "rows": 230,
+      "rows": 25,
       "applied_rows": 0,
-      "blocked_rows": 211,
+      "blocked_rows": 6,
       "manual_review_rows": 19,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
@@ -69,7 +69,7 @@
       "applied_rows": 0,
       "blocked_rows": 0,
       "manual_review_rows": 0,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     }
   ],
@@ -77,41 +77,41 @@
     {
       "campaign_key": "C1_sector_etf_category_truth",
       "artifact": "data/reports/m3_sector_category_campaign.json",
-      "rows": 6600,
+      "rows": 6597,
       "applied_rows": 0,
       "blocked_rows": 77,
-      "manual_review_rows": 6523,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "manual_review_rows": 6520,
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C2_name_freshness",
       "artifact": "data/reports/m3_name_freshness_campaign.json",
-      "rows": 321,
+      "rows": 323,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 321,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "manual_review_rows": 323,
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C4_identity_residual_burn_down",
       "artifact": "data/reports/m3_identity_residual_campaign.json",
-      "rows": 1203,
+      "rows": 1199,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 1203,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "manual_review_rows": 1199,
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C5_non_equity_leakage_guard",
       "artifact": "data/reports/m3_non_equity_leakage_guard.json",
-      "rows": 230,
+      "rows": 25,
       "applied_rows": 0,
-      "blocked_rows": 211,
+      "blocked_rows": 6,
       "manual_review_rows": 19,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     },
     {
@@ -121,7 +121,7 @@
       "applied_rows": 0,
       "blocked_rows": 0,
       "manual_review_rows": 0,
-      "generated_at": "2026-07-28T09:35:09Z",
+      "generated_at": "2026-08-01T16:55:56Z",
       "status": "generated_reviewable_evidence"
     }
   ]

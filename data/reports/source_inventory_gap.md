@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-08-01T08:56:19Z`
+Generated at: `2026-08-01T16:50:04Z`
 
 ## Summary
 
@@ -26,7 +26,7 @@ _No rows._
 | 3 | ATHEX | official_partial | 155 | 0 | 0 | athex_sector_classification | ATHEX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 4 | SZSE | official_partial | 3083 | 12 | 0 | szse_industry_classification | SZSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SZSE report-list industry fields |
 | 5 | SSE | official_partial | 2789 | 35 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |
-| 6 | STO | official_partial | 834 | 0 | 1 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
+| 6 | STO | official_partial | 832 | 0 | 1 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 7 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
 | 8 | Bursa | official_partial | 936 | 0 | 0 | bursa_equities_prices_directory | Bursa Malaysia |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 9 | SIX | official_partial | 758 | 0 | 0 | six_shares_explorer_full | SIX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
@@ -65,7 +65,7 @@ _No rows._
 | 3 | ATHEX | official_partial | 155 | 0 | 0 | athex_sector_classification | ATHEX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 4 | SZSE | official_partial | 3083 | 12 | 0 | szse_industry_classification | SZSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SZSE report-list industry fields |
 | 5 | SSE | official_partial | 2789 | 35 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |
-| 6 | STO | official_partial | 834 | 0 | 1 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
+| 6 | STO | official_partial | 832 | 0 | 1 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 7 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
 | 8 | Bursa | official_partial | 936 | 0 | 0 | bursa_equities_prices_directory | Bursa Malaysia |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 9 | SIX | official_partial | 758 | 0 | 0 | six_shares_explorer_full | SIX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |

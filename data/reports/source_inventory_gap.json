@@ -164,7 +164,7 @@
       "source_mode": "",
       "source_refresh_queue": "",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "tickers": 834,
+      "tickers": 832,
       "unresolved_findings": 0,
       "venue_name": "Nasdaq Stockholm"
     },
@@ -962,7 +962,7 @@
       "exchange": "OTC",
       "expected_format": "finra_orf_daily_list_csv",
       "implementation_status": "implemented",
-      "missing_isin": 759,
+      "missing_isin": 758,
       "missing_sector_or_category": 236,
       "notes": "Official FINRA ORF Daily List can support OTC additions, deletions, symbol/name changes and effective-date history. It remains review-gated and non-applying unless authorized official rows are supplied.",
       "official_full_upgrade_plan": "complete_official_exchange_directory_present",
@@ -976,7 +976,7 @@
       "source_mode": "",
       "source_refresh_queue": "",
       "source_url": "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=DAILYLIST&Facility=ORF",
-      "tickers": 11078,
+      "tickers": 11076,
       "unresolved_findings": 4001,
       "venue_name": "OTC Reporting Facility"
     },
@@ -990,7 +990,7 @@
       "exchange": "OTC",
       "expected_format": "finra_orf_equity_master_csv",
       "implementation_status": "implemented",
-      "missing_isin": 759,
+      "missing_isin": 758,
       "missing_sector_or_category": 236,
       "notes": "Official FINRA ORF Equity Master is the intended cross-check for OTC Markets directory coverage. It is not in the live source list until credentials or an approved cached official file are available, so it cannot silently authorize OTC additions or metadata changes.",
       "official_full_upgrade_plan": "complete_official_exchange_directory_present",
@@ -1004,7 +1004,7 @@
       "source_mode": "",
       "source_refresh_queue": "",
       "source_url": "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=EQUITYMASTERAC&Facility=ORF",
-      "tickers": 11078,
+      "tickers": 11076,
       "unresolved_findings": 4001,
       "venue_name": "OTC Reporting Facility"
     },
@@ -1018,7 +1018,7 @@
       "exchange": "OTC",
       "expected_format": "otc_markets_stock_screener_csv",
       "implementation_status": "implemented",
-      "missing_isin": 759,
+      "missing_isin": 758,
       "missing_sector_or_category": 236,
       "notes": "Largest partial source block. The screener validates OTC symbol/name/tier coverage for stock-like rows and ETFs, but it does not expose ISINs or GICS sectors. Grey and Expert Market access remain excluded intentionally so OTC stays an extended/listing-scope policy area rather than leaking into core primary completeness.",
       "official_full_upgrade_plan": "complete_official_exchange_directory_present",
@@ -1032,7 +1032,7 @@
       "source_mode": "cache",
       "source_refresh_queue": "refresh_official_exchange_directory_before_identity_or_collision_work",
       "source_url": "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV?greyAccess=false&expertAccess=false",
-      "tickers": 11078,
+      "tickers": 11076,
       "unresolved_findings": 4001,
       "venue_name": "OTC Markets"
     },
@@ -1200,7 +1200,7 @@
       "source_mode": "",
       "source_refresh_queue": "",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "tickers": 6559,
+      "tickers": 6557,
       "unresolved_findings": 37,
       "venue_name": "London Stock Exchange"
     },
@@ -1508,7 +1508,7 @@
       "source_mode": "network",
       "source_refresh_queue": "refresh_official_subset_before_gap_enrichment",
       "source_url": "https://www.bolsasymercados.es/en/bme-exchange/securities/stock-prices",
-      "tickers": 221,
+      "tickers": 220,
       "unresolved_findings": 93,
       "venue_name": "BME Spanish Exchanges"
     },
@@ -1648,7 +1648,7 @@
       "source_mode": "network",
       "source_refresh_queue": "refresh_official_subset_before_gap_enrichment",
       "source_url": "https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes",
-      "tickers": 29,
+      "tickers": 28,
       "unresolved_findings": 0,
       "venue_name": "Bahrain Bourse"
     },
@@ -1704,7 +1704,7 @@
       "source_mode": "",
       "source_refresh_queue": "",
       "source_url": "https://www.stockexchangeofmauritius.com/",
-      "tickers": 53,
+      "tickers": 52,
       "unresolved_findings": 6,
       "venue_name": "Stock Exchange of Mauritius"
     },
@@ -1921,7 +1921,7 @@
       "official_full": 34,
       "official_partial": 33
     },
-    "generated_at": "2026-08-01T08:56:19Z",
+    "generated_at": "2026-08-01T16:50:04Z",
     "global_expansion_candidates": 0,
     "high_priority_rows": 24,
     "official_full_upgrade_plan_counts": {

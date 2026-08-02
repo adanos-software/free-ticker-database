@@ -497,3 +497,89 @@ def test_stream_report_resume_skips_completed_listing_keys(tmp_path):
     assert [row.listing_key for row in rows] == ["NASDAQ::MSFT", "NASDAQ::AAPL"]
     assert payload["_meta"]["resumed_rows"] == 1
     assert payload["_meta"]["processed_rows"] == 1
+
+
+def test_stream_report_resume_removes_rows_outside_current_selection(tmp_path):
+    listings_csv = tmp_path / "listings.csv"
+    entry_quality_csv = tmp_path / "entry_quality.csv"
+    source_gap_csv = tmp_path / "source_gap_classification.csv"
+    csv_path = tmp_path / "report.csv"
+
+    with listings_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["listing_key", "ticker", "exchange", "name", "asset_type", "isin"])
+        writer.writeheader()
+        writer.writerow(listing_row())
+
+    with entry_quality_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["listing_key", "quality_status"])
+        writer.writeheader()
+    with source_gap_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["listing_key", "field", "gap_class"])
+        writer.writeheader()
+
+    existing = assess_bars(
+        listing_row(),
+        entry_quality_status="",
+        ohlcv_source="",
+        ohlcv_symbol="MSFT",
+        bars=[],
+        checked=False,
+        min_bars=128,
+        stale_days=21,
+        price_jump_threshold=0.30,
+        zero_volume_streak_threshold=5,
+        stagnant_close_streak_threshold=10,
+    )
+    stale = assess_bars(
+        listing_row(listing_key="NASDAQ::AAPL", ticker="AAPL", name="Apple Inc", isin="US0378331005"),
+        entry_quality_status="",
+        ohlcv_source="",
+        ohlcv_symbol="AAPL",
+        bars=[],
+        checked=False,
+        min_bars=128,
+        stale_days=21,
+        price_jump_threshold=0.30,
+        zero_volume_streak_threshold=5,
+        stagnant_close_streak_threshold=10,
+    )
+    write_csv(csv_path, [existing, stale])
+
+    args = Namespace(
+        listings_csv=listings_csv,
+        entry_quality_csv=entry_quality_csv,
+        source_gap_csv=source_gap_csv,
+        ohlcv_dir=None,
+        csv_out=csv_path,
+        json_out=tmp_path / "report.json",
+        md_out=tmp_path / "report.md",
+        exchange=[],
+        asset_type=[],
+        focus_status=[],
+        max_rows=0,
+        sample_profile="filtered",
+        samples_per_gap_class=5,
+        large_exchange_count=10,
+        samples_per_large_exchange=5,
+        fetch_yahoo=False,
+        include_not_checked=True,
+        max_fetch=250,
+        stream=True,
+        resume=True,
+        progress_every=0,
+        delay_seconds=0.0,
+        timeout_seconds=10.0,
+        chart_range="1y",
+        interval="1d",
+        min_bars=128,
+        stale_days=21,
+        price_jump_threshold=0.30,
+        zero_volume_streak_threshold=5,
+        stagnant_close_streak_threshold=10,
+    )
+
+    rows, payload = stream_report(args)
+
+    assert [row.listing_key for row in rows] == ["NASDAQ::MSFT"]
+    assert read_completed_listing_keys(csv_path) == {"NASDAQ::MSFT"}
+    assert payload["_meta"]["rows"] == 1
