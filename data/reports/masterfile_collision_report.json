@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 79458,
-    "matched": 52138,
-    "collisions": 11549,
-    "missing": 15771
+    "official_symbols": 80739,
+    "matched": 53344,
+    "collisions": 11543,
+    "missing": 15852
   },
   "exchanges": [
     {
@@ -272,12 +272,63 @@
     },
     {
       "exchange": "B3",
-      "official_symbols": 2,
-      "matched": 2,
+      "official_symbols": 1327,
+      "matched": 1220,
       "collisions": 0,
-      "missing": 0,
+      "missing": 107,
       "collision_examples": [],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "ABTC11",
+          "name": "BTG PACTUAL TEVA AUVP BITCOIN FEAR ARB FDO DE IND",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "ALUP11",
+          "name": "ALUPAR INVESTIMENTO S/A",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "ANGV39",
+          "name": "VANECK FALLEN ANGEL HIGH YIELD BOND ETF",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AQPA11",
+          "name": "ARQUIPEO FUNDO DE INVEST IMOB \u2013 RESP LIM",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AQPA15",
+          "name": "ARQUIPEO FUNDO DE INVEST IMOB \u2013 RESP LIM",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AZPE11",
+          "name": "AZ QUEST PANORAMA CR\u00c9DITO ESTRUTURADO FII RESP LTD",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AZUL3",
+          "name": "AZUL S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AZUL97",
+          "name": "AZUL S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AZUL98",
+          "name": "AZUL S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AZUL99",
+          "name": "AZUL S.A.",
+          "exchange": "B3"
+        }
+      ]
     },
     {
       "exchange": "BATS",
@@ -529,10 +580,10 @@
     },
     {
       "exchange": "BIST",
-      "official_symbols": 642,
+      "official_symbols": 647,
       "matched": 611,
       "collisions": 20,
-      "missing": 11,
+      "missing": 16,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -622,6 +673,11 @@
           "exchange": "BIST"
         },
         {
+          "ticker": "ALBTN",
+          "name": "ALBAYRAK HAZIR BETON SANAY\u0130 VE T\u0130CARET A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
           "ticker": "BETAE",
           "name": "BETA ENERJ\u0130 VE TEKNOLOJ\u0130 A.\u015e.",
           "exchange": "BIST"
@@ -637,6 +693,16 @@
           "exchange": "BIST"
         },
         {
+          "ticker": "ISVEA",
+          "name": "\u0130SVEA SERAM\u0130K VE BANYO \u00dcR\u00dcNLER\u0130 SANAY\u0130 A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
+          "ticker": "KARCL",
+          "name": "KARDEM\u0130R \u00c7EL\u0130K SANAY\u0130 A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
           "ticker": "LXGYO",
           "name": "LUXERA GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
           "exchange": "BIST"
@@ -647,23 +713,8 @@
           "exchange": "BIST"
         },
         {
-          "ticker": "METEN",
-          "name": "METG\u00dcN ENERJ\u0130 YATIRIMLARI A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "ORZAX",
-          "name": "ORZAKS \u0130LA\u00c7 VE K\u0130MYA SANAY\u0130 T\u0130CARET A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "SOHOE",
-          "name": "SOHO G\u0130Y\u0130M VE ENERJ\u0130 A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "SSAAT",
-          "name": "SAAT VE SAAT SANAY\u0130 VE T\u0130CARET A.\u015e.",
+          "ticker": "MASFN",
+          "name": "MASFEN ENERJ\u0130 A.\u015e.",
           "exchange": "BIST"
         }
       ]
@@ -815,10 +866,10 @@
     },
     {
       "exchange": "BME",
-      "official_symbols": 99,
-      "matched": 24,
-      "collisions": 12,
-      "missing": 63,
+      "official_symbols": 50,
+      "matched": 12,
+      "collisions": 6,
+      "missing": 32,
       "collision_examples": [
         {
           "ticker": "ACX",
@@ -831,14 +882,6 @@
         {
           "ticker": "AI",
           "name": "AIRTIFICIAL",
-          "target_exchange": "BME",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AIG",
-          "name": "ANDINO INVERSIONES",
           "target_exchange": "BME",
           "existing_exchanges": [
             "NYSE"
@@ -876,42 +919,12 @@
           "existing_exchanges": [
             "OTC"
           ]
-        },
-        {
-          "ticker": "AMP",
-          "name": "AMPER",
-          "target_exchange": "BME",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AMS",
-          "name": "AMADEUS IT GROUP",
-          "target_exchange": "BME",
-          "existing_exchanges": [
-            "LSE",
-            "NYSE MKT"
-          ]
-        },
-        {
-          "ticker": "APAM",
-          "name": "APERAM",
-          "target_exchange": "BME",
-          "existing_exchanges": [
-            "NYSE"
-          ]
         }
       ],
       "missing_examples": [
         {
           "ticker": "AKL",
           "name": "AKILES",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "AMIBX",
-          "name": "AMUNDI IBEX ETF ACC",
           "exchange": "BME"
         },
         {
@@ -952,6 +965,11 @@
         {
           "ticker": "S0084",
           "name": "ALAVA INVERSIONES",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0127",
+          "name": "ALLOCATION",
           "exchange": "BME"
         }
       ]

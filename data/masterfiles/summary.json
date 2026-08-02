@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-01T08:55:07Z",
-  "rows": 148878,
+  "generated_at": "2026-08-02T08:35:09Z",
+  "rows": 150161,
   "exchanges": [
     "ADX",
     "AMS",
@@ -93,18 +93,18 @@
     "asx_listed_companies": 1987,
     "asx_investment_products": 458,
     "athex_sector_classification": 118,
-    "b3_listed_etfs": 211,
+    "b3_listed_etfs": 213,
     "b3_bdr_etfs": 314,
-    "b3_instruments_equities": 2,
+    "b3_instruments_equities": 1327,
     "nasdaq_other_listed": 7512,
     "nasdaq_trading_system_adds_deletes": 36,
     "byma_equity_details": 63,
     "bahrain_bourse_listed_companies": 41,
-    "bist_kap_mkk_listed_securities": 642,
+    "bist_kap_mkk_listed_securities": 647,
     "boursa_kuwait_stocks": 140,
     "bme_etf_list": 5,
-    "bme_security_prices_directory": 99,
     "bme_listed_companies": 123,
+    "bme_security_prices_directory": 50,
     "bmv_stock_search": 10,
     "bmv_market_data_securities": 9,
     "bmv_etf_search": 2,
@@ -296,7 +296,7 @@
       "official": true,
       "mode": "network",
       "rows": 458,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "set_listed_companies": {
       "provider": "SET",
@@ -449,16 +449,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 2,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "rows": 1327,
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "b3_listed_etfs": {
       "provider": "B3",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 211,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "rows": 213,
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "b3_bdr_etfs": {
       "provider": "B3",
@@ -466,7 +466,7 @@
       "official": true,
       "mode": "network",
       "rows": 314,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "jse_etf_list": {
       "provider": "JSE",
@@ -498,7 +498,7 @@
       "official": true,
       "mode": "network",
       "rows": 123,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bme_etf_list": {
       "provider": "BME",
@@ -506,7 +506,7 @@
       "official": true,
       "mode": "network",
       "rows": 5,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bme_listed_values": {
       "provider": "BME",
@@ -522,8 +522,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 99,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "rows": 50,
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bme_growth_prices": {
       "provider": "BME Growth",
@@ -531,7 +531,7 @@
       "official": true,
       "mode": "network",
       "rows": 0,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "athex_sector_classification": {
       "provider": "ATHEX",
@@ -539,7 +539,7 @@
       "official": true,
       "mode": "network",
       "rows": 118,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bursa_equity_isin": {
       "provider": "Bursa Malaysia",
@@ -711,15 +711,15 @@
       "official": true,
       "mode": "network",
       "rows": 41,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bist_kap_mkk_listed_securities": {
       "provider": "KAP/MKK",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 642,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "rows": 647,
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "tadawul_main_market_watch": {
       "provider": "Saudi Exchange",
@@ -735,7 +735,7 @@
       "official": true,
       "mode": "network",
       "rows": 123,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "qse_market_watch": {
       "provider": "QSE",
@@ -864,7 +864,7 @@
       "official": true,
       "mode": "network",
       "rows": 10,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bmv_capital_trust_search": {
       "provider": "BMV",
@@ -872,7 +872,7 @@
       "official": true,
       "mode": "network",
       "rows": 5,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bmv_etf_search": {
       "provider": "BMV",
@@ -880,7 +880,7 @@
       "official": true,
       "mode": "network",
       "rows": 2,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bmv_market_data_securities": {
       "provider": "BMV",
@@ -888,7 +888,7 @@
       "official": true,
       "mode": "network",
       "rows": 9,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "bmv_issuer_directory": {
       "provider": "BMV",
@@ -896,7 +896,7 @@
       "official": true,
       "mode": "network",
       "rows": 0,
-      "generated_at": "2026-07-26T08:37:51Z"
+      "generated_at": "2026-08-02T08:35:09Z"
     },
     "nasdaq_nordic_stockholm_shares": {
       "provider": "Nasdaq Nordic",
