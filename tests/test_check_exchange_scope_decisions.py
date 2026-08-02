@@ -70,3 +70,19 @@ def test_validate_accepts_review_gated_subset(tmp_path: Path) -> None:
     write_csv(decisions, MODULE.FIELDNAMES, [decision_row()])
 
     assert MODULE.validate(decisions, audit) == []
+
+
+def test_validate_reports_exchange_and_reason_code_drift(tmp_path: Path) -> None:
+    audit_path = tmp_path / "audit.csv"
+    decisions_path = tmp_path / "decisions.csv"
+    row = audit_row("SIX")
+    row["promotion_readiness"] = "blocked_nonfresh_source"
+    write_csv(audit_path, list(row.keys()), [row])
+    write_csv(decisions_path, MODULE.FIELDNAMES, [decision_row("SIX")])
+
+    errors = MODULE.validate(decisions_path, audit_path)
+
+    assert errors == [
+        "line 2: SIX reason_code 'blocked_denominator_missing' does not match current audit "
+        "'blocked_nonfresh_source'"
+    ]

@@ -32,6 +32,7 @@ jobs:
       - name: Rebuild source-derived artifacts
         run: |
           python scripts/rebuild_dataset.py
+          python scripts/build_coverage_report.py
           python scripts/build_exchange_source_audit.py
 
       - name: Rebuild entry quality report for current data
