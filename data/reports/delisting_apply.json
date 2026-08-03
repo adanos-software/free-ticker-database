@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-07-27T10:56:36Z",
+    "generated_at": "2026-08-03T10:57:50Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "applied_rows": 0,
     "drafted_rows": 0,
-    "blocked_rows": 25,
-    "manual_rows": 135,
+    "blocked_rows": 26,
+    "manual_rows": 144,
     "status_counts": {
-      "blocked_suspended_kept_by_policy": 25,
-      "manual_rename_vs_delisting_required": 135
+      "blocked_suspended_kept_by_policy": 26,
+      "manual_rename_vs_delisting_required": 144
     }
   },
   "applied": [],
@@ -210,6 +210,14 @@
     },
     {
       "exchange": "BSE_IN",
+      "ticker": "WINSOME",
+      "name": "Winsome Yarns Ltd",
+      "isin": "INE784B01035",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
       "ticker": "YARNPP",
       "name": "Yarn Syndicate Ltd",
       "isin": "IN9564C01011",
@@ -231,6 +239,14 @@
       "ticker": "ADTX",
       "name": "Aditxt Inc. ",
       "isin": "US0070258696",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "AFBI",
+      "name": "Affinity Bancshares Inc",
+      "isin": "US00832E1038",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -324,6 +340,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "CCIX",
+      "name": "Churchill Capital Corp IX",
+      "isin": "KYG213011094",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "CCRN",
       "name": "Cross Country Healthcare Inc",
       "isin": "US2274831047",
@@ -399,6 +423,14 @@
       "ticker": "DEVS",
       "name": "DevvStream Corp. Common Stock",
       "isin": "CA25189R1001",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ELSE",
+      "name": "Electro-Sensors Inc",
+      "isin": "US2852331022",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -492,6 +524,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "GV",
+      "name": "Visionary Education Technology Holdings Group Inc.",
+      "isin": "CA92838F2008",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ISRL",
       "name": "Israel Acquisitions Corp Class A",
       "isin": "KYG496671010",
@@ -503,6 +543,14 @@
       "ticker": "ITRM",
       "name": "Iterum Therapeutics PLC",
       "isin": "IE000TTOOBX0",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "KVAC",
+      "name": "Keen Vision Acquisition Corporation Ordinary Shares",
+      "isin": "VGG524431191",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -527,6 +575,14 @@
       "ticker": "LOKV",
       "name": "Live Oak Acquisition Corp. V Class A Ordinary Shares",
       "isin": "KYG5509P1028",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LPRO",
+      "name": "Open Lending Corp",
+      "isin": "US68373J1043",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -668,6 +724,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "PSTV",
+      "name": "Plus Therapeutics Inc",
+      "isin": "US72941H8060",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "PTNM",
       "name": "Pitanium Ltd",
       "isin": "VGG7111A1012",
@@ -727,6 +791,14 @@
       "ticker": "SGRP",
       "name": "SPAR Group Inc",
       "isin": "US7849331035",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SKYT",
+      "name": "Skywater Technology Inc",
+      "isin": "US83089J1088",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -839,6 +911,14 @@
       "ticker": "VXRT",
       "name": "Vaxart Inc",
       "isin": "US92243A2006",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "VYNE",
+      "name": "Vyne Therapeutics Inc",
+      "isin": "US92941V2097",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1084,14 +1164,6 @@
     },
     {
       "exchange": "NYSE",
-      "ticker": "QBTS",
-      "name": "D-Wave Quantum Inc.",
-      "isin": "US26740W1099",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NYSE",
       "ticker": "SBDS",
       "name": "Solo Brands, Inc. Class A",
       "isin": "US83425V2034",
@@ -1151,6 +1223,14 @@
       "ticker": "TSEOF",
       "name": "Trinseo PLC",
       "isin": "IE0000QBK8U7",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "TWO",
+      "name": "Two Harbors Investments Corp",
+      "isin": "US90187B8046",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
