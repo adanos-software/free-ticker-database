@@ -1,0 +1,42 @@
+{
+  "review_scope": "FinanceDatabase missing-company reconciliation: exact ISIN candidates only",
+  "evidence": {
+    "official_reference_snapshot_utc": "2026-07-29T09:29:29Z",
+    "openfigi_source": "OpenFIGI v3 mapping",
+    "openfigi_generated_at_utc": "2026-08-03T16:31:52.200680Z",
+    "openfigi_raw_sha256": "adec08e56327e2dfa3bbbd1078c1fe34e0439fe3e8a461cba871dbe1c2ccdf14",
+    "listing_rows_reviewed": 46,
+    "unique_isins_queried": 44,
+    "exact_target_venue_name_or_ticker_support": 46
+  },
+  "decisions": {
+    "apply_candidates": 43,
+    "common_stock": 42,
+    "reit_equity_kept_as_stock": 1,
+    "blocked_closed_end_fund": 3,
+    "blocked_listing_keys": [
+      "LSE::ATR",
+      "LSE::CRS",
+      "LSE::PIN"
+    ]
+  },
+  "apply": {
+    "apply_performed": true,
+    "target": "data/coverage_expansion_listings.csv",
+    "rows_added": 43,
+    "unique_isins_added": 41,
+    "sector_policy": "Leave stock_sector blank in the coverage source rows; the normal rebuild may retain an existing official fallback (observed for HEL::LEHTO and TPEX::5348), otherwise keep it blank.",
+    "coverage_source_sector_blank_count": 43,
+    "rebuilt_output_official_sector_fallback_count": 2,
+    "country_policy": "Derive country and country_code from the ISIN issuer prefix, not from the listing venue.",
+    "collision_policy": "Use coverage expansion so all rows enter listings.csv while only collision-free rows may win tickers.csv.",
+    "candidate_global_ticker_collisions": 33,
+    "candidate_primary_ticker_rows": 8,
+    "blocked_rows_not_added": 3
+  },
+  "artifacts": {
+    "evidence_csv": "data/reports/finance_database_isin_coverage_review.csv",
+    "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
+    "raw_openfigi_sha256": "adec08e56327e2dfa3bbbd1078c1fe34e0439fe3e8a461cba871dbe1c2ccdf14"
+  }
+}

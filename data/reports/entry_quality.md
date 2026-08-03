@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-08-02T08:52:24Z`
+Generated at: `2026-08-03T18:18:19Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 68,089 |
-| source_gap | 6,445 |
+| pass | 68,093 |
+| source_gap | 6,484 |
 | warn | 20 |
 
 ## Issue Counts
@@ -17,7 +17,7 @@ Generated at: `2026-08-02T08:52:24Z`
 | official_reference_gap | 5,741 |
 | expected_missing_primary_isin | 777 |
 | missing_etf_category | 122 |
-| missing_stock_sector | 48 |
+| missing_stock_sector | 87 |
 | country_isin_mismatch | 12 |
 | official_name_mismatch | 6 |
 | official_isin_mismatch | 2 |
@@ -33,19 +33,19 @@ Generated at: `2026-08-02T08:52:24Z`
 | BATS | 1,134 | 0 | 180 | 0 | 0 |
 | BMV | 0 | 0 | 179 | 0 | 0 |
 | TSXV | 899 | 0 | 156 | 2 | 0 |
+| LSE | 6,416 | 0 | 146 | 9 | 0 |
 | TSX | 1,696 | 0 | 148 | 0 | 0 |
-| LSE | 6,414 | 0 | 134 | 9 | 0 |
 | BME | 84 | 0 | 136 | 0 | 0 |
 | ASX | 1,491 | 0 | 134 | 0 | 0 |
 | NSE_IN | 2,369 | 0 | 134 | 0 | 0 |
-| XETRA | 3,725 | 0 | 121 | 0 | 0 |
-| Euronext | 984 | 0 | 99 | 0 | 0 |
+| XETRA | 3,725 | 0 | 123 | 0 | 0 |
+| Euronext | 984 | 0 | 100 | 0 | 0 |
 | AMS | 241 | 0 | 90 | 0 | 0 |
 | JSE | 125 | 0 | 87 | 0 | 0 |
-| TASE | 594 | 0 | 78 | 0 | 0 |
+| TASE | 594 | 0 | 80 | 0 | 0 |
 | CSE_MA | 1 | 0 | 65 | 0 | 0 |
+| BSE_IN | 2,576 | 0 | 64 | 0 | 0 |
 | NYSE | 1,939 | 0 | 63 | 0 | 0 |
-| BSE_IN | 2,576 | 0 | 61 | 0 | 0 |
 
 ## Notes
 
