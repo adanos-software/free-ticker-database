@@ -2,9 +2,18 @@
 
 ## [Unreleased]
 
+## [3.32.10] - 2026-08-03
+
 ### Summary
 
-**Listing-scope leakage cleanup and wrong-venue correction.** The rebuild now applies exact active official listing evidence to the non-equity guard and keeps all listing-keyed identifier bridges synchronized with the canonical exports.
+**Official-scope hardening and current exchange-audit release.** Publishes the listing updates accumulated since v3.32.05, removes official non-equity leakage, and aligns release decisions with the latest source-coverage and freshness evidence.
+
+### Changed
+
+- Refreshed Nasdaq US additions, daily symbol changes, LSE symbol rotations, and official exchange masterfiles.
+- Added explicit exchange-scope coverage decisions and validation gates without promoting any incompletely verified exchange.
+- Updated the TPEX, USE_UG, VSE, ZSE, and ZSE_ZW decision reasons after their official source snapshots crossed the freshness boundary; every exchange remains `official_partial`.
+- Regenerated coverage, exchange-source, drift, pending-rename, delisting-candidate, and delisting-apply reports.
 
 ### Fixed
 
@@ -12,11 +21,17 @@
 - Dropped the stale `NYSE::GRTUF` row after official evidence confirmed the NYSE line had ended and `GRTUF` moved to OTCQX; retained the documented SEC-directory false-positive exception for `NYSE::PHXE-P`.
 - Removed the now-stale `OTC::FSLUF` entry-quality warning allowlist row and regenerated extended identifiers, listing index, exports, quality reports, and release acceptance artifacts.
 - Made resumable OHLCV sampling rewrite the completed CSV to the current selection, preventing stale rows from surviving sample-selection changes.
+- Corrected release validation ordering so source-derived coverage is rebuilt before scope-decision validation.
+
+### Safety
+
+- The current drift report contains no pending rename candidates.
+- The current delisting apply report performs no automatic drops: 26 suspended listings remain retained by policy and 144 candidates remain queued for manual rename-versus-delisting review.
 
 ### Verification
 
-- `scripts/validate_database.py`: 84/84 error gates passed; `scripts/check_entry_quality_gate.py --fail-on-stale-allowlist`: 0 unexpected and 0 stale warnings.
-- `scripts/build_release_acceptance_report.py`: 67/67 criteria passed.
+- `python -m pytest tests/ -q`: 1682 passed. `scripts/validate_database.py`: 84/84 error gates passed.
+- `scripts/check_entry_quality_gate.py --fail-on-stale-allowlist`: 20 reviewed warnings allowed, 0 unexpected, 0 stale. `scripts/build_release_acceptance_report.py`: 67/67 criteria passed.
 
 ## [3.32.05] - 2026-07-28
 
