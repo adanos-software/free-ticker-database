@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-08-01T16:49:58Z",
+  "built_at": "2026-08-02T17:48:02Z",
   "drift_detected": true,
-  "generated_at": "2026-08-01T16:50:53Z",
+  "generated_at": "2026-08-03T10:53:19Z",
   "manual_review_count": 10,
   "manual_review_report": "data/reports/pending_renames_manual_review.md",
   "manual_review_sample": [
@@ -218,13 +218,13 @@
       "official_recall_target": false
     },
     "B3": {
-      "collision_adjusted_recall_missing": 0,
-      "collision_adjusted_recall_pass": true,
-      "collision_adjusted_recall_pct": 100.0,
-      "official_recall_exception": "",
-      "official_recall_missing": 0,
-      "official_recall_pass": true,
-      "official_recall_pct": 100.0,
+      "collision_adjusted_recall_missing": 107,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 91.94,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=107;symbol_collisions=0",
+      "official_recall_missing": 107,
+      "official_recall_pass": false,
+      "official_recall_pct": 91.94,
       "official_recall_target": true
     },
     "BATS": {
@@ -258,13 +258,13 @@
       "official_recall_target": true
     },
     "BIST": {
-      "collision_adjusted_recall_missing": 11,
+      "collision_adjusted_recall_missing": 16,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 98.23,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=31;symbol_collisions=20",
-      "official_recall_missing": 31,
+      "collision_adjusted_recall_pct": 97.45,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=36;symbol_collisions=20",
+      "official_recall_missing": 36,
       "official_recall_pass": false,
-      "official_recall_pct": 95.17,
+      "official_recall_pct": 94.44,
       "official_recall_target": true
     },
     "BK": {
@@ -278,13 +278,13 @@
       "official_recall_target": true
     },
     "BME": {
-      "collision_adjusted_recall_missing": 63,
+      "collision_adjusted_recall_missing": 32,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 27.59,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=75;symbol_collisions=12",
-      "official_recall_missing": 75,
+      "collision_adjusted_recall_pct": 27.27,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=38;symbol_collisions=6",
+      "official_recall_missing": 38,
       "official_recall_pass": false,
-      "official_recall_pct": 24.24,
+      "official_recall_pct": 24.0,
       "official_recall_target": true
     },
     "BMV": {
@@ -990,109 +990,49 @@
   },
   "official_recall_regressions": [
     {
-      "current": 1176,
-      "delta": 9,
-      "exchange": "NASDAQ",
+      "current": 107,
+      "delta": 107,
+      "exchange": "B3",
       "metric": "official_recall_missing",
-      "previous": 1167
+      "previous": 0
     },
     {
-      "current": 1113,
-      "delta": 8,
-      "exchange": "NASDAQ",
+      "current": 107,
+      "delta": 107,
+      "exchange": "B3",
       "metric": "collision_adjusted_recall_missing",
-      "previous": 1105
+      "previous": 0
     },
     {
-      "current": 401,
-      "delta": 2,
-      "exchange": "SET",
+      "current": 36,
+      "delta": 5,
+      "exchange": "BIST",
       "metric": "official_recall_missing",
-      "previous": 399
+      "previous": 31
     },
     {
-      "current": 54,
-      "delta": 1,
-      "exchange": "SET",
+      "current": 16,
+      "delta": 5,
+      "exchange": "BIST",
       "metric": "collision_adjusted_recall_missing",
-      "previous": 53
-    },
-    {
-      "current": 157,
-      "delta": 8,
-      "exchange": "SGX",
-      "metric": "official_recall_missing",
-      "previous": 149
-    },
-    {
-      "current": 15,
-      "delta": 6,
-      "exchange": "SGX",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 9
-    },
-    {
-      "current": 222,
-      "delta": 1,
-      "exchange": "TADAWUL",
-      "metric": "official_recall_missing",
-      "previous": 221
-    },
-    {
-      "current": 5,
-      "delta": 1,
-      "exchange": "TADAWUL",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 4
-    },
-    {
-      "current": 121,
-      "delta": 4,
-      "exchange": "TWSE",
-      "metric": "official_recall_missing",
-      "previous": 117
-    },
-    {
-      "current": 59,
-      "delta": 1,
-      "exchange": "TWSE",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 58
+      "previous": 11
     }
   ],
   "pending_renames_count": 0,
   "pending_renames_sample": [],
   "quality_indicators": {
-    "allowed_warn_rows": 21,
-    "expected_missing_primary_isin": 799,
+    "allowed_warn_rows": 20,
+    "expected_missing_primary_isin": 777,
     "missing_etf_category": 122,
-    "missing_stock_sector": 46,
-    "source_gap_rows": 7393
+    "missing_stock_sector": 48,
+    "source_gap_rows": 6445
   },
   "quality_regressions": [
     {
-      "current": 7393,
-      "delta": 167,
-      "metric": "source_gap_rows",
-      "previous": 7226
-    },
-    {
-      "current": 799,
-      "delta": 28,
-      "metric": "expected_missing_primary_isin",
-      "previous": 771
-    },
-    {
-      "current": 46,
-      "delta": 4,
-      "metric": "missing_stock_sector",
-      "previous": 42
-    },
-    {
-      "current": 122,
+      "current": 48,
       "delta": 2,
-      "metric": "missing_etf_category",
-      "previous": 120
+      "metric": "missing_stock_sector",
+      "previous": 46
     }
   ],
   "rename_triage_apply_status_source_totals": {
@@ -1104,5 +1044,5 @@
     "symbol_changes_review": 10
   },
   "stale_threshold_days": 45.0,
-  "staleness_days": 0.0
+  "staleness_days": 0.7
 }
