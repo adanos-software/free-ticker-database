@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-07-27T10:56:36Z
+Generated: 2026-08-03T10:57:49Z
 
 **delisting_detected: True**
 
 Markets checked: US, TSE, NSE_IN, BSE_IN
 Markets skipped: ASX (master too small (0); treated as failed)
 
-Candidates: 160 (delisted=0, suspended=25, master_absent=135)
+Candidates: 170 (delisted=0, suspended=26, master_absent=144)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE authoritative) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -37,9 +37,11 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | BSE_IN | TRUSTWAVE | suspended | Trustwave Securities Ltd | INE668Y01016 |
 | BSE_IN | VASUDHAGAM | suspended | Vasudhagama Enterprises Ltd | INE583K01016 |
 | BSE_IN | WIMPLAST | suspended | Wim Plast Ltd-$ | INE015B01018 |
+| BSE_IN | WINSOME | suspended | Winsome Yarns Ltd | INE784B01035 |
 | BSE_IN | YARNPP | suspended | Yarn Syndicate Ltd | IN9564C01011 |
 | NASDAQ | ABVE | master_absent | Above Food Ingredients Inc. Common Stock | CA00373V1004 |
 | NASDAQ | ADTX | master_absent | Aditxt Inc.  | US0070258696 |
+| NASDAQ | AFBI | master_absent | Affinity Bancshares Inc | US00832E1038 |
 | NASDAQ | ALBT | master_absent | Avalon GloboCare Corp. | US05344R3021 |
 | NASDAQ | ALCY | master_absent | Alchemy Investments Acquisition Corp 1 C | KYG0232F1090 |
 | NASDAQ | APM | master_absent | Aptorum Group Ltd Class A | KYG6096M1069 |
@@ -51,6 +53,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | BCOW | master_absent | 1895 of Wisconsin Inc Bancorp | US28253R1059 |
 | NASDAQ | BNBX | master_absent | BNB Plus Corp. | US03815U6073 |
 | NASDAQ | CAEP | master_absent | Cantor Equity Partners III, Inc. Class A | KYG1828A1085 |
+| NASDAQ | CCIX | master_absent | Churchill Capital Corp IX | KYG213011094 |
 | NASDAQ | CCRN | master_absent | Cross Country Healthcare Inc | US2274831047 |
 | NASDAQ | CEPT | master_absent | Cantor Equity Partners II, Inc. | KYG1827K1076 |
 | NASDAQ | CIMG | master_absent | CIMG Inc | US67073S3076 |
@@ -61,6 +64,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | CREG | master_absent | Smart Powerr Corp | US1689133098 |
 | NASDAQ | CULL | master_absent | Cullman Bancorp Inc. | US2301531081 |
 | NASDAQ | DEVS | master_absent | DevvStream Corp. Common Stock | CA25189R1001 |
+| NASDAQ | ELSE | master_absent | Electro-Sensors Inc | US2852331022 |
 | NASDAQ | EMPG | master_absent | Empro Group Inc. Ordinary shares | KYG3041J1067 |
 | NASDAQ | ESPR | master_absent | Esperion Therapeutics Inc | US29664W1053 |
 | NASDAQ | EVTV | master_absent | Envirotech Vehicles Inc | US29414V2097 |
@@ -72,11 +76,14 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | GLBZ | master_absent | Glen Burnie Bancorp | US3774071019 |
 | NASDAQ | GOCO | master_absent | GoHealth Inc. | US38046W2044 |
 | NASDAQ | GREE | master_absent | Greenidge Generation Holdings Inc | US39531G3083 |
+| NASDAQ | GV | master_absent | Visionary Education Technology Holdings  | CA92838F2008 |
 | NASDAQ | ISRL | master_absent | Israel Acquisitions Corp Class A | KYG496671010 |
 | NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
+| NASDAQ | KVAC | master_absent | Keen Vision Acquisition Corporation Ordi | VGG524431191 |
 | NASDAQ | LIXT | master_absent | Lixte Biotechnology Holdings Inc | US5393192027 |
 | NASDAQ | LMFA | master_absent | LM Funding America Inc | US5020744042 |
 | NASDAQ | LOKV | master_absent | Live Oak Acquisition Corp. V Class A Ord | KYG5509P1028 |
+| NASDAQ | LPRO | master_absent | Open Lending Corp | US68373J1043 |
 | NASDAQ | LYRA | master_absent | Lyra Therapeutics Inc | US55234L1052 |
 | NASDAQ | MAPS | master_absent | WM Technology Inc | US92971A1097 |
 | NASDAQ | MAXN | master_absent | Maxeon Solar Technologies Ltd | SGXZ57724486 |
@@ -94,6 +101,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | PCSC | master_absent | Perceptive Capital Solutions Corp Class  | KYG700771051 |
 | NASDAQ | PELI | master_absent | Pelican Acquisition Corporation Ordinary | KYG6993G1038 |
 | NASDAQ | PIRBF | master_absent | Piraeus Bank S.A. | GRS831003009 |
+| NASDAQ | PSTV | master_absent | Plus Therapeutics Inc | US72941H8060 |
 | NASDAQ | PTNM | master_absent | Pitanium Ltd | VGG7111A1012 |
 | NASDAQ | QVCAQ | master_absent | QVC Group Inc | US74915M6057 |
 | NASDAQ | RAAQ | master_absent | Real Asset Acquisition Corp. | KYG739441031 |
@@ -102,6 +110,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | SDM | master_absent | Smart Digital Group Limited Ordinary Sha | KYG5006S1049 |
 | NASDAQ | SGMO | master_absent | Sangamo Therapeutics Inc | US8006771062 |
 | NASDAQ | SGRP | master_absent | SPAR Group Inc | US7849331035 |
+| NASDAQ | SKYT | master_absent | Skywater Technology Inc | US83089J1088 |
 | NASDAQ | SNBR | master_absent | Sleep Number Corp | US83125X1037 |
 | NASDAQ | SSSS | master_absent | SuRo Capital Corp | US86887Q1094 |
 | NASDAQ | SUUN | master_absent | PowerBank Corporation Common Stock | CA73933V1004 |
@@ -116,6 +125,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | VSTD | master_absent | Vestand Inc. | US98740Y3027 |
 | NASDAQ | VVPR | master_absent | VivoPower International PLC | GB00BD3VDH82 |
 | NASDAQ | VXRT | master_absent | Vaxart Inc | US92243A2006 |
+| NASDAQ | VYNE | master_absent | Vyne Therapeutics Inc | US92941V2097 |
 | NASDAQ | WAI | master_absent | Top KingWin Ltd | KYG8923U1296 |
 | NASDAQ | WGRX | master_absent | Wellgistics Health, Inc. Common Stock | US9495032057 |
 | NASDAQ | WORX | master_absent | Scworx Corp | US78396V3078 |
@@ -146,7 +156,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NYSE | PHXE-P | master_absent | Phoenix Energy One, LLC |  |
 | NYSE | PMNT | master_absent | Perfect Moment Ltd. | US7137151004 |
 | NYSE | PRA | master_absent | ProAssurance Corporation | US74267C1062 |
-| NYSE | QBTS | master_absent | D-Wave Quantum Inc. | US26740W1099 |
 | NYSE | SBDS | master_absent | Solo Brands, Inc. Class A | US83425V2034 |
 | NYSE | SEM | master_absent | Select Medical Holdings | US81619Q1058 |
 | NYSE | SILA | master_absent | Sila Realty Trust, Inc. | US1462805086 |
@@ -155,6 +164,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NYSE | TMHC | master_absent | Taylor Morn Home | US87724P1066 |
 | NYSE | TPTA | master_absent | Terra Property Trust, Inc. 6.00% |  |
 | NYSE | TSEOF | master_absent | Trinseo PLC | IE0000QBK8U7 |
+| NYSE | TWO | master_absent | Two Harbors Investments Corp | US90187B8046 |
 | NYSE | WSR | master_absent | Whitestone REIT | US9660842041 |
 | NYSE MKT | DLA | master_absent | Delta Apparel, Inc. |  |
 | NYSE MKT | SGN | master_absent | Signing Day Sports, Inc. | US82670R3057 |
