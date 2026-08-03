@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T17:48:04Z",
+  "generated_at": "2026-08-03T11:50:25Z",
   "summary": {
     "venues": 81,
     "venue_status_counts": {
@@ -8,12 +8,12 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 26,
-      "maintain": 10,
-      "refresh_required": 31,
+      "maintain": 5,
+      "refresh_required": 36,
       "refresh_unavailable": 14
     },
     "unavailable_venues": 14,
-    "nonfresh_venues": 64,
+    "nonfresh_venues": 74,
     "denominator_missing_venues": 33,
     "promotion_ready_venues": 0
   },
@@ -144,7 +144,7 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_other_listed|nasdaq_trading_system_adds_deletes",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_trading_system_adds_deletes",
+      "nonfresh_source_keys": "nasdaq_other_listed|nasdaq_trading_system_adds_deletes",
       "source_blocker_classes": "stale_artifact",
       "official_denominator": 1559,
       "official_matches": 1223,
@@ -995,7 +995,7 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange",
+      "nonfresh_source_keys": "nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange",
       "source_blocker_classes": "cache_only|stale_artifact",
       "official_denominator": 5739,
       "official_matches": 4563,
@@ -1133,8 +1133,8 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_other_listed|sec_company_tickers_exchange",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "sec_company_tickers_exchange",
-      "source_blocker_classes": "cache_only",
+      "nonfresh_source_keys": "nasdaq_other_listed|sec_company_tickers_exchange",
+      "source_blocker_classes": "cache_only|stale_artifact",
       "official_denominator": 3917,
       "official_matches": 1991,
       "official_collisions": 501,
@@ -1156,7 +1156,7 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_other_listed|nasdaq_trading_system_adds_deletes",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_trading_system_adds_deletes",
+      "nonfresh_source_keys": "nasdaq_other_listed|nasdaq_trading_system_adds_deletes",
       "source_blocker_classes": "stale_artifact",
       "official_denominator": 2697,
       "official_matches": 2570,
@@ -1179,8 +1179,8 @@
       "missing_product_classes": "ETF",
       "official_source_keys": "nasdaq_other_listed",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "nasdaq_other_listed",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 308,
       "official_matches": 224,
       "official_collisions": 29,
@@ -1188,7 +1188,7 @@
       "official_recall_pct": 72.73,
       "collision_adjusted_recall_pct": 80.29,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1593,7 +1593,7 @@
       "missing_product_classes": "",
       "official_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata",
       "unavailable_source_keys": "tase_foreign_etf_search|tase_participating_unit_search",
-      "nonfresh_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search",
+      "nonfresh_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata",
       "source_blocker_classes": "empty_refresh|stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
@@ -1616,8 +1616,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1626,7 +1626,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "TSE",
@@ -1662,8 +1662,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 785,
       "official_matches": 323,
       "official_collisions": 453,
@@ -1671,7 +1671,7 @@
       "official_recall_pct": 41.15,
       "collision_adjusted_recall_pct": 97.29,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1685,8 +1685,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tmx_interlisted_companies|tmx_listed_issuers",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "tmx_interlisted_companies|tmx_listed_issuers",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 1518,
       "official_matches": 961,
       "official_collisions": 542,
@@ -1694,7 +1694,7 @@
       "official_recall_pct": 63.31,
       "collision_adjusted_recall_pct": 98.46,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1708,8 +1708,8 @@
       "missing_product_classes": "",
       "official_source_keys": "twse_etf_list|twse_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "twse_etf_list|twse_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 1093,
       "official_matches": 972,
       "official_collisions": 62,
@@ -1717,7 +1717,7 @@
       "official_recall_pct": 88.93,
       "collision_adjusted_recall_pct": 94.28,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1731,8 +1731,8 @@
       "missing_product_classes": "",
       "official_source_keys": "upcom_registered_securities",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "upcom_registered_securities",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 822,
       "official_matches": 2,
       "official_collisions": 476,
@@ -1740,7 +1740,7 @@
       "official_recall_pct": 0.24,
       "collision_adjusted_recall_pct": 0.58,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1754,8 +1754,8 @@
       "missing_product_classes": "",
       "official_source_keys": "use_ug_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "use_ug_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1764,7 +1764,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "VSE",
@@ -1777,8 +1777,8 @@
       "missing_product_classes": "ETF",
       "official_source_keys": "vienna_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "vienna_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1787,7 +1787,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_product_class_gap"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "WSE",
@@ -1800,8 +1800,8 @@
       "missing_product_classes": "",
       "official_source_keys": "newconnect_listed_companies|wse_etf_list|wse_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "newconnect_listed_companies",
-      "source_blocker_classes": "cache_only",
+      "nonfresh_source_keys": "newconnect_listed_companies|wse_etf_list|wse_listed_companies",
+      "source_blocker_classes": "cache_only|stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1846,8 +1846,8 @@
       "missing_product_classes": "",
       "official_source_keys": "zagreb_securities_directory",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "zagreb_securities_directory",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1856,7 +1856,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "ZSE_ZW",
@@ -1869,8 +1869,8 @@
       "missing_product_classes": "",
       "official_source_keys": "zse_zw_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "zse_zw_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1879,7 +1879,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     }
   ]
 }
