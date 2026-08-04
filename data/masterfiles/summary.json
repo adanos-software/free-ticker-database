@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-02T08:35:09Z",
-  "rows": 150161,
+  "generated_at": "2026-08-04T09:23:31Z",
+  "rows": 150169,
   "exchanges": [
     "ADX",
     "AMS",
@@ -96,7 +96,7 @@
     "b3_listed_etfs": 213,
     "b3_bdr_etfs": 314,
     "b3_instruments_equities": 1327,
-    "nasdaq_other_listed": 7512,
+    "nasdaq_other_listed": 7524,
     "nasdaq_trading_system_adds_deletes": 36,
     "byma_equity_details": 63,
     "bahrain_bourse_listed_companies": 41,
@@ -147,7 +147,7 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5569,
+    "nasdaq_listed": 5565,
     "sec_company_tickers_exchange": 10122,
     "cboe_canada_listing_directory": 440,
     "ngx_company_profile_directory": 133,
@@ -220,16 +220,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5569,
-      "generated_at": "2026-08-01T08:55:07Z"
+      "rows": 5565,
+      "generated_at": "2026-08-04T09:23:31Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7512,
-      "generated_at": "2026-08-01T08:55:07Z"
+      "rows": 7524,
+      "generated_at": "2026-08-04T09:23:31Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1527,5 +1527,16 @@
       "source_key": "tase_participating_unit_search",
       "error": "Empty refresh result; preserved 16 existing rows"
     }
-  ]
+  ],
+  "last_refresh": {
+    "generated_at": "2026-08-04T09:23:31Z",
+    "selected_source_keys": [
+      "nasdaq_listed",
+      "nasdaq_other_listed"
+    ],
+    "source_modes": {
+      "nasdaq_listed": "network",
+      "nasdaq_other_listed": "network"
+    }
+  }
 }

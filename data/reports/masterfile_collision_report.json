@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 80739,
-    "matched": 53859,
-    "collisions": 11240,
-    "missing": 15640
+    "official_symbols": 80757,
+    "matched": 53870,
+    "collisions": 11245,
+    "missing": 15642
   },
   "exchanges": [
     {
@@ -332,9 +332,9 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1559,
-      "matched": 1223,
-      "collisions": 48,
+      "official_symbols": 1573,
+      "matched": 1233,
+      "collisions": 52,
       "missing": 288,
       "collision_examples": [
         {
@@ -369,6 +369,14 @@
           "target_exchange": "BATS",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "AUGC",
+          "name": "Corgi U.S. Equities 10% Structured Buffer ETF - August Series",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "TSXV"
           ]
         },
         {
@@ -413,14 +421,6 @@
             "ASX",
             "SGX",
             "XETRA"
-          ]
-        },
-        {
-          "ticker": "BLCK",
-          "name": "Corgi Crypto Infrastructure ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "TSX"
           ]
         }
       ],
@@ -2772,10 +2772,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5739,
-      "matched": 4563,
+      "official_symbols": 5745,
+      "matched": 4567,
       "collisions": 66,
-      "missing": 1110,
+      "missing": 1112,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -3349,9 +3349,9 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3917,
-      "matched": 1993,
-      "collisions": 510,
+      "official_symbols": 3919,
+      "matched": 1994,
+      "collisions": 511,
       "missing": 1414,
       "collision_examples": [
         {
@@ -3378,6 +3378,14 @@
           "existing_exchanges": [
             "ASX",
             "NYSE MKT"
+          ]
+        },
+        {
+          "ticker": "ADIG",
+          "name": "ADI Global Distribution Inc. Common Stock",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "LSE"
           ]
         },
         {
@@ -3428,14 +3436,6 @@
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "AIM",
-          "name": "AIM ImmunoTech Inc.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE MKT"
           ]
         }
       ],
@@ -3494,8 +3494,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2697,
-      "matched": 2570,
+      "official_symbols": 2693,
+      "matched": 2566,
       "collisions": 32,
       "missing": 95,
       "collision_examples": [
