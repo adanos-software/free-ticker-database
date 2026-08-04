@@ -1,7 +1,7 @@
 # Improvement Deltas
 
-Generated: `2026-08-01T16:54:23Z`
-Baseline: `2026-08-01T16:54:20Z`
+Generated: `2026-08-04T10:31:49Z`
+Baseline: `2026-08-04T10:31:49Z`
 
 This report compares current campaign metrics against `data/reports/improvement_baseline.json`.
 
@@ -9,7 +9,7 @@ This report compares current campaign metrics against `data/reports/improvement_
 
 | Metric | Value |
 |---|---:|
-| numeric_delta_rows | 938 |
+| numeric_delta_rows | 939 |
 | changed_numeric_delta_rows | 0 |
 | global_changed_numeric_delta_rows | 0 |
 | campaign_changed_numeric_delta_rows | 0 |
@@ -20,10 +20,10 @@ This report compares current campaign metrics against `data/reports/improvement_
 
 | Acceptance Metric | Baseline | Current | Delta | Review Context |
 |---|---:|---:|---:|---|
-| `isin_delta` | 61623 | 61623 | 0 | `scope=global;metric=isin_delta;baseline=61623;current=61623;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
-| `sector_delta` | 47304 | 47304 | 0 | `scope=global;metric=sector_delta;baseline=47304;current=47304;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `isin_delta` | 61736 | 61736 | 0 | `scope=global;metric=isin_delta;baseline=61736;current=61736;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `sector_delta` | 47366 | 47366 | 0 | `scope=global;metric=sector_delta;baseline=47366;current=47366;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 | `category_delta` | 15639 | 15639 | 0 | `scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
-| `source_gap_delta` | 7566 | 7566 | 0 | `scope=global;metric=source_gap_delta;baseline=7566;current=7566;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `source_gap_delta` | 7176 | 7176 | 0 | `scope=global;metric=source_gap_delta;baseline=7176;current=7176;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 | `warn_delta` | 20 | 20 | 0 | `scope=global;metric=warn_delta;baseline=20;current=20;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 | `quarantine_delta` | 0 | 0 | 0 | `scope=global;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 
