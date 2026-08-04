@@ -60,6 +60,7 @@ RELEASE_SOURCE_REPORTS = {
     "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
     "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
     "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
+    "finance_database_isin_coverage_review": "data/reports/finance_database_isin_coverage_review.json",
     "otc_scope_review": "data/reports/otc_scope_review.json",
     "canada_residual_review": "data/reports/canada_residual_review.json",
     "canada_scope_review_queue": "data/reports/canada_scope_review_queue.json",
