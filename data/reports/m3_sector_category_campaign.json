@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-03T12:39:08Z",
-    "rows": 7065,
+    "generated_at": "2026-08-04T10:18:50Z",
+    "rows": 7068,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,18 +13,18 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 7065,
-    "candidate_rows": 7065,
+    "rows": 7068,
+    "candidate_rows": 7068,
     "applied_rows": 0,
-    "blocked_rows": 116,
+    "blocked_rows": 119,
     "manual_review_rows": 6949,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
       "blocked_conflicting_official_values": 39,
-      "blocked_noncanonical_official_value": 77,
+      "blocked_noncanonical_official_value": 80,
       "manual_review_official_value_conflicts_with_current": 6949
     },
-    "verified_current_matches_official_rows": 16011,
+    "verified_current_matches_official_rows": 16372,
     "market_rows": 60
   },
   "rows": [
@@ -127292,6 +127292,25 @@
     },
     {
       "campaign": "C1_sector_etf_category_truth",
+      "listing_key": "CPH::RTX",
+      "ticker": "RTX",
+      "exchange": "CPH",
+      "asset_type": "Stock",
+      "name": "RTX",
+      "target_field": "stock_sector",
+      "current_value": "",
+      "official_values": "Telecommunications",
+      "canonical_value": "",
+      "evidence_source": "Nasdaq Nordic:nasdaq_nordic_copenhagen_shares",
+      "confidence_reason": "official_active_masterfile_sector_with_conservative_canonical_mapping",
+      "decision": "blocked_noncanonical_official_value",
+      "review_priority": "P1",
+      "verification_evidence_required": "official_taxonomy_value_exact_listing_key_and_canonical_mapping",
+      "recommended_next_source": "Official venue, registry, issuer, or exchange taxonomy for the exact listing.",
+      "source_gate": "Keep current value or blank until conflicting/noncanonical official taxonomy evidence is resolved."
+    },
+    {
+      "campaign": "C1_sector_etf_category_truth",
       "listing_key": "EGX::RUBX",
       "ticker": "RUBX",
       "exchange": "EGX",
@@ -130066,6 +130085,25 @@
     },
     {
       "campaign": "C1_sector_etf_category_truth",
+      "listing_key": "STO::TALK",
+      "ticker": "TALK",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "TalkPool",
+      "target_field": "stock_sector",
+      "current_value": "",
+      "official_values": "Telecommunications",
+      "canonical_value": "",
+      "evidence_source": "Nasdaq Nordic:nasdaq_nordic_stockholm_shares",
+      "confidence_reason": "official_active_masterfile_sector_with_conservative_canonical_mapping",
+      "decision": "blocked_noncanonical_official_value",
+      "review_priority": "P1",
+      "verification_evidence_required": "official_taxonomy_value_exact_listing_key_and_canonical_mapping",
+      "recommended_next_source": "Official venue, registry, issuer, or exchange taxonomy for the exact listing.",
+      "source_gate": "Keep current value or blank until conflicting/noncanonical official taxonomy evidence is resolved."
+    },
+    {
+      "campaign": "C1_sector_etf_category_truth",
       "listing_key": "HEL::TALLINK",
       "ticker": "TALLINK",
       "exchange": "HEL",
@@ -132821,6 +132859,25 @@
     },
     {
       "campaign": "C1_sector_etf_category_truth",
+      "listing_key": "STO::WAYS",
+      "ticker": "WAYS",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Waystream Group",
+      "target_field": "stock_sector",
+      "current_value": "",
+      "official_values": "Telecommunications",
+      "canonical_value": "",
+      "evidence_source": "Nasdaq Nordic:nasdaq_nordic_stockholm_shares",
+      "confidence_reason": "official_active_masterfile_sector_with_conservative_canonical_mapping",
+      "decision": "blocked_noncanonical_official_value",
+      "review_priority": "P1",
+      "verification_evidence_required": "official_taxonomy_value_exact_listing_key_and_canonical_mapping",
+      "recommended_next_source": "Official venue, registry, issuer, or exchange taxonomy for the exact listing.",
+      "source_gate": "Keep current value or blank until conflicting/noncanonical official taxonomy evidence is resolved."
+    },
+    {
+      "campaign": "C1_sector_etf_category_truth",
       "listing_key": "XETRA::WBIT",
       "ticker": "WBIT",
       "exchange": "XETRA",
@@ -134295,7 +134352,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 70,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 1088,
+      "verified_current_matches_official_rows": 1170,
       "evidence_sources": "ASX:asx_listed_companies"
     },
     {
@@ -134435,10 +134492,10 @@
       "asset_type": "Stock",
       "candidate_rows": 22,
       "applied_rows": 0,
-      "blocked_rows": 0,
+      "blocked_rows": 1,
       "manual_review_rows": 22,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 111,
+      "verified_current_matches_official_rows": 112,
       "evidence_sources": "Nasdaq Nordic:nasdaq_nordic_copenhagen_shares"
     },
     {
@@ -134482,7 +134539,7 @@
       "blocked_rows": 3,
       "manual_review_rows": 31,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 150,
+      "verified_current_matches_official_rows": 152,
       "evidence_sources": "Nasdaq Nordic:nasdaq_nordic_helsinki_shares"
     },
     {
@@ -134548,7 +134605,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 116,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 578,
+      "verified_current_matches_official_rows": 640,
       "evidence_sources": "IDX:idx_company_profiles"
     },
     {
@@ -134570,7 +134627,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 523,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 1047,
+      "verified_current_matches_official_rows": 1073,
       "evidence_sources": "KRX:krx_listed_companies"
     },
     {
@@ -134592,7 +134649,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 245,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 595,
+      "verified_current_matches_official_rows": 611,
       "evidence_sources": "KRX:krx_listed_companies"
     },
     {
@@ -134691,7 +134748,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 7,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 29,
+      "verified_current_matches_official_rows": 30,
       "evidence_sources": "QSE:qse_market_watch"
     },
     {
@@ -134724,7 +134781,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 164,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 372,
+      "verified_current_matches_official_rows": 516,
       "evidence_sources": "SET:set_stock_search"
     },
     {
@@ -134787,10 +134844,10 @@
       "asset_type": "Stock",
       "candidate_rows": 124,
       "applied_rows": 0,
-      "blocked_rows": 23,
+      "blocked_rows": 25,
       "manual_review_rows": 124,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 533,
+      "verified_current_matches_official_rows": 542,
       "evidence_sources": "Nasdaq Nordic:nasdaq_nordic_stockholm_shares"
     },
     {
@@ -134867,7 +134924,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 301,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 654,
+      "verified_current_matches_official_rows": 655,
       "evidence_sources": "MOPS:tpex_emerging_basic_info|MOPS:tpex_mainboard_basic_info"
     },
     {
@@ -134889,7 +134946,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 1278,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 2361,
+      "verified_current_matches_official_rows": 2378,
       "evidence_sources": "JPX:jpx_listed_issues|JPX:jpx_tse_stock_detail"
     },
     {

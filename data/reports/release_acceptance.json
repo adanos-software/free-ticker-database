@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-03T12:39:10Z",
+    "generated_at": "2026-08-04T10:18:53Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -37,6 +37,7 @@
       "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
       "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
       "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
+      "finance_database_isin_coverage_review": "data/reports/finance_database_isin_coverage_review.json",
       "otc_scope_review": "data/reports/otc_scope_review.json",
       "canada_residual_review": "data/reports/canada_residual_review.json",
       "canada_scope_review_queue": "data/reports/canada_scope_review_queue.json",
@@ -254,18 +255,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-08-03T12:39:10Z",
+      "release_generated_at": "2026-08-04T10:18:53Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:00Z"
+          "generated_at": "2026-08-04T10:17:59Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:07Z"
+          "generated_at": "2026-08-04T09:55:50Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -280,17 +281,17 @@
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:08Z"
+          "generated_at": "2026-08-04T10:18:50Z"
         },
         "completion_backlog": {
           "path": "data/reports/completion_backlog.json",
           "exists": true,
-          "generated_at": "2026-08-02T08:52:33Z"
+          "generated_at": "2026-08-04T10:17:19Z"
         },
         "source_inventory_gap": {
           "path": "data/reports/source_inventory_gap.json",
           "exists": true,
-          "generated_at": "2026-08-02T08:52:30Z"
+          "generated_at": "2026-08-04T10:17:17Z"
         },
         "tse_sector_backfill": {
           "path": "data/reports/tse_sector_backfill.json",
@@ -305,12 +306,12 @@
         "official_name_mismatch_backfill": {
           "path": "data/reports/official_name_mismatch_backfill.json",
           "exists": true,
-          "generated_at": "2026-08-02T08:51:10Z"
+          "generated_at": "2026-08-04T10:16:32Z"
         },
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
-          "generated_at": "2026-08-02T08:52:32Z"
+          "generated_at": "2026-08-04T10:17:18Z"
         },
         "pending_renames_manual_review": {
           "path": "data/reports/pending_renames_manual_review.json",
@@ -390,7 +391,7 @@
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
           "exists": true,
-          "generated_at": "2026-08-01T16:50:58Z"
+          "generated_at": "2026-08-04T09:48:02Z"
         },
         "otc_name_mismatch_review": {
           "path": "data/reports/otc_name_mismatch_review.json",
@@ -426,6 +427,11 @@
           "path": "data/reports/financialdata_isin_supplements_review.json",
           "exists": true,
           "generated_at": "2026-06-02T20:31:19Z"
+        },
+        "finance_database_isin_coverage_review": {
+          "path": "data/reports/finance_database_isin_coverage_review.json",
+          "exists": true,
+          "generated_at": "2026-08-03T16:31:52.200680Z"
         },
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
@@ -515,32 +521,32 @@
         "m3_correctness_campaigns": {
           "path": "data/reports/m3_correctness_campaigns.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:08Z"
+          "generated_at": "2026-08-04T10:18:50Z"
         },
         "m3_sector_category_campaign": {
           "path": "data/reports/m3_sector_category_campaign.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:08Z"
+          "generated_at": "2026-08-04T10:18:50Z"
         },
         "m3_name_freshness_campaign": {
           "path": "data/reports/m3_name_freshness_campaign.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:08Z"
+          "generated_at": "2026-08-04T10:18:50Z"
         },
         "m3_identity_residual_campaign": {
           "path": "data/reports/m3_identity_residual_campaign.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:08Z"
+          "generated_at": "2026-08-04T10:18:50Z"
         },
         "m3_non_equity_leakage_guard": {
           "path": "data/reports/m3_non_equity_leakage_guard.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:08Z"
+          "generated_at": "2026-08-04T10:18:50Z"
         },
         "m3_correctness_audit": {
           "path": "data/reports/m3_correctness_audit.json",
           "exists": true,
-          "generated_at": "2026-08-03T12:39:08Z"
+          "generated_at": "2026-08-04T10:18:50Z"
         },
         "primary_isin_completeness": {
           "path": "data/reports/primary_isin_completeness.json",
@@ -678,9 +684,9 @@
       "invalid_correctness_claims": {},
       "report_row_counts": {
         "m3_correctness_campaigns": 5,
-        "m3_sector_category_campaign": 7065,
-        "m3_name_freshness_campaign": 323,
-        "m3_identity_residual_campaign": 1199,
+        "m3_sector_category_campaign": 7068,
+        "m3_name_freshness_campaign": 325,
+        "m3_identity_residual_campaign": 1202,
         "m3_non_equity_leakage_guard": 25,
         "m3_correctness_audit": 4
       },
@@ -758,7 +764,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-08-03T12:39:07Z",
+      "generated_at": "2026-08-04T09:55:50Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -855,124 +861,124 @@
         }
       },
       "source_freshness_status_totals": {
-        "stale": 51,
-        "old": 69,
-        "fresh": 17
+        "fresh": 18,
+        "old": 67,
+        "stale": 52
       },
       "source_age_bucket_totals": {
-        "age_48_168h": 51,
+        "age_0_48h": 18,
         "age_over_336h": 50,
-        "age_168_336h": 19,
-        "age_0_48h": 17
+        "age_48_168h": 52,
+        "age_168_336h": 17
       },
       "source_refresh_priority_totals": {
+        "P4": 18,
         "P2": 98,
-        "P1": 22,
-        "P4": 17
+        "P1": 21
       },
       "source_refresh_queue_totals": {
-        "refresh_official_subset_before_gap_enrichment": 85,
-        "restore_or_replace_unavailable_source_before_data_fill": 15,
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 20,
-        "fresh_no_refresh_needed": 17
+        "fresh_no_refresh_needed": 18,
+        "refresh_official_subset_before_gap_enrichment": 86,
+        "restore_or_replace_unavailable_source_before_data_fill": 13,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 20
       },
       "source_refresh_queue_scope_totals": {
+        "fresh_no_refresh_needed": {
+          "exchange_directory": 9,
+          "listed_companies_subset": 9
+        },
         "refresh_official_subset_before_gap_enrichment": {
-          "exchange_directory": 14,
           "corporate_action_daily_list": 1,
           "security_lookup_subset": 5,
-          "listed_companies_subset": 63,
-          "interlisted_subset": 1,
-          "security_identifier_registry_subset": 1
+          "exchange_directory": 11,
+          "listed_companies_subset": 68,
+          "interlisted_subset": 1
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "listed_companies_subset": 12,
+          "listed_companies_subset": 10,
           "security_lookup_subset": 1,
-          "exchange_directory": 2
+          "security_identifier_registry_subset": 1,
+          "exchange_directory": 1
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "exchange_directory": 20
-        },
-        "fresh_no_refresh_needed": {
-          "listed_companies_subset": 12,
-          "exchange_directory": 5
         }
       },
       "source_refresh_queue_mode_totals": {
+        "fresh_no_refresh_needed": {
+          "network": 18
+        },
         "refresh_official_subset_before_gap_enrichment": {
-          "network": 63,
+          "network": 64,
           "cache": 22
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "unavailable": 15
+          "unavailable": 13
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "network": 12,
           "cache": 8
-        },
-        "fresh_no_refresh_needed": {
-          "network": 17
         }
       },
       "source_refresh_queue_priority_totals": {
+        "fresh_no_refresh_needed": {
+          "P4": 18
+        },
         "refresh_official_subset_before_gap_enrichment": {
-          "P2": 85
+          "P2": 86
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "P2": 13,
-          "P1": 2
+          "P2": 12,
+          "P1": 1
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "P1": 20
-        },
-        "fresh_no_refresh_needed": {
-          "P4": 17
         }
       },
       "source_refresh_queue_age_bucket_totals": {
+        "fresh_no_refresh_needed": {
+          "age_0_48h": 18
+        },
         "refresh_official_subset_before_gap_enrichment": {
-          "age_48_168h": 51,
           "age_over_336h": 27,
+          "age_48_168h": 52,
           "age_168_336h": 7
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "age_over_336h": 12,
-          "age_168_336h": 3
+          "age_168_336h": 1
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "age_168_336h": 9,
           "age_over_336h": 11
-        },
-        "fresh_no_refresh_needed": {
-          "age_0_48h": 17
         }
       },
       "source_refresh_queue_review_strategy_totals": {
+        "fresh_no_refresh_needed": {
+          "no_refresh_required": 18
+        },
         "refresh_official_subset_before_gap_enrichment": {
-          "refresh_official_subset_before_gap_enrichment": 85
+          "refresh_official_subset_before_gap_enrichment": 86
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "restore_or_replace_unavailable_source_before_data_fill": 15
+          "restore_or_replace_unavailable_source_before_data_fill": 13
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "refresh_official_exchange_directory_before_identity_or_collision_work": 20
-        },
-        "fresh_no_refresh_needed": {
-          "no_refresh_required": 17
         }
       },
       "source_refresh_queue_evidence_required_totals": {
+        "fresh_no_refresh_needed": {
+          "fresh_source_generated_at_with_age_under_48h": 18
+        },
         "refresh_official_subset_before_gap_enrichment": {
-          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 85
+          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 86
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 15
+          "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 13
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 20
-        },
-        "fresh_no_refresh_needed": {
-          "fresh_source_generated_at_with_age_under_48h": 17
         }
       }
     },
@@ -1133,7 +1139,7 @@
     },
     "source_gap_traceability": {
       "passed": true,
-      "rows": 6694,
+      "rows": 7176,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1180,7 +1186,7 @@
       "source_file_mismatches": {},
       "unexpected_source_files": [],
       "policy_missing_markers": [],
-      "rows": 317,
+      "rows": 319,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -2097,8 +2103,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 31914,
-      "computed_next_review_batch_rows": 31914,
+      "summary_next_review_batch_rows": 32398,
+      "computed_next_review_batch_rows": 32398,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",

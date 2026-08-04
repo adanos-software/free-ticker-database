@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-01T16:50:58Z",
+    "generated_at": "2026-08-04T09:48:02Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -10,51 +10,51 @@
     "policy": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence."
   },
   "summary": {
-    "fetched_rows": 245,
-    "merged_history_rows": 317,
-    "review_rows": 317,
+    "fetched_rows": 247,
+    "merged_history_rows": 319,
+    "review_rows": 319,
     "match_status_counts": {
       "new_symbol_present_old_symbol_missing": 248,
       "no_matching_listing": 16,
-      "old_and_new_symbols_present": 29,
+      "old_and_new_symbols_present": 30,
       "old_symbol_present_new_symbol_missing": 11,
-      "symbol_present_only_outside_source_scope": 13
+      "symbol_present_only_outside_source_scope": 14
     },
     "symbol_change_workflow_queue_counts": {
       "audit_already_reflected": 246,
       "blocked_missing_source_scope_mapping": 5,
-      "blocked_out_of_scope_symbol_collision": 20,
+      "blocked_out_of_scope_symbol_collision": 21,
       "document_no_dataset_match": 15,
-      "review_duplicate_or_cross_listing": 29,
+      "review_duplicate_or_cross_listing": 30,
       "review_verified_rename_or_delisting": 2
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 317,
+      "rows": 319,
       "verified_rename_or_delisting_review_rows": 2,
-      "duplicate_or_cross_listing_review_rows": 29,
+      "duplicate_or_cross_listing_review_rows": 30,
       "already_reflected_audit_rows": 246,
-      "out_of_scope_collision_blocked_rows": 20,
+      "out_of_scope_collision_blocked_rows": 21,
       "missing_source_scope_mapping_rows": 5,
       "no_dataset_match_documentation_rows": 15,
-      "time_sensitive_review_rows": 21,
+      "time_sensitive_review_rows": 22,
       "direct_symbol_change_apply_allowed_rows": 0,
       "secondary_feed_apply_authorized": false,
       "source_gate": "Symbol-change feed rows are review signals only; ticker, name, listing, or alias changes require listing-keyed official venue or issuer evidence for old/new symbols and issuer identity."
     },
     "review_bucket_counts": {
-      "action_required_duplicate_or_cross_listing": 29,
+      "action_required_duplicate_or_cross_listing": 30,
       "action_required_possible_rename_or_delisting": 2,
-      "already_reflected_in_scope_with_global_symbol_collision": 42,
-      "already_reflected_in_source_scope": 204,
-      "hold_out_of_scope_symbol_collision": 13,
+      "already_reflected_in_scope_with_global_symbol_collision": 43,
+      "already_reflected_in_source_scope": 203,
+      "hold_out_of_scope_symbol_collision": 14,
       "manual_review_due_to_out_of_scope_collision": 7,
       "manual_scope_mapping_required": 5,
       "no_dataset_match_for_source_scope": 15
     },
     "review_priority_counts": {
-      "P1": 31,
-      "P2": 25,
+      "P1": 32,
+      "P2": 26,
       "P3": 15,
       "P4": 246
     },
@@ -71,17 +71,17 @@
     "recency_bucket_counts": {
       "older_than_90d": 217,
       "recent_30d": 33,
-      "recent_7d": 29,
+      "recent_7d": 31,
       "recent_90d": 38
     },
     "review_priority_recency_counts": {
       "P1:older_than_90d": 4,
       "P1:recent_30d": 7,
-      "P1:recent_7d": 14,
+      "P1:recent_7d": 15,
       "P1:recent_90d": 6,
       "P2:older_than_90d": 14,
       "P2:recent_30d": 2,
-      "P2:recent_7d": 6,
+      "P2:recent_7d": 7,
       "P2:recent_90d": 3,
       "P3:older_than_90d": 10,
       "P3:recent_7d": 2,
@@ -99,32 +99,32 @@
       "blocked_missing_source_scope_mapping:older_than_90d": 5,
       "blocked_out_of_scope_symbol_collision:older_than_90d": 9,
       "blocked_out_of_scope_symbol_collision:recent_30d": 2,
-      "blocked_out_of_scope_symbol_collision:recent_7d": 6,
+      "blocked_out_of_scope_symbol_collision:recent_7d": 7,
       "blocked_out_of_scope_symbol_collision:recent_90d": 3,
       "document_no_dataset_match:older_than_90d": 10,
       "document_no_dataset_match:recent_7d": 2,
       "document_no_dataset_match:recent_90d": 3,
       "review_duplicate_or_cross_listing:older_than_90d": 4,
       "review_duplicate_or_cross_listing:recent_30d": 7,
-      "review_duplicate_or_cross_listing:recent_7d": 12,
+      "review_duplicate_or_cross_listing:recent_7d": 13,
       "review_duplicate_or_cross_listing:recent_90d": 6,
       "review_verified_rename_or_delisting:recent_7d": 2
     },
     "workflow_queue_priority_counts": {
       "audit_already_reflected:P4": 246,
       "blocked_missing_source_scope_mapping:P2": 5,
-      "blocked_out_of_scope_symbol_collision:P2": 20,
+      "blocked_out_of_scope_symbol_collision:P2": 21,
       "document_no_dataset_match:P3": 15,
-      "review_duplicate_or_cross_listing:P1": 29,
+      "review_duplicate_or_cross_listing:P1": 30,
       "review_verified_rename_or_delisting:P1": 2
     },
     "workflow_queue_scope_counts": {
-      "audit_already_reflected:global_symbol_collision_outside_source_scope": 42,
-      "audit_already_reflected:matches_within_source_scope": 204,
+      "audit_already_reflected:global_symbol_collision_outside_source_scope": 43,
+      "audit_already_reflected:matches_within_source_scope": 203,
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 5,
-      "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 20,
+      "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 21,
       "document_no_dataset_match:matches_within_source_scope": 15,
-      "review_duplicate_or_cross_listing:matches_within_source_scope": 29,
+      "review_duplicate_or_cross_listing:matches_within_source_scope": 30,
       "review_verified_rename_or_delisting:matches_within_source_scope": 2
     },
     "workflow_queue_match_status_counts": {
@@ -133,9 +133,9 @@
       "blocked_missing_source_scope_mapping:no_matching_listing": 1,
       "blocked_missing_source_scope_mapping:old_symbol_present_new_symbol_missing": 2,
       "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 7,
-      "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 13,
+      "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 14,
       "document_no_dataset_match:no_matching_listing": 15,
-      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 29,
+      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 30,
       "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 2
     },
     "workflow_queue_source_hint_counts": {
@@ -147,7 +147,7 @@
         "missing": 5
       },
       "blocked_out_of_scope_symbol_collision": {
-        "OTC": 13,
+        "OTC": 14,
         "US_LISTED": 7
       },
       "document_no_dataset_match": {
@@ -155,7 +155,7 @@
         "US_LISTED": 9
       },
       "review_duplicate_or_cross_listing": {
-        "US_LISTED": 29
+        "US_LISTED": 30
       },
       "review_verified_rename_or_delisting": {
         "US_LISTED": 2
@@ -169,13 +169,13 @@
         "secondary_review": 5
       },
       "blocked_out_of_scope_symbol_collision": {
-        "secondary_review": 20
+        "secondary_review": 21
       },
       "document_no_dataset_match": {
         "secondary_review": 15
       },
       "review_duplicate_or_cross_listing": {
-        "secondary_review": 29
+        "secondary_review": 30
       },
       "review_verified_rename_or_delisting": {
         "secondary_review": 2
@@ -196,7 +196,7 @@
       "blocked_out_of_scope_symbol_collision": {
         "feed_name_differs_from_scoped_listing_name": 5,
         "feed_name_partially_overlaps_scoped_listing_name": 2,
-        "no_scoped_listing_name_available": 13
+        "no_scoped_listing_name_available": 14
       },
       "document_no_dataset_match": {
         "no_scoped_listing_name_available": 15
@@ -204,7 +204,7 @@
       "review_duplicate_or_cross_listing": {
         "feed_name_differs_from_scoped_listing_name": 2,
         "feed_name_exactly_matches_scoped_listing_name": 10,
-        "feed_name_partially_overlaps_scoped_listing_name": 17
+        "feed_name_partially_overlaps_scoped_listing_name": 18
       },
       "review_verified_rename_or_delisting": {
         "feed_name_differs_from_scoped_listing_name": 1,
@@ -221,14 +221,14 @@
         "old_scoped_listing_key_only": 2
       },
       "blocked_out_of_scope_symbol_collision": {
-        "no_scoped_listing_key_match": 13,
+        "no_scoped_listing_key_match": 14,
         "old_scoped_listing_key_only": 7
       },
       "document_no_dataset_match": {
         "no_scoped_listing_key_match": 15
       },
       "review_duplicate_or_cross_listing": {
-        "old_and_new_scoped_listing_keys_present": 29
+        "old_and_new_scoped_listing_keys_present": 30
       },
       "review_verified_rename_or_delisting": {
         "old_scoped_listing_key_only": 2
@@ -242,13 +242,13 @@
         "map_source_exchange_scope_before_symbol_review": 5
       },
       "blocked_out_of_scope_symbol_collision": {
-        "block_until_source_scope_and_non_symbol_identity_resolved": 20
+        "block_until_source_scope_and_non_symbol_identity_resolved": 21
       },
       "document_no_dataset_match": {
         "document_no_dataset_match_without_canonical_action": 15
       },
       "review_duplicate_or_cross_listing": {
-        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 29
+        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 30
       },
       "review_verified_rename_or_delisting": {
         "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 2
@@ -260,7 +260,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 12,
+        "rows": 13,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -315,7 +315,7 @@
         "review_priority": "P2",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-        "rows": 6,
+        "rows": 7,
         "review_strategy": "block_until_source_scope_and_non_symbol_identity_resolved",
         "evidence_required": "official_exchange_scope_and_non_symbol_identity_evidence_before_apply",
         "recommended_next_source": "Official source exchange scope mapping plus non-symbol identity evidence before any symbol action.",
@@ -469,7 +469,7 @@
         "review_priority": "P4",
         "recency_bucket": "older_than_90d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 151,
+        "rows": 150,
         "review_strategy": "audit_already_reflected_no_canonical_change",
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
         "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
@@ -480,7 +480,7 @@
         "review_priority": "P4",
         "recency_bucket": "older_than_90d",
         "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-        "rows": 38,
+        "rows": 39,
         "review_strategy": "audit_already_reflected_no_canonical_change",
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
         "recommended_next_source": "Audit-only comparison against official scoped exchange evidence; no canonical change.",
@@ -489,35 +489,35 @@
     ],
     "apply_eligibility_counts": {
       "audit_only_no_apply": 246,
-      "blocked_until_exchange_scope_resolved": 25,
+      "blocked_until_exchange_scope_resolved": 26,
       "no_dataset_action_without_scope_mapping": 15,
-      "requires_official_venue_confirmation": 31
+      "requires_official_venue_confirmation": 32
     },
     "symbol_change_apply_readiness_counts": {
       "audit_only_no_canonical_change": 246,
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 31,
-      "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 25,
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 32,
+      "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 26,
       "document_or_ignore_until_scoped_official_dataset_match": 15
     },
     "verification_evidence_required_counts": {
       "audit_only_confirm_no_canonical_change_needed": 246,
-      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 29,
+      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 30,
       "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 2,
-      "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 20,
+      "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 21,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 15,
       "source_exchange_mapping_before_any_symbol_change_review": 5
     },
-    "time_sensitive_review_rows": 21,
+    "time_sensitive_review_rows": 22,
     "time_sensitive_workflow_queue_counts": {
-      "review_duplicate_or_cross_listing": 19,
+      "review_duplicate_or_cross_listing": 20,
       "review_verified_rename_or_delisting": 2
     },
     "time_sensitive_recency_counts": {
       "recent_30d": 7,
-      "recent_7d": 14
+      "recent_7d": 15
     },
     "time_sensitive_apply_readiness_counts": {
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 21
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 22
     },
     "top_time_sensitive_symbol_change_batches": [
       {
@@ -526,7 +526,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_and_new_symbols_present",
         "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
-        "rows": 12,
+        "rows": 13,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -559,18 +559,100 @@
     ],
     "recommended_action_counts": {
       "already_reflected_or_new_symbol_added_in_source_scope": 248,
-      "do_not_apply_from_symbol_match_review_exchange_scope_first": 13,
+      "do_not_apply_from_symbol_match_review_exchange_scope_first": 14,
       "ignore_or_map_exchange_scope_before_applying": 16,
-      "review_duplicate_or_cross_listing_state_in_source_scope": 29,
+      "review_duplicate_or_cross_listing_state_in_source_scope": 30,
       "review_possible_rename_or_delisting_in_source_scope": 11
     },
     "exchange_scope_status_counts": {
-      "global_symbol_collision_outside_source_scope": 62,
+      "global_symbol_collision_outside_source_scope": 64,
       "matches_within_source_scope": 250,
       "unscoped_source_hint": 5
     }
   },
   "review_items": [
+    {
+      "change_id": "22cdba12373c06ac",
+      "effective_date": "2026-08-03",
+      "old_symbol": "PSTV",
+      "new_symbol": "CNSY",
+      "new_company_name": "Cerenome Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/cnsy/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-08-04T09:48:02Z",
+      "match_status": "old_and_new_symbols_present",
+      "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
+      "review_bucket": "action_required_duplicate_or_cross_listing",
+      "review_priority": "P1",
+      "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
+      "effective_age_days": 1,
+      "recency_bucket": "recent_7d",
+      "apply_eligibility": "requires_official_venue_confirmation",
+      "verification_evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
+      "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key.",
+      "recommended_action": "review_duplicate_or_cross_listing_state_in_source_scope",
+      "exchange_scope_status": "matches_within_source_scope",
+      "old_listing_keys": "NASDAQ::PSTV",
+      "new_listing_keys": "NASDAQ::CNSY",
+      "old_scoped_listing_keys": "NASDAQ::PSTV",
+      "new_scoped_listing_keys": "NASDAQ::CNSY",
+      "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
+      "scoped_listing_names": "Cerenome, Inc. - Common Stock|Plus Therapeutics Inc",
+      "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=1;new_scoped_match_count=1;old_scoped_listing_keys=NASDAQ::PSTV;new_scoped_listing_keys=NASDAQ::CNSY",
+      "workflow_review_context": "workflow_queue=review_duplicate_or_cross_listing;review_bucket=action_required_duplicate_or_cross_listing;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "old_match_count": 1,
+      "new_match_count": 1,
+      "old_scoped_match_count": 1,
+      "new_scoped_match_count": 1
+    },
+    {
+      "change_id": "4b082b3276736a14",
+      "effective_date": "2026-07-31",
+      "old_symbol": "GV",
+      "new_symbol": "GVHGF",
+      "new_company_name": "Visionary Holdings Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/quote/otc/GVHGF/",
+      "source_exchange_hint": "OTC",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-08-04T09:48:02Z",
+      "match_status": "symbol_present_only_outside_source_scope",
+      "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "review_bucket": "hold_out_of_scope_symbol_collision",
+      "review_priority": "P2",
+      "review_strategy": "block_until_source_scope_and_non_symbol_identity_resolved",
+      "effective_age_days": 4,
+      "recency_bucket": "recent_7d",
+      "apply_eligibility": "blocked_until_exchange_scope_resolved",
+      "verification_evidence_required": "official_exchange_scope_and_non_symbol_identity_evidence_before_apply",
+      "recommended_next_source": "Official source exchange scope mapping plus non-symbol identity evidence before any symbol action.",
+      "source_gate": "Block apply; global symbol collision outside source scope is not symbol-change evidence.",
+      "recommended_action": "do_not_apply_from_symbol_match_review_exchange_scope_first",
+      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
+      "old_listing_keys": "NASDAQ::GV",
+      "new_listing_keys": "",
+      "old_scoped_listing_keys": "",
+      "new_scoped_listing_keys": "",
+      "listing_key_review_status": "no_scoped_listing_key_match",
+      "scoped_listing_names": "",
+      "issuer_name_review_status": "no_scoped_listing_name_available",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=OTC;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=0;old_scoped_match_count=0;new_scoped_match_count=0;old_scoped_listing_keys=none;new_scoped_listing_keys=none",
+      "workflow_review_context": "workflow_queue=blocked_out_of_scope_symbol_collision;review_bucket=hold_out_of_scope_symbol_collision;apply_eligibility=blocked_until_exchange_scope_resolved;verification_evidence_required=official_exchange_scope_and_non_symbol_identity_evidence_before_apply",
+      "old_match_count": 1,
+      "new_match_count": 0,
+      "old_scoped_match_count": 0,
+      "new_scoped_match_count": 0
+    },
     {
       "change_id": "0f417a3a89dcdf1f",
       "effective_date": "2026-07-29",
@@ -1663,7 +1745,7 @@
       "source_gate": "Audit only; no ticker, listing, or name change is authorized.",
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-      "old_listing_keys": "LSE::SATS",
+      "old_listing_keys": "LSE::SATS|OSL::SATS",
       "new_listing_keys": "NASDAQ::ECHO",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::ECHO",
@@ -1671,9 +1753,9 @@
       "scoped_listing_names": "EchoStar Corporation",
       "issuer_name_review_status": "feed_name_differs_from_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::ECHO",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=2;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::ECHO",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
-      "old_match_count": 1,
+      "old_match_count": 2,
       "new_match_count": 1,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
@@ -5231,17 +5313,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "matches_within_source_scope",
       "old_listing_keys": "",
-      "new_listing_keys": "NASDAQ::GGRP",
+      "new_listing_keys": "IDX::GGRP|NASDAQ::GGRP",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::GGRP",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "The Glimpse Group, Inc.",
       "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::GGRP",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::GGRP",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 0,
-      "new_match_count": 1,
+      "new_match_count": 2,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -5998,18 +6080,18 @@
       "observed_at": "2026-06-10T10:22:05Z",
       "match_status": "new_symbol_present_old_symbol_missing",
       "symbol_change_workflow_queue": "audit_already_reflected",
-      "review_bucket": "already_reflected_in_source_scope",
+      "review_bucket": "already_reflected_in_scope_with_global_symbol_collision",
       "review_priority": "P4",
       "review_strategy": "audit_already_reflected_no_canonical_change",
       "effective_age_days": 145,
       "recency_bucket": "older_than_90d",
       "apply_eligibility": "audit_only_no_apply",
       "verification_evidence_required": "audit_only_confirm_no_canonical_change_needed",
-      "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
+      "recommended_next_source": "Audit-only comparison against official scoped exchange evidence; no canonical change.",
       "source_gate": "Audit only; no ticker, listing, or name change is authorized.",
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
-      "exchange_scope_status": "matches_within_source_scope",
-      "old_listing_keys": "",
+      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
+      "old_listing_keys": "SET::PT",
       "new_listing_keys": "NASDAQ::JF",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::JF",
@@ -6017,9 +6099,9 @@
       "scoped_listing_names": "J and Friends Holdings Limited",
       "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::JF",
-      "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
-      "old_match_count": 0,
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::JF",
+      "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
+      "old_match_count": 1,
       "new_match_count": 1,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
@@ -6174,17 +6256,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
       "old_listing_keys": "LSE::COMM",
-      "new_listing_keys": "NASDAQ::VISN",
+      "new_listing_keys": "NASDAQ::VISN|TASE::VISN",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::VISN",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "Vistance Networks, Inc.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::VISN",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::VISN",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 1,
-      "new_match_count": 1,
+      "new_match_count": 2,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -7158,17 +7240,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
       "old_listing_keys": "TASE::AMRK",
-      "new_listing_keys": "NYSE::GOLD|TSX::GOLD",
+      "new_listing_keys": "IDX::GOLD|NYSE::GOLD|TSX::GOLD",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NYSE::GOLD",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "Gold.com, Inc. Common Stock",
       "issuer_name_review_status": "feed_name_differs_from_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NYSE::GOLD",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=3;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NYSE::GOLD",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 1,
-      "new_match_count": 2,
+      "new_match_count": 3,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -7691,17 +7773,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "matches_within_source_scope",
       "old_listing_keys": "",
-      "new_listing_keys": "NASDAQ::AVX",
+      "new_listing_keys": "NASDAQ::AVX|TSXV::AVX",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::AVX",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "Avax One Technology Ltd.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::AVX",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::AVX",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 0,
-      "new_match_count": 1,
+      "new_match_count": 2,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -8141,7 +8223,7 @@
       "source_gate": "Audit only; no ticker, listing, or name change is authorized.",
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-      "old_listing_keys": "TSX::ADN",
+      "old_listing_keys": "SGX::ADN|TSX::ADN",
       "new_listing_keys": "OTC::ADNH",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "OTC::ADNH",
@@ -8149,9 +8231,9 @@
       "scoped_listing_names": "Advent Technologies Holdings, Inc.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=OTC;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=OTC::ADNH",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=2;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=OTC::ADNH",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
-      "old_match_count": 1,
+      "old_match_count": 2,
       "new_match_count": 1,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
@@ -8511,17 +8593,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
       "old_listing_keys": "TSXV::PWM",
-      "new_listing_keys": "NASDAQ::AURE",
+      "new_listing_keys": "Euronext::AURE|NASDAQ::AURE",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::AURE",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "Aurelion Inc.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::AURE",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::AURE",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 1,
-      "new_match_count": 1,
+      "new_match_count": 2,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -9248,7 +9330,7 @@
       "source_gate": "Audit only; no ticker, listing, or name change is authorized.",
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-      "old_listing_keys": "SET::PORT",
+      "old_listing_keys": "IDX::PORT|SET::PORT",
       "new_listing_keys": "NYSE::ANGX",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NYSE::ANGX",
@@ -9256,9 +9338,9 @@
       "scoped_listing_names": "Angel Studios, Inc.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NYSE::ANGX",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=2;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NYSE::ANGX",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
-      "old_match_count": 1,
+      "old_match_count": 2,
       "new_match_count": 1,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
@@ -10930,17 +11012,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
       "old_listing_keys": "TSXV::CCCM",
-      "new_listing_keys": "NASDAQ::BRR",
+      "new_listing_keys": "NASDAQ::BRR|SET::BRR",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::BRR",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "ProCap Financial, Inc.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::BRR",
+      "scope_match_context": "exchange_scope_status=global_symbol_collision_outside_source_scope;old_match_count=1;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::BRR",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 1,
-      "new_match_count": 1,
+      "new_match_count": 2,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -12283,17 +12365,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "matches_within_source_scope",
       "old_listing_keys": "",
-      "new_listing_keys": "NASDAQ::BRR",
+      "new_listing_keys": "NASDAQ::BRR|SET::BRR",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::BRR",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "ProCap Financial, Inc.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::BRR",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::BRR",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 0,
-      "new_match_count": 1,
+      "new_match_count": 2,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -12775,17 +12857,17 @@
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
       "exchange_scope_status": "matches_within_source_scope",
       "old_listing_keys": "",
-      "new_listing_keys": "NASDAQ::KWM",
+      "new_listing_keys": "NASDAQ::KWM|SET::KWM",
       "old_scoped_listing_keys": "",
       "new_scoped_listing_keys": "NASDAQ::KWM",
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "K Wave Media Ltd.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::KWM",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=2;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::KWM",
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 0,
-      "new_match_count": 1,
+      "new_match_count": 2,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
@@ -12856,18 +12938,18 @@
       "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key.",
       "recommended_action": "review_duplicate_or_cross_listing_state_in_source_scope",
       "exchange_scope_status": "matches_within_source_scope",
-      "old_listing_keys": "NYSE::GOLD|TSX::GOLD",
-      "new_listing_keys": "Borsa Italiana::B|NYSE::B",
+      "old_listing_keys": "IDX::GOLD|NYSE::GOLD|TSX::GOLD",
+      "new_listing_keys": "Borsa Italiana::B|NYSE::B|SET::B",
       "old_scoped_listing_keys": "NYSE::GOLD",
       "new_scoped_listing_keys": "NYSE::B",
       "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
       "scoped_listing_names": "Barrick Mining Corporation|Gold.com, Inc. Common Stock",
       "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=2;new_match_count=2;old_scoped_match_count=1;new_scoped_match_count=1;old_scoped_listing_keys=NYSE::GOLD;new_scoped_listing_keys=NYSE::B",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=3;new_match_count=3;old_scoped_match_count=1;new_scoped_match_count=1;old_scoped_listing_keys=NYSE::GOLD;new_scoped_listing_keys=NYSE::B",
       "workflow_review_context": "workflow_queue=review_duplicate_or_cross_listing;review_bucket=action_required_duplicate_or_cross_listing;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
-      "old_match_count": 2,
-      "new_match_count": 2,
+      "old_match_count": 3,
+      "new_match_count": 3,
       "old_scoped_match_count": 1,
       "new_scoped_match_count": 1
     },

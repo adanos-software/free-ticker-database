@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-03T12:39:08Z",
-    "rows": 323,
+    "generated_at": "2026-08-04T10:18:50Z",
+    "rows": 325,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,15 +13,15 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 323,
-    "candidate_rows": 323,
+    "rows": 325,
+    "candidate_rows": 325,
     "applied_rows": 0,
     "blocked_rows": 0,
-    "manual_review_rows": 323,
+    "manual_review_rows": 325,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
       "manual_review_name_update_or_matcher_false_positive": 6,
-      "manual_review_pending_official_rename_or_symbol_reuse_evidence": 317
+      "manual_review_pending_official_rename_or_symbol_reuse_evidence": 319
     }
   },
   "rows": [
@@ -126,6 +126,40 @@
       "verification_evidence_required": "official_current_name_plus_same_listing_identity_or_matcher_regression_evidence",
       "recommended_next_source": "Official exchange directory, issuer page, OpenFIGI mismatch evidence, or corporate-action notice.",
       "source_gate": "Do not update names until official current-name evidence proves the same listing identity."
+    },
+    {
+      "campaign": "C2_name_freshness",
+      "listing_key": "NASDAQ::PSTV",
+      "ticker": "PSTV",
+      "exchange": "US_LISTED",
+      "asset_type": "",
+      "current_name": "Cerenome, Inc. - Common Stock|Plus Therapeutics Inc",
+      "official_or_feed_name": "Cerenome Inc",
+      "source_kind": "symbol_change_review",
+      "evidence_source": "stockanalysis_symbol_changes",
+      "decision": "manual_review_pending_official_rename_or_symbol_reuse_evidence",
+      "review_priority": "P1",
+      "confidence_reason": "workflow_queue=review_duplicate_or_cross_listing;review_bucket=action_required_duplicate_or_cross_listing;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "verification_evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
+      "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key."
+    },
+    {
+      "campaign": "C2_name_freshness",
+      "listing_key": "NASDAQ::GV",
+      "ticker": "GV",
+      "exchange": "OTC",
+      "asset_type": "",
+      "current_name": "",
+      "official_or_feed_name": "Visionary Holdings Inc",
+      "source_kind": "symbol_change_review",
+      "evidence_source": "stockanalysis_symbol_changes",
+      "decision": "manual_review_pending_official_rename_or_symbol_reuse_evidence",
+      "review_priority": "P2",
+      "confidence_reason": "workflow_queue=blocked_out_of_scope_symbol_collision;review_bucket=hold_out_of_scope_symbol_collision;apply_eligibility=blocked_until_exchange_scope_resolved;verification_evidence_required=official_exchange_scope_and_non_symbol_identity_evidence_before_apply",
+      "verification_evidence_required": "official_exchange_scope_and_non_symbol_identity_evidence_before_apply",
+      "recommended_next_source": "Official source exchange scope mapping plus non-symbol identity evidence before any symbol action.",
+      "source_gate": "Block apply; global symbol collision outside source scope is not symbol-change evidence."
     },
     {
       "campaign": "C2_name_freshness",
@@ -571,7 +605,7 @@
     },
     {
       "campaign": "C2_name_freshness",
-      "listing_key": "LSE::SATS",
+      "listing_key": "LSE::SATS|OSL::SATS",
       "ticker": "SATS",
       "exchange": "US_LISTED",
       "asset_type": "",
@@ -2373,7 +2407,7 @@
     },
     {
       "campaign": "C2_name_freshness",
-      "listing_key": "",
+      "listing_key": "SET::PT",
       "ticker": "PT",
       "exchange": "US_LISTED",
       "asset_type": "",
@@ -2383,9 +2417,9 @@
       "evidence_source": "stockanalysis_symbol_changes",
       "decision": "manual_review_pending_official_rename_or_symbol_reuse_evidence",
       "review_priority": "P4",
-      "confidence_reason": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
+      "confidence_reason": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_scope_with_global_symbol_collision;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "verification_evidence_required": "audit_only_confirm_no_canonical_change_needed",
-      "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
+      "recommended_next_source": "Audit-only comparison against official scoped exchange evidence; no canonical change.",
       "source_gate": "Audit only; no ticker, listing, or name change is authorized."
     },
     {
@@ -3257,7 +3291,7 @@
     },
     {
       "campaign": "C2_name_freshness",
-      "listing_key": "TSX::ADN",
+      "listing_key": "SGX::ADN|TSX::ADN",
       "ticker": "ADN",
       "exchange": "OTC",
       "asset_type": "",
@@ -3716,7 +3750,7 @@
     },
     {
       "campaign": "C2_name_freshness",
-      "listing_key": "SET::PORT",
+      "listing_key": "IDX::PORT|SET::PORT",
       "ticker": "PORT",
       "exchange": "US_LISTED",
       "asset_type": "",

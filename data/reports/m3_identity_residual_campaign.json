@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-03T12:39:08Z",
-    "rows": 1199,
+    "generated_at": "2026-08-04T10:18:50Z",
+    "rows": 1202,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,14 +13,14 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 1199,
-    "candidate_rows": 1199,
+    "rows": 1202,
+    "candidate_rows": 1202,
     "applied_rows": 0,
     "blocked_rows": 0,
-    "manual_review_rows": 1199,
+    "manual_review_rows": 1202,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
-      "manual_review_requires_official_identifier_evidence": 1199
+      "manual_review_requires_official_identifier_evidence": 1202
     }
   },
   "rows": [
@@ -1556,6 +1556,24 @@
     },
     {
       "campaign": "C4_identity_residual_burn_down",
+      "listing_key": "CPH::RTX",
+      "ticker": "RTX",
+      "exchange": "CPH",
+      "asset_type": "Stock",
+      "name": "RTX",
+      "isin": "DK0010267129",
+      "residual_type": "name_equals_ticker",
+      "severity": "medium",
+      "cluster_size": 1,
+      "evidence_source": "data/listings.csv",
+      "decision": "manual_review_requires_official_identifier_evidence",
+      "review_priority": "P2",
+      "verification_evidence_required": "valid_isin_checksum_openfigi_id_isin_and_official_masterfile_or_same_legal_entity_evidence",
+      "recommended_next_source": "Official masterfile, national numbering agency, OpenFIGI ID_ISIN, issuer page, CIK/LEI, or corporate-action evidence.",
+      "source_gate": "Never collapse or rewrite identities from shared ticker, shared name token, or umbrella ISIN alone."
+    },
+    {
+      "campaign": "C4_identity_residual_burn_down",
       "listing_key": "CSE_MA::SALAFIN",
       "ticker": "SALAFIN",
       "exchange": "CSE_MA",
@@ -1580,6 +1598,24 @@
       "asset_type": "Stock",
       "name": "SAMIR",
       "isin": "MA0000010803",
+      "residual_type": "name_equals_ticker",
+      "severity": "medium",
+      "cluster_size": 1,
+      "evidence_source": "data/listings.csv",
+      "decision": "manual_review_requires_official_identifier_evidence",
+      "review_priority": "P2",
+      "verification_evidence_required": "valid_isin_checksum_openfigi_id_isin_and_official_masterfile_or_same_legal_entity_evidence",
+      "recommended_next_source": "Official masterfile, national numbering agency, OpenFIGI ID_ISIN, issuer page, CIK/LEI, or corporate-action evidence.",
+      "source_gate": "Never collapse or rewrite identities from shared ticker, shared name token, or umbrella ISIN alone."
+    },
+    {
+      "campaign": "C4_identity_residual_burn_down",
+      "listing_key": "OSL::SATS",
+      "ticker": "SATS",
+      "exchange": "OSL",
+      "asset_type": "Stock",
+      "name": "SATS",
+      "isin": "NO0010863285",
       "residual_type": "name_equals_ticker",
       "severity": "medium",
       "cluster_size": 1,
@@ -12455,6 +12491,24 @@
       "residual_type": "umbrella_isin_three_or_more_distinct_names",
       "severity": "high",
       "cluster_size": 4,
+      "evidence_source": "data/listings.csv",
+      "decision": "manual_review_requires_official_identifier_evidence",
+      "review_priority": "P1",
+      "verification_evidence_required": "valid_isin_checksum_openfigi_id_isin_and_official_masterfile_or_same_legal_entity_evidence",
+      "recommended_next_source": "Official masterfile, national numbering agency, OpenFIGI ID_ISIN, issuer page, CIK/LEI, or corporate-action evidence.",
+      "source_gate": "Never collapse or rewrite identities from shared ticker, shared name token, or umbrella ISIN alone."
+    },
+    {
+      "campaign": "C4_identity_residual_burn_down",
+      "listing_key": "LSE::0IRE|XETRA::F03|NYSE::FTV",
+      "ticker": "0IRE|F03|FTV",
+      "exchange": "LSE|NYSE|XETRA",
+      "asset_type": "Stock",
+      "name": "FORTIVE CORP.      DL-,01|Fortive Corp|Fortive Corp.",
+      "isin": "US34959J1088",
+      "residual_type": "umbrella_isin_three_or_more_distinct_names",
+      "severity": "high",
+      "cluster_size": 3,
       "evidence_source": "data/listings.csv",
       "decision": "manual_review_requires_official_identifier_evidence",
       "review_priority": "P1",
