@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-08-04T09:24:48Z`
+Generated at: `2026-08-04T09:55:13Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Official reference-gap rows classified: `5748`
+- Official reference-gap rows classified: `5758`
 - Missing primary ISIN rows classified: `1132`
 - Missing stock-sector rows classified: `152`
 - Missing ETF-category rows classified: `134`
@@ -15,8 +15,8 @@ This report classifies residual metadata gaps after official and reviewed free-s
 
 | Class | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5031 |
-| official_reference_symbol_collision_gap | 717 |
+| official_reference_unmatched_source_gap | 5038 |
+| official_reference_symbol_collision_gap | 720 |
 | official_identifier_not_exposed_source_gap | 510 |
 | fund_or_trust_identifier_gap | 359 |
 | official_industry_taxonomy_unavailable_gap | 114 |
@@ -58,7 +58,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_gap | official_reference_unmatched_source_gap | TSX | 81 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | BATS | 78 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | TASE | 74 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| official_reference_gap | official_reference_unmatched_source_gap | Euronext | 68 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | Euronext | 71 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 
 ## Release Policy
 

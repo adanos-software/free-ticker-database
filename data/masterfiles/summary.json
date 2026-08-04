@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-04T09:23:31Z",
-  "rows": 150169,
+  "generated_at": "2026-08-04T09:48:20Z",
+  "rows": 150170,
   "exchanges": [
     "ADX",
     "AMS",
@@ -88,8 +88,8 @@
   ],
   "source_counts": {
     "adx_market_watch": 123,
-    "euronext_etfs": 4064,
-    "euronext_equities": 3857,
+    "euronext_etfs": 4071,
+    "euronext_equities": 3854,
     "asx_listed_companies": 1987,
     "asx_investment_products": 458,
     "athex_sector_classification": 118,
@@ -129,18 +129,18 @@
     "gse_listed_companies": 18,
     "nasdaq_nordic_helsinki_shares": 191,
     "nasdaq_nordic_helsinki_etfs": 2,
-    "hkex_securities_list": 3206,
+    "hkex_securities_list": 3200,
     "hnx_listed_securities": 299,
     "hose_listed_stocks": 403,
     "hose_etf_list": 20,
     "hose_fund_certificate_list": 4,
     "nasdaq_nordic_iceland_shares": 32,
-    "idx_company_profiles": 963,
-    "idx_listed_companies": 963,
-    "jse_etf_list": 140,
+    "idx_company_profiles": 962,
+    "idx_listed_companies": 962,
+    "jse_etf_list": 141,
     "jse_etn_list": 104,
-    "krx_listed_companies": 2760,
-    "krx_etf_finder": 1155,
+    "krx_listed_companies": 2759,
+    "krx_etf_finder": 1160,
     "lse_company_reports": 12707,
     "lse_price_explorer": 11092,
     "lse_instrument_directory": 64,
@@ -358,19 +358,17 @@
       "provider": "Euronext",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 3857,
-      "generated_at": "2026-07-21T08:41:58Z",
-      "last_error": "Empty refresh result; preserved 3857 existing rows"
+      "mode": "network",
+      "rows": 3854,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "euronext_etfs": {
       "provider": "Euronext",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 4064,
-      "generated_at": "2026-07-21T08:41:58Z",
-      "last_error": "Empty refresh result; preserved 4064 existing rows"
+      "mode": "network",
+      "rows": 4071,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "jpx_listed_issues": {
       "provider": "JPX",
@@ -378,15 +376,16 @@
       "official": true,
       "mode": "network",
       "rows": 4437,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "jpx_tse_stock_detail": {
       "provider": "JPX",
       "reference_scope": "security_identifier_registry_subset",
       "official": true,
-      "mode": "network",
+      "mode": "unavailable",
       "rows": 4030,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-07-28T09:07:29Z",
+      "last_error": "Empty refresh result; preserved 4030 existing rows"
     },
     "deutsche_boerse_listed_companies": {
       "provider": "Deutsche Boerse",
@@ -473,8 +472,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 140,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "rows": 141,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "jse_etn_list": {
       "provider": "JSE",
@@ -482,7 +481,7 @@
       "official": true,
       "mode": "network",
       "rows": 104,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "jse_instrument_search": {
       "provider": "JSE",
@@ -582,7 +581,7 @@
       "official": true,
       "mode": "network",
       "rows": 191,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "bvl_issuers_directory": {
       "provider": "CAVALI",
@@ -678,8 +677,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 3206,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "rows": 3200,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "sgx_securities_prices": {
       "provider": "SGX",
@@ -767,7 +766,7 @@
       "official": true,
       "mode": "network",
       "rows": 18,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "luse_listed_companies": {
       "provider": "LuSE",
@@ -1120,16 +1119,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 2760,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "rows": 2759,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "krx_etf_finder": {
       "provider": "KRX",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 1155,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "rows": 1160,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "psx_listed_companies": {
       "provider": "PSX",
@@ -1176,16 +1175,16 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 963,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "rows": 962,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "idx_company_profiles": {
       "provider": "IDX",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 963,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "rows": 962,
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "wse_listed_companies": {
       "provider": "GPW",
@@ -1249,10 +1248,9 @@
       "provider": "HOSE",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
+      "mode": "network",
       "rows": 403,
-      "generated_at": "2026-07-21T08:41:58Z",
-      "last_error": "Empty refresh result; preserved 403 existing rows"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "hose_etf_list": {
       "provider": "HOSE",
@@ -1260,7 +1258,7 @@
       "official": true,
       "mode": "network",
       "rows": 20,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "hose_fund_certificate_list": {
       "provider": "HOSE",
@@ -1268,7 +1266,7 @@
       "official": true,
       "mode": "network",
       "rows": 4,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "hnx_listed_securities": {
       "provider": "HNX",
@@ -1276,7 +1274,7 @@
       "official": true,
       "mode": "network",
       "rows": 299,
-      "generated_at": "2026-07-28T09:07:29Z"
+      "generated_at": "2026-08-04T09:48:20Z"
     },
     "upcom_registered_securities": {
       "provider": "HNX",
@@ -1344,10 +1342,10 @@
     "tmx_listed_issuers": "network",
     "tmx_etf_screener": "network",
     "tmx_interlisted_companies": "network",
-    "euronext_equities": "unavailable",
-    "euronext_etfs": "unavailable",
+    "euronext_equities": "network",
+    "euronext_etfs": "network",
     "jpx_listed_issues": "network",
-    "jpx_tse_stock_detail": "network",
+    "jpx_tse_stock_detail": "unavailable",
     "deutsche_boerse_listed_companies": "network",
     "deutsche_boerse_etfs_etps": "network",
     "deutsche_boerse_xetra_all_tradable_equities": "network",
@@ -1454,7 +1452,7 @@
     "tase_etf_marketdata": "network",
     "tase_foreign_etf_search": "unavailable",
     "tase_participating_unit_search": "unavailable",
-    "hose_listed_stocks": "unavailable",
+    "hose_listed_stocks": "network",
     "hose_etf_list": "network",
     "hose_fund_certificate_list": "network",
     "hnx_listed_securities": "network",
@@ -1496,16 +1494,8 @@
       "error": "Empty refresh result; preserved 3 existing rows"
     },
     {
-      "source_key": "euronext_equities",
-      "error": "Empty refresh result; preserved 3857 existing rows"
-    },
-    {
-      "source_key": "euronext_etfs",
-      "error": "Empty refresh result; preserved 4064 existing rows"
-    },
-    {
-      "source_key": "hose_listed_stocks",
-      "error": "Empty refresh result; preserved 403 existing rows"
+      "source_key": "jpx_tse_stock_detail",
+      "error": "Empty refresh result; preserved 4030 existing rows"
     },
     {
       "source_key": "lse_company_reports",
@@ -1529,14 +1519,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-04T09:23:31Z",
+    "generated_at": "2026-08-04T09:48:20Z",
     "selected_source_keys": [
-      "nasdaq_listed",
-      "nasdaq_other_listed"
+      "egx_listed_stocks",
+      "euronext_equities",
+      "euronext_etfs",
+      "gse_listed_companies",
+      "hkex_securities_list",
+      "hnx_listed_securities",
+      "hose_etf_list",
+      "hose_fund_certificate_list",
+      "hose_listed_stocks",
+      "idx_company_profiles",
+      "idx_listed_companies",
+      "jpx_listed_issues",
+      "jpx_tse_stock_detail",
+      "jse_etf_list",
+      "jse_etn_list",
+      "jse_instrument_search",
+      "krx_etf_finder",
+      "krx_listed_companies",
+      "lse_company_reports",
+      "lse_instrument_directory"
     ],
     "source_modes": {
-      "nasdaq_listed": "network",
-      "nasdaq_other_listed": "network"
+      "egx_listed_stocks": "network",
+      "euronext_equities": "network",
+      "euronext_etfs": "network",
+      "gse_listed_companies": "network",
+      "hkex_securities_list": "network",
+      "hnx_listed_securities": "network",
+      "hose_etf_list": "network",
+      "hose_fund_certificate_list": "network",
+      "hose_listed_stocks": "network",
+      "idx_company_profiles": "network",
+      "idx_listed_companies": "network",
+      "jpx_listed_issues": "network",
+      "jpx_tse_stock_detail": "unavailable",
+      "jse_etf_list": "network",
+      "jse_etn_list": "network",
+      "jse_instrument_search": "cache",
+      "krx_etf_finder": "network",
+      "krx_listed_companies": "network",
+      "lse_company_reports": "unavailable",
+      "lse_instrument_directory": "unavailable"
     }
   }
 }
