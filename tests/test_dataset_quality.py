@@ -573,7 +573,12 @@ def test_numeric_namespace_aliases_and_collisions_cleaned():
     assert "ck hutchison" not in supercomnet["aliases"]
     assert "hutchison" not in supercomnet["aliases"]
 
-    assert ticker_row("002620") is None
+    # KRX::002620 is now admitted as a venue-keyed, official Common Stock
+    # listing by the FinanceDatabase expansion gate.
+    jeil = ticker_row("002620")
+    assert jeil is not None
+    assert jeil["exchange"] == "KRX"
+    assert jeil["asset_type"] == "Stock"
     assert ticker_row("0050") is None
 
 
