@@ -1,27 +1,35 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-02T08:49:52Z`
-- New rows: `1332`
-- Vanished rows: `49`
-- Changed rows: `1`
+- Generated at: `2026-08-04T09:52:54Z`
+- New rows: `30`
+- Vanished rows: `29`
+- Changed rows: `27`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| name_change | 1 |
+| isin_change | 5 |
+| name_change | 24 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| b3_instruments_equities | 1325 |
-| b3_listed_etfs | 2 |
-| bist_kap_mkk_listed_securities | 5 |
+| euronext_equities | 9 |
+| euronext_etfs | 10 |
+| hkex_securities_list | 5 |
+| jse_etf_list | 1 |
+| krx_etf_finder | 5 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| bme_security_prices_directory | 49 |
+| euronext_equities | 12 |
+| euronext_etfs | 3 |
+| hkex_securities_list | 11 |
+| idx_company_profiles | 1 |
+| idx_listed_companies | 1 |
+| krx_listed_companies | 1 |
