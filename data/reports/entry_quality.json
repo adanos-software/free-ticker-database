@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-04T05:38:42Z",
-    "rows": 75201,
+    "generated_at": "2026-08-04T09:24:39Z",
+    "rows": 75219,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 68171,
-      "source_gap": 7010,
+      "pass": 68165,
+      "source_gap": 7034,
       "warn": 20
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4560,
-      "official_reference": 69460,
+      "identifier_enriched": 4566,
+      "official_reference": 69471,
       "scoped_source_gap": 273,
-      "valid_isin": 908
+      "valid_isin": 909
     },
     "severity_counts": {
       "high": 14,
       "medium": 6,
-      "source_gap": 7285
+      "source_gap": 7326
     },
     "issue_counts": {
-      "official_reference_gap": 5741,
-      "expected_missing_primary_isin": 1115,
-      "missing_stock_sector": 307,
-      "missing_etf_category": 122,
+      "official_reference_gap": 5748,
+      "expected_missing_primary_isin": 1132,
+      "missing_stock_sector": 312,
+      "missing_etf_category": 134,
       "country_isin_mismatch": 12,
       "official_name_mismatch": 6,
       "official_isin_mismatch": 2
@@ -53,7 +53,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4427,
-        "source_gap": 235,
+        "source_gap": 239,
         "warn": 1
       },
       {
@@ -63,8 +63,13 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2488,
-        "source_gap": 196
+        "pass": 2482,
+        "source_gap": 205
+      },
+      {
+        "exchange": "BATS",
+        "pass": 1134,
+        "source_gap": 190
       },
       {
         "exchange": "LSE",
@@ -77,11 +82,6 @@
         "pass": 899,
         "source_gap": 184,
         "warn": 2
-      },
-      {
-        "exchange": "BATS",
-        "pass": 1134,
-        "source_gap": 180
       },
       {
         "exchange": "BMV",
@@ -140,7 +140,7 @@
       {
         "exchange": "NYSE",
         "pass": 1939,
-        "source_gap": 65
+        "source_gap": 66
       }
     ]
   },
@@ -17132,6 +17132,31 @@
       ]
     },
     {
+      "listing_key": "NASDAQ::BCCQ",
+      "ticker": "BCCQ",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
       "listing_key": "B3::BCEE3",
       "ticker": "BCEE3",
       "exchange": "B3",
@@ -18334,24 +18359,6 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "SET::BGC",
-      "ticker": "BGC",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
         }
       ]
     }
