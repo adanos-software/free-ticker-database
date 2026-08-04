@@ -1,0 +1,140 @@
+{
+  "generated_at_utc": "2026-08-04T05:36:55.085165Z",
+  "apply_performed": true,
+  "coverage_rows_added": 604,
+  "plan_rows": 932,
+  "apply_action_counts": {
+    "add_coverage_expansion": 604,
+    "blocked_openfigi_name_mismatch": 99,
+    "blocked_openfigi_no_common_stock": 47,
+    "blocked_reconciliation_decision": 111,
+    "blocked_review_drop_entry": 71
+  },
+  "venue_action_counts": {
+    "ASX": {
+      "add_coverage_expansion": 83,
+      "blocked_openfigi_name_mismatch": 5,
+      "blocked_openfigi_no_common_stock": 1
+    },
+    "BSE_IN": {
+      "add_coverage_expansion": 92,
+      "blocked_openfigi_name_mismatch": 3
+    },
+    "Bursa": {
+      "blocked_openfigi_name_mismatch": 40,
+      "blocked_openfigi_no_common_stock": 6
+    },
+    "CPH": {
+      "add_coverage_expansion": 1
+    },
+    "Euronext": {
+      "add_coverage_expansion": 3,
+      "blocked_openfigi_no_common_stock": 2
+    },
+    "HEL": {
+      "add_coverage_expansion": 1
+    },
+    "IDX": {
+      "add_coverage_expansion": 62,
+      "blocked_openfigi_name_mismatch": 2
+    },
+    "KOSDAQ": {
+      "add_coverage_expansion": 27,
+      "blocked_openfigi_no_common_stock": 2
+    },
+    "KRX": {
+      "add_coverage_expansion": 16
+    },
+    "LSE": {
+      "add_coverage_expansion": 35,
+      "blocked_openfigi_name_mismatch": 6,
+      "blocked_openfigi_no_common_stock": 7,
+      "blocked_reconciliation_decision": 6
+    },
+    "NASDAQ": {
+      "blocked_openfigi_no_common_stock": 4,
+      "blocked_reconciliation_decision": 1,
+      "blocked_review_drop_entry": 25
+    },
+    "NYSE": {
+      "add_coverage_expansion": 2,
+      "blocked_openfigi_no_common_stock": 1,
+      "blocked_reconciliation_decision": 104,
+      "blocked_review_drop_entry": 41
+    },
+    "OSL": {
+      "add_coverage_expansion": 1
+    },
+    "OTC": {
+      "add_coverage_expansion": 18,
+      "blocked_openfigi_name_mismatch": 1,
+      "blocked_openfigi_no_common_stock": 9,
+      "blocked_review_drop_entry": 4
+    },
+    "PSE_CZ": {
+      "add_coverage_expansion": 1
+    },
+    "QSE": {
+      "add_coverage_expansion": 1
+    },
+    "SET": {
+      "add_coverage_expansion": 144,
+      "blocked_openfigi_name_mismatch": 29,
+      "blocked_openfigi_no_common_stock": 10
+    },
+    "SGX": {
+      "add_coverage_expansion": 21
+    },
+    "SIX": {
+      "add_coverage_expansion": 1
+    },
+    "STO": {
+      "add_coverage_expansion": 11,
+      "blocked_review_drop_entry": 1
+    },
+    "TADAWUL": {
+      "add_coverage_expansion": 8,
+      "blocked_openfigi_no_common_stock": 4
+    },
+    "TASE": {
+      "add_coverage_expansion": 21
+    },
+    "TSE": {
+      "add_coverage_expansion": 17,
+      "blocked_openfigi_name_mismatch": 4,
+      "blocked_openfigi_no_common_stock": 1
+    },
+    "TSX": {
+      "add_coverage_expansion": 1,
+      "blocked_openfigi_name_mismatch": 4
+    },
+    "TSXV": {
+      "add_coverage_expansion": 28,
+      "blocked_openfigi_name_mismatch": 2
+    },
+    "XETRA": {
+      "add_coverage_expansion": 9,
+      "blocked_openfigi_name_mismatch": 3
+    }
+  },
+  "openfigi_probe_sha256": "64a3abb0ed5110e31ee82dfe9a2ae846547526b2fdd392d8b9cecb4cb070a1c3",
+  "openfigi_probe_errors": 0,
+  "reconciliation_summary": {
+    "finance_database_commit": "8c3ac1eea116436ec565da54b3d116edcf9a02ac",
+    "reference_sha256": "3c35ecc93809dc94db4e22b89d7bd756a56a1457fc01b858e501383ea6c5f124",
+    "candidate_rows": 1051,
+    "selected_review_rows": 932
+  },
+  "policy": {
+    "selection": "Only active official Stock references with an OpenFIGI Common Stock issuer-name match are applied.",
+    "primary_listing": "Coverage rows never override an existing primary ticker owner.",
+    "sector": "Only canonical sectors already present in the official reference are copied; otherwise blank.",
+    "isin": "Only a valid official-reference ISIN is copied; FinanceDatabase-only ISINs remain blank.",
+    "blocked_rows": "Explicit review drop entries, conflicts, fund/trust name signals, missing OpenFIGI Common Stock identity, and name mismatches remain review-only."
+  },
+  "artifacts": {
+    "plan_csv": "finance_database_venue_apply_plan.csv",
+    "summary_json": "finance_database_venue_apply_plan.json",
+    "summary_md": "finance_database_venue_apply_plan.md"
+  }
+}
