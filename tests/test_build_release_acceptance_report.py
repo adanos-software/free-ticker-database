@@ -207,6 +207,10 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
         RELEASE_SOURCE_REPORTS["financialdata_isin_supplements_review"]
         == "data/reports/financialdata_isin_supplements_review.json"
     )
+    assert (
+        RELEASE_SOURCE_REPORTS["finance_database_isin_coverage_review"]
+        == "data/reports/finance_database_isin_coverage_review.json"
+    )
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["canada_scope_review_queue"] == "data/reports/canada_scope_review_queue.json"
