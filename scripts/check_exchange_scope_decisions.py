@@ -25,6 +25,13 @@ ALLOWED_PUBLIC_SCOPES = {
     "official_security_lookup_subset",
     "official_full_licensed_internal",
 }
+BLOCKING_REASON_CODES = {
+    "blocked_denominator_missing",
+    "blocked_nonfresh_source",
+    "blocked_product_class_gap",
+    "blocked_recall_below_99_5",
+    "blocked_source_unavailable",
+}
 
 
 def _read(path: Path) -> tuple[list[str] | None, list[dict[str, str]]]:
@@ -71,12 +78,24 @@ def validate(decisions_path: Path, audit_path: Path) -> list[str]:
             errors.append(f"line {line_number}: unsupported public_scope")
         if row.get("decision") != "retain_official_partial":
             errors.append(f"line {line_number}: decision must retain official_partial")
-        if audit and row.get("reason_code") != audit.get("promotion_readiness"):
+        reviewed_reason = row.get("reason_code", "").strip()
+        if reviewed_reason and reviewed_reason not in BLOCKING_REASON_CODES:
             errors.append(
-                f"line {line_number}: {exchange} reason_code "
-                f"{row.get('reason_code')!r} does not match current audit "
-                f"{audit.get('promotion_readiness')!r}"
+                f"line {line_number}: {exchange} has unsupported reviewed reason_code "
+                f"{reviewed_reason!r}"
             )
+        if audit:
+            current_readiness = audit.get("promotion_readiness", "").strip()
+            if current_readiness == "ready_for_manual_scope_review":
+                errors.append(
+                    f"line {line_number}: {exchange} current audit has no promotion blocker; "
+                    "explicit scope review is required"
+                )
+            elif current_readiness not in BLOCKING_REASON_CODES:
+                errors.append(
+                    f"line {line_number}: {exchange} current audit has unsupported "
+                    f"promotion_readiness {current_readiness!r}"
+                )
         if audit and "security_lookup_subset" in audit.get("reference_scopes", ""):
             if public_scope != "official_security_lookup_subset":
                 errors.append(f"line {line_number}: security lookup evidence needs lookup subset scope")
