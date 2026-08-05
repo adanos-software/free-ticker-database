@@ -183,6 +183,9 @@ class Gate:
     actual: int
     limit: int | None = 0
     details: list[str] | None = None
+    review_policy: str | None = None
+    review_subjects: list[dict[str, str]] | None = None
+    review_subjects_complete: bool | None = None
 
     def to_dict(self) -> dict[str, Any]:
         payload: dict[str, Any] = {
@@ -194,6 +197,13 @@ class Gate:
         }
         if self.details:
             payload["details"] = self.details[:50]
+        if not self.passed:
+            if self.review_policy:
+                payload["review_policy"] = self.review_policy
+            if self.review_subjects is not None:
+                payload["review_subjects"] = self.review_subjects
+            if self.review_subjects_complete is not None:
+                payload["review_subjects_complete"] = self.review_subjects_complete
         return payload
 
 
@@ -223,8 +233,27 @@ def display_path(path: Path) -> str:
         return str(path)
 
 
-def fail_gate(name: str, actual: int, details: list[str] | None = None, limit: int = 0) -> Gate:
-    return Gate(name=name, severity="error", passed=actual <= limit, actual=actual, limit=limit, details=details)
+def fail_gate(
+    name: str,
+    actual: int,
+    details: list[str] | None = None,
+    limit: int = 0,
+    *,
+    review_policy: str | None = None,
+    review_subjects: list[dict[str, str]] | None = None,
+    review_subjects_complete: bool | None = None,
+) -> Gate:
+    return Gate(
+        name=name,
+        severity="error",
+        passed=actual <= limit,
+        actual=actual,
+        limit=limit,
+        details=details,
+        review_policy=review_policy,
+        review_subjects=review_subjects,
+        review_subjects_complete=review_subjects_complete,
+    )
 
 
 def info_gate(name: str, actual: int, details: list[str] | None = None) -> Gate:
@@ -394,7 +423,6 @@ def rows_missing_country_metadata_despite_isin(rows: list[dict[str, str]], id_fi
 
 def rows_with_unreviewed_country_isin_prefix_mismatch(
     rows: list[dict[str, str]],
-    id_field: str,
     reviewed_listing_keys: set[str],
 ) -> list[str]:
     invalid: list[str] = []
@@ -408,7 +436,7 @@ def rows_with_unreviewed_country_isin_prefix_mismatch(
             continue
         if listing_key(row) in reviewed_listing_keys:
             continue
-        invalid.append(row.get(id_field, ""))
+        invalid.append(listing_key(row))
     return invalid
 
 
@@ -891,13 +919,13 @@ def build_validation_report(
     )
     unreviewed_country_mismatch_rows = (
         rows_with_unreviewed_country_isin_prefix_mismatch(
-            tickers, "ticker", reviewed_country_mismatch_listing_keys
+            tickers, reviewed_country_mismatch_listing_keys
         )
         + rows_with_unreviewed_country_isin_prefix_mismatch(
-            listings, "listing_key", reviewed_country_mismatch_listing_keys
+            listings, reviewed_country_mismatch_listing_keys
         )
         + rows_with_unreviewed_country_isin_prefix_mismatch(
-            core_listings, "listing_key", reviewed_country_mismatch_listing_keys
+            core_listings, reviewed_country_mismatch_listing_keys
         )
     )
     country_code_mismatch_rows = (
@@ -1069,6 +1097,12 @@ def build_validation_report(
                 "country_isin_prefix_mismatch_without_review",
                 len(unreviewed_country_mismatch_rows),
                 unreviewed_country_mismatch_rows,
+                review_policy="entry_quality_warning",
+                review_subjects=[
+                    {"listing_key": key, "issue_type": "country_isin_mismatch"}
+                    for key in sorted(set(unreviewed_country_mismatch_rows))
+                ],
+                review_subjects_complete=True,
             ),
             fail_gate(
                 "rows_with_mojibake_names",

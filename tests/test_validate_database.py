@@ -726,6 +726,11 @@ def test_validation_report_fails_unreviewed_country_isin_prefix_mismatch():
     gates = {gate["name"]: gate for gate in report["gates"]}
     assert report["passed"] is False
     assert gates["country_isin_prefix_mismatch_without_review"]["actual"] == 2
+    assert gates["country_isin_prefix_mismatch_without_review"]["review_policy"] == "entry_quality_warning"
+    assert gates["country_isin_prefix_mismatch_without_review"]["review_subjects_complete"] is True
+    assert gates["country_isin_prefix_mismatch_without_review"]["review_subjects"] == [
+        {"listing_key": "NASDAQ::MSFT", "issue_type": "country_isin_mismatch"}
+    ]
 
 
 def test_validation_report_allows_explicitly_allowlisted_adr_and_same_isin_peer():
