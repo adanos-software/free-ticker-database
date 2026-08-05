@@ -5,8 +5,16 @@ import json
 from scripts.check_entry_quality_gate import check_entry_quality_gate, main
 
 
-def row(listing_key: str, quality_status: str) -> dict[str, str]:
-    return {"listing_key": listing_key, "quality_status": quality_status}
+def row(
+    listing_key: str,
+    quality_status: str,
+    issue_types: str = "",
+) -> dict[str, str]:
+    return {
+        "listing_key": listing_key,
+        "quality_status": quality_status,
+        "issue_types": issue_types,
+    }
 
 
 def test_entry_quality_gate_passes_allowed_warns():
@@ -25,7 +33,7 @@ def test_entry_quality_gate_passes_allowed_warns():
 def test_entry_quality_gate_fails_new_warns_and_quarantine():
     result = check_entry_quality_gate(
         [
-            row("OTC::NEW", "warn"),
+            row("OTC::NEW", "warn", "country_isin_mismatch|official_name_mismatch"),
             row("NYSE::BAD", "quarantine"),
         ],
         {"OTC::OLD"},
@@ -33,8 +41,28 @@ def test_entry_quality_gate_fails_new_warns_and_quarantine():
 
     assert result["passed"] is False
     assert result["unexpected_warns"] == ["OTC::NEW"]
+    assert result["unexpected_warning_subjects"] == [
+        {"listing_key": "OTC::NEW", "issue_type": "country_isin_mismatch"},
+        {"listing_key": "OTC::NEW", "issue_type": "official_name_mismatch"},
+    ]
     assert result["quarantined"] == ["NYSE::BAD"]
     assert result["stale_allowlist"] == ["OTC::OLD"]
+
+
+def test_entry_quality_gate_preserves_all_structured_subjects_beyond_display_limit():
+    rows = [
+        row(f"LSE::T{index:02d}", "warn", "country_isin_mismatch")
+        for index in range(51)
+    ]
+
+    result = check_entry_quality_gate(rows, set())
+
+    assert len(result["unexpected_warns"]) == 50
+    assert len(result["unexpected_warning_subjects"]) == 51
+    assert result["unexpected_warning_subjects"][-1] == {
+        "listing_key": "LSE::T50",
+        "issue_type": "country_isin_mismatch",
+    }
 
 
 def test_entry_quality_gate_cli_writes_json_report(tmp_path):

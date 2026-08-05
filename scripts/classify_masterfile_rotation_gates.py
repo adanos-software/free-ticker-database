@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
 
 EXPECTED_REVIEW_GATE = "entry_quality_unexpected_warn_count"
-CORRELATED_REVIEW_GATES = {"country_isin_prefix_mismatch_without_review"}
+ENTRY_QUALITY_REVIEW_POLICY = "entry_quality_warning"
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -17,27 +18,42 @@ def load_json(path: Path) -> dict[str, Any]:
     return payload
 
 
-def gate_details_match_unexpected_warnings(
-    details: object,
-    unexpected_warns: set[str],
-) -> bool:
-    if not isinstance(details, list) or not details or not unexpected_warns:
-        return False
+def parse_warning_subjects(value: object) -> set[tuple[str, str]] | None:
+    if not isinstance(value, list) or not value:
+        return None
 
-    ticker_matches: dict[str, set[str]] = {}
-    for listing_key in unexpected_warns:
-        if "::" not in listing_key:
-            continue
-        ticker_matches.setdefault(listing_key.rsplit("::", 1)[1], set()).add(listing_key)
+    subjects: set[tuple[str, str]] = set()
+    for item in value:
+        if not isinstance(item, dict):
+            return None
+        listing_key = item.get("listing_key")
+        issue_type = item.get("issue_type")
+        if (
+            not isinstance(listing_key, str)
+            or "::" not in listing_key
+            or not isinstance(issue_type, str)
+            or not issue_type
+        ):
+            return None
+        subjects.add((listing_key, issue_type))
+    return subjects
 
-    for detail in details:
-        value = str(detail)
-        if value in unexpected_warns:
-            continue
-        if "::" not in value and len(ticker_matches.get(value, set())) == 1:
-            continue
-        return False
-    return True
+
+def parse_nonnegative_int(value: object) -> int | None:
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        return None
+    return value
+
+
+def has_valid_failure_count(gate: dict[str, Any], *, minimum_actual: int = 1) -> bool:
+    actual = parse_nonnegative_int(gate.get("actual"))
+    limit = parse_nonnegative_int(gate.get("limit"))
+    return (
+        actual is not None
+        and limit is not None
+        and actual >= minimum_actual
+        and actual > limit
+    )
 
 
 def classify_gate_results(
@@ -45,37 +61,98 @@ def classify_gate_results(
     validation_report: dict[str, Any],
     masterfile_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    unexpected_warn_count = int(entry_quality_gate.get("unexpected_warn_count") or 0)
-    unexpected_warns = {
-        str(value) for value in entry_quality_gate.get("unexpected_warns", []) if value
+    parsed_unexpected_warn_count = parse_nonnegative_int(
+        entry_quality_gate.get("unexpected_warn_count")
+    )
+    parsed_quarantine_count = parse_nonnegative_int(entry_quality_gate.get("quarantine_count"))
+    count_report_inconsistent = (
+        parsed_unexpected_warn_count is None or parsed_quarantine_count is None
+    )
+    unexpected_warn_count = parsed_unexpected_warn_count or 0
+    quarantine_count = parsed_quarantine_count or 0
+    raw_unexpected_warning_subjects = entry_quality_gate.get("unexpected_warning_subjects")
+    parsed_unexpected_warning_subjects = parse_warning_subjects(raw_unexpected_warning_subjects)
+    unexpected_warning_subjects = parsed_unexpected_warning_subjects or set()
+    warning_subject_payload_malformed = (
+        raw_unexpected_warning_subjects is not None
+        and not isinstance(raw_unexpected_warning_subjects, list)
+    ) or (
+        isinstance(raw_unexpected_warning_subjects, list)
+        and bool(raw_unexpected_warning_subjects)
+        and parsed_unexpected_warning_subjects is None
+    )
+    unexpected_warning_subject_keys = {
+        listing_key for listing_key, _issue_type in unexpected_warning_subjects
     }
-    quarantine_count = int(entry_quality_gate.get("quarantine_count") or 0)
+    warning_subject_report_inconsistent = warning_subject_payload_malformed or (
+        unexpected_warn_count > 0
+        and len(unexpected_warning_subject_keys) != unexpected_warn_count
+    ) or (unexpected_warn_count == 0 and bool(unexpected_warning_subjects))
     failed_gate_rows = [
         gate
         for gate in validation_report.get("gates", [])
         if gate.get("severity") == "error" and not gate.get("passed") and gate.get("name")
     ]
     failed_error_gates = sorted(str(gate.get("name", "")) for gate in failed_gate_rows)
-    correlated_review_gates = {
-        str(gate.get("name", ""))
-        for gate in failed_gate_rows
-        if gate.get("name") in CORRELATED_REVIEW_GATES
-        and gate_details_match_unexpected_warnings(gate.get("details"), unexpected_warns)
+    duplicate_failed_gate_names = {
+        name for name, count in Counter(failed_error_gates).items() if count > 1
     }
-    hard_failures = sorted(
-        set(failed_error_gates) - {EXPECTED_REVIEW_GATE} - correlated_review_gates
+    expected_review_gate_rows = [
+        gate for gate in failed_gate_rows if gate.get("name") == EXPECTED_REVIEW_GATE
+    ]
+    validation_warning_report_mismatch = not count_report_inconsistent and (
+        (
+            unexpected_warn_count > 0
+            and (
+                len(expected_review_gate_rows) != 1
+                or parse_nonnegative_int(expected_review_gate_rows[0].get("actual"))
+                != unexpected_warn_count
+                or not has_valid_failure_count(expected_review_gate_rows[0])
+            )
+        )
+        or (unexpected_warn_count == 0 and bool(expected_review_gate_rows))
     )
+    hard_failures: list[str] = []
+    for gate in failed_gate_rows:
+        gate_name = str(gate.get("name", ""))
+        if gate_name == EXPECTED_REVIEW_GATE:
+            continue
+        gate_subjects = parse_warning_subjects(gate.get("review_subjects"))
+        if (
+            gate.get("review_policy") == ENTRY_QUALITY_REVIEW_POLICY
+            and not count_report_inconsistent
+            and not validation_warning_report_mismatch
+            and not warning_subject_report_inconsistent
+            and gate.get("review_subjects_complete") is True
+            and gate_subjects is not None
+            and has_valid_failure_count(
+                gate,
+                minimum_actual=len(
+                    {listing_key for listing_key, _issue_type in gate_subjects}
+                ),
+            )
+            and gate_subjects <= unexpected_warning_subjects
+        ):
+            continue
+        hard_failures.append(gate_name)
 
     if quarantine_count:
         hard_failures.append("entry_quality_quarantine")
-    if unexpected_warn_count and EXPECTED_REVIEW_GATE not in failed_error_gates:
+    if count_report_inconsistent:
+        hard_failures.append("entry_quality_count_report_inconsistent")
+    if warning_subject_report_inconsistent:
+        hard_failures.append("entry_quality_warning_subject_report_inconsistent")
+    if validation_warning_report_mismatch:
         hard_failures.append("entry_quality_validation_report_mismatch")
-    if not unexpected_warn_count and EXPECTED_REVIEW_GATE in failed_error_gates:
-        hard_failures.append("entry_quality_gate_report_mismatch")
-    if bool(entry_quality_gate.get("passed")) == bool(unexpected_warn_count or quarantine_count):
-        hard_failures.append("entry_quality_gate_report_inconsistent")
-    if not entry_quality_gate.get("passed") and not unexpected_warn_count and not quarantine_count:
-        hard_failures.append("unclassified_entry_quality_failure")
+    if duplicate_failed_gate_names:
+        hard_failures.append("duplicate_validation_gate_names")
+    if not count_report_inconsistent:
+        if bool(entry_quality_gate.get("passed")) == bool(
+            unexpected_warn_count or quarantine_count
+        ):
+            hard_failures.append("entry_quality_gate_report_inconsistent")
+        if not entry_quality_gate.get("passed") and not unexpected_warn_count and not quarantine_count:
+            hard_failures.append("unclassified_entry_quality_failure")
     if bool(validation_report.get("passed")) == bool(failed_error_gates):
         hard_failures.append("database_validation_report_inconsistent")
     if not validation_report.get("passed") and not failed_error_gates:

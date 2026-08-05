@@ -37,9 +37,22 @@ def check_entry_quality_gate(
     warn_rows = [row for row in entry_quality_rows if row.get("quality_status") == "warn"]
     warn_keys = {row["listing_key"] for row in warn_rows}
     unexpected_warns = sorted(warn_keys - allowed_warns)
+    unexpected_warn_key_set = set(unexpected_warns)
+    unexpected_warning_subjects = [
+        {"listing_key": listing_key, "issue_type": issue_type}
+        for listing_key, issue_type in sorted(
+            {
+                (row["listing_key"], issue_type)
+                for row in warn_rows
+                if row["listing_key"] in unexpected_warn_key_set
+                for issue_type in row.get("issue_types", "").split("|")
+                if issue_type
+            }
+        )
+    ]
     stale_allowlist = sorted(allowed_warns - warn_keys)
 
-    return {
+    result: dict[str, object] = {
         "passed": not quarantined and not unexpected_warns,
         "quarantine_count": len(quarantined),
         "warn_count": len(warn_rows),
@@ -50,6 +63,9 @@ def check_entry_quality_gate(
         "quarantined": [row["listing_key"] for row in quarantined[:50]],
         "stale_allowlist": stale_allowlist[:50],
     }
+    if unexpected_warning_subjects:
+        result["unexpected_warning_subjects"] = unexpected_warning_subjects
+    return result
 
 
 def write_json_report(path: Path, result: dict[str, object], *, entry_quality_csv: Path, warn_allowlist_csv: Path) -> None:
