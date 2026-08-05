@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-04T10:29:56Z",
-    "rows": 7176,
+    "generated_at": "2026-08-05T09:22:59Z",
+    "rows": 7182,
     "field_totals": {
-      "missing_etf_category": 134,
-      "missing_isin_primary": 1132,
-      "missing_sector_stock": 152,
+      "missing_etf_category": 135,
+      "missing_isin_primary": 1135,
+      "missing_sector_stock": 154,
       "official_reference_gap": 5758
     },
     "class_totals": {
@@ -14,39 +14,39 @@
       "commodity_etf_category_gap": 2,
       "debt_or_securitized_identifier_gap": 76,
       "digital_asset_etf_category_gap": 3,
-      "equity_etf_category_gap": 18,
+      "equity_etf_category_gap": 19,
       "fixed_income_etf_category_gap": 1,
-      "fund_or_trust_identifier_gap": 359,
+      "fund_or_trust_identifier_gap": 360,
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 104,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 510,
+      "official_identifier_not_exposed_source_gap": 512,
       "official_identifier_reference_unmatched_gap": 5,
-      "official_industry_taxonomy_unavailable_gap": 114,
+      "official_industry_taxonomy_unavailable_gap": 115,
       "official_product_taxonomy_unavailable_gap": 110,
       "official_reference_symbol_collision_gap": 720,
       "official_reference_unmatched_source_gap": 5038,
       "otc_sector_source_gap": 22,
-      "shell_or_cpc_sector_gap": 15
+      "shell_or_cpc_sector_gap": 16
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 2,
       "missing_etf_category:digital_asset_etf_category_gap": 3,
-      "missing_etf_category:equity_etf_category_gap": 18,
+      "missing_etf_category:equity_etf_category_gap": 19,
       "missing_etf_category:fixed_income_etf_category_gap": 1,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 110,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 43,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 76,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 359,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 360,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 104,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 510,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 512,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 5,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 114,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 115,
       "missing_sector_stock:otc_sector_source_gap": 22,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 15,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 16,
       "official_reference_gap:official_reference_symbol_collision_gap": 720,
       "official_reference_gap:official_reference_unmatched_source_gap": 5038
     },
@@ -54,7 +54,7 @@
       "missing_etf_category": [
         {
           "exchange": "BATS",
-          "rows": 79
+          "rows": 80
         },
         {
           "exchange": "NYSE ARCA",
@@ -71,12 +71,12 @@
           "rows": 182
         },
         {
-          "exchange": "SET",
+          "exchange": "NASDAQ",
           "rows": 144
         },
         {
-          "exchange": "NASDAQ",
-          "rows": 142
+          "exchange": "SET",
+          "rows": 144
         },
         {
           "exchange": "TSXV",
@@ -84,7 +84,7 @@
         },
         {
           "exchange": "BATS",
-          "rows": 100
+          "rows": 101
         },
         {
           "exchange": "NYSE ARCA",
@@ -114,7 +114,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 36
+          "rows": 38
         },
         {
           "exchange": "OTC",
@@ -261,7 +261,7 @@
         "field": "missing_isin_primary",
         "gap_class": "fund_or_trust_identifier_gap",
         "exchange": "BATS",
-        "rows": 98,
+        "rows": 99,
         "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
@@ -269,7 +269,7 @@
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NASDAQ",
-        "rows": 97,
+        "rows": 99,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -937,6 +937,23 @@
       "source_gap_context": "listing_key=BATS::JOBC;exchange=BATS;ticker=JOBC;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::KEO",
+      "ticker": "KEO",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Kurv Equity Option Income ETF",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=BATS::KEO;exchange=BATS;ticker=KEO;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -6653,6 +6670,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::KEO",
+      "ticker": "KEO",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Kurv Equity Option Income ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::KEO;exchange=BATS;ticker=KEO;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::LCTO",
       "ticker": "LCTO",
       "exchange": "BATS",
@@ -10308,6 +10342,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::FDMM",
+      "ticker": "FDMM",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Freedom Metals Acquisition Corp. - Class A Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::FDMM;exchange=NASDAQ;ticker=FDMM;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::FLD",
       "ticker": "FLD",
       "exchange": "NASDAQ",
@@ -10897,6 +10948,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::NWGL;exchange=NASDAQ;ticker=NWGL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::OBX",
+      "ticker": "OBX",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Obsidian Therapeutics, Inc. - Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::OBX;exchange=NASDAQ;ticker=OBX;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -23296,6 +23364,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "NASDAQ::FDMM",
+      "ticker": "FDMM",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Freedom Metals Acquisition Corp. - Class A Ordinary Shares",
+      "gap_class": "shell_or_cpc_sector_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Current issuer business description or official industry classification.",
+      "source_gate": "Canonical sector requires active operating-business evidence.",
+      "source_gap_context": "listing_key=NASDAQ::FDMM;exchange=NASDAQ;ticker=FDMM;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "NASDAQ::FRNM",
       "ticker": "FRNM",
       "exchange": "NASDAQ",
@@ -23511,6 +23596,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NASDAQ::NIKI;exchange=NASDAQ;ticker=NIKI;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::OBX",
+      "ticker": "OBX",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Obsidian Therapeutics, Inc. - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::OBX;exchange=NASDAQ;ticker=OBX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
