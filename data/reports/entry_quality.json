@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-04T10:29:52Z",
-    "rows": 75219,
+    "generated_at": "2026-08-05T09:22:49Z",
+    "rows": 75222,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,25 +15,25 @@
   "summary": {
     "status_counts": {
       "pass": 68155,
-      "source_gap": 7044,
+      "source_gap": 7047,
       "warn": 20
     },
     "evidence_level_counts": {
       "identifier_enriched": 4576,
-      "official_reference": 69461,
+      "official_reference": 69464,
       "scoped_source_gap": 273,
       "valid_isin": 909
     },
     "severity_counts": {
       "high": 14,
       "medium": 6,
-      "source_gap": 7336
+      "source_gap": 7342
     },
     "issue_counts": {
       "official_reference_gap": 5758,
-      "expected_missing_primary_isin": 1132,
-      "missing_stock_sector": 312,
-      "missing_etf_category": 134,
+      "expected_missing_primary_isin": 1135,
+      "missing_stock_sector": 314,
+      "missing_etf_category": 135,
       "country_isin_mismatch": 12,
       "official_name_mismatch": 6,
       "official_isin_mismatch": 2
@@ -53,7 +53,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4427,
-        "source_gap": 239,
+        "source_gap": 241,
         "warn": 1
       },
       {
@@ -69,7 +69,7 @@
       {
         "exchange": "BATS",
         "pass": 1134,
-        "source_gap": 190
+        "source_gap": 191
       },
       {
         "exchange": "LSE",
