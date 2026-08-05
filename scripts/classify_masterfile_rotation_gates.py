@@ -7,6 +7,7 @@ from typing import Any
 
 
 EXPECTED_REVIEW_GATE = "entry_quality_unexpected_warn_count"
+CORRELATED_REVIEW_GATES = {"country_isin_prefix_mismatch_without_review"}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -16,19 +17,54 @@ def load_json(path: Path) -> dict[str, Any]:
     return payload
 
 
+def gate_details_match_unexpected_warnings(
+    details: object,
+    unexpected_warns: set[str],
+) -> bool:
+    if not isinstance(details, list) or not details or not unexpected_warns:
+        return False
+
+    ticker_matches: dict[str, set[str]] = {}
+    for listing_key in unexpected_warns:
+        if "::" not in listing_key:
+            continue
+        ticker_matches.setdefault(listing_key.rsplit("::", 1)[1], set()).add(listing_key)
+
+    for detail in details:
+        value = str(detail)
+        if value in unexpected_warns:
+            continue
+        if "::" not in value and len(ticker_matches.get(value, set())) == 1:
+            continue
+        return False
+    return True
+
+
 def classify_gate_results(
     entry_quality_gate: dict[str, Any],
     validation_report: dict[str, Any],
     masterfile_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     unexpected_warn_count = int(entry_quality_gate.get("unexpected_warn_count") or 0)
+    unexpected_warns = {
+        str(value) for value in entry_quality_gate.get("unexpected_warns", []) if value
+    }
     quarantine_count = int(entry_quality_gate.get("quarantine_count") or 0)
-    failed_error_gates = sorted(
-        str(gate.get("name", ""))
+    failed_gate_rows = [
+        gate
         for gate in validation_report.get("gates", [])
         if gate.get("severity") == "error" and not gate.get("passed") and gate.get("name")
+    ]
+    failed_error_gates = sorted(str(gate.get("name", "")) for gate in failed_gate_rows)
+    correlated_review_gates = {
+        str(gate.get("name", ""))
+        for gate in failed_gate_rows
+        if gate.get("name") in CORRELATED_REVIEW_GATES
+        and gate_details_match_unexpected_warnings(gate.get("details"), unexpected_warns)
+    }
+    hard_failures = sorted(
+        set(failed_error_gates) - {EXPECTED_REVIEW_GATE} - correlated_review_gates
     )
-    hard_failures = sorted(set(failed_error_gates) - {EXPECTED_REVIEW_GATE})
 
     if quarantine_count:
         hard_failures.append("entry_quality_quarantine")

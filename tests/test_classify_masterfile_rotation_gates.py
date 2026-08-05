@@ -5,10 +5,16 @@ import json
 from scripts.classify_masterfile_rotation_gates import classify_gate_results, main
 
 
-def entry_gate(*, unexpected: int = 0, quarantine: int = 0) -> dict[str, object]:
+def entry_gate(
+    *,
+    unexpected: int = 0,
+    quarantine: int = 0,
+    unexpected_warns: list[str] | None = None,
+) -> dict[str, object]:
     return {
         "passed": unexpected == 0 and quarantine == 0,
         "unexpected_warn_count": unexpected,
+        "unexpected_warns": unexpected_warns or [],
         "quarantine_count": quarantine,
     }
 
@@ -37,6 +43,40 @@ def test_classify_gate_results_routes_only_new_warnings_to_manual_review() -> No
     assert result["review_required"] is True
     assert result["unexpected_warn_count"] == 3
     assert result["hard_failures"] == []
+
+
+def test_classify_gate_results_routes_correlated_country_isin_gate_to_review() -> None:
+    report = validation_report(
+        "country_isin_prefix_mismatch_without_review",
+        "entry_quality_unexpected_warn_count",
+    )
+    report["gates"][0]["details"] = ["0I4T", "LSE::0I4T", "LSE::0I4T"]
+
+    result = classify_gate_results(
+        entry_gate(unexpected=1, unexpected_warns=["LSE::0I4T"]),
+        report,
+    )
+
+    assert result["passed"] is True
+    assert result["review_required"] is True
+    assert result["hard_failures"] == []
+
+
+def test_classify_gate_results_keeps_uncorrelated_country_isin_gate_fatal() -> None:
+    report = validation_report(
+        "country_isin_prefix_mismatch_without_review",
+        "entry_quality_unexpected_warn_count",
+    )
+    report["gates"][0]["details"] = ["0I4T", "LSE::0I4T", "NASDAQ::OTHER"]
+
+    result = classify_gate_results(
+        entry_gate(unexpected=1, unexpected_warns=["LSE::0I4T"]),
+        report,
+    )
+
+    assert result["passed"] is False
+    assert result["review_required"] is False
+    assert result["hard_failures"] == ["country_isin_prefix_mismatch_without_review"]
 
 
 def test_classify_gate_results_keeps_quarantine_and_unrelated_gates_fatal() -> None:
