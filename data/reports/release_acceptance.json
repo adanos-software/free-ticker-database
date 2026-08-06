@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T14:09:10Z",
+    "generated_at": "2026-08-06T14:21:19Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -255,33 +255,33 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-08-06T14:09:10Z",
+      "release_generated_at": "2026-08-06T14:21:19Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:07:52Z"
+          "generated_at": "2026-08-06T14:21:13Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:03:40Z"
+          "generated_at": "2026-08-06T14:21:12Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:03:36Z"
+          "generated_at": "2026-08-06T14:13:29Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:03:36Z"
+          "generated_at": "2026-08-06T14:13:29Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:08Z"
+          "generated_at": "2026-08-06T14:21:17Z"
         },
         "completion_backlog": {
           "path": "data/reports/completion_backlog.json",
@@ -306,12 +306,12 @@
         "official_name_mismatch_backfill": {
           "path": "data/reports/official_name_mismatch_backfill.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:03:35Z"
+          "generated_at": "2026-08-06T14:13:27Z"
         },
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:06:17Z"
+          "generated_at": "2026-08-06T14:18:40Z"
         },
         "pending_renames_manual_review": {
           "path": "data/reports/pending_renames_manual_review.json",
@@ -396,12 +396,12 @@
         "otc_name_mismatch_review": {
           "path": "data/reports/otc_name_mismatch_review.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:06:18Z"
+          "generated_at": "2026-08-06T14:18:41Z"
         },
         "otc_name_mismatch_action_queue": {
           "path": "data/reports/otc_name_mismatch_action_queue.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:07:50Z"
+          "generated_at": "2026-08-06T14:18:42Z"
         },
         "ohlcv_plausibility": {
           "path": "data/reports/ohlcv_plausibility.json",
@@ -436,7 +436,7 @@
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:08Z"
+          "generated_at": "2026-08-06T14:18:41Z"
         },
         "canada_residual_review": {
           "path": "data/reports/canada_residual_review.json",
@@ -521,32 +521,32 @@
         "m3_correctness_campaigns": {
           "path": "data/reports/m3_correctness_campaigns.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:09Z"
+          "generated_at": "2026-08-06T14:21:18Z"
         },
         "m3_sector_category_campaign": {
           "path": "data/reports/m3_sector_category_campaign.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:09Z"
+          "generated_at": "2026-08-06T14:21:18Z"
         },
         "m3_name_freshness_campaign": {
           "path": "data/reports/m3_name_freshness_campaign.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:09Z"
+          "generated_at": "2026-08-06T14:21:18Z"
         },
         "m3_identity_residual_campaign": {
           "path": "data/reports/m3_identity_residual_campaign.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:09Z"
+          "generated_at": "2026-08-06T14:21:18Z"
         },
         "m3_non_equity_leakage_guard": {
           "path": "data/reports/m3_non_equity_leakage_guard.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:09Z"
+          "generated_at": "2026-08-06T14:21:18Z"
         },
         "m3_correctness_audit": {
           "path": "data/reports/m3_correctness_audit.json",
           "exists": true,
-          "generated_at": "2026-08-06T14:09:09Z"
+          "generated_at": "2026-08-06T14:21:18Z"
         },
         "primary_isin_completeness": {
           "path": "data/reports/primary_isin_completeness.json",
@@ -684,10 +684,10 @@
       "invalid_correctness_claims": {},
       "report_row_counts": {
         "m3_correctness_campaigns": 5,
-        "m3_sector_category_campaign": 7068,
-        "m3_name_freshness_campaign": 353,
-        "m3_identity_residual_campaign": 1229,
-        "m3_non_equity_leakage_guard": 25,
+        "m3_sector_category_campaign": 7069,
+        "m3_name_freshness_campaign": 375,
+        "m3_identity_residual_campaign": 2826,
+        "m3_non_equity_leakage_guard": 26,
         "m3_correctness_audit": 4
       },
       "required_campaigns": [
@@ -764,17 +764,17 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-08-06T14:03:40Z",
+      "generated_at": "2026-08-06T14:21:12Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
       "command_report": {
-        "allowed_warn_count": 47,
+        "allowed_warn_count": 205,
         "passed": true,
         "quarantine_count": 0,
         "stale_allowlist_count": 0,
         "unexpected_warn_count": 0,
-        "warn_count": 47
+        "warn_count": 205
       },
       "expected_counts_from_validation": {
         "quarantine_count": 0,
@@ -987,12 +987,12 @@
       "passed": true,
       "exception_rows": 45,
       "decision_counts": {
-        "mostly_collision_hidden": 7,
-        "still_actionable": 38
+        "mostly_collision_hidden": 8,
+        "still_actionable": 37
       },
       "reported_decision_counts": {
-        "mostly_collision_hidden": 7,
-        "still_actionable": 38
+        "mostly_collision_hidden": 8,
+        "still_actionable": 37
       },
       "count_mismatches": {},
       "evidence_gaps": [],
@@ -1001,10 +1001,10 @@
     },
     "official_name_mismatch_backfill_gate": {
       "passed": true,
-      "rows_reviewed": 17,
-      "items": 17,
-      "updates_emitted": 17,
-      "accepted_rows": 17,
+      "rows_reviewed": 26,
+      "items": 26,
+      "updates_emitted": 25,
+      "accepted_rows": 25,
       "supported_exchange_count": 15,
       "policy_missing_marker_groups": [],
       "row_gap_count": 0,
@@ -1140,7 +1140,7 @@
     },
     "source_gap_traceability": {
       "passed": true,
-      "rows": 7365,
+      "rows": 9839,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1252,8 +1252,8 @@
     },
     "otc_name_mismatch_review_gate": {
       "passed": true,
-      "rows": 17,
-      "items": 17,
+      "rows": 29,
+      "items": 29,
       "policy_missing_markers": [],
       "row_gap_count": 0,
       "row_gaps": [],
@@ -1275,10 +1275,10 @@
     },
     "otc_name_mismatch_action_queue_gate": {
       "passed": true,
-      "rows": 17,
-      "batches": 10,
-      "items": 10,
-      "item_row_total": 17,
+      "rows": 29,
+      "batches": 14,
+      "items": 14,
+      "item_row_total": 29,
       "gating_gaps": [],
       "invalid_actions": [],
       "missing_item_gate_actions": [],
@@ -1503,7 +1503,7 @@
     },
     "otc_scope_gate": {
       "passed": true,
-      "rows": 11094,
+      "rows": 11754,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1995,34 +1995,34 @@
       "policy_missing_markers": [],
       "acceptance_delta_matrix": {
         "isin_delta": {
-          "baseline": 61764,
-          "current": 61764,
+          "baseline": 62309,
+          "current": 62309,
           "delta": 0,
-          "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "sector_delta": {
-          "baseline": 47365,
-          "current": 47365,
+          "baseline": 45881,
+          "current": 45881,
           "delta": 0,
-          "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "category_delta": {
-          "baseline": 15639,
-          "current": 15639,
+          "baseline": 15601,
+          "current": 15601,
           "delta": 0,
-          "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "source_gap_delta": {
-          "baseline": 7365,
-          "current": 7365,
+          "baseline": 9847,
+          "current": 9847,
           "delta": 0,
-          "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "warn_delta": {
-          "baseline": 47,
-          "current": 47,
+          "baseline": 278,
+          "current": 278,
           "delta": 0,
-          "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "quarantine_delta": {
           "baseline": 0,
@@ -2053,7 +2053,7 @@
       "missing_global_keys": [],
       "nonnumeric_global_keys": [],
       "freshness_totals_missing": false,
-      "exchange_rows_checked": 81,
+      "exchange_rows_checked": 87,
       "exchange_key_gaps": {},
       "malformed_exchange_rows": [],
       "baseline_summary_mismatches": {},
@@ -2104,8 +2104,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 32620,
-      "computed_next_review_batch_rows": 32620,
+      "summary_next_review_batch_rows": 35766,
+      "computed_next_review_batch_rows": 35766,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",

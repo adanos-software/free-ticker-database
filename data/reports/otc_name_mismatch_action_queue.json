@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T14:07:50Z",
+    "generated_at": "2026-08-06T14:18:42Z",
     "source_files": {
       "deepseek_otc_csv": "data/reports/deepseek_otc_review_queue.csv",
       "deepseek_summary_csv": "data/reports/deepseek_review_summary.csv",
@@ -8,6 +8,66 @@
     }
   },
   "items": [
+    {
+      "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+      "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::CSXXY|OTC::HKSHY|OTC::MTGRY|OTC::NISUY|OTC::RDEIY|OTC::VIAAY",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener",
+      "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+      "review_class": "probable_otc_rename_or_symbol_reuse",
+      "review_priority": "high",
+      "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+      "rows": "6",
+      "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+      "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+    },
+    {
+      "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+      "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::NWSGY",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+      "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+      "review_class": "probable_otc_rename_or_symbol_reuse",
+      "review_priority": "high",
+      "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+      "rows": "1",
+      "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+      "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+    },
+    {
+      "action_queue": "review_official_alias_before_matcher_tuning",
+      "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::HISEF|OTC::KPCPF|OTC::LIPO|OTC::SAXJY",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener",
+      "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+      "review_class": "weak_abbreviation_or_truncation_review",
+      "review_priority": "medium",
+      "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+      "rows": "4",
+      "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone.",
+      "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    },
+    {
+      "action_queue": "review_official_alias_before_matcher_tuning",
+      "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::ZPTA",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+      "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+      "review_class": "weak_abbreviation_or_truncation_review",
+      "review_priority": "medium",
+      "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+      "rows": "1",
+      "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone.",
+      "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    },
     {
       "action_queue": "keep_current_until_stronger_issuer_history_source",
       "apply_eligibility": "keep_current_until_stronger_issuer_history_source",
@@ -161,22 +221,24 @@
   ],
   "summary": {
     "action_queue_totals": {
-      "keep_current_until_stronger_issuer_history_source": 17
+      "keep_current_until_stronger_issuer_history_source": 17,
+      "review_official_alias_before_matcher_tuning": 5,
+      "verify_isin_anchored_issuer_history_before_name_change": 7
     },
-    "batches": 10,
+    "batches": 14,
     "deepseek_triage_totals": {
       "deepseek_candidate_apply_blocked": 1,
       "deepseek_needs_official_evidence": 9,
-      "not_triaged_by_deepseek": 7
+      "not_triaged_by_deepseek": 19
     },
     "direct_name_changes_authorized": false,
-    "generated_at": "2026-08-06T14:07:50Z",
+    "generated_at": "2026-08-06T14:18:42Z",
     "metadata_enrichment_authorized": false,
     "official_source_totals": {
       "otc_markets_security_profile": 6,
       "otc_markets_security_profile|otc_markets_stock_screener": 1,
-      "otc_markets_stock_screener": 4,
-      "otc_markets_stock_screener|sec_company_tickers_exchange": 3,
+      "otc_markets_stock_screener": 14,
+      "otc_markets_stock_screener|sec_company_tickers_exchange": 5,
       "sec_company_tickers_exchange": 3
     },
     "policy": {
@@ -185,11 +247,15 @@
       "official_identity_first": "Name changes require listing-keyed OTC Markets, SEC, issuer, registry, or ISIN-anchored issuer-history evidence."
     },
     "review_class_totals": {
-      "hold_unresolved": 17
+      "hold_unresolved": 17,
+      "probable_otc_rename_or_symbol_reuse": 7,
+      "weak_abbreviation_or_truncation_review": 5
     },
     "review_priority_totals": {
-      "held": 17
+      "held": 17,
+      "high": 7,
+      "medium": 5
     },
-    "rows": 17
+    "rows": 29
   }
 }

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T14:09:09Z",
-    "rows": 7068,
+    "generated_at": "2026-08-06T14:21:18Z",
+    "rows": 7069,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,18 +13,18 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 7068,
-    "candidate_rows": 7068,
+    "rows": 7069,
+    "candidate_rows": 7069,
     "applied_rows": 0,
-    "blocked_rows": 119,
+    "blocked_rows": 120,
     "manual_review_rows": 6949,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
       "blocked_conflicting_official_values": 39,
-      "blocked_noncanonical_official_value": 80,
+      "blocked_noncanonical_official_value": 81,
       "manual_review_official_value_conflicts_with_current": 6949
     },
-    "verified_current_matches_official_rows": 16406,
+    "verified_current_matches_official_rows": 17893,
     "market_rows": 60
   },
   "rows": [
@@ -123435,6 +123435,25 @@
     },
     {
       "campaign": "C1_sector_etf_category_truth",
+      "listing_key": "HEL::NOKIA",
+      "ticker": "NOKIA",
+      "exchange": "HEL",
+      "asset_type": "Stock",
+      "name": "Nokia Oyj",
+      "target_field": "stock_sector",
+      "current_value": "",
+      "official_values": "Telecommunications",
+      "canonical_value": "",
+      "evidence_source": "Nasdaq Nordic:nasdaq_nordic_helsinki_shares",
+      "confidence_reason": "official_active_masterfile_sector_with_conservative_canonical_mapping",
+      "decision": "blocked_noncanonical_official_value",
+      "review_priority": "P1",
+      "verification_evidence_required": "official_taxonomy_value_exact_listing_key_and_canonical_mapping",
+      "recommended_next_source": "Official venue, registry, issuer, or exchange taxonomy for the exact listing.",
+      "source_gate": "Keep current value or blank until conflicting/noncanonical official taxonomy evidence is resolved."
+    },
+    {
+      "campaign": "C1_sector_etf_category_truth",
       "listing_key": "ASX::NOR",
       "ticker": "NOR",
       "exchange": "ASX",
@@ -134352,7 +134371,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 70,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 1170,
+      "verified_current_matches_official_rows": 1538,
       "evidence_sources": "ASX:asx_listed_companies"
     },
     {
@@ -134407,8 +134426,8 @@
       "blocked_rows": 0,
       "manual_review_rows": 3,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 7,
-      "evidence_sources": "BME:bme_security_prices_directory"
+      "verified_current_matches_official_rows": 53,
+      "evidence_sources": "BME:bme_listed_companies|BME:bme_security_prices_directory"
     },
     {
       "exchange": "BMV",
@@ -134484,7 +134503,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 452,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 412,
+      "verified_current_matches_official_rows": 512,
       "evidence_sources": "Bursa Malaysia:bursa_closing_prices"
     },
     {
@@ -134495,7 +134514,7 @@
       "blocked_rows": 1,
       "manual_review_rows": 22,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 112,
+      "verified_current_matches_official_rows": 115,
       "evidence_sources": "Nasdaq Nordic:nasdaq_nordic_copenhagen_shares"
     },
     {
@@ -134536,10 +134555,10 @@
       "asset_type": "Stock",
       "candidate_rows": 31,
       "applied_rows": 0,
-      "blocked_rows": 3,
+      "blocked_rows": 4,
       "manual_review_rows": 31,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 152,
+      "verified_current_matches_official_rows": 154,
       "evidence_sources": "Nasdaq Nordic:nasdaq_nordic_helsinki_shares"
     },
     {
@@ -134638,7 +134657,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 129,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 797,
+      "verified_current_matches_official_rows": 939,
       "evidence_sources": "KRX:krx_etf_finder"
     },
     {
@@ -134649,7 +134668,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 245,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 611,
+      "verified_current_matches_official_rows": 645,
       "evidence_sources": "KRX:krx_listed_companies"
     },
     {
@@ -134726,7 +134745,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 36,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 306,
+      "verified_current_matches_official_rows": 324,
       "evidence_sources": "PSX:psx_dps_symbols"
     },
     {
@@ -134781,7 +134800,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 164,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 516,
+      "verified_current_matches_official_rows": 604,
       "evidence_sources": "SET:set_stock_search"
     },
     {
@@ -134814,7 +134833,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 35,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 527,
+      "verified_current_matches_official_rows": 995,
       "evidence_sources": "SIX:six_etf_products|SIX:six_etp_products"
     },
     {
@@ -134836,7 +134855,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 1147,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 1100,
+      "verified_current_matches_official_rows": 1106,
       "evidence_sources": "SSE:sse_a_share_list"
     },
     {
@@ -134847,7 +134866,7 @@
       "blocked_rows": 25,
       "manual_review_rows": 124,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 542,
+      "verified_current_matches_official_rows": 575,
       "evidence_sources": "Nasdaq Nordic:nasdaq_nordic_stockholm_shares"
     },
     {
@@ -134869,7 +134888,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 1401,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 1323,
+      "verified_current_matches_official_rows": 1390,
       "evidence_sources": "SZSE:szse_a_share_list|SZSE:szse_b_share_list"
     },
     {
@@ -134957,7 +134976,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 104,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 234,
+      "verified_current_matches_official_rows": 263,
       "evidence_sources": "GPW:wse_listed_companies|NewConnect:newconnect_listed_companies"
     },
     {
@@ -134968,7 +134987,7 @@
       "blocked_rows": 0,
       "manual_review_rows": 176,
       "metadata_override_pending_rows": 0,
-      "verified_current_matches_official_rows": 919,
+      "verified_current_matches_official_rows": 1002,
       "evidence_sources": "Deutsche Boerse:deutsche_boerse_etfs_etps|Deutsche Boerse:deutsche_boerse_xetra_all_tradable_equities"
     },
     {

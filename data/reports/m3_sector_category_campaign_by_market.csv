@@ -1,24 +1,24 @@
 exchange,asset_type,candidate_rows,applied_rows,blocked_rows,manual_review_rows,metadata_override_pending_rows,verified_current_matches_official_rows,evidence_sources
 ADX,ETF,0,0,0,0,0,17,ADX:adx_market_watch
 ADX,Stock,0,0,0,0,0,68,ADX:adx_market_watch
-ASX,Stock,70,0,0,70,0,1170,ASX:asx_listed_companies
+ASX,Stock,70,0,0,70,0,1538,ASX:asx_listed_companies
 ATHEX,Stock,25,0,0,25,0,93,ATHEX:athex_sector_classification
 B3,ETF,461,0,39,461,0,131,B3:b3_instruments_equities|B3:b3_listed_etfs
 BIST,ETF,0,0,0,0,0,30,KAP/MKK:bist_kap_mkk_listed_securities
 BK,Stock,0,0,0,0,0,1,Boursa Kuwait:boursa_kuwait_stocks
-BME,Stock,3,0,0,3,0,7,BME:bme_security_prices_directory
+BME,Stock,3,0,0,3,0,53,BME:bme_listed_companies|BME:bme_security_prices_directory
 BMV,ETF,2,0,0,2,0,0,BMV:bmv_market_data_securities
 BMV,Stock,1,0,0,1,0,6,BMV:bmv_market_data_securities
 BSE_BW,Stock,2,0,0,2,0,24,BSE Botswana:bse_bw_listed_companies
 BSE_IN,ETF,0,0,0,0,0,6,BSE India:bse_india_scrips
 BVC,Stock,1,0,0,1,0,2,BVC:bvc_colombia_issuers
 Bursa,ETF,0,0,0,0,0,3,Bursa Malaysia:bursa_closing_prices
-Bursa,Stock,452,0,0,452,0,412,Bursa Malaysia:bursa_closing_prices
-CPH,Stock,22,0,1,22,0,112,Nasdaq Nordic:nasdaq_nordic_copenhagen_shares
+Bursa,Stock,452,0,0,452,0,512,Bursa Malaysia:bursa_closing_prices
+CPH,Stock,22,0,1,22,0,115,Nasdaq Nordic:nasdaq_nordic_copenhagen_shares
 DFM,ETF,0,0,0,0,0,2,DFM:dfm_listed_securities
 DFM,Stock,0,0,0,0,0,42,DFM:dfm_listed_securities
 EGX,Stock,23,0,0,23,0,168,EGX:egx_listed_stocks
-HEL,Stock,31,0,3,31,0,152,Nasdaq Nordic:nasdaq_nordic_helsinki_shares
+HEL,Stock,31,0,4,31,0,154,Nasdaq Nordic:nasdaq_nordic_helsinki_shares
 HKEX,ETF,0,0,0,0,0,397,HKEX:hkex_securities_list
 HKEX,Stock,0,0,0,0,0,11,HKEX:hkex_securities_list
 HOSE,ETF,0,0,0,0,0,13,HOSE:hose_etf_list
@@ -27,28 +27,28 @@ ICE_IS,Stock,3,0,1,3,0,13,Nasdaq Nordic:nasdaq_nordic_iceland_shares
 IDX,Stock,116,0,0,116,0,640,IDX:idx_company_profiles
 JSE,ETF,8,0,0,8,0,117,JSE:jse_etf_list|JSE:jse_etn_list
 KOSDAQ,Stock,523,0,0,523,0,1073,KRX:krx_listed_companies
-KRX,ETF,129,0,0,129,0,797,KRX:krx_etf_finder
-KRX,Stock,245,0,0,245,0,611,KRX:krx_listed_companies
+KRX,ETF,129,0,0,129,0,939,KRX:krx_etf_finder
+KRX,Stock,245,0,0,245,0,645,KRX:krx_listed_companies
 MSX,Stock,0,0,0,0,0,91,MSX:muscat_securities_companies
 NGX,Stock,1,0,27,1,0,102,NGX:ngx_equities_price_list
 NSE_IN,ETF,0,0,0,0,0,142,NSE India:nse_india_securities_available
 NSE_KE,Stock,0,0,0,0,0,7,NSE Kenya:nse_ke_listed_companies
 NZX,ETF,0,0,0,0,0,23,NZX:nzx_instruments
 PSX,ETF,0,0,0,0,0,9,PSX:psx_dps_symbols
-PSX,Stock,36,0,0,36,0,306,PSX:psx_dps_symbols
+PSX,Stock,36,0,0,36,0,324,PSX:psx_dps_symbols
 QSE,ETF,0,0,0,0,0,2,QSE:qse_market_watch
 QSE,Stock,7,0,0,7,0,30,QSE:qse_market_watch
 SEM,ETF,0,0,0,0,0,1,SEM:sem_isin
 SEM,Stock,0,0,0,0,0,45,SEM:sem_isin
-SET,Stock,164,0,0,164,0,516,SET:set_stock_search
+SET,Stock,164,0,0,164,0,604,SET:set_stock_search
 SGX,ETF,0,0,0,0,0,47,SGX:sgx_securities_prices
 SGX,Stock,0,0,0,0,0,35,SGX:sgx_securities_prices
-SIX,ETF,35,0,0,35,0,527,SIX:six_etf_products|SIX:six_etp_products
+SIX,ETF,35,0,0,35,0,995,SIX:six_etf_products|SIX:six_etp_products
 SSE,ETF,23,0,0,23,0,508,SSE:sse_etf_list
-SSE,Stock,1147,0,0,1147,0,1100,SSE:sse_a_share_list
-STO,Stock,124,0,25,124,0,542,Nasdaq Nordic:nasdaq_nordic_stockholm_shares
+SSE,Stock,1147,0,0,1147,0,1106,SSE:sse_a_share_list
+STO,Stock,124,0,25,124,0,575,Nasdaq Nordic:nasdaq_nordic_stockholm_shares
 SZSE,ETF,12,0,0,12,0,345,SZSE:szse_etf_list
-SZSE,Stock,1401,0,0,1401,0,1323,SZSE:szse_a_share_list|SZSE:szse_b_share_list
+SZSE,Stock,1401,0,0,1401,0,1390,SZSE:szse_a_share_list|SZSE:szse_b_share_list
 TADAWUL,ETF,0,0,0,0,0,8,Saudi Exchange:tadawul_main_market_watch
 TADAWUL,Stock,0,0,0,0,0,11,Saudi Exchange:tadawul_main_market_watch
 TASE,ETF,18,0,0,18,0,279,TASE:tase_etf_marketdata
@@ -56,6 +56,6 @@ TPEX,ETF,5,0,0,5,0,100,TPEX:tpex_etf_filter
 TPEX,Stock,301,0,0,301,0,655,MOPS:tpex_emerging_basic_info|MOPS:tpex_mainboard_basic_info
 TSE,ETF,0,0,0,0,0,1,JPX:jpx_listed_issues|JPX:jpx_tse_stock_detail
 TSE,Stock,1278,0,0,1278,0,2378,JPX:jpx_listed_issues|JPX:jpx_tse_stock_detail
-WSE,Stock,104,0,0,104,0,234,GPW:wse_listed_companies|NewConnect:newconnect_listed_companies
-XETRA,ETF,176,0,0,176,0,919,Deutsche Boerse:deutsche_boerse_etfs_etps|Deutsche Boerse:deutsche_boerse_xetra_all_tradable_equities
+WSE,Stock,104,0,0,104,0,263,GPW:wse_listed_companies|NewConnect:newconnect_listed_companies
+XETRA,ETF,176,0,0,176,0,1002,Deutsche Boerse:deutsche_boerse_etfs_etps|Deutsche Boerse:deutsche_boerse_xetra_all_tradable_equities
 ZSE,Stock,0,0,23,0,0,0,ZSE Croatia:zagreb_securities_directory
