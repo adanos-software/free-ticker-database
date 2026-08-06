@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 80777,
-    "matched": 53872,
-    "collisions": 11248,
-    "missing": 15657
+    "official_symbols": 80553,
+    "matched": 53703,
+    "collisions": 11245,
+    "missing": 15605
   },
   "exchanges": [
     {
@@ -332,8 +332,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1578,
-      "matched": 1238,
+      "official_symbols": 1574,
+      "matched": 1234,
       "collisions": 52,
       "missing": 288,
       "collision_examples": [
@@ -2772,10 +2772,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5757,
-      "matched": 4573,
-      "collisions": 66,
-      "missing": 1118,
+      "official_symbols": 5584,
+      "matched": 4509,
+      "collisions": 60,
+      "missing": 1015,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -3058,8 +3058,8 @@
     },
     {
       "exchange": "NGX",
-      "official_symbols": 133,
-      "matched": 133,
+      "official_symbols": 130,
+      "matched": 130,
       "collisions": 0,
       "missing": 0,
       "collision_examples": [],
@@ -3067,10 +3067,10 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 3010,
-      "matched": 2369,
-      "collisions": 231,
-      "missing": 410,
+      "official_symbols": 2978,
+      "matched": 2290,
+      "collisions": 234,
+      "missing": 454,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -3121,6 +3121,22 @@
           ]
         },
         {
+          "ticker": "AFIL",
+          "name": "Akme Fintrade (India) Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
+          "ticker": "AGL",
+          "name": "Allcargo Global Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
           "ticker": "AHCL",
           "name": "Anlon Healthcare Limited",
           "target_exchange": "NSE_IN",
@@ -3135,25 +3151,14 @@
           "existing_exchanges": [
             "BSE_IN"
           ]
-        },
-        {
-          "ticker": "AKI",
-          "name": "AKI India Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "AKSHAR",
-          "name": "Akshar Spintex Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AASTHA",
+          "name": "Aastha Spintex Limited",
+          "exchange": "NSE_IN"
+        },
         {
           "ticker": "ABCOTS",
           "name": "A B Cotspin India Limited",
@@ -3198,20 +3203,15 @@
           "ticker": "ADVAIT",
           "name": "Advait Energy Transitions Limited",
           "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ADVANCE",
-          "name": "Advance Agrolife Limited",
-          "exchange": "NSE_IN"
         }
       ]
     },
     {
       "exchange": "NSE_KE",
-      "official_symbols": 66,
+      "official_symbols": 68,
       "matched": 11,
       "collisions": 23,
-      "missing": 32,
+      "missing": 34,
       "collision_examples": [
         {
           "ticker": "ARM",
@@ -3336,23 +3336,23 @@
           "exchange": "NSE_KE"
         },
         {
-          "ticker": "HAFR",
-          "name": "Home Afrika Ltd Ord 1.00",
+          "ticker": "FMLY",
+          "name": "Family Bank Limited",
           "exchange": "NSE_KE"
         },
         {
-          "ticker": "JUB",
-          "name": "Jubilee Holdings Ltd Ord 5.00",
+          "ticker": "HAFR",
+          "name": "Home Afrika Ltd Ord 1.00",
           "exchange": "NSE_KE"
         }
       ]
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3919,
-      "matched": 1994,
-      "collisions": 511,
-      "missing": 1414,
+      "official_symbols": 3900,
+      "matched": 1975,
+      "collisions": 514,
+      "missing": 1411,
       "collision_examples": [
         {
           "ticker": "ACCS",
@@ -3441,6 +3441,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "AAC-UN",
+          "name": "Ares Acquisition Corp III",
+          "exchange": "NYSE"
+        },
+        {
           "ticker": "AAC.U",
           "name": "Ares Acquisition Corporation III Units, each consisting of one Class A ordinary share and one-tenth of one redeemable warrant",
           "exchange": "NYSE"
@@ -3484,18 +3489,13 @@
           "ticker": "ABXL",
           "name": "Abacus Global Management, Inc. 9.875% Fixed Rate Senior Notes due 2028",
           "exchange": "NYSE"
-        },
-        {
-          "ticker": "ACHR-WT",
-          "name": "Archer Aviation Inc.",
-          "exchange": "NYSE"
         }
       ]
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2694,
-      "matched": 2567,
+      "official_symbols": 2693,
+      "matched": 2566,
       "collisions": 32,
       "missing": 95,
       "collision_examples": [
@@ -3781,9 +3781,9 @@
     },
     {
       "exchange": "NZX",
-      "official_symbols": 173,
+      "official_symbols": 172,
       "matched": 45,
-      "collisions": 126,
+      "collisions": 125,
       "missing": 2,
       "collision_examples": [
         {
@@ -4153,10 +4153,10 @@
     },
     {
       "exchange": "PSE",
-      "official_symbols": 381,
+      "official_symbols": 385,
       "matched": 88,
-      "collisions": 181,
-      "missing": 112,
+      "collisions": 179,
+      "missing": 118,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -4302,10 +4302,10 @@
     },
     {
       "exchange": "PSX",
-      "official_symbols": 716,
+      "official_symbols": 720,
       "matched": 371,
-      "collisions": 156,
-      "missing": 189,
+      "collisions": 157,
+      "missing": 192,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -4474,18 +4474,12 @@
     },
     {
       "exchange": "SEM",
-      "official_symbols": 47,
+      "official_symbols": 46,
       "matched": 46,
       "collisions": 0,
-      "missing": 1,
+      "missing": 0,
       "collision_examples": [],
-      "missing_examples": [
-        {
-          "ticker": "LMLC-P",
-          "name": "LES MOULINS DE LA CONCORDE LT",
-          "exchange": "SEM"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "SET",
@@ -5181,8 +5175,8 @@
     {
       "exchange": "TSXV",
       "official_symbols": 1518,
-      "matched": 989,
-      "collisions": 517,
+      "matched": 990,
+      "collisions": 516,
       "missing": 12,
       "collision_examples": [
         {

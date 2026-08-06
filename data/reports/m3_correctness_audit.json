@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-04T10:39:10Z",
+    "generated_at": "2026-08-06T14:09:09Z",
     "rows": 4,
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -38,31 +38,31 @@
     {
       "audit_block": "after_c2_name_freshness",
       "campaign": "C2_name_freshness",
-      "rows_reviewed": 325,
-      "manual_review_rows": 325,
+      "rows_reviewed": 353,
+      "manual_review_rows": 353,
       "blocked_rows": 0,
       "applied_rows": 0,
       "changed_rows": 0,
       "adversarial_changed_rows_checked": 0,
       "two_source_possible_rows": 0,
-      "two_source_gap_rows": 325,
+      "two_source_gap_rows": 353,
       "full_row_correctness_claim": "not_claimed_from_campaign_report",
-      "metric_context": "rows=325;manual=325;blocked=0;applied=0;claim=not_99_percent_without_external_stratified_audit",
+      "metric_context": "rows=353;manual=353;blocked=0;applied=0;claim=not_99_percent_without_external_stratified_audit",
       "source_gate": "Audit rows are reproducible campaign checks. They do not claim >=99% correctness without a stratified external audit using independent sources."
     },
     {
       "audit_block": "after_c4_identity_residual",
       "campaign": "C4_identity_residual_burn_down",
-      "rows_reviewed": 1202,
-      "manual_review_rows": 1202,
+      "rows_reviewed": 1229,
+      "manual_review_rows": 1229,
       "blocked_rows": 0,
       "applied_rows": 0,
       "changed_rows": 0,
       "adversarial_changed_rows_checked": 0,
       "two_source_possible_rows": 0,
-      "two_source_gap_rows": 1202,
+      "two_source_gap_rows": 1229,
       "full_row_correctness_claim": "not_claimed_from_campaign_report",
-      "metric_context": "rows=1202;manual=1202;blocked=0;applied=0;claim=not_99_percent_without_external_stratified_audit",
+      "metric_context": "rows=1229;manual=1229;blocked=0;applied=0;claim=not_99_percent_without_external_stratified_audit",
       "source_gate": "Audit rows are reproducible campaign checks. They do not claim >=99% correctness without a stratified external audit using independent sources."
     },
     {

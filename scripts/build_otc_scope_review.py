@@ -184,9 +184,10 @@ def metadata_enrichment_gate_for(row: dict[str, str], gap_rows: list[dict[str, s
     if "official_name_mismatch" in row["issue_types"].split("|"):
         return "otc_name_mismatch_review_required_before_name_or_metadata_changes"
     if gap_rows:
-        if row["source_gap_field"] == "missing_sector_stock":
+        gap_fields = set(row["source_gap_field"].split("|"))
+        if "missing_sector_stock" in gap_fields:
             return "reviewed_issuer_sector_source_required_keep_blank"
-        if row["source_gap_field"] == "missing_etf_category":
+        if "missing_etf_category" in gap_fields:
             return "reviewed_product_category_source_required_keep_blank"
         return "reviewed_source_required_keep_blank"
     if row["quality_status"] == "warn":

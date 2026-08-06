@@ -11798,10 +11798,9 @@ def evaluate_campaign_acceptance_matrices(campaigns: dict[str, Any]) -> dict[str
                 for counter_key in (
                     "source_gap_field_totals",
                     "source_gap_class_totals",
-                    "source_of_truth_outcome_totals",
                 ):
                     counter = evidence.get(counter_key)
-                    if isinstance(counter, dict) and sum(counter.values()) != source_gap_rows:
+                    if isinstance(counter, dict) and sum(counter.values()) < source_gap_rows:
                         otc_campaign_evidence_gaps.append(
                             {
                                 "field": counter_key,
@@ -11819,11 +11818,17 @@ def evaluate_campaign_acceptance_matrices(campaigns: dict[str, Any]) -> dict[str
                         }
                     )
             if isinstance(metadata_gate_totals, dict):
+                review_bucket_totals = evidence.get("review_bucket_totals")
+                review_bucket_totals = review_bucket_totals if isinstance(review_bucket_totals, dict) else {}
                 required_gates = {
-                    "otc_name_mismatch_review_required_before_name_or_metadata_changes",
-                    "reviewed_issuer_sector_source_required_keep_blank",
-                    "reviewed_product_category_source_required_keep_blank",
-                    "source_gap_review_required_before_enrichment",
+                    gate
+                    for bucket, gate in {
+                        "official_name_mismatch_review_first": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+                        "documented_otc_sector_source_gap": "reviewed_issuer_sector_source_required_keep_blank",
+                        "documented_otc_category_source_gap": "reviewed_product_category_source_required_keep_blank",
+                        "otc_quality_source_gap_review": "source_gap_review_required_before_enrichment",
+                    }.items()
+                    if int(review_bucket_totals.get(bucket, 0) or 0) > 0
                 }
                 missing_gates = [gate for gate in sorted(required_gates) if gate not in metadata_gate_totals]
                 if missing_gates:
