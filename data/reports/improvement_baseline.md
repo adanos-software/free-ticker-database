@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-08-04T10:39:09Z`
+Generated: `2026-08-06T14:03:36Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -12,30 +12,30 @@ Baseline snapshot for future before/after deltas. It does not authorize inferred
 | campaign_count | `10` |
 | exchange_count | `81` |
 | source_file_count | `18` |
-| baseline_context | `"metric_count=16;tickers=63291;listing_keys=75219;source_gap_rows=7176;warn_rows=20;quarantine_rows=0;validation_failed_error_gates=0"` |
+| baseline_context | `"metric_count=16;tickers=63302;listing_keys=75231;source_gap_rows=7365;warn_rows=47;quarantine_rows=0;validation_failed_error_gates=0"` |
 
-Global context: `metric_count=16;tickers=63291;listing_keys=75219;source_gap_rows=7176;warn_rows=20;quarantine_rows=0;validation_failed_error_gates=0`
+Global context: `metric_count=16;tickers=63302;listing_keys=75231;source_gap_rows=7365;warn_rows=47;quarantine_rows=0;validation_failed_error_gates=0`
 
 ## Global
 
 | Metric | Value |
 |---|---:|
-| tickers | `63291` |
-| listing_keys | `75219` |
-| isin_coverage | `61736` |
-| sector_coverage | `63005` |
-| stock_sector_coverage | `47366` |
+| tickers | `63302` |
+| listing_keys | `75231` |
+| isin_coverage | `61764` |
+| sector_coverage | `63004` |
+| stock_sector_coverage | `47365` |
 | etf_category_coverage | `15639` |
-| figi_coverage | `65447` |
-| official_masterfile_matches | `53860` |
-| official_masterfile_collisions | `11248` |
-| official_masterfile_missing | `15651` |
-| source_gap_rows | `7176` |
-| entry_quality_warn_rows | `20` |
-| entry_quality_source_gap_rows | `7044` |
+| figi_coverage | `65434` |
+| official_masterfile_matches | `53703` |
+| official_masterfile_collisions | `11245` |
+| official_masterfile_missing | `15605` |
+| source_gap_rows | `7365` |
+| entry_quality_warn_rows | `47` |
+| entry_quality_source_gap_rows | `7211` |
 | entry_quality_quarantine_rows | `0` |
 | validation_failed_error_gates | `0` |
-| source_freshness_status_totals | `{"fresh": 18, "old": 67, "stale": 52}` |
+| source_freshness_status_totals | `{"fresh": 20, "old": 50, "stale": 67}` |
 
 ## Campaign Baseline
 
@@ -116,39 +116,39 @@ Global context: `metric_count=16;tickers=63291;listing_keys=75219;source_gap_row
 
 | Metric | Value |
 |---|---:|
-| baseline_context | `campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=8353` |
+| baseline_context | `campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=8534` |
 | source_count | `137` |
-| source_freshness_status_totals | `{"fresh": 18, "old": 67, "stale": 52}` |
-| source_refresh_priority_totals | `{"P1": 21, "P2": 98, "P4": 18}` |
-| source_refresh_queue_priority_totals | `{"fresh_no_refresh_needed": {"P4": 18}, "refresh_official_exchange_directory_before_identity_or_collision_work": {"P1": 20}, "refresh_official_subset_before_gap_enrichment": {"P2": 86}, "restore_or_replace_unavailable_source_before_data_fill": {"P1": 1, "P2": 12}}` |
-| source_refresh_action_totals | `{"no_refresh_needed": 18, "refresh_official_exchange_directory_before_identity_or_collision_work": 20, "refresh_official_subset_before_gap_enrichment": 86, "restore_or_replace_unavailable_source_before_data_fill": 13}` |
-| old_official_exchange_directory_count | `21` |
-| source_gap_rows | `7176` |
-| source_gap_class_totals | `{"adr_cdr_or_depositary_identifier_gap": 43, "capital_pool_or_halted_identifier_gap": 33, "commodity_etf_category_gap": 2, "debt_or_securitized_identifier_gap": 76, "digital_asset_etf_category_gap": 3, "equity_etf_category_gap": 18, "fixed_income_etf_category_gap": 1, "fund_or_trust_identifier_gap": 359, "fundlike_stock_sector_gap": 1, "inactive_or_legacy_identifier_gap": 104, "official_current_directory_absent_identifier_gap": 2, "official_identifier_not_exposed_source_gap": 510, "official_identifier_reference_unmatched_gap": 5, "official_industry_taxonomy_unavailable_gap": 114, "official_product_taxonomy_unavailable_gap": 110, "official_reference_symbol_collision_gap": 720, "official_reference_unmatched_source_gap": 5038, "otc_sector_source_gap": 22, "shell_or_cpc_sector_gap": 15}` |
+| source_freshness_status_totals | `{"fresh": 20, "old": 50, "stale": 67}` |
+| source_refresh_priority_totals | `{"P1": 13, "P2": 104, "P4": 20}` |
+| source_refresh_queue_priority_totals | `{"fresh_no_refresh_needed": {"P4": 20}, "refresh_official_exchange_directory_before_identity_or_collision_work": {"P1": 11}, "refresh_official_subset_before_gap_enrichment": {"P2": 91}, "restore_or_replace_unavailable_source_before_data_fill": {"P1": 2, "P2": 13}}` |
+| source_refresh_action_totals | `{"no_refresh_needed": 20, "refresh_official_exchange_directory_before_identity_or_collision_work": 11, "refresh_official_subset_before_gap_enrichment": 91, "restore_or_replace_unavailable_source_before_data_fill": 15}` |
+| old_official_exchange_directory_count | `13` |
+| source_gap_rows | `7365` |
+| source_gap_class_totals | `{"adr_cdr_or_depositary_identifier_gap": 43, "capital_pool_or_halted_identifier_gap": 33, "commodity_etf_category_gap": 2, "debt_or_securitized_identifier_gap": 76, "digital_asset_etf_category_gap": 3, "equity_etf_category_gap": 20, "fixed_income_etf_category_gap": 1, "fund_or_trust_identifier_gap": 366, "fundlike_stock_sector_gap": 1, "inactive_or_legacy_identifier_gap": 104, "official_current_directory_absent_identifier_gap": 2, "official_identifier_not_exposed_source_gap": 510, "official_identifier_reference_unmatched_gap": 10, "official_industry_taxonomy_unavailable_gap": 116, "official_product_taxonomy_unavailable_gap": 115, "official_reference_symbol_collision_gap": 792, "official_reference_unmatched_source_gap": 5131, "otc_sector_source_gap": 22, "shell_or_cpc_sector_gap": 18}` |
 | top_source_gap_review_batches | `20` ranked batches |
 
 | Field | Gap Class | Exchange | Rows | Recommended Next Source | Source Gate |
 |---|---|---|---:|---|---|
-| `official_reference_gap` | `official_reference_unmatched_source_gap` | `OTC` | 3039 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| `official_reference_gap` | `official_reference_unmatched_source_gap` | `OTC` | 3052 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `B3` | 331 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| `official_reference_gap` | `official_reference_symbol_collision_gap` | `NSE_IN` | 174 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `BMV` | 162 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | `missing_isin_primary` | `official_identifier_not_exposed_source_gap` | `SET` | 144 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
-| `official_reference_gap` | `official_reference_symbol_collision_gap` | `OTC` | 131 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
-| `official_reference_gap` | `official_reference_symbol_collision_gap` | `NSE_IN` | 108 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
+| `official_reference_gap` | `official_reference_symbol_collision_gap` | `OTC` | 120 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
+| `official_reference_gap` | `official_reference_unmatched_source_gap` | `NASDAQ` | 115 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| `missing_isin_primary` | `fund_or_trust_identifier_gap` | `BATS` | 103 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `NYSE ARCA` | 102 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `XETRA` | 102 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| `missing_isin_primary` | `fund_or_trust_identifier_gap` | `BATS` | 98 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | `missing_isin_primary` | `official_identifier_not_exposed_source_gap` | `NASDAQ` | 97 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | `missing_isin_primary` | `inactive_or_legacy_identifier_gap` | `ASX` | 90 | Current exchange status/detail feed before any identifier fill. | Exact active listing evidence plus direct identifier source. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `BME` | 87 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `TSXV` | 86 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | `official_reference_gap` | `official_reference_symbol_collision_gap` | `AMS` | 85 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
-| `official_reference_gap` | `official_reference_unmatched_source_gap` | `LSE` | 84 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| `missing_isin_primary` | `fund_or_trust_identifier_gap` | `NYSE ARCA` | 81 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
+| `official_reference_gap` | `official_reference_unmatched_source_gap` | `LSE` | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| `missing_isin_primary` | `fund_or_trust_identifier_gap` | `NYSE ARCA` | 82 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `TSX` | 81 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `BATS` | 78 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | `official_reference_gap` | `official_reference_unmatched_source_gap` | `TASE` | 74 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| `official_reference_gap` | `official_reference_unmatched_source_gap` | `Euronext` | 71 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 
 | Metric | Value |
 |---|---:|
@@ -179,7 +179,7 @@ Global context: `metric_count=16;tickers=63291;listing_keys=75219;source_gap_row
 | ASX | 1708 | 1526 | 1704 | 222 | 0 | 217 | 0 | `exchange=ASX;tickers=1708;isin_coverage=1526;sector_coverage=1704;source_gap_rows=222;warn_rows=0;quality_source_gap_rows=217;quarantine_rows=0` |
 | ATHEX | 155 | 155 | 155 | 37 | 0 | 37 | 0 | `exchange=ATHEX;tickers=155;isin_coverage=155;sector_coverage=155;source_gap_rows=37;warn_rows=0;quality_source_gap_rows=37;quarantine_rows=0` |
 | B3 | 1581 | 1571 | 1579 | 342 | 0 | 331 | 0 | `exchange=B3;tickers=1581;isin_coverage=1571;sector_coverage=1579;source_gap_rows=342;warn_rows=0;quality_source_gap_rows=331;quarantine_rows=0` |
-| BATS | 1324 | 1224 | 1228 | 273 | 0 | 190 | 0 | `exchange=BATS;tickers=1324;isin_coverage=1224;sector_coverage=1228;source_gap_rows=273;warn_rows=0;quality_source_gap_rows=190;quarantine_rows=0` |
+| BATS | 1329 | 1224 | 1228 | 283 | 3 | 192 | 0 | `exchange=BATS;tickers=1329;isin_coverage=1224;sector_coverage=1228;source_gap_rows=283;warn_rows=3;quality_source_gap_rows=192;quarantine_rows=0` |
 | BCBA | 63 | 63 | 63 | 0 | 0 | 0 | 0 | `exchange=BCBA;tickers=63;isin_coverage=63;sector_coverage=63;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | BHB | 28 | 28 | 28 | 0 | 0 | 0 | 0 | `exchange=BHB;tickers=28;isin_coverage=28;sector_coverage=28;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | BIST | 614 | 614 | 614 | 3 | 0 | 3 | 0 | `exchange=BIST;tickers=614;isin_coverage=614;sector_coverage=614;source_gap_rows=3;warn_rows=0;quality_source_gap_rows=3;quarantine_rows=0` |
@@ -216,20 +216,20 @@ Global context: `metric_count=16;tickers=63291;listing_keys=75219;source_gap_row
 | LUSE | 22 | 22 | 22 | 7 | 0 | 7 | 0 | `exchange=LUSE;tickers=22;isin_coverage=22;sector_coverage=22;source_gap_rows=7;warn_rows=0;quality_source_gap_rows=7;quarantine_rows=0` |
 | MSE_MW | 8 | 8 | 8 | 0 | 0 | 0 | 0 | `exchange=MSE_MW;tickers=8;isin_coverage=8;sector_coverage=8;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | MSX | 91 | 91 | 91 | 0 | 0 | 0 | 0 | `exchange=MSX;tickers=91;isin_coverage=91;sector_coverage=91;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
-| NASDAQ | 4667 | 4525 | 4599 | 303 | 1 | 239 | 0 | `exchange=NASDAQ;tickers=4667;isin_coverage=4525;sector_coverage=4599;source_gap_rows=303;warn_rows=1;quality_source_gap_rows=239;quarantine_rows=0` |
+| NASDAQ | 4673 | 4525 | 4599 | 378 | 8 | 302 | 0 | `exchange=NASDAQ;tickers=4673;isin_coverage=4525;sector_coverage=4599;source_gap_rows=378;warn_rows=8;quality_source_gap_rows=302;quarantine_rows=0` |
 | NEO | 197 | 154 | 191 | 57 | 0 | 56 | 0 | `exchange=NEO;tickers=197;isin_coverage=154;sector_coverage=191;source_gap_rows=57;warn_rows=0;quality_source_gap_rows=56;quarantine_rows=0` |
-| NGX | 145 | 145 | 144 | 12 | 1 | 12 | 0 | `exchange=NGX;tickers=145;isin_coverage=145;sector_coverage=144;source_gap_rows=12;warn_rows=1;quality_source_gap_rows=12;quarantine_rows=0` |
+| NGX | 145 | 145 | 144 | 15 | 0 | 15 | 0 | `exchange=NGX;tickers=145;isin_coverage=145;sector_coverage=144;source_gap_rows=15;warn_rows=0;quality_source_gap_rows=15;quarantine_rows=0` |
 | NMFQS | 6 | 6 | 6 | 0 | 0 | 0 | 0 | `exchange=NMFQS;tickers=6;isin_coverage=6;sector_coverage=6;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
-| NSE_IN | 2503 | 2503 | 2503 | 134 | 0 | 134 | 0 | `exchange=NSE_IN;tickers=2503;isin_coverage=2503;sector_coverage=2503;source_gap_rows=134;warn_rows=0;quality_source_gap_rows=134;quarantine_rows=0` |
+| NSE_IN | 2503 | 2503 | 2503 | 213 | 0 | 213 | 0 | `exchange=NSE_IN;tickers=2503;isin_coverage=2503;sector_coverage=2503;source_gap_rows=213;warn_rows=0;quality_source_gap_rows=213;quarantine_rows=0` |
 | NSE_KE | 46 | 46 | 45 | 35 | 0 | 35 | 0 | `exchange=NSE_KE;tickers=46;isin_coverage=46;sector_coverage=45;source_gap_rows=35;warn_rows=0;quality_source_gap_rows=35;quarantine_rows=0` |
-| NYSE | 2005 | 1951 | 1992 | 81 | 0 | 66 | 0 | `exchange=NYSE;tickers=2005;isin_coverage=1951;sector_coverage=1992;source_gap_rows=81;warn_rows=0;quality_source_gap_rows=66;quarantine_rows=0` |
-| NYSE ARCA | 2687 | 2604 | 2628 | 249 | 0 | 205 | 0 | `exchange=NYSE ARCA;tickers=2687;isin_coverage=2604;sector_coverage=2628;source_gap_rows=249;warn_rows=0;quality_source_gap_rows=205;quarantine_rows=0` |
-| NYSE MKT | 229 | 219 | 228 | 16 | 0 | 13 | 0 | `exchange=NYSE MKT;tickers=229;isin_coverage=219;sector_coverage=228;source_gap_rows=16;warn_rows=0;quality_source_gap_rows=13;quarantine_rows=0` |
+| NYSE | 2005 | 1951 | 1992 | 97 | 5 | 81 | 0 | `exchange=NYSE;tickers=2005;isin_coverage=1951;sector_coverage=1992;source_gap_rows=97;warn_rows=5;quality_source_gap_rows=81;quarantine_rows=0` |
+| NYSE ARCA | 2688 | 2604 | 2628 | 251 | 0 | 206 | 0 | `exchange=NYSE ARCA;tickers=2688;isin_coverage=2604;sector_coverage=2628;source_gap_rows=251;warn_rows=0;quality_source_gap_rows=206;quarantine_rows=0` |
+| NYSE MKT | 228 | 218 | 227 | 15 | 0 | 12 | 0 | `exchange=NYSE MKT;tickers=228;isin_coverage=218;sector_coverage=227;source_gap_rows=15;warn_rows=0;quality_source_gap_rows=12;quarantine_rows=0` |
 | NZX | 45 | 45 | 42 | 0 | 0 | 0 | 0 | `exchange=NZX;tickers=45;isin_coverage=45;sector_coverage=42;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | OSL | 269 | 269 | 261 | 21 | 0 | 25 | 0 | `exchange=OSL;tickers=269;isin_coverage=269;sector_coverage=261;source_gap_rows=21;warn_rows=0;quality_source_gap_rows=25;quarantine_rows=0` |
-| OTC | 11094 | 10319 | 10840 | 3192 | 4 | 3170 | 0 | `exchange=OTC;tickers=11094;isin_coverage=10319;sector_coverage=10840;source_gap_rows=3192;warn_rows=4;quality_source_gap_rows=3170;quarantine_rows=0` |
+| OTC | 11094 | 10351 | 10840 | 3194 | 17 | 3172 | 0 | `exchange=OTC;tickers=11094;isin_coverage=10351;sector_coverage=10840;source_gap_rows=3194;warn_rows=17;quality_source_gap_rows=3172;quarantine_rows=0` |
 | PSE | 88 | 88 | 87 | 0 | 0 | 0 | 0 | `exchange=PSE;tickers=88;isin_coverage=88;sector_coverage=87;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
-| PSE_CZ | 27 | 27 | 26 | 4 | 0 | 5 | 0 | `exchange=PSE_CZ;tickers=27;isin_coverage=27;sector_coverage=26;source_gap_rows=4;warn_rows=0;quality_source_gap_rows=5;quarantine_rows=0` |
+| PSE_CZ | 27 | 27 | 26 | 5 | 0 | 6 | 0 | `exchange=PSE_CZ;tickers=27;isin_coverage=27;sector_coverage=26;source_gap_rows=5;warn_rows=0;quality_source_gap_rows=6;quarantine_rows=0` |
 | PSX | 371 | 366 | 371 | 5 | 0 | 5 | 0 | `exchange=PSX;tickers=371;isin_coverage=366;sector_coverage=371;source_gap_rows=5;warn_rows=0;quality_source_gap_rows=5;quarantine_rows=0` |
 | QSE | 55 | 54 | 55 | 1 | 0 | 1 | 0 | `exchange=QSE;tickers=55;isin_coverage=54;sector_coverage=55;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=1;quarantine_rows=0` |
 | RSE | 2 | 2 | 2 | 1 | 0 | 1 | 0 | `exchange=RSE;tickers=2;isin_coverage=2;sector_coverage=2;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=1;quarantine_rows=0` |
@@ -246,12 +246,12 @@ Global context: `metric_count=16;tickers=63291;listing_keys=75219;source_gap_row
 | TPEX | 1119 | 1119 | 1119 | 10 | 1 | 10 | 0 | `exchange=TPEX;tickers=1119;isin_coverage=1119;sector_coverage=1119;source_gap_rows=10;warn_rows=1;quality_source_gap_rows=10;quarantine_rows=0` |
 | TSE | 4077 | 4060 | 4065 | 41 | 0 | 41 | 0 | `exchange=TSE;tickers=4077;isin_coverage=4060;sector_coverage=4065;source_gap_rows=41;warn_rows=0;quality_source_gap_rows=41;quarantine_rows=0` |
 | TSX | 1845 | 1766 | 1803 | 163 | 0 | 149 | 0 | `exchange=TSX;tickers=1845;isin_coverage=1766;sector_coverage=1803;source_gap_rows=163;warn_rows=0;quality_source_gap_rows=149;quarantine_rows=0` |
-| TSXV | 1085 | 980 | 1055 | 200 | 2 | 184 | 0 | `exchange=TSXV;tickers=1085;isin_coverage=980;sector_coverage=1055;source_gap_rows=200;warn_rows=2;quality_source_gap_rows=184;quarantine_rows=0` |
+| TSXV | 1086 | 981 | 1056 | 200 | 2 | 184 | 0 | `exchange=TSXV;tickers=1086;isin_coverage=981;sector_coverage=1056;source_gap_rows=200;warn_rows=2;quality_source_gap_rows=184;quarantine_rows=0` |
 | TWSE | 1191 | 1191 | 1191 | 17 | 0 | 17 | 0 | `exchange=TWSE;tickers=1191;isin_coverage=1191;sector_coverage=1191;source_gap_rows=17;warn_rows=0;quality_source_gap_rows=17;quarantine_rows=0` |
 | UPCOM | 2 | 2 | 2 | 0 | 0 | 0 | 0 | `exchange=UPCOM;tickers=2;isin_coverage=2;sector_coverage=2;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | USE_UG | 7 | 7 | 7 | 0 | 0 | 0 | 0 | `exchange=USE_UG;tickers=7;isin_coverage=7;sector_coverage=7;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | VSE | 56 | 56 | 56 | 18 | 0 | 18 | 0 | `exchange=VSE;tickers=56;isin_coverage=56;sector_coverage=56;source_gap_rows=18;warn_rows=0;quality_source_gap_rows=18;quarantine_rows=0` |
-| WSE | 542 | 542 | 541 | 19 | 0 | 19 | 0 | `exchange=WSE;tickers=542;isin_coverage=542;sector_coverage=541;source_gap_rows=19;warn_rows=0;quality_source_gap_rows=19;quarantine_rows=0` |
+| WSE | 542 | 542 | 541 | 21 | 0 | 21 | 0 | `exchange=WSE;tickers=542;isin_coverage=542;sector_coverage=541;source_gap_rows=21;warn_rows=0;quality_source_gap_rows=21;quarantine_rows=0` |
 | XETRA | 3857 | 3856 | 3234 | 124 | 0 | 129 | 0 | `exchange=XETRA;tickers=3857;isin_coverage=3856;sector_coverage=3234;source_gap_rows=124;warn_rows=0;quality_source_gap_rows=129;quarantine_rows=0` |
 | ZSE | 23 | 23 | 23 | 0 | 0 | 0 | 0 | `exchange=ZSE;tickers=23;isin_coverage=23;sector_coverage=23;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | ZSE_ZW | 27 | 27 | 27 | 1 | 0 | 1 | 0 | `exchange=ZSE_ZW;tickers=27;isin_coverage=27;sector_coverage=27;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=1;quarantine_rows=0` |

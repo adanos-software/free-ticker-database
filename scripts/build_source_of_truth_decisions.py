@@ -127,7 +127,9 @@ def display_path(path: Path) -> str:
         return str(path)
 
 
-def outcome_for_gap_class(gap_class: str) -> str:
+def outcome_for_gap_class(gap_class: str, *, exchange: str = "") -> str:
+    if exchange == "OTC" and gap_class in OFFICIAL_FILL_REQUIRED_CLASSES:
+        return "accepted_source_gap"
     if gap_class in OFFICIAL_FILL_REQUIRED_CLASSES:
         return "official_fill_required"
     if gap_class in ACCEPTED_SOURCE_GAP_CLASSES:
@@ -156,7 +158,10 @@ def fill_action_for(outcome: str) -> str:
 def build_decisions(classification_rows: list[dict[str, str]]) -> list[SourceOfTruthDecisionRow]:
     decisions: list[SourceOfTruthDecisionRow] = []
     for row in classification_rows:
-        outcome = outcome_for_gap_class(row.get("gap_class", ""))
+        outcome = outcome_for_gap_class(
+            row.get("gap_class", ""),
+            exchange=row.get("exchange", ""),
+        )
         decisions.append(
             SourceOfTruthDecisionRow(
                 field=row.get("field", ""),
@@ -202,6 +207,7 @@ def summarize(rows: list[SourceOfTruthDecisionRow], generated_at: str) -> dict[s
         },
         "policy": {
             "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
+            "extended_otc_handling": "Extended OTC listings with official-source gaps remain blank as accepted, review-gated source gaps; this never authorizes a metadata fill or changes the core-listing standard.",
             "no_automatic_core_exclusion": "Core exclusion candidates are not dropped by this report; they require reviewed evidence and the normal drop/scope path.",
         },
     }
@@ -251,6 +257,7 @@ def write_markdown(path: Path, summary: dict[str, Any]) -> None:
         "",
         "- `official_fill_required`: get a source/parser or reviewed override before filling.",
         "- `accepted_source_gap`: keep the blank value as a documented source gap.",
+        "- Extended OTC official-source gaps are accepted only as blank, review-gated residuals; this does not authorize a metadata fill.",
         "- `core_exclusion_candidate`: review official evidence before adding drop/scope overrides.",
         "- Validator gates fail unresolved, stale, duplicate, or non-review-gated decision rows.",
         "",

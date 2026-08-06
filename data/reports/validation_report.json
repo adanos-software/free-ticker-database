@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T09:04:59Z",
+    "generated_at": "2026-08-06T14:07:52Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": false,
+  "passed": true,
   "summary": {
-    "ticker_rows": 63293,
-    "listing_rows": 75222,
-    "adanos_reference_rows": 63293,
-    "entry_quality_rows": 75222,
+    "ticker_rows": 63302,
+    "listing_rows": 75231,
+    "adanos_reference_rows": 63302,
+    "entry_quality_rows": 75231,
     "error_gates": 84,
-    "failed_error_gates": 1,
+    "failed_error_gates": 0,
     "info_gates": 5
   },
   "gates": [
@@ -490,36 +490,9 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": false,
-      "actual": 25,
-      "limit": 0,
-      "details": [
-        "NASDAQ::AGNT",
-        "NASDAQ::BIRD",
-        "NASDAQ::GREE",
-        "NASDAQ::PN",
-        "NASDAQ::RTB",
-        "NASDAQ::RUM",
-        "NASDAQ::VYNE",
-        "NYSE::AIB",
-        "NYSE::BLX",
-        "NYSE::GORO",
-        "NYSE::SRXH",
-        "NYSE::TGB",
-        "OTC::ACQC",
-        "OTC::ADLRF",
-        "OTC::AGNPF",
-        "OTC::CLUS",
-        "OTC::EQLCF",
-        "OTC::FLXI",
-        "OTC::GPUSF",
-        "OTC::MNZO",
-        "OTC::PHDWY",
-        "OTC::REXC",
-        "OTC::TLGYF",
-        "OTC::XESP",
-        "OTC::ZCRMF"
-      ]
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "adanos_alias_findings",
@@ -553,35 +526,35 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 1135,
+      "actual": 1144,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 314,
+      "actual": 317,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 135,
+      "actual": 141,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 7205,
+      "actual": 7211,
       "limit": null
     },
     {
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 20,
+      "actual": 47,
       "limit": null
     },
     {

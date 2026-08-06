@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-06T09:03:19Z",
+    "generated_at": "2026-08-06T14:03:35Z",
     "policy": {
       "source_authority": "Name backfill candidates require active official masterfile references for the exact ticker and exchange.",
       "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
@@ -8,12 +8,219 @@
       "otc_exclusion": "OTC rows are excluded and must use the OTC name-mismatch review workflow."
     },
     "supported_exchanges": [
-      "ASX"
+      "ASX",
+      "BATS",
+      "IDX",
+      "JSE",
+      "LSE",
+      "NASDAQ",
+      "NEO",
+      "NYSE",
+      "NYSE ARCA",
+      "NYSE MKT",
+      "PSX",
+      "SET",
+      "SSE_CL",
+      "TSX",
+      "TSXV"
     ],
-    "rows_reviewed": 0,
-    "updates_emitted": 0,
-    "accepted_by_exchange": {},
+    "rows_reviewed": 17,
+    "updates_emitted": 17,
+    "accepted_by_exchange": {
+      "NASDAQ": 7,
+      "NYSE": 5,
+      "BATS": 3,
+      "TSXV": 2
+    },
     "skipped_by_exchange": {}
   },
-  "items": []
+  "items": [
+    {
+      "listing_key": "NASDAQ::AGNT",
+      "ticker": "AGNT",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "current_name": "eXp World Holdings Inc",
+      "proposed_name": "AGNT, Inc.",
+      "decision": "accept",
+      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
+      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NYSE::AIB",
+      "ticker": "AIB",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "current_name": "BlockchAIn Digital Infrastructure, Inc Common Shares",
+      "proposed_name": "AIB Data Centers Inc.",
+      "decision": "accept",
+      "official_sources": "sec_company_tickers_exchange",
+      "supporting_sources": "sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "BATS::AKAL",
+      "ticker": "AKAL",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "current_name": "T-REX 2X Long AKAM Daily Target ETF",
+      "proposed_name": "ETF Opportunities Trust",
+      "decision": "accept",
+      "official_sources": "nasdaq_trading_system_adds_deletes",
+      "supporting_sources": "nasdaq_trading_system_adds_deletes"
+    },
+    {
+      "listing_key": "TSXV::AXO",
+      "ticker": "AXO",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "current_name": "Axo Metals Corp.",
+      "proposed_name": "AXO Copper Corp.",
+      "decision": "accept",
+      "official_sources": "tmx_listed_issuers",
+      "supporting_sources": "tmx_listed_issuers"
+    },
+    {
+      "listing_key": "NASDAQ::BIRD",
+      "ticker": "BIRD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "current_name": "Allbirds Inc",
+      "proposed_name": "Smartbird, Inc.",
+      "decision": "accept",
+      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
+      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NYSE::BLX",
+      "ticker": "BLX",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "current_name": "Foreign Trade Bank of Latin America Inc",
+      "proposed_name": "Bladex, Inc.",
+      "decision": "accept",
+      "official_sources": "nasdaq_other_listed|sec_company_tickers_exchange",
+      "supporting_sources": "nasdaq_other_listed|sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NYSE::GORO",
+      "ticker": "GORO",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "current_name": "Gold Resource Corporation",
+      "proposed_name": "Goldgroup Mining Inc.",
+      "decision": "accept",
+      "official_sources": "sec_company_tickers_exchange",
+      "supporting_sources": "sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NASDAQ::GREE",
+      "ticker": "GREE",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "current_name": "Greenidge Generation Holdings Inc",
+      "proposed_name": "Vulcan Infrastructure & Power Inc.",
+      "decision": "accept",
+      "official_sources": "sec_company_tickers_exchange",
+      "supporting_sources": "sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "TSXV::MKT",
+      "ticker": "MKT",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "current_name": "Prospect Prediction Markets Inc.",
+      "proposed_name": "DeepMarkit Corp.",
+      "decision": "accept",
+      "official_sources": "tmx_listed_issuers",
+      "supporting_sources": "tmx_listed_issuers"
+    },
+    {
+      "listing_key": "BATS::OCNL",
+      "ticker": "OCNL",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "current_name": "T-REX 2X Long DOCN Daily Target ETF",
+      "proposed_name": "ETF Opportunities Trust",
+      "decision": "accept",
+      "official_sources": "nasdaq_trading_system_adds_deletes",
+      "supporting_sources": "nasdaq_trading_system_adds_deletes"
+    },
+    {
+      "listing_key": "BATS::PENU",
+      "ticker": "PENU",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "current_name": "T-REX 2X Long PENG Daily Target ETF",
+      "proposed_name": "ETF Opportunities Trust",
+      "decision": "accept",
+      "official_sources": "nasdaq_trading_system_adds_deletes",
+      "supporting_sources": "nasdaq_trading_system_adds_deletes"
+    },
+    {
+      "listing_key": "NASDAQ::PN",
+      "ticker": "PN",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "current_name": "Skycorp Solar Group Limited Ordinary Shares",
+      "proposed_name": "PN Smart Energy Limited",
+      "decision": "accept",
+      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
+      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NASDAQ::RTB",
+      "ticker": "RTB",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "current_name": "Ryvyl Inc",
+      "proposed_name": "RTB Digital, Inc.",
+      "decision": "accept",
+      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
+      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NASDAQ::RUM",
+      "ticker": "RUM",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "current_name": "Rumble Inc.",
+      "proposed_name": "RUM Group Inc.",
+      "decision": "accept",
+      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
+      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NYSE::SRXH",
+      "ticker": "SRXH",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "current_name": "SRx Health Solutions Inc.",
+      "proposed_name": "SRX Global Inc.",
+      "decision": "accept",
+      "official_sources": "sec_company_tickers_exchange",
+      "supporting_sources": "sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NYSE::TGB",
+      "ticker": "TGB",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "current_name": "Taseko Mines Ltd",
+      "proposed_name": "Trekor Metals Ltd",
+      "decision": "accept",
+      "official_sources": "sec_company_tickers_exchange",
+      "supporting_sources": "sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "NASDAQ::VYNE",
+      "ticker": "VYNE",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "current_name": "Vyne Therapeutics Inc",
+      "proposed_name": "Yarrow Bioscience, Inc.",
+      "decision": "accept",
+      "official_sources": "sec_company_tickers_exchange",
+      "supporting_sources": "sec_company_tickers_exchange"
+    }
+  ]
 }

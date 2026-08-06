@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-08-06T09:04:59Z`
+Generated at: `2026-08-06T14:07:52Z`
 
-Status: `FAIL`
+Status: `PASS`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 63,293 |
-| listing_rows | 75,222 |
-| adanos_reference_rows | 63,293 |
-| entry_quality_rows | 75,222 |
+| ticker_rows | 63,302 |
+| listing_rows | 75,231 |
+| adanos_reference_rows | 63,302 |
+| entry_quality_rows | 75,231 |
 | error_gates | 84 |
-| failed_error_gates | 1 |
+| failed_error_gates | 0 |
 | info_gates | 5 |
 
 ## Gates
@@ -85,16 +85,16 @@ Status: `FAIL`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | FAIL | 25 | 0 |
+| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 1135 |  |
-| missing_stock_sector | info | PASS | 314 |  |
-| missing_etf_category | info | PASS | 135 |  |
-| source_gap_rows | info | PASS | 7205 |  |
-| allowed_warn_rows | info | PASS | 20 |  |
+| expected_missing_primary_isin | info | PASS | 1144 |  |
+| missing_stock_sector | info | PASS | 317 |  |
+| missing_etf_category | info | PASS | 141 |  |
+| source_gap_rows | info | PASS | 7211 |  |
+| allowed_warn_rows | info | PASS | 47 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |
@@ -112,32 +112,4 @@ Status: `FAIL`
 
 ## Failed Gate Details
 
-### entry_quality_unexpected_warn_count
-
-- Actual: `25`
-- `NASDAQ::AGNT`
-- `NASDAQ::BIRD`
-- `NASDAQ::GREE`
-- `NASDAQ::PN`
-- `NASDAQ::RTB`
-- `NASDAQ::RUM`
-- `NASDAQ::VYNE`
-- `NYSE::AIB`
-- `NYSE::BLX`
-- `NYSE::GORO`
-- `NYSE::SRXH`
-- `NYSE::TGB`
-- `OTC::ACQC`
-- `OTC::ADLRF`
-- `OTC::AGNPF`
-- `OTC::CLUS`
-- `OTC::EQLCF`
-- `OTC::FLXI`
-- `OTC::GPUSF`
-- `OTC::MNZO`
-- `OTC::PHDWY`
-- `OTC::REXC`
-- `OTC::TLGYF`
-- `OTC::XESP`
-- `OTC::ZCRMF`
-
+_No failed error gates._

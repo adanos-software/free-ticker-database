@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T09:04:16Z",
-    "rows": 75222,
+    "generated_at": "2026-08-06T13:58:58Z",
+    "rows": 75231,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,26 +15,26 @@
   "summary": {
     "status_counts": {
       "pass": 67973,
-      "source_gap": 7205,
-      "warn": 44
+      "source_gap": 7211,
+      "warn": 47
     },
     "evidence_level_counts": {
       "identifier_enriched": 4751,
-      "official_reference": 69303,
-      "scoped_source_gap": 260,
+      "official_reference": 69308,
+      "scoped_source_gap": 264,
       "valid_isin": 908
     },
     "severity_counts": {
       "high": 13,
-      "medium": 31,
-      "source_gap": 7503
+      "medium": 34,
+      "source_gap": 7525
     },
     "issue_counts": {
-      "official_reference_gap": 5919,
-      "expected_missing_primary_isin": 1135,
-      "missing_stock_sector": 314,
-      "missing_etf_category": 135,
-      "official_name_mismatch": 31,
+      "official_reference_gap": 5923,
+      "expected_missing_primary_isin": 1144,
+      "missing_stock_sector": 317,
+      "missing_etf_category": 141,
+      "official_name_mismatch": 34,
       "country_isin_mismatch": 12,
       "official_isin_mismatch": 1
     },
@@ -53,7 +53,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4363,
-        "source_gap": 298,
+        "source_gap": 302,
         "warn": 8
       },
       {
@@ -69,12 +69,13 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2482,
-        "source_gap": 205
+        "source_gap": 206
       },
       {
         "exchange": "BATS",
         "pass": 1134,
-        "source_gap": 191
+        "source_gap": 192,
+        "warn": 3
       },
       {
         "exchange": "LSE",
@@ -9271,6 +9272,38 @@
       ]
     },
     {
+      "listing_key": "BATS::AKAL",
+      "ticker": "AKAL",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "quality_status": "warn",
+      "quality_score": 45,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "official_name_mismatch",
+          "severity": "medium",
+          "field": "name",
+          "value": "T-REX 2X Long AKAM Daily Target ETF",
+          "message": "Listing name has weak overlap with official active reference name(s)."
+        },
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
+        }
+      ]
+    },
+    {
       "listing_key": "CSE_MA::AKDITAL",
       "ticker": "AKDITAL",
       "exchange": "CSE_MA",
@@ -14629,6 +14662,38 @@
       ]
     },
     {
+      "listing_key": "NASDAQ::ATTO",
+      "ticker": "ATTO",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 70,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NASDAQ",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::ATTOF",
       "ticker": "ATTOF",
       "exchange": "OTC",
@@ -18323,42 +18388,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TSX::BEK",
-      "ticker": "BEK",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "TSX::BEK-B",
-      "ticker": "BEK-B",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TSX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
