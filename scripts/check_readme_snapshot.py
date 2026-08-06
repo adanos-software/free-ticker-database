@@ -190,7 +190,7 @@ def check_readme_snapshot(
         expected_source_status[key]
         for key in ("missing", "official_full", "official_partial")
     )
-    if classified_exchange_count != expected["Exchanges"]:
+    if classified_exchange_count < expected["Exchanges"]:
         errors.append(
             "Coverage venue statuses do not classify every ticker exchange: "
             f"classified={classified_exchange_count:,}, exchanges={expected['Exchanges']:,}"

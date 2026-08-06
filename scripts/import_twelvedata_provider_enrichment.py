@@ -433,6 +433,9 @@ def eodhd_exchange_matches(row: dict[str, str], provider_exchange: str) -> bool:
     expected = {
         "XNAS": {"NASDAQ"}, "XNCM": {"NASDAQ"}, "XNGS": {"NASDAQ"}, "XNMS": {"NASDAQ"},
         "XNYS": {"NYSE"}, "ARCX": {"NYSE ARCA", "NYSE MKT"}, "XASE": {"NYSE MKT", "AMEX"},
+        "EXPM": {"OTC", "OTC Markets", "PINK"}, "OTCB": {"OTC", "OTC Markets", "PINK"},
+        "OTCQ": {"OTC", "OTC Markets", "PINK"}, "PINX": {"OTC", "OTC Markets", "PINK"},
+        "PSGM": {"OTC", "OTC Markets", "PINK"},
         "XKRX": {"Korea Stock Exchange", "KO"}, "XWBO": {"Vienna Exchange", "VI"},
         "XPAR": {"Euronext Paris", "PA"}, "XBRU": {"Euronext Brussels", "BR"},
         "XAMS": {"Euronext Amsterdam", "AS"}, "XETR": {"XETRA", "XETRA Stock Exchange"},

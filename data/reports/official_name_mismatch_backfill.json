@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-06T14:03:35Z",
+    "generated_at": "2026-08-06T14:13:27Z",
     "policy": {
       "source_authority": "Name backfill candidates require active official masterfile references for the exact ticker and exchange.",
       "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
@@ -24,17 +24,33 @@
       "TSX",
       "TSXV"
     ],
-    "rows_reviewed": 17,
-    "updates_emitted": 17,
+    "rows_reviewed": 26,
+    "updates_emitted": 25,
     "accepted_by_exchange": {
       "NASDAQ": 7,
-      "NYSE": 5,
+      "NYSE": 6,
+      "ASX": 4,
       "BATS": 3,
-      "TSXV": 2
+      "TSXV": 2,
+      "LSE": 2,
+      "NYSE MKT": 1
     },
-    "skipped_by_exchange": {}
+    "skipped_by_exchange": {
+      "NYSE ARCA": 1
+    }
   },
   "items": [
+    {
+      "listing_key": "ASX::AEM",
+      "ticker": "AEM",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "current_name": "Advanced Energy Minerals Ltd",
+      "proposed_name": "Advanced Engineered Materials LTD",
+      "decision": "accept",
+      "official_sources": "asx_listed_companies",
+      "supporting_sources": "asx_listed_companies"
+    },
     {
       "listing_key": "NASDAQ::AGNT",
       "ticker": "AGNT",
@@ -102,6 +118,39 @@
       "supporting_sources": "nasdaq_other_listed|sec_company_tickers_exchange"
     },
     {
+      "listing_key": "NYSE::BVN",
+      "ticker": "BVN",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "current_name": "Compania de Minas Buenaventura SAA ADR",
+      "proposed_name": "Buenaventura Mining Company Inc.",
+      "decision": "accept",
+      "official_sources": "nasdaq_other_listed|sec_company_tickers_exchange",
+      "supporting_sources": "nasdaq_other_listed"
+    },
+    {
+      "listing_key": "NYSE MKT::CTGO",
+      "ticker": "CTGO",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "current_name": "Contango ORE Inc",
+      "proposed_name": "Contango Silver & Gold Inc.",
+      "decision": "accept",
+      "official_sources": "nasdaq_other_listed",
+      "supporting_sources": "nasdaq_other_listed"
+    },
+    {
+      "listing_key": "NYSE ARCA::CTWO",
+      "ticker": "CTWO",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "current_name": "COtwo Advisors Physical European Carbon Allowance Trust",
+      "proposed_name": "",
+      "decision": "skip",
+      "official_sources": "nasdaq_other_listed",
+      "supporting_sources": ""
+    },
+    {
       "listing_key": "NYSE::GORO",
       "ticker": "GORO",
       "exchange": "NYSE",
@@ -122,6 +171,28 @@
       "decision": "accept",
       "official_sources": "sec_company_tickers_exchange",
       "supporting_sources": "sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "LSE::ISEM",
+      "ticker": "ISEM",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "current_name": "iShares II Public Limited Company - iShares MSCI Emerging Markets Islamic UCITS ETF",
+      "proposed_name": "Leverage Shares Public Limited Co. Is Semiconductors Leaders ETP",
+      "decision": "accept",
+      "official_sources": "lse_company_reports|lse_price_explorer",
+      "supporting_sources": "lse_company_reports|lse_price_explorer"
+    },
+    {
+      "listing_key": "ASX::MGX",
+      "ticker": "MGX",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "current_name": "Mount Gibson Iron Ltd",
+      "proposed_name": "Mgx Resources Limited",
+      "decision": "accept",
+      "official_sources": "asx_listed_companies",
+      "supporting_sources": "asx_listed_companies"
     },
     {
       "listing_key": "TSXV::MKT",
@@ -155,6 +226,28 @@
       "decision": "accept",
       "official_sources": "nasdaq_trading_system_adds_deletes",
       "supporting_sources": "nasdaq_trading_system_adds_deletes"
+    },
+    {
+      "listing_key": "ASX::PFE",
+      "ticker": "PFE",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "current_name": "Pantera Lithium Ltd",
+      "proposed_name": "Pantera Minerals Limited",
+      "decision": "accept",
+      "official_sources": "asx_listed_companies",
+      "supporting_sources": "asx_listed_companies"
+    },
+    {
+      "listing_key": "ASX::PMT",
+      "ticker": "PMT",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "current_name": "Patriot Battery Metals Inc",
+      "proposed_name": "Pmet Resources Inc.",
+      "decision": "accept",
+      "official_sources": "asx_listed_companies",
+      "supporting_sources": "asx_listed_companies"
     },
     {
       "listing_key": "NASDAQ::PN",
@@ -210,6 +303,17 @@
       "decision": "accept",
       "official_sources": "sec_company_tickers_exchange",
       "supporting_sources": "sec_company_tickers_exchange"
+    },
+    {
+      "listing_key": "LSE::TIR",
+      "ticker": "TIR",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "current_name": "Tiger Royalties and investments Plc",
+      "proposed_name": "Tiger Alpha PLC ORD 0.1P",
+      "decision": "accept",
+      "official_sources": "lse_company_reports",
+      "supporting_sources": "lse_company_reports"
     },
     {
       "listing_key": "NASDAQ::VYNE",

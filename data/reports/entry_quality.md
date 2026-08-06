@@ -1,51 +1,52 @@
 # Entry Quality Report
 
-Generated at: `2026-08-06T13:58:58Z`
+Generated at: `2026-08-06T14:17:33Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 67,973 |
-| source_gap | 7,211 |
-| warn | 47 |
+| pass | 70,780 |
+| source_gap | 20,942 |
+| warn | 205 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 5,923 |
-| expected_missing_primary_isin | 1,144 |
-| missing_stock_sector | 317 |
-| missing_etf_category | 141 |
-| official_name_mismatch | 34 |
-| country_isin_mismatch | 12 |
-| official_isin_mismatch | 1 |
+| venue_missing_official_source | 11,430 |
+| official_reference_gap | 6,470 |
+| missing_stock_sector | 2,648 |
+| expected_missing_primary_isin | 1,105 |
+| missing_etf_category | 903 |
+| country_isin_mismatch | 95 |
+| official_isin_mismatch | 56 |
+| official_name_mismatch | 56 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 7,905 | 0 | 3,172 | 17 | 0 |
+| FSX | 0 | 0 | 8,141 | 2 | 0 |
+| OTC | 8,390 | 0 | 3,256 | 108 | 0 |
+| XSTU | 0 | 0 | 2,772 | 1 | 0 |
+| TSX | 1,704 | 0 | 592 | 0 | 0 |
+| TSXV | 905 | 0 | 514 | 3 | 0 |
+| LSE | 6,523 | 0 | 483 | 24 | 0 |
+| ASX | 1,868 | 0 | 387 | 4 | 0 |
+| NASDAQ | 4,371 | 0 | 363 | 8 | 0 |
+| BMV | 0 | 0 | 344 | 0 | 0 |
 | B3 | 1,250 | 0 | 331 | 0 | 0 |
-| NASDAQ | 4,363 | 0 | 302 | 8 | 0 |
-| ASX | 1,491 | 0 | 217 | 0 | 0 |
+| Euronext | 1,221 | 0 | 235 | 21 | 0 |
+| NYSE ARCA | 2,483 | 0 | 225 | 1 | 0 |
+| Munich | 0 | 0 | 223 | 0 | 0 |
 | NSE_IN | 2,290 | 0 | 213 | 0 | 0 |
-| NYSE ARCA | 2,482 | 0 | 206 | 0 | 0 |
+| XETRA | 4,112 | 0 | 200 | 3 | 0 |
+| XDUS | 0 | 0 | 199 | 0 | 0 |
+| TASE | 604 | 0 | 196 | 1 | 0 |
 | BATS | 1,134 | 0 | 192 | 3 | 0 |
-| LSE | 6,419 | 0 | 178 | 9 | 0 |
-| TSXV | 900 | 0 | 184 | 2 | 0 |
-| BMV | 0 | 0 | 179 | 0 | 0 |
+| AMS | 361 | 0 | 183 | 2 | 0 |
 | BSE_IN | 2,576 | 0 | 156 | 0 | 0 |
-| TSX | 1,696 | 0 | 149 | 0 | 0 |
-| SET | 543 | 0 | 148 | 0 | 0 |
-| BME | 84 | 0 | 136 | 0 | 0 |
-| XETRA | 3,728 | 0 | 129 | 0 | 0 |
-| Euronext | 981 | 0 | 106 | 0 | 0 |
-| TASE | 594 | 0 | 101 | 0 | 0 |
-| AMS | 241 | 0 | 90 | 0 | 0 |
-| JSE | 125 | 0 | 87 | 0 | 0 |
-| NYSE | 1,919 | 0 | 81 | 5 | 0 |
 
 ## Notes
 

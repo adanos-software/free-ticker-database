@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T14:09:08Z",
+    "generated_at": "2026-08-06T14:21:17Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -32,13 +32,13 @@
     "campaigns": 10,
     "complete_campaigns": 0,
     "next_review_batches": 10,
-    "next_review_batch_rows": 32620,
+    "next_review_batch_rows": 35766,
     "closure_ready_campaigns": 9,
     "closure_blocked_campaigns": 1,
     "closure_blockers": 1,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "campaigns=10;complete_campaigns=0;next_review_batches=10;next_review_batch_rows=32620;closure_ready_campaigns=9;closure_blocked_campaigns=1;closure_blockers=1;validation_failed_error_gates=0",
+  "summary_context": "campaigns=10;complete_campaigns=0;next_review_batches=10;next_review_batch_rows=35766;closure_ready_campaigns=9;closure_blocked_campaigns=1;closure_blockers=1;validation_failed_error_gates=0",
   "campaigns": [
     {
       "priority": 1,
@@ -1224,34 +1224,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -1308,10 +1308,10 @@
             }
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_quarantine_delta": {
             "warn_delta": 0,
@@ -1335,28 +1335,28 @@
         "affected_artifact_rows": 412,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -1375,8 +1375,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -1399,12 +1399,13 @@
       "campaign_key": "otc",
       "status": "scoped_as_extended_with_source_gaps_documented",
       "evidence": {
-        "otc_review_rows": 11094,
-        "source_gap_rows": 3189,
+        "otc_review_rows": 11754,
+        "source_gap_rows": 3745,
         "drop_override_rows_still_present": 0,
         "otc_review_decision_active_name_mismatch_rows": 17,
-        "otc_name_mismatch_unreviewed_active_rows": 0,
+        "otc_name_mismatch_unreviewed_active_rows": 12,
         "otc_review_decision_resolution_totals": {
+          "pending_active_name_mismatch_review": 12,
           "reviewed_decision_covers_active_name_mismatch": 17,
           "reviewed_decision_suppresses_current_listing_warning": 26
         },
@@ -1412,59 +1413,68 @@
         "otc_review_decision_not_current_scope_rows": 0,
         "otc_review_decision_stale_rows": 26,
         "review_bucket_totals": {
-          "clean_extended_otc_listing": 7888,
-          "documented_otc_sector_source_gap": 17,
-          "documented_otc_source_gap": 3172,
-          "official_name_mismatch_review_first": 17
+          "clean_extended_otc_listing": 7914,
+          "documented_otc_sector_source_gap": 476,
+          "documented_otc_source_gap": 3258,
+          "official_name_mismatch_review_first": 29,
+          "otc_quality_warn_review": 77
         },
         "review_bucket_asset_type_totals": {
           "clean_extended_otc_listing": {
             "ETF": 173,
-            "Stock": 7715
+            "Stock": 7741
           },
           "documented_otc_sector_source_gap": {
-            "Stock": 17
+            "Stock": 476
           },
           "documented_otc_source_gap": {
-            "ETF": 53,
-            "Stock": 3119
+            "ETF": 56,
+            "Stock": 3202
           },
           "official_name_mismatch_review_first": {
             "ETF": 2,
-            "Stock": 15
+            "Stock": 27
+          },
+          "otc_quality_warn_review": {
+            "Stock": 77
           }
         },
         "review_bucket_metadata_gate_totals": {
           "clean_extended_otc_listing": {
-            "no_metadata_enrichment_needed": 7888
+            "no_metadata_enrichment_needed": 7914
           },
           "documented_otc_sector_source_gap": {
-            "reviewed_issuer_sector_source_required_keep_blank": 17
+            "reviewed_issuer_sector_source_required_keep_blank": 476
           },
           "documented_otc_source_gap": {
-            "reviewed_issuer_sector_source_required_keep_blank": 5,
-            "reviewed_source_required_keep_blank": 3167
+            "reviewed_issuer_sector_source_required_keep_blank": 69,
+            "reviewed_source_required_keep_blank": 3189
           },
           "official_name_mismatch_review_first": {
-            "otc_name_mismatch_review_required_before_name_or_metadata_changes": 17
+            "otc_name_mismatch_review_required_before_name_or_metadata_changes": 29
+          },
+          "otc_quality_warn_review": {
+            "entry_quality_warn_review_required_before_enrichment": 77
           }
         },
         "review_priority_totals": {
-          "P2": 17,
-          "P3": 3189,
-          "P4": 7888
+          "P2": 106,
+          "P3": 3734,
+          "P4": 7914
         },
         "scope_review_strategy_totals": {
-          "keep_metadata_blank_until_reviewed_otc_source": 3172,
-          "keep_sector_blank_until_reviewed_issuer_sector_source": 17,
-          "no_scope_or_metadata_action_required": 7888,
-          "resolve_listing_keyed_name_mismatch_before_metadata_work": 17
+          "keep_metadata_blank_until_reviewed_otc_source": 3258,
+          "keep_sector_blank_until_reviewed_issuer_sector_source": 476,
+          "no_scope_or_metadata_action_required": 7914,
+          "resolve_listing_keyed_name_mismatch_before_metadata_work": 29,
+          "review_entry_quality_warning_before_metadata_work": 77
         },
         "scope_verification_evidence_required_totals": {
-          "current_pass_status_and_extended_scope_policy_no_metadata_action": 7888,
-          "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision": 17,
-          "reviewed_otc_metadata_source_with_exact_listing_or_keep_blank_decision": 3172,
-          "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change": 17
+          "current_pass_status_and_extended_scope_policy_no_metadata_action": 7914,
+          "entry_quality_warning_review_before_metadata_change": 77,
+          "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision": 476,
+          "reviewed_otc_metadata_source_with_exact_listing_or_keep_blank_decision": 3258,
+          "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change": 29
         },
         "top_otc_scope_review_batches": [
           {
@@ -1473,7 +1483,7 @@
             "asset_type": "Stock",
             "quality_status": "pass",
             "metadata_enrichment_gate": "no_metadata_enrichment_needed",
-            "rows": 7715,
+            "rows": 7741,
             "review_strategy": "no_scope_or_metadata_action_required",
             "verification_evidence_required": "current_pass_status_and_extended_scope_policy_no_metadata_action",
             "recommended_next_source": "No additional source required unless a future metadata change is proposed.",
@@ -1485,11 +1495,23 @@
             "asset_type": "Stock",
             "quality_status": "source_gap",
             "metadata_enrichment_gate": "reviewed_source_required_keep_blank",
-            "rows": 3114,
+            "rows": 3131,
             "review_strategy": "keep_metadata_blank_until_reviewed_otc_source",
             "verification_evidence_required": "reviewed_otc_metadata_source_with_exact_listing_or_keep_blank_decision",
             "recommended_next_source": "Exact listing-keyed OTC Markets, issuer, SEC, or reviewed registry evidence.",
             "source_gate": "Keep metadata blank until exact listing-keyed source evidence or reviewed keep-blank decision exists."
+          },
+          {
+            "review_priority": "P3",
+            "review_bucket": "documented_otc_sector_source_gap",
+            "asset_type": "Stock",
+            "quality_status": "pass",
+            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
+            "rows": 476,
+            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
+            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
+            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
+            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
           },
           {
             "review_priority": "P4",
@@ -1504,12 +1526,24 @@
             "source_gate": "Current extended-scope pass row; no metadata action is authorized by this report."
           },
           {
+            "review_priority": "P2",
+            "review_bucket": "otc_quality_warn_review",
+            "asset_type": "Stock",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "entry_quality_warn_review_required_before_enrichment",
+            "rows": 77,
+            "review_strategy": "review_entry_quality_warning_before_metadata_work",
+            "verification_evidence_required": "entry_quality_warning_review_before_metadata_change",
+            "recommended_next_source": "Entry-quality source evidence plus OTC Markets, issuer, SEC, or registry confirmation.",
+            "source_gate": "Resolve the quality warning before using the row for metadata enrichment."
+          },
+          {
             "review_priority": "P3",
             "review_bucket": "documented_otc_source_gap",
-            "asset_type": "ETF",
+            "asset_type": "Stock",
             "quality_status": "source_gap",
-            "metadata_enrichment_gate": "reviewed_source_required_keep_blank",
-            "rows": 53,
+            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
+            "rows": 69,
             "review_strategy": "keep_metadata_blank_until_reviewed_otc_source",
             "verification_evidence_required": "reviewed_otc_metadata_source_with_exact_listing_or_keep_blank_decision",
             "recommended_next_source": "Exact listing-keyed OTC Markets, issuer, SEC, or reviewed registry evidence.",
@@ -1517,15 +1551,15 @@
           },
           {
             "review_priority": "P3",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "asset_type": "Stock",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "rows": 17,
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
+            "review_bucket": "documented_otc_source_gap",
+            "asset_type": "ETF",
+            "quality_status": "source_gap",
+            "metadata_enrichment_gate": "reviewed_source_required_keep_blank",
+            "rows": 56,
+            "review_strategy": "keep_metadata_blank_until_reviewed_otc_source",
+            "verification_evidence_required": "reviewed_otc_metadata_source_with_exact_listing_or_keep_blank_decision",
+            "recommended_next_source": "Exact listing-keyed OTC Markets, issuer, SEC, or reviewed registry evidence.",
+            "source_gate": "Keep metadata blank until exact listing-keyed source evidence or reviewed keep-blank decision exists."
           },
           {
             "review_priority": "P2",
@@ -1533,23 +1567,11 @@
             "asset_type": "Stock",
             "quality_status": "warn",
             "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
-            "rows": 15,
+            "rows": 27,
             "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
             "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
             "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
-          },
-          {
-            "review_priority": "P3",
-            "review_bucket": "documented_otc_source_gap",
-            "asset_type": "Stock",
-            "quality_status": "source_gap",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "rows": 5,
-            "review_strategy": "keep_metadata_blank_until_reviewed_otc_source",
-            "verification_evidence_required": "reviewed_otc_metadata_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "Exact listing-keyed OTC Markets, issuer, SEC, or reviewed registry evidence.",
-            "source_gate": "Keep metadata blank until exact listing-keyed source evidence or reviewed keep-blank decision exists."
           },
           {
             "review_priority": "P2",
@@ -1562,6 +1584,18 @@
             "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
             "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "review_priority": "P3",
+            "review_bucket": "documented_otc_source_gap",
+            "asset_type": "Stock",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "reviewed_source_required_keep_blank",
+            "rows": 2,
+            "review_strategy": "keep_metadata_blank_until_reviewed_otc_source",
+            "verification_evidence_required": "reviewed_otc_metadata_source_with_exact_listing_or_keep_blank_decision",
+            "recommended_next_source": "Exact listing-keyed OTC Markets, issuer, SEC, or reviewed registry evidence.",
+            "source_gate": "Keep metadata blank until exact listing-keyed source evidence or reviewed keep-blank decision exists."
           }
         ],
         "otc_core_exclusion_candidate_rows": 0,
@@ -1569,14 +1603,14 @@
         "otc_core_exclusion_candidate_metadata_gate_totals": {},
         "otc_core_exclusion_candidate_review_examples": [],
         "scope_apply_eligibility_totals": {
-          "already_extended_no_scope_change_required": 11094
+          "already_extended_no_scope_change_required": 11754
         },
         "otc_scope_completion": {
           "status": "complete_extended_scope_no_core_candidates",
-          "rows": 11094,
-          "extended_otc_rows": 11094,
-          "otc_listing_scope_reason_rows": 11094,
-          "already_extended_scope_decision_rows": 11094,
+          "rows": 11754,
+          "extended_otc_rows": 11754,
+          "otc_listing_scope_reason_rows": 11754,
+          "already_extended_scope_decision_rows": 11754,
           "core_exclusion_candidate_rows": 0,
           "unexpected_core_scope_rows": 0,
           "blocked_scope_decision_rows": 0,
@@ -1586,20 +1620,22 @@
         },
         "post_scope_metadata_backlog": {
           "status": "metadata_review_backlog_open",
-          "rows": 3206,
+          "rows": 3840,
           "metadata_enrichment_authorized": false,
           "scope_blocked_rows": 0,
           "source_gate": "Post-scope OTC metadata work remains blocked unless each row has listing-keyed OTC Markets, issuer, SEC, registry, or reviewed fallback evidence; no ticker-only enrichment is allowed."
         },
         "post_scope_metadata_backlog_bucket_totals": {
-          "documented_otc_sector_source_gap": 17,
-          "documented_otc_source_gap": 3172,
-          "official_name_mismatch_review_first": 17
+          "documented_otc_sector_source_gap": 476,
+          "documented_otc_source_gap": 3258,
+          "official_name_mismatch_review_first": 29,
+          "otc_quality_warn_review": 77
         },
         "post_scope_metadata_backlog_gate_totals": {
-          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 17,
-          "reviewed_issuer_sector_source_required_keep_blank": 22,
-          "reviewed_source_required_keep_blank": 3167
+          "entry_quality_warn_review_required_before_enrichment": 77,
+          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 29,
+          "reviewed_issuer_sector_source_required_keep_blank": 545,
+          "reviewed_source_required_keep_blank": 3189
         },
         "post_scope_metadata_backlog_examples": [
           {
@@ -1655,6 +1691,19 @@
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
           },
           {
+            "listing_key": "OTC::CSXXY",
+            "ticker": "CSXXY",
+            "asset_type": "Stock",
+            "name": "Carsales.Com Ltd ADR",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
             "listing_key": "OTC::DCNSF",
             "ticker": "DCNSF",
             "asset_type": "Stock",
@@ -1697,7 +1746,7 @@
             "listing_key": "OTC::GCWOF",
             "ticker": "GCWOF",
             "asset_type": "Stock",
-            "name": "GCC, S.A.B. de C.V.",
+            "name": "",
             "review_bucket": "official_name_mismatch_review_first",
             "quality_status": "warn",
             "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
@@ -1720,6 +1769,58 @@
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
           },
           {
+            "listing_key": "OTC::HISEF",
+            "ticker": "HISEF",
+            "asset_type": "Stock",
+            "name": "",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "listing_key": "OTC::HKSHY",
+            "ticker": "HKSHY",
+            "asset_type": "Stock",
+            "name": "Hongkong and Shanghai Hotels Ltd ADR",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "listing_key": "OTC::KPCPF",
+            "ticker": "KPCPF",
+            "asset_type": "Stock",
+            "name": "Kasikornbank Public Company Limited",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "listing_key": "OTC::LIPO",
+            "ticker": "LIPO",
+            "asset_type": "Stock",
+            "name": "Lipella Pharmaceuticals Inc. Common Stock",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
             "listing_key": "OTC::MNZO",
             "ticker": "MNZO",
             "asset_type": "Stock",
@@ -1733,10 +1834,49 @@
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
           },
           {
+            "listing_key": "OTC::MTGRY",
+            "ticker": "MTGRY",
+            "asset_type": "Stock",
+            "name": "Mount Gibson Iron Ltd ADR",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "listing_key": "OTC::NISUY",
+            "ticker": "NISUY",
+            "asset_type": "Stock",
+            "name": "Nippon Suisan Kaisha Ltd ADR",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
             "listing_key": "OTC::NMKCP",
             "ticker": "NMKCP",
             "asset_type": "Stock",
             "name": "Niagara Mohawk Power Corporation",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "listing_key": "OTC::NWSGY",
+            "ticker": "NWSGY",
+            "asset_type": "Stock",
+            "name": "NWS Holdings Ltd ADR",
             "review_bucket": "official_name_mismatch_review_first",
             "quality_status": "warn",
             "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
@@ -1772,10 +1912,36 @@
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
           },
           {
+            "listing_key": "OTC::RDEIY",
+            "ticker": "RDEIY",
+            "asset_type": "Stock",
+            "name": "Red Electrica Corporacion SA ADR",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
             "listing_key": "OTC::REXC",
             "ticker": "REXC",
             "asset_type": "ETF",
             "name": "",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "listing_key": "OTC::SAXJY",
+            "ticker": "SAXJY",
+            "asset_type": "Stock",
+            "name": "Sa Sa International Holdings Ltd ADR",
             "review_bucket": "official_name_mismatch_review_first",
             "quality_status": "warn",
             "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
@@ -1796,167 +1962,55 @@
             "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
             "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
-          },
-          {
-            "listing_key": "OTC::XESP",
-            "ticker": "XESP",
-            "asset_type": "Stock",
-            "name": "CannAssist International Corp",
-            "review_bucket": "official_name_mismatch_review_first",
-            "quality_status": "warn",
-            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
-            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
-            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
-            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
-            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
-          },
-          {
-            "listing_key": "OTC::ZCRMF",
-            "ticker": "ZCRMF",
-            "asset_type": "Stock",
-            "name": "ZINCORE METALS INC",
-            "review_bucket": "official_name_mismatch_review_first",
-            "quality_status": "warn",
-            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
-            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
-            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
-            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
-            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
-          },
-          {
-            "listing_key": "OTC::ABZPF",
-            "ticker": "ABZPF",
-            "asset_type": "Stock",
-            "name": "ABOITIZ POWER CORP",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-          },
-          {
-            "listing_key": "OTC::AETLF",
-            "ticker": "AETLF",
-            "asset_type": "Stock",
-            "name": "AERIS ENVIRONMENTAL LTD",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-          },
-          {
-            "listing_key": "OTC::AGFAF",
-            "ticker": "AGFAF",
-            "asset_type": "Stock",
-            "name": "DIGICANN VENTURES INC",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-          },
-          {
-            "listing_key": "OTC::APNHF",
-            "ticker": "APNHF",
-            "asset_type": "Stock",
-            "name": "ASPEN PHARMACARE HLDGS",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-          },
-          {
-            "listing_key": "OTC::BUHPF",
-            "ticker": "BUHPF",
-            "asset_type": "Stock",
-            "name": "Bumrungrad Hospital Public Co Limited/ADR",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-          },
-          {
-            "listing_key": "OTC::ESSI",
-            "ticker": "ESSI",
-            "asset_type": "Stock",
-            "name": "ECO SCIENCE SOLUTIONS, INC.",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-          },
-          {
-            "listing_key": "OTC::FANDF",
-            "ticker": "FANDF",
-            "asset_type": "Stock",
-            "name": "FIRSTRAND LTD",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-          },
-          {
-            "listing_key": "OTC::FKSHF",
-            "ticker": "FKSHF",
-            "asset_type": "Stock",
-            "name": "FUKUSHIMA GALILEI CO LTD",
-            "review_bucket": "documented_otc_sector_source_gap",
-            "quality_status": "pass",
-            "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
-            "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
-            "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
-            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
           }
         ],
         "metadata_enrichment_gate_totals": {
-          "no_metadata_enrichment_needed": 7888,
-          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 17,
-          "reviewed_issuer_sector_source_required_keep_blank": 22,
-          "reviewed_source_required_keep_blank": 3167
+          "entry_quality_warn_review_required_before_enrichment": 77,
+          "no_metadata_enrichment_needed": 7914,
+          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 29,
+          "reviewed_issuer_sector_source_required_keep_blank": 545,
+          "reviewed_source_required_keep_blank": 3189
         },
         "source_gap_field_totals": {
-          "missing_sector_stock": 22,
-          "official_reference_gap": 3172
+          "missing_sector_stock": 556,
+          "official_reference_gap": 3258
         },
         "source_gap_class_totals": {
-          "official_reference_symbol_collision_gap": 120,
-          "official_reference_unmatched_source_gap": 3052,
-          "otc_sector_source_gap": 22
+          "official_reference_symbol_collision_gap": 139,
+          "official_reference_unmatched_source_gap": 3119,
+          "otc_sector_source_gap": 556
         },
         "source_of_truth_outcome_totals": {
-          "accepted_source_gap": 3189
+          "accepted_source_gap": 3745
         },
-        "name_mismatch_review_rows": 17,
+        "name_mismatch_review_rows": 29,
         "name_mismatch_class_counts": {
-          "hold_unresolved": 17
+          "hold_unresolved": 17,
+          "probable_otc_rename_or_symbol_reuse": 7,
+          "weak_abbreviation_or_truncation_review": 5
         },
         "name_mismatch_priority_counts": {
-          "held": 17
+          "held": 17,
+          "high": 7,
+          "medium": 5
         },
         "name_mismatch_review_strategy_counts": {
-          "keep_current_until_stronger_issuer_history_source": 17
+          "keep_current_until_stronger_issuer_history_source": 17,
+          "verify_isin_anchored_issuer_history_before_name_change": 7,
+          "review_official_alias_or_abbreviation_before_matcher_tuning": 5
         },
         "top_otc_name_mismatch_review_batches": [
+          {
+            "review_priority": "high",
+            "review_class": "probable_otc_rename_or_symbol_reuse",
+            "isin_presence": "with_isin",
+            "official_sources": "otc_markets_stock_screener",
+            "rows": 6,
+            "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+            "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name",
+            "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+            "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer."
+          },
           {
             "review_priority": "held",
             "review_class": "hold_unresolved",
@@ -1978,6 +2032,17 @@
             "verification_evidence_required": "stronger_official_or_reviewed_issuer_history_source_before_any_name_change",
             "recommended_next_source": "Stronger official or reviewed issuer-history source matching the OTC listing key.",
             "source_gate": "Keep current name until stronger issuer-history evidence resolves the ambiguity."
+          },
+          {
+            "review_priority": "medium",
+            "review_class": "weak_abbreviation_or_truncation_review",
+            "isin_presence": "with_isin",
+            "official_sources": "otc_markets_stock_screener",
+            "rows": 4,
+            "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+            "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match",
+            "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+            "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone."
           },
           {
             "review_priority": "held",
@@ -2022,25 +2087,51 @@
             "verification_evidence_required": "stronger_official_or_reviewed_issuer_history_source_before_any_name_change",
             "recommended_next_source": "Stronger official or reviewed issuer-history source matching the OTC listing key.",
             "source_gate": "Keep current name until stronger issuer-history evidence resolves the ambiguity."
+          },
+          {
+            "review_priority": "high",
+            "review_class": "probable_otc_rename_or_symbol_reuse",
+            "isin_presence": "with_isin",
+            "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+            "rows": 1,
+            "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+            "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name",
+            "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+            "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer."
+          },
+          {
+            "review_priority": "medium",
+            "review_class": "weak_abbreviation_or_truncation_review",
+            "isin_presence": "with_isin",
+            "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+            "rows": 1,
+            "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+            "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match",
+            "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+            "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone."
           }
         ],
         "name_mismatch_apply_eligibility_counts": {
-          "keep_current_until_stronger_issuer_history_source": 17
+          "keep_current_until_stronger_issuer_history_source": 17,
+          "blocked_until_isin_anchored_issuer_history_review": 7,
+          "matcher_tuning_only_no_metadata_apply_until_exact_identity_review": 5
         },
         "name_mismatch_verification_evidence_required_counts": {
-          "stronger_official_or_reviewed_issuer_history_source_before_any_name_change": 17
+          "stronger_official_or_reviewed_issuer_history_source_before_any_name_change": 17,
+          "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name": 7,
+          "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match": 5
         }
       },
       "artifacts": [
         {
           "path": "data/reports/otc_scope_review.json",
-          "generated_at": "2026-08-06T14:09:08Z",
-          "rows": 11094
+          "generated_at": "2026-08-06T14:18:41Z",
+          "rows": 11754
         },
         {
           "path": "data/reports/otc_name_mismatch_review.json",
-          "generated_at": "2026-08-06T14:06:18Z",
-          "rows": 17
+          "generated_at": "2026-08-06T14:18:41Z",
+          "rows": 29
         }
       ],
       "acceptance_matrix": {
@@ -2048,11 +2139,11 @@
         "exchange_scope": [
           "OTC"
         ],
-        "affected_artifact_rows": 11111,
+        "affected_artifact_rows": 11783,
         "campaign_metric_deltas": {
           "accepted_source_gap_rows": {
-            "baseline": 846,
-            "current": 846,
+            "baseline": 3745,
+            "current": 3745,
             "delta": 0
           },
           "drop_override_rows_still_present": {
@@ -2061,41 +2152,41 @@
             "delta": 0
           },
           "scope_review_rows": {
-            "baseline": 11054,
-            "current": 11054,
+            "baseline": 11754,
+            "current": 11754,
             "delta": 0
           }
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -2130,14 +2221,14 @@
         "status": "partial",
         "known_deltas": {
           "drop_override_rows_still_present": 0,
-          "accepted_source_gap_rows": 3189,
+          "accepted_source_gap_rows": 3745,
           "otc_core_exclusion_candidate_rows": 0,
           "otc_scope_completion": {
             "status": "complete_extended_scope_no_core_candidates",
-            "rows": 11094,
-            "extended_otc_rows": 11094,
-            "otc_listing_scope_reason_rows": 11094,
-            "already_extended_scope_decision_rows": 11094,
+            "rows": 11754,
+            "extended_otc_rows": 11754,
+            "otc_listing_scope_reason_rows": 11754,
+            "already_extended_scope_decision_rows": 11754,
             "core_exclusion_candidate_rows": 0,
             "unexpected_core_scope_rows": 0,
             "blocked_scope_decision_rows": 0,
@@ -2145,15 +2236,15 @@
             "metadata_enrichment_authorized": false,
             "source_gate": "OTC scope is complete only when every current OTC row is extended/otc_listing and no core or core-exclusion scope decision remains open; metadata still requires listing-keyed evidence."
           },
-          "active_name_mismatch_review_rows": 17,
-          "otc_name_mismatch_unreviewed_active_rows": 0,
+          "active_name_mismatch_review_rows": 29,
+          "otc_name_mismatch_unreviewed_active_rows": 12,
           "otc_review_decision_current_listing_suppressed_rows": 26,
           "otc_review_decision_not_current_scope_rows": 0,
           "otc_review_decision_stale_rows": 26,
           "campaign_start_scope_snapshot": {
             "accepted_source_gap_rows": {
-              "baseline": 846,
-              "current": 846,
+              "baseline": 3745,
+              "current": 3745,
               "delta": 0
             },
             "drop_override_rows_still_present": {
@@ -2162,8 +2253,8 @@
               "delta": 0
             },
             "scope_review_rows": {
-              "baseline": 11054,
-              "current": 11054,
+              "baseline": 11754,
+              "current": 11754,
               "delta": 0
             }
           },
@@ -2186,31 +2277,31 @@
         "exchange_scope": [
           "OTC"
         ],
-        "affected_artifact_rows": 11111,
+        "affected_artifact_rows": 11783,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -2229,8 +2320,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -2240,12 +2331,12 @@
           }
         },
         "policy": "Before/after values are release evidence only; any non-zero delta still requires listing-keyed source review.",
-        "before_after_context": "exchange_scope=OTC;affected_artifact_rows=11111;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
+        "before_after_context": "exchange_scope=OTC;affected_artifact_rows=11783;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
       },
       "campaign_context": "priority=2;campaign_key=otc;status=scoped_as_extended_with_source_gaps_documented;exchange_scope=OTC",
-      "artifact_context": "artifact_count=2;affected_artifact_rows=11111;primary_artifact=data/reports/otc_scope_review.json;primary_artifact_rows=11094",
+      "artifact_context": "artifact_count=2;affected_artifact_rows=11783;primary_artifact=data/reports/otc_scope_review.json;primary_artifact_rows=11754",
       "delta_review_context": "delta_status=partial;missing_delta_count=0;before_after_present=true;next_action_present=true",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11111;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11783;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 3,
@@ -2894,34 +2985,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -2961,23 +3052,23 @@
           "canada_core_exclusion_candidate_rows": 242,
           "reviewed_openfigi_source_gap_rows": 151,
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_category_delta": {
             "sector_delta": {
-              "baseline": 47365,
-              "current": 47365,
+              "baseline": 45881,
+              "current": 45881,
               "delta": 0,
-              "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+              "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
             },
             "category_delta": {
-              "baseline": 15639,
-              "current": 15639,
+              "baseline": 15601,
+              "current": 15601,
               "delta": 0,
-              "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+              "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
             }
           },
           "warn_quarantine_delta": {
@@ -3004,28 +3095,28 @@
         "affected_artifact_rows": 525,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -3044,8 +3135,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -3376,34 +3467,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -3445,10 +3536,10 @@
             "delta": 0
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_quarantine_delta": {
             "warn_delta": 0,
@@ -3472,28 +3563,28 @@
         "affected_artifact_rows": 114,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -3512,8 +3603,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -4292,34 +4383,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -4365,10 +4456,10 @@
             "delta": 0
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_quarantine_delta": {
             "warn_delta": 0,
@@ -4399,28 +4490,28 @@
         "affected_artifact_rows": 670,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -4439,8 +4530,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -6771,34 +6862,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -6808,7 +6899,7 @@
           }
         },
         "exchange_scope_deltas": {
-          "exchange_count": 81,
+          "exchange_count": 87,
           "changed_exchange_rows": 0,
           "delta_totals": {
             "isin_delta": 0,
@@ -6855,28 +6946,28 @@
         "affected_artifact_rows": 11176,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -6895,8 +6986,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -7560,34 +7651,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -7597,7 +7688,7 @@
           }
         },
         "exchange_scope_deltas": {
-          "exchange_count": 81,
+          "exchange_count": 87,
           "changed_exchange_rows": 0,
           "delta_totals": {
             "isin_delta": 0,
@@ -7644,28 +7735,28 @@
         "affected_artifact_rows": 319,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -7684,8 +7775,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -8764,34 +8855,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -8801,7 +8892,7 @@
           }
         },
         "exchange_scope_deltas": {
-          "exchange_count": 81,
+          "exchange_count": 87,
           "changed_exchange_rows": 0,
           "delta_totals": {
             "isin_delta": 0,
@@ -8844,28 +8935,28 @@
         "affected_artifact_rows": 263,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -8884,8 +8975,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -8908,36 +8999,36 @@
       "campaign_key": "freshness",
       "status": "global_and_source_freshness_visible",
       "evidence": {
-        "source_gap_rows": 7365,
+        "source_gap_rows": 9839,
         "coverage_freshness_keys": 32,
         "freshness_snapshot": [
           {
             "key": "identifiers",
             "source_type": "dataset",
-            "generated_at": "2026-08-06T13:58:50Z",
+            "generated_at": "2026-08-06T14:17:14Z",
             "age_hours": 0.0,
             "age_bucket": "age_0_48h",
-            "rows": 61764,
+            "rows": 62308,
             "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
             "key": "tickers",
             "source_type": "dataset",
-            "generated_at": "2026-08-06T13:58:48Z",
+            "generated_at": "2026-08-06T14:17:11Z",
             "age_hours": 0.0,
             "age_bucket": "age_0_48h",
-            "rows": 63302,
+            "rows": 63744,
             "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
             "key": "entry_quality",
             "source_type": "quality_gate",
-            "generated_at": "2026-08-06T13:58:58Z",
-            "age_hours": 0.0,
+            "generated_at": "2026-08-06T14:13:14Z",
+            "age_hours": 0.07,
             "age_bucket": "age_0_48h",
-            "rows": 75231,
+            "rows": 91927,
             "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
@@ -8945,7 +9036,7 @@
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-06-02T19:18:19Z",
-            "age_hours": 1554.68,
+            "age_hours": 1554.98,
             "age_bucket": "age_over_336h",
             "rows": 11176,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -8954,10 +9045,10 @@
           {
             "key": "source_gap_classification",
             "source_type": "review_report",
-            "generated_at": "2026-08-06T13:58:59Z",
-            "age_hours": 0.0,
+            "generated_at": "2026-08-06T14:13:23Z",
+            "age_hours": 0.06,
             "age_bucket": "age_0_48h",
-            "rows": 7365,
+            "rows": 9847,
             "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
@@ -8965,7 +9056,7 @@
             "key": "ohlcv_plausibility",
             "source_type": "sampling_report",
             "generated_at": "2026-08-01T16:53:59Z",
-            "age_hours": 117.08,
+            "age_hours": 117.39,
             "age_bucket": "age_48_168h",
             "rows": 143,
             "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -8975,7 +9066,7 @@
             "key": "masterfiles",
             "source_type": "source_inventory",
             "generated_at": "2026-08-06T08:50:31Z",
-            "age_hours": 5.14,
+            "age_hours": 5.45,
             "age_bucket": "age_0_48h",
             "rows": 80553,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
@@ -8985,7 +9076,7 @@
             "key": "symbol_changes",
             "source_type": "workflow_report",
             "generated_at": "2026-08-04T09:48:02Z",
-            "age_hours": 52.18,
+            "age_hours": 52.49,
             "age_bucket": "age_48_168h",
             "rows": 319,
             "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -9002,7 +9093,7 @@
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-06-02T19:18:19Z",
-            "age_hours": 1554.68,
+            "age_hours": 1554.98,
             "age_bucket": "age_over_336h",
             "rows": 11176,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -9012,7 +9103,7 @@
             "key": "ohlcv_plausibility",
             "source_type": "sampling_report",
             "generated_at": "2026-08-01T16:53:59Z",
-            "age_hours": 117.08,
+            "age_hours": 117.39,
             "age_bucket": "age_48_168h",
             "rows": 143,
             "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -9022,7 +9113,7 @@
             "key": "symbol_changes",
             "source_type": "workflow_report",
             "generated_at": "2026-08-04T09:48:02Z",
-            "age_hours": 52.18,
+            "age_hours": 52.49,
             "age_bucket": "age_48_168h",
             "rows": 319,
             "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -9032,50 +9123,50 @@
             "key": "masterfiles",
             "source_type": "source_inventory",
             "generated_at": "2026-08-06T08:50:31Z",
-            "age_hours": 5.14,
+            "age_hours": 5.45,
             "age_bucket": "age_0_48h",
             "rows": 80553,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
-            "key": "identifiers",
-            "source_type": "dataset",
-            "generated_at": "2026-08-06T13:58:50Z",
-            "age_hours": 0.0,
-            "age_bucket": "age_0_48h",
-            "rows": 61764,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
-          {
-            "key": "tickers",
-            "source_type": "dataset",
-            "generated_at": "2026-08-06T13:58:48Z",
-            "age_hours": 0.0,
-            "age_bucket": "age_0_48h",
-            "rows": 63302,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
-          {
             "key": "entry_quality",
             "source_type": "quality_gate",
-            "generated_at": "2026-08-06T13:58:58Z",
-            "age_hours": 0.0,
+            "generated_at": "2026-08-06T14:13:14Z",
+            "age_hours": 0.07,
             "age_bucket": "age_0_48h",
-            "rows": 75231,
+            "rows": 91927,
             "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
             "key": "source_gap_classification",
             "source_type": "review_report",
-            "generated_at": "2026-08-06T13:58:59Z",
+            "generated_at": "2026-08-06T14:13:23Z",
+            "age_hours": 0.06,
+            "age_bucket": "age_0_48h",
+            "rows": 9847,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "identifiers",
+            "source_type": "dataset",
+            "generated_at": "2026-08-06T14:17:14Z",
             "age_hours": 0.0,
             "age_bucket": "age_0_48h",
-            "rows": 7365,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
+            "rows": 62308,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "tickers",
+            "source_type": "dataset",
+            "generated_at": "2026-08-06T14:17:11Z",
+            "age_hours": 0.0,
+            "age_bucket": "age_0_48h",
+            "rows": 63744,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           }
         ],
@@ -9215,7 +9306,7 @@
             "refresh_priority": "P1",
             "source_count": 10,
             "total_rows": 22957,
-            "max_age_hours": 243.88,
+            "max_age_hours": 244.19,
             "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
             "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
             "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode network.",
@@ -9228,7 +9319,7 @@
             "refresh_priority": "P1",
             "source_count": 2,
             "total_rows": 12036,
-            "max_age_hours": 1554.33,
+            "max_age_hours": 1554.64,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision.",
@@ -9241,7 +9332,7 @@
             "refresh_priority": "P1",
             "source_count": 1,
             "total_rows": 108,
-            "max_age_hours": 1554.33,
+            "max_age_hours": 1554.64,
             "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
             "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
             "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode cache.",
@@ -9254,7 +9345,7 @@
             "refresh_priority": "P2",
             "source_count": 54,
             "total_rows": 36350,
-            "max_age_hours": 243.88,
+            "max_age_hours": 244.19,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
@@ -9267,7 +9358,7 @@
             "refresh_priority": "P2",
             "source_count": 17,
             "total_rows": 22876,
-            "max_age_hours": 148.75,
+            "max_age_hours": 149.05,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope exchange_directory before identifier or metadata gap work.",
@@ -9280,7 +9371,7 @@
             "refresh_priority": "P2",
             "source_count": 15,
             "total_rows": 1177,
-            "max_age_hours": 1554.33,
+            "max_age_hours": 1554.64,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
@@ -9293,7 +9384,7 @@
             "refresh_priority": "P2",
             "source_count": 11,
             "total_rows": 20085,
-            "max_age_hours": 1554.33,
+            "max_age_hours": 1554.64,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision.",
@@ -9306,7 +9397,7 @@
             "refresh_priority": "P2",
             "source_count": 3,
             "total_rows": 94,
-            "max_age_hours": 1554.33,
+            "max_age_hours": 1554.64,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9319,7 +9410,7 @@
             "refresh_priority": "P2",
             "source_count": 1,
             "total_rows": 4030,
-            "max_age_hours": 220.86,
+            "max_age_hours": 221.16,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope security_identifier_registry_subset, or document an official replacement/unavailable decision.",
@@ -9332,7 +9423,7 @@
             "refresh_priority": "P2",
             "source_count": 1,
             "total_rows": 267,
-            "max_age_hours": 125.45,
+            "max_age_hours": 125.75,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope interlisted_subset before identifier or metadata gap work.",
@@ -9345,7 +9436,7 @@
             "refresh_priority": "P2",
             "source_count": 1,
             "total_rows": 64,
-            "max_age_hours": 1554.33,
+            "max_age_hours": 1554.64,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope security_lookup_subset, or document an official replacement/unavailable decision.",
@@ -9358,7 +9449,7 @@
             "refresh_priority": "P2",
             "source_count": 1,
             "total_rows": 7,
-            "max_age_hours": 1554.33,
+            "max_age_hours": 1554.64,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9371,7 +9462,7 @@
             "refresh_priority": "P4",
             "source_count": 11,
             "total_rows": 27818,
-            "max_age_hours": 28.63,
+            "max_age_hours": 28.93,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope exchange_directory.",
@@ -9384,7 +9475,7 @@
             "refresh_priority": "P4",
             "source_count": 7,
             "total_rows": 1522,
-            "max_age_hours": 5.14,
+            "max_age_hours": 5.45,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope listed_companies_subset.",
@@ -9397,7 +9488,7 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 860,
-            "max_age_hours": 5.14,
+            "max_age_hours": 5.45,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope security_lookup_subset.",
@@ -9410,7 +9501,7 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 13,
-            "max_age_hours": 5.14,
+            "max_age_hours": 5.45,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope corporate_action_daily_list.",
@@ -9424,122 +9515,143 @@
             "provider": "OTC Markets",
             "mode": "unavailable",
             "rows": 11925,
-            "age_hours": 1554.33
+            "age_hours": 1554.64
           },
           {
             "key": "lse_price_explorer",
             "provider": "LSE",
             "mode": "network",
             "rows": 11092,
-            "age_hours": 196.83
+            "age_hours": 197.13
           },
           {
             "key": "deutsche_boerse_xetra_all_tradable_equities",
             "provider": "Deutsche Boerse",
             "mode": "network",
             "rows": 5080,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "bse_india_scrips",
             "provider": "BSE India",
             "mode": "network",
             "rows": 5077,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "cboe_canada_listing_directory",
             "provider": "Cboe Canada",
             "mode": "network",
             "rows": 440,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "bvb_shares_directory",
             "provider": "BVB",
             "mode": "network",
             "rows": 350,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "cse_lk_company_info_summary",
             "provider": "CSE Sri Lanka",
             "mode": "network",
             "rows": 318,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "cse_lk_all_security_code",
             "provider": "CSE Sri Lanka",
             "mode": "network",
             "rows": 307,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "boursa_kuwait_stocks",
             "provider": "Boursa Kuwait",
             "mode": "network",
             "rows": 140,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "bolsa_santiago_instruments",
             "provider": "Bolsa de Santiago",
             "mode": "unavailable",
             "rows": 111,
-            "age_hours": 1554.33
+            "age_hours": 1554.64
           },
           {
             "key": "muscat_securities_companies",
             "provider": "MSX",
             "mode": "cache",
             "rows": 108,
-            "age_hours": 1554.33
+            "age_hours": 1554.64
           },
           {
             "key": "cse_ma_listed_companies",
             "provider": "Casablanca Stock Exchange",
             "mode": "network",
             "rows": 82,
-            "age_hours": 243.88
+            "age_hours": 244.19
           },
           {
             "key": "dfm_listed_securities",
             "provider": "DFM",
             "mode": "network",
             "rows": 71,
-            "age_hours": 243.88
+            "age_hours": 244.19
           }
         ],
         "source_gap_class_totals": {
           "adr_cdr_or_depositary_identifier_gap": 43,
+          "adr_cdr_or_depositary_sector_gap": 15,
           "capital_pool_or_halted_identifier_gap": 33,
-          "commodity_etf_category_gap": 2,
+          "commodity_etf_category_gap": 14,
           "debt_or_securitized_identifier_gap": 76,
-          "digital_asset_etf_category_gap": 3,
-          "equity_etf_category_gap": 20,
-          "fixed_income_etf_category_gap": 1,
-          "fund_or_trust_identifier_gap": 366,
-          "fundlike_stock_sector_gap": 1,
-          "inactive_or_legacy_identifier_gap": 104,
+          "digital_asset_etf_category_gap": 9,
+          "equity_etf_category_gap": 83,
+          "exchange_industry_source_gap": 919,
+          "fixed_income_etf_category_gap": 29,
+          "fund_or_trust_identifier_gap": 363,
+          "fundlike_stock_sector_gap": 11,
+          "generic_etf_category_source_gap": 3,
+          "inactive_or_legacy_identifier_gap": 91,
           "official_current_directory_absent_identifier_gap": 2,
-          "official_identifier_not_exposed_source_gap": 510,
+          "official_identifier_not_exposed_source_gap": 484,
           "official_identifier_reference_unmatched_gap": 10,
-          "official_industry_taxonomy_unavailable_gap": 116,
-          "official_product_taxonomy_unavailable_gap": 115,
-          "official_reference_symbol_collision_gap": 792,
-          "official_reference_unmatched_source_gap": 5131,
-          "otc_sector_source_gap": 22,
-          "shell_or_cpc_sector_gap": 18
+          "official_identifier_source_gap": 3,
+          "official_industry_taxonomy_unavailable_gap": 358,
+          "official_product_reference_unmatched_category_gap": 16,
+          "official_product_taxonomy_unavailable_gap": 222,
+          "official_reference_symbol_collision_gap": 1236,
+          "official_reference_unmatched_source_gap": 5234,
+          "otc_sector_source_gap": 556,
+          "shell_or_cpc_sector_gap": 29
         },
         "top_source_gap_review_batches": [
           {
             "field": "official_reference_gap",
             "gap_class": "official_reference_unmatched_source_gap",
             "exchange": "OTC",
-            "rows": 3052,
+            "rows": 3119,
             "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
             "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+          },
+          {
+            "field": "missing_sector_stock",
+            "gap_class": "exchange_industry_source_gap",
+            "exchange": "FSX",
+            "rows": 857,
+            "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
+            "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+          },
+          {
+            "field": "missing_sector_stock",
+            "gap_class": "otc_sector_source_gap",
+            "exchange": "OTC",
+            "rows": 556,
+            "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+            "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
           },
           {
             "field": "official_reference_gap",
@@ -9559,6 +9671,22 @@
           },
           {
             "field": "official_reference_gap",
+            "gap_class": "official_reference_symbol_collision_gap",
+            "exchange": "AMS",
+            "rows": 168,
+            "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+            "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
+          },
+          {
+            "field": "official_reference_gap",
+            "gap_class": "official_reference_symbol_collision_gap",
+            "exchange": "BMV",
+            "rows": 165,
+            "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+            "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
+          },
+          {
+            "field": "official_reference_gap",
             "gap_class": "official_reference_unmatched_source_gap",
             "exchange": "BMV",
             "rows": 162,
@@ -9569,7 +9697,7 @@
             "field": "missing_isin_primary",
             "gap_class": "official_identifier_not_exposed_source_gap",
             "exchange": "SET",
-            "rows": 144,
+            "rows": 140,
             "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
             "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
           },
@@ -9577,7 +9705,7 @@
             "field": "official_reference_gap",
             "gap_class": "official_reference_symbol_collision_gap",
             "exchange": "OTC",
-            "rows": 120,
+            "rows": 139,
             "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
             "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
           },
@@ -9585,7 +9713,15 @@
             "field": "official_reference_gap",
             "gap_class": "official_reference_unmatched_source_gap",
             "exchange": "NASDAQ",
-            "rows": 115,
+            "rows": 125,
+            "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+            "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+          },
+          {
+            "field": "official_reference_gap",
+            "gap_class": "official_reference_unmatched_source_gap",
+            "exchange": "NYSE ARCA",
+            "rows": 104,
             "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
             "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
           },
@@ -9600,40 +9736,40 @@
           {
             "field": "official_reference_gap",
             "gap_class": "official_reference_unmatched_source_gap",
-            "exchange": "NYSE ARCA",
-            "rows": 102,
-            "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-            "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-          },
-          {
-            "field": "official_reference_gap",
-            "gap_class": "official_reference_unmatched_source_gap",
             "exchange": "XETRA",
             "rows": 102,
             "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
             "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
           },
           {
+            "field": "missing_sector_stock",
+            "gap_class": "official_industry_taxonomy_unavailable_gap",
+            "exchange": "TSX",
+            "rows": 96,
+            "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+            "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
+          },
+          {
             "field": "missing_isin_primary",
             "gap_class": "official_identifier_not_exposed_source_gap",
             "exchange": "NASDAQ",
-            "rows": 97,
+            "rows": 95,
             "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
             "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
           },
           {
-            "field": "missing_isin_primary",
-            "gap_class": "inactive_or_legacy_identifier_gap",
-            "exchange": "ASX",
-            "rows": 90,
-            "recommended_next_source": "Current exchange status/detail feed before any identifier fill.",
-            "source_gate": "Exact active listing evidence plus direct identifier source."
+            "field": "official_reference_gap",
+            "gap_class": "official_reference_unmatched_source_gap",
+            "exchange": "TSX",
+            "rows": 91,
+            "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+            "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
           },
           {
             "field": "official_reference_gap",
             "gap_class": "official_reference_unmatched_source_gap",
             "exchange": "BME",
-            "rows": 87,
+            "rows": 88,
             "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
             "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
           },
@@ -9647,49 +9783,9 @@
           },
           {
             "field": "official_reference_gap",
-            "gap_class": "official_reference_symbol_collision_gap",
-            "exchange": "AMS",
-            "rows": 85,
-            "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-            "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-          },
-          {
-            "field": "official_reference_gap",
             "gap_class": "official_reference_unmatched_source_gap",
             "exchange": "LSE",
             "rows": 85,
-            "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-            "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-          },
-          {
-            "field": "missing_isin_primary",
-            "gap_class": "fund_or_trust_identifier_gap",
-            "exchange": "NYSE ARCA",
-            "rows": 82,
-            "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-            "source_gate": "Exact fund/trust symbol and product name with checksum."
-          },
-          {
-            "field": "official_reference_gap",
-            "gap_class": "official_reference_unmatched_source_gap",
-            "exchange": "TSX",
-            "rows": 81,
-            "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-            "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-          },
-          {
-            "field": "official_reference_gap",
-            "gap_class": "official_reference_unmatched_source_gap",
-            "exchange": "BATS",
-            "rows": 78,
-            "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-            "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-          },
-          {
-            "field": "official_reference_gap",
-            "gap_class": "official_reference_unmatched_source_gap",
-            "exchange": "TASE",
-            "rows": 74,
             "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
             "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
           }
@@ -9867,13 +9963,13 @@
       "artifacts": [
         {
           "path": "data/reports/coverage_report.json",
-          "generated_at": "2026-08-06T13:59:00Z",
+          "generated_at": "2026-08-06T14:17:14Z",
           "rows": 0
         },
         {
           "path": "data/reports/source_gap_classification.json",
-          "generated_at": "2026-08-06T14:06:17Z",
-          "rows": 7365
+          "generated_at": "2026-08-06T14:18:40Z",
+          "rows": 9839
         },
         {
           "path": "data/reports/financialdata_isin_supplements_review.json",
@@ -9884,7 +9980,7 @@
       "acceptance_matrix": {
         "campaign_key": "freshness",
         "exchange_scope": "all",
-        "affected_artifact_rows": 8030,
+        "affected_artifact_rows": 10504,
         "campaign_metric_deltas": {
           "financialdata_apply_eligibility_counts": {
             "children": {
@@ -10000,14 +10096,19 @@
                 "current": 43,
                 "delta": 0
               },
+              "adr_cdr_or_depositary_sector_gap": {
+                "baseline": 15,
+                "current": 15,
+                "delta": 0
+              },
               "capital_pool_or_halted_identifier_gap": {
                 "baseline": 33,
                 "current": 33,
                 "delta": 0
               },
               "commodity_etf_category_gap": {
-                "baseline": 2,
-                "current": 2,
+                "baseline": 14,
+                "current": 14,
                 "delta": 0
               },
               "debt_or_securitized_identifier_gap": {
@@ -10016,33 +10117,43 @@
                 "delta": 0
               },
               "digital_asset_etf_category_gap": {
+                "baseline": 9,
+                "current": 9,
+                "delta": 0
+              },
+              "equity_etf_category_gap": {
+                "baseline": 83,
+                "current": 83,
+                "delta": 0
+              },
+              "exchange_industry_source_gap": {
+                "baseline": 922,
+                "current": 922,
+                "delta": 0
+              },
+              "fixed_income_etf_category_gap": {
+                "baseline": 29,
+                "current": 29,
+                "delta": 0
+              },
+              "fund_or_trust_identifier_gap": {
+                "baseline": 363,
+                "current": 363,
+                "delta": 0
+              },
+              "fundlike_stock_sector_gap": {
+                "baseline": 11,
+                "current": 11,
+                "delta": 0
+              },
+              "generic_etf_category_source_gap": {
                 "baseline": 3,
                 "current": 3,
                 "delta": 0
               },
-              "equity_etf_category_gap": {
-                "baseline": 20,
-                "current": 20,
-                "delta": 0
-              },
-              "fixed_income_etf_category_gap": {
-                "baseline": 1,
-                "current": 1,
-                "delta": 0
-              },
-              "fund_or_trust_identifier_gap": {
-                "baseline": 366,
-                "current": 366,
-                "delta": 0
-              },
-              "fundlike_stock_sector_gap": {
-                "baseline": 1,
-                "current": 1,
-                "delta": 0
-              },
               "inactive_or_legacy_identifier_gap": {
-                "baseline": 104,
-                "current": 104,
+                "baseline": 91,
+                "current": 91,
                 "delta": 0
               },
               "official_current_directory_absent_identifier_gap": {
@@ -10051,8 +10162,8 @@
                 "delta": 0
               },
               "official_identifier_not_exposed_source_gap": {
-                "baseline": 510,
-                "current": 510,
+                "baseline": 484,
+                "current": 484,
                 "delta": 0
               },
               "official_identifier_reference_unmatched_gap": {
@@ -10060,41 +10171,51 @@
                 "current": 10,
                 "delta": 0
               },
+              "official_identifier_source_gap": {
+                "baseline": 9,
+                "current": 9,
+                "delta": 0
+              },
               "official_industry_taxonomy_unavailable_gap": {
-                "baseline": 116,
-                "current": 116,
+                "baseline": 357,
+                "current": 357,
+                "delta": 0
+              },
+              "official_product_reference_unmatched_category_gap": {
+                "baseline": 16,
+                "current": 16,
                 "delta": 0
               },
               "official_product_taxonomy_unavailable_gap": {
-                "baseline": 115,
-                "current": 115,
+                "baseline": 222,
+                "current": 222,
                 "delta": 0
               },
               "official_reference_symbol_collision_gap": {
-                "baseline": 792,
-                "current": 792,
+                "baseline": 1236,
+                "current": 1236,
                 "delta": 0
               },
               "official_reference_unmatched_source_gap": {
-                "baseline": 5131,
-                "current": 5131,
+                "baseline": 5234,
+                "current": 5234,
                 "delta": 0
               },
               "otc_sector_source_gap": {
-                "baseline": 22,
-                "current": 22,
+                "baseline": 556,
+                "current": 556,
                 "delta": 0
               },
               "shell_or_cpc_sector_gap": {
-                "baseline": 18,
-                "current": 18,
+                "baseline": 29,
+                "current": 29,
                 "delta": 0
               }
             }
           },
           "source_gap_rows": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0
           },
           "source_refresh_action_totals": {
@@ -10193,34 +10314,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -10230,7 +10351,7 @@
           }
         },
         "exchange_scope_deltas": {
-          "exchange_count": 81,
+          "exchange_count": 87,
           "changed_exchange_rows": 0,
           "delta_totals": {
             "isin_delta": 0,
@@ -10259,30 +10380,30 @@
             {
               "key": "identifiers",
               "source_type": "dataset",
-              "generated_at": "2026-08-06T13:58:50Z",
+              "generated_at": "2026-08-06T14:17:14Z",
               "age_hours": 0.0,
               "age_bucket": "age_0_48h",
-              "rows": 61764,
+              "rows": 62308,
               "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
               "key": "tickers",
               "source_type": "dataset",
-              "generated_at": "2026-08-06T13:58:48Z",
+              "generated_at": "2026-08-06T14:17:11Z",
               "age_hours": 0.0,
               "age_bucket": "age_0_48h",
-              "rows": 63302,
+              "rows": 63744,
               "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
               "key": "entry_quality",
               "source_type": "quality_gate",
-              "generated_at": "2026-08-06T13:58:58Z",
-              "age_hours": 0.0,
+              "generated_at": "2026-08-06T14:13:14Z",
+              "age_hours": 0.07,
               "age_bucket": "age_0_48h",
-              "rows": 75231,
+              "rows": 91927,
               "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
@@ -10290,7 +10411,7 @@
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-06-02T19:18:19Z",
-              "age_hours": 1554.68,
+              "age_hours": 1554.98,
               "age_bucket": "age_over_336h",
               "rows": 11176,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -10299,10 +10420,10 @@
             {
               "key": "source_gap_classification",
               "source_type": "review_report",
-              "generated_at": "2026-08-06T13:58:59Z",
-              "age_hours": 0.0,
+              "generated_at": "2026-08-06T14:13:23Z",
+              "age_hours": 0.06,
               "age_bucket": "age_0_48h",
-              "rows": 7365,
+              "rows": 9847,
               "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
@@ -10310,7 +10431,7 @@
               "key": "ohlcv_plausibility",
               "source_type": "sampling_report",
               "generated_at": "2026-08-01T16:53:59Z",
-              "age_hours": 117.08,
+              "age_hours": 117.39,
               "age_bucket": "age_48_168h",
               "rows": 143,
               "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -10320,7 +10441,7 @@
               "key": "masterfiles",
               "source_type": "source_inventory",
               "generated_at": "2026-08-06T08:50:31Z",
-              "age_hours": 5.14,
+              "age_hours": 5.45,
               "age_bucket": "age_0_48h",
               "rows": 80553,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
@@ -10330,7 +10451,7 @@
               "key": "symbol_changes",
               "source_type": "workflow_report",
               "generated_at": "2026-08-04T09:48:02Z",
-              "age_hours": 52.18,
+              "age_hours": 52.49,
               "age_bucket": "age_48_168h",
               "rows": 319,
               "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -10347,7 +10468,7 @@
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-06-02T19:18:19Z",
-              "age_hours": 1554.68,
+              "age_hours": 1554.98,
               "age_bucket": "age_over_336h",
               "rows": 11176,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -10357,7 +10478,7 @@
               "key": "ohlcv_plausibility",
               "source_type": "sampling_report",
               "generated_at": "2026-08-01T16:53:59Z",
-              "age_hours": 117.08,
+              "age_hours": 117.39,
               "age_bucket": "age_48_168h",
               "rows": 143,
               "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -10367,7 +10488,7 @@
               "key": "symbol_changes",
               "source_type": "workflow_report",
               "generated_at": "2026-08-04T09:48:02Z",
-              "age_hours": 52.18,
+              "age_hours": 52.49,
               "age_bucket": "age_48_168h",
               "rows": 319,
               "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -10377,50 +10498,50 @@
               "key": "masterfiles",
               "source_type": "source_inventory",
               "generated_at": "2026-08-06T08:50:31Z",
-              "age_hours": 5.14,
+              "age_hours": 5.45,
               "age_bucket": "age_0_48h",
               "rows": 80553,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
-              "key": "identifiers",
-              "source_type": "dataset",
-              "generated_at": "2026-08-06T13:58:50Z",
-              "age_hours": 0.0,
-              "age_bucket": "age_0_48h",
-              "rows": 61764,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
-            {
-              "key": "tickers",
-              "source_type": "dataset",
-              "generated_at": "2026-08-06T13:58:48Z",
-              "age_hours": 0.0,
-              "age_bucket": "age_0_48h",
-              "rows": 63302,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
-            {
               "key": "entry_quality",
               "source_type": "quality_gate",
-              "generated_at": "2026-08-06T13:58:58Z",
-              "age_hours": 0.0,
+              "generated_at": "2026-08-06T14:13:14Z",
+              "age_hours": 0.07,
               "age_bucket": "age_0_48h",
-              "rows": 75231,
+              "rows": 91927,
               "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
               "key": "source_gap_classification",
               "source_type": "review_report",
-              "generated_at": "2026-08-06T13:58:59Z",
+              "generated_at": "2026-08-06T14:13:23Z",
+              "age_hours": 0.06,
+              "age_bucket": "age_0_48h",
+              "rows": 9847,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "identifiers",
+              "source_type": "dataset",
+              "generated_at": "2026-08-06T14:17:14Z",
               "age_hours": 0.0,
               "age_bucket": "age_0_48h",
-              "rows": 7365,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
+              "rows": 62308,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "tickers",
+              "source_type": "dataset",
+              "generated_at": "2026-08-06T14:17:11Z",
+              "age_hours": 0.0,
+              "age_bucket": "age_0_48h",
+              "rows": 63744,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             }
           ],
@@ -10558,9 +10679,25 @@
               "field": "official_reference_gap",
               "gap_class": "official_reference_unmatched_source_gap",
               "exchange": "OTC",
-              "rows": 3052,
+              "rows": 3119,
               "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
               "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+            },
+            {
+              "field": "missing_sector_stock",
+              "gap_class": "exchange_industry_source_gap",
+              "exchange": "FSX",
+              "rows": 857,
+              "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
+              "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+            },
+            {
+              "field": "missing_sector_stock",
+              "gap_class": "otc_sector_source_gap",
+              "exchange": "OTC",
+              "rows": 556,
+              "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+              "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
             },
             {
               "field": "official_reference_gap",
@@ -10580,6 +10717,22 @@
             },
             {
               "field": "official_reference_gap",
+              "gap_class": "official_reference_symbol_collision_gap",
+              "exchange": "AMS",
+              "rows": 168,
+              "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+              "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
+            },
+            {
+              "field": "official_reference_gap",
+              "gap_class": "official_reference_symbol_collision_gap",
+              "exchange": "BMV",
+              "rows": 165,
+              "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+              "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
+            },
+            {
+              "field": "official_reference_gap",
               "gap_class": "official_reference_unmatched_source_gap",
               "exchange": "BMV",
               "rows": 162,
@@ -10590,7 +10743,7 @@
               "field": "missing_isin_primary",
               "gap_class": "official_identifier_not_exposed_source_gap",
               "exchange": "SET",
-              "rows": 144,
+              "rows": 140,
               "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
               "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
             },
@@ -10598,7 +10751,7 @@
               "field": "official_reference_gap",
               "gap_class": "official_reference_symbol_collision_gap",
               "exchange": "OTC",
-              "rows": 120,
+              "rows": 139,
               "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
               "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
             },
@@ -10606,7 +10759,15 @@
               "field": "official_reference_gap",
               "gap_class": "official_reference_unmatched_source_gap",
               "exchange": "NASDAQ",
-              "rows": 115,
+              "rows": 125,
+              "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+              "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+            },
+            {
+              "field": "official_reference_gap",
+              "gap_class": "official_reference_unmatched_source_gap",
+              "exchange": "NYSE ARCA",
+              "rows": 104,
               "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
               "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
             },
@@ -10621,40 +10782,40 @@
             {
               "field": "official_reference_gap",
               "gap_class": "official_reference_unmatched_source_gap",
-              "exchange": "NYSE ARCA",
-              "rows": 102,
-              "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-              "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-            },
-            {
-              "field": "official_reference_gap",
-              "gap_class": "official_reference_unmatched_source_gap",
               "exchange": "XETRA",
               "rows": 102,
               "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
               "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
             },
             {
+              "field": "missing_sector_stock",
+              "gap_class": "official_industry_taxonomy_unavailable_gap",
+              "exchange": "TSX",
+              "rows": 96,
+              "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+              "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
+            },
+            {
               "field": "missing_isin_primary",
               "gap_class": "official_identifier_not_exposed_source_gap",
               "exchange": "NASDAQ",
-              "rows": 97,
+              "rows": 95,
               "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
               "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
             },
             {
-              "field": "missing_isin_primary",
-              "gap_class": "inactive_or_legacy_identifier_gap",
-              "exchange": "ASX",
-              "rows": 90,
-              "recommended_next_source": "Current exchange status/detail feed before any identifier fill.",
-              "source_gate": "Exact active listing evidence plus direct identifier source."
+              "field": "official_reference_gap",
+              "gap_class": "official_reference_unmatched_source_gap",
+              "exchange": "TSX",
+              "rows": 91,
+              "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+              "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
             },
             {
               "field": "official_reference_gap",
               "gap_class": "official_reference_unmatched_source_gap",
               "exchange": "BME",
-              "rows": 87,
+              "rows": 88,
               "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
               "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
             },
@@ -10668,49 +10829,9 @@
             },
             {
               "field": "official_reference_gap",
-              "gap_class": "official_reference_symbol_collision_gap",
-              "exchange": "AMS",
-              "rows": 85,
-              "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-              "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-            },
-            {
-              "field": "official_reference_gap",
               "gap_class": "official_reference_unmatched_source_gap",
               "exchange": "LSE",
               "rows": 85,
-              "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-              "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-            },
-            {
-              "field": "missing_isin_primary",
-              "gap_class": "fund_or_trust_identifier_gap",
-              "exchange": "NYSE ARCA",
-              "rows": 82,
-              "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-              "source_gate": "Exact fund/trust symbol and product name with checksum."
-            },
-            {
-              "field": "official_reference_gap",
-              "gap_class": "official_reference_unmatched_source_gap",
-              "exchange": "TSX",
-              "rows": 81,
-              "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-              "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-            },
-            {
-              "field": "official_reference_gap",
-              "gap_class": "official_reference_unmatched_source_gap",
-              "exchange": "BATS",
-              "rows": 78,
-              "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-              "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-            },
-            {
-              "field": "official_reference_gap",
-              "gap_class": "official_reference_unmatched_source_gap",
-              "exchange": "TASE",
-              "rows": 74,
               "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
               "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
             }
@@ -10881,31 +11002,31 @@
       },
       "before_after_summary": {
         "exchange_scope": "all",
-        "affected_artifact_rows": 8030,
+        "affected_artifact_rows": 10504,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -10924,8 +11045,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -10935,12 +11056,12 @@
           }
         },
         "policy": "Before/after values are release evidence only; any non-zero delta still requires listing-keyed source review.",
-        "before_after_context": "exchange_scope=all;affected_artifact_rows=8030;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
+        "before_after_context": "exchange_scope=all;affected_artifact_rows=10504;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
       },
       "campaign_context": "priority=9;campaign_key=freshness;status=global_and_source_freshness_visible;exchange_scope=all",
-      "artifact_context": "artifact_count=3;affected_artifact_rows=8030;primary_artifact=data/reports/source_gap_classification.json;primary_artifact_rows=7365",
+      "artifact_context": "artifact_count=3;affected_artifact_rows=10504;primary_artifact=data/reports/source_gap_classification.json;primary_artifact_rows=9839",
       "delta_review_context": "delta_status=present_for_report_visibility;missing_delta_count=0;before_after_present=true;next_action_present=true",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=8030;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=10504;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 10,
@@ -10955,12 +11076,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-08-06T14:03:36Z",
+          "generated_at": "2026-08-06T14:13:29Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-08-06T14:03:36Z",
+          "generated_at": "2026-08-06T14:13:29Z",
           "rows": 0
         }
       ],
@@ -10980,8 +11101,8 @@
             "delta": 0
           },
           "exchange_count": {
-            "baseline": 81,
-            "current": 81,
+            "baseline": 87,
+            "current": 87,
             "delta": 0
           },
           "global_metric_count": {
@@ -10997,34 +11118,34 @@
         },
         "global_acceptance_deltas": {
           "isin_delta": {
-            "baseline": 61764,
-            "current": 61764,
+            "baseline": 62309,
+            "current": 62309,
             "delta": 0,
-            "delta_context": "scope=global;metric=isin_delta;baseline=61764;current=61764;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=isin_delta;baseline=62309;current=62309;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "sector_delta": {
-            "baseline": 47365,
-            "current": 47365,
+            "baseline": 45881,
+            "current": 45881,
             "delta": 0,
-            "delta_context": "scope=global;metric=sector_delta;baseline=47365;current=47365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=sector_delta;baseline=45881;current=45881;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "category_delta": {
-            "baseline": 15639,
-            "current": 15639,
+            "baseline": 15601,
+            "current": 15601,
             "delta": 0,
-            "delta_context": "scope=global;metric=category_delta;baseline=15639;current=15639;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=category_delta;baseline=15601;current=15601;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "source_gap_delta": {
-            "baseline": 7365,
-            "current": 7365,
+            "baseline": 9847,
+            "current": 9847,
             "delta": 0,
-            "delta_context": "scope=global;metric=source_gap_delta;baseline=7365;current=7365;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=source_gap_delta;baseline=9847;current=9847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "warn_delta": {
-            "baseline": 47,
-            "current": 47,
+            "baseline": 278,
+            "current": 278,
             "delta": 0,
-            "delta_context": "scope=global;metric=warn_delta;baseline=47;current=47;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+            "delta_context": "scope=global;metric=warn_delta;baseline=278;current=278;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
           },
           "quarantine_delta": {
             "baseline": 0,
@@ -11034,7 +11155,7 @@
           }
         },
         "exchange_scope_deltas": {
-          "exchange_count": 81,
+          "exchange_count": 87,
           "changed_exchange_rows": 0,
           "delta_totals": {
             "isin_delta": 0,
@@ -11058,7 +11179,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-08-06T14:03:36Z",
+          "baseline_generated_at": "2026-08-06T14:13:29Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },
@@ -11079,28 +11200,28 @@
         "affected_artifact_rows": 0,
         "global_before_after": {
           "isin_delta": {
-            "before": 61764,
-            "after": 61764,
+            "before": 62309,
+            "after": 62309,
             "delta": 0
           },
           "sector_delta": {
-            "before": 47365,
-            "after": 47365,
+            "before": 45881,
+            "after": 45881,
             "delta": 0
           },
           "category_delta": {
-            "before": 15639,
-            "after": 15639,
+            "before": 15601,
+            "after": 15601,
             "delta": 0
           },
           "source_gap_delta": {
-            "before": 7365,
-            "after": 7365,
+            "before": 9847,
+            "after": 9847,
             "delta": 0
           },
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -11119,8 +11240,8 @@
         },
         "warn_quarantine_delta": {
           "warn_delta": {
-            "before": 47,
-            "after": 47,
+            "before": 278,
+            "after": 278,
             "delta": 0
           },
           "quarantine_delta": {
@@ -11159,15 +11280,15 @@
       "campaign_key": "otc",
       "status": "scoped_as_extended_with_source_gaps_documented",
       "delta_status": "partial",
-      "artifact_rows": 11111,
+      "artifact_rows": 11783,
       "primary_artifact": "data/reports/otc_scope_review.json",
-      "primary_artifact_rows": 11094,
+      "primary_artifact_rows": 11754,
       "missing_delta_evidence": [],
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "next_action": "keep OTC enrichment gated by issuer/product evidence; do not sector-fill extended OTC rows from symbol or name shape",
       "recommended_next_source": "OTC Markets profile, SEC/issuer filing, product taxonomy, or reviewed issuer/product source matching the OTC listing key.",
       "source_gate": "Do not enrich OTC rows from symbol/name shape; decide scope and require issuer/product evidence before metadata changes.",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11111;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11783;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 3,
@@ -11264,15 +11385,15 @@
       "campaign_key": "freshness",
       "status": "global_and_source_freshness_visible",
       "delta_status": "present_for_report_visibility",
-      "artifact_rows": 8030,
+      "artifact_rows": 10504,
       "primary_artifact": "data/reports/source_gap_classification.json",
-      "primary_artifact_rows": 7365,
+      "primary_artifact_rows": 9839,
       "missing_delta_evidence": [],
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "next_action": "refresh old official masterfile sources and rerun verification reports",
       "recommended_next_source": "Fresh official exchange, registry, issuer, or source-of-truth artifact with generated_at and row-count evidence.",
       "source_gate": "Do not perform stale-source data work until official artifacts are refreshed or a reviewed unavailable/replacement decision exists.",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=8030;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=10504;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 10,
@@ -11294,33 +11415,33 @@
   ],
   "next_review_workload": {
     "total_batches": 10,
-    "total_rows": 32620,
+    "total_rows": 35766,
     "blocked_batches": 1,
     "rows_by_campaign_key": {
       "asx": 114,
       "b3": 412,
       "baseline": 0,
       "canada": 525,
-      "freshness": 8030,
+      "freshness": 10504,
       "masterfile_collisions": 11176,
       "ohlcv": 263,
-      "otc": 11111,
+      "otc": 11783,
       "symbol_changes": 319,
       "weak_sector": 670
     },
     "rows_by_closure_gate": {
       "future_campaign_delta_comparison_required_before_release_closure": 0,
-      "review_artifact_rows_must_be_processed_before_campaign_closure": 32620
+      "review_artifact_rows_must_be_processed_before_campaign_closure": 35766
     },
     "largest_batch": {
-      "priority": 6,
-      "campaign_key": "masterfile_collisions",
-      "artifact_rows": 11176,
-      "primary_artifact": "data/reports/masterfile_collision_review.json",
+      "priority": 2,
+      "campaign_key": "otc",
+      "artifact_rows": 11783,
+      "primary_artifact": "data/reports/otc_scope_review.json",
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure"
     },
     "policy": "Workload rows are review workload only. They do not authorize data changes or closure without processing the listing-keyed artifacts.",
-    "workload_context": "batches=10;rows=32620;blocked_batches=1;top_campaign=masterfile_collisions;top_rows=11176;top_gate=review_artifact_rows_must_be_processed_before_campaign_closure"
+    "workload_context": "batches=10;rows=35766;blocked_batches=1;top_campaign=otc;top_rows=11783;top_gate=review_artifact_rows_must_be_processed_before_campaign_closure"
   },
   "next_review_execution_plan": [
     {
@@ -11362,7 +11483,7 @@
       "execution_order": 2,
       "priority": 2,
       "campaign_key": "otc",
-      "artifact_rows": 11111,
+      "artifact_rows": 11783,
       "primary_artifact": "data/reports/otc_scope_review.json",
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "evidence_command": "python scripts/build_otc_scope_review.py && python scripts/build_otc_name_mismatch_review.py && python scripts/build_improvement_delta_report.py",
@@ -11388,8 +11509,8 @@
       "review_required_preflight_checks": [],
       "review_required_preflight_context": "campaign_key=otc;preflight_check_count=0;manual_review_required_before_run=false;data_change_authorized=false",
       "ranking_reason": "objective_priority_order_with_local_review_artifact_processing",
-      "ranking_context": "execution_order=2;priority=2;campaign_key=otc;artifact_rows=11111;network_required=false;ranking_reason=objective_priority_order_with_local_review_artifact_processing",
-      "execution_context": "priority=2;campaign_key=otc;artifact_rows=11111;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false"
+      "ranking_context": "execution_order=2;priority=2;campaign_key=otc;artifact_rows=11783;network_required=false;ranking_reason=objective_priority_order_with_local_review_artifact_processing",
+      "execution_context": "priority=2;campaign_key=otc;artifact_rows=11783;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false"
     },
     {
       "execution_order": 3,
@@ -11588,7 +11709,7 @@
       "execution_order": 9,
       "priority": 9,
       "campaign_key": "freshness",
-      "artifact_rows": 8030,
+      "artifact_rows": 10504,
       "primary_artifact": "data/reports/source_gap_classification.json",
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "evidence_command": "python scripts/fetch_exchange_masterfiles.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
@@ -11614,8 +11735,8 @@
       "review_required_preflight_checks": [],
       "review_required_preflight_context": "campaign_key=freshness;preflight_check_count=0;manual_review_required_before_run=false;data_change_authorized=false",
       "ranking_reason": "objective_priority_order_with_external_source_refresh_required",
-      "ranking_context": "execution_order=9;priority=9;campaign_key=freshness;artifact_rows=8030;network_required=true;ranking_reason=objective_priority_order_with_external_source_refresh_required",
-      "execution_context": "priority=9;campaign_key=freshness;artifact_rows=8030;command_mode=network_evidence_refresh;network_required=true;data_change_authorized=false"
+      "ranking_context": "execution_order=9;priority=9;campaign_key=freshness;artifact_rows=10504;network_required=true;ranking_reason=objective_priority_order_with_external_source_refresh_required",
+      "execution_context": "priority=9;campaign_key=freshness;artifact_rows=10504;command_mode=network_evidence_refresh;network_required=true;data_change_authorized=false"
     },
     {
       "execution_order": 10,
@@ -11653,11 +11774,11 @@
     "total_actions": 10,
     "local_report_rebuild_actions": 7,
     "network_evidence_refresh_actions": 3,
-    "network_required_rows": 8612,
-    "local_report_rebuild_rows": 24008,
+    "network_required_rows": 11086,
+    "local_report_rebuild_rows": 24680,
     "rows_by_command_mode": {
-      "local_report_rebuild": 24008,
-      "network_evidence_refresh": 8612
+      "local_report_rebuild": 24680,
+      "network_evidence_refresh": 11086
     },
     "network_campaign_keys": [
       "symbol_changes",
@@ -11675,7 +11796,7 @@
     ],
     "data_change_authorized_actions": 0,
     "policy": "Execution summary is planning evidence only. Network refreshes collect source evidence, and no row authorizes data changes.",
-    "execution_summary_context": "actions=10;local_actions=7;network_actions=3;network_rows=8612;data_change_authorized_actions=0"
+    "execution_summary_context": "actions=10;local_actions=7;network_actions=3;network_rows=11086;data_change_authorized_actions=0"
   },
   "next_review_command_safety_summary": {
     "total_actions": 10,

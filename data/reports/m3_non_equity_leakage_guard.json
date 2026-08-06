@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T14:09:09Z",
-    "rows": 25,
+    "generated_at": "2026-08-06T14:21:18Z",
+    "rows": 26,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,15 +13,15 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 25,
-    "candidate_rows": 25,
+    "rows": 26,
+    "candidate_rows": 26,
     "applied_rows": 0,
     "blocked_rows": 6,
-    "manual_review_rows": 19,
+    "manual_review_rows": 20,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
       "blocked_non_common_stock": 6,
-      "manual_review_ambiguous_stock_classification": 19
+      "manual_review_ambiguous_stock_classification": 20
     }
   },
   "rows": [
@@ -247,6 +247,25 @@
       "confidence": "review",
       "evidence_source": "name",
       "evidence_value": "MidCap Financial Investment Corporation - Closed End Fund",
+      "review_strategy": "classify_with_official_product_or_security_type_evidence",
+      "verification_evidence_required": "official_product_type_or_security_type_for_exact_listing",
+      "recommended_next_source": "Official exchange product segment, issuer security page, CFI code, or OpenFIGI securityType.",
+      "source_gate": "Queue for manual classification; name shape alone does not authorize a Stock or ETF change.",
+      "recommended_action": "queue_for_classification_review"
+    },
+    {
+      "campaign": "C5_non_equity_leakage_guard",
+      "listing_key": "NASDAQ::NSLR",
+      "ticker": "NSLR",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Neostellar Capital Corp.",
+      "isin": "US86887Q1094",
+      "guard_decision": "manual_review_ambiguous_stock_classification",
+      "leakage_class": "possible_closed_end_fund_or_trust",
+      "confidence": "review",
+      "evidence_source": "name",
+      "evidence_value": "Neostellar Capital Corp. - Closed End Fund",
       "review_strategy": "classify_with_official_product_or_security_type_evidence",
       "verification_evidence_required": "official_product_type_or_security_type_for_exact_listing",
       "recommended_next_source": "Official exchange product segment, issuer security page, CFI code, or OpenFIGI securityType.",

@@ -9,28 +9,28 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 58,289 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,302 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 75,231 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,522 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,780 | Primary ticker rows where `asset_type=ETF`. |
-| Exchanges | 81 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
+| Core listings | 61,636 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 63,744 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 91,927 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 47,767 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,977 | Primary ticker rows where `asset_type=ETF`. |
+| Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 125,289 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 61,764 (97.6%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 65,434 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 63,004 (99.5%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 47,365 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,639 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 58,289 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 57,145 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 1,144 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,942 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Aliases | 125,202 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 62,308 (97.7%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 65,431 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 61,480 (96.4%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 45,879 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,601 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 61,636 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 60,531 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 1,105 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 30,291 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 48 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
-| Missing current-scope exchanges | 0 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 7,211 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
-| Entry quality warn rows | 47 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
+| Missing current-scope exchanges | 6 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
+| Entry quality source-gap rows | 20,942 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality warn rows | 205 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
 
@@ -180,23 +180,23 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 7,514 |
-| NASDAQ | 4,587 |
-| LSE | 3,817 |
+| OTC | 6,895 |
+| NASDAQ | 4,577 |
+| LSE | 3,560 |
 | TSE | 3,201 |
-| SZSE | 3,083 |
-| HKEX | 2,841 |
-| SSE | 2,787 |
-| BSE_IN | 2,686 |
-| NYSE ARCA | 2,617 |
+| SZSE | 3,111 |
+| HKEX | 2,840 |
+| SSE | 2,793 |
+| BSE_IN | 2,684 |
+| NYSE ARCA | 2,625 |
 | NSE_IN | 2,379 |
-| XETRA | 2,285 |
-| NYSE | 1,944 |
-| KRX | 1,812 |
-| TSX | 1,585 |
-| KOSDAQ | 1,605 |
+| XETRA | 2,236 |
+| NYSE | 1,871 |
+| KRX | 1,990 |
+| TSX | 1,688 |
+| KOSDAQ | 1,603 |
 | B3 | 1,578 |
-| ASX | 1,301 |
+| ASX | 1,393 |
 
 For full exchange, country, source, and verification coverage, use:
 
@@ -311,7 +311,7 @@ python3 scripts/rebuild_dataset.py
 
 The current universe contains 81 exchanges. Every exchange has official evidence, but the evidence scope is explicit: 48 exchanges are `official_full` and 33 are `official_partial`; a partial listing-company page or security lookup is never presented as a complete exchange directory. Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
 
-Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source coverage status: `0` missing current-scope exchanges, `0` parser todo rows, `0` real global-expansion candidates, `48` official-full exchanges, and `33` official-partial exchanges. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
+Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source coverage status: `6` missing current-scope exchanges, `0` parser todo rows, `0` real global-expansion candidates, `48` official-full exchanges, and `33` official-partial exchanges. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
 
 [`data/reports/exchange_source_audit.md`](data/reports/exchange_source_audit.md) is the one-row-per-exchange operational audit for product-class gaps, source freshness and availability, official denominators, recall, blocker class, and promotion readiness. [`data/masterfiles/exchange_scope_decisions.csv`](data/masterfiles/exchange_scope_decisions.csv) gives every partial exchange a distribution-safe public scope. Its `reason_code` records the blocker observed at review time; validation remains fail-closed by requiring the current audit to contain a known promotion blocker, without invalidating a safe retained scope merely because another blocker becomes higher priority. A current audit with no blocker requires explicit scope review. Commercial products are only evaluation candidates: [`data/masterfiles/commercial_source_options.csv`](data/masterfiles/commercial_source_options.csv) does not grant redistribution rights, and its validator requires explicit contract review or prior written permission.
 
