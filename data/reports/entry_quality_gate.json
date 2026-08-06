@@ -1,17 +1,151 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-08-05T09:23:48Z",
+    "generated_at": "2026-08-06T09:04:57Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
   "allowed_warn_count": 20,
-  "passed": true,
+  "passed": false,
   "quarantine_count": 0,
   "quarantined": [],
-  "stale_allowlist": [],
-  "stale_allowlist_count": 0,
-  "unexpected_warn_count": 0,
-  "unexpected_warns": [],
-  "warn_count": 20
+  "stale_allowlist": [
+    "NGX::TOTAL"
+  ],
+  "stale_allowlist_count": 1,
+  "unexpected_warn_count": 25,
+  "unexpected_warning_subjects": [
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::AGNT"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::BIRD"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::GREE"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::PN"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::RTB"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::RUM"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::VYNE"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NYSE::AIB"
+    },
+    {
+      "issue_type": "expected_missing_primary_isin",
+      "listing_key": "NYSE::BLX"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NYSE::BLX"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NYSE::GORO"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NYSE::SRXH"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NYSE::TGB"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::ACQC"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::ADLRF"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::AGNPF"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::CLUS"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::EQLCF"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::FLXI"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::GPUSF"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::MNZO"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::PHDWY"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::REXC"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::TLGYF"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::XESP"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::ZCRMF"
+    }
+  ],
+  "unexpected_warns": [
+    "NASDAQ::AGNT",
+    "NASDAQ::BIRD",
+    "NASDAQ::GREE",
+    "NASDAQ::PN",
+    "NASDAQ::RTB",
+    "NASDAQ::RUM",
+    "NASDAQ::VYNE",
+    "NYSE::AIB",
+    "NYSE::BLX",
+    "NYSE::GORO",
+    "NYSE::SRXH",
+    "NYSE::TGB",
+    "OTC::ACQC",
+    "OTC::ADLRF",
+    "OTC::AGNPF",
+    "OTC::CLUS",
+    "OTC::EQLCF",
+    "OTC::FLXI",
+    "OTC::GPUSF",
+    "OTC::MNZO",
+    "OTC::PHDWY",
+    "OTC::REXC",
+    "OTC::TLGYF",
+    "OTC::XESP",
+    "OTC::ZCRMF"
+  ],
+  "warn_count": 44
 }

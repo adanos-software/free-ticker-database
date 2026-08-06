@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-08-05T09:22:56Z`
+Generated at: `2026-08-06T09:04:20Z`
 
 ## Summary
 
@@ -41,7 +41,7 @@ _No rows._
 | 18 | HEL | official_partial | 196 | 0 | 0 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 19 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 3 existing rows | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 20 | BVL | official_partial | 33 | 0 | 0 | bvl_issuers_directory | CAVALI | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
-| 21 | PSE_CZ | official_partial | 27 | 0 | 1 | pse_cz_shares_directory | Prague Stock Exchange | cache | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |
+| 21 | PSE_CZ | official_partial | 27 | 0 | 1 | pse_cz_shares_directory | Prague Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |
 | 22 | SIX | official_partial | 759 | 0 | 1 | six_shares_explorer_full | SIX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 23 | WSE | official_partial | 542 | 0 | 1 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 24 | CPH | official_partial | 147 | 0 | 1 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
@@ -80,7 +80,7 @@ _No rows._
 | 18 | HEL | official_partial | 196 | 0 | 0 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 19 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 3 existing rows | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 20 | BVL | official_partial | 33 | 0 | 0 | bvl_issuers_directory | CAVALI | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
-| 21 | PSE_CZ | official_partial | 27 | 0 | 1 | pse_cz_shares_directory | Prague Stock Exchange | cache | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |
+| 21 | PSE_CZ | official_partial | 27 | 0 | 1 | pse_cz_shares_directory | Prague Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |
 | 22 | SIX | official_partial | 759 | 0 | 1 | six_shares_explorer_full | SIX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 23 | WSE | official_partial | 542 | 0 | 1 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 24 | CPH | official_partial | 147 | 0 | 1 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
