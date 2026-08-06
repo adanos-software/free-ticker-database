@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.33.0] - 2026-08-06
+
+### Summary
+
+**Official-masterfile rotation and provider-validated global stock/ETF expansion.** Adds the Twelve Data candidates that pass the EODHD identity gate, while preserving official-source precedence and explicit review gates for unresolved identities.
+
+### Changed
+
+- Rotated official masterfile references and regenerated canonical listings, identifiers, aliases, coverage, and review artifacts.
+- Added provider-validated Twelve Data stocks and ETFs with ISIN, FIGI where available, and listing-keyed metadata updates.
+- Hardened EODHD venue validation for OTC/PINK candidates and rejected the PINX-to-NASDAQ false match for `LIPO` from the provider import.
+
+### Safety
+
+- Potential symbol-reuse and OTC identity conflicts remain explicit `hold_unresolved` review items; no name, ISIN, or alias change was inferred.
+- Extended OTC source gaps remain blank and review-gated; core-listing identifier requirements are unchanged.
+
+### Verification
+
+- `python -m pytest tests/ -q`: 1,717 passed. `scripts/validate_database.py`: 84/84 error gates passed.
+- `scripts/check_entry_quality_gate.py --fail-on-stale-allowlist`: 205 reviewed warnings allowed, 0 unexpected, 0 stale. `scripts/build_release_acceptance_report.py`: 67/67 criteria passed.
+
 ## [3.32.10] - 2026-08-03
 
 ### Summary
