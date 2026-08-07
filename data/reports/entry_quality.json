@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T14:17:33Z",
-    "rows": 91927,
+    "generated_at": "2026-08-07T07:55:27Z",
+    "rows": 91932,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,30 +14,30 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 70780,
-      "source_gap": 20942,
-      "warn": 205
+      "pass": 70779,
+      "source_gap": 20951,
+      "warn": 202
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4751,
-      "official_reference": 74027,
-      "scoped_source_gap": 253,
+      "identifier_enriched": 4752,
+      "official_reference": 74035,
+      "scoped_source_gap": 249,
       "valid_isin": 12896
     },
     "severity_counts": {
       "high": 151,
-      "medium": 56,
-      "source_gap": 22556
+      "medium": 53,
+      "source_gap": 22563
     },
     "issue_counts": {
       "venue_missing_official_source": 11430,
-      "official_reference_gap": 6470,
-      "missing_stock_sector": 2648,
-      "expected_missing_primary_isin": 1105,
-      "missing_etf_category": 903,
+      "official_reference_gap": 6467,
+      "missing_stock_sector": 2651,
+      "expected_missing_primary_isin": 1110,
+      "missing_etf_category": 905,
       "country_isin_mismatch": 95,
       "official_isin_mismatch": 56,
-      "official_name_mismatch": 56
+      "official_name_mismatch": 53
     },
     "top_flagged_exchanges": [
       {
@@ -82,7 +82,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4371,
-        "source_gap": 363,
+        "source_gap": 367,
         "warn": 8
       },
       {
@@ -102,8 +102,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2483,
-        "source_gap": 225,
+        "pass": 2482,
+        "source_gap": 226,
         "warn": 1
       },
       {
@@ -134,8 +134,7 @@
       {
         "exchange": "BATS",
         "pass": 1134,
-        "source_gap": 192,
-        "warn": 3
+        "source_gap": 195
       },
       {
         "exchange": "AMS",

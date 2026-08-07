@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-06T08:50:31Z",
-  "rows": 150264,
+  "generated_at": "2026-08-07T07:53:40Z",
+  "rows": 150277,
   "exchanges": [
     "ADX",
     "AMS",
@@ -96,7 +96,7 @@
     "b3_listed_etfs": 213,
     "b3_bdr_etfs": 314,
     "b3_instruments_equities": 1327,
-    "nasdaq_other_listed": 7525,
+    "nasdaq_other_listed": 7529,
     "nasdaq_trading_system_adds_deletes": 13,
     "byma_equity_details": 63,
     "bahrain_bourse_listed_companies": 41,
@@ -147,7 +147,7 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5570,
+    "nasdaq_listed": 5579,
     "sec_company_tickers_exchange": 10167,
     "cboe_canada_listing_directory": 440,
     "ngx_company_profile_directory": 130,
@@ -220,16 +220,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5570,
-      "generated_at": "2026-08-05T09:21:20Z"
+      "rows": 5579,
+      "generated_at": "2026-08-07T07:53:40Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7525,
-      "generated_at": "2026-08-05T09:21:20Z"
+      "rows": 7529,
+      "generated_at": "2026-08-07T07:53:40Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1529,50 +1529,14 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-06T08:50:31Z",
+    "generated_at": "2026-08-07T07:53:40Z",
     "selected_source_keys": [
-      "nasdaq_trading_system_adds_deletes",
-      "newconnect_listed_companies",
-      "ngm_companies_page",
-      "ngm_market_data_equities",
-      "ngx_company_profile_directory",
-      "ngx_equities_price_list",
-      "nse_india_securities_available",
-      "nse_ke_listed_companies",
-      "nzx_instruments",
-      "otc_markets_security_profile",
-      "otc_markets_stock_screener",
-      "pse_cz_shares_directory",
-      "pse_listed_company_directory",
-      "psx_dps_symbols",
-      "psx_listed_companies",
-      "psx_symbol_name_daily",
-      "qse_market_watch",
-      "rse_listed_companies",
-      "sec_company_tickers_exchange",
-      "sem_isin"
+      "nasdaq_listed",
+      "nasdaq_other_listed"
     ],
     "source_modes": {
-      "nasdaq_trading_system_adds_deletes": "network",
-      "newconnect_listed_companies": "network",
-      "ngm_companies_page": "network",
-      "ngm_market_data_equities": "unavailable",
-      "ngx_company_profile_directory": "network",
-      "ngx_equities_price_list": "network",
-      "nse_india_securities_available": "network",
-      "nse_ke_listed_companies": "network",
-      "nzx_instruments": "network",
-      "otc_markets_security_profile": "network",
-      "otc_markets_stock_screener": "unavailable",
-      "pse_cz_shares_directory": "network",
-      "pse_listed_company_directory": "network",
-      "psx_dps_symbols": "network",
-      "psx_listed_companies": "network",
-      "psx_symbol_name_daily": "network",
-      "qse_market_watch": "network",
-      "rse_listed_companies": "network",
-      "sec_company_tickers_exchange": "network",
-      "sem_isin": "network"
+      "nasdaq_listed": "network",
+      "nasdaq_other_listed": "network"
     }
   }
 }

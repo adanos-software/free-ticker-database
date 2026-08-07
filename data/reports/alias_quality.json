@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-06T09:04:28Z",
-    "rows": 125280,
+    "generated_at": "2026-08-07T07:55:47Z",
+    "rows": 125205,
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "aliases_csv": "data/aliases.csv"
@@ -9,19 +9,19 @@
   },
   "summary": {
     "status_counts": {
-      "reject": 66074,
-      "accept": 58738,
-      "review": 468
+      "reject": 66466,
+      "accept": 58273,
+      "review": 466
     },
     "detection_policy_counts": {
-      "identifier_only": 66074,
-      "safe_natural_language": 58738,
-      "symbol_alias_only": 468
+      "identifier_only": 66466,
+      "safe_natural_language": 58273,
+      "symbol_alias_only": 466
     },
     "reason_counts": {
-      "identifier_alias": 66074,
-      "accepted_name_alias": 58738,
-      "same_as_ticker": 466,
+      "identifier_alias": 66466,
+      "accepted_name_alias": 58273,
+      "same_as_ticker": 464,
       "exchange_ticker_alias": 2
     },
     "alias_type_status_counts": {
@@ -29,14 +29,14 @@
         "review": 2
       },
       "isin": {
-        "reject": 61764
+        "reject": 62308
       },
       "name": {
-        "accept": 58738,
-        "review": 466
+        "accept": 58273,
+        "review": 464
       },
       "wkn": {
-        "reject": 4310
+        "reject": 4158
       }
     }
   },
@@ -203,6 +203,16 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "000020",
+        "alias": "KR7000020008",
+        "alias_type": "isin",
+        "status": "reject",
+        "detection_policy": "identifier_only",
+        "confidence": "0.99",
+        "reason": "identifier_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "000021",
         "alias": "CNE000000FK4",
         "alias_type": "isin",
@@ -275,16 +285,6 @@
       {
         "ticker": "000030",
         "alias": "CNE0000009Z0",
-        "alias_type": "isin",
-        "status": "reject",
-        "detection_policy": "identifier_only",
-        "confidence": "0.99",
-        "reason": "identifier_alias",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000031",
-        "alias": "CNE000000BJ5",
         "alias_type": "isin",
         "status": "reject",
         "detection_policy": "identifier_only",
@@ -667,6 +667,16 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "000020",
+        "alias": "dongwha pharm",
+        "alias_type": "name",
+        "status": "accept",
+        "detection_policy": "safe_natural_language",
+        "confidence": "0.90",
+        "reason": "accepted_name_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "000021",
         "alias": "shenzhen kaifa technology",
         "alias_type": "name",
@@ -709,16 +719,6 @@
       {
         "ticker": "00003",
         "alias": "hk & china gas",
-        "alias_type": "name",
-        "status": "accept",
-        "detection_policy": "safe_natural_language",
-        "confidence": "0.90",
-        "reason": "accepted_name_alias",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000030",
-        "alias": "fawer automotive parts",
         "alias_type": "name",
         "status": "accept",
         "detection_policy": "safe_natural_language",
