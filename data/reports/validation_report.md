@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-08-08T07:34:22Z`
+Generated at: `2026-08-08T20:19:21Z`
 
 Status: `PASS`
 
@@ -93,8 +93,8 @@ Status: `PASS`
 | expected_missing_primary_isin | info | PASS | 1113 |  |
 | missing_stock_sector | info | PASS | 2654 |  |
 | missing_etf_category | info | PASS | 905 |  |
-| source_gap_rows | info | PASS | 20954 |  |
-| allowed_warn_rows | info | PASS | 205 |  |
+| source_gap_rows | info | PASS | 20951 |  |
+| allowed_warn_rows | info | PASS | 198 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |
