@@ -25,7 +25,7 @@
       "etf_missing_count": 44,
       "exchange": "NASDAQ",
       "field": "missing_isin_primary",
-      "missing_count": 149,
+      "missing_count": 152,
       "notes": "Residual US gaps are mostly ETF tails; keep in small batches.",
       "official_source_count": 3,
       "priority_bucket": "top_impact",
@@ -34,7 +34,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-      "stock_missing_count": 105,
+      "stock_missing_count": 108,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -519,7 +519,7 @@
       "etf_missing_count": 0,
       "exchange": "NASDAQ",
       "field": "missing_sector_stock",
-      "missing_count": 55,
+      "missing_count": 58,
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -528,7 +528,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 55,
+      "stock_missing_count": 58,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -1415,10 +1415,10 @@
     },
     "field_totals": {
       "missing_etf_category": 378,
-      "missing_isin_primary": 1110,
-      "missing_sector_stock": 1891
+      "missing_isin_primary": 1113,
+      "missing_sector_stock": 1894
     },
-    "generated_at": "2026-08-07T07:55:39Z",
+    "generated_at": "2026-08-08T07:33:42Z",
     "legacy_primary_ticker_collision_rows": 4787,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1522,7 +1522,7 @@
         "etf_missing_count": 44,
         "exchange": "NASDAQ",
         "field": "missing_isin_primary",
-        "missing_count": 149,
+        "missing_count": 152,
         "official_source_count": 3,
         "recommended_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "residual_gate": "source_gap_classification_blocks_direct_apply",
@@ -1530,8 +1530,8 @@
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
         "source_gap_class": "official_identifier_not_exposed_source_gap",
-        "source_gap_rows": 100,
-        "stock_missing_count": 105,
+        "source_gap_rows": 103,
+        "stock_missing_count": 108,
         "target_field": "isin",
         "venue_status": "official_full",
         "why_next": "source-gap classification review-gated workflow"
@@ -1713,7 +1713,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 9667,
+    "official_masterfile_collisions": 9668,
     "rows": 74
   }
 }

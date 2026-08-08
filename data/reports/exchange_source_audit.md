@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-07T07:55:34Z`
+Generated at: `2026-08-08T07:33:38Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 6, "official_full": 48, "official_partial": 33}`
@@ -52,7 +52,7 @@ Generated at: `2026-08-07T07:55:34Z`
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | denominator_missing | blocked_nonfresh_source |
 | MSX | official_full | muscat_securities_companies |  | 108 | 84.26 | muscat_securities_companies | refresh_required | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5597 | 81.69 |  | maintain | not_applicable |
+| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5602 | 81.67 |  | maintain | not_applicable |
 | NEO | official_full | cboe_canada_listing_directory |  | 440 | 48.41 | cboe_canada_listing_directory | refresh_required | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 |  | maintain | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
