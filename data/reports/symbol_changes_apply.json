@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-08-04T09:48:14Z",
+    "generated_at": "2026-08-08T07:12:54Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "blocked_rows": 319,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 37,
-      "blocked_old_symbol_not_unique_in_us_scope": 242,
-      "manual_isin_not_proven_unchanged": 2,
-      "manual_non_us_or_unscoped_source": 37,
+      "blocked_new_symbol_collision": 50,
+      "blocked_old_symbol_not_unique_in_us_scope": 229,
+      "manual_isin_not_proven_unchanged": 1,
+      "manual_non_us_or_unscoped_source": 38,
       "manual_transition_or_shell_name": 1
     }
   },
@@ -126,7 +126,7 @@
       "old_symbol": "ODV",
       "new_symbol": "OGG",
       "new_company_name": "Osisko Gold Group Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "0a0ee783f171fb74",
@@ -198,7 +198,7 @@
       "old_symbol": "RAAQ",
       "new_symbol": "IQMX",
       "new_company_name": "Iqm Quantum Computers Oyj",
-      "status": "manual_isin_not_proven_unchanged"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "13617a41b3a6d64f",
@@ -230,7 +230,7 @@
       "old_symbol": "SSSS",
       "new_symbol": "NSLR",
       "new_company_name": "Neostellar Capital Corp",
-      "status": "manual_isin_not_proven_unchanged"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "e152bc9194b8f044",
@@ -342,7 +342,7 @@
       "old_symbol": "USEG",
       "new_symbol": "BSIN",
       "new_company_name": "Big Sky Industrial Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "43042af553e39588",
@@ -414,7 +414,7 @@
       "old_symbol": "HOTH",
       "new_symbol": "RKTO",
       "new_company_name": "Rocket One Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "cbd666455ed4b04b",
@@ -422,7 +422,7 @@
       "old_symbol": "AGAE",
       "new_symbol": "AIFA",
       "new_company_name": "All In Futuretech Alliance Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "064ee9235e10f3e2",
@@ -454,7 +454,7 @@
       "old_symbol": "KFS",
       "new_symbol": "KWY",
       "new_company_name": "Kingsway Corp",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "d7f8f1f244c695a1",
@@ -462,7 +462,7 @@
       "old_symbol": "IINN",
       "new_symbol": "QTEX",
       "new_company_name": "Qtrex Quantum Ltd.",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "89f442b06e16deff",
@@ -478,7 +478,7 @@
       "old_symbol": "XWIN",
       "new_symbol": "XMAX",
       "new_company_name": "Xmax Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "feefb37a40fb3b3a",
@@ -486,7 +486,7 @@
       "old_symbol": "LGCB",
       "new_symbol": "UZX",
       "new_company_name": "Linkage Global Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "f8b51e267f3a9e12",
@@ -510,7 +510,7 @@
       "old_symbol": "RVYL",
       "new_symbol": "RTB",
       "new_company_name": "Rtb Digital Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "528a32c6dc85f177",
@@ -518,7 +518,7 @@
       "old_symbol": "FIHL",
       "new_symbol": "PLGO",
       "new_company_name": "Pelagos Insurance Capital Ltd.",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "a3fa4ed6d2046cf8",
@@ -574,7 +574,7 @@
       "old_symbol": "VBIX",
       "new_symbol": "QXL",
       "new_company_name": "Quantum X Labs Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "8dc027c774b5bd4d",
@@ -590,7 +590,7 @@
       "old_symbol": "ETHM",
       "new_symbol": "DYNC",
       "new_company_name": "Dynamix Corp",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_isin_not_proven_unchanged"
     },
     {
       "change_id": "525f87a03045648c",
@@ -662,7 +662,7 @@
       "old_symbol": "ZGM",
       "new_symbol": "ZTG",
       "new_company_name": "Zenta Group Co Ltd.",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "f8b6b8562d0cdcbe",
@@ -1478,7 +1478,7 @@
       "old_symbol": "EBR",
       "new_symbol": "AXIA",
       "new_company_name": "Axia Energia SA",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "0ed70881dec34b50",
@@ -2022,7 +2022,7 @@
       "old_symbol": "PARA",
       "new_symbol": "PSKY",
       "new_company_name": "Paramount Skydance Corp",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "3224bc89291973d9",
