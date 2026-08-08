@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-08-08T07:11:59Z`
+Generated at: `2026-08-08T20:16:46Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `1110`
-- Missing stock sectors: `1891`
+- Missing primary ISIN rows: `1113`
+- Missing stock sectors: `1894`
 - Missing ETF categories: `378`
-- Official symbol collisions tracked in exchange references: `9667`
+- Official symbol collisions tracked in exchange references: `9668`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4787`
 
 ## Next Safe Batches
@@ -17,7 +17,7 @@ Generated at: `2026-08-08T07:11:59Z`
 | 1 | ASX | missing_isin_primary | 169 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
 | 2 | FSX | missing_sector_stock | 883 | candidate_for_official_followup | Official exchange industry feed or reviewed secondary company profile. | yes |
 | 3 | OTC | missing_sector_stock | 556 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
-| 4 | NASDAQ | missing_isin_primary | 149 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
+| 4 | NASDAQ | missing_isin_primary | 152 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
 | 5 | SET | missing_isin_primary | 140 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
 | 6 | BATS | missing_isin_primary | 105 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
 | 7 | TSXV | missing_isin_primary | 97 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
@@ -34,7 +34,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
 | 1 | ASX | All | 169 | official_partial | Official ASX ISIN workbook. | no |
-| 2 | NASDAQ | All | 149 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 2 | NASDAQ | All | 152 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 3 | SET | All | 140 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
 | 4 | BATS | All | 105 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 5 | TSXV | All | 97 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
@@ -53,7 +53,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 1 | FSX | Stock | 883 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 2 | OTC | Stock | 556 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 3 | TSX | Stock | 96 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 4 | NASDAQ | Stock | 55 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 4 | NASDAQ | Stock | 58 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 5 | BSE_IN | Stock | 49 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 6 | XSTU | Stock | 45 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 7 | LSE | Stock | 38 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
@@ -86,8 +86,8 @@ These are orchestration candidates only. They do not authorize direct data chang
 |---|---|---:|---:|---:|---|
 | 1 | FSX | 890 | 883 | 7 | missing |
 | 2 | OTC | 556 | 556 | 0 | official_full |
-| 3 | TSX | 119 | 96 | 23 | official_full |
-| 4 | NASDAQ | 117 | 55 | 62 | official_full |
+| 3 | NASDAQ | 120 | 58 | 62 | official_full |
+| 4 | TSX | 119 | 96 | 23 | official_full |
 | 5 | LSE | 88 | 38 | 50 | official_full |
 | 6 | BATS | 84 | 0 | 84 | official_full |
 | 7 | BSE_IN | 49 | 49 | 0 | official_full |

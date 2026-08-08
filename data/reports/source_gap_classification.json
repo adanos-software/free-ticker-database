@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-08T07:11:58Z",
-    "rows": 9818,
+    "generated_at": "2026-08-08T20:16:46Z",
+    "rows": 9824,
     "field_totals": {
       "missing_etf_category": 378,
-      "missing_isin_primary": 1110,
-      "missing_sector_stock": 1891,
+      "missing_isin_primary": 1113,
+      "missing_sector_stock": 1894,
       "official_reference_gap": 6439
     },
     "class_totals": {
@@ -23,10 +23,10 @@
       "generic_etf_category_source_gap": 3,
       "inactive_or_legacy_identifier_gap": 91,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 490,
+      "official_identifier_not_exposed_source_gap": 493,
       "official_identifier_reference_unmatched_gap": 7,
       "official_identifier_source_gap": 3,
-      "official_industry_taxonomy_unavailable_gap": 361,
+      "official_industry_taxonomy_unavailable_gap": 364,
       "official_product_reference_unmatched_category_gap": 16,
       "official_product_taxonomy_unavailable_gap": 224,
       "official_reference_symbol_collision_gap": 1210,
@@ -48,13 +48,13 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 365,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 91,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 490,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 493,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 7,
       "missing_isin_primary:official_identifier_source_gap": 3,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 15,
       "missing_sector_stock:exchange_industry_source_gap": 919,
       "missing_sector_stock:fundlike_stock_sector_gap": 11,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 361,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 364,
       "missing_sector_stock:otc_sector_source_gap": 556,
       "missing_sector_stock:shell_or_cpc_sector_gap": 29,
       "official_reference_gap:official_reference_symbol_collision_gap": 1210,
@@ -110,7 +110,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 149
+          "rows": 152
         },
         {
           "exchange": "SET",
@@ -160,7 +160,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 55
+          "rows": 58
         },
         {
           "exchange": "BSE_IN",
@@ -336,20 +336,20 @@
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
       {
+        "field": "missing_isin_primary",
+        "gap_class": "official_identifier_not_exposed_source_gap",
+        "exchange": "NASDAQ",
+        "rows": 103,
+        "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+        "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      },
+      {
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "XETRA",
         "rows": 102,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-      },
-      {
-        "field": "missing_isin_primary",
-        "gap_class": "official_identifier_not_exposed_source_gap",
-        "exchange": "NASDAQ",
-        "rows": 100,
-        "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-        "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
       {
         "field": "missing_sector_stock",
@@ -14188,6 +14188,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::BLSM",
+      "ticker": "BLSM",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "BlossomHill Therapeutics, Inc. - Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::BLSM;exchange=NASDAQ;ticker=BLSM;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::BREZ",
       "ticker": "BREZ",
       "exchange": "NASDAQ",
@@ -14834,6 +14851,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::LTGO",
+      "ticker": "LTGO",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Latigo Biotherapeutics, Inc. - Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::LTGO;exchange=NASDAQ;ticker=LTGO;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::LTGR",
       "ticker": "LTGR",
       "exchange": "NASDAQ",
@@ -15253,6 +15287,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::QNME;exchange=NASDAQ;ticker=QNME;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::QVC",
+      "ticker": "QVC",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "QVC Group, Inc. - Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::QVC;exchange=NASDAQ;ticker=QVC;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -43071,6 +43122,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "NASDAQ::BLSM",
+      "ticker": "BLSM",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "BlossomHill Therapeutics, Inc. - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::BLSM;exchange=NASDAQ;ticker=BLSM;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "NASDAQ::BRKH",
       "ticker": "BRKH",
       "exchange": "NASDAQ",
@@ -43530,6 +43598,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "NASDAQ::LTGO",
+      "ticker": "LTGO",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Latigo Biotherapeutics, Inc. - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::LTGO;exchange=NASDAQ;ticker=LTGO;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "NASDAQ::LTGR",
       "ticker": "LTGR",
       "exchange": "NASDAQ",
@@ -43694,6 +43779,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NASDAQ::QNME;exchange=NASDAQ;ticker=QNME;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::QVC",
+      "ticker": "QVC",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "QVC Group, Inc. - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::QVC;exchange=NASDAQ;ticker=QVC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },

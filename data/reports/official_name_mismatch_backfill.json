@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-08T07:10:08Z",
+    "generated_at": "2026-08-08T20:15:56Z",
     "policy": {
       "source_authority": "Name backfill candidates require active official masterfile references for the exact ticker and exchange.",
       "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
@@ -10,57 +10,10 @@
     "supported_exchanges": [
       "ASX"
     ],
-    "rows_reviewed": 4,
-    "updates_emitted": 4,
-    "accepted_by_exchange": {
-      "ASX": 4
-    },
+    "rows_reviewed": 0,
+    "updates_emitted": 0,
+    "accepted_by_exchange": {},
     "skipped_by_exchange": {}
   },
-  "items": [
-    {
-      "listing_key": "ASX::AEM",
-      "ticker": "AEM",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "current_name": "Advanced Energy Minerals Ltd",
-      "proposed_name": "Advanced Engineered Materials LTD",
-      "decision": "accept",
-      "official_sources": "asx_listed_companies",
-      "supporting_sources": "asx_listed_companies"
-    },
-    {
-      "listing_key": "ASX::MGX",
-      "ticker": "MGX",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "current_name": "Mount Gibson Iron Ltd",
-      "proposed_name": "Mgx Resources Limited",
-      "decision": "accept",
-      "official_sources": "asx_listed_companies",
-      "supporting_sources": "asx_listed_companies"
-    },
-    {
-      "listing_key": "ASX::PFE",
-      "ticker": "PFE",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "current_name": "Pantera Lithium Ltd",
-      "proposed_name": "Pantera Minerals Limited",
-      "decision": "accept",
-      "official_sources": "asx_listed_companies",
-      "supporting_sources": "asx_listed_companies"
-    },
-    {
-      "listing_key": "ASX::PMT",
-      "ticker": "PMT",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "current_name": "Patriot Battery Metals Inc",
-      "proposed_name": "Pmet Resources Inc.",
-      "decision": "accept",
-      "official_sources": "asx_listed_companies",
-      "supporting_sources": "asx_listed_companies"
-    }
-  ]
+  "items": []
 }
