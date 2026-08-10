@@ -1,21 +1,29 @@
 {
   "summary": {
-    "generated_at": "2026-08-03T10:57:50Z",
+    "generated_at": "2026-08-10T09:01:40Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "applied_rows": 0,
     "drafted_rows": 0,
-    "blocked_rows": 26,
-    "manual_rows": 144,
+    "blocked_rows": 27,
+    "manual_rows": 169,
     "status_counts": {
-      "blocked_suspended_kept_by_policy": 26,
-      "manual_rename_vs_delisting_required": 144
+      "blocked_suspended_kept_by_policy": 27,
+      "manual_rename_vs_delisting_required": 169
     }
   },
   "applied": [],
   "drafted": [],
   "blocked": [
+    {
+      "exchange": "BSE_IN",
+      "ticker": "ABAN",
+      "name": "Aban Offshore Ltd",
+      "isin": "INE421A01028",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
     {
       "exchange": "BSE_IN",
       "ticker": "ALSTONE",
@@ -252,6 +260,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "AGAE",
+      "name": "Allied Gaming & Entertainment Inc.",
+      "isin": "US0191701095",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ALBT",
       "name": "Avalon GloboCare Corp.",
       "isin": "US05344R3021",
@@ -332,6 +348,22 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "BNZI",
+      "name": "Banzai International Inc",
+      "isin": "US06682J3086",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "BOCN",
+      "name": "Blue Ocean Acquisition Corp",
+      "isin": "KYG1330L1059",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "CAEP",
       "name": "Cantor Equity Partners III, Inc. Class A Ordinary Shares",
       "isin": "KYG1828A1085",
@@ -396,14 +428,6 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "CPTAF",
-      "name": "Captivision Inc",
-      "isin": "KYG189321063",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "CREG",
       "name": "Smart Powerr Corp",
       "isin": "US1689133098",
@@ -428,6 +452,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "EA",
+      "name": "Electronic Arts Inc",
+      "isin": "US2855121099",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ELSE",
       "name": "Electro-Sensors Inc",
       "isin": "US2852331022",
@@ -447,6 +479,14 @@
       "ticker": "ESPR",
       "name": "Esperion Therapeutics Inc",
       "isin": "US29664W1053",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ETHM",
+      "name": "Dynamix Corporation",
+      "isin": "KYG2949D1126",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -532,6 +572,30 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "HEPA",
+      "name": "Hepion Pharmaceuticals Inc",
+      "isin": "US4268971045",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "HOTH",
+      "name": "Hoth Therapeutics Inc",
+      "isin": "US44148G2049",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "IINN",
+      "name": "Inspira Technologies Oxy BHN Ltd",
+      "isin": "IL0011715781",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ISRL",
       "name": "Israel Acquisitions Corp Class A",
       "isin": "KYG496671010",
@@ -551,6 +615,14 @@
       "ticker": "KVAC",
       "name": "Keen Vision Acquisition Corporation Ordinary Shares",
       "isin": "VGG524431191",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LGCB",
+      "name": "Linkage Global Inc Ordinary Shares",
+      "isin": "KYG5500B1023",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -583,6 +655,14 @@
       "ticker": "LPRO",
       "name": "Open Lending Corp",
       "isin": "US68373J1043",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LSH",
+      "name": "Lakeside Holding Limited Common Stock",
+      "isin": "US51216F1093",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -740,6 +820,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "QVC",
+      "name": "QVC Group, Inc. - Common Stock",
+      "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "QVCAQ",
       "name": "QVC Group Inc",
       "isin": "US74915M6057",
@@ -767,6 +855,14 @@
       "ticker": "RVPH",
       "name": "Reviva Pharmaceuticals Holdings Inc.",
       "isin": "US76152G2093",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "RVYL",
+      "name": "Ryvyl Inc",
+      "isin": "US39366L3078",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -812,9 +908,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "SSSS",
-      "name": "SuRo Capital Corp",
-      "isin": "US86887Q1094",
+      "ticker": "STRS",
+      "name": "Stratus Properties Inc",
+      "isin": "US8631672016",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -847,6 +943,14 @@
       "ticker": "TIRX",
       "name": "Tian Ruixiang Holdings Ltd",
       "isin": "KYG8884K1444",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "TOI",
+      "name": "Oncology Institute Inc",
+      "isin": "US68236X1000",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -887,6 +991,22 @@
       "ticker": "VACH",
       "name": "Voyager Acquisition Corp",
       "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "VBIX",
+      "name": "Viewbix Inc. Common Stock",
+      "isin": "US9267111022",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "VSEE",
+      "name": "VSee Health, Inc.",
+      "isin": "US92919Y1029",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -988,6 +1108,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "ZGM",
+      "name": "Zenta Group Company Limited Ordinary Shares",
+      "isin": "KYG988921055",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ZSPC",
       "name": "zSpace, Inc. Common stock",
       "isin": "US98980W1071",
@@ -1011,10 +1139,26 @@
       "status": "manual_rename_vs_delisting_required"
     },
     {
+      "exchange": "NSE_IN",
+      "ticker": "SABEVENTS",
+      "name": "Sab Events & Governance Now Media Limited",
+      "isin": "INE860T01019",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
       "exchange": "NYSE",
       "ticker": "AVNS",
       "name": "Avanos Medical Inc",
       "isin": "US05350V1061",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "AXIA",
+      "name": "AXIA Energia",
+      "isin": "US15234Q2075",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1068,9 +1212,9 @@
     },
     {
       "exchange": "NYSE",
-      "ticker": "FDP",
-      "name": "Fresh Del Monte Produce Inc",
-      "isin": "KYG367381053",
+      "ticker": "FIHL",
+      "name": "Pelagos Insurance Capital Ltd",
+      "isin": "BMG3398L1182",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1087,6 +1231,14 @@
       "ticker": "JHG",
       "name": "Janus Henderson Group PLC",
       "isin": "JE00BYPZJM29",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "KFS",
+      "name": "Kingsway Financial Services Inc",
+      "isin": "US4969042021",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1127,14 +1279,6 @@
       "ticker": "NSA",
       "name": "National Storage Affiliates Trust",
       "isin": "US6378701063",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NYSE",
-      "ticker": "ODV",
-      "name": "Osisko Development Corp.",
-      "isin": "CA68828E8099",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1228,14 +1372,6 @@
     },
     {
       "exchange": "NYSE",
-      "ticker": "TWO",
-      "name": "Two Harbors Investments Corp",
-      "isin": "US90187B8046",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required"
-    },
-    {
-      "exchange": "NYSE",
       "ticker": "WSR",
       "name": "Whitestone REIT",
       "isin": "US9660842041",
@@ -1268,6 +1404,14 @@
     },
     {
       "exchange": "TSE",
+      "ticker": "191A",
+      "name": "MIMOSA CO.,LTD.",
+      "isin": "JP3907250009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
       "ticker": "2686",
       "name": "GFOOT CO.,LTD.",
       "isin": "JP3536900008",
@@ -1276,9 +1420,49 @@
     },
     {
       "exchange": "TSE",
+      "ticker": "2763",
+      "name": "FTGroup CO.,LTD.",
+      "isin": "JP3166940001",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "311A",
+      "name": "NPT CO.,LTD.",
+      "isin": "JP3165890009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
       "ticker": "3198",
       "name": "SFP Holdings Co.,Ltd.",
       "isin": "JP3162250009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "3271",
+      "name": "The Global Ltd.",
+      "isin": "JP3345720001",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "3681",
+      "name": "V-cube,Inc.",
+      "isin": "JP3829750003",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "4367",
+      "name": "KOEI CHEMICAL COMPANY,LIMITED",
+      "isin": "JP3286100007",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1316,6 +1500,14 @@
     },
     {
       "exchange": "TSE",
+      "ticker": "6096",
+      "name": "RareJob,Inc.",
+      "isin": "JP3979210006",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
       "ticker": "6173",
       "name": "Aqualine Ltd.",
       "isin": "JP3107990008",
@@ -1340,6 +1532,14 @@
     },
     {
       "exchange": "TSE",
+      "ticker": "7317",
+      "name": "Matsuya R&D Co.,Ltd",
+      "isin": "JP3869400006",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
       "ticker": "7922",
       "name": "SANKO SANGYO CO.,LTD.",
       "isin": "JP3331000004",
@@ -1351,6 +1551,14 @@
       "ticker": "7925",
       "name": "MAEZAWA KASEI INDUSTRIES CO.,LTD.",
       "isin": "JP3860250004",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "7940",
+      "name": "WAVELOCK HOLDINGS CO.,LTD.",
+      "isin": "JP3687800007",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
