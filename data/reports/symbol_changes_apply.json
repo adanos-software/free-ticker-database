@@ -1,21 +1,45 @@
 {
   "summary": {
-    "generated_at": "2026-08-08T07:12:54Z",
+    "generated_at": "2026-08-10T08:02:58Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 319,
+    "blocked_rows": 323,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 50,
+      "blocked_new_symbol_collision": 53,
       "blocked_old_symbol_not_unique_in_us_scope": 229,
       "manual_isin_not_proven_unchanged": 1,
-      "manual_non_us_or_unscoped_source": 38,
+      "manual_non_us_or_unscoped_source": 39,
       "manual_transition_or_shell_name": 1
     }
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "63adbe92e5699a19",
+      "effective_date": "2026-08-07",
+      "old_symbol": "BNZI",
+      "new_symbol": "PARA",
+      "new_company_name": "Banzai International Inc",
+      "status": "blocked_new_symbol_collision"
+    },
+    {
+      "change_id": "2b82fd8d8ce1d67c",
+      "effective_date": "2026-08-04",
+      "old_symbol": "TOI",
+      "new_symbol": "STLN",
+      "new_company_name": "Starling Oncology Inc",
+      "status": "blocked_new_symbol_collision"
+    },
+    {
+      "change_id": "3a40fbee8917009f",
+      "effective_date": "2026-08-04",
+      "old_symbol": "LSH",
+      "new_symbol": "QNME",
+      "new_company_name": "Quanome Technologies Inc",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "22cdba12373c06ac",
       "effective_date": "2026-08-03",
@@ -1471,6 +1495,14 @@
       "new_symbol": "XMAX",
       "new_company_name": "Xmax Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "cb72391226dc9240",
+      "effective_date": "2025-11-10",
+      "old_symbol": "EBR",
+      "new_symbol": "AXIAY",
+      "new_company_name": "Axia Energia SA",
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "f8cdc8cc724911f5",
