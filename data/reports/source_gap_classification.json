@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-10T08:17:15Z",
-    "rows": 9834,
+    "generated_at": "2026-08-11T07:50:53Z",
+    "rows": 9852,
     "field_totals": {
-      "missing_etf_category": 382,
-      "missing_isin_primary": 1118,
-      "missing_sector_stock": 1895,
+      "missing_etf_category": 390,
+      "missing_isin_primary": 1127,
+      "missing_sector_stock": 1896,
       "official_reference_gap": 6439
     },
     "class_totals": {
@@ -13,58 +13,58 @@
       "adr_cdr_or_depositary_sector_gap": 15,
       "capital_pool_or_halted_identifier_gap": 33,
       "commodity_etf_category_gap": 15,
-      "debt_or_securitized_identifier_gap": 77,
+      "debt_or_securitized_identifier_gap": 80,
       "digital_asset_etf_category_gap": 9,
-      "equity_etf_category_gap": 83,
+      "equity_etf_category_gap": 85,
       "exchange_industry_source_gap": 919,
-      "fixed_income_etf_category_gap": 29,
-      "fund_or_trust_identifier_gap": 368,
+      "fixed_income_etf_category_gap": 32,
+      "fund_or_trust_identifier_gap": 373,
       "fundlike_stock_sector_gap": 11,
       "generic_etf_category_source_gap": 3,
       "inactive_or_legacy_identifier_gap": 91,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 494,
+      "official_identifier_not_exposed_source_gap": 495,
       "official_identifier_reference_unmatched_gap": 7,
       "official_identifier_source_gap": 3,
-      "official_industry_taxonomy_unavailable_gap": 365,
+      "official_industry_taxonomy_unavailable_gap": 366,
       "official_product_reference_unmatched_category_gap": 16,
-      "official_product_taxonomy_unavailable_gap": 227,
-      "official_reference_symbol_collision_gap": 1210,
-      "official_reference_unmatched_source_gap": 5229,
+      "official_product_taxonomy_unavailable_gap": 230,
+      "official_reference_symbol_collision_gap": 1211,
+      "official_reference_unmatched_source_gap": 5228,
       "otc_sector_source_gap": 556,
       "shell_or_cpc_sector_gap": 29
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 15,
       "missing_etf_category:digital_asset_etf_category_gap": 9,
-      "missing_etf_category:equity_etf_category_gap": 83,
-      "missing_etf_category:fixed_income_etf_category_gap": 29,
+      "missing_etf_category:equity_etf_category_gap": 85,
+      "missing_etf_category:fixed_income_etf_category_gap": 32,
       "missing_etf_category:generic_etf_category_source_gap": 3,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 16,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 227,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 230,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 43,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
-      "missing_isin_primary:debt_or_securitized_identifier_gap": 77,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 368,
+      "missing_isin_primary:debt_or_securitized_identifier_gap": 80,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 373,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 91,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 494,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 495,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 7,
       "missing_isin_primary:official_identifier_source_gap": 3,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 15,
       "missing_sector_stock:exchange_industry_source_gap": 919,
       "missing_sector_stock:fundlike_stock_sector_gap": 11,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 365,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 366,
       "missing_sector_stock:otc_sector_source_gap": 556,
       "missing_sector_stock:shell_or_cpc_sector_gap": 29,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1210,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5229
+      "official_reference_gap:official_reference_symbol_collision_gap": 1211,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5228
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
         {
           "exchange": "BATS",
-          "rows": 84
+          "rows": 92
         },
         {
           "exchange": "NASDAQ",
@@ -110,7 +110,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 153
+          "rows": 154
         },
         {
           "exchange": "SET",
@@ -118,7 +118,7 @@
         },
         {
           "exchange": "BATS",
-          "rows": 105
+          "rows": 113
         },
         {
           "exchange": "TSXV",
@@ -160,7 +160,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 59
+          "rows": 60
         },
         {
           "exchange": "BSE_IN",
@@ -190,7 +190,7 @@
       "official_reference_gap": [
         {
           "exchange": "OTC",
-          "rows": 3258
+          "rows": 3257
         },
         {
           "exchange": "B3",
@@ -235,7 +235,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "OTC",
-        "rows": 3118,
+        "rows": 3117,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -320,28 +320,28 @@
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
+        "field": "missing_isin_primary",
+        "gap_class": "fund_or_trust_identifier_gap",
+        "exchange": "BATS",
+        "rows": 108,
+        "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+        "source_gate": "Exact fund/trust symbol and product name with checksum."
+      },
+      {
+        "field": "missing_isin_primary",
+        "gap_class": "official_identifier_not_exposed_source_gap",
+        "exchange": "NASDAQ",
+        "rows": 105,
+        "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+        "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      },
+      {
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NYSE ARCA",
         "rows": 105,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-      },
-      {
-        "field": "missing_isin_primary",
-        "gap_class": "official_identifier_not_exposed_source_gap",
-        "exchange": "NASDAQ",
-        "rows": 104,
-        "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-        "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-      },
-      {
-        "field": "missing_isin_primary",
-        "gap_class": "fund_or_trust_identifier_gap",
-        "exchange": "BATS",
-        "rows": 103,
-        "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-        "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
       {
         "field": "official_reference_gap",
@@ -1625,6 +1625,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "BATS::HYGD",
+      "ticker": "HYGD",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "MicroSectors -3x Short High Yield Corporate Bond (HYG) ETNs",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=BATS::HYGD;exchange=BATS;ticker=HYGD;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "BATS::IDAU",
       "ticker": "IDAU",
       "exchange": "BATS",
@@ -1761,6 +1778,40 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "BATS::LQDD",
+      "ticker": "LQDD",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "MicroSectors -3x Short Investment Grade Corporate Bond (LQD) ETNs",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=BATS::LQDD;exchange=BATS;ticker=LQDD;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::LQDU",
+      "ticker": "LQDU",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "MicroSectors 3x Long Investment Grade Corporate Bond (LQD) ETNs",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=BATS::LQDU;exchange=BATS;ticker=LQDU;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "BATS::LRCC",
       "ticker": "LRCC",
       "exchange": "BATS",
@@ -1846,6 +1897,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "BATS::MRAX",
+      "ticker": "MRAX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Long MRAM Daily ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::MRAX;exchange=BATS;ticker=MRAX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "BATS::MRVX",
       "ticker": "MRVX",
       "exchange": "BATS",
@@ -1876,6 +1944,23 @@
       "source_gap_context": "listing_key=BATS::MUIB;exchange=BATS;ticker=MUIB;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::MXLL",
+      "ticker": "MXLL",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Leverage Shares 2X Long MXL Daily ETF",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=BATS::MXLL;exchange=BATS;ticker=MXLL;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -2237,6 +2322,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "BATS::SITX",
+      "ticker": "SITX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Long SITM Daily ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::SITX;exchange=BATS;ticker=SITX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "BATS::SKHA",
       "ticker": "SKHA",
       "exchange": "BATS",
@@ -2390,6 +2492,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "BATS::STLL",
+      "ticker": "STLL",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Leverage Shares 2X Long STRL Daily ETF",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=BATS::STLL;exchange=BATS;ticker=STLL;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "BATS::TEMC",
       "ticker": "TEMC",
       "exchange": "BATS",
@@ -2452,6 +2571,23 @@
       "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
       "source_gap_context": "listing_key=BATS::TSIB;exchange=BATS;ticker=TSIB;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::UMCU",
+      "ticker": "UMCU",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Long UMC Daily ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::UMCU;exchange=BATS;ticker=UMCU;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
     },
@@ -10601,6 +10737,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::HYGD",
+      "ticker": "HYGD",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "MicroSectors -3x Short High Yield Corporate Bond (HYG) ETNs",
+      "gap_class": "debt_or_securitized_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
+      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
+      "source_gap_context": "listing_key=BATS::HYGD;exchange=BATS;ticker=HYGD;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::IDAU",
       "ticker": "IDAU",
       "exchange": "BATS",
@@ -10788,6 +10941,40 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::LQDD",
+      "ticker": "LQDD",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "MicroSectors -3x Short Investment Grade Corporate Bond (LQD) ETNs",
+      "gap_class": "debt_or_securitized_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
+      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
+      "source_gap_context": "listing_key=BATS::LQDD;exchange=BATS;ticker=LQDD;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::LQDU",
+      "ticker": "LQDU",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "MicroSectors 3x Long Investment Grade Corporate Bond (LQD) ETNs",
+      "gap_class": "debt_or_securitized_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
+      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
+      "source_gap_context": "listing_key=BATS::LQDU;exchange=BATS;ticker=LQDU;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::LRCC",
       "ticker": "LRCC",
       "exchange": "BATS",
@@ -10890,6 +11077,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::MRAX",
+      "ticker": "MRAX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Long MRAM Daily ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::MRAX;exchange=BATS;ticker=MRAX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::MRVX",
       "ticker": "MRVX",
       "exchange": "BATS",
@@ -10935,6 +11139,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=BATS::MUIB;exchange=BATS;ticker=MUIB;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::MXLL",
+      "ticker": "MXLL",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Leverage Shares 2X Long MXL Daily ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::MXLL;exchange=BATS;ticker=MXLL;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -11349,6 +11570,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::SITX",
+      "ticker": "SITX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Long SITM Daily ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::SITX;exchange=BATS;ticker=SITX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::SKHA",
       "ticker": "SKHA",
       "exchange": "BATS",
@@ -11502,6 +11740,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::STLL",
+      "ticker": "STLL",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Leverage Shares 2X Long STRL Daily ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::STLL;exchange=BATS;ticker=STLL;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::TEMC",
       "ticker": "TEMC",
       "exchange": "BATS",
@@ -11598,6 +11853,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=BATS::TSIB;exchange=BATS;ticker=TSIB;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::UMCU",
+      "ticker": "UMCU",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Long UMC Daily ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::UMCU;exchange=BATS;ticker=UMCU;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -15712,6 +15984,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::WFF;exchange=NASDAQ;ticker=WFF;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::WLCO",
+      "ticker": "WLCO",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Wilco 63 Corporation - Class A Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::WLCO;exchange=NASDAQ;ticker=WLCO;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -44121,6 +44410,23 @@
       "source_gap_context": "listing_key=NASDAQ::VLOS;exchange=NASDAQ;ticker=VLOS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::WLCO",
+      "ticker": "WLCO",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Wilco 63 Corporation - Class A Ordinary Shares",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::WLCO;exchange=NASDAQ;ticker=WLCO;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -101092,6 +101398,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NYSE MKT::CNL",
+      "ticker": "CNL",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "name": "Collective Mining Ltd.",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE MKT::CNL;exchange=NYSE MKT;ticker=CNL;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NYSE MKT::DLA",
       "ticker": "DLA",
       "exchange": "NYSE MKT",
@@ -139472,23 +139795,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=OTC::PHMB;exchange=OTC;ticker=PHMB;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "OTC::PHOS",
-      "ticker": "PHOS",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "Phosphate Holdings Inc",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=OTC::PHOS;exchange=OTC;ticker=PHOS;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

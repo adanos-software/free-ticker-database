@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-10T08:15:22Z",
+    "generated_at": "2026-08-11T07:49:01Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,22 +8,134 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 6,
-    "accepted_rows": 5,
-    "skipped_rows": 1,
+    "new_supported_rows": 13,
+    "accepted_rows": 9,
+    "skipped_rows": 4,
     "accepted_by_exchange": {
-      "NASDAQ": 1,
-      "NYSE": 1,
-      "NYSE ARCA": 3
+      "BATS": 8,
+      "NASDAQ": 1
     },
     "skipped_by_reason": {
-      "ticker_collision": 1
+      "excluded_non_common_stock": 1,
+      "ticker_collision": 3
     }
   },
   "accepted": [
     {
-      "ticker": "QVCG",
-      "name": "QVC Group, Inc. - Common Stock",
+      "ticker": "HYGD",
+      "name": "MicroSectors -3x Short High Yield Corporate Bond (HYG) ETNs",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "LQDD",
+      "name": "MicroSectors -3x Short Investment Grade Corporate Bond (LQD) ETNs",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "LQDU",
+      "name": "MicroSectors 3x Long Investment Grade Corporate Bond (LQD) ETNs",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MRAX",
+      "name": "Tradr 2X Long MRAM Daily ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MXLL",
+      "name": "Leverage Shares 2X Long MXL Daily ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SITX",
+      "name": "Tradr 2X Long SITM Daily ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "STLL",
+      "name": "Leverage Shares 2X Long STRL Daily ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "UMCU",
+      "name": "Tradr 2X Long UMC Daily ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "WLCO",
+      "name": "Wilco 63 Corporation - Class A Ordinary Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -34,72 +146,40 @@
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "GCPB",
-      "name": "Goldman Sachs Core Plus Bond ETF",
-      "exchange": "NYSE",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "ARIA",
-      "name": "ARIA Opportunities ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "FFLX",
-      "name": "First Trust Flexible Income ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "PHOX",
-      "name": "Aura AI Photonics ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
     }
   ],
   "skipped": [
     {
-      "ticker": "GINC",
-      "exchange": "NYSE ARCA",
-      "name": "Goldman Sachs Income ETF",
+      "ticker": "HYGU",
+      "exchange": "BATS",
+      "name": "MicroSectors 3x Long High Yield Corporate Bond (HYG) ETNs",
       "asset_type": "ETF",
       "source_key": "nasdaq_other_listed",
       "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "LITG",
+      "exchange": "BATS",
+      "name": "Leverage Shares 2X Long LITE Daily ETF",
+      "asset_type": "ETF",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "PHOS",
+      "exchange": "NASDAQ",
+      "name": "First Phosphate Corp. - American Depositary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "WLCOW",
+      "exchange": "NASDAQ",
+      "name": "Wilco 63 Corporation - Warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
     }
   ]
 }
