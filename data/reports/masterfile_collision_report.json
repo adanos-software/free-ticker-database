@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 80591,
-    "matched": 56840,
-    "collisions": 9671,
-    "missing": 14080
+    "official_symbols": 80600,
+    "matched": 56847,
+    "collisions": 9674,
+    "missing": 14079
   },
   "exchanges": [
     {
@@ -338,9 +338,9 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1588,
-      "matched": 1246,
-      "collisions": 55,
+      "official_symbols": 1591,
+      "matched": 1248,
+      "collisions": 56,
       "missing": 287,
       "collision_examples": [
         {
@@ -2869,9 +2869,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5605,
+      "official_symbols": 5606,
       "matched": 4577,
-      "collisions": 53,
+      "collisions": 54,
       "missing": 975,
       "collision_examples": [
         {
@@ -3467,9 +3467,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3899,
-      "matched": 1985,
+      "matched": 1986,
       "collisions": 569,
-      "missing": 1345,
+      "missing": 1344,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3615,9 +3615,9 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2697,
-      "matched": 2578,
-      "collisions": 27,
+      "official_symbols": 2701,
+      "matched": 2581,
+      "collisions": 28,
       "missing": 92,
       "collision_examples": [
         {
@@ -3664,6 +3664,14 @@
           ]
         },
         {
+          "ticker": "CSRA",
+          "name": "Cohen & Steers Real Assets Active ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "IDX"
+          ]
+        },
+        {
           "ticker": "FBT",
           "name": "First Trust Amex Biotech Index Fund",
           "target_exchange": "NYSE ARCA",
@@ -3697,14 +3705,6 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "GINC",
-          "name": "Goldman Sachs Income ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "LSE"
           ]
         }
       ],
@@ -3763,8 +3763,8 @@
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 308,
-      "matched": 229,
+      "official_symbols": 309,
+      "matched": 230,
       "collisions": 31,
       "missing": 48,
       "collision_examples": [
