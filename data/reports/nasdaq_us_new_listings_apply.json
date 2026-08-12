@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-11T07:49:01Z",
+    "generated_at": "2026-08-12T08:01:52Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,22 +8,23 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 13,
-    "accepted_rows": 9,
-    "skipped_rows": 4,
+    "new_supported_rows": 10,
+    "accepted_rows": 7,
+    "skipped_rows": 3,
     "accepted_by_exchange": {
-      "BATS": 8,
-      "NASDAQ": 1
+      "BATS": 2,
+      "NYSE": 1,
+      "NYSE ARCA": 3,
+      "NYSE MKT": 1
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 1,
       "ticker_collision": 3
     }
   },
   "accepted": [
     {
-      "ticker": "HYGD",
-      "name": "MicroSectors -3x Short High Yield Corporate Bond (HYG) ETNs",
+      "ticker": "MPDB",
+      "name": "m+ DynaBuffer ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -36,8 +37,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "LQDD",
-      "name": "MicroSectors -3x Short Investment Grade Corporate Bond (LQD) ETNs",
+      "ticker": "YLDY",
+      "name": "Horizon High Income ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -50,136 +51,100 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "LQDU",
-      "name": "MicroSectors 3x Long Investment Grade Corporate Bond (LQD) ETNs",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "MRAX",
-      "name": "Tradr 2X Long MRAM Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "MXLL",
-      "name": "Leverage Shares 2X Long MXL Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "SITX",
-      "name": "Tradr 2X Long SITM Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "STLL",
-      "name": "Leverage Shares 2X Long STRL Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "UMCU",
-      "name": "Tradr 2X Long UMC Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "WLCO",
-      "name": "Wilco 63 Corporation - Class A Ordinary Shares",
-      "exchange": "NASDAQ",
+      "ticker": "FOIL",
+      "name": "Londian Wason New Energy Tech Inc. American Depositary Shares, each representing five Ordinary Shares",
+      "exchange": "NYSE",
       "asset_type": "Stock",
       "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "GAIQ",
+      "name": "Guinness Atkinson Global Innovators Fund: ETF Class Shares",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MPDY",
+      "name": "m+ DualYield Autocall ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MPIM",
+      "name": "m+ Income Momentum Autocall ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SNSC",
+      "name": "SunScout Holding Limited Class A Ordinary Shares",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory"
     }
   ],
   "skipped": [
     {
-      "ticker": "HYGU",
+      "ticker": "EXPN",
       "exchange": "BATS",
-      "name": "MicroSectors 3x Long High Yield Corporate Bond (HYG) ETNs",
+      "name": "Horizon Expansion Leaders ETF",
       "asset_type": "ETF",
       "source_key": "nasdaq_other_listed",
       "skip_reason": "ticker_collision"
     },
     {
-      "ticker": "LITG",
-      "exchange": "BATS",
-      "name": "Leverage Shares 2X Long LITE Daily ETF",
+      "ticker": "CNL",
+      "exchange": "NASDAQ",
+      "name": "Collective Mining Ltd. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "CSRA",
+      "exchange": "NYSE ARCA",
+      "name": "Cohen & Steers Real Assets Active ETF",
       "asset_type": "ETF",
       "source_key": "nasdaq_other_listed",
       "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "PHOS",
-      "exchange": "NASDAQ",
-      "name": "First Phosphate Corp. - American Depositary Shares",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "WLCOW",
-      "exchange": "NASDAQ",
-      "name": "Wilco 63 Corporation - Warrant",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
     }
   ]
 }

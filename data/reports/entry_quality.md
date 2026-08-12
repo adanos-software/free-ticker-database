@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-08-11T07:50:42Z`
+Generated at: `2026-08-12T08:03:30Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | pass | 70,786 |
-| source_gap | 20,965 |
+| source_gap | 20,972 |
 | warn | 198 |
 
 ## Issue Counts
@@ -16,9 +16,9 @@ Generated at: `2026-08-11T07:50:42Z`
 |---|---:|
 | venue_missing_official_source | 11,430 |
 | official_reference_gap | 6,439 |
-| missing_stock_sector | 2,656 |
-| expected_missing_primary_isin | 1,127 |
-| missing_etf_category | 917 |
+| missing_stock_sector | 2,658 |
+| expected_missing_primary_isin | 1,134 |
+| missing_etf_category | 922 |
 | country_isin_mismatch | 95 |
 | official_isin_mismatch | 56 |
 | official_name_mismatch | 49 |
@@ -38,11 +38,11 @@ Generated at: `2026-08-11T07:50:42Z`
 | BMV | 0 | 0 | 344 | 0 | 0 |
 | B3 | 1,250 | 0 | 331 | 0 | 0 |
 | Euronext | 1,221 | 0 | 235 | 21 | 0 |
-| NYSE ARCA | 2,482 | 0 | 229 | 1 | 0 |
+| NYSE ARCA | 2,482 | 0 | 232 | 1 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | NSE_IN | 2,290 | 0 | 213 | 0 | 0 |
+| BATS | 1,134 | 0 | 205 | 0 | 0 |
 | XETRA | 4,112 | 0 | 200 | 3 | 0 |
-| BATS | 1,134 | 0 | 203 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | TASE | 604 | 0 | 196 | 1 | 0 |
 | AMS | 361 | 0 | 183 | 2 | 0 |
