@@ -1,38 +1,40 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-07-08T04:36:18Z
+Generated: 2026-08-10T09:18:27Z
 
-**isin_issues_detected: False**
+**isin_issues_detected: True**
 
-ISINs validated: 61764 | match=59959 mismatch=101 no_data=1704
+ISINs validated: 62308 | match=60482 mismatch=105 no_data=1721
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `101` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1704` (provider coverage gap)
+- Mismatch residuals: `105` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1721` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 28 |
-| NSE_IN | 10 |
-| NASDAQ | 8 |
+| OTC | 27 |
+| NSE_IN | 11 |
+| NASDAQ | 10 |
 | BSE_IN | 7 |
 | Bursa | 6 |
 | LSE | 5 |
 | TSX | 4 |
 | CSE_LK | 3 |
 | Euronext | 3 |
-| NYSE | 3 |
 | NYSE ARCA | 3 |
 | SGX | 3 |
 | TSXV | 3 |
 | B3 | 2 |
+| FSX | 2 |
+| NYSE | 2 |
 | SIX | 2 |
+| WSE | 2 |
 | AMS | 1 |
 | ASX | 1 |
 | ATHEX | 1 |
@@ -43,39 +45,38 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | NSE_KE | 1 |
 | OSL | 1 |
 | SET | 1 |
-| WSE | 1 |
 
 ### OpenFIGI no-data residuals by exchange
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 604 |
+| OTC | 596 |
 | B3 | 220 |
-| TPEX | 200 |
-| NYSE ARCA | 120 |
-| NASDAQ | 106 |
-| TSX | 98 |
-| BATS | 68 |
-| TSXV | 67 |
-| ASX | 37 |
+| TPEX | 196 |
+| NYSE ARCA | 121 |
+| NASDAQ | 98 |
+| TSX | 95 |
+| TSXV | 71 |
+| BATS | 69 |
+| ASX | 39 |
+| FSX | 33 |
 | EGX | 28 |
+| SET | 16 |
 | JSE | 15 |
-| BSE_IN | 14 |
-| SET | 13 |
-| NYSE | 12 |
+| BSE_IN | 13 |
+| NYSE | 13 |
 | NGX | 9 |
 | SZSE | 6 |
-| HKEX | 5 |
 | STO | 5 |
 | CSE_MA | 4 |
 | LSE | 4 |
 | SSE_CL | 4 |
 | ATHEX | 3 |
 | BCBA | 3 |
+| Euronext | 3 |
 | KRX | 3 |
 | NEO | 3 |
 | NSE_KE | 3 |
-| NYSE MKT | 3 |
 | OSL | 3 |
 | PSX | 3 |
 | SEM | 3 |
@@ -84,6 +85,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 
 | ISIN | Our ticker | Our name | OpenFIGI ticker(s) | OpenFIGI name | Triage |
 |---|---|---|---|---|---|
+| AU000000AWC3 | AWC | American Water Works Company I | AWCAUD,AWCEUR,AWCUSD | ALUMINA LTD | review_required_openfigi_resolves_different_security |
 | AU000000ODM3 | G11 | G11 RESOURCES LIMITED | 09Z | ODIN METALS LTD | review_required_openfigi_resolves_different_security |
 | AU000000PTM6 | PTMGF | L1 Group Limited | PTMAUD | PLATINUM ASSET MANAGEMENT | review_required_openfigi_resolves_different_security |
 | BRPMSPCPA000 | PMSP11B | PREFEITURA MUNICIPAL DE SAO PA | PMSP11BL | CEPAC - AGUA ESPRAIADA | review_required_openfigi_resolves_different_security |
@@ -110,7 +112,10 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | GB0007655474 | 47IE | S&U plc | SUSLN 3.9375 PERP | S & U STORES PLC | review_required_openfigi_resolves_different_security |
 | GB00BJ9MHH56 | CYK | Cykel AI PLC | MUSTGBX | MUSTANG ENERGY PLC | review_required_openfigi_resolves_different_security |
 | GRS534003009 | TRESTATES | TRESTATES | TRESTATE,TRESTEUR,TRESTY | TRADE ESTATES REAL ESTATE IN | review_required_openfigi_resolves_different_security |
+| HK0000055787 | HIUC | China Taiping Insurance Holdin | JFTHAII | JPMORGAN THAILAND FD-ACC USD | review_required_openfigi_resolves_different_security |
+| HK0000171949 | BJWTF | Beijing Enterprises Water Grou | BJEHF 6.15 11/14/22 | KEEN BOND INVESTMENT LTD | review_required_openfigi_resolves_different_security |
 | IE0007WMHDE3 | EUGD | HANetf ICAV - European Green D | 8GRT,ASWAD,ETFHGR8 | MAKING EUROPE GREAT AGAIN UC | review_required_openfigi_resolves_different_security |
+| IL0011715781 | IINN | Inspira Technologies Oxy BHN L | QTEX | QTREX QUANTUM LTD | review_required_openfigi_resolves_different_security |
 | INE030P01017 | ALSL | Alacrity Securities Ltd | ALSE | RNIT AI SOLUTIONS LTD | review_required_openfigi_resolves_different_security |
 | INE058F01019 | ALUFLUOR | Alufluoride Ltd | ALFD | ALUFLOURIDE LTD | review_required_openfigi_resolves_different_security |
 | INE0M3I01029 | AMBEY | Ambey Laboratories Limited | DHANSA | DHANSA LABS LTD | review_required_openfigi_resolves_different_security |
@@ -128,6 +133,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INF247L01FR8 | MOALPHA50 | Motilal Oswal Nifty Alpha 50 E | MONA5RG | MOTI OSW NIF AI 50 ETF- RG | review_required_openfigi_resolves_different_security |
 | INF247L01GJ3 | MOSERVICE | Motilal Oswal Nifty Services S | MONSSRG | MTIL OSWL NFTY SRVC SCTR ETF | review_required_openfigi_resolves_different_security |
 | INF754K01TF1 | EMULTIMQ | Edelweiss Nifty500 Multicap Mo | EDENM50 | EDEL NF500 MLT MOM QLT50 ETF | review_required_openfigi_resolves_different_security |
+| INF767K01SM1 | LICMFGOLD | LICMF LICGoldETF | LICMFGLD | LIC MF GOLD ETF | review_required_openfigi_resolves_different_security |
 | KE0000000547 | KENGEN | KENGEN CO. PLC | KEGC | KENYA ELECTRICITY GENERATING | review_required_openfigi_resolves_different_security |
 | KYG2296A1094 | BRR | ProCap Financial, Inc. | CCCMEUR,CCCMUSD | COLUMBUS CIRCLE CAPITAL CO-A | review_required_openfigi_resolves_different_security |
 | KYG8232Y1017 | PENG | Penguin Solutions, Inc. | SGH2EUR,SGH2GBP,SGH2USD | SMART GLOBAL HOLDINGS INC | review_required_openfigi_resolves_different_security |
@@ -145,6 +151,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | NL0015000H56 | BNJW | BANIJAY GROUP WARR | FLEW | FL ENTERTAINMENT N.V.-CW24 | review_required_openfigi_resolves_different_security |
 | NO0013711721 | KMCP | KMC PROPERTIES | 0N0L,5FM0,BINT | BEVEST ASA | review_required_openfigi_resolves_different_security |
 | PLDRD2400010 | DRF | Dr.Finance SA | D24,D241PLN,D24PLN | DORADCY24 SA | review_required_openfigi_resolves_different_security |
+| PLPZUGD00010 | ETFPZUGOLD | ETFPZUGOLD | ETFP2PLN,ETFPZUG | PZU ETF GOLD PORTFELOWY FIZ | review_required_openfigi_resolves_different_security |
 | SG1B56010922 | F13 | Fu Yu Corporation Ltd | FUYU,FUYVF | FU YU CORP LTD | review_required_openfigi_resolves_different_security |
 | SG2B91959363 | 5RC | ES Group (Holdings) Limited | ESG | ES GROUP HOLDINGS LTD | review_required_openfigi_resolves_different_security |
 | SGXE45420721 | 1Y1 | 9R Limited | 9R | 9R LTD | review_required_openfigi_resolves_different_security |
@@ -152,7 +159,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | TH0052B10Z09 | DV8 | DV8 Public Company Limited | ASTR,DVPCF | ASTRA ENTERPRISE PCL | review_required_openfigi_resolves_different_security |
 | TREMEPT00012 | MEPET | MEPET METRO PETROL VE TESİSLER | MEPETTRY,MOLA,MOLAY | BREAK MOLA TURIZM YATIRIMLAR | review_required_openfigi_resolves_different_security |
 | US00775Y7287 | RAYD | Rayliant Quantitative Develope | RWLC | RAYLN NXTGN MU US EQ ETF-USD | review_required_openfigi_resolves_different_security |
-| US05968L1026 | CIB | Grupo Cibest S.A. | BXK,CIBEUR,CIBGBP | BANCOLOMBIA S.A.-SPONS ADR | review_required_openfigi_resolves_different_security |
 | US06690B1153 | PNST | Pinstripes Holdings Inc | PNSWQ | BANYAN ACQUISITION CO -CW23 | review_required_openfigi_resolves_different_security |
 | US20731J1025 | PRHI | Presurance Holdings, Inc. | CNFREUR,CNFRUSD | CONIFER HOLDINGS INC | review_required_openfigi_resolves_different_security |
 | US2075972040 | CNLTL | The Connecticut Light and Powe | ES 1.9 PERP 1947 | CONN LT & PWR | review_required_openfigi_resolves_different_security |
@@ -168,13 +174,13 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | US2668881061 | DUERF | Dürr Aktiengesellschaft | DUEB,DURYY,DURYYEUR | DUERR AG -UNSP ADR | review_required_openfigi_resolves_different_security |
 | US26922B7091 | IDME | International Drawdown Managed | IDUB | APTUS INTL ENHAN YLD ETF | review_required_openfigi_resolves_different_security |
 | US26923H3093 | BWET | ETF Managers Group Commodity T | BWETUSD | BREAKWAVE TANKER SHIP ETF | review_required_openfigi_resolves_different_security |
-| US2972842007 | ESLOF | EssilorLuxottica Société anony | ESLC,ESLOY,ESLOYEUR | ESSILORLUXOT-UNSPON ADR | review_required_openfigi_resolves_different_security |
 | US3134006408 | FMCKI | Federal Hme 6.55 Pf | FMCC 6.55 PERP Y | FREDDIE MAC | review_required_openfigi_resolves_different_security |
 | US3134006739 | FMCKM | Federal Home Ln Mtg | FMCC 5.57 PERP V | FREDDIE MAC | review_required_openfigi_resolves_different_security |
 | US3134008222 | FREJP | Federal Home 5.30% | FMCC 5.3 PERP | FREDDIE MAC | review_required_openfigi_resolves_different_security |
 | US3135866040 | FNMFM | Federal National Mortgage Asso | FNMA 5.1 PERP +E | FANNIE MAE | review_required_openfigi_resolves_different_security |
 | US3135868103 | FNMFO | Federal National Mortgage Asso | FNMA 5.375 PERP | FANNIE MAE | review_required_openfigi_resolves_different_security |
 | US33739Q3092 | FDIV | MarketDesk Focused U.S. Divide | HISF | FIRST TR HI INC STRAT FOC | review_required_openfigi_resolves_different_security |
+| US44148G2049 | HOTH | Hoth Therapeutics Inc | HOTHUSD,RKTO | ROCKET ONE INC | review_required_openfigi_resolves_different_security |
 | US44987J1034 | IOOFF | Insignia Financial Ltd | IOOFY | IOOF HOLDINGS LTD-SPON ADR | review_required_openfigi_resolves_different_security |
 | US48135NTM82 | VYLD | Inverse VIX Short-Term Futures | JPM 5 08/28/28 MTn | JPMORGAN CHASE FINANCIAL | review_required_openfigi_resolves_different_security |
 | US48837P1021 | KMGH | Kemiao Garment Holding Group | WGSK | WORLD GU SHAN KANG HOLDING G | review_required_openfigi_resolves_different_security |
@@ -183,5 +189,4 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | US67073S3076 | CIMG | CIMG Inc | NUZEEUR,NUZEGBP | NUZEE INC | review_required_openfigi_resolves_different_security |
 | US69290X1019 | PDLB | Ponce Financial Group Inc | PDLBUSD | PDL COMMUNITY BANCORP | review_required_openfigi_resolves_different_security |
 | US83548F2002 | SONM | DNA X, Inc. | SONMEUR,SONMGBP,SONMUSD | SONIM TECHNOLOGIES INC | review_required_openfigi_resolves_different_security |
-| XS0493723968 | PCFBF | Pacific Basin Shipping Limited | PACBAS 1.75 04/12/16 | PB ISSUER NO 2 LTD | review_required_openfigi_resolves_different_security |
 | ZAE000261392 | UMMIEA | Absa re Momentum International | UBS 0 08/22/28 @ | UBS AG LONDON | review_required_openfigi_resolves_different_security |
