@@ -1,23 +1,25 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-08-10T08:15:22Z`
-- New supported rows: `6`
-- Accepted rows: `5`
-- Skipped rows: `1`
+- Generated at: `2026-08-12T08:01:52Z`
+- New supported rows: `10`
+- Accepted rows: `7`
+- Skipped rows: `3`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
 | Ticker | Exchange | Name | Asset type | Source |
 |---|---|---|---|---|
-| QVCG | NASDAQ | QVC Group, Inc. - Common Stock | Stock | nasdaq_listed |
-| GCPB | NYSE | Goldman Sachs Core Plus Bond ETF | ETF | nasdaq_other_listed |
-| ARIA | NYSE ARCA | ARIA Opportunities ETF | ETF | nasdaq_other_listed |
-| FFLX | NYSE ARCA | First Trust Flexible Income ETF | ETF | nasdaq_other_listed |
-| PHOX | NYSE ARCA | Aura AI Photonics ETF | ETF | nasdaq_other_listed |
+| MPDB | BATS | m+ DynaBuffer ETF | ETF | nasdaq_other_listed |
+| YLDY | BATS | Horizon High Income ETF | ETF | nasdaq_other_listed |
+| FOIL | NYSE | Londian Wason New Energy Tech Inc. American Depositary Shares, each representing five Ordinary Shares | Stock | nasdaq_other_listed |
+| GAIQ | NYSE ARCA | Guinness Atkinson Global Innovators Fund: ETF Class Shares | ETF | nasdaq_other_listed |
+| MPDY | NYSE ARCA | m+ DualYield Autocall ETF | ETF | nasdaq_other_listed |
+| MPIM | NYSE ARCA | m+ Income Momentum Autocall ETF | ETF | nasdaq_other_listed |
+| SNSC | NYSE MKT | SunScout Holding Limited Class A Ordinary Shares | Stock | nasdaq_other_listed |
 
 ## Skipped
 
 | Reason | Rows |
 |---|---:|
-| ticker_collision | 1 |
+| ticker_collision | 3 |

@@ -4939,6 +4939,13 @@ def test_load_jse_instrument_search_rows_keeps_existing_cached_rows_when_targets
 def test_infer_jpx_asset_type_prefers_section_label():
     assert infer_jpx_asset_type("ETFs/ ETNs", "Ordinary Corp.") == "ETF"
     assert infer_jpx_asset_type("Prime Market (Domestic)", "Ordinary Corp.") == "Stock"
+    assert (
+        infer_jpx_asset_type(
+            "REIT, Venture Funds, Country Funds and Infrastructure Funds",
+            "Mitsui Fudosan Retail Fund Investment Corporation",
+        )
+        == "Stock"
+    )
 
 
 def test_parse_deutsche_boerse_listed_companies_excel_maps_xetra_rows(tmp_path):
