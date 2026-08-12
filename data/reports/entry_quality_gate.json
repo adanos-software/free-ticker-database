@@ -1,17 +1,30 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-08-11T07:51:45Z",
+    "generated_at": "2026-08-12T07:50:43Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
   "allowed_warn_count": 198,
-  "passed": true,
+  "passed": false,
   "quarantine_count": 0,
   "quarantined": [],
   "stale_allowlist": [],
   "stale_allowlist_count": 0,
-  "unexpected_warn_count": 0,
-  "unexpected_warns": [],
-  "warn_count": 198
+  "unexpected_warn_count": 2,
+  "unexpected_warning_subjects": [
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "LSE::0GB5"
+    },
+    {
+      "issue_type": "country_isin_mismatch",
+      "listing_key": "LSE::0I4T"
+    }
+  ],
+  "unexpected_warns": [
+    "LSE::0GB5",
+    "LSE::0I4T"
+  ],
+  "warn_count": 200
 }

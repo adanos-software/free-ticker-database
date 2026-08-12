@@ -1,28 +1,25 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-08-11T07:49:01Z`
-- New supported rows: `13`
-- Accepted rows: `9`
-- Skipped rows: `4`
+- Generated at: `2026-08-12T07:46:16Z`
+- New supported rows: `10`
+- Accepted rows: `7`
+- Skipped rows: `3`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
 | Ticker | Exchange | Name | Asset type | Source |
 |---|---|---|---|---|
-| HYGD | BATS | MicroSectors -3x Short High Yield Corporate Bond (HYG) ETNs | ETF | nasdaq_other_listed |
-| LQDD | BATS | MicroSectors -3x Short Investment Grade Corporate Bond (LQD) ETNs | ETF | nasdaq_other_listed |
-| LQDU | BATS | MicroSectors 3x Long Investment Grade Corporate Bond (LQD) ETNs | ETF | nasdaq_other_listed |
-| MRAX | BATS | Tradr 2X Long MRAM Daily ETF | ETF | nasdaq_other_listed |
-| MXLL | BATS | Leverage Shares 2X Long MXL Daily ETF | ETF | nasdaq_other_listed |
-| SITX | BATS | Tradr 2X Long SITM Daily ETF | ETF | nasdaq_other_listed |
-| STLL | BATS | Leverage Shares 2X Long STRL Daily ETF | ETF | nasdaq_other_listed |
-| UMCU | BATS | Tradr 2X Long UMC Daily ETF | ETF | nasdaq_other_listed |
-| WLCO | NASDAQ | Wilco 63 Corporation - Class A Ordinary Shares | Stock | nasdaq_listed |
+| MPDB | BATS | m+ DynaBuffer ETF | ETF | nasdaq_other_listed |
+| YLDY | BATS | Horizon High Income ETF | ETF | nasdaq_other_listed |
+| FOIL | NYSE | Londian Wason New Energy Tech Inc. American Depositary Shares, each representing five Ordinary Shares | Stock | nasdaq_other_listed |
+| GAIQ | NYSE ARCA | Guinness Atkinson Global Innovators Fund: ETF Class Shares | ETF | nasdaq_other_listed |
+| MPDY | NYSE ARCA | m+ DualYield Autocall ETF | ETF | nasdaq_other_listed |
+| MPIM | NYSE ARCA | m+ Income Momentum Autocall ETF | ETF | nasdaq_other_listed |
+| SNSC | NYSE MKT | SunScout Holding Limited Class A Ordinary Shares | Stock | nasdaq_other_listed |
 
 ## Skipped
 
 | Reason | Rows |
 |---|---:|
-| excluded_non_common_stock | 1 |
 | ticker_collision | 3 |

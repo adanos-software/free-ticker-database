@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-08-11T07:51:50Z`
+Generated at: `2026-08-12T07:50:46Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 63,766 |
-| listing_rows | 91,949 |
-| adanos_reference_rows | 63,766 |
-| entry_quality_rows | 91,949 |
+| ticker_rows | 63,777 |
+| listing_rows | 91,956 |
+| adanos_reference_rows | 63,777 |
+| entry_quality_rows | 91,956 |
 | error_gates | 84 |
-| failed_error_gates | 0 |
+| failed_error_gates | 2 |
 | info_gates | 5 |
 
 ## Gates
@@ -56,7 +56,7 @@ Status: `PASS`
 | invalid_country_code_rows | error | PASS | 0 | 0 |
 | country_code_mismatch_rows | error | PASS | 0 | 0 |
 | rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
-| country_isin_prefix_mismatch_without_review | error | PASS | 0 | 0 |
+| country_isin_prefix_mismatch_without_review | error | FAIL | 3 | 0 |
 | rows_with_mojibake_names | error | PASS | 0 | 0 |
 | listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
@@ -85,15 +85,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 2 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 1127 |  |
-| missing_stock_sector | info | PASS | 2656 |  |
-| missing_etf_category | info | PASS | 917 |  |
-| source_gap_rows | info | PASS | 20965 |  |
+| expected_missing_primary_isin | info | PASS | 1134 |  |
+| missing_stock_sector | info | PASS | 2658 |  |
+| missing_etf_category | info | PASS | 922 |  |
+| source_gap_rows | info | PASS | 20989 |  |
 | allowed_warn_rows | info | PASS | 198 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -112,4 +112,16 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### country_isin_prefix_mismatch_without_review
+
+- Actual: `3`
+- `LSE::0I4T`
+- `LSE::0I4T`
+- `LSE::0I4T`
+
+### entry_quality_unexpected_warn_count
+
+- Actual: `2`
+- `LSE::0GB5`
+- `LSE::0I4T`
+

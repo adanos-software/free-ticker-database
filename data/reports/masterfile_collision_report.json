@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 80591,
-    "matched": 56840,
-    "collisions": 9671,
-    "missing": 14080
+    "official_symbols": 80621,
+    "matched": 56841,
+    "collisions": 9681,
+    "missing": 14099
   },
   "exchanges": [
     {
@@ -338,9 +338,9 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1588,
-      "matched": 1246,
-      "collisions": 55,
+      "official_symbols": 1591,
+      "matched": 1248,
+      "collisions": 56,
       "missing": 287,
       "collision_examples": [
         {
@@ -2622,10 +2622,10 @@
     },
     {
       "exchange": "LSE",
-      "official_symbols": 11092,
-      "matched": 6852,
-      "collisions": 773,
-      "missing": 3467,
+      "official_symbols": 11113,
+      "matched": 6846,
+      "collisions": 781,
+      "missing": 3486,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2668,14 +2668,6 @@
           ]
         },
         {
-          "ticker": "0LW0",
-          "name": "MOJ SA",
-          "target_exchange": "LSE",
-          "existing_exchanges": [
-            "FSX"
-          ]
-        },
-        {
           "ticker": "0MLA",
           "name": "ISHARES DIVDAX UCITS (DE) ETF ISHARES DIVDAX UCITS (DE) ETF",
           "target_exchange": "LSE",
@@ -2705,6 +2697,14 @@
           "target_exchange": "LSE",
           "existing_exchanges": [
             "XETRA"
+          ]
+        },
+        {
+          "ticker": "2GS",
+          "name": "LEVERAGE SHARES PUBLIC LIMITED CO. LEVSHARES 2X GOLDMAN ETP",
+          "target_exchange": "LSE",
+          "existing_exchanges": [
+            "AMS"
           ]
         }
       ],
@@ -2765,8 +2765,8 @@
       "exchange": "MSX",
       "official_symbols": 108,
       "matched": 91,
-      "collisions": 14,
-      "missing": 3,
+      "collisions": 13,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "AMAT",
@@ -2841,11 +2841,11 @@
           ]
         },
         {
-          "ticker": "MGCI",
-          "name": "MAJAN GLASS",
+          "ticker": "ORDS",
+          "name": "OOREDOO",
           "target_exchange": "MSX",
           "existing_exchanges": [
-            "LSE"
+            "QSE"
           ]
         }
       ],
@@ -2853,6 +2853,11 @@
         {
           "ticker": "OCCI",
           "name": "OMAN CHROMITE",
+          "exchange": "MSX"
+        },
+        {
+          "ticker": "OMIF",
+          "name": "OMIFCO",
           "exchange": "MSX"
         },
         {
@@ -2869,9 +2874,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5605,
+      "official_symbols": 5606,
       "matched": 4577,
-      "collisions": 53,
+      "collisions": 54,
       "missing": 975,
       "collision_examples": [
         {
@@ -3467,9 +3472,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3899,
-      "matched": 1985,
+      "matched": 1986,
       "collisions": 569,
-      "missing": 1345,
+      "missing": 1344,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3615,9 +3620,9 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2697,
-      "matched": 2578,
-      "collisions": 27,
+      "official_symbols": 2701,
+      "matched": 2581,
+      "collisions": 28,
       "missing": 92,
       "collision_examples": [
         {
@@ -3664,6 +3669,14 @@
           ]
         },
         {
+          "ticker": "CSRA",
+          "name": "Cohen & Steers Real Assets Active ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "IDX"
+          ]
+        },
+        {
           "ticker": "FBT",
           "name": "First Trust Amex Biotech Index Fund",
           "target_exchange": "NYSE ARCA",
@@ -3697,14 +3710,6 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "GINC",
-          "name": "Goldman Sachs Income ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "LSE"
           ]
         }
       ],
@@ -3763,8 +3768,8 @@
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 308,
-      "matched": 229,
+      "official_symbols": 309,
+      "matched": 230,
       "collisions": 31,
       "missing": 48,
       "collision_examples": [

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-11T07:51:50Z",
+    "generated_at": "2026-08-12T07:50:46Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
-    "ticker_rows": 63766,
-    "listing_rows": 91949,
-    "adanos_reference_rows": 63766,
-    "entry_quality_rows": 91949,
+    "ticker_rows": 63777,
+    "listing_rows": 91956,
+    "adanos_reference_rows": 63777,
+    "entry_quality_rows": 91956,
     "error_gates": 84,
-    "failed_error_gates": 0,
+    "failed_error_gates": 2,
     "info_gates": 5
   },
   "gates": [
@@ -287,9 +287,22 @@
     {
       "name": "country_isin_prefix_mismatch_without_review",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 3,
+      "limit": 0,
+      "details": [
+        "LSE::0I4T",
+        "LSE::0I4T",
+        "LSE::0I4T"
+      ],
+      "review_policy": "entry_quality_warning",
+      "review_subjects": [
+        {
+          "listing_key": "LSE::0I4T",
+          "issue_type": "country_isin_mismatch"
+        }
+      ],
+      "review_subjects_complete": true
     },
     {
       "name": "rows_with_mojibake_names",
@@ -490,9 +503,13 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 2,
+      "limit": 0,
+      "details": [
+        "LSE::0GB5",
+        "LSE::0I4T"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -526,28 +543,28 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 1127,
+      "actual": 1134,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 2656,
+      "actual": 2658,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 917,
+      "actual": 922,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 20965,
+      "actual": 20989,
       "limit": null
     },
     {

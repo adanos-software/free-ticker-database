@@ -1,628 +1,2223 @@
 {
   "summary": {
-    "generated_at": "2026-08-08T20:17:17Z",
-    "previous_reference_csv": "/tmp/pr-210-main-reference.csv",
+    "generated_at": "2026-08-12T07:46:13Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 36,
-    "vanished_rows": 2,
-    "changed_rows": 2,
+    "new_rows": 69,
+    "vanished_rows": 37,
+    "changed_rows": 42,
     "new_by_source": {
-      "tase_securities_marketdata": 2,
-      "tmx_etf_screener": 1,
-      "tpex_emerging_basic_info": 2,
-      "upcom_registered_securities": 1,
-      "vienna_listed_companies": 28,
-      "wse_etf_list": 2
+      "lse_price_explorer": 32,
+      "muscat_securities_companies": 1,
+      "nasdaq_listed": 1,
+      "nasdaq_nordic_copenhagen_shares": 3,
+      "nasdaq_nordic_helsinki_shares": 4,
+      "nasdaq_nordic_stockholm_etfs": 2,
+      "nasdaq_nordic_stockholm_shares": 17,
+      "nasdaq_other_listed": 9
     },
     "vanished_by_source": {
-      "tase_securities_marketdata": 1,
-      "upcom_registered_securities": 1
+      "lse_price_explorer": 11,
+      "muscat_securities_companies": 1,
+      "nasdaq_listed": 2,
+      "nasdaq_mutual_fund_quotes": 1,
+      "nasdaq_nordic_copenhagen_shares": 1,
+      "nasdaq_nordic_helsinki_shares": 1,
+      "nasdaq_nordic_stockholm_shares": 18,
+      "nasdaq_other_listed": 2
     },
     "changed_by_type": {
-      "name_change": 2
+      "field_change": 5,
+      "isin_change": 14,
+      "name_change": 24
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "tase_securities_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "ticker": "AVSR",
-      "name": "AVISROR",
-      "exchange": "TASE",
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "57AM",
+      "name": "BST INTERNATIONAL BANK INC",
+      "exchange": "LSE",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IL0012458514",
+      "isin": "PR11778DAA65",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "tase_securities_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "ticker": "SOLT-M",
-      "name": "SOLTERRA-M",
-      "exchange": "TASE",
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "90ID",
+      "name": "NATWEST GROUP PLC",
+      "exchange": "LSE",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IL0001690119",
+      "isin": "GB0007548026",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "tmx_etf_screener",
-      "provider": "TMX",
-      "source_url": "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json",
-      "ticker": "PSY",
-      "name": "Purpose Structured Equity Yield Fund",
-      "exchange": "TSX",
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "ADTC",
+      "name": "AMUNDI ETF ICAV AMUNDI GLOBAL DATA CENTER UCITS ETF ACC",
+      "exchange": "LSE",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000GA7JQV8",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "ADTG",
+      "name": "AMUNDI ETF ICAV AMUNDI GLOBAL DATA CENTER UCITS ETF ACC",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000GA7JQV8",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "AZEQ",
+      "name": "ALLIANZ GLOBAL INVESTORS ETF ICAV ALLIANZ SMART EUROPE EQUITY EQUITY ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000519M2U5",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "AZGQ",
+      "name": "ALLIANZ GLOBAL INVESTORS ETF ICAV ALLIANZ SMART GLOBAL EQUITY EQUITY ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000NZURBQ4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "AZGS",
+      "name": "ALLIANZ GLOBAL INVESTORS ETF ICAV ALLIANZ SMART GLOBAL EQUITY EQUITY ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000NZURBQ4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "AZUQ",
+      "name": "ALLIANZ GLOBAL INVESTORS ETF ICAV ALLIANZ SMART US EQUITY EQUITY ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000LST78X7",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "AZUS",
+      "name": "ALLIANZ GLOBAL INVESTORS ETF ICAV ALLIANZ SMART US EQUITY EQUITY ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000LST78X7",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "B1GH",
+      "name": "ISHARES III PLC AT1 BOND ACTIVE GBP HEDGED (DIST)",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000RGNDFJ6",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "BLDR",
+      "name": "ISHARES II PLC ISHARES EUROPE INFRASTRUCTURE BUILDERS U",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000PTMIE90",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "DCSH",
+      "name": "ISHARES VI PLC ISHARES $ OVERNIGHT RATE SWAP UCITS ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE00069Q7MY9",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "EOT1",
+      "name": "EUROPEAN OPPORTUNITIES TRUST PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00BP9LSJ34",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "EOT2",
+      "name": "EUROPEAN OPPORTUNITIES TRUST PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00BP9LSK49",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "EOT3",
+      "name": "EUROPEAN OPPORTUNITIES TRUST PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00BP9LSL55",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "FSPC",
+      "name": "FIRST TRUST GLOBAL FUNDS ICAV FT BBG SPC ECMY",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000ANMCD25",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "FTSA",
+      "name": "ISHARES II PLC ISHARES FTSE ALL-WORLD UCITS ETF USD DI",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000OL3XN92",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "HWGA",
+      "name": "HARWORTH GROUP PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00BT7LPN68",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "IWDS",
+      "name": "ISHARES VI PLC ISHARES MSCI WORLD SWAP UCITS ETF USD A",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000F9IDGB5",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "LIOG",
+      "name": "LEGAL & GENERAL UCITS ETF PLC L&G LSF AFRICAN GOVERNMENT BOND USD DIST",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000MJ79846",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "LION",
+      "name": "LEGAL & GENERAL UCITS ETF PLC L&G LSF AFRICAN GOVERNMENT BOND USD DIST",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000MJ79846",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "LLPH",
+      "name": "LLOYDS BANKING GROUP PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00B3KSBH82",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "LLPJ",
+      "name": "LLOYDS BANKING GROUP PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00B3KSBK12",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "LUNA",
+      "name": "FIRST TRUST GLOBAL FUNDS ICAV FT BBG SPC ECMY",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000ANMCD25",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "LUNG",
+      "name": "GLOBAL X ETFS ICAV GLOBAL X SPACE TECH UCITS ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000W4A2Q38",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "LUNR",
+      "name": "GLOBAL X ETFS ICAV GLOBAL X SPACE TECH UCITS ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000W4A2Q38",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "PQWP",
+      "name": "PICTET ICAV PICTET AI WORLD EQUITY ETF USD ACC - GBP",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000JBZXFH0",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "SCSH",
+      "name": "ISHARES VI PLC ISHARES £ OVERNIGHT RATE SWAP UCITS ETF",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE0006H7HTU4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "SWWD",
+      "name": "SSGA SPDR ETFS EUROPE I PLC SS SPDR MSCI WORLD UCITS (DIST)",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000P60WPS6",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "SYSA",
+      "name": "SYSTEM1 GROUP PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00BXNX1R02",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "SYSB",
+      "name": "SYSTEM1 GROUP PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00BXNX2007",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "WCOP",
+      "name": "WISDOMTREE ISSUER ICAV WT ENHANCED COMMODITY - GBP HEDGED",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE00BFXX9Y76",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "muscat_securities_companies",
+      "provider": "MSX",
+      "source_url": "https://www.msx.om/companies.aspx",
+      "ticker": "OMIF",
+      "name": "OMIFCO",
+      "exchange": "MSX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "nasdaq_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "ticker": "CNL",
+      "name": "Collective Mining Ltd. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
       "official": "true",
       "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "tpex_emerging_basic_info",
-      "provider": "MOPS",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "ticker": "7925",
-      "name": "健生實業股份有限公司",
-      "exchange": "TPEX",
+      "source_key": "nasdaq_nordic_copenhagen_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "BARDJU",
+      "name": "BAR DJUS",
+      "exchange": "CPH",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0007925B14",
+      "isin": "DK0064869408",
       "cfi": "",
-      "sector": "Industrials"
+      "sector": "Consumer Staples"
     },
     {
-      "source_key": "tpex_emerging_basic_info",
-      "provider": "MOPS",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "ticker": "7942",
-      "name": "東佑達自動化科技股份有限公司",
-      "exchange": "TPEX",
+      "source_key": "nasdaq_nordic_copenhagen_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "BIOMAR",
+      "name": "BioMar Group",
+      "exchange": "CPH",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0007942B13",
+      "isin": "DK0064867972",
+      "cfi": "",
+      "sector": "Consumer Staples"
+    },
+    {
+      "source_key": "nasdaq_nordic_copenhagen_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "IG",
+      "name": "InstallatørGruppen",
+      "exchange": "CPH",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "DK0064982565",
       "cfi": "",
       "sector": "Industrials"
     },
     {
-      "source_key": "upcom_registered_securities",
-      "provider": "HNX",
-      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
-      "ticker": "ULG",
-      "name": "CTCP Logistics U&I",
-      "exchange": "UPCOM",
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "IQMX",
+      "name": "IQM Quantum Computers Oyj",
+      "exchange": "HEL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "FI4000602354",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "KPYOSK",
+      "name": "KPY osk",
+      "exchange": "HEL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "FI0009014708",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "REAKTOR",
+      "name": "Reaktor Group Oyj",
+      "exchange": "HEL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "FI4000603105",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "SAVOX",
+      "name": "Savox Communications Oyj",
+      "exchange": "HEL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "FI4000602958",
+      "cfi": "",
+      "sector": "Telecommunications"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_etfs",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/etp",
+      "ticker": "WIRE",
+      "name": "Levler Electrification by Xtrackers UCITS ETF",
+      "exchange": "STO",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE000O7Q2E56",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_etfs",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/etp",
+      "ticker": "XCMC",
+      "name": "Levler BBG Commodity Swap by Xtrackers UCITS ETF",
+      "exchange": "STO",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "LU2278080713",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "AIRA",
+      "name": "AI Revenue Assistant Software",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0028778498",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "BLINC-B",
+      "name": "BlincVision AB B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0009806045",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "CYNCA",
+      "name": "Cynca Nordic",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0017134125",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "ELLOS",
+      "name": "Ellos Holding",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0028799429",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "KEOC",
+      "name": "Keo Capital",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0008374383",
+      "cfi": "",
+      "sector": "Energy"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "LASER",
+      "name": "Lasernet Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0001338039",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "NEEMS-B",
+      "name": "Neem's Hill B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0009242654",
+      "cfi": "",
+      "sector": "Health Care"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "NTECH",
+      "name": "Stockholm Nordtech Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0028825042",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "NYOR",
+      "name": "Nyorda",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0001552357",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "OCTV-SDB",
+      "name": "Octave Intelligence SDB",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0028329433",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "PUBLI",
+      "name": "PPI Public Property Invest",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0028799411",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "SALIX",
+      "name": "Salix Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0028329540",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "SBOK-B",
+      "name": "ScandBook Holding",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0029301258",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "SNM-SDB",
+      "name": "ShaMaran Petroleum Ltd",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0028000992",
+      "cfi": "",
+      "sector": "Energy"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "SPACEN-B",
+      "name": "Space Nord Invest B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0000483943",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "TANGEN-B",
+      "name": "Tången Industrikapital",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0029278985",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "VETT",
+      "name": "Vetted Assets",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0029301191",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "EXPN",
+      "name": "Horizon Expansion Leaders ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "MPDB",
+      "name": "m+ DynaBuffer ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "YLDY",
+      "name": "Horizon High Income ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "FOIL",
+      "name": "Londian Wason New Energy Tech Inc. American Depositary Shares, each representing five Ordinary Shares",
+      "exchange": "NYSE",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "VN000000ULG6",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "4X0",
-      "name": "STEYR MOTORS AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A3FW25",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "AAD",
-      "name": "AMADEUS FIRE AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "DE0005093108",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "ANDR",
-      "name": "Andritz AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000730007",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "ATS",
-      "name": "AT&S Austria Technologie & Systemtechnik Aktiengesellschaft",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000969985",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "BG",
-      "name": "BAWAG Group AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000BAWAG2",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "BIO",
-      "name": "Biogena Group Invest AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "ATBIOGENA005",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "BMAG",
-      "name": "Bajaj Mobility AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000KTMI02",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "CAI",
-      "name": "CA Immobilien Anlagen AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000641352",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "CPI",
-      "name": "CPI Europe AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A21KS2",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "DOC",
-      "name": "DO & CO Aktiengesellschaft",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000818802",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "EBS",
-      "name": "Erste Group Bank AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000652011",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "ETS",
-      "name": "EuroTeleSites AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT000000ETS9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "EVN",
-      "name": "EVN AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000741053",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "EXO",
-      "name": "EXOR NV",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "NL0012059018",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "FQT",
-      "name": "Frequentis AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "ATFREQUENT09",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "KTN",
-      "name": "KONTRON AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A0E9W5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "LTH",
-      "name": "Linz Textil Holding AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000723606",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "PAL",
-      "name": "Palfinger AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000758305",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "POS",
-      "name": "Porr AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000609607",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "PYT",
-      "name": "Polytec Holding AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A00XX9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "STR",
-      "name": "STRABAG SE",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT000000STR1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "TKA",
-      "name": "Telekom Austria AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000720008",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "UBS",
-      "name": "UBM Development AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000815402",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VER",
-      "name": "VERBUND AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000746409",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VIG",
-      "name": "Vienna Insurance Group AG Wiener Versicherung Gruppe",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000908504",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VLA",
-      "name": "Valneva SE",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "FR0004056851",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VOE",
-      "name": "voestalpine AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000937503",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "WOLF",
-      "name": "Wolftank Group AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A25NJ6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "wse_etf_list",
-      "provider": "GPW",
-      "source_url": "https://www.gpw.pl/etf?isin=PLPZUZM00011",
-      "ticker": "ETFPZUCASH",
-      "name": "ETFPZUCASH",
-      "exchange": "WSE",
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "CSRA",
+      "name": "Cohen & Steers Real Assets Active ETF",
+      "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "PLPZUZM00011",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "wse_etf_list",
-      "provider": "GPW",
-      "source_url": "https://www.gpw.pl/etf?isin=PLPZUDG00010",
-      "ticker": "ETFPZULONGDUR",
-      "name": "ETFPZULONGDUR",
-      "exchange": "WSE",
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "GAIQ",
+      "name": "Guinness Atkinson Global Innovators Fund: ETF Class Shares",
+      "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "PLPZUDG00010",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "MPDY",
+      "name": "m+ DualYield Autocall ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "MPIM",
+      "name": "m+ Income Momentum Autocall ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "SNSC",
+      "name": "SunScout Holding Limited Class A Ordinary Shares",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
       "cfi": "",
       "sector": ""
     }
   ],
   "vanished": [
     {
-      "source_key": "tase_securities_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "ticker": "SOLT",
-      "name": "SOLTERRA-M",
-      "exchange": "TASE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IL0001690119",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "upcom_registered_securities",
-      "provider": "HNX",
-      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
-      "ticker": "TAN",
-      "name": "Công ty cổ phần Cà phê Thuận An",
-      "exchange": "UPCOM",
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "0GB5",
+      "name": "NILORNGRUPPEN AB",
+      "exchange": "LSE",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "VN000000TAN7",
+      "isin": "SE0007100342",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "0IFX",
+      "name": "ELECTRONIC ARTS INC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "US2855121099",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "0IUE",
+      "name": "SOCIETE DE LA TOUR EIFFEL SA",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "FR0000036816",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "0LW0",
+      "name": "MOJ SA",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "PLMOJ0000015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "3BE9",
+      "name": "CITIGROUP GLOBAL MARKETS FUNDING LUXEMBOURG S.C.A.",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "XS3127850215",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "ANCR",
+      "name": "ANIMALCARE GROUP PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB0032350695",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "BSIF",
+      "name": "BLUEFIELD SOLAR INCOME FUND LIMITED",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GG00BB0RDB98",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "EOT",
+      "name": "EUROPEAN OPPORTUNITIES TRUST PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB0000197722",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "FLTR",
+      "name": "FLUTTER ENTERTAINMENT PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE00BWT6H894",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "IDHA",
+      "name": "INTEGRATED DIAGNOSTICS HOLDINGS PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "JE00BVSV6X61",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "provider": "LSE",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "ticker": "IPF",
+      "name": "INTERNATIONAL PERSONAL FINANCE PLC",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "GB00B1YKG049",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "muscat_securities_companies",
+      "provider": "MSX",
+      "source_url": "https://www.msx.om/companies.aspx",
+      "ticker": "MGCI",
+      "name": "MAJAN GLASS",
+      "exchange": "MSX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "nasdaq_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "ticker": "MNTSW",
+      "name": "Momentus Inc. - Warrant",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "ticker": "NUTR",
+      "name": "Nusatrip Incorporated - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_mutual_fund_quotes",
+      "provider": "Nasdaq",
+      "source_url": "https://api.nasdaq.com/api/quote/VRTVX/info?assetclass=mutualfunds",
+      "ticker": "VRTVX",
+      "name": "Vanguard Russell 2000 Value Index Fd Insti Cl",
+      "exchange": "NMFQS",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "security_lookup_subset",
+      "official": "true",
+      "isin": "US92206C6315",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_nordic_copenhagen_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "ASTK",
+      "name": "Asetek",
+      "exchange": "CPH",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "DK0060477263",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "PIIPPO",
+      "name": "Piippo Oyj",
+      "exchange": "HEL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "FI4000123070",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "CINT",
+      "name": "Cint Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0015483276",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "CMOTEC-B",
+      "name": "Scandinavian ChemoTech B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0009242654",
+      "cfi": "",
+      "sector": "Health Care"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "FING-B",
+      "name": "Fingerprint Cards B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0026141665",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "FPIP",
+      "name": "Formpipe Software",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0001338039",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "HELIO",
+      "name": "Heliospectra",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0005933082",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "HOTEL",
+      "name": "Hotel Fast SSE",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0011415710",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "HULT-B",
+      "name": "Hultström Group B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0000483943",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "LOGI-A",
+      "name": "Logistea A",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0017131329",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "LPGO",
+      "name": "Lipigon Pharmaceuticals",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0015382072",
+      "cfi": "",
+      "sector": "Health Care"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "MAHA-A",
+      "name": "Maha Capital",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0008374383",
+      "cfi": "",
+      "sector": "Energy"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "NIL-B",
+      "name": "Nilörngruppen B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0007100342",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "REFINE",
+      "name": "Refine Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0021021656",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "SBOK",
+      "name": "ScandBook Holding",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0003175660",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "SNM",
+      "name": "ShaMaran Petroleum Corp",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "CA8193201024",
+      "cfi": "",
+      "sector": "Energy"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "STABL",
+      "name": "Stayble Therapeutics",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0013513652",
+      "cfi": "",
+      "sector": "Health Care"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "TERRNT-B",
+      "name": "Terranet B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0009806045",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "TRAD",
+      "name": "TradeDoubler",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0001552357",
+      "cfi": "",
+      "sector": "Technology"
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "provider": "Nasdaq Nordic",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "ticker": "VESTUM",
+      "name": "Vestum",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0017134125",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "MDV",
+      "name": "Modiv Industrial, Inc. Class C Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nasdaq_other_listed",
+      "provider": "Nasdaq Trader",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "ticker": "MDV$A",
+      "name": "Modiv Industrial, Inc. 7.375% Series A Cumulative Redeemable Perpetual Preferred Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
       "cfi": "",
       "sector": ""
     }
   ],
   "changed": [
     {
-      "source_key": "wse_listed_companies",
-      "exchange": "WSE",
-      "ticker": "CPA",
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "0A6R",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "CAPITAL PARTNERS SPÓŁKA AKCYJNA",
-          "after": "BUMECH DEFENSE PARTNERS SPÓŁKA AKCYJNA"
+        "isin": {
+          "before": "US00808Y6041",
+          "after": "US00808Y7031"
         }
       }
     },
     {
-      "source_key": "wse_listed_companies",
-      "exchange": "WSE",
-      "ticker": "PUR",
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "0I4T",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "US2267181046",
+          "after": "LU3433852426"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "0K17",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "US5949603048",
+          "after": "US5949604038"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "0M4N",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "DE0005019004",
+          "after": "DE000A41YFV4"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "0M4O",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "DE0005019038",
+          "after": "DE000A41YFW2"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "0NXT",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "DE0005118806",
+          "after": "DE000A41YFQ4"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "ANRJ",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "PURE BIOLOGICS SPÓŁKA AKCYJNA",
-          "after": "MULTIQURE SPÓŁKA AKCYJNA"
+          "before": "AMUNDI ETF AMUNDI GLOBAL HYDROGEN UCITS ETF",
+          "after": "AMUNDI ASSET MANAGEMENT AMUNDI GLOBAL HYDROGEN"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "BYBG",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "AMUNDI INDEX SOLUTIONS AMUNDI S&P 500 BUYBACK",
+          "after": "AMUNDI INDEX SOLUTIONS AMUNDI S&P 500 BUYBACK UCITS ETF - USD"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "BYBU",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "AMUNDI INDEX SOLUTIONS AMUNDI S&P 500 BUYBACK",
+          "after": "AMUNDI INDEX SOLUTIONS AMUNDI S&P 500 BUYBACK UCITS ETF - USD"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "CG1",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "AMUNDI ETF AMUNDI ETF DAX UCITS ETF DR",
+          "after": "AMUNDI ASSET MANAGEMENT AMUNDI ETF DAX"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "CNAA",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS FRANCE LYXOR MSCI CHINA A (DR) UCITS ETF - ACC",
+          "after": "MULTI UNITS FRANCE AMUNDI MSCI CHINA A UCITS ETF ACC"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "CNAL",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS FRANCE LYXOR MSCI CHINA A (DR) UCITS ETF - ACC",
+          "after": "MULTI UNITS FRANCE AMUNDI MSCI CHINA A UCITS ETF ACC"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "DJEL",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "LYXOR INTERNATIONAL ASSET MANAGEMNT LYXOR DOW JONES INDUSTRIAL AVG - DIST",
+          "after": "AMUNDI ASSET MANAGEMENT AMUNDI DOW JONES INDUSTRIAL AVG - DIST"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "DJEU",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "LYXOR INTERNATIONAL ASSET MANAGEMNT LYXOR DOW JONES INDUSTRIAL AVG - DIST $",
+          "after": "AMUNDI ASSET MANAGEMENT AMUNDI DOW JONES INDUSTRIAL AVG - DIST"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "GABI",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "JE00BPCSN748",
+          "after": "JE00BVMWGC49"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "JPNL",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS FRANCE LYXOR JAPAN (TOPIX) - DIST",
+          "after": "MULTI UNITS FRANCE AMUNDI JAPAN TOPIX II UCITS ETF EUR DIST"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "JPNU",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS FRANCE LYXOR JAPAN (TOPIX) - DIST $",
+          "after": "MULTI UNITS FRANCE AMUNDI JAPAN TOPIX II UCITS ETF EUR DIST"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "SBAR",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "SUNDAE BAR PLC",
+          "after": "SUNDAE BAR AI PLC"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "TIPA",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS LUXEMBOURG AMUNDI US TIPS GOV INFLATION-LINKED BOND",
+          "after": "MULTI UNITS LUXEMBOURG AMUNDI US TIPS"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "TIPG",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS LUXEMBOURG AMUNDI USTIPS GOVINFLATION-LINKED BOND D",
+          "after": "MULTI UNITS LUXEMBOURG AMUNDI US TIPS"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "TIPH",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS LUXEMBOURG AMUNDI US TIPS GOVERNMENT INFL GBP HDG",
+          "after": "MULTI UNITS LUXEMBOURG AMUNDI US TIPS"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "TIPU",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MULTI UNITS LUXEMBOURG AMUNDI USTIPS GOVINFLATION-LINKED BOND D",
+          "after": "MULTI UNITS LUXEMBOURG AMUNDI US TIPS"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "TPXG",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "AMUNDI INDEX SOLUTIONS AMUNDI JAPAN TOPIX",
+          "after": "AMUNDI INDEX SOLUTIONS AMUNDI JAPAN TOPIX UCITS ETF - JPY (C)"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "TPXU",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "AMUNDI INDEX SOLUTIONS AMUNDI JAPAN TOPIX",
+          "after": "AMUNDI INDEX SOLUTIONS AMUNDI JAPAN TOPIX UCITS ETF - JPY (C)"
+        }
+      }
+    },
+    {
+      "source_key": "lse_price_explorer",
+      "exchange": "LSE",
+      "ticker": "TRAF",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "TRAFALGAR PROPERTY GROUP PLC",
+          "after": "TRAFALGAR MINERALS PLC"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_listed",
+      "exchange": "NASDAQ",
+      "ticker": "TJGC",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "TJGC Group Limited - ordinary shares",
+          "after": "TJGC Group Limited - Class A Ordinary Shares"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_copenhagen_shares",
+      "exchange": "CPH",
+      "ticker": "NEWCAP",
+      "change_types": [
+        "name_change",
+        "isin_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Newcap Holding",
+          "after": "NewCap Holding"
+        },
+        "isin": {
+          "before": "DK0010212570",
+          "after": "DK0064983373"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "exchange": "HEL",
+      "ticker": "DETEC",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Industrials",
+          "after": "Health Care"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "exchange": "HEL",
+      "ticker": "STEAV",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Basic Materials",
+          "after": "Industrials"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_helsinki_shares",
+      "exchange": "HEL",
+      "ticker": "STERV",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Basic Materials",
+          "after": "Industrials"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "ACTI",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "SE0001137985",
+          "after": "SE0029278555"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "ENRO",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "SE0011256312",
+          "after": "SE0029300995"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "ESGR-B",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "ES Energy Save Holding B",
+          "after": "ES Group B"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "GOTL-A",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "SE0000105371",
+          "after": "SE0029278191"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "GOTL-B",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "SE0000105397",
+          "after": "SE0029278209"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "ITAB",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "ITAB Shop Concept",
+          "after": "ITAB Group"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "SCIB",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "SE0007045414",
+          "after": "SE0029277631"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "STE-A",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Basic Materials",
+          "after": "Industrials"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "STE-R",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Basic Materials",
+          "after": "Industrials"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "STWK",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Stockwik Förvaltning",
+          "after": "Stockwik"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "VER",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Verve Group",
+          "after": "Verve Group Media"
+        }
+      }
+    },
+    {
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "exchange": "STO",
+      "ticker": "VIVE",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "SE0000722365",
+          "after": "SE0028925701"
         }
       }
     }
