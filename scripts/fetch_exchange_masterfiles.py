@@ -14975,6 +14975,8 @@ def infer_jpx_asset_type(section: str, name: str) -> str:
     normalized = section.strip().lower()
     if "etf" in normalized or "etn" in normalized:
         return "ETF"
+    if "reit" in normalized or "infrastructure fund" in normalized:
+        return "Stock"
     if (
         "stock" in normalized
         or "domestic" in normalized
