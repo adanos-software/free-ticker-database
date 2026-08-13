@@ -1,25 +1,29 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-08-12T08:01:52Z`
-- New supported rows: `10`
-- Accepted rows: `7`
-- Skipped rows: `3`
+- Generated at: `2026-08-13T08:02:58Z`
+- New supported rows: `12`
+- Accepted rows: `10`
+- Skipped rows: `2`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
 | Ticker | Exchange | Name | Asset type | Source |
 |---|---|---|---|---|
-| MPDB | BATS | m+ DynaBuffer ETF | ETF | nasdaq_other_listed |
-| YLDY | BATS | Horizon High Income ETF | ETF | nasdaq_other_listed |
-| FOIL | NYSE | Londian Wason New Energy Tech Inc. American Depositary Shares, each representing five Ordinary Shares | Stock | nasdaq_other_listed |
-| GAIQ | NYSE ARCA | Guinness Atkinson Global Innovators Fund: ETF Class Shares | ETF | nasdaq_other_listed |
-| MPDY | NYSE ARCA | m+ DualYield Autocall ETF | ETF | nasdaq_other_listed |
-| MPIM | NYSE ARCA | m+ Income Momentum Autocall ETF | ETF | nasdaq_other_listed |
-| SNSC | NYSE MKT | SunScout Holding Limited Class A Ordinary Shares | Stock | nasdaq_other_listed |
+| MPIA | NASDAQ | m+ Nasdaq-100 Accelerator Autocall ETF | ETF | nasdaq_listed |
+| PLCI | NASDAQ | Pelican Acquisition II Corporation - Ordinary Shares | Stock | nasdaq_listed |
+| VOGX | NASDAQ | Vogenx Inc - Common Stock | Stock | nasdaq_listed |
+| RVII | NYSE | Robinhood Ventures Fund II Common Shares of Beneficial Interest | Stock | nasdaq_other_listed |
+| ANTW | NYSE ARCA | Anthropic AI Lab Ecosystem ETF | ETF | nasdaq_other_listed |
+| DACL | NYSE ARCA | REX Defensive Autocallable Income ETF | ETF | nasdaq_other_listed |
+| DEPW | NYSE ARCA | Google DeepMind AI Lab Ecosystem ETF | ETF | nasdaq_other_listed |
+| MTAW | NYSE ARCA | Meta AI Lab Ecosystem ETF | ETF | nasdaq_other_listed |
+| OAIW | NYSE ARCA | OpenAI Lab Ecosystem ETF | ETF | nasdaq_other_listed |
+| XAIW | NYSE ARCA | SpaceXAI Lab Ecosystem ETF | ETF | nasdaq_other_listed |
 
 ## Skipped
 
 | Reason | Rows |
 |---|---:|
-| ticker_collision | 3 |
+| excluded_non_common_stock | 1 |
+| ticker_collision | 1 |
