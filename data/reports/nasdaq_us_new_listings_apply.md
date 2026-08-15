@@ -1,25 +1,23 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-08-14T07:59:38Z`
-- New supported rows: `9`
-- Accepted rows: `6`
-- Skipped rows: `3`
+- Generated at: `2026-08-15T07:08:41Z`
+- New supported rows: `7`
+- Accepted rows: `5`
+- Skipped rows: `2`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
 | Ticker | Exchange | Name | Asset type | Source |
 |---|---|---|---|---|
-| BEMD | BATS | BNY Mellon Emerging Markets Debt ETF | ETF | nasdaq_other_listed |
-| BRNX | NASDAQ | BrenX Ltd. - Ordinary Shares | Stock | nasdaq_listed |
-| CGPT | NASDAQ | VegaShares AI Inference ETF | ETF | nasdaq_listed |
-| COOL | NASDAQ | VegaShares AI Thermal, Cooling & Power Management ETF | ETF | nasdaq_listed |
-| GHXI | NASDAQ | Gores Holdings XI, Inc. - Class A Ordinary Shares | Stock | nasdaq_listed |
-| HAWG | NYSE ARCA | HCM Hedged Equity ETF | ETF | nasdaq_other_listed |
+| ACQQ | NASDAQ | ProShares Nasdaq-100 Autocallable Income ETF | ETF | nasdaq_listed |
+| ACRT | NASDAQ | ProShares Russell 2000 Autocallable Income ETF | ETF | nasdaq_listed |
+| ACSP | NASDAQ | ProShares S&P 500 Autocallable Income ETF | ETF | nasdaq_listed |
+| EWAV | NASDAQ | East West Ave Acquisition Corp. - Common Stock | Stock | nasdaq_listed |
+| THEO | NASDAQ | BOA Acquisition Corp. II - Class A Ordinary Shares | Stock | nasdaq_listed |
 
 ## Skipped
 
 | Reason | Rows |
 |---|---:|
 | excluded_non_common_stock | 2 |
-| temporary_when_issued_line | 1 |

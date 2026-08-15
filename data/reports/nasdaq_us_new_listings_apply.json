@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-14T07:59:38Z",
+    "generated_at": "2026-08-15T07:08:41Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,37 +8,62 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 9,
-    "accepted_rows": 6,
-    "skipped_rows": 3,
+    "new_supported_rows": 7,
+    "accepted_rows": 5,
+    "skipped_rows": 2,
     "accepted_by_exchange": {
-      "BATS": 1,
-      "NASDAQ": 4,
-      "NYSE ARCA": 1
+      "NASDAQ": 5
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 2,
-      "temporary_when_issued_line": 1
+      "excluded_non_common_stock": 2
     }
   },
   "accepted": [
     {
-      "ticker": "BEMD",
-      "name": "BNY Mellon Emerging Markets Debt ETF",
-      "exchange": "BATS",
+      "ticker": "ACQQ",
+      "name": "ProShares Nasdaq-100 Autocallable Income ETF",
+      "exchange": "NASDAQ",
       "asset_type": "ETF",
       "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "BRNX",
-      "name": "BrenX Ltd. - Ordinary Shares",
+      "ticker": "ACRT",
+      "name": "ProShares Russell 2000 Autocallable Income ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "ACSP",
+      "name": "ProShares S&P 500 Autocallable Income ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "EWAV",
+      "name": "East West Ave Acquisition Corp. - Common Stock",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -51,36 +76,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "CGPT",
-      "name": "VegaShares AI Inference ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "COOL",
-      "name": "VegaShares AI Thermal, Cooling & Power Management ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "GHXI",
-      "name": "Gores Holdings XI, Inc. - Class A Ordinary Shares",
+      "ticker": "THEO",
+      "name": "BOA Acquisition Corp. II - Class A Ordinary Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -90,47 +87,25 @@
       "aliases": "",
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "HAWG",
-      "name": "HCM Hedged Equity ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory"
     }
   ],
   "skipped": [
     {
-      "ticker": "GHXIW",
+      "ticker": "EWAVR",
       "exchange": "NASDAQ",
-      "name": "Gores Holdings XI, Inc. - Warrant",
+      "name": "East West Ave Acquisition Corp. - Rights",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "TBCVU",
+      "ticker": "THEOR",
       "exchange": "NASDAQ",
-      "name": "Thunder Bridge Capital Partners V, Ltd. - Units",
+      "name": "BOA Acquisition Corp. II - Rights",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "GFR.V",
-      "exchange": "NYSE",
-      "name": "Greenfire Resources Ltd. Rights (expiring September 15, 2026) Rights when issued",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "temporary_when_issued_line"
     }
   ]
 }
