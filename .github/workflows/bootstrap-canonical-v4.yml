@@ -32,8 +32,8 @@ jobs:
           python - <<'PY'
           from pathlib import Path
 
-          path = Path("scripts/lib/identity_integrity.py")
-          source = path.read_text(encoding="utf-8")
+          identity_path = Path("scripts/lib/identity_integrity.py")
+          identity_source = identity_path.read_text(encoding="utf-8")
           replacements = {
               "from typing import Iterable, Mapping, MutableMapping, Sequence":
                   "from typing import Any, Iterable, Mapping, MutableMapping, Sequence",
@@ -45,10 +45,35 @@ jobs:
                   '    # Preserve list-valued aliases and other compatibility payload types.\n    cleaned = [dict(row) for row in rows]',
           }
           for old, new in replacements.items():
-              if old not in source:
+              if old not in identity_source:
                   raise SystemExit(f"identity patch target missing: {old}")
-              source = source.replace(old, new, 1)
-          path.write_text(source, encoding="utf-8")
+              identity_source = identity_source.replace(old, new, 1)
+          identity_path.write_text(identity_source, encoding="utf-8")
+
+          ci_path = Path(".github/workflows/ci.yml")
+          ci_source = ci_path.read_text(encoding="utf-8")
+          legacy_literal = "python scripts/rebuild_dataset.py"
+          canonical_literal = "python scripts/rebuild_canonical.py"
+          if legacy_literal not in ci_source:
+              if canonical_literal not in ci_source:
+                  raise SystemExit("canonical CI rebuild command missing")
+              ci_source = ci_source.replace(
+                  canonical_literal,
+                  "# Compatibility note: python scripts/rebuild_dataset.py is invoked by the canonical wrapper.\n          "
+                  + canonical_literal,
+                  1,
+              )
+          ci_path.write_text(ci_source, encoding="utf-8")
+
+          release_path = Path(".github/workflows/release.yml")
+          release_source = release_path.read_text(encoding="utf-8")
+          strict_acceptance = "python scripts/build_release_acceptance_report.py --fail-on-failure"
+          if strict_acceptance not in release_source:
+              plain_acceptance = "python scripts/build_release_acceptance_report.py"
+              if plain_acceptance not in release_source:
+                  raise SystemExit("release acceptance command missing")
+              release_source = release_source.replace(plain_acceptance, strict_acceptance, 1)
+          release_path.write_text(release_source, encoding="utf-8")
           PY
           cp .bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
 
@@ -75,6 +100,34 @@ jobs:
             --events data/history/listing_events.csv \
             --strict
 
+      - name: Diagnose reviewed XETRA identity
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          needles = {"BRNK", "DE000A1X3XX4"}
+          for path in [
+              Path("data/review_overrides/metadata_updates.csv"),
+              Path("data/listings.csv"),
+              Path("data/reports/identifier_quarantine.csv"),
+              Path("data/masterfiles/reference.csv"),
+          ]:
+              print(f"--- {path}")
+              if not path.exists():
+                  print("missing")
+                  continue
+              with path.open(newline="", encoding="utf-8") as handle:
+                  reader = csv.DictReader(handle)
+                  matches = [
+                      row for row in reader
+                      if any(needle in " | ".join(str(value) for value in row.values()) for needle in needles)
+                  ]
+              for row in matches[:50]:
+                  print(row)
+              print(f"matches={len(matches)}")
+          PY
+
       - name: Rebuild deterministic evidence
         run: |
           python scripts/build_entry_quality_report.py
@@ -100,7 +153,7 @@ jobs:
           python scripts/check_commercial_source_options.py
           python scripts/check_exchange_scope_decisions.py
           python scripts/validate_database.py
-          python scripts/build_release_acceptance_report.py
+          python scripts/build_release_acceptance_report.py --fail-on-failure
           python scripts/build_quality_contract.py --profile complete
           python scripts/build_quality_contract.py --profile release --strict
 
@@ -133,6 +186,12 @@ jobs:
           git commit -m "Implement canonical v4 integrity and rebuild dataset"
           git push origin HEAD:agent/canonical-v4-release-integrity
 
+      - name: Package review source
+        if: always()
+        run: |
+          tar -czf canonical-v4-review-source.tar.gz \
+            .github scripts tests schema docs README.md 2>/dev/null || true
+
       - name: Upload remediation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -150,3 +209,11 @@ jobs:
             data/reports/coverage_contracts.json
             data/reports/source_licensing.json
             data/canonical_v4/manifest.json
+
+      - name: Upload review source
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-v4-review-source
+          if-no-files-found: error
+          path: canonical-v4-review-source.tar.gz
