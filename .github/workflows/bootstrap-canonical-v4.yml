@@ -22,12 +22,14 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: agent/canonical-v4-release-integrity
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Install remediation source patch
         run: |
           cat .bootstrap/patch.* | base64 --decode > /tmp/patch.tar.xz
           tar -xJf /tmp/patch.tar.xz -C .
+          cp .bootstrap/rebuild_canonical.py scripts/rebuild_canonical.py
+          cp .bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
 
       - name: Set up Python
         uses: actions/setup-python@v6
