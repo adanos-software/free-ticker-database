@@ -87,3 +87,16 @@ def test_final_export_pass_removes_conflict_reintroduced_after_mid_pipeline_clea
     assert alias_types == {}
     assert not find_identity_conflicts(cleaned)
     assert {item["isin"] for item in cleaned} == {""}
+
+
+def test_resolution_preserves_non_identity_payload_types() -> None:
+    isin = "ARP6356B1059"
+    rows = [
+        {**row("TSX", "LIFE", "CI Global Longevity Economy Fund", "ETF", isin), "aliases": ["LIFE", "CI Longevity"]},
+        {**row("BCBA", "LONG", "Longvie SA", "Stock", isin), "aliases": ["LONG"]},
+    ]
+
+    cleaned, _ = resolve_identity_conflicts(rows)
+
+    assert all(isinstance(item["aliases"], list) for item in cleaned)
+    assert cleaned[0]["aliases"] == ["LIFE", "CI Longevity"]

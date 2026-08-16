@@ -29,6 +29,27 @@ jobs:
           cat .bootstrap/patch.* | base64 --decode > /tmp/patch.tar.xz
           tar -xJf /tmp/patch.tar.xz -C .
           cp .bootstrap/rebuild_canonical.py scripts/rebuild_canonical.py
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("scripts/lib/identity_integrity.py")
+          source = path.read_text(encoding="utf-8")
+          replacements = {
+              "from typing import Iterable, Mapping, MutableMapping, Sequence":
+                  "from typing import Any, Iterable, Mapping, MutableMapping, Sequence",
+              "    rows: Sequence[MutableMapping[str, str]],":
+                  "    rows: Sequence[MutableMapping[str, Any]],",
+              ") -> tuple[list[dict[str, str]], list[ResolutionDecision]]:":
+                  ") -> tuple[list[dict[str, Any]], list[ResolutionDecision]]:",
+              '    cleaned = [{str(key): str(value or "") for key, value in row.items()} for row in rows]':
+                  '    # Preserve list-valued aliases and other compatibility payload types.\n    cleaned = [dict(row) for row in rows]',
+          }
+          for old, new in replacements.items():
+              if old not in source:
+                  raise SystemExit(f"identity patch target missing: {old}")
+              source = source.replace(old, new, 1)
+          path.write_text(source, encoding="utf-8")
+          PY
           cp .bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
 
       - name: Set up Python
