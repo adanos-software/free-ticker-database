@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: canonical-v4-remediation
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   bootstrap:
@@ -76,6 +76,8 @@ jobs:
           release_path.write_text(release_source, encoding="utf-8")
           PY
           cp .bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
+          git apply --check .bootstrap/official_name_reconciliation.patch
+          git apply .bootstrap/official_name_reconciliation.patch
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -100,34 +102,6 @@ jobs:
             --events data/history/listing_events.csv \
             --strict
 
-      - name: Diagnose reviewed XETRA identity
-        run: |
-          python - <<'PY'
-          import csv
-          from pathlib import Path
-
-          needles = {"BRNK", "DE000A1X3XX4"}
-          for path in [
-              Path("data/review_overrides/metadata_updates.csv"),
-              Path("data/listings.csv"),
-              Path("data/reports/identifier_quarantine.csv"),
-              Path("data/masterfiles/reference.csv"),
-          ]:
-              print(f"--- {path}")
-              if not path.exists():
-                  print("missing")
-                  continue
-              with path.open(newline="", encoding="utf-8") as handle:
-                  reader = csv.DictReader(handle)
-                  matches = [
-                      row for row in reader
-                      if any(needle in " | ".join(str(value) for value in row.values()) for needle in needles)
-                  ]
-              for row in matches[:50]:
-                  print(row)
-              print(f"matches={len(matches)}")
-          PY
-
       - name: Rebuild deterministic evidence
         run: |
           python scripts/build_entry_quality_report.py
@@ -147,6 +121,8 @@ jobs:
 
       - name: Run full review gates
         run: |
+          python -m compileall -q scripts tests
+          git diff --check
           python -m pytest tests/ -q
           python scripts/check_entry_quality_gate.py
           python scripts/check_readme_snapshot.py
@@ -204,6 +180,9 @@ jobs:
             data/reports/report_provenance.json
             data/reports/identifier_quarantine.csv
             data/reports/identifier_quarantine.json
+            data/reports/official_name_reconciliation.csv
+            data/reports/official_name_reconciliation.json
+            data/reports/official_name_reconciliation.md
             data/reports/safe_merge.json
             data/reports/reference_reconciliation.json
             data/reports/coverage_contracts.json
