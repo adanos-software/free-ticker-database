@@ -76,8 +76,12 @@ jobs:
           release_path.write_text(release_source, encoding="utf-8")
           PY
           cp .bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
-          git apply --check .bootstrap/official_name_reconciliation.patch
-          git apply .bootstrap/official_name_reconciliation.patch
+          base64 --decode .bootstrap/official_name_reconciliation.patch.xz.b64 \
+            > /tmp/official_name_reconciliation.patch.xz
+          xz -dc /tmp/official_name_reconciliation.patch.xz \
+            > /tmp/official_name_reconciliation.patch
+          git apply --check /tmp/official_name_reconciliation.patch
+          git apply /tmp/official_name_reconciliation.patch
 
       - name: Set up Python
         uses: actions/setup-python@v6
