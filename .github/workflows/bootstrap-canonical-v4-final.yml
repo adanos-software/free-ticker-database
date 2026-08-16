@@ -90,6 +90,7 @@ jobs:
           apply_compressed_patch official_name_reconciliation
           apply_compressed_patch deterministic_csv_lf
           apply_compressed_patch quality_contract_hardening
+          apply_compressed_patch official_name_peer_consensus
 
       - name: Set up Python
         uses: actions/setup-python@v6
