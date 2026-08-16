@@ -1,0 +1,129 @@
+name: Bootstrap canonical v4 remediation
+
+on:
+  push:
+    branches:
+      - agent/canonical-v4-release-integrity
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canonical-v4-remediation
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout remediation branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-release-integrity
+          fetch-depth: 0
+
+      - name: Install remediation source patch
+        run: |
+          cat .bootstrap/patch.* | base64 --decode > /tmp/patch.tar.xz
+          tar -xJf /tmp/patch.tar.xz -C .
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Preserve baseline
+        run: cp data/listings.csv /tmp/listings-before.csv
+
+      - name: Normalize source governance and rebuild canonical data
+        run: |
+          python scripts/normalize_source_registry.py
+          python scripts/rebuild_canonical.py
+          python scripts/check_safe_merge.py \
+            --before /tmp/listings-before.csv \
+            --after data/listings.csv \
+            --events data/history/listing_events.csv \
+            --strict
+
+      - name: Rebuild deterministic evidence
+        run: |
+          python scripts/build_entry_quality_report.py
+          python scripts/build_coverage_report.py
+          python scripts/build_source_inventory.py
+          python scripts/build_exchange_source_audit.py
+          python scripts/build_source_gap_classification.py
+          python scripts/build_source_of_truth_decisions.py
+          python scripts/build_completion_backlog.py
+          python scripts/build_alias_quality_report.py
+          python scripts/build_adanos_ticker_reference.py
+          python scripts/build_isin_identity_collision_review_queue.py
+          python scripts/build_reference_reconciliation.py
+          python scripts/build_coverage_contracts.py
+          python scripts/update_readme_snapshot.py
+          python scripts/update_readme_quality_contract.py
+
+      - name: Run full review gates
+        run: |
+          python -m pytest tests/ -q
+          python scripts/check_entry_quality_gate.py
+          python scripts/check_readme_snapshot.py
+          python scripts/check_commercial_source_options.py
+          python scripts/check_exchange_scope_decisions.py
+          python scripts/validate_database.py
+          python scripts/build_release_acceptance_report.py
+          python scripts/build_quality_contract.py --profile complete
+          python scripts/build_quality_contract.py --profile release --strict
+
+      - name: Commit source and deterministic remediation outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            .github/workflows/ci.yml \
+            .github/workflows/release.yml \
+            .github/workflows/remediate-canonical-v4.yml \
+            scripts/lib/identity_integrity.py \
+            scripts/rebuild_canonical.py \
+            scripts/build_canonical_v4.py \
+            scripts/check_safe_merge.py \
+            scripts/normalize_source_registry.py \
+            scripts/build_reference_reconciliation.py \
+            scripts/build_coverage_contracts.py \
+            scripts/build_quality_contract.py \
+            scripts/update_readme_quality_contract.py \
+            scripts/build_canonical_v4_archive.py \
+            scripts/pipeline_manifest.json \
+            schema/canonical_v4.sql \
+            docs \
+            tests \
+            README.md \
+            data
+          git rm -r .bootstrap
+          git rm .github/workflows/bootstrap-canonical-v4.yml
+          git commit -m "Implement canonical v4 integrity and rebuild dataset"
+          git push origin HEAD:agent/canonical-v4-release-integrity
+
+      - name: Upload remediation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-v4-bootstrap-evidence
+          if-no-files-found: warn
+          path: |
+            data/reports/quality_contract.json
+            data/reports/quality_contract.md
+            data/reports/report_provenance.json
+            data/reports/identifier_quarantine.csv
+            data/reports/identifier_quarantine.json
+            data/reports/safe_merge.json
+            data/reports/reference_reconciliation.json
+            data/reports/coverage_contracts.json
+            data/reports/source_licensing.json
+            data/canonical_v4/manifest.json
