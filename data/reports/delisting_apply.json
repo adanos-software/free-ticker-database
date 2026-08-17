@@ -1,29 +1,21 @@
 {
   "summary": {
-    "generated_at": "2026-08-10T09:01:40Z",
+    "generated_at": "2026-08-17T08:24:09Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "applied_rows": 0,
     "drafted_rows": 0,
-    "blocked_rows": 27,
-    "manual_rows": 169,
+    "blocked_rows": 28,
+    "manual_rows": 177,
     "status_counts": {
-      "blocked_suspended_kept_by_policy": 27,
-      "manual_rename_vs_delisting_required": 169
+      "blocked_suspended_kept_by_policy": 28,
+      "manual_rename_vs_delisting_required": 177
     }
   },
   "applied": [],
   "drafted": [],
   "blocked": [
-    {
-      "exchange": "BSE_IN",
-      "ticker": "ABAN",
-      "name": "Aban Offshore Ltd",
-      "isin": "INE421A01028",
-      "classification": "suspended",
-      "status": "blocked_suspended_kept_by_policy"
-    },
     {
       "exchange": "BSE_IN",
       "ticker": "ALSTONE",
@@ -37,6 +29,14 @@
       "ticker": "ASHIS",
       "name": "Ashiana Ispat Ltd",
       "isin": "INE587D01012",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "ASYL",
+      "name": "Advance Syntex Ltd",
+      "isin": "INE184U01012",
       "classification": "suspended",
       "status": "blocked_suspended_kept_by_policy"
     },
@@ -101,6 +101,14 @@
       "ticker": "OMKARCHEM",
       "name": "Omkar Speciality Chemicals Ltd",
       "isin": "INE474L01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "OTCO",
+      "name": "OTCO International Ltd",
+      "isin": "INE910B01028",
       "classification": "suspended",
       "status": "blocked_suspended_kept_by_policy"
     },
@@ -284,6 +292,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "ANSC",
+      "name": "Agriculture & Natural Solutions Acquisition Corporation Class A Ordinary Shares",
+      "isin": "KYG0131Y1008",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "APM",
       "name": "Aptorum Group Ltd Class A",
       "isin": "KYG6096M1069",
@@ -343,6 +359,14 @@
       "ticker": "BNBX",
       "name": "BNB Plus Corp.",
       "isin": "US03815U6073",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "BNRG",
+      "name": "Brenmiller Energy Ltd Ordinary Shares",
+      "isin": "IL0011415309",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -596,6 +620,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "IPCX",
+      "name": "Inflection Point Acquisition Corp. III Class A Ordinary Shares",
+      "isin": "KYG478751020",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "ISRL",
       "name": "Israel Acquisitions Corp Class A",
       "isin": "KYG496671010",
@@ -732,6 +764,14 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "NUTR",
+      "name": "Nusatrip Incorporated Common Stock",
+      "isin": "US67119K1025",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "NUVL",
       "name": "Nuvalent Inc",
       "isin": "US6707031075",
@@ -815,6 +855,14 @@
       "ticker": "PTNM",
       "name": "Pitanium Ltd",
       "isin": "VGG7111A1012",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "QMMM",
+      "name": "QMMM Holdings Limited Ordinary Shares",
+      "isin": "KYG7309R1149",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1148,6 +1196,14 @@
     },
     {
       "exchange": "NYSE",
+      "ticker": "AVB",
+      "name": "AvalonBay Communities Inc",
+      "isin": "US0534841012",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
       "ticker": "AVNS",
       "name": "Avanos Medical Inc",
       "isin": "US05350V1061",
@@ -1159,6 +1215,14 @@
       "ticker": "AXIA",
       "name": "AXIA Energia",
       "isin": "US15234Q2075",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "BBBY",
+      "name": "Bed Bath & Beyond, Inc.",
+      "isin": "US6903701018",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
@@ -1255,6 +1319,14 @@
       "ticker": "LEGT",
       "name": "Legato Merger Corp. III",
       "isin": "KYG5451A1031",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "MDV",
+      "name": "Modiv Inc",
+      "isin": "US60784B1017",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required"
     },
