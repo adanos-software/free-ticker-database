@@ -1,7 +1,7 @@
 # Drift / freshness report
 
-Generated: 2026-08-10T08:54:52Z
-Dataset built_at: 2026-08-10T08:17:05Z (0.0 days ago; threshold 45.0)
+Generated: 2026-08-17T08:05:05Z
+Dataset built_at: 2026-08-15T07:10:25Z (2.0 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
@@ -28,22 +28,21 @@ Dataset built_at: 2026-08-10T08:17:05Z (0.0 days ago; threshold 45.0)
 
 ## Quality indicators (release-gate info counts)
 - allowed_warn_rows: 198
-- expected_missing_primary_isin: 1118
-- missing_etf_category: 909
-- missing_stock_sector: 2655
-- source_gap_rows: 20956
+- expected_missing_primary_isin: 1155
+- missing_etf_category: 936
+- missing_stock_sector: 2665
+- source_gap_rows: 21000
 
 ## Quality regressions: 4
-- source_gap_rows: 6445 -> 20956 (+14511)
-- expected_missing_primary_isin: 777 -> 1118 (+341)
-- missing_stock_sector: 48 -> 2655 (+2607)
-- missing_etf_category: 122 -> 909 (+787)
+- source_gap_rows: 20956 -> 21000 (+44)
+- expected_missing_primary_isin: 1118 -> 1155 (+37)
+- missing_stock_sector: 2655 -> 2665 (+10)
+- missing_etf_category: 909 -> 936 (+27)
 
-## Official recall regressions: 5
-- BATS official_recall_missing: 336 -> 340 (+4)
-- Borsa Italiana official_recall_missing: 2640 -> 2647 (+7)
-- NSE_IN official_recall_missing: 641 -> 688 (+47)
-- NSE_IN collision_adjusted_recall_missing: 445 -> 453 (+8)
-- NSE_KE official_recall_missing: 55 -> 57 (+2)
+## Official recall regressions: 4
+- BATS official_recall_missing: 340 -> 343 (+3)
+- NASDAQ official_recall_missing: 1027 -> 1034 (+7)
+- NASDAQ collision_adjusted_recall_missing: 974 -> 980 (+6)
+- NYSE ARCA official_recall_missing: 119 -> 121 (+2)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._
