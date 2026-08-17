@@ -12,7 +12,7 @@ permissions:
   statuses: write
 
 jobs:
-  test:
+  compatibility:
     name: Compatibility dataset
     runs-on: ubuntu-latest
 
@@ -112,19 +112,6 @@ jobs:
                   raise SystemExit(f"{path} is empty after rebuild")
           PY
 
-      - name: Publish dispatched CI result for branch protection
-        if: ${{ always() && github.event_name == 'workflow_dispatch' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-          CI_STATE: ${{ job.status == 'success' && 'success' || 'failure' }}
-          CI_TARGET_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
-            -f state="$CI_STATE" \
-            -f context="test" \
-            -f description="Full dispatched CI: $CI_STATE" \
-            -f target_url="$CI_TARGET_URL"
-
   canonical-v4:
     name: Canonical v4 foundation
     runs-on: ubuntu-latest
@@ -138,7 +125,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd pg_isready
+          --health-cmd "pg_isready -U postgres -d ticker"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -265,3 +252,35 @@ jobs:
             data/reports/coverage_contracts.csv
             data/reports/source_licensing.json
             data/canonical_v4/manifest.json
+
+  test:
+    name: test
+    if: ${{ always() }}
+    needs:
+      - compatibility
+      - canonical-v4
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Require all technical CI jobs
+        env:
+          COMPATIBILITY_RESULT: ${{ needs.compatibility.result }}
+          CANONICAL_RESULT: ${{ needs.canonical-v4.result }}
+        run: |
+          test "$COMPATIBILITY_RESULT" = "success"
+          test "$CANONICAL_RESULT" = "success"
+
+      - name: Publish legacy branch-protection status
+        if: ${{ always() }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          CI_STATE: ${{ needs.compatibility.result == 'success' && needs.canonical-v4.result == 'success' && 'success' || 'failure' }}
+          CI_TARGET_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
+            -f state="$CI_STATE" \
+            -f context="test" \
+            -f description="Aggregate PR CI: $CI_STATE" \
+            -f target_url="$CI_TARGET_URL"
