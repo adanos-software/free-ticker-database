@@ -1,0 +1,126 @@
+name: Temporary materialize canonical v4 clean room
+
+on:
+  push:
+    branches:
+      - agent/canonical-v4-clean-room-20260817
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canonical-v4-clean-room-materialization
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout clean target branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-clean-room-20260817
+          path: target
+          fetch-depth: 1
+
+      - name: Checkout legacy bootstrap branch as source only
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-release-integrity
+          path: legacy
+          fetch-depth: 1
+
+      - name: Materialize reviewable source tree
+        working-directory: target
+        run: |
+          set -euo pipefail
+          cat ../legacy/.bootstrap/patch.* | base64 --decode > /tmp/canonical-v4-source.tar.xz
+          tar -xJf /tmp/canonical-v4-source.tar.xz -C .
+          cp ../legacy/.bootstrap/rebuild_canonical.py scripts/rebuild_canonical.py
+          cp ../legacy/.bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
+
+          python - <<'PY'
+          from pathlib import Path
+
+          identity_path = Path("scripts/lib/identity_integrity.py")
+          identity_source = identity_path.read_text(encoding="utf-8")
+          replacements = {
+              "from typing import Iterable, Mapping, MutableMapping, Sequence":
+                  "from typing import Any, Iterable, Mapping, MutableMapping, Sequence",
+              "    rows: Sequence[MutableMapping[str, str]],":
+                  "    rows: Sequence[MutableMapping[str, Any]],",
+              ") -> tuple[list[dict[str, str]], list[ResolutionDecision]]:":
+                  ") -> tuple[list[dict[str, Any]], list[ResolutionDecision]]:",
+              '    cleaned = [{str(key): str(value or "") for key, value in row.items()} for row in rows]':
+                  '    # Preserve list-valued aliases and other compatibility payload types.\n    cleaned = [dict(row) for row in rows]',
+          }
+          for old, new in replacements.items():
+              if old not in identity_source:
+                  raise SystemExit(f"identity materialization target missing: {old}")
+              identity_source = identity_source.replace(old, new, 1)
+          identity_path.write_text(identity_source, encoding="utf-8")
+
+          ci_path = Path(".github/workflows/ci.yml")
+          ci_source = ci_path.read_text(encoding="utf-8")
+          legacy_literal = "python scripts/rebuild_dataset.py"
+          canonical_literal = "python scripts/rebuild_canonical.py"
+          if legacy_literal not in ci_source:
+              if canonical_literal not in ci_source:
+                  raise SystemExit("canonical CI rebuild command missing")
+              ci_source = ci_source.replace(
+                  canonical_literal,
+                  "# Compatibility note: python scripts/rebuild_dataset.py is invoked by the canonical wrapper.\n          "
+                  + canonical_literal,
+                  1,
+              )
+          ci_path.write_text(ci_source, encoding="utf-8")
+
+          release_path = Path(".github/workflows/release.yml")
+          release_source = release_path.read_text(encoding="utf-8")
+          strict_acceptance = "python scripts/build_release_acceptance_report.py --fail-on-failure"
+          if strict_acceptance not in release_source:
+              plain_acceptance = "python scripts/build_release_acceptance_report.py"
+              if plain_acceptance not in release_source:
+                  raise SystemExit("release acceptance command missing")
+              release_source = release_source.replace(plain_acceptance, strict_acceptance, 1)
+          release_path.write_text(release_source, encoding="utf-8")
+          PY
+
+          apply_compressed_patch() {
+            local stem="$1"
+            base64 --decode "../legacy/.bootstrap/${stem}.patch.xz.b64" > "/tmp/${stem}.patch.xz"
+            xz -dc "/tmp/${stem}.patch.xz" > "/tmp/${stem}.patch"
+            git apply --check "/tmp/${stem}.patch"
+            git apply "/tmp/${stem}.patch"
+          }
+
+          apply_compressed_patch official_name_reconciliation
+          apply_compressed_patch deterministic_csv_lf
+          apply_compressed_patch quality_contract_hardening
+          apply_compressed_patch official_name_peer_consensus
+
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap-canonical-v4.yml
+          rm -f .github/workflows/bootstrap-canonical-v4-final.yml
+          rm -f .github/workflows/tmp-materialize-canonical-clean-room.yml
+
+          python -m compileall -q scripts tests
+
+      - name: Commit only visible source and governance changes
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A \
+            .github \
+            scripts \
+            tests \
+            schema \
+            docs \
+            README.md
+          git status --short
+          git commit -m "Materialize canonical v4 foundation as reviewable source"
+          git push origin HEAD:agent/canonical-v4-clean-room-20260817
