@@ -1,0 +1,642 @@
+name: Temporary harden canonical v4 clean room
+
+on:
+  push:
+    branches:
+      - agent/canonical-v4-clean-room-20260817
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canonical-v4-clean-room-hardening
+  cancel-in-progress: true
+
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout clean-room branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-clean-room-20260817
+          fetch-depth: 1
+
+      - name: Verify materialized source exists
+        run: |
+          set -euo pipefail
+          test -f scripts/lib/identity_integrity.py
+          test -f scripts/check_safe_merge.py
+          test -f scripts/build_reference_reconciliation.py
+          test -f scripts/build_coverage_contracts.py
+          test -f scripts/build_quality_contract.py
+
+      - name: Apply fail-closed hardening
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+
+          import ast
+          import re
+          from pathlib import Path
+
+
+          def write_ast(path: Path, tree: ast.AST) -> None:
+              ast.fix_missing_locations(tree)
+              rendered = ast.unparse(tree).rstrip() + "\n"
+              path.write_text(rendered, encoding="utf-8")
+
+
+          # ------------------------------------------------------------------
+          # Identity matching: remove single-token fuzzy joins, validate every
+          # reviewed listing key, and fail closed for contradictory short names.
+          # ------------------------------------------------------------------
+          identity_path = Path("scripts/lib/identity_integrity.py")
+          identity_source = identity_path.read_text(encoding="utf-8")
+          identity_tree = ast.parse(identity_source)
+          matcher = None
+          for node in ast.walk(identity_tree):
+              if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                  continue
+              segment = ast.get_source_segment(identity_source, node) or ""
+              if "left_tokens & right_tokens" not in segment:
+                  continue
+              matcher = node
+              break
+          if matcher is None or len(matcher.args.args) < 2:
+              raise SystemExit("identity-name matcher not found")
+
+          left_arg = matcher.args.args[0].arg
+          right_arg = matcher.args.args[1].arg
+          matcher_template = f'''
+          def _replacement({left_arg}, {right_arg}):
+              import re as _re
+              import unicodedata as _unicodedata
+
+              def _normalise_identity_name(value):
+                  text = _unicodedata.normalize("NFKD", str(value or ""))
+                  text = "".join(ch for ch in text if not _unicodedata.combining(ch))
+                  return " ".join(_re.findall(r"[a-z0-9]+", text.casefold()))
+
+              left_normalised = _normalise_identity_name({left_arg})
+              right_normalised = _normalise_identity_name({right_arg})
+              if not left_normalised or not right_normalised:
+                  return False
+              if left_normalised == right_normalised:
+                  return True
+
+              ignored = {{
+                  "ag", "asa", "as", "ab", "bv", "co", "company", "corp",
+                  "corporation", "inc", "incorporated", "limited", "ltd", "nv",
+                  "oyj", "plc", "sa", "se", "spa", "group", "holding", "holdings",
+                  "global", "international", "capital", "financial", "finance",
+                  "energy", "industries", "industry", "resources", "technologies",
+                  "technology", "systems", "services", "solutions", "partners",
+              }}
+              left_tokens = set(left_normalised.split()) - ignored
+              right_tokens = set(right_normalised.split()) - ignored
+              if not left_tokens or not right_tokens:
+                  return False
+              if left_tokens == right_tokens:
+                  return True
+              shared = left_tokens & right_tokens
+              union = left_tokens | right_tokens
+              return len(shared) >= 2 and len(shared) * 2 >= len(union)
+          '''
+          replacement = ast.parse(matcher_template).body[0]
+          matcher.body = replacement.body
+          matcher_name = matcher.name
+
+          cleanse = next(
+              (
+                  node
+                  for node in identity_tree.body
+                  if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+                  and node.name == "cleanse_conflicting_isin_rows"
+              ),
+              None,
+          )
+          if cleanse is None or not cleanse.args.args:
+              raise SystemExit("cleanse_conflicting_isin_rows not found")
+          rows_arg = cleanse.args.args[0].arg
+          review_args = [arg.arg for arg in cleanse.args.args if "review" in arg.arg.casefold()]
+          review_names_literal = repr(review_args)
+          guard_template = f'''
+          import re as _identity_re
+          from collections.abc import Mapping as _IdentityMapping, Sequence as _IdentitySequence
+
+          def _identity_listing_key(row):
+              explicit = str(row.get("listing_key") or "").strip()
+              if explicit:
+                  return explicit
+              exchange = str(row.get("exchange") or "").strip()
+              ticker = str(row.get("ticker") or "").strip()
+              return f"{{exchange}}::{{ticker}}" if exchange and ticker else ""
+
+          _identity_rows_by_key = {{
+              _identity_listing_key(row): row
+              for row in {rows_arg}
+              if _identity_listing_key(row)
+          }}
+          _identity_reviewed_keys = set()
+          for _identity_arg_name in {review_names_literal}:
+              _identity_review_map = locals().get(_identity_arg_name)
+              if not isinstance(_identity_review_map, _IdentityMapping):
+                  continue
+              for _identity_review_id, _identity_spec in _identity_review_map.items():
+                  if isinstance(_identity_spec, _IdentityMapping):
+                      _identity_values = (
+                          _identity_spec.get("listing_keys")
+                          or _identity_spec.get("members")
+                          or _identity_spec.get("keys")
+                          or []
+                      )
+                  else:
+                      _identity_values = _identity_spec
+                  if isinstance(_identity_values, str):
+                      _identity_keys = [_identity_values] if "::" in _identity_values else []
+                  elif isinstance(_identity_values, _IdentitySequence):
+                      _identity_keys = [
+                          str(value).strip()
+                          for value in _identity_values
+                          if isinstance(value, str) and "::" in value
+                      ]
+                  else:
+                      _identity_keys = []
+                  if not _identity_keys:
+                      continue
+                  missing = [key for key in _identity_keys if key not in _identity_rows_by_key]
+                  if missing:
+                      raise ValueError(
+                          "reviewed identity override references unknown listing keys: "
+                          + ", ".join(sorted(missing))
+                      )
+                  _identity_reviewed_keys.update(_identity_keys)
+                  if _identity_re.fullmatch(r"[A-Z]{{2}}[A-Z0-9]{{9}}[0-9]", str(_identity_review_id)):
+                      mismatched = [
+                          key
+                          for key in _identity_keys
+                          if str(_identity_rows_by_key[key].get("isin") or "").strip().upper()
+                          != str(_identity_review_id).strip().upper()
+                      ]
+                      if mismatched:
+                          raise ValueError(
+                              "reviewed identity override does not match the row ISIN: "
+                              + ", ".join(sorted(mismatched))
+                          )
+                  _identity_assets = {{
+                      str(_identity_rows_by_key[key].get("asset_type") or "").strip().casefold()
+                      for key in _identity_keys
+                      if str(_identity_rows_by_key[key].get("asset_type") or "").strip()
+                  }}
+                  if len(_identity_assets) > 1:
+                      raise ValueError(
+                          "reviewed identity override mixes asset types: "
+                          + ", ".join(sorted(_identity_keys))
+                      )
+                  _identity_names = [
+                      str(_identity_rows_by_key[key].get("name") or "").strip()
+                      for key in _identity_keys
+                      if str(_identity_rows_by_key[key].get("name") or "").strip()
+                  ]
+                  for _identity_index, _identity_left in enumerate(_identity_names):
+                      for _identity_right in _identity_names[_identity_index + 1:]:
+                          if not {matcher_name}(_identity_left, _identity_right):
+                              raise ValueError(
+                                  "reviewed identity override contains incoherent names: "
+                                  + ", ".join(sorted(_identity_keys))
+                              )
+
+          _identity_guarded_rows = [dict(row) for row in {rows_arg}]
+          _identity_groups = {{}}
+          for _identity_row in _identity_guarded_rows:
+              _identity_isin = str(_identity_row.get("isin") or "").strip().upper()
+              if _identity_isin:
+                  _identity_groups.setdefault(_identity_isin, []).append(_identity_row)
+          for _identity_isin, _identity_group in _identity_groups.items():
+              _identity_names = {{
+                  "".join(_identity_re.findall(r"[a-z0-9]+", str(row.get("name") or "").casefold()))
+                  for row in _identity_group
+                  if str(row.get("name") or "").strip()
+              }}
+              _identity_keys = {{_identity_listing_key(row) for row in _identity_group}}
+              if (
+                  len(_identity_names) > 1
+                  and all(len(name) <= 4 for name in _identity_names)
+                  and not (_identity_keys and _identity_keys <= _identity_reviewed_keys)
+              ):
+                  for _identity_row in _identity_group:
+                      _identity_row["isin"] = ""
+          {rows_arg} = _identity_guarded_rows
+          '''
+          guard_nodes = ast.parse(guard_template).body
+          insert_at = 1 if cleanse.body and isinstance(cleanse.body[0], ast.Expr) and isinstance(cleanse.body[0].value, ast.Constant) and isinstance(cleanse.body[0].value.value, str) else 0
+          cleanse.body[insert_at:insert_at] = guard_nodes
+          write_ast(identity_path, identity_tree)
+
+          # ------------------------------------------------------------------
+          # Safe merge: every unevidenced row removal and every destructive ISIN
+          # change is a blocker, independent of percentage thresholds.
+          # ------------------------------------------------------------------
+          safe_path = Path("scripts/check_safe_merge.py")
+          safe_source = safe_path.read_text(encoding="utf-8")
+          safe_tree = ast.parse(safe_source)
+          safe_target = None
+          for node in safe_tree.body:
+              if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) or node.name == "main":
+                  continue
+              segment = ast.get_source_segment(safe_source, node) or ""
+              if "overall_shrink_pct" in segment and "unevidenced_removed_rows" in segment:
+                  safe_target = node
+                  break
+          if safe_target is None:
+              raise SystemExit("safe-merge report function not found")
+          original_safe_name = safe_target.name
+          legacy_safe_name = f"_legacy_{{original_safe_name}}"
+          safe_target.name = legacy_safe_name
+          wrapper_template = f'''
+          def {original_safe_name}(*args, **kwargs):
+              import csv as _safe_csv
+              from collections.abc import Mapping as _SafeMapping, Sequence as _SafeSequence
+              from pathlib import Path as _SafePath
+
+              report = {legacy_safe_name}(*args, **kwargs)
+              if not isinstance(report, dict):
+                  return report
+
+              def _safe_rows(value):
+                  if isinstance(value, (_SafePath, str)):
+                      path = _SafePath(value)
+                      if path.exists() and path.suffix.casefold() == ".csv":
+                          with path.open("r", encoding="utf-8-sig", newline="") as handle:
+                              return list(_safe_csv.DictReader(handle))
+                      return None
+                  if isinstance(value, _SafeSequence) and not isinstance(value, (str, bytes)):
+                      materialised = list(value)
+                      if not materialised or all(isinstance(row, _SafeMapping) for row in materialised):
+                          return materialised
+                  return None
+
+              candidates = []
+              for value in list(args) + list(kwargs.values()):
+                  rows = _safe_rows(value)
+                  if rows is not None:
+                      candidates.append(rows)
+              listing_sets = []
+              event_rows = []
+              for rows in candidates:
+                  if rows and any("event_type" in row for row in rows):
+                      event_rows.extend(rows)
+                  elif rows and all(("listing_key" in row or ("exchange" in row and "ticker" in row)) for row in rows):
+                      listing_sets.append(rows)
+              if len(listing_sets) >= 2:
+                  before_rows, after_rows = listing_sets[0], listing_sets[1]
+
+                  def _safe_key(row):
+                      explicit = str(row.get("listing_key") or "").strip()
+                      if explicit:
+                          return explicit
+                      exchange = str(row.get("exchange") or "").strip()
+                      ticker = str(row.get("ticker") or "").strip()
+                      return f"{{exchange}}::{{ticker}}" if exchange and ticker else ""
+
+                  valid_event_types = {{"delisted", "removed", "listing_closed", "symbol_changed"}}
+                  evidenced = set()
+                  for event in event_rows:
+                      event_type = str(event.get("event_type") or "").strip().casefold()
+                      source = str(
+                          event.get("source_key")
+                          or event.get("source")
+                          or event.get("observation_id")
+                          or ""
+                      ).strip()
+                      effective = str(
+                          event.get("effective_at")
+                          or event.get("observed_at")
+                          or event.get("event_date")
+                          or ""
+                      ).strip()
+                      key = _safe_key(event)
+                      if key and event_type in valid_event_types and source and effective:
+                          evidenced.add(key)
+
+                  before_by_key = {{_safe_key(row): row for row in before_rows if _safe_key(row)}}
+                  after_by_key = {{_safe_key(row): row for row in after_rows if _safe_key(row)}}
+                  removed = sorted(set(before_by_key) - set(after_by_key))
+                  destructive_identifiers = sorted(
+                      key
+                      for key in set(before_by_key) & set(after_by_key)
+                      if str(before_by_key[key].get("isin") or "").strip()
+                      and str(before_by_key[key].get("isin") or "").strip().upper()
+                      != str(after_by_key[key].get("isin") or "").strip().upper()
+                  )
+                  unevidenced_removed = [key for key in removed if key not in evidenced]
+                  unevidenced_identifier_changes = [
+                      key for key in destructive_identifiers if key not in evidenced
+                  ]
+                  report["removed_rows"] = len(removed)
+                  report["unevidenced_removed_rows"] = len(unevidenced_removed)
+                  report["destructive_identifier_changes"] = len(destructive_identifiers)
+                  report["unevidenced_identifier_changes"] = len(unevidenced_identifier_changes)
+                  report["unevidenced_removed_listing_keys"] = unevidenced_removed
+                  report["unevidenced_identifier_change_keys"] = unevidenced_identifier_changes
+
+              blockers = list(report.get("blockers") or [])
+              if int(report.get("unevidenced_removed_rows") or 0) > 0:
+                  blockers.append("every removed listing requires dated source evidence")
+              if int(report.get("unevidenced_identifier_changes") or 0) > 0:
+                  blockers.append("every destructive identifier change requires dated source evidence")
+              report["blockers"] = list(dict.fromkeys(blockers))
+              if blockers:
+                  report["passed"] = False
+                  report["status"] = "fail"
+              return report
+          '''
+          wrapper = ast.parse(wrapper_template).body[0]
+          safe_index = safe_tree.body.index(safe_target)
+          safe_tree.body.insert(safe_index + 1, wrapper)
+          write_ast(safe_path, safe_tree)
+
+          # ------------------------------------------------------------------
+          # Coverage: diagnostic alternates remain visible, but only an exact
+          # venue+symbol match contributes to venue recall.
+          # ------------------------------------------------------------------
+          class StrictCoverageTransformer(ast.NodeTransformer):
+              ALTERNATES = {{
+                  "alternate_listing_line",
+                  "normalization_or_mapping_difference",
+                  "normalization_difference",
+                  "name_match",
+                  "identifier_match",
+              }}
+
+              def visit_Compare(self, node):
+                  node = self.generic_visit(node)
+                  if len(node.ops) != 1 or not isinstance(node.ops[0], ast.In):
+                      return node
+                  comparator = node.comparators[0]
+                  if not isinstance(comparator, (ast.Set, ast.List, ast.Tuple)):
+                      return node
+                  values = {{
+                      element.value
+                      for element in comparator.elts
+                      if isinstance(element, ast.Constant) and isinstance(element.value, str)
+                  }}
+                  if "exact_match" in values and values & self.ALTERNATES:
+                      return ast.Compare(
+                          left=node.left,
+                          ops=[ast.Eq()],
+                          comparators=[ast.Constant(value="exact_match")],
+                      )
+                  return node
+
+          for coverage_file in (
+              Path("scripts/build_reference_reconciliation.py"),
+              Path("scripts/build_coverage_contracts.py"),
+          ):
+              source = coverage_file.read_text(encoding="utf-8")
+              tree = ast.parse(source)
+              tree = StrictCoverageTransformer().visit(tree)
+              helper = ast.parse('''
+          def is_strict_venue_coverage_match(classification: str) -> bool:
+              """Return True only for an exact current listing-key match."""
+              return str(classification or "").strip() == "exact_match"
+          ''').body[0]
+              if not any(isinstance(node, ast.FunctionDef) and node.name == helper.name for node in tree.body):
+                  main_index = next(
+                      (
+                          index
+                          for index, node in enumerate(tree.body)
+                          if isinstance(node, ast.If)
+                          and isinstance(node.test, ast.Compare)
+                      ),
+                      len(tree.body),
+                  )
+                  tree.body.insert(main_index, helper)
+              write_ast(coverage_file, tree)
+
+          # Strict stable releases must include every complete-governance gate.
+          release_path = Path(".github/workflows/release.yml")
+          release_source = release_path.read_text(encoding="utf-8")
+          release_source = release_source.replace(
+              "python scripts/build_quality_contract.py --profile complete\n",
+              "python scripts/build_quality_contract.py --profile complete --strict\n",
+          )
+          if "python scripts/build_quality_contract.py --profile complete --strict" not in release_source:
+              raise SystemExit("strict complete quality gate missing from release workflow")
+          release_path.write_text(release_source, encoding="utf-8")
+
+          # The temporary/self-writing remediation workflow is not part of the
+          # reviewable foundation.
+          Path(".github/workflows/remediate-canonical-v4.yml").unlink(missing_ok=True)
+
+          foundation_workflow = '''name: Canonical v4 foundation\n\non:\n  pull_request:\n    paths:\n      - "scripts/lib/identity_integrity.py"\n      - "scripts/check_safe_merge.py"\n      - "scripts/build_reference_reconciliation.py"\n      - "scripts/build_coverage_contracts.py"\n      - "scripts/build_quality_contract.py"\n      - "schema/canonical_v4.sql"\n      - "tests/test_canonical_v4_*.py"\n      - ".github/workflows/canonical-v4-foundation.yml"\n      - ".github/workflows/release.yml"\n  push:\n    branches:\n      - main\n    paths:\n      - "scripts/lib/identity_integrity.py"\n      - "scripts/check_safe_merge.py"\n      - "scripts/build_reference_reconciliation.py"\n      - "scripts/build_coverage_contracts.py"\n      - "scripts/build_quality_contract.py"\n      - "schema/canonical_v4.sql"\n      - "tests/test_canonical_v4_*.py"\n      - ".github/workflows/canonical-v4-foundation.yml"\n      - ".github/workflows/release.yml"\n\npermissions:\n  contents: read\n\njobs:\n  foundation:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v6\n      - uses: actions/setup-python@v6\n        with:\n          python-version: "3.12"\n      - run: |\n          python -m pip install --upgrade pip\n          pip install -r requirements.txt\n      - run: python -m compileall -q scripts tests\n      - run: |\n          python -m pytest \\\n            tests/test_identity_integrity.py \\\n            tests/test_safe_merge.py \\\n            tests/test_canonical_v4_identity_hardening.py \\\n            tests/test_canonical_v4_safe_merge_fail_closed.py \\\n            tests/test_canonical_v4_coverage_strict.py \\\n            tests/test_canonical_v4_release_gate.py -q\n'''
+          Path(".github/workflows/canonical-v4-foundation.yml").write_text(
+              foundation_workflow,
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Add independent regression tests
+        run: |
+          cat > tests/test_canonical_v4_identity_hardening.py <<'PY'
+          from __future__ import annotations
+
+          import inspect
+
+          import pytest
+
+          from scripts.lib import identity_integrity
+
+
+          def _row(key: str, name: str, isin: str = "US0378331005") -> dict[str, object]:
+              exchange, ticker = key.split("::", 1)
+              return {
+                  "listing_key": key,
+                  "exchange": exchange,
+                  "ticker": ticker,
+                  "name": name,
+                  "asset_type": "Stock",
+                  "isin": isin,
+                  "aliases": [name.casefold()],
+              }
+
+
+          def _invoke(rows, reviewed=None):
+              function = identity_integrity.cleanse_conflicting_isin_rows
+              signature = inspect.signature(function)
+              kwargs = {}
+              for index, parameter in enumerate(signature.parameters.values()):
+                  if index == 0:
+                      continue
+                  if "review" in parameter.name.casefold():
+                      kwargs[parameter.name] = reviewed or {}
+                  elif parameter.default is inspect.Parameter.empty:
+                      kwargs[parameter.name] = {}
+              return function(rows, **kwargs)
+
+
+          def test_generic_shared_word_does_not_merge_unrelated_companies():
+              matcher = next(
+                  value
+                  for name, value in vars(identity_integrity).items()
+                  if callable(value)
+                  and "name" in name.casefold()
+                  and len(inspect.signature(value).parameters) == 2
+                  and "left_tokens" in inspect.getsource(value)
+              )
+              assert not matcher("Global Power Inc", "Global Foods Inc")
+
+
+          def test_contradictory_short_names_fail_closed():
+              cleaned, _ = _invoke([
+                  _row("XNAS::AAA", "AAA"),
+                  _row("XNYS::BBB", "BBB"),
+              ])
+              assert all(not str(row.get("isin") or "").strip() for row in cleaned)
+
+
+          def test_review_override_rejects_unknown_listing_key():
+              rows = [_row("XNAS::AAPL", "Apple Inc")]
+              reviewed = {"US0378331005": ["XNAS::AAPL", "MISSING::AAPL"]}
+              with pytest.raises(ValueError, match="unknown listing keys"):
+                  _invoke(rows, reviewed)
+          PY
+
+          cat > tests/test_canonical_v4_safe_merge_fail_closed.py <<'PY'
+          from __future__ import annotations
+
+          import csv
+          import subprocess
+          import sys
+          from pathlib import Path
+
+
+          HEADERS = ["listing_key", "exchange", "ticker", "name", "asset_type", "isin"]
+          EVENT_HEADERS = ["listing_key", "exchange", "ticker", "event_type", "effective_at", "source_key"]
+
+
+          def _write(path: Path, headers, rows) -> None:
+              with path.open("w", encoding="utf-8", newline="") as handle:
+                  writer = csv.DictWriter(handle, fieldnames=headers, lineterminator="\n")
+                  writer.writeheader()
+                  writer.writerows(rows)
+
+
+          def _run(tmp_path: Path, before_rows, after_rows, events=()):
+              before = tmp_path / "before.csv"
+              after = tmp_path / "after.csv"
+              event_path = tmp_path / "events.csv"
+              _write(before, HEADERS, before_rows)
+              _write(after, HEADERS, after_rows)
+              _write(event_path, EVENT_HEADERS, events)
+              return subprocess.run(
+                  [
+                      sys.executable,
+                      "scripts/check_safe_merge.py",
+                      "--before", str(before),
+                      "--after", str(after),
+                      "--events", str(event_path),
+                      "--strict",
+                  ],
+                  text=True,
+                  capture_output=True,
+                  check=False,
+              )
+
+
+          def _row(index: int, isin: str = "US0378331005"):
+              ticker = f"T{index:04d}"
+              return {
+                  "listing_key": f"XNAS::{ticker}",
+                  "exchange": "XNAS",
+                  "ticker": ticker,
+                  "name": f"Company {index}",
+                  "asset_type": "Stock",
+                  "isin": isin,
+              }
+
+
+          def test_single_unevidenced_deletion_is_blocked(tmp_path):
+              before = [_row(index) for index in range(1000)]
+              result = _run(tmp_path, before, before[:-1])
+              assert result.returncode != 0, result.stdout + result.stderr
+
+
+          def test_dated_sourced_delisting_is_accepted(tmp_path):
+              before = [_row(1), _row(2)]
+              removed = before[-1]
+              events = [{
+                  "listing_key": removed["listing_key"],
+                  "exchange": removed["exchange"],
+                  "ticker": removed["ticker"],
+                  "event_type": "delisted",
+                  "effective_at": "2026-08-17",
+                  "source_key": "official-exchange-notice",
+              }]
+              result = _run(tmp_path, before, before[:-1], events)
+              assert result.returncode == 0, result.stdout + result.stderr
+
+
+          def test_unevidenced_isin_clear_is_blocked(tmp_path):
+              before = [_row(1)]
+              after = [dict(before[0], isin="")]
+              result = _run(tmp_path, before, after)
+              assert result.returncode != 0, result.stdout + result.stderr
+          PY
+
+          cat > tests/test_canonical_v4_coverage_strict.py <<'PY'
+          from scripts import build_coverage_contracts, build_reference_reconciliation
+
+
+          def test_only_exact_listing_key_counts_for_venue_recall():
+              for module in (build_coverage_contracts, build_reference_reconciliation):
+                  predicate = module.is_strict_venue_coverage_match
+                  assert predicate("exact_match")
+                  assert not predicate("alternate_listing_line")
+                  assert not predicate("normalization_or_mapping_difference")
+                  assert not predicate("name_match")
+                  assert not predicate("identifier_match")
+          PY
+
+          cat > tests/test_canonical_v4_release_gate.py <<'PY'
+          from pathlib import Path
+
+
+          def test_stable_release_runs_complete_quality_contract_strictly():
+              workflow = Path(".github/workflows/release.yml").read_text(encoding="utf-8")
+              assert "python scripts/build_quality_contract.py --profile complete --strict" in workflow
+          PY
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run targeted and full regression suites
+        run: |
+          set -euo pipefail
+          python -m compileall -q scripts tests
+          git diff --check
+          python -m pytest \
+            tests/test_identity_integrity.py \
+            tests/test_safe_merge.py \
+            tests/test_canonical_v4_identity_hardening.py \
+            tests/test_canonical_v4_safe_merge_fail_closed.py \
+            tests/test_canonical_v4_coverage_strict.py \
+            tests/test_canonical_v4_release_gate.py -q
+          python -m pytest tests/ -q
+
+      - name: Commit visible hardened foundation
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/tmp-harden-canonical-clean-room.yml
+          rm -f .github/workflows/tmp-materialize-canonical-clean-room.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .github scripts tests schema docs README.md
+          git status --short
+          git commit -m "Harden canonical v4 foundation with fail-closed gates"
+          git push origin HEAD:agent/canonical-v4-clean-room-20260817
