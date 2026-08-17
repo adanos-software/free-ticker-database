@@ -40,105 +40,95 @@ jobs:
 
           path = Path("scripts/rebuild_canonical.py")
           source = path.read_text(encoding="utf-8")
-
-          old_imports = '''        build_canonical_v4, build_coverage_contracts, build_coverage_report,
-        build_exchange_source_audit, build_listing_history, build_reference_reconciliation,
-        enrich_global_identifiers, normalize_source_registry,
-'''
-          new_imports = '''        build_adanos_ticker_reference, build_canonical_v4, build_coverage_contracts,
-        build_coverage_report, build_entry_quality_report, build_exchange_source_audit,
-        build_listing_history, build_reference_reconciliation,
-        build_source_gap_classification, build_source_of_truth_decisions,
-        enrich_global_identifiers, normalize_source_registry,
-'''
-          if source.count(old_imports) != 1:
-              raise SystemExit("package import target missing or ambiguous")
-          source = source.replace(old_imports, new_imports, 1)
-
-          old_fallback = '''    import build_canonical_v4
-    import build_coverage_contracts
-    import build_coverage_report
-    import build_exchange_source_audit
-    import build_listing_history
-    import build_reference_reconciliation
-    import enrich_global_identifiers
-    import normalize_source_registry
-'''
-          new_fallback = '''    import build_adanos_ticker_reference
-    import build_canonical_v4
-    import build_coverage_contracts
-    import build_coverage_report
-    import build_entry_quality_report
-    import build_exchange_source_audit
-    import build_listing_history
-    import build_reference_reconciliation
-    import build_source_gap_classification
-    import build_source_of_truth_decisions
-    import enrich_global_identifiers
-    import normalize_source_registry
-'''
-          if source.count(old_fallback) != 1:
-              raise SystemExit("direct-execution import target missing or ambiguous")
-          source = source.replace(old_fallback, new_fallback, 1)
-
-          helper_anchor = '''def rebuild(
-    *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False
-) -> dict[str, Any]:
-'''
-          helper = '''def rebuild_validation_dependents() -> None:
-    """Regenerate every validator input derived from the rebuilt current dataset."""
-
-    build_entry_quality_report.main([])
-    build_source_gap_classification.main([])
-    build_source_of_truth_decisions.main([])
-    if build_adanos_ticker_reference.main([]) != 0:
-        raise SystemExit("Adanos ticker reference rebuild failed")
-
-
-'''
-          if source.count(helper_anchor) != 1:
-              raise SystemExit("rebuild helper anchor missing or ambiguous")
-          source = source.replace(helper_anchor, helper + helper_anchor, 1)
-
-          call_anchor = '''    build_coverage_report.build_report()
-    if build_exchange_source_audit.main([]) != 0:
-        raise SystemExit("exchange source audit failed")
-    evidence_as_of = _built_at_datetime()
-'''
-          call_replacement = '''    build_coverage_report.build_report()
-    if build_exchange_source_audit.main([]) != 0:
-        raise SystemExit("exchange source audit failed")
-    rebuild_validation_dependents()
-    evidence_as_of = _built_at_datetime()
-'''
-          if source.count(call_anchor) != 1:
-              raise SystemExit("dependent synchronization call anchor missing or ambiguous")
-          source = source.replace(call_anchor, call_replacement, 1)
+          replacements = [
+              (
+                  "        build_canonical_v4, build_coverage_contracts, build_coverage_report,\n"
+                  "        build_exchange_source_audit, build_listing_history, build_reference_reconciliation,\n"
+                  "        enrich_global_identifiers, normalize_source_registry,\n",
+                  "        build_adanos_ticker_reference, build_canonical_v4, build_coverage_contracts,\n"
+                  "        build_coverage_report, build_entry_quality_report, build_exchange_source_audit,\n"
+                  "        build_listing_history, build_reference_reconciliation,\n"
+                  "        build_source_gap_classification, build_source_of_truth_decisions,\n"
+                  "        enrich_global_identifiers, normalize_source_registry,\n",
+              ),
+              (
+                  "    import build_canonical_v4\n"
+                  "    import build_coverage_contracts\n"
+                  "    import build_coverage_report\n"
+                  "    import build_exchange_source_audit\n"
+                  "    import build_listing_history\n"
+                  "    import build_reference_reconciliation\n"
+                  "    import enrich_global_identifiers\n"
+                  "    import normalize_source_registry\n",
+                  "    import build_adanos_ticker_reference\n"
+                  "    import build_canonical_v4\n"
+                  "    import build_coverage_contracts\n"
+                  "    import build_coverage_report\n"
+                  "    import build_entry_quality_report\n"
+                  "    import build_exchange_source_audit\n"
+                  "    import build_listing_history\n"
+                  "    import build_reference_reconciliation\n"
+                  "    import build_source_gap_classification\n"
+                  "    import build_source_of_truth_decisions\n"
+                  "    import enrich_global_identifiers\n"
+                  "    import normalize_source_registry\n",
+              ),
+              (
+                  "def rebuild(\n"
+                  "    *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False\n"
+                  ") -> dict[str, Any]:\n",
+                  "def rebuild_validation_dependents() -> None:\n"
+                  "    \"\"\"Regenerate every validator input derived from the rebuilt current dataset.\"\"\"\n"
+                  "\n"
+                  "    build_entry_quality_report.main([])\n"
+                  "    build_source_gap_classification.main([])\n"
+                  "    build_source_of_truth_decisions.main([])\n"
+                  "    if build_adanos_ticker_reference.main([]) != 0:\n"
+                  "        raise SystemExit(\"Adanos ticker reference rebuild failed\")\n"
+                  "\n"
+                  "\n"
+                  "def rebuild(\n"
+                  "    *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False\n"
+                  ") -> dict[str, Any]:\n",
+              ),
+              (
+                  "    build_coverage_report.build_report()\n"
+                  "    if build_exchange_source_audit.main([]) != 0:\n"
+                  "        raise SystemExit(\"exchange source audit failed\")\n"
+                  "    evidence_as_of = _built_at_datetime()\n",
+                  "    build_coverage_report.build_report()\n"
+                  "    if build_exchange_source_audit.main([]) != 0:\n"
+                  "        raise SystemExit(\"exchange source audit failed\")\n"
+                  "    rebuild_validation_dependents()\n"
+                  "    evidence_as_of = _built_at_datetime()\n",
+              ),
+          ]
+          for old, new in replacements:
+              if source.count(old) != 1:
+                  raise SystemExit(f"canonical patch target missing or ambiguous: {old[:80]!r}")
+              source = source.replace(old, new, 1)
           path.write_text(source, encoding="utf-8")
 
           test_path = Path("tests/test_rebuild_canonical_foundation.py")
           test_source = test_path.read_text(encoding="utf-8")
-          test_name = "test_validation_dependents_are_rebuilt_in_dependency_order"
-          if test_name not in test_source:
-              test_source += '''
+          if "test_validation_dependents_are_rebuilt_in_dependency_order" not in test_source:
+              lines = [
+                  "",
+                  "",
+                  "def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> None:",
+                  "    calls: list[str] = []",
+                  "    monkeypatch.setattr(canonical.build_entry_quality_report, \"main\", lambda argv: calls.append(\"entry_quality\"))",
+                  "    monkeypatch.setattr(canonical.build_source_gap_classification, \"main\", lambda argv: calls.append(\"source_gap\"))",
+                  "    monkeypatch.setattr(canonical.build_source_of_truth_decisions, \"main\", lambda argv: calls.append(\"source_truth\"))",
+                  "    monkeypatch.setattr(canonical.build_adanos_ticker_reference, \"main\", lambda argv: calls.append(\"adanos\") or 0)",
+                  "    canonical.rebuild_validation_dependents()",
+                  "    assert calls == [\"entry_quality\", \"source_gap\", \"source_truth\", \"adanos\"]",
+                  "",
+              ]
+              test_path.write_text(test_source.rstrip() + "\n" + "\n".join(lines), encoding="utf-8")
 
-
-def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> None:
-    calls: list[str] = []
-    monkeypatch.setattr(canonical.build_entry_quality_report, "main", lambda argv: calls.append("entry_quality"))
-    monkeypatch.setattr(canonical.build_source_gap_classification, "main", lambda argv: calls.append("source_gap"))
-    monkeypatch.setattr(canonical.build_source_of_truth_decisions, "main", lambda argv: calls.append("source_truth"))
-    monkeypatch.setattr(
-        canonical.build_adanos_ticker_reference,
-        "main",
-        lambda argv: calls.append("adanos") or 0,
-    )
-
-    canonical.rebuild_validation_dependents()
-
-    assert calls == ["entry_quality", "source_gap", "source_truth", "adanos"]
-'''
-              test_path.write_text(test_source, encoding="utf-8")
+          Path("/tmp/rebuild_canonical.py").write_bytes(path.read_bytes())
+          Path("/tmp/test_rebuild_canonical_foundation.py").write_bytes(test_path.read_bytes())
           PY
 
       - name: Verify source changes
@@ -146,7 +136,6 @@ def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> N
           python -m compileall -q scripts tests
           python -m pytest -q tests/test_rebuild_canonical_foundation.py
           git diff --check
-          git diff -- scripts/rebuild_canonical.py tests/test_rebuild_canonical_foundation.py
 
       - name: Run complete canonical validation
         run: |
@@ -176,92 +165,8 @@ def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> N
       - name: Commit source-only fix
         run: |
           git reset --hard HEAD
-          python - <<'PY'
-          from pathlib import Path
-
-          path = Path("scripts/rebuild_canonical.py")
-          source = path.read_text(encoding="utf-8")
-          old_imports = '''        build_canonical_v4, build_coverage_contracts, build_coverage_report,
-        build_exchange_source_audit, build_listing_history, build_reference_reconciliation,
-        enrich_global_identifiers, normalize_source_registry,
-'''
-          new_imports = '''        build_adanos_ticker_reference, build_canonical_v4, build_coverage_contracts,
-        build_coverage_report, build_entry_quality_report, build_exchange_source_audit,
-        build_listing_history, build_reference_reconciliation,
-        build_source_gap_classification, build_source_of_truth_decisions,
-        enrich_global_identifiers, normalize_source_registry,
-'''
-          source = source.replace(old_imports, new_imports, 1)
-          old_fallback = '''    import build_canonical_v4
-    import build_coverage_contracts
-    import build_coverage_report
-    import build_exchange_source_audit
-    import build_listing_history
-    import build_reference_reconciliation
-    import enrich_global_identifiers
-    import normalize_source_registry
-'''
-          new_fallback = '''    import build_adanos_ticker_reference
-    import build_canonical_v4
-    import build_coverage_contracts
-    import build_coverage_report
-    import build_entry_quality_report
-    import build_exchange_source_audit
-    import build_listing_history
-    import build_reference_reconciliation
-    import build_source_gap_classification
-    import build_source_of_truth_decisions
-    import enrich_global_identifiers
-    import normalize_source_registry
-'''
-          source = source.replace(old_fallback, new_fallback, 1)
-          helper_anchor = '''def rebuild(
-    *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False
-) -> dict[str, Any]:
-'''
-          helper = '''def rebuild_validation_dependents() -> None:
-    """Regenerate every validator input derived from the rebuilt current dataset."""
-
-    build_entry_quality_report.main([])
-    build_source_gap_classification.main([])
-    build_source_of_truth_decisions.main([])
-    if build_adanos_ticker_reference.main([]) != 0:
-        raise SystemExit("Adanos ticker reference rebuild failed")
-
-
-'''
-          source = source.replace(helper_anchor, helper + helper_anchor, 1)
-          call_anchor = '''    build_coverage_report.build_report()
-    if build_exchange_source_audit.main([]) != 0:
-        raise SystemExit("exchange source audit failed")
-    evidence_as_of = _built_at_datetime()
-'''
-          call_replacement = '''    build_coverage_report.build_report()
-    if build_exchange_source_audit.main([]) != 0:
-        raise SystemExit("exchange source audit failed")
-    rebuild_validation_dependents()
-    evidence_as_of = _built_at_datetime()
-'''
-          source = source.replace(call_anchor, call_replacement, 1)
-          path.write_text(source, encoding="utf-8")
-
-          test_path = Path("tests/test_rebuild_canonical_foundation.py")
-          test_source = test_path.read_text(encoding="utf-8")
-          if "test_validation_dependents_are_rebuilt_in_dependency_order" not in test_source:
-              test_source += '''
-
-
-def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> None:
-    calls: list[str] = []
-    monkeypatch.setattr(canonical.build_entry_quality_report, "main", lambda argv: calls.append("entry_quality"))
-    monkeypatch.setattr(canonical.build_source_gap_classification, "main", lambda argv: calls.append("source_gap"))
-    monkeypatch.setattr(canonical.build_source_of_truth_decisions, "main", lambda argv: calls.append("source_truth"))
-    monkeypatch.setattr(canonical.build_adanos_ticker_reference, "main", lambda argv: calls.append("adanos") or 0)
-    canonical.rebuild_validation_dependents()
-    assert calls == ["entry_quality", "source_gap", "source_truth", "adanos"]
-'''
-              test_path.write_text(test_source, encoding="utf-8")
-          PY
+          cp /tmp/rebuild_canonical.py scripts/rebuild_canonical.py
+          cp /tmp/test_rebuild_canonical_foundation.py tests/test_rebuild_canonical_foundation.py
           python -m compileall -q scripts tests
           python -m pytest -q tests/test_rebuild_canonical_foundation.py
           git add scripts/rebuild_canonical.py tests/test_rebuild_canonical_foundation.py
