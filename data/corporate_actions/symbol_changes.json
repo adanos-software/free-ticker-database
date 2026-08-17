@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-15T06:55:55Z",
+    "generated_at": "2026-08-17T07:14:28Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -10,18 +10,18 @@
     "policy": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence."
   },
   "summary": {
-    "fetched_rows": 240,
-    "merged_history_rows": 324,
-    "review_rows": 324,
+    "fetched_rows": 239,
+    "merged_history_rows": 325,
+    "review_rows": 325,
     "match_status_counts": {
-      "new_symbol_present_old_symbol_missing": 238,
+      "new_symbol_present_old_symbol_missing": 239,
       "no_matching_listing": 12,
       "old_and_new_symbols_present": 52,
       "old_symbol_present_new_symbol_missing": 7,
       "symbol_present_only_outside_source_scope": 15
     },
     "symbol_change_workflow_queue_counts": {
-      "audit_already_reflected": 236,
+      "audit_already_reflected": 237,
       "blocked_missing_source_scope_mapping": 6,
       "blocked_out_of_scope_symbol_collision": 20,
       "document_no_dataset_match": 12,
@@ -30,10 +30,10 @@
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 324,
+      "rows": 325,
       "verified_rename_or_delisting_review_rows": 1,
       "duplicate_or_cross_listing_review_rows": 49,
-      "already_reflected_audit_rows": 236,
+      "already_reflected_audit_rows": 237,
       "out_of_scope_collision_blocked_rows": 20,
       "missing_source_scope_mapping_rows": 6,
       "no_dataset_match_documentation_rows": 12,
@@ -45,7 +45,7 @@
     "review_bucket_counts": {
       "action_required_duplicate_or_cross_listing": 49,
       "action_required_possible_rename_or_delisting": 1,
-      "already_reflected_in_scope_with_global_symbol_collision": 54,
+      "already_reflected_in_scope_with_global_symbol_collision": 55,
       "already_reflected_in_source_scope": 182,
       "hold_out_of_scope_symbol_collision": 15,
       "manual_review_due_to_out_of_scope_collision": 5,
@@ -56,7 +56,7 @@
       "P1": 50,
       "P2": 26,
       "P3": 12,
-      "P4": 236
+      "P4": 237
     },
     "review_bucket_priorities": {
       "action_required_duplicate_or_cross_listing": "P1",
@@ -71,7 +71,7 @@
     "recency_bucket_counts": {
       "older_than_90d": 218,
       "recent_30d": 33,
-      "recent_7d": 35,
+      "recent_7d": 36,
       "recent_90d": 38
     },
     "review_priority_recency_counts": {
@@ -88,13 +88,13 @@
       "P3:recent_90d": 2,
       "P4:older_than_90d": 189,
       "P4:recent_30d": 16,
-      "P4:recent_7d": 7,
+      "P4:recent_7d": 8,
       "P4:recent_90d": 24
     },
     "workflow_queue_recency_counts": {
       "audit_already_reflected:older_than_90d": 189,
       "audit_already_reflected:recent_30d": 16,
-      "audit_already_reflected:recent_7d": 7,
+      "audit_already_reflected:recent_7d": 8,
       "audit_already_reflected:recent_90d": 24,
       "blocked_missing_source_scope_mapping:older_than_90d": 6,
       "blocked_out_of_scope_symbol_collision:older_than_90d": 10,
@@ -111,7 +111,7 @@
       "review_verified_rename_or_delisting:recent_90d": 1
     },
     "workflow_queue_priority_counts": {
-      "audit_already_reflected:P4": 236,
+      "audit_already_reflected:P4": 237,
       "blocked_missing_source_scope_mapping:P2": 6,
       "blocked_out_of_scope_symbol_collision:P2": 20,
       "document_no_dataset_match:P3": 12,
@@ -119,7 +119,7 @@
       "review_verified_rename_or_delisting:P1": 1
     },
     "workflow_queue_scope_counts": {
-      "audit_already_reflected:global_symbol_collision_outside_source_scope": 54,
+      "audit_already_reflected:global_symbol_collision_outside_source_scope": 55,
       "audit_already_reflected:matches_within_source_scope": 182,
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 6,
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 20,
@@ -128,7 +128,7 @@
       "review_verified_rename_or_delisting:matches_within_source_scope": 1
     },
     "workflow_queue_match_status_counts": {
-      "audit_already_reflected:new_symbol_present_old_symbol_missing": 236,
+      "audit_already_reflected:new_symbol_present_old_symbol_missing": 237,
       "blocked_missing_source_scope_mapping:new_symbol_present_old_symbol_missing": 2,
       "blocked_missing_source_scope_mapping:old_and_new_symbols_present": 3,
       "blocked_missing_source_scope_mapping:old_symbol_present_new_symbol_missing": 1,
@@ -141,7 +141,7 @@
     "workflow_queue_source_hint_counts": {
       "audit_already_reflected": {
         "OTC": 13,
-        "US_LISTED": 223
+        "US_LISTED": 224
       },
       "blocked_missing_source_scope_mapping": {
         "missing": 6
@@ -163,7 +163,7 @@
     },
     "workflow_queue_source_confidence_counts": {
       "audit_already_reflected": {
-        "secondary_review": 236
+        "secondary_review": 237
       },
       "blocked_missing_source_scope_mapping": {
         "secondary_review": 6
@@ -183,7 +183,7 @@
     },
     "workflow_queue_issuer_name_review_counts": {
       "audit_already_reflected": {
-        "feed_name_differs_from_scoped_listing_name": 19,
+        "feed_name_differs_from_scoped_listing_name": 20,
         "feed_name_exactly_matches_scoped_listing_name": 160,
         "feed_name_partially_overlaps_scoped_listing_name": 57
       },
@@ -210,7 +210,7 @@
     },
     "workflow_queue_listing_key_review_counts": {
       "audit_already_reflected": {
-        "new_scoped_listing_key_only": 236
+        "new_scoped_listing_key_only": 237
       },
       "blocked_missing_source_scope_mapping": {
         "new_scoped_listing_key_only": 2,
@@ -233,7 +233,7 @@
     },
     "workflow_queue_review_strategy_counts": {
       "audit_already_reflected": {
-        "audit_already_reflected_no_canonical_change": 236
+        "audit_already_reflected_no_canonical_change": 237
       },
       "blocked_missing_source_scope_mapping": {
         "map_source_exchange_scope_before_symbol_review": 6
@@ -399,22 +399,22 @@
         "symbol_change_workflow_queue": "audit_already_reflected",
         "review_priority": "P4",
         "recency_bucket": "recent_7d",
-        "exchange_scope_status": "matches_within_source_scope",
+        "exchange_scope_status": "global_symbol_collision_outside_source_scope",
         "rows": 4,
         "review_strategy": "audit_already_reflected_no_canonical_change",
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
-        "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
+        "recommended_next_source": "Audit-only comparison against official scoped exchange evidence; no canonical change.",
         "source_gate": "Audit only; no ticker, listing, or name change is authorized."
       },
       {
         "symbol_change_workflow_queue": "audit_already_reflected",
         "review_priority": "P4",
         "recency_bucket": "recent_7d",
-        "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-        "rows": 3,
+        "exchange_scope_status": "matches_within_source_scope",
+        "rows": 4,
         "review_strategy": "audit_already_reflected_no_canonical_change",
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
-        "recommended_next_source": "Audit-only comparison against official scoped exchange evidence; no canonical change.",
+        "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
         "source_gate": "Audit only; no ticker, listing, or name change is authorized."
       },
       {
@@ -485,19 +485,19 @@
       }
     ],
     "apply_eligibility_counts": {
-      "audit_only_no_apply": 236,
+      "audit_only_no_apply": 237,
       "blocked_until_exchange_scope_resolved": 26,
       "no_dataset_action_without_scope_mapping": 12,
       "requires_official_venue_confirmation": 50
     },
     "symbol_change_apply_readiness_counts": {
-      "audit_only_no_canonical_change": 236,
+      "audit_only_no_canonical_change": 237,
       "blocked_until_listing_keyed_official_symbol_change_evidence": 50,
       "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 26,
       "document_or_ignore_until_scoped_official_dataset_match": 12
     },
     "verification_evidence_required_counts": {
-      "audit_only_confirm_no_canonical_change_needed": 236,
+      "audit_only_confirm_no_canonical_change_needed": 237,
       "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 49,
       "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 1,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 20,
@@ -542,14 +542,14 @@
       }
     ],
     "recommended_action_counts": {
-      "already_reflected_or_new_symbol_added_in_source_scope": 238,
+      "already_reflected_or_new_symbol_added_in_source_scope": 239,
       "do_not_apply_from_symbol_match_review_exchange_scope_first": 15,
       "ignore_or_map_exchange_scope_before_applying": 12,
       "review_duplicate_or_cross_listing_state_in_source_scope": 52,
       "review_possible_rename_or_delisting_in_source_scope": 7
     },
     "exchange_scope_status_counts": {
-      "global_symbol_collision_outside_source_scope": 74,
+      "global_symbol_collision_outside_source_scope": 75,
       "matches_within_source_scope": 244,
       "unscoped_source_hint": 6
     }
@@ -568,6 +568,20 @@
       "source_confidence": "secondary_review",
       "review_needed": "true",
       "observed_at": "2026-08-15T06:55:55Z"
+    },
+    {
+      "change_id": "0757a3d0b0354dcd",
+      "effective_date": "2026-08-10",
+      "old_symbol": "FPHOY",
+      "new_symbol": "PHOS",
+      "new_company_name": "First Phosphate Corp",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/phos/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-08-17T07:14:28Z"
     },
     {
       "change_id": "63adbe92e5699a19",
