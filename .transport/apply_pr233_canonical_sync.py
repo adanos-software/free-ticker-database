@@ -107,7 +107,7 @@ def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> N
     canonical.rebuild_validation_dependents()
     assert calls == ["entry_quality", "source_gap", "source_truth", "adanos", "readme"]
 """
-    path.write_text(source.rstrip() + test + "\n", encoding="utf-8")
+    path.write_text(source.rstrip() + test.rstrip() + "\n", encoding="utf-8")
 
 
 def main() -> None:
