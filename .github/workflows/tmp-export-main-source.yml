@@ -1,0 +1,27 @@
+name: Temporary export main source
+
+on:
+  push:
+    branches:
+      - agent/tmp-export-main-source
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Package reviewable source
+        run: |
+          tar -czf main-source.tar.gz \
+            .github scripts tests schema docs README.md requirements.txt pyproject.toml 2>/dev/null || \
+          tar -czf main-source.tar.gz \
+            .github scripts tests schema docs README.md requirements.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: main-source-export
+          path: main-source.tar.gz
+          if-no-files-found: error
