@@ -23,6 +23,16 @@ jobs:
           ref: agent/canonical-v4-clean
           fetch-depth: 4
 
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Restore and regenerate README
         run: |
           git cat-file -e 339a561bf081285aa96d73a737ef38bc016ff6e5^{commit}
@@ -76,3 +86,23 @@ jobs:
           git diff --cached --check
           git commit -m "Fix README encoding and safe-merge test provenance"
           git push origin HEAD:agent/canonical-v4-clean
+
+      - name: Diagnose remaining canonical validation gates
+        run: |
+          git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
+          python scripts/rebuild_canonical.py
+          python scripts/validate_database.py || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("data/reports/validation_report.json").read_text(encoding="utf-8"))
+          failed = [
+              gate
+              for gate in report.get("gates", [])
+              if gate.get("severity") == "error" and not gate.get("passed")
+          ]
+          print(json.dumps({"failed_error_gates": failed}, indent=2, ensure_ascii=False))
+          if not failed:
+              print("No validation failures remain.")
+          PY
