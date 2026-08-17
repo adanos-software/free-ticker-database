@@ -19,7 +19,8 @@ def removal_event(value: dict[str, str]) -> dict[str, str]:
         "listing_key": value["listing_key"], "exchange": value["exchange"], "ticker": value["ticker"],
         "event_type": "delisted", "before_row_sha256": row_fingerprint(value),
         "observed_at": "2026-08-17T00:00:00Z", "source_key": "official_delisting_notice",
-        "source_url": "https://exchange.example/notices/A", "evidence_status": "official",
+        "source_url": "https://exchange.example/notices/A",
+        "observation_id": f"delisting-{value['listing_key']}", "evidence_status": "official",
     }
 
 
