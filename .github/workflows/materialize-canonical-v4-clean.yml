@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: agent/canonical-v4-materializer-20260817
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Reconstruct and verify reviewed patch set
         run: |
@@ -34,7 +34,8 @@ jobs:
 
       - name: Materialize six clean source commits from exact main
         run: |
-          git cat-file -e 352bd3ac03e68ca0bcb700fc207acd842f505ece^{commit}
+          git fetch --no-tags --depth=1 origin refs/heads/main:refs/remotes/origin/reviewed-main
+          test "$(git rev-parse refs/remotes/origin/reviewed-main)" = "352bd3ac03e68ca0bcb700fc207acd842f505ece"
           git checkout --detach 352bd3ac03e68ca0bcb700fc207acd842f505ece
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
