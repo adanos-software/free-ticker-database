@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import io
 import json
 import os
@@ -50,6 +51,15 @@ US_EXCHANGES = {"NYSE", "NASDAQ", "NYSE ARCA", "NYSE MKT", "AMEX", "BATS"}
 # Minimum plausible master size per market; below this we treat the fetch as
 # failed and SKIP the market (never emit candidates from a truncated master).
 MIN_MASTER = {"US": 9000, "TSE": 3000, "ASX": 1500, "NSE_IN": 2000, "BSE_IN": 3000}
+BSE_STATUS_URL_TEMPLATE = (
+    "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
+    "?Group=&Scripcode=&industry=&segment=Equity&status={status}"
+)
+
+
+def evidence_observation_id(candidate: dict[str, str], observed_at: str) -> str:
+    payload = "|".join([candidate.get("source_key", ""), candidate.get("source_url", ""), candidate.get("exchange", ""), candidate.get("ticker", ""), candidate.get("isin", ""), candidate.get("classification", ""), observed_at])
+    return "obs_" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:24]
 
 
 def _norm(sym: str) -> str:
@@ -173,8 +183,7 @@ def fetch_nse(session) -> tuple[set[str], set[str]]:
 
 def fetch_bse_status(session, status: str) -> tuple[set[str], set[str]]:
     """Return (scrip_id set, ISIN set) for one BSE status (Active/Suspended/Delisted)."""
-    url = ("https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
-           f"?Group=&Scripcode=&industry=&segment=Equity&status={status}")
+    url = BSE_STATUS_URL_TEMPLATE.format(status=status)
     data = session.get(url, timeout=90, headers={
         "Origin": "https://www.bseindia.com",
         "Referer": "https://www.bseindia.com/corporates/List_Scrips.html",
@@ -288,6 +297,13 @@ def main(argv: list[str] | None = None) -> None:
     detected = compute_detected(cand_keys, prior_keys)
 
     now = args.now or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    for candidate in candidates:
+        if candidate.get("exchange") == "BSE_IN" and candidate.get("classification") in {"delisted", "suspended"}:
+            status = candidate["classification"].title()
+            candidate["source_key"] = "bse_india_scrips"
+            candidate["source_url"] = BSE_STATUS_URL_TEMPLATE.format(status=status)
+            candidate["observed_at"] = now
+            candidate["observation_id"] = evidence_observation_id(candidate, now)
     summary = {
         "generated_at": now,
         "markets_checked": checked,

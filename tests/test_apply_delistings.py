@@ -28,7 +28,7 @@ def test_apply_delistings_writes_only_authoritative_bse_delisted(tmp_path: Path)
         json.dumps(
             {
                 "candidates": [
-                    {"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted", "name": "Dead Ltd", "isin": "INE1"},
+                    {"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted", "name": "Dead Ltd", "isin": "INE1", "source_key": "bse_india_scrips", "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?status=Delisted", "observed_at": "2026-04-05T00:00:00Z", "observation_id": "obs_123456789012345678901234"},
                     {"exchange": "BSE_IN", "ticker": "WAIT", "classification": "suspended", "name": "Wait Ltd", "isin": "INE2"},
                     {"exchange": "NASDAQ", "ticker": "OLD", "classification": "master_absent", "name": "Old Inc", "isin": "US1"},
                 ]
@@ -57,7 +57,7 @@ def test_apply_delistings_draft_mode_does_not_mutate_drop_entries(tmp_path: Path
     drops = tmp_path / "drop_entries.csv"
     write_drop_rows(drops, [])
     source.write_text(
-        json.dumps({"candidates": [{"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted"}]}),
+        json.dumps({"candidates": [{"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted", "source_key": "bse_india_scrips", "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?status=Delisted", "observed_at": "2026-04-05T00:00:00Z", "observation_id": "obs_123456789012345678901234"}]}),
         encoding="utf-8",
     )
 
@@ -71,3 +71,31 @@ def test_apply_delistings_draft_mode_does_not_mutate_drop_entries(tmp_path: Path
 
     assert report["summary"]["drafted_rows"] == 1
     assert read_drop_rows(drops) == []
+
+
+def test_missing_official_evidence_blocks_auto_drop(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    write_drop_rows(drops, [])
+    source.write_text(json.dumps({"candidates": [{"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted"}]}), encoding="utf-8")
+    report = apply_delistings(delisting_report_json=source, drop_entries_csv=drops, report_json=tmp_path / "apply.json", report_md=tmp_path / "apply.md", apply=True)
+    assert report["summary"]["applied_rows"] == 0
+    assert report["blocked"][0]["status"] == "blocked_missing_official_delisting_evidence"
+
+
+def test_wrong_source_or_non_bse_url_blocks_auto_drop(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    write_drop_rows(drops, [])
+    source.write_text(json.dumps({"candidates": [{
+        "exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted",
+        "source_key": "not_bse", "source_url": "https://example.test/?status=Delisted",
+        "observed_at": "2026-04-05T00:00:00Z",
+        "observation_id": "obs_123456789012345678901234",
+    }]}), encoding="utf-8")
+    report = apply_delistings(
+        delisting_report_json=source, drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json", report_md=tmp_path / "apply.md", apply=True,
+    )
+    assert report["summary"]["applied_rows"] == 0
+    assert report["blocked"][0]["status"] == "blocked_missing_official_delisting_evidence"

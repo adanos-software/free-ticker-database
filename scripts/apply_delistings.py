@@ -3,8 +3,9 @@ from __future__ import annotations
 import argparse
 import os
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 from typing import Any
 
 try:
@@ -30,11 +31,41 @@ def drop_key(row: dict[str, str]) -> tuple[str, str]:
     return row.get("exchange", ""), row.get("ticker", "")
 
 
+def _valid_official_bse_delisting_evidence(candidate: dict[str, str]) -> bool:
+    if str(candidate.get("source_key", "")).strip() != "bse_india_scrips":
+        return False
+    raw_url = str(candidate.get("source_url", "")).strip()
+    try:
+        url = urlparse(raw_url)
+    except ValueError:
+        return False
+    if url.scheme != "https" or url.hostname != "api.bseindia.com":
+        return False
+    if not url.path.endswith("/ListofScripData/w"):
+        return False
+    if parse_qs(url.query).get("status") != ["Delisted"]:
+        return False
+    try:
+        observed = datetime.fromisoformat(str(candidate.get("observed_at", "")).replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    if observed.tzinfo is None or observed.utcoffset() is None:
+        return False
+    if observed.astimezone(timezone.utc) > datetime.now(timezone.utc) + timedelta(minutes=5):
+        return False
+    observation_id = str(candidate.get("observation_id", "")).strip()
+    return observation_id.startswith("obs_") and len(observation_id) == 28
+
+
 def classify_candidate(candidate: dict[str, str]) -> str:
     classification = candidate.get("classification", "")
     exchange = candidate.get("exchange", "")
     if classification == "delisted" and exchange == "BSE_IN":
-        return "apply_drop_override"
+        return (
+            "apply_drop_override"
+            if _valid_official_bse_delisting_evidence(candidate)
+            else "blocked_missing_official_delisting_evidence"
+        )
     if classification == "master_absent":
         return "manual_rename_vs_delisting_required"
     if classification == "suspended":
@@ -68,6 +99,7 @@ def apply_delistings(
     existing_keys = {drop_key(row) for row in existing_drop_rows}
 
     applied: list[dict[str, str]] = []
+    already_applied: list[dict[str, str]] = []
     drafted: list[dict[str, str]] = []
     blocked: list[dict[str, str]] = []
     manual: list[dict[str, str]] = []
@@ -80,13 +112,15 @@ def apply_delistings(
             "ticker": candidate.get("ticker", ""),
             "name": candidate.get("name", ""),
             "isin": candidate.get("isin", ""),
-            "classification": candidate.get("classification", ""),
-            "status": status,
+            "classification": candidate.get("classification", ""), "status": status,
+            "source_key": candidate.get("source_key", ""), "source_url": candidate.get("source_url", ""),
+            "observed_at": candidate.get("observed_at", ""), "effective_at": candidate.get("effective_at", ""),
+            "observation_id": candidate.get("observation_id", ""),
         }
         if status == "apply_drop_override":
             key = drop_key(row)
             if key in existing_keys:
-                applied.append({**row, "status": "already_present_drop_override"})
+                already_applied.append({**row, "status": "already_present_drop_override"})
                 continue
             drop_row = build_drop_row(candidate)
             if apply:
@@ -110,15 +144,15 @@ def apply_delistings(
         "apply": apply,
         "delisting_report_json": display_path(delisting_report_json, ROOT),
         "drop_entries_csv": display_path(drop_entries_csv, ROOT),
-        "applied_rows": len(applied),
+        "applied_rows": len(applied), "already_applied_rows": len(already_applied),
         "drafted_rows": len(drafted),
         "blocked_rows": len(blocked),
         "manual_rows": len(manual),
-        "status_counts": dict(sorted(Counter(row["status"] for row in [*applied, *drafted, *blocked, *manual]).items())),
+        "status_counts": dict(sorted(Counter(row["status"] for row in [*applied, *already_applied, *drafted, *blocked, *manual]).items())),
     }
     report = {
         "summary": summary,
-        "applied": applied,
+        "applied": applied, "already_applied": already_applied,
         "drafted": drafted,
         "blocked": blocked,
         "manual": manual,
@@ -138,6 +172,7 @@ def write_markdown(path: Path, report: dict[str, Any]) -> None:
         f"- Generated at: `{summary['generated_at']}`",
         f"- Apply mode: `{str(summary['apply']).lower()}`",
         f"- Applied rows: `{summary['applied_rows']}`",
+        f"- Already-applied rows: `{summary['already_applied_rows']}`",
         f"- Drafted rows: `{summary['drafted_rows']}`",
         f"- Blocked rows: `{summary['blocked_rows']}`",
         f"- Manual rows: `{summary['manual_rows']}`",

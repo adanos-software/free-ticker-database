@@ -1,3 +1,5 @@
+"""Build current snapshot, evidence-bound listing events and point-in-time status."""
+
 from __future__ import annotations
 
 import csv
@@ -6,10 +8,13 @@ from pathlib import Path
 from typing import Any, Iterable
 
 try:
+    from scripts.apply_delistings import _valid_official_bse_delisting_evidence
     from scripts.listing_keys import row_listing_key
-except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from scripts.lib.merge_evidence import row_fingerprint
+except ModuleNotFoundError:  # pragma: no cover
+    from apply_delistings import _valid_official_bse_delisting_evidence
     from listing_keys import row_listing_key
-
+    from lib.merge_evidence import row_fingerprint
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -21,25 +26,32 @@ DAILY_LISTING_SUMMARY_JSON = HISTORY_DIR / "daily_listing_summary.json"
 DAILY_LISTING_SUMMARY_CSV = HISTORY_DIR / "daily_listing_summary.csv"
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
-DELISTING_APPLY_JSON = DATA_DIR / "reports" / "delisting_apply.json"
+DELISTING_APPLY_JSON = DATA_DIR / "reports/delisting_apply.json"
+IDENTIFIER_QUARANTINE_CSV = DATA_DIR / "reports/identifier_quarantine.csv"
+OFFICIAL_NAME_RECONCILIATION_CSV = DATA_DIR / "reports/official_name_reconciliation.csv"
+TRUSTED_EVIDENCE = {"official", "reviewed", "verified"}
 VALID_LISTING_STATUSES = {"active", "suspended", "delisted"}
 STATUS_HISTORY_FIELDS = [
-    "listing_key",
-    "ticker",
-    "exchange",
-    "status",
-    "first_observed_at",
-    "last_observed_at",
-    "effective_at",
-    "status_source",
-    "source_report",
+    "listing_key", "ticker", "exchange", "status", "first_observed_at",
+    "last_observed_at", "effective_at", "status_source", "source_report",
+    "evidence_status",
 ]
+EVENT_FIELDS = [
+    "listing_key", "ticker", "exchange", "event_type", "field_name", "old_value",
+    "new_value", "before_row_sha256", "effective_at", "observed_at", "source_key",
+    "source_url", "source_report", "observation_id", "evidence_status",
+]
+CRITICAL_FIELD_EVENT_TYPES = {
+    "name": "renamed", "asset_type": "reclassified", "country": "country_changed",
+    "country_code": "country_changed", "isin": "identifier_changed",
+    "stock_sector": "taxonomy_changed", "etf_category": "taxonomy_changed",
+}
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n", extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -57,475 +69,363 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def load_current_rows() -> tuple[list[dict[str, str]], str]:
-    with TICKERS_JSON.open(encoding="utf-8") as handle:
-        built_at = json.load(handle)["_meta"]["built_at"]
-    return load_csv(LISTINGS_CSV), built_at
-
-
 def listing_identity(row: dict[str, str]) -> str:
     return row.get("listing_key") or row_listing_key(row)
 
 
-def compact_legacy_status_history(existing_rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    by_listing: dict[str, list[dict[str, str]]] = {}
-    for row in existing_rows:
-        key = listing_identity(row)
-        by_listing.setdefault(key, []).append(row)
-
-    compacted: list[dict[str, str]] = []
-    for rows in by_listing.values():
-        current_interval: dict[str, str] | None = None
-        for row in sorted(rows, key=lambda value: (value["observed_at"], value["status"])):
-            listing_key = listing_identity(row)
-            observed_at = row["observed_at"]
-            status = row["status"]
-            if current_interval and current_interval["status"] == status:
-                current_interval["last_observed_at"] = observed_at
-                continue
-            if current_interval:
-                compacted.append(current_interval)
-            current_interval = {
-                "listing_key": listing_key,
-                "ticker": row["ticker"],
-                "exchange": row["exchange"],
-                "status": status,
-                "first_observed_at": observed_at,
-                "last_observed_at": observed_at,
-                "effective_at": row.get("effective_at", ""),
-                "status_source": row.get("status_source", "snapshot"),
-                "source_report": row.get("source_report", ""),
-            }
-        if current_interval:
-            compacted.append(current_interval)
-
-    return compacted
-
-
-def normalize_status_history(existing_rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    if not existing_rows:
-        return []
-    if "first_observed_at" not in existing_rows[0]:
-        existing_rows = compact_legacy_status_history(existing_rows)
-
-    normalized: list[dict[str, str]] = []
-    for row in existing_rows:
-        listing_key = listing_identity(row)
-        first_observed_at = row.get("first_observed_at") or row.get("observed_at", "")
-        last_observed_at = row.get("last_observed_at") or row.get("observed_at", "")
-        status = row.get("status", "")
-        if status not in VALID_LISTING_STATUSES:
-            continue
-        if not first_observed_at:
-            continue
-        if last_observed_at and last_observed_at < first_observed_at:
-            last_observed_at = first_observed_at
-        normalized.append(
-            {
-                "listing_key": listing_key,
-                "ticker": row["ticker"],
-                "exchange": row["exchange"],
-                "status": status,
-                "first_observed_at": first_observed_at,
-                "last_observed_at": last_observed_at or first_observed_at,
-                "effective_at": row.get("effective_at", ""),
-                "status_source": row.get("status_source", "snapshot"),
-                "source_report": row.get("source_report", ""),
-            }
-        )
-
-    return sorted(
-        normalized,
-        key=lambda row: (row["first_observed_at"], row["ticker"], row["exchange"], row["status"]),
-    )
+def load_current_rows() -> tuple[list[dict[str, str]], str]:
+    built_at = json.loads(TICKERS_JSON.read_text(encoding="utf-8"))["_meta"]["built_at"]
+    return load_csv(LISTINGS_CSV), built_at
 
 
 def sector_model_fields(row: dict[str, str]) -> tuple[str, str]:
-    asset_type = row.get("asset_type", "")
-    legacy_sector = row.get("sector", "")
-    stock_sector = row.get("stock_sector", "")
-    etf_category = row.get("etf_category", "")
-    if asset_type == "Stock":
-        stock_sector = stock_sector or legacy_sector
-        etf_category = ""
-        legacy_sector = stock_sector
-    elif asset_type == "ETF":
-        etf_category = etf_category or legacy_sector
-        stock_sector = ""
-    return stock_sector, etf_category
+    legacy = row.get("sector", "")
+    if row.get("asset_type") == "Stock":
+        return row.get("stock_sector", "") or legacy, ""
+    if row.get("asset_type") == "ETF":
+        return "", row.get("etf_category", "") or legacy
+    return row.get("stock_sector", ""), row.get("etf_category", "")
 
 
 def build_snapshot(rows: list[dict[str, str]], observed_at: str) -> list[dict[str, str]]:
-    snapshot: list[dict[str, str]] = []
+    snapshot = []
     for row in rows:
         stock_sector, etf_category = sector_model_fields(row)
-        snapshot.append(
-            {
-                "listing_key": listing_identity(row),
-                "ticker": row["ticker"],
-                "exchange": row["exchange"],
-                "name": row["name"],
-                "asset_type": row["asset_type"],
-                "country": row["country"],
-                "country_code": row["country_code"],
-                "isin": row["isin"],
-                "stock_sector": stock_sector,
-                "etf_category": etf_category,
-                "status": "active",
-                "observed_at": observed_at,
+        snapshot.append({
+            "listing_key": listing_identity(row), "ticker": row["ticker"],
+            "exchange": row["exchange"], "name": row["name"],
+            "asset_type": row["asset_type"], "country": row["country"],
+            "country_code": row["country_code"], "isin": row["isin"],
+            "stock_sector": stock_sector, "etf_category": etf_category,
+            "status": "active", "observed_at": observed_at,
+        })
+    return sorted(snapshot, key=lambda row: row["listing_key"])
+
+
+def compact_legacy_status_history(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for row in rows:
+        grouped.setdefault(listing_identity(row), []).append(row)
+    compacted: list[dict[str, str]] = []
+    for members in grouped.values():
+        current: dict[str, str] | None = None
+        for row in sorted(members, key=lambda item: (item.get("observed_at", ""), item.get("status", ""))):
+            status = row.get("status", "")
+            evidence = row.get("evidence_status", "observed_unverified")
+            if status == "delisted" and evidence not in TRUSTED_EVIDENCE:
+                continue
+            observed_at = row.get("observed_at", "")
+            if not observed_at:
+                continue
+            if current and current["status"] == status:
+                current["last_observed_at"] = observed_at
+                continue
+            if current:
+                compacted.append(current)
+            current = {
+                "listing_key": listing_identity(row), "ticker": row["ticker"],
+                "exchange": row["exchange"], "status": status,
+                "first_observed_at": observed_at, "last_observed_at": observed_at,
+                "effective_at": row.get("effective_at", ""),
+                "status_source": row.get("status_source", "snapshot"),
+                "source_report": row.get("source_report", ""),
+                "evidence_status": evidence,
             }
-        )
-    return snapshot
+        if current:
+            compacted.append(current)
+    return compacted
+
+
+def normalize_status_history(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    if rows and "first_observed_at" not in rows[0]:
+        rows = compact_legacy_status_history(rows)
+    normalized = []
+    for row in rows:
+        status = row.get("status", "")
+        evidence = row.get("evidence_status", "observed_unverified")
+        if status not in VALID_LISTING_STATUSES:
+            continue
+        if status == "delisted" and evidence not in TRUSTED_EVIDENCE:
+            continue
+        first = row.get("first_observed_at") or row.get("observed_at", "")
+        last = row.get("last_observed_at") or row.get("observed_at", "") or first
+        if not first:
+            continue
+        if last < first:
+            last = first
+        normalized.append({
+            "listing_key": listing_identity(row), "ticker": row["ticker"],
+            "exchange": row["exchange"], "status": status,
+            "first_observed_at": first, "last_observed_at": last,
+            "effective_at": row.get("effective_at", ""),
+            "status_source": row.get("status_source", "snapshot"),
+            "source_report": row.get("source_report", ""),
+            "evidence_status": evidence,
+        })
+    return sorted(normalized, key=lambda row: (row["listing_key"], row["first_observed_at"], row["status"]))
+
+
+def _event_base(row: dict[str, str], event_type: str, observed_at: str) -> dict[str, str]:
+    return {
+        "listing_key": listing_identity(row), "ticker": row["ticker"],
+        "exchange": row["exchange"], "event_type": event_type, "field_name": "",
+        "old_value": "", "new_value": "", "before_row_sha256": "",
+        "effective_at": "", "observed_at": observed_at, "source_key": "",
+        "source_url": "", "source_report": "", "observation_id": "",
+        "evidence_status": "observed_unverified",
+    }
+
+
+def load_change_evidence() -> dict[tuple[str, str, str, str], dict[str, str]]:
+    evidence: dict[tuple[str, str, str, str], dict[str, str]] = {}
+    for row in load_csv(OFFICIAL_NAME_RECONCILIATION_CSV):
+        if row.get("action", "applied") != "applied":
+            continue
+        evidence[(listing_identity(row), "name", row.get("old_name", ""), row.get("new_name", ""))] = {
+            "source_key": row.get("source_key", ""), "source_url": row.get("source_url", ""),
+            "source_report": str(OFFICIAL_NAME_RECONCILIATION_CSV.relative_to(ROOT)),
+            "observation_id": row.get("observation_id", ""), "evidence_status": "official",
+        }
+    for row in load_csv(IDENTIFIER_QUARANTINE_CSV):
+        old = row.get("isin", "")
+        new = row.get("retained_isin", "")
+        if not row.get("action", "").startswith("cleared") or not old or old == new:
+            continue
+        raw = row.get("evidence_status", "")
+        if raw.startswith("reviewed_"):
+            status = "reviewed"
+        elif raw.startswith("official_"):
+            status = "official"
+        else:
+            # A detector result or absence of decisive evidence is not proof
+            # authorising a destructive identifier change.
+            continue
+        evidence[(listing_identity(row), "isin", old, new)] = {
+            "source_key": "identifier_quarantine", "source_url": "",
+            "source_report": str(IDENTIFIER_QUARANTINE_CSV.relative_to(ROOT)),
+            "observation_id": row.get("conflict_id", ""), "evidence_status": status,
+        }
+    return evidence
 
 
 def build_event_rows(
-    previous_snapshot: list[dict[str, str]],
-    current_snapshot: list[dict[str, str]],
+    previous_snapshot: list[dict[str, str]], current_snapshot: list[dict[str, str]],
     observed_at: str,
+    change_evidence: dict[tuple[str, str, str, str], dict[str, str]] | None = None,
 ) -> list[dict[str, str]]:
     if not previous_snapshot:
         return []
+    evidence = change_evidence or {}
     previous = {listing_identity(row): row for row in previous_snapshot}
     current = {listing_identity(row): row for row in current_snapshot}
     events: list[dict[str, str]] = []
-
-    for key, row in sorted(current.items(), key=lambda item: (item[1]["ticker"], item[1]["exchange"])):
-        previous_row = previous.get(key)
-        if previous_row is None:
-            events.append(
-                {
-                    "listing_key": listing_identity(row),
-                    "ticker": row["ticker"],
-                    "exchange": row["exchange"],
-                    "event_type": "listed",
-                    "old_value": "",
-                    "new_value": row["name"],
-                    "observed_at": observed_at,
-                }
-            )
+    for key, row in sorted(current.items()):
+        before = previous.get(key)
+        if before is None:
+            event = _event_base(row, "listed", observed_at)
+            event["new_value"] = row.get("name", "")
+            events.append(event)
             continue
-        if previous_row["name"] != row["name"]:
-            events.append(
-                {
-                    "listing_key": listing_identity(row),
-                    "ticker": row["ticker"],
-                    "exchange": row["exchange"],
-                    "event_type": "renamed",
-                    "old_value": previous_row["name"],
-                    "new_value": row["name"],
-                    "observed_at": observed_at,
-                }
-            )
-
-    for key, row in sorted(previous.items(), key=lambda item: (item[1]["ticker"], item[1]["exchange"])):
+        for field, event_type in CRITICAL_FIELD_EVENT_TYPES.items():
+            old = str(before.get(field, "") or "")
+            new = str(row.get(field, "") or "")
+            if old == new:
+                continue
+            if field == "isin" and old and not new:
+                event_type = "identifier_removed"
+            event = _event_base(row, event_type, observed_at)
+            event.update({
+                "field_name": field, "old_value": old, "new_value": new,
+                "before_row_sha256": row_fingerprint(before),
+            })
+            event.update(evidence.get((key, field, old, new), {}))
+            events.append(event)
+    for key, row in sorted(previous.items()):
         if key in current:
             continue
-        events.append(
-            {
-                "listing_key": listing_identity(row),
-                "ticker": row["ticker"],
-                "exchange": row["exchange"],
-                "event_type": "delisted",
-                "old_value": row["name"],
-                "new_value": "",
-                "observed_at": observed_at,
-            }
-        )
-
+        event = _event_base(row, "not_observed", observed_at)
+        event.update({"old_value": row.get("name", ""), "before_row_sha256": row_fingerprint(row)})
+        events.append(event)
     return events
 
 
 def delisting_apply_status_rows(payload: dict[str, Any]) -> list[dict[str, str]]:
-    generated_at = str(payload.get("summary", {}).get("generated_at", ""))
+    generated = str(payload.get("summary", {}).get("generated_at", ""))
     source_report = str(payload.get("summary", {}).get("delisting_report_json", ""))
-    rows: list[dict[str, str]] = []
-    for section, status in (("applied", "delisted"), ("drafted", "delisted"), ("blocked", "suspended")):
-        for row in payload.get(section, []) or []:
-            classification = row.get("classification", "")
-            if section == "blocked" and classification != "suspended":
-                continue
-            if section in {"applied", "drafted"} and classification != "delisted":
-                continue
-            ticker = row.get("ticker", "")
-            exchange = row.get("exchange", "")
-            if not ticker or not exchange:
-                continue
-            rows.append(
-                {
-                    "listing_key": listing_identity(row),
-                    "ticker": ticker,
-                    "exchange": exchange,
-                    "status": status,
-                    "first_observed_at": generated_at,
-                    "last_observed_at": generated_at,
-                    "effective_at": row.get("effective_at", "") or generated_at,
-                    "status_source": "delisting_apply",
-                    "source_report": source_report,
-                }
-            )
+    rows = []
+    evidence_rows = [
+        *(payload.get("applied", []) or []),
+        *(payload.get("already_applied", []) or []),
+    ]
+    for row in evidence_rows:
+        if (
+            row.get("classification") != "delisted"
+            or not row.get("ticker")
+            or not row.get("exchange")
+            or not _valid_official_bse_delisting_evidence(row)
+        ):
+            continue
+        rows.append({
+            "listing_key": listing_identity(row), "ticker": row["ticker"],
+            "exchange": row["exchange"], "status": "delisted",
+            "first_observed_at": row.get("observed_at", "") or generated,
+            "last_observed_at": row.get("observed_at", "") or generated,
+            "effective_at": row.get("effective_at", ""), "status_source": "delisting_apply",
+            "source_report": source_report, "source_key": row.get("source_key", ""),
+            "source_url": row.get("source_url", ""), "observation_id": row.get("observation_id", ""),
+            "evidence_status": "official",
+        })
     return rows
 
 
+def normalize_existing_events(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    normalized = []
+    for source in rows:
+        row = {field: source.get(field, "") for field in EVENT_FIELDS}
+        if row["event_type"] == "delisted" and row["evidence_status"] not in TRUSTED_EVIDENCE:
+            row["event_type"] = "not_observed"
+            row["evidence_status"] = "observed_unverified"
+        normalized.append(row)
+    return normalized
+
+
 def build_status_evidence_event_rows(
-    evidence_rows: list[dict[str, str]],
-    existing_events: list[dict[str, str]],
+    evidence_rows: list[dict[str, str]], existing_events: list[dict[str, str]],
+    previous_snapshot: list[dict[str, str]] | None = None,
 ) -> list[dict[str, str]]:
-    existing_keys = {
-        (listing_identity(row), row.get("event_type", ""), row.get("observed_at", ""))
+    existing = {
+        (listing_identity(row), row.get("event_type", ""), row.get("effective_at") or row.get("observed_at", ""), row.get("field_name", ""), row.get("old_value", ""), row.get("new_value", ""))
         for row in existing_events
     }
-    events: list[dict[str, str]] = []
+    previous = {listing_identity(row): row for row in (previous_snapshot or [])}
+    events = []
     for row in evidence_rows:
-        event_type = row["status"]
-        if event_type not in {"suspended", "delisted"}:
+        if row["status"] not in {"suspended", "delisted"}:
             continue
-        observed_at = row.get("effective_at") or row.get("first_observed_at", "")
-        key = (listing_identity(row), event_type, observed_at)
-        if key in existing_keys:
-            continue
-        events.append(
-            {
-                "listing_key": listing_identity(row),
-                "ticker": row["ticker"],
-                "exchange": row["exchange"],
-                "event_type": event_type,
-                "old_value": "",
-                "new_value": row["status"],
-                "observed_at": observed_at,
-            }
-        )
+        before = previous.get(listing_identity(row), {})
+        event = _event_base(row, row["status"], row.get("first_observed_at", ""))
+        event.update({
+            "old_value": before.get("name", ""), "new_value": row["status"],
+            "before_row_sha256": row_fingerprint(before) if before else "",
+            "effective_at": row.get("effective_at", ""),
+            "source_key": row.get("source_key", ""), "source_url": row.get("source_url", ""),
+            "source_report": row.get("source_report", ""), "observation_id": row.get("observation_id", ""),
+            "evidence_status": row.get("evidence_status", "observed_unverified"),
+        })
+        key = (event["listing_key"], event["event_type"], event["effective_at"] or event["observed_at"], event["field_name"], event["old_value"], event["new_value"])
+        if key not in existing:
+            events.append(event)
+            existing.add(key)
     return events
 
 
 def merge_status_history(
-    existing_rows: list[dict[str, str]],
-    previous_snapshot: list[dict[str, str]],
-    current_snapshot: list[dict[str, str]],
-    observed_at: str,
+    existing_rows: list[dict[str, str]], previous_snapshot: list[dict[str, str]],
+    current_snapshot: list[dict[str, str]], observed_at: str,
     status_evidence_rows: list[dict[str, str]] | None = None,
 ) -> list[dict[str, str]]:
-    normalized_rows = normalize_status_history(existing_rows)
-    by_listing: dict[str, list[dict[str, str]]] = {}
-    for row in normalized_rows:
-        key = listing_identity(row)
-        by_listing.setdefault(key, []).append(row)
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for row in normalize_status_history(existing_rows):
+        grouped.setdefault(listing_identity(row), []).append(row)
 
-    def upsert_status_interval(
-        row: dict[str, str],
-        status: str,
-        *,
-        interval_observed_at: str = observed_at,
-        effective_at: str = "",
-        status_source: str = "snapshot",
-        source_report: str = "",
-    ) -> None:
+    def upsert(row: dict[str, str], status: str, *, at: str = observed_at, effective: str = "", source: str = "snapshot", report: str = "", evidence: str = "observed_unverified") -> None:
         if status not in VALID_LISTING_STATUSES:
             return
-        key = listing_identity(row)
-        listing_key = listing_identity(row)
-        intervals = by_listing.setdefault(key, [])
+        intervals = grouped.setdefault(listing_identity(row), [])
         if intervals and intervals[-1]["status"] == status:
-            if interval_observed_at > intervals[-1]["last_observed_at"]:
-                intervals[-1]["last_observed_at"] = interval_observed_at
-            intervals[-1]["listing_key"] = listing_key
-            intervals[-1]["effective_at"] = intervals[-1].get("effective_at") or effective_at
-            intervals[-1]["status_source"] = status_source or intervals[-1].get("status_source", "")
-            intervals[-1]["source_report"] = source_report or intervals[-1].get("source_report", "")
+            intervals[-1]["last_observed_at"] = max(intervals[-1]["last_observed_at"], at)
             return
-        intervals.append(
-            {
-                "listing_key": listing_key,
-                "ticker": row["ticker"],
-                "exchange": row["exchange"],
-                "status": status,
-                "first_observed_at": interval_observed_at,
-                "last_observed_at": interval_observed_at,
-                "effective_at": effective_at,
-                "status_source": status_source,
-                "source_report": source_report,
-            }
-        )
-
-    current_keys = {listing_identity(row): row for row in current_snapshot}
+        intervals.append({
+            "listing_key": listing_identity(row), "ticker": row["ticker"], "exchange": row["exchange"],
+            "status": status, "first_observed_at": at, "last_observed_at": at,
+            "effective_at": effective, "status_source": source, "source_report": report,
+            "evidence_status": evidence,
+        })
 
     for row in current_snapshot:
-        upsert_status_interval(row, "active")
-
-    for row in previous_snapshot:
-        if listing_identity(row) in current_keys:
-            continue
-        upsert_status_interval(row, "delisted")
-
+        upsert(row, "active")
+    # Snapshot disappearance is not a status transition. Only explicit evidence
+    # can create suspended/delisted intervals.
     for row in status_evidence_rows or []:
-        upsert_status_interval(
-            row,
-            row["status"],
-            interval_observed_at=row.get("first_observed_at") or row.get("effective_at") or observed_at,
-            effective_at=row.get("effective_at", ""),
-            status_source=row.get("status_source", ""),
-            source_report=row.get("source_report", ""),
+        upsert(
+            row, row["status"], at=row.get("first_observed_at") or observed_at,
+            effective=row.get("effective_at", ""), source=row.get("status_source", ""),
+            report=row.get("source_report", ""), evidence=row.get("evidence_status", "observed_unverified"),
         )
-
-    merged = [row for rows in by_listing.values() for row in rows]
-    return sorted(
-        merged,
-        key=lambda row: (row["first_observed_at"], row["ticker"], row["exchange"], row["status"]),
-    )
+    return sorted((row for rows in grouped.values() for row in rows), key=lambda row: (row["listing_key"], row["first_observed_at"], row["status"]))
 
 
-def build_daily_summary(
-    current_snapshot: list[dict[str, str]],
-    new_events: list[dict[str, str]],
-    observed_at: str,
-) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    event_type_counts: dict[str, int] = {}
-    by_exchange: dict[str, dict[str, Any]] = {}
-    for event in new_events:
-        event_type = event["event_type"]
-        exchange = event["exchange"]
-        event_type_counts[event_type] = event_type_counts.get(event_type, 0) + 1
-        exchange_row = by_exchange.setdefault(
-            exchange,
-            {
-                "observed_at": observed_at,
-                "exchange": exchange,
-                "listed": 0,
-                "renamed": 0,
-                "suspended": 0,
-                "delisted": 0,
-                "active_snapshot_rows": 0,
-            },
-        )
-        if event_type not in exchange_row:
-            exchange_row[event_type] = 0
-        exchange_row[event_type] += 1
-
-    for row in current_snapshot:
-        exchange_row = by_exchange.setdefault(
-            row["exchange"],
-            {
-                "observed_at": observed_at,
-                "exchange": row["exchange"],
-                "listed": 0,
-                "renamed": 0,
-                "suspended": 0,
-                "delisted": 0,
-                "active_snapshot_rows": 0,
-            },
-        )
-        exchange_row["active_snapshot_rows"] += 1
-
-    rows = sorted(by_exchange.values(), key=lambda row: row["exchange"])
-    summary = {
-        "observed_at": observed_at,
-        "active_snapshot_rows": len(current_snapshot),
-        "new_events": len(new_events),
-        "listed": event_type_counts.get("listed", 0),
-        "renamed": event_type_counts.get("renamed", 0),
-        "suspended": event_type_counts.get("suspended", 0),
-        "delisted": event_type_counts.get("delisted", 0),
-        "exchange_rows": len(rows),
-    }
-    return summary, rows
+def build_daily_summary(current: list[dict[str, str]], events: list[dict[str, str]], observed_at: str) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    types: dict[str, int] = {}
+    exchanges: dict[str, dict[str, Any]] = {}
+    def blank(exchange: str) -> dict[str, Any]:
+        return {"observed_at": observed_at, "exchange": exchange, "listed": 0, "renamed": 0, "suspended": 0, "delisted": 0, "not_observed": 0, "active_snapshot_rows": 0}
+    for event in events:
+        typ = event["event_type"]
+        types[typ] = types.get(typ, 0) + 1
+        row = exchanges.setdefault(event["exchange"], blank(event["exchange"]))
+        row[typ] = row.get(typ, 0) + 1
+    for listing in current:
+        exchanges.setdefault(listing["exchange"], blank(listing["exchange"]))["active_snapshot_rows"] += 1
+    rows = sorted(exchanges.values(), key=lambda row: row["exchange"])
+    return {
+        "observed_at": observed_at, "active_snapshot_rows": len(current), "new_events": len(events),
+        "listed": types.get("listed", 0), "renamed": types.get("renamed", 0),
+        "suspended": types.get("suspended", 0), "delisted": types.get("delisted", 0),
+        "not_observed": types.get("not_observed", 0), "exchange_rows": len(rows),
+    }, rows
 
 
-def listing_status_on_date(history_rows: list[dict[str, str]], listing_key: str, date_value: str) -> str:
-    candidates = [row for row in normalize_status_history(history_rows) if row["listing_key"] == listing_key]
-    matching = []
-    for row in candidates:
+def listing_status_on_date(history_rows: list[dict[str, str]], key: str, date_value: str) -> str:
+    candidates = []
+    for row in normalize_status_history(history_rows):
+        if row["listing_key"] != key:
+            continue
         start = row["effective_at"] or row["first_observed_at"]
-        end = row["last_observed_at"]
-        if start <= date_value <= end:
-            matching.append((start, row))
-    if matching:
-        return max(matching, key=lambda item: item[0])[1]["status"]
-    return ""
+        if start <= date_value:
+            candidates.append((start, row))
+    return max(candidates, key=lambda item: item[0])[1]["status"] if candidates else ""
 
 
-def was_listing_active_on_date(history_rows: list[dict[str, str]], listing_key: str, date_value: str) -> bool:
-    return listing_status_on_date(history_rows, listing_key, date_value) == "active"
+def was_listing_active_on_date(history_rows: list[dict[str, str]], key: str, date_value: str) -> bool:
+    return listing_status_on_date(history_rows, key, date_value) == "active"
 
 
 def build_history() -> dict[str, Any]:
     current_rows, observed_at = load_current_rows()
-    current_snapshot = build_snapshot(current_rows, observed_at)
-    previous_snapshot = load_csv(LATEST_SNAPSHOT_CSV)
-    existing_events = load_csv(LISTING_EVENTS_CSV)
-    existing_status_history = load_csv(LISTING_STATUS_HISTORY_CSV)
-    status_evidence_rows = delisting_apply_status_rows(load_json(DELISTING_APPLY_JSON))
-
+    current = build_snapshot(current_rows, observed_at)
+    previous = load_csv(LATEST_SNAPSHOT_CSV)
+    existing_events = normalize_existing_events(load_csv(LISTING_EVENTS_CSV))
+    evidence_rows = delisting_apply_status_rows(load_json(DELISTING_APPLY_JSON))
     new_events = [
-        *build_event_rows(previous_snapshot, current_snapshot, observed_at),
-        *build_status_evidence_event_rows(status_evidence_rows, existing_events),
+        *build_event_rows(previous, current, observed_at, load_change_evidence()),
+        *build_status_evidence_event_rows(evidence_rows, existing_events, previous),
     ]
-    event_keys = {
-        (listing_identity(row), row["event_type"], row["observed_at"])
+    keys = {
+        (listing_identity(row), row["event_type"], row.get("effective_at") or row.get("observed_at", ""), row.get("field_name", ""), row.get("old_value", ""), row.get("new_value", ""))
         for row in existing_events
     }
     merged_events = list(existing_events)
     for row in new_events:
-        key = (listing_identity(row), row["event_type"], row["observed_at"])
-        if key not in event_keys:
+        key = (listing_identity(row), row["event_type"], row.get("effective_at") or row["observed_at"], row["field_name"], row["old_value"], row["new_value"])
+        if key not in keys:
             merged_events.append(row)
-            event_keys.add(key)
-
-    merged_status_history = merge_status_history(
-        existing_status_history,
-        previous_snapshot,
-        current_snapshot,
-        observed_at,
-        status_evidence_rows=status_evidence_rows,
-    )
-
-    write_csv(
-        LATEST_SNAPSHOT_CSV,
-        [
-            "listing_key",
-            "ticker",
-            "exchange",
-            "name",
-            "asset_type",
-            "country",
-            "country_code",
-            "isin",
-            "stock_sector",
-            "etf_category",
-            "status",
-            "observed_at",
-        ],
-        current_snapshot,
-    )
-    write_csv(
-        LISTING_EVENTS_CSV,
-        ["listing_key", "ticker", "exchange", "event_type", "old_value", "new_value", "observed_at"],
-        sorted(merged_events, key=lambda row: (row["observed_at"], row["ticker"], row["exchange"], row["event_type"])),
-    )
-    write_csv(
-        LISTING_STATUS_HISTORY_CSV,
-        STATUS_HISTORY_FIELDS,
-        merged_status_history,
-    )
-    daily_summary, daily_rows = build_daily_summary(current_snapshot, new_events, observed_at)
-    DAILY_LISTING_SUMMARY_JSON.write_text(json.dumps(daily_summary, indent=2), encoding="utf-8")
-    write_csv(
-        DAILY_LISTING_SUMMARY_CSV,
-        ["observed_at", "exchange", "listed", "renamed", "suspended", "delisted", "active_snapshot_rows"],
-        daily_rows,
-    )
-
-    return {
-        "snapshot_rows": len(current_snapshot),
-        "new_events": len(new_events),
-        "total_events": len(merged_events),
-        "status_rows": len(merged_status_history),
-        "observed_at": observed_at,
-        "daily_summary": daily_summary,
-    }
+            keys.add(key)
+    status_history = merge_status_history(load_csv(LISTING_STATUS_HISTORY_CSV), previous, current, observed_at, evidence_rows)
+    write_csv(LATEST_SNAPSHOT_CSV, [
+        "listing_key", "ticker", "exchange", "name", "asset_type", "country", "country_code",
+        "isin", "stock_sector", "etf_category", "status", "observed_at",
+    ], current)
+    write_csv(LISTING_EVENTS_CSV, EVENT_FIELDS, sorted(merged_events, key=lambda row: (row.get("effective_at") or row.get("observed_at", ""), row["listing_key"], row["event_type"])))
+    write_csv(LISTING_STATUS_HISTORY_CSV, STATUS_HISTORY_FIELDS, status_history)
+    daily, daily_rows = build_daily_summary(current, new_events, observed_at)
+    DAILY_LISTING_SUMMARY_JSON.write_text(json.dumps(daily, indent=2) + "\n", encoding="utf-8")
+    write_csv(DAILY_LISTING_SUMMARY_CSV, ["observed_at", "exchange", "listed", "renamed", "suspended", "delisted", "not_observed", "active_snapshot_rows"], daily_rows)
+    return {"snapshot_rows": len(current), "new_events": len(new_events), "total_events": len(merged_events), "status_rows": len(status_history), "observed_at": observed_at, "daily_summary": daily}
 
 
 def main() -> None:
-    summary = build_history()
-    print(json.dumps(summary, indent=2))
+    print(json.dumps(build_history(), indent=2))
 
 
 if __name__ == "__main__":
