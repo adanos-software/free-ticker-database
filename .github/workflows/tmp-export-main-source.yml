@@ -15,11 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Package reviewable source
+        shell: bash
         run: |
-          tar -czf main-source.tar.gz \
-            .github scripts tests schema docs README.md requirements.txt pyproject.toml 2>/dev/null || \
-          tar -czf main-source.tar.gz \
-            .github scripts tests schema docs README.md requirements.txt
+          paths=(.github scripts tests docs README.md requirements.txt)
+          [[ -e schema ]] && paths+=(schema)
+          [[ -e pyproject.toml ]] && paths+=(pyproject.toml)
+          tar -czf main-source.tar.gz "${paths[@]}"
       - uses: actions/upload-artifact@v4
         with:
           name: main-source-export
