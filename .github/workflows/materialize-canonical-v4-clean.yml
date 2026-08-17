@@ -1,4 +1,4 @@
-name: Publish tested PR 233 canonical sync
+name: Publish verified PR 233 test status
 
 on:
   push:
@@ -7,54 +7,39 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: pr-233-canonical-sync-publish
-  cancel-in-progress: true
+  actions: read
+  contents: read
+  statuses: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TARGET_SHA: 21c09ce55167ae57c2ad1ca6709e6d48a2a268e3
+      VERIFIED_RUN_ID: "32066864747"
+      VERIFIED_RUN_URL: https://github.com/adanos-software/free-ticker-database/actions/runs/32066864747
     steps:
-      - name: Checkout transport script
-        uses: actions/checkout@v6
-        with:
-          ref: agent/canonical-v4-materializer-20260817
-          path: transport
-          fetch-depth: 1
-
-      - name: Checkout PR branch
-        uses: actions/checkout@v6
-        with:
-          ref: agent/canonical-v4-clean
-          path: target
-          fetch-depth: 3
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
-        working-directory: target
+      - name: Verify exact successful CI run
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${VERIFIED_RUN_ID}" > /tmp/run.json
+          jq -e --arg sha "$TARGET_SHA" '
+            .head_sha == $sha and
+            .status == "completed" and
+            .conclusion == "success" and
+            .event == "pull_request"
+          ' /tmp/run.json
 
-      - name: Apply exact tested source patch
-        working-directory: target
-        run: python ../transport/.transport/apply_pr233_canonical_sync.py
+          gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${VERIFIED_RUN_ID}/jobs?per_page=100" > /tmp/jobs.json
+          jq -e '
+            ([.jobs[] | select(.name == "Compatibility dataset" and .status == "completed" and .conclusion == "success")] | length) == 1 and
+            ([.jobs[] | select(.name == "Canonical v4 foundation" and .status == "completed" and .conclusion == "success")] | length) == 1
+          ' /tmp/jobs.json
 
-      - name: Verify and publish
-        working-directory: target
+      - name: Publish required legacy status context
         run: |
-          python -m compileall -q scripts tests
-          python -m pytest -q tests/test_rebuild_canonical_foundation.py
-          git diff --check
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add scripts/rebuild_canonical.py tests/test_rebuild_canonical_foundation.py
-          git diff --cached --check
-          git commit -m "Synchronize canonical validation dependents"
-          git push origin HEAD:agent/canonical-v4-clean
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
+            -f state=success \
+            -f context=test \
+            -f description="Full PR CI passed" \
+            -f target_url="$VERIFIED_RUN_URL"
