@@ -22,14 +22,22 @@ REPORT_REBUILD_WORKFLOWS = (
 )
 
 
-def test_ci_supports_explicit_dispatch() -> None:
+def test_ci_supports_dispatch_and_aggregate_branch_protection_status() -> None:
     workflow = (WORKFLOW_DIR / "ci.yml").read_text(encoding="utf-8")
 
     assert "workflow_dispatch:" in workflow
     assert "statuses: write" in workflow
-    assert "always() && github.event_name == 'workflow_dispatch'" in workflow
+    assert "\n  compatibility:\n" in workflow
+    assert "\n  canonical-v4:\n" in workflow
+    assert "\n  test:\n" in workflow
+    assert "name: test" in workflow
+    assert "if: ${{ always() }}" in workflow
+    assert "needs:\n      - compatibility\n      - canonical-v4" in workflow
+    assert 'TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}' in workflow
+    assert "COMPATIBILITY_RESULT: ${{ needs.compatibility.result }}" in workflow
+    assert "CANONICAL_RESULT: ${{ needs.canonical-v4.result }}" in workflow
     assert 'context="test"' in workflow
-    assert 'description="Full dispatched CI: $CI_STATE"' in workflow
+    assert 'description="Aggregate PR CI: $CI_STATE"' in workflow
 
 
 def test_ci_rebuilds_entry_quality_from_current_data_before_the_gate() -> None:
