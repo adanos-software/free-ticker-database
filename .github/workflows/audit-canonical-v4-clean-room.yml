@@ -1,0 +1,166 @@
+name: Independent audit canonical v4 clean-room PR
+
+on:
+  push:
+    branches:
+      - agent/canonical-v4-clean-room-runner
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: canonical-v4-clean-room-independent-audit
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout exact replacement PR head
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-clean-room-20260817
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run independent audit
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          exec > >(tee /tmp/canonical-v4-audit.log) 2>&1
+          failed=0
+
+          echo '## Repository and diff scope'
+          head_sha=$(git rev-parse HEAD)
+          echo "HEAD=$head_sha"
+          git fetch origin main --depth 1
+          git diff --name-status origin/main...HEAD | tee /tmp/canonical-v4-diff.txt
+
+          if git diff --name-only origin/main...HEAD | grep -Eq '(^|/)\.bootstrap/|bootstrap-canonical|tmp-materialize|tmp-harden|run-canonical-v4-clean-room'; then
+            echo 'FAIL: opaque bootstrap or temporary target workflow remains'
+            failed=1
+          fi
+          if git diff --name-only origin/main...HEAD | grep -Eq '^data/'; then
+            echo 'FAIL: generated data is mixed into the foundation PR'
+            failed=1
+          fi
+          if find . -path './.git' -prune -o -path './.bootstrap*' -print | grep -q .; then
+            echo 'FAIL: .bootstrap content exists in the checked-out tree'
+            failed=1
+          fi
+
+          echo '## Static integrity assertions'
+          test -f scripts/lib/identity_integrity.py || failed=1
+          test -f scripts/check_safe_merge.py || failed=1
+          test -f scripts/build_reference_reconciliation.py || failed=1
+          test -f scripts/build_coverage_contracts.py || failed=1
+          test -f scripts/build_quality_contract.py || failed=1
+          test -f schema/canonical_v4.sql || failed=1
+          test -f tests/test_canonical_v4_identity_hardening.py || failed=1
+          test -f tests/test_canonical_v4_safe_merge_fail_closed.py || failed=1
+          test -f tests/test_canonical_v4_coverage_strict.py || failed=1
+          test -f tests/test_canonical_v4_release_gate.py || failed=1
+          grep -Fq 'python scripts/build_quality_contract.py --profile complete --strict' .github/workflows/release.yml || failed=1
+
+          echo '## Compilation and whitespace'
+          python -m compileall -q scripts tests || failed=1
+          git diff --check origin/main...HEAD || failed=1
+
+          echo '## Targeted P0 regression suites'
+          python -m pytest \
+            tests/test_identity_integrity.py \
+            tests/test_safe_merge.py \
+            tests/test_canonical_v4_identity_hardening.py \
+            tests/test_canonical_v4_safe_merge_fail_closed.py \
+            tests/test_canonical_v4_coverage_strict.py \
+            tests/test_canonical_v4_release_gate.py -q || failed=1
+
+          echo '## Complete repository suite'
+          python -m pytest tests/ -q || failed=1
+
+          printf '%s\n' "$head_sha" > /tmp/canonical-v4-head-sha.txt
+          printf '%s\n' "$failed" > /tmp/canonical-v4-audit-result.txt
+          if [ "$failed" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Publish success status and PR comment
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head_sha=$(cat /tmp/canonical-v4-head-sha.txt)
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${head_sha}" \
+            -f state=success \
+            -f context='canonical-v4-independent-review' \
+            -f description='Visible clean-room diff and full suite passed' \
+            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          pr=$(gh pr list --head agent/canonical-v4-clean-room-20260817 --state open --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            tests=$(grep -Eo '[0-9]+ passed' /tmp/canonical-v4-audit.log | tail -1 || true)
+            gh pr comment "$pr" --body "### Independent clean-room audit: PASS
+
+- audited exact head: \`${head_sha}\`
+- no encoded bootstrap payloads or temporary target workflows
+- no generated data mixed into the foundation diff
+- P0 identity, safe-merge, strict venue recall, and stable-release regressions passed
+- complete repository suite: ${tests:-passed}
+- diff and whitespace checks passed
+
+This validates the visible PR tree only. The PR remains Draft until the SQL/CSV loader contract and follow-up data migration are reviewed separately."
+          fi
+
+      - name: Publish failure status and PR comment
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head_sha=$(git rev-parse HEAD)
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${head_sha}" \
+            -f state=failure \
+            -f context='canonical-v4-independent-review' \
+            -f description='Clean-room audit failed; do not merge' \
+            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          pr=$(gh pr list --head agent/canonical-v4-clean-room-20260817 --state open --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            tail -120 /tmp/canonical-v4-audit.log > /tmp/audit-tail.txt || true
+            {
+              echo '### Independent clean-room audit: FAIL'
+              echo
+              echo 'Do not merge. The exact visible head failed at least one required gate.'
+              echo
+              echo '<details><summary>Last audit lines</summary>'
+              echo
+              echo '```text'
+              cat /tmp/audit-tail.txt
+              echo '```'
+              echo '</details>'
+            } > /tmp/audit-comment.md
+            gh pr comment "$pr" --body-file /tmp/audit-comment.md
+          fi
+
+      - name: Upload independent audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-v4-independent-audit
+          if-no-files-found: warn
+          path: |
+            /tmp/canonical-v4-audit.log
+            /tmp/canonical-v4-diff.txt
+            /tmp/canonical-v4-head-sha.txt
+            /tmp/canonical-v4-audit-result.txt
