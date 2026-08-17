@@ -9,28 +9,28 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 62,052 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 64,111 | Rows in `data/tickers.csv`; one primary row per security. |
+| Core listings | 61,687 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 63,794 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 91,977 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 48,026 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 16,085 | Primary ticker rows where `asset_type=ETF`. |
+| Stocks | 47,784 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 16,010 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 125,302 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 62,166 (97.0%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 65,057 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 61,705 (96.2%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 46,047 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,658 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 62,052 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 60,392 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 1,660 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 29,925 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Aliases | 125,248 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 62,308 (97.7%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 65,430 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 61,480 (96.4%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 45,879 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,601 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 61,687 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 60,532 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 1,155 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 30,290 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 48 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 6 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 21,292 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
-| Entry quality warn rows | 202 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
+| Entry quality source-gap rows | 21,000 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality warn rows | 198 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
 
@@ -111,235 +111,22 @@ Reference and audit files:
 
 ```csv
 listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases,instrument_group_key,scope_reason
-NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,US,US0378331005,apple,US0378331005,primary_listing
+NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,USµUS0378331005,apple,US0378331005,primary_listing
+
 ```
 
 `tickers.csv` is the legacy compatibility export:
 
 ```csv
 ticker,name,exchange,asset_type,stock_sector,etf_category,country,country_code,isin,aliases
-KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,,United States,US,US1912161007,coca-cola
+KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,,United States,USµUS1912161007,coca-cola
 ```
 
-`listings.csv` is the full venue export:
+`data/listings.csv` is the full venue export:
 
 ```csv
 listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases
-NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,US,US0378331005,apple
-```
-
-Important rules:
-
-- `core_listings.csv` is the canonical core security export; `listing_key` is its collision-safe current venue/symbol key.
-- `tickers.csv` is a compatibility export that keeps one row per globally unique `ticker`.
-- `listings.csv` and `listing_key` are the venue-level source of truth for exchange-specific listing identity.
-- `ticker` is globally unique only in `tickers.csv`; use `listing_key` for venue-level identity.
-- Stocks use `stock_sector`; ETFs use `etf_category`.
-- `instrument_scopes.csv` marks `core`, OTC `extended`, and secondary cross-listings.
-- Core rows without ISIN are tagged as `scope_reason=primary_listing_missing_isin`.
-- Secondary listings stay in `listings.csv` and `cross_listings.csv`; `core_listings.csv` keeps one primary listing row per security.
-- `tickers.csv.aliases` is restricted to conservative natural-language aliases. ISINs, WKNs, and exchange-ticker aliases stay in `data/aliases.csv`, `data/core_aliases.csv`, and identifier exports.
-- `data/adanos/ticker_reference.csv` is the preferred import for Adanos Sentiment API ticker detection.
-
-JSON metadata:
-
-```json
-{
-  "_meta": {
-    "version": "3.32.00",
-    "built_at": "2026-07-07T10:06:34Z",
-    "total_tickers": 63162
-  },
-  "tickers": []
-}
-```
-
-SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrument_scopes`.
-Additional collision-safe tables: `core_listings` and `core_aliases`.
-
-<!-- canonical-v4-quality:start -->
-## Canonical v4 and release truth
-
-`listing_key` is the collision-safe **current venue/symbol key**. It is not a permanent historical identifier because symbols can change or be reused. Canonical v4 separates listing lifecycles from instruments and venues, while source observations and assertion tables preserve the evidence behind accepted values. Conflicting identifiers never merge listings into one instrument; they remain quarantined assertions until reviewed evidence resolves them.
-
-The quality contract is cumulative: `merge` blocks structural, identity, history, safe-merge, source-governance, and canonical-schema failures; `stable` additionally requires passing official-full coverage, verified contributing-source rights, complete field provenance, and MIC mappings; `complete` additionally requires zero metadata and official-reference gaps. A green merge check never claims that the database is already complete or legally ready for a stable data release.
-
-Canonical implementation source is committed as ordinary reviewable files. CI rejects compressed source payloads, workflow-time patching, and self-pushing workflows. It validates the canonical CSV contract, loads the result into PostgreSQL, and verifies deterministic repeat builds.
-
-Operational rebuilds use:
-
-```bash
-python scripts/rebuild_canonical.py
-```
-
-Direct execution of `scripts/rebuild_dataset.py` remains available only for compatibility-export validation.
-<!-- canonical-v4-quality:end -->
-## Quality
-
-- Valid ISINs are checksum-verified.
-- `data/reports/alias_quality.csv` classifies every alias as safe, review-only, or identifier-only for mention detection.
-- `data/reports/adanos_detection_simulation.json` measures positive alias hits and negative false-positive probes for the Sentiment API import.
-- Natural-language aliases are derived from current security names on every rebuild, then normalized to API-safe aliases.
-- Duplicate natural-language aliases are either assigned to a clear best owner or removed from public alias columns.
-- `data/reports/entry_quality.csv` stores one deterministic quality row per `listing_key`.
-- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, blank country metadata on ISIN-bearing rows, mojibake name corruption, Adanos alias findings, unexpected entry-quality warnings, stale coverage counts, stale/unclassified residual source gaps, unreviewed US-primary foreign ISINs (ticker-collision suspects, allowlisted in `data/review_overrides/foreign_isin_reviewed.csv`), and stale source-of-truth decisions must be clean.
-- `data/reports/ohlcv_plausibility.csv` stores optional market-data hygiene checks; default runs are no-network and omit unchecked rows unless local OHLCV samples, `--fetch-yahoo`, or `--include-not-checked` are provided.
-- Obvious common-word, wrapper, celebrity, product, junk, short, and numeric aliases are filtered.
-- Rights, units, warrants, notes, preferreds, and depositary lines are filtered from the stock universe.
-- Foreign OTC country metadata is corrected from valid ISIN prefixes where possible.
-- Official masterfiles are kept separate from secondary sources.
-- Yahoo, EODHD, XTB, and FinanceDatabase are treated as reviewed candidate sources, not as exchange authority.
-- Local probe/test artifacts are ignored via `output/` and `test-results/`. CSVs under `data/` are the diffable source of truth; generated JSON, SQLite, and Parquet files are release assets.
-
-## Coverage
-
-Top exchanges by primary ticker count:
-
-| Exchange | Tickers |
-|---|---:|
-| OTC | 6,990 |
-| NASDAQ | 4,607 |
-| LSE | 3,619 |
-| TSE | 3,201 |
-| SZSE | 3,111 |
-| HKEX | 2,841 |
-| SSE | 2,793 |
-| BSE_IN | 2,685 |
-| NYSE ARCA | 2,659 |
-| NSE_IN | 2,379 |
-| XETRA | 2,265 |
-| NYSE | 1,877 |
-| KRX | 1,990 |
-| TSX | 1,690 |
-| KOSDAQ | 1,603 |
-| B3 | 1,579 |
-| ASX | 1,386 |
-
-For full exchange, country, source, and verification coverage, use:
-
-```bash
-python3 scripts/build_entry_quality_report.py
-python3 scripts/build_coverage_report.py
-python3 scripts/build_source_inventory.py
-python3 scripts/build_exchange_source_audit.py
-python3 scripts/build_etf_universe_completeness.py
-python3 scripts/build_completion_backlog.py
-python3 scripts/build_primary_isin_completeness.py
-python3 scripts/build_cfi_code_review.py
-python3 scripts/build_b3_residual_isin_review.py
-python3 scripts/build_b3_residual_sector_review.py
-python3 scripts/build_otc_scope_review.py
-python3 scripts/build_canada_residual_review.py
-python3 scripts/build_canada_figi_queue.py
-python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 10
-python3 scripts/build_alias_quality_report.py
-python3 scripts/build_adanos_ticker_reference.py
-python3 scripts/simulate_adanos_detection.py
-python3 scripts/validate_database.py
-python3 scripts/build_ohlcv_plausibility_report.py
-python3 scripts/fetch_symbol_changes.py
-FINANCIALDATA_API_KEY=... python3 scripts/fetch_financialdata_symbols.py
-```
-
-Long OHLCV fetch runs should use streaming checkpoints:
-
-```bash
-python3 scripts/build_ohlcv_plausibility_report.py --fetch-yahoo --include-not-checked --stream --resume
-```
-
-## Refresh Pipeline
-
-Quick rebuild:
-
-```bash
-python3 scripts/rebuild_dataset.py
-python3 scripts/build_listing_history.py
-python3 scripts/build_entry_quality_report.py
-python3 scripts/build_coverage_report.py
-python3 scripts/build_source_inventory.py
-python3 scripts/build_exchange_source_audit.py
-python3 scripts/build_etf_universe_completeness.py
-python3 scripts/build_completion_backlog.py
-python3 scripts/build_primary_isin_completeness.py
-python3 scripts/build_cfi_code_review.py
-python3 scripts/build_b3_residual_isin_review.py
-python3 scripts/build_b3_residual_sector_review.py
-python3 scripts/build_otc_scope_review.py
-python3 scripts/build_canada_residual_review.py
-python3 scripts/build_canada_figi_queue.py
-python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 10
-python3 scripts/build_alias_quality_report.py
-python3 scripts/build_adanos_ticker_reference.py
-python3 scripts/simulate_adanos_detection.py
-python3 scripts/validate_database.py
-python3 scripts/build_ohlcv_plausibility_report.py
-python3 scripts/fetch_symbol_changes.py
-```
-
-Planned enrichment run:
-
-```bash
-python3 scripts/run_enrichment_pipeline.py --dry-run
-```
-
-Use `--include-secondary-network` for EODHD/Yahoo candidate stages. Use `--apply-reviewed-backfills` only when reviewed candidates should be merged into overrides.
-
-Main targeted backfills:
-
-| Task | Script |
-|---|---|
-| Official masterfiles | `scripts/fetch_exchange_masterfiles.py` |
-| Nasdaq Trader new US stocks auto-apply | `scripts/apply_nasdaq_us_new_listings.py` |
-| Safe official supplements | `scripts/build_masterfile_supplements.py` |
-| Extended FIGI/CIK/LEI identifiers | `scripts/enrich_global_identifiers.py` |
-| Same-ISIN sector/category peers | `scripts/backfill_sector_from_isin_peers.py` |
-| FinanceDatabase sectors | `scripts/backfill_financedatabase_metadata.py` |
-| EODHD ISIN candidates | `scripts/backfill_eodhd_metadata.py` |
-| XTB OMI ISIN candidates | `scripts/backfill_xtb_omi_isins.py` |
-| Yahoo OTC ISIN candidates | `scripts/backfill_yahoo_otc_isins.py` |
-| ASX official ISINs | `scripts/backfill_asx_isins.py` |
-| B3 COTAHIST ISINs | `scripts/backfill_b3_cotahist_isins.py` |
-| Thailand SEC official SET ISINs | `scripts/backfill_set_sec_isins.py` |
-| NYSE Group Security Master sample ISIN/category candidates | `scripts/backfill_nyse_security_master_sample.py` |
-| TradingView free scanner ISIN candidates | `scripts/backfill_tradingview_missing_isins.py` |
-| TradingView free scanner stock-sector candidates | `scripts/backfill_tradingview_stock_sectors.py` |
-| Daily symbol-change feed | `scripts/fetch_symbol_changes.py` |
-| FinancialData.net symbol match | `scripts/fetch_financialdata_symbols.py` |
-| FinancialData.net official-ISIN supplements | `scripts/build_financialdata_isin_supplements.py` |
-
-Review queue:
-
-```bash
-python3 scripts/build_entry_quality_report.py
-python3 scripts/build_b3_residual_isin_review.py
-python3 scripts/build_b3_residual_sector_review.py
-python3 scripts/build_otc_scope_review.py
-python3 scripts/build_canada_residual_review.py
-python3 scripts/build_canada_figi_queue.py
-python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 10
-python3 scripts/build_ohlcv_plausibility_report.py
-python3 scripts/audit_dataset.py --write-defaults
-python3 scripts/run_claude_review_queue.py --model sonnet --skip-existing
-python3 scripts/build_claude_review_overrides.py --min-confidence 0.8
-python3 scripts/rebuild_dataset.py
-```
-
-## Sources
-
-The primary-ticker universe covers 86 exchanges. Source coverage is explicit: 48 exchanges are `official_full`, 33 are `official_partial`, and 6 current-scope exchanges have an official-source candidate awaiting parser implementation; a partial listing-company page or security lookup is never presented as a complete exchange directory. Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
-
-Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source coverage status: `6` missing current-scope exchanges, `6` parser todo rows, `0` real global-expansion candidates, `48` official-full exchanges, and `33` official-partial exchanges. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
-
-[`data/reports/exchange_source_audit.md`](data/reports/exchange_source_audit.md) is the one-row-per-exchange operational audit for product-class gaps, source freshness and availability, official denominators, recall, blocker class, and promotion readiness. [`data/masterfiles/exchange_scope_decisions.csv`](data/masterfiles/exchange_scope_decisions.csv) gives every partial exchange a distribution-safe public scope. Its `reason_code` records the blocker observed at review time; validation remains fail-closed by requiring the current audit to contain a known promotion blocker, without invalidating a safe retained scope merely because another blocker becomes higher priority. A current audit with no blocker requires explicit scope review. Commercial products are only evaluation candidates: [`data/masterfiles/commercial_source_options.csv`](data/masterfiles/commercial_source_options.csv) does not grant redistribution rights, and its validator requires explicit contract review or prior written permission.
-
-Secondary/reviewed enrichment inputs include [EODHD](https://eodhd.com/financial-apis/), [FinanceDatabase](https://github.com/JerBouma/FinanceDatabase), official B3 COTAHIST files, NYSE Group Security Master sample files, TradingView free scanner metadata, XTB OMI specification data, Yahoo Finance review helpers, [FinancialData.net](https://financialdata.net/documentation) symbol-universe matching, OpenFIGI, GLEIF, and curated production aliases from [api.adanos.org](https://api.adanos.org).
-
-FinancialData.net output is intentionally review-only: the international-symbols endpoint has `trading_symbol` and `registrant_name`, but no ISIN or sector. The sync writes [`data/financialdata/international_stock_symbols.csv`](data/financialdata/international_stock_symbols.csv), [`data/reports/financialdata_symbol_match.md`](data/reports/financialdata_symbol_match.md), [`data/reports/financialdata_current_exchange_gaps.csv`](data/reports/financialdata_current_exchange_gaps.csv), and [`data/reports/financialdata_global_expansion_candidates.csv`](data/reports/financialdata_global_expansion_candidates.csv). Missing rows are split into current-exchange gaps and global expansion candidates. The follow-up [`scripts/build_financialdata_isin_supplements.py`](scripts/build_financialdata_isin_supplements.py) only writes supplemental core rows when the FinancialData discovery row matches an official active masterfile row with a valid ISIN, name gate, no existing global ticker, and no existing/selected ISIN.
-
-## Project
-
-- License: [MIT](LICENSE)
-- Changelog: [CHANGELOG.md](CHANGELOG.md)
-- M2 operations: [docs/m2_operations.md](docs/m2_operations.md)
-- Releases: [GitHub Releases](https://github.com/adanos-software/free-ticker-database/releases)
-- Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
+NASDAQ::AAPL,AAPL,NASDAQ\H[˜ËİØÚË[™›Ü›X][ÛˆXÚ›ÛÙŞK[š]Yİ]\ËTÂ-UTÌÍÎÌÌLK\B˜‚’[\Ü[[\Î‚‚‹HÛÜ™WÛ\İ[™ÜË˜Üİ˜\ÈHØ[›ÛšXØ[ÛÜ™HÙXİ\š]H^ÜÈ\İ[™×ÚÙ^X\È]ÈÛÛ\Ú[Û‹\ØY™Hİ\œ™[™[YKÜŞ[X›ÛÙ^K‚‹HXÚÙ\œË˜Üİ˜\ÈHÛÛ\]Xš[]H^Ü]ÙY\ÈÛ™H›İÈ\ˆÛØ˜[H[š\]YHXÚÙ\˜‚‹H\İ[™ÜË˜Üİ˜[™\İ[™×ÚÙ^X\™HH™[YK[]™[Ûİ\˜ÙHÙˆ]›Üˆ^Ú[™ÙK\ÜXÚYšXÈ\İ[™ÈY[]K‚‹HXÚÙ\˜\ÈÛØ˜[H[š\]YHÛ›H[ˆXÚÙ\œË˜Üİ˜È\ÙH\İ[™×ÚÙ^X›Üˆ™[YK[]™[Y[]K‚‹HİØÚÜÈ\ÙHİØÚ×ÜÙXİÜ˜ÈUœÈ\ÙH]—ØØ]YÛÜX‚‹H[œİ[Y[ÜØÛÜ\Ë˜Üİ˜X\šÜÈÛÜ™XÕÈ^[™Y[™ÙXÛÛ™\HÜ›ÜÜË[\İ[™ÜË‚‹HÛÜ™H›İÜÈÚ]İ]TÒSˆ\™HYÙÙY\ÈØÛÜWÜ™X\ÛÛ\š[X\WÛ\İ[™×ÛZ\ÜÚ[™×Ú\Ú[˜‚‹HÙXÛÛ™\H\İ[™ÜÈİ^H[ˆ\İ[™ÜË˜Üİ˜[™Ü›ÜÜ×Û\İ[™ÜË˜Üİ˜ÈÛÜ™WÛ\İ[™ÜË˜Üİ˜ÙY\ÈÛ™Hš[X\H\İ[™È›İÈ\ˆÙXİ\š]K‚‹HXÚÙ\œË˜Üİ‹˜[X\Ù\Ø\È™\İšXİYÈÛÛœÙ\˜]]™H˜]\˜[[[™İXYÙH[X\Ù\ËˆTÒSœËÒÓœË[™^Ú[™ÙK]XÚÙ\ˆ[X\Ù\Èİ^H[ˆ]KØ[X\Ù\Ë˜Üİ˜]KØÛÜ™WØ[X\Ù\Ë˜Üİ˜[™Y[YšY\ˆ^ÜË‚‹H]KØY[›ÜËİXÚÙ\—Ü™Y™\™[˜ÙK˜Üİ˜\ÈH™Y™\œ™Y[\Ü›ÜˆY[›ÜÈÙ[[Y[THXÚÙ\ˆ]Xİ[Û‹‚‚’”ÓÓˆY]Y]N‚‚˜œÛÛ‚Âˆ—ÛY]HˆÂˆ™\œÚ[ÛˆˆŒËŒÌ‹Œ‹ˆ˜Z[Ø]ˆŒŒ‹LËLÕLŒŒÍˆ‹ˆİ[İXÚÙ\œÈˆŒÌMŒ‚ˆKˆXÚÙ\œÈˆ×BŸB˜‚”ÔS]HX›\ÎˆXÚÙ\œØ\İ[™ÜØ[X\Ù\ØÜ›ÜÜ×Û\İ[™ÜØ[™[œİ[Y[ÜØÛÜ\Ø‚Y][Û˜[ÛÛ\Ú[Û‹\ØY™HX›\ÎˆÛÜ™WÛ\İ[™ÜØ[™ÛÜ™WØ[X\Ù\Ø‚‚KKHØ[›ÛšXØ[]\]X[]Nœİ\KO‚ˆÈÈØ[›ÛšXØ[[™™[X\ÙH]‚˜\İ[™×ÚÙ^X\ÈHÛÛ\Ú[Û‹\ØY™H
+Š˜İ\œ™[™[YKÜŞ[X›ÛÙ^JŠ‹ˆ]\È›İH\›X[™[\İÜšXØ[Y[YšY\ˆ™XØ]\ÙHŞ[X›ÛÈØ[ˆÚ[™ÙHÜˆ™H™]\ÙYˆØ[›ÛšXØ[Ù\\˜]\È\İ[™ÈY™XŞXÛ\Èœ›ÛH[œİ[Y[È[™™[Y\ËÚ[HÛİ\˜ÙHØœÙ\˜][ÛœÈ[™\ÜÙ\[ÛˆX›\È™\Ù\™HH]šY[˜ÙH™Z[™XØÙ\Y˜[Y\ËˆÛÛ™›Xİ[™ÈY[YšY\œÈ™]™\ˆY\™ÙH\İ[™ÜÈ[ÈÛ™H[œİ[Y[È^H™[XZ[ˆ]X\˜[[™Y\ÜÙ\[ÛœÈ[[™]šY]ÙY]šY[˜ÙH™\ÛÛ™\È[K‚‚•H]X[]HÛÛ˜Xİ\Èİ[][]]™NˆY\™ÙX›ØÚÜÈİXİ\˜[Y[]K\İÜKØY™K[Y\™ÙKÛİ\˜ÙKYÛİ™\›˜[˜ÙK[™Ø[›ÛšXØ[\ØÚ[XH˜Z[\™\ÎÈİX›XY][Û˜[H™\]Z\™\È\ÜÚ[™ÈÙ™šXÚX[Y[Ûİ™\˜YÙK™\šYšYYÛÛšX][™Ë\Ûİ\˜ÙHšYÚËÛÛ\]HšY[›İ™[˜[˜ÙK[™RPÈX\[™ÜÎÈÛÛ\]XY][Û˜[H™\]Z\™\È™\›ÈY]Y]H[™Ù™šXÚX[\™Y™\™[˜ÙHØ\ËˆHÜ™Y[ˆY\™ÙHÚXÚÈ™]™\ˆÛZ[\È]H]X˜\ÙH\È[™XYHÛÛ\]HÜˆYØ[H™XYH›ÜˆHİX›H]H™[X\ÙK‚‚Ø[›ÛšXØ[[\[Y[][ÛˆÛİ\˜ÙH\ÈÛÛ[Z]Y\ÈÜ™[˜\H™]šY]ØX›Hš[\ËˆÒH™Z™XİÈÛÛ\™\ÜÙYÛİ\˜ÙH^[ØYËÛÜšÙ›İË][YH]Ú[™Ë[™Ù[‹\\Ú[™ÈÛÜšÙ›İÜËˆ]˜[Y]\ÈHØ[›ÛšXØ[ÔÕˆÛÛ˜XİØYÈH™\İ[[ÈÜİÜ™TÔS[™™\šYšY\È]\›Z[š\İXÈ™\X]Z[Ë‚‚“Ü\˜][Û˜[™XZ[È\ÙN‚‚˜˜\Úœ]ÛŒÈØÜš\ËÜ™XZ[ØØ[›ÛšXØ[œB˜‚‘\™Xİ^Xİ][ÛˆÙˆØÜš\ËÜ™XZ[Ù]\Ù]œX™[XZ[œÈ]˜Z[X›HÛ›H›ÜˆÛÛ\]Xš[]KY^Ü˜[Y][Û‹‚KKHØ[›ÛšXØ[]\]X[]N™[™KO‚ˆÈÈ]X[]B‚‹H˜[YTÒSœÈ\™HÚXÚÜİ[K]™\šYšYY‚‹H]KÜ™\ÜËØ[X\×Ü]X[]K˜Üİ˜Û\ÜÚYšY\È]™\H[X\È\ÈØY™K™]šY]Ë[Û›KÜˆY[YšY\‹[Û›H›ÜˆY[[Ûˆ]Xİ[Û‹‚‹H]KÜ™\ÜËØY[›Ü×Ù]Xİ[Û—ÜÚ[][][Û‹šœÛÛ˜YX\İ\™\ÈÜÚ]]™H[X\È]È[™™YØ]]™H˜[ÙK\ÜÚ]]™H›Ø™\È›ÜˆHÙ[[Y[TH[\Ü‚‹H˜]\˜[[[™İXYÙH[X\Ù\È\™H\š]™Yœ›ÛHİ\œ™[ÙXİ\š]H˜[Y\ÈÛˆ]™\H™XZ[[ˆ›Ü›X[^™YÈTK\ØY™H[X\Ù\Ë‚‹H\XØ]H˜]\˜[[[™İXYÙH[X\Ù\È\™HZ]\ˆ\ÜÚYÛ™YÈHÛX\ˆ™\İİÛ™\ˆÜˆ™[[İ™Yœ›ÛHX›XÈ[X\ÈÛÛ[[œË‚‹H]KÜ™\ÜËÙ[WÜ]X[]K˜Üİ˜İÜ™\ÈÛ™H]\›Z[š\İXÈ]X[]H›İÈ\ˆ\İ[™×ÚÙ^X‚‹H]KÜ™\ÜËİ˜[Y][Û—Ü™\ÜšœÛÛ˜\ÈH™[X\ÙHØ]Nˆ\XØ]HÙ^\Ë[˜[YTÒSœË\YÙXİÜ‹ØØ]YÛÜHXZØYÙK›[šÈÛİ[XY]Y]HÛˆTÒS‹X™X\š[™È›İÜË[ÚšX˜ZÙH˜[YHÛÜœ\[Û‹Y[›ÜÈ[X\Èš[™[™ÜË[™^XİY[K\]X[]HØ\›š[™ÜËİ[HÛİ™\˜YÙHÛİ[Ëİ[Kİ[˜Û\ÜÚYšYY™\ÚYX[Ûİ\˜ÙHØ\Ë[œ™]šY]ÙYTË\š[X\H›Ü™ZYÛ‹RTÒSˆZ\ÛX]Ú\Ë[™[™^Z[™Yš[X\KY^Ú[™ÙHÚ[™Ù\È[˜Z[H™[X\ÙK‚‹HÜ[ˆ[š]X[™\ÚYX[È\™H^XÚ]ˆØØÜš\ËØZ[Ø[š]ÚX[Ü™]šY]ËœXJØÜš\ËØZ[Ø[š]ÚX[Ü™]šY]ËœJH™[XZ[œÈHÙ[™\šXÈ™]šY]È]Y]YHÚ]™\›È]]ÛX]XÈY]Y]H\XØ][ÛˆÚ[HHÙ™šXÚX[TÖ[™Ø[˜YH™]šY]ÜÈ\™H\İ[™ËZÙ^YY[™˜Z[XÛÜÙY‚‹Hš[X\H\İ[™ÈXÚ\Ú[ÛœÈ\™HØÛÜ™YHÙ™šXÚX[\İ[™È]šY[˜ÙHš\œİ[ˆÛYKRTÒS‹ØÛÜK™[YH\K˜[YHİY™š^[™^Ú[™ÙHÛÙHYXœ™XZÙ\œË‚‹Hš[X\H^Ú[™ÙHÚ[™Ù\È\™HÛÛ\\™YÈ]KÜ™]šY]×Ûİ™\œšY\ËÜš[X\WÛ\İ[™×Ûİ™\œšY\Ë˜Üİ˜È]™\HÚ[™ÙH™YYÈH™]šY]ÙYÛÜœÜ˜]KXXİ[ÛˆÜˆ\İ[™Ë\İ]\È™X\ÛÛ‹‚‹H]KÜ™]šY]×Ûİ™\œšY\ËÛY]Y]Wİ\]\Ë˜Üİ˜İÜ™\ÈX[X[Y]Y]HXÚ\Ú[ÛœÈ\È›İÜÈÙ^YYHXÚÙ\ˆ
+È^Ú[™ÙH
+ÈšY[ÈZ\ÜÚ[™È™X\ÛÛ˜ÜˆÛİ\˜ÙWİ\›\ÈH˜[Y][Ûˆ˜Z[\™K‚‹H]KÜ™]šY]×Ûİ™\œšY\ËÜ™Y™\œ™YØ[İÛ\İ˜Üİ˜\ÈH™]šY]ÙY^Ù\[Ûˆ^Y\ˆ›Üˆ™Y™\œ™YËÛ›İ\È[™[YZ]Y›İÜÈ]\İİ[\ÜÈH›Û‹XÛÛ[[Û‹\İØÚÈØÛÜHÛXŞK‚‹H\œÙ\ˆİ]]È]˜Z[Üˆ™]\›ˆ™\›È›İÜÈ\™HÙ\\È™\ÜÈÜˆ™]šY]È]Y]Y\ÎÈ^HÈ›İ™\XÙHHØ[›ÛšXØ[]H[›\ÜÈHX\šÙ]ØÛÜH[™›İÈÛİ[\™HØY™K‚‹HØØÜš\ËØ]Y]Ù]\Ù]œXJØÜš\ËØ]Y]Ù]\Ù]œJH›İÈÜš]\È›İH]Z[YØ]KÜ™\ÜËÙ]WÜ]X[]WÜ™\Ü˜Üİ˜J]KÜ™\ÜËÙ]WÜ]X[]WÜ™\Ü˜ÜİŠBæB6FVv÷&—¦VB¶FF÷&W÷'G2öFF÷VÆ—G•ö—77VW2æ77fÒ†FF÷&W÷'G2öFF÷VÆ—G•ö—77VW2æ77b’f÷"&Wf–Wrà¢ÒwV&çFVVB7W'&VçB÷WGWG3¢Æ—7F–æw2æ77fÂ6÷&UöÆ—7F–æw2æ77fÂ–ç7G'VÖVçE÷66÷W2æ77fÂÆÂf÷&ÖG2ÂæBÆ–6W2æ77f&R&V'V–ÇBg&öÒF†R6ÖR6æöæ–6Â6÷W&6Rw&‚à¢Ò÷fW'&–FRFV'BæB6öÆÆ—6–öç2&Ræ÷B6–ÆVçC¢F†R7W'&VçBvFR6Æ76–f–W2&W6öÇfVBÂ&VGVæFçBÂæB6öæfÆ–7F–ær&÷w2æBw&—FW2FWFW&Ö–æ—7F–2&W÷'Bà ¢22&÷f–FW"Vç&–6†ÖVç@ ¤WFöÖF–2Vç&–6†ÖVçB†27G&–7BwV&G3  £â6†V6·7VÒ×fÆ–B•4”âÀ£"âæÖR6ö×F–&–Æ—G’f÷"F†Rv—fVâ6V7W&—G’G—RÀ£2âÖVBfVçVRöW†6†ævR6öFRÀ£Bâ7W÷'FVB6V7W&—G’G—RÀ£RâW‡V7FVB•4”â6÷VçG'’&Vf—‚À£bâæò÷fW'w&—FRöb6öæfÆ–7F–æræöâÖV×G’fÇVRà ¤6öæfÆ–7G2&Rw&—GFVâFò&÷f–FW"×7V6–f–255g2VæFW"FF÷&÷f–FW%÷&Wf–WröæB&RæWfW"Æ–VBWFöÖF–6ÆÇ’à ¢22WFöÖFVB&Wf–WuFööÇ0 ¤–âFF—F–öâFòF†R6FVv÷'’×7V6–f–26÷VçG2ÂF†R—VÆ–æR–æ6ÇVFW2âWFöÖFVBW6&ÆR×F–6¶W"&ö&Rf÷"F†RF÷Æ—7F–ær¶W—2æBw&—FW2FF÷&W÷'G2÷F–6¶W%÷ÇVÖ&–æu÷&ö&Ræ77fà¥F†R&ö&R6†V6·2F†BF†R6ÖRF–6¶W"&W6öÇfW27&÷72Æ—7F–æw2Â&–Ö'’F–6¶W'2Â–FVçF–f–W'2Âd”t’Ö–æw2ÂæB7Fö6²fW&–f–6F–öâ&W÷'G2à §F–6¶W&W‡ç6–öâFWFV7F–öâfö–G2vÆö&ÂÖæÖW76RfÇ6R÷6—F—fW2'’&WV—&–ær7G&öær—77VW"ögVæBæÖRÖF6‚&Vf÷&RâW‡FW&æÂ7–Ö&öÂ—26WFVB2æ÷F†W"Æ—7F–ærà ¤Ç’&Wf–WvVBÖWFFFöÆ–2÷fW'&–FW2æB&V'V–ÆBÆÂ'F–f7G3  ¦&6€§—F†öã267&—G2÷&V'V–ÆEöFF6WBç§—F†öã267&—G2öVF—EöFF6WBç’Ò×w&—FRÖFVfVÇG0§—F†öã267&—G2ö'V–ÆEö÷fW'&–FUöFV'E÷&W÷'Bç¦  ¥&VvVæW&FRÄÄÒÖ&6VB&Wf–Wr÷fW'&–FW2‡F†R67&—BÆ–W2æòFFF—&V7FÇ’“  ¦&6€§—F†öã267&—G2÷'Våö6ÆVFU÷&Wf–Wu÷VWVRç’ÒÖÖöFVÂ6öææWBÒ×6¶—ÖW†—7F–æp§—F†öã267&—G2ö'V–ÆEö6ÆVFU÷&Wf–Wuö÷fW'&–FW2ç’ÒÖÖ–âÖ6öæf–FVæ6Rã€¦  ¥&VvVæW&FRGvVÇfRFF6æF–FFRæBÇ’7VÖÖ&–W2‡F†RFVfVÇBÖöFRÆ–W2æòFF“  ¦&6€§—F†öã267&—G2ö–×÷'E÷GvVÇfVFF÷&÷f–FW%öVç&–6†ÖVçBç§—F†öã267&—G2ö–×÷'E÷GvVÇfVFF÷&÷f–FW%öVç&–6†ÖVçBç’ÒÖÇ’ÒÖÇ’×&Wf–WvVBÖ÷fW'&–FW0¦  ¤–×÷'B–FVçF–f–W"æB6V7F÷"6æF–FFW2g&öÒ”R6–â¶öærôÖ†÷Bg&VR&÷‡•Fö¶Vç22&Wf–WrÖöæÇ’&÷f–FW"Wf–FVæ6R‡F†RFVfVÇBÖöFRÆ–W2æòFF“  ¦&6€§—F†öã267&—G2ö–×÷'E÷&÷‡—Fö¶Vå÷&÷f–FW%öVç&–6†ÖVçBç§—F†öã267&—G2ö–×÷'E÷&÷‡—Fö¶Vå÷&÷f–FW%öVç&–6†ÖVçBç’ÒÖÇ’ÒÖÇ’×&Wf–WvVBÖ÷fW'&–FW0¦  ¥VWVRF†RF÷Ö—76–ær&–Ö'’•4”â&÷w2f÷"÷Väd”t’&Wf–Wr†æòFF—2Æ–VB“  ¦&6€§—F†öã267&—G2ö&6¶f–ÆÅö÷Væf–v•öÖ—76–æuö—6–ç2ç’ÒÖW†6†ævW2ä4DÄå•4RÄ$E2Äå•4R´$4ÒÖÆ–Ö—BÒÖ÷WGWBÖ77bFFö÷Væf–v•÷fW&–f–6F–öâöÖ—76–æuö—6–å÷&ö&Ræ77`§—F†öã267&—G2ö&6¶f–ÆÅö÷Væf–v•öÖ—76–æuö—6–ç2ç’ÒÖW†6†ævW2ä4DÄå•4RÔ$E2Äå•4R$4ÒÖÆ–Ö—BÒÖ÷WGWBÖ77bFFö÷Væf–v•÷fW&–f–6F–öâöÖ—76–æuö—6–å÷&ö&Ræ77bÒÖfWF6‚ÒÖ–æ6ÇVFRÖæ÷BÖ6†V6¶VBÒ×7G&VÒÒ×&W7VÖP¦  ¢22&Vg&W6‚—VÆ–æP ¥V–6²&V'V–ÆC  ¦&6€§—F†öã267&—G2÷&V'V–ÆEöFF6WBç§—F†öã267&—G2ö'V–ÆEöÆ—7F–æuö†—7F÷'’ç§—F†öã267&—G2ö'V–ÆEöVçG'•÷VÆ—G•÷&W÷'Bç§—F†öã267&—G2ö'V–ÆEö6÷fW&vU÷&W÷'Bç§—F†öã267&—G2ö'V–ÆE÷6÷W&6Uö–çfVçF÷'’ç§—F†öã267&—G2ö'V–ÆEöW†6†ævU÷6÷W&6UöVF—Bç§—F†öã267&—G2ö'V–ÆEöWFe÷Væ—fW'6Uö6ö×ÆWFVæW72ç§—F†öã267&—G2ö'V–ÆEö6ö×ÆWF–öåö&6¶Æörç§—F†öã267&—G2ö'V–ÆE÷&–Ö'•ö—6–åö6ö×ÆWFVæW72ç§—F†öã267&—G2ö'V–ÆEö6f•ö6öFU÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö#5÷&W6–GVÅö—6–å÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö#5÷&W6–GVÅ÷6V7F÷%÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö÷F5÷66÷U÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö6æF÷&W6–GVÅ÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö6æFöf–v•÷VWVRç§—F†öã267&—G2÷&ö&Uö6æFöf–v•ö&F6‚ç’ÒÖ&F6‚Ö–B6æFÖf–v’ÓÒÖÆ–Ö—B §—F†öã267&—G2ö'V–ÆEöÆ–5÷VÆ—G•÷&W÷'Bç§—F†öã267&—G2ö'V–ÆEöFæ÷5÷F–6¶W%÷&VfW&Væ6Rç§—F†öã267&—G2÷6–×VÆFUöFæ÷5öFWFV7F–öâç§—F†öã267&—G2÷fÆ–FFUöFF&6Rç§—F†öã267&—G2ö'V–ÆEöö†Æ7e÷ÆW6–&–Æ—G•÷&W÷'Bç§—F†öã267&—G2öfWF6…÷7–Ö&öÅö6†ævW2ç¦  ¥ÆææVBVç&–6†ÖVçB'Vã  ¦&6€§—F†öã267&—G2÷'VåöVç&–6†ÖVçE÷—VÆ–æRç’ÒÖG'’×'Và¦  ¥W6RÒÖ–æ6ÇVFR×6V6öæF'’ÖæWGv÷&¶f÷"TôD„Bõ–†öò6æF–FFR7FvW2âW6RÒÖÇ’×&Wf–WvVBÖ&6¶f–ÆÇ6öæÇ’v†Vâ&Wf–WvVB6æF–FFW26†÷VÆB&RÖW&vVB–çFò÷fW'&–FW2à ¤Ö–âF&vWFVB&6¶f–ÆÇ3  §ÂF6²Â67&—BÀ§ÂÒÒ×ÂÒÒ×À§Âöff–6–ÂÖ7FW&f–ÆW2Â67&—G2öfWF6…öW†6†ævUöÖ7FW&f–ÆW2ç–À§Âæ6FG&FW"æWrU27Fö6·2WFòÖÇ’Â67&—G2öÇ•öæ6F÷W5öæWuöÆ—7F–æw2ç–À§Â6fRöff–6–Â7WÆVÖVçG2Â67&—G2ö'V–ÆEöÖ7FW&f–ÆU÷7WÆVÖVçG2ç–À§ÂW‡FVæFVBd”t’ô4”²ôÄT’–FVçF–f–W'2Â67&—G2öVç&–6…övÆö&Åö–FVçF–f–W'2ç–À§Â6ÖRÔ•4”â6V7F÷"ö6FVv÷'’VW'2Â67&—G2ö&6¶f–ÆÅ÷6V7F÷%ög&öÕö—6–å÷VW'2ç–À§Âf–ææ6TFF&6R6V7F÷'2Â67&—G2ö&6¶f–ÆÅöf–ææ6VFF&6UöÖWFFFç–À§ÂTôD„B•4”â6æF–FFW2Â67&—G2ö&6¶f–ÆÅöVöF†EöÖWFFFç–À§Â…D"ôÔ’•4”â6æF–FFW2Â67&—G2ö&6¶f–ÆÅ÷‡F%ööÖ•ö—6–ç2ç–À§Â–†öòõD2•4”â6æF–FFW2Â67&—G2ö&6¶f–ÆÅ÷–†öõö÷F5ö—6–ç2ç–À§Â5‚öff–6–Â•4”ç2Â67&—G2ö&6¶f–ÆÅö7…ö—6–ç2ç–À§Â#24õD„•5B•4”ç2Â67&—G2ö&6¶f–ÆÅö#5ö6÷F†—7Eö—6–ç2ç–À§ÂF†–ÆæB4T2öff–6–Â4UB•4”ç2Â67&—G2ö&6¶f–ÆÅ÷6WE÷6V5ö—6–ç2ç–À§Âå•4Rw&÷W6V7W&—G’Ö7FW"6×ÆR•4”âö6FVv÷'’6æF–FFW2Â67&—G2ö&6¶f–ÆÅöç—6U÷6V7W&—G•öÖ7FW%÷6×ÆRç–À§ÂG&F–æuf–Wrg&VR66ææW"•4”â6æF–FFW2Â67&—G2ö&6¶f–ÆÅ÷G&F–æwf–WuöÖ—76–æuö—6–ç2ç–À§ÂG&F–æuf–Wrg&VR66ææW"7Fö6²×6V7F÷"6æF–FFW2Â67&—G2ö&6¶f–ÆÅ÷G&F–æwf–Wu÷7Fö6µ÷6V7F÷'2ç–À§ÂF–Ç’7–Ö&öÂÖ6†ævRfVVBÂ67&—G2öfWF6…÷7–Ö&öÅö6†ævW2ç–À§Âf–ææ6–ÄFFææWB7–Ö&öÂÖF6‚Â67&—G2öfWF6…öf–ææ6–ÆFF÷7–Ö&öÇ2ç–À§Âf–ææ6–ÄFFææWBöff–6–ÂÔ•4”â7WÆVÖVçG2Â67&—G2ö'V–ÆEöf–ææ6–ÆFFö—6–å÷7WÆVÖVçG2ç–À ¥&Wf–WrVWVS  ¦&6€§—F†öã267&—G2ö'V–ÆEöVçG'•÷VÆ—G•÷&W÷'Bç§—F†öã267&—G2ö'V–ÆEö#5÷&W6–GVÅö—6–å÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö#5÷&W6–GVÅ÷6V7F÷%÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö÷F5÷66÷U÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö6æF÷&W6–GVÅ÷&Wf–Wrç§—F†öã267&—G2ö'V–ÆEö6æFöf–v•÷VWVRç§—F†öã267&—G2÷&ö&Uö6æFöf–v•ö&F6‚ç’ÒÖ&F6‚Ö–B6æFÖf–v’ÓÒÖÆ–Ö—B §—F†öã267&—G2ö'V–ÆEöö†Æ7e÷ÆW6–&–Æ—G•÷&W÷'Bç§—F†öã267&—G2öVF—EöFF6WBç’Ò×w&—FRÖFVfVÇG0§—F†öã267&—G2÷'Våö6ÆVFU÷&Wf–Wu÷VWVRç’ÒÖÖöFVÂ6öææWBÒ×6¶—ÖW†—7F–æp§—F†öã267&—G2ö'V–ÆEö6ÆVFU÷&Wf–Wuö÷fW'&–FW2ç’ÒÖÖ–âÖ6öæf–FVæ6Rã€§—F†öã267&—G2÷&V'V–ÆEöFF6WBç¦  ¢226÷W&6W0 ¥F†R&–Ö'’×F–6¶W"Væ—fW'6R6÷fW'2ƒbW†6†ævW2â6÷W&6R6÷fW&vR—2W‡Æ–6—C¢C‚W†6†ævW2&Röff–6–ÅögVÆÆÂ32&Röff–6–Å÷'F–ÆÂæBb7W'&VçB×66÷RW†6†ævW2†fRâöff–6–Â×6÷W&6R6æF–FFRv—F–ær'6W"–×ÆVÖVçFF–öã²'F–ÂÆ—7F–ærÖ6ö×ç’vR÷"6V7W&—G’Æöö·W—2æWfW"&W6VçFVB26ö×ÆWFRW†6†ævRF—&V7F÷'’â–×ÆVÖVçFVB&–Ö'’W†6†ævR÷&VfW&Væ6R–çWG2–æ6ÇVFRæ6FG&FW"Âæ6Fæ÷&F–2Â5‚ÂFWWG66†R&öW'6RÂ#2ÂDÕ‚ÂWW&öæW‡BÂ¥‚õE4RÂEu4RÂEU‚Â54Rõ5¥4RÂ'W'6ÖÆ—6–Â$ÔRÂ$ÕbÂu4RôæWt6öææV7BÂD4RÂµ%‚Â„õ4Rô„å‚õU4ôÒÂ54R7&’Ææ¶ÂæB4T26ö×ç’F–6¶W'2à ¤öff–6–Â6÷W&6R6æF–FFW2æB&V6öæ6–ÆVB6÷W&6Rv2&RG&6¶VB–â¶FFöÖ7FW&f–ÆW2÷6÷W&6Uö6æF–FFW2æ§6öæÒ†FFöÖ7FW&f–ÆW2÷6÷W&6Uö6æF–FFW2æ§6öâ’æB7VÖÖ&—¦VB'’¶FF÷&W÷'G2÷6÷W&6Uö–çfVçF÷'•övæÖFÒ†FF÷&W÷'G2÷6÷W&6Uö–çfVçF÷'•övæÖB’â7W'&VçB6÷W&6R6÷fW&vR7FGW3¢fÖ—76–ær7W'&VçB×66÷RW†6†ævW2Âf'6W"FöFò&÷w2Â&VÂvÆö&ÂÖW‡ç6–öâ6æF–FFW2ÂC†öff–6–ÂÖgVÆÂW†6†ævW2ÂæB36öff–6–Â×'F–ÂW†6†ævW2â&VÖ–æ–ærv÷&²–æ6ÇVFW26÷W&6R×'6W"&6¶ÆörÇW2f–VÆBÖ6ö×ÆWF–öâæBF†öæö×’6÷fW&vRà ¥¶FF÷&W÷'G2öW†6†ævU÷6÷W&6UöVF—BæÖFÒ†FF÷&W÷'G2öW†6†ævU÷6÷W&6UöVF—BæÖB’—2F†RöæR×&÷r×W"ÖW†6†ævR÷W&F–öæÂVF—Bf÷"&öGV7BÖ6Æ72v2Â6÷W&6Rg&W6†æW72æBf–Æ&–Æ—G’Âöff–6–ÂFVæöÖ–æF÷'2Â&V6ÆÂÂ&Æö6¶W"6Æ72ÂæB&öÖ÷F–öâ&VF–æW72â¶FFöÖ7FW&f–ÆW2öW†6†ævU÷66÷UöFV6—6–öç2æ77fÒ†FFöÖ7FW&f–ÆW2öW†6†ævU÷66÷UöFV6—6–öç2æ77b’v—fW2WfW'’'F–ÂW†6†ævRF—7G&–'WF–öâ×6fRV&Æ–266÷Râ—G2&V6öåö6öFV&V6÷&G2F†R&Æö6¶W"ö'6W'fVBB&Wf–WrF–ÖS²fÆ–FF–öâ&VÖ–ç2f–ÂÖ6Æ÷6VB'’&WV—&–ærF†R7W'&VçBVF—BFò6öçF–â¶æ÷vâ&öÖ÷F–öâ&Æö6¶W"Âv—F†÷WB–çfÆ–FF–ær6fR&WF–æVB66÷RÖW&VÇ’&V6W6Ræ÷F†W"&Æö6¶W"&V6öÖW2†–v†W"&–÷&—G’â7W'&VçBVF—Bv—F‚æò&Æö6¶W"&WV—&W2W‡Æ–6—B66÷R&Wf–Wrâ6öÖÖW&6–Â&öGV7G2&RöæÇ’WfÇVF–öâ6æF–FFW3¢¶FFöÖ7FW&f–ÆW2ö6öÖÖW&6–Å÷6÷W&6Uö÷F–öç2æ77fÒ†FFöÖ7FW&f–ÆW2ö6öÖÖW&6–Å÷6÷W&6Uö÷F–öç2æ77b’FöW2æ÷Bw&çB&VF—7G&–'WF–öâ&–v‡G2ÂæB—G2fÆ–FF÷"&WV—&W2W‡Æ–6—B6öçG&7B&Wf–Wr÷"&–÷"w&—GFVâW&Ö—76–öâà ¥6V6öæF'’÷&Wf–WvVBVç&–6†ÖVçB–çWG2–æ6ÇVFR´TôD„EÒ†‡GG3¢òöVöF†Bæ6öÒöf–ææ6–ÂÖ—2ò’Â´f–ææ6TFF&6UÒ†‡GG3¢òöv—F‡V"æ6öÒô¦W$&÷VÖôf–ææ6TFF&6R’Âöff–6–Â#24õD„•5Bf–ÆW2Âå•4Rw&÷W6V7W&—G’Ö7FW"6×ÆRf–ÆW2ÂG&F–æuf–Wrg&VR66ææW"ÖWFFFÂ…D"ôÔ’7V6–f–6F–öâFFÂ–†öòf–ææ6R&Wf–Wr†VÇW'2Â´f–ææ6–ÄFFææWEÒ†‡GG3¢òöf–ææ6–ÆFFææWBöFö7VÖVçFF–öâ’7–Ö&öÂ×Væ—fW'6RÖF6†–ærÂ÷Väd”t’ÂtÄT”bÂæB7W&FVB&öGV7F–öâÆ–6W2g&öÒ¶’æFæ÷2æ÷&uÒ†‡GG3¢òö’æFæ÷2æ÷&r’à ¤f–ææ6–ÄFFææWB÷WGWB—2–çFVçF–öæÆÇ’&Wf–WrÖöæÇ“¢F†R–çFW&æF–öæÂ×7–Ö&öÇ2VæGö–çB†2G&F–æu÷7–Ö&öÆæB&Vv—7G&çEöæÖVÂ'WBæò•4”â÷"6V7F÷"âF†R7–æ2w&—FW2¶FFöf–ææ6–ÆFFö–çFW&æF–öæÅ÷7Fö6µ÷7–Ö&öÇ2æ77fÒ†FFöf–ææ6–ÆFFö–çFW&æF–öæÅ÷7Fö6µ÷7–Ö&öÇ2æ77b’Â¶FF÷&W÷'G2öf–ææ6–ÆFF÷7–Ö&öÅöÖF6‚æÖFÒ†FF÷&W÷'G2öf–ææ6–ÆFF÷7–Ö&öÅöÖF6‚æÖB’Â¶FF÷&W÷'G2öf–ææ6–ÆFFö7W'&VçEöW†6†ævUöv2æ77fÒ†FF÷&W÷'G2öf–ææ6–ÆFFö7W'&VçEöW†6†ævUöv2æ78¤°…¹m‘…Ñ„½É•Á½ÉÑÌ½™¥¹…¹¥…±‘…Ñ…}±½‰…±}•áÁ…¹Í¥½¹}…¹‘¥‘…Ñ•Ì¹ÍÙt¡‘…Ñ„½É•Á½ÉÑÌ½™¥¹…¹¥…±‘…Ñ…}±½‰…±}•áÁ…¹Í¥½¹}…¹‘¥‘…Ñ•Ì¹ÍØ¤¸5¥ÍÍ¥¹œÉ½İÌ…É”ÍÁ±¥Ğ¥¹Ñ¼ÕÉÉ•¹Ğµ•á¡…¹”…ÁÌ…¹±½‰…°•áÁ…¹Í¥½¸…¹‘¥‘…Ñ•Ì¸Q¡”™½±±½ÜµÕÀmÍÉ¥ÁÑÌ½‰Õ¥±‘}™¥¹…¹¥…±‘…Ñ…}¥Í¥¹}ÍÕÁÁ±•µ•¹ÑÌ¹Áåt¡ÍÉ¥ÁÑÌ½‰Õ¥±‘}™¥¹…¹¥…±‘…Ñ…}¥Í¥¹}ÍÕÁÁ±•µ•¹ÑÌ¹Áä¤½¹±äİÉ¥Ñ•ÌÍÕÁÁ±•µ•¹Ñ…°½É”É½İÌİ¡•¸Ñ¡”¥¹…¹¥…±…Ñ„‘¥Í½Ù•ÉäÉ½Üµ…Ñ¡•Ì…¸½™™¥¥…°…Ñ¥Ù”µ…ÍÑ•É™¥±”É½Üİ¥Ñ „Ù…±¥%M%8°¹…µ”…Ñ”°¹¼•á¥ÍÑ¥¹œ±½‰…°Ñ¥­•È°…¹¹¼•á¥ÍÑ¥¹œ½Í•±•Ñ•%M%8¸((ŒŒAÉ½©•Ğ((´1¥•¹Í”èm5%Qt¡1%9M¤(´¡…¹•±½œèm!91=¹µ‘t¡!91=¹µ¤(´4È½Á•É…Ñ¥½¹Ìèm‘½Ì½´É}½Á•É…Ñ¥½¹Ì¹µ‘t¡‘½Ì½´É}½Á•É…Ñ¥½¹Ì¹µ¤(´I•±•…Í•Ìèm¥Ñ!ÕˆI•±•…Í•Ít¡¡ÑÑÁÌè¼½¥Ñ¡Õˆ¹½´½…‘…¹½ÌµÍ½™Ñİ…É”½™É•”µÑ¥­•Èµ‘…Ñ…‰…Í”½É•±•…Í•Ì¤(´½¹ÑÉ¥‰ÕÑ¥¹œèm=9QI%	UQ%9¹µ‘t¡=9QI%	UQ%9¹µ¤(

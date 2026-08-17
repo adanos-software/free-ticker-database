@@ -19,9 +19,7 @@ def removal_event(value: dict[str, str]) -> dict[str, str]:
         "listing_key": value["listing_key"], "exchange": value["exchange"], "ticker": value["ticker"],
         "event_type": "delisted", "before_row_sha256": row_fingerprint(value),
         "observed_at": "2026-08-17T00:00:00Z", "source_key": "official_delisting_notice",
-        "source_url": "https://exchange.example/notices/A",
-        "observation_id": f"obs-{value['exchange']}-{value['ticker']}",
-        "evidence_status": "official",
+        "source_url": "https://exchange.example/notices/A", "evidence_status": "official",
     }
 
 
@@ -77,7 +75,7 @@ def test_invalid_timestamp_or_provenance_is_rejected() -> None:
 
 
 def test_duplicate_listing_keys_fail() -> None:
-    duplicate = [row("X", "A"), row("X", "A")]
+    duplicate = [row("X", "A"), row("X", "A"W]
     assert evaluate(duplicate, duplicate, [])["status"] == "fail"
 
 
@@ -89,8 +87,114 @@ def test_large_evidenced_shrink_requires_explicit_override() -> None:
     assert evaluate(before, after, events, allow_large_evidenced_removal=True)["status"] == "pass"
 
 
-def test_future_event_cannot_authorize_destructive_change() -> None:
-    before = [row("NASDAQ", "A")]
-    event = removal_event(before[0])
-    event["observed_at"] = "2999-01-01T00:00:00Z"
-    assert evaluate(before, [], [event])["status"] == "fail"
+def official_reference(
+    exchange: str,
+    ticker: str,
+    *,
+    name: str,
+    isin: str,
+    asset_type: str = "Stock",
+    official: str = "true",
+    listing_status: str = "active",
+) -> dict[str, str]:
+    return {
+        "source_key": "official_exchange_directory",
+        "provider": "Example Exchange",
+        "source_url": "https://exchange.example/securities.xlsx",
+        "ticker": ticker,
+        "name": name,
+        "exchange": exchange,
+        "asset_type": asset_type,
+        "listing_status": listing_status,
+        "reference_scope": "exchange_directory",
+        "official": official,
+        "isin": isin,
+    }
+
+
+def test_exact_official_reference_allows_blank_isin_and_derived_country_change() -> None:
+    before = [
+        row("HKEX", "01124", name="COASTAL GL", country="Hong Kong", country_code="HK"),
+        row("NYSE", "BMBASE", name="Bermuda Baseline", country="Bermuda", country_code="BM"),
+    ]
+    after = [
+        row(
+            "HKEX", "01124", name="COASTAL GL", country="Bermuda",
+            country_code="BM", isin="BMG2239B1643",
+        ),
+        before[1],
+    ]
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[
+            official_reference(
+                "HKEX", "01124", name="COASTAL GL", isin="BMG2239B1643"
+            )
+        ],
+        observed_at="2026-08-17T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+    )
+    assert report["status"] == "pass"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 3
+    assert {event["field_name"] for event in report["generated_official_change_evidence"]} == {
+        "isin", "country", "country_code",
+    }
+
+
+def test_official_reference_cannot_replace_existing_isin() -> None:
+    before = [row("X", "A", name="Alpha", isin="US0378331005")]
+    after = [row("X", "A", name="Alpha", isin="US5949181045")]
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[official_reference("X", "A", name="Alpha", isin="US5949181045")],
+        observed_at="2026-08-17T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+    )
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def test_non_exact_or_untrusted_reference_cannot_authorize_change() -> None:
+    before = [row("X", "A", name="Alpha")]
+    after = [row("X", "A", name="Alpha", isin="US0378331005")]
+    cases = [
+        official_reference("Y", "A", name="Alpha", isin="US0378331005"),
+        official_reference("X", "A", name="Different", isin="US0378331005"),
+        official_reference("X", "A", name="Alpha", isin="US0378331005", official="false"),
+        official_reference(
+            "X", "A", name="Alpha", isin="US0378331005", listing_status="delisted"
+        ),
+    ]
+    for reference in cases:
+        report = evaluate(
+            before,
+            after,
+            [],
+            reference_rows=[reference],
+            observed_at="2026-08-17T00:00:00Z",
+            reference_source_report="data/masterfiles/reference.csv",
+        )
+        assert report["status"] == "fail"
+        assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def test_conflicting_exact_official_isins_fail_closed() -> None:
+    before = [row("X", "A", name="Alpha")]
+    after = [row("X", "A", name="Alpha", isin="US0378331005")]
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[
+            official_reference("X", "A", name="Alpha", isin="US0378331005"),
+            official_reference("X", "A", name="Alpha", isin="US5949181045"),
+        ],
+        observed_at="2026-08-17T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+    )
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0

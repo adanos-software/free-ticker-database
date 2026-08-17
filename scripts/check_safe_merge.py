@@ -14,20 +14,41 @@ try:
         CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
         event_has_provenance, event_timestamp_is_valid, listing_key, row_fingerprint,
     )
+    from scripts.lib.official_change_evidence import build_official_change_evidence
 except ModuleNotFoundError:  # pragma: no cover
     from lib.merge_evidence import (
         CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
         event_has_provenance, event_timestamp_is_valid, listing_key, row_fingerprint,
     )
+    from lib.official_change_evidence import build_official_change_evidence
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
+DEFAULT_OFFICIAL_REFERENCE = DATA_DIR / "masterfiles/reference.csv"
+DEFAULT_TICKERS_JSON = DATA_DIR / "tickers.json"
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+
+def _display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT.resolve()))
+    except ValueError:
+        return str(path)
+
+
+def _dataset_built_at(path: Path = DEFAULT_TICKERS_JSON) -> str:
+    if not path.exists():
+        return ""
+    try:
+        return str(json.loads(path.read_text(encoding="utf-8")).get("_meta", {}).get("built_at", ""))
+    except (OSError, json.JSONDecodeError):
+        return ""
 
 
 def _duplicates(rows: list[dict[str, str]]) -> list[str]:
@@ -66,6 +87,9 @@ def evaluate(
     total_shrink_limit: float = 0.0025,
     venue_shrink_limit: float = 0.02,
     allow_large_evidenced_removal: bool = False,
+    reference_rows: list[dict[str, str]] | None = None,
+    observed_at: str = "",
+    reference_source_report: str = "",
 ) -> dict[str, Any]:
     failures: list[str] = []
     before_duplicates = _duplicates(before_rows)
@@ -77,8 +101,12 @@ def evaluate(
 
     before = {listing_key(row): row for row in before_rows if listing_key(row)}
     after = {listing_key(row): row for row in after_rows if listing_key(row)}
+    generated_reference_evidence = build_official_change_evidence(
+        before_rows, after_rows, reference_rows or [],
+        observed_at=observed_at, source_report=reference_source_report,
+    )
     events: dict[str, list[dict[str, str]]] = {}
-    for event in event_rows:
+    for event in [*event_rows, *generated_reference_evidence]:
         events.setdefault(listing_key(event), []).append(event)
 
     removed = sorted(set(before) - set(after))
@@ -155,12 +183,14 @@ def evaluate(
             "unevidenced_critical_field_changes": len(unevidenced_changes),
             "before_duplicate_listing_keys": len(before_duplicates),
             "after_duplicate_listing_keys": len(after_duplicates),
+            "generated_official_change_evidence_rows": len(generated_reference_evidence),
         },
         "failures": failures,
         "unevidenced_removed_listing_keys": unevidenced,
         "evidenced_removed_listing_keys": evidenced,
         "unevidenced_critical_field_changes": unevidenced_changes,
         "critical_field_changes": changes,
+        "generated_official_change_evidence": generated_reference_evidence,
         "venue_findings": venue_findings,
     }
 
@@ -181,12 +211,17 @@ def main() -> None:
     parser.add_argument("--after", type=Path, default=DATA_DIR / "listings.csv")
     parser.add_argument("--events", type=Path, default=DATA_DIR / "history/listing_events.csv")
     parser.add_argument("--allow-large-evidenced-removal", action="store_true")
+    parser.add_argument("--official-reference", type=Path, default=DEFAULT_OFFICIAL_REFERENCE)
+    parser.add_argument("--observed-at", default="")
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
     report = evaluate(
         load_csv(args.before), load_csv(args.after),
         load_csv(args.events) if args.events.exists() else [],
         allow_large_evidenced_removal=args.allow_large_evidenced_removal,
+        reference_rows=load_csv(args.official_reference) if args.official_reference.exists() else [],
+        observed_at=args.observed_at or _dataset_built_at(),
+        reference_source_report=_display_path(args.official_reference),
     )
     write_report(report)
     print(json.dumps(report["summary"], indent=2))
