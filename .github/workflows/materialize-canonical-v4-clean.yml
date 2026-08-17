@@ -44,8 +44,8 @@ jobs:
           while IFS=$'\t' read -r patch message; do
             test -n "$patch"
             test -n "$message"
-            git apply --check "/tmp/canonical-v4-patches/$patch"
-            git apply --index "/tmp/canonical-v4-patches/$patch"
+            git apply --check --exclude='.github/workflows/*' "/tmp/canonical-v4-patches/$patch"
+            git apply --index --exclude='.github/workflows/*' "/tmp/canonical-v4-patches/$patch"
             git diff --cached --check
             git commit -m "$message"
             commit_count=$((commit_count + 1))
@@ -62,9 +62,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Verify exact visible tree and critical gates
+      - name: Verify exact visible source tree and critical gates
         run: |
-          test "$(git rev-parse HEAD^{tree})" = "8d1e6c83f520dc9a7f880729f6fec2585555565b"
+          test "$(git rev-parse HEAD^{tree})" = "d841bd00307ecb66ca18a260ae884be92af303a9"
           test ! -e .materialize
           test ! -e .github/workflows/materialize-canonical-v4-clean.yml
           test ! -e .bootstrap
