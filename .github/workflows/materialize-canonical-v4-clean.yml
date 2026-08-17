@@ -1,0 +1,83 @@
+name: Materialize reviewed canonical v4 branch
+
+on:
+  push:
+    branches:
+      - agent/canonical-v4-materializer-20260817
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canonical-v4-clean-materialization
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout isolated materializer
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-materializer-20260817
+          fetch-depth: 0
+
+      - name: Reconstruct and verify reviewed patch set
+        run: |
+          cat .materialize/part-* | base64 --decode > /tmp/canonical-v4-patches.tar.xz
+          echo "6b5a4d5b38f411e3e8bf0fee92852a49d2835ba84051e9ab641177d84fe42b39  /tmp/canonical-v4-patches.tar.xz" | sha256sum -c -
+          mkdir /tmp/canonical-v4-patches
+          tar -xJf /tmp/canonical-v4-patches.tar.xz -C /tmp/canonical-v4-patches
+          test "$(find /tmp/canonical-v4-patches -maxdepth 1 -type f | wc -l)" -eq 7
+
+      - name: Materialize six clean source commits from exact main
+        run: |
+          git cat-file -e 352bd3ac03e68ca0bcb700fc207acd842f505ece^{commit}
+          git checkout --detach 352bd3ac03e68ca0bcb700fc207acd842f505ece
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          commit_count=0
+          while IFS=$'\t' read -r patch message; do
+            test -n "$patch"
+            test -n "$message"
+            git apply --check "/tmp/canonical-v4-patches/$patch"
+            git apply --index "/tmp/canonical-v4-patches/$patch"
+            git diff --cached --check
+            git commit -m "$message"
+            commit_count=$((commit_count + 1))
+          done < /tmp/canonical-v4-patches/manifest.tsv
+          test "$commit_count" -eq 6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify exact visible tree and critical gates
+        run: |
+          test "$(git rev-parse HEAD^{tree})" = "8d1e6c83f520dc9a7f880729f6fec2585555565b"
+          test ! -e .materialize
+          test ! -e .github/workflows/materialize-canonical-v4-clean.yml
+          test ! -e .bootstrap
+          python -m compileall -q scripts tests
+          git diff --check 352bd3ac03e68ca0bcb700fc207acd842f505ece..HEAD
+          python scripts/check_workflow_source_policy.py
+          python -m pytest -q \
+            tests/test_identity_integrity.py \
+            tests/test_safe_merge.py \
+            tests/test_coverage_contracts.py \
+            tests/test_canonical_v4_exports.py \
+            tests/test_listing_lifecycles.py \
+            tests/test_apply_delistings.py
+
+      - name: Publish source-only target branch
+        run: |
+          git push --force origin HEAD:agent/canonical-v4-clean
