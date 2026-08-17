@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   test:
+    name: Compatibility dataset
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +30,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Rebuild source-derived artifacts
+      - name: Reject hidden source payloads and self-modifying workflows
+        run: python scripts/check_workflow_source_policy.py
+
+      - name: Verify source registry normalization is committed
+        run: |
+          python scripts/normalize_source_registry.py
+          test -s data/reports/source_licensing.json
+          git ls-files --error-unmatch data/reports/source_licensing.json
+          git diff --exit-code -- \
+            data/masterfiles/sources.json \
+            data/reports/source_licensing.json
+
+      - name: Compile source
+        run: python -m compileall -q scripts tests
+
+      - name: Rebuild compatibility exports
         run: |
           python scripts/rebuild_dataset.py
           python scripts/build_coverage_report.py
@@ -42,25 +58,20 @@ jobs:
             --json-out /tmp/entry-quality.json \
             --md-out /tmp/entry-quality.md
 
-      - name: Run test suite
+      - name: Run complete test suite
         run: python -m pytest tests/ -q
 
-      - name: Check entry quality gate
+      - name: Validate compatibility and entry-quality gates
         run: |
           python scripts/check_entry_quality_gate.py \
             --entry-quality-csv /tmp/entry-quality.csv \
             --no-json-out
-
-      - name: Check README snapshot
-        run: |
           python scripts/check_readme_snapshot.py
           python scripts/check_commercial_source_options.py
           python scripts/check_exchange_scope_decisions.py
+          python scripts/validate_database.py
 
-      - name: Validate database release gates
-        run: python scripts/validate_database.py
-
-      - name: Check derived artifacts are current
+      - name: Check committed compatibility artifacts are current
         run: |
           git diff --exit-code -- \
             data/tickers.csv \
@@ -80,40 +91,25 @@ jobs:
 
           import pyarrow.parquet as pq
 
-
-          def validate_json(path: str) -> None:
-              payload = json.loads(Path(path).read_text(encoding="utf-8"))
-              if not payload:
+          for path in ("data/tickers.json", "data/core_listings.json"):
+              if not json.loads(Path(path).read_text(encoding="utf-8")):
                   raise SystemExit(f"{path} is empty after rebuild")
 
+          with sqlite3.connect("data/tickers.db") as connection:
+              tables = [row[0] for row in connection.execute(
+                  "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
+              )]
+              if not tables:
+                  raise SystemExit("data/tickers.db has no tables")
+              for table in tables:
+                  count = connection.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
+                  if count <= 0:
+                      raise SystemExit(f"data/tickers.db table {table} is empty")
 
-          def validate_sqlite(path: str) -> None:
-              with sqlite3.connect(path) as conn:
-                  tables = [
-                      row[0]
-                      for row in conn.execute(
-                          "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
-                      )
-                  ]
-                  if not tables:
-                      raise SystemExit(f"{path} has no tables after rebuild")
-                  for table in tables:
-                      count = conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
-                      if count <= 0:
-                          raise SystemExit(f"{path} table {table} is empty after rebuild")
-
-
-          def validate_parquet(path: str) -> None:
+          for path in ("data/tickers.parquet", "data/core_listings.parquet"):
               table = pq.read_table(path)
               if table.num_rows <= 0 or table.num_columns <= 0:
                   raise SystemExit(f"{path} is empty after rebuild")
-
-
-          validate_json("data/tickers.json")
-          validate_json("data/core_listings.json")
-          validate_sqlite("data/tickers.db")
-          validate_parquet("data/tickers.parquet")
-          validate_parquet("data/core_listings.parquet")
           PY
 
       - name: Publish dispatched CI result for branch protection
@@ -128,3 +124,144 @@ jobs:
             -f context="test" \
             -f description="Full dispatched CI: $CI_STATE" \
             -f target_url="$CI_TARGET_URL"
+
+  canonical-v4:
+    name: Canonical v4 foundation
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ticker
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install runtime and PostgreSQL validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Reject hidden source payloads and self-modifying workflows
+        run: python scripts/check_workflow_source_policy.py
+
+      - name: Preserve merge baseline
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" ]]; then
+            git show "$PR_BASE_SHA:data/listings.csv" > /tmp/listings-before.csv
+          elif [[ "$EVENT_NAME" == "push" ]] && git rev-parse HEAD^ >/dev/null 2>&1; then
+            git show "HEAD^:data/listings.csv" > /tmp/listings-before.csv
+          else
+            cp data/listings.csv /tmp/listings-before.csv
+          fi
+          test -s /tmp/listings-before.csv
+
+      - name: Build the visible canonical implementation
+        run: |
+          git diff --check
+          python scripts/rebuild_canonical.py
+          python scripts/check_safe_merge.py \
+            --before /tmp/listings-before.csv \
+            --after data/listings.csv \
+            --events data/history/listing_events.csv \
+            --strict
+
+      - name: Validate canonical CSV and PostgreSQL contracts
+        env:
+          CANONICAL_POSTGRES_DSN: postgresql://postgres:postgres@localhost:5432/ticker
+        run: |
+          python scripts/validate_database.py
+          python scripts/validate_canonical_v4_exports.py --expected-git-commit "$GITHUB_SHA"
+          python scripts/load_canonical_v4_postgres.py --dsn "$CANONICAL_POSTGRES_DSN" --expected-git-commit "$GITHUB_SHA"
+
+      - name: Verify deterministic canonical output
+        run: |
+          BUILT_AT="$(python - <<'PY'
+          import json
+          print(json.load(open('data/tickers.json', encoding='utf-8'))['_meta']['built_at'])
+          PY
+          )"
+          python scripts/build_canonical_v4.py \
+            --out-dir /tmp/canonical-a \
+            --built-at "$BUILT_AT" \
+            --git-commit "$GITHUB_SHA"
+          python scripts/build_canonical_v4.py \
+            --out-dir /tmp/canonical-b \
+            --built-at "$BUILT_AT" \
+            --git-commit "$GITHUB_SHA"
+          diff -qr /tmp/canonical-a /tmp/canonical-b
+
+      - name: Run canonical foundation regression suite
+        run: |
+          python -m pytest -q \
+            tests/test_identity_integrity.py \
+            tests/test_review_adjudications.py \
+            tests/test_safe_merge.py \
+            tests/test_apply_delistings.py \
+            tests/test_build_delisting_report.py \
+            tests/test_build_listing_history.py \
+            tests/test_listing_lifecycles.py \
+            tests/test_reference_reconciliation.py \
+            tests/test_coverage_contracts.py \
+            tests/test_normalize_source_registry.py \
+            tests/test_canonical_v4_exports.py \
+            tests/test_build_canonical_v4_archive.py \
+            tests/test_quality_contract.py \
+            tests/test_quality_profiles.py \
+            tests/test_workflow_source_policy.py \
+            tests/test_rebuild_canonical_foundation.py
+
+      - name: Evaluate advisory stable posture
+        run: |
+          python scripts/build_quality_contract.py \
+            --profile stable \
+            --expected-git-commit "$GITHUB_SHA" \
+            --json-out /tmp/quality-contract-stable.json \
+            --md-out /tmp/quality-contract-stable.md
+
+      - name: Enforce merge contract
+        run: |
+          python scripts/build_quality_contract.py \
+            --profile merge \
+            --strict \
+            --expected-git-commit "$GITHUB_SHA" \
+            --json-out /tmp/quality-contract-merge.json \
+            --md-out /tmp/quality-contract-merge.md
+
+      - name: Upload canonical review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-v4-review-evidence
+          if-no-files-found: warn
+          path: |
+            /tmp/quality-contract-merge.json
+            /tmp/quality-contract-merge.md
+            /tmp/quality-contract-stable.json
+            /tmp/quality-contract-stable.md
+            data/reports/safe_merge.json
+            data/reports/identifier_quarantine.csv
+            data/reports/reference_reconciliation.csv
+            data/reports/coverage_contracts.csv
+            data/reports/source_licensing.json
+            data/canonical_v4/manifest.json
