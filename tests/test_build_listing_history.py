@@ -6,6 +6,18 @@ from scripts.build_listing_history import (
     merge_status_history,
 )
 from scripts.lib.merge_evidence import row_fingerprint
+from scripts.lib.delisting_evidence import BSE_STATUS_URL_TEMPLATE, evidence_observation_id
+
+
+def official_status_row(ticker: str) -> dict[str, str]:
+    row = {
+        "listing_key": f"BSE_IN::{ticker}", "ticker": ticker, "exchange": "BSE_IN",
+        "classification": "delisted", "source_key": "bse_india_scrips",
+        "source_url": BSE_STATUS_URL_TEMPLATE.format(status="Delisted"),
+        "observed_at": "2026-08-17T00:00:00Z", "isin": "",
+    }
+    row["observation_id"] = evidence_observation_id(row, row["observed_at"])
+    return row
 
 
 def test_snapshot_absence_is_not_delisting() -> None:
@@ -31,19 +43,14 @@ def test_snapshot_absence_does_not_create_status_interval() -> None:
 def test_only_applied_delisting_with_official_evidence_enters_history() -> None:
     payload = {
         "summary": {"generated_at": "2026-08-17T00:00:00Z", "delisting_report_json": "data/reports/delisting_report.json"},
-        "applied": [{
-            "listing_key": "BSE_IN::DEAD", "ticker": "DEAD", "exchange": "BSE_IN",
-            "classification": "delisted", "source_key": "bse_india_scrips",
-            "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?status=Delisted",
-            "observed_at": "2026-08-17T00:00:00Z", "observation_id": "obs_123456789012345678901234",
-        }],
+        "applied": [official_status_row("DEAD")],
         "drafted": [{"ticker": "DRAFT", "exchange": "BSE_IN", "classification": "delisted"}],
     }
     rows = delisting_apply_status_rows(payload)
     assert [row["listing_key"] for row in rows] == ["BSE_IN::DEAD"]
     event = build_status_evidence_event_rows(rows, [], [{"listing_key": "BSE_IN::DEAD", "ticker": "DEAD", "exchange": "BSE_IN", "name": "Dead Ltd"}])[0]
     assert event["event_type"] == "delisted"
-    assert event["observation_id"] == "obs_123456789012345678901234"
+    assert event["observation_id"] == official_status_row("DEAD")["observation_id"]
     assert event["before_row_sha256"]
 
 
@@ -63,11 +70,6 @@ def test_snapshot_builder_preserves_listing_key_and_sector_model() -> None:
 def test_already_applied_official_delisting_enters_history() -> None:
     payload = {
         "summary": {"generated_at": "2026-08-17T00:00:00Z"},
-        "already_applied": [{
-            "listing_key": "BSE_IN::OLD", "ticker": "OLD", "exchange": "BSE_IN",
-            "classification": "delisted", "source_key": "bse_india_scrips",
-            "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?status=Delisted",
-            "observed_at": "2026-08-17T00:00:00Z", "observation_id": "obs_123456789012345678901234",
-        }],
+        "already_applied": [official_status_row("OLD")],
     }
     assert [row["listing_key"] for row in delisting_apply_status_rows(payload)] == ["BSE_IN::OLD"]

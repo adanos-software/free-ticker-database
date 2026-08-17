@@ -3,15 +3,16 @@ from __future__ import annotations
 import argparse
 import os
 from collections import Counter
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
 from typing import Any
 
 try:
     from scripts.lib.dataio import display_path, read_json, load_csv, write_csv, write_json
+    from scripts.lib.delisting_evidence import valid_official_bse_delisting_evidence
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from lib.dataio import display_path, read_json, load_csv, write_csv, write_json
+    from lib.delisting_evidence import valid_official_bse_delisting_evidence
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,29 +33,7 @@ def drop_key(row: dict[str, str]) -> tuple[str, str]:
 
 
 def _valid_official_bse_delisting_evidence(candidate: dict[str, str]) -> bool:
-    if str(candidate.get("source_key", "")).strip() != "bse_india_scrips":
-        return False
-    raw_url = str(candidate.get("source_url", "")).strip()
-    try:
-        url = urlparse(raw_url)
-    except ValueError:
-        return False
-    if url.scheme != "https" or url.hostname != "api.bseindia.com":
-        return False
-    if not url.path.endswith("/ListofScripData/w"):
-        return False
-    if parse_qs(url.query).get("status") != ["Delisted"]:
-        return False
-    try:
-        observed = datetime.fromisoformat(str(candidate.get("observed_at", "")).replace("Z", "+00:00"))
-    except ValueError:
-        return False
-    if observed.tzinfo is None or observed.utcoffset() is None:
-        return False
-    if observed.astimezone(timezone.utc) > datetime.now(timezone.utc) + timedelta(minutes=5):
-        return False
-    observation_id = str(candidate.get("observation_id", "")).strip()
-    return observation_id.startswith("obs_") and len(observation_id) == 28
+    return valid_official_bse_delisting_evidence(candidate)
 
 
 def classify_candidate(candidate: dict[str, str]) -> str:

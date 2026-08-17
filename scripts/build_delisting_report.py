@@ -28,7 +28,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import io
 import json
 import os
@@ -39,6 +38,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+
+from scripts.lib.delisting_evidence import (
+    BSE_STATUS_URL_TEMPLATE,
+    evidence_observation_id,
+)
 
 TICKERS_CSV = ROOT / "data" / "tickers.csv"
 REPORT_JSON = ROOT / "data" / "reports" / "delisting_report.json"
@@ -51,16 +55,6 @@ US_EXCHANGES = {"NYSE", "NASDAQ", "NYSE ARCA", "NYSE MKT", "AMEX", "BATS"}
 # Minimum plausible master size per market; below this we treat the fetch as
 # failed and SKIP the market (never emit candidates from a truncated master).
 MIN_MASTER = {"US": 9000, "TSE": 3000, "ASX": 1500, "NSE_IN": 2000, "BSE_IN": 3000}
-BSE_STATUS_URL_TEMPLATE = (
-    "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
-    "?Group=&Scripcode=&industry=&segment=Equity&status={status}"
-)
-
-
-def evidence_observation_id(candidate: dict[str, str], observed_at: str) -> str:
-    payload = "|".join([candidate.get("source_key", ""), candidate.get("source_url", ""), candidate.get("exchange", ""), candidate.get("ticker", ""), candidate.get("isin", ""), candidate.get("classification", ""), observed_at])
-    return "obs_" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:24]
-
 
 def _norm(sym: str) -> str:
     return sym.strip().upper().replace(".", "").replace("-", "")
