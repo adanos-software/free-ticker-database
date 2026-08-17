@@ -1,0 +1,134 @@
+name: Build canonical v4 clean-room branch
+
+on:
+  push:
+    branches:
+      - agent/canonical-v4-clean-room-runner
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canonical-v4-clean-room-runner
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main as clean target
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          path: target
+          fetch-depth: 1
+
+      - name: Checkout old branch as read-only source
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-release-integrity
+          path: legacy
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Materialize the real source tree
+        working-directory: target
+        run: |
+          set -euo pipefail
+          cat ../legacy/.bootstrap/patch.* | base64 --decode > /tmp/canonical-v4-source.tar.xz
+          tar -xJf /tmp/canonical-v4-source.tar.xz -C .
+          cp ../legacy/.bootstrap/rebuild_canonical.py scripts/rebuild_canonical.py
+          cp ../legacy/.bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
+
+          python - <<'PY'
+          from pathlib import Path
+
+          identity_path = Path("scripts/lib/identity_integrity.py")
+          identity_source = identity_path.read_text(encoding="utf-8")
+          replacements = {
+              "from typing import Iterable, Mapping, MutableMapping, Sequence":
+                  "from typing import Any, Iterable, Mapping, MutableMapping, Sequence",
+              "    rows: Sequence[MutableMapping[str, str]],":
+                  "    rows: Sequence[MutableMapping[str, Any]],",
+              ") -> tuple[list[dict[str, str]], list[ResolutionDecision]]:":
+                  ") -> tuple[list[dict[str, Any]], list[ResolutionDecision]]:",
+              '    cleaned = [{str(key): str(value or "") for key, value in row.items()} for row in rows]':
+                  '    # Preserve list-valued aliases and other compatibility payload types.\n    cleaned = [dict(row) for row in rows]',
+          }
+          for old, new in replacements.items():
+              if old not in identity_source:
+                  raise SystemExit(f"identity materialization target missing: {old}")
+              identity_source = identity_source.replace(old, new, 1)
+          identity_path.write_text(identity_source, encoding="utf-8")
+
+          release_path = Path(".github/workflows/release.yml")
+          release_source = release_path.read_text(encoding="utf-8")
+          strict_acceptance = "python scripts/build_release_acceptance_report.py --fail-on-failure"
+          if strict_acceptance not in release_source:
+              plain_acceptance = "python scripts/build_release_acceptance_report.py"
+              if plain_acceptance not in release_source:
+                  raise SystemExit("release acceptance command missing")
+              release_source = release_source.replace(plain_acceptance, strict_acceptance, 1)
+          release_path.write_text(release_source, encoding="utf-8")
+          PY
+
+          apply_compressed_patch() {
+            local stem="$1"
+            base64 --decode "../legacy/.bootstrap/${stem}.patch.xz.b64" > "/tmp/${stem}.patch.xz"
+            xz -dc "/tmp/${stem}.patch.xz" > "/tmp/${stem}.patch"
+            git apply --check "/tmp/${stem}.patch"
+            git apply "/tmp/${stem}.patch"
+          }
+
+          apply_compressed_patch official_name_reconciliation
+          apply_compressed_patch deterministic_csv_lf
+          apply_compressed_patch quality_contract_hardening
+          apply_compressed_patch official_name_peer_consensus
+
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap-canonical-v4.yml
+          rm -f .github/workflows/bootstrap-canonical-v4-final.yml
+          rm -f .github/workflows/remediate-canonical-v4.yml
+          rm -f .github/workflows/run-canonical-v4-clean-room.yml
+
+      - name: Install dependencies
+        working-directory: target
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify materialized source before publishing
+        working-directory: target
+        run: |
+          set -euo pipefail
+          test -f scripts/lib/identity_integrity.py
+          test -f scripts/check_safe_merge.py
+          test -f scripts/build_reference_reconciliation.py
+          test -f scripts/build_coverage_contracts.py
+          test -f scripts/build_quality_contract.py
+          test -f schema/canonical_v4.sql
+          python -m compileall -q scripts tests
+          git diff --check
+          python -m pytest tests/ -q
+          if find . -path './.git' -prune -o -path './.bootstrap*' -print | grep -q .; then
+            echo 'Opaque bootstrap content remains' >&2
+            exit 1
+          fi
+          if find .github/workflows -maxdepth 1 -type f -name '*bootstrap*' -print | grep -q .; then
+            echo 'Bootstrap workflow remains' >&2
+            exit 1
+          fi
+
+      - name: Publish one clean visible commit
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B agent/canonical-v4-clean-room-20260817
+          git add -A -- .github scripts tests schema docs README.md
+          git status --short
+          git commit -m "Materialize canonical v4 as reviewable source"
+          git push --force origin HEAD:agent/canonical-v4-clean-room-20260817
