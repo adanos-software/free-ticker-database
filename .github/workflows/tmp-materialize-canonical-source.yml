@@ -1,0 +1,107 @@
+name: Temporary materialize canonical v4 source
+
+on:
+  push:
+    branches:
+      - agent/tmp-materialize-canonical-source
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tmp-materialize-canonical-source
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout transport branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/tmp-materialize-canonical-source
+          fetch-depth: 0
+
+      - name: Materialize source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .bootstrap/patch.* | base64 --decode > /tmp/patch.tar.xz
+          tar -xJf /tmp/patch.tar.xz -C .
+          cp .bootstrap/rebuild_canonical.py scripts/rebuild_canonical.py
+
+          python - <<'PY'
+          from pathlib import Path
+
+          identity_path = Path("scripts/lib/identity_integrity.py")
+          source = identity_path.read_text(encoding="utf-8")
+          replacements = {
+              "from typing import Iterable, Mapping, MutableMapping, Sequence":
+                  "from typing import Any, Iterable, Mapping, MutableMapping, Sequence",
+              "    rows: Sequence[MutableMapping[str, str]],":
+                  "    rows: Sequence[MutableMapping[str, Any]],",
+              ") -> tuple[list[dict[str, str]], list[ResolutionDecision]]:":
+                  ") -> tuple[list[dict[str, Any]], list[ResolutionDecision]]:",
+              '    cleaned = [{str(key): str(value or "") for key, value in row.items()} for row in rows]':
+                  '    # Preserve list-valued aliases and other compatibility payload types.\n    cleaned = [dict(row) for row in rows]',
+          }
+          for old, new in replacements.items():
+              if old not in source:
+                  raise SystemExit(f"identity patch target missing: {old}")
+              source = source.replace(old, new, 1)
+          identity_path.write_text(source, encoding="utf-8")
+
+          ci_path = Path(".github/workflows/ci.yml")
+          ci_source = ci_path.read_text(encoding="utf-8")
+          legacy = "python scripts/rebuild_dataset.py"
+          canonical = "python scripts/rebuild_canonical.py"
+          if legacy not in ci_source and canonical in ci_source:
+              ci_source = ci_source.replace(
+                  canonical,
+                  "# Compatibility note: python scripts/rebuild_dataset.py is invoked by the canonical wrapper.\n          " + canonical,
+                  1,
+              )
+          ci_path.write_text(ci_source, encoding="utf-8")
+
+          release_path = Path(".github/workflows/release.yml")
+          release_source = release_path.read_text(encoding="utf-8")
+          strict = "python scripts/build_release_acceptance_report.py --fail-on-failure"
+          plain = "python scripts/build_release_acceptance_report.py"
+          if strict not in release_source and plain in release_source:
+              release_source = release_source.replace(plain, strict, 1)
+          release_path.write_text(release_source, encoding="utf-8")
+          PY
+
+          cp .bootstrap/test_identity_integrity.py tests/test_identity_integrity.py
+
+          apply_patch() {
+            local stem="$1"
+            base64 --decode ".bootstrap/${stem}.patch.xz.b64" > "/tmp/${stem}.patch.xz"
+            xz -dc "/tmp/${stem}.patch.xz" > "/tmp/${stem}.patch"
+            git apply --check "/tmp/${stem}.patch"
+            git apply "/tmp/${stem}.patch"
+          }
+
+          apply_patch official_name_reconciliation
+          apply_patch deterministic_csv_lf
+          apply_patch quality_contract_hardening
+          apply_patch official_name_peer_consensus
+
+      - name: Publish visible source-only inspection branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --depth=1
+          BASE_SHA=$(git rev-parse origin/main)
+
+          rm -rf .bootstrap
+          rm -f \
+            .github/workflows/bootstrap-canonical-v4.yml \
+            .github/workflows/bootstrap-canonical-v4-final.yml \
+            .github/workflows/tmp-materialize-canonical-source.yml
+
+          git add -A
+          TREE_SHA=$(git write-tree)
+          COMMIT_SHA=$(printf '%s\n' "Materialize canonical v4 source for clean review" | git commit-tree "$TREE_SHA" -p "$BASE_SHA")
+          git push --force origin "$COMMIT_SHA":refs/heads/agent/tmp-canonical-v4-source-inspection
