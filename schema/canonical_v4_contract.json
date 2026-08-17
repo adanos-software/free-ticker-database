@@ -1,0 +1,646 @@
+{
+  "version": "4.0.0",
+  "tables": {
+    "sources": {
+      "primary_key": [
+        "source_id"
+      ],
+      "unique": [
+        [
+          "source_key"
+        ]
+      ],
+      "columns": {
+        "source_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "source_key": {
+          "type": "text",
+          "required": true
+        },
+        "provider": {
+          "type": "text",
+          "required": true
+        },
+        "source_url": {
+          "type": "text",
+          "required": true
+        },
+        "authority_level": {
+          "type": "text",
+          "required": true
+        },
+        "reference_scope": {
+          "type": "text",
+          "required": true
+        },
+        "license_status": {
+          "type": "text",
+          "required": true
+        },
+        "license_name": {
+          "type": "text"
+        },
+        "license_url": {
+          "type": "text"
+        },
+        "derived_facts_redistribution_status": {
+          "type": "text",
+          "required": true
+        },
+        "raw_redistribution_allowed": {
+          "type": "boolean",
+          "required": true
+        },
+        "attribution_required": {
+          "type": "text",
+          "required": true
+        },
+        "commercial_use_status": {
+          "type": "text",
+          "required": true
+        },
+        "terms_version": {
+          "type": "text"
+        },
+        "terms_sha256": {
+          "type": "sha256"
+        },
+        "license_reviewed_at": {
+          "type": "timestamp"
+        },
+        "freshness_sla_days": {
+          "type": "integer",
+          "required": true
+        },
+        "enabled": {
+          "type": "boolean",
+          "required": true
+        }
+      }
+    },
+    "source_observations": {
+      "primary_key": [
+        "observation_id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "source_id"
+          ],
+          "table": "sources",
+          "target": [
+            "source_id"
+          ]
+        }
+      ],
+      "columns": {
+        "observation_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "source_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "source_key": {
+          "type": "text",
+          "required": true
+        },
+        "source_record_id": {
+          "type": "text"
+        },
+        "observed_at": {
+          "type": "timestamp",
+          "required": true
+        },
+        "effective_at": {
+          "type": "timestamp"
+        },
+        "raw_uri": {
+          "type": "text",
+          "required": true
+        },
+        "raw_sha256": {
+          "type": "sha256"
+        },
+        "normalized_rows_sha256": {
+          "type": "sha256",
+          "required": true
+        },
+        "parser_name": {
+          "type": "text",
+          "required": true
+        },
+        "parser_version": {
+          "type": "text",
+          "required": true
+        },
+        "parse_status": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "venues": {
+      "primary_key": [
+        "venue_id"
+      ],
+      "unique": [
+        [
+          "exchange_code"
+        ]
+      ],
+      "columns": {
+        "venue_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "exchange_code": {
+          "type": "text",
+          "required": true
+        },
+        "operating_mic": {
+          "type": "mic"
+        },
+        "segment_mic": {
+          "type": "mic"
+        },
+        "canonical_name": {
+          "type": "text",
+          "required": true
+        },
+        "country_code": {
+          "type": "country_code"
+        },
+        "status": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "issuers": {
+      "primary_key": [
+        "issuer_id"
+      ],
+      "columns": {
+        "issuer_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "legal_name": {
+          "type": "text",
+          "required": true
+        },
+        "normalized_name": {
+          "type": "text",
+          "required": true
+        },
+        "lei": {
+          "type": "lei"
+        },
+        "domicile_country_code": {
+          "type": "country_code"
+        },
+        "status": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "instruments": {
+      "primary_key": [
+        "instrument_id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "issuer_id"
+          ],
+          "table": "issuers",
+          "target": [
+            "issuer_id"
+          ],
+          "nullable": true
+        }
+      ],
+      "columns": {
+        "instrument_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "issuer_id": {
+          "type": "uuid"
+        },
+        "isin": {
+          "type": "isin"
+        },
+        "asset_type": {
+          "type": "text",
+          "required": true
+        },
+        "security_type": {
+          "type": "text",
+          "required": true
+        },
+        "name": {
+          "type": "text",
+          "required": true
+        },
+        "country_code": {
+          "type": "country_code"
+        },
+        "status": {
+          "type": "text",
+          "required": true
+        },
+        "valid_from": {
+          "type": "timestamp",
+          "required": true
+        },
+        "valid_to": {
+          "type": "timestamp"
+        }
+      }
+    },
+    "listings": {
+      "primary_key": [
+        "listing_id"
+      ],
+      "unique": [
+        [
+          "listing_key",
+          "valid_from"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "instrument_id"
+          ],
+          "table": "instruments",
+          "target": [
+            "instrument_id"
+          ]
+        },
+        {
+          "columns": [
+            "venue_id"
+          ],
+          "table": "venues",
+          "target": [
+            "venue_id"
+          ]
+        },
+        {
+          "columns": [
+            "source_observation_id"
+          ],
+          "table": "source_observations",
+          "target": [
+            "observation_id"
+          ],
+          "nullable": true
+        }
+      ],
+      "columns": {
+        "listing_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "listing_key": {
+          "type": "text",
+          "required": true
+        },
+        "instrument_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "venue_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "local_symbol": {
+          "type": "text",
+          "required": true
+        },
+        "is_primary": {
+          "type": "boolean",
+          "required": true
+        },
+        "status": {
+          "type": "text",
+          "required": true
+        },
+        "valid_from": {
+          "type": "timestamp",
+          "required": true
+        },
+        "valid_to": {
+          "type": "timestamp"
+        },
+        "current": {
+          "type": "boolean",
+          "required": true
+        },
+        "source_observation_id": {
+          "type": "uuid"
+        }
+      }
+    },
+    "identifier_assertions": {
+      "primary_key": [
+        "assertion_id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "observation_id"
+          ],
+          "table": "source_observations",
+          "target": [
+            "observation_id"
+          ],
+          "nullable": true
+        }
+      ],
+      "columns": {
+        "assertion_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "entity_type": {
+          "type": "text",
+          "required": true
+        },
+        "entity_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "scheme": {
+          "type": "text",
+          "required": true
+        },
+        "value": {
+          "type": "text",
+          "required": true
+        },
+        "observation_id": {
+          "type": "uuid"
+        },
+        "confidence": {
+          "type": "decimal",
+          "required": true
+        },
+        "adjudication_status": {
+          "type": "text",
+          "required": true
+        },
+        "valid_from": {
+          "type": "timestamp"
+        },
+        "valid_to": {
+          "type": "timestamp"
+        }
+      }
+    },
+    "field_assertions": {
+      "primary_key": [
+        "assertion_id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "observation_id"
+          ],
+          "table": "source_observations",
+          "target": [
+            "observation_id"
+          ]
+        }
+      ],
+      "columns": {
+        "assertion_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "entity_type": {
+          "type": "text",
+          "required": true
+        },
+        "entity_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "field_name": {
+          "type": "text",
+          "required": true
+        },
+        "field_value": {
+          "type": "text",
+          "required": true
+        },
+        "observation_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "confidence": {
+          "type": "decimal",
+          "required": true
+        },
+        "adjudication_status": {
+          "type": "text",
+          "required": true
+        },
+        "valid_from": {
+          "type": "timestamp"
+        },
+        "valid_to": {
+          "type": "timestamp"
+        }
+      }
+    },
+    "provenance_gaps": {
+      "primary_key": [
+        "gap_id"
+      ],
+      "columns": {
+        "gap_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "entity_type": {
+          "type": "text",
+          "required": true
+        },
+        "entity_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "listing_key": {
+          "type": "text",
+          "required": true
+        },
+        "field_name": {
+          "type": "text",
+          "required": true
+        },
+        "current_value": {
+          "type": "text"
+        },
+        "gap_class": {
+          "type": "text",
+          "required": true
+        },
+        "required_evidence": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "listing_events": {
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "listing_id"
+          ],
+          "table": "listings",
+          "target": [
+            "listing_id"
+          ]
+        },
+        {
+          "columns": [
+            "observation_id"
+          ],
+          "table": "source_observations",
+          "target": [
+            "observation_id"
+          ]
+        }
+      ],
+      "columns": {
+        "event_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "listing_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "listing_key": {
+          "type": "text",
+          "required": true
+        },
+        "event_type": {
+          "type": "text",
+          "required": true
+        },
+        "field_name": {
+          "type": "text"
+        },
+        "old_value": {
+          "type": "text"
+        },
+        "new_value": {
+          "type": "text"
+        },
+        "effective_at": {
+          "type": "timestamp",
+          "required": true
+        },
+        "observed_at": {
+          "type": "timestamp",
+          "required": true
+        },
+        "observation_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "evidence_status": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "coverage_contracts": {
+      "primary_key": [
+        "contract_id"
+      ],
+      "unique": [
+        [
+          "contract_key"
+        ]
+      ],
+      "columns": {
+        "contract_id": {
+          "type": "uuid",
+          "required": true
+        },
+        "contract_key": {
+          "type": "text",
+          "required": true
+        },
+        "exchange": {
+          "type": "text",
+          "required": true
+        },
+        "asset_type": {
+          "type": "text",
+          "required": true
+        },
+        "claim_type": {
+          "type": "text",
+          "required": true
+        },
+        "source_keys": {
+          "type": "text",
+          "required": true
+        },
+        "denominator_method": {
+          "type": "text",
+          "required": true
+        },
+        "denominator": {
+          "type": "integer",
+          "required": true
+        },
+        "covered_reference_keys": {
+          "type": "integer",
+          "required": true
+        },
+        "missing_reference_keys": {
+          "type": "integer",
+          "required": true
+        },
+        "identity_conflict_keys": {
+          "type": "integer",
+          "required": true
+        },
+        "recall_pct": {
+          "type": "decimal"
+        },
+        "freshness_status": {
+          "type": "text",
+          "required": true
+        },
+        "license_status": {
+          "type": "text",
+          "required": true
+        },
+        "contract_status": {
+          "type": "text",
+          "required": true
+        },
+        "generated_at": {
+          "type": "timestamp",
+          "required": true
+        }
+      }
+    }
+  }
+}

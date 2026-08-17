@@ -9,28 +9,28 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 61,687 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,794 | Rows in `data/tickers.csv`; one primary row per security. |
+| Core listings | 62,052 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 64,111 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 91,977 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,784 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 16,010 | Primary ticker rows where `asset_type=ETF`. |
+| Stocks | 48,026 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 16,085 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 125,248 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 62,308 (97.7%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 65,430 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 61,480 (96.4%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 45,879 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,601 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 61,687 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 60,532 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 1,155 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 30,290 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Aliases | 125,302 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 62,166 (97.0%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 65,057 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 61,705 (96.2%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 46,047 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,658 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 62,052 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 60,392 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 1,660 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 29,925 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 48 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 6 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 21,000 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
-| Entry quality warn rows | 198 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
+| Entry quality source-gap rows | 21,292 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality warn rows | 202 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
 
@@ -130,7 +130,7 @@ NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,U
 
 Important rules:
 
-- `core_listings.csv` is the canonical core security export; `listing_key` is the stable identity.
+- `core_listings.csv` is the canonical core security export; `listing_key` is its collision-safe current venue/symbol key.
 - `tickers.csv` is a compatibility export that keeps one row per globally unique `ticker`.
 - `listings.csv` and `listing_key` are the venue-level source of truth for exchange-specific listing identity.
 - `ticker` is globally unique only in `tickers.csv`; use `listing_key` for venue-level identity.
@@ -157,6 +157,23 @@ JSON metadata:
 SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrument_scopes`.
 Additional collision-safe tables: `core_listings` and `core_aliases`.
 
+<!-- canonical-v4-quality:start -->
+## Canonical v4 and release truth
+
+`listing_key` is the collision-safe **current venue/symbol key**. It is not a permanent historical identifier because symbols can change or be reused. Canonical v4 separates listing lifecycles from instruments and venues, while source observations and assertion tables preserve the evidence behind accepted values. Conflicting identifiers never merge listings into one instrument; they remain quarantined assertions until reviewed evidence resolves them.
+
+The quality contract is cumulative: `merge` blocks structural, identity, history, safe-merge, source-governance, and canonical-schema failures; `stable` additionally requires passing official-full coverage, verified contributing-source rights, complete field provenance, and MIC mappings; `complete` additionally requires zero metadata and official-reference gaps. A green merge check never claims that the database is already complete or legally ready for a stable data release.
+
+Canonical implementation source is committed as ordinary reviewable files. CI rejects compressed source payloads, workflow-time patching, and self-pushing workflows. It validates the canonical CSV contract, loads the result into PostgreSQL, and verifies deterministic repeat builds.
+
+Operational rebuilds use:
+
+```bash
+python scripts/rebuild_canonical.py
+```
+
+Direct execution of `scripts/rebuild_dataset.py` remains available only for compatibility-export validation.
+<!-- canonical-v4-quality:end -->
 ## Quality
 
 - Valid ISINs are checksum-verified.
@@ -180,23 +197,23 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 6,894 |
-| NASDAQ | 4,599 |
-| LSE | 3,560 |
+| OTC | 6,990 |
+| NASDAQ | 4,607 |
+| LSE | 3,619 |
 | TSE | 3,201 |
 | SZSE | 3,111 |
-| HKEX | 2,840 |
+| HKEX | 2,841 |
 | SSE | 2,793 |
-| BSE_IN | 2,684 |
-| NYSE ARCA | 2,638 |
+| BSE_IN | 2,685 |
+| NYSE ARCA | 2,659 |
 | NSE_IN | 2,379 |
-| XETRA | 2,236 |
-| NYSE | 1,874 |
+| XETRA | 2,265 |
+| NYSE | 1,877 |
 | KRX | 1,990 |
-| TSX | 1,688 |
+| TSX | 1,690 |
 | KOSDAQ | 1,603 |
-| B3 | 1,578 |
-| ASX | 1,393 |
+| B3 | 1,579 |
+| ASX | 1,386 |
 
 For full exchange, country, source, and verification coverage, use:
 
