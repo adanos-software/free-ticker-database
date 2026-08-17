@@ -75,7 +75,7 @@ def test_invalid_timestamp_or_provenance_is_rejected() -> None:
 
 
 def test_duplicate_listing_keys_fail() -> None:
-    duplicate = [row("X", "A"), row("X", "A"W]
+    duplicate = [row("X", "A"), row("X", "A")]
     assert evaluate(duplicate, duplicate, [])["status"] == "fail"
 
 
