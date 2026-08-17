@@ -18,9 +18,11 @@ from typing import Any, Iterable
 
 try:
     from scripts import (
-        build_canonical_v4, build_coverage_contracts, build_coverage_report,
-        build_exchange_source_audit, build_listing_history, build_reference_reconciliation,
-        enrich_global_identifiers, normalize_source_registry,
+        build_adanos_ticker_reference, build_canonical_v4, build_coverage_contracts,
+        build_coverage_report, build_entry_quality_report, build_exchange_source_audit,
+        build_listing_history, build_reference_reconciliation,
+        build_source_gap_classification, build_source_of_truth_decisions,
+        enrich_global_identifiers, normalize_source_registry, update_readme_snapshot,
     )
     from scripts.lib.identity_integrity import (
         ResolutionDecision, decision_rows, find_identity_conflicts, is_full_identity_name,
@@ -28,14 +30,19 @@ try:
     )
     from scripts.lib.review_adjudications import keep_listing_keys_by_isin
 except ModuleNotFoundError:  # pragma: no cover - direct script execution
+    import build_adanos_ticker_reference
     import build_canonical_v4
     import build_coverage_contracts
     import build_coverage_report
+    import build_entry_quality_report
     import build_exchange_source_audit
     import build_listing_history
     import build_reference_reconciliation
+    import build_source_gap_classification
+    import build_source_of_truth_decisions
     import enrich_global_identifiers
     import normalize_source_registry
+    import update_readme_snapshot
     from lib.identity_integrity import (
         ResolutionDecision, decision_rows, find_identity_conflicts, is_full_identity_name,
         listing_key, names_refer_to_same_identity, resolve_identity_conflicts,
@@ -485,6 +492,18 @@ def assert_identity_decisions_match_export() -> int:
     return len(find_identity_conflicts(rows))
 
 
+def rebuild_validation_dependents() -> None:
+    """Regenerate every validator input derived from the rebuilt current dataset."""
+
+    build_entry_quality_report.main([])
+    build_source_gap_classification.main([])
+    build_source_of_truth_decisions.main([])
+    if build_adanos_ticker_reference.main([]) != 0:
+        raise SystemExit("Adanos ticker reference rebuild failed")
+    if update_readme_snapshot.main([]) != 0:
+        raise SystemExit("README snapshot rebuild failed")
+
+
 def rebuild(
     *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False
 ) -> dict[str, Any]:
@@ -529,6 +548,7 @@ def rebuild(
     build_coverage_report.build_report()
     if build_exchange_source_audit.main([]) != 0:
         raise SystemExit("exchange source audit failed")
+    rebuild_validation_dependents()
     evidence_as_of = _built_at_datetime()
     reference_summary = build_reference_reconciliation.build(as_of=evidence_as_of)
     coverage_summary = build_coverage_contracts.build(as_of=evidence_as_of)
