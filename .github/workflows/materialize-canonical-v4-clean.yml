@@ -1,4 +1,4 @@
-name: Synchronize PR 233 canonical dependents
+name: Publish tested PR 233 canonical sync
 
 on:
   push:
@@ -10,17 +10,25 @@ permissions:
   contents: write
 
 concurrency:
-  group: pr-233-canonical-dependent-sync
+  group: pr-233-canonical-sync-publish
   cancel-in-progress: true
 
 jobs:
-  synchronize:
+  publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout transport script
+        uses: actions/checkout@v6
+        with:
+          ref: agent/canonical-v4-materializer-20260817
+          path: transport
+          fetch-depth: 1
+
       - name: Checkout PR branch
         uses: actions/checkout@v6
         with:
           ref: agent/canonical-v4-clean
+          path: target
           fetch-depth: 3
 
       - name: Set up Python
@@ -29,151 +37,23 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
+        working-directory: target
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Patch canonical dependent synchronization
-        run: |
-          python - <<'PY'
-          from pathlib import Path
+      - name: Apply exact tested source patch
+        working-directory: target
+        run: python ../transport/.transport/apply_pr233_canonical_sync.py
 
-          path = Path("scripts/rebuild_canonical.py")
-          source = path.read_text(encoding="utf-8")
-          replacements = [
-              (
-                  "        build_canonical_v4, build_coverage_contracts, build_coverage_report,\n"
-                  "        build_exchange_source_audit, build_listing_history, build_reference_reconciliation,\n"
-                  "        enrich_global_identifiers, normalize_source_registry,\n",
-                  "        build_adanos_ticker_reference, build_canonical_v4, build_coverage_contracts,\n"
-                  "        build_coverage_report, build_entry_quality_report, build_exchange_source_audit,\n"
-                  "        build_listing_history, build_reference_reconciliation,\n"
-                  "        build_source_gap_classification, build_source_of_truth_decisions,\n"
-                  "        enrich_global_identifiers, normalize_source_registry, update_readme_snapshot,\n",
-              ),
-              (
-                  "    import build_canonical_v4\n"
-                  "    import build_coverage_contracts\n"
-                  "    import build_coverage_report\n"
-                  "    import build_exchange_source_audit\n"
-                  "    import build_listing_history\n"
-                  "    import build_reference_reconciliation\n"
-                  "    import enrich_global_identifiers\n"
-                  "    import normalize_source_registry\n",
-                  "    import build_adanos_ticker_reference\n"
-                  "    import build_canonical_v4\n"
-                  "    import build_coverage_contracts\n"
-                  "    import build_coverage_report\n"
-                  "    import build_entry_quality_report\n"
-                  "    import build_exchange_source_audit\n"
-                  "    import build_listing_history\n"
-                  "    import build_reference_reconciliation\n"
-                  "    import build_source_gap_classification\n"
-                  "    import build_source_of_truth_decisions\n"
-                  "    import enrich_global_identifiers\n"
-                  "    import normalize_source_registry\n"
-                  "    import update_readme_snapshot\n",
-              ),
-              (
-                  "def rebuild(\n"
-                  "    *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False\n"
-                  ") -> dict[str, Any]:\n",
-                  "def rebuild_validation_dependents() -> None:\n"
-                  "    \"\"\"Regenerate every validator input derived from the rebuilt current dataset.\"\"\"\n"
-                  "\n"
-                  "    build_entry_quality_report.main([])\n"
-                  "    build_source_gap_classification.main([])\n"
-                  "    build_source_of_truth_decisions.main([])\n"
-                  "    if build_adanos_ticker_reference.main([]) != 0:\n"
-                  "        raise SystemExit(\"Adanos ticker reference rebuild failed\")\n"
-                  "    if update_readme_snapshot.main([]) != 0:\n"
-                  "        raise SystemExit(\"README snapshot rebuild failed\")\n"
-                  "\n"
-                  "\n"
-                  "def rebuild(\n"
-                  "    *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False\n"
-                  ") -> dict[str, Any]:\n",
-              ),
-              (
-                  "    build_coverage_report.build_report()\n"
-                  "    if build_exchange_source_audit.main([]) != 0:\n"
-                  "        raise SystemExit(\"exchange source audit failed\")\n"
-                  "    evidence_as_of = _built_at_datetime()\n",
-                  "    build_coverage_report.build_report()\n"
-                  "    if build_exchange_source_audit.main([]) != 0:\n"
-                  "        raise SystemExit(\"exchange source audit failed\")\n"
-                  "    rebuild_validation_dependents()\n"
-                  "    evidence_as_of = _built_at_datetime()\n",
-              ),
-          ]
-          for old, new in replacements:
-              if source.count(old) != 1:
-                  raise SystemExit(f"canonical patch target missing or ambiguous: {old[:80]!r}")
-              source = source.replace(old, new, 1)
-          path.write_text(source, encoding="utf-8")
-
-          test_path = Path("tests/test_rebuild_canonical_foundation.py")
-          test_source = test_path.read_text(encoding="utf-8")
-          if "test_validation_dependents_are_rebuilt_in_dependency_order" not in test_source:
-              lines = [
-                  "",
-                  "",
-                  "def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> None:",
-                  "    calls: list[str] = []",
-                  "    monkeypatch.setattr(canonical.build_entry_quality_report, \"main\", lambda argv: calls.append(\"entry_quality\"))",
-                  "    monkeypatch.setattr(canonical.build_source_gap_classification, \"main\", lambda argv: calls.append(\"source_gap\"))",
-                  "    monkeypatch.setattr(canonical.build_source_of_truth_decisions, \"main\", lambda argv: calls.append(\"source_truth\"))",
-                  "    monkeypatch.setattr(canonical.build_adanos_ticker_reference, \"main\", lambda argv: calls.append(\"adanos\") or 0)",
-                  "    monkeypatch.setattr(canonical.update_readme_snapshot, \"main\", lambda argv: calls.append(\"readme\") or 0)",
-                  "    canonical.rebuild_validation_dependents()",
-                  "    assert calls == [\"entry_quality\", \"source_gap\", \"source_truth\", \"adanos\", \"readme\"]",
-                  "",
-              ]
-              test_path.write_text(test_source.rstrip() + "\n" + "\n".join(lines), encoding="utf-8")
-
-          Path("/tmp/rebuild_canonical.py").write_bytes(path.read_bytes())
-          Path("/tmp/test_rebuild_canonical_foundation.py").write_bytes(test_path.read_bytes())
-          PY
-
-      - name: Verify source changes
+      - name: Verify and publish
+        working-directory: target
         run: |
           python -m compileall -q scripts tests
           python -m pytest -q tests/test_rebuild_canonical_foundation.py
           git diff --check
-
-      - name: Run complete canonical validation
-        run: |
-          python scripts/rebuild_canonical.py
-          python scripts/validate_database.py
-          python scripts/check_readme_snapshot.py
-          python - <<'PY'
-          import csv
-          import json
-          from pathlib import Path
-
-          with Path("data/tickers.csv").open(newline="", encoding="utf-8") as handle:
-              ticker_count = sum(1 for _ in csv.DictReader(handle))
-          with Path("data/adanos/ticker_reference.csv").open(newline="", encoding="utf-8") as handle:
-              adanos_count = sum(1 for _ in csv.DictReader(handle))
-          report = json.loads(Path("data/reports/validation_report.json").read_text(encoding="utf-8"))
-          failed = [gate for gate in report.get("gates", []) if gate.get("severity") == "error" and not gate.get("passed")]
-          if ticker_count != adanos_count:
-              raise SystemExit(f"Adanos row-count mismatch after rebuild: {adanos_count} != {ticker_count}")
-          if failed:
-              raise SystemExit(json.dumps(failed, indent=2, ensure_ascii=False))
-          print(json.dumps({"tickers": ticker_count, "adanos": adanos_count, "failed_error_gates": 0}, indent=2))
-          PY
-
-      - name: Run complete test suite
-        run: python -m pytest tests/ -q
-
-      - name: Commit source-only fix
-        run: |
-          git reset --hard HEAD
-          cp /tmp/rebuild_canonical.py scripts/rebuild_canonical.py
-          cp /tmp/test_rebuild_canonical_foundation.py tests/test_rebuild_canonical_foundation.py
-          python -m compileall -q scripts tests
-          python -m pytest -q tests/test_rebuild_canonical_foundation.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add scripts/rebuild_canonical.py tests/test_rebuild_canonical_foundation.py
           git diff --cached --check
           git commit -m "Synchronize canonical validation dependents"
