@@ -1,4 +1,4 @@
-name: Materialize reviewed canonical v4 branch
+name: Repair PR 233 checked-in files
 
 on:
   push:
@@ -10,75 +10,69 @@ permissions:
   contents: write
 
 concurrency:
-  group: canonical-v4-clean-materialization
+  group: pr-233-file-repair
   cancel-in-progress: true
 
 jobs:
-  materialize:
+  repair:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout isolated materializer
+      - name: Checkout PR branch
         uses: actions/checkout@v6
         with:
-          ref: agent/canonical-v4-materializer-20260817
-          fetch-depth: 1
+          ref: agent/canonical-v4-clean
+          fetch-depth: 4
 
-      - name: Reconstruct and verify reviewed patch set
+      - name: Restore and regenerate README
         run: |
-          cat .materialize/part-* | base64 --decode > /tmp/canonical-v4-patches.tar.xz
-          echo "6b5a4d5b38f411e3e8bf0fee92852a49d2835ba84051e9ab641177d84fe42b39  /tmp/canonical-v4-patches.tar.xz" | sha256sum -c -
-          mkdir /tmp/canonical-v4-patches
-          tar -xJf /tmp/canonical-v4-patches.tar.xz -C /tmp/canonical-v4-patches
-          test "$(find /tmp/canonical-v4-patches -maxdepth 1 -type f | wc -l)" -eq 7
+          git cat-file -e 339a561bf081285aa96d73a737ef38bc016ff6e5^{commit}
+          git show 339a561bf081285aa96d73a737ef38bc016ff6e5:README.md > README.md
+          python scripts/update_readme_snapshot.py
+          python - <<'PY'
+          from pathlib import Path
 
-      - name: Materialize six clean source commits from exact main
+          text = Path("README.md").read_text(encoding="utf-8")
+          if "�" in text:
+              raise SystemExit("README contains replacement characters")
+          PY
+          python scripts/check_readme_snapshot.py
+
+      - name: Update strict provenance fixtures
         run: |
-          git fetch --no-tags --depth=1 origin refs/heads/main:refs/remotes/origin/reviewed-main
-          test "$(git rev-parse refs/remotes/origin/reviewed-main)" = "352bd3ac03e68ca0bcb700fc207acd842f505ece"
-          git checkout --detach 352bd3ac03e68ca0bcb700fc207acd842f505ece
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("tests/test_safe_merge.py")
+          source = path.read_text(encoding="utf-8")
+          marker = '"observation_id": f"delisting-{value[\'listing_key\']}"'
+          if marker not in source:
+              old = '        "source_url": "https://exchange.example/notices/A", "evidence_status": "official",\n'
+              new = (
+                  '        "source_url": "https://exchange.example/notices/A",\n'
+                  '        "observation_id": f"delisting-{value[\'listing_key\']}", '
+                  '"evidence_status": "official",\n'
+              )
+              if source.count(old) != 1:
+                  raise SystemExit("safe-merge fixture target missing or ambiguous")
+              source = source.replace(old, new, 1)
+              path.write_text(source, encoding="utf-8")
+          PY
+
+      - name: Verify focused fixes
+        run: |
+          python -m compileall -q scripts tests
+          python -m pytest -q \
+            tests/test_safe_merge.py \
+            tests/test_dataset_quality.py::test_readme_stats_and_claims_are_current \
+            tests/test_dataset_quality.py::test_open_source_project_files_exist_and_are_linked
+          git diff --check
+          git diff -- README.md tests/test_safe_merge.py
+
+      - name: Commit exact reviewed files
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          commit_count=0
-          while IFS=$'\t' read -r patch message; do
-            test -n "$patch"
-            test -n "$message"
-            git apply --check --exclude='.github/workflows/*' "/tmp/canonical-v4-patches/$patch"
-            git apply --index --exclude='.github/workflows/*' "/tmp/canonical-v4-patches/$patch"
-            git diff --cached --check
-            git commit -m "$message"
-            commit_count=$((commit_count + 1))
-          done < /tmp/canonical-v4-patches/manifest.tsv
-          test "$commit_count" -eq 6
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install repository dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Verify exact visible source tree and critical gates
-        run: |
-          test "$(git rev-parse HEAD^{tree})" = "d841bd00307ecb66ca18a260ae884be92af303a9"
-          test ! -e .materialize
-          test ! -e .github/workflows/materialize-canonical-v4-clean.yml
-          test ! -e .bootstrap
-          python -m compileall -q scripts tests
-          git diff --check 352bd3ac03e68ca0bcb700fc207acd842f505ece..HEAD
-          python scripts/check_workflow_source_policy.py
-          python -m pytest -q \
-            tests/test_identity_integrity.py \
-            tests/test_safe_merge.py \
-            tests/test_coverage_contracts.py \
-            tests/test_canonical_v4_exports.py \
-            tests/test_listing_lifecycles.py \
-            tests/test_apply_delistings.py
-
-      - name: Publish source-only target branch
-        run: |
-          git push --force origin HEAD:agent/canonical-v4-clean
+          git add README.md tests/test_safe_merge.py
+          git diff --cached --check
+          git commit -m "Fix README encoding and safe-merge test provenance"
+          git push origin HEAD:agent/canonical-v4-clean
