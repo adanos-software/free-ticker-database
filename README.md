@@ -130,7 +130,7 @@ NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,U
 
 Important rules:
 
-- `core_listings.csv` is the canonical core security export; `listing_key` is the stable identity.
+- `core_listings.csv` is the canonical core security export; `listing_key` is its collision-safe current venue/symbol key.
 - `tickers.csv` is a compatibility export that keeps one row per globally unique `ticker`.
 - `listings.csv` and `listing_key` are the venue-level source of truth for exchange-specific listing identity.
 - `ticker` is globally unique only in `tickers.csv`; use `listing_key` for venue-level identity.
@@ -157,6 +157,23 @@ JSON metadata:
 SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrument_scopes`.
 Additional collision-safe tables: `core_listings` and `core_aliases`.
 
+<!-- canonical-v4-quality:start -->
+## Canonical v4 and release truth
+
+`listing_key` is the collision-safe **current venue/symbol key**. It is not a permanent historical identifier because symbols can change or be reused. Canonical v4 separates listing lifecycles from instruments and venues, while source observations and assertion tables preserve the evidence behind accepted values. Conflicting identifiers never merge listings into one instrument; they remain quarantined assertions until reviewed evidence resolves them.
+
+The quality contract is cumulative: `merge` blocks structural, identity, history, safe-merge, source-governance, and canonical-schema failures; `stable` additionally requires passing official-full coverage, verified contributing-source rights, complete field provenance, and MIC mappings; `complete` additionally requires zero metadata and official-reference gaps. A green merge check never claims that the database is already complete or legally ready for a stable data release.
+
+Canonical implementation source is committed as ordinary reviewable files. CI rejects compressed source payloads, workflow-time patching, and self-pushing workflows. It validates the canonical CSV contract, loads the result into PostgreSQL, and verifies deterministic repeat builds.
+
+Operational rebuilds use:
+
+```bash
+python scripts/rebuild_canonical.py
+```
+
+Direct execution of `scripts/rebuild_dataset.py` remains available only for compatibility-export validation.
+<!-- canonical-v4-quality:end -->
 ## Quality
 
 - Valid ISINs are checksum-verified.

@@ -34,8 +34,11 @@ jobs:
         id: delist
         run: python scripts/build_delisting_report.py
 
-      - name: Validate delisting report logic
-        run: python -m pytest tests/test_build_delisting_report.py -q
+      - name: Validate delisting evidence and apply gates
+        run: |
+          python -m pytest -q \
+            tests/test_build_delisting_report.py \
+            tests/test_apply_delistings.py
 
       - name: Apply verified delisting classes
         id: apply
@@ -84,8 +87,9 @@ jobs:
             with authoritative status). A failed master fetch skips that market
             (never emits false candidates).
 
-            **Detection only — nothing is auto-applied.** Triage each candidate:
-            - `delisted` (BSE authoritative status) → applied as a gated drop override
+            Triage each candidate. Only exact, field-bound BSE `Delisted`
+            observations from this workflow are converted into drop overrides:
+            - `delisted` (BSE authoritative status) → gated drop override
             - `master_absent` → verify rename vs delisting before acting (renames
               re-key/dedup; genuine delistings drop)
             - `suspended` (BSE) → kept by policy (can resume)

@@ -9,8 +9,10 @@ from typing import Any
 
 try:
     from scripts.lib.dataio import display_path, read_json, load_csv, write_csv, write_json
+    from scripts.lib.delisting_evidence import valid_official_bse_delisting_evidence
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from lib.dataio import display_path, read_json, load_csv, write_csv, write_json
+    from lib.delisting_evidence import valid_official_bse_delisting_evidence
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,11 +32,19 @@ def drop_key(row: dict[str, str]) -> tuple[str, str]:
     return row.get("exchange", ""), row.get("ticker", "")
 
 
+def _valid_official_bse_delisting_evidence(candidate: dict[str, str]) -> bool:
+    return valid_official_bse_delisting_evidence(candidate)
+
+
 def classify_candidate(candidate: dict[str, str]) -> str:
     classification = candidate.get("classification", "")
     exchange = candidate.get("exchange", "")
     if classification == "delisted" and exchange == "BSE_IN":
-        return "apply_drop_override"
+        return (
+            "apply_drop_override"
+            if _valid_official_bse_delisting_evidence(candidate)
+            else "blocked_missing_official_delisting_evidence"
+        )
     if classification == "master_absent":
         return "manual_rename_vs_delisting_required"
     if classification == "suspended":
@@ -68,6 +78,7 @@ def apply_delistings(
     existing_keys = {drop_key(row) for row in existing_drop_rows}
 
     applied: list[dict[str, str]] = []
+    already_applied: list[dict[str, str]] = []
     drafted: list[dict[str, str]] = []
     blocked: list[dict[str, str]] = []
     manual: list[dict[str, str]] = []
@@ -80,13 +91,15 @@ def apply_delistings(
             "ticker": candidate.get("ticker", ""),
             "name": candidate.get("name", ""),
             "isin": candidate.get("isin", ""),
-            "classification": candidate.get("classification", ""),
-            "status": status,
+            "classification": candidate.get("classification", ""), "status": status,
+            "source_key": candidate.get("source_key", ""), "source_url": candidate.get("source_url", ""),
+            "observed_at": candidate.get("observed_at", ""), "effective_at": candidate.get("effective_at", ""),
+            "observation_id": candidate.get("observation_id", ""),
         }
         if status == "apply_drop_override":
             key = drop_key(row)
             if key in existing_keys:
-                applied.append({**row, "status": "already_present_drop_override"})
+                already_applied.append({**row, "status": "already_present_drop_override"})
                 continue
             drop_row = build_drop_row(candidate)
             if apply:
@@ -110,15 +123,15 @@ def apply_delistings(
         "apply": apply,
         "delisting_report_json": display_path(delisting_report_json, ROOT),
         "drop_entries_csv": display_path(drop_entries_csv, ROOT),
-        "applied_rows": len(applied),
+        "applied_rows": len(applied), "already_applied_rows": len(already_applied),
         "drafted_rows": len(drafted),
         "blocked_rows": len(blocked),
         "manual_rows": len(manual),
-        "status_counts": dict(sorted(Counter(row["status"] for row in [*applied, *drafted, *blocked, *manual]).items())),
+        "status_counts": dict(sorted(Counter(row["status"] for row in [*applied, *already_applied, *drafted, *blocked, *manual]).items())),
     }
     report = {
         "summary": summary,
-        "applied": applied,
+        "applied": applied, "already_applied": already_applied,
         "drafted": drafted,
         "blocked": blocked,
         "manual": manual,
@@ -138,6 +151,7 @@ def write_markdown(path: Path, report: dict[str, Any]) -> None:
         f"- Generated at: `{summary['generated_at']}`",
         f"- Apply mode: `{str(summary['apply']).lower()}`",
         f"- Applied rows: `{summary['applied_rows']}`",
+        f"- Already-applied rows: `{summary['already_applied_rows']}`",
         f"- Drafted rows: `{summary['drafted_rows']}`",
         f"- Blocked rows: `{summary['blocked_rows']}`",
         f"- Manual rows: `{summary['manual_rows']}`",

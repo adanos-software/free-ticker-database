@@ -8,44 +8,78 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ticker
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
-      - name: Checkout
+      - name: Checkout release commit
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Install runtime and PostgreSQL validation dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements.txt -r requirements-dev.txt
 
-      - name: Build source-derived outputs
+      - name: Reject hidden source payloads and self-modifying workflows
+        run: python scripts/check_workflow_source_policy.py
+
+      - name: Preserve release baseline
         run: |
-          python scripts/rebuild_dataset.py
-          python scripts/enrich_global_identifiers.py
-          for i in $(seq 1 8); do
-            python scripts/verify_stock_masterfiles.py --asset-type Stock --chunk-index "$i" --chunk-count 8 --output-dir data/stock_verification/run-release
-            python scripts/verify_stock_masterfiles.py --asset-type ETF --chunk-index "$i" --chunk-count 8 --output-dir data/etf_verification/run-release
-          done
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
+            git show "HEAD^:data/listings.csv" > /tmp/listings-before.csv
+          else
+            cp data/listings.csv /tmp/listings-before.csv
+          fi
+          test -s /tmp/listings-before.csv
+
+      - name: Build canonical source-derived outputs
+        run: |
+          python scripts/rebuild_canonical.py
+          python scripts/check_safe_merge.py \
+            --before /tmp/listings-before.csv \
+            --after data/listings.csv \
+            --events data/history/listing_events.csv \
+            --strict
           python scripts/build_entry_quality_report.py
-          python scripts/build_coverage_report.py
           python scripts/build_source_inventory.py
-          python scripts/build_exchange_source_audit.py
           python scripts/build_source_gap_classification.py
           python scripts/build_source_of_truth_decisions.py
           python scripts/build_completion_backlog.py
           python scripts/build_alias_quality_report.py
           python scripts/build_adanos_ticker_reference.py
+          python scripts/build_isin_identity_collision_review_queue.py
           python scripts/update_readme_snapshot.py
+          python scripts/update_readme_quality_contract.py
 
-      - name: Run validation gates
+      - name: Validate canonical CSV and PostgreSQL contracts
+        env:
+          CANONICAL_POSTGRES_DSN: postgresql://postgres:postgres@localhost:5432/ticker
         run: |
           python -m pytest tests/ -q
           python scripts/check_entry_quality_gate.py
@@ -53,9 +87,22 @@ jobs:
           python scripts/check_commercial_source_options.py
           python scripts/check_exchange_scope_decisions.py
           python scripts/validate_database.py
+          python scripts/validate_canonical_v4_exports.py --expected-git-commit "$GITHUB_SHA"
+          python scripts/load_canonical_v4_postgres.py --dsn "$CANONICAL_POSTGRES_DSN" --expected-git-commit "$GITHUB_SHA"
           python scripts/build_b3_masterfile_gap_review.py
           python scripts/build_improvement_campaign_report.py
           python scripts/build_release_acceptance_report.py --fail-on-failure
+          python scripts/build_quality_contract.py \
+            --profile complete \
+            --expected-git-commit "$GITHUB_SHA" \
+            --json-out data/reports/quality_contract_complete.json \
+            --md-out data/reports/quality_contract_complete.md
+          python scripts/build_quality_contract.py \
+            --profile stable \
+            --strict \
+            --expected-git-commit "$GITHUB_SHA" \
+            --json-out data/reports/quality_contract.json \
+            --md-out data/reports/quality_contract.md
 
       - name: Build public dataset packages
         run: python scripts/build_public_dataset_package.py
@@ -63,6 +110,7 @@ jobs:
       - name: Build GitHub Release assets
         run: |
           python scripts/build_release_artifacts.py
+          python scripts/build_canonical_v4_archive.py
           python scripts/build_evidence_archive.py
 
       - name: Create GitHub Release
@@ -73,6 +121,8 @@ jobs:
             output/release/manifest.json
             output/evidence_archive/m2-campaign-evidence.zip
             output/evidence_archive/evidence-manifest.json
+            data/reports/quality_contract.json
+            data/canonical_v4/manifest.json
           generate_release_notes: true
 
       - name: Publish Kaggle package

@@ -44,6 +44,8 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     assert "output/evidence_archive/evidence-manifest.json" in workflow
     assert "PUBLISH_KAGGLE" in workflow
     assert "PUBLISH_HUGGINGFACE" in workflow
+    assert "git rev-parse HEAD^ >/dev/null 2>&1" in workflow
+    assert "cp data/listings.csv /tmp/listings-before.csv" in workflow
 
     validation = workflow.index("python scripts/validate_database.py")
     b3_review = workflow.index("python scripts/build_b3_masterfile_gap_review.py")

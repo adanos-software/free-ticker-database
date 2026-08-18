@@ -39,6 +39,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from scripts.lib.delisting_evidence import (
+    BSE_STATUS_URL_TEMPLATE,
+    evidence_observation_id,
+)
+
 TICKERS_CSV = ROOT / "data" / "tickers.csv"
 REPORT_JSON = ROOT / "data" / "reports" / "delisting_report.json"
 REPORT_MD = ROOT / "data" / "reports" / "delisting_report.md"
@@ -50,7 +55,6 @@ US_EXCHANGES = {"NYSE", "NASDAQ", "NYSE ARCA", "NYSE MKT", "AMEX", "BATS"}
 # Minimum plausible master size per market; below this we treat the fetch as
 # failed and SKIP the market (never emit candidates from a truncated master).
 MIN_MASTER = {"US": 9000, "TSE": 3000, "ASX": 1500, "NSE_IN": 2000, "BSE_IN": 3000}
-
 
 def _norm(sym: str) -> str:
     return sym.strip().upper().replace(".", "").replace("-", "")
@@ -173,8 +177,7 @@ def fetch_nse(session) -> tuple[set[str], set[str]]:
 
 def fetch_bse_status(session, status: str) -> tuple[set[str], set[str]]:
     """Return (scrip_id set, ISIN set) for one BSE status (Active/Suspended/Delisted)."""
-    url = ("https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
-           f"?Group=&Scripcode=&industry=&segment=Equity&status={status}")
+    url = BSE_STATUS_URL_TEMPLATE.format(status=status)
     data = session.get(url, timeout=90, headers={
         "Origin": "https://www.bseindia.com",
         "Referer": "https://www.bseindia.com/corporates/List_Scrips.html",
@@ -288,6 +291,13 @@ def main(argv: list[str] | None = None) -> None:
     detected = compute_detected(cand_keys, prior_keys)
 
     now = args.now or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    for candidate in candidates:
+        if candidate.get("exchange") == "BSE_IN" and candidate.get("classification") in {"delisted", "suspended"}:
+            status = candidate["classification"].title()
+            candidate["source_key"] = "bse_india_scrips"
+            candidate["source_url"] = BSE_STATUS_URL_TEMPLATE.format(status=status)
+            candidate["observed_at"] = now
+            candidate["observation_id"] = evidence_observation_id(candidate, now)
     summary = {
         "generated_at": now,
         "markets_checked": checked,
