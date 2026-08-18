@@ -92,3 +92,12 @@ def test_report_rebuilds_follow_their_data_dependencies() -> None:
         completion_backlog = workflow.index("python scripts/build_completion_backlog.py")
 
         assert entry_quality < source_gaps < source_decisions < completion_backlog
+
+
+def test_operational_rebuilds_use_canonical_entrypoint_and_safe_merge() -> None:
+    for filename in REPORT_REBUILD_WORKFLOWS:
+        workflow = (WORKFLOW_DIR / filename).read_text(encoding="utf-8")
+        assert "python scripts/rebuild_canonical.py" in workflow
+        assert "python scripts/check_safe_merge.py" in workflow
+        if filename != "release.yml":
+            assert "python scripts/rebuild_dataset.py" not in workflow

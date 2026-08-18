@@ -116,6 +116,10 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Germany",
         "country_code": "DE",
     },
+    "FSX": {
+        "country": "Germany",
+        "country_code": "DE",
+    },
 }
 
 SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
@@ -126,6 +130,7 @@ SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE: dict[str, set[str]] = {
     "TSX": {"listed_companies_subset"},
     "TSXV": {"listed_companies_subset"},
     "XETRA": {"exchange_directory", "listed_companies_subset"},
+    "FSX": {"exchange_directory"},
 }
 LOCAL_LANGUAGE_REFRESH_EXCHANGES = {"TWSE", "TPEX"}
 

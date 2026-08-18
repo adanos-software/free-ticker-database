@@ -4280,6 +4280,12 @@ def test_deutsche_boerse_xetra_all_tradable_source_is_modeled_as_exchange_direct
     assert source.reference_scope == "exchange_directory"
 
 
+def test_deutsche_boerse_frankfurt_all_tradable_source_is_modeled_as_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "deutsche_boerse_frankfurt_all_tradable_equities")
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "deutsche_boerse_frankfurt_all_tradable_csv"
+
+
 def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
     dataframe_path = tmp_path / "jpx.xlsx"
 

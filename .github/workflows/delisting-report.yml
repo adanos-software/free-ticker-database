@@ -47,7 +47,13 @@ jobs:
       - name: Rebuild derived exports and reports
         if: steps.apply.outputs.delistings_applied == 'true'
         run: |
-          python scripts/rebuild_dataset.py
+          cp data/listings.csv /tmp/listings-before.csv
+          python scripts/rebuild_canonical.py
+          python scripts/check_safe_merge.py \
+            --before /tmp/listings-before.csv \
+            --after data/listings.csv \
+            --events data/history/listing_events.csv \
+            --strict
           python scripts/enrich_global_identifiers.py
           python scripts/build_entry_quality_report.py
           python scripts/build_coverage_report.py

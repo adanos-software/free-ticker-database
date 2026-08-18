@@ -385,6 +385,7 @@ JPX_STOCK_DETAIL_TIMEOUT = 5.0
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
 DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
+DEUTSCHE_BOERSE_FRANKFURT_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv"
 DEUTSCHE_BOERSE_ETP_PRODUCT_TYPE_CATEGORY_MAP = {
     "ETC": "Commodity",
     "ETN": "Alternative",
@@ -1842,6 +1843,14 @@ OFFICIAL_SOURCES = [
         description="Official Deutsche Boerse Xetra all tradable instruments directory for shares and ETPs",
         source_url=DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL,
         format="deutsche_boerse_xetra_all_tradable_csv",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="deutsche_boerse_frankfurt_all_tradable_equities",
+        provider="Deutsche Boerse",
+        description="Official Deutsche Boerse Frankfurt all tradable instruments directory for shares and ETPs",
+        source_url=DEUTSCHE_BOERSE_FRANKFURT_ALL_TRADABLE_URL,
+        format="deutsche_boerse_frankfurt_all_tradable_csv",
         reference_scope="exchange_directory",
     ),
     MasterfileSource(
@@ -15490,7 +15499,13 @@ def normalize_deutsche_boerse_xetra_etp_category(instrument_type: str, product_g
     return ""
 
 
-def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+def parse_deutsche_boerse_t7_all_tradable_csv(
+    text: str,
+    source: MasterfileSource,
+    *,
+    mic_code: str,
+    exchange: str,
+) -> list[dict[str, str]]:
     lines = text.splitlines()
     if len(lines) < 3:
         return []
@@ -15502,7 +15517,7 @@ def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSo
             continue
         if record.get("Instrument Status") != "Active":
             continue
-        if record.get("MIC Code") != "XETR":
+        if record.get("MIC Code") != mic_code:
             continue
         instrument_type = str(record.get("Instrument Type", "")).strip().upper()
         asset_type = DEUTSCHE_BOERSE_XETRA_INSTRUMENT_TYPE_ASSET_TYPE.get(instrument_type, "")
@@ -15520,7 +15535,7 @@ def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSo
             "source_url": source.source_url,
             "ticker": ticker,
             "name": name,
-            "exchange": "XETRA",
+            "exchange": exchange,
             "asset_type": asset_type,
             "listing_status": "active",
             "reference_scope": source.reference_scope,
@@ -15537,6 +15552,14 @@ def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSo
                 row["sector"] = category
         rows.append(row)
     return rows
+
+
+def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_deutsche_boerse_t7_all_tradable_csv(text, source, mic_code="XETR", exchange="XETRA")
+
+
+def parse_deutsche_boerse_frankfurt_all_tradable_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_deutsche_boerse_t7_all_tradable_csv(text, source, mic_code="XFRA", exchange="FSX")
 
 
 def parse_tmx_interlisted(text: str, source: MasterfileSource) -> list[dict[str, str]]:
@@ -18194,6 +18217,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "deutsche_boerse_xetra_all_tradable_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_deutsche_boerse_xetra_all_tradable_csv(text, source)
+    if source.format == "deutsche_boerse_frankfurt_all_tradable_csv":
+        text = fetch_text(source.source_url, session=session)
+        return parse_deutsche_boerse_frankfurt_all_tradable_csv(text, source)
     if source.format == "six_equity_issuers_json":
         return fetch_six_equity_issuers(source, session=session)
     if source.format == "six_share_details_fqs_json":

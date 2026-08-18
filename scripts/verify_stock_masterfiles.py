@@ -88,6 +88,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "TSX": {"tmx_interlisted_companies", "tmx_listed_issuers"},
     "TSXV": {"tmx_interlisted_companies", "tmx_listed_issuers"},
     "XETRA": {"deutsche_boerse_xetra_all_tradable_equities"},
+    "FSX": {"deutsche_boerse_frankfurt_all_tradable_equities"},
 }
 ABBREVIATED_OFFICIAL_LABEL_EXCHANGES = {"KRX", "KOSDAQ"}
 TMX_ROOT_SUFFIX_ETF_EXCHANGES = {"TSX", "TSXV"}
