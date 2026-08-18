@@ -20,6 +20,14 @@ DEFAULT_OUTPUT_DIR = ROOT / "data" / "isin_peer_sector_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "sector_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "sector_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
+REASON_ALL_PEERS = (
+    "Sector/category propagated from same-ISIN listing peers after requiring the primary row "
+    "to be missing sector and all same-asset peer sectors to normalize to one value."
+)
+REASON_NON_OTC_PEERS = (
+    "Sector/category propagated from same-ISIN listing peers after requiring the primary row "
+    "to be missing sector and all same-asset non-OTC peer sectors to normalize to one value."
+)
 REPORT_FIELDNAMES = [
     "ticker",
     "exchange",
@@ -103,12 +111,29 @@ def evaluate_sector_peer_row(
     return {**base, "sector_update": next(iter(normalized_sectors)), "decision": "accept"}
 
 
+def select_peers(
+    row: dict[str, str],
+    peers: list[dict[str, str]],
+    *,
+    require_non_otc_peers: bool = False,
+) -> list[dict[str, str]]:
+    selected = [
+        peer
+        for peer in peers
+        if not (peer.get("ticker") == row.get("ticker") and peer.get("exchange") == row.get("exchange"))
+    ]
+    if require_non_otc_peers:
+        selected = [peer for peer in selected if peer.get("exchange") != "OTC"]
+    return selected
+
+
 def verify_sector_peers(
     ticker_rows: list[dict[str, str]],
     listing_rows: list[dict[str, str]],
     *,
     exchanges: set[str],
     asset_types: set[str],
+    require_non_otc_peers: bool = False,
 ) -> list[dict[str, Any]]:
     peer_sectors = index_peer_sectors(listing_rows)
     candidates = [
@@ -122,13 +147,22 @@ def verify_sector_peers(
     return [
         evaluate_sector_peer_row(
             row,
-            peer_sectors.get((row["isin"].strip().upper(), row["asset_type"]), []),
+            select_peers(
+                row,
+                peer_sectors.get((row["isin"].strip().upper(), row["asset_type"]), []),
+                require_non_otc_peers=require_non_otc_peers,
+            ),
         )
         for row in candidates
     ]
 
 
-def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]]:
+def build_metadata_updates(
+    results: list[dict[str, Any]],
+    *,
+    require_non_otc_peers: bool = False,
+) -> list[dict[str, str]]:
+    reason = REASON_NON_OTC_PEERS if require_non_otc_peers else REASON_ALL_PEERS
     updates: list[dict[str, str]] = []
     for result in results:
         if result["decision"] != "accept":
@@ -141,7 +175,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                 "decision": "update",
                 "proposed_value": result["sector_update"],
                 "confidence": "0.88",
-                "reason": "Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset peer sectors to normalize to one value.",
+                "reason": reason,
             }
         )
     return updates
@@ -163,6 +197,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
     parser.add_argument("--exchange", action="append", help="Restrict to one or more internal exchanges.")
     parser.add_argument("--asset-type", action="append", choices=["ETF", "Stock"], help="Restrict to one or more asset types.")
+    parser.add_argument(
+        "--from-listings",
+        action="store_true",
+        help="Use listings.csv as candidates so secondary/cross-listed rows can be filled.",
+    )
+    parser.add_argument(
+        "--require-non-otc-peers",
+        action="store_true",
+        help="Ignore OTC peers so taxonomy is copied only from a regulated venue.",
+    )
     parser.add_argument("--limit", type=int)
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--apply", action="store_true")
@@ -171,22 +215,23 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
-    ticker_rows = load_csv_rows(TICKERS_CSV)
     listing_rows = load_csv_rows(LISTINGS_CSV)
-    exchanges = set(args.exchange or {row["exchange"] for row in ticker_rows})
+    candidate_rows = listing_rows if args.from_listings else load_csv_rows(TICKERS_CSV)
+    exchanges = set(args.exchange or {row["exchange"] for row in candidate_rows})
     asset_types = set(args.asset_type or ["ETF", "Stock"])
 
     results = verify_sector_peers(
-        ticker_rows,
+        candidate_rows,
         listing_rows,
         exchanges=exchanges,
         asset_types=asset_types,
+        require_non_otc_peers=args.require_non_otc_peers,
     )
     if args.offset:
         results = results[args.offset :]
     if args.limit is not None:
         results = results[: args.limit]
-    updates = build_metadata_updates(results)
+    updates = build_metadata_updates(results, require_non_otc_peers=args.require_non_otc_peers)
 
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(

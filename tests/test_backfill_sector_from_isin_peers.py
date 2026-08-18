@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 from scripts.backfill_sector_from_isin_peers import (
+    REASON_NON_OTC_PEERS,
     build_metadata_updates,
     evaluate_sector_peer_row,
     index_peer_sectors,
+    select_peers,
     verify_sector_peers,
     write_report_csv,
 )
@@ -63,6 +65,70 @@ def test_verify_sector_peers_filters_missing_sector_rows():
     assert len(results) == 1
     assert results[0]["ticker"] == "ABC"
     assert results[0]["decision"] == "accept"
+
+
+def test_select_peers_drops_otc_when_required():
+    row = {"ticker": "ABC", "exchange": "FSX", "asset_type": "Stock", "isin": "DE000ABC1234"}
+    peers = [
+        {"ticker": "ABCQ", "exchange": "OTC", "sector": "Industrials"},
+        {"ticker": "ABC", "exchange": "XETRA", "sector": "Industrials"},
+    ]
+
+    assert [peer["exchange"] for peer in select_peers(row, peers)] == ["OTC", "XETRA"]
+    assert [peer["exchange"] for peer in select_peers(row, peers, require_non_otc_peers=True)] == ["XETRA"]
+
+
+def test_verify_sector_peers_rejects_otc_only_evidence_when_required():
+    candidates = [
+        {
+            "ticker": "ABC",
+            "exchange": "FSX",
+            "asset_type": "Stock",
+            "name": "ABC AG",
+            "isin": "DE000ABC1234",
+            "sector": "",
+        }
+    ]
+    listing_rows = [
+        {"ticker": "ABC", "exchange": "OTC", "asset_type": "Stock", "isin": "DE000ABC1234", "sector": "Industrials"},
+        {"ticker": "ABC", "exchange": "XETRA", "asset_type": "Stock", "isin": "DE000ABC1234", "sector": "Industrials"},
+    ]
+
+    otc_only = verify_sector_peers(
+        candidates,
+        [listing_rows[0]],
+        exchanges={"FSX"},
+        asset_types={"Stock"},
+        require_non_otc_peers=True,
+    )
+    accepted = verify_sector_peers(
+        candidates,
+        listing_rows,
+        exchanges={"FSX"},
+        asset_types={"Stock"},
+        require_non_otc_peers=True,
+    )
+
+    assert otc_only[0]["decision"] == "no_sector_peer"
+    assert accepted[0]["decision"] == "accept"
+    assert accepted[0]["sector_update"] == "Industrials"
+
+
+def test_build_metadata_updates_emits_non_otc_reason_when_required():
+    updates = build_metadata_updates(
+        [
+            {
+                "decision": "accept",
+                "ticker": "ABC",
+                "exchange": "FSX",
+                "asset_type": "Stock",
+                "sector_update": "Industrials",
+            }
+        ],
+        require_non_otc_peers=True,
+    )
+
+    assert updates[0]["reason"] == REASON_NON_OTC_PEERS
 
 
 def test_build_metadata_updates_emits_sector_override():
