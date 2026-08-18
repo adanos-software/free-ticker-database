@@ -51,8 +51,11 @@ jobs:
 
       - name: Preserve release baseline
         run: |
-          git rev-parse HEAD^ >/dev/null
-          git show "HEAD^:data/listings.csv" > /tmp/listings-before.csv
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
+            git show "HEAD^:data/listings.csv" > /tmp/listings-before.csv
+          else
+            cp data/listings.csv /tmp/listings-before.csv
+          fi
           test -s /tmp/listings-before.csv
 
       - name: Build canonical source-derived outputs
