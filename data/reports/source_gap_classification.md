@@ -1,22 +1,22 @@
 # Source Gap Classification
 
-Generated at: `2026-08-15T07:10:35Z`
+Generated at: `2026-08-18T07:06:31Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Official reference-gap rows classified: `6446`
+- Official reference-gap rows classified: `6456`
 - Missing primary ISIN rows classified: `1155`
-- Missing stock-sector rows classified: `1905`
+- Missing stock-sector rows classified: `1913`
 - Missing ETF-category rows classified: `409`
 
 ## Top Classes
 
 | Class | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5235 |
-| official_reference_symbol_collision_gap | 1211 |
+| official_reference_unmatched_source_gap | 5244 |
+| official_reference_symbol_collision_gap | 1212 |
 | exchange_industry_source_gap | 919 |
 | otc_sector_source_gap | 556 |
 | official_identifier_not_exposed_source_gap | 502 |
@@ -30,10 +30,10 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | capital_pool_or_halted_identifier_gap | 33 |
 | fixed_income_etf_category_gap | 32 |
 | shell_or_cpc_sector_gap | 32 |
+| fundlike_stock_sector_gap | 20 |
 | adr_cdr_or_depositary_sector_gap | 16 |
 | official_product_reference_unmatched_category_gap | 16 |
 | commodity_etf_category_gap | 15 |
-| fundlike_stock_sector_gap | 12 |
 | digital_asset_etf_category_gap | 9 |
 
 ## Top Review Batches

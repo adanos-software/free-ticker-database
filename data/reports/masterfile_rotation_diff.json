@@ -1,628 +1,2224 @@
 {
   "summary": {
-    "generated_at": "2026-08-08T20:17:17Z",
-    "previous_reference_csv": "/tmp/pr-210-main-reference.csv",
+    "generated_at": "2026-08-18T07:02:56Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 36,
-    "vanished_rows": 2,
-    "changed_rows": 2,
+    "new_rows": 52,
+    "vanished_rows": 38,
+    "changed_rows": 59,
     "new_by_source": {
-      "tase_securities_marketdata": 2,
-      "tmx_etf_screener": 1,
-      "tpex_emerging_basic_info": 2,
-      "upcom_registered_securities": 1,
-      "vienna_listed_companies": 28,
-      "wse_etf_list": 2
+      "euronext_etfs": 16,
+      "hkex_securities_list": 9,
+      "hose_listed_stocks": 2,
+      "jpx_listed_issues": 18,
+      "jse_etf_list": 1,
+      "krx_etf_finder": 3,
+      "krx_listed_companies": 3
     },
     "vanished_by_source": {
-      "tase_securities_marketdata": 1,
-      "upcom_registered_securities": 1
+      "euronext_equities": 5,
+      "euronext_etfs": 1,
+      "hkex_securities_list": 15,
+      "hose_fund_certificate_list": 1,
+      "jpx_listed_issues": 11,
+      "jse_etf_list": 2,
+      "krx_listed_companies": 3
     },
     "changed_by_type": {
-      "name_change": 2
+      "field_change": 9,
+      "isin_change": 8,
+      "name_change": 44
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "tase_securities_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "ticker": "AVSR",
-      "name": "AVISROR",
-      "exchange": "TASE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IL0012458514",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "tase_securities_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "ticker": "SOLT-M",
-      "name": "SOLTERRA-M",
-      "exchange": "TASE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IL0001690119",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "tmx_etf_screener",
-      "provider": "TMX",
-      "source_url": "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json",
-      "ticker": "PSY",
-      "name": "Purpose Structured Equity Yield Fund",
-      "exchange": "TSX",
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "B1TA",
+      "name": "iSh AT1 Bond Active EUR (Dist)",
+      "exchange": "AMS",
       "asset_type": "ETF",
       "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000XPG7Q27",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "ONSW",
+      "name": "iShares € Overnight Rate Swap UCITS ETF",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE0005RKXDO7",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "G0BC",
+      "name": "Xtrackers Global Corporate Bond UCITS ETF",
+      "exchange": "Borsa Italiana",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000LRDPD24",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "JPEA",
+      "name": "JPM All Country Research Enhanced Index Equity Paris Aligned Active UCITS ETF - EUR (dist)",
+      "exchange": "Borsa Italiana",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000H0H26Q8",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "TCQE",
+      "name": "Trading Central Quant Europe 50 Equity UCITS ETF - Accumulating",
+      "exchange": "Borsa Italiana",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000DN0XQM1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "XGCE",
+      "name": "Xtrackers Global Corporate Bond UCITS ETF",
+      "exchange": "Borsa Italiana",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000EUY91Y9",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "XHW0",
+      "name": "Xtrackers Global High Yield Corporate Bond UCITS ETF",
+      "exchange": "Borsa Italiana",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000DT6MI20",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "XHWE",
+      "name": "Xtrackers Global High Yield Corporate Bond UCITS ETF",
+      "exchange": "Borsa Italiana",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000AGH5ZI1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "B1UH",
+      "name": "iSh AT1 Bond Active USD Hedged (Dist)",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000RWQ7DN4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "FTSA",
+      "name": "iShares FTSE All-World UCITS ETF",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000OL3XN92",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "OCGP",
+      "name": "ODDO BHF Global Equity Active UCITS ETF - Accumulating ETF Share Class CGP",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000IH9YO94",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "TCQE",
+      "name": "Trading Central Quant Europe 50 Equity UCITS ETF - Accumulating",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000DN0XQM1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "WMSC",
+      "name": "iSh MSCI World Comm Services Sector Adv",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000JJLNIG0",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "WNSF",
+      "name": "iSh MSCI World Financials Sector Adv",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000FQYTH79",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "WSDC",
+      "name": "iSh MSCI World Consumer Discret Sec Adv",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000JEU61P1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "WSTI",
+      "name": "iSh MSCI World Info Technology Sec Adv",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000LO4MAC0",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02261",
+      "name": "NASN TECH",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "CNE100007SM7",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02349",
+      "name": "CHINA AI INFRA",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG2118E1070",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02903",
+      "name": "SUNCORP TECH",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG8571C2726",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02904",
+      "name": "CMON RTS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG223911333",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02907",
+      "name": "CH WOOD INT RTS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG2162J1500",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "06918",
+      "name": "JIUTAI DIGITAL",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG5259S1084",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08128",
+      "name": "SINO ENGY CONS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG2127R1231",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08238",
+      "name": "JIUFANG DIGITAL",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG9722S1333",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08577",
+      "name": "BRIGHTSTAR TECH",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG479741293",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hose_listed_stocks",
+      "provider": "HOSE",
+      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
+      "ticker": "DMX",
+      "name": "Dien May Xanh Investment Joint Stock Company",
+      "exchange": "HOSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
       "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "VN000000DMX5",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hose_listed_stocks",
+      "provider": "HOSE",
+      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
+      "ticker": "LPS",
+      "name": "LPBank Securities Joint Stock Company",
+      "exchange": "HOSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "VN000000LPS1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "590A",
+      "name": "giftee Group,Inc.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Communication Services"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "593A",
+      "name": "TIER IV,Inc.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Communication Services"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "594A",
+      "name": "PRO HOLDINGS Co.,Ltd",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "597A",
+      "name": "andUS.inc",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "598A",
+      "name": "ChatPlus Co.,Ltd.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Communication Services"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "599A",
+      "name": "Genkinakaigo Co.,Ltd",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "600A",
+      "name": "Nissay ETF Russell 2000",
+      "exchange": "TSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
       "official": "true",
       "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "tpex_emerging_basic_info",
-      "provider": "MOPS",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "ticker": "7925",
-      "name": "健生實業股份有限公司",
-      "exchange": "TPEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0007925B14",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "tpex_emerging_basic_info",
-      "provider": "MOPS",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "ticker": "7942",
-      "name": "東佑達自動化科技股份有限公司",
-      "exchange": "TPEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0007942B13",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "upcom_registered_securities",
-      "provider": "HNX",
-      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
-      "ticker": "ULG",
-      "name": "CTCP Logistics U&I",
-      "exchange": "UPCOM",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "601A",
+      "name": "LUCKS Construction Co.,Ltd",
+      "exchange": "TSE",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "VN000000ULG6",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Industrials"
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "4X0",
-      "name": "STEYR MOTORS AG",
-      "exchange": "VSE",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "602A",
+      "name": "Rex Advisors Co.,Ltd.",
+      "exchange": "TSE",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000A3FW25",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Industrials"
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "AAD",
-      "name": "AMADEUS FIRE AG",
-      "exchange": "VSE",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "603A",
+      "name": "i GRID SOLUTIONS Inc.",
+      "exchange": "TSE",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "DE0005093108",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Utilities"
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "ANDR",
-      "name": "Andritz AG",
-      "exchange": "VSE",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "604A",
+      "name": "beABLE CO.,LTD.",
+      "exchange": "TSE",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000730007",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Industrials"
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "ATS",
-      "name": "AT&S Austria Technologie & Systemtechnik Aktiengesellschaft",
-      "exchange": "VSE",
-      "asset_type": "Stock",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "605A",
+      "name": "NEXT FUNDS Japan Equity Policy Focus Exchange Traded Fund",
+      "exchange": "TSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000969985",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "BG",
-      "name": "BAWAG Group AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "606A",
+      "name": "Gold 2x Bull ETF",
+      "exchange": "TSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000BAWAG2",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "BIO",
-      "name": "Biogena Group Invest AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "608A",
+      "name": "Listed Index Fund TSE REIT High Yield 30",
+      "exchange": "TSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "ATBIOGENA005",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "BMAG",
-      "name": "Bajaj Mobility AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "609A",
+      "name": "Global X Japan Wholesale Trade & Resource Business ETF",
+      "exchange": "TSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000KTMI02",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "CAI",
-      "name": "CA Immobilien Anlagen AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "610A",
+      "name": "Global X Space Tech Top 10 ETF (ex-Japan)",
+      "exchange": "TSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000641352",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "CPI",
-      "name": "CPI Europe AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "611A",
+      "name": "One ETF Japanese Government Bond 27-30 years",
+      "exchange": "TSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000A21KS2",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "DOC",
-      "name": "DO & CO Aktiengesellschaft",
-      "exchange": "VSE",
-      "asset_type": "Stock",
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "612A",
+      "name": "One ETF JGB Futures Short Index",
+      "exchange": "TSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "AT0000818802",
+      "isin": "",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "EBS",
-      "name": "Erste Group Bank AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000652011",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "ETS",
-      "name": "EuroTeleSites AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT000000ETS9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "EVN",
-      "name": "EVN AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000741053",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "EXO",
-      "name": "EXOR NV",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "NL0012059018",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "FQT",
-      "name": "Frequentis AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "ATFREQUENT09",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "KTN",
-      "name": "KONTRON AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A0E9W5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "LTH",
-      "name": "Linz Textil Holding AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000723606",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "PAL",
-      "name": "Palfinger AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000758305",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "POS",
-      "name": "Porr AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000609607",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "PYT",
-      "name": "Polytec Holding AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A00XX9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "STR",
-      "name": "STRABAG SE",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT000000STR1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "TKA",
-      "name": "Telekom Austria AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000720008",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "UBS",
-      "name": "UBM Development AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000815402",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VER",
-      "name": "VERBUND AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000746409",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VIG",
-      "name": "Vienna Insurance Group AG Wiener Versicherung Gruppe",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000908504",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VLA",
-      "name": "Valneva SE",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "FR0004056851",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "VOE",
-      "name": "voestalpine AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000937503",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "vienna_listed_companies",
-      "provider": "Wiener Boerse",
-      "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
-      "ticker": "WOLF",
-      "name": "Wolftank Group AG",
-      "exchange": "VSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "AT0000A25NJ6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "wse_etf_list",
-      "provider": "GPW",
-      "source_url": "https://www.gpw.pl/etf?isin=PLPZUZM00011",
-      "ticker": "ETFPZUCASH",
-      "name": "ETFPZUCASH",
-      "exchange": "WSE",
+      "source_key": "jse_etf_list",
+      "provider": "JSE",
+      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v94/ETF%20List%20v.94.xlsx",
+      "ticker": "BGFMAI",
+      "name": "Benguela EasyETFs Global AI Revolution Actively Managed ETF",
+      "exchange": "JSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "PLPZUZM00011",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "wse_etf_list",
-      "provider": "GPW",
-      "source_url": "https://www.gpw.pl/etf?isin=PLPZUDG00010",
-      "ticker": "ETFPZULONGDUR",
-      "name": "ETFPZULONGDUR",
-      "exchange": "WSE",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0226D0",
+      "name": "FOCUS 금융반도체지주채권혼합50액티브",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "PLPZUDG00010",
+      "isin": "KR70226D0007",
       "cfi": "",
-      "sector": ""
+      "sector": "Fixed Income"
+    },
+    {
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0227K0",
+      "name": "RISE 미국우주위성통신",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR70227K0007",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0228G0",
+      "name": "ACE 반도체Plus전략산업",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR70228G0002",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "483350",
+      "name": "Dealicious",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR7483350005",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "487400",
+      "name": "KNS SND",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR7487400004",
+      "cfi": "",
+      "sector": "Information Technology"
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "950260",
+      "name": "INGENIA Therapeutics",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR8840280000",
+      "cfi": "",
+      "sector": "Industrials"
     }
   ],
   "vanished": [
     {
-      "source_key": "tase_securities_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "ticker": "SOLT",
-      "name": "SOLTERRA-M",
-      "exchange": "TASE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IL0001690119",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "upcom_registered_securities",
-      "provider": "HNX",
-      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
-      "ticker": "TAN",
-      "name": "Công ty cổ phần Cà phê Thuận An",
-      "exchange": "UPCOM",
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "STAR7",
+      "name": "STAR7",
+      "exchange": "Borsa Italiana",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "VN000000TAN7",
+      "isin": "IT0005466195",
       "cfi": "",
       "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "1EA",
+      "name": "ELECTRONIC ARTS",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "secondary_listing_subset",
+      "official": "true",
+      "isin": "US2855121099",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "2EA",
+      "name": "ELECTRONIC ARTS",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "secondary_listing_subset",
+      "official": "true",
+      "isin": "US2855121099",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "4DD",
+      "name": "DUPONT DE NEMOURS",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "secondary_listing_subset",
+      "official": "true",
+      "isin": "US26614N2018",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "4EA",
+      "name": "ELECTRONIC ARTS",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "secondary_listing_subset",
+      "official": "true",
+      "isin": "US2855121099",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_etfs",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "ticker": "YBTC",
+      "name": "Fineqia Bitcoin Yield ETP",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "LI1444931821",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "01143",
+      "name": "CN ENGY STORAGE",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG5500A1388",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "01246",
+      "name": "BOILLHEALTHCARE",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG1225S1167",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02323",
+      "name": "RENCO HOLDINGS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG749131071",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02974",
+      "name": "ARTGO HOLD-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG0509A1554",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02975",
+      "name": "YOUZAN-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG2164J1172",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02976",
+      "name": "MEXAN-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG6051D1258",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02977",
+      "name": "YUANHENGGAS-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG9877V1138",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02979",
+      "name": "HAOSEN FINT-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG719721147",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02986",
+      "name": "HUISHENG I-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG4643W1235",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02987",
+      "name": "MOG DIGITEC RTS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG6185A1123",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02988",
+      "name": "GREEN LEAD-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG4165P1344",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02994",
+      "name": "GW TERROIR-50K",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG4080L1431",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02997",
+      "name": "TSUGAMI CHI-1K",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG7215M1188",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "06608",
+      "name": "BAIRONG-W",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG0705A1085",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08571",
+      "name": "CH NETCOM-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG2117P1375",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hose_fund_certificate_list",
+      "provider": "HOSE",
+      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/fundcertificate",
+      "ticker": "FUCTVGF3",
+      "name": "Thien Viet Growth Fund 3",
+      "exchange": "HOSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "VN0FUCTVGF39",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "191A",
+      "name": "MIMOSA CO.,LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "2763",
+      "name": "FTGroup CO.,LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "311A",
+      "name": "NPT CO.,LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Health Care"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "3271",
+      "name": "The Global Ltd.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "3681",
+      "name": "V-cube,Inc.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Communication Services"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "4367",
+      "name": "KOEI CHEMICAL COMPANY,LIMITED",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "5022",
+      "name": "REVO International Inc.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Energy"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "5903",
+      "name": "SHINPO CO.,LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "6096",
+      "name": "RareJob,Inc.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "7317",
+      "name": "Matsuya R&D Co.,Ltd",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "provider": "JPX",
+      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+      "ticker": "7940",
+      "name": "WAVELOCK HOLDINGS CO.,LTD.",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "jse_etf_list",
+      "provider": "JSE",
+      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v93/ETF%20List%20v.93%20%281%29.xlsx",
+      "ticker": "RWDVF",
+      "name": "Reitway Global Property Diversified Prescient ETF",
+      "exchange": "JSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "jse_etf_list",
+      "provider": "JSE",
+      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v93/ETF%20List%20v.93%20%281%29.xlsx",
+      "ticker": "STXID",
+      "name": "Satrix Inclusion & Diversity ETF",
+      "exchange": "JSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "043090",
+      "name": "The Technology",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR7043090000",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "299900",
+      "name": "WYSIWYG STUDIOS",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR7299900001",
+      "cfi": "",
+      "sector": "Communication Services"
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "provider": "KRX",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "ticker": "031440",
+      "name": "SF",
+      "exchange": "KRX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR7031440001",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
     }
   ],
   "changed": [
     {
-      "source_key": "wse_listed_companies",
-      "exchange": "WSE",
-      "ticker": "CPA",
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "1BYND",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "CAPITAL PARTNERS SPÓŁKA AKCYJNA",
-          "after": "BUMECH DEFENSE PARTNERS SPÓŁKA AKCYJNA"
+        "isin": {
+          "before": "US08862E1091",
+          "after": "US08862E3071"
         }
       }
     },
     {
-      "source_key": "wse_listed_companies",
-      "exchange": "WSE",
-      "ticker": "PUR",
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "1FRE",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "DE0005785604",
+          "after": "DE000FRE5EN2"
+        }
+      }
+    },
+    {
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "2BYND",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "US08862E1091",
+          "after": "US08862E3071"
+        }
+      }
+    },
+    {
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "2FRE",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "DE0005785604",
+          "after": "DE000FRE5EN2"
+        }
+      }
+    },
+    {
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "4BYND",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "US08862E1091",
+          "after": "US08862E3071"
+        }
+      }
+    },
+    {
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "4FRE",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "DE0005785604",
+          "after": "DE000FRE5EN2"
+        }
+      }
+    },
+    {
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "MLBBO",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "PURE BIOLOGICS SPÓŁKA AKCYJNA",
-          "after": "MULTIQURE SPÓŁKA AKCYJNA"
+          "before": "BEBO HEALTH",
+          "after": "BE MAKER"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00022",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MEXAN-NEW",
+          "after": "MEXAN"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00061",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "GREEN LEAD-NEW",
+          "after": "GREEN LEADER"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00209",
+      "change_types": [
+        "name_change",
+        "isin_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "POLY XVERSE IT",
+          "after": "POLY XVERSE-NEW"
+        },
+        "isin": {
+          "before": "BMG9723F1225",
+          "after": "BMG9723F1555"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00332",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "YUANHENGGAS-NEW",
+          "after": "YUANHENG GAS"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00524",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "GW TERROIR-10K",
+          "after": "GW TERROIR"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00527",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "RUIFENG RENEW",
+          "after": "RF GREEN EN AI"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00745",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "CN CULTURE GP",
+          "after": "CN CULTURE-2000"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01340",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "HUISHENG I-NEW",
+          "after": "HUISHENG INTL"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01432",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "CHINA SHENGMU",
+          "after": "CHINASHENGMU-PF"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01651",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "TSUGAMI CHI-500",
+          "after": "TSUGAMI CHINA"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01745",
+      "change_types": [
+        "name_change",
+        "isin_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "LVJI TECH",
+          "after": "LVJI TECH-NEW"
+        },
+        "isin": {
+          "before": "KYG5804E1098",
+          "after": "KYG5804E1254"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01870",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "ACME INTL HLDGS",
+          "after": "GREEN POWER GP"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02525",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "HESAI-W-NEW",
+          "after": "HESAI-W"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02680",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "INNOVAX HLDGS",
+          "after": "AUSTRAX HLDGS"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02900",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "LVJI TECH",
+          "after": "LVJI TECH-OLD"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02991",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "POLY XVERSE IT",
+          "after": "POLY XVERSE-OLD"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "03313",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "ARTGO HOLD-NEW",
+          "after": "ARTGO HOLDINGS"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "03848",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "HAOSEN FINT-NEW",
+          "after": "HAOSEN FINTECH"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "03903",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "HANHUA FIN",
+          "after": "HANHUA HOLDING"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "06051",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "YOUZAN-NEW",
+          "after": "YOUZAN"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "08071",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "CH NETCOM-NEW",
+          "after": "CH NETCOMTECH"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "08125",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "CHINA NEW HLDGS",
+          "after": "RJVAN"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "08147",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "MILLENNIUM PG",
+          "after": "YUNJING DIGITEC"
+        }
+      }
+    },
+    {
+      "source_key": "hose_listed_stocks",
+      "exchange": "HOSE",
+      "ticker": "JVC",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Vietnam Medical and Pharmaceutical Investment Joint Stock Company",
+          "after": "Japan Vietnam Medical Investment and Development Joint Stock Company"
+        }
+      }
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "exchange": "IDX",
+      "ticker": "BIKE",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "PT Sepeda Bersama Indonesia Tbk",
+          "after": "PT Bhineka Inovasi Ketahanan Energi Tbk"
+        }
+      }
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "exchange": "IDX",
+      "ticker": "KAEF",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Kimia Farma Tbk.",
+          "after": "PT Kimia Farma (Persero) Tbk"
+        }
+      }
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "exchange": "IDX",
+      "ticker": "PIPA",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "PT Multi Makmur Lemindo Tbk.",
+          "after": "PT Oxala Energy International Tbk"
+        }
+      }
+    },
+    {
+      "source_key": "idx_listed_companies",
+      "exchange": "IDX",
+      "ticker": "BIKE",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Sepeda Bersama Indonesia Tbk.",
+          "after": "Bhineka Inovasi Ketahanan Ener"
+        }
+      }
+    },
+    {
+      "source_key": "idx_listed_companies",
+      "exchange": "IDX",
+      "ticker": "KAEF",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Kimia Farma Tbk.",
+          "after": "Kimia Farma (Persero) Tbk."
+        }
+      }
+    },
+    {
+      "source_key": "idx_listed_companies",
+      "exchange": "IDX",
+      "ticker": "PIPA",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Multi Makmur Lemindo Tbk.",
+          "after": "Oxala Energy International Tbk"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "151A",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Dive Inc.",
+          "after": "Dive Group Inc."
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "2501",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "SAPPORO HOLDINGS LIMITED",
+          "after": "SAPPORO BREWERIES LIMITED"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "3182",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Oisix ra daichi Inc.",
+          "after": "Oisix Inc."
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "3226",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "3249",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "3462",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "3626",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "TIS Inc.",
+          "after": "TISI Inc."
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "3750",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "ADR120S,Inc.",
+          "after": "ADR Biomedical Holdings Inc."
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "509A",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "5891",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Kairikiya Co.,Ltd.",
+          "after": "SAKIGAKE Holdings Co.,Ltd."
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "6420",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "GALILEI CO.LTD.",
+          "after": "GALILEI HOLDINGS CO.LTD."
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "6459",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "DAIWA INDUSTRIES LTD.",
+          "after": "DAIWA LTD."
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "7561",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "HURXLEY CORPORATION",
+          "after": "HURXLEY HOLDINGS CORPORATION"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "8951",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "8953",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "8961",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "8964",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Frontier Real Estate Investment Corporation",
+          "after": "Mitsui Fudosan Retail Fund Investment Corporation"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "8967",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "jpx_listed_issues",
+      "exchange": "TSE",
+      "ticker": "9284",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "asset_type": {
+          "before": "ETF",
+          "after": "Stock"
+        }
+      }
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "exchange": "KOSDAQ",
+      "ticker": "070300",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Xcure",
+          "after": "QuantumRail"
+        }
+      }
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "exchange": "KOSDAQ",
+      "ticker": "291230",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "NP",
+          "after": "Com2uS N"
+        }
+      }
+    },
+    {
+      "source_key": "krx_listed_companies",
+      "exchange": "KOSDAQ",
+      "ticker": "291650",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Aptamer Sciences",
+          "after": "CHOOLIP SCIENCE"
         }
       }
     }

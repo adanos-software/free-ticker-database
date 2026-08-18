@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-08-15T07:10:36Z`
+Generated at: `2026-08-18T07:06:32Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `1155`
-- Missing stock sectors: `1905`
+- Missing stock sectors: `1913`
 - Missing ETF categories: `409`
-- Official symbol collisions tracked in exchange references: `9676`
+- Official symbol collisions tracked in exchange references: `9678`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4787`
 
 ## Next Safe Batches
@@ -20,12 +20,12 @@ Generated at: `2026-08-15T07:10:36Z`
 | 4 | NASDAQ | missing_isin_primary | 166 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
 | 5 | SET | missing_isin_primary | 140 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
 | 6 | BATS | missing_isin_primary | 116 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
-| 7 | TSXV | missing_isin_primary | 97 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
-| 8 | NYSE ARCA | missing_isin_primary | 97 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
-| 9 | TSX | missing_sector_stock | 96 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
-| 10 | BATS | missing_etf_category | 95 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 11 | TSX | missing_isin_primary | 77 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
-| 12 | NASDAQ | missing_etf_category | 68 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 7 | TSE | missing_sector_stock | 8 | candidate_for_official_followup | Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update. | yes |
+| 8 | TSXV | missing_isin_primary | 97 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
+| 9 | NYSE ARCA | missing_isin_primary | 97 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
+| 10 | TSX | missing_sector_stock | 96 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
+| 11 | BATS | missing_etf_category | 95 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 12 | TSX | missing_isin_primary | 77 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 
