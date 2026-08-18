@@ -122,6 +122,11 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
     },
 }
 
+# Frankfurt's official T7 directory lists thousands of unique-mnemonic foreign
+# dual listings. Keep those rows for coverage/status matching, but do not expand
+# the public FSX universe from them.
+SUPPLEMENT_REFRESH_ONLY_EXCHANGES = {"FSX"}
+
 SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
     re.compile(r"\babs trust\b", re.IGNORECASE),
 ]
@@ -186,6 +191,7 @@ def build_supplement_rows(
         "safe_missing_rows": 0,
         "refreshable_existing_rows": 0,
         "colliding_rows_skipped": 0,
+        "refresh_only_missing_rows_skipped": 0,
         "by_exchange": {},
     }
 
@@ -216,6 +222,10 @@ def build_supplement_rows(
         if exchanges and exchanges != {exchange}:
             summary["colliding_rows_skipped"] += 1
             stats["colliding_rows_skipped"] += 1
+            continue
+        if not exchanges and exchange in SUPPLEMENT_REFRESH_ONLY_EXCHANGES:
+            summary["refresh_only_missing_rows_skipped"] += 1
+            stats["refresh_only_missing_rows_skipped"] = stats.get("refresh_only_missing_rows_skipped", 0) + 1
             continue
         if not exchanges and len(eligible_missing_exchanges_by_ticker.get(ticker, set())) > 1:
             summary["colliding_rows_skipped"] += 1

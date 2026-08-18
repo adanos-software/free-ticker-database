@@ -19043,9 +19043,51 @@ def merge_summary_errors(
     return [errors_by_source[source_key] for source_key in sorted(errors_by_source)]
 
 
+PRESERVED_SOURCE_GOVERNANCE_FIELDS = (
+    "license_status",
+    "license_name",
+    "license_url",
+    "derived_facts_redistribution_status",
+    "raw_redistribution_allowed",
+    "attribution_required",
+    "commercial_use_status",
+    "terms_version",
+    "terms_sha256",
+    "license_reviewed_at",
+)
+
+
+def load_existing_source_metadata() -> dict[str, dict[str, Any]]:
+    if not MASTERFILE_SOURCES_JSON.exists():
+        return {}
+    try:
+        payload = json.loads(MASTERFILE_SOURCES_JSON.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    if not isinstance(payload, list):
+        return {}
+    return {
+        str(row.get("key", "")): row
+        for row in payload
+        if isinstance(row, dict) and row.get("key")
+    }
+
+
 def persist_source_metadata() -> None:
     ensure_output_dirs()
-    payload = [asdict(source) for source in OFFICIAL_SOURCES]
+    existing_by_key = load_existing_source_metadata()
+    payload: list[dict[str, Any]] = []
+    for source in OFFICIAL_SOURCES:
+        row = asdict(source)
+        previous = existing_by_key.get(source.key, {})
+        for field in PRESERVED_SOURCE_GOVERNANCE_FIELDS:
+            if field not in previous:
+                continue
+            value = previous[field]
+            if value in ("", None):
+                continue
+            row[field] = value
+        payload.append(row)
     MASTERFILE_SOURCES_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 

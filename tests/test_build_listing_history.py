@@ -98,3 +98,64 @@ def test_applied_nasdaq_delete_enters_history() -> None:
     rows = delisting_apply_status_rows(payload)
     assert [row["listing_key"] for row in rows] == ["NASDAQ::DEAD"]
     assert rows[0]["evidence_status"] == "official"
+
+
+def test_reviewed_metadata_updates_stamp_taxonomy_changes(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "scripts.build_listing_history.load_csv",
+        lambda path: (
+            [{
+                "ticker": "WDNA",
+                "exchange": "BATS",
+                "field": "etf_category",
+                "decision": "update",
+                "proposed_value": "Equity",
+            }]
+            if str(path).endswith("metadata_updates.csv")
+            else []
+        ),
+    )
+    previous = [{
+        "listing_key": "BATS::WDNA", "ticker": "WDNA", "exchange": "BATS",
+        "name": "WisdomTree BioRevolution Fund", "asset_type": "ETF",
+        "etf_category": "", "isin": "US97717Y6187",
+    }]
+    current = [{**previous[0], "etf_category": "Equity"}]
+    from scripts.build_listing_history import load_change_evidence
+    event = build_event_rows(previous, current, "2026-08-18T06:00:00Z", load_change_evidence())[0]
+    assert event["event_type"] == "taxonomy_changed"
+    assert event["evidence_status"] == "reviewed"
+    assert event["source_report"] == "data/review_overrides/metadata_updates.csv"
+    assert event["observation_id"] == "BATS::WDNA:etf_category"
+
+
+def test_evidenced_isin_fill_stamps_inferred_country_change() -> None:
+    previous = [{
+        "listing_key": "SET::AAA", "ticker": "AAA", "exchange": "SET",
+        "name": "Alpha", "asset_type": "Stock", "country": "Thailand",
+        "country_code": "TH", "isin": "",
+    }]
+    current = [{
+        **previous[0],
+        "isin": "US0378331005",
+        "country": "United States",
+        "country_code": "US",
+    }]
+    evidence = {
+        ("SET::AAA", "isin", "*", "US0378331005"): {
+            "source_key": "review_metadata_updates",
+            "source_url": "",
+            "source_report": "data/review_overrides/metadata_updates.csv",
+            "observation_id": "SET::AAA:isin",
+            "evidence_status": "reviewed",
+        }
+    }
+    events = {event["field_name"]: event for event in build_event_rows(
+        previous, current, "2026-08-18T07:00:00Z", evidence
+    )}
+    assert events["isin"]["evidence_status"] == "reviewed"
+    assert events["country"]["evidence_status"] == "verified"
+    assert events["country_code"]["evidence_status"] == "verified"
+    assert events["country"]["new_value"] == "United States"
+    assert events["country_code"]["observation_id"].endswith(":isin_prefix_country")
+

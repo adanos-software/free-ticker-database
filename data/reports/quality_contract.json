@@ -1,0 +1,586 @@
+{
+  "profile": "merge",
+  "status": "pass",
+  "merge_status": "pass",
+  "stable_status": "fail",
+  "complete_status": "fail",
+  "dataset_sha256": "3b59cf7a78427fe361f853e524be6ddfb5037382d768496d7adf53a48295f1ac",
+  "source_manifest_sha256": "15bb7f9942382449d220b19d57b49c030cdb4de666dc13f5391ef1a7bb2a39e5",
+  "git_commit": "b9bf54f1f10664cf2834418c475ee5b14e320e23",
+  "summary": {
+    "checks": 20,
+    "merge_failures": 0,
+    "stable_failures": 5,
+    "complete_failures": 11,
+    "selected_failures": 0
+  },
+  "checks": [
+    {
+      "name": "legacy_database_validation",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "summary": {
+          "ticker_rows": 63794,
+          "listing_rows": 91977,
+          "adanos_reference_rows": 63794,
+          "entry_quality_rows": 91977,
+          "error_gates": 84,
+          "failed_error_gates": 0,
+          "info_gates": 5
+        }
+      }
+    },
+    {
+      "name": "reviewable_source_and_workflow_policy",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "violations": [],
+        "count": 0
+      }
+    },
+    {
+      "name": "canonical_v4_exports_and_schema",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "error": "",
+        "counts": {
+          "sources": 145,
+          "source_observations": 156774,
+          "venues": 87,
+          "issuers": 72055,
+          "instruments": 72055,
+          "listings": 91977,
+          "identifier_assertions": 165933,
+          "field_assertions": 204644,
+          "provenance_gaps": 266420,
+          "listing_events": 61196,
+          "coverage_contracts": 134
+        }
+      }
+    },
+    {
+      "name": "safe_merge_gate",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "status": "pass",
+        "summary": {
+          "before_rows": 91977,
+          "after_rows": 91977,
+          "overall_shrink_pct": 0.0,
+          "removed_rows": 0,
+          "evidenced_removed_rows": 0,
+          "unevidenced_removed_rows": 0,
+          "critical_field_changes": 632,
+          "unevidenced_critical_field_changes": 0,
+          "before_duplicate_listing_keys": 0,
+          "after_duplicate_listing_keys": 0,
+          "generated_official_change_evidence_rows": 9
+        }
+      }
+    },
+    {
+      "name": "current_snapshot_keyset",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "listings": 91977,
+        "snapshot": 91977,
+        "missing": 0,
+        "extra": 0,
+        "duplicate_listing_keys": 0,
+        "duplicate_snapshot_keys": 0
+      }
+    },
+    {
+      "name": "identifier_adjudications_enforced",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "decisions": 5045,
+        "current_conflict_groups": 1548,
+        "failure_count": 0,
+        "sample": []
+      }
+    },
+    {
+      "name": "reference_observations_classified",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "rows": 168261,
+        "unclassified": 0
+      }
+    },
+    {
+      "name": "source_registry_governance_schema",
+      "scope": "merge",
+      "status": "pass",
+      "details": {
+        "sources": 138,
+        "failure_count": 0,
+        "sample": []
+      }
+    },
+    {
+      "name": "zero_unresolved_identifier_conflicts",
+      "scope": "stable",
+      "status": "fail",
+      "details": {
+        "conflict_groups": 1548,
+        "sample": [
+          "AN8068571086",
+          "ARP6356B1059",
+          "ARP6558L1178",
+          "ARP689251337",
+          "ARP7905G1652",
+          "AT0000743059",
+          "AT0000758305",
+          "AT0000785407",
+          "AT0000834007",
+          "AT0000922554",
+          "AT0000946652",
+          "AT0000A18XM4",
+          "AT0000A21KS2",
+          "AT0000A3EPA4",
+          "AT0000APOST4",
+          "AU000000ADY7",
+          "AU000000ANO7",
+          "AU000000BPT9",
+          "AU000000CRB1",
+          "AU000000CTO0",
+          "AU000000CYG6",
+          "AU000000DMP0",
+          "AU000000ILU1",
+          "AU000000IMD5",
+          "AU000000IVX4",
+          "AU000000LLC3",
+          "AU000000MCP2",
+          "AU000000MGX7",
+          "AU000000NUF3",
+          "AU000000ORI1",
+          "AU000000PLS0",
+          "AU000000PNN7",
+          "AU000000RAC3",
+          "AU000000RDS3",
+          "AU000000RFF5",
+          "AU000000SHV6",
+          "AU000000STX7",
+          "AU000000SVM6",
+          "AU000000TBR5",
+          "AU000000TLG7",
+          "AU000000UOS4",
+          "AU000000WEC5",
+          "AU000000WOW2",
+          "AU000000YAL0",
+          "AU0000026171",
+          "AU00000BEAR2",
+          "AU0000143729",
+          "AU0000148496",
+          "AU0000152803",
+          "AU0000233397"
+        ]
+      }
+    },
+    {
+      "name": "official_name_reconciliation_resolved",
+      "scope": "stable",
+      "status": "fail",
+      "details": {
+        "proposed_rows": 1784,
+        "sample": [
+          "ADX::GRMNY",
+          "ADX::JPANI",
+          "ADX::PKSTN",
+          "ADX::UAED",
+          "AMS::500E",
+          "AMS::ERC",
+          "AMS::EXS1",
+          "AMS::IAEX",
+          "AMS::IEGA",
+          "AMS::LQDA",
+          "AMS::SPYL",
+          "AMS::TPSA",
+          "AMS::USCE",
+          "B3::BCTE39",
+          "BCBA::BA-C",
+          "BK::ALIMTIAZ",
+          "BME::COXG",
+          "BME::HBX",
+          "BME::LYXIB",
+          "BSE_IN::EBIX",
+          "BVB::IARV",
+          "BVB::ICGROETF",
+          "BVB::MACO",
+          "BVB::SATU",
+          "Borsa Italiana::DBA",
+          "Borsa Italiana::ICOP",
+          "Borsa Italiana::KME",
+          "Bursa::0093",
+          "Bursa::0148",
+          "Bursa::0154",
+          "Bursa::0155",
+          "Bursa::0158",
+          "Bursa::0172",
+          "Bursa::0177",
+          "Bursa::0196",
+          "Bursa::0198",
+          "Bursa::0212",
+          "Bursa::0218",
+          "Bursa::0221",
+          "Bursa::0222",
+          "Bursa::0228",
+          "Bursa::0230",
+          "Bursa::0257",
+          "Bursa::0297",
+          "Bursa::0303",
+          "Bursa::0306",
+          "Bursa::0373",
+          "Bursa::0385",
+          "Bursa::1198",
+          "Bursa::2054"
+        ]
+      }
+    },
+    {
+      "name": "all_official_full_coverage_contracts_pass",
+      "scope": "stable",
+      "status": "fail",
+      "details": {
+        "contracts": 134,
+        "failing_full": 86,
+        "sample": [
+          "ADX::ETF",
+          "ADX::Stock",
+          "AMS::ETF",
+          "AMS::Stock",
+          "B3::ETF",
+          "B3::Stock",
+          "BATS::ETF",
+          "BATS::Stock",
+          "BHB::Stock",
+          "BIST::ETF",
+          "BIST::Stock",
+          "BK::Stock",
+          "BME::ETF",
+          "BME::Stock",
+          "BSE_IN::ETF",
+          "BSE_IN::Stock",
+          "BVB::ETF",
+          "BVB::Stock",
+          "Borsa Italiana::ETF",
+          "Borsa Italiana::Stock",
+          "CSE_LK::Stock",
+          "CSE_MA::Stock",
+          "DFM::ETF",
+          "DFM::Stock",
+          "Euronext::ETF",
+          "Euronext::Stock",
+          "FSX::ETF",
+          "FSX::Stock",
+          "HKEX::ETF",
+          "HKEX::Stock",
+          "HNX::Stock",
+          "IDX::Stock",
+          "ISE::Stock",
+          "KOSDAQ::Stock",
+          "KRX::ETF",
+          "KRX::Stock",
+          "LSE::ETF",
+          "LSE::Stock",
+          "MSX::Stock",
+          "NASDAQ::ETF",
+          "NASDAQ::Stock",
+          "NEO::ETF",
+          "NEO::Stock",
+          "NGX::Stock",
+          "NSE_IN::ETF",
+          "NSE_IN::Stock",
+          "NSE_KE::ETF",
+          "NSE_KE::Stock",
+          "NYSE::ETF",
+          "NYSE::Stock"
+        ]
+      }
+    },
+    {
+      "name": "contributing_source_licenses_verified",
+      "scope": "stable",
+      "status": "fail",
+      "details": {
+        "sources": 66,
+        "failures": 65,
+        "sample": [
+          {
+            "source_key": "adx_market_watch",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "b3_bdr_etfs",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "b3_instruments_equities",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "b3_listed_etfs",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bahrain_bourse_listed_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bist_kap_mkk_listed_securities",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bme_etf_list",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bme_listed_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bme_security_prices_directory",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bolsa_santiago_instruments",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "boursa_kuwait_stocks",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bse_india_scrips",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bvb_fund_units_directory",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "bvb_shares_directory",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "cboe_canada_listing_directory",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "cse_lk_all_security_code",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "cse_lk_company_info_summary",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "cse_ma_listed_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "deutsche_boerse_etfs_etps",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "deutsche_boerse_listed_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "dfm_listed_securities",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "euronext_equities",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "euronext_etfs",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "hkex_securities_list",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "hnx_listed_securities",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "idx_company_profiles",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "idx_listed_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "jpx_listed_issues",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "jpx_tse_stock_detail",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "krx_etf_finder",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "krx_listed_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "lse_company_reports",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "lse_instrument_directory",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "lse_price_explorer",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "muscat_securities_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "nasdaq_listed",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "nasdaq_other_listed",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "nasdaq_trading_system_adds_deletes",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "ngx_company_profile_directory",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "ngx_equities_price_list",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "nse_india_securities_available",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "nse_ke_listed_companies",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "nzx_instruments",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "otc_markets_security_profile",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "otc_markets_stock_screener",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "pse_listed_company_directory",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "psx_dps_symbols",
+            "reason": "license_status is not verified_open"
+          },
+          {
+            "source_key": "psx_listed_companies",
+            "reason": "license_status is not verified_open"
+          }
+        ]
+      }
+    },
+    {
+      "name": "field_level_provenance_complete",
+      "scope": "stable",
+      "status": "fail",
+      "details": {
+        "gap_rows": 266420
+      }
+    },
+    {
+      "name": "venue_mic_mapping_complete",
+      "scope": "stable",
+      "status": "pass",
+      "details": {
+        "missing_venues": 0,
+        "sample": []
+      }
+    },
+    {
+      "name": "complete_listing_isin_coverage",
+      "scope": "complete",
+      "status": "fail",
+      "details": {
+        "missing_rows": 1554
+      }
+    },
+    {
+      "name": "complete_country_metadata",
+      "scope": "complete",
+      "status": "fail",
+      "details": {
+        "missing_rows": 196
+      }
+    },
+    {
+      "name": "complete_stock_sector_metadata",
+      "scope": "complete",
+      "status": "fail",
+      "details": {
+        "missing_rows": 14490
+      }
+    },
+    {
+      "name": "complete_etf_category_metadata",
+      "scope": "complete",
+      "status": "fail",
+      "details": {
+        "missing_rows": 2651
+      }
+    },
+    {
+      "name": "zero_in_scope_official_reference_gaps",
+      "scope": "complete",
+      "status": "fail",
+      "details": {
+        "missing_rows": 47806
+      }
+    },
+    {
+      "name": "all_target_venues_have_full_contracts",
+      "scope": "complete",
+      "status": "fail",
+      "details": {
+        "partial_contracts": 48
+      }
+    }
+  ]
+}

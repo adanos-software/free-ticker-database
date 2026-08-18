@@ -314,7 +314,7 @@ def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     exchanges = set(args.exchange or EXCHANGE_TO_FIGI)
     asset_types = set(args.asset_type or ["ETF", "Stock"])
-    api_key = os.environ.get("OPENFIGI_API_KEY", "").strip()
+    api_key = os.environ.get("OPENFIGI_API_KEY", "").strip() or os.environ.get("OPENFIGI", "").strip()
 
     rows = load_missing_rows(args.tickers_csv, exchanges, asset_types)
     if args.offset:

@@ -377,10 +377,14 @@ def strict_cleaned_rows() -> tuple[list[dict[str, str]], dict[tuple[str, str], s
     contamination hook.  A stale or contradictory ISIN override can therefore
     reintroduce a conflict after ``strict_cleanse``.  This final pass makes the
     postcondition apply to the exact rows that are exported.
+
+    Intermediate identity decisions from ``strict_cleanse`` are discarded here so
+    the quarantine ledger and export assertion describe the exported rows only.
     """
 
     if _ORIGINAL_CLEANED_ROWS is None:
         raise RuntimeError("strict_cleaned_rows used outside canonical rebuild")
+    _DECISIONS.clear()
     rows, alias_type_lookup = _ORIGINAL_CLEANED_ROWS()
     rows = reconcile_exact_official_names(
         rows, apply_updates=_APPLY_OFFICIAL_NAME_UPDATES
@@ -504,6 +508,14 @@ def rebuild_validation_dependents() -> None:
         raise SystemExit("README snapshot rebuild failed")
 
 
+def _load_listings_csv() -> list[dict[str, str]]:
+    path = DATA_DIR / "listings.csv"
+    if not path.exists():
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
 def rebuild(
     *, apply_identity_fixes: bool = False, apply_official_name_updates: bool = False
 ) -> dict[str, Any]:
@@ -513,6 +525,7 @@ def rebuild(
     _APPLY_OFFICIAL_NAME_UPDATES = apply_official_name_updates
     _DECISIONS.clear()
     _NAME_RECONCILIATIONS.clear()
+    previous_listings = _load_listings_csv()
     normalize_source_registry.build()
     dataset = _dataset_module()
     _ORIGINAL_CLEANSE = dataset.cleanse_conflicting_isin_rows
@@ -541,7 +554,7 @@ def rebuild(
     unresolved_identity_conflicts = assert_identity_decisions_match_export()
     quarantine_summary = write_quarantine_report()
     quarantine_summary["remaining_conflict_groups"] = unresolved_identity_conflicts
-    history_summary = build_listing_history.build_history()
+    history_summary = build_listing_history.build_history(previous_listings=previous_listings)
     # Coverage contracts depend on reports derived from this exact rebuilt
     # listing snapshot. Rebuild those inputs here instead of trusting stale
     # committed reports from an earlier dataset.

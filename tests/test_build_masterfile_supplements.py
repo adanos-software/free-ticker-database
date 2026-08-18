@@ -641,3 +641,46 @@ def test_build_supplement_rows_allows_tsx_replacement_for_dropped_wrong_venue_ro
     assert summary["safe_missing_rows"] == 1
     assert summary["refreshable_existing_rows"] == 0
     assert summary["colliding_rows_skipped"] == 0
+
+
+def test_build_supplement_rows_refreshes_existing_fsx_without_universe_expansion():
+    core_rows = [
+        {"ticker": "APC", "exchange": "FSX", "name": "APPLE INC.", "isin": "US0378331005"},
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "APC",
+            "name": "APPLE INC.",
+            "exchange": "FSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+            "source_url": "https://example.com/xfra.csv",
+            "isin": "US0378331005",
+        },
+        {
+            "ticker": "000",
+            "name": "BITZERO HOLDINGS  O.N.",
+            "exchange": "FSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+            "source_url": "https://example.com/xfra.csv",
+            "isin": "CA09175N1096",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert [row["ticker"] for row in rows] == ["APC"]
+    assert summary["refreshable_existing_rows"] == 1
+    assert summary["safe_missing_rows"] == 0
+    assert summary["refresh_only_missing_rows_skipped"] == 1
+    assert summary["by_exchange"]["FSX"] == {
+        "safe_missing_rows": 0,
+        "refreshable_existing_rows": 1,
+        "colliding_rows_skipped": 0,
+        "refresh_only_missing_rows_skipped": 1,
+    }

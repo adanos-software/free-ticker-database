@@ -1341,6 +1341,44 @@ def test_apply_official_exchange_corrections_keeps_non_placeholder_same_exchange
     assert corrected[0]["name"] == "Steer Technologies Inc."
 
 
+def test_apply_official_exchange_corrections_skips_frankfurt_t7_mnemonic_names(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "BZZ",
+        "name": "Bank of Montreal",
+        "exchange": "FSX",
+        "asset_type": "Stock",
+        "country": "Canada",
+        "country_code": "CA",
+        "sector": "",
+        "isin": "CA0636711016",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("BZZ", "Stock"): (
+                {
+                    "ticker": "BZZ",
+                    "exchange": "FSX",
+                    "asset_type": "Stock",
+                    "name": "BK MONTREAL          CD 2",
+                    "source_key": rebuild_dataset.FRANKFURT_T7_DIRECTORY_SOURCE_KEY,
+                    "reference_scope": "exchange_directory",
+                    "isin": "CA0636711016",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["name"] == "Bank of Montreal"
+
+
 def test_apply_official_exchange_corrections_moves_six_etf_to_euronext_on_exact_official_match(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -1855,6 +1893,115 @@ def test_load_active_official_isin_fallbacks_only_keeps_unique_active_official_v
         rebuild_dataset.load_active_official_isin_fallbacks.cache_clear()
 
     assert fallbacks == {("AAA", "LSE", "Stock"): "GB0002634946"}
+
+
+def test_load_active_official_isin_fallbacks_skips_frankfurt_t7_share_class_rows(tmp_path, monkeypatch):
+    from scripts import rebuild_dataset
+
+    reference_csv = tmp_path / "reference.csv"
+    with reference_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "ticker",
+                "exchange",
+                "asset_type",
+                "official",
+                "listing_status",
+                "reference_scope",
+                "source_key",
+                "isin",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(
+            [
+                {
+                    "ticker": "I8X",
+                    "exchange": "FSX",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "exchange_directory",
+                    "source_key": rebuild_dataset.FRANKFURT_T7_DIRECTORY_SOURCE_KEY,
+                    "isin": "NO0013536078",
+                },
+                {
+                    "ticker": "AAA",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "listed_companies_subset",
+                    "source_key": "lse_listed_companies",
+                    "isin": "GB0002634946",
+                },
+            ]
+        )
+
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_REFERENCE_CSV", reference_csv)
+    rebuild_dataset.load_active_official_isin_fallbacks.cache_clear()
+    try:
+        fallbacks = rebuild_dataset.load_active_official_isin_fallbacks()
+    finally:
+        rebuild_dataset.load_active_official_isin_fallbacks.cache_clear()
+
+    assert fallbacks == {("AAA", "LSE", "Stock"): "GB0002634946"}
+
+
+def test_active_official_depositary_listing_keys_skip_frankfurt_t7_adr_mnemonics():
+    from scripts.rebuild_dataset import (
+        FRANKFURT_T7_DIRECTORY_SOURCE_KEY,
+        REVIEWED_DEPOSITARY_PATTERN,
+        active_official_depositary_listing_keys,
+    )
+
+    rows = [
+        {
+            "ticker": "MV90",
+            "exchange": "FSX",
+            "asset_type": "Stock",
+            "official": "true",
+            "listing_status": "active",
+            "source_key": FRANKFURT_T7_DIRECTORY_SOURCE_KEY,
+            "name": "AMERICA MOVIL SAB ADR/20",
+        },
+        {
+            "ticker": "ABEV",
+            "exchange": "NYSE",
+            "asset_type": "Stock",
+            "official": "true",
+            "listing_status": "active",
+            "source_key": "nyse_listed",
+            "name": "Ambev S.A. American Depositary Shares",
+        },
+    ]
+    assert active_official_depositary_listing_keys(rows, REVIEWED_DEPOSITARY_PATTERN) == {
+        ("ABEV", "NYSE")
+    }
+
+
+def test_should_exclude_row_keeps_allowlisted_frankfurt_unit_false_positives(monkeypatch):
+    from scripts import rebuild_dataset
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_preferred_allowlist",
+        lambda: {("46T", "FSX"), ("ICP", "FSX"), ("MY4", "FSX")},
+    )
+    for ticker, name in (
+        ("46T", "GPT Group"),
+        ("ICP", "Panamax AG"),
+        ("MY4", "Goodman Group"),
+    ):
+        assert rebuild_dataset.should_exclude_row(
+            {
+                "ticker": ticker,
+                "exchange": "FSX",
+                "asset_type": "Stock",
+                "name": name,
+            }
+        ) is False
 
 
 def test_load_active_official_sector_fallbacks_only_keeps_unique_active_official_values(tmp_path, monkeypatch):

@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 80620,
-    "matched": 56861,
-    "collisions": 9676,
-    "missing": 14083
+    "official_symbols": 98636,
+    "matched": 64868,
+    "collisions": 13621,
+    "missing": 20147
   },
   "exchanges": [
     {
@@ -1884,6 +1884,147 @@
           "ticker": "ABBS",
           "name": "AB SCIENCE BSA",
           "exchange": "Euronext"
+        }
+      ]
+    },
+    {
+      "exchange": "FSX",
+      "official_symbols": 18016,
+      "matched": 8007,
+      "collisions": 3945,
+      "missing": 6064,
+      "collision_examples": [
+        {
+          "ticker": "00X0",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XJ",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XK",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XL",
+          "name": "WITR.H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XM",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XN",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XP",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XQ",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XR",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "00XS",
+          "name": "WITR H.COM.SEC.Z12/UN.IDX",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "000",
+          "name": "BITZERO HOLDINGS  O.N.",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "00D0",
+          "name": "SOUTH MANGAN.INV.  HD-,05",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "0130",
+          "name": "JD.COM INC.   SDR",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "01R",
+          "name": "DATAWALK B-H      ZY -,10",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "021",
+          "name": "SFS GROUP AG NA.   SF-,10",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "024",
+          "name": "MASTERMYNE GROUP LTD.",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "03N1",
+          "name": "CRETE PLASTICS   EO 1,43",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "04QA",
+          "name": "NORDEA BANK SP.ADR/1  B",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "04T",
+          "name": "TIAN GE INT.HLDGS DL-0001",
+          "exchange": "FSX"
+        },
+        {
+          "ticker": "04X",
+          "name": "PERSONALIS INC. DL-,001",
+          "exchange": "FSX"
         }
       ]
     },

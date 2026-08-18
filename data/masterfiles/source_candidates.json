@@ -1237,8 +1237,8 @@
     "expected_format": "boerse_stuttgart_equities_directory",
     "implementation_status": "todo",
     "priority": "high",
-    "blocker": "Official venue directory candidate is not yet parsed; provider-validated rows remain source-gapped until listing-keyed official coverage is implemented.",
-    "notes": "Research candidate for the active Stuttgart cash-market directory. No identifier, name, or sector fill is authorized until a reproducible official parser and exact listing-key matching are in place."
+    "blocker": "No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts.",
+    "notes": "2026-08-18 research: Boerse Stuttgart distributes master data to vendors and research applicants, not as a public T7-style CSV. Do not scrape the website or invent identifiers, names, or sectors until a licensed, reproducible official feed exists."
   },
   {
     "key": "munich_stock_exchange_directory",

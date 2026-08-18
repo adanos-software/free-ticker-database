@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-15T07:08:36Z",
-  "rows": 150347,
+  "generated_at": "2026-08-18T05:44:22Z",
+  "rows": 168363,
   "exchanges": [
     "ADX",
     "AMS",
@@ -29,6 +29,7 @@
     "DSE_TZ",
     "EGX",
     "Euronext",
+    "FSX",
     "GSE",
     "HEL",
     "HKEX",
@@ -126,6 +127,7 @@
     "dfm_listed_securities": 71,
     "dse_tz_listed_companies": 17,
     "egx_listed_stocks": 191,
+    "deutsche_boerse_frankfurt_all_tradable_equities": 18016,
     "gse_listed_companies": 18,
     "nasdaq_nordic_helsinki_shares": 191,
     "nasdaq_nordic_helsinki_etfs": 2,
@@ -410,6 +412,14 @@
       "mode": "network",
       "rows": 5080,
       "generated_at": "2026-07-27T10:06:05Z"
+    },
+    "deutsche_boerse_frankfurt_all_tradable_equities": {
+      "provider": "Deutsche Boerse",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 18016,
+      "generated_at": "2026-08-18T05:44:22Z"
     },
     "six_equity_issuers": {
       "provider": "SIX",
@@ -1464,7 +1474,8 @@
     "sec_company_tickers_exchange": "network",
     "otc_markets_security_profile": "network",
     "otc_markets_stock_screener": "unavailable",
-    "nasdaq_trading_system_adds_deletes": "network"
+    "nasdaq_trading_system_adds_deletes": "network",
+    "deutsche_boerse_frankfurt_all_tradable_equities": "network"
   },
   "errors": [
     {
@@ -1529,14 +1540,12 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-15T07:08:36Z",
+    "generated_at": "2026-08-18T05:44:22Z",
     "selected_source_keys": [
-      "nasdaq_listed",
-      "nasdaq_other_listed"
+      "deutsche_boerse_frankfurt_all_tradable_equities"
     ],
     "source_modes": {
-      "nasdaq_listed": "network",
-      "nasdaq_other_listed": "network"
+      "deutsche_boerse_frankfurt_all_tradable_equities": "network"
     }
   }
 }
