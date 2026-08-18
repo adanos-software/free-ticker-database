@@ -2,6 +2,41 @@
 
 ## [Unreleased]
 
+## [3.34.0] - 2026-08-18
+
+### Summary
+
+**Canonical v4 foundation and listing-keyed evidence release.** Publishes the fail-closed canonical rebuild, official Frankfurt directory, ISO MIC mapping, and gated ISIN/taxonomy fills accumulated since v3.33.0. This is a `merge`-profile dataset release, not a `stable` or `complete` claim: unresolved identity groups, unverified source licenses, and remaining ISIN/sector gaps stay explicit.
+
+### Added
+
+- Reviewable canonical v4 pipeline: listing-keyed identity adjudication, fail-closed merge evidence, source/coverage contracts, and CSV plus PostgreSQL canonical exports.
+- Official Deutsche Boerse T7 Frankfurt all-tradable directory (`XFRA` → `FSX`), refresh-only so extra dual listings are not dumped into the public set.
+- ISO 10383 MIC mapping for every venue, gated Nasdaq Trader `Delete` handling, and listing-keyed SET SEC ISIN plus Cboe/Yahoo ETF evidence.
+
+### Changed
+
+- Daily masterfile, Nasdaq-new-listing, symbol-change, and delisting workflows now rebuild through `scripts/rebuild_canonical.py` and `scripts/check_safe_merge.py`.
+- Tag releases enforce `merge --strict` and keep `stable`/`complete` advisory until licenses, official-full contracts, provenance, and identity are actually earned.
+- Filled residual US ETF ISINs from gated Yahoo evidence, then 281 same-ISIN non-OTC peer sector/category values plus `NYSE::GCPB` (`US38151N8092`).
+- Rotated official masterfiles and published scheduled Nasdaq, symbol-change, drift, delisting, and OpenFIGI validation refreshes; corrected JPX REIT asset-type inference.
+
+### Fixed
+
+- Stopped same-ticker unique-name ISIN copies from filling OTC peers from BATS/NASDAQ namesakes.
+- Kept Frankfurt T7 as listing presence rather than identity, so bilingual/short official names do not emit false ISIN or name mismatches.
+- Identity apply remains limited to decisive families; proposed official-name updates and the 749 `official_exact_listing_match` identifier clears are not bulk-applied.
+
+### Safety
+
+- Unknown legal terms stay `review_required`; only SEC is `verified_open`. No license, ISIN, or sector was invented to pass `stable`/`complete`.
+- FSX supplement extras remain out of the database. Unevidenced listing drops and critical-field changes still fail closed.
+
+### Verification
+
+- `python -m pytest tests/ -q` and `scripts/validate_database.py` are re-run by the tag workflow, together with `scripts/build_release_acceptance_report.py --fail-on-failure` and `scripts/build_quality_contract.py --profile merge --strict`.
+- Snapshot after the latest canonical rebuild: 63,790 primary tickers, 91,977 listing rows, 97.9% ISIN coverage, 97.0% sector/category coverage.
+
 ## [3.33.0] - 2026-08-06
 
 ### Summary
