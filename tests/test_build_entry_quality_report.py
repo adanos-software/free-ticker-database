@@ -9,6 +9,7 @@ from scripts.build_entry_quality_report import (
     write_csv,
     write_markdown,
 )
+from scripts.rebuild_dataset import FRANKFURT_T7_DIRECTORY_SOURCE_KEY
 
 
 def row(
@@ -1232,3 +1233,42 @@ def test_entry_quality_ignores_local_script_name_with_single_latin_acronym():
     )
 
     assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_treats_frankfurt_t7_as_presence_not_identity():
+    listing = row(
+        "FSX::I8X",
+        "I8X",
+        "FSX",
+        "IDEX Biometrics ASA",
+        isin="NO0003070609",
+        stock_sector="",
+        country="Norway",
+        country_code="NO",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("FSX::I8X", "I8X", "FSX", isin="NO0003070609")],
+        identifiers=[{"listing_key": "FSX::I8X", "ticker": "I8X", "exchange": "FSX", "isin": "NO0003070609", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[
+            official_ref(
+                "I8X",
+                "FSX",
+                "IDEX BIOMETRICS ASA UNIT",
+                "NO0013536078",
+                source_key=FRANKFURT_T7_DIRECTORY_SOURCE_KEY,
+                provider="Deutsche Boerse",
+            )
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "FSX", "venue_status": "official_full"}]},
+    )
+
+    issue_types = {issue.issue_type for issue in report_rows[0].issues}
+    assert "official_isin_mismatch" not in issue_types
+    assert "official_name_mismatch" not in issue_types
+    assert "official_reference_gap" not in issue_types
+    assert report_rows[0].evidence_level == "official_reference"
+    assert report_rows[0].quality_status == "source_gap"
+
