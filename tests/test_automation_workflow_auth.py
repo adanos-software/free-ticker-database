@@ -101,3 +101,4 @@ def test_operational_rebuilds_use_canonical_entrypoint_and_safe_merge() -> None:
         assert "python scripts/check_safe_merge.py" in workflow
         if filename != "release.yml":
             assert "python scripts/rebuild_dataset.py" not in workflow
+            assert "python scripts/rebuild_canonical.py --apply-identity-fixes" in workflow

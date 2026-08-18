@@ -17,7 +17,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.lib.dataio import merge_metadata_updates
-from scripts.rebuild_dataset import TICKERS_CSV, is_valid_isin
+from scripts.rebuild_dataset import LISTINGS_CSV, is_valid_isin
 
 SEC_THAILAND_ISIN_URL = "https://market.sec.or.th/public/idisc/th/ISIN"
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "set_verification"
@@ -134,7 +134,7 @@ def fetch_sec_isin_rows_for_symbol(
     return parse_sec_isin_rows(search_response.text)
 
 
-def load_set_missing_isin_rows(path: Path = TICKERS_CSV) -> list[dict[str, str]]:
+def load_set_missing_isin_rows(path: Path = LISTINGS_CSV) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     return [
@@ -200,7 +200,7 @@ def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill SET missing ISINs from the official Thailand SEC ISIN search.")
-    parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
+    parser.add_argument("--tickers-csv", type=Path, default=LISTINGS_CSV)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)

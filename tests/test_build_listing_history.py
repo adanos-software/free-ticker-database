@@ -6,7 +6,11 @@ from scripts.build_listing_history import (
     merge_status_history,
 )
 from scripts.lib.merge_evidence import row_fingerprint
-from scripts.lib.delisting_evidence import BSE_STATUS_URL_TEMPLATE, evidence_observation_id
+from scripts.lib.delisting_evidence import (
+    BSE_STATUS_URL_TEMPLATE,
+    NASDAQ_ADDS_DELETES_URL,
+    evidence_observation_id,
+)
 
 
 def official_status_row(ticker: str) -> dict[str, str]:
@@ -14,6 +18,17 @@ def official_status_row(ticker: str) -> dict[str, str]:
         "listing_key": f"BSE_IN::{ticker}", "ticker": ticker, "exchange": "BSE_IN",
         "classification": "delisted", "source_key": "bse_india_scrips",
         "source_url": BSE_STATUS_URL_TEMPLATE.format(status="Delisted"),
+        "observed_at": "2026-08-17T00:00:00Z", "isin": "",
+    }
+    row["observation_id"] = evidence_observation_id(row, row["observed_at"])
+    return row
+
+
+def official_nasdaq_status_row(ticker: str) -> dict[str, str]:
+    row = {
+        "listing_key": f"NASDAQ::{ticker}", "ticker": ticker, "exchange": "NASDAQ",
+        "classification": "delisted", "source_key": "nasdaq_trading_system_adds_deletes",
+        "source_url": NASDAQ_ADDS_DELETES_URL, "nasdaq_action": "Delete",
         "observed_at": "2026-08-17T00:00:00Z", "isin": "",
     }
     row["observation_id"] = evidence_observation_id(row, row["observed_at"])
@@ -73,3 +88,13 @@ def test_already_applied_official_delisting_enters_history() -> None:
         "already_applied": [official_status_row("OLD")],
     }
     assert [row["listing_key"] for row in delisting_apply_status_rows(payload)] == ["BSE_IN::OLD"]
+
+
+def test_applied_nasdaq_delete_enters_history() -> None:
+    payload = {
+        "summary": {"generated_at": "2026-08-17T00:00:00Z"},
+        "applied": [official_nasdaq_status_row("DEAD")],
+    }
+    rows = delisting_apply_status_rows(payload)
+    assert [row["listing_key"] for row in rows] == ["NASDAQ::DEAD"]
+    assert rows[0]["evidence_status"] == "official"

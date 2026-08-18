@@ -8,11 +8,11 @@ from pathlib import Path
 from typing import Any, Iterable
 
 try:
-    from scripts.apply_delistings import _valid_official_bse_delisting_evidence
+    from scripts.lib.delisting_evidence import valid_official_delisting_evidence
     from scripts.listing_keys import row_listing_key
     from scripts.lib.merge_evidence import row_fingerprint
 except ModuleNotFoundError:  # pragma: no cover
-    from apply_delistings import _valid_official_bse_delisting_evidence
+    from lib.delisting_evidence import valid_official_delisting_evidence
     from listing_keys import row_listing_key
     from lib.merge_evidence import row_fingerprint
 
@@ -262,7 +262,7 @@ def delisting_apply_status_rows(payload: dict[str, Any]) -> list[dict[str, str]]
             row.get("classification") != "delisted"
             or not row.get("ticker")
             or not row.get("exchange")
-            or not _valid_official_bse_delisting_evidence(row)
+            or not valid_official_delisting_evidence(row)
         ):
             continue
         rows.append({

@@ -5,7 +5,11 @@ import json
 from pathlib import Path
 
 from scripts.apply_delistings import apply_delistings
-from scripts.lib.delisting_evidence import BSE_STATUS_URL_TEMPLATE, evidence_observation_id
+from scripts.lib.delisting_evidence import (
+    BSE_STATUS_URL_TEMPLATE,
+    NASDAQ_ADDS_DELETES_URL,
+    evidence_observation_id,
+)
 
 
 def official_delisting_candidate(**overrides: str) -> dict[str, str]:
@@ -17,6 +21,25 @@ def official_delisting_candidate(**overrides: str) -> dict[str, str]:
         "isin": "INE1",
         "source_key": "bse_india_scrips",
         "source_url": BSE_STATUS_URL_TEMPLATE.format(status="Delisted"),
+        "observed_at": "2026-04-05T00:00:00Z",
+    }
+    candidate.update(overrides)
+    candidate["observation_id"] = evidence_observation_id(
+        candidate, candidate["observed_at"]
+    )
+    return candidate
+
+
+def official_nasdaq_delete_candidate(**overrides: str) -> dict[str, str]:
+    candidate = {
+        "exchange": "NASDAQ",
+        "ticker": "DEAD",
+        "classification": "delisted",
+        "name": "Dead Inc",
+        "isin": "US1",
+        "source_key": "nasdaq_trading_system_adds_deletes",
+        "source_url": NASDAQ_ADDS_DELETES_URL,
+        "nasdaq_action": "Delete",
         "observed_at": "2026-04-05T00:00:00Z",
     }
     candidate.update(overrides)
@@ -135,3 +158,58 @@ def test_tampered_observation_id_blocks_auto_drop(tmp_path: Path) -> None:
 
     assert report["summary"]["applied_rows"] == 0
     assert report["blocked"][0]["status"] == "blocked_missing_official_delisting_evidence"
+
+
+def test_apply_delistings_writes_official_nasdaq_delete(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    write_drop_rows(drops, [])
+    source.write_text(
+        json.dumps({"candidates": [official_nasdaq_delete_candidate()]}),
+        encoding="utf-8",
+    )
+
+    report = apply_delistings(
+        delisting_report_json=source,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json",
+        report_md=tmp_path / "apply.md",
+        apply=True,
+    )
+
+    assert report["summary"]["applied_rows"] == 1
+    assert read_drop_rows(drops)[0]["ticker"] == "DEAD"
+    assert read_drop_rows(drops)[0]["exchange"] == "NASDAQ"
+
+
+def test_nasdaq_delete_without_action_or_wrong_url_is_blocked(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    write_drop_rows(drops, [])
+    missing_action = official_nasdaq_delete_candidate()
+    missing_action.pop("nasdaq_action")
+    missing_action["observation_id"] = evidence_observation_id(
+        missing_action, missing_action["observed_at"]
+    )
+    wrong_url = official_nasdaq_delete_candidate(
+        ticker="OTHER",
+        source_url="https://example.test/TradingSystemAddsDeletes.txt",
+    )
+    source.write_text(
+        json.dumps({"candidates": [missing_action, wrong_url]}),
+        encoding="utf-8",
+    )
+
+    report = apply_delistings(
+        delisting_report_json=source,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json",
+        report_md=tmp_path / "apply.md",
+        apply=True,
+    )
+
+    assert report["summary"]["applied_rows"] == 0
+    assert report["summary"]["blocked_rows"] == 2
+    assert {row["status"] for row in report["blocked"]} == {
+        "blocked_missing_official_delisting_evidence"
+    }

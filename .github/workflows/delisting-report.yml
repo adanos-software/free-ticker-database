@@ -48,7 +48,7 @@ jobs:
         if: steps.apply.outputs.delistings_applied == 'true'
         run: |
           cp data/listings.csv /tmp/listings-before.csv
-          python scripts/rebuild_canonical.py
+          python scripts/rebuild_canonical.py --apply-identity-fixes
           python scripts/check_safe_merge.py \
             --before /tmp/listings-before.csv \
             --after data/listings.csv \
@@ -93,9 +93,9 @@ jobs:
             with authoritative status). A failed master fetch skips that market
             (never emits false candidates).
 
-            Triage each candidate. Only exact, field-bound BSE `Delisted`
+            Triage each candidate. Only exact, field-bound official delisting
             observations from this workflow are converted into drop overrides:
-            - `delisted` (BSE authoritative status) → gated drop override
+            - `delisted` (BSE ListofScripData or Nasdaq Trader Delete) → gated drop override
             - `master_absent` → verify rename vs delisting before acting (renames
               re-key/dedup; genuine delistings drop)
             - `suspended` (BSE) → kept by policy (can resume)
