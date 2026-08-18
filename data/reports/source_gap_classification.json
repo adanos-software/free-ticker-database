@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-18T08:42:49Z",
-    "rows": 9389,
+    "generated_at": "2026-08-18T20:23:32Z",
+    "rows": 9386,
     "field_totals": {
       "missing_etf_category": 247,
       "missing_isin_primary": 874,
-      "missing_sector_stock": 1686,
+      "missing_sector_stock": 1683,
       "official_reference_gap": 6582
     },
     "class_totals": {
@@ -19,12 +19,12 @@
       "exchange_industry_source_gap": 62,
       "fixed_income_etf_category_gap": 20,
       "fund_or_trust_identifier_gap": 250,
-      "fundlike_stock_sector_gap": 10,
+      "fundlike_stock_sector_gap": 9,
       "inactive_or_legacy_identifier_gap": 91,
       "official_current_directory_absent_identifier_gap": 9,
       "official_identifier_not_exposed_source_gap": 363,
       "official_identifier_reference_unmatched_gap": 7,
-      "official_industry_taxonomy_unavailable_gap": 1012,
+      "official_industry_taxonomy_unavailable_gap": 1010,
       "official_product_reference_unmatched_category_gap": 7,
       "official_product_taxonomy_unavailable_gap": 147,
       "official_reference_symbol_collision_gap": 1300,
@@ -49,8 +49,8 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 7,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
-      "missing_sector_stock:fundlike_stock_sector_gap": 10,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1012,
+      "missing_sector_stock:fundlike_stock_sector_gap": 9,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1010,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 32,
       "official_reference_gap:official_reference_symbol_collision_gap": 1300,
@@ -144,7 +144,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 821
+          "rows": 820
         },
         {
           "exchange": "OTC",
@@ -164,7 +164,7 @@
         },
         {
           "exchange": "LSE",
-          "rows": 28
+          "rows": 27
         },
         {
           "exchange": "TSXV",
@@ -176,7 +176,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 13
+          "rows": 12
         },
         {
           "exchange": "Munich",
@@ -22514,23 +22514,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::3HJ",
-      "ticker": "3HJ",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Lippo Malls Indonesia Retail Trust",
-      "gap_class": "fundlike_stock_sector_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
-      "recommended_next_source": "Issuer classification from official exchange or reviewed profile source.",
-      "source_gate": "Canonical stock sector only with issuer-level classification evidence.",
-      "source_gap_context": "listing_key=FSX::3HJ;exchange=FSX;ticker=3HJ;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=fundlike_stock_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=fundlike_stock_sector_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::3K2",
       "ticker": "3K2",
       "exchange": "FSX",
@@ -34822,23 +34805,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "LSE::HLN",
-      "ticker": "HLN",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "name": "Haleon PLC",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=LSE::HLN;exchange=LSE;ticker=HLN;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "LSE::LND",
       "ticker": "LND",
       "exchange": "LSE",
@@ -46444,23 +46410,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=TSX::FT;exchange=TSX;ticker=FT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "TSX::FTS",
-      "ticker": "FTS",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "Fortis Inc",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=TSX::FTS;exchange=TSX;ticker=FTS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
