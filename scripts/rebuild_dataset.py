@@ -1746,6 +1746,42 @@ def build_unique_name_isin_fallbacks(rows: list[dict[str, str]]) -> dict[tuple[s
     }
 
 
+def same_ticker_name_isins(rows: list[dict[str, str]]) -> dict[tuple[str, str, str], set[str]]:
+    """Map (compact name, asset type, ticker) to ISINs already carried by that ticker."""
+
+    grouped: dict[tuple[str, str, str], set[str]] = defaultdict(set)
+    for row in rows:
+        if row.get("exchange") in OTC_EXCHANGES:
+            continue
+        isin = row.get("isin", "").strip().upper()
+        if not is_valid_isin(isin):
+            continue
+        name_key = normalized_compact(row.get("name", ""))
+        ticker = row.get("ticker", "").strip().upper()
+        if not name_key or not ticker:
+            continue
+        grouped[(name_key, row.get("asset_type", ""), ticker)].add(isin)
+    return grouped
+
+
+def unique_name_isin_for_row(
+    row: dict[str, str],
+    unique_name_fallbacks: dict[tuple[str, str], str],
+    ticker_name_isins: dict[tuple[str, str, str], set[str]],
+) -> str:
+    """Copy a unique issuer ISIN, but not a same-ticker dual listing."""
+
+    name_key = normalized_compact(row.get("name", ""))
+    asset_type = row.get("asset_type", "")
+    fallback = unique_name_fallbacks.get((name_key, asset_type), "")
+    if not fallback:
+        return ""
+    ticker = row.get("ticker", "").strip().upper()
+    if fallback in ticker_name_isins.get((name_key, asset_type, ticker), set()):
+        return ""
+    return fallback
+
+
 def choose_preferred_official_reference_row(
     rows: tuple[dict[str, str], ...],
     current_name: str,
@@ -2647,9 +2683,9 @@ def cleaned_rows():
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
     stock_name_lookup = build_stock_name_lookup(prepared_rows)
     # Name-keyed ISIN copies may not inherit fills applied in this rebuild.
-    unique_name_isin_fallbacks = build_unique_name_isin_fallbacks(
-        [normalize_input_row(dict(row)) for row in ticker_rows]
-    )
+    unique_name_source_rows = [normalize_input_row(dict(row)) for row in ticker_rows]
+    unique_name_isin_fallbacks = build_unique_name_isin_fallbacks(unique_name_source_rows)
+    ticker_name_isins = same_ticker_name_isins(unique_name_source_rows)
 
     base_rows: list[dict[str, str]] = []
     for row in prepared_rows:
@@ -2690,9 +2726,8 @@ def cleaned_rows():
                     merged["country"] = inferred_country
                     merged["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
         if not merged.get("isin") and "isin" not in review_metadata_updates.get(row_key, {}):
-            merged["isin"] = unique_name_isin_fallbacks.get(
-                (normalized_compact(row["name"]), row["asset_type"]),
-                "",
+            merged["isin"] = unique_name_isin_for_row(
+                row, unique_name_isin_fallbacks, ticker_name_isins
             )
         sector_overridden = any(
             field in review_metadata_updates.get(row_key, {})

@@ -43,7 +43,7 @@ def test_ci_supports_dispatch_and_aggregate_branch_protection_status() -> None:
 def test_ci_rebuilds_entry_quality_from_current_data_before_the_gate() -> None:
     workflow = (WORKFLOW_DIR / "ci.yml").read_text(encoding="utf-8")
 
-    dataset_rebuild = workflow.index("python scripts/rebuild_dataset.py")
+    dataset_rebuild = workflow.index("python scripts/rebuild_canonical.py")
     entry_quality_rebuild = workflow.index("python scripts/build_entry_quality_report.py")
     test_suite = workflow.index("python -m pytest tests/ -q")
     entry_quality_gate = workflow.index("python scripts/check_entry_quality_gate.py")

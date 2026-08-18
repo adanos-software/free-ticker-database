@@ -2335,6 +2335,36 @@ def test_build_unique_name_isin_fallbacks_only_keeps_unique_non_otc_names():
     assert ("duplicatenamefund", "ETF") not in fallbacks
 
 
+def test_unique_name_isin_skips_same_ticker_dual_listing():
+    from scripts.rebuild_dataset import (
+        build_unique_name_isin_fallbacks,
+        same_ticker_name_isins,
+        unique_name_isin_for_row,
+    )
+
+    rows = [
+        {
+            "ticker": "DRAM",
+            "name": "Roundhill Memory ETF",
+            "exchange": "BATS",
+            "asset_type": "ETF",
+            "isin": "US77926X3200",
+        },
+        {
+            "ticker": "DRAM",
+            "name": "Roundhill Memory ETF",
+            "exchange": "OTC",
+            "asset_type": "ETF",
+            "isin": "",
+        },
+    ]
+    fallbacks = build_unique_name_isin_fallbacks(rows)
+    ticker_isins = same_ticker_name_isins(rows)
+    otc = unique_name_isin_for_row(rows[1], fallbacks, ticker_isins)
+    assert fallbacks[("roundhillmemoryetf", "ETF")] == "US77926X3200"
+    assert otc == ""
+
+
 def test_cleaned_rows_backfills_unique_name_isin_for_otc_and_updates_country(monkeypatch):
     from scripts import rebuild_dataset
 
