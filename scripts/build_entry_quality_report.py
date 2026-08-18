@@ -21,6 +21,7 @@ from scripts.rebuild_dataset import (
     CORE_LISTINGS_CSV,
     COUNTRY_TO_ISO,
     EXCHANGE_TICKER_RE,
+    FRANKFURT_T7_DIRECTORY_SOURCE_KEY,
     IDENTIFIERS_EXTENDED_CSV,
     LISTINGS_CSV,
     MASTERFILE_REFERENCE_CSV,
@@ -51,6 +52,9 @@ DEFAULT_JSON_OUT = REPORTS_DIR / "entry_quality.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "entry_quality.md"
 
 VALID_ASSET_TYPES = {"Stock", "ETF"}
+# Frankfurt T7 mnemonics are official presence evidence, but not listing-keyed
+# identity: the same ticker can name a dual-listed wrapper, unit, or ADR.
+IDENTITY_UNRELIABLE_OFFICIAL_SOURCE_KEYS = {FRANKFURT_T7_DIRECTORY_SOURCE_KEY}
 ISSUE_PENALTIES = {
     "critical": 100,
     "high": 60,
@@ -686,6 +690,14 @@ def assess_aliases(
             )
 
 
+def identity_official_refs(official_refs: list[dict[str, str]]) -> list[dict[str, str]]:
+    return [
+        ref
+        for ref in official_refs
+        if ref.get("source_key") not in IDENTITY_UNRELIABLE_OFFICIAL_SOURCE_KEYS
+    ]
+
+
 def assess_reference_match(
     row: dict[str, str],
     official_refs: list[dict[str, str]],
@@ -697,9 +709,12 @@ def assess_reference_match(
 ) -> None:
     if not official_refs:
         return
+    identity_refs = identity_official_refs(official_refs)
+    if not identity_refs:
+        return
 
     row_isin = row.get("isin", "")
-    official_isins = {ref.get("isin", "") for ref in official_refs if ref.get("isin")}
+    official_isins = {ref.get("isin", "") for ref in identity_refs if ref.get("isin")}
     if row_isin and official_isins and row_isin not in official_isins:
         add_issue(
             issues,
@@ -714,7 +729,7 @@ def assess_reference_match(
 
     official_names = [
         ref.get("name", "")
-        for ref in official_refs
+        for ref in identity_refs
         if official_name_is_informative(ref.get("name", ""), row.get("ticker", ""))
     ]
     comparable_names = [name for name in official_names if names_are_comparable(row.get("name", ""), name)]
@@ -728,9 +743,11 @@ def assess_reference_match(
             ):
                 continue
 
-            peer_official_refs = official_lookup.get(
-                (peer.get("ticker", ""), peer.get("exchange", ""), peer.get("asset_type", "")),
-                [],
+            peer_official_refs = identity_official_refs(
+                official_lookup.get(
+                    (peer.get("ticker", ""), peer.get("exchange", ""), peer.get("asset_type", "")),
+                    [],
+                )
             )
             if not peer_official_refs:
                 continue
@@ -746,7 +763,7 @@ def assess_reference_match(
     ) and not corroborating_peer_names:
         if row.get("exchange") == "OTC" and otc_review_decision.get("decision") == "keep_current_reviewed":
             return
-        source_keys = {ref.get("source_key", "") for ref in official_refs if ref.get("source_key")}
+        source_keys = {ref.get("source_key", "") for ref in identity_refs if ref.get("source_key")}
         if (
             row.get("exchange") == "OTC"
             and reviewed_name_override

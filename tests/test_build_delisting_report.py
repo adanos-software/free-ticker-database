@@ -12,10 +12,13 @@ from scripts.build_delisting_report import (
     holdings_by_exchange,
     master_absent,
     classify_bse,
+    classify_nasdaq_deletes,
     compute_detected,
     build_markdown,
+    nasdaq_effective_at,
     _norm,
 )
+from scripts.lib.delisting_evidence import parse_nasdaq_trading_system_deletes
 
 
 def test_norm_strips_dots_and_hyphens():
@@ -87,3 +90,38 @@ def test_build_markdown_renders_summary():
     assert "delisting_detected: True" in md
     assert "BSE_IN (fetch failed: ConnectionError)" in md
     assert "KASHYAP" in md and "delisted" in md
+
+
+def test_classify_nasdaq_deletes_matches_holdings_and_ignores_unlisted():
+    holdings = [
+        {"exchange": "NASDAQ", "ticker": "OLD", "name": "Old Inc", "isin": "US1"},
+        {"exchange": "NYSE", "ticker": "KEEP", "name": "Keep Co", "isin": "US2"},
+    ]
+    deletes = [
+        {"ticker": "OLD", "exchange": "NASDAQ", "name": "Old Inc", "nasdaq_action": "Delete", "effective_date": "20260801"},
+        {"ticker": "GONE", "exchange": "NASDAQ", "name": "Gone Inc", "nasdaq_action": "Delete", "effective_date": "20260801"},
+        {"ticker": "KEEP", "exchange": "NASDAQ", "name": "Wrong Venue", "nasdaq_action": "Delete", "effective_date": "20260801"},
+    ]
+    out = classify_nasdaq_deletes(holdings, deletes)
+    assert [(row["exchange"], row["ticker"], row["classification"]) for row in out] == [
+        ("NASDAQ", "OLD", "delisted")
+    ]
+    assert out[0]["nasdaq_action"] == "Delete"
+    assert nasdaq_effective_at(out[0]["effective_date"]) == "2026-08-01T00:00:00Z"
+
+
+def test_parse_nasdaq_trading_system_deletes_keeps_only_mapped_deletes():
+    text = "\n".join(
+        [
+            "Effective Date|Symbol|Company Name|NASDAQ Action|Primary Listing Market",
+            "20260801|OLD|Old Inc|Delete|Q",
+            "20260801|NEW|New Inc|Add|Q",
+            "20260801|ZZ|Unknown Market Inc|Delete|XX",
+            "File Creation Time: 0818202617:00",
+        ]
+    )
+    rows = parse_nasdaq_trading_system_deletes(text)
+    assert [(row["ticker"], row["exchange"], row["nasdaq_action"]) for row in rows] == [
+        ("OLD", "NASDAQ", "Delete")
+    ]
+

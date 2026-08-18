@@ -43,7 +43,7 @@ def test_ci_supports_dispatch_and_aggregate_branch_protection_status() -> None:
 def test_ci_rebuilds_entry_quality_from_current_data_before_the_gate() -> None:
     workflow = (WORKFLOW_DIR / "ci.yml").read_text(encoding="utf-8")
 
-    dataset_rebuild = workflow.index("python scripts/rebuild_dataset.py")
+    dataset_rebuild = workflow.index("python scripts/rebuild_canonical.py")
     entry_quality_rebuild = workflow.index("python scripts/build_entry_quality_report.py")
     test_suite = workflow.index("python -m pytest tests/ -q")
     entry_quality_gate = workflow.index("python scripts/check_entry_quality_gate.py")
@@ -92,3 +92,13 @@ def test_report_rebuilds_follow_their_data_dependencies() -> None:
         completion_backlog = workflow.index("python scripts/build_completion_backlog.py")
 
         assert entry_quality < source_gaps < source_decisions < completion_backlog
+
+
+def test_operational_rebuilds_use_canonical_entrypoint_and_safe_merge() -> None:
+    for filename in REPORT_REBUILD_WORKFLOWS:
+        workflow = (WORKFLOW_DIR / filename).read_text(encoding="utf-8")
+        assert "python scripts/rebuild_canonical.py" in workflow
+        assert "python scripts/check_safe_merge.py" in workflow
+        if filename != "release.yml":
+            assert "python scripts/rebuild_dataset.py" not in workflow
+            assert "python scripts/rebuild_canonical.py --apply-identity-fixes" in workflow

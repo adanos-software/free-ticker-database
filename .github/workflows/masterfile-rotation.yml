@@ -53,10 +53,16 @@ jobs:
 
       - name: Rebuild derived exports and reports
         run: |
-          python scripts/rebuild_dataset.py
+          cp data/listings.csv /tmp/listings-before.csv
+          python scripts/rebuild_canonical.py --apply-identity-fixes
           python scripts/build_entry_quality_report.py
           python scripts/backfill_official_name_mismatches.py --exchange ASX --apply
-          python scripts/rebuild_dataset.py
+          python scripts/rebuild_canonical.py --apply-identity-fixes
+          python scripts/check_safe_merge.py \
+            --before /tmp/listings-before.csv \
+            --after data/listings.csv \
+            --events data/history/listing_events.csv \
+            --strict
           python scripts/enrich_global_identifiers.py
           python scripts/build_entry_quality_report.py
           python scripts/build_coverage_report.py

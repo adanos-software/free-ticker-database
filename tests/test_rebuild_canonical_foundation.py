@@ -52,6 +52,41 @@ def test_compatible_official_rename_is_recorded(monkeypatch) -> None:
     assert canonical._NAME_RECONCILIATIONS[-1]["observation_id"] == "obs"
 
 
+def test_final_identity_pass_discards_intermediate_decisions(monkeypatch) -> None:
+    from scripts.lib.identity_integrity import ResolutionDecision
+
+    canonical._DECISIONS[:] = [
+        ResolutionDecision(
+            conflict_id="old",
+            isin="CH0183135992",
+            listing_key="OTC::ZSILF",
+            ticker="ZSILF",
+            exchange="OTC",
+            name="ZKB Silver ETF",
+            asset_type="ETF",
+            action="quarantined_unresolved_identifier",
+            reason="intermediate",
+            evidence_status="review",
+            retained_isin="CH0183135992",
+        )
+    ]
+    previous = canonical._ORIGINAL_CLEANED_ROWS
+    canonical._ORIGINAL_CLEANED_ROWS = lambda: ([], {})
+    monkeypatch.setattr(canonical, "reconcile_exact_official_names", lambda rows, apply_updates=False: rows)
+    monkeypatch.setattr(canonical, "resolve_identity_conflicts", lambda rows, **kwargs: (rows, []))
+    monkeypatch.setattr(canonical, "_official_isin_by_listing", lambda: {})
+    monkeypatch.setattr(canonical, "_reviewed_keep_listing_keys", lambda: {})
+
+    try:
+        rows, aliases = canonical.strict_cleaned_rows()
+    finally:
+        canonical._ORIGINAL_CLEANED_ROWS = previous
+
+    assert rows == []
+    assert aliases == {}
+    assert canonical._DECISIONS == []
+
+
 def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> None:
     calls: list[str] = []
     monkeypatch.setattr(canonical.build_entry_quality_report, "main", lambda argv: calls.append("entry_quality"))

@@ -288,6 +288,9 @@ EXCHANGE_ALIASES = {"OTCCE": "OTC", "OTCMKTS": "OTC", "NYSEARCA": "NYSE ARCA"}
 PRIMARY_VENUE_CORRECTION_EXCHANGES = US_EXCHANGES | GENERIC_US_EXCHANGES | OTC_EXCHANGES
 KOREAN_STOCK_EXCHANGES = {"KRX", "KOSDAQ"}
 SAME_EXCHANGE_TICKER_CORRECTION_EXCHANGES = {"NGX"}
+# T7 mnemonic directory: refresh overlapping FSX keys, but do not treat share-class
+# ISINs, ADR suffixes, or UNIT labels as identity/country/exclusion evidence.
+FRANKFURT_T7_DIRECTORY_SOURCE_KEY = "deutsche_boerse_frankfurt_all_tradable_equities"
 STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
 IDENTIFIER_RE = re.compile(r"^[A-Z0-9]{5,12}$")
@@ -1604,6 +1607,8 @@ def load_active_official_isin_fallbacks() -> dict[tuple[str, str, str], str]:
                 continue
             if row.get("reference_scope") in {"", "manual"}:
                 continue
+            if row.get("source_key") == FRANKFURT_T7_DIRECTORY_SOURCE_KEY:
+                continue
             isin = row.get("isin", "").strip().upper()
             if not is_valid_isin(isin):
                 continue
@@ -1649,6 +1654,8 @@ def active_official_depositary_listing_keys(
     listing_keys: set[tuple[str, str]] = set()
     for row in rows:
         if row.get("official") != "true" or row.get("listing_status") != "active":
+            continue
+        if row.get("source_key") == FRANKFURT_T7_DIRECTORY_SOURCE_KEY:
             continue
         if row.get("asset_type") != "Stock" or not depositary_pattern.search(row.get("name", "")):
             continue
@@ -1737,6 +1744,42 @@ def build_unique_name_isin_fallbacks(rows: list[dict[str, str]]) -> dict[tuple[s
         for key, isins in grouped.items()
         if len(isins) == 1
     }
+
+
+def same_ticker_name_isins(rows: list[dict[str, str]]) -> dict[tuple[str, str, str], set[str]]:
+    """Map (compact name, asset type, ticker) to ISINs already carried by that ticker."""
+
+    grouped: dict[tuple[str, str, str], set[str]] = defaultdict(set)
+    for row in rows:
+        if row.get("exchange") in OTC_EXCHANGES:
+            continue
+        isin = row.get("isin", "").strip().upper()
+        if not is_valid_isin(isin):
+            continue
+        name_key = normalized_compact(row.get("name", ""))
+        ticker = row.get("ticker", "").strip().upper()
+        if not name_key or not ticker:
+            continue
+        grouped[(name_key, row.get("asset_type", ""), ticker)].add(isin)
+    return grouped
+
+
+def unique_name_isin_for_row(
+    row: dict[str, str],
+    unique_name_fallbacks: dict[tuple[str, str], str],
+    ticker_name_isins: dict[tuple[str, str, str], set[str]],
+) -> str:
+    """Copy a unique issuer ISIN, but not a same-ticker dual listing."""
+
+    name_key = normalized_compact(row.get("name", ""))
+    asset_type = row.get("asset_type", "")
+    fallback = unique_name_fallbacks.get((name_key, asset_type), "")
+    if not fallback:
+        return ""
+    ticker = row.get("ticker", "").strip().upper()
+    if fallback in ticker_name_isins.get((name_key, asset_type, ticker), set()):
+        return ""
+    return fallback
 
 
 def choose_preferred_official_reference_row(
@@ -1979,13 +2022,21 @@ def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict
             corrected_rows.append(row)
             continue
 
-        same_exchange_candidates = tuple(candidate for candidate in candidates if candidate["exchange"] == row["exchange"])
+        same_exchange_candidates = tuple(
+            candidate
+            for candidate in candidates
+            if candidate["exchange"] == row["exchange"]
+            and candidate.get("source_key") != FRANKFURT_T7_DIRECTORY_SOURCE_KEY
+        )
         wrapper_match = generic_fund_wrapper_match(row["name"])
         if same_exchange_candidates and (is_code_like_name(row["name"], row["ticker"]) or wrapper_match):
             preferred_same_exchange = choose_preferred_official_reference_row(same_exchange_candidates, row["name"])
             corrected = dict(row)
             corrected["name"] = preferred_same_exchange["name"]
-            corrected_rows.append(corrected)
+            if should_exclude_stock_row(corrected):
+                corrected_rows.append(row)
+            else:
+                corrected_rows.append(corrected)
             continue
 
         official_row = choose_official_exchange_correction_candidate(row, candidates)
@@ -2631,7 +2682,10 @@ def cleaned_rows():
     prepared_rows = drop_stale_tmx_etf_duplicates(prepared_rows)
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
     stock_name_lookup = build_stock_name_lookup(prepared_rows)
-    unique_name_isin_fallbacks = build_unique_name_isin_fallbacks(prepared_rows)
+    # Name-keyed ISIN copies may not inherit fills applied in this rebuild.
+    unique_name_source_rows = [normalize_input_row(dict(row)) for row in ticker_rows]
+    unique_name_isin_fallbacks = build_unique_name_isin_fallbacks(unique_name_source_rows)
+    ticker_name_isins = same_ticker_name_isins(unique_name_source_rows)
 
     base_rows: list[dict[str, str]] = []
     for row in prepared_rows:
@@ -2672,9 +2726,8 @@ def cleaned_rows():
                     merged["country"] = inferred_country
                     merged["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
         if not merged.get("isin") and "isin" not in review_metadata_updates.get(row_key, {}):
-            merged["isin"] = unique_name_isin_fallbacks.get(
-                (normalized_compact(row["name"]), row["asset_type"]),
-                "",
+            merged["isin"] = unique_name_isin_for_row(
+                row, unique_name_isin_fallbacks, ticker_name_isins
             )
         sector_overridden = any(
             field in review_metadata_updates.get(row_key, {})

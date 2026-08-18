@@ -41,7 +41,11 @@ if str(ROOT) not in sys.path:
 
 from scripts.lib.delisting_evidence import (
     BSE_STATUS_URL_TEMPLATE,
+    NASDAQ_ADDS_DELETES_URL,
+    NASDAQ_DELETE_EXCHANGES,
+    NASDAQ_SOURCE_KEY,
     evidence_observation_id,
+    parse_nasdaq_trading_system_deletes,
 )
 
 TICKERS_CSV = ROOT / "data" / "tickers.csv"
@@ -95,6 +99,33 @@ def classify_bse(candidates: list[dict], delisted_isins: set[str], delisted_ids:
         else:
             status = "master_absent"
         out.append({**r, "classification": status})
+    return out
+
+
+def nasdaq_effective_at(raw: str) -> str:
+    value = str(raw or "").strip()
+    if len(value) == 8 and value.isdigit():
+        return f"{value[:4]}-{value[4:6]}-{value[6:]}T00:00:00Z"
+    return ""
+
+
+def classify_nasdaq_deletes(holdings: list[dict], deletes: list[dict]) -> list[dict]:
+    """Map official Nasdaq Trader Delete rows onto current stock holdings."""
+    by_key = {(str(row.get("exchange", "")), str(row.get("ticker", ""))): row for row in holdings}
+    out = []
+    for delete in deletes:
+        holding = by_key.get((str(delete.get("exchange", "")), str(delete.get("ticker", ""))))
+        if holding is None:
+            continue
+        out.append({
+            "exchange": holding["exchange"],
+            "ticker": holding["ticker"],
+            "name": holding.get("name", "") or delete.get("name", ""),
+            "isin": holding.get("isin", ""),
+            "classification": "delisted",
+            "nasdaq_action": "Delete",
+            "effective_date": str(delete.get("effective_date", "")).strip(),
+        })
     return out
 
 
@@ -239,6 +270,27 @@ def build_candidates() -> tuple[list[dict], list[str], list[dict]]:
     except Exception as exc:  # noqa: BLE001
         skipped.append({"market": "BSE_IN", "reason": f"fetch failed: {type(exc).__name__}: {exc}"})
 
+    # --- US Nasdaq Trader trading-system Deletes (authoritative per listing) ---
+    try:
+        text = session.get(NASDAQ_ADDS_DELETES_URL, timeout=60).text
+        deletes = parse_nasdaq_trading_system_deletes(text)
+        nasdaq_delisted = classify_nasdaq_deletes(
+            market_holdings(*sorted(NASDAQ_DELETE_EXCHANGES)),
+            deletes,
+        )
+        checked.append("US_NASDAQ_DELETES")
+        delisted_keys = {(row["exchange"], row["ticker"]) for row in nasdaq_delisted}
+        candidates = [
+            row for row in candidates
+            if (row["exchange"], row["ticker"]) not in delisted_keys
+        ]
+        candidates.extend(nasdaq_delisted)
+    except Exception as exc:  # noqa: BLE001
+        skipped.append({
+            "market": "US_NASDAQ_DELETES",
+            "reason": f"fetch failed: {type(exc).__name__}: {exc}",
+        })
+
     candidates.sort(key=lambda c: (c["exchange"], c["ticker"]))
     return candidates, checked, skipped
 
@@ -258,9 +310,9 @@ def build_markdown(summary: dict) -> str:
         f"(delisted={cls.get('delisted', 0)}, suspended={cls.get('suspended', 0)}, "
         f"master_absent={cls.get('master_absent', 0)})", "",
         "Detection only — verify each (delisting vs rename vs SME/suspended) and "
-        "apply via the override/verify pipeline. `delisted` (BSE authoritative) are "
-        "drop-ready; `master_absent` need rename-vs-delisting verification; "
-        "`suspended` are kept by policy (can resume).", "",
+        "apply via the override/verify pipeline. `delisted` (BSE ListofScripData or "
+        "Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need "
+        "rename-vs-delisting verification; `suspended` are kept by policy (can resume).", "",
         "| Exchange | Ticker | Classification | Name | ISIN |",
         "|---|---|---|---|---|",
     ]
@@ -297,6 +349,15 @@ def main(argv: list[str] | None = None) -> None:
             candidate["source_key"] = "bse_india_scrips"
             candidate["source_url"] = BSE_STATUS_URL_TEMPLATE.format(status=status)
             candidate["observed_at"] = now
+            candidate["observation_id"] = evidence_observation_id(candidate, now)
+        elif (
+            candidate.get("classification") == "delisted"
+            and candidate.get("nasdaq_action") == "Delete"
+        ):
+            candidate["source_key"] = NASDAQ_SOURCE_KEY
+            candidate["source_url"] = NASDAQ_ADDS_DELETES_URL
+            candidate["observed_at"] = now
+            candidate["effective_at"] = nasdaq_effective_at(str(candidate.get("effective_date", "")))
             candidate["observation_id"] = evidence_observation_id(candidate, now)
     summary = {
         "generated_at": now,

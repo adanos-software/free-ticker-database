@@ -8,11 +8,11 @@ from pathlib import Path
 from typing import Any, Iterable
 
 try:
-    from scripts.apply_delistings import _valid_official_bse_delisting_evidence
+    from scripts.lib.delisting_evidence import valid_official_delisting_evidence
     from scripts.listing_keys import row_listing_key
     from scripts.lib.merge_evidence import row_fingerprint
 except ModuleNotFoundError:  # pragma: no cover
-    from apply_delistings import _valid_official_bse_delisting_evidence
+    from lib.delisting_evidence import valid_official_delisting_evidence
     from listing_keys import row_listing_key
     from lib.merge_evidence import row_fingerprint
 
@@ -29,6 +29,7 @@ TICKERS_JSON = DATA_DIR / "tickers.json"
 DELISTING_APPLY_JSON = DATA_DIR / "reports/delisting_apply.json"
 IDENTIFIER_QUARANTINE_CSV = DATA_DIR / "reports/identifier_quarantine.csv"
 OFFICIAL_NAME_RECONCILIATION_CSV = DATA_DIR / "reports/official_name_reconciliation.csv"
+METADATA_UPDATES_CSV = DATA_DIR / "review_overrides/metadata_updates.csv"
 TRUSTED_EVIDENCE = {"official", "reviewed", "verified"}
 VALID_LISTING_STATUSES = {"active", "suspended", "delisted"}
 STATUS_HISTORY_FIELDS = [
@@ -205,7 +206,64 @@ def load_change_evidence() -> dict[tuple[str, str, str, str], dict[str, str]]:
             "source_report": str(IDENTIFIER_QUARANTINE_CSV.relative_to(ROOT)),
             "observation_id": row.get("conflict_id", ""), "evidence_status": status,
         }
+    for row in load_csv(METADATA_UPDATES_CSV):
+        if row.get("decision") != "update":
+            continue
+        field = str(row.get("field", "") or "").strip()
+        if field not in CRITICAL_FIELD_EVENT_TYPES:
+            continue
+        ticker = str(row.get("ticker", "") or "").strip().upper()
+        exchange = str(row.get("exchange", "") or "").strip()
+        new = str(row.get("proposed_value", "") or "")
+        if not ticker or not exchange or not new:
+            continue
+        evidence[(f"{exchange}::{ticker}", field, "*", new)] = {
+            "source_key": "review_metadata_updates",
+            "source_url": "",
+            "source_report": str(METADATA_UPDATES_CSV.relative_to(ROOT)),
+            "observation_id": f"{exchange}::{ticker}:{field}",
+            "evidence_status": "reviewed",
+        }
     return evidence
+
+
+def _inferred_country_from_isin(isin: str) -> tuple[str, str]:
+    try:
+        from scripts.rebuild_dataset import COUNTRY_TO_ISO, country_from_isin
+    except ModuleNotFoundError:  # pragma: no cover
+        from rebuild_dataset import COUNTRY_TO_ISO, country_from_isin
+    country = country_from_isin(isin) or ""
+    return country, COUNTRY_TO_ISO.get(country, "") if country else ""
+
+
+def _stamp_country_inference_from_isin(events: list[dict[str, str]]) -> None:
+    isin_event = next(
+        (
+            event
+            for event in events
+            if event.get("field_name") == "isin"
+            and event.get("evidence_status") in TRUSTED_EVIDENCE
+            and event.get("new_value")
+        ),
+        None,
+    )
+    if isin_event is None:
+        return
+    inferred_country, inferred_code = _inferred_country_from_isin(isin_event["new_value"])
+    provenance = {
+        "source_key": isin_event.get("source_key", ""),
+        "source_url": isin_event.get("source_url", ""),
+        "source_report": isin_event.get("source_report", ""),
+        "observation_id": f"{isin_event.get('observation_id', '')}:isin_prefix_country",
+        "evidence_status": "verified",
+    }
+    for event in events:
+        if event.get("evidence_status") in TRUSTED_EVIDENCE:
+            continue
+        if event.get("field_name") == "country" and inferred_country and event.get("new_value") == inferred_country:
+            event.update(provenance)
+        elif event.get("field_name") == "country_code" and inferred_code and event.get("new_value") == inferred_code:
+            event.update(provenance)
 
 
 def build_event_rows(
@@ -226,6 +284,7 @@ def build_event_rows(
             event["new_value"] = row.get("name", "")
             events.append(event)
             continue
+        row_events: list[dict[str, str]] = []
         for field, event_type in CRITICAL_FIELD_EVENT_TYPES.items():
             old = str(before.get(field, "") or "")
             new = str(row.get(field, "") or "")
@@ -239,7 +298,11 @@ def build_event_rows(
                 "before_row_sha256": row_fingerprint(before),
             })
             event.update(evidence.get((key, field, old, new), {}))
-            events.append(event)
+            if event.get("evidence_status") == "observed_unverified":
+                event.update(evidence.get((key, field, "*", new), {}))
+            row_events.append(event)
+        _stamp_country_inference_from_isin(row_events)
+        events.extend(row_events)
     for key, row in sorted(previous.items()):
         if key in current:
             continue
@@ -262,7 +325,7 @@ def delisting_apply_status_rows(payload: dict[str, Any]) -> list[dict[str, str]]
             row.get("classification") != "delisted"
             or not row.get("ticker")
             or not row.get("exchange")
-            or not _valid_official_bse_delisting_evidence(row)
+            or not valid_official_delisting_evidence(row)
         ):
             continue
         rows.append({
@@ -391,10 +454,14 @@ def was_listing_active_on_date(history_rows: list[dict[str, str]], key: str, dat
     return listing_status_on_date(history_rows, key, date_value) == "active"
 
 
-def build_history() -> dict[str, Any]:
+def build_history(previous_listings: list[dict[str, str]] | None = None) -> dict[str, Any]:
     current_rows, observed_at = load_current_rows()
     current = build_snapshot(current_rows, observed_at)
-    previous = load_csv(LATEST_SNAPSHOT_CSV)
+    previous = (
+        build_snapshot(previous_listings, observed_at)
+        if previous_listings is not None
+        else load_csv(LATEST_SNAPSHOT_CSV)
+    )
     existing_events = normalize_existing_events(load_csv(LISTING_EVENTS_CSV))
     evidence_rows = delisting_apply_status_rows(load_json(DELISTING_APPLY_JSON))
     new_events = [

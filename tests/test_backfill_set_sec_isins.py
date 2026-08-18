@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-from scripts.backfill_set_sec_isins import build_metadata_updates, evaluate_row, parse_sec_isin_rows
+from scripts.backfill_set_sec_isins import (
+    build_metadata_updates,
+    evaluate_row,
+    load_set_missing_isin_rows,
+    parse_sec_isin_rows,
+)
 
 
 def test_parse_sec_isin_rows_extracts_local_isin() -> None:
@@ -56,3 +61,18 @@ def test_evaluate_row_rejects_missing_ambiguous_or_invalid_matches() -> None:
         == "ambiguous_sec_isin"
     )
     assert evaluate_row(target, [{"sec_symbol": "AOT", "sec_isin_local": "US0378331005"}])["decision"] == "invalid_or_non_th_isin"
+
+
+def test_load_set_missing_isin_rows_keeps_collision_hidden_set_listings(tmp_path) -> None:
+    path = tmp_path / "listings.csv"
+    path.write_text(
+        "ticker,exchange,asset_type,name,isin\n"
+        "A,NYSE,Stock,Agilent Technologies Inc,US00846U1016\n"
+        "A,SET,Stock,AREEYA PROPERTY PUBLIC COMPANY LIMITED,\n"
+        "AOT,SET,Stock,AIRPORTS OF THAILAND,TH0765010Z08\n"
+        "BCH,SET,ETF,Some ETF,\n",
+        encoding="utf-8",
+    )
+    rows = load_set_missing_isin_rows(path)
+    assert [(row["ticker"], row["exchange"]) for row in rows] == [("A", "SET")]
+

@@ -4280,6 +4280,12 @@ def test_deutsche_boerse_xetra_all_tradable_source_is_modeled_as_exchange_direct
     assert source.reference_scope == "exchange_directory"
 
 
+def test_deutsche_boerse_frankfurt_all_tradable_source_is_modeled_as_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "deutsche_boerse_frankfurt_all_tradable_equities")
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "deutsche_boerse_frankfurt_all_tradable_csv"
+
+
 def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
     dataframe_path = tmp_path / "jpx.xlsx"
 
@@ -17424,3 +17430,40 @@ def test_fetch_source_rows_with_mode_uses_sec_cache(tmp_path, monkeypatch):
             "official": "true",
         }
     ]
+
+
+def test_persist_source_metadata_preserves_reviewed_license_fields(tmp_path, monkeypatch):
+    sources_path = tmp_path / "sources.json"
+    sources_path.write_text(
+        json.dumps(
+            [
+                {
+                    "key": "sec_company_tickers_exchange",
+                    "provider": "SEC",
+                    "license_status": "verified_open",
+                    "license_name": "SEC Website Dissemination Policy",
+                    "license_url": "https://www.sec.gov/about/privacy-information",
+                    "derived_facts_redistribution_status": "allowed",
+                    "raw_redistribution_allowed": True,
+                    "attribution_required": "required",
+                    "commercial_use_status": "allowed",
+                    "terms_version": "privacy-information-website-dissemination",
+                    "terms_sha256": "a" * 64,
+                    "license_reviewed_at": "2026-08-18T07:00:00Z",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_SOURCES_JSON", sources_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILES_DIR", tmp_path)
+
+    fetch_exchange_masterfiles.persist_source_metadata()
+
+    payload = json.loads(sources_path.read_text(encoding="utf-8"))
+    sec = next(row for row in payload if row["key"] == "sec_company_tickers_exchange")
+    nasdaq = next(row for row in payload if row["key"] == "nasdaq_listed")
+    assert sec["license_status"] == "verified_open"
+    assert sec["license_url"] == "https://www.sec.gov/about/privacy-information"
+    assert sec["terms_sha256"] == "a" * 64
+    assert "license_status" not in nasdaq

@@ -47,7 +47,7 @@ jobs:
 
       - name: Rebuild compatibility exports
         run: |
-          python scripts/rebuild_dataset.py
+          python scripts/rebuild_canonical.py
           python scripts/build_coverage_report.py
           python scripts/build_exchange_source_audit.py
 
