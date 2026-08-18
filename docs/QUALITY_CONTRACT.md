@@ -24,7 +24,7 @@ The stable-release profile includes all merge checks and additionally requires:
 - zero field-level provenance gaps;
 - reviewed MIC mapping for every venue.
 
-A tag release runs `stable --strict`. It remains blocked while external coverage, licensing, provenance, or MIC evidence is unresolved.
+A tag release currently enforces `merge --strict` and records `stable`/`complete` as advisory reports. `stable --strict` remains the target once official-full coverage, contributing-source licenses, provenance, identity, and MIC evidence are actually earned. A published `v3.x` tag is not a `stable`-profile claim.
 
 ## `complete`
 

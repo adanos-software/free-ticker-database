@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 
@@ -54,6 +55,11 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     release_assets = workflow.index("python scripts/build_release_artifacts.py")
 
     assert validation < b3_review < campaigns < acceptance < release_assets
+    assert "--profile merge" in workflow
+    assert "--profile stable" in workflow
+    assert "--profile complete" in workflow
+    assert re.search(r"--profile merge\s+\\\s+--strict", workflow)
+    assert not re.search(r"--profile stable\s+\\\s+--strict", workflow)
 
 
 def test_symbol_change_workflow_skips_timestamp_only_apply_report_churn() -> None:

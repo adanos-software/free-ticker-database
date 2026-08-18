@@ -99,6 +99,11 @@ jobs:
             --md-out data/reports/quality_contract_complete.md
           python scripts/build_quality_contract.py \
             --profile stable \
+            --expected-git-commit "$GITHUB_SHA" \
+            --json-out data/reports/quality_contract_stable.json \
+            --md-out data/reports/quality_contract_stable.md
+          python scripts/build_quality_contract.py \
+            --profile merge \
             --strict \
             --expected-git-commit "$GITHUB_SHA" \
             --json-out data/reports/quality_contract.json \
