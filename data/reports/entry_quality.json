@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-18T06:37:03Z",
+    "generated_at": "2026-08-18T08:26:49Z",
     "rows": 91977,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 78073,
-      "source_gap": 13662,
-      "warn": 242
+      "pass": 78082,
+      "source_gap": 13697,
+      "warn": 198
     },
     "evidence_level_counts": {
       "identifier_enriched": 4757,
@@ -25,26 +25,26 @@
       "valid_isin": 4863
     },
     "severity_counts": {
-      "high": 197,
-      "medium": 56,
-      "source_gap": 14272
+      "high": 151,
+      "medium": 49,
+      "source_gap": 14247
     },
     "issue_counts": {
       "official_reference_gap": 6582,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 2662,
-      "expected_missing_primary_isin": 900,
+      "expected_missing_primary_isin": 875,
       "missing_etf_category": 841,
-      "official_isin_mismatch": 102,
       "country_isin_mismatch": 95,
-      "official_name_mismatch": 56
+      "official_isin_mismatch": 56,
+      "official_name_mismatch": 49
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8392,
+        "pass": 8390,
         "source_gap": 3255,
-        "warn": 106
+        "warn": 108
       },
       {
         "exchange": "XSTU",
@@ -53,9 +53,9 @@
       },
       {
         "exchange": "FSX",
-        "pass": 7066,
-        "source_gap": 1029,
-        "warn": 48
+        "pass": 7075,
+        "source_gap": 1066,
+        "warn": 2
       },
       {
         "exchange": "TSX",
@@ -102,8 +102,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2480,
-        "source_gap": 241,
+        "pass": 2482,
+        "source_gap": 239,
         "warn": 1
       },
       {
@@ -3298,17 +3298,10 @@
       "ticker": "0PL",
       "exchange": "FSX",
       "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 30,
-      "recommended_action": "review_or_backfill",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "CA70339L1085",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): CA98422Q1063."
-        },
         {
           "issue_type": "missing_stock_sector",
           "severity": "source_gap",
@@ -3499,17 +3492,10 @@
       "ticker": "0QL0",
       "exchange": "FSX",
       "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 30,
-      "recommended_action": "review_or_backfill",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "US92766K1060",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): US92766K4031."
-        },
         {
           "issue_type": "missing_stock_sector",
           "severity": "source_gap",
@@ -4344,17 +4330,10 @@
       "ticker": "11L",
       "exchange": "FSX",
       "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 30,
-      "recommended_action": "review_or_backfill",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "CA1380351009",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): CA1380357048."
-        },
         {
           "issue_type": "missing_stock_sector",
           "severity": "source_gap",
@@ -12744,17 +12723,10 @@
       "ticker": "3MB",
       "exchange": "FSX",
       "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 30,
-      "recommended_action": "review_or_backfill",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "SE0010270793",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): SE0021627353."
-        },
         {
           "issue_type": "missing_stock_sector",
           "severity": "source_gap",
@@ -14766,24 +14738,6 @@
       ]
     },
     {
-      "listing_key": "FSX::4AS",
-      "ticker": "4AS",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "NO0010768500",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): NO0013464750."
-        }
-      ]
-    },
-    {
       "listing_key": "Munich::4BV",
       "ticker": "4BV",
       "exchange": "Munich",
@@ -15587,17 +15541,10 @@
       "ticker": "4QS",
       "exchange": "FSX",
       "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 30,
-      "recommended_action": "review_or_backfill",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "CA38149V1031",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): CA38149V3011."
-        },
         {
           "issue_type": "missing_stock_sector",
           "severity": "source_gap",
@@ -18386,6 +18333,24 @@
           "field": "exchange",
           "value": "TSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::61L0",
+      "ticker": "61L0",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
         }
       ]
     }

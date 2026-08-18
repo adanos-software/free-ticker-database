@@ -1,13 +1,13 @@
 # Source Gap Classification
 
-Generated at: `2026-08-18T06:37:05Z`
+Generated at: `2026-08-18T08:26:50Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
 - Official reference-gap rows classified: `6582`
-- Missing primary ISIN rows classified: `900`
+- Missing primary ISIN rows classified: `875`
 - Missing stock-sector rows classified: `1900`
 - Missing ETF-category rows classified: `314`
 
@@ -20,7 +20,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_industry_taxonomy_unavailable_gap | 1222 |
 | otc_sector_source_gap | 556 |
 | official_identifier_not_exposed_source_gap | 363 |
-| fund_or_trust_identifier_gap | 275 |
+| fund_or_trust_identifier_gap | 250 |
 | official_product_taxonomy_unavailable_gap | 174 |
 | inactive_or_legacy_identifier_gap | 91 |
 | debt_or_securitized_identifier_gap | 78 |
@@ -54,12 +54,12 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 111 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | official_reference_gap | official_reference_unmatched_source_gap | NYSE ARCA | 105 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | TSX | 96 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
-| missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 95 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | official_reference_gap | official_reference_unmatched_source_gap | TSX | 90 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | BME | 86 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | LSE | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | TSXV | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | BATS | 82 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | XETRA | 80 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 
 ## Release Policy
 
