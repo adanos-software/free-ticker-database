@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "3b59cf7a78427fe361f853e524be6ddfb5037382d768496d7adf53a48295f1ac",
+  "dataset_sha256": "e60354ba4fcbde07610bdeee3b1e01e2a9aeba80a6738c74966b5a8c094e0070",
   "source_manifest_sha256": "15bb7f9942382449d220b19d57b49c030cdb4de666dc13f5391ef1a7bb2a39e5",
-  "git_commit": "b9bf54f1f10664cf2834418c475ee5b14e320e23",
+  "git_commit": "b69032382276a6b778ea404d03d3a673c8413b2d",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 145,
-          "source_observations": 156774,
+          "source_observations": 156799,
           "venues": 87,
           "issuers": 72055,
           "instruments": 72055,
           "listings": 91977,
-          "identifier_assertions": 165933,
+          "identifier_assertions": 165958,
           "field_assertions": 204644,
-          "provenance_gaps": 266420,
-          "listing_events": 61196,
+          "provenance_gaps": 266445,
+          "listing_events": 61221,
           "coverage_contracts": 134
         }
       }
@@ -74,11 +74,11 @@
           "removed_rows": 0,
           "evidenced_removed_rows": 0,
           "unevidenced_removed_rows": 0,
-          "critical_field_changes": 632,
+          "critical_field_changes": 25,
           "unevidenced_critical_field_changes": 0,
           "before_duplicate_listing_keys": 0,
           "after_duplicate_listing_keys": 0,
-          "generated_official_change_evidence_rows": 9
+          "generated_official_change_evidence_rows": 0
         }
       }
     },
@@ -522,7 +522,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 266420
+        "gap_rows": 266445
       }
     },
     {
@@ -539,7 +539,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1554
+        "missing_rows": 1529
       }
     },
     {

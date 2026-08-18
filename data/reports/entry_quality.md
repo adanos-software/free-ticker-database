@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-08-18T06:37:03Z`
+Generated at: `2026-08-18T08:26:49Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 78,073 |
-| source_gap | 13,662 |
-| warn | 242 |
+| pass | 78,082 |
+| source_gap | 13,697 |
+| warn | 198 |
 
 ## Issue Counts
 
@@ -17,19 +17,19 @@ Generated at: `2026-08-18T06:37:03Z`
 | official_reference_gap | 6,582 |
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 2,662 |
-| expected_missing_primary_isin | 900 |
+| expected_missing_primary_isin | 875 |
 | missing_etf_category | 841 |
-| official_isin_mismatch | 102 |
 | country_isin_mismatch | 95 |
-| official_name_mismatch | 56 |
+| official_isin_mismatch | 56 |
+| official_name_mismatch | 49 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 8,392 | 0 | 3,255 | 106 | 0 |
+| OTC | 8,390 | 0 | 3,255 | 108 | 0 |
 | XSTU | 0 | 0 | 2,772 | 1 | 0 |
-| FSX | 7,066 | 0 | 1,029 | 48 | 0 |
+| FSX | 7,075 | 0 | 1,066 | 2 | 0 |
 | TSX | 1,704 | 0 | 592 | 0 | 0 |
 | TSXV | 905 | 0 | 514 | 3 | 0 |
 | LSE | 6,523 | 0 | 483 | 24 | 0 |
@@ -38,7 +38,7 @@ Generated at: `2026-08-18T06:37:03Z`
 | BMV | 0 | 0 | 344 | 0 | 0 |
 | B3 | 1,250 | 0 | 331 | 0 | 0 |
 | Euronext | 1,221 | 0 | 235 | 21 | 0 |
-| NYSE ARCA | 2,480 | 0 | 241 | 1 | 0 |
+| NYSE ARCA | 2,482 | 0 | 239 | 1 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | NSE_IN | 2,290 | 0 | 213 | 0 | 0 |
 | XETRA | 4,112 | 0 | 200 | 3 | 0 |
