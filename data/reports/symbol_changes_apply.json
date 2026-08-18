@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-17T07:14:43Z",
+    "generated_at": "2026-08-18T07:02:43Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
@@ -8,9 +8,9 @@
     "blocked_rows": 325,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 54,
-      "blocked_old_symbol_not_unique_in_us_scope": 230,
+      "blocked_old_symbol_not_unique_in_us_scope": 229,
       "manual_isin_not_proven_unchanged": 1,
-      "manual_non_us_or_unscoped_source": 39,
+      "manual_non_us_or_unscoped_source": 40,
       "manual_transition_or_shell_name": 1
     }
   },
@@ -1886,7 +1886,7 @@
       "old_symbol": "BYON",
       "new_symbol": "BBBY",
       "new_company_name": "Bed Bath & Beyond Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "78fa0859edf3d0d8",
