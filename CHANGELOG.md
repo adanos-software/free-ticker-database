@@ -26,6 +26,7 @@
 - Stopped same-ticker unique-name ISIN copies from filling OTC peers from BATS/NASDAQ namesakes.
 - Kept Frankfurt T7 as listing presence rather than identity, so bilingual/short official names do not emit false ISIN or name mismatches.
 - Identity apply remains limited to decisive families; proposed official-name updates and the 749 `official_exact_listing_match` identifier clears are not bulk-applied.
+- Aligned the public Kaggle/Hugging Face listing-events schema with the evidence-bound history columns so tag packaging no longer fails closed on header drift.
 
 ### Safety
 

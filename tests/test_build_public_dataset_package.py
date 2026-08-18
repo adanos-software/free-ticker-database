@@ -5,6 +5,8 @@ import json
 import pytest
 
 from scripts import build_public_dataset_package as package
+from scripts.build_listing_history import EVENT_FIELDS
+from scripts.build_public_dataset_package import ROOT
 
 
 def write_csv(path, header, rows):
@@ -178,6 +180,13 @@ def test_validate_dataset_files_rejects_schema_drift(monkeypatch, tmp_path):
 
     with pytest.raises(ValueError, match="header does not match publishing schema"):
         package.validate_dataset_files()
+
+
+def test_listing_events_publishing_schema_matches_history_export():
+    event_file = next(item for item in package.FILES if item.name == "listing_events.csv")
+    header = package.read_header(ROOT / "data" / "history" / "listing_events.csv")
+    assert list(event_file.columns) == EVENT_FIELDS
+    assert header == EVENT_FIELDS
 
 
 def test_ensure_clean_dir_replaces_file(tmp_path):
