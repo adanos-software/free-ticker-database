@@ -1,9 +1,9 @@
 {
   "generated_at": "2026-08-19T14:41:36Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1793,
+  "reconciled_rows": 1795,
   "applied_rows": 0,
-  "proposed_rows": 1793,
+  "proposed_rows": 1795,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -232,6 +232,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "BIST::MARKA",
+      "action": "proposed",
+      "ticker": "MARKA",
+      "exchange": "BIST",
+      "asset_type": "Stock",
+      "isin": "TREIFTY00019",
+      "old_name": "MARKA YATIRIM HOLDİNG A.Ş.",
+      "new_name": "US YATIRIM HOLDİNG A.Ş.",
+      "source_key": "bist_kap_mkk_listed_securities",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+      "observation_id": "2b8cbc56b6d7da578936784f",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "BK::ALIMTIAZ",
       "action": "proposed",
       "ticker": "ALIMTIAZ",
@@ -289,6 +304,21 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
       "observation_id": "616c26475ffd1a7cf29b34d6",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "BMV::GSKN",
+      "action": "proposed",
+      "ticker": "GSKN",
+      "exchange": "BMV",
+      "asset_type": "Stock",
+      "isin": "US37733W2044",
+      "old_name": "GlaxoSmithKline plc",
+      "new_name": "GSK PLC",
+      "source_key": "bmv_issuer_directory",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+      "observation_id": "7b93903bc50936cf4828edf2",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

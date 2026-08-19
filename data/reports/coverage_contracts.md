@@ -7,8 +7,8 @@
 
 | Status | Contracts |
 |---|---:|
-| `fail_freshness` | 22 |
-| `fail_identity_conflict` | 37 |
+| `fail_freshness` | 21 |
+| `fail_identity_conflict` | 38 |
 | `fail_license` | 27 |
 | `partial_scope_observed` | 48 |
 

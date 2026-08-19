@@ -1,8 +1,8 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-08-19T14:56:06Z`
-- Rotation date: `2026-08-22` overlay
-- Vanished reference rows: `11`
-- Still in database: `10`
+- Generated at: `2026-08-19T15:19:38Z`
+- Rotation date: `2026-08-23` overlay
+- Vanished reference rows: `61`
+- Still in database: `25`
 - Applied drops: `0`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
 
@@ -10,25 +10,40 @@
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 11 |
+| manual_rename_vs_delisting_required | 61 |
 
 ## Rows still in the database
 
 | Exchange | Ticker | Source | Action |
 |---|---|---|---|
-| TASE | ARTS | tase_securities_marketdata | manual_rename_vs_delisting_required |
-| TASE | TKUN | tase_securities_marketdata | manual_rename_vs_delisting_required |
-| TSX | GIQG | tmx_etf_screener | manual_rename_vs_delisting_required |
-| TSX | GIQG.B | tmx_etf_screener | manual_rename_vs_delisting_required |
-| TSX | UDA | tmx_etf_screener | manual_rename_vs_delisting_required |
-| TPEX | 2237 | tpex_emerging_basic_info | manual_rename_vs_delisting_required |
-| TPEX | 4546 | tpex_emerging_basic_info | manual_rename_vs_delisting_required |
-| TPEX | 6241 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required |
-| WSE | CPA | wse_listed_companies | manual_rename_vs_delisting_required |
-| WSE | PUR | wse_listed_companies | manual_rename_vs_delisting_required |
+| ASX | DHOF | asx_investment_products | manual_rename_vs_delisting_required |
+| ASX | HHIF | asx_investment_products | manual_rename_vs_delisting_required |
+| ASX | HJZP | asx_investment_products | manual_rename_vs_delisting_required |
+| ASX | MHG | asx_investment_products | manual_rename_vs_delisting_required |
+| B3 | AURB11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | BAOK39 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | BFLO39 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | BGOZ39 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | BIUS39 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | BRIM11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | BTLH39 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | BVAR11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | DVLT11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | GLCR11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | HBCR11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | HCHG11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | HUSC11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | KEVE11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | LLBI3 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | PMFO11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | VANG11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | VJFD11 | b3_instruments_equities | manual_rename_vs_delisting_required |
+| B3 | TIRB11 | b3_listed_etfs | manual_rename_vs_delisting_required |
+| SSE_CL | NORTEGRAN | bolsa_santiago_instruments | manual_rename_vs_delisting_required |
+| SSE_CL | OROBLANCO | bolsa_santiago_instruments | manual_rename_vs_delisting_required |
 
 ## Notes
 
-- `WSE::ROB` official ISIN recode is not in the database; no listing-keyed apply.
-- `TSX::GIQG.B` vanished from `tmx_etf_screener` only; the official row was preserved so `drop_stale_tmx_etf_duplicates` cannot delete the listing.
+- B3 vanished rows are mostly FIIs/BDRs absent from the listed-equity database; remaining listed rows stay.
+- ASX investment-product and Santiago vanished rows stay; names are not dumped.
 - No vanished rows are dropped.

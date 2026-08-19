@@ -1,25 +1,25 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T15:01:16Z`
+Generated at: `2026-08-19T15:18:27Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 31, "official_source_required": 5, "refresh_required": 13, "refresh_unavailable": 14}`
+- Audit outcomes: `{"denominator_missing": 23, "maintain": 36, "official_source_required": 5, "refresh_required": 8, "refresh_unavailable": 15}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
-| ADX | official_full | adx_market_watch |  | 123 | 69.11 | adx_market_watch | refresh_required | not_applicable |
+| ADX | official_full | adx_market_watch |  | 123 | 69.11 |  | maintain | not_applicable |
 | AMS | official_full | euronext_equities|euronext_etfs |  | 604 | 61.92 |  | maintain | not_applicable |
-| ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_investment_products|asx_listed_companies | refresh_unavailable | blocked_source_unavailable |
-| ATHEX | official_partial | athex_sector_classification | ETF | 0 |  | athex_sector_classification | denominator_missing | blocked_nonfresh_source |
-| B3 | official_full | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs |  | 1327 | 91.94 | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs | refresh_required | not_applicable |
+| ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_listed_companies | refresh_unavailable | blocked_source_unavailable |
+| ATHEX | official_partial | athex_sector_classification | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |
+| B3 | official_full | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs |  | 1294 | 93.66 |  | maintain | not_applicable |
 | BATS | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 1603 | 78.73 |  | maintain | not_applicable |
 | BCBA | official_partial | byma_equity_details |  | 0 |  | byma_equity_details | denominator_missing | blocked_nonfresh_source |
-| BHB | official_full | bahrain_bourse_listed_companies |  | 41 | 68.29 | bahrain_bourse_listed_companies | refresh_required | not_applicable |
-| BIST | official_full | bist_kap_mkk_listed_securities |  | 647 | 94.44 | bist_kap_mkk_listed_securities | refresh_required | not_applicable |
+| BHB | official_full | bahrain_bourse_listed_companies |  | 41 | 68.29 |  | maintain | not_applicable |
+| BIST | official_full | bist_kap_mkk_listed_securities |  | 652 | 93.87 |  | maintain | not_applicable |
 | BK | official_full | boursa_kuwait_stocks |  | 140 | 72.86 | boursa_kuwait_stocks | refresh_required | not_applicable |
-| BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 50 | 36.0 | bme_etf_list|bme_listed_companies|bme_security_prices_directory | refresh_required | not_applicable |
-| BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_etf_search|bmv_market_data_securities|bmv_stock_search | denominator_missing | blocked_nonfresh_source |
+| BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 50 | 36.0 | bme_security_prices_directory | refresh_unavailable | not_applicable |
+| BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_market_data_securities|bmv_stock_search | refresh_unavailable | blocked_source_unavailable |
 | BSE_BW | official_partial | bse_bw_listed_companies | ETF | 0 |  | bse_bw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | BSE_HU | official_partial | bse_hu_listed_companies | ETF | 0 |  | bse_hu_listed_companies | denominator_missing | blocked_nonfresh_source |
 | BSE_IN | official_full | bse_india_scrips |  | 5077 | 52.61 | bse_india_scrips | refresh_required | not_applicable |
@@ -74,7 +74,7 @@ Generated at: `2026-08-19T15:01:16Z`
 | SGX | official_full | sgx_securities_prices |  | 746 | 81.77 |  | maintain | not_applicable |
 | SIX | official_partial | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | SSE | official_partial | sse_a_share_list|sse_etf_list |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
-| SSE_CL | official_full | bolsa_santiago_instruments |  | 111 | 100.0 | bolsa_santiago_instruments | refresh_unavailable | not_applicable |
+| SSE_CL | official_full | bolsa_santiago_instruments |  | 122 | 100.0 |  | maintain | not_applicable |
 | STO | official_partial | nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory |  | 0 |  | ngm_market_data_equities | refresh_unavailable | blocked_source_unavailable |
 | SZSE | official_partial | szse_a_share_list|szse_b_share_list|szse_etf_list |  | 0 |  | szse_a_share_list | refresh_unavailable | blocked_source_unavailable |
 | TADAWUL | official_full | tadawul_main_market_watch |  | 413 | 47.94 |  | maintain | not_applicable |

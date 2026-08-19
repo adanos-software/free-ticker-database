@@ -4,14 +4,14 @@
   "conflict_count": 1549,
   "decision_rows": 5046,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1316,
-    "proposed_clear_conflicting_identifier": 748,
+    "kept_listing_keyed_identifier": 1319,
+    "proposed_clear_conflicting_identifier": 745,
     "quarantined_unresolved_identifier": 2982
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 748,
+  "proposed_clear_rows": 745,
   "quarantined_rows": 2982,
-  "retained_rows": 1316,
+  "retained_rows": 1319,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -22,9 +22,9 @@
       "exchange": "BMV",
       "name": "Schlumberger Limited",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "AN8068571086"
     },
     {
@@ -35,9 +35,9 @@
       "exchange": "FSX",
       "name": "Schlumberger Limited",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "AN8068571086"
     },
     {
@@ -50,7 +50,7 @@
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "AN8068571086"
     },
     {
@@ -61,9 +61,9 @@
       "exchange": "XSTU",
       "name": "Schlumberger Limited",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "AN8068571086"
     },
     {
@@ -24774,9 +24774,9 @@
       "exchange": "ATHEX",
       "name": "Hellenic Telecommunications Organization S.A",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "GRS260333000"
     },
     {
@@ -24787,9 +24787,9 @@
       "exchange": "FSX",
       "name": "Hellenic Telecommunications Organization S.A",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "GRS260333000"
     },
     {
@@ -24800,9 +24800,9 @@
       "exchange": "LSE",
       "name": "Hellenic Telec",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "GRS260333000"
     },
     {
@@ -24813,9 +24813,9 @@
       "exchange": "OTC",
       "name": "Hellenic Telecommunications Organization S.A",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "GRS260333000"
     },
     {
@@ -24826,9 +24826,9 @@
       "exchange": "XSTU",
       "name": "Hellenic Telecommunications Organization S.A",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "GRS260333000"
     },
     {
@@ -57313,9 +57313,9 @@
       "exchange": "BMV",
       "name": "GlaxoSmithKline plc",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US37733W2044"
     },
     {
@@ -57326,9 +57326,9 @@
       "exchange": "NYSE",
       "name": "GSK plc",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US37733W2044"
     },
     {

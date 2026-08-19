@@ -1,38 +1,38 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-19T14:55:37Z`
-- New rows: `102`
-- Vanished rows: `11`
-- Changed rows: `4`
+- Generated at: `2026-08-19T15:16:58Z`
+- New rows: `140`
+- Vanished rows: `61`
+- Changed rows: `48`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| isin_change | 1 |
-| name_change | 3 |
+| field_change | 42 |
+| isin_change | 2 |
+| name_change | 4 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| tase_securities_marketdata | 3 |
-| tmx_etf_screener | 7 |
-| tmx_interlisted_companies | 2 |
-| tmx_listed_issuers | 81 |
-| tpex_emerging_basic_info | 2 |
-| tpex_mainboard_daily_quotes | 1 |
-| twse_listed_companies | 2 |
-| upcom_registered_securities | 2 |
-| wse_listed_companies | 2 |
+| asx_investment_products | 3 |
+| athex_sector_classification | 8 |
+| b3_bdr_etfs | 7 |
+| b3_instruments_equities | 21 |
+| b3_listed_etfs | 4 |
+| bist_kap_mkk_listed_securities | 5 |
+| bmv_etf_search | 3 |
+| bmv_issuer_directory | 76 |
+| bolsa_santiago_instruments | 13 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| tase_securities_marketdata | 2 |
-| tmx_etf_screener | 3 |
-| tpex_emerging_basic_info | 3 |
-| tpex_mainboard_daily_quotes | 1 |
-| wse_listed_companies | 2 |
+| asx_investment_products | 4 |
+| b3_instruments_equities | 54 |
+| b3_listed_etfs | 1 |
+| bolsa_santiago_instruments | 2 |

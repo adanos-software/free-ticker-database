@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-19T15:01:21Z",
+    "generated_at": "2026-08-19T15:18:32Z",
     "rows": 92006,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80306,
-      "source_gap": 11512,
+      "pass": 80381,
+      "source_gap": 11437,
       "warn": 188
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4717,
-      "official_reference": 82186,
+      "identifier_enriched": 4655,
+      "official_reference": 82271,
       "scoped_source_gap": 239,
-      "valid_isin": 4864
+      "valid_isin": 4841
     },
     "severity_counts": {
       "high": 152,
       "medium": 38,
-      "source_gap": 11856
+      "source_gap": 11771
     },
     "issue_counts": {
-      "official_reference_gap": 6533,
+      "official_reference_gap": 6448,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1300,
       "expected_missing_primary_isin": 700,
@@ -58,19 +58,20 @@
         "warn": 2
       },
       {
-        "exchange": "BMV",
-        "source_gap": 344
-      },
-      {
         "exchange": "B3",
-        "source_gap": 331,
-        "pass": 1250
+        "source_gap": 340,
+        "pass": 1241
       },
       {
         "exchange": "NASDAQ",
         "pass": 4493,
         "source_gap": 267,
         "warn": 7
+      },
+      {
+        "exchange": "BMV",
+        "pass": 76,
+        "source_gap": 268
       },
       {
         "exchange": "Munich",
@@ -109,6 +110,11 @@
         "source_gap": 172
       },
       {
+        "exchange": "ASX",
+        "pass": 2108,
+        "source_gap": 151
+      },
+      {
         "exchange": "BME",
         "pass": 127,
         "source_gap": 146,
@@ -119,11 +125,6 @@
         "pass": 1329,
         "source_gap": 127,
         "warn": 21
-      },
-      {
-        "exchange": "ASX",
-        "pass": 2111,
-        "source_gap": 148
       },
       {
         "exchange": "TSXV",
@@ -4581,24 +4582,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "BMV::1810N",
-      "ticker": "1810N",
-      "exchange": "BMV",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "BMV",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -18318,6 +18301,24 @@
     {
       "listing_key": "XSTU::6P8",
       "ticker": "6P8",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::6PU",
+      "ticker": "6PU",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",
