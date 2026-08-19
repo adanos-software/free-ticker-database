@@ -58,6 +58,9 @@ MASTERFILE_FIELDNAMES = [
     "sector",
 ]
 DEFAULT_SOURCE_TIMEOUT_SECONDS = 90.0
+SOURCE_TIMEOUT_SECONDS = {
+    "bme_security_prices_directory": 600.0,
+}
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
 ETF_VERIFICATION_DIR = DATA_DIR / "etf_verification"
@@ -520,6 +523,7 @@ BME_SHARE_DETAILS_INFO_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ShareDetailsIn
 BME_SECURITY_PRICES_PAGE_URL = "https://www.bolsasymercados.es/en/bme-exchange/companies-search.html"
 BME_SECURITY_PRICES_TRADING_SYSTEMS = "SIBE,Floor,Latibex,MTF,ETF"
 BME_SECURITY_PRICES_MIN_CACHE_ROWS = 500
+BME_SECURITY_PRICES_DETAIL_WORKERS = 16
 BME_LISTED_VALUES_PDF_URL = (
     "https://www.bolsasymercados.es/dam/descargas/exchange/renta-variable/"
     "listado-valores-renta-variable-es-en.pdf"
@@ -6928,6 +6932,16 @@ def chrome_impersonated_get(
     )
 
 
+def raise_requests_status(response) -> None:
+    try:
+        response.raise_for_status()
+    except requests.RequestException:
+        raise
+    except Exception as exc:
+        error = requests.HTTPError(str(exc), response=response)
+        raise error from exc
+
+
 def boursa_kuwait_header_index(header: str) -> dict[str, int]:
     return {field: index for index, field in enumerate(str(header or "").split("|"))}
 
@@ -11041,6 +11055,10 @@ def fetch_bme_listed_companies_payload(
         )
         if getattr(response, "status_code", 200) in {401, 403}:
             try:
+                chrome_impersonated_get(
+                    BME_COMPANIES_SEARCH_PAGE_URL,
+                    headers={"User-Agent": BROWSER_USER_AGENT},
+                )
                 response = chrome_impersonated_get(
                     BME_LISTED_COMPANIES_API_URL,
                     headers=bme_request_headers(),
@@ -11052,7 +11070,7 @@ def fetch_bme_listed_companies_payload(
                 )
             except ImportError:
                 pass
-        response.raise_for_status()
+        raise_requests_status(response)
         payload = response.json()
         data = payload.get("data") or []
         rows.extend(data)
@@ -11080,7 +11098,16 @@ def fetch_bme_share_details_info(
         headers=bme_request_headers(),
         timeout=REQUEST_TIMEOUT,
     )
-    response.raise_for_status()
+    if getattr(response, "status_code", 200) in {401, 403}:
+        try:
+            response = chrome_impersonated_get(
+                BME_SHARE_DETAILS_INFO_API_URL,
+                headers=bme_request_headers(),
+                params={"isin": isin, "language": "en"},
+            )
+        except ImportError:
+            pass
+    raise_requests_status(response)
     return response.json()
 
 
@@ -11270,6 +11297,7 @@ def fetch_bme_security_prices_rows(
     source: MasterfileSource,
     *,
     session: requests.Session | None = None,
+    listings_path: Path = LISTINGS_CSV,
 ) -> list[dict[str, str]]:
     session = session or requests.Session()
     listed_items = fetch_bme_listed_companies_payload(
@@ -11278,7 +11306,6 @@ def fetch_bme_security_prices_rows(
     )
     rows: list[dict[str, str]] = []
     seen_pairs: set[tuple[str, str]] = set()
-    processed_isins: set[str] = set()
 
     def add_detail(detail: dict[str, Any]) -> None:
         trading_system = str(detail.get("tradingSystem", "")).strip()
@@ -11290,40 +11317,79 @@ def fetch_bme_security_prices_rows(
             seen_pairs.add(pair)
             rows.append(row)
 
-    if not isinstance(session, requests.Session) or len(listed_items) <= 1:
-        for item in listed_items:
-            isin = str(item.get("isin", "")).strip().upper()
-            if not isin:
+    listings_by_isin: dict[str, list[dict[str, str]]] = {}
+    if listings_path.exists():
+        for listing_row in load_csv(listings_path):
+            if listing_row.get("exchange") != "BME":
                 continue
-            try:
-                add_detail(fetch_bme_share_details_info(isin, session=session))
-            except requests.RequestException:
-                continue
-        return rows
+            isin = listing_row.get("isin", "").strip().upper()
+            if isin:
+                listings_by_isin.setdefault(isin, []).append(listing_row)
 
-    first_isin = next((str(item.get("isin", "")).strip().upper() for item in listed_items if str(item.get("isin", "")).strip()), "")
-    if first_isin:
+    unmatched_isins: list[str] = []
+    seen_unmatched: set[str] = set()
+    for item in listed_items:
+        isin = str(item.get("isin", "")).strip().upper()
+        official_name = str(item.get("shareName") or item.get("name") or "").strip()
+        if not isin:
+            continue
+        matches = listings_by_isin.get(isin, [])
+        if matches:
+            for listing_row in matches:
+                add_detail(
+                    {
+                        "ticker": listing_row.get("ticker", ""),
+                        "isin": isin,
+                        "name": official_name,
+                        "tradingSystem": item.get("tradingSystem", ""),
+                        "sector": item.get("sector", ""),
+                        "subsector": item.get("subsector", ""),
+                    }
+                )
+            continue
+        if isin not in seen_unmatched:
+            seen_unmatched.add(isin)
+            unmatched_isins.append(isin)
+
+    def fetch_unmatched_details() -> None:
+        if not unmatched_isins:
+            return
+        if not isinstance(session, requests.Session) or len(unmatched_isins) <= 1:
+            for isin in unmatched_isins:
+                try:
+                    add_detail(fetch_bme_share_details_info(isin, session=session))
+                except requests.RequestException:
+                    continue
+            return
+
+        first_isin = unmatched_isins[0]
         try:
             add_detail(fetch_bme_share_details_info(first_isin, session=session))
-            processed_isins.add(first_isin)
         except requests.HTTPError as exc:
             if exc.response is not None and exc.response.status_code in {401, 403}:
-                raise
+                if not rows:
+                    raise
+                return
         except requests.RequestException:
-            processed_isins.add(first_isin)
+            pass
 
-    max_workers = min(8, len(listed_items))
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {
-            executor.submit(fetch_bme_share_details_info, str(item.get("isin", "")).strip().upper()): item
-            for item in listed_items
-            if str(item.get("isin", "")).strip().upper() not in processed_isins
-        }
-        for future in as_completed(futures):
-            try:
-                add_detail(future.result())
-            except requests.RequestException:
-                continue
+        rest = unmatched_isins[1:]
+        if not rest:
+            return
+        max_workers = min(BME_SECURITY_PRICES_DETAIL_WORKERS, len(rest))
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = [executor.submit(fetch_bme_share_details_info, isin) for isin in rest]
+            for future in as_completed(futures):
+                try:
+                    add_detail(future.result())
+                except requests.RequestException:
+                    continue
+
+    try:
+        fetch_unmatched_details()
+    except requests.Timeout:
+        if not rows:
+            raise
     return rows
 
 
@@ -19126,14 +19192,15 @@ def fetch_all_sources(
                 and threading.current_thread() is threading.main_thread()
             ):
                 previous_handler = signal.getsignal(signal.SIGALRM)
+                timeout_seconds = SOURCE_TIMEOUT_SECONDS.get(source.key, source_timeout_seconds)
 
                 def handle_source_timeout(_signum, _frame):
                     raise requests.Timeout(
-                        f"Source {source.key} timed out after {source_timeout_seconds:g}s"
+                        f"Source {source.key} timed out after {timeout_seconds:g}s"
                     )
 
                 signal.signal(signal.SIGALRM, handle_source_timeout)
-                signal.setitimer(signal.ITIMER_REAL, source_timeout_seconds)
+                signal.setitimer(signal.ITIMER_REAL, timeout_seconds)
                 try:
                     source_rows, mode = fetch_source_rows_with_mode(source, session=session)
                 finally:
