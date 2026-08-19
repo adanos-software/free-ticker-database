@@ -411,6 +411,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        default=TICKERS_CSV,
+        help="Listing-keyed source CSV; use data/listings.csv to include collision-hidden rows.",
+    )
     parser.add_argument("--exchange", action="append", choices=sorted(EXCHANGE_TO_TRADINGVIEW))
     parser.add_argument("--asset-type", action="append", choices=["ETF", "Stock"])
     parser.add_argument("--batch-size", type=int, default=150)
@@ -427,7 +433,11 @@ def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     exchanges = set(args.exchange or EXCHANGE_TO_TRADINGVIEW)
     asset_types = set(args.asset_type or ["ETF", "Stock"])
-    target_rows = load_missing_isin_rows(exchanges=exchanges, asset_types=asset_types)
+    target_rows = load_missing_isin_rows(
+        exchanges=exchanges,
+        asset_types=asset_types,
+        tickers_csv=args.tickers_csv,
+    )
     if args.offset:
         target_rows = target_rows[args.offset :]
     if args.limit is not None:
@@ -440,7 +450,7 @@ def main(argv: list[str] | None = None) -> None:
         timeout_seconds=args.timeout_seconds,
         progress_every=args.progress_every,
     )
-    results = verify_rows(target_rows, source_rows, index_existing_isin_rows())
+    results = verify_rows(target_rows, source_rows, index_existing_isin_rows(args.tickers_csv))
     updates = build_metadata_updates(results)
 
     args.json_out.parent.mkdir(parents=True, exist_ok=True)

@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 98636,
-    "matched": 64868,
-    "collisions": 13621,
-    "missing": 20147
+    "official_symbols": 98654,
+    "matched": 64855,
+    "collisions": 13623,
+    "missing": 20176
   },
   "exchanges": [
     {
@@ -137,11 +137,79 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 602,
+      "official_symbols": 604,
       "matched": 374,
-      "collisions": 176,
-      "missing": 52,
+      "collisions": 177,
+      "missing": 53,
       "collision_examples": [
+        {
+          "ticker": "AGIL",
+          "name": "Agility Capital H",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "BME"
+          ]
+        },
+        {
+          "ticker": "FAST",
+          "name": "FASTNED",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "NSI",
+          "name": "NSI N.V.",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "OCI",
+          "name": "OCI",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "PBH",
+          "name": "PB HOLDING",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "ASX",
+            "NYSE",
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "TFG",
+          "name": "TETRAGON FIN GRP",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE",
+            "SET"
+          ]
+        },
+        {
+          "ticker": "TRIO",
+          "name": "TRIODOS BANK",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "BATS"
+          ]
+        },
+        {
+          "ticker": "VTA",
+          "name": "VOLTA FINANCE",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "ASX",
+            "LSE"
+          ]
+        },
         {
           "ticker": "2AAP",
           "name": "Leverage Shares 2x Apple ETP Securities",
@@ -157,76 +225,32 @@
           "existing_exchanges": [
             "LSE"
           ]
-        },
-        {
-          "ticker": "2AMZ",
-          "name": "Leverage Shares 2x Amazon ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2BAB",
-          "name": "Leverage Shares 2x Alibaba ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2FB",
-          "name": "Leverage Shares 2x Facebook ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2GOO",
-          "name": "Leverage Shares 2x Alphabet ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2NFL",
-          "name": "Leverage Shares 2x Netflix ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2TSL",
-          "name": "Leverage Shares 2x Tesla ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2VIS",
-          "name": "Leverage Shares 2x Visa ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "3AAP",
-          "name": "Leverage Shares 3x Apple ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
         }
       ],
       "missing_examples": [
         {
           "ticker": "AZRNW",
           "name": "AZERION WARRANTS",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "NAIW",
+          "name": "NAI WARRANTS",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "PPLA",
+          "name": "PPLA European Unit",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "QEVW",
+          "name": "QEV WARRANTS",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "B1TA",
+          "name": "iSh AT1 Bond Active EUR (Dist)",
           "exchange": "AMS"
         },
         {
@@ -252,26 +276,6 @@
         {
           "ticker": "BSTE",
           "name": "BlueSphere US Technology UCITS ETF",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "BSUE",
-          "name": "BlueSphere US Equity UCITS ETF",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "BSWE",
-          "name": "BlueSphere World Equity UCITS ETF",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "ECLU",
-          "name": "iShares \u20ac AAA CLO Active UCITS ETF EUR (Dist)",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "EUFG",
-          "name": "iShares Europe Foreign Focus UCITS ETF EUR (Acc)",
           "exchange": "AMS"
         }
       ]
@@ -1253,144 +1257,157 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2898,
-      "matched": 251,
-      "collisions": 1855,
-      "missing": 792,
+      "official_symbols": 2903,
+      "matched": 250,
+      "collisions": 1856,
+      "missing": 797,
       "collision_examples": [
         {
-          "ticker": "1PAS",
-          "name": "WISDOMTREE PALLADIUM 1X DAILY SHORT",
+          "ticker": "ABC",
+          "name": "ABC COMPANY",
           "target_exchange": "Borsa Italiana",
           "existing_exchanges": [
-            "LSE"
+            "SSE_CL"
           ]
         },
         {
-          "ticker": "26TP",
-          "name": "iShares iBonds 26 \u20ac Italy Govt UCITS ETF",
+          "ticker": "ACE",
+          "name": "ACEA",
           "target_exchange": "Borsa Italiana",
           "existing_exchanges": [
+            "ASX",
+            "NSE_IN",
+            "SET",
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ADV",
+          "name": "ADVENTURE",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "ASX",
+            "FSX",
+            "NASDAQ",
+            "WSE",
+            "XETRA",
+            "XSTU"
+          ]
+        },
+        {
+          "ticker": "AIM",
+          "name": "4AIM SICAF",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "ASX",
+            "NYSE MKT",
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "ALMS",
+          "name": "ALIA MENTIS",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "AMI",
+          "name": "FRIENDS",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "ASX",
             "XETRA"
           ]
         },
         {
-          "ticker": "28IY",
-          "name": "iShares iBonds 28 \u20ac Italy Govt UCITS ETF",
+          "ticker": "AMP",
+          "name": "AMPLIFON",
           "target_exchange": "Borsa Italiana",
           "existing_exchanges": [
-            "Euronext",
-            "XETRA"
+            "ASX",
+            "BME",
+            "FSX",
+            "NYSE"
           ]
         },
         {
-          "ticker": "29GA",
-          "name": "iShares iBonds Dec 29 \u20ac Corp UCITS ETF A",
+          "ticker": "ARIS",
+          "name": "ARISTON HOLDING",
           "target_exchange": "Borsa Italiana",
           "existing_exchanges": [
-            "SIX"
+            "NYSE",
+            "TSX"
           ]
         },
         {
-          "ticker": "29GI",
-          "name": "iShares iBonds Dec 29 EUR Corp UCITS ETF",
+          "ticker": "ARN",
+          "name": "ALERION",
           "target_exchange": "Borsa Italiana",
           "existing_exchanges": [
-            "Euronext",
-            "XETRA"
+            "ASX"
           ]
         },
         {
-          "ticker": "2CAR",
-          "name": "WISDOMTREE STOXX EUROPE AUTOMOBILES 2X",
+          "ticker": "ASC",
+          "name": "ASCOPIAVE",
           "target_exchange": "Borsa Italiana",
           "existing_exchanges": [
             "LSE",
-            "XETRA"
-          ]
-        },
-        {
-          "ticker": "2OIG",
-          "name": "WISDOMTREE STOXX EUROPE OIL&GAS 2X SHORT",
-          "target_exchange": "Borsa Italiana",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2PAL",
-          "name": "WISDOMTREE PALLADIUM 2X DAILY LEVERAGED",
-          "target_exchange": "Borsa Italiana",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2STR",
-          "name": "WISDOMTREE STOXX EUROPE TRA&LEI 2X SHORT",
-          "target_exchange": "Borsa Italiana",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2TRV",
-          "name": "WISDOMTREE STOXX EUROPE TRAVEL & LEIS 2X",
-          "target_exchange": "Borsa Italiana",
-          "existing_exchanges": [
-            "LSE"
+            "NYSE"
           ]
         }
       ],
       "missing_examples": [
         {
-          "ticker": "100EUA",
-          "name": "UBS FTSE 100 UCITS ETF GBP dis",
+          "ticker": "A2A",
+          "name": "A2A",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "1PUT",
-          "name": "WisdomTree 1-Day Equity Put Premium",
+          "ticker": "AEDES",
+          "name": "AEDES",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "26TA",
-          "name": "iShares iBnds 26 \u20ac Italy Gvt UCITS ETF A",
+          "ticker": "AIM2",
+          "name": "4AIM SICAF COMP 2",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "28IA",
-          "name": "iShares iBonds 28 Italy Govt UCITS ETF A",
+          "ticker": "ANIM",
+          "name": "ANIMA HOLDING",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "3BTL",
-          "name": "WISDOMTREE BTP 10Y 3X DAILY LEVERAGED",
+          "ticker": "AUTME",
+          "name": "AUTOSTRADE MERID",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "3BTS",
-          "name": "WISDOMTREE BTP 10Y 3X DAILY SHORT",
+          "ticker": "BDB",
+          "name": "BCO DESIO BRIANZA",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "3BUL",
-          "name": "WISDOMTREE BUND 10Y 3X DAILY LEVERAGED",
+          "ticker": "BF",
+          "name": "BOLOGNAFIERE",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "3BUS",
-          "name": "WISDOMTREE BUND 10Y 3X DAILY SHORT",
+          "ticker": "BFF",
+          "name": "BFF BANK",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "3FNG",
-          "name": "GRANITESHARES 3X LONG FAANG DAILY ETP",
+          "ticker": "BGN",
+          "name": "BANCA GENERALI",
           "exchange": "Borsa Italiana"
         },
         {
-          "ticker": "3ITL",
-          "name": "WISDOMTREE FTSE MIB 3X DAILY LEVERAGED",
+          "ticker": "BMPS",
+          "name": "BANCA MPS",
           "exchange": "Borsa Italiana"
         }
       ]
@@ -1747,90 +1764,98 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2007,
+      "official_symbols": 2014,
       "matched": 1341,
-      "collisions": 366,
-      "missing": 300,
+      "collisions": 365,
+      "missing": 308,
       "collision_examples": [
         {
-          "ticker": "26TP",
-          "name": "iShares iBonds Dec 2026 Term EUR Italy Govt Bond UCITS ETF EUR (Dist)",
+          "ticker": "8GW",
+          "name": "GREAT WESTERN MIN.",
           "target_exchange": "Euronext",
           "existing_exchanges": [
+            "ISE"
+          ]
+        },
+        {
+          "ticker": "ABEO",
+          "name": "ABEO",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ADP",
+          "name": "ADP",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "FSX",
+            "NASDAQ",
+            "XSTU"
+          ]
+        },
+        {
+          "ticker": "AKOM",
+          "name": "AERKOMM INC",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "OTC"
+          ]
+        },
+        {
+          "ticker": "CBE",
+          "name": "ROBERTET CI",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "ASX",
+            "FSX"
+          ]
+        },
+        {
+          "ticker": "CBR",
+          "name": "ROBERTET CDV 87",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "FSX",
+            "TSXV"
+          ]
+        },
+        {
+          "ticker": "COR",
+          "name": "CORTICEIRA AMORIM",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "LSE",
+            "NYSE",
+            "TSXV",
             "XETRA"
           ]
         },
         {
-          "ticker": "27IT",
-          "name": "iShares iBonds Dec 2027 Term $ Treasury UCITS ETF USD (Dist)",
+          "ticker": "COTY",
+          "name": "COTY",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "SIX"
+            "NYSE"
           ]
         },
         {
-          "ticker": "29ID",
-          "name": "iShares iBonds Dec 2029 Term $ Corp UCITS ETF USD (Dist)",
+          "ticker": "CRI",
+          "name": "CIECHARGEURSINVEST",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "SIX"
+            "ASX",
+            "NYSE",
+            "TSXV"
           ]
         },
         {
-          "ticker": "29IT",
-          "name": "iShares iBonds Dec 2029 Term $ Treasury UCITS ETF USD (Dist)",
+          "ticker": "CRTO",
+          "name": "CRCAM TOURAINE CCI",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "SIX"
-          ]
-        },
-        {
-          "ticker": "30ID",
-          "name": "iShares iBonds Dec 2030 Term $ Corp UCITS ETF USD (Dist)",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "AMS",
-            "SIX"
-          ]
-        },
-        {
-          "ticker": "31ID",
-          "name": "iShares iBonds Dec 2031 Term $ Corp UCITS ETF USD (Dist)",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "SIX"
-          ]
-        },
-        {
-          "ticker": "32ID",
-          "name": "iShares iBonds Dec 2032 Term $ Corp UCITS ETF USD (Dist)",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "SIX"
-          ]
-        },
-        {
-          "ticker": "33ID",
-          "name": "iShares iBonds Dec 2033 Term $ Corp UCITS ETF USD (Dist)",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "SIX"
-          ]
-        },
-        {
-          "ticker": "34ID",
-          "name": "iShares iBonds Dec 2034 Term $ Corp UCITS ETF USD (Dist)",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "SIX"
-          ]
-        },
-        {
-          "ticker": "3EUL",
-          "name": "WisdomTree EURO STOXX 50 3x Daily Leveraged",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "LSE"
+            "NASDAQ"
           ]
         }
       ],
@@ -1841,48 +1866,48 @@
           "exchange": "Euronext"
         },
         {
-          "ticker": "0CAC",
-          "name": "OSSIAM CAC 40 NR - UCITS ETF 1C (EUR)",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "28IU",
-          "name": "iShares iBonds Dec 2028 Term $ High Yield Corp UCITS ETF USD (Dist)",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "29IU",
-          "name": "iShares iBonds Dec 2029 Term $ High Yield Corp UCITS ETF USD (Dist)",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "35ID",
-          "name": "iShares iBonds Dec 2035 Term $ Corp UCITS ETF USD (Dist)",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "36ID",
-          "name": "iSh iBonds Dec 2036 Term $ Corp USD Dist",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "37ID",
-          "name": "iSh iBonds Dec 2037 Term $ Corp USD Dist",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "3CAC",
-          "name": "WisdomTree CAC 40 3x Daily Leveraged",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "3CAS",
-          "name": "WisdomTree CAC 40 3x Daily Short",
-          "exchange": "Euronext"
-        },
-        {
           "ticker": "ABBS",
           "name": "AB SCIENCE BSA",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ABBSA",
+          "name": "AB SCIENCE BSAAU25",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ABSBS",
+          "name": "AB SCIENCE BSA 25",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ADOBS",
+          "name": "ADOCIA BSA",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ALAON",
+          "name": "APOLLO MINERALS",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ALCLA",
+          "name": "CLARANOVA",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ALCPA",
+          "name": "MACOMPTA.FR",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ALEFA",
+          "name": "EDUFORM ACTION",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "ALETC",
+          "name": "ENERGY SOLAR",
           "exchange": "Euronext"
         }
       ]
@@ -2030,10 +2055,10 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3200,
+      "official_symbols": 3194,
       "matched": 3038,
       "collisions": 70,
-      "missing": 92,
+      "missing": 86,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -2537,10 +2562,10 @@
     },
     {
       "exchange": "KOSDAQ",
-      "official_symbols": 1817,
-      "matched": 1596,
+      "official_symbols": 1818,
+      "matched": 1595,
       "collisions": 3,
-      "missing": 218,
+      "missing": 220,
       "collision_examples": [
         {
           "ticker": "002230",
@@ -2622,11 +2647,19 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2102,
-      "matched": 1960,
+      "official_symbols": 2104,
+      "matched": 1959,
       "collisions": 14,
-      "missing": 128,
+      "missing": 131,
       "collision_examples": [
+        {
+          "ticker": "200030",
+          "name": "KODEX \ubbf8\uad6dS&P500\uc0b0\uc5c5\uc7ac(\ud569\uc131)",
+          "target_exchange": "KRX",
+          "existing_exchanges": [
+            "SZSE"
+          ]
+        },
         {
           "ticker": "000850",
           "name": "HMT",
@@ -2698,52 +2731,9 @@
           "existing_exchanges": [
             "SZSE"
           ]
-        },
-        {
-          "ticker": "002880",
-          "name": "DYA",
-          "target_exchange": "KRX",
-          "existing_exchanges": [
-            "SZSE"
-          ]
         }
       ],
       "missing_examples": [
-        {
-          "ticker": "000300",
-          "name": "DHAUTONEX",
-          "exchange": "KRX"
-        },
-        {
-          "ticker": "000520",
-          "name": "SAMIL PHARM",
-          "exchange": "KRX"
-        },
-        {
-          "ticker": "001470",
-          "name": "SAMBU CONST",
-          "exchange": "KRX"
-        },
-        {
-          "ticker": "001570",
-          "name": "KY",
-          "exchange": "KRX"
-        },
-        {
-          "ticker": "002030",
-          "name": "ASIA HOLDINGS",
-          "exchange": "KRX"
-        },
-        {
-          "ticker": "002200",
-          "name": "KOR EXPT PKG IND",
-          "exchange": "KRX"
-        },
-        {
-          "ticker": "005110",
-          "name": "HANCHANG",
-          "exchange": "KRX"
-        },
         {
           "ticker": "0057H0",
           "name": "PLUS \ubbf8\uad6dS&P500\ubbf8\uad6d\ucc44\ud63c\ud56950\uc561\ud2f0\ube0c",
@@ -2755,8 +2745,43 @@
           "exchange": "KRX"
         },
         {
-          "ticker": "006380",
-          "name": "CAPRO",
+          "ticker": "0065G0",
+          "name": "KODEX \ucc28\uc774\ub098\ud14c\ud06cTOP10",
+          "exchange": "KRX"
+        },
+        {
+          "ticker": "0067V0",
+          "name": "TIGER \ucc28\uc774\ub098\uae00\ub85c\ubc8c\ub9ac\ub354\uc2a4TOP3+",
+          "exchange": "KRX"
+        },
+        {
+          "ticker": "0068M0",
+          "name": "KODEX \ubbf8\uad6dS&P500\ubc84\ud37c6\uc6d4\uc561\ud2f0\ube0c",
+          "exchange": "KRX"
+        },
+        {
+          "ticker": "0073X0",
+          "name": "FOCUS \uc54c\ub9ac\ubc14\ubc14\ubbf8\uad6d\ucc44\ucee4\ubc84\ub4dc\ucf5c\ud63c\ud569",
+          "exchange": "KRX"
+        },
+        {
+          "ticker": "0074K0",
+          "name": "KoAct K\uc218\ucd9c\ud575\uc2ec\uae30\uc5c5TOP30\uc561\ud2f0\ube0c",
+          "exchange": "KRX"
+        },
+        {
+          "ticker": "0080G0",
+          "name": "KODEX \ubc29\uc0b0TOP10",
+          "exchange": "KRX"
+        },
+        {
+          "ticker": "0084E0",
+          "name": "KIWOOM \ubbf8\uad6d\ub300\ud615\uc8fc500\uc6d4\uac04\ubaa9\ud45c\ud5e4\uc9c0\uc561\ud2f0\ube0c",
+          "exchange": "KRX"
+        },
+        {
+          "ticker": "0085N0",
+          "name": "ACE \ubbf8\uad6d10\ub144\uad6d\ucc44\uc561\ud2f0\ube0c(H)",
           "exchange": "KRX"
         }
       ]
@@ -3622,30 +3647,12 @@
           ]
         },
         {
-          "ticker": "ACCS",
-          "name": "ACCESS Newswire Inc.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE MKT"
-          ]
-        },
-        {
           "ticker": "ACP",
           "name": "abrdn Income Credit Strategies Fund Common Shares",
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "ASX",
             "WSE"
-          ]
-        },
-        {
-          "ticker": "ACU",
-          "name": "ACME UNITED CORP",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "ASX",
-            "NYSE MKT",
-            "TSXV"
           ]
         },
         {
@@ -3667,24 +3674,6 @@
           ]
         },
         {
-          "ticker": "AEF",
-          "name": "abrdn Emerging Markets ex-China Fund, Inc.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "ASX",
-            "Borsa Italiana",
-            "TSXV"
-          ]
-        },
-        {
-          "ticker": "AEON",
-          "name": "AEON Biopharma, Inc.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE MKT"
-          ]
-        },
-        {
           "ticker": "AGD",
           "name": "abrdn Global Dynamic Dividend Fund Common Shares of Beneficial Interest",
           "target_exchange": "NYSE",
@@ -3693,20 +3682,55 @@
           ]
         },
         {
-          "ticker": "AGIG",
-          "name": "ABUNDIA GLOBAL IMPACT GROUP, INC.",
+          "ticker": "AMX",
+          "name": "America Movil, S.A.B. de C.V. American Depositary Shares (each representing the right to receive twenty (20) Series B Shares",
           "target_exchange": "NYSE",
           "existing_exchanges": [
-            "NYSE MKT"
+            "ASX",
+            "TASE"
+          ]
+        },
+        {
+          "ticker": "AOMD",
+          "name": "Angel Oak Mortgage REIT, Inc. 9.750% Senior Notes due 2030",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "FSX",
+            "XETRA",
+            "XSTU"
+          ]
+        },
+        {
+          "ticker": "ASA",
+          "name": "ASA  Gold and Precious Metals Limited",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "OSL"
+          ]
+        },
+        {
+          "ticker": "ASG",
+          "name": "Liberty All-Star Growth Fund, Inc.",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "ASX",
+            "FSX",
+            "TSXV",
+            "XETRA",
+            "XSTU"
+          ]
+        },
+        {
+          "ticker": "BBN",
+          "name": "BlackRock Taxable Municipal Bond Trust Common Shares of Beneficial Interest",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "ASX",
+            "SIX"
           ]
         }
       ],
       "missing_examples": [
-        {
-          "ticker": "AAC-UN",
-          "name": "Ares Acquisition Corp III",
-          "exchange": "NYSE"
-        },
         {
           "ticker": "AAC.U",
           "name": "Ares Acquisition Corporation III Units, each consisting of one Class A ordinary share and one-tenth of one redeemable warrant",
@@ -3728,28 +3752,33 @@
           "exchange": "NYSE"
         },
         {
-          "ticker": "ABR-PD",
-          "name": "ARBOR REALTY TRUST INC",
-          "exchange": "NYSE"
-        },
-        {
-          "ticker": "ABR-PE",
-          "name": "ARBOR REALTY TRUST INC",
-          "exchange": "NYSE"
-        },
-        {
-          "ticker": "ABR-PF",
-          "name": "ARBOR REALTY TRUST INC",
-          "exchange": "NYSE"
-        },
-        {
           "ticker": "ABXL",
           "name": "Abacus Global Management, Inc. 9.875% Fixed Rate Senior Notes due 2028",
           "exchange": "NYSE"
         },
         {
-          "ticker": "ACHR-WT",
-          "name": "Archer Aviation Inc.",
+          "ticker": "ACHR.W",
+          "name": "Archer Aviation Inc. Redeemable Warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ACP$A",
+          "name": "abrdn Income Credit Strategies Fund 5.250% Series A Perpetual Preferred Stock",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ACR$C",
+          "name": "ACRES Commercial Realty Corp. 8.625% Fixed-to-Floating Series C Cumulative Redeemable Preferred Stock",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ACR$D",
+          "name": "ACRES Commercial Realty Corp. 7.875% Series D Cumulative Redeemable Preferred Stock",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ACV",
+          "name": "Virtus Diversified Income & Convertible Fund Common Shares of Beneficial Interest",
           "exchange": "NYSE"
         }
       ]
@@ -5171,10 +5200,10 @@
     },
     {
       "exchange": "TSE",
-      "official_symbols": 4437,
-      "matched": 4053,
-      "collisions": 334,
-      "missing": 50,
+      "official_symbols": 4444,
+      "matched": 4043,
+      "collisions": 335,
+      "missing": 66,
       "collision_examples": [
         {
           "ticker": "1305",

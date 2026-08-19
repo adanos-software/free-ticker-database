@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-18T20:23:15Z",
+  "generated_at": "2026-08-19T06:25:53Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 1548,
-  "decision_rows": 5045,
+  "conflict_count": 1549,
+  "decision_rows": 5048,
   "action_counts": {
     "kept_listing_keyed_identifier": 1328,
     "proposed_clear_conflicting_identifier": 749,
-    "quarantined_unresolved_identifier": 2968
+    "quarantined_unresolved_identifier": 2971
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 749,
-  "quarantined_rows": 2968,
+  "quarantined_rows": 2971,
   "retained_rows": 1328,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -834,7 +834,20 @@
       "retained_isin": "AU000000CTO0"
     },
     {
-      "conflict_id": "8e3ec1797a9aec09c1f0",
+      "conflict_id": "c12c945112758e6b56d5",
+      "isin": "AU000000CYG6",
+      "listing_key": "ASX::CYG",
+      "ticker": "CYG",
+      "exchange": "ASX",
+      "name": "COVENTRY GROUP LIMITED",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "AU000000CYG6"
+    },
+    {
+      "conflict_id": "c12c945112758e6b56d5",
       "isin": "AU000000CYG6",
       "listing_key": "FSX::1DX",
       "ticker": "1DX",
@@ -847,7 +860,7 @@
       "retained_isin": "AU000000CYG6"
     },
     {
-      "conflict_id": "8e3ec1797a9aec09c1f0",
+      "conflict_id": "c12c945112758e6b56d5",
       "isin": "AU000000CYG6",
       "listing_key": "TSXV::CYG",
       "ticker": "CYG",
@@ -1924,6 +1937,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU00000BEAR2"
+    },
+    {
+      "conflict_id": "c41368c24b1fd21540e6",
+      "isin": "AU0000113490",
+      "listing_key": "ASX::CLU",
+      "ticker": "CLU",
+      "exchange": "ASX",
+      "name": "CLUEY LTD",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "AU0000113490"
+    },
+    {
+      "conflict_id": "c41368c24b1fd21540e6",
+      "isin": "AU0000113490",
+      "listing_key": "NEO::CLU",
+      "ticker": "CLU",
+      "exchange": "NEO",
+      "name": "iShares US Fundamental Hedged Common Class",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "AU0000113490"
     },
     {
       "conflict_id": "96b8d021f572fff977e0",

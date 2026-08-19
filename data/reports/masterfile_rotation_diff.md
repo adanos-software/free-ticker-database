@@ -1,31 +1,39 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-08T20:17:17Z`
-- New rows: `36`
-- Vanished rows: `2`
-- Changed rows: `2`
+- Generated at: `2026-08-19T06:07:11Z`
+- New rows: `52`
+- Vanished rows: `38`
+- Changed rows: `59`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| name_change | 2 |
+| field_change | 9 |
+| isin_change | 8 |
+| name_change | 44 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| tase_securities_marketdata | 2 |
-| tmx_etf_screener | 1 |
-| tpex_emerging_basic_info | 2 |
-| upcom_registered_securities | 1 |
-| vienna_listed_companies | 28 |
-| wse_etf_list | 2 |
+| euronext_etfs | 16 |
+| hkex_securities_list | 9 |
+| hose_listed_stocks | 2 |
+| jpx_listed_issues | 18 |
+| jse_etf_list | 1 |
+| krx_etf_finder | 3 |
+| krx_listed_companies | 3 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| tase_securities_marketdata | 1 |
-| upcom_registered_securities | 1 |
+| euronext_equities | 5 |
+| euronext_etfs | 1 |
+| hkex_securities_list | 15 |
+| hose_fund_certificate_list | 1 |
+| jpx_listed_issues | 11 |
+| jse_etf_list | 2 |
+| krx_listed_companies | 3 |
