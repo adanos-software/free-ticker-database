@@ -1,36 +1,43 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-19T14:16:55Z`
-- New rows: `455`
-- Vanished rows: `172`
-- Changed rows: `125`
+- Generated at: `2026-08-19T14:39:36Z`
+- New rows: `117`
+- Vanished rows: `13`
+- Changed rows: `12`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| isin_change | 50 |
-| name_change | 75 |
+| isin_change | 5 |
+| name_change | 7 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| nasdaq_other_listed | 30 |
-| nasdaq_trading_system_adds_deletes | 24 |
-| nse_india_securities_available | 251 |
-| otc_markets_security_profile | 22 |
-| psx_listed_companies | 2 |
-| psx_symbol_name_daily | 18 |
-| sec_company_tickers_exchange | 108 |
+| set_dr_search | 19 |
+| set_listed_companies | 1 |
+| set_stock_search | 1 |
+| sgx_securities_prices | 3 |
+| six_equity_issuers | 1 |
+| six_etf_products | 50 |
+| six_etp_products | 6 |
+| six_shares_explorer_full | 1 |
+| spotlight_companies_directory | 9 |
+| sse_a_share_list | 4 |
+| sse_etf_list | 9 |
+| szse_etf_list | 10 |
+| tadawul_main_market_watch | 1 |
+| tase_etf_marketdata | 2 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| nasdaq_other_listed | 22 |
-| nasdaq_trading_system_adds_deletes | 13 |
-| newconnect_listed_companies | 1 |
-| nse_india_securities_available | 27 |
-| sec_company_tickers_exchange | 109 |
+| set_listed_companies | 2 |
+| set_stock_search | 2 |
+| sgx_securities_prices | 3 |
+| six_equity_issuers | 1 |
+| spotlight_companies_directory | 5 |

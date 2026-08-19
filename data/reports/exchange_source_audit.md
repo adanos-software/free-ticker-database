@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T14:19:23Z`
+Generated at: `2026-08-19T14:42:00Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 24, "official_source_required": 5, "refresh_required": 21, "refresh_unavailable": 13}`
+- Audit outcomes: `{"denominator_missing": 24, "maintain": 28, "official_source_required": 5, "refresh_required": 17, "refresh_unavailable": 13}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -69,16 +69,16 @@ Generated at: `2026-08-19T14:19:23Z`
 | PSX | official_full | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily |  | 720 | 54.17 |  | maintain | not_applicable |
 | QSE | official_full | qse_market_watch |  | 57 | 96.49 |  | maintain | not_applicable |
 | RSE | official_partial | rse_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
-| SEM | official_full | sem_isin |  | 46 | 100.0 | sem_isin | refresh_required | not_applicable |
-| SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 944 | 82.1 | set_dr_search|set_etf_search|set_listed_companies|set_stock_search | refresh_required | not_applicable |
-| SGX | official_full | sgx_securities_prices |  | 746 | 81.9 | sgx_securities_prices | refresh_required | not_applicable |
-| SIX | official_partial | six_equity_issuers|six_etf_products|six_etp_products |  | 0 |  | six_equity_issuers|six_etf_products|six_etp_products | denominator_missing | blocked_nonfresh_source |
-| SSE | official_partial | sse_a_share_list|sse_etf_list |  | 0 |  | sse_a_share_list|sse_etf_list | denominator_missing | blocked_nonfresh_source |
+| SEM | official_full | sem_isin |  | 46 | 100.0 |  | maintain | not_applicable |
+| SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 943 | 82.18 |  | maintain | not_applicable |
+| SGX | official_full | sgx_securities_prices |  | 746 | 81.77 |  | maintain | not_applicable |
+| SIX | official_partial | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
+| SSE | official_partial | sse_a_share_list|sse_etf_list |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | SSE_CL | official_full | bolsa_santiago_instruments |  | 111 | 100.0 | bolsa_santiago_instruments | refresh_unavailable | not_applicable |
-| STO | official_partial | nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory |  | 0 |  | ngm_market_data_equities|spotlight_companies_directory | refresh_unavailable | blocked_source_unavailable |
-| SZSE | official_partial | szse_a_share_list|szse_b_share_list|szse_etf_list |  | 0 |  | szse_a_share_list|szse_b_share_list|szse_etf_list | refresh_unavailable | blocked_source_unavailable |
-| TADAWUL | official_full | tadawul_main_market_watch |  | 412 | 48.06 | tadawul_main_market_watch | refresh_required | not_applicable |
-| TASE | official_partial | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata |  | 0 |  | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata | refresh_unavailable | blocked_source_unavailable |
+| STO | official_partial | nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory |  | 0 |  | ngm_market_data_equities | refresh_unavailable | blocked_source_unavailable |
+| SZSE | official_partial | szse_a_share_list|szse_b_share_list|szse_etf_list |  | 0 |  | szse_a_share_list | refresh_unavailable | blocked_source_unavailable |
+| TADAWUL | official_full | tadawul_main_market_watch |  | 413 | 47.94 |  | maintain | not_applicable |
+| TASE | official_partial | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata |  | 0 |  | tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata | refresh_unavailable | blocked_source_unavailable |
 | TPEX | official_partial | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes |  | 0 |  | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes | denominator_missing | blocked_nonfresh_source |
 | TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 90.98 | jpx_tse_stock_detail | refresh_unavailable | not_applicable |
 | TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 785 | 75.16 | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |

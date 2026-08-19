@@ -1,8 +1,8 @@
 {
   "global": {
     "official_symbols": 98879,
-    "matched": 64876,
-    "collisions": 13795,
+    "matched": 64875,
+    "collisions": 13796,
     "missing": 20208
   },
   "exchanges": [
@@ -4754,10 +4754,10 @@
     },
     {
       "exchange": "SET",
-      "official_symbols": 944,
+      "official_symbols": 943,
       "matched": 775,
       "collisions": 132,
-      "missing": 37,
+      "missing": 36,
       "collision_examples": [
         {
           "ticker": "AAI",
@@ -4867,11 +4867,6 @@
           "exchange": "SET"
         },
         {
-          "ticker": "BANPUU",
-          "name": "BANPU PUBLIC COMPANY LIMITED",
-          "exchange": "SET"
-        },
-        {
           "ticker": "BLISS",
           "name": "BLISS INTELLIGENCE PUBLIC COMPANY LIMITED",
           "exchange": "SET"
@@ -4895,15 +4890,20 @@
           "ticker": "CTARAF",
           "name": "CENTARA HOTELS & RESORTS LEASEHOLD PROPERTY FUND",
           "exchange": "SET"
+        },
+        {
+          "ticker": "FUTURERT",
+          "name": "Future City Leasehold Real Estate Investment Trust",
+          "exchange": "SET"
         }
       ]
     },
     {
       "exchange": "SGX",
       "official_symbols": 746,
-      "matched": 611,
+      "matched": 610,
       "collisions": 122,
-      "missing": 13,
+      "missing": 14,
       "collision_examples": [
         {
           "ticker": "500",
@@ -5006,6 +5006,11 @@
           "exchange": "SGX"
         },
         {
+          "ticker": "EYZR",
+          "name": "G Invacom R",
+          "exchange": "SGX"
+        },
+        {
           "ticker": "GLU",
           "name": "Lion SG Phy Gold US$",
           "exchange": "SGX"
@@ -5018,6 +5023,11 @@
         {
           "ticker": "JFQ",
           "name": "AnnicaHoldings",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "Q50",
+          "name": "A CGS FG Next50 SGD",
           "exchange": "SGX"
         },
         {
@@ -5034,16 +5044,6 @@
           "ticker": "UGS",
           "name": "ULTRAGREEN AI SGD",
           "exchange": "SGX"
-        },
-        {
-          "ticker": "UXSD",
-          "name": "SpaceX US SDR 100to1",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "WNH",
-          "name": "Autagco Ltd",
-          "exchange": "SGX"
         }
       ]
     },
@@ -5058,9 +5058,9 @@
     },
     {
       "exchange": "TADAWUL",
-      "official_symbols": 412,
+      "official_symbols": 413,
       "matched": 198,
-      "collisions": 209,
+      "collisions": 210,
       "missing": 5,
       "collision_examples": [
         {
