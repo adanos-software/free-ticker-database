@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-18T07:02:32Z",
+    "generated_at": "2026-08-19T07:03:27Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -11,30 +11,30 @@
   },
   "summary": {
     "fetched_rows": 239,
-    "merged_history_rows": 325,
-    "review_rows": 325,
+    "merged_history_rows": 327,
+    "review_rows": 327,
     "match_status_counts": {
       "new_symbol_present_old_symbol_missing": 238,
       "no_matching_listing": 12,
       "old_and_new_symbols_present": 53,
-      "old_symbol_present_new_symbol_missing": 7,
-      "symbol_present_only_outside_source_scope": 15
+      "old_symbol_present_new_symbol_missing": 8,
+      "symbol_present_only_outside_source_scope": 16
     },
     "symbol_change_workflow_queue_counts": {
       "audit_already_reflected": 236,
       "blocked_missing_source_scope_mapping": 7,
-      "blocked_out_of_scope_symbol_collision": 20,
+      "blocked_out_of_scope_symbol_collision": 22,
       "document_no_dataset_match": 12,
       "review_duplicate_or_cross_listing": 49,
       "review_verified_rename_or_delisting": 1
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 325,
+      "rows": 327,
       "verified_rename_or_delisting_review_rows": 1,
       "duplicate_or_cross_listing_review_rows": 49,
       "already_reflected_audit_rows": 236,
-      "out_of_scope_collision_blocked_rows": 20,
+      "out_of_scope_collision_blocked_rows": 22,
       "missing_source_scope_mapping_rows": 7,
       "no_dataset_match_documentation_rows": 12,
       "time_sensitive_review_rows": 36,
@@ -47,14 +47,14 @@
       "action_required_possible_rename_or_delisting": 1,
       "already_reflected_in_scope_with_global_symbol_collision": 54,
       "already_reflected_in_source_scope": 182,
-      "hold_out_of_scope_symbol_collision": 15,
-      "manual_review_due_to_out_of_scope_collision": 5,
+      "hold_out_of_scope_symbol_collision": 16,
+      "manual_review_due_to_out_of_scope_collision": 6,
       "manual_scope_mapping_required": 7,
       "no_dataset_match_for_source_scope": 12
     },
     "review_priority_counts": {
       "P1": 50,
-      "P2": 27,
+      "P2": 29,
       "P3": 12,
       "P4": 236
     },
@@ -69,9 +69,9 @@
       "no_dataset_match_for_source_scope": "P3"
     },
     "recency_bucket_counts": {
-      "older_than_90d": 218,
+      "older_than_90d": 219,
       "recent_30d": 33,
-      "recent_7d": 36,
+      "recent_7d": 37,
       "recent_90d": 38
     },
     "review_priority_recency_counts": {
@@ -79,9 +79,9 @@
       "P1:recent_30d": 15,
       "P1:recent_7d": 21,
       "P1:recent_90d": 9,
-      "P2:older_than_90d": 17,
+      "P2:older_than_90d": 18,
       "P2:recent_30d": 2,
-      "P2:recent_7d": 5,
+      "P2:recent_7d": 6,
       "P2:recent_90d": 3,
       "P3:older_than_90d": 8,
       "P3:recent_7d": 2,
@@ -97,9 +97,9 @@
       "audit_already_reflected:recent_7d": 8,
       "audit_already_reflected:recent_90d": 24,
       "blocked_missing_source_scope_mapping:older_than_90d": 7,
-      "blocked_out_of_scope_symbol_collision:older_than_90d": 10,
+      "blocked_out_of_scope_symbol_collision:older_than_90d": 11,
       "blocked_out_of_scope_symbol_collision:recent_30d": 2,
-      "blocked_out_of_scope_symbol_collision:recent_7d": 5,
+      "blocked_out_of_scope_symbol_collision:recent_7d": 6,
       "blocked_out_of_scope_symbol_collision:recent_90d": 3,
       "document_no_dataset_match:older_than_90d": 8,
       "document_no_dataset_match:recent_7d": 2,
@@ -113,7 +113,7 @@
     "workflow_queue_priority_counts": {
       "audit_already_reflected:P4": 236,
       "blocked_missing_source_scope_mapping:P2": 7,
-      "blocked_out_of_scope_symbol_collision:P2": 20,
+      "blocked_out_of_scope_symbol_collision:P2": 22,
       "document_no_dataset_match:P3": 12,
       "review_duplicate_or_cross_listing:P1": 49,
       "review_verified_rename_or_delisting:P1": 1
@@ -122,7 +122,7 @@
       "audit_already_reflected:global_symbol_collision_outside_source_scope": 54,
       "audit_already_reflected:matches_within_source_scope": 182,
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 7,
-      "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 20,
+      "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 22,
       "document_no_dataset_match:matches_within_source_scope": 12,
       "review_duplicate_or_cross_listing:matches_within_source_scope": 49,
       "review_verified_rename_or_delisting:matches_within_source_scope": 1
@@ -132,8 +132,8 @@
       "blocked_missing_source_scope_mapping:new_symbol_present_old_symbol_missing": 2,
       "blocked_missing_source_scope_mapping:old_and_new_symbols_present": 4,
       "blocked_missing_source_scope_mapping:old_symbol_present_new_symbol_missing": 1,
-      "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 5,
-      "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 15,
+      "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 6,
+      "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 16,
       "document_no_dataset_match:no_matching_listing": 12,
       "review_duplicate_or_cross_listing:old_and_new_symbols_present": 49,
       "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 1
@@ -148,7 +148,7 @@
       },
       "blocked_out_of_scope_symbol_collision": {
         "OTC": 15,
-        "US_LISTED": 5
+        "US_LISTED": 7
       },
       "document_no_dataset_match": {
         "OTC": 5,
@@ -169,7 +169,7 @@
         "secondary_review": 7
       },
       "blocked_out_of_scope_symbol_collision": {
-        "secondary_review": 20
+        "secondary_review": 22
       },
       "document_no_dataset_match": {
         "secondary_review": 12
@@ -193,8 +193,8 @@
         "feed_name_partially_overlaps_scoped_listing_name": 2
       },
       "blocked_out_of_scope_symbol_collision": {
-        "feed_name_differs_from_scoped_listing_name": 5,
-        "no_scoped_listing_name_available": 15
+        "feed_name_differs_from_scoped_listing_name": 6,
+        "no_scoped_listing_name_available": 16
       },
       "document_no_dataset_match": {
         "no_scoped_listing_name_available": 12
@@ -218,8 +218,8 @@
         "old_scoped_listing_key_only": 1
       },
       "blocked_out_of_scope_symbol_collision": {
-        "no_scoped_listing_key_match": 15,
-        "old_scoped_listing_key_only": 5
+        "no_scoped_listing_key_match": 16,
+        "old_scoped_listing_key_only": 6
       },
       "document_no_dataset_match": {
         "no_scoped_listing_key_match": 12
@@ -239,7 +239,7 @@
         "map_source_exchange_scope_before_symbol_review": 7
       },
       "blocked_out_of_scope_symbol_collision": {
-        "block_until_source_scope_and_non_symbol_identity_resolved": 20
+        "block_until_source_scope_and_non_symbol_identity_resolved": 22
       },
       "document_no_dataset_match": {
         "document_no_dataset_match_without_canonical_action": 12
@@ -312,7 +312,7 @@
         "review_priority": "P2",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-        "rows": 5,
+        "rows": 6,
         "review_strategy": "block_until_source_scope_and_non_symbol_identity_resolved",
         "evidence_required": "official_exchange_scope_and_non_symbol_identity_evidence_before_apply",
         "recommended_next_source": "Official source exchange scope mapping plus non-symbol identity evidence before any symbol action.",
@@ -345,7 +345,7 @@
         "review_priority": "P2",
         "recency_bucket": "older_than_90d",
         "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-        "rows": 10,
+        "rows": 11,
         "review_strategy": "block_until_source_scope_and_non_symbol_identity_resolved",
         "evidence_required": "official_exchange_scope_and_non_symbol_identity_evidence_before_apply",
         "recommended_next_source": "Official source exchange scope mapping plus non-symbol identity evidence before any symbol action.",
@@ -486,21 +486,21 @@
     ],
     "apply_eligibility_counts": {
       "audit_only_no_apply": 236,
-      "blocked_until_exchange_scope_resolved": 27,
+      "blocked_until_exchange_scope_resolved": 29,
       "no_dataset_action_without_scope_mapping": 12,
       "requires_official_venue_confirmation": 50
     },
     "symbol_change_apply_readiness_counts": {
       "audit_only_no_canonical_change": 236,
       "blocked_until_listing_keyed_official_symbol_change_evidence": 50,
-      "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 27,
+      "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 29,
       "document_or_ignore_until_scoped_official_dataset_match": 12
     },
     "verification_evidence_required_counts": {
       "audit_only_confirm_no_canonical_change_needed": 236,
       "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 49,
       "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 1,
-      "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 20,
+      "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 22,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 12,
       "source_exchange_mapping_before_any_symbol_change_review": 7
     },
@@ -543,18 +543,32 @@
     ],
     "recommended_action_counts": {
       "already_reflected_or_new_symbol_added_in_source_scope": 238,
-      "do_not_apply_from_symbol_match_review_exchange_scope_first": 15,
+      "do_not_apply_from_symbol_match_review_exchange_scope_first": 16,
       "ignore_or_map_exchange_scope_before_applying": 12,
       "review_duplicate_or_cross_listing_state_in_source_scope": 53,
-      "review_possible_rename_or_delisting_in_source_scope": 7
+      "review_possible_rename_or_delisting_in_source_scope": 8
     },
     "exchange_scope_status_counts": {
-      "global_symbol_collision_outside_source_scope": 74,
+      "global_symbol_collision_outside_source_scope": 76,
       "matches_within_source_scope": 244,
       "unscoped_source_hint": 7
     }
   },
   "symbol_changes": [
+    {
+      "change_id": "7aa1fe5f06e2e396",
+      "effective_date": "2026-08-17",
+      "old_symbol": "BBBY",
+      "new_symbol": "NXH",
+      "new_company_name": "Neighborhood Intelligence Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/nxh/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-08-19T07:03:27Z"
+    },
     {
       "change_id": "483371aab93a417c",
       "effective_date": "2026-08-14",
@@ -3816,6 +3830,20 @@
       "source_confidence": "secondary_review",
       "review_needed": "true",
       "observed_at": "2026-06-10T10:22:05Z"
+    },
+    {
+      "change_id": "268c4c8fed4ddf15",
+      "effective_date": "2025-08-29",
+      "old_symbol": "BYON",
+      "new_symbol": "NXH",
+      "new_company_name": "Neighborhood Intelligence Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/nxh/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-08-19T07:03:27Z"
     },
     {
       "change_id": "2220f65e52dc10ab",
