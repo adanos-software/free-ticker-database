@@ -1,38 +1,38 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-19T15:16:58Z`
-- New rows: `140`
-- Vanished rows: `61`
-- Changed rows: `48`
+- Generated at: `2026-08-19T15:24:56Z`
+- New rows: `142`
+- Vanished rows: `175`
+- Changed rows: `29`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 42 |
-| isin_change | 2 |
-| name_change | 4 |
+| isin_change | 5 |
+| name_change | 24 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| asx_investment_products | 3 |
-| athex_sector_classification | 8 |
-| b3_bdr_etfs | 7 |
-| b3_instruments_equities | 21 |
-| b3_listed_etfs | 4 |
-| bist_kap_mkk_listed_securities | 5 |
-| bmv_etf_search | 3 |
-| bmv_issuer_directory | 76 |
-| bolsa_santiago_instruments | 13 |
+| bse_india_scrips | 43 |
+| bvb_fund_units_directory | 1 |
+| byma_equity_details | 29 |
+| cboe_canada_listing_directory | 6 |
+| deutsche_boerse_etfs_etps | 24 |
+| deutsche_boerse_frankfurt_all_tradable_equities | 11 |
+| deutsche_boerse_listed_companies | 2 |
+| deutsche_boerse_xetra_all_tradable_equities | 26 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| asx_investment_products | 4 |
-| b3_instruments_equities | 54 |
-| b3_listed_etfs | 1 |
-| bolsa_santiago_instruments | 2 |
+| bse_india_scrips | 150 |
+| cboe_canada_listing_directory | 2 |
+| deutsche_boerse_etfs_etps | 2 |
+| deutsche_boerse_frankfurt_all_tradable_equities | 2 |
+| deutsche_boerse_listed_companies | 6 |
+| deutsche_boerse_xetra_all_tradable_equities | 13 |

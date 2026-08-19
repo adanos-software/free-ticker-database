@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 22,
+    "critical_field_changes": 26,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -24,10 +24,28 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
+      "listing_key": "BCBA::MELI",
+      "field_name": "isin",
+      "old_value": "US58733R1023",
+      "new_value": "ARDEUT116175"
+    },
+    {
+      "listing_key": "BCBA::PETR3",
+      "field_name": "isin",
+      "old_value": "BRPETRACNOR9",
+      "new_value": "ARCAVA4601L7"
+    },
+    {
       "listing_key": "CPH::NEWCAP",
       "field_name": "isin",
       "old_value": "DK0010212570",
       "new_value": "DK0064983373"
+    },
+    {
+      "listing_key": "FSX::FRE",
+      "field_name": "isin",
+      "old_value": "DE0005785604",
+      "new_value": "DE000FRE5EN2"
     },
     {
       "listing_key": "HEL::REAKTOR",
@@ -154,6 +172,12 @@
       "field_name": "isin",
       "old_value": "SE0000722365",
       "new_value": "SE0028925701"
+    },
+    {
+      "listing_key": "XETRA::FRE",
+      "field_name": "isin",
+      "old_value": "DE0005785604",
+      "new_value": "DE000FRE5EN2"
     }
   ],
   "generated_official_change_evidence": [],

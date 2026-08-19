@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 98947,
-    "matched": 64960,
-    "collisions": 13798,
-    "missing": 20189
+    "official_symbols": 98866,
+    "matched": 64811,
+    "collisions": 13806,
+    "missing": 20249
   },
   "exchanges": [
     {
@@ -950,10 +950,10 @@
     },
     {
       "exchange": "BSE_IN",
-      "official_symbols": 5077,
-      "matched": 2671,
-      "collisions": 1843,
-      "missing": 563,
+      "official_symbols": 4970,
+      "matched": 2535,
+      "collisions": 1845,
+      "missing": 590,
       "collision_examples": [
         {
           "ticker": "20MICRONS",
@@ -1889,10 +1889,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18016,
-      "matched": 8007,
+      "official_symbols": 18025,
+      "matched": 8006,
       "collisions": 3945,
-      "missing": 6064,
+      "missing": 6074,
       "collision_examples": [
         {
           "ticker": "00X0",
@@ -3158,10 +3158,10 @@
     },
     {
       "exchange": "NEO",
-      "official_symbols": 440,
-      "matched": 213,
-      "collisions": 65,
-      "missing": 162,
+      "official_symbols": 444,
+      "matched": 211,
+      "collisions": 66,
+      "missing": 167,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -3211,6 +3211,14 @@
           ]
         },
         {
+          "ticker": "ATAP",
+          "name": "AGF ENERGY TRANSITION AND ADAPTION ETF",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "IDX"
+          ]
+        },
+        {
           "ticker": "AXA",
           "name": "AXA CDR (CAD HEDGED)",
           "target_exchange": "NEO",
@@ -3245,14 +3253,6 @@
           "target_exchange": "NEO",
           "existing_exchanges": [
             "BATS"
-          ]
-        },
-        {
-          "ticker": "BYLD",
-          "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - HEDGED UNITS",
-          "target_exchange": "NEO",
-          "existing_exchanges": [
-            "NYSE ARCA"
           ]
         }
       ],
@@ -5851,10 +5851,10 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5080,
-      "matched": 4113,
-      "collisions": 700,
-      "missing": 267,
+      "official_symbols": 5093,
+      "matched": 4103,
+      "collisions": 705,
+      "missing": 285,
       "collision_examples": [
         {
           "ticker": "01P",
@@ -5950,6 +5950,11 @@
           "exchange": "XETRA"
         },
         {
+          "ticker": "0Q30",
+          "name": "BEYOND MEAT INC O.N.",
+          "exchange": "XETRA"
+        },
+        {
           "ticker": "0YB0",
           "name": "IONQ INC. CL.A   DL-,0001",
           "exchange": "XETRA"
@@ -5987,11 +5992,6 @@
         {
           "ticker": "26CA",
           "name": "IMMUNITYBIO INC. DL-,0001",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "28K1",
-          "name": "BIGBEAR.AI HOLD. DL-,0001",
           "exchange": "XETRA"
         }
       ]

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-19T15:18:32Z",
+    "generated_at": "2026-08-19T15:31:29Z",
     "rows": 92006,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,25 +14,25 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80381,
-      "source_gap": 11437,
+      "pass": 80236,
+      "source_gap": 11582,
       "warn": 188
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4655,
-      "official_reference": 82271,
+      "identifier_enriched": 4800,
+      "official_reference": 82148,
       "scoped_source_gap": 239,
-      "valid_isin": 4841
+      "valid_isin": 4819
     },
     "severity_counts": {
       "high": 152,
       "medium": 38,
-      "source_gap": 11771
+      "source_gap": 11895
     },
     "issue_counts": {
-      "official_reference_gap": 6448,
+      "official_reference_gap": 6571,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1300,
+      "missing_stock_sector": 1301,
       "expected_missing_primary_isin": 700,
       "country_isin_mismatch": 95,
       "official_isin_mismatch": 57,
@@ -88,6 +88,11 @@
         "source_gap": 199
       },
       {
+        "exchange": "BSE_IN",
+        "pass": 2535,
+        "source_gap": 197
+      },
+      {
         "exchange": "LSE",
         "pass": 6854,
         "source_gap": 151,
@@ -127,27 +132,21 @@
         "warn": 21
       },
       {
+        "exchange": "XETRA",
+        "pass": 4169,
+        "source_gap": 143,
+        "warn": 3
+      },
+      {
         "exchange": "TSXV",
         "pass": 1283,
         "source_gap": 136,
         "warn": 3
       },
       {
-        "exchange": "XETRA",
-        "pass": 4182,
-        "source_gap": 130,
-        "warn": 3
-      },
-      {
         "exchange": "BATS",
         "pass": 1226,
         "source_gap": 131
-      },
-      {
-        "exchange": "NYSE",
-        "pass": 1922,
-        "source_gap": 92,
-        "warn": 8
       }
     ]
   },
@@ -3010,6 +3009,24 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XETRA::0Q3",
+      "ticker": "0Q3",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -14318,6 +14335,24 @@
       ]
     },
     {
+      "listing_key": "BSE_IN::4THGEN",
+      "ticker": "4THGEN",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "FSX::4U50",
       "ticker": "4U50",
       "exchange": "FSX",
@@ -18295,42 +18330,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::6P8",
-      "ticker": "6P8",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::6PU",
-      "ticker": "6PU",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }

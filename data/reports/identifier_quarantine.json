@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-19T14:41:36Z",
+  "generated_at": "2026-08-19T15:26:28Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1549,
   "decision_rows": 5046,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1319,
-    "proposed_clear_conflicting_identifier": 745,
-    "quarantined_unresolved_identifier": 2982
+    "kept_listing_keyed_identifier": 1322,
+    "proposed_clear_conflicting_identifier": 748,
+    "quarantined_unresolved_identifier": 2976
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 745,
-  "quarantined_rows": 2982,
-  "retained_rows": 1319,
+  "proposed_clear_rows": 748,
+  "quarantined_rows": 2976,
+  "retained_rows": 1322,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -74,9 +74,9 @@
       "exchange": "BCBA",
       "name": "Longvie SA",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP6356B1059"
     },
     {
@@ -87,9 +87,9 @@
       "exchange": "TSX",
       "name": "CI Global Longevity Economy Fund",
       "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP6356B1059"
     },
     {
@@ -100,9 +100,9 @@
       "exchange": "BCBA",
       "name": "Metrogas SA",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP6558L1178"
     },
     {
@@ -113,9 +113,9 @@
       "exchange": "LSE",
       "name": "ETC Group Global Metaverse UCITS ETF USD Accumulation",
       "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP6558L1178"
     },
     {
@@ -126,9 +126,9 @@
       "exchange": "BCBA",
       "name": "Molinos Rio de la Plata SA",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP689251337"
     },
     {
@@ -139,9 +139,9 @@
       "exchange": "IDX",
       "name": "Madusari Murni Indah Tbk PT",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP689251337"
     },
     {
@@ -152,9 +152,9 @@
       "exchange": "BCBA",
       "name": "Polledo S.A.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP7905G1652"
     },
     {
@@ -165,9 +165,9 @@
       "exchange": "IDX",
       "name": "Pollux Properti Indonesia Tbk PT",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "ARP7905G1652"
     },
     {
@@ -35031,9 +35031,9 @@
       "exchange": "BSE_IN",
       "name": "Popees Baby Care India Limited",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "INE167F01018"
     },
     {
@@ -35044,9 +35044,9 @@
       "exchange": "BSE_IN",
       "name": "Koiya International Ltd",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "INE167F01018"
     },
     {
