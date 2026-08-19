@@ -1122,6 +1122,78 @@ def test_twse_etf_source_is_modeled_as_partial_official_coverage() -> None:
 
     assert source.provider == "TWSE"
     assert source.reference_scope == "listed_companies_subset"
+    assert source.source_url == fetch_exchange_masterfiles.TWSE_ETF_OPENDATA_URL
+
+
+def test_parse_twse_opendata_etf_funds_prefers_english_name() -> None:
+    payload = [
+        {
+            "基金代號": "0050",
+            "基金英文名稱": "Yuanta Taiwan Top 50 ETF",
+            "基金中文名稱": "元大台灣卓越50基金",
+            "基金類型": "ETF",
+        },
+        {
+            "基金代號": "00646",
+            "基金英文名稱": "Yuanta S&amp;P 500 ETF",
+            "基金中文名稱": "元大S&amp;P500",
+            "基金類型": "ETF",
+        },
+        {"基金代號": "", "基金英文名稱": "Ignored"},
+    ]
+
+    rows = fetch_exchange_masterfiles.parse_twse_opendata_etf_funds(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "0050",
+            "name": "Yuanta Taiwan Top 50 ETF",
+            "exchange": "TWSE",
+            "asset_type": "ETF",
+            "isin": "TW0000050004",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "00646",
+            "name": "Yuanta S&P 500 ETF",
+            "exchange": "TWSE",
+            "asset_type": "ETF",
+            "isin": "TW0000064609",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_twse_etf_list_rows_uses_opendata_fund_feed(monkeypatch) -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "twse_etf_list")
+    payload = [
+        {
+            "基金代號": "0050",
+            "基金英文名稱": "Yuanta Taiwan Top 50 ETF",
+            "基金中文名稱": "元大台灣卓越50基金",
+        }
+    ]
+
+    def fake_fetch_json(url, session=None):
+        assert url == fetch_exchange_masterfiles.TWSE_ETF_OPENDATA_URL
+        return payload
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_json", fake_fetch_json)
+
+    rows = fetch_exchange_masterfiles.fetch_twse_etf_list_rows(source)
+
+    assert [row["ticker"] for row in rows] == ["0050"]
+    assert rows[0]["source_url"] == fetch_exchange_masterfiles.TWSE_ETF_OPENDATA_URL
 
 
 def test_parse_sse_a_share_list_maps_sse_rows() -> None:
@@ -16655,6 +16727,105 @@ def test_boursa_kuwait_stocks_source_is_modeled_as_official_exchange_directory()
     assert source.provider == "Boursa Kuwait"
     assert source.reference_scope == "exchange_directory"
     assert source.format == "boursa_kuwait_legacy_mix_json"
+
+
+def test_fetch_boursa_kuwait_stocks_rows_impersonates_forbidden_api(monkeypatch) -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "boursa_kuwait_stocks")
+    payload = {
+        "HED": {
+            "TD": (
+                "EXCHANGE|SYMBOL|INSTRUMENT_TYPE|SYMBOL_DESCRIPTION|SECTOR|CURRENCY|SHRT_DSC|"
+                "DECIMAL_PLACES|MARKET_ID|LOT_SIZE|UNIT|INDEX_TYPE|COMPANY_CODE|CORRECTION_FACTOR|"
+                "EQUITY_SYMBOL|CFID|SERIAL|TI|RIC_CODE|DS|ISIN_CODE|LASTTRADABLEDATE|SOURCE_SHORT_ID|"
+                "STRIKE_PRICE|EXP_DATE|OPI|AST|TSZ|TCL1|TCL2|TCL3|FSSD|FSED|SSSD|SSED|MDATE|TC|"
+                "FSSH|FSEH|SSSH|SSEH|BBGID|GROUP_SECTORS|LOT_SIZE_DEC|CONTRACT_SIZE|LISTING_DATE"
+            ),
+            "SCTD": "SECTOR|SECT_DSC|SORT_KEY",
+        },
+        "DAT": {
+            "SCTD": ["24|Banking|"],
+            "TD": [
+                "KSE|NBK`R|0|National Bank of Kuwait|24|KWD|NBK|-1|M|1|||101|10||||||NBK|KW0EQ0100010||||||||||||||||||||||||",
+            ],
+        },
+    }
+
+    class ForbiddenResponse:
+        status_code = 403
+
+        def raise_for_status(self):
+            raise requests.HTTPError("403")
+
+        def json(self):
+            raise AssertionError("forbidden body should not be parsed")
+
+    class OkResponse:
+        status_code = 200
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return payload
+
+    class FakeSession:
+        def get(self, *args, **kwargs):
+            return ForbiddenResponse()
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", lambda *args, **kwargs: OkResponse())
+
+    rows = fetch_exchange_masterfiles.fetch_boursa_kuwait_stocks_rows(source, session=FakeSession())
+
+    assert [row["ticker"] for row in rows] == ["NBK"]
+    assert rows[0]["isin"] == "KW0EQ0100010"
+
+
+def test_load_boursa_kuwait_stocks_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "boursa_kuwait_stocks.json"
+    cache_path.write_text('[{"ticker":"OLD","name":"Stale"}]', encoding="utf-8")
+    fresh_rows = [{"ticker": "NBK", "name": "National Bank of Kuwait"}]
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BOURSA_KUWAIT_STOCKS_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BOURSA_KUWAIT_STOCKS_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_boursa_kuwait_stocks_rows",
+        lambda source, session=None: fresh_rows,
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ensure_output_dirs", lambda: None)
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "boursa_kuwait_stocks")
+
+    rows, mode = fetch_exchange_masterfiles.load_boursa_kuwait_stocks_rows(source)
+
+    assert mode == "network"
+    assert rows == fresh_rows
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_boursa_kuwait_stocks_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "boursa_kuwait_stocks.json"
+    cached_rows = [{"ticker": "NBK", "name": "National Bank of Kuwait"}]
+    cache_path.write_text(json.dumps(cached_rows), encoding="utf-8")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BOURSA_KUWAIT_STOCKS_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BOURSA_KUWAIT_STOCKS_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_boursa_kuwait_stocks_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "boursa_kuwait_stocks")
+
+    rows, mode = fetch_exchange_masterfiles.load_boursa_kuwait_stocks_rows(source)
+
+    assert mode == "cache"
+    assert rows == cached_rows
 
 
 def test_parse_bist_kap_mkk_listed_securities_payload_joins_kap_stocks_to_mkk_isins() -> None:

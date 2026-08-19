@@ -4,39 +4,39 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 63807 |
-| core_listings | 61697 |
-| aliases | 125522 |
-| stocks | 47775 |
-| etfs | 16032 |
-| isin_coverage | 62559 |
-| sector_coverage | 62267 |
-| stock_sector_coverage | 46266 |
-| etf_category_coverage | 16001 |
+| tickers | 63803 |
+| core_listings | 61693 |
+| aliases | 125516 |
+| stocks | 47772 |
+| etfs | 16031 |
+| isin_coverage | 62555 |
+| sector_coverage | 62262 |
+| stock_sector_coverage | 46262 |
+| etf_category_coverage | 16000 |
 | cik_coverage | 7785 |
 | figi_coverage | 65407 |
 | lei_coverage | 17789 |
 | listing_status_rows | 107914 |
 | listing_status_intervals | 107914 |
-| listing_events | 82671 |
+| listing_events | 82689 |
 | listing_keys | 92006 |
 | instrument_scope_rows | 92006 |
-| instrument_scope_core | 61697 |
-| instrument_scope_extended | 30309 |
-| instrument_scope_primary_listing | 61007 |
+| instrument_scope_core | 61693 |
+| instrument_scope_extended | 30313 |
+| instrument_scope_primary_listing | 61003 |
 | instrument_scope_primary_listing_missing_isin | 690 |
 | instrument_scope_otc_listing | 11753 |
-| instrument_scope_secondary_cross_listing | 18556 |
-| legacy_primary_ticker_collision_rows | 4783 |
+| instrument_scope_secondary_cross_listing | 18560 |
+| legacy_primary_ticker_collision_rows | 4780 |
 | official_masterfile_symbols | 98869 |
-| official_masterfile_matches | 64809 |
-| official_masterfile_collisions | 13806 |
+| official_masterfile_matches | 64808 |
+| official_masterfile_collisions | 13807 |
 | official_masterfile_missing | 20254 |
 | official_recall_denominator | 98869 |
-| official_recall_matches | 64809 |
-| official_recall_missing | 34060 |
+| official_recall_matches | 64808 |
+| official_recall_missing | 34061 |
 | official_recall_pct | 65.55 |
-| collision_adjusted_recall_denominator | 85063 |
+| collision_adjusted_recall_denominator | 85062 |
 | collision_adjusted_recall_missing | 20254 |
 | collision_adjusted_recall_pct | 76.19 |
 | collision_adjusted_recall_gap_rate | 23.81 |
@@ -69,38 +69,38 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-08-19T16:17:52Z |
-| tickers_age_hours | 0.05 |
-| masterfiles_generated_at | 2026-08-19T16:15:20Z |
-| masterfiles_age_hours | 0.1 |
-| identifiers_generated_at | 2026-08-19T16:20:59Z |
+| tickers_built_at | 2026-08-19T16:49:17Z |
+| tickers_age_hours | 0.0 |
+| masterfiles_generated_at | 2026-08-19T16:42:09Z |
+| masterfiles_age_hours | 0.12 |
+| identifiers_generated_at | 2026-08-19T16:49:20Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-08-19T16:17:52Z |
-| listing_history_age_hours | 0.05 |
+| listing_history_observed_at | 2026-08-19T16:49:17Z |
+| listing_history_age_hours | 0.0 |
 | latest_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_verification_age_hours | 2575.92 |
+| latest_verification_age_hours | 2576.4 |
 | latest_stock_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_stock_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_stock_verification_age_hours | 2575.92 |
+| latest_stock_verification_age_hours | 2576.4 |
 | latest_etf_verification_run | data/etf_verification/run-20260504-sgx-isin-refresh |
 | latest_etf_verification_generated_at | 2026-05-04T08:25:46Z |
-| latest_etf_verification_age_hours | 2575.92 |
+| latest_etf_verification_age_hours | 2576.4 |
 | symbol_changes_generated_at | 2026-08-19T07:03:27Z |
-| symbol_changes_age_hours | 9.29 |
+| symbol_changes_age_hours | 9.77 |
 | symbol_changes_review_rows | 327 |
-| entry_quality_generated_at | 2026-08-19T16:18:09Z |
-| entry_quality_age_hours | 0.05 |
+| entry_quality_generated_at | 2026-08-19T16:43:55Z |
+| entry_quality_age_hours | 0.09 |
 | entry_quality_rows | 92006 |
 | masterfile_collision_review_generated_at | 2026-06-02T19:18:19Z |
-| masterfile_collision_review_age_hours | 1869.05 |
+| masterfile_collision_review_age_hours | 1869.52 |
 | masterfile_collision_review_rows | 11176 |
 | ohlcv_plausibility_generated_at | 2026-08-01T16:53:59Z |
-| ohlcv_plausibility_age_hours | 431.45 |
+| ohlcv_plausibility_age_hours | 431.92 |
 | ohlcv_plausibility_rows | 143 |
-| source_gap_classification_generated_at | 2026-08-19T16:18:10Z |
-| source_gap_classification_age_hours | 0.05 |
-| source_gap_classification_rows | 8807 |
+| source_gap_classification_generated_at | 2026-08-19T16:43:56Z |
+| source_gap_classification_age_hours | 0.09 |
+| source_gap_classification_rows | 8799 |
 
 ## Freshness Review Summary
 
@@ -108,269 +108,269 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Signal | Generated At | Age Hours | Rows | Source Gate |
 |---|---|---:|---:|---|
-| Dataset build | 2026-08-19T16:17:52Z | 0.05 |  | dataset_age_visibility_no_data_change_authorized |
-| Masterfiles | 2026-08-19T16:15:20Z | 0.1 |  | refresh_old_official_sources_before_identity_or_gap_work |
-| Identifiers | 2026-08-19T16:20:59Z | 0.0 |  | identifier_age_visibility_no_identifier_backfill_authorized |
-| Listing history | 2026-08-19T16:17:52Z | 0.05 |  | refresh_listing_history_before_fresh_listing_status_claims |
-| Stock verification | 2026-05-04T08:25:42Z | 2575.92 |  | rerun_verification_before_closing_stock_source_gaps |
-| ETF verification | 2026-05-04T08:25:46Z | 2575.92 |  | rerun_verification_before_closing_etf_source_gaps |
-| Symbol changes | 2026-08-19T07:03:27Z | 9.29 | 327 | symbol_change_age_visibility_no_symbol_change_authorized |
-| Entry quality | 2026-08-19T16:18:09Z | 0.05 | 92006 | entry_quality_age_visibility_no_quality_gate_override |
-| Source gaps | 2026-08-19T16:18:10Z | 0.05 | 8807 | source_gap_age_visibility_no_gap_fill_authorized |
-| Masterfile collisions | 2026-06-02T19:18:19Z | 1869.05 | 11176 | collision_review_age_visibility_no_symbol_only_match_authorized |
-| OHLCV plausibility | 2026-08-01T16:53:59Z | 431.45 | 143 | ohlcv_age_visibility_plausibility_only |
+| Dataset build | 2026-08-19T16:49:17Z | 0.0 |  | dataset_age_visibility_no_data_change_authorized |
+| Masterfiles | 2026-08-19T16:42:09Z | 0.12 |  | refresh_old_official_sources_before_identity_or_gap_work |
+| Identifiers | 2026-08-19T16:49:20Z | 0.0 |  | identifier_age_visibility_no_identifier_backfill_authorized |
+| Listing history | 2026-08-19T16:49:17Z | 0.0 |  | refresh_listing_history_before_fresh_listing_status_claims |
+| Stock verification | 2026-05-04T08:25:42Z | 2576.4 |  | rerun_verification_before_closing_stock_source_gaps |
+| ETF verification | 2026-05-04T08:25:46Z | 2576.4 |  | rerun_verification_before_closing_etf_source_gaps |
+| Symbol changes | 2026-08-19T07:03:27Z | 9.77 | 327 | symbol_change_age_visibility_no_symbol_change_authorized |
+| Entry quality | 2026-08-19T16:43:55Z | 0.09 | 92006 | entry_quality_age_visibility_no_quality_gate_override |
+| Source gaps | 2026-08-19T16:43:56Z | 0.09 | 8799 | source_gap_age_visibility_no_gap_fill_authorized |
+| Masterfile collisions | 2026-06-02T19:18:19Z | 1869.52 | 11176 | collision_review_age_visibility_no_symbol_only_match_authorized |
+| OHLCV plausibility | 2026-08-01T16:53:59Z | 431.92 | 143 | ohlcv_age_visibility_plausibility_only |
 
 ### Source Freshness Totals
 
 | Metric | Value |
 |---|---|
-| freshness_status_totals | {"fresh": 116, "old": 22} |
-| source_age_bucket_totals | {"age_0_48h": 116, "age_over_336h": 22} |
-| refresh_priority_totals | {"P1": 4, "P2": 18, "P4": 116} |
-| refresh_queue_totals | {"fresh_no_refresh_needed": 116, "restore_or_replace_unavailable_source_before_data_fill": 22} |
+| freshness_status_totals | {"fresh": 118, "old": 20} |
+| source_age_bucket_totals | {"age_0_48h": 118, "age_over_336h": 20} |
+| refresh_priority_totals | {"P1": 3, "P2": 17, "P4": 118} |
+| refresh_queue_totals | {"fresh_no_refresh_needed": 118, "restore_or_replace_unavailable_source_before_data_fill": 20} |
 
 ### Highest Priority Source Refresh Batches
 
 | Queue | Scope | Mode | Priority | Sources | Rows | Max Age Hours | Source Gate |
 |---|---|---|---|---:|---:|---:|---|
-| restore_or_replace_unavailable_source_before_data_fill | exchange_directory | unavailable | P1 | 4 | 12197 | 1868.7 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 17 | 20337 | 1868.7 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| restore_or_replace_unavailable_source_before_data_fill | security_lookup_subset | unavailable | P2 | 1 | 64 | 1868.7 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| fresh_no_refresh_needed | listed_companies_subset | network | P4 | 70 | 39175 | 7.7 | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | exchange_directory | network | P4 | 38 | 91824 | 7.7 | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | security_lookup_subset | network | P4 | 5 | 1011 | 7.7 | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | security_identifier_registry_subset | network | P4 | 1 | 4040 | 0.1 | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | interlisted_subset | network | P4 | 1 | 269 | 1.47 | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | corporate_action_daily_list | network | P4 | 1 | 24 | 2.17 | Freshness evidence is present; no data change is authorized by freshness alone. |
+| restore_or_replace_unavailable_source_before_data_fill | exchange_directory | unavailable | P1 | 3 | 12057 | 1869.17 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 16 | 20106 | 1869.17 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| restore_or_replace_unavailable_source_before_data_fill | security_lookup_subset | unavailable | P2 | 1 | 64 | 1869.17 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| fresh_no_refresh_needed | listed_companies_subset | network | P4 | 71 | 39443 | 8.17 | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | exchange_directory | network | P4 | 39 | 91964 | 8.17 | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | security_lookup_subset | network | P4 | 5 | 1011 | 8.17 | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | security_identifier_registry_subset | network | P4 | 1 | 4040 | 0.57 | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | interlisted_subset | network | P4 | 1 | 269 | 1.94 | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | corporate_action_daily_list | network | P4 | 1 | 24 | 2.64 | Freshness evidence is present; no data change is authorized by freshness alone. |
 
 ## Source Coverage
 
 | Source | Provider | Scope | Mode | Rows | Generated At | Age Hours | Freshness | Refresh Priority | Refresh Queue | Action | Recommended next source | Source gate |
 |---|---|---|---|---|---|---:|---|---|---|---|---|---|
-| nasdaq_listed | Nasdaq Trader | exchange_directory | network | 5602 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_other_listed | Nasdaq Trader | exchange_directory | network | 7558 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_trading_system_adds_deletes | Nasdaq Trader | corporate_action_daily_list | network | 24 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope corporate_action_daily_list. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| lse_company_reports | LSE | listed_companies_subset | unavailable | 12707 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| lse_instrument_search | LSE | security_lookup_subset | network | 0 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| lse_instrument_directory | LSE | security_lookup_subset | unavailable | 64 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope security_lookup_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| lse_price_explorer | LSE | exchange_directory | network | 11107 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| asx_listed_companies | ASX | listed_companies_subset | unavailable | 1987 | 2026-07-19T09:54:21Z | 750.45 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| cboe_canada_listing_directory | Cboe Canada | exchange_directory | network | 444 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| asx_investment_products | ASX | listed_companies_subset | network | 457 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| set_listed_companies | SET | listed_companies_subset | network | 930 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| set_stock_search | SET | exchange_directory | network | 943 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| set_etf_search | SET | listed_companies_subset | network | 13 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| set_dr_search | SET | listed_companies_subset | network | 512 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tmx_listed_issuers | TMX | listed_companies_subset | network | 3700 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tmx_etf_screener | TMX | listed_companies_subset | network | 1780 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tmx_interlisted_companies | TMX | interlisted_subset | network | 269 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope interlisted_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| euronext_equities | Euronext | exchange_directory | network | 3849 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| euronext_etfs | Euronext | listed_companies_subset | network | 4086 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| jpx_listed_issues | JPX | exchange_directory | network | 4444 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| jpx_tse_stock_detail | JPX | security_identifier_registry_subset | network | 4040 | 2026-08-19T16:15:20Z | 0.1 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_identifier_registry_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| deutsche_boerse_listed_companies | Deutsche Boerse | listed_companies_subset | network | 464 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| deutsche_boerse_etfs_etps | Deutsche Boerse | listed_companies_subset | network | 3674 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| deutsche_boerse_xetra_all_tradable_equities | Deutsche Boerse | exchange_directory | network | 5093 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| deutsche_boerse_frankfurt_all_tradable_equities | Deutsche Boerse | exchange_directory | network | 18025 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| six_equity_issuers | SIX | listed_companies_subset | network | 241 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| six_shares_explorer_full | SIX | listed_companies_subset | network | 1 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| six_etf_products | SIX | listed_companies_subset | network | 8950 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| six_etp_products | SIX | listed_companies_subset | network | 850 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| b3_instruments_equities | B3 | exchange_directory | network | 1294 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| b3_listed_etfs | B3 | listed_companies_subset | network | 216 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| b3_bdr_etfs | B3 | listed_companies_subset | network | 321 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| jse_etf_list | JSE | listed_companies_subset | network | 140 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| jse_etn_list | JSE | listed_companies_subset | network | 104 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| jse_instrument_search | JSE | listed_companies_subset | unavailable | 0 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bme_listed_companies | BME | listed_companies_subset | network | 123 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bme_etf_list | BME | listed_companies_subset | network | 5 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bme_listed_values | BME | listed_companies_subset | unavailable | 0 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bme_security_prices_directory | BME | exchange_directory | unavailable | 50 | 2026-08-02T08:35:09Z | 415.77 | old | P1 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bme_growth_prices | BME Growth | listed_companies_subset | network | 0 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| athex_sector_classification | ATHEX | listed_companies_subset | network | 126 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bursa_equity_isin | Bursa Malaysia | listed_companies_subset | unavailable | 1127 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bursa_closing_prices | Bursa Malaysia | listed_companies_subset | unavailable | 1281 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bse_bw_listed_companies | BSE Botswana | listed_companies_subset | network | 26 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bse_hu_listed_companies | Budapest Stock Exchange | listed_companies_subset | network | 20 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| egx_listed_stocks | EGX | listed_companies_subset | network | 191 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bvl_issuers_directory | CAVALI | security_lookup_subset | network | 31 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| cse_ma_listed_companies | Casablanca Stock Exchange | exchange_directory | unavailable | 82 | 2026-07-27T10:06:05Z | 558.25 | old | P1 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| cse_lk_all_security_code | CSE Sri Lanka | exchange_directory | network | 306 | 2026-08-19T15:46:36Z | 0.58 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| cse_lk_company_info_summary | CSE Sri Lanka | exchange_directory | network | 319 | 2026-08-19T15:46:36Z | 0.58 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| dse_tz_listed_companies | DSE Tanzania | listed_companies_subset | network | 17 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bvc_colombia_issuers | BVC | listed_companies_subset | unavailable | 3 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| byma_equity_details | BYMA | security_lookup_subset | network | 92 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| mse_mw_listed_companies | MSE Malawi | listed_companies_subset | unavailable | 8 | 2026-07-07T09:07:40Z | 1039.22 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| nse_ke_listed_companies | NSE Kenya | exchange_directory | network | 68 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nse_india_securities_available | NSE India | exchange_directory | network | 3202 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bse_india_scrips | BSE India | exchange_directory | network | 4970 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| hkex_securities_list | HKEX | exchange_directory | network | 3197 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| sgx_securities_prices | SGX | exchange_directory | network | 746 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| dfm_listed_securities | DFM | exchange_directory | network | 71 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| boursa_kuwait_stocks | Boursa Kuwait | exchange_directory | unavailable | 140 | 2026-07-27T10:06:05Z | 558.25 | old | P1 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bahrain_bourse_listed_companies | Bahrain Bourse | exchange_directory | network | 41 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bist_kap_mkk_listed_securities | KAP/MKK | exchange_directory | network | 652 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tadawul_main_market_watch | Saudi Exchange | exchange_directory | network | 413 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| adx_market_watch | ADX | exchange_directory | network | 123 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| qse_market_watch | QSE | exchange_directory | network | 57 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| muscat_securities_companies | MSX | exchange_directory | network | 108 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| rse_listed_companies | RSE | listed_companies_subset | network | 1 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| gse_listed_companies | GSE | listed_companies_subset | network | 18 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| luse_listed_companies | LuSE | listed_companies_subset | unavailable | 15 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bolsa_santiago_instruments | Bolsa de Santiago | exchange_directory | network | 122 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| sem_isin | SEM | exchange_directory | network | 46 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| use_ug_listed_companies | USE Uganda | listed_companies_subset | network | 7 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nzx_instruments | NZX | exchange_directory | network | 172 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_mutual_fund_quotes | Nasdaq | security_lookup_subset | network | 6 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| zse_zw_listed_companies | ZSE Zimbabwe | listed_companies_subset | network | 26 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bvb_shares_directory | BVB | exchange_directory | network | 350 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bvb_fund_units_directory | BVB | listed_companies_subset | network | 10 | 2026-08-19T15:20:47Z | 1.01 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| ngx_equities_price_list | NGX | listed_companies_subset | network | 130 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| ngx_company_profile_directory | NGX | exchange_directory | network | 130 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bmv_stock_search | BMV | listed_companies_subset | unavailable | 10 | 2026-08-02T08:35:09Z | 415.77 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bmv_capital_trust_search | BMV | listed_companies_subset | unavailable | 5 | 2026-08-02T08:35:09Z | 415.77 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bmv_etf_search | BMV | listed_companies_subset | network | 5 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| bmv_market_data_securities | BMV | listed_companies_subset | unavailable | 9 | 2026-08-02T08:35:09Z | 415.77 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| bmv_issuer_directory | BMV | listed_companies_subset | network | 76 | 2026-08-19T15:05:31Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | network | 744 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_stockholm_shares_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_helsinki_shares | Nasdaq Nordic | listed_companies_subset | network | 194 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_helsinki_shares_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_iceland_shares | Nasdaq Nordic | listed_companies_subset | network | 32 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| spotlight_companies_directory | Spotlight | listed_companies_subset | network | 129 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| spotlight_companies_search | Spotlight | listed_companies_subset | network | 0 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| ngm_companies_page | NGM | listed_companies_subset | network | 53 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| ngm_market_data_equities | NGM | listed_companies_subset | unavailable | 30 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| nasdaq_nordic_copenhagen_shares | Nasdaq Nordic | listed_companies_subset | network | 145 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_copenhagen_shares_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_stockholm_etfs | Nasdaq Nordic | listed_companies_subset | network | 35 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_helsinki_etfs | Nasdaq Nordic | listed_companies_subset | network | 2 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_copenhagen_etfs | Nasdaq Nordic | listed_companies_subset | network | 1 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_copenhagen_etf_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| nasdaq_nordic_stockholm_trackers | Nasdaq Nordic | listed_companies_subset | network | 6 | 2026-08-19T08:39:18Z | 7.7 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| twse_listed_companies | TWSE | exchange_directory | network | 1095 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| twse_etf_list | TWSE | listed_companies_subset | unavailable | 231 | 2026-08-01T08:32:15Z | 439.81 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| sse_a_share_list | SSE | listed_companies_subset | network | 2355 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| sse_etf_list | SSE | listed_companies_subset | network | 918 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| szse_a_share_list | SZSE | listed_companies_subset | unavailable | 2893 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| szse_b_share_list | SZSE | listed_companies_subset | network | 38 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| szse_etf_list | SZSE | listed_companies_subset | network | 714 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tpex_mainboard_daily_quotes | TPEX | listed_companies_subset | network | 896 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tpex_etf_filter | TPEX | listed_companies_subset | network | 117 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tpex_mainboard_basic_info | MOPS | listed_companies_subset | network | 890 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tpex_emerging_basic_info | MOPS | listed_companies_subset | network | 360 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| krx_listed_companies | KRX | exchange_directory | network | 2759 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| krx_etf_finder | KRX | exchange_directory | network | 1162 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| psx_listed_companies | PSX | listed_companies_subset | network | 565 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| psx_symbol_name_daily | PSX | listed_companies_subset | network | 383 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| psx_dps_symbols | PSX | exchange_directory | network | 720 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| pse_listed_company_directory | PSE | exchange_directory | network | 385 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| pse_cz_shares_directory | Prague Stock Exchange | listed_companies_subset | network | 62 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| idx_listed_companies | IDX | listed_companies_subset | network | 962 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| idx_company_profiles | IDX | exchange_directory | network | 962 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| wse_listed_companies | GPW | listed_companies_subset | network | 403 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| newconnect_listed_companies | NewConnect | listed_companies_subset | network | 347 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| wse_etf_list | GPW | listed_companies_subset | network | 38 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tase_securities_marketdata | TASE | listed_companies_subset | network | 532 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tase_etf_marketdata | TASE | listed_companies_subset | network | 467 | 2026-08-19T14:30:55Z | 1.84 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| tase_foreign_etf_search | TASE | listed_companies_subset | unavailable | 15 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| tase_participating_unit_search | TASE | listed_companies_subset | unavailable | 16 | 2026-06-02T19:38:59Z | 1868.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| hose_listed_stocks | HOSE | listed_companies_subset | network | 405 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| hose_etf_list | HOSE | listed_companies_subset | network | 20 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| hose_fund_certificate_list | HOSE | listed_companies_subset | network | 3 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| hnx_listed_securities | HNX | exchange_directory | network | 299 | 2026-08-19T15:33:46Z | 0.79 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| upcom_registered_securities | HNX | exchange_directory | network | 824 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| vienna_listed_companies | Wiener Boerse | listed_companies_subset | network | 66 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| zagreb_securities_directory | ZSE Croatia | listed_companies_subset | network | 73 | 2026-08-19T14:53:11Z | 1.47 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| sec_company_tickers_exchange | SEC | exchange_directory | network | 10166 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| otc_markets_security_profile | OTC Markets | security_lookup_subset | network | 882 | 2026-08-19T14:11:11Z | 2.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| otc_markets_stock_screener | OTC Markets | exchange_directory | unavailable | 11925 | 2026-06-02T19:38:59Z | 1868.7 | old | P1 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| nasdaq_listed | Nasdaq Trader | exchange_directory | network | 5602 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_other_listed | Nasdaq Trader | exchange_directory | network | 7558 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_trading_system_adds_deletes | Nasdaq Trader | corporate_action_daily_list | network | 24 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope corporate_action_daily_list. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| lse_company_reports | LSE | listed_companies_subset | unavailable | 12707 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| lse_instrument_search | LSE | security_lookup_subset | network | 0 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| lse_instrument_directory | LSE | security_lookup_subset | unavailable | 64 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope security_lookup_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| lse_price_explorer | LSE | exchange_directory | network | 11107 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| asx_listed_companies | ASX | listed_companies_subset | unavailable | 1987 | 2026-07-19T09:54:21Z | 750.92 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| cboe_canada_listing_directory | Cboe Canada | exchange_directory | network | 444 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| asx_investment_products | ASX | listed_companies_subset | network | 457 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| set_listed_companies | SET | listed_companies_subset | network | 930 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| set_stock_search | SET | exchange_directory | network | 943 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| set_etf_search | SET | listed_companies_subset | network | 13 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| set_dr_search | SET | listed_companies_subset | network | 512 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tmx_listed_issuers | TMX | listed_companies_subset | network | 3700 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tmx_etf_screener | TMX | listed_companies_subset | network | 1780 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tmx_interlisted_companies | TMX | interlisted_subset | network | 269 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope interlisted_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| euronext_equities | Euronext | exchange_directory | network | 3849 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| euronext_etfs | Euronext | listed_companies_subset | network | 4086 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| jpx_listed_issues | JPX | exchange_directory | network | 4444 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| jpx_tse_stock_detail | JPX | security_identifier_registry_subset | network | 4040 | 2026-08-19T16:15:20Z | 0.57 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_identifier_registry_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| deutsche_boerse_listed_companies | Deutsche Boerse | listed_companies_subset | network | 464 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| deutsche_boerse_etfs_etps | Deutsche Boerse | listed_companies_subset | network | 3674 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| deutsche_boerse_xetra_all_tradable_equities | Deutsche Boerse | exchange_directory | network | 5093 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| deutsche_boerse_frankfurt_all_tradable_equities | Deutsche Boerse | exchange_directory | network | 18025 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| six_equity_issuers | SIX | listed_companies_subset | network | 241 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| six_shares_explorer_full | SIX | listed_companies_subset | network | 1 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| six_etf_products | SIX | listed_companies_subset | network | 8950 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| six_etp_products | SIX | listed_companies_subset | network | 850 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| b3_instruments_equities | B3 | exchange_directory | network | 1294 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| b3_listed_etfs | B3 | listed_companies_subset | network | 216 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| b3_bdr_etfs | B3 | listed_companies_subset | network | 321 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| jse_etf_list | JSE | listed_companies_subset | network | 140 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| jse_etn_list | JSE | listed_companies_subset | network | 104 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| jse_instrument_search | JSE | listed_companies_subset | unavailable | 0 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bme_listed_companies | BME | listed_companies_subset | network | 123 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bme_etf_list | BME | listed_companies_subset | network | 5 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bme_listed_values | BME | listed_companies_subset | unavailable | 0 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bme_security_prices_directory | BME | exchange_directory | unavailable | 50 | 2026-08-02T08:35:09Z | 416.24 | old | P1 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bme_growth_prices | BME Growth | listed_companies_subset | network | 0 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| athex_sector_classification | ATHEX | listed_companies_subset | network | 126 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bursa_equity_isin | Bursa Malaysia | listed_companies_subset | unavailable | 1127 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bursa_closing_prices | Bursa Malaysia | listed_companies_subset | unavailable | 1281 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bse_bw_listed_companies | BSE Botswana | listed_companies_subset | network | 26 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bse_hu_listed_companies | Budapest Stock Exchange | listed_companies_subset | network | 20 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| egx_listed_stocks | EGX | listed_companies_subset | network | 191 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bvl_issuers_directory | CAVALI | security_lookup_subset | network | 31 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| cse_ma_listed_companies | Casablanca Stock Exchange | exchange_directory | unavailable | 82 | 2026-07-27T10:06:05Z | 558.72 | old | P1 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| cse_lk_all_security_code | CSE Sri Lanka | exchange_directory | network | 306 | 2026-08-19T15:46:36Z | 1.05 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| cse_lk_company_info_summary | CSE Sri Lanka | exchange_directory | network | 319 | 2026-08-19T15:46:36Z | 1.05 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| dse_tz_listed_companies | DSE Tanzania | listed_companies_subset | network | 17 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bvc_colombia_issuers | BVC | listed_companies_subset | unavailable | 3 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| byma_equity_details | BYMA | security_lookup_subset | network | 92 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| mse_mw_listed_companies | MSE Malawi | listed_companies_subset | unavailable | 8 | 2026-07-07T09:07:40Z | 1039.7 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| nse_ke_listed_companies | NSE Kenya | exchange_directory | network | 68 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nse_india_securities_available | NSE India | exchange_directory | network | 3202 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bse_india_scrips | BSE India | exchange_directory | network | 4970 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| hkex_securities_list | HKEX | exchange_directory | network | 3197 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| sgx_securities_prices | SGX | exchange_directory | network | 746 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| dfm_listed_securities | DFM | exchange_directory | network | 71 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| boursa_kuwait_stocks | Boursa Kuwait | exchange_directory | network | 140 | 2026-08-19T16:39:16Z | 0.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bahrain_bourse_listed_companies | Bahrain Bourse | exchange_directory | network | 41 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bist_kap_mkk_listed_securities | KAP/MKK | exchange_directory | network | 652 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tadawul_main_market_watch | Saudi Exchange | exchange_directory | network | 413 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| adx_market_watch | ADX | exchange_directory | network | 123 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| qse_market_watch | QSE | exchange_directory | network | 57 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| muscat_securities_companies | MSX | exchange_directory | network | 108 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| rse_listed_companies | RSE | listed_companies_subset | network | 1 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| gse_listed_companies | GSE | listed_companies_subset | network | 18 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| luse_listed_companies | LuSE | listed_companies_subset | unavailable | 15 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bolsa_santiago_instruments | Bolsa de Santiago | exchange_directory | network | 122 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| sem_isin | SEM | exchange_directory | network | 46 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| use_ug_listed_companies | USE Uganda | listed_companies_subset | network | 7 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nzx_instruments | NZX | exchange_directory | network | 172 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_mutual_fund_quotes | Nasdaq | security_lookup_subset | network | 6 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| zse_zw_listed_companies | ZSE Zimbabwe | listed_companies_subset | network | 26 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bvb_shares_directory | BVB | exchange_directory | network | 350 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bvb_fund_units_directory | BVB | listed_companies_subset | network | 10 | 2026-08-19T15:20:47Z | 1.48 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| ngx_equities_price_list | NGX | listed_companies_subset | network | 130 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| ngx_company_profile_directory | NGX | exchange_directory | network | 130 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bmv_stock_search | BMV | listed_companies_subset | unavailable | 10 | 2026-08-02T08:35:09Z | 416.24 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bmv_capital_trust_search | BMV | listed_companies_subset | unavailable | 5 | 2026-08-02T08:35:09Z | 416.24 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bmv_etf_search | BMV | listed_companies_subset | network | 5 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| bmv_market_data_securities | BMV | listed_companies_subset | unavailable | 9 | 2026-08-02T08:35:09Z | 416.24 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| bmv_issuer_directory | BMV | listed_companies_subset | network | 76 | 2026-08-19T15:05:31Z | 1.73 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | network | 744 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_stockholm_shares_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_helsinki_shares | Nasdaq Nordic | listed_companies_subset | network | 194 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_helsinki_shares_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_iceland_shares | Nasdaq Nordic | listed_companies_subset | network | 32 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| spotlight_companies_directory | Spotlight | listed_companies_subset | network | 129 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| spotlight_companies_search | Spotlight | listed_companies_subset | network | 0 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| ngm_companies_page | NGM | listed_companies_subset | network | 53 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| ngm_market_data_equities | NGM | listed_companies_subset | unavailable | 30 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| nasdaq_nordic_copenhagen_shares | Nasdaq Nordic | listed_companies_subset | network | 145 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_copenhagen_shares_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_stockholm_etfs | Nasdaq Nordic | listed_companies_subset | network | 35 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_helsinki_etfs | Nasdaq Nordic | listed_companies_subset | network | 2 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_copenhagen_etfs | Nasdaq Nordic | listed_companies_subset | network | 1 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_copenhagen_etf_search | Nasdaq Nordic | listed_companies_subset | network | 0 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| nasdaq_nordic_stockholm_trackers | Nasdaq Nordic | listed_companies_subset | network | 6 | 2026-08-19T08:39:18Z | 8.17 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| twse_listed_companies | TWSE | exchange_directory | network | 1095 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| twse_etf_list | TWSE | listed_companies_subset | network | 268 | 2026-08-19T16:42:09Z | 0.12 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| sse_a_share_list | SSE | listed_companies_subset | network | 2355 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| sse_etf_list | SSE | listed_companies_subset | network | 918 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| szse_a_share_list | SZSE | listed_companies_subset | unavailable | 2893 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| szse_b_share_list | SZSE | listed_companies_subset | network | 38 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| szse_etf_list | SZSE | listed_companies_subset | network | 714 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tpex_mainboard_daily_quotes | TPEX | listed_companies_subset | network | 896 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tpex_etf_filter | TPEX | listed_companies_subset | network | 117 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tpex_mainboard_basic_info | MOPS | listed_companies_subset | network | 890 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tpex_emerging_basic_info | MOPS | listed_companies_subset | network | 360 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| krx_listed_companies | KRX | exchange_directory | network | 2759 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| krx_etf_finder | KRX | exchange_directory | network | 1162 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| psx_listed_companies | PSX | listed_companies_subset | network | 565 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| psx_symbol_name_daily | PSX | listed_companies_subset | network | 383 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| psx_dps_symbols | PSX | exchange_directory | network | 720 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| pse_listed_company_directory | PSE | exchange_directory | network | 385 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| pse_cz_shares_directory | Prague Stock Exchange | listed_companies_subset | network | 62 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| idx_listed_companies | IDX | listed_companies_subset | network | 962 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| idx_company_profiles | IDX | exchange_directory | network | 962 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| wse_listed_companies | GPW | listed_companies_subset | network | 403 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| newconnect_listed_companies | NewConnect | listed_companies_subset | network | 347 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| wse_etf_list | GPW | listed_companies_subset | network | 38 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tase_securities_marketdata | TASE | listed_companies_subset | network | 532 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tase_etf_marketdata | TASE | listed_companies_subset | network | 467 | 2026-08-19T14:30:55Z | 2.31 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| tase_foreign_etf_search | TASE | listed_companies_subset | unavailable | 15 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| tase_participating_unit_search | TASE | listed_companies_subset | unavailable | 16 | 2026-06-02T19:38:59Z | 1869.17 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| hose_listed_stocks | HOSE | listed_companies_subset | network | 405 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| hose_etf_list | HOSE | listed_companies_subset | network | 20 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| hose_fund_certificate_list | HOSE | listed_companies_subset | network | 3 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| hnx_listed_securities | HNX | exchange_directory | network | 299 | 2026-08-19T15:33:46Z | 1.26 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| upcom_registered_securities | HNX | exchange_directory | network | 824 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| vienna_listed_companies | Wiener Boerse | listed_companies_subset | network | 66 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| zagreb_securities_directory | ZSE Croatia | listed_companies_subset | network | 73 | 2026-08-19T14:53:11Z | 1.94 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| sec_company_tickers_exchange | SEC | exchange_directory | network | 10166 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| otc_markets_security_profile | OTC Markets | security_lookup_subset | network | 882 | 2026-08-19T14:11:11Z | 2.64 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| otc_markets_stock_screener | OTC Markets | exchange_directory | unavailable | 11925 | 2026-06-02T19:38:59Z | 1869.17 | old | P1 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
 
 ## Source Refresh Priority
 
 | Priority | Sources |
 |---|---:|
-| P1 | 4 |
-| P2 | 18 |
-| P4 | 116 |
+| P1 | 3 |
+| P2 | 17 |
+| P4 | 118 |
 
 ## Source Refresh Queues
 
 | Queue | Sources |
 |---|---:|
-| fresh_no_refresh_needed | 116 |
-| restore_or_replace_unavailable_source_before_data_fill | 22 |
+| fresh_no_refresh_needed | 118 |
+| restore_or_replace_unavailable_source_before_data_fill | 20 |
 
 ## Source Refresh Queue By Scope
 
 | Queue | Scope | Sources |
 |---|---|---:|
 | fresh_no_refresh_needed | corporate_action_daily_list | 1 |
-| fresh_no_refresh_needed | exchange_directory | 38 |
+| fresh_no_refresh_needed | exchange_directory | 39 |
 | fresh_no_refresh_needed | interlisted_subset | 1 |
-| fresh_no_refresh_needed | listed_companies_subset | 70 |
+| fresh_no_refresh_needed | listed_companies_subset | 71 |
 | fresh_no_refresh_needed | security_identifier_registry_subset | 1 |
 | fresh_no_refresh_needed | security_lookup_subset | 5 |
-| restore_or_replace_unavailable_source_before_data_fill | exchange_directory | 4 |
-| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | 17 |
+| restore_or_replace_unavailable_source_before_data_fill | exchange_directory | 3 |
+| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | 16 |
 | restore_or_replace_unavailable_source_before_data_fill | security_lookup_subset | 1 |
 
 ## Source Refresh Queue By Mode
 
 | Queue | Mode | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | network | 116 |
-| restore_or_replace_unavailable_source_before_data_fill | unavailable | 22 |
+| fresh_no_refresh_needed | network | 118 |
+| restore_or_replace_unavailable_source_before_data_fill | unavailable | 20 |
 
 ## Source Refresh Queue By Priority
 
 | Queue | Priority | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | P4 | 116 |
-| restore_or_replace_unavailable_source_before_data_fill | P1 | 4 |
-| restore_or_replace_unavailable_source_before_data_fill | P2 | 18 |
+| fresh_no_refresh_needed | P4 | 118 |
+| restore_or_replace_unavailable_source_before_data_fill | P1 | 3 |
+| restore_or_replace_unavailable_source_before_data_fill | P2 | 17 |
 
 ## Source Age Buckets
 
 | Age bucket | Sources |
 |---|---:|
-| age_0_48h | 116 |
-| age_over_336h | 22 |
+| age_0_48h | 118 |
+| age_over_336h | 20 |
 
 ## Source Refresh Queue By Age Bucket
 
 | Queue | Age bucket | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | age_0_48h | 116 |
-| restore_or_replace_unavailable_source_before_data_fill | age_over_336h | 22 |
+| fresh_no_refresh_needed | age_0_48h | 118 |
+| restore_or_replace_unavailable_source_before_data_fill | age_over_336h | 20 |
 
 ## Source Refresh Strategies
 
 | Queue | Strategy | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | no_refresh_required | 116 |
-| restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | 22 |
+| fresh_no_refresh_needed | no_refresh_required | 118 |
+| restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | 20 |
 
 ## Source Refresh Evidence
 
 | Queue | Evidence required | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | fresh_source_generated_at_with_age_under_48h | 116 |
-| restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | 22 |
+| fresh_no_refresh_needed | fresh_source_generated_at_with_age_under_48h | 118 |
+| restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | 20 |
 
 ## Top Source Refresh Batches
 
 | Queue | Scope | Mode | Priority | Sources | Rows | Max age hours | Strategy | Evidence required | Recommended next source | Source gate |
 |---|---|---|---|---:|---:|---:|---|---|---|---|
-| restore_or_replace_unavailable_source_before_data_fill | exchange_directory | unavailable | P1 | 4 | 12197 | 1868.7 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 17 | 20337 | 1868.7 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| restore_or_replace_unavailable_source_before_data_fill | security_lookup_subset | unavailable | P2 | 1 | 64 | 1868.7 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope security_lookup_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| fresh_no_refresh_needed | listed_companies_subset | network | P4 | 70 | 39175 | 7.7 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | exchange_directory | network | P4 | 38 | 91824 | 7.7 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | security_lookup_subset | network | P4 | 5 | 1011 | 7.7 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | security_identifier_registry_subset | network | P4 | 1 | 4040 | 0.1 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope security_identifier_registry_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | interlisted_subset | network | P4 | 1 | 269 | 1.47 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope interlisted_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
-| fresh_no_refresh_needed | corporate_action_daily_list | network | P4 | 1 | 24 | 2.17 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope corporate_action_daily_list. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| restore_or_replace_unavailable_source_before_data_fill | exchange_directory | unavailable | P1 | 3 | 12057 | 1869.17 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 16 | 20106 | 1869.17 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| restore_or_replace_unavailable_source_before_data_fill | security_lookup_subset | unavailable | P2 | 1 | 64 | 1869.17 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope security_lookup_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
+| fresh_no_refresh_needed | listed_companies_subset | network | P4 | 71 | 39443 | 8.17 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | exchange_directory | network | P4 | 39 | 91964 | 8.17 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | security_lookup_subset | network | P4 | 5 | 1011 | 8.17 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | security_identifier_registry_subset | network | P4 | 1 | 4040 | 0.57 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope security_identifier_registry_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | interlisted_subset | network | P4 | 1 | 269 | 1.94 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope interlisted_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | corporate_action_daily_list | network | P4 | 1 | 24 | 2.64 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope corporate_action_daily_list. | Freshness evidence is present; no data change is authorized by freshness alone. |
 
 ## Exchange Coverage
 
@@ -385,7 +385,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | BCBA | official_partial | 92 | 92 | 69 | 0 | 60 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | BHB | official_full | 28 | 28 | 28 | 0 | 26 | 7 | 41 | 28 | 9 | 4 | 68.29 | 31.71 | 87.5 | 4 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=13;symbol_collisions=9 | 100.0 |
 | BIST | official_full | 614 | 614 | 614 | 0 | 614 | 550 | 652 | 612 | 21 | 19 | 93.87 | 6.13 | 96.99 | 19 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=40;symbol_collisions=21 | 100.0 |
-| BK | official_full | 104 | 104 | 104 | 0 | 104 | 0 | 140 | 102 | 27 | 11 | 72.86 | 27.14 | 90.27 | 11 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=38;symbol_collisions=27 | 100.0 |
+| BK | official_full | 104 | 104 | 104 | 0 | 104 | 0 | 140 | 101 | 28 | 11 | 72.14 | 27.86 | 90.18 | 11 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=39;symbol_collisions=28 | 100.0 |
 | BME | official_full | 276 | 276 | 266 | 3 | 220 | 212 | 50 | 18 | 0 | 32 | 36.0 | 64.0 | 36.0 | 32 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=32;symbol_collisions=0 | 100.0 |
 | BMV | official_partial | 344 | 327 | 335 | 0 | 159 | 47 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | BSE_BW | official_partial | 39 | 39 | 36 | 0 | 37 | 6 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
@@ -491,8 +491,8 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | BHB | 68.29 | 87.5 | 41 | 13 | 4 | 9 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=13;symbol_collisions=9 |
 | ADX | 69.11 | 93.41 | 123 | 38 | 6 | 32 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=38;symbol_collisions=32 |
 | OTC | 69.33 | 69.47 | 11925 | 3657 | 3633 | 24 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=3657;symbol_collisions=24 |
+| BK | 72.14 | 90.18 | 140 | 39 | 11 | 28 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=39;symbol_collisions=28 |
 | NSE_IN | 72.8 | 82.89 | 3202 | 871 | 481 | 390 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=871;symbol_collisions=390 |
-| BK | 72.86 | 90.27 | 140 | 38 | 11 | 27 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=38;symbol_collisions=27 |
 | NYSE MKT | 74.43 | 82.73 | 309 | 79 | 48 | 31 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=79;symbol_collisions=31 |
 | TSX | 75.25 | 99.16 | 788 | 195 | 5 | 190 | mostly_collision_hidden | review collision-hidden rows separately and prioritize the remaining true missing symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=195;symbol_collisions=190 |
 | IDX | 78.59 | 97.55 | 962 | 206 | 19 | 187 | still_actionable | repair parser/source coverage or add reviewed official evidence for true missing active symbols. | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=206;symbol_collisions=187 |
@@ -530,7 +530,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Brazil | 1596 | 1586 | 1595 | 13 | 1259 | 2 |
 | British Virgin Islands | 152 | 152 | 149 | 96 | 92 | 23 |
 | Bulgaria | 11 | 11 | 11 | 1 | 11 | 0 |
-| Canada | 4449 | 4247 | 4034 | 291 | 3269 | 34 |
+| Canada | 4450 | 4248 | 4035 | 291 | 3269 | 34 |
 | Cayman Islands | 2275 | 2266 | 2239 | 605 | 1880 | 247 |
 | Chile | 116 | 89 | 116 | 3 | 84 | 2 |
 | China | 6397 | 6344 | 6394 | 4 | 5245 | 10 |
@@ -542,13 +542,13 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Egypt | 231 | 230 | 231 | 0 | 201 | 0 |
 | Faroe Islands | 3 | 3 | 3 | 0 | 2 | 2 |
 | Finland | 200 | 200 | 199 | 2 | 193 | 3 |
-| France | 705 | 702 | 700 | 14 | 663 | 650 |
+| France | 703 | 700 | 698 | 14 | 662 | 649 |
 | Gabon | 1 | 1 | 1 | 0 | 1 | 1 |
 | Germany | 838 | 833 | 795 | 10 | 759 | 696 |
 | Ghana | 19 | 18 | 19 | 0 | 17 | 0 |
 | Gibraltar | 3 | 3 | 3 | 1 | 3 | 2 |
 | Greece | 140 | 140 | 138 | 1 | 120 | 116 |
-| Guernsey | 68 | 68 | 66 | 4 | 56 | 56 |
+| Guernsey | 67 | 67 | 65 | 4 | 55 | 55 |
 | Hong Kong | 472 | 469 | 468 | 0 | 461 | 5 |
 | Hungary | 37 | 36 | 37 | 0 | 29 | 0 |
 | Iceland | 18 | 18 | 18 | 1 | 18 | 18 |
@@ -559,13 +559,13 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Israel | 754 | 753 | 751 | 72 | 703 | 2 |
 | Italy | 241 | 240 | 230 | 1 | 223 | 216 |
 | Japan | 3395 | 3390 | 3336 | 20 | 3322 | 446 |
-| Jersey | 173 | 173 | 170 | 15 | 158 | 157 |
+| Jersey | 173 | 173 | 170 | 14 | 158 | 156 |
 | Kazakhstan | 1 | 1 | 1 | 0 | 1 | 0 |
 | Kenya | 44 | 44 | 44 | 0 | 41 | 0 |
 | Kuwait | 102 | 102 | 102 | 0 | 102 | 0 |
 | Liechtenstein | 3 | 3 | 3 | 0 | 3 | 3 |
 | Lithuania | 9 | 9 | 2 | 0 | 2 | 2 |
-| Luxembourg | 1027 | 1024 | 1023 | 14 | 995 | 2 |
+| Luxembourg | 1026 | 1023 | 1022 | 14 | 995 | 2 |
 | Malawi | 8 | 8 | 8 | 0 | 7 | 0 |
 | Malaysia | 974 | 974 | 974 | 0 | 933 | 1 |
 | Malta | 6 | 6 | 6 | 0 | 6 | 6 |
@@ -577,7 +577,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Netherlands | 192 | 192 | 187 | 28 | 172 | 127 |
 | New Zealand | 75 | 75 | 71 | 0 | 64 | 0 |
 | Nigeria | 147 | 147 | 147 | 0 | 135 | 78 |
-| Norway | 225 | 224 | 220 | 5 | 209 | 210 |
+| Norway | 223 | 222 | 217 | 5 | 206 | 207 |
 | Oman | 90 | 90 | 90 | 0 | 0 | 0 |
 | Pakistan | 371 | 366 | 371 | 3 | 263 | 0 |
 | Panama | 6 | 5 | 5 | 3 | 4 | 0 |
@@ -595,7 +595,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Slovenia | 8 | 8 | 1 | 0 | 1 | 1 |
 | South Africa | 252 | 252 | 227 | 9 | 175 | 141 |
 | South Korea | 3585 | 3583 | 3582 | 1 | 3362 | 0 |
-| Spain | 223 | 223 | 221 | 8 | 209 | 205 |
+| Spain | 224 | 224 | 222 | 8 | 210 | 206 |
 | Sri Lanka | 307 | 307 | 307 | 0 | 305 | 0 |
 | Sweden | 817 | 812 | 791 | 5 | 762 | 760 |
 | Switzerland | 371 | 371 | 370 | 22 | 345 | 293 |

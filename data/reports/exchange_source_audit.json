@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T16:21:07Z",
+  "generated_at": "2026-08-19T16:49:29Z",
   "summary": {
     "venues": 87,
     "venue_status_counts": {
@@ -9,12 +9,12 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 24,
-      "maintain": 43,
+      "maintain": 45,
       "official_source_required": 5,
-      "refresh_unavailable": 15
+      "refresh_unavailable": 13
     },
-    "unavailable_venues": 15,
-    "nonfresh_venues": 15,
+    "unavailable_venues": 13,
+    "nonfresh_venues": 13,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -236,17 +236,17 @@
       "official_active_etf_rows": 0,
       "missing_product_classes": "",
       "official_source_keys": "boursa_kuwait_stocks",
-      "unavailable_source_keys": "boursa_kuwait_stocks",
-      "nonfresh_source_keys": "boursa_kuwait_stocks",
-      "source_blocker_classes": "empty_refresh",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 140,
-      "official_matches": 102,
-      "official_collisions": 27,
+      "official_matches": 101,
+      "official_collisions": 28,
       "official_missing": 11,
-      "official_recall_pct": 72.86,
-      "collision_adjusted_recall_pct": 90.27,
+      "official_recall_pct": 72.14,
+      "collision_adjusted_recall_pct": 90.18,
       "denominator_status": "available",
-      "audit_outcome": "refresh_unavailable",
+      "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1751,12 +1751,12 @@
       "current_stock_rows": 1017,
       "current_etf_rows": 222,
       "official_active_stock_rows": 1095,
-      "official_active_etf_rows": 231,
+      "official_active_etf_rows": 268,
       "missing_product_classes": "",
       "official_source_keys": "twse_etf_list|twse_listed_companies",
-      "unavailable_source_keys": "twse_etf_list",
-      "nonfresh_source_keys": "twse_etf_list",
-      "source_blocker_classes": "empty_refresh",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 1095,
       "official_matches": 1015,
       "official_collisions": 31,
@@ -1764,7 +1764,7 @@
       "official_recall_pct": 92.69,
       "collision_adjusted_recall_pct": 95.39,
       "denominator_status": "available",
-      "audit_outcome": "refresh_unavailable",
+      "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
     },
     {

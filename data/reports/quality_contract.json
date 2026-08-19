@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "0b3488d2ce35d2f3b5f431c473c4f6d5e955f94a338c05d3824016ab5682c48c",
-  "source_manifest_sha256": "15bb7f9942382449d220b19d57b49c030cdb4de666dc13f5391ef1a7bb2a39e5",
-  "git_commit": "05479e0c2cee001b97560f263cc12b3cdb811227",
+  "dataset_sha256": "259f5aa5899aa39fd62f035d3bd7db895b441625bdf4dcf88cc1cbbddd28a5fd",
+  "source_manifest_sha256": "e67adda931ce624d7c79033ee4ea2be258e35e3c918e84eb624fd96844301fe5",
+  "git_commit": "51db544c5956b2c163884d784ce7c8818e032a2e",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 145,
-          "source_observations": 171466,
+          "source_observations": 171484,
           "venues": 87,
-          "issuers": 72067,
-          "instruments": 72067,
+          "issuers": 72061,
+          "instruments": 72061,
           "listings": 92006,
-          "identifier_assertions": 166111,
-          "field_assertions": 204645,
-          "provenance_gaps": 280985,
-          "listing_events": 75931,
+          "identifier_assertions": 166105,
+          "field_assertions": 204679,
+          "provenance_gaps": 280951,
+          "listing_events": 75949,
           "coverage_contracts": 134
         }
       }
@@ -74,7 +74,7 @@
           "removed_rows": 0,
           "evidenced_removed_rows": 0,
           "unevidenced_removed_rows": 0,
-          "critical_field_changes": 69,
+          "critical_field_changes": 87,
           "unevidenced_critical_field_changes": 0,
           "before_duplicate_listing_keys": 0,
           "after_duplicate_listing_keys": 0,
@@ -100,7 +100,7 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "decisions": 5047,
+        "decisions": 5048,
         "current_conflict_groups": 1549,
         "failure_count": 0,
         "sample": []
@@ -111,7 +111,7 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "rows": 168831,
+        "rows": 168868,
         "unclassified": 0
       }
     },
@@ -190,7 +190,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "proposed_rows": 1796,
+        "proposed_rows": 1795,
         "sample": [
           "ADX::GRMNY",
           "ADX::JPANI",
@@ -522,7 +522,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 280985
+        "gap_rows": 280951
       }
     },
     {
@@ -571,7 +571,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 48256
+        "missing_rows": 48277
       }
     },
     {

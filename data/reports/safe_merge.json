@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 69,
+    "critical_field_changes": 87,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -42,10 +42,52 @@
       "new_value": "ARCAVA4601L7"
     },
     {
+      "listing_key": "BME::AMP",
+      "field_name": "isin",
+      "old_value": "ES0109260531",
+      "new_value": "ES0109260291"
+    },
+    {
+      "listing_key": "BME::ARM",
+      "field_name": "isin",
+      "old_value": "ES0105376000",
+      "new_value": "ES0105376059"
+    },
+    {
+      "listing_key": "BME::PRS",
+      "field_name": "isin",
+      "old_value": "ES0171743901",
+      "new_value": "ES01717430J3"
+    },
+    {
       "listing_key": "CPH::NEWCAP",
       "field_name": "isin",
       "old_value": "DK0010212570",
       "new_value": "DK0064983373"
+    },
+    {
+      "listing_key": "Euronext::AVT",
+      "field_name": "isin",
+      "old_value": "FR0000066052",
+      "new_value": "FR001400CFI7"
+    },
+    {
+      "listing_key": "Euronext::MTA",
+      "field_name": "country",
+      "old_value": "France",
+      "new_value": "Luxembourg"
+    },
+    {
+      "listing_key": "Euronext::MTA",
+      "field_name": "country_code",
+      "old_value": "FR",
+      "new_value": "LU"
+    },
+    {
+      "listing_key": "Euronext::MTA",
+      "field_name": "isin",
+      "old_value": "FR0010222224",
+      "new_value": "LU1650487413"
     },
     {
       "listing_key": "Euronext::MTH",
@@ -138,6 +180,42 @@
       "new_value": "AU000000BHP4"
     },
     {
+      "listing_key": "LSE::BME",
+      "field_name": "country",
+      "old_value": "Luxembourg",
+      "new_value": "Jersey"
+    },
+    {
+      "listing_key": "LSE::BME",
+      "field_name": "country_code",
+      "old_value": "LU",
+      "new_value": "JE"
+    },
+    {
+      "listing_key": "LSE::BME",
+      "field_name": "isin",
+      "old_value": "LU1072616219",
+      "new_value": "JE00BVSYJW51"
+    },
+    {
+      "listing_key": "LSE::DCI",
+      "field_name": "country",
+      "old_value": "British Virgin Islands",
+      "new_value": "Guernsey"
+    },
+    {
+      "listing_key": "LSE::DCI",
+      "field_name": "country_code",
+      "old_value": "VG",
+      "new_value": "GG"
+    },
+    {
+      "listing_key": "LSE::DCI",
+      "field_name": "isin",
+      "old_value": "VGG2803G1028",
+      "new_value": "GG00BSWT8V72"
+    },
+    {
       "listing_key": "LSE::GABI",
       "field_name": "isin",
       "old_value": "JE00BPCSN748",
@@ -162,6 +240,12 @@
       "new_value": "GB00BVMTNR93"
     },
     {
+      "listing_key": "LSE::TSLS",
+      "field_name": "isin",
+      "old_value": "IE00BKT6ZH01",
+      "new_value": "XS2944886931"
+    },
+    {
       "listing_key": "LSE::VAST",
       "field_name": "isin",
       "old_value": "GB00BQ7WTT20",
@@ -172,6 +256,30 @@
       "field_name": "isin",
       "old_value": "INE811A01020",
       "new_value": "INE811A01038"
+    },
+    {
+      "listing_key": "OSL::ASA",
+      "field_name": "isin",
+      "old_value": "NO0010768500",
+      "new_value": "NO0013464750"
+    },
+    {
+      "listing_key": "OSL::GEOS",
+      "field_name": "isin",
+      "old_value": "NO0010813843",
+      "new_value": "NO0013228585"
+    },
+    {
+      "listing_key": "OSL::NEXT",
+      "field_name": "isin",
+      "old_value": "NO0010629108",
+      "new_value": "NO0013740142"
+    },
+    {
+      "listing_key": "OSL::ZENA",
+      "field_name": "isin",
+      "old_value": "CA98936C1068",
+      "new_value": "CA98936C8584"
     },
     {
       "listing_key": "OTC::AGNPF",
@@ -449,7 +557,7 @@
       "new_value": "JP3966660007",
       "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
       "effective_at": "",
-      "observed_at": "2026-08-19T16:17:52Z",
+      "observed_at": "2026-08-19T16:49:17Z",
       "source_key": "jpx_tse_stock_detail",
       "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
       "source_report": "data/masterfiles/reference.csv",
@@ -466,7 +574,7 @@
       "new_value": "Japan",
       "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
       "effective_at": "",
-      "observed_at": "2026-08-19T16:17:52Z",
+      "observed_at": "2026-08-19T16:49:17Z",
       "source_key": "jpx_tse_stock_detail",
       "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
       "source_report": "data/masterfiles/reference.csv",
@@ -483,7 +591,7 @@
       "new_value": "JP",
       "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
       "effective_at": "",
-      "observed_at": "2026-08-19T16:17:52Z",
+      "observed_at": "2026-08-19T16:49:17Z",
       "source_key": "jpx_tse_stock_detail",
       "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
       "source_report": "data/masterfiles/reference.csv",

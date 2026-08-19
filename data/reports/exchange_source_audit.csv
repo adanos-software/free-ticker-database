@@ -8,7 +8,7 @@ BATS,official_full,corporate_action_daily_list|exchange_directory,1,1356,4,1608,
 BCBA,official_partial,security_lookup_subset,92,0,92,0,,byma_equity_details,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
 BHB,official_full,exchange_directory,28,0,41,0,,bahrain_bourse_listed_companies,,,,41,28,9,4,68.29,87.5,available,maintain,not_applicable
 BIST,official_full,exchange_directory,584,30,622,30,,bist_kap_mkk_listed_securities,,,,652,612,21,19,93.87,96.99,available,maintain,not_applicable
-BK,official_full,exchange_directory,104,0,140,0,,boursa_kuwait_stocks,boursa_kuwait_stocks,boursa_kuwait_stocks,empty_refresh,140,102,27,11,72.86,90.27,available,refresh_unavailable,not_applicable
+BK,official_full,exchange_directory,104,0,140,0,,boursa_kuwait_stocks,,,,140,101,28,11,72.14,90.18,available,maintain,not_applicable
 BME,official_full,exchange_directory|listed_companies_subset,271,5,171,7,,bme_etf_list|bme_listed_companies|bme_security_prices_directory,bme_security_prices_directory,bme_security_prices_directory,empty_refresh,50,18,0,32,36.0,36.0,available,refresh_unavailable,not_applicable
 BMV,official_partial,listed_companies_subset,189,155,94,11,,bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search,bmv_capital_trust_search|bmv_market_data_securities|bmv_stock_search,bmv_capital_trust_search|bmv_market_data_securities|bmv_stock_search,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 BSE_BW,official_partial,listed_companies_subset,38,1,26,0,ETF,bse_bw_listed_companies,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_product_class_gap
@@ -74,7 +74,7 @@ TPEX,official_partial,listed_companies_subset,1010,109,2138,125,,tpex_emerging_b
 TSE,official_full,exchange_directory|security_identifier_registry_subset,3722,355,7654,830,,jpx_listed_issues|jpx_tse_stock_detail,,,,4444,4043,335,66,90.98,98.39,available,maintain,not_applicable
 TSX,official_full,exchange_directory|interlisted_subset|listed_companies_subset,656,1640,996,3088,,tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers,,,,788,593,190,5,75.25,99.16,available,maintain,not_applicable
 TSXV,official_full,exchange_directory|interlisted_subset|listed_companies_subset,1419,3,1652,13,,tmx_interlisted_companies|tmx_listed_issuers,,,,1596,1400,194,2,87.72,99.86,available,maintain,not_applicable
-TWSE,official_full,exchange_directory|listed_companies_subset,1017,222,1095,231,,twse_etf_list|twse_listed_companies,twse_etf_list,twse_etf_list,empty_refresh,1095,1015,31,49,92.69,95.39,available,refresh_unavailable,not_applicable
+TWSE,official_full,exchange_directory|listed_companies_subset,1017,222,1095,268,,twse_etf_list|twse_listed_companies,,,,1095,1015,31,49,92.69,95.39,available,maintain,not_applicable
 UPCOM,official_full,exchange_directory,2,0,824,0,,upcom_registered_securities,,,,824,2,524,298,0.24,0.67,available,maintain,not_applicable
 USE_UG,official_partial,listed_companies_subset,7,0,7,0,,use_ug_listed_companies,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
 VSE,official_partial,listed_companies_subset,83,5,66,0,ETF,vienna_listed_companies,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_product_class_gap

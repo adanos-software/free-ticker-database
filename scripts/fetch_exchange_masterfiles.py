@@ -497,6 +497,7 @@ HNX_SECURITIES_SOURCE_CONFIG = {
 }
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
+TWSE_ETF_OPENDATA_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap47_L"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SET_STOCK_SEARCH_URL = "https://www.set.or.th/en/market/product/stock/search"
 SET_STOCK_LIST_API_URL = "https://www.set.or.th/api/set/stock/list"
@@ -2471,7 +2472,7 @@ OFFICIAL_SOURCES = [
         key="twse_etf_list",
         provider="TWSE",
         description="Official TWSE ETF product directory",
-        source_url=TWSE_ETF_LIST_URL,
+        source_url=TWSE_ETF_OPENDATA_URL,
         format="twse_etf_list_json",
         reference_scope="listed_companies_subset",
     ),
@@ -6907,6 +6908,26 @@ def boursa_kuwait_request_headers() -> dict[str, str]:
     }
 
 
+def chrome_impersonated_get(
+    url: str,
+    *,
+    headers: dict[str, str] | None = None,
+    params: dict[str, str] | None = None,
+    timeout: float = REQUEST_TIMEOUT,
+    verify: bool = True,
+):
+    from curl_cffi import requests as curl_requests  # type: ignore[import-not-found]
+
+    return curl_requests.get(
+        url,
+        headers=headers,
+        params=params,
+        impersonate="chrome120",
+        timeout=timeout,
+        verify=verify,
+    )
+
+
 def boursa_kuwait_header_index(header: str) -> dict[str, int]:
     return {field: index for index, field in enumerate(str(header or "").split("|"))}
 
@@ -7011,6 +7032,15 @@ def fetch_boursa_kuwait_stocks_rows(
         params=BOURSA_KUWAIT_PARAMS,
         timeout=REQUEST_TIMEOUT,
     )
+    if getattr(response, "status_code", 200) in {401, 403}:
+        try:
+            response = chrome_impersonated_get(
+                BOURSA_KUWAIT_LEGACY_MIX_API_URL,
+                headers=boursa_kuwait_request_headers(),
+                params=BOURSA_KUWAIT_PARAMS,
+            )
+        except ImportError:
+            pass
     response.raise_for_status()
     return parse_boursa_kuwait_legacy_mix_payload(response.json(), source)
 
@@ -7019,12 +7049,12 @@ def load_boursa_kuwait_stocks_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (BOURSA_KUWAIT_STOCKS_CACHE, LEGACY_BOURSA_KUWAIT_STOCKS_CACHE):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
         rows = fetch_boursa_kuwait_stocks_rows(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BOURSA_KUWAIT_STOCKS_CACHE, LEGACY_BOURSA_KUWAIT_STOCKS_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
         return None, "unavailable"
 
     ensure_output_dirs()
@@ -11009,6 +11039,19 @@ def fetch_bme_listed_companies_payload(
             headers=bme_request_headers(),
             timeout=REQUEST_TIMEOUT,
         )
+        if getattr(response, "status_code", 200) in {401, 403}:
+            try:
+                response = chrome_impersonated_get(
+                    BME_LISTED_COMPANIES_API_URL,
+                    headers=bme_request_headers(),
+                    params={
+                        "tradingSystem": trading_system,
+                        "page": str(page),
+                        "pageSize": str(page_size),
+                    },
+                )
+            except ImportError:
+                pass
         response.raise_for_status()
         payload = response.json()
         data = payload.get("data") or []
@@ -16033,6 +16076,50 @@ def parse_twse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> li
     return rows
 
 
+def parse_twse_opendata_etf_funds(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("基金代號", "")).strip()
+        name = " ".join(
+            unescape(
+                str(record.get("基金英文名稱", "")).strip() or str(record.get("基金中文名稱", "")).strip()
+            ).split()
+        )
+        if not ticker or not name:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TWSE",
+            "asset_type": infer_taiwan_asset_type(ticker, name),
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = derive_taiwan_isin(ticker)
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
+    return rows
+
+
+def fetch_twse_etf_list_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    payload = fetch_json(source.source_url, session=session)
+    if not isinstance(payload, list):
+        raise ValueError("Unexpected TWSE ETF open-data payload")
+    rows = parse_twse_opendata_etf_funds(payload, source)
+    if not rows:
+        raise ValueError("TWSE ETF open-data feed returned no rows")
+    return rows
+
+
 def parse_sse_jsonp(text: str) -> dict[str, Any]:
     match = SSE_JSONP_RE.match(text.strip())
     if not match:
@@ -18288,8 +18375,7 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         payload = fetch_json(source.source_url, session=session)
         return parse_twse_listed_companies(payload, source)
     if source.format == "twse_etf_list_json":
-        payload = fetch_json(source.source_url, session=session)
-        return parse_twse_etf_list(payload, source)
+        return fetch_twse_etf_list_rows(source, session=session)
     if source.format == "sse_a_share_list_jsonp":
         return fetch_sse_a_share_list(source, session=session)
     if source.format == "sse_etf_list_json":

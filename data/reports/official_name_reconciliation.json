@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-19T16:17:52Z",
+  "generated_at": "2026-08-19T16:49:17Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1796,
+  "reconciled_rows": 1795,
   "applied_rows": 0,
-  "proposed_rows": 1796,
+  "proposed_rows": 1795,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -24899,11 +24899,26 @@
       "asset_type": "ETF",
       "isin": "TW0000062074",
       "old_name": "Fuh Hwa CSI 300 A Shares",
-      "new_name": "Fuh Hwa CSI300 A Shares ETF (FH CSI300)",
+      "new_name": "Fuh Hwa CSI 300 A Shares Exchange Traded Fund",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "203a085165e29987ec745c86",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "0cd940eb54c6000bd3b6cd5c",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "TWSE::00625K",
+      "action": "proposed",
+      "ticker": "00625K",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "isin": "TW00000625K4",
+      "old_name": "Fubon SSE180 Exchange Traded Fund",
+      "new_name": "FUBON SSE 180 ETF RMB",
+      "source_key": "twse_etf_list",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "08a90676eda696d640484cb0",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -24914,41 +24929,11 @@
       "asset_type": "ETF",
       "isin": "TW00000669R7",
       "old_name": "Cathay DJIA Inv 1X ETF",
-      "new_name": "Cathay DOW JONES INDUSTRIAL AVERAGE Daily Inversed ETF",
+      "new_name": "Cathay Dow Jones Industrial Average Daily Inversed ETF",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "bdd3e0d34c3d1a0fac7c0b74",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "TWSE::00678",
-      "action": "proposed",
-      "ticker": "00678",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "isin": "TW0000067800",
-      "old_name": "Capital Nasdaq Biotechnology Index Exchange Traded Fund",
-      "new_name": "Capital NBI ETF",
-      "source_key": "twse_etf_list",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "b5c90098b4d5b48f74a17ff5",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "TWSE::00876",
-      "action": "proposed",
-      "ticker": "00876",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "isin": "TW0000087600",
-      "old_name": "Yuanta Global NexGen Communication Innovative Technology ETF",
-      "new_name": "YT Global 5G Telecommunication Components ETF(YT Global Communication Technology ETF)",
-      "source_key": "twse_etf_list",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "8500cbf796697705aa9ca47b",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "11b294ed3aab034a1fe46dfe",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -24962,8 +24947,8 @@
       "new_name": "KGI US Premium Selection High Yield Bond ETF",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "df088fb945fee72e17f08f1f",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "d2d5292293c6e531c5a34249",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -24974,11 +24959,11 @@
       "asset_type": "ETF",
       "isin": "TW00000985B1",
       "old_name": "CAPITAL INV TRUST CORP CAP 0 5",
-      "new_name": "Capital 0-5 Year ESG Investment Grade Corporate Bond ETF",
+      "new_name": "CAPITAL 0-5 YEAR ESG INVESTMENT GRADE CORPORATE BOND EXCHANGE TRADED FUND",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "3f80820dd65ff40f1265e3b0",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "21380a550a95b34a747688f7",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

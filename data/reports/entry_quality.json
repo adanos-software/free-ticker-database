@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-19T16:21:12Z",
+    "generated_at": "2026-08-19T16:49:34Z",
     "rows": 92006,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,29 +14,29 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80252,
-      "source_gap": 11574,
-      "warn": 180
+      "pass": 80267,
+      "source_gap": 11571,
+      "warn": 168
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4806,
-      "official_reference": 82142,
+      "identifier_enriched": 4800,
+      "official_reference": 82150,
       "scoped_source_gap": 239,
-      "valid_isin": 4819
+      "valid_isin": 4817
     },
     "severity_counts": {
-      "high": 144,
+      "high": 132,
       "medium": 38,
-      "source_gap": 11886
+      "source_gap": 11878
     },
     "issue_counts": {
-      "official_reference_gap": 6577,
+      "official_reference_gap": 6569,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1296,
       "expected_missing_primary_isin": 690,
       "country_isin_mismatch": 95,
-      "official_isin_mismatch": 49,
       "official_name_mismatch": 38,
+      "official_isin_mismatch": 37,
       "missing_etf_category": 36
     },
     "top_flagged_exchanges": [
@@ -53,8 +53,8 @@
       },
       {
         "exchange": "FSX",
-        "pass": 7155,
-        "source_gap": 986,
+        "pass": 7154,
+        "source_gap": 987,
         "warn": 2
       },
       {
@@ -104,15 +104,15 @@
         "source_gap": 174
       },
       {
-        "exchange": "LSE",
-        "pass": 6858,
-        "source_gap": 151,
-        "warn": 21
-      },
-      {
         "exchange": "NSE_IN",
         "pass": 2331,
         "source_gap": 172
+      },
+      {
+        "exchange": "LSE",
+        "pass": 6861,
+        "source_gap": 151,
+        "warn": 18
       },
       {
         "exchange": "ASX",
@@ -120,16 +120,15 @@
         "source_gap": 151
       },
       {
-        "exchange": "BME",
-        "pass": 127,
-        "source_gap": 146,
-        "warn": 3
+        "exchange": "Euronext",
+        "pass": 1331,
+        "source_gap": 128,
+        "warn": 18
       },
       {
-        "exchange": "Euronext",
-        "pass": 1330,
-        "source_gap": 127,
-        "warn": 20
+        "exchange": "BME",
+        "pass": 130,
+        "source_gap": 146
       },
       {
         "exchange": "XETRA",
@@ -370,168 +369,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "HKEX",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::006205",
-      "ticker": "006205",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00625K",
-      "ticker": "00625K",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00636",
-      "ticker": "00636",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00636K",
-      "ticker": "00636K",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00643",
-      "ticker": "00643",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00657",
-      "ticker": "00657",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00657K",
-      "ticker": "00657K",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00668",
-      "ticker": "00668",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00668K",
-      "ticker": "00668K",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TWSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -13313,6 +13150,24 @@
       ]
     },
     {
+      "listing_key": "FSX::4AS",
+      "ticker": "4AS",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
       "listing_key": "Munich::4BV",
       "ticker": "4BV",
       "exchange": "Munich",
@@ -18330,6 +18185,157 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6SO",
+      "ticker": "6SO",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::6TB",
+      "ticker": "6TB",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "Munich::6TU",
+      "ticker": "6TU",
+      "exchange": "Munich",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "Munich",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::6TU",
+      "ticker": "6TU",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6UF0",
+      "ticker": "6UF0",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6W1",
+      "ticker": "6W1",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6W7",
+      "ticker": "6W7",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6WX",
+      "ticker": "6WX",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
         }
       ]
     }

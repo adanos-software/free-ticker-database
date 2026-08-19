@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-19T16:15:20Z",
-  "rows": 168941,
+  "generated_at": "2026-08-19T16:42:09Z",
+  "rows": 168978,
   "exchanges": [
     "ADX",
     "AMS",
@@ -204,7 +204,7 @@
     "tmx_listed_issuers": 3700,
     "tmx_etf_screener": 1780,
     "tmx_interlisted_companies": 269,
-    "twse_etf_list": 231,
+    "twse_etf_list": 268,
     "twse_listed_companies": 1095,
     "upcom_registered_securities": 824,
     "use_ug_listed_companies": 7,
@@ -714,10 +714,9 @@
       "provider": "Boursa Kuwait",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
+      "mode": "network",
       "rows": 140,
-      "generated_at": "2026-07-27T10:06:05Z",
-      "last_error": "Empty refresh result; preserved 140 existing rows"
+      "generated_at": "2026-08-19T16:39:16Z"
     },
     "bahrain_bourse_listed_companies": {
       "provider": "Bahrain Bourse",
@@ -1056,10 +1055,9 @@
       "provider": "TWSE",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 231,
-      "generated_at": "2026-08-01T08:32:15Z",
-      "last_error": "Empty refresh result; preserved 231 existing rows"
+      "mode": "network",
+      "rows": 268,
+      "generated_at": "2026-08-19T16:42:09Z"
     },
     "sse_a_share_list": {
       "provider": "SSE",
@@ -1405,7 +1403,7 @@
     "hkex_securities_list": "network",
     "sgx_securities_prices": "network",
     "dfm_listed_securities": "network",
-    "boursa_kuwait_stocks": "unavailable",
+    "boursa_kuwait_stocks": "network",
     "bahrain_bourse_listed_companies": "network",
     "bist_kap_mkk_listed_securities": "network",
     "tadawul_main_market_watch": "network",
@@ -1447,7 +1445,7 @@
     "nasdaq_nordic_copenhagen_etf_search": "network",
     "nasdaq_nordic_stockholm_trackers": "network",
     "twse_listed_companies": "network",
-    "twse_etf_list": "unavailable",
+    "twse_etf_list": "network",
     "sse_a_share_list": "network",
     "sse_etf_list": "network",
     "szse_a_share_list": "unavailable",
@@ -1512,10 +1510,6 @@
       "error": "Empty refresh result; preserved 10 existing rows"
     },
     {
-      "source_key": "boursa_kuwait_stocks",
-      "error": "Empty refresh result; preserved 140 existing rows"
-    },
-    {
       "source_key": "bursa_closing_prices",
       "error": "Empty refresh result; preserved 1281 existing rows"
     },
@@ -1570,19 +1564,15 @@
     {
       "source_key": "tase_participating_unit_search",
       "error": "Empty refresh result; preserved 16 existing rows"
-    },
-    {
-      "source_key": "twse_etf_list",
-      "error": "Empty refresh result; preserved 231 existing rows"
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-19T16:15:20Z",
+    "generated_at": "2026-08-19T16:42:09Z",
     "selected_source_keys": [
-      "jpx_tse_stock_detail"
+      "twse_etf_list"
     ],
     "source_modes": {
-      "jpx_tse_stock_detail": "network"
+      "twse_etf_list": "network"
     }
   }
 }

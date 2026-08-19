@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T16:21:07Z`
+Generated at: `2026-08-19T16:49:29Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 43, "official_source_required": 5, "refresh_unavailable": 15}`
+- Audit outcomes: `{"denominator_missing": 24, "maintain": 45, "official_source_required": 5, "refresh_unavailable": 13}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -17,7 +17,7 @@ Generated at: `2026-08-19T16:21:07Z`
 | BCBA | official_partial | byma_equity_details |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | BHB | official_full | bahrain_bourse_listed_companies |  | 41 | 68.29 |  | maintain | not_applicable |
 | BIST | official_full | bist_kap_mkk_listed_securities |  | 652 | 93.87 |  | maintain | not_applicable |
-| BK | official_full | boursa_kuwait_stocks |  | 140 | 72.86 | boursa_kuwait_stocks | refresh_unavailable | not_applicable |
+| BK | official_full | boursa_kuwait_stocks |  | 140 | 72.14 |  | maintain | not_applicable |
 | BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 50 | 36.0 | bme_security_prices_directory | refresh_unavailable | not_applicable |
 | BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_market_data_securities|bmv_stock_search | refresh_unavailable | blocked_source_unavailable |
 | BSE_BW | official_partial | bse_bw_listed_companies | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |
@@ -83,7 +83,7 @@ Generated at: `2026-08-19T16:21:07Z`
 | TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 90.98 |  | maintain | not_applicable |
 | TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 788 | 75.25 |  | maintain | not_applicable |
 | TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1596 | 87.72 |  | maintain | not_applicable |
-| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1095 | 92.69 | twse_etf_list | refresh_unavailable | not_applicable |
+| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1095 | 92.69 |  | maintain | not_applicable |
 | UPCOM | official_full | upcom_registered_securities |  | 824 | 0.24 |  | maintain | not_applicable |
 | USE_UG | official_partial | use_ug_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | VSE | official_partial | vienna_listed_companies | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |

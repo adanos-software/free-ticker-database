@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-19T16:17:52Z",
+  "generated_at": "2026-08-19T16:49:17Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1549,
-  "decision_rows": 5047,
+  "decision_rows": 5048,
   "action_counts": {
     "kept_listing_keyed_identifier": 1326,
     "proposed_clear_conflicting_identifier": 750,
-    "quarantined_unresolved_identifier": 2971
+    "quarantined_unresolved_identifier": 2972
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 750,
-  "quarantined_rows": 2971,
+  "quarantined_rows": 2972,
   "retained_rows": 1326,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -42759,7 +42759,20 @@
       "retained_isin": "LU1525418643"
     },
     {
-      "conflict_id": "7e035192e4bb6c499bb9",
+      "conflict_id": "d8c5faab68697561b850",
+      "isin": "LU1650487413",
+      "listing_key": "Euronext::MTA",
+      "ticker": "MTA",
+      "exchange": "Euronext",
+      "name": "Amundi Euro Government Bond 1-3Y UCITS ETF Acc EUR",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "LU1650487413"
+    },
+    {
+      "conflict_id": "d8c5faab68697561b850",
       "isin": "LU1650487413",
       "listing_key": "LSE::0HGY",
       "ticker": "0HGY",
@@ -42772,7 +42785,7 @@
       "retained_isin": "LU1650487413"
     },
     {
-      "conflict_id": "7e035192e4bb6c499bb9",
+      "conflict_id": "d8c5faab68697561b850",
       "isin": "LU1650487413",
       "listing_key": "XETRA::LYQ2",
       "ticker": "LYQ2",
