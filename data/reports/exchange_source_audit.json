@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T15:57:05Z",
+  "generated_at": "2026-08-19T16:21:07Z",
   "summary": {
     "venues": 87,
     "venue_status_counts": {
@@ -9,12 +9,12 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 24,
-      "maintain": 42,
+      "maintain": 43,
       "official_source_required": 5,
-      "refresh_unavailable": 16
+      "refresh_unavailable": 15
     },
-    "unavailable_venues": 16,
-    "nonfresh_venues": 16,
+    "unavailable_venues": 15,
+    "nonfresh_venues": 15,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -1681,13 +1681,13 @@
       "reference_scopes": "exchange_directory|security_identifier_registry_subset",
       "current_stock_rows": 3722,
       "current_etf_rows": 355,
-      "official_active_stock_rows": 7644,
+      "official_active_stock_rows": 7654,
       "official_active_etf_rows": 830,
       "missing_product_classes": "",
       "official_source_keys": "jpx_listed_issues|jpx_tse_stock_detail",
-      "unavailable_source_keys": "jpx_tse_stock_detail",
-      "nonfresh_source_keys": "jpx_tse_stock_detail",
-      "source_blocker_classes": "empty_refresh",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 4444,
       "official_matches": 4043,
       "official_collisions": 335,
@@ -1695,7 +1695,7 @@
       "official_recall_pct": 90.98,
       "collision_adjusted_recall_pct": 98.39,
       "denominator_status": "available",
-      "audit_outcome": "refresh_unavailable",
+      "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
     },
     {

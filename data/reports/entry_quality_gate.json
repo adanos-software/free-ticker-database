@@ -1,7 +1,7 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-08-19T15:58:03Z",
+    "generated_at": "2026-08-19T16:21:45Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
@@ -11,6 +11,7 @@
   "quarantined": [],
   "stale_allowlist": [
     "AMS::3PLT",
+    "Euronext::MTH",
     "LSE::AEG",
     "LSE::BHP",
     "LSE::NOG",
@@ -35,8 +36,8 @@
     "STO::AEC",
     "XETRA::SKOR"
   ],
-  "stale_allowlist_count": 24,
+  "stale_allowlist_count": 25,
   "unexpected_warn_count": 0,
   "unexpected_warns": [],
-  "warn_count": 181
+  "warn_count": 180
 }

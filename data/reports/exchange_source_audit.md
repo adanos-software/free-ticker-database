@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T15:57:05Z`
+Generated at: `2026-08-19T16:21:07Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 42, "official_source_required": 5, "refresh_unavailable": 16}`
+- Audit outcomes: `{"denominator_missing": 24, "maintain": 43, "official_source_required": 5, "refresh_unavailable": 15}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -80,7 +80,7 @@ Generated at: `2026-08-19T15:57:05Z`
 | TADAWUL | official_full | tadawul_main_market_watch |  | 413 | 47.94 |  | maintain | not_applicable |
 | TASE | official_partial | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata |  | 0 |  | tase_foreign_etf_search|tase_participating_unit_search | refresh_unavailable | blocked_source_unavailable |
 | TPEX | official_partial | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
-| TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 90.98 | jpx_tse_stock_detail | refresh_unavailable | not_applicable |
+| TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 90.98 |  | maintain | not_applicable |
 | TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 788 | 75.25 |  | maintain | not_applicable |
 | TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1596 | 87.72 |  | maintain | not_applicable |
 | TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1095 | 92.69 | twse_etf_list | refresh_unavailable | not_applicable |

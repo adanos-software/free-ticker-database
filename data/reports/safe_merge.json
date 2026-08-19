@@ -12,11 +12,11 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 36,
+    "critical_field_changes": 69,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0
+    "generated_official_change_evidence_rows": 3
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
@@ -46,6 +46,24 @@
       "field_name": "isin",
       "old_value": "DK0010212570",
       "new_value": "DK0064983373"
+    },
+    {
+      "listing_key": "Euronext::MTH",
+      "field_name": "country",
+      "old_value": "France",
+      "new_value": "Luxembourg"
+    },
+    {
+      "listing_key": "Euronext::MTH",
+      "field_name": "country_code",
+      "old_value": "FR",
+      "new_value": "LU"
+    },
+    {
+      "listing_key": "Euronext::MTH",
+      "field_name": "isin",
+      "old_value": "FR0012538148",
+      "new_value": "LU1686832194"
     },
     {
       "listing_key": "FSX::FRE",
@@ -228,6 +246,186 @@
       "new_value": "SE0028925701"
     },
     {
+      "listing_key": "TSE::1445",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::1445",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::1445",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3783430006"
+    },
+    {
+      "listing_key": "TSE::1514",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::1514",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::1514",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3400750000"
+    },
+    {
+      "listing_key": "TSE::2317",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::2317",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::2317",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3351050004"
+    },
+    {
+      "listing_key": "TSE::2705",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::2705",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::2705",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3188300002"
+    },
+    {
+      "listing_key": "TSE::3266",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::3266",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::3266",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3802920003"
+    },
+    {
+      "listing_key": "TSE::3321",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::3321",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::3321",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3886200009"
+    },
+    {
+      "listing_key": "TSE::3543",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::3543",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::3543",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3305580007"
+    },
+    {
+      "listing_key": "TSE::7157",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::7157",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::7157",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3966660007"
+    },
+    {
+      "listing_key": "TSE::8303",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::8303",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::8303",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3729000004"
+    },
+    {
+      "listing_key": "TSE::8929",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan"
+    },
+    {
+      "listing_key": "TSE::8929",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP"
+    },
+    {
+      "listing_key": "TSE::8929",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3825750007"
+    },
+    {
       "listing_key": "XETRA::FRE",
       "field_name": "isin",
       "old_value": "DE0005785604",
@@ -240,7 +438,59 @@
       "new_value": "XS3324655540"
     }
   ],
-  "generated_official_change_evidence": [],
+  "generated_official_change_evidence": [
+    {
+      "listing_key": "TSE::7157",
+      "ticker": "7157",
+      "exchange": "TSE",
+      "event_type": "identifier_changed",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "JP3966660007",
+      "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
+      "effective_at": "",
+      "observed_at": "2026-08-19T16:17:52Z",
+      "source_key": "jpx_tse_stock_detail",
+      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "fe844e11d93b15eb25b4442e",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "TSE::7157",
+      "ticker": "7157",
+      "exchange": "TSE",
+      "event_type": "country_changed",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Japan",
+      "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
+      "effective_at": "",
+      "observed_at": "2026-08-19T16:17:52Z",
+      "source_key": "jpx_tse_stock_detail",
+      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "09ac235283171a7f4dfebae8",
+      "evidence_status": "verified"
+    },
+    {
+      "listing_key": "TSE::7157",
+      "ticker": "7157",
+      "exchange": "TSE",
+      "event_type": "country_changed",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "JP",
+      "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
+      "effective_at": "",
+      "observed_at": "2026-08-19T16:17:52Z",
+      "source_key": "jpx_tse_stock_detail",
+      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "292d5ecc344caf40efb64547",
+      "evidence_status": "verified"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",

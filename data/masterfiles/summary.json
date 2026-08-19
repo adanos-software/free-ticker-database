@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-19T15:46:36Z",
-  "rows": 168931,
+  "generated_at": "2026-08-19T16:15:20Z",
+  "rows": 168941,
   "exchanges": [
     "ADX",
     "AMS",
@@ -200,7 +200,7 @@
     "tpex_mainboard_basic_info": 890,
     "tpex_emerging_basic_info": 360,
     "jpx_listed_issues": 4444,
-    "jpx_tse_stock_detail": 4030,
+    "jpx_tse_stock_detail": 4040,
     "tmx_listed_issuers": 3700,
     "tmx_etf_screener": 1780,
     "tmx_interlisted_companies": 269,
@@ -386,10 +386,9 @@
       "provider": "JPX",
       "reference_scope": "security_identifier_registry_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 4030,
-      "generated_at": "2026-07-28T09:07:29Z",
-      "last_error": "Empty refresh result; preserved 4030 existing rows"
+      "mode": "network",
+      "rows": 4040,
+      "generated_at": "2026-08-19T16:15:20Z"
     },
     "deutsche_boerse_listed_companies": {
       "provider": "Deutsche Boerse",
@@ -1367,7 +1366,7 @@
     "euronext_equities": "network",
     "euronext_etfs": "network",
     "jpx_listed_issues": "network",
-    "jpx_tse_stock_detail": "unavailable",
+    "jpx_tse_stock_detail": "network",
     "deutsche_boerse_listed_companies": "network",
     "deutsche_boerse_etfs_etps": "network",
     "deutsche_boerse_xetra_all_tradable_equities": "network",
@@ -1533,10 +1532,6 @@
       "error": "Empty refresh result; preserved 82 existing rows"
     },
     {
-      "source_key": "jpx_tse_stock_detail",
-      "error": "Empty refresh result; preserved 4030 existing rows"
-    },
-    {
       "source_key": "jse_instrument_search",
       "error": "JSE instrument search unavailable"
     },
@@ -1582,22 +1577,12 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-19T15:46:36Z",
+    "generated_at": "2026-08-19T16:15:20Z",
     "selected_source_keys": [
-      "bme_security_prices_directory",
-      "boursa_kuwait_stocks",
-      "cse_lk_all_security_code",
-      "cse_lk_company_info_summary",
-      "cse_ma_listed_companies",
-      "twse_etf_list"
+      "jpx_tse_stock_detail"
     ],
     "source_modes": {
-      "bme_security_prices_directory": "unavailable",
-      "boursa_kuwait_stocks": "unavailable",
-      "cse_lk_all_security_code": "network",
-      "cse_lk_company_info_summary": "network",
-      "cse_ma_listed_companies": "unavailable",
-      "twse_etf_list": "unavailable"
+      "jpx_tse_stock_detail": "network"
     }
   }
 }

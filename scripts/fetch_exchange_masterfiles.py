@@ -382,6 +382,7 @@ JPX_STOCK_DETAIL_PAGE_URL = "https://quote.jpx.co.jp/jpxhp/main/index.aspx?f=e_s
 JPX_STOCK_DETAIL_API_URL = "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode="
 JPX_STOCK_DETAIL_WORKERS = 6
 JPX_STOCK_DETAIL_TIMEOUT = 5.0
+JPX_TSE_STOCK_DETAIL_MIN_REFRESH_RATIO = 0.95
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
 DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
@@ -15267,21 +15268,34 @@ def fetch_jpx_tse_stock_detail_rows(
                         rows_by_ticker[str(cached_row["ticker"])] = dict(cached_row)
 
     def fetch_target(listing_row: dict[str, str]) -> dict[str, str] | None:
-        payload = fetch_jpx_tse_stock_detail_payload(listing_row["ticker"], session=session)
-        row = parse_jpx_tse_stock_detail_payload(
-            payload,
-            source,
-            fallback_ticker=listing_row["ticker"],
-            fallback_asset_type=listing_row.get("asset_type", ""),
-        )
-        return row
+        try:
+            payload = fetch_jpx_tse_stock_detail_payload(listing_row["ticker"], session=session)
+            return parse_jpx_tse_stock_detail_payload(
+                payload,
+                source,
+                fallback_ticker=listing_row["ticker"],
+                fallback_asset_type=listing_row.get("asset_type", ""),
+            )
+        except Exception as exc:
+            print(
+                f"JPX/TSE stock detail: skip {listing_row.get('ticker', '')}: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+            return None
 
     def write_partial_cache() -> None:
         if session is not None:
             return
-        ensure_output_dirs()
-        partial_rows = [rows_by_ticker[ticker] for ticker in sorted(rows_by_ticker)]
-        JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE.write_text(json.dumps(partial_rows), encoding="utf-8")
+        try:
+            ensure_output_dirs()
+            partial_rows = [rows_by_ticker[ticker] for ticker in sorted(rows_by_ticker)]
+            JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE.write_text(json.dumps(partial_rows), encoding="utf-8")
+        except Exception as exc:
+            print(
+                f"JPX/TSE stock detail: failed to write partial cache: {type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
 
     remaining_targets = [row for row in targets if row["ticker"].strip() not in rows_by_ticker]
     if session is None:
@@ -15291,23 +15305,31 @@ def fetch_jpx_tse_stock_detail_rows(
             file=sys.stderr,
         )
         completed = 0
-        with ThreadPoolExecutor(max_workers=JPX_STOCK_DETAIL_WORKERS) as executor:
-            future_rows = {executor.submit(fetch_target, row): row for row in remaining_targets}
-            for future in as_completed(future_rows):
-                completed += 1
-                try:
-                    row = future.result()
-                except (OSError, ValueError, json.JSONDecodeError, subprocess.SubprocessError):
-                    continue
-                if row is not None:
-                    rows_by_ticker[row["ticker"]] = row
-                if completed % 100 == 0:
-                    write_partial_cache()
-                    print(
-                        f"JPX/TSE stock detail: {len(rows_by_ticker)}/{len(targets)} rows cached",
-                        file=sys.stderr,
-                    )
-        write_partial_cache()
+        try:
+            with ThreadPoolExecutor(max_workers=JPX_STOCK_DETAIL_WORKERS) as executor:
+                future_rows = {executor.submit(fetch_target, row): row for row in remaining_targets}
+                for future in as_completed(future_rows):
+                    completed += 1
+                    listing_row = future_rows[future]
+                    try:
+                        row = future.result()
+                    except Exception as exc:
+                        print(
+                            f"JPX/TSE stock detail: skip {listing_row.get('ticker', '')}: "
+                            f"{type(exc).__name__}: {exc}",
+                            file=sys.stderr,
+                        )
+                        continue
+                    if row is not None:
+                        rows_by_ticker[row["ticker"]] = row
+                    if completed % 100 == 0:
+                        write_partial_cache()
+                        print(
+                            f"JPX/TSE stock detail: {len(rows_by_ticker)}/{len(targets)} rows cached",
+                            file=sys.stderr,
+                        )
+        finally:
+            write_partial_cache()
     else:
         for listing_row in targets:
             row = fetch_target(listing_row)
@@ -15327,16 +15349,37 @@ def fetch_jpx_tse_stock_detail_rows(
     return rows
 
 
+def jpx_tse_stock_detail_existing_reference_count() -> int:
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return 0
+    count = 0
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("source_key") == "jpx_tse_stock_detail":
+                count += 1
+    return count
+
+
+def jpx_tse_stock_detail_refresh_is_complete(rows: list[dict[str, str]]) -> bool:
+    existing = jpx_tse_stock_detail_existing_reference_count()
+    if existing <= 0:
+        return bool(rows)
+    return len(rows) >= int(existing * JPX_TSE_STOCK_DETAIL_MIN_REFRESH_RATIO)
+
+
 def load_jpx_tse_stock_detail_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
     try:
         rows = fetch_jpx_tse_stock_detail_rows(source, session=session)
-    except (requests.RequestException, ValueError, json.JSONDecodeError, subprocess.SubprocessError):
+    except Exception:
         for path in (JPX_TSE_STOCK_DETAIL_CACHE, LEGACY_JPX_TSE_STOCK_DETAIL_CACHE):
             if path.exists():
                 return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    if not jpx_tse_stock_detail_refresh_is_complete(rows):
         return None, "unavailable"
 
     ensure_output_dirs()

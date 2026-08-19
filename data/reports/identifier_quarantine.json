@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-19T15:55:21Z",
+  "generated_at": "2026-08-19T16:17:52Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1549,
-  "decision_rows": 5046,
+  "decision_rows": 5047,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1322,
-    "proposed_clear_conflicting_identifier": 748,
-    "quarantined_unresolved_identifier": 2976
+    "kept_listing_keyed_identifier": 1326,
+    "proposed_clear_conflicting_identifier": 750,
+    "quarantined_unresolved_identifier": 2971
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 748,
-  "quarantined_rows": 2976,
-  "retained_rows": 1322,
+  "proposed_clear_rows": 750,
+  "quarantined_rows": 2971,
+  "retained_rows": 1326,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -37696,9 +37696,9 @@
       "exchange": "FSX",
       "name": "DEMAE-CAN CO. LTD.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "JP3952870008"
     },
     {
@@ -37709,9 +37709,9 @@
       "exchange": "OTC",
       "name": "Demaecan Co Ltd",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "JP3952870008"
     },
     {
@@ -37722,9 +37722,9 @@
       "exchange": "TSE",
       "name": "DEMAE-CAN CO.,LTD",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "JP3952870008"
     },
     {
@@ -37754,29 +37754,42 @@
       "retained_isin": "JP3965410008"
     },
     {
-      "conflict_id": "8f7c507a4f014a46ed3f",
+      "conflict_id": "00f085d9fcefe3d0d70d",
       "isin": "JP3966660007",
       "listing_key": "FSX::7XJ",
       "ticker": "7XJ",
       "exchange": "FSX",
       "name": "LIFENET INSURANCE CO.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "JP3966660007"
     },
     {
-      "conflict_id": "8f7c507a4f014a46ed3f",
+      "conflict_id": "00f085d9fcefe3d0d70d",
       "isin": "JP3966660007",
       "listing_key": "OTC::LIFNF",
       "ticker": "LIFNF",
       "exchange": "OTC",
       "name": "Lifenet Ins Company",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3966660007"
+    },
+    {
+      "conflict_id": "00f085d9fcefe3d0d70d",
+      "isin": "JP3966660007",
+      "listing_key": "TSE::7157",
+      "ticker": "7157",
+      "exchange": "TSE",
+      "name": "LIFENET INSURANCE COMPANY",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "JP3966660007"
     },
     {

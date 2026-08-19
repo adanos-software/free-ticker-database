@@ -4545,6 +4545,51 @@ def test_fetch_jpx_tse_stock_detail_rows_uses_official_detail_api(tmp_path) -> N
     assert any("F=ctl/stock_detail&qcode=7203" in url for url in urls)
 
 
+def test_fetch_jpx_tse_stock_detail_rows_skips_failed_tickers(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "ticker,exchange,asset_type,name,isin\n"
+        "1301,TSE,Stock,Broken,\n"
+        "7203,TSE,Stock,Toyota,\n",
+        encoding="utf-8",
+    )
+
+    class FakeResponse:
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self):
+            return {
+                "section1": {
+                    "data": {
+                        "7203/T": {
+                            "TTCODE2": "7203",
+                            "FLLNE": "TOYOTA MOTOR CORP.",
+                            "ISIN": "JP3633400001",
+                        }
+                    }
+                }
+            }
+
+    class FakeSession:
+        def get(self, url, headers=None, timeout=None):
+            if "qcode=1301" in url:
+                raise RuntimeError("detail boom")
+            return FakeResponse()
+
+    rows = fetch_jpx_tse_stock_detail_rows(SOURCE, listings_path=listings_path, session=FakeSession())
+
+    assert [row["ticker"] for row in rows] == ["7203"]
+    assert rows[0]["isin"] == "JP3633400001"
+
+
+def test_jpx_tse_stock_detail_refresh_is_complete_rejects_shrink(monkeypatch) -> None:
+    monkeypatch.setattr(fetch_exchange_masterfiles, "jpx_tse_stock_detail_existing_reference_count", lambda: 4030)
+
+    assert fetch_exchange_masterfiles.jpx_tse_stock_detail_refresh_is_complete([{"ticker": str(i)} for i in range(3827)]) is False
+    assert fetch_exchange_masterfiles.jpx_tse_stock_detail_refresh_is_complete([{"ticker": str(i)} for i in range(3828)]) is True
+
+
 def test_fetch_jpx_tse_stock_detail_rows_reconciles_cached_asset_type(tmp_path, monkeypatch) -> None:
     listings_path = tmp_path / "listings.csv"
     listings_path.write_text("ticker,exchange,asset_type,name,isin\n462A,TSE,Stock,FUNDINNO,\n", encoding="utf-8")
