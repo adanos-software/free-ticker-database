@@ -9968,7 +9968,7 @@ def test_fetch_bme_reference_rows_uses_listing_isin_when_share_details_fail(tmp_
     ]
 
 
-def test_fetch_bme_security_prices_rows_maps_mixed_trading_systems() -> None:
+def test_fetch_bme_security_prices_rows_maps_mixed_trading_systems(tmp_path) -> None:
     source = MasterfileSource(
         key="bme_security_prices_directory",
         provider="BME",
@@ -10037,7 +10037,11 @@ def test_fetch_bme_security_prices_rows_maps_mixed_trading_systems() -> None:
                 return FakeResponse(payloads[params["isin"]])
             raise AssertionError(url)
 
-    rows = fetch_exchange_masterfiles.fetch_bme_security_prices_rows(source, session=FakeSession())
+    rows = fetch_exchange_masterfiles.fetch_bme_security_prices_rows(
+        source,
+        session=FakeSession(),
+        listings_path=tmp_path / "listings.csv",
+    )
 
     assert rows == [
         {
@@ -10070,7 +10074,7 @@ def test_fetch_bme_security_prices_rows_maps_mixed_trading_systems() -> None:
     ]
 
 
-def test_fetch_bme_security_prices_rows_fails_fast_when_detail_endpoint_forbidden() -> None:
+def test_fetch_bme_security_prices_rows_fails_fast_when_detail_endpoint_forbidden(tmp_path, monkeypatch) -> None:
     source = MasterfileSource(
         key="bme_security_prices_directory",
         provider="BME",
@@ -10115,10 +10119,135 @@ def test_fetch_bme_security_prices_rows_fails_fast_when_detail_endpoint_forbidde
 
     session = FakeSession()
 
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "chrome_impersonated_get",
+        lambda *args, **kwargs: FakeResponse(status_code=403),
+    )
+
     with pytest.raises(requests.HTTPError):
-        fetch_exchange_masterfiles.fetch_bme_security_prices_rows(source, session=session)
+        fetch_exchange_masterfiles.fetch_bme_security_prices_rows(
+            source,
+            session=session,
+            listings_path=tmp_path / "listings.csv",
+        )
 
     assert session.detail_calls == 1
+
+
+def test_fetch_bme_security_prices_rows_keeps_listing_join_when_details_forbidden(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bme_security_prices_directory",
+        provider="BME",
+        description="Official BME security prices directory",
+        source_url=fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+        format="bme_security_prices_json",
+        reference_scope="exchange_directory",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "SAN,BME,Stock,Legacy Santander,ES0113900J37",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload=None, status_code=200):
+            self._payload = payload or {}
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(response=self)
+
+        def json(self):
+            return self._payload
+
+    class FakeSession(requests.Session):
+        def get(self, url, params=None, headers=None, timeout=None):
+            if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
+                return FakeResponse(
+                    {
+                        "hasMoreResults": False,
+                        "data": [
+                            {
+                                "isin": "ES0113900J37",
+                                "shareName": "BANCO SANTANDER",
+                                "tradingSystem": "SIBE",
+                                "sector": "05",
+                                "subsector": "01",
+                            },
+                            {"isin": "ES0105687000", "shareName": "ENERGY SOLAR TECH", "tradingSystem": "MTF"},
+                        ],
+                    }
+                )
+            if url == fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL:
+                return FakeResponse(status_code=403)
+            raise AssertionError(url)
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "chrome_impersonated_get",
+        lambda *args, **kwargs: FakeResponse(status_code=403),
+    )
+
+    rows = fetch_exchange_masterfiles.fetch_bme_security_prices_rows(
+        source,
+        session=FakeSession(),
+        listings_path=listings_path,
+    )
+
+    assert rows == [
+        {
+            "source_key": "bme_security_prices_directory",
+            "provider": "BME",
+            "source_url": fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+            "ticker": "SAN",
+            "name": "BANCO SANTANDER",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "ES0113900J37",
+            "sector": "Financials",
+        }
+    ]
+
+
+def test_fetch_bme_share_details_info_impersonates_forbidden_api(monkeypatch) -> None:
+    class ForbiddenResponse:
+        status_code = 403
+
+        def raise_for_status(self):
+            raise requests.HTTPError(response=self)
+
+        def json(self):
+            raise AssertionError("forbidden body should not be parsed")
+
+    class OkResponse:
+        status_code = 200
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"ticker": "SAN", "name": "BANCO SANTANDER", "isin": "ES0113900J37"}
+
+    class FakeSession:
+        def get(self, url, params=None, headers=None, timeout=None):
+            return ForbiddenResponse()
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", lambda *args, **kwargs: OkResponse())
+
+    detail = fetch_exchange_masterfiles.fetch_bme_share_details_info("ES0113900J37", session=FakeSession())
+
+    assert detail["ticker"] == "SAN"
+    assert detail["isin"] == "ES0113900J37"
 
 
 def test_load_bme_reference_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
