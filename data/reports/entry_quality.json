@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-19T16:49:34Z",
+    "generated_at": "2026-08-19T17:08:15Z",
     "rows": 92006,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80267,
-      "source_gap": 11571,
-      "warn": 168
+      "pass": 80269,
+      "source_gap": 11570,
+      "warn": 167
     },
     "evidence_level_counts": {
       "identifier_enriched": 4800,
@@ -25,18 +25,18 @@
       "valid_isin": 4817
     },
     "severity_counts": {
-      "high": 132,
+      "high": 131,
       "medium": 38,
-      "source_gap": 11878
+      "source_gap": 11877
     },
     "issue_counts": {
       "official_reference_gap": 6569,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1296,
+      "missing_stock_sector": 1295,
       "expected_missing_primary_isin": 690,
       "country_isin_mismatch": 95,
       "official_name_mismatch": 38,
-      "official_isin_mismatch": 37,
+      "official_isin_mismatch": 36,
       "missing_etf_category": 36
     },
     "top_flagged_exchanges": [
@@ -53,8 +53,8 @@
       },
       {
         "exchange": "FSX",
-        "pass": 7154,
-        "source_gap": 987,
+        "pass": 7155,
+        "source_gap": 986,
         "warn": 2
       },
       {
@@ -110,9 +110,9 @@
       },
       {
         "exchange": "LSE",
-        "pass": 6861,
+        "pass": 6862,
         "source_gap": 151,
-        "warn": 18
+        "warn": 17
       },
       {
         "exchange": "ASX",
@@ -15849,24 +15849,6 @@
       ]
     },
     {
-      "listing_key": "FSX::5PH",
-      "ticker": "5PH",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::5PL",
       "ticker": "5PL",
       "exchange": "XSTU",
@@ -18324,6 +18306,24 @@
     {
       "listing_key": "FSX::6WX",
       "ticker": "6WX",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6X5",
+      "ticker": "6X5",
       "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",

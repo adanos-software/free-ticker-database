@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T16:49:35Z",
-    "rows": 8800,
+    "generated_at": "2026-08-19T17:08:16Z",
+    "rows": 8799,
     "field_totals": {
       "missing_etf_category": 31,
       "missing_isin_primary": 690,
-      "missing_sector_stock": 1510,
+      "missing_sector_stock": 1509,
       "official_reference_gap": 6569
     },
     "class_totals": {
@@ -21,7 +21,7 @@
       "official_current_directory_absent_identifier_gap": 9,
       "official_identifier_not_exposed_source_gap": 262,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 842,
+      "official_industry_taxonomy_unavailable_gap": 841,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 26,
       "official_reference_symbol_collision_gap": 1219,
@@ -44,7 +44,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 6,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 842,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 841,
       "missing_sector_stock:otc_sector_source_gap": 553,
       "missing_sector_stock:shell_or_cpc_sector_gap": 31,
       "official_reference_gap:official_reference_symbol_collision_gap": 1219,
@@ -118,7 +118,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 811
+          "rows": 810
         },
         {
           "exchange": "OTC",
@@ -213,7 +213,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 788,
+        "rows": 787,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -15886,23 +15886,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=FSX::5OV0;exchange=FSX;ticker=5OV0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "FSX::5PH",
-      "ticker": "5PH",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Gemfields Group Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::5PH;exchange=FSX;ticker=5PH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
