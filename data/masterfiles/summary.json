@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T15:33:46Z",
+  "generated_at": "2026-08-19T15:46:36Z",
   "rows": 168931,
   "exchanges": [
     "ADX",
@@ -122,8 +122,8 @@
     "bursa_equity_isin": 1127,
     "nasdaq_nordic_copenhagen_shares": 145,
     "nasdaq_nordic_copenhagen_etfs": 1,
-    "cse_lk_all_security_code": 307,
-    "cse_lk_company_info_summary": 318,
+    "cse_lk_all_security_code": 306,
+    "cse_lk_company_info_summary": 319,
     "cse_ma_listed_companies": 82,
     "dfm_listed_securities": 71,
     "dse_tz_listed_companies": 17,
@@ -617,19 +617,17 @@
       "provider": "CSE Sri Lanka",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 307,
-      "generated_at": "2026-07-27T10:06:05Z",
-      "last_error": "Empty refresh result; preserved 307 existing rows"
+      "mode": "network",
+      "rows": 306,
+      "generated_at": "2026-08-19T15:46:36Z"
     },
     "cse_lk_company_info_summary": {
       "provider": "CSE Sri Lanka",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 318,
-      "generated_at": "2026-07-27T10:06:05Z",
-      "last_error": "Empty refresh result; preserved 318 existing rows"
+      "mode": "network",
+      "rows": 319,
+      "generated_at": "2026-08-19T15:46:36Z"
     },
     "dse_tz_listed_companies": {
       "provider": "DSE Tanzania",
@@ -1396,8 +1394,8 @@
     "egx_listed_stocks": "network",
     "bvl_issuers_directory": "network",
     "cse_ma_listed_companies": "unavailable",
-    "cse_lk_all_security_code": "unavailable",
-    "cse_lk_company_info_summary": "unavailable",
+    "cse_lk_all_security_code": "network",
+    "cse_lk_company_info_summary": "network",
     "dse_tz_listed_companies": "network",
     "bvc_colombia_issuers": "unavailable",
     "byma_equity_details": "network",
@@ -1531,14 +1529,6 @@
       "error": "Empty refresh result; preserved 3 existing rows"
     },
     {
-      "source_key": "cse_lk_all_security_code",
-      "error": "Empty refresh result; preserved 307 existing rows"
-    },
-    {
-      "source_key": "cse_lk_company_info_summary",
-      "error": "Empty refresh result; preserved 318 existing rows"
-    },
-    {
       "source_key": "cse_ma_listed_companies",
       "error": "Empty refresh result; preserved 82 existing rows"
     },
@@ -1592,50 +1582,22 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-19T15:33:46Z",
+    "generated_at": "2026-08-19T15:46:36Z",
     "selected_source_keys": [
-      "dse_tz_listed_companies",
-      "egx_listed_stocks",
-      "euronext_equities",
-      "euronext_etfs",
-      "gse_listed_companies",
-      "hkex_securities_list",
-      "hnx_listed_securities",
-      "hose_etf_list",
-      "hose_fund_certificate_list",
-      "hose_listed_stocks",
-      "idx_company_profiles",
-      "idx_listed_companies",
-      "jpx_listed_issues",
-      "jpx_tse_stock_detail",
-      "jse_etf_list",
-      "jse_etn_list",
-      "jse_instrument_search",
-      "krx_etf_finder",
-      "krx_listed_companies",
-      "lse_company_reports"
+      "bme_security_prices_directory",
+      "boursa_kuwait_stocks",
+      "cse_lk_all_security_code",
+      "cse_lk_company_info_summary",
+      "cse_ma_listed_companies",
+      "twse_etf_list"
     ],
     "source_modes": {
-      "dse_tz_listed_companies": "network",
-      "egx_listed_stocks": "network",
-      "euronext_equities": "network",
-      "euronext_etfs": "network",
-      "gse_listed_companies": "network",
-      "hkex_securities_list": "network",
-      "hnx_listed_securities": "network",
-      "hose_etf_list": "network",
-      "hose_fund_certificate_list": "network",
-      "hose_listed_stocks": "network",
-      "idx_company_profiles": "network",
-      "idx_listed_companies": "network",
-      "jpx_listed_issues": "network",
-      "jpx_tse_stock_detail": "unavailable",
-      "jse_etf_list": "network",
-      "jse_etn_list": "network",
-      "jse_instrument_search": "unavailable",
-      "krx_etf_finder": "network",
-      "krx_listed_companies": "network",
-      "lse_company_reports": "unavailable"
+      "bme_security_prices_directory": "unavailable",
+      "boursa_kuwait_stocks": "unavailable",
+      "cse_lk_all_security_code": "network",
+      "cse_lk_company_info_summary": "network",
+      "cse_ma_listed_companies": "unavailable",
+      "twse_etf_list": "unavailable"
     }
   }
 }

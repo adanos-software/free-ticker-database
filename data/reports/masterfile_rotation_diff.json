@@ -1,176 +1,84 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T15:40:08Z",
-    "previous_reference_csv": "/tmp/reference-before-aug25-rotation.csv",
+    "generated_at": "2026-08-19T15:54:20Z",
+    "previous_reference_csv": "/tmp/reference-before-freshness-retry.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 3,
-    "vanished_rows": 1,
-    "changed_rows": 6,
+    "new_rows": 2,
+    "vanished_rows": 2,
+    "changed_rows": 0,
     "new_by_source": {
-      "hkex_securities_list": 3
+      "cse_lk_company_info_summary": 2
     },
     "vanished_by_source": {
-      "krx_etf_finder": 1
+      "cse_lk_all_security_code": 1,
+      "cse_lk_company_info_summary": 1
     },
-    "changed_by_type": {
-      "isin_change": 1,
-      "name_change": 6
-    },
+    "changed_by_type": {},
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "03555",
-      "name": "AGX HSDIV ENH",
-      "exchange": "HKEX",
-      "asset_type": "ETF",
+      "source_key": "cse_lk_company_info_summary",
+      "provider": "CSE Sri Lanka",
+      "source_url": "https://www.cse.lk/api/companyInfoSummery",
+      "ticker": "AAF.R0000",
+      "name": "ASIA ASSET FINANCE PLC",
+      "exchange": "CSE_LK",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "HK0001342077",
+      "isin": "LK0406R00006",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "41555",
-      "name": "AGX HSDIV ENH-U",
-      "exchange": "HKEX",
-      "asset_type": "ETF",
+      "source_key": "cse_lk_company_info_summary",
+      "provider": "CSE Sri Lanka",
+      "source_url": "https://www.cse.lk/api/companyInfoSummery",
+      "ticker": "MBSL.P0000",
+      "name": "MERCHANT BANK OF SRI LANKA & FINANCE PLC",
+      "exchange": "CSE_LK",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "HK0001342077",
+      "isin": "LK0186P00008",
       "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "83555",
-      "name": "AGX HSDIV ENH-R",
-      "exchange": "HKEX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "HK0001342077",
-      "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     }
   ],
   "vanished": [
     {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "0036D0",
-      "name": "TIME 미국배당다우존스액티브",
-      "exchange": "KRX",
-      "asset_type": "ETF",
+      "source_key": "cse_lk_all_security_code",
+      "provider": "CSE Sri Lanka",
+      "source_url": "https://www.cse.lk/api/allSecurityCode",
+      "ticker": "AMF.N0000",
+      "name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "exchange": "CSE_LK",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "KR70036D0007",
+      "isin": "LK0387N00007",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
+    },
+    {
+      "source_key": "cse_lk_company_info_summary",
+      "provider": "CSE Sri Lanka",
+      "source_url": "https://www.cse.lk/api/companyInfoSummery",
+      "ticker": "AMF.N0000",
+      "name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "exchange": "CSE_LK",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "LK0387N00007",
+      "cfi": "",
+      "sector": ""
     }
   ],
-  "changed": [
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01063",
-      "change_types": [
-        "name_change",
-        "isin_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "SUNCORP TECH",
-          "after": "SUNCORP TEC-NEW"
-        },
-        "isin": {
-          "before": "BMG8571C2494",
-          "after": "BMG8571C2643"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "02903",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "SUNCORP TECH",
-          "after": "SUNCORP TEC-OLD"
-        }
-      }
-    },
-    {
-      "source_key": "krx_etf_finder",
-      "exchange": "KRX",
-      "ticker": "0174J0",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "DAISHIN343 오피스리츠플러스",
-          "after": "DAISHIN 오피스리츠플러스"
-        }
-      }
-    },
-    {
-      "source_key": "krx_etf_finder",
-      "exchange": "KRX",
-      "ticker": "0189Z0",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "DAISHIN343 금융&지주고배당",
-          "after": "DAISHIN 금융&지주고배당"
-        }
-      }
-    },
-    {
-      "source_key": "krx_etf_finder",
-      "exchange": "KRX",
-      "ticker": "434960",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "DAISHIN343 K200",
-          "after": "DAISHIN K200"
-        }
-      }
-    },
-    {
-      "source_key": "krx_etf_finder",
-      "exchange": "KRX",
-      "ticker": "486240",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "DAISHIN343 AI반도체&인프라액티브",
-          "after": "DAISHIN AI반도체&인프라액티브"
-        }
-      }
-    }
-  ]
+  "changed": []
 }

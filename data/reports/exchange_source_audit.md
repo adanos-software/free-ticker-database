@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T15:41:21Z`
+Generated at: `2026-08-19T15:57:05Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 41, "official_source_required": 5, "refresh_unavailable": 17}`
+- Audit outcomes: `{"denominator_missing": 24, "maintain": 42, "official_source_required": 5, "refresh_unavailable": 16}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -29,7 +29,7 @@ Generated at: `2026-08-19T15:41:21Z`
 | Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2903 | 8.61 |  | maintain | not_applicable |
 | Bursa | official_partial | bursa_closing_prices|bursa_equity_isin |  | 0 |  | bursa_closing_prices|bursa_equity_isin | refresh_unavailable | blocked_source_unavailable |
 | CPH | official_partial | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
-| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 318 | 96.54 | cse_lk_all_security_code|cse_lk_company_info_summary | refresh_unavailable | not_applicable |
+| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 319 | 95.92 |  | maintain | not_applicable |
 | CSE_MA | official_full | cse_ma_listed_companies |  | 82 | 1.22 | cse_ma_listed_companies | refresh_unavailable | not_applicable |
 | DFM | official_full | dfm_listed_securities |  | 71 | 63.38 |  | maintain | not_applicable |
 | DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |

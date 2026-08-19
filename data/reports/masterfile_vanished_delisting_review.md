@@ -1,8 +1,8 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-08-19T15:42:35Z`
-- Rotation date: `2026-08-25` overlay
-- Vanished reference rows: `1`
-- Still in database: `1`
+- Generated at: `2026-08-19T15:58:38Z`
+- Rotation date: `2026-08-19` CSE Sri Lanka freshness retry
+- Vanished reference rows: `2`
+- Still in database: `2`
 - Applied drops: `0`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
 
@@ -10,17 +10,18 @@
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 1 |
+| manual_rename_vs_delisting_required | 2 |
 
 ## Rows still in the database
 
 | Exchange | Ticker | Source | Action |
 |---|---|---|---|
-| KRX | 0036D0 | krx_etf_finder | manual_rename_vs_delisting_required |
+| CSE_LK | AMF.N0000 | cse_lk_all_security_code | manual_rename_vs_delisting_required |
+| CSE_LK | AMF.N0000 | cse_lk_company_info_summary | manual_rename_vs_delisting_required |
 
 ## Notes
 
-- `KRX::0036D0` vanished from `krx_etf_finder` only; the listing stays.
-- `HKEX::01063` ISIN recode `BMG8571C2494` -> `BMG8571C2643` is listing-keyed from official HKEX ListOfSecurities; name kept.
-- `jpx_tse_stock_detail` and `lse_company_reports` remained unavailable.
+- `CSE_LK::AMF.N0000` vanished from both CSE Sri Lanka sources; the listing stays.
+- Kuwait, BME security prices, CSE Morocco, TWSE ETF and JPX TSE stock detail remained unavailable.
+- Listing-keyed official ISIN recodes applied for `AMS::3PLT`, `STO::AEC`, `LSE::AEG`, `LSE::BHP`, `LSE::NOG`, `LSE::PAY`, `XETRA::SKOR`.
 - No vanished rows are dropped.

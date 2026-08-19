@@ -1,23 +1,23 @@
 # Source Gap Classification
 
-Generated at: `2026-08-19T15:41:28Z`
+Generated at: `2026-08-19T15:57:11Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Official reference-gap rows classified: `6572`
+- Official reference-gap rows classified: `6573`
 - Missing primary ISIN rows classified: `700`
-- Missing stock-sector rows classified: `1513`
+- Missing stock-sector rows classified: `1510`
 - Missing ETF-category rows classified: `31`
 
 ## Top Classes
 
 | Class | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5349 |
+| official_reference_unmatched_source_gap | 5350 |
 | official_reference_symbol_collision_gap | 1223 |
-| official_industry_taxonomy_unavailable_gap | 845 |
+| official_industry_taxonomy_unavailable_gap | 842 |
 | otc_sector_source_gap | 553 |
 | official_identifier_not_exposed_source_gap | 271 |
 | fund_or_trust_identifier_gap | 237 |
@@ -40,7 +40,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | Field | Gap Class | Exchange | Rows | Recommended Next Source | Source Gate |
 |---|---|---|---:|---|---|
 | official_reference_gap | official_reference_unmatched_source_gap | OTC | 3110 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| missing_sector_stock | official_industry_taxonomy_unavailable_gap | FSX | 791 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
+| missing_sector_stock | official_industry_taxonomy_unavailable_gap | FSX | 788 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | otc_sector_source_gap | OTC | 553 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
 | official_reference_gap | official_reference_unmatched_source_gap | B3 | 340 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | BSE_IN | 192 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |

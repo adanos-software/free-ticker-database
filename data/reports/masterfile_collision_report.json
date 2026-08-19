@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 98868,
-    "matched": 64810,
+    "official_symbols": 98869,
+    "matched": 64809,
     "collisions": 13806,
-    "missing": 20252
+    "missing": 20254
   },
   "exchanges": [
     {
@@ -1397,12 +1397,17 @@
     },
     {
       "exchange": "CSE_LK",
-      "official_symbols": 318,
-      "matched": 307,
+      "official_symbols": 319,
+      "matched": 306,
       "collisions": 0,
-      "missing": 11,
+      "missing": 13,
       "collision_examples": [],
       "missing_examples": [
+        {
+          "ticker": "AAF.R0000",
+          "name": "ASIA ASSET FINANCE PLC",
+          "exchange": "CSE_LK"
+        },
         {
           "ticker": "ATL.R0000",
           "name": "AMANA TAKAFUL  PLC",
@@ -1444,13 +1449,8 @@
           "exchange": "CSE_LK"
         },
         {
-          "ticker": "MBSL.R0001",
+          "ticker": "MBSL.P0000",
           "name": "MERCHANT BANK OF SRI LANKA & FINANCE PLC",
-          "exchange": "CSE_LK"
-        },
-        {
-          "ticker": "MERC.R0000",
-          "name": "MERCANTILE INVESTMENTS AND FINANCE PLC",
           "exchange": "CSE_LK"
         }
       ]

@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T15:41:28Z",
-    "rows": 8816,
+    "generated_at": "2026-08-19T15:57:11Z",
+    "rows": 8814,
     "field_totals": {
       "missing_etf_category": 31,
       "missing_isin_primary": 700,
-      "missing_sector_stock": 1513,
-      "official_reference_gap": 6572
+      "missing_sector_stock": 1510,
+      "official_reference_gap": 6573
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -21,11 +21,11 @@
       "official_current_directory_absent_identifier_gap": 9,
       "official_identifier_not_exposed_source_gap": 271,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 845,
+      "official_industry_taxonomy_unavailable_gap": 842,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 26,
       "official_reference_symbol_collision_gap": 1223,
-      "official_reference_unmatched_source_gap": 5349,
+      "official_reference_unmatched_source_gap": 5350,
       "otc_sector_source_gap": 553,
       "shell_or_cpc_sector_gap": 31
     },
@@ -44,11 +44,11 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 6,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 845,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 842,
       "missing_sector_stock:otc_sector_source_gap": 553,
       "missing_sector_stock:shell_or_cpc_sector_gap": 31,
       "official_reference_gap:official_reference_symbol_collision_gap": 1223,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5349
+      "official_reference_gap:official_reference_unmatched_source_gap": 5350
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -118,7 +118,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 814
+          "rows": 811
         },
         {
           "exchange": "OTC",
@@ -213,7 +213,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 791,
+        "rows": 788,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -15059,23 +15059,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::3NO0",
-      "ticker": "3NO0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Nostrum Oil & Gas PLC",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::3NO0;exchange=FSX;ticker=3NO0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::3O40",
       "ticker": "3O40",
       "exchange": "FSX",
@@ -21230,23 +21213,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::H730",
-      "ticker": "H730",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Africa Energy Corp.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::H730;exchange=FSX;ticker=H730;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::H7L",
       "ticker": "H7L",
       "exchange": "FSX",
@@ -24420,23 +24386,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=FSX::PAHA;exchange=FSX;ticker=PAHA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "FSX::PAN0",
-      "ticker": "PAN0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "PayPoint plc",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::PAN0;exchange=FSX;ticker=PAN0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -62109,6 +62058,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=CPH::VJBA;exchange=CPH;ticker=VJBA;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "CSE_LK::AMF.N0000",
+      "ticker": "AMF.N0000",
+      "exchange": "CSE_LK",
+      "asset_type": "Stock",
+      "name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=CSE_LK::AMF.N0000;exchange=CSE_LK;ticker=AMF.N0000;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

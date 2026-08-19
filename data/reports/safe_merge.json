@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 27,
+    "critical_field_changes": 36,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,6 +23,12 @@
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
+    {
+      "listing_key": "AMS::3PLT",
+      "field_name": "isin",
+      "old_value": "XS2337085851",
+      "new_value": "XS2663694680"
+    },
     {
       "listing_key": "BCBA::MELI",
       "field_name": "isin",
@@ -90,6 +96,30 @@
       "new_value": "DE000FRE5EN2"
     },
     {
+      "listing_key": "LSE::AEG",
+      "field_name": "isin",
+      "old_value": "GB00B1YMN108",
+      "new_value": "GB00BPG7NS80"
+    },
+    {
+      "listing_key": "LSE::BHP",
+      "field_name": "country",
+      "old_value": "United Kingdom",
+      "new_value": "Australia"
+    },
+    {
+      "listing_key": "LSE::BHP",
+      "field_name": "country_code",
+      "old_value": "GB",
+      "new_value": "AU"
+    },
+    {
+      "listing_key": "LSE::BHP",
+      "field_name": "isin",
+      "old_value": "GB00BH0P3Z91",
+      "new_value": "AU000000BHP4"
+    },
+    {
       "listing_key": "LSE::GABI",
       "field_name": "isin",
       "old_value": "JE00BPCSN748",
@@ -100,6 +130,18 @@
       "field_name": "isin",
       "old_value": "GB00BZ4BQC70",
       "new_value": "GB00BTQHVY80"
+    },
+    {
+      "listing_key": "LSE::NOG",
+      "field_name": "isin",
+      "old_value": "GB00BGP6Q951",
+      "new_value": "GB00BQVVS097"
+    },
+    {
+      "listing_key": "LSE::PAY",
+      "field_name": "isin",
+      "old_value": "GB00B02QND93",
+      "new_value": "GB00BVMTNR93"
     },
     {
       "listing_key": "LSE::VAST",
@@ -144,6 +186,12 @@
       "new_value": "SE0029278555"
     },
     {
+      "listing_key": "STO::AEC",
+      "field_name": "isin",
+      "old_value": "CA00830W1059",
+      "new_value": "CA00830W5019"
+    },
+    {
       "listing_key": "STO::ENRO",
       "field_name": "isin",
       "old_value": "SE0011256312",
@@ -184,6 +232,12 @@
       "field_name": "isin",
       "old_value": "DE0005785604",
       "new_value": "DE000FRE5EN2"
+    },
+    {
+      "listing_key": "XETRA::SKOR",
+      "field_name": "isin",
+      "old_value": "XS2472196331",
+      "new_value": "XS3324655540"
     }
   ],
   "generated_official_change_evidence": [],

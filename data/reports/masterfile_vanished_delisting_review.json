@@ -1,30 +1,44 @@
 {
-  "generated_at": "2026-08-19T15:42:35Z",
+  "generated_at": "2026-08-19T15:58:38Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
-  "rotation_date": "2026-08-25",
-  "vanished_reference_rows": 1,
-  "still_in_database": 1,
+  "rotation_date": "2026-08-19-freshness-retry",
+  "vanished_reference_rows": 2,
+  "still_in_database": 2,
   "classifier_counts": {
-    "manual_rename_vs_delisting_required": 1
+    "manual_rename_vs_delisting_required": 2
   },
   "applied_drops": 0,
   "notes": [
-    "KRX::0036D0 vanished from krx_etf_finder only; the listing stays.",
-    "HKEX::01063 ISIN recode BMG8571C2494 -> BMG8571C2643 is listing-keyed from official HKEX ListOfSecurities; name kept.",
-    "jpx_tse_stock_detail and lse_company_reports remained unavailable.",
+    "CSE_LK::AMF.N0000 vanished from both CSE Sri Lanka sources; the listing stays.",
+    "Kuwait, BME security prices, CSE Morocco, TWSE ETF and JPX TSE stock detail remained unavailable.",
+    "Listing-keyed official ISIN recodes applied for AMS::3PLT, STO::AEC, LSE::AEG, LSE::BHP, LSE::NOG, LSE::PAY, XETRA::SKOR.",
     "No vanished rows are dropped."
   ],
   "rows": [
     {
-      "ticker": "0036D0",
-      "exchange": "KRX",
-      "name": "TIME 미국배당다우존스액티브",
-      "isin": "KR70036D0007",
+      "ticker": "AMF.N0000",
+      "exchange": "CSE_LK",
+      "name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "isin": "LK0387N00007",
       "classification": "master_absent",
-      "source_key": "krx_etf_finder",
-      "official_name": "TIME 미국배당다우존스액티브",
-      "listing_name": "TIME 미국배당다우존스액티브",
-      "listing_isin": "KR70036D0007",
+      "source_key": "cse_lk_all_security_code",
+      "official_name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "listing_name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "listing_isin": "LK0387N00007",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false
+    },
+    {
+      "ticker": "AMF.N0000",
+      "exchange": "CSE_LK",
+      "name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "isin": "LK0387N00007",
+      "classification": "master_absent",
+      "source_key": "cse_lk_company_info_summary",
+      "official_name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "listing_name": "ASSOCIATED MOTOR FINANCE COMPANY PLC",
+      "listing_isin": "LK0387N00007",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false
