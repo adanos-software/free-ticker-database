@@ -10250,6 +10250,51 @@ def test_fetch_bme_share_details_info_impersonates_forbidden_api(monkeypatch) ->
     assert detail["isin"] == "ES0113900J37"
 
 
+def test_fetch_bme_share_details_info_wraps_impersonation_timeout(monkeypatch) -> None:
+    class ForbiddenResponse:
+        status_code = 403
+
+        def raise_for_status(self):
+            raise requests.HTTPError(response=self)
+
+        def json(self):
+            raise AssertionError("forbidden body should not be parsed")
+
+    class FakeSession:
+        def get(self, url, params=None, headers=None, timeout=None):
+            return ForbiddenResponse()
+
+    def boom(*args, **kwargs):
+        raise TimeoutError("curl 28")
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", boom)
+
+    with pytest.raises(requests.RequestException, match="curl 28"):
+        fetch_exchange_masterfiles.fetch_bme_share_details_info("ES0113900J37", session=FakeSession())
+
+
+def test_fetch_bme_share_details_info_skips_impersonation_when_disabled() -> None:
+    class ForbiddenResponse:
+        status_code = 403
+
+        def raise_for_status(self):
+            raise requests.HTTPError(response=self)
+
+        def json(self):
+            raise AssertionError("impersonation should be skipped")
+
+    class FakeSession:
+        def get(self, url, params=None, headers=None, timeout=None):
+            return ForbiddenResponse()
+
+    with pytest.raises(requests.HTTPError):
+        fetch_exchange_masterfiles.fetch_bme_share_details_info(
+            "ES0113900J37",
+            session=FakeSession(),
+            impersonate=False,
+        )
+
+
 def test_load_bme_reference_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "bme_listed_companies.json"
     cache_path.write_text(
