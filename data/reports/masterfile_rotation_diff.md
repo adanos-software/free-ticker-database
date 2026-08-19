@@ -1,43 +1,38 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-19T14:39:36Z`
-- New rows: `117`
-- Vanished rows: `13`
-- Changed rows: `12`
+- Generated at: `2026-08-19T14:55:37Z`
+- New rows: `102`
+- Vanished rows: `11`
+- Changed rows: `4`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| isin_change | 5 |
-| name_change | 7 |
+| isin_change | 1 |
+| name_change | 3 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| set_dr_search | 19 |
-| set_listed_companies | 1 |
-| set_stock_search | 1 |
-| sgx_securities_prices | 3 |
-| six_equity_issuers | 1 |
-| six_etf_products | 50 |
-| six_etp_products | 6 |
-| six_shares_explorer_full | 1 |
-| spotlight_companies_directory | 9 |
-| sse_a_share_list | 4 |
-| sse_etf_list | 9 |
-| szse_etf_list | 10 |
-| tadawul_main_market_watch | 1 |
-| tase_etf_marketdata | 2 |
+| tase_securities_marketdata | 3 |
+| tmx_etf_screener | 7 |
+| tmx_interlisted_companies | 2 |
+| tmx_listed_issuers | 81 |
+| tpex_emerging_basic_info | 2 |
+| tpex_mainboard_daily_quotes | 1 |
+| twse_listed_companies | 2 |
+| upcom_registered_securities | 2 |
+| wse_listed_companies | 2 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| set_listed_companies | 2 |
-| set_stock_search | 2 |
-| sgx_securities_prices | 3 |
-| six_equity_issuers | 1 |
-| spotlight_companies_directory | 5 |
+| tase_securities_marketdata | 2 |
+| tmx_etf_screener | 3 |
+| tpex_emerging_basic_info | 3 |
+| tpex_mainboard_daily_quotes | 1 |
+| wse_listed_companies | 2 |

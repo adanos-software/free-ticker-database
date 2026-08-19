@@ -1,9 +1,9 @@
 {
   "generated_at": "2026-08-19T14:41:36Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1792,
+  "reconciled_rows": 1793,
   "applied_rows": 0,
-  "proposed_rows": 1792,
+  "proposed_rows": 1793,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -24844,6 +24844,21 @@
       "reference_scope": "security_identifier_registry_subset",
       "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=9369",
       "observation_id": "d2e61701eab9a9a7841742fa",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "TSXV::NVRO",
+      "action": "proposed",
+      "ticker": "NVRO",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "isin": "CA29408C1005",
+      "old_name": "NVRO MetaNVRO",
+      "new_name": "NVRO Metals Limited",
+      "source_key": "tmx_listed_issuers",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://app-money.tmx.com/graphql",
+      "observation_id": "ec1940d6147a75d6441d3206",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

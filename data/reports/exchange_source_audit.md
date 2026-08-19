@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T14:42:00Z`
+Generated at: `2026-08-19T15:01:16Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 28, "official_source_required": 5, "refresh_required": 17, "refresh_unavailable": 13}`
+- Audit outcomes: `{"denominator_missing": 24, "maintain": 31, "official_source_required": 5, "refresh_required": 13, "refresh_unavailable": 14}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -78,20 +78,20 @@ Generated at: `2026-08-19T14:42:00Z`
 | STO | official_partial | nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory |  | 0 |  | ngm_market_data_equities | refresh_unavailable | blocked_source_unavailable |
 | SZSE | official_partial | szse_a_share_list|szse_b_share_list|szse_etf_list |  | 0 |  | szse_a_share_list | refresh_unavailable | blocked_source_unavailable |
 | TADAWUL | official_full | tadawul_main_market_watch |  | 413 | 47.94 |  | maintain | not_applicable |
-| TASE | official_partial | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata |  | 0 |  | tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata | refresh_unavailable | blocked_source_unavailable |
-| TPEX | official_partial | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes |  | 0 |  | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes | denominator_missing | blocked_nonfresh_source |
+| TASE | official_partial | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata |  | 0 |  | tase_foreign_etf_search|tase_participating_unit_search | refresh_unavailable | blocked_source_unavailable |
+| TPEX | official_partial | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 90.98 | jpx_tse_stock_detail | refresh_unavailable | not_applicable |
-| TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 785 | 75.16 | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
-| TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1518 | 87.09 | tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
-| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1093 | 92.86 | twse_etf_list|twse_listed_companies | refresh_required | not_applicable |
-| UPCOM | official_full | upcom_registered_securities |  | 822 | 0.24 | upcom_registered_securities | refresh_required | not_applicable |
-| USE_UG | official_partial | use_ug_listed_companies |  | 0 |  | use_ug_listed_companies | denominator_missing | blocked_nonfresh_source |
-| VSE | official_partial | vienna_listed_companies | ETF | 0 |  | vienna_listed_companies | denominator_missing | blocked_nonfresh_source |
-| WSE | official_partial | newconnect_listed_companies|wse_etf_list|wse_listed_companies |  | 0 |  | wse_etf_list|wse_listed_companies | denominator_missing | blocked_nonfresh_source |
+| TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 788 | 75.25 |  | maintain | not_applicable |
+| TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1596 | 87.72 |  | maintain | not_applicable |
+| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1095 | 92.69 | twse_etf_list | refresh_unavailable | not_applicable |
+| UPCOM | official_full | upcom_registered_securities |  | 824 | 0.24 |  | maintain | not_applicable |
+| USE_UG | official_partial | use_ug_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
+| VSE | official_partial | vienna_listed_companies | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |
+| WSE | official_partial | newconnect_listed_companies|wse_etf_list|wse_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | XDUS | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XETRA | official_full | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities |  | 5080 | 80.96 | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities | refresh_required | not_applicable |
 | XHAM | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XHAN | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XSTU | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| ZSE | official_partial | zagreb_securities_directory |  | 0 |  | zagreb_securities_directory | denominator_missing | blocked_nonfresh_source |
-| ZSE_ZW | official_partial | zse_zw_listed_companies |  | 0 |  | zse_zw_listed_companies | denominator_missing | blocked_nonfresh_source |
+| ZSE | official_partial | zagreb_securities_directory |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
+| ZSE_ZW | official_partial | zse_zw_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |

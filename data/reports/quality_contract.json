@@ -6,7 +6,7 @@
   "complete_status": "fail",
   "dataset_sha256": "e1d6898da3b3b080b7aa9e6b89a7e3fe0b52d9bd720829d7d34d31e5bf14be17",
   "source_manifest_sha256": "15bb7f9942382449d220b19d57b49c030cdb4de666dc13f5391ef1a7bb2a39e5",
-  "git_commit": "74c332056b91560039265a1bfc48751c2fdf7967",
+  "git_commit": "486fc9eeeb218ee4cce83a065f33166032380181",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -48,14 +48,14 @@
         "error": "",
         "counts": {
           "sources": 145,
-          "source_observations": 171422,
+          "source_observations": 171421,
           "venues": 87,
           "issuers": 72071,
           "instruments": 72071,
           "listings": 92006,
-          "identifier_assertions": 166111,
-          "field_assertions": 204676,
-          "provenance_gaps": 280915,
+          "identifier_assertions": 166110,
+          "field_assertions": 204830,
+          "provenance_gaps": 280754,
           "listing_events": 75882,
           "coverage_contracts": 134
         }
@@ -111,7 +111,7 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "rows": 168681,
+        "rows": 168773,
         "unclassified": 0
       }
     },
@@ -190,7 +190,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "proposed_rows": 1792,
+        "proposed_rows": 1793,
         "sample": [
           "ADX::GRMNY",
           "ADX::JPANI",
@@ -522,7 +522,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 280915
+        "gap_rows": 280754
       }
     },
     {
@@ -571,7 +571,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 48146
+        "missing_rows": 48159
       }
     },
     {
