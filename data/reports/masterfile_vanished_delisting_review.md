@@ -1,47 +1,39 @@
-# Masterfile vanished delisting review
+# Masterfile Vanished Delisting Review
+- Generated at: `2026-08-19T16:43:03Z`
+- Rotation date: `2026-08-19` Kuwait + TWSE ETF refresh
+- Vanished reference rows: `15`
+- Still in database: `10`
+- Applied drops: `0`
+- Policy: `feed_delisting_classifier_not_direct_deletion`
 
-- Vanished official-reference rows: `38`
-- Still in `data/listings.csv`: `18`
-- Classifier: all `manual_rename_vs_delisting_required`
-- Applied drops: `0` (no BSE/Nasdaq official delete evidence)
+## Classifier counts
 
-| Listing | Source | Still in DB | Classifier |
+| Action | Rows |
+|---|---:|
+| manual_rename_vs_delisting_required | 15 |
+
+## Rows still in the database
+
+| Exchange | Ticker | Source | Action |
 |---|---|---|---|
-| Borsa Italiana::STAR7 | `euronext_equities` | true | `manual_rename_vs_delisting_required` |
-| Euronext::1EA | `euronext_equities` | false | `manual_rename_vs_delisting_required` |
-| Euronext::2EA | `euronext_equities` | false | `manual_rename_vs_delisting_required` |
-| Euronext::4DD | `euronext_equities` | false | `manual_rename_vs_delisting_required` |
-| Euronext::4EA | `euronext_equities` | false | `manual_rename_vs_delisting_required` |
-| Euronext::YBTC | `euronext_etfs` | false | `manual_rename_vs_delisting_required` |
-| HKEX::01143 | `hkex_securities_list` | true | `manual_rename_vs_delisting_required` |
-| HKEX::01246 | `hkex_securities_list` | true | `manual_rename_vs_delisting_required` |
-| HKEX::02323 | `hkex_securities_list` | true | `manual_rename_vs_delisting_required` |
-| HKEX::02974 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02975 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02976 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02977 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02979 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02986 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02987 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02988 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02994 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::02997 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HKEX::06608 | `hkex_securities_list` | true | `manual_rename_vs_delisting_required` |
-| HKEX::08571 | `hkex_securities_list` | false | `manual_rename_vs_delisting_required` |
-| HOSE::FUCTVGF3 | `hose_fund_certificate_list` | false | `manual_rename_vs_delisting_required` |
-| TSE::191A | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::2763 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::311A | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::3271 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::3681 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::4367 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::5022 | `jpx_listed_issues` | false | `manual_rename_vs_delisting_required` |
-| TSE::5903 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::6096 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::7317 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| TSE::7940 | `jpx_listed_issues` | true | `manual_rename_vs_delisting_required` |
-| JSE::RWDVF | `jse_etf_list` | false | `manual_rename_vs_delisting_required` |
-| JSE::STXID | `jse_etf_list` | true | `manual_rename_vs_delisting_required` |
-| KOSDAQ::043090 | `krx_listed_companies` | false | `manual_rename_vs_delisting_required` |
-| KOSDAQ::299900 | `krx_listed_companies` | true | `manual_rename_vs_delisting_required` |
-| KRX::031440 | `krx_listed_companies` | true | `manual_rename_vs_delisting_required` |
+| BK | KPPC | boursa_kuwait_stocks | manual_rename_vs_delisting_required |
+| CSE_LK | AMF.N0000 | cse_lk_all_security_code | manual_rename_vs_delisting_required |
+| CSE_LK | AMF.N0000 | cse_lk_company_info_summary | manual_rename_vs_delisting_required |
+| TSE | 2763 | jpx_tse_stock_detail | manual_rename_vs_delisting_required |
+| TSE | 311A | jpx_tse_stock_detail | manual_rename_vs_delisting_required |
+| TSE | 4171 | jpx_tse_stock_detail | manual_rename_vs_delisting_required |
+| TSE | 4367 | jpx_tse_stock_detail | manual_rename_vs_delisting_required |
+| TSE | 6096 | jpx_tse_stock_detail | manual_rename_vs_delisting_required |
+| TSE | 6197 | jpx_tse_stock_detail | manual_rename_vs_delisting_required |
+| TSE | 8283 | jpx_tse_stock_detail | manual_rename_vs_delisting_required |
+
+## Notes
+
+- Boursa Kuwait stocks refreshed via Chrome impersonation: 140 network rows.
+- TWSE ETF list switched from the hanging rwd feed to official open data t187ap47_L: 268 network rows.
+- BK::KPPC vanished from the Kuwait feed; listing stays.
+- Five old TWSE rwd dual-currency ticker strings vanished; real 006205/00636/00643/00657/00668 listings stay.
+- BME security prices and CSE Morocco remain unavailable; empty refresh preserves cache.
+- CSE_LK::AMF.N0000 and seven JPX TSE vanished tickers remain classifier-only.
+- Listing-keyed official ISIN recodes applied for 12 same-instrument keys after Kuwait/TWSE refresh.
+- No vanished rows are dropped.

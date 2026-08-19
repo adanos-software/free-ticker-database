@@ -1,2224 +1,1489 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T06:07:11Z",
-    "previous_reference_csv": "/tmp/reference-before-rotation-overlay.csv",
+    "generated_at": "2026-08-19T16:42:27Z",
+    "previous_reference_csv": "/tmp/reference-before-kuwait-twse.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 52,
-    "vanished_rows": 38,
-    "changed_rows": 59,
+    "new_rows": 43,
+    "vanished_rows": 6,
+    "changed_rows": 52,
     "new_by_source": {
-      "euronext_etfs": 16,
-      "hkex_securities_list": 9,
-      "hose_listed_stocks": 2,
-      "jpx_listed_issues": 18,
-      "jse_etf_list": 1,
-      "krx_etf_finder": 3,
-      "krx_listed_companies": 3
+      "boursa_kuwait_stocks": 1,
+      "twse_etf_list": 42
     },
     "vanished_by_source": {
-      "euronext_equities": 5,
-      "euronext_etfs": 1,
-      "hkex_securities_list": 15,
-      "hose_fund_certificate_list": 1,
-      "jpx_listed_issues": 11,
-      "jse_etf_list": 2,
-      "krx_listed_companies": 3
+      "boursa_kuwait_stocks": 1,
+      "twse_etf_list": 5
     },
     "changed_by_type": {
-      "field_change": 9,
-      "isin_change": 8,
-      "name_change": 44
+      "name_change": 52
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "B1TA",
-      "name": "iSh AT1 Bond Active EUR (Dist)",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000XPG7Q27",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "ONSW",
-      "name": "iShares € Overnight Rate Swap UCITS ETF",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0005RKXDO7",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "G0BC",
-      "name": "Xtrackers Global Corporate Bond UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000LRDPD24",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "JPEA",
-      "name": "JPM All Country Research Enhanced Index Equity Paris Aligned Active UCITS ETF - EUR (dist)",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000H0H26Q8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "TCQE",
-      "name": "Trading Central Quant Europe 50 Equity UCITS ETF - Accumulating",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000DN0XQM1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "XGCE",
-      "name": "Xtrackers Global Corporate Bond UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000EUY91Y9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "XHW0",
-      "name": "Xtrackers Global High Yield Corporate Bond UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000DT6MI20",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "XHWE",
-      "name": "Xtrackers Global High Yield Corporate Bond UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000AGH5ZI1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "B1UH",
-      "name": "iSh AT1 Bond Active USD Hedged (Dist)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000RWQ7DN4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FTSA",
-      "name": "iShares FTSE All-World UCITS ETF",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000OL3XN92",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "OCGP",
-      "name": "ODDO BHF Global Equity Active UCITS ETF - Accumulating ETF Share Class CGP",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000IH9YO94",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "TCQE",
-      "name": "Trading Central Quant Europe 50 Equity UCITS ETF - Accumulating",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000DN0XQM1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "WMSC",
-      "name": "iSh MSCI World Comm Services Sector Adv",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000JJLNIG0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "WNSF",
-      "name": "iSh MSCI World Financials Sector Adv",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000FQYTH79",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "WSDC",
-      "name": "iSh MSCI World Consumer Discret Sec Adv",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000JEU61P1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "WSTI",
-      "name": "iSh MSCI World Info Technology Sec Adv",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000LO4MAC0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02261",
-      "name": "NASN TECH",
-      "exchange": "HKEX",
+      "source_key": "boursa_kuwait_stocks",
+      "provider": "Boursa Kuwait",
+      "source_url": "https://www.boursakuwait.com.kw/data-api/legacy-mix-services",
+      "ticker": "PHC",
+      "name": "Privatization Holding",
+      "exchange": "BK",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "CNE100007SM7",
+      "isin": "KW0EQ0601702",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02349",
-      "name": "CHINA AI INFRA",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG2118E1070",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02903",
-      "name": "SUNCORP TECH",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG8571C2726",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02904",
-      "name": "CMON RTS",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG223911333",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02907",
-      "name": "CH WOOD INT RTS",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG2162J1500",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "06918",
-      "name": "JIUTAI DIGITAL",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG5259S1084",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "08128",
-      "name": "SINO ENGY CONS",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG2127R1231",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "08238",
-      "name": "JIUFANG DIGITAL",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG9722S1333",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "08577",
-      "name": "BRIGHTSTAR TECH",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG479741293",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hose_listed_stocks",
-      "provider": "HOSE",
-      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
-      "ticker": "DMX",
-      "name": "Dien May Xanh Investment Joint Stock Company",
-      "exchange": "HOSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "VN000000DMX5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hose_listed_stocks",
-      "provider": "HOSE",
-      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
-      "ticker": "LPS",
-      "name": "LPBank Securities Joint Stock Company",
-      "exchange": "HOSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "VN000000LPS1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "590A",
-      "name": "giftee Group,Inc.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Communication Services"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "593A",
-      "name": "TIER IV,Inc.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Communication Services"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "594A",
-      "name": "PRO HOLDINGS Co.,Ltd",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "597A",
-      "name": "andUS.inc",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Materials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "598A",
-      "name": "ChatPlus Co.,Ltd.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Communication Services"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "599A",
-      "name": "Genkinakaigo Co.,Ltd",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "600A",
-      "name": "Nissay ETF Russell 2000",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "601A",
-      "name": "LUCKS Construction Co.,Ltd",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "602A",
-      "name": "Rex Advisors Co.,Ltd.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "603A",
-      "name": "i GRID SOLUTIONS Inc.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Utilities"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "604A",
-      "name": "beABLE CO.,LTD.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "605A",
-      "name": "NEXT FUNDS Japan Equity Policy Focus Exchange Traded Fund",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "606A",
-      "name": "Gold 2x Bull ETF",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "608A",
-      "name": "Listed Index Fund TSE REIT High Yield 30",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "609A",
-      "name": "Global X Japan Wholesale Trade & Resource Business ETF",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "610A",
-      "name": "Global X Space Tech Top 10 ETF (ex-Japan)",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "611A",
-      "name": "One ETF Japanese Government Bond 27-30 years",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "612A",
-      "name": "One ETF JGB Futures Short Index",
-      "exchange": "TSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jse_etf_list",
-      "provider": "JSE",
-      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v94/ETF%20List%20v.94.xlsx",
-      "ticker": "BGFMAI",
-      "name": "Benguela EasyETFs Global AI Revolution Actively Managed ETF",
-      "exchange": "JSE",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "0054",
+      "name": "Yuanta/P-shares S&P Custom China Play 50 ETF",
+      "exchange": "TWSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "",
+      "isin": "TW0000054006",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "0226D0",
-      "name": "FOCUS 금융반도체지주채권혼합50액티브",
-      "exchange": "KRX",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "0058",
+      "name": "FUBON TAIWAN EIGHT INDUSTRIES ETF",
+      "exchange": "TWSE",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR70226D0007",
+      "isin": "TW0000058007",
       "cfi": "",
-      "sector": "Fixed Income"
+      "sector": ""
     },
     {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "0227K0",
-      "name": "RISE 미국우주위성통신",
-      "exchange": "KRX",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "0059",
+      "name": "FUBON TAIWAN FINANCE ETF",
+      "exchange": "TWSE",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR70227K0007",
+      "isin": "TW0000059005",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "0228G0",
-      "name": "ACE 반도체Plus전략산업",
-      "exchange": "KRX",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "0060",
+      "name": "Yuanta/P-shares TWSE Taiwan Non－Tech 50 ETF",
+      "exchange": "TWSE",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR70228G0002",
+      "isin": "TW0000060003",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "483350",
-      "name": "Dealicious",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "006205",
+      "name": "Fubon SSE180 ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR7483350005",
+      "isin": "TW0000062058",
       "cfi": "",
-      "sector": "Consumer Discretionary"
+      "sector": ""
     },
     {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "487400",
-      "name": "KNS SND",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00625K",
+      "name": "FUBON SSE 180 ETF RMB",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR7487400004",
+      "isin": "TW00000625K4",
       "cfi": "",
-      "sector": "Information Technology"
+      "sector": ""
     },
     {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "950260",
-      "name": "INGENIA Therapeutics",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00636",
+      "name": "Cathay FTSE China A50 ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR8840280000",
+      "isin": "TW0000063601",
       "cfi": "",
-      "sector": "Industrials"
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00636K",
+      "name": "Cathay FTSE China A50 ETF(USD)",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000636K1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00643",
+      "name": "CAPITAL SZSE SME １００ INDEX EXCHANGE TRADED FUND",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000064302",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00643K",
+      "name": "CAPITAL SZSE SME １００ INDEX EXCHANGE TRADED FUND",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000643K7",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00649",
+      "name": "Fuh Hwa Hang Seng ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000064906",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00657",
+      "name": "Cathay Nikkei 225 Currency-hedged ETF Fund",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000065705",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00657K",
+      "name": "Cathay Nikkei 225 Currency-hedged ETF Fund(USD)",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000657K7",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00658L",
+      "name": "Cathay FTSE Japan Daily Leveraged 2X ETF Fund",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000658L3",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00659R",
+      "name": "Cathay FTSE Japan Daily Inversed ETF Fund",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000659R8",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00667",
+      "name": "Yuanta KOSPI 200 ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000066703",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00668",
+      "name": "Cathay Dow Jones Industrial Average ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000066802",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00668K",
+      "name": "Cathay Dow Jones Industrial Average ETF(USD)",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000668K4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00672L",
+      "name": "Yuanta S&P GSCI Crude Oil 2x Leveraged ER Futures ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000672L4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00677U",
+      "name": "Fubon S&P 500 VIX Short-Term Futures ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000677U4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00691R",
+      "name": "Mega Taiwan Blue Chip 30 Daily Inverse ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000691R1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00698L",
+      "name": "Yuanta Daily U.S. Treasury 7-10 Year Bond Bull 2X ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000698L9",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00699R",
+      "name": "Yuanta Daily U.S. Treasury 7-10 Year Bond Bear 1X ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000699R4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00704L",
+      "name": "Taishin MSCI Taiwan Daily Leveraged 2X ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000704L5",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00705R",
+      "name": "Taishin MSCI Taiwan Daily Inverse ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000705R9",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00716R",
+      "name": "Paradigm S&P GSCI Brent Crude 1X Inverse ER Futures ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000716R6",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00729R",
+      "name": "FSITC Taiwan Industry Elite 30 Daily -1X Inverse ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000729R9",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00732",
+      "name": "Cathay FTSE Chinese Government and Policy Bank Bond 0-1Year Select ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000073204",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00742",
+      "name": "Shin Kong Domestic Demand High Dividend ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000074202",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00743",
+      "name": "Cathay FTSE China A150 ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000074301",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00766L",
+      "name": "Taishin MSCI China Free Leveraged 2X Daily ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000766L4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00767",
+      "name": "Fuh Hwa Dow Jones US Financial Services Equity ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000076702",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00774B",
+      "name": "Shin Kong 10 Years China Treasury Policy Bank Green Bond ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000774B9",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00774C",
+      "name": "Shin Kong 10 Years China Treasury Policy Bank Green Bond ETF RMB",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW00000774C7",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00776",
+      "name": "Shin Kong NYSE US Core Large Cap ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000077601",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "0080",
+      "name": "HANG SENG H-SHARE INDEX ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000080001",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "0081",
+      "name": "HANG SENG INDEX ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000081009",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "008201",
+      "name": "W.I.S.E. - SSE 50 China Tracker",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000082015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00866",
+      "name": "Shin Kong Shiller Barclays CAPE® US Sector Value ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000086602",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00906",
+      "name": "United Metaverse Technology and Services ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000090604",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "00925",
+      "name": "Shin Kong S&P Electric Vehicles ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000092501",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "ticker": "009829",
+      "name": "United Korea KOSPI 50 ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "TW0000098292",
+      "cfi": "",
+      "sector": ""
     }
   ],
   "vanished": [
     {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "STAR7",
-      "name": "STAR7",
-      "exchange": "Borsa Italiana",
+      "source_key": "boursa_kuwait_stocks",
+      "provider": "Boursa Kuwait",
+      "source_url": "https://www.boursakuwait.com.kw/data-api/legacy-mix-services",
+      "ticker": "KPPC",
+      "name": "Privatization Holding",
+      "exchange": "BK",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IT0005466195",
+      "isin": "KW0EQ0601702",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "1EA",
-      "name": "ELECTRONIC ARTS",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "secondary_listing_subset",
-      "official": "true",
-      "isin": "US2855121099",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "2EA",
-      "name": "ELECTRONIC ARTS",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "secondary_listing_subset",
-      "official": "true",
-      "isin": "US2855121099",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "4DD",
-      "name": "DUPONT DE NEMOURS",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "secondary_listing_subset",
-      "official": "true",
-      "isin": "US26614N2018",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "4EA",
-      "name": "ELECTRONIC ARTS",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "secondary_listing_subset",
-      "official": "true",
-      "isin": "US2855121099",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "YBTC",
-      "name": "Fineqia Bitcoin Yield ETP",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LI1444931821",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "01143",
-      "name": "CN ENGY STORAGE",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG5500A1388",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "01246",
-      "name": "BOILLHEALTHCARE",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG1225S1167",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02323",
-      "name": "RENCO HOLDINGS",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG749131071",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02974",
-      "name": "ARTGO HOLD-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG0509A1554",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02975",
-      "name": "YOUZAN-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG2164J1172",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02976",
-      "name": "MEXAN-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG6051D1258",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02977",
-      "name": "YUANHENGGAS-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG9877V1138",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02979",
-      "name": "HAOSEN FINT-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG719721147",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02986",
-      "name": "HUISHENG I-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG4643W1235",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02987",
-      "name": "MOG DIGITEC RTS",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG6185A1123",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02988",
-      "name": "GREEN LEAD-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG4165P1344",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02994",
-      "name": "GW TERROIR-50K",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG4080L1431",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02997",
-      "name": "TSUGAMI CHI-1K",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG7215M1188",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "06608",
-      "name": "BAIRONG-W",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG0705A1085",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "08571",
-      "name": "CH NETCOM-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG2117P1375",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hose_fund_certificate_list",
-      "provider": "HOSE",
-      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/fundcertificate",
-      "ticker": "FUCTVGF3",
-      "name": "Thien Viet Growth Fund 3",
-      "exchange": "HOSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "VN0FUCTVGF39",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "191A",
-      "name": "MIMOSA CO.,LTD.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "2763",
-      "name": "FTGroup CO.,LTD.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "311A",
-      "name": "NPT CO.,LTD.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Health Care"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "3271",
-      "name": "The Global Ltd.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Real Estate"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "3681",
-      "name": "V-cube,Inc.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Communication Services"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "4367",
-      "name": "KOEI CHEMICAL COMPANY,LIMITED",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Materials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "5022",
-      "name": "REVO International Inc.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Energy"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "5903",
-      "name": "SHINPO CO.,LTD.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "6096",
-      "name": "RareJob,Inc.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Industrials"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "7317",
-      "name": "Matsuya R&D Co.,Ltd",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Consumer Discretionary"
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "provider": "JPX",
-      "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
-      "ticker": "7940",
-      "name": "WAVELOCK HOLDINGS CO.,LTD.",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Materials"
-    },
-    {
-      "source_key": "jse_etf_list",
-      "provider": "JSE",
-      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v93/ETF%20List%20v.93%20%281%29.xlsx",
-      "ticker": "RWDVF",
-      "name": "Reitway Global Property Diversified Prescient ETF",
-      "exchange": "JSE",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
+      "ticker": "006205(TWD)<br>00625K(RMB)",
+      "name": "Fubon SSE180 ETF (FB SSE180)",
+      "exchange": "TWSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
       "isin": "",
       "cfi": "",
-      "sector": "Real Estate"
+      "sector": ""
     },
     {
-      "source_key": "jse_etf_list",
-      "provider": "JSE",
-      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v93/ETF%20List%20v.93%20%281%29.xlsx",
-      "ticker": "STXID",
-      "name": "Satrix Inclusion & Diversity ETF",
-      "exchange": "JSE",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
+      "ticker": "00636(TWD)<br>00636K(USD)",
+      "name": "Cathay FTSE China A50 ETF",
+      "exchange": "TWSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
       "isin": "",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "043090",
-      "name": "The Technology",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
+      "ticker": "00643(TWD)<br>00643K(RMB)",
+      "name": "Capital SZSE SME 100 Index ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR7043090000",
+      "isin": "",
       "cfi": "",
-      "sector": "Consumer Discretionary"
+      "sector": ""
     },
     {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "299900",
-      "name": "WYSIWYG STUDIOS",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
+      "ticker": "00657(TWD)<br>00657K(USD)",
+      "name": "Cathay Nikkei 225 Currency-hedged ETF",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR7299900001",
+      "isin": "",
       "cfi": "",
-      "sector": "Communication Services"
+      "sector": ""
     },
     {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "031440",
-      "name": "SF",
-      "exchange": "KRX",
-      "asset_type": "Stock",
+      "source_key": "twse_etf_list",
+      "provider": "TWSE",
+      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
+      "ticker": "00668(TWD)<br>00668K(USD)",
+      "name": "Cathay Dow Jones Industrial Average ETF Fund",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR7031440001",
+      "isin": "",
       "cfi": "",
-      "sector": "Consumer Discretionary"
+      "sector": ""
     }
   ],
   "changed": [
     {
-      "source_key": "euronext_equities",
-      "exchange": "Euronext",
-      "ticker": "1BYND",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "US08862E1091",
-          "after": "US08862E3071"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_equities",
-      "exchange": "Euronext",
-      "ticker": "1FRE",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "DE0005785604",
-          "after": "DE000FRE5EN2"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_equities",
-      "exchange": "Euronext",
-      "ticker": "2BYND",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "US08862E1091",
-          "after": "US08862E3071"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_equities",
-      "exchange": "Euronext",
-      "ticker": "2FRE",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "DE0005785604",
-          "after": "DE000FRE5EN2"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_equities",
-      "exchange": "Euronext",
-      "ticker": "4BYND",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "US08862E1091",
-          "after": "US08862E3071"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_equities",
-      "exchange": "Euronext",
-      "ticker": "4FRE",
-      "change_types": [
-        "isin_change"
-      ],
-      "changes": {
-        "isin": {
-          "before": "DE0005785604",
-          "after": "DE000FRE5EN2"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_equities",
-      "exchange": "Euronext",
-      "ticker": "MLBBO",
+      "source_key": "boursa_kuwait_stocks",
+      "exchange": "BK",
+      "ticker": "ALFTAQA",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "BEBO HEALTH",
-          "after": "BE MAKER"
+          "before": "Action Energy Company K.S.C.C",
+          "after": "Action Energy Company K.S.C.P"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00022",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00400A",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "MEXAN-NEW",
-          "after": "MEXAN"
+          "before": "Cathay Taiwan High Dividend Momentum Active ETF",
+          "after": "Cathay High Dividend Momentum Active ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00061",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "0057",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "GREEN LEAD-NEW",
-          "after": "GREEN LEADER"
+          "before": "Fubon MSCI® Taiwan ETF",
+          "after": "FUBON MSCI TAIWAN ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00209",
-      "change_types": [
-        "name_change",
-        "isin_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "POLY XVERSE IT",
-          "after": "POLY XVERSE-NEW"
-        },
-        "isin": {
-          "before": "BMG9723F1225",
-          "after": "BMG9723F1555"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00332",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "006207",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "YUANHENGGAS-NEW",
-          "after": "YUANHENG GAS"
+          "before": "Fuh Hwa CSI300 A Shares ETF (FH CSI300)",
+          "after": "Fuh Hwa CSI 300 A Shares Exchange Traded Fund"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00524",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00633L",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "GW TERROIR-10K",
-          "after": "GW TERROIR"
+          "before": "Fubon SSE180 Leveraged 2X Index ETF",
+          "after": "Fubon SSE 180 Leveraged 2X Index ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00527",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00634R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "RUIFENG RENEW",
-          "after": "RF GREEN EN AI"
+          "before": "Fubon SSE180 Inversed Index ETF",
+          "after": "Fubon SSE 180 Inversed Index ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00745",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00638R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "CN CULTURE GP",
-          "after": "CN CULTURE-2000"
+          "before": "Yuanta Daily Taiwan 50 Bear -1X ETF",
+          "after": "Yuanta Daily CSI 300 Bear -1X ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01340",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00639",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "HUISHENG I-NEW",
-          "after": "HUISHENG INTL"
+          "before": "Fubon SZSE 100 Index ETF",
+          "after": "Fubon SZSE 100 ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01432",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00641R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "CHINA SHENGMU",
-          "after": "CHINASHENGMU-PF"
+          "before": "Fubon TOPIX Inverse -1X Index ETF",
+          "after": "Fubon TOPIX Inverse-1X Index ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01651",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00648R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "TSUGAMI CHI-500",
-          "after": "TSUGAMI CHINA"
+          "before": "Yuanta Daily S&P 500 Inverse ETF",
+          "after": "Yuanta Daily S&P 500 Bear 1X ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01745",
-      "change_types": [
-        "name_change",
-        "isin_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "LVJI TECH",
-          "after": "LVJI TECH-NEW"
-        },
-        "isin": {
-          "before": "KYG5804E1098",
-          "after": "KYG5804E1254"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01870",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00653L",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "ACME INTL HLDGS",
-          "after": "GREEN POWER GP"
+          "before": "Fubon NIFTY PR 2X Leverage Index ETF",
+          "after": "Fubon NIFTY 2X Leveraged Index ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "02525",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00654R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "HESAI-W-NEW",
-          "after": "HESAI-W"
+          "before": "Fubon NIFTY PR 1X Inverse Index ETF",
+          "after": "Fubon NIFTY -1 Inverse Index ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "02680",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00669R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "INNOVAX HLDGS",
-          "after": "AUSTRAX HLDGS"
+          "before": "Cathay DOW JONES INDUSTRIAL AVERAGE Daily Inversed ETF",
+          "after": "Cathay Dow Jones Industrial Average Daily Inversed ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "02900",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00674R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "LVJI TECH",
-          "after": "LVJI TECH-OLD"
+          "before": "Yuanta S&P GSCI Gold 1x Inverse ER Futures ETF",
+          "after": "Yuanta S&P GSCI Gold 1x Inverse ER FuturesETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "02991",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00676R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "POLY XVERSE IT",
-          "after": "POLY XVERSE-OLD"
+          "before": "Fubon TAIEX Daily -1X Inverse ETF",
+          "after": "Fubon TAIEX Daily-1X Inverse ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "03313",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00678",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "ARTGO HOLD-NEW",
-          "after": "ARTGO HOLDINGS"
+          "before": "Capital NBI ETF",
+          "after": "CAPITAL NASDAQ BIOTECHNOLOGY INDEX EXCHANGE"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "03848",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00685L",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "HAOSEN FINT-NEW",
-          "after": "HAOSEN FINTECH"
+          "before": "Capital TAIEX Daily Leveraged 2X ETF",
+          "after": "CAPITAL TAIEX DAILY LEVERAGED 2X ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "03903",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00686R",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "HANHUA FIN",
-          "after": "HANHUA HOLDING"
+          "before": "Capital TAIEX Daily Inversed -1X ETF",
+          "after": "CAPITAL TAIEX DAILY INVERSED -1X ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "06051",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00701",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "YOUZAN-NEW",
-          "after": "YOUZAN"
+          "before": "Cathay TIP TAIEX<sup>+</sup> Low Volatility Select 30 ETF",
+          "after": "Cathay TIP TAIEX +Low Volatility Select 30 ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "08071",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00714",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "CH NETCOM-NEW",
-          "after": "CH NETCOMTECH"
+          "before": "Capital Dow Jones U.S. Real Estate ETF",
+          "after": "CAPITAL DOW JONES U.S. REAL ESTATE INDEX EXCHANGE TRADED FUND"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "08125",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00715L",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "CHINA NEW HLDGS",
-          "after": "RJVAN"
+          "before": "JKO S&P GSCI Brent Crude 2X Leveraged ER Futures ETF",
+          "after": "JKO S&P GSCI Brent Crude 2x Leveraged ER Futures ETF"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "08147",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00733",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "MILLENNIUM PG",
-          "after": "YUNJING DIGITEC"
+          "before": "Fubon TAIEX<sup>+</sup> Small/Mid-Cap Alpha Momentum 50 ETF",
+          "after": "Fubon Taiwan Small-Mid Cap Alpha Momentum 50 ETF"
         }
       }
     },
     {
-      "source_key": "hose_listed_stocks",
-      "exchange": "HOSE",
-      "ticker": "JVC",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00735",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Vietnam Medical and Pharmaceutical Investment Joint Stock Company",
-          "after": "Japan Vietnam Medical Investment and Development Joint Stock Company"
+          "before": "Cathay Korea/Taiwan IT Premier ETF Fund",
+          "after": "Cathay Korea/Taiwan IT Premier ETF"
         }
       }
     },
     {
-      "source_key": "idx_company_profiles",
-      "exchange": "IDX",
-      "ticker": "BIKE",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00736",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "PT Sepeda Bersama Indonesia Tbk",
-          "after": "PT Bhineka Inovasi Ketahanan Energi Tbk"
+          "before": "Cathay FTSE Emerging Markets ETF Fund",
+          "after": "Cathay FTSE Emerging Markets ETF"
         }
       }
     },
     {
-      "source_key": "idx_company_profiles",
-      "exchange": "IDX",
-      "ticker": "KAEF",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00737",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Kimia Farma Tbk.",
-          "after": "PT Kimia Farma (Persero) Tbk"
+          "before": "Cathay Nasdaq CTA Artificial Intelligence and Robotics ETF Fund",
+          "after": "Cathay Nasdaq CTA Artificial Inteligence and Robotics ETF"
         }
       }
     },
     {
-      "source_key": "idx_company_profiles",
-      "exchange": "IDX",
-      "ticker": "PIPA",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00739",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "PT Multi Makmur Lemindo Tbk.",
-          "after": "PT Oxala Energy International Tbk"
+          "before": "Yuanta MSCI China A ETF",
+          "after": "Yuanta MSCI CHINA A ETF"
         }
       }
     },
     {
-      "source_key": "idx_listed_companies",
-      "exchange": "IDX",
-      "ticker": "BIKE",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00770",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Sepeda Bersama Indonesia Tbk.",
-          "after": "Bhineka Inovasi Ketahanan Ener"
+          "before": "Cathay S&P North American Technology Sector ETF",
+          "after": "Cathay North American Technology ETF"
         }
       }
     },
     {
-      "source_key": "idx_listed_companies",
-      "exchange": "IDX",
-      "ticker": "KAEF",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00852L",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Kimia Farma Tbk.",
-          "after": "Kimia Farma (Persero) Tbk."
+          "before": "Cathay Dow Jones Industrial Average Daily Leveraged 2X ETF",
+          "after": "Cathay DJIA Daily Leveraged 2X ETF"
         }
       }
     },
     {
-      "source_key": "idx_listed_companies",
-      "exchange": "IDX",
-      "ticker": "PIPA",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00865B",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Multi Makmur Lemindo Tbk.",
-          "after": "Oxala Energy International Tbk"
+          "before": "Cathay US Short Term Treasury ETF(Cathay Bloomberg Barclays US Short Term Treasury ETF)",
+          "after": "Cathay US Short Term Treasury ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "151A",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00876",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Dive Inc.",
-          "after": "Dive Group Inc."
+          "before": "YT Global 5G Telecommunication Components ETF(YT Global Communication Technology ETF)",
+          "after": "Yuanta Global 5G & NexGen Telecommunication Components ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "2501",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00885",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "SAPPORO HOLDINGS LIMITED",
-          "after": "SAPPORO BREWERIES LIMITED"
+          "before": "Fubon Vietnam ETF",
+          "after": "Fubon FTSE Vietnam ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "3182",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00892",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Oisix ra daichi Inc.",
-          "after": "Oisix Inc."
+          "before": "Fubon NYSE FactSet Taiwan Core Semiconductor ETF",
+          "after": "Fubon ICE FactSet Taiwan Core Semiconductor ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "3226",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "3249",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "3462",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "3626",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00893",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "TIS Inc.",
-          "after": "TISI Inc."
+          "before": "Cathay Global Autonomous and Electric Vehicles ETF",
+          "after": "Cathay Global Autonomous EV ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "3750",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00898",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "ADR120S,Inc.",
-          "after": "ADR Biomedical Holdings Inc."
+          "before": "Cathay Global Genomics Immunology and Medical Revolution ETF",
+          "after": "Solactive Global Genomics Immunology and medical revolution index"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "509A",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "5891",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00900",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Kairikiya Co.,Ltd.",
-          "after": "SAKIGAKE Holdings Co.,Ltd."
+          "before": "Fubon TIP Customized Taiwan High Dividend 30 ETF",
+          "after": "Fubon Taiwan Index high dividend 30 ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "6420",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00903",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "GALILEI CO.LTD.",
-          "after": "GALILEI HOLDINGS CO.LTD."
+          "before": "Fubon Metaverse ETF",
+          "after": "Fubon Solactive Metaverse ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "6459",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00910",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "DAIWA INDUSTRIES LTD.",
-          "after": "DAIWA LTD."
+          "before": "FSITC Aerospace and Satellite",
+          "after": "FSITC Aerospace and Satellite ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "7561",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00918",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "HURXLEY CORPORATION",
-          "after": "HURXLEY HOLDINGS CORPORATION"
+          "before": "United Taiwan High Dividend Recovery 30 ETF",
+          "after": "United Taiwan High Dividend Recovery ETF"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "8951",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "8953",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "8961",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "8964",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00919",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Frontier Real Estate Investment Corporation",
-          "after": "Mitsui Fudosan Retail Fund Investment Corporation"
+          "before": "Capital TIP Customized Taiwan Select High Dividend ETF",
+          "after": "CAPITAL TIP CUSTOMIZED TAIWAN SELECT HIGH DIVIDEND EXCHANGE TRADED FUND"
         }
       }
     },
     {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "8967",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "jpx_listed_issues",
-      "exchange": "TSE",
-      "ticker": "9284",
-      "change_types": [
-        "field_change"
-      ],
-      "changes": {
-        "asset_type": {
-          "before": "ETF",
-          "after": "Stock"
-        }
-      }
-    },
-    {
-      "source_key": "krx_listed_companies",
-      "exchange": "KOSDAQ",
-      "ticker": "070300",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00921",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Xcure",
-          "after": "QuantumRail"
+          "before": "Mega Taiwan Market Leader Dividend Equal Weight ETF",
+          "after": "Mega Taiwan Market Leader EW ETF"
         }
       }
     },
     {
-      "source_key": "krx_listed_companies",
-      "exchange": "KOSDAQ",
-      "ticker": "291230",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00923",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "NP",
-          "after": "Com2uS N"
+          "before": "Capital TIP Customized Taiwan ESG Low Carbon 50 ETF",
+          "after": "CAPITAL TIP CUSTOMIZED TAIWAN ESG LOW CARBON 50 EXCHANGE TRADED FUND"
         }
       }
     },
     {
-      "source_key": "krx_listed_companies",
-      "exchange": "KOSDAQ",
-      "ticker": "291650",
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00927",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Aptamer Sciences",
-          "after": "CHOOLIP SCIENCE"
+          "before": "Capital TIP Customized Taiwan Semiconductor Dividend Yield ETF",
+          "after": "CAPITAL TIP CUSTOMIZED TAIWAN SEMICONDUCTOR DIVIDEND YIELD EXCHANGE TRADED FUND"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00930",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "SinoPac Taiwan ESG Low Carbon High Dividend 40 ETF",
+          "after": "SinoPac Taiwan ESG Low Carbon High Dividend ETF"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00946",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Capital TIP Customized Taiwan Tech High Dividend And Growth ETF",
+          "after": "CAPITAL TAIWAN TECH HIGH DIVIDEND AND GROWTH ETF"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00953B",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Capital BB-B Coupon Enhanced High Yield Bond ETF",
+          "after": "CAPITAL BB-B COUPON ENHANCED HIGH YIELD BOND EXCHANGE TRADED FUND"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "009809",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Fubon Taiwan NET ZERO Transition ETF",
+          "after": "Fubon Taiwan NET ZERO ESG 50 ETF"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "009817",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Cathay JP REITs Dividend Income ETF",
+          "after": "Cathay Daiwa Japan REITs Dividend Income ETF"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "009824",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Capital US Tech Giant ETF",
+          "after": "CAPITAL US TECH GIANT EXCHANGE TRADED FUND"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00982A",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Capital Taiwan Select Premium Active ETF",
+          "after": "CAPITAL TAIWAN SELECT PREMIUM ACTIVE EXCHANGE TRADED FUND"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00982T",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Mega Taiwan-U.S. Momentum Balanced ETF",
+          "after": "Mega Taiwan-U.S. Momentum Balanced"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00985B",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "Capital 0-5 Year ESG Investment Grade Corporate Bond ETF",
+          "after": "CAPITAL 0-5 YEAR ESG INVESTMENT GRADE CORPORATE BOND EXCHANGE TRADED FUND"
+        }
+      }
+    },
+    {
+      "source_key": "twse_etf_list",
+      "exchange": "TWSE",
+      "ticker": "00989A",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "JPMorgan (Taiwan) U.S. Tech Leaders Active ETF",
+          "after": "JPMorgan(Taiwan) U.S. Tech Leaders Active ETF"
         }
       }
     }

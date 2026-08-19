@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-19T07:22:23Z",
+  "generated_at": "2026-08-19T16:49:17Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1785,
+  "reconciled_rows": 1795,
   "applied_rows": 0,
-  "proposed_rows": 1785,
+  "proposed_rows": 1795,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -232,6 +232,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "BIST::MARKA",
+      "action": "proposed",
+      "ticker": "MARKA",
+      "exchange": "BIST",
+      "asset_type": "Stock",
+      "isin": "TREIFTY00019",
+      "old_name": "MARKA YATIRIM HOLDİNG A.Ş.",
+      "new_name": "US YATIRIM HOLDİNG A.Ş.",
+      "source_key": "bist_kap_mkk_listed_securities",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+      "observation_id": "2b8cbc56b6d7da578936784f",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "BK::ALIMTIAZ",
       "action": "proposed",
       "ticker": "ALIMTIAZ",
@@ -289,6 +304,21 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
       "observation_id": "616c26475ffd1a7cf29b34d6",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "BMV::GSKN",
+      "action": "proposed",
+      "ticker": "GSKN",
+      "exchange": "BMV",
+      "asset_type": "Stock",
+      "isin": "US37733W2044",
+      "old_name": "GlaxoSmithKline plc",
+      "new_name": "GSK PLC",
+      "source_key": "bmv_issuer_directory",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+      "observation_id": "7b93903bc50936cf4828edf2",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -16132,21 +16162,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::0GB5",
-      "action": "proposed",
-      "ticker": "0GB5",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "isin": "SE0007100342",
-      "old_name": "Niloerngruppen AB Series B",
-      "new_name": "NILORNGRUPPEN AB",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "b4ea2c9e77b74e2324b926c5",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::0GB7",
       "action": "proposed",
       "ticker": "0GB7",
@@ -16947,13 +16962,13 @@
       "ticker": "0NXT",
       "exchange": "LSE",
       "asset_type": "Stock",
-      "isin": "DE0005118806",
+      "isin": "DE000A41YFQ4",
       "old_name": "11880 Solutions AG",
       "new_name": "11 88 0 SOLUTIONS AG",
       "source_key": "lse_price_explorer",
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "3edd6da5a584d1c925997f66",
+      "observation_id": "495c932dd69132ae7752ba21",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -21202,21 +21217,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::TIPU",
-      "action": "proposed",
-      "ticker": "TIPU",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "LU1452600270",
-      "old_name": "Lyxor US TIPS DR UCITS D-USD",
-      "new_name": "MULTI UNITS LUXEMBOURG AMUNDI USTIPS GOVINFLATION-LINKED BOND D",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "9bdce3f3621821de529dc1bd",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::TNOW",
       "action": "proposed",
       "ticker": "TNOW",
@@ -21269,11 +21269,11 @@
       "asset_type": "Stock",
       "isin": "GB00BKMQQR47",
       "old_name": "Trafalgar New Homes Plc",
-      "new_name": "TRAFALGAR PROPERTY GROUP PLC",
+      "new_name": "TRAFALGAR MINERALS PLC",
       "source_key": "lse_price_explorer",
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "ee926a58626f907321ebcccc",
+      "observation_id": "e3de3a4bcf04d0c74ed8a0bf",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -22267,6 +22267,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "NSE_IN::HIRECT",
+      "action": "proposed",
+      "ticker": "HIRECT",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "isin": "INE835D01023",
+      "old_name": "Hind Rectifiers Limited",
+      "new_name": "Hirect Limited",
+      "source_key": "nse_india_securities_available",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "observation_id": "d45739163f79f504c6de5262",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "NSE_IN::OBCL",
       "action": "proposed",
       "ticker": "OBCL",
@@ -22492,6 +22507,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "OTC::CSXXY",
+      "action": "proposed",
+      "ticker": "CSXXY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "US14575D1072",
+      "old_name": "Carsales.Com Ltd ADR",
+      "new_name": "CAR GROUP LTD",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/CSXXY/security",
+      "observation_id": "1eeca048405da55125592a54",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "OTC::EDDYF",
       "action": "proposed",
       "ticker": "EDDYF",
@@ -22597,6 +22627,66 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "OTC::MTGRY",
+      "action": "proposed",
+      "ticker": "MTGRY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "US6213241028",
+      "old_name": "Mount Gibson Iron Ltd ADR",
+      "new_name": "MGX RES LTD",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/MTGRY/security",
+      "observation_id": "86826f77a150b6ac61f22da6",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "OTC::NISUY",
+      "action": "proposed",
+      "ticker": "NISUY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "US6546202028",
+      "old_name": "Nippon Suisan Kaisha Ltd ADR",
+      "new_name": "Nissui Corporation",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/NISUY/security",
+      "observation_id": "5ca8effbfb05d3f76451a1db",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "OTC::NWSGY",
+      "action": "proposed",
+      "ticker": "NWSGY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "US62948T1016",
+      "old_name": "NWS Holdings Ltd ADR",
+      "new_name": "CTF Services Limited",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/NWSGY/security",
+      "observation_id": "e95d7d13d3c43ef2abec6c95",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "OTC::RDEIY",
+      "action": "proposed",
+      "ticker": "RDEIY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "US7565681019",
+      "old_name": "Red Electrica Corporacion SA ADR",
+      "new_name": "Redeia Corporacion SA",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/RDEIY/security",
+      "observation_id": "05a8c6141a4aaba2b5fb2a95",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "OTC::SPXSY",
       "action": "proposed",
       "ticker": "SPXSY",
@@ -22609,6 +22699,51 @@
       "reference_scope": "security_lookup_subset",
       "source_url": "https://www.otcmarkets.com/stock/SPXSY/security",
       "observation_id": "dfd08a23a6a0b2881b3a315a",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "OTC::VIAAY",
+      "action": "proposed",
+      "ticker": "VIAAY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "US9266281081",
+      "old_name": "Flughafen Wien AG ADR",
+      "new_name": "Vienna International Airport (VIA)",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/VIAAY/security",
+      "observation_id": "64cf256409398e124266b138",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "OTC::ZCRMF",
+      "action": "proposed",
+      "ticker": "ZCRMF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "CA3808871097",
+      "old_name": "ZINCORE METALS INC",
+      "new_name": "GOLDEN CROSS RES INC.",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/ZCRMF/security",
+      "observation_id": "20b1493d50c85940a8a6dd3a",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "OTC::ZPTA",
+      "action": "proposed",
+      "ticker": "ZPTA",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "isin": "US98906V1008",
+      "old_name": "Zapata Computing Holdings Inc. Common Stock",
+      "new_name": "Zapata Quantum Inc",
+      "source_key": "otc_markets_security_profile",
+      "reference_scope": "security_lookup_subset",
+      "source_url": "https://www.otcmarkets.com/stock/ZPTA/security",
+      "observation_id": "568f643a61b25417a5b469f2",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -23497,18 +23632,33 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "STO::ESGR-B",
+      "action": "proposed",
+      "ticker": "ESGR-B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "isin": "SE0014428447",
+      "old_name": "ES Energy Save Holding AB",
+      "new_name": "ES Group B",
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "observation_id": "b782f603e0c40d01e260438f",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "STO::GOTL-A",
       "action": "proposed",
       "ticker": "GOTL-A",
       "exchange": "STO",
       "asset_type": "Stock",
-      "isin": "SE0000105371",
+      "isin": "SE0029278191",
       "old_name": "Gotland Rederi AB Series A",
       "new_name": "Gotlandsbolaget A",
       "source_key": "nasdaq_nordic_stockholm_shares",
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "a998488fbb186bf7b613a6be",
+      "observation_id": "3b322f593a061a4affbfa4c0",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -23517,13 +23667,13 @@
       "ticker": "GOTL-B",
       "exchange": "STO",
       "asset_type": "Stock",
-      "isin": "SE0000105397",
+      "isin": "SE0029278209",
       "old_name": "Gotland Rederi AB Series B",
       "new_name": "Gotlandsbolaget B",
       "source_key": "nasdaq_nordic_stockholm_shares",
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "2425df0858d30a7d6bb0721c",
+      "observation_id": "657800eff098b5409b891366",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -23719,21 +23869,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
       "observation_id": "29430c09d78e22abe62131fb",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "STO::STWK",
-      "action": "proposed",
-      "ticker": "STWK",
-      "exchange": "STO",
-      "asset_type": "Stock",
-      "isin": "SE0012257970",
-      "old_name": "Stockwik Forvaltning AB",
-      "new_name": "Stockwik Förvaltning",
-      "source_key": "nasdaq_nordic_stockholm_shares",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "4cc6ad5e0f730bbad7632ff7",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -24742,6 +24877,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "TSXV::NVRO",
+      "action": "proposed",
+      "ticker": "NVRO",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "isin": "CA29408C1005",
+      "old_name": "NVRO MetaNVRO",
+      "new_name": "NVRO Metals Limited",
+      "source_key": "tmx_listed_issuers",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://app-money.tmx.com/graphql",
+      "observation_id": "ec1940d6147a75d6441d3206",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "TWSE::006207",
       "action": "proposed",
       "ticker": "006207",
@@ -24749,11 +24899,26 @@
       "asset_type": "ETF",
       "isin": "TW0000062074",
       "old_name": "Fuh Hwa CSI 300 A Shares",
-      "new_name": "Fuh Hwa CSI300 A Shares ETF (FH CSI300)",
+      "new_name": "Fuh Hwa CSI 300 A Shares Exchange Traded Fund",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "203a085165e29987ec745c86",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "0cd940eb54c6000bd3b6cd5c",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "TWSE::00625K",
+      "action": "proposed",
+      "ticker": "00625K",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "isin": "TW00000625K4",
+      "old_name": "Fubon SSE180 Exchange Traded Fund",
+      "new_name": "FUBON SSE 180 ETF RMB",
+      "source_key": "twse_etf_list",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "08a90676eda696d640484cb0",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -24764,41 +24929,11 @@
       "asset_type": "ETF",
       "isin": "TW00000669R7",
       "old_name": "Cathay DJIA Inv 1X ETF",
-      "new_name": "Cathay DOW JONES INDUSTRIAL AVERAGE Daily Inversed ETF",
+      "new_name": "Cathay Dow Jones Industrial Average Daily Inversed ETF",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "bdd3e0d34c3d1a0fac7c0b74",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "TWSE::00678",
-      "action": "proposed",
-      "ticker": "00678",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "isin": "TW0000067800",
-      "old_name": "Capital Nasdaq Biotechnology Index Exchange Traded Fund",
-      "new_name": "Capital NBI ETF",
-      "source_key": "twse_etf_list",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "b5c90098b4d5b48f74a17ff5",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "TWSE::00876",
-      "action": "proposed",
-      "ticker": "00876",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "isin": "TW0000087600",
-      "old_name": "Yuanta Global NexGen Communication Innovative Technology ETF",
-      "new_name": "YT Global 5G Telecommunication Components ETF(YT Global Communication Technology ETF)",
-      "source_key": "twse_etf_list",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "8500cbf796697705aa9ca47b",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "11b294ed3aab034a1fe46dfe",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -24812,8 +24947,8 @@
       "new_name": "KGI US Premium Selection High Yield Bond ETF",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "df088fb945fee72e17f08f1f",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "d2d5292293c6e531c5a34249",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -24824,11 +24959,11 @@
       "asset_type": "ETF",
       "isin": "TW00000985B1",
       "old_name": "CAPITAL INV TRUST CORP CAP 0 5",
-      "new_name": "Capital 0-5 Year ESG Investment Grade Corporate Bond ETF",
+      "new_name": "CAPITAL 0-5 YEAR ESG INVESTMENT GRADE CORPORATE BOND EXCHANGE TRADED FUND",
       "source_key": "twse_etf_list",
       "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "observation_id": "3f80820dd65ff40f1265e3b0",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
+      "observation_id": "21380a550a95b34a747688f7",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -26460,10 +26595,10 @@
       "isin": "DE0005118806",
       "old_name": "11880 Solutions AG",
       "new_name": "11 88 0 SOLUTIONS AG",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "observation_id": "9b8323818d20afff046b65c4",
+      "source_key": "deutsche_boerse_listed_companies",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx",
+      "observation_id": "cfc1cc98bc089d4c33b73f57",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -26479,6 +26614,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
       "observation_id": "6202b43f326d635cddcfa2b6",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "XETRA::U1DA",
+      "action": "proposed",
+      "ticker": "U1DA",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "isin": "DE000A3MQC96",
+      "old_name": "Finchain Capital Partners AG",
+      "new_name": "MOLOGEN Lifescience AG",
+      "source_key": "deutsche_boerse_listed_companies",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx",
+      "observation_id": "32ffc24322677709e7d37334",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

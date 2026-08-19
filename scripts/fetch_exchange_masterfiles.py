@@ -382,6 +382,7 @@ JPX_STOCK_DETAIL_PAGE_URL = "https://quote.jpx.co.jp/jpxhp/main/index.aspx?f=e_s
 JPX_STOCK_DETAIL_API_URL = "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode="
 JPX_STOCK_DETAIL_WORKERS = 6
 JPX_STOCK_DETAIL_TIMEOUT = 5.0
+JPX_TSE_STOCK_DETAIL_MIN_REFRESH_RATIO = 0.95
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
 DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
@@ -496,6 +497,7 @@ HNX_SECURITIES_SOURCE_CONFIG = {
 }
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
+TWSE_ETF_OPENDATA_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap47_L"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SET_STOCK_SEARCH_URL = "https://www.set.or.th/en/market/product/stock/search"
 SET_STOCK_LIST_API_URL = "https://www.set.or.th/api/set/stock/list"
@@ -2470,7 +2472,7 @@ OFFICIAL_SOURCES = [
         key="twse_etf_list",
         provider="TWSE",
         description="Official TWSE ETF product directory",
-        source_url=TWSE_ETF_LIST_URL,
+        source_url=TWSE_ETF_OPENDATA_URL,
         format="twse_etf_list_json",
         reference_scope="listed_companies_subset",
     ),
@@ -6906,6 +6908,26 @@ def boursa_kuwait_request_headers() -> dict[str, str]:
     }
 
 
+def chrome_impersonated_get(
+    url: str,
+    *,
+    headers: dict[str, str] | None = None,
+    params: dict[str, str] | None = None,
+    timeout: float = REQUEST_TIMEOUT,
+    verify: bool = True,
+):
+    from curl_cffi import requests as curl_requests  # type: ignore[import-not-found]
+
+    return curl_requests.get(
+        url,
+        headers=headers,
+        params=params,
+        impersonate="chrome120",
+        timeout=timeout,
+        verify=verify,
+    )
+
+
 def boursa_kuwait_header_index(header: str) -> dict[str, int]:
     return {field: index for index, field in enumerate(str(header or "").split("|"))}
 
@@ -7010,6 +7032,15 @@ def fetch_boursa_kuwait_stocks_rows(
         params=BOURSA_KUWAIT_PARAMS,
         timeout=REQUEST_TIMEOUT,
     )
+    if getattr(response, "status_code", 200) in {401, 403}:
+        try:
+            response = chrome_impersonated_get(
+                BOURSA_KUWAIT_LEGACY_MIX_API_URL,
+                headers=boursa_kuwait_request_headers(),
+                params=BOURSA_KUWAIT_PARAMS,
+            )
+        except ImportError:
+            pass
     response.raise_for_status()
     return parse_boursa_kuwait_legacy_mix_payload(response.json(), source)
 
@@ -7018,12 +7049,12 @@ def load_boursa_kuwait_stocks_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (BOURSA_KUWAIT_STOCKS_CACHE, LEGACY_BOURSA_KUWAIT_STOCKS_CACHE):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
         rows = fetch_boursa_kuwait_stocks_rows(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BOURSA_KUWAIT_STOCKS_CACHE, LEGACY_BOURSA_KUWAIT_STOCKS_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
         return None, "unavailable"
 
     ensure_output_dirs()
@@ -11008,6 +11039,19 @@ def fetch_bme_listed_companies_payload(
             headers=bme_request_headers(),
             timeout=REQUEST_TIMEOUT,
         )
+        if getattr(response, "status_code", 200) in {401, 403}:
+            try:
+                response = chrome_impersonated_get(
+                    BME_LISTED_COMPANIES_API_URL,
+                    headers=bme_request_headers(),
+                    params={
+                        "tradingSystem": trading_system,
+                        "page": str(page),
+                        "pageSize": str(page_size),
+                    },
+                )
+            except ImportError:
+                pass
         response.raise_for_status()
         payload = response.json()
         data = payload.get("data") or []
@@ -15267,21 +15311,34 @@ def fetch_jpx_tse_stock_detail_rows(
                         rows_by_ticker[str(cached_row["ticker"])] = dict(cached_row)
 
     def fetch_target(listing_row: dict[str, str]) -> dict[str, str] | None:
-        payload = fetch_jpx_tse_stock_detail_payload(listing_row["ticker"], session=session)
-        row = parse_jpx_tse_stock_detail_payload(
-            payload,
-            source,
-            fallback_ticker=listing_row["ticker"],
-            fallback_asset_type=listing_row.get("asset_type", ""),
-        )
-        return row
+        try:
+            payload = fetch_jpx_tse_stock_detail_payload(listing_row["ticker"], session=session)
+            return parse_jpx_tse_stock_detail_payload(
+                payload,
+                source,
+                fallback_ticker=listing_row["ticker"],
+                fallback_asset_type=listing_row.get("asset_type", ""),
+            )
+        except Exception as exc:
+            print(
+                f"JPX/TSE stock detail: skip {listing_row.get('ticker', '')}: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+            return None
 
     def write_partial_cache() -> None:
         if session is not None:
             return
-        ensure_output_dirs()
-        partial_rows = [rows_by_ticker[ticker] for ticker in sorted(rows_by_ticker)]
-        JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE.write_text(json.dumps(partial_rows), encoding="utf-8")
+        try:
+            ensure_output_dirs()
+            partial_rows = [rows_by_ticker[ticker] for ticker in sorted(rows_by_ticker)]
+            JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE.write_text(json.dumps(partial_rows), encoding="utf-8")
+        except Exception as exc:
+            print(
+                f"JPX/TSE stock detail: failed to write partial cache: {type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
 
     remaining_targets = [row for row in targets if row["ticker"].strip() not in rows_by_ticker]
     if session is None:
@@ -15291,23 +15348,31 @@ def fetch_jpx_tse_stock_detail_rows(
             file=sys.stderr,
         )
         completed = 0
-        with ThreadPoolExecutor(max_workers=JPX_STOCK_DETAIL_WORKERS) as executor:
-            future_rows = {executor.submit(fetch_target, row): row for row in remaining_targets}
-            for future in as_completed(future_rows):
-                completed += 1
-                try:
-                    row = future.result()
-                except (OSError, ValueError, json.JSONDecodeError, subprocess.SubprocessError):
-                    continue
-                if row is not None:
-                    rows_by_ticker[row["ticker"]] = row
-                if completed % 100 == 0:
-                    write_partial_cache()
-                    print(
-                        f"JPX/TSE stock detail: {len(rows_by_ticker)}/{len(targets)} rows cached",
-                        file=sys.stderr,
-                    )
-        write_partial_cache()
+        try:
+            with ThreadPoolExecutor(max_workers=JPX_STOCK_DETAIL_WORKERS) as executor:
+                future_rows = {executor.submit(fetch_target, row): row for row in remaining_targets}
+                for future in as_completed(future_rows):
+                    completed += 1
+                    listing_row = future_rows[future]
+                    try:
+                        row = future.result()
+                    except Exception as exc:
+                        print(
+                            f"JPX/TSE stock detail: skip {listing_row.get('ticker', '')}: "
+                            f"{type(exc).__name__}: {exc}",
+                            file=sys.stderr,
+                        )
+                        continue
+                    if row is not None:
+                        rows_by_ticker[row["ticker"]] = row
+                    if completed % 100 == 0:
+                        write_partial_cache()
+                        print(
+                            f"JPX/TSE stock detail: {len(rows_by_ticker)}/{len(targets)} rows cached",
+                            file=sys.stderr,
+                        )
+        finally:
+            write_partial_cache()
     else:
         for listing_row in targets:
             row = fetch_target(listing_row)
@@ -15327,16 +15392,37 @@ def fetch_jpx_tse_stock_detail_rows(
     return rows
 
 
+def jpx_tse_stock_detail_existing_reference_count() -> int:
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return 0
+    count = 0
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("source_key") == "jpx_tse_stock_detail":
+                count += 1
+    return count
+
+
+def jpx_tse_stock_detail_refresh_is_complete(rows: list[dict[str, str]]) -> bool:
+    existing = jpx_tse_stock_detail_existing_reference_count()
+    if existing <= 0:
+        return bool(rows)
+    return len(rows) >= int(existing * JPX_TSE_STOCK_DETAIL_MIN_REFRESH_RATIO)
+
+
 def load_jpx_tse_stock_detail_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
     try:
         rows = fetch_jpx_tse_stock_detail_rows(source, session=session)
-    except (requests.RequestException, ValueError, json.JSONDecodeError, subprocess.SubprocessError):
+    except Exception:
         for path in (JPX_TSE_STOCK_DETAIL_CACHE, LEGACY_JPX_TSE_STOCK_DETAIL_CACHE):
             if path.exists():
                 return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    if not jpx_tse_stock_detail_refresh_is_complete(rows):
         return None, "unavailable"
 
     ensure_output_dirs()
@@ -15987,6 +16073,50 @@ def parse_twse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> li
         if category:
             row["sector"] = category
         rows.append(row)
+    return rows
+
+
+def parse_twse_opendata_etf_funds(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("基金代號", "")).strip()
+        name = " ".join(
+            unescape(
+                str(record.get("基金英文名稱", "")).strip() or str(record.get("基金中文名稱", "")).strip()
+            ).split()
+        )
+        if not ticker or not name:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TWSE",
+            "asset_type": infer_taiwan_asset_type(ticker, name),
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = derive_taiwan_isin(ticker)
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
+    return rows
+
+
+def fetch_twse_etf_list_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    payload = fetch_json(source.source_url, session=session)
+    if not isinstance(payload, list):
+        raise ValueError("Unexpected TWSE ETF open-data payload")
+    rows = parse_twse_opendata_etf_funds(payload, source)
+    if not rows:
+        raise ValueError("TWSE ETF open-data feed returned no rows")
     return rows
 
 
@@ -18245,8 +18375,7 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         payload = fetch_json(source.source_url, session=session)
         return parse_twse_listed_companies(payload, source)
     if source.format == "twse_etf_list_json":
-        payload = fetch_json(source.source_url, session=session)
-        return parse_twse_etf_list(payload, source)
+        return fetch_twse_etf_list_rows(source, session=session)
     if source.format == "sse_a_share_list_jsonp":
         return fetch_sse_a_share_list(source, session=session)
     if source.format == "sse_etf_list_json":

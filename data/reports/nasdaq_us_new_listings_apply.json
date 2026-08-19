@@ -1,111 +1,19 @@
 {
   "summary": {
-    "generated_at": "2026-08-15T07:08:41Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-08-19T15:54:21Z",
+    "previous_reference_csv": "/tmp/reference-before-freshness-retry.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "supported_asset_types": [
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 7,
-    "accepted_rows": 5,
-    "skipped_rows": 2,
-    "accepted_by_exchange": {
-      "NASDAQ": 5
-    },
-    "skipped_by_reason": {
-      "excluded_non_common_stock": 2
-    }
+    "new_supported_rows": 0,
+    "accepted_rows": 0,
+    "skipped_rows": 0,
+    "accepted_by_exchange": {},
+    "skipped_by_reason": {}
   },
-  "accepted": [
-    {
-      "ticker": "ACQQ",
-      "name": "ProShares Nasdaq-100 Autocallable Income ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "ACRT",
-      "name": "ProShares Russell 2000 Autocallable Income ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "ACSP",
-      "name": "ProShares S&P 500 Autocallable Income ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "EWAV",
-      "name": "East West Ave Acquisition Corp. - Common Stock",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "THEO",
-      "name": "BOA Acquisition Corp. II - Class A Ordinary Shares",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    }
-  ],
-  "skipped": [
-    {
-      "ticker": "EWAVR",
-      "exchange": "NASDAQ",
-      "name": "East West Ave Acquisition Corp. - Rights",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "THEOR",
-      "exchange": "NASDAQ",
-      "name": "BOA Acquisition Corp. II - Rights",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    }
-  ]
+  "accepted": [],
+  "skipped": []
 }
