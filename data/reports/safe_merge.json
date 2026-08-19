@@ -6,17 +6,17 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 91977,
+    "before_rows": 92006,
     "after_rows": 92006,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 87,
+    "critical_field_changes": 3,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 3
+    "generated_official_change_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
@@ -24,581 +24,25 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "AMS::3PLT",
-      "field_name": "isin",
-      "old_value": "XS2337085851",
-      "new_value": "XS2663694680"
-    },
-    {
-      "listing_key": "BCBA::MELI",
-      "field_name": "isin",
-      "old_value": "US58733R1023",
-      "new_value": "ARDEUT116175"
-    },
-    {
-      "listing_key": "BCBA::PETR3",
-      "field_name": "isin",
-      "old_value": "BRPETRACNOR9",
-      "new_value": "ARCAVA4601L7"
-    },
-    {
-      "listing_key": "BME::AMP",
-      "field_name": "isin",
-      "old_value": "ES0109260531",
-      "new_value": "ES0109260291"
-    },
-    {
-      "listing_key": "BME::ARM",
-      "field_name": "isin",
-      "old_value": "ES0105376000",
-      "new_value": "ES0105376059"
-    },
-    {
-      "listing_key": "BME::PRS",
-      "field_name": "isin",
-      "old_value": "ES0171743901",
-      "new_value": "ES01717430J3"
-    },
-    {
-      "listing_key": "CPH::NEWCAP",
-      "field_name": "isin",
-      "old_value": "DK0010212570",
-      "new_value": "DK0064983373"
-    },
-    {
-      "listing_key": "Euronext::AVT",
-      "field_name": "isin",
-      "old_value": "FR0000066052",
-      "new_value": "FR001400CFI7"
-    },
-    {
-      "listing_key": "Euronext::MTA",
-      "field_name": "country",
-      "old_value": "France",
-      "new_value": "Luxembourg"
-    },
-    {
-      "listing_key": "Euronext::MTA",
-      "field_name": "country_code",
-      "old_value": "FR",
-      "new_value": "LU"
-    },
-    {
-      "listing_key": "Euronext::MTA",
-      "field_name": "isin",
-      "old_value": "FR0010222224",
-      "new_value": "LU1650487413"
-    },
-    {
-      "listing_key": "Euronext::MTH",
-      "field_name": "country",
-      "old_value": "France",
-      "new_value": "Luxembourg"
-    },
-    {
-      "listing_key": "Euronext::MTH",
-      "field_name": "country_code",
-      "old_value": "FR",
-      "new_value": "LU"
-    },
-    {
-      "listing_key": "Euronext::MTH",
-      "field_name": "isin",
-      "old_value": "FR0012538148",
-      "new_value": "LU1686832194"
-    },
-    {
-      "listing_key": "FSX::FRE",
-      "field_name": "isin",
-      "old_value": "DE0005785604",
-      "new_value": "DE000FRE5EN2"
-    },
-    {
-      "listing_key": "HEL::REAKTOR",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Information Technology"
-    },
-    {
-      "listing_key": "HKEX::01063",
-      "field_name": "isin",
-      "old_value": "BMG8571C2494",
-      "new_value": "BMG8571C2643"
-    },
-    {
-      "listing_key": "LSE::0A20",
-      "field_name": "isin",
-      "old_value": "US08862E1091",
-      "new_value": "US08862E3071"
-    },
-    {
-      "listing_key": "LSE::0I4T",
-      "field_name": "isin",
-      "old_value": "US2267181046",
-      "new_value": "LU3433852426"
-    },
-    {
-      "listing_key": "LSE::0K17",
-      "field_name": "isin",
-      "old_value": "US5949603048",
-      "new_value": "US5949604038"
-    },
-    {
-      "listing_key": "LSE::0NXT",
-      "field_name": "isin",
-      "old_value": "DE0005118806",
-      "new_value": "DE000A41YFQ4"
-    },
-    {
-      "listing_key": "LSE::0OO9",
-      "field_name": "isin",
-      "old_value": "DE0005785604",
-      "new_value": "DE000FRE5EN2"
-    },
-    {
-      "listing_key": "LSE::AEG",
-      "field_name": "isin",
-      "old_value": "GB00B1YMN108",
-      "new_value": "GB00BPG7NS80"
-    },
-    {
-      "listing_key": "LSE::BHP",
+      "listing_key": "LSE::GEM",
       "field_name": "country",
       "old_value": "United Kingdom",
-      "new_value": "Australia"
-    },
-    {
-      "listing_key": "LSE::BHP",
-      "field_name": "country_code",
-      "old_value": "GB",
-      "new_value": "AU"
-    },
-    {
-      "listing_key": "LSE::BHP",
-      "field_name": "isin",
-      "old_value": "GB00BH0P3Z91",
-      "new_value": "AU000000BHP4"
-    },
-    {
-      "listing_key": "LSE::BME",
-      "field_name": "country",
-      "old_value": "Luxembourg",
-      "new_value": "Jersey"
-    },
-    {
-      "listing_key": "LSE::BME",
-      "field_name": "country_code",
-      "old_value": "LU",
-      "new_value": "JE"
-    },
-    {
-      "listing_key": "LSE::BME",
-      "field_name": "isin",
-      "old_value": "LU1072616219",
-      "new_value": "JE00BVSYJW51"
-    },
-    {
-      "listing_key": "LSE::DCI",
-      "field_name": "country",
-      "old_value": "British Virgin Islands",
       "new_value": "Guernsey"
     },
     {
-      "listing_key": "LSE::DCI",
+      "listing_key": "LSE::GEM",
       "field_name": "country_code",
-      "old_value": "VG",
+      "old_value": "GB",
       "new_value": "GG"
     },
     {
-      "listing_key": "LSE::DCI",
+      "listing_key": "LSE::GEM",
       "field_name": "isin",
-      "old_value": "VGG2803G1028",
-      "new_value": "GG00BSWT8V72"
-    },
-    {
-      "listing_key": "LSE::GABI",
-      "field_name": "isin",
-      "old_value": "JE00BPCSN748",
-      "new_value": "JE00BVMWGC49"
-    },
-    {
-      "listing_key": "LSE::JMAT",
-      "field_name": "isin",
-      "old_value": "GB00BZ4BQC70",
-      "new_value": "GB00BTQHVY80"
-    },
-    {
-      "listing_key": "LSE::NOG",
-      "field_name": "isin",
-      "old_value": "GB00BGP6Q951",
-      "new_value": "GB00BQVVS097"
-    },
-    {
-      "listing_key": "LSE::PAY",
-      "field_name": "isin",
-      "old_value": "GB00B02QND93",
-      "new_value": "GB00BVMTNR93"
-    },
-    {
-      "listing_key": "LSE::TSLS",
-      "field_name": "isin",
-      "old_value": "IE00BKT6ZH01",
-      "new_value": "XS2944886931"
-    },
-    {
-      "listing_key": "LSE::VAST",
-      "field_name": "isin",
-      "old_value": "GB00BQ7WTT20",
-      "new_value": "GB00BXNRYG27"
-    },
-    {
-      "listing_key": "NSE_IN::KIRLPNU",
-      "field_name": "isin",
-      "old_value": "INE811A01020",
-      "new_value": "INE811A01038"
-    },
-    {
-      "listing_key": "OSL::ASA",
-      "field_name": "isin",
-      "old_value": "NO0010768500",
-      "new_value": "NO0013464750"
-    },
-    {
-      "listing_key": "OSL::GEOS",
-      "field_name": "isin",
-      "old_value": "NO0010813843",
-      "new_value": "NO0013228585"
-    },
-    {
-      "listing_key": "OSL::NEXT",
-      "field_name": "isin",
-      "old_value": "NO0010629108",
-      "new_value": "NO0013740142"
-    },
-    {
-      "listing_key": "OSL::ZENA",
-      "field_name": "isin",
-      "old_value": "CA98936C1068",
-      "new_value": "CA98936C8584"
-    },
-    {
-      "listing_key": "OTC::AGNPF",
-      "field_name": "isin",
-      "old_value": "CA01559C1068",
-      "new_value": "CA3978841078"
-    },
-    {
-      "listing_key": "OTC::GPUSF",
-      "field_name": "isin",
-      "old_value": "CA0211551068",
-      "new_value": "CA0211552058"
-    },
-    {
-      "listing_key": "OTC::ZCRMF",
-      "field_name": "isin",
-      "old_value": "CA98959P8698",
-      "new_value": "CA3808871097"
-    },
-    {
-      "listing_key": "SIX::CURN",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Health Care"
-    },
-    {
-      "listing_key": "STO::ACTI",
-      "field_name": "isin",
-      "old_value": "SE0001137985",
-      "new_value": "SE0029278555"
-    },
-    {
-      "listing_key": "STO::AEC",
-      "field_name": "isin",
-      "old_value": "CA00830W1059",
-      "new_value": "CA00830W5019"
-    },
-    {
-      "listing_key": "STO::ENRO",
-      "field_name": "isin",
-      "old_value": "SE0011256312",
-      "new_value": "SE0029300995"
-    },
-    {
-      "listing_key": "STO::FRNT-B",
-      "field_name": "isin",
-      "old_value": "SE0005337920",
-      "new_value": "SE0029279066"
-    },
-    {
-      "listing_key": "STO::GOTL-A",
-      "field_name": "isin",
-      "old_value": "SE0000105371",
-      "new_value": "SE0029278191"
-    },
-    {
-      "listing_key": "STO::GOTL-B",
-      "field_name": "isin",
-      "old_value": "SE0000105397",
-      "new_value": "SE0029278209"
-    },
-    {
-      "listing_key": "STO::SCIB",
-      "field_name": "isin",
-      "old_value": "SE0007045414",
-      "new_value": "SE0029277631"
-    },
-    {
-      "listing_key": "STO::VIVE",
-      "field_name": "isin",
-      "old_value": "SE0000722365",
-      "new_value": "SE0028925701"
-    },
-    {
-      "listing_key": "TSE::1445",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::1445",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::1445",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3783430006"
-    },
-    {
-      "listing_key": "TSE::1514",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::1514",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::1514",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3400750000"
-    },
-    {
-      "listing_key": "TSE::2317",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::2317",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::2317",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3351050004"
-    },
-    {
-      "listing_key": "TSE::2705",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::2705",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::2705",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3188300002"
-    },
-    {
-      "listing_key": "TSE::3266",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::3266",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::3266",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3802920003"
-    },
-    {
-      "listing_key": "TSE::3321",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::3321",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::3321",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3886200009"
-    },
-    {
-      "listing_key": "TSE::3543",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::3543",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::3543",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3305580007"
-    },
-    {
-      "listing_key": "TSE::7157",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::7157",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::7157",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3966660007"
-    },
-    {
-      "listing_key": "TSE::8303",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::8303",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::8303",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3729000004"
-    },
-    {
-      "listing_key": "TSE::8929",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan"
-    },
-    {
-      "listing_key": "TSE::8929",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP"
-    },
-    {
-      "listing_key": "TSE::8929",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3825750007"
-    },
-    {
-      "listing_key": "XETRA::FRE",
-      "field_name": "isin",
-      "old_value": "DE0005785604",
-      "new_value": "DE000FRE5EN2"
-    },
-    {
-      "listing_key": "XETRA::SKOR",
-      "field_name": "isin",
-      "old_value": "XS2472196331",
-      "new_value": "XS3324655540"
+      "old_value": "GB00B0HX1083",
+      "new_value": "GG00BG0KTL52"
     }
   ],
-  "generated_official_change_evidence": [
-    {
-      "listing_key": "TSE::7157",
-      "ticker": "7157",
-      "exchange": "TSE",
-      "event_type": "identifier_changed",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "JP3966660007",
-      "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
-      "effective_at": "",
-      "observed_at": "2026-08-19T16:49:17Z",
-      "source_key": "jpx_tse_stock_detail",
-      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
-      "source_report": "data/masterfiles/reference.csv",
-      "observation_id": "fe844e11d93b15eb25b4442e",
-      "evidence_status": "official"
-    },
-    {
-      "listing_key": "TSE::7157",
-      "ticker": "7157",
-      "exchange": "TSE",
-      "event_type": "country_changed",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Japan",
-      "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
-      "effective_at": "",
-      "observed_at": "2026-08-19T16:49:17Z",
-      "source_key": "jpx_tse_stock_detail",
-      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
-      "source_report": "data/masterfiles/reference.csv",
-      "observation_id": "09ac235283171a7f4dfebae8",
-      "evidence_status": "verified"
-    },
-    {
-      "listing_key": "TSE::7157",
-      "ticker": "7157",
-      "exchange": "TSE",
-      "event_type": "country_changed",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "JP",
-      "before_row_sha256": "3ed7e42ce2c7aff76807edce6cbc1d155910f83aef6d701c7147cb15ad36e3c0",
-      "effective_at": "",
-      "observed_at": "2026-08-19T16:49:17Z",
-      "source_key": "jpx_tse_stock_detail",
-      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=7157",
-      "source_report": "data/masterfiles/reference.csv",
-      "observation_id": "292d5ecc344caf40efb64547",
-      "evidence_status": "verified"
-    }
-  ],
+  "generated_official_change_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -647,7 +91,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1340,
+      "before_rows": 1357,
       "after_rows": 1357,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -998,7 +442,7 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4764,
+      "before_rows": 4767,
       "after_rows": 4767,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -1052,7 +496,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2020,
+      "before_rows": 2022,
       "after_rows": 2022,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -1061,7 +505,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2722,
+      "before_rows": 2729,
       "after_rows": 2729,
       "shrink_pct": 0.0,
       "removed_rows": 0,

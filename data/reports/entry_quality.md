@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-08-19T16:49:34Z`
+Generated at: `2026-08-19T17:08:15Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,267 |
-| source_gap | 11,571 |
-| warn | 168 |
+| pass | 80,269 |
+| source_gap | 11,570 |
+| warn | 167 |
 
 ## Issue Counts
 
@@ -16,11 +16,11 @@ Generated at: `2026-08-19T16:49:34Z`
 |---|---:|
 | official_reference_gap | 6,569 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 1,296 |
+| missing_stock_sector | 1,295 |
 | expected_missing_primary_isin | 690 |
 | country_isin_mismatch | 95 |
 | official_name_mismatch | 38 |
-| official_isin_mismatch | 37 |
+| official_isin_mismatch | 36 |
 | missing_etf_category | 36 |
 
 ## Top Flagged Exchanges
@@ -29,7 +29,7 @@ Generated at: `2026-08-19T16:49:34Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 8,403 | 0 | 3,255 | 95 | 0 |
 | XSTU | 0 | 0 | 2,772 | 1 | 0 |
-| FSX | 7,154 | 0 | 987 | 2 | 0 |
+| FSX | 7,155 | 0 | 986 | 2 | 0 |
 | B3 | 1,241 | 0 | 340 | 0 | 0 |
 | NASDAQ | 4,493 | 0 | 267 | 7 | 0 |
 | BMV | 76 | 0 | 268 | 0 | 0 |
@@ -40,7 +40,7 @@ Generated at: `2026-08-19T16:49:34Z`
 | AMS | 372 | 0 | 173 | 1 | 0 |
 | TSX | 2,122 | 0 | 174 | 0 | 0 |
 | NSE_IN | 2,331 | 0 | 172 | 0 | 0 |
-| LSE | 6,861 | 0 | 151 | 18 | 0 |
+| LSE | 6,862 | 0 | 151 | 17 | 0 |
 | ASX | 2,108 | 0 | 151 | 0 | 0 |
 | Euronext | 1,331 | 0 | 128 | 18 | 0 |
 | BME | 130 | 0 | 146 | 0 | 0 |
