@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-19T08:39:18Z",
-  "rows": 168404,
+  "generated_at": "2026-08-19T14:11:11Z",
+  "rows": 168687,
   "exchanges": [
     "ADX",
     "AMS",
@@ -97,8 +97,8 @@
     "b3_listed_etfs": 213,
     "b3_bdr_etfs": 314,
     "b3_instruments_equities": 1327,
-    "nasdaq_other_listed": 7550,
-    "nasdaq_trading_system_adds_deletes": 13,
+    "nasdaq_other_listed": 7558,
+    "nasdaq_trading_system_adds_deletes": 24,
     "byma_equity_details": 63,
     "bahrain_bourse_listed_companies": 41,
     "bist_kap_mkk_listed_securities": 647,
@@ -150,21 +150,21 @@
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
     "nasdaq_listed": 5602,
-    "sec_company_tickers_exchange": 10167,
+    "sec_company_tickers_exchange": 10166,
     "cboe_canada_listing_directory": 440,
     "ngx_company_profile_directory": 130,
     "ngx_equities_price_list": 130,
     "nasdaq_mutual_fund_quotes": 6,
-    "nse_india_securities_available": 2978,
+    "nse_india_securities_available": 3202,
     "nse_ke_listed_companies": 68,
     "nzx_instruments": 172,
     "otc_markets_stock_screener": 11925,
-    "otc_markets_security_profile": 860,
+    "otc_markets_security_profile": 882,
     "pse_listed_company_directory": 385,
     "pse_cz_shares_directory": 62,
     "psx_dps_symbols": 720,
-    "psx_listed_companies": 563,
-    "psx_symbol_name_daily": 365,
+    "psx_listed_companies": 565,
+    "psx_symbol_name_daily": 383,
     "qse_market_watch": 57,
     "rse_listed_companies": 1,
     "sem_isin": 46,
@@ -208,7 +208,7 @@
     "use_ug_listed_companies": 7,
     "vienna_listed_companies": 66,
     "wse_listed_companies": 403,
-    "newconnect_listed_companies": 348,
+    "newconnect_listed_companies": 347,
     "wse_etf_list": 38,
     "deutsche_boerse_etfs_etps": 3652,
     "deutsche_boerse_xetra_all_tradable_equities": 5080,
@@ -230,16 +230,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7550,
-      "generated_at": "2026-08-15T07:08:36Z"
+      "rows": 7558,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
       "reference_scope": "corporate_action_daily_list",
       "official": true,
       "mode": "network",
-      "rows": 13,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "rows": 24,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "lse_company_reports": {
       "provider": "LSE",
@@ -665,15 +665,15 @@
       "official": true,
       "mode": "network",
       "rows": 68,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "nse_india_securities_available": {
       "provider": "NSE India",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 2978,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "rows": 3202,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "bse_india_scrips": {
       "provider": "BSE India",
@@ -753,7 +753,7 @@
       "official": true,
       "mode": "network",
       "rows": 57,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "muscat_securities_companies": {
       "provider": "MSX",
@@ -769,7 +769,7 @@
       "official": true,
       "mode": "network",
       "rows": 1,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "gse_listed_companies": {
       "provider": "GSE",
@@ -819,7 +819,7 @@
       "official": true,
       "mode": "network",
       "rows": 172,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "nasdaq_mutual_fund_quotes": {
       "provider": "Nasdaq",
@@ -859,7 +859,7 @@
       "official": true,
       "mode": "network",
       "rows": 130,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "ngx_company_profile_directory": {
       "provider": "NGX",
@@ -867,7 +867,7 @@
       "official": true,
       "mode": "network",
       "rows": 130,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "bmv_stock_search": {
       "provider": "BMV",
@@ -971,7 +971,7 @@
       "official": true,
       "mode": "network",
       "rows": 53,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "ngm_market_data_equities": {
       "provider": "NGM",
@@ -1148,16 +1148,16 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 563,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "rows": 565,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "psx_symbol_name_daily": {
       "provider": "PSX",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 365,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "rows": 383,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "psx_dps_symbols": {
       "provider": "PSX",
@@ -1165,7 +1165,7 @@
       "official": true,
       "mode": "network",
       "rows": 720,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "pse_listed_company_directory": {
       "provider": "PSE",
@@ -1173,7 +1173,7 @@
       "official": true,
       "mode": "network",
       "rows": 385,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "pse_cz_shares_directory": {
       "provider": "Prague Stock Exchange",
@@ -1181,7 +1181,7 @@
       "official": true,
       "mode": "network",
       "rows": 62,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "idx_listed_companies": {
       "provider": "IDX",
@@ -1212,8 +1212,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 348,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "rows": 347,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "wse_etf_list": {
       "provider": "GPW",
@@ -1318,16 +1318,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 10167,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "rows": 10166,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
       "reference_scope": "security_lookup_subset",
       "official": true,
       "mode": "network",
-      "rows": 860,
-      "generated_at": "2026-08-06T08:50:31Z"
+      "rows": 882,
+      "generated_at": "2026-08-19T14:11:11Z"
     },
     "otc_markets_stock_screener": {
       "provider": "OTC Markets",
@@ -1550,50 +1550,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-19T08:39:18Z",
+    "generated_at": "2026-08-19T14:11:11Z",
     "selected_source_keys": [
-      "lse_instrument_directory",
-      "lse_instrument_search",
-      "lse_price_explorer",
-      "luse_listed_companies",
-      "mse_mw_listed_companies",
-      "muscat_securities_companies",
-      "nasdaq_listed",
-      "nasdaq_mutual_fund_quotes",
-      "nasdaq_nordic_copenhagen_etf_search",
-      "nasdaq_nordic_copenhagen_etfs",
-      "nasdaq_nordic_copenhagen_shares",
-      "nasdaq_nordic_copenhagen_shares_search",
-      "nasdaq_nordic_helsinki_etfs",
-      "nasdaq_nordic_helsinki_shares",
-      "nasdaq_nordic_helsinki_shares_search",
-      "nasdaq_nordic_iceland_shares",
-      "nasdaq_nordic_stockholm_etfs",
-      "nasdaq_nordic_stockholm_shares",
-      "nasdaq_nordic_stockholm_shares_search",
-      "nasdaq_nordic_stockholm_trackers"
+      "nasdaq_other_listed",
+      "nasdaq_trading_system_adds_deletes",
+      "newconnect_listed_companies",
+      "ngm_companies_page",
+      "ngm_market_data_equities",
+      "ngx_company_profile_directory",
+      "ngx_equities_price_list",
+      "nse_india_securities_available",
+      "nse_ke_listed_companies",
+      "nzx_instruments",
+      "otc_markets_security_profile",
+      "otc_markets_stock_screener",
+      "pse_cz_shares_directory",
+      "pse_listed_company_directory",
+      "psx_dps_symbols",
+      "psx_listed_companies",
+      "psx_symbol_name_daily",
+      "qse_market_watch",
+      "rse_listed_companies",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "lse_instrument_directory": "unavailable",
-      "lse_instrument_search": "network",
-      "lse_price_explorer": "network",
-      "luse_listed_companies": "unavailable",
-      "mse_mw_listed_companies": "unavailable",
-      "muscat_securities_companies": "network",
-      "nasdaq_listed": "network",
-      "nasdaq_mutual_fund_quotes": "network",
-      "nasdaq_nordic_copenhagen_etf_search": "network",
-      "nasdaq_nordic_copenhagen_etfs": "network",
-      "nasdaq_nordic_copenhagen_shares": "network",
-      "nasdaq_nordic_copenhagen_shares_search": "network",
-      "nasdaq_nordic_helsinki_etfs": "network",
-      "nasdaq_nordic_helsinki_shares": "network",
-      "nasdaq_nordic_helsinki_shares_search": "network",
-      "nasdaq_nordic_iceland_shares": "network",
-      "nasdaq_nordic_stockholm_etfs": "network",
-      "nasdaq_nordic_stockholm_shares": "network",
-      "nasdaq_nordic_stockholm_shares_search": "network",
-      "nasdaq_nordic_stockholm_trackers": "network"
+      "nasdaq_other_listed": "network",
+      "nasdaq_trading_system_adds_deletes": "network",
+      "newconnect_listed_companies": "network",
+      "ngm_companies_page": "network",
+      "ngm_market_data_equities": "unavailable",
+      "ngx_company_profile_directory": "network",
+      "ngx_equities_price_list": "network",
+      "nse_india_securities_available": "network",
+      "nse_ke_listed_companies": "network",
+      "nzx_instruments": "network",
+      "otc_markets_security_profile": "network",
+      "otc_markets_stock_screener": "unavailable",
+      "pse_cz_shares_directory": "network",
+      "pse_listed_company_directory": "network",
+      "psx_dps_symbols": "network",
+      "psx_listed_companies": "network",
+      "psx_symbol_name_daily": "network",
+      "qse_market_watch": "network",
+      "rse_listed_companies": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }

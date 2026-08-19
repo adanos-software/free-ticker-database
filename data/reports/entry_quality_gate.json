@@ -1,17 +1,35 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-08-19T08:52:36Z",
+    "generated_at": "2026-08-19T14:24:45Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
-  "allowed_warn_count": 199,
+  "allowed_warn_count": 205,
   "passed": true,
   "quarantine_count": 0,
   "quarantined": [],
-  "stale_allowlist": [],
-  "stale_allowlist_count": 0,
+  "stale_allowlist": [
+    "NASDAQ::GREE",
+    "NASDAQ::VYNE",
+    "OTC::AGNPF",
+    "OTC::CSXXY",
+    "OTC::GPUSF",
+    "OTC::HKSHY",
+    "OTC::KPCPF",
+    "OTC::LIPO",
+    "OTC::MTGRY",
+    "OTC::NISUY",
+    "OTC::NMKCP",
+    "OTC::NWSGY",
+    "OTC::RDEIY",
+    "OTC::SAXJY",
+    "OTC::VIAAY",
+    "OTC::ZCRMF",
+    "OTC::ZPTA"
+  ],
+  "stale_allowlist_count": 17,
   "unexpected_warn_count": 0,
   "unexpected_warns": [],
-  "warn_count": 199
+  "warn_count": 188
 }

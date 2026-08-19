@@ -1,58 +1,127 @@
 # Masterfile Vanished Delisting Review
 
-- Generated at: `2026-08-19T08:44:42Z`
-- Rotation date: `2026-08-19`
-- Vanished reference rows: `48`
-- Still in database: `35`
+- Generated at: `2026-08-19T14:18:25Z`
+- Rotation date: `2026-08-20` overlay on the 19 Aug batch
+- Vanished reference rows: `172`
+- Still in database: `104`
 - Applied drops: `0`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
+
+ISSC→IA from the 19 Aug Nasdaq listed overlay remains classified, not dropped, and not applied as a new listing.
+
+NYSE::BBBY vanished from nasdaq_other_listed after the NXH ticker change; TSXV::NXH is a different issuer, so BBBY stays.
 
 ## Classifier counts
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 48 |
-
-## ISSC → IA
-
-Nasdaq listed.txt dropped `ISSC` and added `IA` (Innovative Solutions and Support). Issuer press (2026-08-11) says the ticker change is effective 2026-08-18 with unchanged CUSIP. The row was **not** applied as a new listing and **not** dropped. `apply_symbol_changes` stays blocked until the official master proves the unchanged ISIN.
+| manual_rename_vs_delisting_required | 172 |
 
 ## Rows still in the database
 
-| Exchange | Ticker | Listing name | Official name | Source | Action |
-|---|---|---|---|---|---|
-| LSE | 0GB5 | Niloerngruppen AB Series B | NILORNGRUPPEN AB | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | 0HJO | Avalonbay Communities Inc. | AVALONBAY COMMUNITIES INC | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | 0IFX | Electronic Arts Inc. | ELECTRONIC ARTS INC | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | ANCR | Animalcare Group Plc | ANIMALCARE GROUP PLC | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | BSIF | Bluefield Solar Income Fund | BLUEFIELD SOLAR INCOME FUND LIMITED | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | CRDL | Cordel Group Plc | CORDEL GROUP PLC | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | DELT | Deltic Energy PLC | DELTIC ENERGY PLC | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | FLTR | Flutter Entertainment PLC | FLUTTER ENTERTAINMENT PLC | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | IIG | Intuitive Investments Group Plc | INTUITIVE INVESTMENTS GROUP PLC | lse_price_explorer | manual_rename_vs_delisting_required |
-| LSE | IPF | International Personal Finance PLC | INTERNATIONAL PERSONAL FINANCE PLC | lse_price_explorer | manual_rename_vs_delisting_required |
-| NASDAQ | FTRK | FAST TRACK GROUP | FAST TRACK GROUP - Ordinary shares | nasdaq_listed | manual_rename_vs_delisting_required |
-| NASDAQ | IPCX | Inflection Point Acquisition Corp. III Class A Ordinary Shares | Inflection Point Acquisition Corp. III - Class A ordinary shares | nasdaq_listed | manual_rename_vs_delisting_required |
-| NASDAQ | ISSC | Innovative Solutions and Support | Innovative Solutions and Support, Inc. - Common Stock | nasdaq_listed | manual_rename_vs_delisting_required |
-| NASDAQ | TALK | Talkspace Inc | Talkspace, Inc. - Common Stock | nasdaq_listed | manual_rename_vs_delisting_required |
-| CPH | ASTK | Asetek A/S | Asetek | nasdaq_nordic_copenhagen_shares | manual_rename_vs_delisting_required |
-| HEL | PIIPPO | Piippo OYJ | Piippo Oyj | nasdaq_nordic_helsinki_shares | manual_rename_vs_delisting_required |
-| STO | CINT | Cint Group Ab | Cint Group | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | CMOTEC-B | Scandinavian ChemoTech AB Series B | Scandinavian ChemoTech B | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | FING-B | Fingerprint Cards AB (publ) | Fingerprint Cards B | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | FPIP | FormPipe Software AB | Formpipe Software | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | HELIO | Heliospectra publ AB | Heliospectra | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | HOTEL | Hotel Fast SSE | Hotel Fast SSE | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | HULT-B | Hultström Group B | Hultström Group B | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | INSP | Insplorion | Insplorion | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | LOGI-A | Logistea A | Logistea A | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | LPGO | Lipigon Pharmaceuticals AB | Lipigon Pharmaceuticals | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | MAHA-A | Maha Energy AB (publ) | Maha Capital | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | NIL-B | Niloerngruppen AB Series B | Nilörngruppen B | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | REFINE | Refine Group AB | Refine Group | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | SBOK | ScandBook Holding AB | ScandBook Holding | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | SNM | ShaMaran Petroleum Corp | ShaMaran Petroleum Corp | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | STABL | Stayble Therapeutics AB | Stayble Therapeutics | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | TERRNT-B | Terranet AB | Terranet B | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | TRAD | TradeDoubler AB | TradeDoubler | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
-| STO | VESTUM | Vestum AB (publ) | Vestum | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required |
+| Exchange | Ticker | Source | Action |
+|---|---|---|---|
+| NYSE | AVB | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE | BBBY | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE | EQR | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | AOTS | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | BCHI | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | DEFI | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | IWDL | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | IWFL | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | IWML | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | MTUL | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | PCCE | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | PCGG | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | PCIG | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | QULL | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | SCDL | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| NYSE ARCA | USML | nasdaq_other_listed | manual_rename_vs_delisting_required |
+| BATS | AKAL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| BATS | LYTE | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| BATS | OCNL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| BATS | PENU | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| NASDAQ | ANGU | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| NASDAQ | BRVE | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| NASDAQ | NCLD | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| NASDAQ | QVC | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| NASDAQ | VSEE | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| NYSE ARCA | LOFD | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required |
+| NSE_IN | 3IINFOLTD | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | AARTISURF | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | ABMINTLLTD | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | COUNCODOS | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | E2E | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | ESAFSFB | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | HMVL | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | KCPSUGIND | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | MHLXMIRU | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | MOLDTECH | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | NURECA | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | QMSMEDI | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | RPPL | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | SHEKHAWATI | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | SIKKO | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | SPECIALITY | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | TIL | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | UFBL | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NSE_IN | UYFINCORP | nse_india_securities_available | manual_rename_vs_delisting_required |
+| NASDAQ | AFBI | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | BNZI | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | CCIX | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | EA | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | ELSE | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | GREE | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | GV | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | KVAC | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | LPRO | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | LSH | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | NUTR | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | PSTV | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | QMMM | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | RSVRW | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | SKYT | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | STRS | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | TOI | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | VSEE | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | VSTD | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NASDAQ | VYNE | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NYSE | AVNS | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NYSE | AXIA | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NYSE | CNL | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NYSE | MVO | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NYSE | ORLA | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| NYSE | TMHC | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | AAMTF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | AVCRF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | AYRWF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | BABYD | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | BKSC | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | BSEM | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | CDAQF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | CDAUF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | CLOW | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | CSDX | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | DTII | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | ENZN | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | FPHOY | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | FZMD | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | HGTXU | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | HIRU | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | HLEO | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | IVPR | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | JUSHF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | MSPR | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | NIMU | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | NYMXF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | OWPC | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | PHBI | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | PLMUF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | RMXI | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | SENR | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | SGTM | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | SMTGF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | UCLE | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | VROYF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | WCUFF | sec_company_tickers_exchange | manual_rename_vs_delisting_required |
+| OTC | WINT | sec_company_tickers_exchange | manual_rename_vs_delisting_required |

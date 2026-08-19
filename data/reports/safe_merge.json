@@ -7,12 +7,12 @@
   },
   "summary": {
     "before_rows": 91977,
-    "after_rows": 91980,
+    "after_rows": 92006,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 16,
+    "critical_field_changes": 21,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -84,6 +84,30 @@
       "new_value": "GB00BXNRYG27"
     },
     {
+      "listing_key": "NSE_IN::KIRLPNU",
+      "field_name": "isin",
+      "old_value": "INE811A01020",
+      "new_value": "INE811A01038"
+    },
+    {
+      "listing_key": "OTC::AGNPF",
+      "field_name": "isin",
+      "old_value": "CA01559C1068",
+      "new_value": "CA3978841078"
+    },
+    {
+      "listing_key": "OTC::GPUSF",
+      "field_name": "isin",
+      "old_value": "CA0211551068",
+      "new_value": "CA0211552058"
+    },
+    {
+      "listing_key": "OTC::ZCRMF",
+      "field_name": "isin",
+      "old_value": "CA98959P8698",
+      "new_value": "CA3808871097"
+    },
+    {
       "listing_key": "STO::ACTI",
       "field_name": "isin",
       "old_value": "SE0001137985",
@@ -94,6 +118,12 @@
       "field_name": "isin",
       "old_value": "SE0011256312",
       "new_value": "SE0029300995"
+    },
+    {
+      "listing_key": "STO::FRNT-B",
+      "field_name": "isin",
+      "old_value": "SE0005337920",
+      "new_value": "SE0029279066"
     },
     {
       "listing_key": "STO::GOTL-A",
@@ -170,7 +200,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1340,
-      "after_rows": 1340,
+      "after_rows": 1357,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -575,7 +605,7 @@
     {
       "exchange": "NYSE",
       "before_rows": 2020,
-      "after_rows": 2020,
+      "after_rows": 2022,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -584,7 +614,7 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2722,
-      "after_rows": 2722,
+      "after_rows": 2729,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

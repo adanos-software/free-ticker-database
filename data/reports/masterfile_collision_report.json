@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 98685,
-    "matched": 64848,
-    "collisions": 13634,
-    "missing": 20203
+    "official_symbols": 98879,
+    "matched": 64876,
+    "collisions": 13795,
+    "missing": 20208
   },
   "exchanges": [
     {
@@ -338,10 +338,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1588,
-      "matched": 1245,
-      "collisions": 56,
-      "missing": 287,
+      "official_symbols": 1603,
+      "matched": 1262,
+      "collisions": 58,
+      "missing": 283,
       "collision_examples": [
         {
           "ticker": "ALA",
@@ -3015,10 +3015,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5638,
-      "matched": 4591,
+      "official_symbols": 5608,
+      "matched": 4571,
       "collisions": 60,
-      "missing": 987,
+      "missing": 977,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3160,8 +3160,8 @@
       "exchange": "NEO",
       "official_symbols": 440,
       "matched": 213,
-      "collisions": 64,
-      "missing": 163,
+      "collisions": 65,
+      "missing": 162,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -3320,10 +3320,10 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 2978,
-      "matched": 2290,
-      "collisions": 235,
-      "missing": 453,
+      "official_symbols": 3202,
+      "matched": 2331,
+      "collisions": 390,
+      "missing": 481,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -3342,11 +3342,28 @@
           ]
         },
         {
+          "ticker": "ABANSENT",
+          "name": "Abans Enterprises Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
           "ticker": "ABMKNO",
           "name": "ABM Knowledgeware Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
+          ]
+        },
+        {
+          "ticker": "ACGL",
+          "name": "Automobile Corporation of Goa Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN",
+            "NASDAQ"
           ]
         },
         {
@@ -3367,6 +3384,14 @@
           ]
         },
         {
+          "ticker": "ADDIND",
+          "name": "Addi Industries Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
           "ticker": "ADOR",
           "name": "Ador Welding Limited",
           "target_exchange": "NSE_IN",
@@ -3375,33 +3400,8 @@
           ]
         },
         {
-          "ticker": "AFIL",
-          "name": "Akme Fintrade (India) Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "AGL",
-          "name": "Allcargo Global Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "ASX",
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AHCL",
-          "name": "Anlon Healthcare Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "PSX"
-          ]
-        },
-        {
-          "ticker": "AKCAPIT",
-          "name": "AK Capital Services Limited",
+          "ticker": "ADVIKCA",
+          "name": "Advik Capital Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
@@ -3611,10 +3611,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3900,
-      "matched": 1987,
-      "collisions": 569,
-      "missing": 1344,
+      "official_symbols": 3891,
+      "matched": 1983,
+      "collisions": 572,
+      "missing": 1336,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3760,8 +3760,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2707,
-      "matched": 2586,
+      "official_symbols": 2701,
+      "matched": 2580,
       "collisions": 29,
       "missing": 92,
       "collision_examples": [

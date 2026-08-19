@@ -1,39 +1,36 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-19T08:40:33Z`
-- New rows: `75`
-- Vanished rows: `48`
-- Changed rows: `49`
+- Generated at: `2026-08-19T14:16:55Z`
+- New rows: `455`
+- Vanished rows: `172`
+- Changed rows: `125`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 5 |
-| isin_change | 18 |
-| name_change | 27 |
+| isin_change | 50 |
+| name_change | 75 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| lse_price_explorer | 32 |
-| muscat_securities_companies | 1 |
-| nasdaq_listed | 16 |
-| nasdaq_nordic_copenhagen_shares | 3 |
-| nasdaq_nordic_helsinki_shares | 4 |
-| nasdaq_nordic_stockholm_etfs | 2 |
-| nasdaq_nordic_stockholm_shares | 17 |
+| nasdaq_other_listed | 30 |
+| nasdaq_trading_system_adds_deletes | 24 |
+| nse_india_securities_available | 251 |
+| otc_markets_security_profile | 22 |
+| psx_listed_companies | 2 |
+| psx_symbol_name_daily | 18 |
+| sec_company_tickers_exchange | 108 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| lse_price_explorer | 17 |
-| muscat_securities_companies | 1 |
-| nasdaq_listed | 8 |
-| nasdaq_mutual_fund_quotes | 1 |
-| nasdaq_nordic_copenhagen_shares | 1 |
-| nasdaq_nordic_helsinki_shares | 1 |
-| nasdaq_nordic_stockholm_shares | 19 |
+| nasdaq_other_listed | 22 |
+| nasdaq_trading_system_adds_deletes | 13 |
+| newconnect_listed_companies | 1 |
+| nse_india_securities_available | 27 |
+| sec_company_tickers_exchange | 109 |
