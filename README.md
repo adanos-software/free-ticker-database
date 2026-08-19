@@ -10,9 +10,9 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Metric | Value | Meaning |
 |---|---:|---|
 | Core listings | 61,666 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,779 | Rows in `data/tickers.csv`; one primary row per security. |
+| Primary tickers | 63,778 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 91,977 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,773 | Primary ticker rows where `asset_type=Stock`. |
+| Stocks | 47,772 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 16,006 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
@@ -197,7 +197,7 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 6,894 |
+| OTC | 6,893 |
 | NASDAQ | 4,592 |
 | LSE | 3,560 |
 | TSE | 3,201 |

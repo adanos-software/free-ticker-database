@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T06:26:24Z",
-    "rows": 8782,
+    "generated_at": "2026-08-19T07:22:40Z",
+    "rows": 8781,
     "field_totals": {
       "missing_etf_category": 5,
       "missing_isin_primary": 671,
-      "missing_sector_stock": 1514,
+      "missing_sector_stock": 1513,
       "official_reference_gap": 6592
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_product_taxonomy_unavailable_gap": 4,
       "official_reference_symbol_collision_gap": 1301,
       "official_reference_unmatched_source_gap": 5291,
-      "otc_sector_source_gap": 554,
+      "otc_sector_source_gap": 553,
       "shell_or_cpc_sector_gap": 31
     },
     "class_by_field": {
@@ -43,7 +43,7 @@
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 6,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 845,
-      "missing_sector_stock:otc_sector_source_gap": 554,
+      "missing_sector_stock:otc_sector_source_gap": 553,
       "missing_sector_stock:shell_or_cpc_sector_gap": 31,
       "official_reference_gap:official_reference_symbol_collision_gap": 1301,
       "official_reference_gap:official_reference_unmatched_source_gap": 5291
@@ -116,7 +116,7 @@
         },
         {
           "exchange": "OTC",
-          "rows": 554
+          "rows": 553
         },
         {
           "exchange": "XSTU",
@@ -215,7 +215,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 554,
+        "rows": 553,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -27185,23 +27185,6 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::AEBZY;exchange=OTC;ticker=AEBZY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OTC::AETLF",
-      "ticker": "AETLF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "AERIS ENVIRONMENTAL LTD",
-      "gap_class": "otc_sector_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
-      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
-      "source_gap_context": "listing_key=OTC::AETLF;exchange=OTC;ticker=AETLF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },
