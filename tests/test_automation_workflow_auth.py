@@ -101,4 +101,9 @@ def test_operational_rebuilds_use_canonical_entrypoint_and_safe_merge() -> None:
         assert "python scripts/check_safe_merge.py" in workflow
         if filename != "release.yml":
             assert "python scripts/rebuild_dataset.py" not in workflow
+        # Identity dumps are unevidenced and fail safe-merge. Daily rotation must
+        # overlay official rows only; identity clears stay in a separate review path.
+        if filename == "masterfile-rotation.yml":
+            assert "python scripts/rebuild_canonical.py --apply-identity-fixes" not in workflow
+        elif filename != "release.yml":
             assert "python scripts/rebuild_canonical.py --apply-identity-fixes" in workflow

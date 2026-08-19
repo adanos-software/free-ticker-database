@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-19T07:22:23Z",
+  "generated_at": "2026-08-19T08:50:18Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1549,
-  "decision_rows": 5048,
+  "decision_rows": 5046,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1328,
-    "proposed_clear_conflicting_identifier": 749,
-    "quarantined_unresolved_identifier": 2971
+    "kept_listing_keyed_identifier": 1319,
+    "proposed_clear_conflicting_identifier": 747,
+    "quarantined_unresolved_identifier": 2980
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 749,
-  "quarantined_rows": 2971,
-  "retained_rows": 1328,
+  "proposed_clear_rows": 747,
+  "quarantined_rows": 2980,
+  "retained_rows": 1319,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -48089,42 +48089,29 @@
       "retained_isin": "SE0000667925"
     },
     {
-      "conflict_id": "12ff31359273972839d3",
+      "conflict_id": "b83d1f4e11fc721d014f",
       "isin": "SE0000722365",
       "listing_key": "FSX::OMAX",
       "ticker": "OMAX",
       "exchange": "FSX",
       "name": "Vivesto AB",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0000722365"
     },
     {
-      "conflict_id": "12ff31359273972839d3",
+      "conflict_id": "b83d1f4e11fc721d014f",
       "isin": "SE0000722365",
       "listing_key": "OTC::VIVE",
       "ticker": "VIVE",
       "exchange": "OTC",
       "name": "Viveve Medical Inc",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "SE0000722365"
-    },
-    {
-      "conflict_id": "12ff31359273972839d3",
-      "isin": "SE0000722365",
-      "listing_key": "STO::VIVE",
-      "ticker": "VIVE",
-      "exchange": "STO",
-      "name": "Vivesto Ab",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0000722365"
     },
     {
@@ -48915,9 +48902,9 @@
       "exchange": "FSX",
       "name": "NILORNGRUPPEN AB B",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0007100342"
     },
     {
@@ -48928,9 +48915,9 @@
       "exchange": "LSE",
       "name": "Niloerngruppen AB Series B",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0007100342"
     },
     {
@@ -48941,9 +48928,9 @@
       "exchange": "OTC",
       "name": "Nilörngruppen AB",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0007100342"
     },
     {
@@ -48954,9 +48941,9 @@
       "exchange": "STO",
       "name": "Niloerngruppen AB Series B",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0007100342"
     },
     {
@@ -49176,8 +49163,8 @@
       "name": "SCANDINAV.CHEMOTECH CL.B",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
-      "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
-      "evidence_status": "official_exact_listing_match",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0009242654"
     },
     {
@@ -49188,9 +49175,9 @@
       "exchange": "STO",
       "name": "Scandinavian ChemoTech AB Series B",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0009242654"
     },
     {
@@ -60036,46 +60023,33 @@
       "retained_isin": "US59156R1086"
     },
     {
-      "conflict_id": "7a60d0981cfbfbd0f816",
+      "conflict_id": "8e371e90ce69ee2f00f5",
       "isin": "US5949603048",
       "listing_key": "FSX::MVIN",
       "ticker": "MVIN",
       "exchange": "FSX",
       "name": "MicroVision Inc",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US5949603048"
     },
     {
-      "conflict_id": "7a60d0981cfbfbd0f816",
-      "isin": "US5949603048",
-      "listing_key": "LSE::0K17",
-      "ticker": "0K17",
-      "exchange": "LSE",
-      "name": "MicroVision Inc.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US5949603048"
-    },
-    {
-      "conflict_id": "7a60d0981cfbfbd0f816",
+      "conflict_id": "8e371e90ce69ee2f00f5",
       "isin": "US5949603048",
       "listing_key": "NASDAQ::MVIS",
       "ticker": "MVIS",
       "exchange": "NASDAQ",
       "name": "Microvision Inc",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US5949603048"
     },
     {
-      "conflict_id": "7a60d0981cfbfbd0f816",
+      "conflict_id": "8e371e90ce69ee2f00f5",
       "isin": "US5949603048",
       "listing_key": "XSTU::MVIN",
       "ticker": "MVIN",
@@ -60083,8 +60057,8 @@
       "name": "MICROVISION (MVIN.SG)",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
-      "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
-      "evidence_status": "official_exact_listing_match",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US5949603048"
     },
     {

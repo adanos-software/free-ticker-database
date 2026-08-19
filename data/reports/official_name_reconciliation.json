@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-19T07:22:23Z",
+  "generated_at": "2026-08-19T08:50:18Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1785,
+  "reconciled_rows": 1783,
   "applied_rows": 0,
-  "proposed_rows": 1785,
+  "proposed_rows": 1783,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -16132,21 +16132,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::0GB5",
-      "action": "proposed",
-      "ticker": "0GB5",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "isin": "SE0007100342",
-      "old_name": "Niloerngruppen AB Series B",
-      "new_name": "NILORNGRUPPEN AB",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "b4ea2c9e77b74e2324b926c5",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::0GB7",
       "action": "proposed",
       "ticker": "0GB7",
@@ -16947,13 +16932,13 @@
       "ticker": "0NXT",
       "exchange": "LSE",
       "asset_type": "Stock",
-      "isin": "DE0005118806",
+      "isin": "DE000A41YFQ4",
       "old_name": "11880 Solutions AG",
       "new_name": "11 88 0 SOLUTIONS AG",
       "source_key": "lse_price_explorer",
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "3edd6da5a584d1c925997f66",
+      "observation_id": "495c932dd69132ae7752ba21",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -21202,21 +21187,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::TIPU",
-      "action": "proposed",
-      "ticker": "TIPU",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "LU1452600270",
-      "old_name": "Lyxor US TIPS DR UCITS D-USD",
-      "new_name": "MULTI UNITS LUXEMBOURG AMUNDI USTIPS GOVINFLATION-LINKED BOND D",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "9bdce3f3621821de529dc1bd",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::TNOW",
       "action": "proposed",
       "ticker": "TNOW",
@@ -21269,11 +21239,11 @@
       "asset_type": "Stock",
       "isin": "GB00BKMQQR47",
       "old_name": "Trafalgar New Homes Plc",
-      "new_name": "TRAFALGAR PROPERTY GROUP PLC",
+      "new_name": "TRAFALGAR MINERALS PLC",
       "source_key": "lse_price_explorer",
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "ee926a58626f907321ebcccc",
+      "observation_id": "e3de3a4bcf04d0c74ed8a0bf",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -23497,18 +23467,33 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "STO::ESGR-B",
+      "action": "proposed",
+      "ticker": "ESGR-B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "isin": "SE0014428447",
+      "old_name": "ES Energy Save Holding AB",
+      "new_name": "ES Group B",
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+      "observation_id": "b782f603e0c40d01e260438f",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "STO::GOTL-A",
       "action": "proposed",
       "ticker": "GOTL-A",
       "exchange": "STO",
       "asset_type": "Stock",
-      "isin": "SE0000105371",
+      "isin": "SE0029278191",
       "old_name": "Gotland Rederi AB Series A",
       "new_name": "Gotlandsbolaget A",
       "source_key": "nasdaq_nordic_stockholm_shares",
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "a998488fbb186bf7b613a6be",
+      "observation_id": "3b322f593a061a4affbfa4c0",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -23517,13 +23502,13 @@
       "ticker": "GOTL-B",
       "exchange": "STO",
       "asset_type": "Stock",
-      "isin": "SE0000105397",
+      "isin": "SE0029278209",
       "old_name": "Gotland Rederi AB Series B",
       "new_name": "Gotlandsbolaget B",
       "source_key": "nasdaq_nordic_stockholm_shares",
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "2425df0858d30a7d6bb0721c",
+      "observation_id": "657800eff098b5409b891366",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -23719,21 +23704,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
       "observation_id": "29430c09d78e22abe62131fb",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "STO::STWK",
-      "action": "proposed",
-      "ticker": "STWK",
-      "exchange": "STO",
-      "asset_type": "Stock",
-      "isin": "SE0012257970",
-      "old_name": "Stockwik Forvaltning AB",
-      "new_name": "Stockwik Förvaltning",
-      "source_key": "nasdaq_nordic_stockholm_shares",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "4cc6ad5e0f730bbad7632ff7",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-19T07:22:39Z",
-    "rows": 91977,
+    "generated_at": "2026-08-19T08:50:34Z",
+    "rows": 91980,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,30 +14,30 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80245,
-      "source_gap": 11534,
-      "warn": 198
+      "pass": 80226,
+      "source_gap": 11555,
+      "warn": 199
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4767,
-      "official_reference": 82098,
+      "identifier_enriched": 4787,
+      "official_reference": 82082,
       "scoped_source_gap": 249,
-      "valid_isin": 4863
+      "valid_isin": 4862
     },
     "severity_counts": {
       "high": 151,
-      "medium": 49,
-      "source_gap": 11860
+      "medium": 50,
+      "source_gap": 11883
     },
     "issue_counts": {
-      "official_reference_gap": 6592,
+      "official_reference_gap": 6611,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1300,
-      "expected_missing_primary_isin": 671,
+      "missing_stock_sector": 1299,
+      "expected_missing_primary_isin": 674,
       "country_isin_mismatch": 95,
       "official_isin_mismatch": 56,
-      "official_name_mismatch": 49,
-      "missing_etf_category": 10
+      "official_name_mismatch": 50,
+      "missing_etf_category": 12
     },
     "top_flagged_exchanges": [
       {
@@ -53,8 +53,8 @@
       },
       {
         "exchange": "FSX",
-        "pass": 7150,
-        "source_gap": 991,
+        "pass": 7151,
+        "source_gap": 990,
         "warn": 2
       },
       {
@@ -69,7 +69,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4512,
-        "source_gap": 244,
+        "source_gap": 247,
         "warn": 8
       },
       {
@@ -103,16 +103,16 @@
         "source_gap": 177
       },
       {
+        "exchange": "LSE",
+        "pass": 6854,
+        "source_gap": 151,
+        "warn": 25
+      },
+      {
         "exchange": "AMS",
         "pass": 371,
         "source_gap": 173,
         "warn": 2
-      },
-      {
-        "exchange": "LSE",
-        "pass": 6856,
-        "source_gap": 150,
-        "warn": 24
       },
       {
         "exchange": "BME",
@@ -2257,6 +2257,24 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0GB5",
+      "ticker": "0GB5",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 65,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "official_name_mismatch",
+          "severity": "medium",
+          "field": "name",
+          "value": "Niloerngruppen AB Series B",
+          "message": "Listing name has weak overlap with official active reference name(s)."
         }
       ]
     },
@@ -7687,24 +7705,6 @@
           "field": "exchange",
           "value": "KRX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::25N0",
-      "ticker": "25N0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
