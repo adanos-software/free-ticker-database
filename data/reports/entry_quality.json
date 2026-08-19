@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-19T15:31:29Z",
+    "generated_at": "2026-08-19T15:41:26Z",
     "rows": 92006,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80236,
-      "source_gap": 11582,
+      "pass": 80235,
+      "source_gap": 11583,
       "warn": 188
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4800,
-      "official_reference": 82148,
+      "identifier_enriched": 4801,
+      "official_reference": 82147,
       "scoped_source_gap": 239,
       "valid_isin": 4819
     },
     "severity_counts": {
       "high": 152,
       "medium": 38,
-      "source_gap": 11895
+      "source_gap": 11896
     },
     "issue_counts": {
-      "official_reference_gap": 6571,
+      "official_reference_gap": 6572,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1301,
       "expected_missing_primary_isin": 700,
@@ -307,6 +307,24 @@
       "ticker": "00279K",
       "exchange": "KRX",
       "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "KRX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "KRX::0036D0",
+      "ticker": "0036D0",
+      "exchange": "KRX",
+      "asset_type": "ETF",
       "quality_status": "source_gap",
       "quality_score": 90,
       "recommended_action": "find_source_or_keep_scoped_gap",
@@ -18300,24 +18318,6 @@
     {
       "listing_key": "FSX::6NR",
       "ticker": "6NR",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::6NU0",
-      "ticker": "6NU0",
       "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",

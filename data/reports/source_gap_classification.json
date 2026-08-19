@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T15:31:30Z",
-    "rows": 8815,
+    "generated_at": "2026-08-19T15:41:28Z",
+    "rows": 8816,
     "field_totals": {
       "missing_etf_category": 31,
       "missing_isin_primary": 700,
       "missing_sector_stock": 1513,
-      "official_reference_gap": 6571
+      "official_reference_gap": 6572
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -25,7 +25,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 26,
       "official_reference_symbol_collision_gap": 1223,
-      "official_reference_unmatched_source_gap": 5348,
+      "official_reference_unmatched_source_gap": 5349,
       "otc_sector_source_gap": 553,
       "shell_or_cpc_sector_gap": 31
     },
@@ -48,7 +48,7 @@
       "missing_sector_stock:otc_sector_source_gap": 553,
       "missing_sector_stock:shell_or_cpc_sector_gap": 31,
       "official_reference_gap:official_reference_symbol_collision_gap": 1223,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5348
+      "official_reference_gap:official_reference_unmatched_source_gap": 5349
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -70405,6 +70405,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=KRX::0021E0;exchange=KRX;ticker=0021E0;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "KRX::0036D0",
+      "ticker": "0036D0",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "name": "TIME 미국배당다우존스액티브",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=KRX::0036D0;exchange=KRX;ticker=0036D0;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

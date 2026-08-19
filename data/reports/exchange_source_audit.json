@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T15:31:24Z",
+  "generated_at": "2026-08-19T15:41:21Z",
   "summary": {
     "venues": 87,
     "venue_status_counts": {
@@ -14,7 +14,7 @@
       "refresh_unavailable": 17
     },
     "unavailable_venues": 17,
-    "nonfresh_venues": 18,
+    "nonfresh_venues": 17,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -582,8 +582,8 @@
       "missing_product_classes": "",
       "official_source_keys": "dse_tz_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "dse_tz_listed_companies",
-      "source_blocker_classes": "stale_artifact",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -592,7 +592,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_nonfresh_source"
+      "promotion_readiness": "blocked_denominator_missing"
     },
     {
       "exchange": "EGX",
@@ -716,18 +716,18 @@
       "current_stock_rows": 2658,
       "current_etf_rows": 400,
       "official_active_stock_rows": 2782,
-      "official_active_etf_rows": 412,
+      "official_active_etf_rows": 415,
       "missing_product_classes": "",
       "official_source_keys": "hkex_securities_list",
       "unavailable_source_keys": "",
       "nonfresh_source_keys": "",
       "source_blocker_classes": "",
-      "official_denominator": 3194,
+      "official_denominator": 3197,
       "official_matches": 3038,
       "official_collisions": 70,
-      "official_missing": 86,
-      "official_recall_pct": 95.12,
-      "collision_adjusted_recall_pct": 97.25,
+      "official_missing": 89,
+      "official_recall_pct": 95.03,
+      "collision_adjusted_recall_pct": 97.15,
       "denominator_status": "available",
       "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
@@ -900,14 +900,14 @@
       "current_stock_rows": 903,
       "current_etf_rows": 1088,
       "official_active_stock_rows": 941,
-      "official_active_etf_rows": 1163,
+      "official_active_etf_rows": 1162,
       "missing_product_classes": "",
       "official_source_keys": "krx_etf_finder|krx_listed_companies",
       "unavailable_source_keys": "",
       "nonfresh_source_keys": "",
       "source_blocker_classes": "",
-      "official_denominator": 2104,
-      "official_matches": 1959,
+      "official_denominator": 2103,
+      "official_matches": 1958,
       "official_collisions": 14,
       "official_missing": 131,
       "official_recall_pct": 93.11,

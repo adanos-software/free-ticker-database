@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T15:31:30Z",
-    "rows": 8815,
+    "generated_at": "2026-08-19T15:41:28Z",
+    "rows": 8816,
     "outcome_totals": {
       "accepted_source_gap": 6050,
       "core_exclusion_candidate": 465,
-      "official_fill_required": 2300
+      "official_fill_required": 2301
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -24,7 +24,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 26,
       "official_reference_symbol_collision_gap": 1223,
-      "official_reference_unmatched_source_gap": 5348,
+      "official_reference_unmatched_source_gap": 5349,
       "otc_sector_source_gap": 553,
       "shell_or_cpc_sector_gap": 31
     },
@@ -36,7 +36,7 @@
       "missing_sector_stock:core_exclusion_candidate": 53,
       "missing_sector_stock:official_fill_required": 62,
       "official_reference_gap:accepted_source_gap": 4333,
-      "official_reference_gap:official_fill_required": 2238
+      "official_reference_gap:official_fill_required": 2239
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -134030,6 +134030,23 @@
       "exchange": "KRX",
       "asset_type": "Stock",
       "name": "AMOREPACIFIC Group",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "KRX::0036D0",
+      "ticker": "0036D0",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "name": "TIME 미국배당다우존스액티브",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",

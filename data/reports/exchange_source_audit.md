@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T15:31:24Z`
+Generated at: `2026-08-19T15:41:21Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
@@ -32,13 +32,13 @@ Generated at: `2026-08-19T15:31:24Z`
 | CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 318 | 96.54 | cse_lk_all_security_code|cse_lk_company_info_summary | refresh_unavailable | not_applicable |
 | CSE_MA | official_full | cse_ma_listed_companies |  | 82 | 1.22 | cse_ma_listed_companies | refresh_unavailable | not_applicable |
 | DFM | official_full | dfm_listed_securities |  | 71 | 63.38 |  | maintain | not_applicable |
-| DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  | dse_tz_listed_companies | denominator_missing | blocked_nonfresh_source |
+| DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | EGX | official_partial | egx_listed_stocks |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | Euronext | official_full | euronext_equities|euronext_etfs |  | 2014 | 66.58 |  | maintain | not_applicable |
 | FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18025 | 44.42 |  | maintain | not_applicable |
 | GSE | official_partial | gse_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | HEL | official_partial | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
-| HKEX | official_full | hkex_securities_list |  | 3194 | 95.12 |  | maintain | not_applicable |
+| HKEX | official_full | hkex_securities_list |  | 3197 | 95.03 |  | maintain | not_applicable |
 | HNX | official_full | hnx_listed_securities |  | 299 | 34.78 |  | maintain | not_applicable |
 | HOSE | official_partial | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | ICE_IS | official_partial | nasdaq_nordic_iceland_shares |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
@@ -46,7 +46,7 @@ Generated at: `2026-08-19T15:31:24Z`
 | ISE | official_full | euronext_equities |  | 15 | 60.0 |  | maintain | not_applicable |
 | JSE | official_partial | jse_etf_list|jse_etn_list | Stock | 0 |  |  | denominator_missing | blocked_product_class_gap |
 | KOSDAQ | official_full | krx_listed_companies |  | 1818 | 87.73 |  | maintain | not_applicable |
-| KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2104 | 93.11 |  | maintain | not_applicable |
+| KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2103 | 93.11 |  | maintain | not_applicable |
 | LSE | official_full | lse_company_reports|lse_instrument_directory|lse_price_explorer |  | 11107 | 61.6 | lse_company_reports|lse_instrument_directory | refresh_unavailable | not_applicable |
 | LUSE | official_partial | luse_listed_companies |  | 0 |  | luse_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |

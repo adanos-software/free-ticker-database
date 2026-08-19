@@ -23,13 +23,13 @@ CPH,official_partial,listed_companies_subset,150,3,145,1,,nasdaq_nordic_copenhag
 CSE_LK,official_full,exchange_directory,307,0,625,0,,cse_lk_all_security_code|cse_lk_company_info_summary,cse_lk_all_security_code|cse_lk_company_info_summary,cse_lk_all_security_code|cse_lk_company_info_summary,empty_refresh,318,307,0,11,96.54,96.54,available,refresh_unavailable,not_applicable
 CSE_MA,official_full,exchange_directory,66,0,82,0,,cse_ma_listed_companies,cse_ma_listed_companies,cse_ma_listed_companies,empty_refresh,82,1,64,17,1.22,5.56,available,refresh_unavailable,not_applicable
 DFM,official_full,exchange_directory,44,2,69,2,,dfm_listed_securities,,,,71,45,17,9,63.38,83.33,available,maintain,not_applicable
-DSE_TZ,official_partial,listed_companies_subset,17,0,17,0,,dse_tz_listed_companies,,dse_tz_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
+DSE_TZ,official_partial,listed_companies_subset,17,0,17,0,,dse_tz_listed_companies,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
 EGX,official_partial,listed_companies_subset,223,0,191,0,,egx_listed_stocks,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
 Euronext,official_full,exchange_directory|secondary_listing_subset,863,614,2973,1143,,euronext_equities|euronext_etfs,,,,2014,1341,365,308,66.58,81.32,available,maintain,not_applicable
 FSX,official_full,exchange_directory,8018,125,14550,3475,,deutsche_boerse_frankfurt_all_tradable_equities,,,,18025,8006,3945,6074,44.42,56.86,available,maintain,not_applicable
 GSE,official_partial,listed_companies_subset,19,0,18,0,,gse_listed_companies,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
 HEL,official_partial,listed_companies_subset,199,1,194,2,,nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
-HKEX,official_full,exchange_directory,2658,400,2782,412,,hkex_securities_list,,,,3194,3038,70,86,95.12,97.25,available,maintain,not_applicable
+HKEX,official_full,exchange_directory,2658,400,2782,415,,hkex_securities_list,,,,3197,3038,70,89,95.03,97.15,available,maintain,not_applicable
 HNX,official_full,exchange_directory,105,0,299,0,,hnx_listed_securities,,,,299,104,163,32,34.78,76.47,available,maintain,not_applicable
 HOSE,official_partial,listed_companies_subset,140,13,408,20,,hose_etf_list|hose_fund_certificate_list|hose_listed_stocks,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
 ICE_IS,official_partial,listed_companies_subset,18,0,32,0,,nasdaq_nordic_iceland_shares,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
@@ -37,7 +37,7 @@ IDX,official_full,exchange_directory|listed_companies_subset,756,0,1924,0,,idx_c
 ISE,official_full,exchange_directory,14,0,15,0,,euronext_equities,,,,15,9,6,0,60.0,100.0,available,maintain,not_applicable
 JSE,official_partial,listed_companies_subset,85,127,0,244,Stock,jse_etf_list|jse_etn_list,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_product_class_gap
 KOSDAQ,official_full,exchange_directory,1605,0,1818,0,,krx_listed_companies,,,,1818,1595,3,220,87.73,87.88,available,maintain,not_applicable
-KRX,official_full,exchange_directory,903,1088,941,1163,,krx_etf_finder|krx_listed_companies,,,,2104,1959,14,131,93.11,93.73,available,maintain,not_applicable
+KRX,official_full,exchange_directory,903,1088,941,1162,,krx_etf_finder|krx_listed_companies,,,,2103,1958,14,131,93.11,93.73,available,maintain,not_applicable
 LSE,official_full,exchange_directory|listed_companies_subset|security_lookup_subset,4010,3020,13982,9896,,lse_company_reports|lse_instrument_directory|lse_price_explorer,lse_company_reports|lse_instrument_directory,lse_company_reports|lse_instrument_directory,empty_refresh,11107,6842,779,3486,61.6,66.25,available,refresh_unavailable,not_applicable
 LUSE,official_partial,listed_companies_subset,22,0,15,0,,luse_listed_companies,luse_listed_companies,luse_listed_companies,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 MSE_MW,official_partial,listed_companies_subset,8,0,8,0,,mse_mw_listed_companies,mse_mw_listed_companies,mse_mw_listed_companies,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable

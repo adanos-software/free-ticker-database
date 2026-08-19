@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "b213203e3b915b9d85fcc443eec37fcf5b90f8b49727ba882686c3242ab17f0e",
+  "dataset_sha256": "3865c5e342970855f735263b3787970ecf7de894449c033252e75d6a8663e52a",
   "source_manifest_sha256": "15bb7f9942382449d220b19d57b49c030cdb4de666dc13f5391ef1a7bb2a39e5",
-  "git_commit": "4916548cd9a81b407784312aa244037b4c3d854c",
+  "git_commit": "103faebada5dc7ea9c77c578f7d4ec70d6f34315",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 145,
-          "source_observations": 171427,
+          "source_observations": 171424,
           "venues": 87,
-          "issuers": 72072,
-          "instruments": 72072,
+          "issuers": 72073,
+          "instruments": 72073,
           "listings": 92006,
-          "identifier_assertions": 166108,
-          "field_assertions": 204594,
-          "provenance_gaps": 280981,
-          "listing_events": 75890,
+          "identifier_assertions": 166107,
+          "field_assertions": 204587,
+          "provenance_gaps": 280988,
+          "listing_events": 75889,
           "coverage_contracts": 134
         }
       }
@@ -74,7 +74,7 @@
           "removed_rows": 0,
           "evidenced_removed_rows": 0,
           "unevidenced_removed_rows": 0,
-          "critical_field_changes": 26,
+          "critical_field_changes": 27,
           "unevidenced_critical_field_changes": 0,
           "before_duplicate_listing_keys": 0,
           "after_duplicate_listing_keys": 0,
@@ -111,7 +111,7 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "rows": 168819,
+        "rows": 168821,
         "unclassified": 0
       }
     },
@@ -522,7 +522,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 280981
+        "gap_rows": 280988
       }
     },
     {
@@ -571,7 +571,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 48252
+        "missing_rows": 48256
       }
     },
     {
