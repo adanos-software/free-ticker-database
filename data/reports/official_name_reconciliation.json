@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-18T20:23:15Z",
+  "generated_at": "2026-08-19T07:22:23Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1784,
+  "reconciled_rows": 1785,
   "applied_rows": 0,
-  "proposed_rows": 1784,
+  "proposed_rows": 1785,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -14674,6 +14674,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
       "observation_id": "ded65febaf93c4e84db848bc",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "KOSDAQ::291230",
+      "action": "proposed",
+      "ticker": "291230",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "isin": "KR7291230001",
+      "old_name": "NP Inc.",
+      "new_name": "Com2uS N",
+      "source_key": "krx_listed_companies",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "observation_id": "9985bf778d5908379a68f7ad",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
