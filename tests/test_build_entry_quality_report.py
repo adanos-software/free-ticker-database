@@ -410,6 +410,153 @@ def test_entry_quality_accepts_otc_ordinary_listing_sharing_confirmed_adr_isin()
     assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["OTC::EXMPF"].issues)
 
 
+def test_entry_quality_accepts_otc_ordinary_unique_issuer_country_without_adr_sibling():
+    foreign = row(
+        "Euronext::BECO",
+        "BECO",
+        "Euronext",
+        "Example Holdings SA",
+        isin="BE0003797140",
+        country="Belgium",
+        country_code="BE",
+    )
+    ordinary = row(
+        "OTC::EXMPF",
+        "EXMPF",
+        "OTC",
+        "Example Holdings SA",
+        isin="US03524A1088",
+        country="Belgium",
+        country_code="BE",
+    )
+    listings = [foreign, ordinary]
+
+    report_rows = assess_entries(
+        listings,
+        tickers=listings,
+        scopes=[
+            scope("Euronext::BECO", "BECO", "Euronext", isin="BE0003797140"),
+            scope(
+                "OTC::EXMPF",
+                "EXMPF",
+                "OTC",
+                isin="US03524A1088",
+                instrument_scope="extended",
+                scope_reason="otc_listing",
+            ),
+        ],
+        identifiers=[
+            {
+                "listing_key": "OTC::EXMPF",
+                "ticker": "EXMPF",
+                "exchange": "OTC",
+                "isin": "US03524A1088",
+                "wkn": "",
+                "figi": "",
+                "cik": "",
+                "lei": "",
+                "figi_source": "",
+                "cik_source": "",
+                "lei_source": "",
+            }
+        ],
+        masterfiles=[
+            official_ref("BECO", "Euronext", "Example Holdings SA", "BE0003797140"),
+            official_ref("EXMPF", "OTC", "Example Holdings SA", ""),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["OTC::EXMPF"].issues)
+
+
+def test_entry_quality_does_not_inherit_confirmation_across_ticker_collision_names():
+    german = row(
+        "XETRA::TEA",
+        "TEA",
+        "XETRA",
+        "Example Telecom AG",
+        isin="DE000A161077",
+        country="Germany",
+        country_code="DE",
+    )
+    canadian = row(
+        "TSX::TEA",
+        "TEA",
+        "TSX",
+        "Example Tea Inc.",
+        isin="CA4175391032",
+        country="Canada",
+        country_code="CA",
+    )
+    ordinary = row(
+        "OTC::TEAF",
+        "TEAF",
+        "OTC",
+        "Example Tea Inc.",
+        isin="US2515661054",
+        country="Canada",
+        country_code="CA",
+    )
+    collided_primary = row(
+        "FSX::TEA",
+        "TEA",
+        "FSX",
+        "Example Telecom AG",
+        isin="US2515661054",
+        country="Canada",
+        country_code="CA",
+    )
+    listings = [german, canadian, ordinary, collided_primary]
+
+    report_rows = assess_entries(
+        listings,
+        tickers=listings,
+        scopes=[
+            scope("XETRA::TEA", "TEA", "XETRA", isin="DE000A161077"),
+            scope("TSX::TEA", "TEA", "TSX", isin="CA4175391032"),
+            scope(
+                "OTC::TEAF",
+                "TEAF",
+                "OTC",
+                isin="US2515661054",
+                instrument_scope="extended",
+                scope_reason="otc_listing",
+                primary_listing_key="FSX::TEA",
+            ),
+            scope("FSX::TEA", "TEA", "FSX", isin="US2515661054"),
+        ],
+        identifiers=[
+            {
+                "listing_key": "OTC::TEAF",
+                "ticker": "TEAF",
+                "exchange": "OTC",
+                "isin": "US2515661054",
+                "wkn": "",
+                "figi": "",
+                "cik": "",
+                "lei": "",
+                "figi_source": "",
+                "cik_source": "",
+                "lei_source": "",
+            }
+        ],
+        masterfiles=[
+            official_ref("TEA", "XETRA", "Example Telecom AG", "DE000A161077"),
+            official_ref("TEA", "TSX", "Example Tea Inc.", "CA4175391032"),
+            official_ref("TEAF", "OTC", "Example Tea Inc.", ""),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["OTC::TEAF"].issues)
+    assert any(issue.issue_type == "country_isin_mismatch" for issue in by_key["FSX::TEA"].issues)
+
+
 def test_entry_quality_keeps_unreviewed_country_isin_mismatch_visible():
     listing = row(
         "NASDAQ::EXMP",
