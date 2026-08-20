@@ -53,6 +53,7 @@ RELEASE_SOURCE_REPORTS = {
     "twelvedata_global_rest_second_source_queue": "data/reports/twelvedata_global_rest_second_source_queue_summary.json",
     "source_refresh_queue": "data/reports/source_refresh_queue.json",
     "symbol_changes_review": "data/reports/symbol_changes_review.json",
+    "masterfile_vanished_delisting_review": "data/reports/masterfile_vanished_delisting_review.json",
     "otc_name_mismatch_review": "data/reports/otc_name_mismatch_review.json",
     "otc_name_mismatch_action_queue": "data/reports/otc_name_mismatch_action_queue.json",
     "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
