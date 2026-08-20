@@ -1,21 +1,45 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T07:03:43Z",
+    "generated_at": "2026-08-20T07:04:15Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 327,
+    "blocked_rows": 330,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 55,
       "blocked_old_symbol_not_unique_in_us_scope": 230,
-      "manual_isin_not_proven_unchanged": 1,
-      "manual_non_us_or_unscoped_source": 40,
+      "manual_isin_not_proven_unchanged": 2,
+      "manual_non_us_or_unscoped_source": 42,
       "manual_transition_or_shell_name": 1
     }
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "49520fd1c4e78199",
+      "effective_date": "2026-08-18",
+      "old_symbol": "ISSC",
+      "new_symbol": "IA",
+      "new_company_name": "Innovative Solutions & Support Inc",
+      "status": "manual_isin_not_proven_unchanged"
+    },
+    {
+      "change_id": "b757299775ae44f9",
+      "effective_date": "2026-08-18",
+      "old_symbol": "EQR",
+      "new_symbol": "VRMK",
+      "new_company_name": "Vivmark Residential",
+      "status": "manual_non_us_or_unscoped_source"
+    },
+    {
+      "change_id": "8df32d20baed0d8e",
+      "effective_date": "2026-08-17",
+      "old_symbol": "FRTK",
+      "new_symbol": "FTRKF",
+      "new_company_name": "Fast Track Group",
+      "status": "manual_non_us_or_unscoped_source"
+    },
     {
       "change_id": "7aa1fe5f06e2e396",
       "effective_date": "2026-08-17",
