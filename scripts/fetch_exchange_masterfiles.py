@@ -6922,14 +6922,19 @@ def chrome_impersonated_get(
 ):
     from curl_cffi import requests as curl_requests  # type: ignore[import-not-found]
 
-    return curl_requests.get(
-        url,
-        headers=headers,
-        params=params,
-        impersonate="chrome120",
-        timeout=timeout,
-        verify=verify,
-    )
+    try:
+        return curl_requests.get(
+            url,
+            headers=headers,
+            params=params,
+            impersonate="chrome120",
+            timeout=timeout,
+            verify=verify,
+        )
+    except requests.RequestException:
+        raise
+    except Exception as exc:
+        raise requests.RequestException(str(exc)) from exc
 
 
 def raise_requests_status(response) -> None:
@@ -11090,6 +11095,7 @@ def fetch_bme_share_details_info(
     isin: str,
     *,
     session: requests.Session | None = None,
+    impersonate: bool = True,
 ) -> dict[str, Any]:
     session = session or requests.Session()
     response = session.get(
@@ -11098,7 +11104,7 @@ def fetch_bme_share_details_info(
         headers=bme_request_headers(),
         timeout=REQUEST_TIMEOUT,
     )
-    if getattr(response, "status_code", 200) in {401, 403}:
+    if impersonate and getattr(response, "status_code", 200) in {401, 403}:
         try:
             response = chrome_impersonated_get(
                 BME_SHARE_DETAILS_INFO_API_URL,
@@ -11107,6 +11113,10 @@ def fetch_bme_share_details_info(
             )
         except ImportError:
             pass
+        except requests.RequestException:
+            raise
+        except Exception as exc:
+            raise requests.RequestException(str(exc)) from exc
     raise_requests_status(response)
     return response.json()
 
@@ -11378,16 +11388,19 @@ def fetch_bme_security_prices_rows(
             return
         max_workers = min(BME_SECURITY_PRICES_DETAIL_WORKERS, len(rest))
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            futures = [executor.submit(fetch_bme_share_details_info, isin) for isin in rest]
+            futures = [
+                executor.submit(fetch_bme_share_details_info, isin, impersonate=False)
+                for isin in rest
+            ]
             for future in as_completed(futures):
                 try:
                     add_detail(future.result())
-                except requests.RequestException:
+                except (requests.RequestException, ValueError, json.JSONDecodeError):
                     continue
 
     try:
         fetch_unmatched_details()
-    except requests.Timeout:
+    except (requests.RequestException, TimeoutError):
         if not rows:
             raise
     return rows
