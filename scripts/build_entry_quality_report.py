@@ -1143,8 +1143,11 @@ def build_confirmed_depositary_listing_tuples(
     """Build affirmative, listing- and identifier-bound depositary evidence.
 
     OTC ordinary F-share lines that keep the issuer country and share a US
-    CINS with a confirmed ADR are accepted duals, not United States recodes.
+    CINS with a confirmed ADR, or that uniquely resolve to that issuer country
+    via local-ISIN peers, are accepted duals, not United States recodes.
     Unconfirmed same-ISIN peers on other venues stay visible.
+    Differently named ticker-collision primaries whose unique issuer countries
+    disagree do not inherit confirmation.
     """
     scope_lookup = build_scope_lookup(scopes)
     identifier_lookup = build_identifier_lookup(identifiers)
@@ -1174,6 +1177,12 @@ def build_confirmed_depositary_listing_tuples(
     }
     foreign_country_by_name = build_unique_foreign_issuer_country_lookup(listings)
     listings_by_key = {row.get("listing_key", ""): row for row in listings}
+
+    def unique_issuer_countries_conflict(left_name: str, right_name: str) -> bool:
+        left = foreign_country_by_name.get(normalized_compact(left_name))
+        right = foreign_country_by_name.get(normalized_compact(right_name))
+        return bool(left and right and left != right)
+
     for row in listings:
         isin = row.get("isin", "")
         country = row.get("country", "")
@@ -1205,9 +1214,12 @@ def build_confirmed_depositary_listing_tuples(
                 or isin.strip().upper() in official_isins
             )
         )
+        is_otc_foreign_ordinary = bool(
+            row.get("exchange") == "OTC" and row.get("ticker", "").endswith("F")
+        )
         if (
             is_foreign_us_security
-            and (is_depositary_candidate or is_cins_identifier)
+            and (is_depositary_candidate or is_cins_identifier or is_otc_foreign_ordinary)
             and has_listing_bound_identifier
             and has_country_evidence
         ):
@@ -1227,6 +1239,7 @@ def build_confirmed_depositary_listing_tuples(
             primary
             and row.get("isin") == primary.get("isin")
             and row.get("country") == primary.get("country")
+            and not unique_issuer_countries_conflict(row.get("name", ""), primary.get("name", ""))
         ):
             confirmed.add(
                 (*primary_key, primary.get("isin", "").strip().upper(), primary.get("country", "").strip())
@@ -1246,13 +1259,14 @@ def build_confirmed_depositary_listing_tuples(
             and primary_tuple in confirmed
             and row.get("isin") == primary.get("isin")
             and row.get("country") == primary.get("country")
+            and not unique_issuer_countries_conflict(row.get("name", ""), primary.get("name", ""))
         ):
             confirmed.add((*key, row.get("isin", "").strip().upper(), row.get("country", "").strip()))
     confirmed_issuer_keys = {
         (isin, country) for _ticker, _exchange, isin, country in confirmed if isin and country
     }
     for row in listings:
-        if row.get("exchange") != "OTC" or not row.get("ticker", "").endswith("F"):
+        if row.get("exchange") != "OTC" or not row.get("ticker", "").endswith(("F", "Y")):
             continue
         isin = row.get("isin", "").strip().upper()
         country = row.get("country", "").strip()
