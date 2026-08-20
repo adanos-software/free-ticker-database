@@ -43715,3 +43715,66 @@ SCIG4,BME,name,update,INBEST GPF MACP IV,0.95,Official BME security-prices direc
 YIRG,BME,name,update,IRG10,0.95,Official BME security-prices directory maps BME::YIRG ES0105653002 to IRG10; listing-keyed official name for ticker-stub placeholder.
 YKTS,BME,name,update,KTESIOS,0.95,Official BME security-prices directory maps BME::YKTS ES0105536009 to KTESIOS; listing-keyed official name for ticker-stub placeholder.
 RTX,CPH,stock_sector,update,Communication Services,0.95,Official Nasdaq Nordic Copenhagen shares directory maps CPH::RTX DK0010267129 to Telecommunications; persist canonical GICS Communication Services after normalize_sector.
+0ADF,LSE,country,update,United Kingdom,0.95,Official LSE directory maps LSE::0ADF to depositary name ARM HOLDINGS PLC ARM HOLDINGS AMERICAN DEPOSITARY SHARES; keep issuer country United Kingdom with listing-keyed ADR/ADS ISIN US0420682058.
+0ADF,LSE,isin,update,US0420682058,0.95,Official LSE directory maps LSE::0ADF to depositary name ARM HOLDINGS PLC ARM HOLDINGS AMERICAN DEPOSITARY SHARES; keep issuer country United Kingdom with listing-keyed ADR/ADS ISIN US0420682058.
+0L2T,LSE,isin,update,US7960542030,0.95,Official LSE directory maps LSE::0L2T to depositary GDR/GDS SAMSUNG SDI CO LTD SAMSUNG SDI GDR; keep issuer country South Korea with listing-keyed US depositary ISIN US7960542030.
+32QX,LSE,country,update,Egypt,0.95,Official LSE directory maps LSE::32QX to depositary GDR/GDS TELECOM EGYPT S.A.E GDS(EACH REPR 5 ORDS EGP10) (144A); keep issuer country Egypt with listing-keyed US depositary ISIN US87927T1034.
+32QX,LSE,isin,update,US87927T1034,0.95,Official LSE directory maps LSE::32QX to depositary GDR/GDS TELECOM EGYPT S.A.E GDS(EACH REPR 5 ORDS EGP10) (144A); keep issuer country Egypt with listing-keyed US depositary ISIN US87927T1034.
+37OC,LSE,isin,update,US67778Q1013,0.95,Official LSE directory maps LSE::37OC to depositary GDR/GDS OIL & GAS DEVELOPMENT COMPANY LD GDR (EACH REPR 10 ORD)(144A); keep issuer country Pakistan with listing-keyed US depositary ISIN US67778Q1013.
+51FL,LSE,isin,update,US83367Y1082,0.95,Official LSE directory maps LSE::51FL to depositary GDR/GDS SOCIETATEA ENERGETICA ELECTRICA SA GDR (EACH REPR 4ORD) (144A); keep issuer country Romania with listing-keyed US depositary ISIN US83367Y1082.
+59OT,LSE,isin,update,US63253R1023,0.95,Official LSE directory maps LSE::59OT to depositary GDR/GDS JSC NATIONAL ATOMIC CO KAZATOMPROM GDR (EACH REPR 1 ORD) (144A); keep issuer country Kazakhstan with listing-keyed US depositary ISIN US63253R1023.
+78QZ,LSE,isin,update,US0222081020,0.95,Official LSE directory maps LSE::78QZ to depositary GDR/GDS ALUMINIUM BAHRAIN B.S.C. GDR (EACH REPR 1/5 ORD) (144A); keep issuer country Bahrain with listing-keyed US depositary ISIN US0222081020.
+ALFVY,OTC,country,update,Sweden,0.95,Official OTC directory maps OTC::ALFVY to depositary name ALFA-LAVAL AB UNSP/ADR; keep issuer country Sweden with listing-keyed ADR/ADS ISIN US0153931011.
+ALFVY,OTC,isin,update,US0153931011,0.95,Official OTC directory maps OTC::ALFVY to depositary name ALFA-LAVAL AB UNSP/ADR; keep issuer country Sweden with listing-keyed ADR/ADS ISIN US0153931011.
+ALIZY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::ALIZY to depositary name ALLIANZ SE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US0188201000.
+ALIZY,OTC,isin,update,US0188201000,0.95,Official OTC directory maps OTC::ALIZY to depositary name ALLIANZ SE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US0188201000.
+ATEYY,OTC,country,update,Japan,0.95,Official OTC directory maps OTC::ATEYY to depositary name ADVANTEST CORP SP/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US00762U2006.
+ATEYY,OTC,isin,update,US00762U2006,0.95,Official OTC directory maps OTC::ATEYY to depositary name ADVANTEST CORP SP/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US00762U2006.
+BGAOY,OTC,country,update,Belgium,0.95,Official OTC directory maps OTC::BGAOY to depositary name PROXIMUS GROUP UNSP/ADR; keep issuer country Belgium with listing-keyed ADR/ADS ISIN US74428W1080.
+BGAOY,OTC,isin,update,US74428W1080,0.95,Official OTC directory maps OTC::BGAOY to depositary name PROXIMUS GROUP UNSP/ADR; keep issuer country Belgium with listing-keyed ADR/ADS ISIN US74428W1080.
+CMWAY,OTC,country,update,Australia,0.95,Official OTC directory maps OTC::CMWAY to depositary name CMNWLTH BK AUSTRLA S/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US2027126000.
+CMWAY,OTC,isin,update,US2027126000,0.95,Official OTC directory maps OTC::CMWAY to depositary name CMNWLTH BK AUSTRLA S/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US2027126000.
+CSLLY,OTC,country,update,Australia,0.95,Official OTC directory maps OTC::CSLLY to depositary name CSL LTD SP/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US12637N2045.
+CSLLY,OTC,isin,update,US12637N2045,0.95,Official OTC directory maps OTC::CSLLY to depositary name CSL LTD SP/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US12637N2045.
+DBOEY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::DBOEY to depositary name DEUTSCHE BOERSE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US2515421061.
+DBOEY,OTC,isin,update,US2515421061,0.95,Official OTC directory maps OTC::DBOEY to depositary name DEUTSCHE BOERSE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US2515421061.
+DURYY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::DURYY to depositary name DURR AG SPON ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US2668881061.
+DURYY,OTC,isin,update,US2668881061,0.95,Official OTC directory maps OTC::DURYY to depositary name DURR AG SPON ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US2668881061.
+FSNUY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::FSNUY to depositary name FRESENIUS SE S/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US35804M1053.
+FSNUY,OTC,isin,update,US35804M1053,0.95,Official OTC directory maps OTC::FSNUY to depositary name FRESENIUS SE S/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US35804M1053.
+HBGRY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::HBGRY to depositary name HEIDELBERGER DRK UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US42281Q1040.
+HBGRY,OTC,isin,update,US42281Q1040,0.95,Official OTC directory maps OTC::HBGRY to depositary name HEIDELBERGER DRK UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US42281Q1040.
+HLPPY,OTC,country,update,Hong Kong,0.95,Official OTC directory maps OTC::HLPPY to depositary name HANG LUNG PPTYS S/ADR; keep issuer country Hong Kong with listing-keyed ADR/ADS ISIN US41043M1045.
+HLPPY,OTC,isin,update,US41043M1045,0.95,Official OTC directory maps OTC::HLPPY to depositary name HANG LUNG PPTYS S/ADR; keep issuer country Hong Kong with listing-keyed ADR/ADS ISIN US41043M1045.
+HVRRY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::HVRRY to depositary name HANNOVER RE SE S/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US4106931052.
+HVRRY,OTC,isin,update,US4106931052,0.95,Official OTC directory maps OTC::HVRRY to depositary name HANNOVER RE SE S/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US4106931052.
+IFNNY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::IFNNY to depositary name INFINEON TECHS AG S/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US45662N1037.
+IFNNY,OTC,isin,update,US45662N1037,0.95,Official OTC directory maps OTC::IFNNY to depositary name INFINEON TECHS AG S/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US45662N1037.
+IMPUY,OTC,country,update,South Africa,0.95,Official OTC directory maps OTC::IMPUY to depositary name IMPALA PLATINUM HLDGS ADR; keep issuer country South Africa with listing-keyed ADR/ADS ISIN US4525533083.
+IMPUY,OTC,isin,update,US4525533083,0.95,Official OTC directory maps OTC::IMPUY to depositary name IMPALA PLATINUM HLDGS ADR; keep issuer country South Africa with listing-keyed ADR/ADS ISIN US4525533083.
+KNRRY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::KNRRY to depositary name KNORR-BREMSE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US4991801071.
+KNRRY,OTC,isin,update,US4991801071,0.95,Official OTC directory maps OTC::KNRRY to depositary name KNORR-BREMSE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US4991801071.
+LVMUY,OTC,country,update,France,0.95,Official OTC directory maps OTC::LVMUY to depositary name LVMH-MOET H/L/V UNSP/ADR; keep issuer country France with listing-keyed ADR/ADS ISIN US5024413065.
+LVMUY,OTC,isin,update,US5024413065,0.95,Official OTC directory maps OTC::LVMUY to depositary name LVMH-MOET H/L/V UNSP/ADR; keep issuer country France with listing-keyed ADR/ADS ISIN US5024413065.
+MALRY,OTC,country,update,Australia,0.95,Official OTC directory maps OTC::MALRY to depositary name MINERAL RES LTD UNSP/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US6030511033.
+MALRY,OTC,isin,update,US6030511033,0.95,Official OTC directory maps OTC::MALRY to depositary name MINERAL RES LTD UNSP/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US6030511033.
+MITEY,OTC,country,update,Japan,0.95,Official OTC directory maps OTC::MITEY to depositary name MITSUBISHI EST UNSP/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US6067832070.
+MITEY,OTC,isin,update,US6067832070,0.95,Official OTC directory maps OTC::MITEY to depositary name MITSUBISHI EST UNSP/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US6067832070.
+MKKGY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::MKKGY to depositary name MERCK KGAA  SPNS/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US5893392093.
+MKKGY,OTC,isin,update,US5893392093,0.95,Official OTC directory maps OTC::MKKGY to depositary name MERCK KGAA  SPNS/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US5893392093.
+MPFRY,OTC,country,update,Spain,0.95,Official OTC directory maps OTC::MPFRY to depositary name MAPFRE SA UNSP/ADR; keep issuer country Spain with listing-keyed ADR/ADS ISIN US5651001043.
+MPFRY,OTC,isin,update,US5651001043,0.95,Official OTC directory maps OTC::MPFRY to depositary name MAPFRE SA UNSP/ADR; keep issuer country Spain with listing-keyed ADR/ADS ISIN US5651001043.
+NEN0,FSX,country,update,Japan,0.95,Official FSX directory maps FSX::NEN0 to depositary name RENESAS ELECTR.ADR 1/2/ON; keep issuer country Japan with listing-keyed ADR/ADS ISIN US75972B1017.
+NEN0,FSX,isin,update,US75972B1017,0.95,Official FSX directory maps FSX::NEN0 to depositary name RENESAS ELECTR.ADR 1/2/ON; keep issuer country Japan with listing-keyed ADR/ADS ISIN US75972B1017.
+NRXXY,OTC,country,update,Germany,0.95,Official OTC directory maps OTC::NRXXY to depositary name NORDEX SE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US6555721058.
+NRXXY,OTC,isin,update,US6555721058,0.95,Official OTC directory maps OTC::NRXXY to depositary name NORDEX SE UNSP/ADR; keep issuer country Germany with listing-keyed ADR/ADS ISIN US6555721058.
+SCGLY,OTC,country,update,France,0.95,Official OTC directory maps OTC::SCGLY to depositary name SOCIETE GENL FRNCE S/ADR; keep issuer country France with listing-keyed ADR/ADS ISIN US83364L1098.
+SCGLY,OTC,isin,update,US83364L1098,0.95,Official OTC directory maps OTC::SCGLY to depositary name SOCIETE GENL FRNCE S/ADR; keep issuer country France with listing-keyed ADR/ADS ISIN US83364L1098.
+SHCAY,OTC,country,update,Japan,0.95,Official OTC directory maps OTC::SHCAY to depositary name SHARP CORP UNSP/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US8198823093.
+SHCAY,OTC,isin,update,US8198823093,0.95,Official OTC directory maps OTC::SHCAY to depositary name SHARP CORP UNSP/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US8198823093.
+SILXY,OTC,country,update,Australia,0.95,Official OTC directory maps OTC::SILXY to depositary name SILEX SYS LTD SPON ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US8270461036.
+SILXY,OTC,isin,update,US8270461036,0.95,Official OTC directory maps OTC::SILXY to depositary name SILEX SYS LTD SPON ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US8270461036.
+SKHHY,OTC,country,update,Australia,0.95,Official OTC directory maps OTC::SKHHY to depositary name SONIC HEALTHCARE SP/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US83546A2033.
+SKHHY,OTC,isin,update,US83546A2033,0.95,Official OTC directory maps OTC::SKHHY to depositary name SONIC HEALTHCARE SP/ADR; keep issuer country Australia with listing-keyed ADR/ADS ISIN US83546A2033.
+SUTNY,OTC,country,update,Japan,0.95,Official OTC directory maps OTC::SUTNY to depositary name SUMITOMO MITSUI TR S/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US86562X1063.
+SUTNY,OTC,isin,update,US86562X1063,0.95,Official OTC directory maps OTC::SUTNY to depositary name SUMITOMO MITSUI TR S/ADR; keep issuer country Japan with listing-keyed ADR/ADS ISIN US86562X1063.
