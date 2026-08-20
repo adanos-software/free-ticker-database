@@ -1140,7 +1140,12 @@ def build_confirmed_depositary_listing_tuples(
     masterfiles: list[dict[str, str]],
     metadata_updates: list[dict[str, str]] | None = None,
 ) -> set[tuple[str, str, str, str]]:
-    """Build affirmative, listing- and identifier-bound depositary evidence."""
+    """Build affirmative, listing- and identifier-bound depositary evidence.
+
+    OTC ordinary F-share lines that keep the issuer country and share a US
+    CINS with a confirmed ADR are accepted duals, not United States recodes.
+    Unconfirmed same-ISIN peers on other venues stay visible.
+    """
     scope_lookup = build_scope_lookup(scopes)
     identifier_lookup = build_identifier_lookup(identifiers)
     official_lookup = build_official_reference_lookup(masterfiles)
@@ -1222,7 +1227,6 @@ def build_confirmed_depositary_listing_tuples(
             primary
             and row.get("isin") == primary.get("isin")
             and row.get("country") == primary.get("country")
-            and not (primary.get("exchange") == "OTC" and primary.get("ticker", "").endswith("F"))
         ):
             confirmed.add(
                 (*primary_key, primary.get("isin", "").strip().upper(), primary.get("country", "").strip())
@@ -1237,15 +1241,24 @@ def build_confirmed_depositary_listing_tuples(
             primary.get("isin", "").strip().upper(),
             primary.get("country", "").strip(),
         )
-        is_foreign_ordinary = row.get("exchange") == "OTC" and row.get("ticker", "").endswith("F")
         if (
             scope.get("scope_reason") == "secondary_cross_listing"
             and primary_tuple in confirmed
             and row.get("isin") == primary.get("isin")
             and row.get("country") == primary.get("country")
-            and not is_foreign_ordinary
         ):
             confirmed.add((*key, row.get("isin", "").strip().upper(), row.get("country", "").strip()))
+    confirmed_issuer_keys = {
+        (isin, country) for _ticker, _exchange, isin, country in confirmed if isin and country
+    }
+    for row in listings:
+        if row.get("exchange") != "OTC" or not row.get("ticker", "").endswith("F"):
+            continue
+        isin = row.get("isin", "").strip().upper()
+        country = row.get("country", "").strip()
+        if (isin, country) in confirmed_issuer_keys:
+            key = (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+            confirmed.add((*key, isin, country))
     return confirmed
 
 

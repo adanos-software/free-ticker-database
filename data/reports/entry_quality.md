@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-08-20T08:00:43Z`
+Generated at: `2026-08-20T08:24:44Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,419 |
-| source_gap | 11,455 |
-| warn | 132 |
+| pass | 80,453 |
+| source_gap | 11,456 |
+| warn | 97 |
 
 ## Issue Counts
 
@@ -18,16 +18,16 @@ Generated at: `2026-08-20T08:00:43Z`
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 1,284 |
 | expected_missing_primary_isin | 690 |
-| country_isin_mismatch | 60 |
 | official_name_mismatch | 38 |
 | official_isin_mismatch | 36 |
 | missing_etf_category | 36 |
+| country_isin_mismatch | 25 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 8,429 | 0 | 3,255 | 69 | 0 |
+| OTC | 8,463 | 0 | 3,255 | 35 | 0 |
 | XSTU | 0 | 0 | 2,772 | 1 | 0 |
 | FSX | 7,155 | 0 | 987 | 1 | 0 |
 | B3 | 1,241 | 0 | 340 | 0 | 0 |
