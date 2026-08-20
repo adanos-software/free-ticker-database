@@ -73,6 +73,7 @@ Reference and audit files:
 | [`data/masterfiles/financialdata_isin_supplemental_listings.csv`](data/masterfiles/financialdata_isin_supplemental_listings.csv) | FinancialData-discovered rows accepted only after official ISIN-bearing masterfile match |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | Machine-readable coverage report |
+| [`docs/SOURCE_LICENSING.md`](docs/SOURCE_LICENSING.md) | Source-license policy; unknown stays `review_required`, restricted reviews do not unlock `stable` |
 | [`data/reports/pr_review_summary.md`](data/reports/pr_review_summary.md) | Compact PR review entry point for scope, safety policy, acceptance status, and remaining risks |
 | [`data/reports/release_acceptance.md`](data/reports/release_acceptance.md) | Release acceptance matrix covering data invariants, review traceability, campaign evidence, and gates |
 | [`data/reports/improvement_campaigns.md`](data/reports/improvement_campaigns.md) | Campaign status, next review batches, source gates, and closure blockers |
@@ -146,9 +147,9 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.32.00",
-    "built_at": "2026-07-07T10:06:34Z",
-    "total_tickers": 63162
+    "version": "3.35.0",
+    "built_at": "2026-08-20T18:25:00Z",
+    "total_tickers": 63802
   },
   "tickers": []
 }
@@ -188,6 +189,7 @@ Direct execution of `scripts/rebuild_dataset.py` remains available only for comp
 - Rights, units, warrants, notes, preferreds, and depositary lines are filtered from the stock universe.
 - Foreign OTC country metadata is corrected from valid ISIN prefixes where possible.
 - Official masterfiles are kept separate from secondary sources.
+- Source licenses are recorded in `data/masterfiles/sources.json`. Only `verified_open` with hashed evidence can pass official-full contracts; `verified_restricted` and `review_required` stay fail-closed. See [`docs/SOURCE_LICENSING.md`](docs/SOURCE_LICENSING.md).
 - Yahoo, EODHD, XTB, and FinanceDatabase are treated as reviewed candidate sources, not as exchange authority.
 - Local probe/test artifacts are ignored via `output/` and `test-results/`. CSVs under `data/` are the diffable source of truth; generated JSON, SQLite, and Parquet files are release assets.
 

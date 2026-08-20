@@ -2,14 +2,34 @@
 
 ## [Unreleased]
 
+## [3.35.0] - 2026-08-20
+
+### Summary
+
+**Merge-profile dataset release after official rotation, listing-keyed identity recodes, and hashed license reviews.** Publishes the work accumulated since v3.34.0. This is still a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, identity conflicts remain explicit, and unverified sources stay `review_required`.
+
 ### Changed
 
-- Recorded Nasdaq Trader, Euronext, QSE, PSE, DFM, and KAP website terms as `verified_restricted` with hashed evidence. Restricted sources do not unlock official-full contracts or `stable`/`complete`.
-- Left `bolsa_santiago_instruments` as `review_required` after a bot-blocked terms fetch; Chile open-data licences do not cover the exchange API.
+- Rotated official masterfiles (19 Aug overlay) with gated completeness fills and scheduled Nasdaq, symbol-change, and BME directory refreshes.
+- Filled listing-level sectors from same-ISIN non-OTC peers, then `CPH::RTX` from official Nordic Telecommunications via canonical GICS.
+- Recoded `LSE::GEM` to the official Guernsey ISIN and `OSL::ADS` from Norway to Cyprus using the official CY ISIN.
+- Pinned official ADR and GDR listings as reviewed depositaries. Accepted OTC ordinary CINS duals of confirmed ADRs, then OTC ordinary US-CINS lines with unique issuer-country evidence, without recoding siblings to US.
+- Recorded hashed Nasdaq Trader, Euronext, QSE, PSE, DFM, and KAP website terms as `verified_restricted`. Left `bolsa_santiago_instruments` as `review_required` after a bot-blocked terms fetch.
+
+### Fixed
+
+- Kept a BME official snapshot when share-detail calls 403 or time out, and kept listing joins when share-detail impersonation times out.
+- Restored live BME ListedCompanies after it returned 200 (123 listed companies; security-prices 271→272).
 
 ### Safety
 
-- License review never infers `verified_open`. Reviewed restricted sources remain fail-closed for derived-facts redistribution claims.
+- Unknown legal terms stay `review_required`. Only SEC is `verified_open`; restricted reviews do not unlock official-full or `stable`/`complete`. No license, ISIN, name, or sector was invented.
+- FSX supplement extras remain out of the database. Unevidenced listing drops and critical-field changes still fail closed.
+
+### Verification
+
+- `python -m pytest tests/ -q` and `scripts/validate_database.py` are re-run by the tag workflow, together with `scripts/build_release_acceptance_report.py --fail-on-failure` and `scripts/build_quality_contract.py --profile merge --strict`.
+- Snapshot: 63,802 primary tickers, 92,006 listing rows, 98.0% ISIN coverage, 97.6% sector/category coverage, 81 entry-quality warns, 11,458 source-gap rows. Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
 
 ## [3.34.0] - 2026-08-18
 
