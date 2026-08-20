@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-19T16:42:09Z",
-  "rows": 168978,
+  "generated_at": "2026-08-20T05:59:39Z",
+  "rows": 169199,
   "exchanges": [
     "ADX",
     "AMS",
@@ -104,8 +104,8 @@
     "bist_kap_mkk_listed_securities": 652,
     "boursa_kuwait_stocks": 140,
     "bme_etf_list": 5,
+    "bme_security_prices_directory": 271,
     "bme_listed_companies": 123,
-    "bme_security_prices_directory": 50,
     "bmv_issuer_directory": 76,
     "bmv_stock_search": 10,
     "bmv_market_data_securities": 9,
@@ -509,7 +509,7 @@
       "official": true,
       "mode": "network",
       "rows": 123,
-      "generated_at": "2026-08-19T15:05:31Z"
+      "generated_at": "2026-08-20T05:59:39Z"
     },
     "bme_etf_list": {
       "provider": "BME",
@@ -517,7 +517,7 @@
       "official": true,
       "mode": "network",
       "rows": 5,
-      "generated_at": "2026-08-19T15:05:31Z"
+      "generated_at": "2026-08-20T05:59:39Z"
     },
     "bme_listed_values": {
       "provider": "BME",
@@ -532,10 +532,9 @@
       "provider": "BME",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 50,
-      "generated_at": "2026-08-02T08:35:09Z",
-      "last_error": "Empty refresh result; preserved 50 existing rows"
+      "mode": "network",
+      "rows": 271,
+      "generated_at": "2026-08-20T05:59:39Z"
     },
     "bme_growth_prices": {
       "provider": "BME Growth",
@@ -1381,7 +1380,7 @@
     "bme_listed_companies": "network",
     "bme_etf_list": "network",
     "bme_listed_values": "unavailable",
-    "bme_security_prices_directory": "unavailable",
+    "bme_security_prices_directory": "network",
     "bme_growth_prices": "network",
     "athex_sector_classification": "network",
     "bursa_equity_isin": "unavailable",
@@ -1494,10 +1493,6 @@
       "error": "BME listed values rows unavailable"
     },
     {
-      "source_key": "bme_security_prices_directory",
-      "error": "Empty refresh result; preserved 50 existing rows"
-    },
-    {
       "source_key": "bmv_capital_trust_search",
       "error": "Empty refresh result; preserved 5 existing rows"
     },
@@ -1567,12 +1562,16 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-19T16:42:09Z",
+    "generated_at": "2026-08-20T05:59:39Z",
     "selected_source_keys": [
-      "twse_etf_list"
+      "bme_etf_list",
+      "bme_listed_companies",
+      "bme_security_prices_directory"
     ],
     "source_modes": {
-      "twse_etf_list": "network"
+      "bme_etf_list": "network",
+      "bme_listed_companies": "network",
+      "bme_security_prices_directory": "network"
     }
   }
 }

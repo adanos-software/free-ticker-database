@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-19T17:08:15Z",
+    "generated_at": "2026-08-20T06:08:01Z",
     "rows": 92006,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,25 +14,25 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80269,
-      "source_gap": 11570,
+      "pass": 80385,
+      "source_gap": 11454,
       "warn": 167
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4800,
-      "official_reference": 82150,
+      "identifier_enriched": 4694,
+      "official_reference": 82266,
       "scoped_source_gap": 239,
-      "valid_isin": 4817
+      "valid_isin": 4807
     },
     "severity_counts": {
       "high": 131,
       "medium": 38,
-      "source_gap": 11877
+      "source_gap": 11751
     },
     "issue_counts": {
-      "official_reference_gap": 6569,
+      "official_reference_gap": 6453,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1295,
+      "missing_stock_sector": 1285,
       "expected_missing_primary_isin": 690,
       "country_isin_mismatch": 95,
       "official_name_mismatch": 38,
@@ -126,11 +126,6 @@
         "warn": 18
       },
       {
-        "exchange": "BME",
-        "pass": 130,
-        "source_gap": 146
-      },
-      {
         "exchange": "XETRA",
         "pass": 4170,
         "source_gap": 143,
@@ -146,6 +141,12 @@
         "exchange": "BATS",
         "pass": 1226,
         "source_gap": 131
+      },
+      {
+        "exchange": "NYSE",
+        "pass": 1922,
+        "source_gap": 92,
+        "warn": 8
       }
     ]
   },
@@ -12880,24 +12881,6 @@
       ]
     },
     {
-      "listing_key": "BME::480S",
-      "ticker": "480S",
-      "exchange": "BME",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "BME",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
       "listing_key": "KRX::483240",
       "ticker": "483240",
       "exchange": "KRX",
@@ -18324,6 +18307,24 @@
     {
       "listing_key": "FSX::6X5",
       "ticker": "6X5",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6YP",
+      "ticker": "6YP",
       "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
