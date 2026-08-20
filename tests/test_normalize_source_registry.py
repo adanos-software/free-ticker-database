@@ -64,6 +64,10 @@ def test_live_nasdaq_and_euronext_reviews_stay_restricted_not_open() -> None:
         "nasdaq_trading_system_adds_deletes",
         "euronext_equities",
         "euronext_etfs",
+        "qse_market_watch",
+        "pse_listed_company_directory",
+        "dfm_listed_securities",
+        "bist_kap_mkk_listed_securities",
     )
     for key in restricted_keys:
         row = by_key[key]
@@ -75,3 +79,6 @@ def test_live_nasdaq_and_euronext_reviews_stay_restricted_not_open() -> None:
         assert len(row["terms_sha256"]) == 64
         assert row["license_reviewed_at"]
     assert by_key["sec_company_tickers_exchange"]["license_status"] == "verified_open"
+    santiago = by_key["bolsa_santiago_instruments"]
+    assert santiago["license_status"] == "review_required"
+    assert santiago["terms_sha256"] == ""
