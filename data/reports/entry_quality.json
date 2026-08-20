@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-20T08:24:44Z",
+    "generated_at": "2026-08-20T08:47:11Z",
     "rows": 92006,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80453,
-      "source_gap": 11456,
-      "warn": 97
+      "pass": 80467,
+      "source_gap": 11458,
+      "warn": 81
     },
     "evidence_level_counts": {
       "identifier_enriched": 4694,
@@ -25,7 +25,7 @@
       "valid_isin": 4807
     },
     "severity_counts": {
-      "high": 61,
+      "high": 45,
       "medium": 38,
       "source_gap": 11750
     },
@@ -37,14 +37,14 @@
       "official_name_mismatch": 38,
       "official_isin_mismatch": 36,
       "missing_etf_category": 36,
-      "country_isin_mismatch": 25
+      "country_isin_mismatch": 9
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8463,
-        "source_gap": 3255,
-        "warn": 35
+        "pass": 8477,
+        "source_gap": 3257,
+        "warn": 19
       },
       {
         "exchange": "XSTU",
