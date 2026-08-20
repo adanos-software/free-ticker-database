@@ -20,6 +20,7 @@
 
 - Kept a BME official snapshot when share-detail calls 403 or time out, and kept listing joins when share-detail impersonation times out.
 - Restored live BME ListedCompanies after it returned 200 (123 listed companies; security-prices 271→272).
+- Pruned 124 stale entry-quality allowlist keys after warns fell to 81, and listed `masterfile_vanished_delisting_review.json` in release source-report integrity.
 
 ### Safety
 

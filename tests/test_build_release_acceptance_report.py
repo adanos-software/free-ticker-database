@@ -229,6 +229,10 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["primary_isin_completeness"] == "data/reports/primary_isin_completeness.json"
     assert RELEASE_SOURCE_REPORTS["etf_universe_completeness"] == "data/reports/etf_universe_completeness.json"
     assert RELEASE_SOURCE_REPORTS["cfi_code_review"] == "data/reports/cfi_code_review.json"
+    assert (
+        RELEASE_SOURCE_REPORTS["masterfile_vanished_delisting_review"]
+        == "data/reports/masterfile_vanished_delisting_review.json"
+    )
 
 
 def test_evaluate_release_metadata_requires_versioned_changelog_section() -> None:
