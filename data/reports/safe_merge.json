@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 2,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -22,7 +22,20 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "OSL::ADS",
+      "field_name": "country",
+      "old_value": "Norway",
+      "new_value": "Cyprus"
+    },
+    {
+      "listing_key": "OSL::ADS",
+      "field_name": "country_code",
+      "old_value": "NO",
+      "new_value": "CY"
+    }
+  ],
   "generated_official_change_evidence": [],
   "venue_findings": [
     {
