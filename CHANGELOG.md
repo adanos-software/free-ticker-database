@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Recorded Nasdaq Trader and Euronext website terms as `verified_restricted` with hashed evidence. Restricted sources do not unlock official-full contracts or `stable`/`complete`.
+
+### Safety
+
+- License review never infers `verified_open`. Nasdaq and Euronext remain fail-closed for derived-facts redistribution claims.
+
 ## [3.34.0] - 2026-08-18
 
 ### Summary
