@@ -17840,7 +17840,21 @@ def test_persist_source_metadata_preserves_reviewed_license_fields(tmp_path, mon
                     "terms_version": "privacy-information-website-dissemination",
                     "terms_sha256": "a" * 64,
                     "license_reviewed_at": "2026-08-18T07:00:00Z",
-                }
+                },
+                {
+                    "key": "nasdaq_listed",
+                    "provider": "Nasdaq Trader",
+                    "license_status": "verified_restricted",
+                    "license_name": "Nasdaq Trader Copyright, Trademarks and Disclaimers",
+                    "license_url": "https://www.nasdaqtrader.com/Trader.aspx?id=CopyDisclaimMain",
+                    "derived_facts_redistribution_status": "restricted",
+                    "raw_redistribution_allowed": False,
+                    "attribution_required": "required",
+                    "commercial_use_status": "restricted",
+                    "terms_version": "nasdaqtrader-copydisclaim-main-copyright-2021",
+                    "terms_sha256": "b" * 64,
+                    "license_reviewed_at": "2026-08-20T17:50:00Z",
+                },
             ]
         ),
         encoding="utf-8",
@@ -17853,7 +17867,12 @@ def test_persist_source_metadata_preserves_reviewed_license_fields(tmp_path, mon
     payload = json.loads(sources_path.read_text(encoding="utf-8"))
     sec = next(row for row in payload if row["key"] == "sec_company_tickers_exchange")
     nasdaq = next(row for row in payload if row["key"] == "nasdaq_listed")
+    euronext = next(row for row in payload if row["key"] == "euronext_equities")
     assert sec["license_status"] == "verified_open"
     assert sec["license_url"] == "https://www.sec.gov/about/privacy-information"
     assert sec["terms_sha256"] == "a" * 64
-    assert "license_status" not in nasdaq
+    assert nasdaq["license_status"] == "verified_restricted"
+    assert nasdaq["license_url"] == "https://www.nasdaqtrader.com/Trader.aspx?id=CopyDisclaimMain"
+    assert nasdaq["terms_sha256"] == "b" * 64
+    assert nasdaq["raw_redistribution_allowed"] is False
+    assert "license_status" not in euronext

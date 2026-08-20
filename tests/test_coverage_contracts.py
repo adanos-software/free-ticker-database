@@ -72,6 +72,17 @@ def test_license_requires_terms_hash_and_review_time() -> None:
     assert source_license_approved(bad)[0] is False
 
 
+def test_verified_restricted_does_not_approve_derived_facts_redistribution() -> None:
+    restricted = source()
+    restricted["license_status"] = "verified_restricted"
+    restricted["derived_facts_redistribution_status"] = "restricted"
+    restricted["commercial_use_status"] = "restricted"
+    restricted["attribution_required"] = "required"
+    ok, reason = source_license_approved(restricted)
+    assert ok is False
+    assert "license_status is not verified_open" in reason
+
+
 def test_future_snapshot_timestamp_is_rejected() -> None:
     ok, reason = source_fresh(
         source(),

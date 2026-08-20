@@ -86,6 +86,7 @@ def build(*, sources_json: Path = SOURCES_JSON, licensing_json: Path = SOURCE_LI
         "license_status_counts": dict(sorted(counts.items())),
         "raw_redistribution_allowed_sources": sum(bool(row["raw_redistribution_allowed"]) for row in rows),
         "review_required_sources": sum(row["license_status"] == "review_required" for row in rows),
+        "verified_restricted_sources": sum(row["license_status"] == "verified_restricted" for row in rows),
         "sources_with_terms_hash": sum(len(row["terms_sha256"]) == 64 for row in rows),
         "policy": "Unknown legal terms remain review_required; normalization never infers permission.",
     }
