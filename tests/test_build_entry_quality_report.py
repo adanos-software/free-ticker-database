@@ -274,6 +274,142 @@ def test_entry_quality_accepts_official_depositary_but_not_unconfirmed_peer():
     assert any(issue.issue_type == "country_isin_mismatch" for issue in by_key["LSE::EXMPL"].issues)
 
 
+def test_entry_quality_accepts_otc_ordinary_cins_dual_of_confirmed_adr():
+    foreign = row(
+        "Euronext::BECO",
+        "BECO",
+        "Euronext",
+        "Example Holdings SA",
+        isin="BE0003797140",
+        country="Belgium",
+        country_code="BE",
+    )
+    ordinary = row(
+        "OTC::EXMPF",
+        "EXMPF",
+        "OTC",
+        "Example Holdings SA",
+        isin="US03524A1088",
+        country="Belgium",
+        country_code="BE",
+    )
+    adr = row(
+        "OTC::EXMPY",
+        "EXMPY",
+        "OTC",
+        "Example Holdings SA",
+        isin="US03524A1088",
+        country="Belgium",
+        country_code="BE",
+    )
+    listings = [foreign, ordinary, adr]
+
+    report_rows = assess_entries(
+        listings,
+        tickers=listings,
+        scopes=[
+            scope("Euronext::BECO", "BECO", "Euronext", isin="BE0003797140"),
+            scope(
+                "OTC::EXMPF",
+                "EXMPF",
+                "OTC",
+                isin="US03524A1088",
+                instrument_scope="extended",
+                scope_reason="otc_listing",
+            ),
+            scope(
+                "OTC::EXMPY",
+                "EXMPY",
+                "OTC",
+                isin="US03524A1088",
+                instrument_scope="extended",
+                scope_reason="otc_listing",
+                primary_listing_key="OTC::EXMPF",
+            ),
+        ],
+        identifiers=[],
+        masterfiles=[
+            official_ref("BECO", "Euronext", "Example Holdings SA", "BE0003797140"),
+            official_ref("EXMPF", "OTC", "Example Holdings SA", "US03524A1088"),
+            official_ref("EXMPY", "OTC", "Example Holdings SA - ADS", "US03524A1088"),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["OTC::EXMPY"].issues)
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["OTC::EXMPF"].issues)
+
+
+def test_entry_quality_accepts_otc_ordinary_listing_sharing_confirmed_adr_isin():
+    adr = row(
+        "NASDAQ::EXMP",
+        "EXMP",
+        "NASDAQ",
+        "Example Holdings SA",
+        isin="US03524A1088",
+        country="Cayman Islands",
+        country_code="KY",
+    )
+    ordinary = row(
+        "OTC::EXMPF",
+        "EXMPF",
+        "OTC",
+        "Example Holdings SA",
+        isin="US03524A1088",
+        country="Cayman Islands",
+        country_code="KY",
+    )
+    listings = [adr, ordinary]
+
+    report_rows = assess_entries(
+        listings,
+        tickers=listings,
+        scopes=[
+            scope("NASDAQ::EXMP", "EXMP", "NASDAQ", isin="US03524A1088"),
+            scope(
+                "OTC::EXMPF",
+                "EXMPF",
+                "OTC",
+                isin="US03524A1088",
+                instrument_scope="extended",
+                scope_reason="otc_listing",
+                primary_listing_key="NASDAQ::EXMP",
+            ),
+        ],
+        identifiers=[],
+        masterfiles=[
+            official_ref("EXMP", "NASDAQ", "Example Holdings SA - ADS", "US03524A1088"),
+            official_ref("EXMPF", "OTC", "Example Holdings SA", "US03524A1088"),
+        ],
+        metadata_updates=[
+            {
+                "ticker": "EXMP",
+                "exchange": "NASDAQ",
+                "field": "country",
+                "decision": "update",
+                "proposed_value": "Cayman Islands",
+                "reason": "Reviewed ADR issuer domicile",
+            },
+            {
+                "ticker": "EXMP",
+                "exchange": "NASDAQ",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US03524A1088",
+                "reason": "Reviewed ADR depositary ISIN",
+            },
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": []},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["NASDAQ::EXMP"].issues)
+    assert all(issue.issue_type != "country_isin_mismatch" for issue in by_key["OTC::EXMPF"].issues)
+
+
 def test_entry_quality_keeps_unreviewed_country_isin_mismatch_visible():
     listing = row(
         "NASDAQ::EXMP",
