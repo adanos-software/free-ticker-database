@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T17:08:09Z",
+  "generated_at": "2026-08-20T06:07:56Z",
   "summary": {
     "venues": 87,
     "venue_status_counts": {
@@ -9,12 +9,12 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 24,
-      "maintain": 45,
+      "maintain": 46,
       "official_source_required": 5,
-      "refresh_unavailable": 13
+      "refresh_unavailable": 12
     },
-    "unavailable_venues": 13,
-    "nonfresh_venues": 13,
+    "unavailable_venues": 12,
+    "nonfresh_venues": 12,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -255,21 +255,21 @@
       "reference_scopes": "exchange_directory|listed_companies_subset",
       "current_stock_rows": 271,
       "current_etf_rows": 5,
-      "official_active_stock_rows": 171,
-      "official_active_etf_rows": 7,
+      "official_active_stock_rows": 389,
+      "official_active_etf_rows": 10,
       "missing_product_classes": "",
       "official_source_keys": "bme_etf_list|bme_listed_companies|bme_security_prices_directory",
-      "unavailable_source_keys": "bme_security_prices_directory",
-      "nonfresh_source_keys": "bme_security_prices_directory",
-      "source_blocker_classes": "empty_refresh",
-      "official_denominator": 50,
-      "official_matches": 18,
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
+      "official_denominator": 271,
+      "official_matches": 246,
       "official_collisions": 0,
-      "official_missing": 32,
-      "official_recall_pct": 36.0,
-      "collision_adjusted_recall_pct": 36.0,
+      "official_missing": 25,
+      "official_recall_pct": 90.77,
+      "collision_adjusted_recall_pct": 90.77,
       "denominator_status": "available",
-      "audit_outcome": "refresh_unavailable",
+      "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
     },
     {

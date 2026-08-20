@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-19T17:08:09Z`
+Generated at: `2026-08-20T06:07:56Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 45, "official_source_required": 5, "refresh_unavailable": 13}`
+- Audit outcomes: `{"denominator_missing": 24, "maintain": 46, "official_source_required": 5, "refresh_unavailable": 12}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -18,7 +18,7 @@ Generated at: `2026-08-19T17:08:09Z`
 | BHB | official_full | bahrain_bourse_listed_companies |  | 41 | 68.29 |  | maintain | not_applicable |
 | BIST | official_full | bist_kap_mkk_listed_securities |  | 652 | 93.87 |  | maintain | not_applicable |
 | BK | official_full | boursa_kuwait_stocks |  | 140 | 72.14 |  | maintain | not_applicable |
-| BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 50 | 36.0 | bme_security_prices_directory | refresh_unavailable | not_applicable |
+| BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 271 | 90.77 |  | maintain | not_applicable |
 | BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_market_data_securities|bmv_stock_search | refresh_unavailable | blocked_source_unavailable |
 | BSE_BW | official_partial | bse_bw_listed_companies | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |
 | BSE_HU | official_partial | bse_hu_listed_companies | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |
