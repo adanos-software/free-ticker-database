@@ -1,1489 +1,861 @@
 {
   "summary": {
-    "generated_at": "2026-08-19T16:42:27Z",
-    "previous_reference_csv": "/tmp/reference-before-kuwait-twse.csv",
+    "generated_at": "2026-08-21T07:10:02Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 43,
-    "vanished_rows": 6,
-    "changed_rows": 52,
+    "new_rows": 38,
+    "vanished_rows": 10,
+    "changed_rows": 8,
     "new_by_source": {
-      "boursa_kuwait_stocks": 1,
-      "twse_etf_list": 42
+      "set_stock_search": 2,
+      "six_etf_products": 26,
+      "spotlight_companies_directory": 5,
+      "sse_etf_list": 2,
+      "szse_etf_list": 3
     },
     "vanished_by_source": {
-      "boursa_kuwait_stocks": 1,
-      "twse_etf_list": 5
+      "set_stock_search": 1,
+      "spotlight_companies_directory": 9
     },
     "changed_by_type": {
-      "name_change": 52
+      "isin_change": 8
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "boursa_kuwait_stocks",
-      "provider": "Boursa Kuwait",
-      "source_url": "https://www.boursakuwait.com.kw/data-api/legacy-mix-services",
-      "ticker": "PHC",
-      "name": "Privatization Holding",
-      "exchange": "BK",
+      "source_key": "set_stock_search",
+      "provider": "SET",
+      "source_url": "https://www.set.or.th/api/set/stock/list",
+      "ticker": "COLOUR",
+      "name": "SALEE COLOUR PUBLIC COMPANY LIMITED",
+      "exchange": "SET",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "KW0EQ0601702",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Industrials"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "0054",
-      "name": "Yuanta/P-shares S&P Custom China Play 50 ETF",
-      "exchange": "TWSE",
+      "source_key": "set_stock_search",
+      "provider": "SET",
+      "source_url": "https://www.set.or.th/api/set/stock/list",
+      "ticker": "PHAT",
+      "name": "Phatra Group Public Company Limited",
+      "exchange": "SET",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Staples"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "IQAW",
+      "name": "Invesco All Country World Enhanced Equity UCITS ETF Acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000054006",
+      "isin": "IE000S0JMIY6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "0058",
-      "name": "FUBON TAIWAN EIGHT INDUSTRIES ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "IQAW-CHF",
+      "name": "Invesco All Country World Enhanced Equity UCITS ETF Acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000058007",
+      "isin": "IE000S0JMIY6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "0059",
-      "name": "FUBON TAIWAN FINANCE ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "IQAW-USD",
+      "name": "Invesco All Country World Enhanced Equity UCITS ETF Acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000059005",
+      "isin": "IE000S0JMIY6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "0060",
-      "name": "Yuanta/P-shares TWSE Taiwan Non－Tech 50 ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "IQAWCHF",
+      "name": "Invesco All Country World Enhanced Equity UCITS ETF Acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000060003",
+      "isin": "IE000S0JMIY6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "006205",
-      "name": "Fubon SSE180 ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "IQAWUSD",
+      "name": "Invesco All Country World Enhanced Equity UCITS ETF Acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000062058",
+      "isin": "IE000S0JMIY6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00625K",
-      "name": "FUBON SSE 180 ETF RMB",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "SHORTM",
+      "name": "UBS BBG USD Treasury Ultra-Short UCITS ETF fhMXN acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000625K4",
+      "isin": "LU3311860152",
       "cfi": "",
-      "sector": ""
+      "sector": "Fixed Income"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00636",
-      "name": "Cathay FTSE China A50 ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "SHORTM-USD",
+      "name": "UBS BBG USD Treasury Ultra-Short UCITS ETF fhMXN acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000063601",
+      "isin": "LU3311860152",
       "cfi": "",
-      "sector": ""
+      "sector": "Fixed Income"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00636K",
-      "name": "Cathay FTSE China A50 ETF(USD)",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "SHORTMUSD",
+      "name": "UBS BBG USD Treasury Ultra-Short UCITS ETF fhMXN acc",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000636K1",
+      "isin": "LU3311860152",
       "cfi": "",
-      "sector": ""
+      "sector": "Fixed Income"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00643",
-      "name": "CAPITAL SZSE SME １００ INDEX EXCHANGE TRADED FUND",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VALL",
+      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000064302",
+      "isin": "IE000VAHT5T0",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00643K",
-      "name": "CAPITAL SZSE SME １００ INDEX EXCHANGE TRADED FUND",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VALL-USD",
+      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000643K7",
+      "isin": "IE000VAHT5T0",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00649",
-      "name": "Fuh Hwa Hang Seng ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VALLD",
+      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000064906",
+      "isin": "IE000CVUM3N6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00657",
-      "name": "Cathay Nikkei 225 Currency-hedged ETF Fund",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VALLD-USD",
+      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000065705",
+      "isin": "IE000CVUM3N6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00657K",
-      "name": "Cathay Nikkei 225 Currency-hedged ETF Fund(USD)",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VALLDUSD",
+      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000657K7",
+      "isin": "IE000CVUM3N6",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00658L",
-      "name": "Cathay FTSE Japan Daily Leveraged 2X ETF Fund",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VALLUSD",
+      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000658L3",
+      "isin": "IE000VAHT5T0",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00659R",
-      "name": "Cathay FTSE Japan Daily Inversed ETF Fund",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VSML",
+      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000659R8",
+      "isin": "IE0007TPRF31",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00667",
-      "name": "Yuanta KOSPI 200 ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VSML-USD",
+      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000066703",
+      "isin": "IE0007TPRF31",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00668",
-      "name": "Cathay Dow Jones Industrial Average ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VSMLD",
+      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000066802",
+      "isin": "IE000F8RXD33",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00668K",
-      "name": "Cathay Dow Jones Industrial Average ETF(USD)",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VSMLD-USD",
+      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000668K4",
+      "isin": "IE000F8RXD33",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00672L",
-      "name": "Yuanta S&P GSCI Crude Oil 2x Leveraged ER Futures ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VSMLDUSD",
+      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000672L4",
+      "isin": "IE000F8RXD33",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00677U",
-      "name": "Fubon S&P 500 VIX Short-Term Futures ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VSMLUSD",
+      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000677U4",
+      "isin": "IE0007TPRF31",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00691R",
-      "name": "Mega Taiwan Blue Chip 30 Daily Inverse ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VXUD",
+      "name": "Vanguard FTSE All- World ex-U.S. UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000691R1",
+      "isin": "IE000G1H7OC0",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00698L",
-      "name": "Yuanta Daily U.S. Treasury 7-10 Year Bond Bull 2X ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VXUD-USD",
+      "name": "Vanguard FTSE All- World ex-U.S. UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000698L9",
+      "isin": "IE000G1H7OC0",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00699R",
-      "name": "Yuanta Daily U.S. Treasury 7-10 Year Bond Bear 1X ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VXUDUSD",
+      "name": "Vanguard FTSE All- World ex-U.S. UCITS ETF USD Dist Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000699R4",
+      "isin": "IE000G1H7OC0",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00704L",
-      "name": "Taishin MSCI Taiwan Daily Leveraged 2X ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VXUS",
+      "name": "Vanguard FTSE All- World ex-U.S. UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000704L5",
+      "isin": "IE0009A5ADV9",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00705R",
-      "name": "Taishin MSCI Taiwan Daily Inverse ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VXUS-USD",
+      "name": "Vanguard FTSE All- World ex-U.S. UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000705R9",
+      "isin": "IE0009A5ADV9",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00716R",
-      "name": "Paradigm S&P GSCI Brent Crude 1X Inverse ER Futures ETF",
-      "exchange": "TWSE",
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "VXUSUSD",
+      "name": "Vanguard FTSE All- World ex-U.S. UCITS ETF USD Acc Shares",
+      "exchange": "SIX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000716R6",
+      "isin": "IE0009A5ADV9",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000446254",
+      "ticker": "LANE-B",
+      "name": "Lane Capital Group B",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0027301763",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00729R",
-      "name": "FSITC Taiwan Industry Elite 30 Daily -1X Inverse ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000361679",
+      "ticker": "LGOLD-B",
+      "name": "Lappland Guldprospektering",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000729R9",
+      "isin": "SE0022447207",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00732",
-      "name": "Cathay FTSE Chinese Government and Policy Bank Bond 0-1Year Select ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000528855",
+      "ticker": "LIGR-BTA",
+      "name": "Lightning Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000073204",
+      "isin": "SE0029951441",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00742",
-      "name": "Shin Kong Domestic Demand High Dividend ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000411523",
+      "ticker": "LOGIST-A",
+      "name": "Logistri",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000074202",
+      "isin": "SE0025197619",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00743",
-      "name": "Cathay FTSE China A150 ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000320",
+      "ticker": "LOVI",
+      "name": "Lovisagruvan",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000074301",
+      "isin": "SE0000418873",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00766L",
-      "name": "Taishin MSCI China Free Leveraged 2X Daily ETF",
-      "exchange": "TWSE",
+      "source_key": "sse_etf_list",
+      "provider": "SSE",
+      "source_url": "https://www.sse.com.cn/assortment/fund/etf/list/",
+      "ticker": "517230",
+      "name": "云计算ETF永赢",
+      "exchange": "SSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000766L4",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00767",
-      "name": "Fuh Hwa Dow Jones US Financial Services Equity ETF",
-      "exchange": "TWSE",
+      "source_key": "sse_etf_list",
+      "provider": "SSE",
+      "source_url": "https://www.sse.com.cn/assortment/fund/etf/list/",
+      "ticker": "589460",
+      "name": "科创200ETF华宝",
+      "exchange": "SSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000076702",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00774B",
-      "name": "Shin Kong 10 Years China Treasury Policy Bank Green Bond ETF",
-      "exchange": "TWSE",
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158012",
+      "name": "云计算ETF南方",
+      "exchange": "SZSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000774B9",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00774C",
-      "name": "Shin Kong 10 Years China Treasury Policy Bank Green Bond ETF RMB",
-      "exchange": "TWSE",
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "159073",
+      "name": "粮食ETF汇添富",
+      "exchange": "SZSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW00000774C7",
+      "isin": "",
       "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00776",
-      "name": "Shin Kong NYSE US Core Large Cap ETF",
-      "exchange": "TWSE",
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "159082",
+      "name": "化工ETF华夏",
+      "exchange": "SZSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "TW0000077601",
+      "isin": "",
       "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "0080",
-      "name": "HANG SENG H-SHARE INDEX ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0000080001",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "0081",
-      "name": "HANG SENG INDEX ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0000081009",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "008201",
-      "name": "W.I.S.E. - SSE 50 China Tracker",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0000082015",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00866",
-      "name": "Shin Kong Shiller Barclays CAPE® US Sector Value ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0000086602",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00906",
-      "name": "United Metaverse Technology and Services ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0000090604",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "00925",
-      "name": "Shin Kong S&P Electric Vehicles ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0000092501",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap47_L",
-      "ticker": "009829",
-      "name": "United Korea KOSPI 50 ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "TW0000098292",
-      "cfi": "",
-      "sector": ""
+      "sector": "Equity"
     }
   ],
   "vanished": [
     {
-      "source_key": "boursa_kuwait_stocks",
-      "provider": "Boursa Kuwait",
-      "source_url": "https://www.boursakuwait.com.kw/data-api/legacy-mix-services",
-      "ticker": "KPPC",
-      "name": "Privatization Holding",
-      "exchange": "BK",
+      "source_key": "set_stock_search",
+      "provider": "SET",
+      "source_url": "https://www.set.or.th/api/set/stock/list",
+      "ticker": "COLOR",
+      "name": "SALEE COLOUR PUBLIC COMPANY LIMITED",
+      "exchange": "SET",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "KW0EQ0601702",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01001053",
+      "ticker": "GJAB",
+      "name": "Gullberg & Jansson",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0004576346",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "ticker": "006205(TWD)<br>00625K(RMB)",
-      "name": "Fubon SSE180 ETF (FB SSE180)",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000DLRC",
+      "ticker": "GOSOL",
+      "name": "Gosol Energy Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "",
+      "isin": "SE0020845071",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "ticker": "00636(TWD)<br>00636K(USD)",
-      "name": "Cathay FTSE China A50 ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01001481",
+      "ticker": "HAMLET-B",
+      "name": "Hamlet",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "",
+      "isin": "SE0015661152",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "ticker": "00643(TWD)<br>00643K(RMB)",
-      "name": "Capital SZSE SME 100 Index ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000421292",
+      "ticker": "HFRTO-B",
+      "name": "HF Reverse",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "",
+      "isin": "SE0025937899",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "ticker": "00657(TWD)<br>00657K(USD)",
-      "name": "Cathay Nikkei 225 Currency-hedged ETF",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000446255",
+      "ticker": "KONT",
+      "name": "KONT",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "",
+      "isin": "SE0007075247",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "twse_etf_list",
-      "provider": "TWSE",
-      "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
-      "ticker": "00668(TWD)<br>00668K(USD)",
-      "name": "Cathay Dow Jones Industrial Average ETF Fund",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000486",
+      "ticker": "NIDHOG",
+      "name": "Nidhogg Resources Holding",
+      "exchange": "STO",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "",
+      "isin": "SE0023468624",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000302570",
+      "ticker": "OPSYH",
+      "name": "OPSYH",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0025399199",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000302489",
+      "ticker": "SLOTT-B",
+      "name": "Slottsviken",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0018012411",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000C56Q",
+      "ticker": "UPGRAD",
+      "name": "Upgrade Invest Nordic",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0018536401",
       "cfi": "",
       "sector": ""
     }
   ],
   "changed": [
     {
-      "source_key": "boursa_kuwait_stocks",
-      "exchange": "BK",
-      "ticker": "ALFTAQA",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "CHOSA",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Action Energy Company K.S.C.C",
-          "after": "Action Energy Company K.S.C.P"
+        "isin": {
+          "before": "SE0007784319",
+          "after": ""
         }
       }
     },
     {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00400A",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "EASY-B",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Cathay Taiwan High Dividend Momentum Active ETF",
-          "after": "Cathay High Dividend Momentum Active ETF"
+        "isin": {
+          "before": "",
+          "after": "XSAT01000532"
         }
       }
     },
     {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "0057",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "EXALT",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Fubon MSCI® Taiwan ETF",
-          "after": "FUBON MSCI TAIWAN ETF"
+        "isin": {
+          "before": "SE0005223542",
+          "after": ""
         }
       }
     },
     {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "006207",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "GOMERO",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Fuh Hwa CSI300 A Shares ETF (FH CSI300)",
-          "after": "Fuh Hwa CSI 300 A Shares Exchange Traded Fund"
+        "isin": {
+          "before": "SE0011167535",
+          "after": ""
         }
       }
     },
     {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00633L",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "HOME-B",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Fubon SSE180 Leveraged 2X Index ETF",
-          "after": "Fubon SSE 180 Leveraged 2X Index ETF"
+        "isin": {
+          "before": "SE0001426131",
+          "after": ""
         }
       }
     },
     {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00634R",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "IMS",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Fubon SSE180 Inversed Index ETF",
-          "after": "Fubon SSE 180 Inversed Index ETF"
+        "isin": {
+          "before": "SE0007603402",
+          "after": ""
         }
       }
     },
     {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00638R",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "KRONA",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Yuanta Daily Taiwan 50 Bear -1X ETF",
-          "after": "Yuanta Daily CSI 300 Bear -1X ETF"
+        "isin": {
+          "before": "",
+          "after": "SE0015657895"
         }
       }
     },
     {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00639",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "ZOOM",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Fubon SZSE 100 Index ETF",
-          "after": "Fubon SZSE 100 ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00641R",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon TOPIX Inverse -1X Index ETF",
-          "after": "Fubon TOPIX Inverse-1X Index ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00648R",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Yuanta Daily S&P 500 Inverse ETF",
-          "after": "Yuanta Daily S&P 500 Bear 1X ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00653L",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon NIFTY PR 2X Leverage Index ETF",
-          "after": "Fubon NIFTY 2X Leveraged Index ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00654R",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon NIFTY PR 1X Inverse Index ETF",
-          "after": "Fubon NIFTY -1 Inverse Index ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00669R",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay DOW JONES INDUSTRIAL AVERAGE Daily Inversed ETF",
-          "after": "Cathay Dow Jones Industrial Average Daily Inversed ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00674R",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Yuanta S&P GSCI Gold 1x Inverse ER Futures ETF",
-          "after": "Yuanta S&P GSCI Gold 1x Inverse ER FuturesETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00676R",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon TAIEX Daily -1X Inverse ETF",
-          "after": "Fubon TAIEX Daily-1X Inverse ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00678",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital NBI ETF",
-          "after": "CAPITAL NASDAQ BIOTECHNOLOGY INDEX EXCHANGE"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00685L",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital TAIEX Daily Leveraged 2X ETF",
-          "after": "CAPITAL TAIEX DAILY LEVERAGED 2X ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00686R",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital TAIEX Daily Inversed -1X ETF",
-          "after": "CAPITAL TAIEX DAILY INVERSED -1X ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00701",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay TIP TAIEX<sup>+</sup> Low Volatility Select 30 ETF",
-          "after": "Cathay TIP TAIEX +Low Volatility Select 30 ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00714",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital Dow Jones U.S. Real Estate ETF",
-          "after": "CAPITAL DOW JONES U.S. REAL ESTATE INDEX EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00715L",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "JKO S&P GSCI Brent Crude 2X Leveraged ER Futures ETF",
-          "after": "JKO S&P GSCI Brent Crude 2x Leveraged ER Futures ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00733",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon TAIEX<sup>+</sup> Small/Mid-Cap Alpha Momentum 50 ETF",
-          "after": "Fubon Taiwan Small-Mid Cap Alpha Momentum 50 ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00735",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay Korea/Taiwan IT Premier ETF Fund",
-          "after": "Cathay Korea/Taiwan IT Premier ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00736",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay FTSE Emerging Markets ETF Fund",
-          "after": "Cathay FTSE Emerging Markets ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00737",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay Nasdaq CTA Artificial Intelligence and Robotics ETF Fund",
-          "after": "Cathay Nasdaq CTA Artificial Inteligence and Robotics ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00739",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Yuanta MSCI China A ETF",
-          "after": "Yuanta MSCI CHINA A ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00770",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay S&P North American Technology Sector ETF",
-          "after": "Cathay North American Technology ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00852L",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay Dow Jones Industrial Average Daily Leveraged 2X ETF",
-          "after": "Cathay DJIA Daily Leveraged 2X ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00865B",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay US Short Term Treasury ETF(Cathay Bloomberg Barclays US Short Term Treasury ETF)",
-          "after": "Cathay US Short Term Treasury ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00876",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "YT Global 5G Telecommunication Components ETF(YT Global Communication Technology ETF)",
-          "after": "Yuanta Global 5G & NexGen Telecommunication Components ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00885",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon Vietnam ETF",
-          "after": "Fubon FTSE Vietnam ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00892",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon NYSE FactSet Taiwan Core Semiconductor ETF",
-          "after": "Fubon ICE FactSet Taiwan Core Semiconductor ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00893",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay Global Autonomous and Electric Vehicles ETF",
-          "after": "Cathay Global Autonomous EV ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00898",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay Global Genomics Immunology and Medical Revolution ETF",
-          "after": "Solactive Global Genomics Immunology and medical revolution index"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00900",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon TIP Customized Taiwan High Dividend 30 ETF",
-          "after": "Fubon Taiwan Index high dividend 30 ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00903",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon Metaverse ETF",
-          "after": "Fubon Solactive Metaverse ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00910",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "FSITC Aerospace and Satellite",
-          "after": "FSITC Aerospace and Satellite ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00918",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "United Taiwan High Dividend Recovery 30 ETF",
-          "after": "United Taiwan High Dividend Recovery ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00919",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital TIP Customized Taiwan Select High Dividend ETF",
-          "after": "CAPITAL TIP CUSTOMIZED TAIWAN SELECT HIGH DIVIDEND EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00921",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Mega Taiwan Market Leader Dividend Equal Weight ETF",
-          "after": "Mega Taiwan Market Leader EW ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00923",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital TIP Customized Taiwan ESG Low Carbon 50 ETF",
-          "after": "CAPITAL TIP CUSTOMIZED TAIWAN ESG LOW CARBON 50 EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00927",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital TIP Customized Taiwan Semiconductor Dividend Yield ETF",
-          "after": "CAPITAL TIP CUSTOMIZED TAIWAN SEMICONDUCTOR DIVIDEND YIELD EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00930",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "SinoPac Taiwan ESG Low Carbon High Dividend 40 ETF",
-          "after": "SinoPac Taiwan ESG Low Carbon High Dividend ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00946",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital TIP Customized Taiwan Tech High Dividend And Growth ETF",
-          "after": "CAPITAL TAIWAN TECH HIGH DIVIDEND AND GROWTH ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00953B",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital BB-B Coupon Enhanced High Yield Bond ETF",
-          "after": "CAPITAL BB-B COUPON ENHANCED HIGH YIELD BOND EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "009809",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Fubon Taiwan NET ZERO Transition ETF",
-          "after": "Fubon Taiwan NET ZERO ESG 50 ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "009817",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Cathay JP REITs Dividend Income ETF",
-          "after": "Cathay Daiwa Japan REITs Dividend Income ETF"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "009824",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital US Tech Giant ETF",
-          "after": "CAPITAL US TECH GIANT EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00982A",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital Taiwan Select Premium Active ETF",
-          "after": "CAPITAL TAIWAN SELECT PREMIUM ACTIVE EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00982T",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Mega Taiwan-U.S. Momentum Balanced ETF",
-          "after": "Mega Taiwan-U.S. Momentum Balanced"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00985B",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Capital 0-5 Year ESG Investment Grade Corporate Bond ETF",
-          "after": "CAPITAL 0-5 YEAR ESG INVESTMENT GRADE CORPORATE BOND EXCHANGE TRADED FUND"
-        }
-      }
-    },
-    {
-      "source_key": "twse_etf_list",
-      "exchange": "TWSE",
-      "ticker": "00989A",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "JPMorgan (Taiwan) U.S. Tech Leaders Active ETF",
-          "after": "JPMorgan(Taiwan) U.S. Tech Leaders Active ETF"
+        "isin": {
+          "before": "SE0012740074",
+          "after": ""
         }
       }
     }
