@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-20T08:00:46Z",
-    "rows": 8682,
+    "generated_at": "2026-08-21T07:18:16Z",
+    "rows": 8684,
     "outcome_totals": {
       "accepted_source_gap": 5998,
       "core_exclusion_candidate": 464,
-      "official_fill_required": 2220
+      "official_fill_required": 2222
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -17,14 +17,14 @@
       "fund_or_trust_identifier_gap": 236,
       "fundlike_stock_sector_gap": 6,
       "inactive_or_legacy_identifier_gap": 22,
-      "official_current_directory_absent_identifier_gap": 9,
-      "official_identifier_not_exposed_source_gap": 262,
+      "official_current_directory_absent_identifier_gap": 2,
+      "official_identifier_not_exposed_source_gap": 269,
       "official_identifier_reference_unmatched_gap": 8,
       "official_industry_taxonomy_unavailable_gap": 840,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 26,
       "official_reference_symbol_collision_gap": 1185,
-      "official_reference_unmatched_source_gap": 5268,
+      "official_reference_unmatched_source_gap": 5270,
       "otc_sector_source_gap": 553,
       "shell_or_cpc_sector_gap": 31
     },
@@ -36,7 +36,7 @@
       "missing_sector_stock:core_exclusion_candidate": 53,
       "missing_sector_stock:official_fill_required": 62,
       "official_reference_gap:accepted_source_gap": 4295,
-      "official_reference_gap:official_fill_required": 2158
+      "official_reference_gap:official_fill_required": 2160
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -580,14 +580,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "BP CAPITAL MARKETS P.L.C.",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -597,14 +597,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "CAISSE FRANCAISE DE FINANCEMENT LOCAL",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -614,14 +614,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "LLOYDS BANKING GROUP PLC",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -631,14 +631,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "SHINHAN BANK.",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -648,14 +648,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "NEW SOUTH WALES TREASURY CORPORATION",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -665,14 +665,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "QUEENSLAND TREASURY CORPORATION",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -682,14 +682,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "TREASURY CORPORATION OF VICTORIA",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -141522,6 +141522,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "STO::GOSOL",
+      "ticker": "GOSOL",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Gosol Energy Group Ab",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "STO::HDW-B",
       "ticker": "HDW-B",
       "exchange": "STO",
@@ -141641,11 +141658,11 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "STO::LANE-B",
-      "ticker": "LANE-B",
+      "listing_key": "STO::KONT",
+      "ticker": "KONT",
       "exchange": "STO",
       "asset_type": "Stock",
-      "name": "Lane Capital Group Ab",
+      "name": "Kontigo Care AB",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -141714,23 +141731,6 @@
       "exchange": "STO",
       "asset_type": "Stock",
       "name": "I Love Lund Ab",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "STO::LOVI",
-      "ticker": "LOVI",
-      "exchange": "STO",
-      "asset_type": "Stock",
-      "name": "Lovisagruvan Ab",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -141884,6 +141884,23 @@
       "exchange": "STO",
       "asset_type": "Stock",
       "name": "Qlucore AB (publ)",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "STO::OPSYH",
+      "ticker": "OPSYH",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Opsy Holding Ab",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -142156,6 +142173,23 @@
       "exchange": "STO",
       "asset_type": "Stock",
       "name": "Umida Group Ab",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "STO::UPGRAD",
+      "ticker": "UPGRAD",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Upgrade Invest Nordic AB",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
