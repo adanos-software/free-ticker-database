@@ -101,9 +101,17 @@ def test_operational_rebuilds_use_canonical_entrypoint_and_safe_merge() -> None:
         assert "python scripts/check_safe_merge.py" in workflow
         if filename != "release.yml":
             assert "python scripts/rebuild_dataset.py" not in workflow
-        # Identity dumps are unevidenced and fail safe-merge. Daily rotation must
-        # overlay official rows only; identity clears stay in a separate review path.
-        if filename == "masterfile-rotation.yml":
+        # Identity dumps are unevidenced and fail safe-merge. Listing ingestion
+        # workflows must overlay official rows only; identity clears stay in a
+        # separate review path.
+        if filename in {"masterfile-rotation.yml", "nasdaq-us-new-listings.yml"}:
             assert "python scripts/rebuild_canonical.py --apply-identity-fixes" not in workflow
         elif filename != "release.yml":
             assert "python scripts/rebuild_canonical.py --apply-identity-fixes" in workflow
+
+
+def test_masterfile_rotation_keeps_official_name_backfill_report_only() -> None:
+    workflow = (WORKFLOW_DIR / "masterfile-rotation.yml").read_text(encoding="utf-8")
+
+    assert "python scripts/backfill_official_name_mismatches.py --exchange ASX\n" in workflow
+    assert "python scripts/backfill_official_name_mismatches.py --exchange ASX --apply" not in workflow

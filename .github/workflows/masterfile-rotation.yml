@@ -56,7 +56,7 @@ jobs:
           cp data/listings.csv /tmp/listings-before.csv
           python scripts/rebuild_canonical.py
           python scripts/build_entry_quality_report.py
-          python scripts/backfill_official_name_mismatches.py --exchange ASX --apply
+          python scripts/backfill_official_name_mismatches.py --exchange ASX
           python scripts/rebuild_canonical.py
           python scripts/check_safe_merge.py \
             --before /tmp/listings-before.csv \
