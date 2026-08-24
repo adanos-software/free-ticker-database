@@ -33,11 +33,12 @@ jobs:
       - name: Snapshot current Nasdaq reference
         run: cp data/masterfiles/reference.csv /tmp/reference-before-nasdaq-us.csv
 
-      - name: Refresh Nasdaq Trader symbol directories
+      - name: Refresh Nasdaq Trader and SEC exchange directories
         run: |
           python scripts/fetch_exchange_masterfiles.py \
             --source nasdaq_listed \
-            --source nasdaq_other_listed
+            --source nasdaq_other_listed \
+            --source sec_company_tickers_exchange
 
       - name: Apply safe new US stock and ETF listings
         id: apply
@@ -114,12 +115,15 @@ jobs:
 
             This refresh:
             - updates `nasdaq_listed` and `nasdaq_other_listed` in `data/masterfiles/reference.csv`
-            - applies only newly active, collision-free US `Stock` and `ETF` rows to `data/masterfiles/supplemental_listings.csv`
+            - routes newly active US `Stock` and `ETF` rows to normal supplements when identity is stable
+            - routes distinct same-ticker securities to collision-safe `data/coverage_expansion_listings.csv`
             - rebuilds public exports and reports when rows are accepted
 
             Guardrails:
             - no backlog catch-up: only rows newly active versus the previous committed reference snapshot are eligible
-            - no ticker collisions with existing `data/listings.csv`
+            - exact venue/ticker duplicates remain blocked; cross-security ticker collisions cannot replace the global primary
+            - same-security venue moves and ticker renames preserve unique peer metadata
+            - potentially foreign share lines do not receive an unsupported US domicile default
             - no Units, Rights, Warrants, Preferreds, Notes, or non-stock-like names
 
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
