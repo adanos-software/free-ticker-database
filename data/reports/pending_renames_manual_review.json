@@ -1,6 +1,40 @@
 {
-  "generated_at": "2026-08-17T08:05:05Z",
+  "generated_at": "2026-08-24T08:09:21Z",
   "manual_review_items": [
+    {
+      "apply_status": "manual_isin_not_proven_unchanged",
+      "apply_status_source": "available",
+      "blocker_reason": "manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source",
+      "effective_date": "2026-08-18",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Innovative Solutions & Support Inc",
+      "new_listing_keys": "",
+      "new_symbol": "IA",
+      "old_listing_keys": "NASDAQ::ISSC",
+      "old_symbol": "ISSC",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
+      "blocker_reason": "manual: source exchange scope is not mapped to a safe listing-keyed apply path",
+      "effective_date": "2026-08-18",
+      "exchange_scope_status": "unscoped_source_hint",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Vivmark Residential",
+      "new_listing_keys": "",
+      "new_symbol": "VRMK",
+      "old_listing_keys": "ASX::EQR|FSX::EQR|NYSE::EQR|XSTU::EQR",
+      "old_symbol": "EQR",
+      "source_exchange_hint": "",
+      "symbol_change_workflow_queue": "blocked_missing_source_scope_mapping",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
       "apply_status_source": "available",
@@ -132,6 +166,23 @@
       "new_symbol": "ZTG",
       "old_listing_keys": "NASDAQ::ZGM",
       "old_symbol": "ZGM",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "blocked_new_symbol_collision",
+      "apply_status_source": "available",
+      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::YOOV",
+      "effective_date": "2026-04-13",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_and_new_symbols_present",
+      "new_company_name": "Concorde International Group Ltd.",
+      "new_listing_keys": "NASDAQ::YOOV",
+      "new_symbol": "YOOV",
+      "old_listing_keys": "NASDAQ::CIGL",
+      "old_symbol": "CIGL",
       "source_exchange_hint": "US_LISTED",
       "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
       "triage_source": "symbol_changes_review",
@@ -292,5 +343,5 @@
     }
   ],
   "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
-  "rows": 17
+  "rows": 20
 }
