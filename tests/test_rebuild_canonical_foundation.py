@@ -55,23 +55,27 @@ def test_compatible_official_rename_is_recorded(monkeypatch) -> None:
 def test_final_identity_pass_discards_intermediate_decisions(monkeypatch) -> None:
     from scripts.lib.identity_integrity import ResolutionDecision
 
-    canonical._DECISIONS[:] = [
-        ResolutionDecision(
-            conflict_id="old",
-            isin="CH0183135992",
-            listing_key="OTC::ZSILF",
-            ticker="ZSILF",
-            exchange="OTC",
-            name="ZKB Silver ETF",
-            asset_type="ETF",
-            action="quarantined_unresolved_identifier",
-            reason="intermediate",
-            evidence_status="review",
-            retained_isin="CH0183135992",
-        )
-    ]
+    intermediate = ResolutionDecision(
+        conflict_id="old",
+        isin="CH0183135992",
+        listing_key="OTC::ZSILF",
+        ticker="ZSILF",
+        exchange="OTC",
+        name="ZKB Silver ETF",
+        asset_type="ETF",
+        action="quarantined_unresolved_identifier",
+        reason="intermediate",
+        evidence_status="review",
+        retained_isin="CH0183135992",
+    )
+
+    def legacy_cleaned_rows():
+        canonical._DECISIONS.append(intermediate)
+        return [], {}
+
+    canonical._DECISIONS.clear()
     previous = canonical._ORIGINAL_CLEANED_ROWS
-    canonical._ORIGINAL_CLEANED_ROWS = lambda: ([], {})
+    canonical._ORIGINAL_CLEANED_ROWS = legacy_cleaned_rows
     monkeypatch.setattr(canonical, "reconcile_exact_official_names", lambda rows, apply_updates=False: rows)
     monkeypatch.setattr(canonical, "resolve_identity_conflicts", lambda rows, **kwargs: (rows, []))
     monkeypatch.setattr(canonical, "_official_isin_by_listing", lambda: {})
