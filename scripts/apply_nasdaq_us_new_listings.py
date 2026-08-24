@@ -30,6 +30,7 @@ LISTINGS_CSV = DATA_DIR / "listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 COVERAGE_EXPANSION_CSV = DATA_DIR / "coverage_expansion_listings.csv"
+LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
 REPORTS_DIR = DATA_DIR / "reports"
 REPORT_JSON = REPORTS_DIR / "nasdaq_us_new_listings_apply.json"
 REPORT_MD = REPORTS_DIR / "nasdaq_us_new_listings_apply.md"
@@ -247,6 +248,35 @@ def sec_venue_change_identity_peers(
     return peers
 
 
+def reviewed_symbol_change_identity_peers(
+    row: dict[str, str],
+    listings: Iterable[dict[str, str]],
+    reviewed_transitions: Iterable[dict[str, str]],
+) -> list[dict[str, str]]:
+    new_listing_key = f"{row['exchange']}::{row['ticker']}"
+    transitions = [
+        transition
+        for transition in reviewed_transitions
+        if transition.get("new_listing_key") == new_listing_key
+        and transition.get("event_type") == "symbol_changed"
+        and transition.get("identity_type") == "same_isin"
+        and transition.get("identity_value", "").strip()
+    ]
+    if len(transitions) != 1:
+        return []
+
+    transition = transitions[0]
+    identity_value = transition["identity_value"].strip().upper()
+    peers = [
+        listing
+        for listing in listings
+        if listing.get("listing_key") == transition.get("old_listing_key")
+        and listing.get("asset_type") == row.get("asset_type")
+        and listing.get("isin", "").strip().upper() == identity_value
+    ]
+    return peers if len(peers) == 1 else []
+
+
 def unique_peer_value(peers: Iterable[dict[str, str]], *fields: str) -> str:
     values = {
         next((str(peer.get(field, "")).strip() for field in fields if peer.get(field, "").strip()), "")
@@ -254,6 +284,19 @@ def unique_peer_value(peers: Iterable[dict[str, str]], *fields: str) -> str:
     }
     values.discard("")
     return next(iter(values)) if len(values) == 1 else ""
+
+
+def merged_peer_aliases(peers: Iterable[dict[str, str]]) -> str:
+    aliases: list[str] = []
+    seen: set[str] = set()
+    for peer in peers:
+        for alias in peer.get("aliases", "").split("|"):
+            alias = alias.strip()
+            normalized = alias.casefold()
+            if alias and normalized not in seen:
+                aliases.append(alias)
+                seen.add(normalized)
+    return "|".join(aliases)
 
 
 def resolved_peer_country(identity_peers: Iterable[dict[str, str]]) -> tuple[str, str, bool]:
@@ -372,7 +415,7 @@ def build_supplement_row(
         "country": country,
         "country_code": country_code,
         "isin": isin,
-        "aliases": "",
+        "aliases": merged_peer_aliases(security_identity_peers),
         "source_key": row.get("source_key", ""),
         "source_url": row.get("source_url", ""),
         "reference_scope": row.get("reference_scope", ""),
@@ -400,7 +443,7 @@ def build_coverage_row(
         "country": country,
         "country_code": country_code,
         "isin": isin,
-        "aliases": "",
+        "aliases": merged_peer_aliases(security_identity_peers),
     }
 
 
@@ -411,6 +454,7 @@ def apply_new_listings(
     listings_csv: Path = LISTINGS_CSV,
     supplement_csv: Path = MASTERFILE_SUPPLEMENT_CSV,
     coverage_expansion_csv: Path = COVERAGE_EXPANSION_CSV,
+    listing_transitions_csv: Path = LISTING_TRANSITIONS_CSV,
     report_json: Path = REPORT_JSON,
     report_md: Path = REPORT_MD,
     asset_types: set[str] | None = None,
@@ -423,6 +467,7 @@ def apply_new_listings(
     current_rows = load_csv(current_reference_csv)
     listings = load_csv(listings_csv)
     existing_supplements = load_csv(supplement_csv)
+    reviewed_transitions = load_csv(listing_transitions_csv)
 
     previous_active_keys = {
         active_reference_key(row)
@@ -489,6 +534,11 @@ def apply_new_listings(
             for peer in sec_venue_change_identity_peers(row, listings, previous_rows, current_rows)
             if peer not in security_identity_peers
         )
+        security_identity_peers.extend(
+            peer
+            for peer in reviewed_symbol_change_identity_peers(row, listings, reviewed_transitions)
+            if peer not in security_identity_peers
+        )
         identity_peers.extend(peer for peer in security_identity_peers if peer not in identity_peers)
         ticker_occupant_matches = any(peer.get("ticker") == row["ticker"] for peer in security_identity_peers)
         if row["ticker"] in existing_tickers and not ticker_occupant_matches:
@@ -522,6 +572,7 @@ def apply_new_listings(
         "current_reference_csv": display_path(current_reference_csv),
         "supplement_csv": display_path(supplement_csv),
         "coverage_expansion_csv": display_path(coverage_expansion_csv),
+        "listing_transitions_csv": display_path(listing_transitions_csv),
         "supported_asset_types": sorted(asset_types),
         "new_supported_rows": len(new_supported_rows),
         "accepted_rows": len(accepted),
@@ -592,6 +643,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--listings-csv", type=Path, default=LISTINGS_CSV)
     parser.add_argument("--supplement-csv", type=Path, default=MASTERFILE_SUPPLEMENT_CSV)
     parser.add_argument("--coverage-expansion-csv", type=Path, default=COVERAGE_EXPANSION_CSV)
+    parser.add_argument("--listing-transitions-csv", type=Path, default=LISTING_TRANSITIONS_CSV)
     parser.add_argument("--report-json", type=Path, default=REPORT_JSON)
     parser.add_argument("--report-md", type=Path, default=REPORT_MD)
     parser.add_argument(
@@ -620,6 +672,7 @@ def main(argv: list[str] | None = None) -> int:
         listings_csv=args.listings_csv,
         supplement_csv=args.supplement_csv,
         coverage_expansion_csv=args.coverage_expansion_csv,
+        listing_transitions_csv=args.listing_transitions_csv,
         report_json=args.report_json,
         report_md=args.report_md,
         asset_types=normalize_asset_types(args.asset_types),

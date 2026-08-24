@@ -48,6 +48,17 @@ SUPPLEMENT_FIELDS = [
     "source_url",
     "reference_scope",
 ]
+TRANSITION_FIELDS = [
+    "old_listing_key",
+    "new_listing_key",
+    "event_type",
+    "identity_type",
+    "identity_value",
+    "confidence",
+    "source_key",
+    "source_url",
+    "reason",
+]
 
 
 def write_rows(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
@@ -355,6 +366,7 @@ def test_apply_new_listings_carries_metadata_across_exact_name_ticker_rename(tmp
         listings_csv=listings,
         supplement_csv=supplements,
         coverage_expansion_csv=coverage,
+        listing_transitions_csv=tmp_path / "missing-transitions.csv",
         report_json=tmp_path / "report.json",
         report_md=tmp_path / "report.md",
     )
@@ -364,6 +376,118 @@ def test_apply_new_listings_carries_metadata_across_exact_name_ticker_rename(tmp
     assert rows[0]["ticker"] == "SEPQ"
     assert rows[0]["sector"] == "Equity"
     assert rows[0]["isin"] == ""
+
+
+def test_apply_new_listings_preserves_metadata_for_reviewed_same_isin_symbol_change(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+
+    write_rows(previous_reference, REFERENCE_FIELDS, [])
+    write_rows(
+        current_reference,
+        REFERENCE_FIELDS,
+        [reference_row("BTLN", "Brightline Interactive, Inc. - Common Stock", "NASDAQ")],
+    )
+    predecessor = listing_row("GGRP", exchange="NASDAQ")
+    predecessor.update(
+        {
+            "name": "The Glimpse Group, Inc.",
+            "stock_sector": "Information Technology",
+            "isin": "US37892C1062",
+            "aliases": "the glimpse group",
+        }
+    )
+    write_rows(listings, LISTING_FIELDS, [predecessor])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(
+        transitions,
+        TRANSITION_FIELDS,
+        [
+            {
+                "old_listing_key": "NASDAQ::GGRP",
+                "new_listing_key": "NASDAQ::BTLN",
+                "event_type": "symbol_changed",
+                "identity_type": "same_isin",
+                "identity_value": "US37892C1062",
+                "confidence": "0.99",
+                "source_key": "sec_8k_name_symbol_change",
+                "source_url": "https://www.sec.gov/example",
+                "reason": "CUSIP unchanged",
+            }
+        ],
+    )
+
+    apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["ticker"] == "BTLN"
+    assert row["sector"] == "Information Technology"
+    assert row["isin"] == "US37892C1062"
+    assert row["aliases"] == "the glimpse group"
+
+
+def test_apply_new_listings_does_not_trust_issuer_only_transition_for_isin(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+
+    write_rows(previous_reference, REFERENCE_FIELDS, [])
+    write_rows(current_reference, REFERENCE_FIELDS, [reference_row("NEW", "Renamed Inc Common Stock")])
+    predecessor = listing_row("OLD", exchange="NYSE")
+    predecessor["isin"] = "US0000000001"
+    write_rows(listings, LISTING_FIELDS, [predecessor])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(
+        transitions,
+        TRANSITION_FIELDS,
+        [
+            {
+                "old_listing_key": "NYSE::OLD",
+                "new_listing_key": "NYSE::NEW",
+                "event_type": "symbol_changed",
+                "identity_type": "same_cik",
+                "identity_value": "0000000001",
+                "confidence": "0.99",
+                "source_key": "issuer_notice",
+                "source_url": "https://www.sec.gov/example",
+                "reason": "Issuer identity only",
+            }
+        ],
+    )
+
+    apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["isin"] == ""
 
 
 def test_apply_new_listings_does_not_assume_us_domicile_for_foreign_share_wording(tmp_path):
