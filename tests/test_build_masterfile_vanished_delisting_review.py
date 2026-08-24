@@ -59,6 +59,7 @@ def run_review(
     listings: list[dict[str, str]],
     delisting_candidates: list[dict[str, str]] | None = None,
     previous_rows: list[dict[str, object]] | None = None,
+    new: list[dict[str, str]] | None = None,
 ) -> dict:
     rotation = tmp_path / "rotation.json"
     listings_csv = tmp_path / "listings.csv"
@@ -66,7 +67,7 @@ def run_review(
     previous = tmp_path / "previous.json"
     report_json = tmp_path / "review.json"
     report_md = tmp_path / "review.md"
-    write_json(rotation, {"vanished": vanished})
+    write_json(rotation, {"vanished": vanished, "new": new or []})
     write_csv(listings_csv, LISTING_FIELDS, listings)
     write_json(delisting, {"candidates": delisting_candidates or []})
     write_json(previous, {"rows": previous_rows or []})
@@ -213,3 +214,17 @@ def test_still_in_database_backlog_is_carried_and_stale_absences_are_not(tmp_pat
     assert report["backlog_rows"] == 1
     assert report["rotation_vanished_rows"] == 1
     assert report["policy"] == "feed_delisting_classifier_not_direct_deletion"
+
+
+def test_reappeared_official_row_leaves_backlog(tmp_path: Path) -> None:
+    recovered = vanished_ref("BACK", "TSE", source_key="jpx_tse_stock_detail", isin="JP1")
+    report = run_review(
+        tmp_path,
+        vanished=[],
+        new=[recovered],
+        listings=[{"ticker": "BACK", "exchange": "TSE", "name": "Back Co", "isin": "JP1"}],
+        previous_rows=[{**recovered, "still_in_database": True}],
+    )
+
+    assert report["rows"] == []
+    assert report["backlog_rows"] == 0

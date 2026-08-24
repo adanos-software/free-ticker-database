@@ -104,10 +104,12 @@ def reference_from_previous(row: dict[str, Any]) -> dict[str, str]:
 
 def collect_vanished_references(
     rotation_vanished: list[dict[str, Any]],
+    rotation_new: list[dict[str, Any]],
     previous_rows: list[dict[str, Any]],
 ) -> list[tuple[str, dict[str, str]]]:
     collected: list[tuple[str, dict[str, str]]] = []
     seen: set[tuple[str, str, str]] = set()
+    reappeared = {vanished_identity(ref) for ref in rotation_new}
     for ref in rotation_vanished:
         identity = vanished_identity(ref)
         if identity in seen:
@@ -118,7 +120,7 @@ def collect_vanished_references(
         if not previous.get("still_in_database"):
             continue
         identity = vanished_identity(previous)
-        if identity in seen:
+        if identity in seen or identity in reappeared:
             continue
         seen.add(identity)
         collected.append(("backlog", reference_from_previous(previous)))
@@ -253,7 +255,12 @@ def build_review(
     previous_path = previous_review_json if previous_review_json is not None else report_json
     previous = read_json(previous_path, default={}) or {}
     rotation_vanished = list(diff.get("vanished", []))
-    collected = collect_vanished_references(rotation_vanished, list(previous.get("rows", [])))
+    rotation_new = list(diff.get("new", []))
+    collected = collect_vanished_references(
+        rotation_vanished,
+        rotation_new,
+        list(previous.get("rows", [])),
+    )
     listings = listings_by_key(load_csv(listings_csv))
     delisting_by_key = delisting_candidates_by_key(read_json(delisting_report_json, default={}) or {})
 
