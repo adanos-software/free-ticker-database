@@ -9,9 +9,9 @@
 | aliases | 125507 |
 | stocks | 47773 |
 | etfs | 16028 |
-| isin_coverage | 62551 |
-| sector_coverage | 62264 |
-| stock_sector_coverage | 46267 |
+| isin_coverage | 62552 |
+| sector_coverage | 62265 |
+| stock_sector_coverage | 46268 |
 | etf_category_coverage | 15997 |
 | cik_coverage | 7820 |
 | figi_coverage | 65402 |
