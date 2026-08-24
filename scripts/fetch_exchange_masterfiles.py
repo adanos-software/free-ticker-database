@@ -575,8 +575,7 @@ BSE_HU_BETA_MARKET_URL = "https://www.bet.hu/oldalak/beta_piac#reszvenyek"
 EGX_LISTED_STOCKS_URL = "https://www.egx.com.eg/en/ListedStocks.aspx"
 CAVALI_BVL_EMISORES_URL = "https://cavali-corporativa.screativa.com/emisores"
 CASABLANCA_BOURSE_INSTRUMENTS_URL = "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions"
-CASABLANCA_BOURSE_ISSUERS_URL = "https://www.casablanca-bourse.com/en/emetteurs/liste-emetteurs"
-CASABLANCA_BOURSE_ISSUERS_JINA_URL = f"https://r.jina.ai/{CASABLANCA_BOURSE_ISSUERS_URL}"
+CASABLANCA_BOURSE_INSTRUMENTS_JINA_URL = f"https://r.jina.ai/{CASABLANCA_BOURSE_INSTRUMENTS_URL}"
 CSE_LK_ALL_SECURITY_CODE_URL = "https://www.cse.lk/api/allSecurityCode"
 CSE_LK_COMPANY_INFO_SUMMARY_URL = "https://www.cse.lk/api/companyInfoSummery"
 CSE_LK_COMPANY_INFO_WORKERS = 8
@@ -2039,8 +2038,8 @@ OFFICIAL_SOURCES = [
     MasterfileSource(
         key="cse_ma_listed_companies",
         provider="Casablanca Stock Exchange",
-        description="Official Casablanca Stock Exchange listed-issuer directory of active equity instruments",
-        source_url=CASABLANCA_BOURSE_ISSUERS_URL,
+        description="Official Casablanca Stock Exchange active equities Drupal directory",
+        source_url=CASABLANCA_BOURSE_INSTRUMENTS_URL,
         format="cse_ma_listed_companies_json",
         reference_scope="exchange_directory",
     ),
@@ -5597,84 +5596,12 @@ CSE_MA_DRUPAL_SETTINGS_RE = re.compile(
     r'<script[^>]*data-drupal-selector=["\']drupal-settings-json["\'][^>]*>(?P<payload>.*?)</script>',
     re.I | re.S,
 )
-# Ordinary and second-line equities. The directory also publishes rights and
-# bonds; those labels must not match the equity markers below.
-CSE_MA_EQUITY_TYPE_MARKERS = ("stock", "action", "share")
-CSE_MA_NON_EQUITY_TYPE_MARKERS = ("right", "droit", "bond", "obligation")
+CSE_MA_EQUITY_CATEGORY_MARKERS = ("stock", "action", "share")
+CSE_MA_NON_EQUITY_CATEGORY_MARKERS = ("right", "droit", "bond", "obligation")
 CSE_MA_CHROME_TIMEOUT_SECONDS = 15.0
 
 
-def cse_ma_localized_text(value: Any, *langs: str) -> str:
-    if isinstance(value, str):
-        return value.strip()
-    if not isinstance(value, dict):
-        return ""
-    for lang in langs:
-        text = str(value.get(lang) or "").strip()
-        if text:
-            return text
-    for text in value.values():
-        cleaned = str(text or "").strip()
-        if cleaned:
-            return cleaned
-    return ""
-
-
-def cse_ma_is_stock_instrument(instrument: dict[str, Any]) -> bool:
-    type_value = instrument.get("type")
-    labels: list[str] = []
-    if isinstance(type_value, dict):
-        labels.extend(str(type_value.get(lang) or "") for lang in ("en", "fr"))
-    else:
-        labels.append(str(type_value or ""))
-    combined = " ".join(label.strip().lower() for label in labels if str(label).strip())
-    if not combined or any(marker in combined for marker in CSE_MA_NON_EQUITY_TYPE_MARKERS):
-        return False
-    return any(marker in combined for marker in CSE_MA_EQUITY_TYPE_MARKERS)
-
-
-def cse_ma_html_contains_issuers(text: str) -> bool:
-    return "boursenova" in text and "emetteurs" in text
-
-
-def parse_cse_ma_boursenova_issuers(
-    issuers: Any,
-    source: MasterfileSource,
-) -> list[dict[str, str]]:
-    if not isinstance(issuers, list):
-        raise ValueError("Unexpected Casablanca Stock Exchange issuer directory payload")
-    rows: list[dict[str, str]] = []
-    seen: set[str] = set()
-    for issuer in issuers:
-        if not isinstance(issuer, dict):
-            continue
-        issuer_name = cse_ma_localized_text(issuer.get("label"), "en", "fr")
-        for instrument in issuer.get("instruments") or []:
-            if not isinstance(instrument, dict) or not cse_ma_is_stock_instrument(instrument):
-                continue
-            ticker = str(instrument.get("symbol") or "").strip().upper()
-            name = issuer_name or cse_ma_localized_text(instrument.get("label"), "en", "fr")
-            if not ticker or ticker in seen or not name:
-                continue
-            rows.append(
-                {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": source.source_url,
-                    "ticker": ticker,
-                    "name": name,
-                    "exchange": "CSE_MA",
-                    "asset_type": "Stock",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                }
-            )
-            seen.add(ticker)
-    return rows
-
-
-def parse_cse_ma_boursenova_issuers_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+def parse_cse_ma_boursenova_actions_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     match = CSE_MA_DRUPAL_SETTINGS_RE.search(text)
     if not match:
         raise ValueError("Missing Casablanca Stock Exchange Drupal settings payload")
@@ -5682,71 +5609,53 @@ def parse_cse_ma_boursenova_issuers_html(text: str, source: MasterfileSource) ->
         settings = json.loads(unescape(match.group("payload")))
     except json.JSONDecodeError as exc:
         raise ValueError("Invalid Casablanca Stock Exchange Drupal settings payload") from exc
-    issuers = (settings.get("boursenova") or {}).get("emetteurs") if isinstance(settings, dict) else None
-    rows = parse_cse_ma_boursenova_issuers(issuers, source)
+    actions = (settings.get("boursenova") or {}).get("actions") if isinstance(settings, dict) else None
+    if not isinstance(actions, list):
+        raise ValueError("Unexpected Casablanca Stock Exchange equities payload")
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for action in actions:
+        if not isinstance(action, dict):
+            continue
+        category = str(action.get("categorie") or "").strip().lower()
+        if (
+            not category
+            or any(marker in category for marker in CSE_MA_NON_EQUITY_CATEGORY_MARKERS)
+            or not any(marker in category for marker in CSE_MA_EQUITY_CATEGORY_MARKERS)
+        ):
+            continue
+        ticker = str(action.get("ticker") or "").strip().upper()
+        isin = str(action.get("codeISIN") or "").strip().upper()
+        name = str(action.get("emetteur") or action.get("instrument") or "").strip()
+        if not ticker or ticker in seen or not name:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if is_valid_isin(isin):
+            row["isin"] = isin
+        rows.append(row)
+        seen.add(ticker)
     if not rows:
-        raise ValueError("Unexpected Casablanca Stock Exchange issuer directory payload")
+        raise ValueError("Unexpected Casablanca Stock Exchange equities payload")
     return rows
 
 
-def cse_ma_previous_isins_by_ticker(
-    *,
-    cache_paths: tuple[Path, ...] | None = None,
-    reference_path: Path = MASTERFILE_REFERENCE_CSV,
-) -> dict[str, str]:
-    isins: dict[str, str] = {}
-    for path in cache_paths or (CSE_MA_LISTED_COMPANIES_CACHE, LEGACY_CSE_MA_LISTED_COMPANIES_CACHE):
-        if not path.exists():
-            continue
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            continue
-        if not isinstance(payload, list):
-            continue
-        for row in payload:
-            if not isinstance(row, dict):
-                continue
-            ticker = str(row.get("ticker") or "").strip().upper()
-            isin = str(row.get("isin") or "").strip().upper()
-            if ticker and is_valid_isin(isin):
-                isins[ticker] = isin
-    if reference_path.exists():
-        for row in load_csv(reference_path):
-            if row.get("source_key") != "cse_ma_listed_companies":
-                continue
-            ticker = str(row.get("ticker") or "").strip().upper()
-            isin = str(row.get("isin") or "").strip().upper()
-            if ticker and is_valid_isin(isin):
-                isins[ticker] = isin
-    return isins
-
-
-def attach_cse_ma_previous_isins(
-    rows: list[dict[str, str]],
-    previous_isins: dict[str, str] | None = None,
-) -> list[dict[str, str]]:
-    isins = previous_isins if previous_isins is not None else cse_ma_previous_isins_by_ticker()
-    attached: list[dict[str, str]] = []
-    for row in rows:
-        updated = dict(row)
-        ticker = str(updated.get("ticker") or "").strip().upper()
-        current_isin = str(updated.get("isin") or "").strip().upper()
-        if not is_valid_isin(current_isin):
-            previous_isin = isins.get(ticker, "")
-            if is_valid_isin(previous_isin):
-                updated["isin"] = previous_isin
-            else:
-                updated.pop("isin", None)
-        attached.append(updated)
-    return attached
-
-
-def fetch_cse_ma_issuers_html(*, session: requests.Session | None = None) -> str:
+def fetch_cse_ma_actions_html(*, session: requests.Session | None = None) -> str:
     session = session or requests.Session()
     try:
         response = chrome_impersonated_get(
-            CASABLANCA_BOURSE_ISSUERS_URL,
+            CASABLANCA_BOURSE_INSTRUMENTS_URL,
             headers={
                 "User-Agent": BROWSER_USER_AGENT,
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -5756,13 +5665,13 @@ def fetch_cse_ma_issuers_html(*, session: requests.Session | None = None) -> str
         )
         raise_requests_status(response)
         text = str(getattr(response, "text", "") or "")
-        if cse_ma_html_contains_issuers(text):
+        if '"actions"' in text and "boursenova" in text:
             return text
     except (ImportError, requests.RequestException, ValueError):
         pass
 
     response = session.get(
-        CASABLANCA_BOURSE_ISSUERS_JINA_URL,
+        CASABLANCA_BOURSE_INSTRUMENTS_JINA_URL,
         headers={
             "User-Agent": USER_AGENT,
             "Accept": "text/html,*/*",
@@ -5772,9 +5681,9 @@ def fetch_cse_ma_issuers_html(*, session: requests.Session | None = None) -> str
     )
     response.raise_for_status()
     text = str(getattr(response, "text", "") or "")
-    if cse_ma_html_contains_issuers(text):
+    if '"actions"' in text and "boursenova" in text:
         return text
-    raise ValueError("Unexpected Casablanca Stock Exchange issuer directory payload")
+    raise ValueError("Unexpected Casablanca Stock Exchange equities page")
 
 
 def fetch_cse_ma_listed_companies_legacy_jsonapi(
@@ -5785,7 +5694,7 @@ def fetch_cse_ma_listed_companies_legacy_jsonapi(
     session = session or requests.Session()
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     page_response = session.get(
-        CASABLANCA_BOURSE_INSTRUMENTS_URL,
+        source.source_url,
         headers={"User-Agent": BROWSER_USER_AGENT},
         timeout=REQUEST_TIMEOUT,
         verify=False,
@@ -5795,10 +5704,7 @@ def fetch_cse_ma_listed_companies_legacy_jsonapi(
     build_id = str(shell_payload.get("buildId") or "").strip()
     if not build_id:
         raise ValueError("Missing Casablanca Stock Exchange Next.js build id")
-    next_data_url = urljoin(
-        CASABLANCA_BOURSE_INSTRUMENTS_URL,
-        f"/_next/data/{build_id}/en/marche-cash/instruments-actions.json",
-    )
+    next_data_url = urljoin(source.source_url, f"/_next/data/{build_id}/en/marche-cash/instruments-actions.json")
     next_data_response = session.get(
         next_data_url,
         headers={"User-Agent": BROWSER_USER_AGENT, "Accept": "application/json"},
@@ -5836,24 +5742,13 @@ def fetch_cse_ma_listed_companies(
     source: MasterfileSource,
     *,
     session: requests.Session | None = None,
-    previous_isins: dict[str, str] | None = None,
 ) -> list[dict[str, str]]:
     session = session or requests.Session()
-    rows: list[dict[str, str]] = []
     try:
-        html = fetch_cse_ma_issuers_html(session=session)
-        rows = parse_cse_ma_boursenova_issuers_html(html, source)
+        html = fetch_cse_ma_actions_html(session=session)
+        return dedupe_rows(parse_cse_ma_boursenova_actions_html(html, source))
     except (requests.RequestException, ValueError, json.JSONDecodeError):
-        rows = []
-    if not rows:
-        rows = fetch_cse_ma_listed_companies_legacy_jsonapi(source, session=session)
-    # The listed-issuer page is the current official equity set. Previous
-    # instruments that no longer appear there are omitted, not merged back
-    # from cache; only same-ticker ISINs are carried forward.
-    rows = attach_cse_ma_previous_isins(dedupe_rows(rows), previous_isins=previous_isins)
-    if not rows:
-        raise ValueError("Unexpected Casablanca Stock Exchange issuer directory payload")
-    return rows
+        return fetch_cse_ma_listed_companies_legacy_jsonapi(source, session=session)
 
 
 def load_cse_ma_listed_companies_rows(
