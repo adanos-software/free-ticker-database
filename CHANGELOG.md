@@ -2,19 +2,44 @@
 
 ## [Unreleased]
 
+## [3.36.0] - 2026-08-24
+
+### Summary
+
+**Fail-closed listing-transition and automation-reliability release.** Publishes the official rotations, reviewed identity corrections, Nasdaq additions, and workflow hardening accumulated since v3.35.0. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, unresolved source gaps remain explicit, and upstream outages preserve the last valid evidence.
+
 ### Added
 
-- Classify vanished official-reference rows with the delisting classifier and a still-in-database backlog. Rotation no longer treats feed absence as a drop.
+- Added reviewed listing transitions for `GGRP` to `BTLN`, `TUGN` to `SEPQ`, and OTC-to-Nasdaq `QNBC`, with exact identity evidence and collision-safe predecessor retirement.
+- Added a reproducible vanished-row classifier and still-in-database backlog. Official-feed absence is classified for review and never treated as a delisting instruction.
+- Added collision-safe coverage expansion for distinct same-ticker securities discovered by the Nasdaq workflow.
 
 ### Changed
 
-- Burned listing-keyed entry-quality contradictions: official exchange ISINs replace provider-locked ISINs where the unique active official reference matches the same identity; venue-directory renames keep the listing ISIN; DAVIDsTEA no longer shares Deutsche Telekom's ADR ISIN.
-- Completed country+ISIN review pairs for genuine issuer-domicile vs ISIN-prefix cases (ADR/CDR). Residual warns are name/ISIN disagreements without official ISIN evidence or with ticker-reuse risk.
+- Rotated official masterfiles and refreshed the symbol-change, drift, freshness, delisting, and Nasdaq review artifacts. The Nasdaq apply accepted 23 supported Stock/ETF listings plus two official venue corrections while excluding six preferred, rights, and warrant rows.
+- Burned listing-keyed entry-quality contradictions: official exchange ISINs replace provider-locked ISINs only where a unique active official reference proves the same identity; venue-directory renames keep the listing ISIN; DAVIDsTEA no longer shares Deutsche Telekom's ADR ISIN. Entry-quality warnings fell from 81 to 34.
+- Completed reviewed issuer-domicile and ISIN pairs for genuine ADR/CDR cases and post-corporate-action corrections. Residual warnings remain explicit where official ISIN evidence is absent or ticker reuse makes identity ambiguous.
+- Preserved sector, country, ISIN, and aliases across exact reviewed same-ISIN symbol changes; issuer-only transitions remain fail-closed for security metadata.
 
 ### Fixed
 
 - Recoded `SZSE::001289` to the A-share ISIN `CNE1000057F9` instead of Longyuan's US ADR, pinned `WSE::ATS` to Estonia with `EE0000000552`, and kept `OTC::HISEF` on the current Hisense Home Appliances name.
-- Restored the Casablanca official equities refresh directly from the post-relaunch Drupal instrument payload, including ISINs and second-line shares.
+- Restored the Casablanca official equities parser and current `/en/marches-produits/actions` route. Network or schema failures preserve the committed official cache instead of accepting proxy data or an empty refresh.
+- Kept Nasdaq and masterfile jobs within their ownership boundaries, handled exact official venue migrations, and routed distinct ticker collisions without replacing the global primary row.
+- Cleared intermediate identity decisions after reviewed transition drops so scheduled canonical rebuilds cannot export stale predecessor decisions.
+- Made CI and tag releases preserve the official-reference snapshot from the same historical commit as the listing baseline, allowing strict safe merge to reconstruct venue-change evidence after a merge to `main`.
+
+### Safety
+
+- Unevidenced removals, critical-field changes, ticker reuse, competing venue claims, and ambiguous identity transitions still fail closed.
+- Vanished rows remain in the database until exact official delisting evidence reaches the dedicated apply path. Suspended rows remain kept by policy.
+- Casablanca remains cache-preserving when the official host is unreachable from the runner. No third-party proxy is promoted to exchange authority.
+
+### Verification
+
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract.
+- A final live Nasdaq/SEC workflow rerun reported `new_supported_rows=0`, `accepted_rows=0`, and opened no pull request.
+- Snapshot: 63,821 primary tickers, 92,026 listing rows, 62,552 primary ISINs (98.0%), 62,265 sector/category values, 34 entry-quality warnings, and 11,367 source-gap rows. Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
 
 ## [3.35.0] - 2026-08-20
 
