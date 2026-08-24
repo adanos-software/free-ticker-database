@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-21T07:11:54Z",
+  "generated_at": "2026-08-24T09:28:44Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1549,
   "decision_rows": 5048,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1326,
-    "proposed_clear_conflicting_identifier": 750,
-    "quarantined_unresolved_identifier": 2972
+    "kept_listing_keyed_identifier": 1327,
+    "proposed_clear_conflicting_identifier": 751,
+    "quarantined_unresolved_identifier": 2970
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 750,
-  "quarantined_rows": 2972,
-  "retained_rows": 1326,
+  "proposed_clear_rows": 751,
+  "quarantined_rows": 2970,
+  "retained_rows": 1327,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -35031,9 +35031,9 @@
       "exchange": "BSE_IN",
       "name": "Popees Baby Care India Limited",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "INE167F01018"
     },
     {
@@ -35044,9 +35044,9 @@
       "exchange": "BSE_IN",
       "name": "Koiya International Ltd",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "INE167F01018"
     },
     {

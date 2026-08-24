@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-08-21T07:18:11Z`
+Generated at: `2026-08-24T09:31:36Z`
 
 ## Summary
 
@@ -47,7 +47,7 @@ Generated at: `2026-08-21T07:18:11Z`
 | 23 | SIX | official_partial | 1263 | 0 | 3 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 24 | Bursa | official_partial | 1039 | 0 | 3 | bursa_equities_prices_directory | Bursa Malaysia |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 25 | HEL | official_partial | 200 | 0 | 0 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
-| 26 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 3 existing rows | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
+| 26 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 27 | CPH | official_partial | 153 | 0 | 2 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
 | 28 | BVL | official_partial | 33 | 0 | 0 | bvl_issuers_directory | CAVALI | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 29 | PSE_CZ | official_partial | 27 | 0 | 1 | pse_cz_shares_directory | Prague Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |
@@ -86,7 +86,7 @@ _No rows._
 | 23 | SIX | official_partial | 1263 | 0 | 3 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 24 | Bursa | official_partial | 1039 | 0 | 3 | bursa_equities_prices_directory | Bursa Malaysia |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 25 | HEL | official_partial | 200 | 0 | 0 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
-| 26 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 3 existing rows | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
+| 26 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 27 | CPH | official_partial | 153 | 0 | 2 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
 | 28 | BVL | official_partial | 33 | 0 | 0 | bvl_issuers_directory | CAVALI | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 29 | PSE_CZ | official_partial | 27 | 0 | 1 | pse_cz_shares_directory | Prague Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |

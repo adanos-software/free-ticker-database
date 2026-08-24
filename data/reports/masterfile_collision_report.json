@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99092,
-    "matched": 65035,
-    "collisions": 13808,
-    "missing": 20249
+    "official_symbols": 99264,
+    "matched": 65152,
+    "collisions": 13816,
+    "missing": 20296
   },
   "exchanges": [
     {
@@ -950,10 +950,10 @@
     },
     {
       "exchange": "BSE_IN",
-      "official_symbols": 4970,
-      "matched": 2535,
-      "collisions": 1845,
-      "missing": 590,
+      "official_symbols": 5117,
+      "matched": 2662,
+      "collisions": 1850,
+      "missing": 605,
       "collision_examples": [
         {
           "ticker": "20MICRONS",
@@ -1397,17 +1397,12 @@
     },
     {
       "exchange": "CSE_LK",
-      "official_symbols": 319,
+      "official_symbols": 318,
       "matched": 306,
       "collisions": 0,
-      "missing": 13,
+      "missing": 12,
       "collision_examples": [],
       "missing_examples": [
-        {
-          "ticker": "AAF.R0000",
-          "name": "ASIA ASSET FINANCE PLC",
-          "exchange": "CSE_LK"
-        },
         {
           "ticker": "ATL.R0000",
           "name": "AMANA TAKAFUL  PLC",
@@ -1450,6 +1445,11 @@
         },
         {
           "ticker": "MBSL.P0000",
+          "name": "MERCHANT BANK OF SRI LANKA & FINANCE PLC",
+          "exchange": "CSE_LK"
+        },
+        {
+          "ticker": "MBSL.R0001",
           "name": "MERCHANT BANK OF SRI LANKA & FINANCE PLC",
           "exchange": "CSE_LK"
         }
@@ -1889,10 +1889,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18025,
-      "matched": 8006,
-      "collisions": 3945,
-      "missing": 6074,
+      "official_symbols": 18047,
+      "matched": 8000,
+      "collisions": 3947,
+      "missing": 6100,
       "collision_examples": [
         {
           "ticker": "00X0",
@@ -3212,7 +3212,7 @@
         },
         {
           "ticker": "ATAP",
-          "name": "AGF ENERGY TRANSITION AND ADAPTION ETF",
+          "name": "AGF ENERGY TRANSITION AND ADAPTATION ETF",
           "target_exchange": "NEO",
           "existing_exchanges": [
             "IDX"
@@ -5851,10 +5851,10 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5093,
-      "matched": 4103,
-      "collisions": 705,
-      "missing": 285,
+      "official_symbols": 5097,
+      "matched": 4099,
+      "collisions": 706,
+      "missing": 292,
       "collision_examples": [
         {
           "ticker": "01P",
@@ -5970,6 +5970,11 @@
           "exchange": "XETRA"
         },
         {
+          "ticker": "1GBS",
+          "name": "GBS SOFTWARE AG INH O.N.",
+          "exchange": "XETRA"
+        },
+        {
           "ticker": "1S2",
           "name": "FIGMA INC. A O.N.",
           "exchange": "XETRA"
@@ -5987,11 +5992,6 @@
         {
           "ticker": "21GR",
           "name": "21SHARES GRAM ETPOE",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "26CA",
-          "name": "IMMUNITYBIO INC. DL-,0001",
           "exchange": "XETRA"
         }
       ]
