@@ -14,6 +14,7 @@
 ### Fixed
 
 - Recoded `SZSE::001289` to the A-share ISIN `CNE1000057F9` instead of Longyuan's US ADR, pinned `WSE::ATS` to Estonia with `EE0000000552`, and kept `OTC::HISEF` on the current Hisense Home Appliances name.
+- Restored the Casablanca official equities refresh directly from the post-relaunch Drupal instrument payload, including ISINs and second-line shares.
 
 ## [3.35.0] - 2026-08-20
 

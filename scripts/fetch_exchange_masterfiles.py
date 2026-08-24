@@ -2037,7 +2037,7 @@ OFFICIAL_SOURCES = [
     MasterfileSource(
         key="cse_ma_listed_companies",
         provider="Casablanca Stock Exchange",
-        description="Official Casablanca Stock Exchange active equity instruments JSONAPI directory",
+        description="Official Casablanca Stock Exchange active equities Drupal directory",
         source_url=CASABLANCA_BOURSE_INSTRUMENTS_URL,
         format="cse_ma_listed_companies_json",
         reference_scope="exchange_directory",
@@ -5591,7 +5591,86 @@ def cse_ma_initial_collection_from_next_payload(payload: dict[str, Any]) -> dict
     raise ValueError("Unexpected Casablanca Stock Exchange instruments payload")
 
 
-def fetch_cse_ma_listed_companies(
+CSE_MA_DRUPAL_SETTINGS_RE = re.compile(
+    r'<script[^>]*data-drupal-selector=["\']drupal-settings-json["\'][^>]*>(?P<payload>.*?)</script>',
+    re.I | re.S,
+)
+CSE_MA_EQUITY_CATEGORY_MARKERS = ("stock", "action", "share")
+CSE_MA_NON_EQUITY_CATEGORY_MARKERS = ("right", "droit", "bond", "obligation")
+CSE_MA_CHROME_TIMEOUT_SECONDS = 15.0
+
+
+def parse_cse_ma_boursenova_actions_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    match = CSE_MA_DRUPAL_SETTINGS_RE.search(text)
+    if not match:
+        raise ValueError("Missing Casablanca Stock Exchange Drupal settings payload")
+    try:
+        settings = json.loads(unescape(match.group("payload")))
+    except json.JSONDecodeError as exc:
+        raise ValueError("Invalid Casablanca Stock Exchange Drupal settings payload") from exc
+    boursenova = settings.get("boursenova") if isinstance(settings, dict) else None
+    if not isinstance(boursenova, dict):
+        raise ValueError("Unexpected Casablanca Stock Exchange boursenova payload")
+    actions = boursenova.get("actions")
+    if not isinstance(actions, list):
+        raise ValueError("Unexpected Casablanca Stock Exchange equities payload")
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for action in actions:
+        if not isinstance(action, dict):
+            continue
+        category = str(action.get("categorie") or "").strip().lower()
+        if (
+            not category
+            or any(marker in category for marker in CSE_MA_NON_EQUITY_CATEGORY_MARKERS)
+            or not any(marker in category for marker in CSE_MA_EQUITY_CATEGORY_MARKERS)
+        ):
+            continue
+        ticker = str(action.get("ticker") or "").strip().upper()
+        isin = str(action.get("codeISIN") or "").strip().upper()
+        name = str(action.get("emetteur") or action.get("instrument") or "").strip()
+        if not ticker or ticker in seen or not name:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if is_valid_isin(isin):
+            row["isin"] = isin
+        rows.append(row)
+        seen.add(ticker)
+    if not rows:
+        raise ValueError("Unexpected Casablanca Stock Exchange equities payload")
+    return rows
+
+
+def fetch_cse_ma_actions_html() -> str:
+    response = chrome_impersonated_get(
+        CASABLANCA_BOURSE_INSTRUMENTS_URL,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9,fr;q=0.8",
+        },
+        timeout=CSE_MA_CHROME_TIMEOUT_SECONDS,
+    )
+    raise_requests_status(response)
+    text = str(getattr(response, "text", "") or "")
+    if '"actions"' in text and "boursenova" in text:
+        return text
+    raise ValueError("Unexpected Casablanca Stock Exchange equities page")
+
+
+def fetch_cse_ma_listed_companies_legacy_jsonapi(
     source: MasterfileSource,
     *,
     session: requests.Session | None = None,
@@ -5643,20 +5722,30 @@ def fetch_cse_ma_listed_companies(
     return rows
 
 
+def fetch_cse_ma_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    try:
+        html = fetch_cse_ma_actions_html()
+        return dedupe_rows(parse_cse_ma_boursenova_actions_html(html, source))
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return fetch_cse_ma_listed_companies_legacy_jsonapi(source, session=session)
+
+
 def load_cse_ma_listed_companies_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (CSE_MA_LISTED_COMPANIES_CACHE, LEGACY_CSE_MA_LISTED_COMPANIES_CACHE):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
         rows = fetch_cse_ma_listed_companies(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
-        try:
-            rows = fetch_cse_ma_reader_rows(source, session=session)
-        except (requests.RequestException, ValueError):
-            return None, "unavailable"
+        for path in (CSE_MA_LISTED_COMPANIES_CACHE, LEGACY_CSE_MA_LISTED_COMPANIES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
 
     ensure_output_dirs()
     CSE_MA_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")

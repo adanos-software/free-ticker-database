@@ -138,8 +138,8 @@
     "expected_format": "cse_ma_listed_companies_json",
     "implementation_status": "implemented",
     "priority": "medium",
-    "blocker": "implemented via official Casablanca Bourse Next.js/JSONAPI active equity instrument collection",
-    "notes": "The official Casablanca Bourse active instrument page exposes a JSONAPI collection with symbol, ISIN, issuer, and instrument URL for active class-code 1 stock rows. Sector labels still need a separate official taxonomy path."
+    "blocker": "implemented via the official Casablanca Bourse Drupal equities payload",
+    "notes": "The post-relaunch equities page embeds a boursenova.actions payload with ticker, ISIN, issuer, category, and sector. The fetcher accepts first- and second-line shares, rejects non-equities, and preserves the last official cache when the exchange is unavailable."
   },
   {
     "key": "dse_tz_listed_companies",

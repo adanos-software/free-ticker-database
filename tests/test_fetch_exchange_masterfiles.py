@@ -265,6 +265,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_cavali_bvl_emisores_html_pages,
     parse_cse_lk_all_security_code_payload,
     parse_cse_lk_company_info_summary_payload,
+    parse_cse_ma_boursenova_actions_html,
     parse_cse_ma_jsonapi_collection,
     parse_dse_tz_listed_companies_html,
     parse_mse_mw_mainboard_html,
@@ -10854,6 +10855,102 @@ def test_parse_cse_ma_jsonapi_collection_extracts_official_instruments() -> None
             "isin": "MA0000011819",
         },
     ]
+
+
+CSE_MA_BOURSENOVA_ACTIONS_HTML = """
+<html><body>
+<script type="application/json" data-drupal-selector="drupal-settings-json">
+{"boursenova":{"actions":[
+  {"ticker":"AFM  ","codeISIN":"MA0000012296","emetteur":"AFMA SA","instrument":"AFMA","categorie":"1st Line Shares"},
+  {"ticker":"2SAHA","codeISIN":"MA0000012841","emetteur":"SANLAM MAROC","instrument":"2L SAH J01JAN2026","categorie":"2nd Line Shares"},
+  {"ticker":"NEW","codeISIN":"","emetteur":"NEW ISSUER","instrument":"NEW ISSUER","categorie":"1st Line Shares"},
+  {"ticker":"AFM/D","codeISIN":"MA0000099999","emetteur":"AFMA SA","instrument":"AFMA Rights","categorie":"Rights"},
+  {"ticker":"BND","codeISIN":"MA0000019999","emetteur":"Bond Issuer","instrument":"Bond","categorie":"Corporate Bonds"}
+]}}
+</script>
+</body></html>
+"""
+
+
+def _cse_ma_source() -> MasterfileSource:
+    return MasterfileSource(
+        key="cse_ma_listed_companies",
+        provider="Casablanca Stock Exchange",
+        description="Official Casablanca Stock Exchange active equities directory",
+        source_url="https://www.casablanca-bourse.com/en/marche-cash/instruments-actions",
+        format="cse_ma_listed_companies_json",
+        reference_scope="exchange_directory",
+    )
+
+
+def test_parse_cse_ma_boursenova_actions_html_keeps_first_and_second_line_shares() -> None:
+    rows = parse_cse_ma_boursenova_actions_html(CSE_MA_BOURSENOVA_ACTIONS_HTML, _cse_ma_source())
+
+    assert [row["ticker"] for row in rows] == ["AFM", "2SAHA", "NEW"]
+    assert [row.get("isin", "") for row in rows] == ["MA0000012296", "MA0000012841", ""]
+    assert all(row["source_url"].endswith("/en/marche-cash/instruments-actions") for row in rows)
+
+
+def test_fetch_cse_ma_listed_companies_uses_exchange_actions_payload(monkeypatch) -> None:
+    class OkResponse:
+        status_code = 200
+        text = CSE_MA_BOURSENOVA_ACTIONS_HTML
+
+        def raise_for_status(self):
+            return None
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", lambda *args, **kwargs: OkResponse())
+
+    rows = fetch_exchange_masterfiles.fetch_cse_ma_listed_companies(_cse_ma_source())
+
+    assert [row["ticker"] for row in rows] == ["2SAHA", "AFM", "NEW"]
+
+
+def test_parse_cse_ma_boursenova_actions_html_rejects_non_object_payload() -> None:
+    html = """
+    <script type="application/json" data-drupal-selector="drupal-settings-json">
+    {"boursenova":[]}
+    </script>
+    """
+
+    with pytest.raises(ValueError, match="boursenova payload"):
+        parse_cse_ma_boursenova_actions_html(html, _cse_ma_source())
+
+
+def test_load_cse_ma_listed_companies_rows_prefers_network_over_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "cse_ma_listed_companies.json"
+    cache_path.write_text('[{"ticker":"OLD","name":"Stale"}]', encoding="utf-8")
+    fresh_rows = [{"ticker": "AFM", "name": "AFMA SA"}]
+    monkeypatch.setattr(fetch_exchange_masterfiles, "CSE_MA_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_CSE_MA_LISTED_COMPANIES_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_cse_ma_listed_companies", lambda source, session=None: fresh_rows)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ensure_output_dirs", lambda: None)
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "cse_ma_listed_companies")
+
+    rows, mode = fetch_exchange_masterfiles.load_cse_ma_listed_companies_rows(source)
+
+    assert mode == "network"
+    assert rows == fresh_rows
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_cse_ma_listed_companies_rows_preserves_cache_when_exchange_is_unavailable(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "cse_ma_listed_companies.json"
+    cached_rows = [{"ticker": "AFM", "name": "AFMA SA", "isin": "MA0000012296"}]
+    cache_path.write_text(json.dumps(cached_rows), encoding="utf-8")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "CSE_MA_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_CSE_MA_LISTED_COMPANIES_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_cse_ma_listed_companies",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("timeout")),
+    )
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "cse_ma_listed_companies")
+
+    rows, mode = fetch_exchange_masterfiles.load_cse_ma_listed_companies_rows(source)
+
+    assert mode == "cache"
+    assert rows == cached_rows
 
 
 def test_parse_nse_ke_listed_companies_html_extracts_symbols_isins_and_sectors() -> None:
