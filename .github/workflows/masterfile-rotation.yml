@@ -44,6 +44,9 @@ jobs:
           python scripts/build_masterfile_diff_report.py \
             --previous-reference /tmp/reference-before-masterfile-rotation.csv
 
+      - name: Classify vanished official-reference rows
+        run: python scripts/build_masterfile_vanished_delisting_review.py
+
       - name: Apply safe new US stock and ETF listings
         id: apply
         run: |
