@@ -90,6 +90,7 @@ def evaluate(
     reference_rows: list[dict[str, str]] | None = None,
     observed_at: str = "",
     reference_source_report: str = "",
+    previous_reference_rows: list[dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     failures: list[str] = []
     before_duplicates = _duplicates(before_rows)
@@ -104,6 +105,7 @@ def evaluate(
     generated_reference_evidence = build_official_change_evidence(
         before_rows, after_rows, reference_rows or [],
         observed_at=observed_at, source_report=reference_source_report,
+        previous_reference_rows=previous_reference_rows,
     )
     events: dict[str, list[dict[str, str]]] = {}
     for event in [*event_rows, *generated_reference_evidence]:
@@ -212,6 +214,7 @@ def main() -> None:
     parser.add_argument("--events", type=Path, default=DATA_DIR / "history/listing_events.csv")
     parser.add_argument("--allow-large-evidenced-removal", action="store_true")
     parser.add_argument("--official-reference", type=Path, default=DEFAULT_OFFICIAL_REFERENCE)
+    parser.add_argument("--previous-official-reference", type=Path)
     parser.add_argument("--observed-at", default="")
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
@@ -222,6 +225,11 @@ def main() -> None:
         reference_rows=load_csv(args.official_reference) if args.official_reference.exists() else [],
         observed_at=args.observed_at or _dataset_built_at(),
         reference_source_report=_display_path(args.official_reference),
+        previous_reference_rows=(
+            load_csv(args.previous_official_reference)
+            if args.previous_official_reference and args.previous_official_reference.exists()
+            else []
+        ),
     )
     write_report(report)
     print(json.dumps(report["summary"], indent=2))

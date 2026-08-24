@@ -115,3 +115,13 @@ def test_masterfile_rotation_keeps_official_name_backfill_report_only() -> None:
 
     assert "python scripts/backfill_official_name_mismatches.py --exchange ASX\n" in workflow
     assert "python scripts/backfill_official_name_mismatches.py --exchange ASX --apply" not in workflow
+
+
+def test_listing_refreshes_pass_previous_official_reference_to_safe_merge() -> None:
+    expected_snapshots = {
+        "masterfile-rotation.yml": "/tmp/reference-before-masterfile-rotation.csv",
+        "nasdaq-us-new-listings.yml": "/tmp/reference-before-nasdaq-us.csv",
+    }
+    for filename, snapshot in expected_snapshots.items():
+        workflow = (WORKFLOW_DIR / filename).read_text(encoding="utf-8")
+        assert f"--previous-official-reference {snapshot}" in workflow

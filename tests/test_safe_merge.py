@@ -199,3 +199,221 @@ def test_conflicting_exact_official_isins_fail_closed() -> None:
     )
     assert report["status"] == "fail"
     assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def venue_reference(exchange: str, ticker: str, *, name: str) -> dict[str, str]:
+    return {
+        "source_key": "nasdaq_other_listed",
+        "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+        "ticker": ticker,
+        "name": name,
+        "exchange": exchange,
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "exchange_directory",
+        "official": "true",
+        "isin": "",
+    }
+
+
+def sec_venue_reference(exchange: str, ticker: str, *, name: str) -> dict[str, str]:
+    value = venue_reference(exchange, ticker, name=name)
+    value.update(
+        {
+            "source_key": "sec_company_tickers_exchange",
+            "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+        }
+    )
+    return value
+
+
+def test_exact_official_venue_migrations_allow_ncl_and_sbev_removals() -> None:
+    before = [
+        row("NYSE MKT", "NCL", name="Northann Corp.", isin="US66373M4087"),
+        row("NYSE MKT", "SBEV", name="Splash Beverage Group Inc", isin="US84862C3025"),
+    ]
+    after = [
+        row("NYSE", "NCL", name="Northann Corp.", isin="US66373M4087"),
+        row("NYSE", "SBEV", name="Splash Beverage Group Inc", isin="US84862C3025"),
+    ]
+    previous_references = [
+        venue_reference("NYSE MKT", "NCL", name="Northann Corp. Common Stock"),
+        venue_reference(
+            "NYSE MKT", "SBEV", name="Splash Beverage Group, Inc. (NV) Common Stock"
+        ),
+        sec_venue_reference("NYSE", "NCL", name="Northann Corp."),
+        sec_venue_reference("NYSE", "SBEV", name="SPLASH BEVERAGE GROUP, INC."),
+    ]
+    current_references = [
+        sec_venue_reference("NYSE", "NCL", name="Northann Corp."),
+        sec_venue_reference("NYSE", "SBEV", name="SPLASH BEVERAGE GROUP, INC."),
+    ]
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=current_references,
+        previous_reference_rows=previous_references,
+        observed_at="2026-08-24T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "pass"
+    assert report["summary"]["evidenced_removed_rows"] == 2
+    assert report["summary"]["generated_official_change_evidence_rows"] == 2
+    assert {
+        event["event_type"] for event in report["generated_official_change_evidence"]
+    } == {"venue_reconciled"}
+    assert {
+        (event["listing_key"], event["old_value"], event["new_value"])
+        for event in report["generated_official_change_evidence"]
+    } == {
+        ("NYSE MKT::NCL", "NYSE MKT", "NYSE"),
+        ("NYSE MKT::SBEV", "NYSE MKT", "NYSE"),
+    }
+
+
+def test_ambiguous_official_venue_migration_fails_closed() -> None:
+    before = [row("NYSE MKT", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    after = [
+        row("NYSE", "NCL", name="Northann Corp.", isin="US66373M4087"),
+        row("NASDAQ", "NCL", name="Northann Corp.", isin="US66373M4087"),
+    ]
+    previous_references = [
+        venue_reference("NYSE MKT", "NCL", name="Northann Corp. Common Stock")
+    ]
+    current_references = [
+        venue_reference("NYSE", "NCL", name="Northann Corp. Common Stock"),
+        venue_reference("NASDAQ", "NCL", name="Northann Corp. Common Stock"),
+    ]
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=current_references,
+        previous_reference_rows=previous_references,
+        observed_at="2026-08-24T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["unevidenced_removed_rows"] == 1
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def test_ticker_only_official_venue_migration_fails_closed() -> None:
+    before = [row("NYSE MKT", "AAA", name="Alpha Holdings", isin="US0378331005")]
+    after = [row("NYSE", "AAA", name="Alpha Holdings", isin="US0378331005")]
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[venue_reference("NYSE", "AAA", name="Different Issuer Common Stock")],
+        previous_reference_rows=[
+            venue_reference("NYSE MKT", "AAA", name="Different Issuer Common Stock")
+        ],
+        observed_at="2026-08-24T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def test_conflicting_current_official_venue_claim_fails_closed() -> None:
+    before = [row("NYSE MKT", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    after = [row("NYSE", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    previous_references = [
+        venue_reference("NYSE MKT", "NCL", name="Northann Corp. Common Stock"),
+        sec_venue_reference("NYSE", "NCL", name="Northann Corp."),
+    ]
+    current_references = [
+        sec_venue_reference("NYSE", "NCL", name="Northann Corp."),
+        venue_reference("NASDAQ", "NCL", name="Northann Corp. Common Stock"),
+    ]
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=current_references,
+        previous_reference_rows=previous_references,
+        observed_at="2026-08-24T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def test_conflicting_previous_isin_venue_reconciliation_fails_closed() -> None:
+    before = [row("NYSE MKT", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    after = [row("NYSE", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    old_reference = venue_reference("NYSE MKT", "NCL", name="Northann Corp. Common Stock")
+    old_reference["isin"] = "US0378331005"
+    sec_reference = sec_venue_reference("NYSE", "NCL", name="Northann Corp.")
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[sec_reference],
+        previous_reference_rows=[old_reference, sec_reference],
+        observed_at="2026-08-24T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def test_same_isin_conflicting_current_venue_claim_fails_closed() -> None:
+    before = [row("NYSE MKT", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    after = [row("NYSE", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    old_reference = venue_reference("NYSE MKT", "NCL", name="Northann Corp. Common Stock")
+    sec_reference = sec_venue_reference("NYSE", "NCL", name="Northann Corp.")
+    conflicting = venue_reference("NASDAQ", "NCL", name="Completely Different Name")
+    conflicting["isin"] = "US66373M4087"
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[sec_reference, conflicting],
+        previous_reference_rows=[old_reference, sec_reference],
+        observed_at="2026-08-24T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def test_sec_target_must_be_stable_at_same_venue() -> None:
+    before = [row("NYSE MKT", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    after = [row("NYSE", "NCL", name="Northann Corp.", isin="US66373M4087")]
+    old_reference = venue_reference("NYSE MKT", "NCL", name="Northann Corp. Common Stock")
+    previous_sec = sec_venue_reference("NASDAQ", "NCL", name="Northann Corp.")
+    current_sec = sec_venue_reference("NYSE", "NCL", name="Northann Corp.")
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[current_sec],
+        previous_reference_rows=[old_reference, previous_sec],
+        observed_at="2026-08-24T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
