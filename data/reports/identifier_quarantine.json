@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-24T09:28:44Z",
+  "generated_at": "2026-08-24T09:18:46Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 1549,
-  "decision_rows": 5048,
+  "conflict_count": 1552,
+  "decision_rows": 5054,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1327,
-    "proposed_clear_conflicting_identifier": 751,
-    "quarantined_unresolved_identifier": 2970
+    "kept_listing_keyed_identifier": 1330,
+    "proposed_clear_conflicting_identifier": 750,
+    "quarantined_unresolved_identifier": 2974
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 751,
-  "quarantined_rows": 2970,
-  "retained_rows": 1327,
+  "proposed_clear_rows": 750,
+  "quarantined_rows": 2974,
+  "retained_rows": 1330,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -10160,7 +10160,7 @@
       "listing_key": "OTC::HISEF",
       "ticker": "HISEF",
       "exchange": "OTC",
-      "name": "Hisense Home Appliances Group Co. Ltd",
+      "name": "Hisense Kelon Electrical Holdings Co Ltd.",
       "asset_type": "Stock",
       "action": "proposed_clear_conflicting_identifier",
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
@@ -36883,7 +36883,7 @@
       "retained_isin": "JP3378200004"
     },
     {
-      "conflict_id": "5393f604349a75de0b9e",
+      "conflict_id": "d3fcf6fbacb252f38f02",
       "isin": "JP3404600003",
       "listing_key": "FSX::SUMA",
       "ticker": "SUMA",
@@ -36896,7 +36896,7 @@
       "retained_isin": "JP3404600003"
     },
     {
-      "conflict_id": "5393f604349a75de0b9e",
+      "conflict_id": "d3fcf6fbacb252f38f02",
       "isin": "JP3404600003",
       "listing_key": "OTC::SSUMF",
       "ticker": "SSUMF",
@@ -36909,20 +36909,7 @@
       "retained_isin": "JP3404600003"
     },
     {
-      "conflict_id": "5393f604349a75de0b9e",
-      "isin": "JP3404600003",
-      "listing_key": "OTC::SSUMY",
-      "ticker": "SSUMY",
-      "exchange": "OTC",
-      "name": "Sumitomo Corporation",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "JP3404600003"
-    },
-    {
-      "conflict_id": "5393f604349a75de0b9e",
+      "conflict_id": "d3fcf6fbacb252f38f02",
       "isin": "JP3404600003",
       "listing_key": "TSE::8053",
       "ticker": "8053",
@@ -36935,7 +36922,7 @@
       "retained_isin": "JP3404600003"
     },
     {
-      "conflict_id": "5393f604349a75de0b9e",
+      "conflict_id": "d3fcf6fbacb252f38f02",
       "isin": "JP3404600003",
       "listing_key": "XSTU::SUMA",
       "ticker": "SUMA",
@@ -37024,6 +37011,58 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "JP3459600007"
+    },
+    {
+      "conflict_id": "3fb7f22e3d60cd99fbb2",
+      "isin": "JP3476480003",
+      "listing_key": "FSX::QHH",
+      "ticker": "QHH",
+      "exchange": "FSX",
+      "name": "Dai-ichi Life Holdings Inc",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3476480003"
+    },
+    {
+      "conflict_id": "3fb7f22e3d60cd99fbb2",
+      "isin": "JP3476480003",
+      "listing_key": "OTC::DCNSF",
+      "ticker": "DCNSF",
+      "exchange": "OTC",
+      "name": "Daiichi Life Group Inc.",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3476480003"
+    },
+    {
+      "conflict_id": "3fb7f22e3d60cd99fbb2",
+      "isin": "JP3476480003",
+      "listing_key": "TSE::8750",
+      "ticker": "8750",
+      "exchange": "TSE",
+      "name": "Dai-ichi Life Holdings,Inc.",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3476480003"
+    },
+    {
+      "conflict_id": "3fb7f22e3d60cd99fbb2",
+      "isin": "JP3476480003",
+      "listing_key": "XSTU::QHH",
+      "ticker": "QHH",
+      "exchange": "XSTU",
+      "name": "DAI-ICHI LIFE (QHH.SG)",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3476480003"
     },
     {
       "conflict_id": "4cbe17a45ea0eeff5a94",
@@ -43071,7 +43110,20 @@
       "retained_isin": "LU1834983634"
     },
     {
-      "conflict_id": "9bae0e56ebb93c5010cc",
+      "conflict_id": "9a8b8c64a8c98b22f2f3",
+      "isin": "LU1900066207",
+      "listing_key": "Euronext::RIO",
+      "ticker": "RIO",
+      "exchange": "Euronext",
+      "name": "Lyxor MSCI Brazil UCITS ETF",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "LU1900066207"
+    },
+    {
+      "conflict_id": "9a8b8c64a8c98b22f2f3",
       "isin": "LU1900066207",
       "listing_key": "LSE::RIOL",
       "ticker": "RIOL",
@@ -43084,7 +43136,7 @@
       "retained_isin": "LU1900066207"
     },
     {
-      "conflict_id": "9bae0e56ebb93c5010cc",
+      "conflict_id": "9a8b8c64a8c98b22f2f3",
       "isin": "LU1900066207",
       "listing_key": "LSE::RIOU",
       "ticker": "RIOU",
@@ -43097,7 +43149,7 @@
       "retained_isin": "LU1900066207"
     },
     {
-      "conflict_id": "9bae0e56ebb93c5010cc",
+      "conflict_id": "9a8b8c64a8c98b22f2f3",
       "isin": "LU1900066207",
       "listing_key": "SIX::LYRIO",
       "ticker": "LYRIO",
@@ -43110,7 +43162,7 @@
       "retained_isin": "LU1900066207"
     },
     {
-      "conflict_id": "9bae0e56ebb93c5010cc",
+      "conflict_id": "9a8b8c64a8c98b22f2f3",
       "isin": "LU1900066207",
       "listing_key": "XETRA::LBRA",
       "ticker": "LBRA",
@@ -43667,6 +43719,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "MX01GA000004"
+    },
+    {
+      "conflict_id": "7272400af5bce57d821c",
+      "isin": "MX01GC2M0006",
+      "listing_key": "FSX::AK4",
+      "ticker": "AK4",
+      "exchange": "FSX",
+      "name": "GCC S.A.B. DE C.V.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "MX01GC2M0006"
+    },
+    {
+      "conflict_id": "7272400af5bce57d821c",
+      "isin": "MX01GC2M0006",
+      "listing_key": "OTC::GCWOF",
+      "ticker": "GCWOF",
+      "exchange": "OTC",
+      "name": "Grupo Cementos de Chihuahua SAB de CV",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "MX01GC2M0006"
     },
     {
       "conflict_id": "8dd958c41b02579d3a64",
@@ -52912,6 +52990,32 @@
       "retained_isin": "US0147521092"
     },
     {
+      "conflict_id": "d48abb748538d15b4c88",
+      "isin": "US01675A2087",
+      "listing_key": "FSX::8W80",
+      "ticker": "8W80",
+      "exchange": "FSX",
+      "name": "Allbirds, Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "US01675A2087"
+    },
+    {
+      "conflict_id": "d48abb748538d15b4c88",
+      "isin": "US01675A2087",
+      "listing_key": "NASDAQ::BIRD",
+      "ticker": "BIRD",
+      "exchange": "NASDAQ",
+      "name": "Smartbird, Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "US01675A2087"
+    },
+    {
       "conflict_id": "20c66fe1a8764ab496f1",
       "isin": "US02043Q1076",
       "listing_key": "FSX::DUL",
@@ -54992,6 +55096,32 @@
       "retained_isin": "US20337X1090"
     },
     {
+      "conflict_id": "7f018fcb6300735a7a7a",
+      "isin": "US2044481040",
+      "listing_key": "FSX::MBU",
+      "ticker": "MBU",
+      "exchange": "FSX",
+      "name": "Compañía de Minas Buenaventura S.A.A",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "US2044481040"
+    },
+    {
+      "conflict_id": "7f018fcb6300735a7a7a",
+      "isin": "US2044481040",
+      "listing_key": "NYSE::BVN",
+      "ticker": "BVN",
+      "exchange": "NYSE",
+      "name": "Buenaventura Mining Company Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "US2044481040"
+    },
+    {
       "conflict_id": "0a627af30272a0ddbf2c",
       "isin": "US21036P1084",
       "listing_key": "FSX::CB1A",
@@ -55088,7 +55218,7 @@
       "listing_key": "NYSE MKT::CTGO",
       "ticker": "CTGO",
       "exchange": "NYSE MKT",
-      "name": "Contango ORE Inc",
+      "name": "Contango Silver & Gold Inc.",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -55627,58 +55757,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US24703L2025"
-    },
-    {
-      "conflict_id": "ecdf83c479bf4debcf92",
-      "isin": "US2515661054",
-      "listing_key": "FSX::DTEA",
-      "ticker": "DTEA",
-      "exchange": "FSX",
-      "name": "Deutsche Telekom AG",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US2515661054"
-    },
-    {
-      "conflict_id": "ecdf83c479bf4debcf92",
-      "isin": "US2515661054",
-      "listing_key": "OTC::DTEAF",
-      "ticker": "DTEAF",
-      "exchange": "OTC",
-      "name": "DAVIDsTEA Inc.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US2515661054"
-    },
-    {
-      "conflict_id": "ecdf83c479bf4debcf92",
-      "isin": "US2515661054",
-      "listing_key": "TSXV::DTEA",
-      "ticker": "DTEA",
-      "exchange": "TSXV",
-      "name": "DAVIDsTEA Inc.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US2515661054"
-    },
-    {
-      "conflict_id": "ecdf83c479bf4debcf92",
-      "isin": "US2515661054",
-      "listing_key": "XSTU::DTEA",
-      "ticker": "DTEA",
-      "exchange": "XSTU",
-      "name": "Deutsche Telekom AG",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US2515661054"
     },
     {
       "conflict_id": "e510669f64a10a1f6a6c",

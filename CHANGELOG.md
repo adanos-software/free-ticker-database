@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Burned listing-keyed entry-quality contradictions: official exchange ISINs replace provider-locked ISINs where the unique active official reference matches the same identity; venue-directory renames keep the listing ISIN; DAVIDsTEA no longer shares Deutsche Telekom's ADR ISIN.
+- Completed country+ISIN review pairs for genuine issuer-domicile vs ISIN-prefix cases (ADR/CDR). Residual warns are name/ISIN disagreements without official ISIN evidence or with ticker-reuse risk.
+
 ## [3.35.0] - 2026-08-20
 
 ### Summary
