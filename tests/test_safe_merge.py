@@ -417,3 +417,143 @@ def test_sec_target_must_be_stable_at_same_venue() -> None:
 
     assert report["status"] == "fail"
     assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+
+def reviewed_transition(
+    old_key: str,
+    new_key: str,
+    *,
+    event_type: str,
+    identity_type: str,
+    identity_value: str,
+) -> dict[str, str]:
+    return {
+        "old_listing_key": old_key,
+        "new_listing_key": new_key,
+        "event_type": event_type,
+        "identity_type": identity_type,
+        "identity_value": identity_value,
+        "confidence": "0.99",
+        "source_key": "issuer_announcement",
+        "source_url": "https://issuer.example/transition",
+        "reason": "Reviewed issuer transition.",
+    }
+
+
+def test_reviewed_same_isin_symbol_and_venue_transitions_allow_removals() -> None:
+    isin_symbol = "US53656F1690"
+    isin_venue = "US74726N1072"
+    before = [
+        row("NASDAQ", "TUGN", name="Fund", asset_type="ETF", isin=isin_symbol),
+        row("OTC", "QNBC", name="QNB Corp", isin=isin_venue),
+    ]
+    after = [
+        row("NASDAQ", "SEPQ", name="Fund", asset_type="ETF", isin=isin_symbol),
+        row("NASDAQ", "QNBC", name="QNB Corp", isin=isin_venue),
+    ]
+    transitions = [
+        reviewed_transition(
+            "NASDAQ::TUGN", "NASDAQ::SEPQ",
+            event_type="symbol_changed", identity_type="same_isin", identity_value=isin_symbol,
+        ),
+        reviewed_transition(
+            "OTC::QNBC", "NASDAQ::QNBC",
+            event_type="venue_changed", identity_type="same_isin", identity_value=isin_venue,
+        ),
+    ]
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=transitions,
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-24T00:00:00Z",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "pass"
+    assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 2
+
+
+def test_reviewed_same_cik_transition_requires_both_sec_cache_symbols() -> None:
+    before = [row("NASDAQ", "GGRP", name="Glimpse")]
+    after = [row("NASDAQ", "BTLN", name="Brightline")]
+    transition = reviewed_transition(
+        "NASDAQ::GGRP", "NASDAQ::BTLN",
+        event_type="symbol_changed", identity_type="same_cik", identity_value="0001854445",
+    )
+    payload = {
+        "fields": ["cik", "name", "ticker", "exchange"],
+        "data": [
+            [1854445, "Glimpse Group, Inc.", "GGRP", "Nasdaq"],
+            [1854445, "Glimpse Group, Inc.", "BTLN", "Nasdaq"],
+        ],
+    }
+
+    passed = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=[transition],
+        sec_exchange_payload=payload,
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-24T00:00:00Z",
+    )
+    failed = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=[transition],
+        sec_exchange_payload={"fields": payload["fields"], "data": payload["data"][:1]},
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-24T00:00:00Z",
+    )
+
+    assert passed["status"] == "pass"
+    assert failed["status"] == "fail"
+    assert failed["summary"]["generated_reviewed_transition_evidence_rows"] == 0
+
+
+def test_reviewed_transition_fails_closed_on_identity_or_shape_mismatch() -> None:
+    before = [row("NASDAQ", "OLD", isin="US53656F1690")]
+    after = [row("NYSE", "NEW", isin="US53656F1690")]
+    transition = reviewed_transition(
+        "NASDAQ::OLD", "NYSE::NEW",
+        event_type="symbol_changed", identity_type="same_isin", identity_value="US53656F1690",
+    )
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=[transition],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-24T00:00:00Z",
+        venue_shrink_limit=1.0,
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 0
+
+
+def test_reviewed_transition_rejects_non_finite_confidence() -> None:
+    before = [row("NASDAQ", "OLD", isin="US53656F1690")]
+    after = [row("NASDAQ", "NEW", isin="US53656F1690")]
+    transition = reviewed_transition(
+        "NASDAQ::OLD", "NASDAQ::NEW",
+        event_type="symbol_changed", identity_type="same_isin", identity_value="US53656F1690",
+    )
+    transition["confidence"] = "nan"
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=[transition],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-24T00:00:00Z",
+    )
+
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 0
