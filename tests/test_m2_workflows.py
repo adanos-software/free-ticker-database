@@ -13,6 +13,7 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
 
     assert "--rotation-batch-size 20" in workflow
     assert "scripts/build_masterfile_diff_report.py" in workflow
+    assert "scripts/build_masterfile_vanished_delisting_review.py" in workflow
     assert "scripts/apply_nasdaq_us_new_listings.py" in workflow
     assert "--asset-type Stock,ETF" in workflow
     rebuild_step = workflow.split("- name: Rebuild derived exports and reports", 1)[1].split(

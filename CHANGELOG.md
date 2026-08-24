@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Classify vanished official-reference rows with the delisting classifier and a still-in-database backlog. Rotation no longer treats feed absence as a drop.
+
 ### Changed
 
 - Burned listing-keyed entry-quality contradictions: official exchange ISINs replace provider-locked ISINs where the unique active official reference matches the same identity; venue-directory renames keep the listing ISIN; DAVIDsTEA no longer shares Deutsche Telekom's ADR ISIN.
