@@ -597,6 +597,9 @@ VIVK,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather
 VNO-PO,NASDAQ,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the current exchange, indicating the current listing is stale."
 VNUED,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 VRAR,NASDAQ,0.96,"Nasdaq Trader no longer lists VRAR, lists GGRP active on Nasdaq, and both stale/current dataset rows carry ISIN US37892C1062 for The Glimpse Group; drop stale pre-change symbol."
+GGRP,NASDAQ,0.99,Reviewed issuer transition NASDAQ::GGRP to NASDAQ::BTLN; exact evidence is recorded in listing_transitions.csv.
+TUGN,NASDAQ,0.99,Reviewed fund ticker transition NASDAQ::TUGN to NASDAQ::SEPQ; exact evidence is recorded in listing_transitions.csv.
+QNBC,OTC,0.99,Reviewed issuer venue transition OTC::QNBC to NASDAQ::QNBC; exact evidence is recorded in listing_transitions.csv.
 VSA,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: VisionSys AI Inc. - American Depositary Shares"
 VSNTV,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 VTYX,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
