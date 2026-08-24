@@ -207,7 +207,8 @@ def load_change_evidence() -> dict[tuple[str, str, str, str], dict[str, str]]:
             "observation_id": row.get("conflict_id", ""), "evidence_status": status,
         }
     for row in load_csv(METADATA_UPDATES_CSV):
-        if row.get("decision") != "update":
+        decision = str(row.get("decision", "") or "").strip()
+        if decision not in {"update", "clear"}:
             continue
         field = str(row.get("field", "") or "").strip()
         if field not in CRITICAL_FIELD_EVENT_TYPES:
@@ -215,7 +216,7 @@ def load_change_evidence() -> dict[tuple[str, str, str, str], dict[str, str]]:
         ticker = str(row.get("ticker", "") or "").strip().upper()
         exchange = str(row.get("exchange", "") or "").strip()
         new = str(row.get("proposed_value", "") or "")
-        if not ticker or not exchange or not new:
+        if not ticker or not exchange or (decision == "update" and not new) or (decision == "clear" and new):
             continue
         evidence[(f"{exchange}::{ticker}", field, "*", new)] = {
             "source_key": "review_metadata_updates",
