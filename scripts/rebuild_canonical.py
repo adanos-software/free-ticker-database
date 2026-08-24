@@ -384,8 +384,12 @@ def strict_cleaned_rows() -> tuple[list[dict[str, str]], dict[tuple[str, str], s
 
     if _ORIGINAL_CLEANED_ROWS is None:
         raise RuntimeError("strict_cleaned_rows used outside canonical rebuild")
-    _DECISIONS.clear()
     rows, alias_type_lookup = _ORIGINAL_CLEANED_ROWS()
+    # The legacy pass invokes ``strict_cleanse`` before applying reviewed
+    # transition drops, so it can record decisions for predecessor rows that no
+    # longer exist in the exported snapshot. Discard those intermediate
+    # decisions only after the legacy pass has completed.
+    _DECISIONS.clear()
     rows = reconcile_exact_official_names(
         rows, apply_updates=_APPLY_OFFICIAL_NAME_UPDATES
     )
