@@ -574,7 +574,10 @@ BSE_BW_LISTED_COMPANIES_URL = "https://www.bse.co.bw/companies/"
 BSE_HU_BETA_MARKET_URL = "https://www.bet.hu/oldalak/beta_piac#reszvenyek"
 EGX_LISTED_STOCKS_URL = "https://www.egx.com.eg/en/ListedStocks.aspx"
 CAVALI_BVL_EMISORES_URL = "https://cavali-corporativa.screativa.com/emisores"
-CASABLANCA_BOURSE_INSTRUMENTS_URL = "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions"
+CASABLANCA_BOURSE_INSTRUMENTS_URL = "https://www.casablanca-bourse.com/en/marches-produits/actions"
+CASABLANCA_BOURSE_LEGACY_INSTRUMENTS_URL = (
+    "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions"
+)
 CSE_LK_ALL_SECURITY_CODE_URL = "https://www.cse.lk/api/allSecurityCode"
 CSE_LK_COMPANY_INFO_SUMMARY_URL = "https://www.cse.lk/api/companyInfoSummery"
 CSE_LK_COMPANY_INFO_WORKERS = 8
@@ -5678,7 +5681,7 @@ def fetch_cse_ma_listed_companies_legacy_jsonapi(
     session = session or requests.Session()
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     page_response = session.get(
-        source.source_url,
+        CASABLANCA_BOURSE_LEGACY_INSTRUMENTS_URL,
         headers={"User-Agent": BROWSER_USER_AGENT},
         timeout=REQUEST_TIMEOUT,
         verify=False,
@@ -5688,7 +5691,10 @@ def fetch_cse_ma_listed_companies_legacy_jsonapi(
     build_id = str(shell_payload.get("buildId") or "").strip()
     if not build_id:
         raise ValueError("Missing Casablanca Stock Exchange Next.js build id")
-    next_data_url = urljoin(source.source_url, f"/_next/data/{build_id}/en/marche-cash/instruments-actions.json")
+    next_data_url = urljoin(
+        CASABLANCA_BOURSE_LEGACY_INSTRUMENTS_URL,
+        f"/_next/data/{build_id}/en/marche-cash/instruments-actions.json",
+    )
     next_data_response = session.get(
         next_data_url,
         headers={"User-Agent": BROWSER_USER_AGENT, "Accept": "application/json"},
