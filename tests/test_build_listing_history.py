@@ -129,6 +129,36 @@ def test_reviewed_metadata_updates_stamp_taxonomy_changes(monkeypatch) -> None:
     assert event["observation_id"] == "BATS::WDNA:etf_category"
 
 
+def test_reviewed_metadata_clear_stamps_identifier_removal(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "scripts.build_listing_history.load_csv",
+        lambda path: (
+            [{
+                "ticker": "DTEA",
+                "exchange": "TSXV",
+                "field": "isin",
+                "decision": "clear",
+                "proposed_value": "",
+            }]
+            if str(path).endswith("metadata_updates.csv")
+            else []
+        ),
+    )
+    previous = [{
+        "listing_key": "TSXV::DTEA", "ticker": "DTEA", "exchange": "TSXV",
+        "name": "DAVIDsTEA Inc.", "asset_type": "Stock", "isin": "US2515661054",
+    }]
+    current = [{**previous[0], "isin": ""}]
+    from scripts.build_listing_history import load_change_evidence
+    event = build_event_rows(previous, current, "2026-08-24T12:00:00Z", load_change_evidence())[0]
+    assert event["event_type"] == "identifier_removed"
+    assert event["old_value"] == "US2515661054"
+    assert event["new_value"] == ""
+    assert event["evidence_status"] == "reviewed"
+    assert event["source_report"] == "data/review_overrides/metadata_updates.csv"
+    assert event["observation_id"] == "TSXV::DTEA:isin"
+
+
 def test_evidenced_isin_fill_stamps_inferred_country_change() -> None:
     previous = [{
         "listing_key": "SET::AAA", "ticker": "AAA", "exchange": "SET",
@@ -158,4 +188,3 @@ def test_evidenced_isin_fill_stamps_inferred_country_change() -> None:
     assert events["country_code"]["evidence_status"] == "verified"
     assert events["country"]["new_value"] == "United States"
     assert events["country_code"]["observation_id"].endswith(":isin_prefix_country")
-
