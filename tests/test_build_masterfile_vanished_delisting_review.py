@@ -127,6 +127,8 @@ def test_suspended_official_status_blocks_drop(tmp_path: Path) -> None:
     assert row["classifier_action"] == "blocked_suspended_kept_by_policy"
     assert row["classification"] == "suspended"
     assert row["would_apply_drop"] is False
+    assert row["source_url"] == "https://example.test/feed"
+    assert row["evidence_source_key"] == "bse_india_scrips"
 
 
 def test_official_delisting_evidence_is_reported_not_applied(tmp_path: Path) -> None:
@@ -139,10 +141,43 @@ def test_official_delisting_evidence_is_reported_not_applied(tmp_path: Path) -> 
         delisting_candidates=[official_bse_delisted()],
     )
     row = report["rows"][0]
+    evidence = official_bse_delisted()
     assert row["classifier_action"] == "apply_drop_override"
     assert row["would_apply_drop"] is True
     assert report["applied_drops"] == 0
     assert drops.read_text(encoding="utf-8") == "ticker,exchange,confidence,reason\n"
+    assert row["source_url"] == "https://example.test/feed"
+    assert row["evidence_source_url"] == evidence["source_url"]
+    assert row["evidence_observation_id"] == evidence["observation_id"]
+    assert row["evidence_observed_at"] == evidence["observed_at"]
+
+
+def test_ticker_reuse_does_not_inherit_foreign_delisting_evidence(tmp_path: Path) -> None:
+    report = run_review(
+        tmp_path,
+        vanished=[vanished_ref("DEAD", "BSE_IN", source_key="bse_india_scrips", isin="INE999")],
+        listings=[{"ticker": "DEAD", "exchange": "BSE_IN", "name": "New Co", "isin": "INE999"}],
+        delisting_candidates=[official_bse_delisted("DEAD")],
+    )
+    row = report["rows"][0]
+    assert row["classifier_action"] == "manual_rename_vs_delisting_required"
+    assert row["would_apply_drop"] is False
+    assert row["evidence_source_url"] == ""
+    assert row["evidence_observation_id"] == ""
+
+
+def test_blank_listing_isin_does_not_inherit_vanished_feed_evidence(tmp_path: Path) -> None:
+    report = run_review(
+        tmp_path,
+        vanished=[vanished_ref("DEAD", "BSE_IN", source_key="bse_india_scrips", isin="INE1")],
+        listings=[{"ticker": "DEAD", "exchange": "BSE_IN", "name": "Dead Ltd", "isin": ""}],
+        delisting_candidates=[official_bse_delisted("DEAD")],
+    )
+    row = report["rows"][0]
+    assert row["still_in_database"] is True
+    assert row["classifier_action"] == "manual_rename_vs_delisting_required"
+    assert row["would_apply_drop"] is False
+    assert row["evidence_source_url"] == ""
 
 
 def test_still_in_database_backlog_is_carried_and_stale_absences_are_not(tmp_path: Path) -> None:

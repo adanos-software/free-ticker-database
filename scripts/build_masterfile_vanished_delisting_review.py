@@ -38,6 +38,12 @@ def utc_now_iso() -> str:
 
 
 def listing_lookup_key(exchange: str, ticker: str) -> tuple[str, str]:
+    """Presence key for listings.csv, not instrument identity.
+
+    A vanished feed row is still in the database when the listing key exists,
+    including official ISIN recodes on the same ticker. Delisting evidence must
+    not use this key alone; ``matching_delisting_candidate`` requires the ISIN.
+    """
     return exchange, ticker
 
 
@@ -53,12 +59,36 @@ def listings_by_key(rows: list[dict[str, str]]) -> dict[tuple[str, str], dict[st
     return {listing_lookup_key(row.get("exchange", ""), row.get("ticker", "")): row for row in rows}
 
 
-def delisting_candidates_by_key(report: dict[str, Any]) -> dict[tuple[str, str], dict[str, str]]:
-    out: dict[tuple[str, str], dict[str, str]] = {}
+def delisting_candidates_by_key(report: dict[str, Any]) -> dict[tuple[str, str], list[dict[str, str]]]:
+    out: dict[tuple[str, str], list[dict[str, str]]] = {}
     for candidate in report.get("candidates", []):
         key = listing_lookup_key(str(candidate.get("exchange", "")), str(candidate.get("ticker", "")))
-        out[key] = candidate
+        out.setdefault(key, []).append(candidate)
     return out
+
+
+def listing_isin(listing: dict[str, str] | None) -> str:
+    if listing is None:
+        return ""
+    return str(listing.get("isin", "")).strip()
+
+
+def matching_delisting_candidate(
+    candidates: list[dict[str, str]],
+    *,
+    listing: dict[str, str] | None,
+) -> dict[str, str] | None:
+    """Bind weekly delisting evidence to the current listing ISIN, not ticker reuse."""
+    isin = listing_isin(listing)
+    if not isin:
+        return None
+    matches = [candidate for candidate in candidates if str(candidate.get("isin", "")).strip() == isin]
+    if not matches:
+        return None
+    for candidate in matches:
+        if classify_candidate(candidate) == "apply_drop_override":
+            return candidate
+    return matches[0]
 
 
 def reference_from_previous(row: dict[str, Any]) -> dict[str, str]:
@@ -99,13 +129,19 @@ def classify_vanished_row(
     *,
     ref: dict[str, str],
     listing: dict[str, str] | None,
-    delisting_candidate: dict[str, str] | None,
+    delisting_candidates: list[dict[str, str]] | None,
     origin: str,
 ) -> dict[str, Any]:
     still_in_database = listing is not None
+    matched = (
+        matching_delisting_candidate(delisting_candidates or [], listing=listing)
+        if still_in_database
+        else None
+    )
     if still_in_database:
-        candidate = dict(delisting_candidate or {})
-        if not candidate:
+        if matched:
+            candidate = dict(matched)
+        else:
             candidate = {
                 "ticker": ref.get("ticker", ""),
                 "exchange": ref.get("exchange", ""),
@@ -128,6 +164,10 @@ def classify_vanished_row(
         "classification": classification,
         "source_key": ref.get("source_key", ""),
         "source_url": ref.get("source_url", ""),
+        "evidence_source_key": "" if matched is None else str(matched.get("source_key", "")),
+        "evidence_source_url": "" if matched is None else str(matched.get("source_url", "")),
+        "evidence_observation_id": "" if matched is None else str(matched.get("observation_id", "")),
+        "evidence_observed_at": "" if matched is None else str(matched.get("observed_at", "")),
         "official_name": ref.get("name", ""),
         "listing_name": "" if listing is None else listing.get("name", ""),
         "listing_isin": "" if listing is None else listing.get("isin", ""),
@@ -221,8 +261,9 @@ def build_review(
         classify_vanished_row(
             ref=ref,
             listing=listings.get(listing_lookup_key(ref.get("exchange", ""), ref.get("ticker", ""))),
-            delisting_candidate=delisting_by_key.get(
-                listing_lookup_key(ref.get("exchange", ""), ref.get("ticker", ""))
+            delisting_candidates=delisting_by_key.get(
+                listing_lookup_key(ref.get("exchange", ""), ref.get("ticker", "")),
+                [],
             ),
             origin=origin,
         )
