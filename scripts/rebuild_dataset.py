@@ -65,6 +65,7 @@ REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
 REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
 REVIEW_DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
+REVIEW_LISTING_TRANSITIONS_CSV = REVIEW_OVERRIDES_DIR / "listing_transitions.csv"
 PRIMARY_LISTING_OVERRIDES_CSV = REVIEW_OVERRIDES_DIR / "primary_listing_overrides.csv"
 # (ticker, exchange) pairs that are exchange-listed preferreds/notes or common-stock
 # names that the non-common-stock name filters would otherwise drop as false positives
@@ -2597,6 +2598,41 @@ def load_review_overrides():
     return remove_aliases, metadata_updates, drop_entries
 
 
+def load_reviewed_transition_replacements() -> dict[tuple[str, str], tuple[str, str]]:
+    """Map reviewed predecessor rows to the replacement that must already exist.
+
+    A transition-specific drop stays dormant until its replacement reaches the
+    rebuild inputs. This keeps ordinary rebuilds deterministic and prevents a
+    reviewed future transition from creating a temporary coverage gap.
+    """
+    replacements: dict[tuple[str, str], tuple[str, str]] = {}
+    if not REVIEW_LISTING_TRANSITIONS_CSV.exists():
+        return replacements
+    with REVIEW_LISTING_TRANSITIONS_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            old_exchange, separator, old_ticker = row.get("old_listing_key", "").partition("::")
+            new_exchange, new_separator, new_ticker = row.get("new_listing_key", "").partition("::")
+            if separator and new_separator and all((old_ticker, old_exchange, new_ticker, new_exchange)):
+                replacements[(old_ticker, old_exchange)] = (new_ticker, new_exchange)
+    return replacements
+
+
+def active_review_transition_drops(
+    drop_entries: set[tuple[str, str]],
+    cleaned_rows: list[dict[str, str]],
+) -> set[tuple[str, str]]:
+    """Activate transition drops only when the replacement survived cleaning."""
+    replacements = load_reviewed_transition_replacements()
+    surviving = {(row.get("ticker", ""), row.get("exchange", "")) for row in cleaned_rows}
+    return {
+        key
+        for key in drop_entries
+        if key in replacements
+        and replacements[key] in surviving
+        and replacements[key] not in drop_entries
+    }
+
+
 def apply_input_metadata_overrides(
     row: dict[str, str],
     field_overrides: dict[str, dict[str, str]],
@@ -2663,6 +2699,8 @@ def apply_review_alias_removals(aliases: list[str], removals: set[str]) -> list[
 def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
+    transition_predecessors = set(load_reviewed_transition_replacements())
+    unconditional_review_drops = review_drop_entries - transition_predecessors
     official_isin_fallbacks = load_active_official_isin_fallbacks()
     official_sector_fallbacks = load_active_official_sector_fallbacks()
     official_depositary_listing_keys = load_active_official_depositary_listing_keys()
@@ -2670,7 +2708,7 @@ def cleaned_rows():
     prepared_rows: list[dict[str, str]] = []
     for row in ticker_rows:
         row_key = (row["ticker"], row["exchange"])
-        if row_key in review_drop_entries:
+        if row_key in unconditional_review_drops:
             continue
         metadata_overrides = review_metadata_updates.get(row_key, {})
         merged = normalize_input_row(row)
@@ -2805,6 +2843,12 @@ def cleaned_rows():
         protected_country_listing_keys,
     )
     output_rows = drop_duplicate_ticker_aliases(output_rows)
+    active_transition_drops = active_review_transition_drops(review_drop_entries, output_rows)
+    output_rows = [
+        row
+        for row in output_rows
+        if (row.get("ticker", ""), row.get("exchange", "")) not in active_transition_drops
+    ]
     return sorted(output_rows, key=lambda row: row["ticker"]), alias_type_lookup
 
 

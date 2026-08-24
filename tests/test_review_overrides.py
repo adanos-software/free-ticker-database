@@ -140,6 +140,26 @@ def test_load_review_overrides_and_apply_metadata(tmp_path, monkeypatch):
     assert renamed_input["name"] == "Bajaj Mobility AG"
 
 
+def test_transition_drop_activates_only_after_replacement_survives_cleaning(tmp_path, monkeypatch):
+    transitions = tmp_path / "listing_transitions.csv"
+    write_csv(
+        transitions,
+        ["old_listing_key", "new_listing_key"],
+        [{"old_listing_key": "NASDAQ::OLD", "new_listing_key": "NASDAQ::NEW"}],
+    )
+    monkeypatch.setattr(rebuild_dataset, "REVIEW_LISTING_TRANSITIONS_CSV", transitions)
+    drops = {("OLD", "NASDAQ"), ("STALE", "NYSE")}
+    new_row = {"ticker": "NEW", "exchange": "NASDAQ"}
+
+    assert rebuild_dataset.active_review_transition_drops(drops, []) == set()
+    assert rebuild_dataset.active_review_transition_drops(drops, [new_row]) == {
+        ("OLD", "NASDAQ")
+    }
+
+    drops.add(("NEW", "NASDAQ"))
+    assert rebuild_dataset.active_review_transition_drops(drops, [new_row]) == set()
+
+
 def test_split_aliases_accepts_review_override_lists():
     assert rebuild_dataset.split_aliases(["hotel fast sse", "", " stockholm "]) == [
         "hotel fast sse",
