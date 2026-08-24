@@ -55,6 +55,7 @@ jobs:
             --before /tmp/listings-before.csv \
             --after data/listings.csv \
             --events data/history/listing_events.csv \
+            --previous-official-reference /tmp/reference-before-nasdaq-us.csv \
             --strict
           python scripts/enrich_global_identifiers.py
           python scripts/build_entry_quality_report.py

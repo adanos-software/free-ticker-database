@@ -1,6 +1,6 @@
 """Generate narrow, source-backed evidence for safe canonical field changes.
 
-This module deliberately supports only one automatic evidence path:
+This module deliberately supports only two automatic evidence paths:
 
 * an exact active official reference row supplies a valid ISIN for the same
   venue, ticker, asset type and name;
@@ -9,6 +9,12 @@ This module deliberately supports only one automatic evidence path:
 * any accompanying country changes are the deterministic consequence of the
   ISIN prefix and a country-code/name mapping already present in the trusted
   baseline dataset.
+
+It also recognizes an exact venue migration when the same active official
+source observation moves from one venue to one other venue. For US listings it
+can reconcile a vanished Nasdaq Trader directory row to a stable SEC venue
+assignment. Both paths require an unchanged canonical security; ambiguous
+observations or candidate listings remain blocked.
 
 Conflicting references, ticker-only matches, non-official rows, stale rows,
 name mismatches and replacement of a non-empty ISIN are all rejected.
@@ -23,8 +29,10 @@ from typing import Iterable, Mapping
 
 try:
     from scripts.lib.merge_evidence import listing_key, row_fingerprint
+    from scripts.lib.normalize import names_match
 except ModuleNotFoundError:  # pragma: no cover - direct script execution
     from lib.merge_evidence import listing_key, row_fingerprint
+    from lib.normalize import names_match
 
 ISIN_FORMAT_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{9}[0-9]$")
 DIRECT_IDENTIFIER_SCOPES = {
@@ -34,6 +42,8 @@ DIRECT_IDENTIFIER_SCOPES = {
     "security_lookup_subset",
     "listed_companies_subset",
 }
+NASDAQ_US_DIRECTORY_SOURCES = {"nasdaq_listed", "nasdaq_other_listed"}
+SEC_VENUE_SOURCE = "sec_company_tickers_exchange"
 
 
 def is_valid_isin(value: str) -> bool:
@@ -78,6 +88,64 @@ def _reference_key(row: Mapping[str, str]) -> str:
     return f"{exchange}::{ticker}" if exchange and ticker else ""
 
 
+def _active_official_reference(row: Mapping[str, str]) -> bool:
+    return (
+        str(row.get("official", "")).strip().casefold() == "true"
+        and str(row.get("listing_status", "")).strip().casefold() == "active"
+        and str(row.get("reference_scope", "")).strip() in DIRECT_IDENTIFIER_SCOPES
+        and bool(str(row.get("source_key", "") or "").strip())
+        and bool(str(row.get("source_url", "") or "").strip())
+        and bool(_reference_key(row))
+    )
+
+
+def _reference_identity(row: Mapping[str, str]) -> tuple[str, ...]:
+    """Identify one security observation while deliberately excluding venue."""
+
+    return (
+        str(row.get("source_key", "") or "").strip(),
+        str(row.get("source_url", "") or "").strip(),
+        str(row.get("ticker", "") or "").strip().upper(),
+        _text(str(row.get("name", "") or "")),
+        str(row.get("asset_type", "") or "").strip(),
+        str(row.get("reference_scope", "") or "").strip(),
+        str(row.get("isin", "") or "").strip().upper(),
+    )
+
+
+def _reference_matches_canonical(
+    reference: Mapping[str, str], canonical: Mapping[str, str]
+) -> bool:
+    reference_isin = str(reference.get("isin", "") or "").strip().upper()
+    canonical_isin = str(canonical.get("isin", "") or "").strip().upper()
+    return (
+        str(reference.get("ticker", "") or "").strip().upper()
+        == str(canonical.get("ticker", "") or "").strip().upper()
+        and str(reference.get("asset_type", "") or "").strip()
+        == str(canonical.get("asset_type", "") or "").strip()
+        and names_match(
+            str(reference.get("name", "") or ""),
+            str(canonical.get("name", "") or ""),
+        )
+        and (not reference_isin or reference_isin == canonical_isin)
+    )
+
+
+def _reference_claims_canonical_security(
+    reference: Mapping[str, str], canonical: Mapping[str, str]
+) -> bool:
+    if (
+        str(reference.get("ticker", "") or "").strip().upper()
+        != str(canonical.get("ticker", "") or "").strip().upper()
+    ):
+        return False
+    reference_isin = str(reference.get("isin", "") or "").strip().upper()
+    canonical_isin = str(canonical.get("isin", "") or "").strip().upper()
+    return bool(reference_isin and reference_isin == canonical_isin) or (
+        _reference_matches_canonical(reference, canonical)
+    )
+
+
 def _observation_id(
     *, source_key: str, source_url: str, key: str, field: str, old: str, new: str
 ) -> str:
@@ -92,6 +160,7 @@ def build_official_change_evidence(
     *,
     observed_at: str,
     source_report: str,
+    previous_reference_rows: list[dict[str, str]] | None = None,
 ) -> list[dict[str, str]]:
     """Return exact field-change events justified by active official references.
 
@@ -109,11 +178,7 @@ def build_official_change_evidence(
 
     references_by_key: dict[str, list[dict[str, str]]] = defaultdict(list)
     for reference in reference_rows:
-        if str(reference.get("official", "")).strip().casefold() != "true":
-            continue
-        if str(reference.get("listing_status", "")).strip().casefold() != "active":
-            continue
-        if str(reference.get("reference_scope", "")).strip() not in DIRECT_IDENTIFIER_SCOPES:
+        if not _active_official_reference(reference):
             continue
         source_key = str(reference.get("source_key", "") or "").strip()
         source_url = str(reference.get("source_url", "") or "").strip()
@@ -239,5 +304,135 @@ def build_official_change_evidence(
                     event_type="country_changed",
                     evidence_status="verified",
                 )
+
+    previous_references = [
+        dict(row) for row in (previous_reference_rows or []) if _active_official_reference(row)
+    ]
+    current_references = [dict(row) for row in reference_rows if _active_official_reference(row)]
+    previous_by_identity: dict[tuple[str, ...], list[dict[str, str]]] = defaultdict(list)
+    current_by_identity: dict[tuple[str, ...], list[dict[str, str]]] = defaultdict(list)
+    previous_by_key: dict[str, list[dict[str, str]]] = defaultdict(list)
+    current_by_key: dict[str, list[dict[str, str]]] = defaultdict(list)
+    current_by_ticker: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for reference in previous_references:
+        previous_by_identity[_reference_identity(reference)].append(reference)
+        previous_by_key[_reference_key(reference)].append(reference)
+    for reference in current_references:
+        current_by_identity[_reference_identity(reference)].append(reference)
+        current_by_key[_reference_key(reference)].append(reference)
+        ticker = str(reference.get("ticker", "") or "").strip().upper()
+        current_by_ticker[ticker].append(reference)
+
+    removed_keys = sorted(set(before) - set(after))
+    for old_key in removed_keys:
+        old_row = before[old_key]
+        ticker = str(old_row.get("ticker", "") or "").strip().upper()
+        candidate_rows = [
+            row
+            for key, row in after.items()
+            if key != old_key
+            and str(row.get("ticker", "") or "").strip().upper() == ticker
+            and all(
+                str(row.get(field, "") or "").strip()
+                == str(old_row.get(field, "") or "").strip()
+                for field in (
+                    "name", "asset_type", "country", "country_code", "isin",
+                    "stock_sector", "etf_category",
+                )
+            )
+        ]
+        if len(candidate_rows) != 1:
+            continue
+        new_row = candidate_rows[0]
+        new_key = listing_key(new_row)
+
+        matching_pairs: list[tuple[dict[str, str], dict[str, str]]] = []
+        evidence_event_type = "venue_changed"
+        for old_reference in previous_by_key.get(old_key, []):
+            identity = _reference_identity(old_reference)
+            old_references = previous_by_identity[identity]
+            new_references = current_by_identity.get(identity, [])
+            if len(old_references) != 1 or len(new_references) != 1:
+                continue
+            new_reference = new_references[0]
+            if (
+                _reference_key(old_reference) == old_key
+                and _reference_key(new_reference) == new_key
+                and old_key != new_key
+                and _reference_matches_canonical(old_reference, old_row)
+                and _reference_matches_canonical(new_reference, new_row)
+            ):
+                matching_pairs.append((old_reference, new_reference))
+        if not matching_pairs and is_valid_isin(str(old_row.get("isin", "") or "")):
+            disappeared_old_references = [
+                reference
+                for reference in previous_by_key.get(old_key, [])
+                if not current_by_identity.get(_reference_identity(reference))
+                and str(reference.get("source_key", "") or "").strip()
+                in NASDAQ_US_DIRECTORY_SOURCES
+                and _reference_matches_canonical(reference, old_row)
+            ]
+            stable_new_references = [
+                reference
+                for reference in current_by_key.get(new_key, [])
+                if len(previous_by_identity.get(_reference_identity(reference), [])) == 1
+                and _reference_key(
+                    previous_by_identity[_reference_identity(reference)][0]
+                ) == new_key
+                and str(reference.get("source_key", "") or "").strip() == SEC_VENUE_SOURCE
+                and _reference_matches_canonical(reference, new_row)
+            ]
+            if (
+                len(disappeared_old_references) == 1
+                and len(stable_new_references) == 1
+                and names_match(
+                    str(disappeared_old_references[0].get("name", "") or ""),
+                    str(stable_new_references[0].get("name", "") or ""),
+                )
+            ):
+                matching_pairs.append((disappeared_old_references[0], stable_new_references[0]))
+                evidence_event_type = "venue_reconciled"
+        if len(matching_pairs) != 1:
+            continue
+
+        current_claimed_venues = {
+            _reference_key(reference)
+            for reference in current_by_ticker[ticker]
+            if _reference_claims_canonical_security(reference, new_row)
+        }
+        if current_claimed_venues != {new_key}:
+            continue
+
+        previous_reference, reference = matching_pairs[0]
+        source_key = str(reference.get("source_key", "") or "").strip()
+        source_url = str(reference.get("source_url", "") or "").strip()
+        evidence.append(
+            {
+                "listing_key": old_key,
+                "ticker": str(old_row.get("ticker", "") or ""),
+                "exchange": str(old_row.get("exchange", "") or ""),
+                "event_type": evidence_event_type,
+                "field_name": "exchange",
+                "old_value": str(old_row.get("exchange", "") or ""),
+                "new_value": str(new_row.get("exchange", "") or ""),
+                "before_row_sha256": row_fingerprint(old_row),
+                "effective_at": "",
+                "observed_at": observed_at,
+                "source_key": source_key,
+                "source_url": source_url,
+                "source_report": source_report,
+                "previous_source_key": str(previous_reference.get("source_key", "") or ""),
+                "previous_source_url": str(previous_reference.get("source_url", "") or ""),
+                "observation_id": _observation_id(
+                    source_key=source_key,
+                    source_url=source_url,
+                    key=f"{old_key}->{new_key}",
+                    field="exchange",
+                    old=str(old_row.get("exchange", "") or ""),
+                    new=str(new_row.get("exchange", "") or ""),
+                ),
+                "evidence_status": "official",
+            }
+        )
 
     return evidence
