@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Classify vanished official-reference rows with the delisting classifier and a still-in-database backlog. Rotation no longer treats feed absence as a drop.
+
 ## [3.35.0] - 2026-08-20
 
 ### Summary
