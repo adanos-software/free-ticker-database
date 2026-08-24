@@ -121,6 +121,7 @@ jobs:
           python scripts/build_release_artifacts.py
           python scripts/build_canonical_v4_archive.py
           python scripts/build_evidence_archive.py
+          cp data/canonical_v4/manifest.json output/release/canonical-v4-manifest.json
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -131,7 +132,7 @@ jobs:
             output/evidence_archive/m2-campaign-evidence.zip
             output/evidence_archive/evidence-manifest.json
             data/reports/quality_contract.json
-            data/canonical_v4/manifest.json
+            output/release/canonical-v4-manifest.json
           generate_release_notes: true
 
       - name: Publish Kaggle package
