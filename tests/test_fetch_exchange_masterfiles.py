@@ -10776,7 +10776,7 @@ def test_parse_cse_ma_jsonapi_collection_extracts_official_instruments() -> None
         key="cse_ma_listed_companies",
         provider="Casablanca Stock Exchange",
         description="Official Casablanca Stock Exchange active equity instruments JSONAPI directory",
-        source_url="https://www.casablanca-bourse.com/en/marche-cash/instruments-actions",
+        source_url="https://www.casablanca-bourse.com/en/marches-produits/actions",
         format="cse_ma_listed_companies_json",
         reference_scope="exchange_directory",
     )
@@ -10877,7 +10877,7 @@ def _cse_ma_source() -> MasterfileSource:
         key="cse_ma_listed_companies",
         provider="Casablanca Stock Exchange",
         description="Official Casablanca Stock Exchange active equities directory",
-        source_url="https://www.casablanca-bourse.com/en/marche-cash/instruments-actions",
+        source_url="https://www.casablanca-bourse.com/en/marches-produits/actions",
         format="cse_ma_listed_companies_json",
         reference_scope="exchange_directory",
     )
@@ -10888,10 +10888,12 @@ def test_parse_cse_ma_boursenova_actions_html_keeps_first_and_second_line_shares
 
     assert [row["ticker"] for row in rows] == ["AFM", "2SAHA", "NEW"]
     assert [row.get("isin", "") for row in rows] == ["MA0000012296", "MA0000012841", ""]
-    assert all(row["source_url"].endswith("/en/marche-cash/instruments-actions") for row in rows)
+    assert all(row["source_url"].endswith("/en/marches-produits/actions") for row in rows)
 
 
 def test_fetch_cse_ma_listed_companies_uses_exchange_actions_payload(monkeypatch) -> None:
+    requested_urls = []
+
     class OkResponse:
         status_code = 200
         text = CSE_MA_BOURSENOVA_ACTIONS_HTML
@@ -10899,10 +10901,15 @@ def test_fetch_cse_ma_listed_companies_uses_exchange_actions_payload(monkeypatch
         def raise_for_status(self):
             return None
 
-    monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", lambda *args, **kwargs: OkResponse())
+    def fake_get(url, **kwargs):
+        requested_urls.append(url)
+        return OkResponse()
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", fake_get)
 
     rows = fetch_exchange_masterfiles.fetch_cse_ma_listed_companies(_cse_ma_source())
 
+    assert requested_urls == ["https://www.casablanca-bourse.com/en/marches-produits/actions"]
     assert [row["ticker"] for row in rows] == ["2SAHA", "AFM", "NEW"]
 
 
