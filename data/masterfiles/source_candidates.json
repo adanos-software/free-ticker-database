@@ -130,7 +130,7 @@
     "venue_name": "Casablanca Stock Exchange",
     "country": "Morocco",
     "provider": "Casablanca Stock Exchange",
-    "source_url": "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions",
+    "source_url": "https://www.casablanca-bourse.com/en/emetteurs/liste-emetteurs",
     "candidate_scope": "exchange_directory_candidate",
     "asset_types": [
       "Stock"
@@ -138,8 +138,8 @@
     "expected_format": "cse_ma_listed_companies_json",
     "implementation_status": "implemented",
     "priority": "medium",
-    "blocker": "implemented via official Casablanca Bourse Next.js/JSONAPI active equity instrument collection",
-    "notes": "The official Casablanca Bourse active instrument page exposes a JSONAPI collection with symbol, ISIN, issuer, and instrument URL for active class-code 1 stock rows. Sector labels still need a separate official taxonomy path."
+    "blocker": "implemented via official Casablanca Bourse listed-issuer directory; ISIN and sector still need a separate official taxonomy path",
+    "notes": "The 2026 site relaunch replaced the Next.js/JSONAPI instruments collection with a Drupal listed-issuer page. The embedded boursenova.emetteurs payload has symbols and issuer names for active stocks, rights, and bonds, but no ISINs. The fetcher keeps stocks only and carries prior official ISINs by short ticker."
   },
   {
     "key": "dse_tz_listed_companies",

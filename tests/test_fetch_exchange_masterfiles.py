@@ -265,6 +265,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_cavali_bvl_emisores_html_pages,
     parse_cse_lk_all_security_code_payload,
     parse_cse_lk_company_info_summary_payload,
+    parse_cse_ma_boursenova_issuers_html,
     parse_cse_ma_jsonapi_collection,
     parse_dse_tz_listed_companies_html,
     parse_mse_mw_mainboard_html,
@@ -10854,6 +10855,154 @@ def test_parse_cse_ma_jsonapi_collection_extracts_official_instruments() -> None
             "isin": "MA0000011819",
         },
     ]
+
+
+CSE_MA_BOURSENOVA_ISSUERS_HTML = """
+<html><body>
+<script type="application/json" data-drupal-selector="drupal-settings-json">
+{"boursenova":{"currentLanguage":"en","emetteurs":[
+  {"label":{"en":"AFMA SA","fr":"AFMA SA"},"sector":{"en":"Insurance"},"instruments":[
+    {"symbol":"AFM  ","label":{"en":"AFMA","fr":"AFMA"},"type":{"en":"Stock","fr":"Actions"},"shares":"1","compartment":"Principal"},
+    {"symbol":"AFM/D","label":{"en":"AFMA Rights","fr":"AFMA Droits"},"type":{"en":"Rights","fr":"Droits"},"shares":"1","compartment":"Principal"}
+  ]},
+  {"label":{"en":"AUTO HALL","fr":"AUTO HALL"},"sector":{"en":"Distributors"},"instruments":[
+    {"symbol":"ATH  ","label":{"en":"AUTO HALL","fr":"AUTO HALL"},"type":{"en":"Stock","fr":"Actions"},"shares":"1","compartment":"Principal"}
+  ]},
+  {"label":{"en":"Bond Issuer","fr":"Emetteur Obligation"},"sector":{"en":"Banks"},"instruments":[
+    {"symbol":"BND  ","label":{"en":"Bond Issuer","fr":"Emetteur Obligation"},"type":{"en":"Corporate Bonds","fr":"Obligations"},"shares":"1","compartment":"Principal"}
+  ]},
+  {"label":{"en":"Second Line Issuer","fr":"Emetteur 2eme ligne"},"sector":{"en":"Insurance"},"instruments":[
+    {"symbol":"2SL  ","label":{"en":"Second Line Issuer","fr":"Emetteur 2eme ligne"},"type":{"en":"2nd Line Shares","fr":"Actions de 2eme ligne"},"shares":"1","compartment":"Principal"}
+  ]}
+]}}
+</script>
+</body></html>
+"""
+
+
+def _cse_ma_source() -> MasterfileSource:
+    return MasterfileSource(
+        key="cse_ma_listed_companies",
+        provider="Casablanca Stock Exchange",
+        description="Official Casablanca Stock Exchange listed-issuer directory of active equity instruments",
+        source_url="https://www.casablanca-bourse.com/en/emetteurs/liste-emetteurs",
+        format="cse_ma_listed_companies_json",
+        reference_scope="exchange_directory",
+    )
+
+
+def test_parse_cse_ma_boursenova_issuers_html_keeps_stocks_and_drops_rights_and_bonds() -> None:
+    rows = parse_cse_ma_boursenova_issuers_html(CSE_MA_BOURSENOVA_ISSUERS_HTML, _cse_ma_source())
+
+    assert [row["ticker"] for row in rows] == ["AFM", "ATH", "2SL"]
+    assert rows[0]["name"] == "AFMA SA"
+    assert rows[1]["name"] == "AUTO HALL"
+    assert rows[2]["name"] == "Second Line Issuer"
+    assert "isin" not in rows[0]
+    assert all(row["asset_type"] == "Stock" for row in rows)
+    assert all(row["source_url"].endswith("/en/emetteurs/liste-emetteurs") for row in rows)
+
+
+def test_attach_cse_ma_previous_isins_copies_same_ticker_only() -> None:
+    rows = parse_cse_ma_boursenova_issuers_html(CSE_MA_BOURSENOVA_ISSUERS_HTML, _cse_ma_source())
+
+    attached = fetch_exchange_masterfiles.attach_cse_ma_previous_isins(
+        rows,
+        previous_isins={
+            "AFM": "MA0000012296",
+            "BND": "MA0000019999",
+            "2SAHA": "MA0000012841",
+        },
+    )
+
+    assert [row["ticker"] for row in attached] == ["AFM", "ATH", "2SL"]
+    assert attached[0]["isin"] == "MA0000012296"
+    assert "isin" not in attached[1]
+    assert not any(row["ticker"] == "2SAHA" for row in attached)
+
+
+def test_fetch_cse_ma_listed_companies_uses_chrome_issuer_directory(monkeypatch) -> None:
+    class OkResponse:
+        status_code = 200
+        text = CSE_MA_BOURSENOVA_ISSUERS_HTML
+
+        def raise_for_status(self):
+            return None
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "chrome_impersonated_get",
+        lambda *args, **kwargs: OkResponse(),
+    )
+
+    class BoomSession(requests.Session):
+        def get(self, *args, **kwargs):
+            raise AssertionError("jina fallback should not run when chrome returns issuers")
+
+    rows = fetch_exchange_masterfiles.fetch_cse_ma_listed_companies(
+        _cse_ma_source(),
+        session=BoomSession(),
+        previous_isins={"AFM": "MA0000012296"},
+    )
+
+    assert [row["ticker"] for row in rows] == ["2SL", "AFM", "ATH"]
+    assert rows[1]["isin"] == "MA0000012296"
+
+
+def test_fetch_cse_ma_listed_companies_falls_back_to_jina_html(monkeypatch) -> None:
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "chrome_impersonated_get",
+        lambda *args, **kwargs: (_ for _ in ()).throw(requests.RequestException("timeout")),
+    )
+
+    class FakeSession(requests.Session):
+        def get(self, url, headers=None, timeout=None):
+            assert url == fetch_exchange_masterfiles.CASABLANCA_BOURSE_ISSUERS_JINA_URL
+            assert (headers or {}).get("X-Return-Format") == "html"
+
+            class OkResponse:
+                status_code = 200
+                text = CSE_MA_BOURSENOVA_ISSUERS_HTML
+
+                def raise_for_status(self):
+                    return None
+
+            return OkResponse()
+
+    rows = fetch_exchange_masterfiles.fetch_cse_ma_listed_companies(
+        _cse_ma_source(),
+        session=FakeSession(),
+        previous_isins={},
+    )
+
+    assert [row["ticker"] for row in rows] == ["2SL", "AFM", "ATH"]
+
+
+def test_load_cse_ma_listed_companies_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "cse_ma_listed_companies.json"
+    cache_path.write_text('[{"ticker":"OLD","name":"Stale"}]', encoding="utf-8")
+    fresh_rows = [{"ticker": "AFM", "name": "AFMA SA"}]
+    monkeypatch.setattr(fetch_exchange_masterfiles, "CSE_MA_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_CSE_MA_LISTED_COMPANIES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_cse_ma_listed_companies",
+        lambda source, session=None, previous_isins=None: fresh_rows,
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ensure_output_dirs", lambda: None)
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "cse_ma_listed_companies")
+
+    rows, mode = fetch_exchange_masterfiles.load_cse_ma_listed_companies_rows(source)
+
+    assert mode == "network"
+    assert rows == fresh_rows
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+    assert source.source_url.endswith("/en/emetteurs/liste-emetteurs")
 
 
 def test_parse_nse_ke_listed_companies_html_extracts_symbols_isins_and_sectors() -> None:
