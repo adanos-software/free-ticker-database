@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-24T15:51:11Z",
-    "rows": 92006,
+    "generated_at": "2026-08-24T17:18:16Z",
+    "rows": 92026,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,34 +14,34 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80630,
-      "source_gap": 11342,
+      "pass": 80625,
+      "source_gap": 11367,
       "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4574,
-      "official_reference": 82384,
+      "identifier_enriched": 4579,
+      "official_reference": 82399,
       "scoped_source_gap": 239,
       "valid_isin": 4809
     },
     "severity_counts": {
       "high": 6,
       "medium": 30,
-      "source_gap": 11630
+      "source_gap": 11675
     },
     "issue_counts": {
-      "official_reference_gap": 6335,
+      "official_reference_gap": 6340,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1281,
-      "expected_missing_primary_isin": 691,
-      "missing_etf_category": 36,
+      "missing_stock_sector": 1286,
+      "expected_missing_primary_isin": 711,
+      "missing_etf_category": 51,
       "official_name_mismatch": 30,
       "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8483,
+        "pass": 8482,
         "source_gap": 3257,
         "warn": 13
       },
@@ -61,8 +61,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4495,
-        "source_gap": 267,
+        "pass": 4494,
+        "source_gap": 274,
         "warn": 5
       },
       {
@@ -76,8 +76,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2526,
-        "source_gap": 201,
+        "pass": 2524,
+        "source_gap": 209,
         "warn": 2
       },
       {
@@ -116,15 +116,15 @@
         "source_gap": 144
       },
       {
+        "exchange": "BATS",
+        "pass": 1225,
+        "source_gap": 140
+      },
+      {
         "exchange": "TSXV",
         "pass": 1283,
         "source_gap": 137,
         "warn": 2
-      },
-      {
-        "exchange": "BATS",
-        "pass": 1226,
-        "source_gap": 131
       },
       {
         "exchange": "Euronext",
@@ -134,7 +134,7 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1923,
+        "pass": 1925,
         "source_gap": 93,
         "warn": 6
       },
