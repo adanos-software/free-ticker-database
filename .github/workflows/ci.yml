@@ -156,12 +156,16 @@ jobs:
         run: |
           if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" ]]; then
             git show "$PR_BASE_SHA:data/listings.csv" > /tmp/listings-before.csv
+            git show "$PR_BASE_SHA:data/masterfiles/reference.csv" > /tmp/reference-before-safe-merge.csv
           elif [[ "$EVENT_NAME" == "push" ]] && git rev-parse HEAD^ >/dev/null 2>&1; then
             git show "HEAD^:data/listings.csv" > /tmp/listings-before.csv
+            git show "HEAD^:data/masterfiles/reference.csv" > /tmp/reference-before-safe-merge.csv
           else
             cp data/listings.csv /tmp/listings-before.csv
+            cp data/masterfiles/reference.csv /tmp/reference-before-safe-merge.csv
           fi
           test -s /tmp/listings-before.csv
+          test -s /tmp/reference-before-safe-merge.csv
 
       - name: Build the visible canonical implementation
         run: |
@@ -171,6 +175,7 @@ jobs:
             --before /tmp/listings-before.csv \
             --after data/listings.csv \
             --events data/history/listing_events.csv \
+            --previous-official-reference /tmp/reference-before-safe-merge.csv \
             --strict
 
       - name: Validate canonical CSV and PostgreSQL contracts
