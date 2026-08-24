@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
+import math
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -15,18 +17,22 @@ try:
         event_has_provenance, event_timestamp_is_valid, listing_key, row_fingerprint,
     )
     from scripts.lib.official_change_evidence import build_official_change_evidence
+    from scripts.lib.official_change_evidence import is_valid_isin
 except ModuleNotFoundError:  # pragma: no cover
     from lib.merge_evidence import (
         CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
         event_has_provenance, event_timestamp_is_valid, listing_key, row_fingerprint,
     )
     from lib.official_change_evidence import build_official_change_evidence
+    from lib.official_change_evidence import is_valid_isin
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
 DEFAULT_OFFICIAL_REFERENCE = DATA_DIR / "masterfiles/reference.csv"
 DEFAULT_TICKERS_JSON = DATA_DIR / "tickers.json"
+DEFAULT_LISTING_TRANSITIONS = DATA_DIR / "review_overrides/listing_transitions.csv"
+DEFAULT_SEC_EXCHANGE_CACHE = DATA_DIR / "masterfiles/cache/sec_company_tickers_exchange.json"
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -79,6 +85,118 @@ def _valid_change(
     )
 
 
+def _split_listing_key(value: str) -> tuple[str, str]:
+    exchange, separator, ticker = value.partition("::")
+    return (exchange, ticker) if separator and exchange and ticker else ("", "")
+
+
+def _sec_ciks_by_ticker(payload: dict[str, Any] | None) -> dict[str, set[str]]:
+    if not payload:
+        return {}
+    fields = payload.get("fields", [])
+    data = payload.get("data", [])
+    if not isinstance(fields, list) or not isinstance(data, list):
+        return {}
+    indexed: dict[str, set[str]] = {}
+    for values in data:
+        if not isinstance(values, list) or len(values) != len(fields):
+            continue
+        row = dict(zip(fields, values))
+        ticker = str(row.get("ticker", "") or "").strip().upper()
+        cik = str(row.get("cik", "") or "").strip()
+        if ticker and cik.isdigit():
+            indexed.setdefault(ticker, set()).add(cik.zfill(10))
+    return indexed
+
+
+def build_reviewed_transition_evidence(
+    before_rows: list[dict[str, str]],
+    after_rows: list[dict[str, str]],
+    transition_rows: list[dict[str, str]],
+    *,
+    sec_exchange_payload: dict[str, Any] | None,
+    observed_at: str,
+    source_report: str,
+) -> list[dict[str, str]]:
+    if not observed_at or not source_report:
+        return []
+    before = {listing_key(row): row for row in before_rows if listing_key(row)}
+    after = {listing_key(row): row for row in after_rows if listing_key(row)}
+    sec_ciks = _sec_ciks_by_ticker(sec_exchange_payload)
+    evidence: list[dict[str, str]] = []
+    for transition in transition_rows:
+        old_key = transition.get("old_listing_key", "").strip()
+        new_key = transition.get("new_listing_key", "").strip()
+        old_row = before.get(old_key)
+        new_row = after.get(new_key)
+        if not old_row or not new_row or old_key in after:
+            continue
+        old_exchange, old_ticker = _split_listing_key(old_key)
+        new_exchange, new_ticker = _split_listing_key(new_key)
+        event_type = transition.get("event_type", "").strip()
+        if event_type == "venue_changed":
+            shape_is_valid = old_ticker == new_ticker and old_exchange != new_exchange
+            field_name, old_value, new_value = "exchange", old_exchange, new_exchange
+        elif event_type == "symbol_changed":
+            shape_is_valid = old_exchange == new_exchange and old_ticker != new_ticker
+            field_name, old_value, new_value = "ticker", old_ticker, new_ticker
+        else:
+            continue
+        if not shape_is_valid or old_row.get("asset_type") != new_row.get("asset_type"):
+            continue
+        identity_type = transition.get("identity_type", "").strip()
+        identity_value = transition.get("identity_value", "").strip().upper()
+        if identity_type == "same_isin":
+            identity_is_valid = bool(
+                is_valid_isin(identity_value)
+                and old_row.get("isin", "").strip().upper() == identity_value
+                and new_row.get("isin", "").strip().upper() == identity_value
+            )
+        elif identity_type == "same_cik":
+            identity_is_valid = bool(
+                identity_value.isdigit()
+                and identity_value.zfill(10) in sec_ciks.get(old_ticker, set())
+                and identity_value.zfill(10) in sec_ciks.get(new_ticker, set())
+            )
+        else:
+            continue
+        source_key = transition.get("source_key", "").strip()
+        source_url = transition.get("source_url", "").strip()
+        try:
+            confidence = float(transition.get("confidence", "0"))
+        except ValueError:
+            confidence = 0.0
+        if (
+            not identity_is_valid
+            or not math.isfinite(confidence)
+            or not 0.95 <= confidence <= 1.0
+            or not source_key
+            or not source_url.startswith("https://")
+        ):
+            continue
+        observation_payload = "|".join((old_key, new_key, identity_type, identity_value, source_url))
+        evidence.append(
+            {
+                "listing_key": old_key,
+                "ticker": old_ticker,
+                "exchange": old_exchange,
+                "event_type": event_type,
+                "field_name": field_name,
+                "old_value": old_value,
+                "new_value": new_value,
+                "before_row_sha256": row_fingerprint(old_row),
+                "effective_at": "",
+                "observed_at": observed_at,
+                "source_key": source_key,
+                "source_url": source_url,
+                "source_report": source_report,
+                "observation_id": hashlib.sha256(observation_payload.encode("utf-8")).hexdigest()[:24],
+                "evidence_status": "reviewed",
+            }
+        )
+    return evidence
+
+
 def evaluate(
     before_rows: list[dict[str, str]],
     after_rows: list[dict[str, str]],
@@ -91,6 +209,9 @@ def evaluate(
     observed_at: str = "",
     reference_source_report: str = "",
     previous_reference_rows: list[dict[str, str]] | None = None,
+    reviewed_transition_rows: list[dict[str, str]] | None = None,
+    sec_exchange_payload: dict[str, Any] | None = None,
+    reviewed_transition_source_report: str = "",
 ) -> dict[str, Any]:
     failures: list[str] = []
     before_duplicates = _duplicates(before_rows)
@@ -107,8 +228,16 @@ def evaluate(
         observed_at=observed_at, source_report=reference_source_report,
         previous_reference_rows=previous_reference_rows,
     )
+    generated_reviewed_transition_evidence = build_reviewed_transition_evidence(
+        before_rows,
+        after_rows,
+        reviewed_transition_rows or [],
+        sec_exchange_payload=sec_exchange_payload,
+        observed_at=observed_at,
+        source_report=reviewed_transition_source_report,
+    )
     events: dict[str, list[dict[str, str]]] = {}
-    for event in [*event_rows, *generated_reference_evidence]:
+    for event in [*event_rows, *generated_reference_evidence, *generated_reviewed_transition_evidence]:
         events.setdefault(listing_key(event), []).append(event)
 
     removed = sorted(set(before) - set(after))
@@ -186,6 +315,7 @@ def evaluate(
             "before_duplicate_listing_keys": len(before_duplicates),
             "after_duplicate_listing_keys": len(after_duplicates),
             "generated_official_change_evidence_rows": len(generated_reference_evidence),
+            "generated_reviewed_transition_evidence_rows": len(generated_reviewed_transition_evidence),
         },
         "failures": failures,
         "unevidenced_removed_listing_keys": unevidenced,
@@ -193,6 +323,7 @@ def evaluate(
         "unevidenced_critical_field_changes": unevidenced_changes,
         "critical_field_changes": changes,
         "generated_official_change_evidence": generated_reference_evidence,
+        "generated_reviewed_transition_evidence": generated_reviewed_transition_evidence,
         "venue_findings": venue_findings,
     }
 
@@ -215,6 +346,8 @@ def main() -> None:
     parser.add_argument("--allow-large-evidenced-removal", action="store_true")
     parser.add_argument("--official-reference", type=Path, default=DEFAULT_OFFICIAL_REFERENCE)
     parser.add_argument("--previous-official-reference", type=Path)
+    parser.add_argument("--reviewed-listing-transitions", type=Path, default=DEFAULT_LISTING_TRANSITIONS)
+    parser.add_argument("--sec-exchange-cache", type=Path, default=DEFAULT_SEC_EXCHANGE_CACHE)
     parser.add_argument("--observed-at", default="")
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
@@ -230,6 +363,17 @@ def main() -> None:
             if args.previous_official_reference and args.previous_official_reference.exists()
             else []
         ),
+        reviewed_transition_rows=(
+            load_csv(args.reviewed_listing_transitions)
+            if args.reviewed_listing_transitions.exists()
+            else []
+        ),
+        sec_exchange_payload=(
+            json.loads(args.sec_exchange_cache.read_text(encoding="utf-8"))
+            if args.sec_exchange_cache.exists()
+            else None
+        ),
+        reviewed_transition_source_report=_display_path(args.reviewed_listing_transitions),
     )
     write_report(report)
     print(json.dumps(report["summary"], indent=2))
