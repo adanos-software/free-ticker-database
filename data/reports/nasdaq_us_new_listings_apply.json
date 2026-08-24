@@ -1,9 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-24T09:28:02Z",
-    "previous_reference_csv": "/tmp/reference-before-pr262-refresh-20260824.csv",
+    "generated_at": "2026-08-24T15:43:51Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
+    "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
+    "listing_transitions_csv": "data/review_overrides/listing_transitions.csv",
     "supported_asset_types": [
       "ETF",
       "Stock"
@@ -12,6 +14,7 @@
     "accepted_rows": 0,
     "skipped_rows": 0,
     "accepted_by_exchange": {},
+    "accepted_by_target": {},
     "skipped_by_reason": {}
   },
   "accepted": [],
