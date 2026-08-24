@@ -12,18 +12,75 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 9,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0
+    "generated_official_change_evidence_rows": 0,
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "BSE_HU::ADID",
+      "field_name": "isin",
+      "old_value": "US00687A1079",
+      "new_value": "DE000A1EWWW0"
+    },
+    {
+      "listing_key": "LSE::0I4T",
+      "field_name": "country",
+      "old_value": "France",
+      "new_value": "Luxembourg"
+    },
+    {
+      "listing_key": "LSE::0I4T",
+      "field_name": "country_code",
+      "old_value": "FR",
+      "new_value": "LU"
+    },
+    {
+      "listing_key": "LSE::BME",
+      "field_name": "name",
+      "old_value": "B&M European Value Retail SA",
+      "new_value": "B&M European Value Retail plc"
+    },
+    {
+      "listing_key": "LSE::GEM",
+      "field_name": "name",
+      "old_value": "Gemfields Plc",
+      "new_value": "Gemfields Group Limited"
+    },
+    {
+      "listing_key": "NYSE MKT::GTE",
+      "field_name": "isin",
+      "old_value": "US38500T1016",
+      "new_value": "US38500T2006"
+    },
+    {
+      "listing_key": "OTC::AGNPF",
+      "field_name": "name",
+      "old_value": "Algernon Health Inc.",
+      "new_value": "Grey Matters Health Inc."
+    },
+    {
+      "listing_key": "OTC::HISEF",
+      "field_name": "name",
+      "old_value": "Hisense Home Appliances Group Co. Ltd",
+      "new_value": "Hisense Kelon Electrical Holdings Co Ltd."
+    },
+    {
+      "listing_key": "OTC::ZCRMF",
+      "field_name": "name",
+      "old_value": "ZINCORE METALS INC",
+      "new_value": "Golden Cross Resources Inc."
+    }
+  ],
   "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",

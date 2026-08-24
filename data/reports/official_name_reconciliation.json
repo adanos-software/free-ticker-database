@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T09:18:46Z",
+  "generated_at": "2026-08-24T12:37:33Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
   "reconciled_rows": 1796,
   "applied_rows": 0,
@@ -3619,6 +3619,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
       "observation_id": "32be340c79e48826554a6e24",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "FSX::5PH",
+      "action": "proposed",
+      "ticker": "5PH",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "isin": "GG00BG0KTL52",
+      "old_name": "Gemfields Group Limited",
+      "new_name": "GEMFIELDS GROUP  DL-00001",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "observation_id": "117db3fb3df298d30c163f86",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -22729,21 +22744,6 @@
       "reference_scope": "security_lookup_subset",
       "source_url": "https://www.otcmarkets.com/stock/VIAAY/security",
       "observation_id": "64cf256409398e124266b138",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "OTC::ZCRMF",
-      "action": "proposed",
-      "ticker": "ZCRMF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "isin": "CA3808871097",
-      "old_name": "ZINCORE METALS INC",
-      "new_name": "GOLDEN CROSS RES INC.",
-      "source_key": "otc_markets_security_profile",
-      "reference_scope": "security_lookup_subset",
-      "source_url": "https://www.otcmarkets.com/stock/ZCRMF/security",
-      "observation_id": "20b1493d50c85940a8a6dd3a",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
