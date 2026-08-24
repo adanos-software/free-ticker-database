@@ -139,7 +139,7 @@
     "implementation_status": "implemented",
     "priority": "medium",
     "blocker": "implemented via the official Casablanca Bourse Drupal equities payload",
-    "notes": "The post-relaunch equities page embeds a boursenova.actions payload with ticker, ISIN, issuer, category, and sector. The fetcher accepts first- and second-line shares, rejects non-equities, and uses a rendered-HTML fallback when the exchange blocks direct requests."
+    "notes": "The post-relaunch equities page embeds a boursenova.actions payload with ticker, ISIN, issuer, category, and sector. The fetcher accepts first- and second-line shares, rejects non-equities, and preserves the last official cache when the exchange is unavailable."
   },
   {
     "key": "dse_tz_listed_companies",

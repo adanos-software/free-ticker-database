@@ -575,7 +575,6 @@ BSE_HU_BETA_MARKET_URL = "https://www.bet.hu/oldalak/beta_piac#reszvenyek"
 EGX_LISTED_STOCKS_URL = "https://www.egx.com.eg/en/ListedStocks.aspx"
 CAVALI_BVL_EMISORES_URL = "https://cavali-corporativa.screativa.com/emisores"
 CASABLANCA_BOURSE_INSTRUMENTS_URL = "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions"
-CASABLANCA_BOURSE_INSTRUMENTS_JINA_URL = f"https://r.jina.ai/{CASABLANCA_BOURSE_INSTRUMENTS_URL}"
 CSE_LK_ALL_SECURITY_CODE_URL = "https://www.cse.lk/api/allSecurityCode"
 CSE_LK_COMPANY_INFO_SUMMARY_URL = "https://www.cse.lk/api/companyInfoSummery"
 CSE_LK_COMPANY_INFO_WORKERS = 8
@@ -5609,7 +5608,10 @@ def parse_cse_ma_boursenova_actions_html(text: str, source: MasterfileSource) ->
         settings = json.loads(unescape(match.group("payload")))
     except json.JSONDecodeError as exc:
         raise ValueError("Invalid Casablanca Stock Exchange Drupal settings payload") from exc
-    actions = (settings.get("boursenova") or {}).get("actions") if isinstance(settings, dict) else None
+    boursenova = settings.get("boursenova") if isinstance(settings, dict) else None
+    if not isinstance(boursenova, dict):
+        raise ValueError("Unexpected Casablanca Stock Exchange boursenova payload")
+    actions = boursenova.get("actions")
     if not isinstance(actions, list):
         raise ValueError("Unexpected Casablanca Stock Exchange equities payload")
 
@@ -5651,35 +5653,17 @@ def parse_cse_ma_boursenova_actions_html(text: str, source: MasterfileSource) ->
     return rows
 
 
-def fetch_cse_ma_actions_html(*, session: requests.Session | None = None) -> str:
-    session = session or requests.Session()
-    try:
-        response = chrome_impersonated_get(
-            CASABLANCA_BOURSE_INSTRUMENTS_URL,
-            headers={
-                "User-Agent": BROWSER_USER_AGENT,
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Language": "en-US,en;q=0.9,fr;q=0.8",
-            },
-            timeout=CSE_MA_CHROME_TIMEOUT_SECONDS,
-        )
-        raise_requests_status(response)
-        text = str(getattr(response, "text", "") or "")
-        if '"actions"' in text and "boursenova" in text:
-            return text
-    except (ImportError, requests.RequestException, ValueError):
-        pass
-
-    response = session.get(
-        CASABLANCA_BOURSE_INSTRUMENTS_JINA_URL,
+def fetch_cse_ma_actions_html() -> str:
+    response = chrome_impersonated_get(
+        CASABLANCA_BOURSE_INSTRUMENTS_URL,
         headers={
-            "User-Agent": USER_AGENT,
-            "Accept": "text/html,*/*",
-            "X-Return-Format": "html",
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9,fr;q=0.8",
         },
-        timeout=REQUEST_TIMEOUT,
+        timeout=CSE_MA_CHROME_TIMEOUT_SECONDS,
     )
-    response.raise_for_status()
+    raise_requests_status(response)
     text = str(getattr(response, "text", "") or "")
     if '"actions"' in text and "boursenova" in text:
         return text
@@ -5745,7 +5729,7 @@ def fetch_cse_ma_listed_companies(
 ) -> list[dict[str, str]]:
     session = session or requests.Session()
     try:
-        html = fetch_cse_ma_actions_html(session=session)
+        html = fetch_cse_ma_actions_html()
         return dedupe_rows(parse_cse_ma_boursenova_actions_html(html, source))
     except (requests.RequestException, ValueError, json.JSONDecodeError):
         return fetch_cse_ma_listed_companies_legacy_jsonapi(source, session=session)
@@ -5758,13 +5742,10 @@ def load_cse_ma_listed_companies_rows(
     try:
         rows = fetch_cse_ma_listed_companies(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
-        try:
-            rows = fetch_cse_ma_reader_rows(source, session=session)
-        except (requests.RequestException, ValueError):
-            for path in (CSE_MA_LISTED_COMPANIES_CACHE, LEGACY_CSE_MA_LISTED_COMPANIES_CACHE):
-                if path.exists():
-                    return json.loads(path.read_text(encoding="utf-8")), "cache"
-            return None, "unavailable"
+        for path in (CSE_MA_LISTED_COMPANIES_CACHE, LEGACY_CSE_MA_LISTED_COMPANIES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
 
     ensure_output_dirs()
     CSE_MA_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")

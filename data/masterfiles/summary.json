@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-24T14:10:34Z",
-  "rows": 169416,
+  "generated_at": "2026-08-24T09:23:58Z",
+  "rows": 169417,
   "exchanges": [
     "ADX",
     "AMS",
@@ -124,7 +124,7 @@
     "nasdaq_nordic_copenhagen_etfs": 1,
     "cse_lk_all_security_code": 306,
     "cse_lk_company_info_summary": 318,
-    "cse_ma_listed_companies": 81,
+    "cse_ma_listed_companies": 82,
     "dfm_listed_securities": 71,
     "dse_tz_listed_companies": 17,
     "egx_listed_stocks": 191,
@@ -605,9 +605,10 @@
       "provider": "Casablanca Stock Exchange",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "network",
-      "rows": 81,
-      "generated_at": "2026-08-24T14:10:34Z"
+      "mode": "unavailable",
+      "rows": 82,
+      "generated_at": "2026-07-27T10:06:05Z",
+      "last_error": "Empty refresh result; preserved 82 existing rows"
     },
     "cse_lk_all_security_code": {
       "provider": "CSE Sri Lanka",
@@ -1386,7 +1387,7 @@
     "bse_hu_listed_companies": "network",
     "egx_listed_stocks": "network",
     "bvl_issuers_directory": "network",
-    "cse_ma_listed_companies": "network",
+    "cse_ma_listed_companies": "unavailable",
     "cse_lk_all_security_code": "network",
     "cse_lk_company_info_summary": "network",
     "dse_tz_listed_companies": "network",
@@ -1502,6 +1503,10 @@
       "error": "Empty refresh result; preserved 10 existing rows"
     },
     {
+      "source_key": "cse_ma_listed_companies",
+      "error": "Empty refresh result; preserved 82 existing rows"
+    },
+    {
       "source_key": "jse_instrument_search",
       "error": "JSE instrument search unavailable"
     },
@@ -1547,12 +1552,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-24T14:10:34Z",
+    "generated_at": "2026-08-24T09:23:58Z",
     "selected_source_keys": [
-      "cse_ma_listed_companies"
+      "boursa_kuwait_stocks",
+      "bse_bw_listed_companies",
+      "bse_hu_listed_companies",
+      "bse_india_scrips",
+      "bursa_closing_prices",
+      "bursa_equity_isin",
+      "bvb_fund_units_directory",
+      "bvb_shares_directory",
+      "bvc_colombia_issuers",
+      "bvl_issuers_directory",
+      "byma_equity_details",
+      "cboe_canada_listing_directory",
+      "cse_lk_all_security_code",
+      "cse_lk_company_info_summary",
+      "cse_ma_listed_companies",
+      "deutsche_boerse_etfs_etps",
+      "deutsche_boerse_frankfurt_all_tradable_equities",
+      "deutsche_boerse_listed_companies",
+      "deutsche_boerse_xetra_all_tradable_equities",
+      "dfm_listed_securities"
     ],
     "source_modes": {
-      "cse_ma_listed_companies": "network"
+      "boursa_kuwait_stocks": "network",
+      "bse_bw_listed_companies": "network",
+      "bse_hu_listed_companies": "network",
+      "bse_india_scrips": "network",
+      "bursa_closing_prices": "network",
+      "bursa_equity_isin": "network",
+      "bvb_fund_units_directory": "network",
+      "bvb_shares_directory": "network",
+      "bvc_colombia_issuers": "network",
+      "bvl_issuers_directory": "network",
+      "byma_equity_details": "network",
+      "cboe_canada_listing_directory": "network",
+      "cse_lk_all_security_code": "network",
+      "cse_lk_company_info_summary": "network",
+      "cse_ma_listed_companies": "unavailable",
+      "deutsche_boerse_etfs_etps": "network",
+      "deutsche_boerse_frankfurt_all_tradable_equities": "network",
+      "deutsche_boerse_listed_companies": "network",
+      "deutsche_boerse_xetra_all_tradable_equities": "network",
+      "dfm_listed_securities": "network"
     }
   }
 }

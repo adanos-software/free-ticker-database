@@ -10891,7 +10891,7 @@ def test_parse_cse_ma_boursenova_actions_html_keeps_first_and_second_line_shares
     assert all(row["source_url"].endswith("/en/marche-cash/instruments-actions") for row in rows)
 
 
-def test_fetch_cse_ma_listed_companies_uses_chrome_actions_payload(monkeypatch) -> None:
+def test_fetch_cse_ma_listed_companies_uses_exchange_actions_payload(monkeypatch) -> None:
     class OkResponse:
         status_code = 200
         text = CSE_MA_BOURSENOVA_ACTIONS_HTML
@@ -10901,38 +10901,20 @@ def test_fetch_cse_ma_listed_companies_uses_chrome_actions_payload(monkeypatch) 
 
     monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", lambda *args, **kwargs: OkResponse())
 
-    class BoomSession(requests.Session):
-        def get(self, *args, **kwargs):
-            raise AssertionError("Jina fallback should not run when Chrome returns the actions payload")
-
-    rows = fetch_exchange_masterfiles.fetch_cse_ma_listed_companies(_cse_ma_source(), session=BoomSession())
+    rows = fetch_exchange_masterfiles.fetch_cse_ma_listed_companies(_cse_ma_source())
 
     assert [row["ticker"] for row in rows] == ["2SAHA", "AFM", "NEW"]
 
 
-def test_fetch_cse_ma_listed_companies_falls_back_to_jina_actions_payload(monkeypatch) -> None:
-    monkeypatch.setattr(
-        fetch_exchange_masterfiles,
-        "chrome_impersonated_get",
-        lambda *args, **kwargs: (_ for _ in ()).throw(requests.RequestException("timeout")),
-    )
+def test_parse_cse_ma_boursenova_actions_html_rejects_non_object_payload() -> None:
+    html = """
+    <script type="application/json" data-drupal-selector="drupal-settings-json">
+    {"boursenova":[]}
+    </script>
+    """
 
-    class FakeSession(requests.Session):
-        def get(self, url, headers=None, timeout=None):
-            assert url == fetch_exchange_masterfiles.CASABLANCA_BOURSE_INSTRUMENTS_JINA_URL
-            assert (headers or {}).get("X-Return-Format") == "html"
-
-            class OkResponse:
-                text = CSE_MA_BOURSENOVA_ACTIONS_HTML
-
-                def raise_for_status(self):
-                    return None
-
-            return OkResponse()
-
-    rows = fetch_exchange_masterfiles.fetch_cse_ma_listed_companies(_cse_ma_source(), session=FakeSession())
-
-    assert [row["ticker"] for row in rows] == ["2SAHA", "AFM", "NEW"]
+    with pytest.raises(ValueError, match="boursenova payload"):
+        parse_cse_ma_boursenova_actions_html(html, _cse_ma_source())
 
 
 def test_load_cse_ma_listed_companies_rows_prefers_network_over_cache(tmp_path, monkeypatch) -> None:
@@ -10950,6 +10932,25 @@ def test_load_cse_ma_listed_companies_rows_prefers_network_over_cache(tmp_path, 
     assert mode == "network"
     assert rows == fresh_rows
     assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_cse_ma_listed_companies_rows_preserves_cache_when_exchange_is_unavailable(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "cse_ma_listed_companies.json"
+    cached_rows = [{"ticker": "AFM", "name": "AFMA SA", "isin": "MA0000012296"}]
+    cache_path.write_text(json.dumps(cached_rows), encoding="utf-8")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "CSE_MA_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_CSE_MA_LISTED_COMPANIES_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_cse_ma_listed_companies",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("timeout")),
+    )
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "cse_ma_listed_companies")
+
+    rows, mode = fetch_exchange_masterfiles.load_cse_ma_listed_companies_rows(source)
+
+    assert mode == "cache"
+    assert rows == cached_rows
 
 
 def test_parse_nse_ke_listed_companies_html_extracts_symbols_isins_and_sectors() -> None:
