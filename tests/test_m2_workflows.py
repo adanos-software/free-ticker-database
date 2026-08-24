@@ -44,6 +44,10 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     assert "output/evidence_archive/*" not in workflow
     assert "output/evidence_archive/m2-campaign-evidence.zip" in workflow
     assert "output/evidence_archive/evidence-manifest.json" in workflow
+    assert "cp data/canonical_v4/manifest.json output/release/canonical-v4-manifest.json" in workflow
+    assert "output/release/canonical-v4-manifest.json" in workflow
+    release_files = workflow.split("files: |", 1)[1].split("generate_release_notes:", 1)[0]
+    assert "data/canonical_v4/manifest.json" not in release_files
     assert "PUBLISH_KAGGLE" in workflow
     assert "PUBLISH_HUGGINGFACE" in workflow
     assert "git rev-parse HEAD^ >/dev/null 2>&1" in workflow
