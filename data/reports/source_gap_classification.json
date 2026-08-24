@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-24T09:31:38Z",
-    "rows": 8564,
+    "generated_at": "2026-08-24T11:51:17Z",
+    "rows": 8563,
     "field_totals": {
       "missing_etf_category": 31,
-      "missing_isin_primary": 690,
-      "missing_sector_stock": 1508,
+      "missing_isin_primary": 691,
+      "missing_sector_stock": 1506,
       "official_reference_gap": 6335
     },
     "class_totals": {
@@ -16,17 +16,17 @@
       "equity_etf_category_gap": 4,
       "exchange_industry_source_gap": 62,
       "fund_or_trust_identifier_gap": 236,
-      "fundlike_stock_sector_gap": 6,
+      "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
-      "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 269,
+      "official_current_directory_absent_identifier_gap": 9,
+      "official_identifier_not_exposed_source_gap": 263,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 840,
+      "official_industry_taxonomy_unavailable_gap": 838,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 26,
       "official_reference_symbol_collision_gap": 1186,
       "official_reference_unmatched_source_gap": 5149,
-      "otc_sector_source_gap": 553,
+      "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 31
     },
     "class_by_field": {
@@ -38,14 +38,14 @@
       "missing_isin_primary:debt_or_securitized_identifier_gap": 76,
       "missing_isin_primary:fund_or_trust_identifier_gap": 236,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
-      "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 269,
+      "missing_isin_primary:official_current_directory_absent_identifier_gap": 9,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 263,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 8,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
-      "missing_sector_stock:fundlike_stock_sector_gap": 6,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 840,
-      "missing_sector_stock:otc_sector_source_gap": 553,
+      "missing_sector_stock:fundlike_stock_sector_gap": 5,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 838,
+      "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 31,
       "official_reference_gap:official_reference_symbol_collision_gap": 1186,
       "official_reference_gap:official_reference_unmatched_source_gap": 5149
@@ -80,7 +80,7 @@
         },
         {
           "exchange": "TSXV",
-          "rows": 97
+          "rows": 98
         },
         {
           "exchange": "TSX",
@@ -118,11 +118,11 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 810
+          "rows": 807
         },
         {
           "exchange": "OTC",
-          "rows": 553
+          "rows": 554
         },
         {
           "exchange": "XSTU",
@@ -213,7 +213,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 787,
+        "rows": 784,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -221,7 +221,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 553,
+        "rows": 554,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -2280,14 +2280,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "BP CAPITAL MARKETS P.L.C.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::BP1;exchange=ASX;ticker=BP1;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2314,14 +2314,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "CAISSE FRANCAISE DE FINANCEMENT LOCAL",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::DXA;exchange=ASX;ticker=DXA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2348,14 +2348,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "LLOYDS BANKING GROUP PLC",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::LO1;exchange=ASX;ticker=LO1;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2501,14 +2501,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "SHINHAN BANK.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::SHZ;exchange=ASX;ticker=SHZ;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2535,14 +2535,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "NEW SOUTH WALES TREASURY CORPORATION",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::XNC;exchange=ASX;ticker=XNC;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2552,14 +2552,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "QUEENSLAND TREASURY CORPORATION",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::XQL;exchange=ASX;ticker=XQL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2569,14 +2569,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "TREASURY CORPORATION OF VICTORIA",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::XVG;exchange=ASX;ticker=XVG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -6580,7 +6580,7 @@
       "ticker": "BLX",
       "exchange": "NYSE",
       "asset_type": "Stock",
-      "name": "Foreign Trade Bank of Latin America Inc",
+      "name": "Bladex, Inc.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
@@ -11370,6 +11370,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "TSXV::DTEA",
+      "ticker": "DTEA",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "name": "DAVIDsTEA Inc.",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=TSXV::DTEA;exchange=TSXV;ticker=DTEA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "TSXV::ELL",
       "ticker": "ELL",
       "exchange": "TSXV",
@@ -12996,23 +13013,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=FSX::0MZ;exchange=FSX;ticker=0MZ;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "FSX::0PA0",
-      "ticker": "0PA0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Premier African Minerals Ltd.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::0PA0;exchange=FSX;ticker=0PA0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -20618,23 +20618,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::G1P0",
-      "ticker": "G1P0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Gran Tierra Energy Inc.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::G1P0;exchange=FSX;ticker=G1P0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::G7A",
       "ticker": "G7A",
       "exchange": "FSX",
@@ -22635,23 +22618,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=FSX::LUH0;exchange=FSX;ticker=LUH0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "FSX::LVO0",
-      "ticker": "LVO0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "LivePerson Inc.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::LVO0;exchange=FSX;ticker=LVO0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -26708,15 +26674,15 @@
       "ticker": "TIR",
       "exchange": "LSE",
       "asset_type": "Stock",
-      "name": "Tiger Royalties and investments Plc",
-      "gap_class": "fundlike_stock_sector_gap",
+      "name": "Tiger Alpha PLC",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
-      "recommended_next_source": "Issuer classification from official exchange or reviewed profile source.",
-      "source_gate": "Canonical stock sector only with issuer-level classification evidence.",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=LSE::TIR;exchange=LSE;ticker=TIR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=fundlike_stock_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=fundlike_stock_sector_gap"
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -33787,6 +33753,23 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::PEGIY;exchange=OTC;ticker=PEGIY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::PHDWY",
+      "ticker": "PHDWY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "PT Aspirasi Hidup Indonesia TBK",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::PHDWY;exchange=OTC;ticker=PHDWY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },
