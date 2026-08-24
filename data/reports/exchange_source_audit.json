@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T12:57:57Z",
+  "generated_at": "2026-08-24T15:51:18Z",
   "summary": {
     "venues": 87,
     "venue_status_counts": {
@@ -8,13 +8,13 @@
       "official_partial": 33
     },
     "audit_outcome_counts": {
-      "denominator_missing": 25,
+      "denominator_missing": 23,
       "maintain": 8,
       "official_source_required": 5,
       "refresh_required": 38,
-      "refresh_unavailable": 11
+      "refresh_unavailable": 13
     },
-    "unavailable_venues": 11,
+    "unavailable_venues": 13,
     "nonfresh_venues": 68,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
@@ -306,9 +306,9 @@
       "official_active_etf_rows": 0,
       "missing_product_classes": "ETF",
       "official_source_keys": "bse_bw_listed_companies",
-      "unavailable_source_keys": "",
+      "unavailable_source_keys": "bse_bw_listed_companies",
       "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "source_blocker_classes": "empty_refresh",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -316,8 +316,8 @@
       "official_recall_pct": null,
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
-      "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_product_class_gap"
+      "audit_outcome": "refresh_unavailable",
+      "promotion_readiness": "blocked_source_unavailable"
     },
     {
       "exchange": "BSE_HU",
@@ -348,8 +348,8 @@
       "reference_scopes": "exchange_directory",
       "current_stock_rows": 2725,
       "current_etf_rows": 7,
-      "official_active_stock_rows": 4920,
-      "official_active_etf_rows": 197,
+      "official_active_stock_rows": 4919,
+      "official_active_etf_rows": 198,
       "missing_product_classes": "",
       "official_source_keys": "bse_india_scrips",
       "unavailable_source_keys": "",
@@ -398,9 +398,9 @@
       "official_active_etf_rows": 0,
       "missing_product_classes": "",
       "official_source_keys": "bvc_colombia_issuers",
-      "unavailable_source_keys": "",
+      "unavailable_source_keys": "bvc_colombia_issuers",
       "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "source_blocker_classes": "empty_refresh",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -408,8 +408,8 @@
       "official_recall_pct": null,
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
-      "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "audit_outcome": "refresh_unavailable",
+      "promotion_readiness": "blocked_source_unavailable"
     },
     {
       "exchange": "BVL",
