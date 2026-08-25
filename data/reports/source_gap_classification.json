@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-08-24T17:18:28Z",
-    "rows": 8607,
+    "generated_at": "2026-08-25T07:32:06Z",
+    "rows": 8614,
     "field_totals": {
-      "missing_etf_category": 45,
-      "missing_isin_primary": 711,
+      "missing_etf_category": 48,
+      "missing_isin_primary": 715,
       "missing_sector_stock": 1511,
       "official_reference_gap": 6340
     },
@@ -13,9 +13,9 @@
       "adr_cdr_or_depositary_sector_gap": 16,
       "capital_pool_or_halted_identifier_gap": 33,
       "debt_or_securitized_identifier_gap": 76,
-      "equity_etf_category_gap": 7,
+      "equity_etf_category_gap": 8,
       "exchange_industry_source_gap": 62,
-      "fund_or_trust_identifier_gap": 251,
+      "fund_or_trust_identifier_gap": 255,
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
       "official_current_directory_absent_identifier_gap": 2,
@@ -23,20 +23,20 @@
       "official_identifier_reference_unmatched_gap": 8,
       "official_industry_taxonomy_unavailable_gap": 841,
       "official_product_reference_unmatched_category_gap": 1,
-      "official_product_taxonomy_unavailable_gap": 37,
+      "official_product_taxonomy_unavailable_gap": 39,
       "official_reference_symbol_collision_gap": 1182,
       "official_reference_unmatched_source_gap": 5158,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 33
     },
     "class_by_field": {
-      "missing_etf_category:equity_etf_category_gap": 7,
+      "missing_etf_category:equity_etf_category_gap": 8,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 37,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 39,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 44,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 76,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 251,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 255,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 275,
@@ -54,11 +54,11 @@
       "missing_etf_category": [
         {
           "exchange": "BATS",
-          "rows": 25
+          "rows": 26
         },
         {
           "exchange": "NYSE ARCA",
-          "rows": 13
+          "rows": 15
         },
         {
           "exchange": "NASDAQ",
@@ -91,11 +91,11 @@
           "rows": 62
         },
         {
-          "exchange": "NASDAQ",
-          "rows": 54
+          "exchange": "NYSE ARCA",
+          "rows": 57
         },
         {
-          "exchange": "NYSE ARCA",
+          "exchange": "NASDAQ",
           "rows": 54
         },
         {
@@ -104,7 +104,7 @@
         },
         {
           "exchange": "BATS",
-          "rows": 45
+          "rows": 46
         },
         {
           "exchange": "NEO",
@@ -558,6 +558,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "BATS::LBOX",
+      "ticker": "LBOX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "GraniteShares Short Term Box ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=BATS::LBOX;exchange=BATS;ticker=LBOX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "BATS::LWLX",
       "ticker": "LWLX",
       "exchange": "BATS",
@@ -932,6 +949,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "NYSE ARCA::BTA",
+      "ticker": "BTA",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Beacon Tactical Alternatives Risk ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=NYSE ARCA::BTA;exchange=NYSE ARCA;ticker=BTA;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "NYSE ARCA::GCLO",
       "ticker": "GCLO",
       "exchange": "NYSE ARCA",
@@ -996,6 +1030,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::HXC;exchange=NYSE ARCA;ticker=HXC;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "NYSE ARCA::JULV",
+      "ticker": "JULV",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "VanEck U.S. Equity Buffer ETF - July",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::JULV;exchange=NYSE ARCA;ticker=JULV;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -3323,6 +3374,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=BATS::JPNU;exchange=BATS;ticker=JPNU;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::LBOX",
+      "ticker": "LBOX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "GraniteShares Short Term Box ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::LBOX;exchange=BATS;ticker=LBOX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -7817,6 +7885,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NYSE ARCA::BTA",
+      "ticker": "BTA",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Beacon Tactical Alternatives Risk ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NYSE ARCA::BTA;exchange=NYSE ARCA;ticker=BTA;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NYSE ARCA::CLCV",
       "ticker": "CLCV",
       "exchange": "NYSE ARCA",
@@ -8170,6 +8255,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::JHCR;exchange=NYSE ARCA;ticker=JHCR;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NYSE ARCA::JULV",
+      "ticker": "JULV",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "VanEck U.S. Equity Buffer ETF - July",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NYSE ARCA::JULV;exchange=NYSE ARCA;ticker=JULV;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -8576,6 +8678,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=NYSE ARCA::XXXX;exchange=NYSE ARCA;ticker=XXXX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NYSE ARCA::ZCSH",
+      "ticker": "ZCSH",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "The Zcash ETF Shares",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NYSE ARCA::ZCSH;exchange=NYSE ARCA;ticker=ZCSH;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
