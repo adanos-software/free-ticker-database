@@ -2752,7 +2752,10 @@ def cleaned_rows():
             )
             if unreviewed_foreign_otc_us_isin:
                 official_isin = ""
-            if official_isin and merged.get("isin") != official_isin:
+            # A current directory snapshot may expose a corporate action, ticker
+            # reuse, or a new security line. Only fill a missing identifier here;
+            # replacements of an existing ISIN require the reviewed metadata path.
+            if official_isin and not merged.get("isin"):
                 merged["isin"] = official_isin
                 inferred_country = country_from_isin(official_isin)
                 preserve_depositary_domicile = bool(

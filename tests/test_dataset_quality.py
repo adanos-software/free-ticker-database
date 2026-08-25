@@ -2159,6 +2159,100 @@ def test_cleaned_rows_does_not_backfill_unreviewed_foreign_otc_us_isin(monkeypat
     assert cleaned[0]["country_code"] == "DE"
 
 
+def test_hkex_snapshot_isin_changes_require_review_and_pass_safe_merge(monkeypatch, tmp_path):
+    from scripts import rebuild_dataset
+    from scripts.check_safe_merge import evaluate
+
+    before_rows = [
+        {
+            "ticker": "01566", "name": "CA CULTURAL", "exchange": "HKEX",
+            "asset_type": "Stock", "sector": "Communication Services",
+            "stock_sector": "Communication Services", "etf_category": "",
+            "country": "Cayman Islands", "country_code": "KY",
+            "isin": "KYG211751071", "aliases": "ca cultural",
+        },
+        {
+            "ticker": "08446", "name": "BRIGHTSTAR TECH", "exchange": "HKEX",
+            "asset_type": "Stock", "sector": "Consumer Discretionary",
+            "stock_sector": "Consumer Discretionary", "etf_category": "",
+            "country": "Cayman Islands", "country_code": "KY",
+            "isin": "KYG479741038", "aliases": "brightstar tech",
+        },
+    ]
+    reference_fields = [
+        "source_key", "provider", "source_url", "ticker", "name", "exchange",
+        "asset_type", "listing_status", "reference_scope", "official", "isin",
+        "cfi", "sector",
+    ]
+    current_references = [
+        {
+            "source_key": "hkex_securities_list", "provider": "HKEX",
+            "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+            "ticker": "01566", "name": "CA CULTURAL", "exchange": "HKEX",
+            "asset_type": "Stock", "listing_status": "active",
+            "reference_scope": "exchange_directory", "official": "true",
+            "isin": "KYG211751154", "cfi": "", "sector": "",
+        },
+        {
+            "source_key": "hkex_securities_list", "provider": "HKEX",
+            "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+            "ticker": "08446", "name": "BRIGHTSTAR-NEW", "exchange": "HKEX",
+            "asset_type": "Stock", "listing_status": "active",
+            "reference_scope": "exchange_directory", "official": "true",
+            "isin": "KYG479741111", "cfi": "", "sector": "",
+        },
+    ]
+    previous_references = [dict(row) for row in current_references]
+    previous_references[0]["isin"] = "KYG211751071"
+    previous_references[1].update(name="BRIGHTSTAR TECH", isin="KYG479741038")
+    reference_csv = tmp_path / "reference.csv"
+    with reference_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=reference_fields)
+        writer.writeheader()
+        writer.writerows(current_references)
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: (before_rows, {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_review_overrides",
+        lambda: (defaultdict(set), defaultdict(dict), set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_REFERENCE_CSV", reference_csv)
+    cached_loaders = [
+        rebuild_dataset.load_active_official_reference_rows,
+        rebuild_dataset.load_active_official_isin_fallbacks,
+        rebuild_dataset.load_active_official_sector_fallbacks,
+        rebuild_dataset.load_active_official_depositary_listing_keys,
+    ]
+    for loader in cached_loaders:
+        loader.cache_clear()
+    try:
+        cleaned, _ = rebuild_dataset.cleaned_rows()
+    finally:
+        for loader in cached_loaders:
+            loader.cache_clear()
+
+    assert {row["ticker"]: row["isin"] for row in cleaned} == {
+        "01566": "KYG211751071",
+        "08446": "KYG479741038",
+    }
+    report = evaluate(
+        before_rows,
+        cleaned,
+        [],
+        reference_rows=current_references,
+        previous_reference_rows=previous_references,
+        observed_at="2026-08-25T07:06:04Z",
+        reference_source_report="data/masterfiles/reference.csv",
+    )
+    assert report["status"] == "pass"
+    assert report["summary"]["critical_field_changes"] == 0
+
+
 def test_cleaned_rows_backfills_unique_official_sector(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -2193,7 +2287,7 @@ def test_cleaned_rows_backfills_unique_official_sector(monkeypatch):
     assert cleaned[0]["stock_sector"] == "Financials"
 
 
-def test_cleaned_rows_replaces_contaminated_isin_with_exact_official_isin(monkeypatch):
+def test_cleaned_rows_preserves_contaminated_isin_without_review(monkeypatch):
     from scripts import rebuild_dataset
 
     row = {
@@ -2223,9 +2317,9 @@ def test_cleaned_rows_replaces_contaminated_isin_with_exact_official_isin(monkey
 
     cleaned, _ = rebuild_dataset.cleaned_rows()
 
-    assert cleaned[0]["isin"] == "ES0167050915"
-    assert cleaned[0]["country"] == "Spain"
-    assert cleaned[0]["country_code"] == "ES"
+    assert cleaned[0]["isin"] == "AU000000ACS1"
+    assert cleaned[0]["country"] == "Australia"
+    assert cleaned[0]["country_code"] == "AU"
 
 
 def test_cleaned_rows_syncs_country_for_review_isin_override(monkeypatch):
