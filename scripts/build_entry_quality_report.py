@@ -288,6 +288,13 @@ def names_are_comparable(left: str, right: str) -> bool:
     return has_latin_letter(left) == has_latin_letter(right)
 
 
+def official_name_for_comparison(name: str, exchange: str) -> str:
+    """Remove exchange trading markers that are not part of an issuer name."""
+    if exchange == "HKEX":
+        return re.sub(r"(?:-|\s)+NEW$", "", name, flags=re.IGNORECASE).strip()
+    return name
+
+
 def unicode_compact(value: str) -> str:
     normalized = unicodedata.normalize("NFKC", value).casefold()
     return "".join(character for character in normalized if character.isalnum())
@@ -728,7 +735,7 @@ def assess_reference_match(
         return
 
     official_names = [
-        ref.get("name", "")
+        official_name_for_comparison(ref.get("name", ""), row.get("exchange", ""))
         for ref in identity_refs
         if official_name_is_informative(ref.get("name", ""), row.get("ticker", ""))
     ]
