@@ -114,7 +114,7 @@ jobs:
             echo
             echo "The refresh completed technically, but introduced ${{ steps.release.outputs.unexpected_warn_count }} new entry-quality warning(s)."
             echo "Selected sources requiring review: ${{ steps.release.outputs.source_review_count }} (${{ steps.release.outputs.source_review_keys }})."
-            echo "A draft pull request will preserve the generated diff; CI and automerge remain disabled until review."
+            echo "A substantive generated data diff will be preserved in a draft pull request; source-only review without data changes remains summary-only."
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Detect substantive changes
@@ -130,9 +130,9 @@ jobs:
           diff_count=$(cat /tmp/masterfile-diff-counts)
           if [ "$diff_count" = "0" ] \
             && [ "${{ steps.apply.outputs.new_listings_applied }}" != "true" ] \
-            && [ "${{ steps.release.outputs.review_required }}" != "true" ]; then
+            && [ "${{ steps.release.outputs.unexpected_warn_count }}" = "0" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No masterfile row diffs or accepted listings; skipping PR (timestamp-only churn discarded)."
+            echo "No masterfile row diffs, accepted listings, or unexpected warnings; skipping PR (timestamp-only churn discarded; source-only review remains in the summary)."
           elif [ "${{ steps.release.outputs.review_required }}" != "true" ] && git diff --quiet -- \
             data/masterfiles/reference.csv \
             data/masterfiles/sources.json \

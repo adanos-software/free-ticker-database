@@ -26,9 +26,13 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "continue-on-error: true" in validation_step
     assert "scripts/classify_masterfile_rotation_gates.py" in workflow
     assert "steps.release.outputs.review_required != 'true'" in workflow
+    no_change_guard = workflow.split('if [ "$diff_count" = "0" ]', 1)[1].split("; then", 1)[0]
+    assert 'steps.release.outputs.unexpected_warn_count }}" = "0"' in no_change_guard
+    assert "steps.release.outputs.review_required" not in no_change_guard
     assert "draft: ${{ steps.release.outputs.review_required == 'true' }}" in workflow
     assert 'gh pr ready "${{ steps.cpr.outputs.pull-request-number }}" --undo' in workflow
     assert 'diff_count" = "0"' in workflow
+    assert "source-only review remains in the summary" in workflow
     assert "timestamp-only churn discarded" in workflow
     assert "gh workflow run ci.yml --ref automation/masterfile-rotation" in workflow
     assert "AUTOMATION_PR_TOKEN" not in workflow
