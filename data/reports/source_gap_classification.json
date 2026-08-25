@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T07:32:06Z",
-    "rows": 8614,
+    "generated_at": "2026-08-25T08:36:41Z",
+    "rows": 8619,
     "field_totals": {
       "missing_etf_category": 48,
       "missing_isin_primary": 715,
       "missing_sector_stock": 1511,
-      "official_reference_gap": 6340
+      "official_reference_gap": 6345
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -25,7 +25,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 39,
       "official_reference_symbol_collision_gap": 1182,
-      "official_reference_unmatched_source_gap": 5158,
+      "official_reference_unmatched_source_gap": 5163,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 33
     },
@@ -48,7 +48,7 @@
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 33,
       "official_reference_gap:official_reference_symbol_collision_gap": 1182,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5158
+      "official_reference_gap:official_reference_unmatched_source_gap": 5163
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -64767,6 +64767,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "HKEX::00195",
+      "ticker": "00195",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "GREENTECH INTL",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=HKEX::00195;exchange=HKEX;ticker=00195;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "HKEX::00431",
       "ticker": "00431",
       "exchange": "HKEX",
@@ -65188,6 +65205,23 @@
       "source_gap_context": "listing_key=ISE::OIZ;exchange=ISE;ticker=OIZ;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "JSE::RWESG",
+      "ticker": "RWESG",
+      "exchange": "JSE",
+      "asset_type": "ETF",
+      "name": "Prescient Management Company (RF) (Pty) Ltd - Reitway Global Property ESG Prescient ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=JSE::RWESG;exchange=JSE;ticker=RWESG;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -66722,6 +66756,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "KOSDAQ::269620",
+      "ticker": "269620",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "name": "SYSWORK",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=KOSDAQ::269620;exchange=KOSDAQ;ticker=269620;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "KOSDAQ::299900",
       "ticker": "299900",
       "exchange": "KOSDAQ",
@@ -67005,6 +67056,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=KRX::394350;exchange=KRX;ticker=394350;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "KRX::397420",
+      "ticker": "397420",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "name": "KBSTAR FKTB 5Y Dur ff",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=KRX::397420;exchange=KRX;ticker=397420;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -81523,6 +81591,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=OSL::PCIB;exchange=OSL;ticker=PCIB;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "OSL::PRYME",
+      "ticker": "PRYME",
+      "exchange": "OSL",
+      "asset_type": "Stock",
+      "name": "PRYME",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=OSL::PRYME;exchange=OSL;ticker=PRYME;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-25T07:33:07Z",
+    "generated_at": "2026-08-25T08:37:41Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
     "ticker_rows": 63824,
     "listing_rows": 92030,
     "adanos_reference_rows": 63824,
     "entry_quality_rows": 92030,
     "error_gates": 84,
-    "failed_error_gates": 0,
+    "failed_error_gates": 1,
     "info_gates": 5
   },
   "gates": [
@@ -490,9 +490,13 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 2,
+      "limit": 0,
+      "details": [
+        "HKEX::01566",
+        "HKEX::08446"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -547,7 +551,7 @@
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11371,
+      "actual": 11376,
       "limit": null
     },
     {

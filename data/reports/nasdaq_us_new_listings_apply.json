@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T07:27:52Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-08-25T08:28:27Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -10,92 +10,13 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 5,
-    "accepted_rows": 4,
-    "skipped_rows": 1,
-    "accepted_by_exchange": {
-      "BATS": 1,
-      "NYSE ARCA": 3
-    },
-    "accepted_by_target": {
-      "coverage_expansion": 1,
-      "supplement": 3
-    },
-    "skipped_by_reason": {
-      "excluded_non_common_stock": 1
-    }
+    "new_supported_rows": 0,
+    "accepted_rows": 0,
+    "skipped_rows": 0,
+    "accepted_by_exchange": {},
+    "accepted_by_target": {},
+    "skipped_by_reason": {}
   },
-  "accepted": [
-    {
-      "ticker": "LBOX",
-      "name": "GraniteShares Short Term Box ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "BTA",
-      "name": "Beacon Tactical Alternatives Risk ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "JULV",
-      "name": "VanEck U.S. Equity Buffer ETF - July",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "listing_key": "NYSE ARCA::ZCSH",
-      "ticker": "ZCSH",
-      "exchange": "NYSE ARCA",
-      "name": "The Zcash ETF Shares",
-      "asset_type": "ETF",
-      "stock_sector": "",
-      "etf_category": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "apply_target": "coverage_expansion"
-    }
-  ],
-  "skipped": [
-    {
-      "ticker": "GFR.R",
-      "exchange": "NYSE",
-      "name": "Greenfire Resources Ltd. Rights (expiring September 15, 2026) Rights",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
-    }
-  ]
+  "accepted": [],
+  "skipped": []
 }
