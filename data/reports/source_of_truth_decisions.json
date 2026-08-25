@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T07:32:07Z",
-    "rows": 8614,
+    "generated_at": "2026-08-25T08:55:45Z",
+    "rows": 8619,
     "outcome_totals": {
       "accepted_source_gap": 6020,
       "core_exclusion_candidate": 484,
-      "official_fill_required": 2110
+      "official_fill_required": 2115
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -24,7 +24,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 39,
       "official_reference_symbol_collision_gap": 1182,
-      "official_reference_unmatched_source_gap": 5158,
+      "official_reference_unmatched_source_gap": 5163,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 33
     },
@@ -36,7 +36,7 @@
       "missing_sector_stock:core_exclusion_candidate": 54,
       "missing_sector_stock:official_fill_required": 62,
       "official_reference_gap:accepted_source_gap": 4292,
-      "official_reference_gap:official_fill_required": 2048
+      "official_reference_gap:official_fill_required": 2053
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -128959,6 +128959,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "HKEX::00195",
+      "ticker": "00195",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "GREENTECH INTL",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "HKEX::00431",
       "ticker": "00431",
       "exchange": "HKEX",
@@ -129894,6 +129911,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "JSE::RWESG",
+      "ticker": "RWESG",
+      "exchange": "JSE",
+      "asset_type": "ETF",
+      "name": "Prescient Management Company (RF) (Pty) Ltd - Reitway Global Property ESG Prescient ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "JSE::SBK",
       "ticker": "SBK",
       "exchange": "JSE",
@@ -130222,6 +130256,23 @@
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "name": "Echomarketing Co.Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "KOSDAQ::269620",
+      "ticker": "269620",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "name": "SYSWORK",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -130715,6 +130766,23 @@
       "exchange": "KRX",
       "asset_type": "ETF",
       "name": "KOSEF Lyxor Global Future Mobility MSCI",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "KRX::397420",
+      "ticker": "397420",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "name": "KBSTAR FKTB 5Y Dur ff",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
@@ -139096,6 +139164,23 @@
       "exchange": "OSL",
       "asset_type": "Stock",
       "name": "PCI BIOTECH HOLD",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "OSL::PRYME",
+      "ticker": "PRYME",
+      "exchange": "OSL",
+      "asset_type": "Stock",
+      "name": "PRYME",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",

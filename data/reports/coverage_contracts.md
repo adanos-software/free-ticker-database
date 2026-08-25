@@ -7,9 +7,9 @@
 
 | Status | Contracts |
 |---|---:|
-| `fail_freshness` | 1 |
+| `fail_freshness` | 2 |
 | `fail_identity_conflict` | 36 |
-| `fail_license` | 49 |
+| `fail_license` | 48 |
 | `partial_scope_observed` | 48 |
 
 A full contract passes only with a current official denominator, venue-specific identity-aware recall of at least 99.5%, fresh source snapshots, and verified redistribution/commercial-use evidence.

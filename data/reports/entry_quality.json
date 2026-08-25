@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-25T07:31:53Z",
+    "generated_at": "2026-08-25T08:55:40Z",
     "rows": 92030,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80625,
-      "source_gap": 11371,
+      "pass": 80620,
+      "source_gap": 11376,
       "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4579,
-      "official_reference": 82403,
+      "identifier_enriched": 4582,
+      "official_reference": 82398,
       "scoped_source_gap": 239,
-      "valid_isin": 4809
+      "valid_isin": 4811
     },
     "severity_counts": {
       "high": 6,
       "medium": 30,
-      "source_gap": 11683
+      "source_gap": 11688
     },
     "issue_counts": {
-      "official_reference_gap": 6340,
+      "official_reference_gap": 6345,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1286,
       "expected_missing_primary_isin": 715,
@@ -140,8 +140,8 @@
       },
       {
         "exchange": "JSE",
-        "source_gap": 88,
-        "pass": 124
+        "source_gap": 89,
+        "pass": 123
       }
     ]
   },
@@ -222,6 +222,24 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::00195",
+      "ticker": "00195",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -7459,6 +7477,24 @@
       ]
     },
     {
+      "listing_key": "KOSDAQ::269620",
+      "ticker": "269620",
+      "exchange": "KOSDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "KOSDAQ",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "FSX::26B",
       "ticker": "26B",
       "exchange": "FSX",
@@ -10362,6 +10398,24 @@
     {
       "listing_key": "KRX::394350",
       "ticker": "394350",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "KRX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "KRX::397420",
+      "ticker": "397420",
       "exchange": "KRX",
       "asset_type": "ETF",
       "quality_status": "source_gap",
@@ -18299,60 +18353,6 @@
           "field": "exchange",
           "value": "XETRA",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::72M0",
-      "ticker": "72M0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "TSE::7317",
-      "ticker": "7317",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::73GN",
-      "ticker": "73GN",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }

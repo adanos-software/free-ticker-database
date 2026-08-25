@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92026,
+    "before_rows": 92030,
     "after_rows": 92030,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 2,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,20 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "HKEX::01566",
+      "field_name": "isin",
+      "old_value": "KYG211751071",
+      "new_value": "KYG211751154"
+    },
+    {
+      "listing_key": "HKEX::08446",
+      "field_name": "isin",
+      "old_value": "KYG479741038",
+      "new_value": "KYG479741111"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -74,7 +87,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1365,
+      "before_rows": 1366,
       "after_rows": 1366,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -488,7 +501,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2735,
+      "before_rows": 2738,
       "after_rows": 2738,
       "shrink_pct": 0.0,
       "removed_rows": 0,

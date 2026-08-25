@@ -963,6 +963,49 @@ def test_entry_quality_accepts_official_otc_abbreviated_names():
     assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
 
 
+def test_entry_quality_accepts_hkex_temporary_new_trading_marker():
+    listing = row(
+        "HKEX::08446",
+        "08446",
+        "HKEX",
+        "Brightstar Technology Group Co Ltd",
+        isin="KYG479741111",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("HKEX::08446", "08446", "HKEX", isin="KYG479741111")],
+        identifiers=[
+            {
+                "listing_key": "HKEX::08446",
+                "ticker": "08446",
+                "exchange": "HKEX",
+                "isin": "KYG479741111",
+                "wkn": "",
+                "figi": "",
+                "cik": "",
+                "lei": "",
+                "figi_source": "",
+                "cik_source": "",
+                "lei_source": "",
+            }
+        ],
+        masterfiles=[
+            official_ref(
+                "08446",
+                "HKEX",
+                "BRIGHTSTAR-NEW",
+                "KYG479741111",
+                asset_type="Stock",
+            )
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "HKEX", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
 def test_entry_quality_accepts_otc_unsponsored_adr_wrapper_names():
     listing = row(
         "OTC::AACAY",
@@ -1554,4 +1597,3 @@ def test_entry_quality_treats_frankfurt_t7_as_presence_not_identity():
     assert "official_reference_gap" not in issue_types
     assert report_rows[0].evidence_level == "official_reference"
     assert report_rows[0].quality_status == "source_gap"
-
