@@ -1,9 +1,9 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-08-25T08:28:24Z`
+- Generated at: `2026-08-25T09:31:23Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `36`
-- Rotation vanished rows: `13`
-- Backlog rows: `23`
+- Vanished reference rows: `28`
+- Rotation vanished rows: `0`
+- Backlog rows: `28`
 - Still in database: `28`
 - Applied drops: `0`
 
@@ -13,7 +13,6 @@
 |---|---:|
 | blocked_suspended_kept_by_policy | 1 |
 | manual_rename_vs_delisting_required | 27 |
-| not_in_database | 8 |
 
 ## Rows still in the database
 
@@ -31,11 +30,11 @@
 | FSX | 8L8C | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | ECK | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | WED | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| HKEX | 00195 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
-| JSE | RWESG | jse_etf_list | manual_rename_vs_delisting_required | rotation |
-| KOSDAQ | 269620 | krx_listed_companies | manual_rename_vs_delisting_required | rotation |
-| KRX | 397420 | krx_etf_finder | manual_rename_vs_delisting_required | rotation |
-| OSL | PRYME | euronext_equities | manual_rename_vs_delisting_required | rotation |
+| HKEX | 00195 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| JSE | RWESG | jse_etf_list | manual_rename_vs_delisting_required | backlog |
+| KOSDAQ | 269620 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
+| KRX | 397420 | krx_etf_finder | manual_rename_vs_delisting_required | backlog |
+| OSL | PRYME | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | TSE | 2763 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 311A | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 4171 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
@@ -51,6 +50,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 13; still-in-database backlog carried: 23.
-- Still in database: 28; not in database: 8.
+- Rotation vanished rows: 0; still-in-database backlog carried: 28.
+- Still in database: 28; not in database: 0.
 - Applied drops from this classifier: 0.
