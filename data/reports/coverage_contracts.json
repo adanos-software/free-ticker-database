@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T08:30:15Z",
+    "generated_at": "2026-08-25T08:45:02Z",
     "contracts": 134,
     "official_full_contracts": 86,
     "official_full_pass": 0,
     "official_full_fail": 86,
     "status_counts": {
       "fail_freshness": 2,
-      "fail_identity_conflict": 37,
-      "fail_license": 47,
+      "fail_identity_conflict": 36,
+      "fail_license": 48,
       "partial_scope_observed": 48
     },
     "minimum_full_recall_pct": 99.5
@@ -1251,15 +1251,15 @@
       "denominator_method": "exchange_audit_official_active_product_rows",
       "denominator": 2782,
       "observed_reference_keys": 2782,
-      "covered_reference_keys": 2630,
-      "missing_reference_keys": 152,
-      "identity_conflict_keys": 2,
+      "covered_reference_keys": 2632,
+      "missing_reference_keys": 150,
+      "identity_conflict_keys": 0,
       "unclassified_keys": 0,
-      "recall_pct": 94.536305,
+      "recall_pct": 94.608196,
       "minimum_recall_pct": 99.5,
       "freshness_status": "pass",
       "license_status": "fail",
-      "contract_status": "fail_identity_conflict",
+      "contract_status": "fail_license",
       "freshness_failures": "",
       "license_failures": "hkex_securities_list: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"

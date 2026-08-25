@@ -1,8 +1,8 @@
 # Database Validation Report
 
-Generated at: `2026-08-25T08:37:41Z`
+Generated at: `2026-08-25T08:56:09Z`
 
-Status: `FAIL`
+Status: `PASS`
 
 ## Summary
 
@@ -13,7 +13,7 @@ Status: `FAIL`
 | adanos_reference_rows | 63,824 |
 | entry_quality_rows | 92,030 |
 | error_gates | 84 |
-| failed_error_gates | 1 |
+| failed_error_gates | 0 |
 | info_gates | 5 |
 
 ## Gates
@@ -85,7 +85,7 @@ Status: `FAIL`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | FAIL | 2 | 0 |
+| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
@@ -112,9 +112,4 @@ Status: `FAIL`
 
 ## Failed Gate Details
 
-### entry_quality_unexpected_warn_count
-
-- Actual: `2`
-- `HKEX::01566`
-- `HKEX::08446`
-
+_No failed error gates._

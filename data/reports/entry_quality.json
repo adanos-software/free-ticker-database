@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-25T08:36:29Z",
+    "generated_at": "2026-08-25T08:55:40Z",
     "rows": 92030,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80618,
+      "pass": 80620,
       "source_gap": 11376,
-      "warn": 36
+      "warn": 34
     },
     "evidence_level_counts": {
       "identifier_enriched": 4582,
@@ -25,8 +25,8 @@
       "valid_isin": 4811
     },
     "severity_counts": {
-      "high": 8,
-      "medium": 31,
+      "high": 6,
+      "medium": 30,
       "source_gap": 11688
     },
     "issue_counts": {
@@ -35,8 +35,8 @@
       "missing_stock_sector": 1286,
       "expected_missing_primary_isin": 715,
       "missing_etf_category": 55,
-      "official_name_mismatch": 31,
-      "official_isin_mismatch": 8
+      "official_name_mismatch": 30,
+      "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
       {
@@ -899,24 +899,6 @@
       ]
     },
     {
-      "listing_key": "HKEX::01566",
-      "ticker": "01566",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "KYG211751071",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): KYG211751154."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::01732",
       "ticker": "01732",
       "exchange": "HKEX",
@@ -1568,31 +1550,6 @@
           "field": "exchange",
           "value": "HKEX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "HKEX::08446",
-      "ticker": "08446",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 5,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "KYG479741038",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): KYG479741111."
-        },
-        {
-          "issue_type": "official_name_mismatch",
-          "severity": "medium",
-          "field": "name",
-          "value": "BRIGHTSTAR TECH",
-          "message": "Listing name has weak overlap with official active reference name(s)."
         }
       ]
     },
@@ -18360,6 +18317,42 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::71BA",
+      "ticker": "71BA",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XETRA::724",
+      "ticker": "724",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }
