@@ -98,6 +98,16 @@ def load_asx_missing_isin_rows(tickers_csv: Path = TICKERS_CSV) -> list[dict[str
     ]
 
 
+def asx_identity_match(target: dict[str, str], source: AsxIsinRow) -> bool:
+    if strict_names_match(source.name, target["name"]):
+        return True
+    return (
+        target.get("asset_type") == "ETF"
+        and bool(source.security_type.strip())
+        and strict_names_match(source.security_type, target["name"])
+    )
+
+
 def evaluate_asx_row(target: dict[str, str], source_by_ticker: dict[str, AsxIsinRow]) -> dict[str, Any]:
     base = {
         "ticker": target["ticker"],
@@ -123,7 +133,7 @@ def evaluate_asx_row(target: dict[str, str], source_by_ticker: dict[str, AsxIsin
     if not is_valid_isin(source.isin):
         return {**base, "decision": "invalid_isin"}
 
-    name_match = strict_names_match(source.name, target["name"])
+    name_match = asx_identity_match(target, source)
     base["name_match"] = name_match
     if not name_match:
         return {**base, "decision": "name_mismatch"}
@@ -151,7 +161,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                 "decision": "update",
                 "proposed_value": result["asx_isin"],
                 "confidence": "0.96",
-                "reason": "Official ASX ISIN.xls lists this ASX code with a valid ISIN; accepted only after exact ASX code, issuer-name, numeric-token, and ISIN-checksum gates matched a current ASX row without ISIN.",
+                "reason": "Official ASX ISIN.xls lists this ASX code with a valid ISIN; accepted only after exact ASX code, issuer-name or ETF security-type, numeric-token, and ISIN-checksum gates matched a current ASX row without ISIN.",
             }
         )
     return updates

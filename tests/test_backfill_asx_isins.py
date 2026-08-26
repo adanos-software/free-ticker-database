@@ -82,6 +82,51 @@ def test_evaluate_asx_row_accepts_official_code_name_and_isin():
     assert result["asx_isin"] == "NZATME0002S8"
 
 
+def test_evaluate_asx_row_accepts_etf_product_name_against_security_type():
+    result = evaluate_asx_row(
+        {
+            "ticker": "EBTC",
+            "exchange": "ASX",
+            "asset_type": "ETF",
+            "name": "Global X 21Shares Bitcoin ETF",
+            "isin": "",
+        },
+        {
+            "EBTC": AsxIsinRow(
+                "EBTC",
+                "GLOBAL X MANAGEMENT (AUS) LIMITED",
+                "GLOBAL X 21SHARES BITCOIN ETF",
+                "AU0000198020",
+            )
+        },
+    )
+
+    assert result["decision"] == "accept"
+    assert result["asx_isin"] == "AU0000198020"
+
+
+def test_evaluate_asx_row_rejects_stock_security_type_only_match():
+    result = evaluate_asx_row(
+        {
+            "ticker": "EBTC",
+            "exchange": "ASX",
+            "asset_type": "Stock",
+            "name": "Global X 21Shares Bitcoin ETF",
+            "isin": "",
+        },
+        {
+            "EBTC": AsxIsinRow(
+                "EBTC",
+                "GLOBAL X MANAGEMENT (AUS) LIMITED",
+                "GLOBAL X 21SHARES BITCOIN ETF",
+                "AU0000198020",
+            )
+        },
+    )
+
+    assert result["decision"] == "name_mismatch"
+
+
 def test_build_metadata_updates_emits_isin_override():
     updates = build_metadata_updates(
         [
@@ -98,7 +143,7 @@ def test_build_metadata_updates_emits_isin_override():
             "decision": "update",
             "proposed_value": "NZATME0002S8",
             "confidence": "0.96",
-            "reason": "Official ASX ISIN.xls lists this ASX code with a valid ISIN; accepted only after exact ASX code, issuer-name, numeric-token, and ISIN-checksum gates matched a current ASX row without ISIN.",
+            "reason": "Official ASX ISIN.xls lists this ASX code with a valid ISIN; accepted only after exact ASX code, issuer-name or ETF security-type, numeric-token, and ISIN-checksum gates matched a current ASX row without ISIN.",
         }
     ]
 
