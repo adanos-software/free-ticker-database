@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T08:55:45Z",
-    "rows": 8619,
+    "generated_at": "2026-08-26T07:12:29Z",
+    "rows": 8624,
     "field_totals": {
-      "missing_etf_category": 48,
-      "missing_isin_primary": 715,
-      "missing_sector_stock": 1511,
-      "official_reference_gap": 6345
+      "missing_etf_category": 49,
+      "missing_isin_primary": 717,
+      "missing_sector_stock": 1512,
+      "official_reference_gap": 6346
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -15,40 +15,40 @@
       "debt_or_securitized_identifier_gap": 76,
       "equity_etf_category_gap": 8,
       "exchange_industry_source_gap": 62,
-      "fund_or_trust_identifier_gap": 255,
+      "fund_or_trust_identifier_gap": 256,
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 275,
+      "official_identifier_not_exposed_source_gap": 276,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 841,
+      "official_industry_taxonomy_unavailable_gap": 842,
       "official_product_reference_unmatched_category_gap": 1,
-      "official_product_taxonomy_unavailable_gap": 39,
-      "official_reference_symbol_collision_gap": 1182,
-      "official_reference_unmatched_source_gap": 5163,
+      "official_product_taxonomy_unavailable_gap": 40,
+      "official_reference_symbol_collision_gap": 1185,
+      "official_reference_unmatched_source_gap": 5161,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 33
     },
     "class_by_field": {
       "missing_etf_category:equity_etf_category_gap": 8,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 39,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 40,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 44,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 76,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 255,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 256,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 275,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 276,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 8,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 5,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 841,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 842,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 33,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1182,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5163
+      "official_reference_gap:official_reference_symbol_collision_gap": 1185,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5161
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -62,7 +62,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 5
+          "rows": 6
         },
         {
           "exchange": "Euronext",
@@ -96,7 +96,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 54
+          "rows": 56
         },
         {
           "exchange": "NYSE",
@@ -130,7 +130,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 38
+          "rows": 39
         },
         {
           "exchange": "NYSE",
@@ -205,7 +205,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "OTC",
-        "rows": 3110,
+        "rows": 3108,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -253,7 +253,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_symbol_collision_gap",
         "exchange": "OTC",
-        "rows": 147,
+        "rows": 149,
         "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
         "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
       },
@@ -909,6 +909,23 @@
       "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
       "source_gap_context": "listing_key=NASDAQ::XCSH;exchange=NASDAQ;ticker=XCSH;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "NASDAQ::YRAM",
+      "ticker": "YRAM",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "YieldMax Memory and Storage Portfolio Option Income ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=NASDAQ::YRAM;exchange=NASDAQ;ticker=YRAM;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
     },
@@ -5556,6 +5573,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::YRAM",
+      "ticker": "YRAM",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "YieldMax Memory and Storage Portfolio Option Income ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NASDAQ::YRAM;exchange=NASDAQ;ticker=YRAM;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::ACCL",
       "ticker": "ACCL",
       "exchange": "NASDAQ",
@@ -5567,6 +5601,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::ACCL;exchange=NASDAQ;ticker=ACCL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::ADBT",
+      "ticker": "ADBT",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Advasa Holdings, Inc. - Common stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::ADBT;exchange=NASDAQ;ticker=ADBT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -27550,6 +27601,23 @@
       "source_gap_context": "listing_key=Munich::XCX;exchange=Munich;ticker=XCX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::ADBT",
+      "ticker": "ADBT",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Advasa Holdings, Inc. - Common stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::ADBT;exchange=NASDAQ;ticker=ADBT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -128080,14 +128148,14 @@
       "exchange": "OTC",
       "asset_type": "Stock",
       "name": "Statera Biopharma Inc",
-      "gap_class": "official_reference_unmatched_source_gap",
+      "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
       "source_gap_context": "listing_key=OTC::STAB;exchange=OTC;ticker=STAB;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",
@@ -134115,14 +134183,14 @@
       "exchange": "OTC",
       "asset_type": "Stock",
       "name": "Vasamed Inc",
-      "gap_class": "official_reference_unmatched_source_gap",
+      "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
       "source_gap_context": "listing_key=OTC::VSMD;exchange=OTC;ticker=VSMD;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",
@@ -138543,6 +138611,23 @@
       "source_gap_context": "listing_key=STO::GOSOL;exchange=STO;ticker=GOSOL;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "STO::GUARD",
+      "ticker": "GUARD",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Guard Therapeutics International Ab",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=STO::GUARD;exchange=STO;ticker=GUARD;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",

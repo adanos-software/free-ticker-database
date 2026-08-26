@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-08-25T08:55:43Z`
+Generated at: `2026-08-26T07:12:25Z`
 
 ## Summary
 
@@ -55,7 +55,7 @@ Generated at: `2026-08-25T08:55:43Z`
 | 31 | ZSE_ZW | official_partial | 27 | 0 | 0 | zse_zw_listed_companies | ZSE Zimbabwe | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official ZSE front-end API and price-sheet API |
 | 32 | DSE_TZ | official_partial | 17 | 0 | 0 | dse_tz_listed_companies | DSE Tanzania | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official listed-company table; profile pages still need a richer ISIN/sector endpoint |
 | 33 | MSE_MW | official_partial | 8 | 0 | 0 | mse_mw_listed_companies | MSE Malawi | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 8 existing rows | implemented via official mainboard listed-company table |
-| 34 | LUSE | official_partial | 22 | 0 | 0 | luse_listed_companies | LuSE | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 15 existing rows | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
+| 34 | LUSE | official_partial | 22 | 0 | 0 | luse_listed_companies | LuSE | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
 | 35 | USE_UG | official_partial | 7 | 0 | 0 | use_ug_listed_companies | USE Uganda | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market-snapshot table |
 
 ## Global Expansion Candidates
@@ -94,7 +94,7 @@ _No rows._
 | 31 | ZSE_ZW | official_partial | 27 | 0 | 0 | zse_zw_listed_companies | ZSE Zimbabwe | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official ZSE front-end API and price-sheet API |
 | 32 | DSE_TZ | official_partial | 17 | 0 | 0 | dse_tz_listed_companies | DSE Tanzania | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official listed-company table; profile pages still need a richer ISIN/sector endpoint |
 | 33 | MSE_MW | official_partial | 8 | 0 | 0 | mse_mw_listed_companies | MSE Malawi | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 8 existing rows | implemented via official mainboard listed-company table |
-| 34 | LUSE | official_partial | 22 | 0 | 0 | luse_listed_companies | LuSE | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 15 existing rows | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
+| 34 | LUSE | official_partial | 22 | 0 | 0 | luse_listed_companies | LuSE | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
 | 35 | USE_UG | official_partial | 7 | 0 | 0 | use_ug_listed_companies | USE Uganda | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market-snapshot table |
 
 ## Policy
