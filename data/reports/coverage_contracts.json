@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T08:45:02Z",
+    "generated_at": "2026-08-26T13:34:26Z",
     "contracts": 134,
     "official_full_contracts": 86,
     "official_full_pass": 0,
     "official_full_fail": 86,
     "status_counts": {
-      "fail_freshness": 2,
+      "fail_freshness": 3,
       "fail_identity_conflict": 36,
-      "fail_license": 48,
+      "fail_license": 47,
       "partial_scope_observed": 48
     },
     "minimum_full_recall_pct": 99.5
@@ -1535,7 +1535,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_identity_conflict",
-      "freshness_failures": "lse_company_reports: latest refresh is unavailable",
+      "freshness_failures": "lse_company_reports: latest refresh is unavailable | lse_price_explorer: snapshot age 7.20d exceeds 7d SLA",
       "license_failures": "lse_company_reports: license_status is not verified_open | lse_price_explorer: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1560,7 +1560,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_identity_conflict",
-      "freshness_failures": "lse_company_reports: latest refresh is unavailable | lse_instrument_directory: latest refresh is unavailable",
+      "freshness_failures": "lse_company_reports: latest refresh is unavailable | lse_instrument_directory: latest refresh is unavailable | lse_price_explorer: snapshot age 7.20d exceeds 7d SLA",
       "license_failures": "lse_company_reports: license_status is not verified_open | lse_instrument_directory: license_status is not verified_open | lse_price_explorer: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1632,10 +1632,10 @@
       "unclassified_keys": 0,
       "recall_pct": 84.259259,
       "minimum_recall_pct": 99.5,
-      "freshness_status": "pass",
+      "freshness_status": "fail",
       "license_status": "fail",
-      "contract_status": "fail_license",
-      "freshness_failures": "",
+      "contract_status": "fail_freshness",
+      "freshness_failures": "muscat_securities_companies: snapshot age 7.20d exceeds 7d SLA",
       "license_failures": "muscat_securities_companies: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },

@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-08-25T08:55:40Z`
+Generated at: `2026-08-26T13:34:57Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,620 |
-| source_gap | 11,376 |
+| pass | 80,621 |
+| source_gap | 11,375 |
 | warn | 34 |
 
 ## Issue Counts
@@ -17,9 +17,9 @@ Generated at: `2026-08-25T08:55:40Z`
 | official_reference_gap | 6,345 |
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 1,286 |
-| expected_missing_primary_isin | 715 |
-| missing_etf_category | 55 |
+| expected_missing_primary_isin | 714 |
 | official_name_mismatch | 30 |
+| missing_etf_category | 28 |
 | official_isin_mismatch | 6 |
 
 ## Top Flagged Exchanges
@@ -39,7 +39,7 @@ Generated at: `2026-08-25T08:55:40Z`
 | AMS | 373 | 0 | 173 | 0 | 0 |
 | NSE_IN | 2,331 | 0 | 172 | 0 | 0 |
 | LSE | 6,876 | 0 | 152 | 2 | 0 |
-| ASX | 2,108 | 0 | 151 | 0 | 0 |
+| ASX | 2,109 | 0 | 150 | 0 | 0 |
 | XETRA | 4,171 | 0 | 144 | 0 | 0 |
 | BATS | 1,225 | 0 | 141 | 0 | 0 |
 | TSXV | 1,283 | 0 | 137 | 2 | 0 |

@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-25T08:55:43Z`
+Generated at: `2026-08-26T13:34:48Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
@@ -20,11 +20,11 @@ Generated at: `2026-08-25T08:55:43Z`
 | BK | official_full | boursa_kuwait_stocks |  | 140 | 72.14 |  | maintain | not_applicable |
 | BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 272 | 90.44 | bme_etf_list|bme_listed_companies|bme_security_prices_directory | refresh_required | not_applicable |
 | BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search | refresh_unavailable | blocked_source_unavailable |
-| BSE_BW | official_partial | bse_bw_listed_companies | ETF | 0 |  |  | refresh_unavailable | blocked_source_unavailable |
+| BSE_BW | official_partial | bse_bw_listed_companies | ETF | 0 |  | bse_bw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | BSE_HU | official_partial | bse_hu_listed_companies | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |
 | BSE_IN | official_full | bse_india_scrips |  | 5117 | 52.02 |  | maintain | not_applicable |
 | BVB | official_full | bvb_fund_units_directory|bvb_shares_directory |  | 350 | 24.86 |  | maintain | not_applicable |
-| BVC | official_partial | bvc_colombia_issuers |  | 0 |  |  | refresh_unavailable | blocked_source_unavailable |
+| BVC | official_partial | bvc_colombia_issuers |  | 0 |  | bvc_colombia_issuers | refresh_unavailable | blocked_source_unavailable |
 | BVL | official_partial | bvl_issuers_directory |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2908 | 8.6 |  | maintain | not_applicable |
 | Bursa | official_partial | bursa_closing_prices|bursa_equity_isin |  | 0 |  |  | denominator_missing | blocked_denominator_missing |

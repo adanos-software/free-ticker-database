@@ -11,11 +11,11 @@ BIST,official_full,exchange_directory,584,30,622,30,,bist_kap_mkk_listed_securit
 BK,official_full,exchange_directory,104,0,140,0,,boursa_kuwait_stocks,,,,140,101,28,11,72.14,90.18,available,maintain,not_applicable
 BME,official_full,exchange_directory|listed_companies_subset,271,5,390,10,,bme_etf_list|bme_listed_companies|bme_security_prices_directory,,bme_etf_list|bme_listed_companies|bme_security_prices_directory,stale_artifact,272,246,0,26,90.44,90.44,available,refresh_required,not_applicable
 BMV,official_partial,listed_companies_subset,189,155,94,11,,bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search,bmv_capital_trust_search|bmv_market_data_securities|bmv_stock_search,bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search,empty_refresh|stale_artifact,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
-BSE_BW,official_partial,listed_companies_subset,38,1,26,0,ETF,bse_bw_listed_companies,bse_bw_listed_companies,,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
+BSE_BW,official_partial,listed_companies_subset,38,1,26,0,ETF,bse_bw_listed_companies,bse_bw_listed_companies,bse_bw_listed_companies,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 BSE_HU,official_partial,listed_companies_subset,49,1,20,0,ETF,bse_hu_listed_companies,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_product_class_gap
 BSE_IN,official_full,exchange_directory,2725,7,4919,198,,bse_india_scrips,,,,5117,2662,1850,605,52.02,81.48,available,maintain,not_applicable
 BVB,official_full,exchange_directory|listed_companies_subset,87,5,350,10,,bvb_fund_units_directory|bvb_shares_directory,,,,350,87,119,144,24.86,37.66,available,maintain,not_applicable
-BVC,official_partial,listed_companies_subset,3,0,3,0,,bvc_colombia_issuers,bvc_colombia_issuers,,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
+BVC,official_partial,listed_companies_subset,3,0,3,0,,bvc_colombia_issuers,bvc_colombia_issuers,bvc_colombia_issuers,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 BVL,official_partial,security_lookup_subset,31,2,30,1,,bvl_issuers_directory,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
 Borsa Italiana,official_full,exchange_directory,278,0,446,2462,,euronext_equities|euronext_etfs,,,,2908,250,1857,801,8.6,23.79,available,maintain,not_applicable
 Bursa,official_partial,listed_companies_subset,1035,4,2393,31,,bursa_closing_prices|bursa_equity_isin,,,,0,0,0,0,,,denominator_missing,denominator_missing,blocked_denominator_missing
