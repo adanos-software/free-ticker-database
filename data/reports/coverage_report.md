@@ -6,25 +6,25 @@
 |---|---|
 | tickers | 63824 |
 | core_listings | 61695 |
-| aliases | 125531 |
+| aliases | 125532 |
 | stocks | 47778 |
 | etfs | 16046 |
-| isin_coverage | 62553 |
-| sector_coverage | 62291 |
+| isin_coverage | 62554 |
+| sector_coverage | 62300 |
 | stock_sector_coverage | 46267 |
-| etf_category_coverage | 16024 |
+| etf_category_coverage | 16033 |
 | cik_coverage | 7828 |
 | figi_coverage | 65397 |
 | lei_coverage | 17788 |
 | listing_status_rows | 107943 |
 | listing_status_intervals | 107943 |
-| listing_events | 82868 |
+| listing_events | 82878 |
 | listing_keys | 92030 |
 | instrument_scope_rows | 92030 |
 | instrument_scope_core | 61695 |
 | instrument_scope_extended | 30335 |
-| instrument_scope_primary_listing | 60981 |
-| instrument_scope_primary_listing_missing_isin | 714 |
+| instrument_scope_primary_listing | 60982 |
+| instrument_scope_primary_listing_missing_isin | 713 |
 | instrument_scope_otc_listing | 11752 |
 | instrument_scope_secondary_cross_listing | 18583 |
 | legacy_primary_ticker_collision_rows | 4766 |
@@ -100,7 +100,7 @@
 | ohlcv_plausibility_rows | 143 |
 | source_gap_classification_generated_at | 2026-08-25T08:55:45Z |
 | source_gap_classification_age_hours | 28.65 |
-| source_gap_classification_rows | 8619 |
+| source_gap_classification_rows | 8582 |
 
 ## Freshness Review Summary
 
@@ -116,7 +116,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | ETF verification | 2026-05-04T08:25:46Z | 2741.15 |  | rerun_verification_before_closing_etf_source_gaps |
 | Symbol changes | 2026-08-25T07:06:47Z | 30.47 | 335 | symbol_change_age_visibility_no_symbol_change_authorized |
 | Entry quality | 2026-08-25T08:55:40Z | 28.65 | 92030 | entry_quality_age_visibility_no_quality_gate_override |
-| Source gaps | 2026-08-25T08:55:45Z | 28.65 | 8619 | source_gap_age_visibility_no_gap_fill_authorized |
+| Source gaps | 2026-08-25T08:55:45Z | 28.65 | 8582 | source_gap_age_visibility_no_gap_fill_authorized |
 | Masterfile collisions | 2026-06-02T19:18:19Z | 2034.27 | 11176 | collision_review_age_visibility_no_symbol_only_match_authorized |
 | OHLCV plausibility | 2026-08-01T16:53:59Z | 596.68 | 143 | ohlcv_age_visibility_plausibility_only |
 

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-26T13:34:57Z",
+    "generated_at": "2026-08-27T06:47:28Z",
     "rows": 92030,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80621,
-      "source_gap": 11375,
+      "pass": 80622,
+      "source_gap": 11374,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -27,15 +27,15 @@
     "severity_counts": {
       "high": 6,
       "medium": 30,
-      "source_gap": 11660
+      "source_gap": 11650
     },
     "issue_counts": {
       "official_reference_gap": 6345,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1286,
-      "expected_missing_primary_isin": 714,
+      "expected_missing_primary_isin": 713,
       "official_name_mismatch": 30,
-      "missing_etf_category": 28,
+      "missing_etf_category": 19,
       "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
@@ -76,8 +76,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2524,
-        "source_gap": 212,
+        "pass": 2525,
+        "source_gap": 211,
         "warn": 2
       },
       {
