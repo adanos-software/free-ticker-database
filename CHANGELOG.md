@@ -2,13 +2,22 @@
 
 ## [Unreleased]
 
+## [3.37.0] - 2026-08-27
+
+### Summary
+
+**Fail-closed official-identity, freshness, and taxonomy release.** Publishes listing-keyed recodes, live directory freshness restorations, gated ETF and ASX fills, reviewed HKEX consolidations, and automation hardening accumulated since v3.36.0. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, identity conflicts remain explicit, and upstream outages preserve the last valid evidence.
+
 ### Changed
 
-- Refreshed official B3 `b3_listed_etfs` and `b3_bdr_etfs` directories live. Listed ETFs stay at 216 rows: `XIFR11` left the directory and `OBRA11` Trend Infraestrutura ESG entered; Bradesco `B5MB11` / `IMBB11` names shortened. `B3::ETF` freshness still passes. Residual ISIN/sector/category apply stayed at 0 writes. No B3 listing rows were added, dropped, or recoded; `OBRA11` stays `missing_from_database` until the listing apply path, and `B5MB11` / `IMBB11` keep their listing names and ISINs because the listed-ETF feed has no ISIN.
+- Rotated official masterfiles with reviewed HKEX share-consolidation ISINs for `01566` (10:1) and `08446` (20:1). Temporary HKEX `-NEW` trading markers stay non-issuer-name metadata. Vanished listings remain for delisting review.
+- Refreshed Nasdaq US new listings: three supported Stock/ETF supplements plus one collision-safe coverage-expansion row. Daily symbol-change review artifacts were refreshed with 0 accepted applies.
+- Official directory ISIN replacements now require the reviewed metadata path instead of automatic valid-to-valid overwrite.
 - Recoded `LSE::GMP` Gabelli Merchant Partners PLC / `GB00BD8P0741` from ETF to Stock after exact ticker, ISIN, and name match against the live `lse_price_explorer` directory. `LSE::ISEM` stays the iShares EM Islamic ETF (`IE00B27YCP72`); the new Leverage Shares ETP on that ticker was not copied. `LSE::GMPP` was not dumped.
 - Recoded three listing-keyed identities from exact official exchange directories: `KRX::088980` MKIF / `KR7088980008` from ETF to Stock, `SSE_CL::NUAM` to Bolsa Santiago name `NUAM S.A.`, and `Euronext::CBDG` Compagnie du Cambodge to Euronext ISIN `FR001400SUB7`. `LSE::0I76` stays the global primary for that ISIN because ticker `CBDG` is a distinct OTC security. Those three official-full contracts now fail license review instead of identity. `XETRA::FRE` already matches Xetra all-tradable `DE000FRE5EN2`; the stale listed-companies ISIN was not copied. Ticker-reuse rows (`AMS::HAL`, `Borsa Italiana::COME`, `Euronext::GLDM`, `XETRA::GIJ0`) stay unchanged. Clearing `etf_category` after an official Stock recode is not typed leakage; the stale `Euronext::CBDG` entry-quality warn allowlist row is removed.
 - Refreshed the official LSE `lse_price_explorer` directory live (11,107 → 11,124 rows). The previous 90s source timeout aborted pagination and fell back to cache; the per-source budget is now 360s. `lse_price_explorer` freshness now passes. LSE official-full contracts still fail identity review, and `lse_company_reports` / `lse_instrument_directory` stay unavailable. No LSE listing rows were added, dropped, or recoded; directory adds/drops stay in the masterfile until the listing apply path.
 - Refreshed the official Muscat `muscat_securities_companies` directory live (108 active-stock rows, identical to the previous snapshot). `MSX::Stock` freshness now passes. The official-full contract still fails license review; recall stays 84.26% (91 of 108) and would fail after license. No MSX listing rows were added, dropped, or recoded.
+- Refreshed official B3 `b3_listed_etfs` and `b3_bdr_etfs` directories live. Listed ETFs stay at 216 rows: `XIFR11` left the directory and `OBRA11` Trend Infraestrutura ESG entered; Bradesco `B5MB11` / `IMBB11` names shortened. `B3::ETF` freshness still passes. Residual ISIN/sector/category apply stayed at 0 writes. No B3 listing rows were added, dropped, or recoded; `OBRA11` stays `missing_from_database` until the listing apply path, and `B5MB11` / `IMBB11` keep their listing names and ISINs because the listed-ETF feed has no ISIN.
 - Filled 26 BATS ETF categories from the official Cboe U.S. LMM asset-class file after exact ticker and product-name gates. Canonical mapping stays fail-closed: `US Equity` → Equity, `Outcome-Based` → Alternative, `Single Stock`/`Other` → Other.
 - Filled 9 NYSE ARCA/Nasdaq ETF categories from official issuer product pages or summary prospectuses after exact ticker gates (Amplify AHBM/ROBX/XQBT/XWNG, KraneShares KAIT, Virtus ZDIS/ZINN, Defiance CROB, xETFs KSMH). Accepted `NYSE ARCA::KAIT` ISIN `US5007671739` from the KraneShares product page.
 - Filled listing-keyed `ASX::USD` as `Currency` from the official Betashares product page (Category Currencies; ASX code USD; ISIN `AU000000USD7`). The NYSE ARCA `USD` primary ticker is a different security and stays unchanged.
@@ -17,18 +26,19 @@
 ### Fixed
 
 - Partial official masterfile refresh no longer writes a stale cache snapshot over the committed directory. Cache fallback preserves existing `reference.csv` rows, records the source as unavailable, and does not recode names or drop tickers from an older cache file.
+- Scheduled masterfile rotation no longer opens a pull request for source-only timestamp churn when directory rows, accepted listings, and unexpected warnings are unchanged.
 
 ### Safety
 
-- The live B3 fetch is recorded in `last_refresh` (`2026-08-27T12:33:13Z`). Dataset `as_of` stays at `built_at`. `b3_instruments_equities` stayed on the 2026-08-19 network snapshot after cache fallback; that source was not marked unavailable. ASX listed companies, Casablanca, OTC screener, and JPX stock detail remain unavailable on the official hosts (empty CSV, HTML error page, timeout, 404). No Jina or third-party proxy was used.
-- Live Casablanca `cse_ma_listed_companies` fetch timed out against `www.casablanca-bourse.com` (connection timeout on `/en/marches-produits/actions` and the legacy instruments API). The committed directory is preserved; no Jina or third-party proxy was used. Cache names were not applied onto listings. `CSE_MA::Stock` freshness stays unavailable until the official host is reachable.
-- Live JPX `jpx_tse_stock_detail` probe timed out resolving `quote.jpx.co.jp`. Incomplete or cache-only refresh keeps the existing snapshot. `TSE::ETF` freshness stays unavailable; fields stay blank. No listing dump.
-- Cboe taxonomy stays BATS-only. Remaining NYSE ARCA, Nasdaq, TSX, WSE, Euronext, and BMV ETF categories stay blank without an official product-page Category/Asset-Class field, including JULV buffer/outcome, crypto ETPs, GCLO, OVNI overnight, and BMV::QQQ (different ISIN from NASDAQ::QQQ). Same-ISIN peer fill remains unique-value only and found no additional fills.
-- ASX Stock rows still cannot match on security type alone, so debt ISINs are not copied onto stock/ETF listings.
-- Regenerating canonical exports keeps dataset `as_of` at the previous `built_at` so official-directory freshness is not aged by this metadata fill. No LSE listing data was changed.
-- SET `BSET100` official quote page matches symbol and name `BCAP SET 100 ETF` but does not expose ISIN, so the listing name `BCAP SET100` / `TH8092010009` was not recoded.
-- The live LSE fetch is recorded in `last_refresh` (`2026-08-27T08:36:47Z`). Dataset `as_of` stays at `built_at`. Six price-explorer tickers that left the directory stay in listings until official delisting evidence; 23 new directory tickers were not dumped into listings.
-- The live Muscat fetch is recorded in `last_refresh` (`2026-08-27T05:35:27Z`). Coverage contracts keep dataset `as_of` at `built_at` and age a post-build official snapshot against the latest refresh envelope, so later targeted fetches of other sources still advance the SLA clock without backdating `generated_at`.
+- Unevidenced listing dumps, ticker reuse, official ISIN replacements without review, and Cboe taxonomy outside BATS stay fail-closed. Dataset `as_of` remains the previous `built_at`; live fetches are recorded in `last_refresh`.
+- Casablanca, JPX stock detail, ASX listed companies, and the OTC screener remain unavailable on the official hosts. Committed directories are preserved; no Jina or third-party proxy was used. `CSE_MA::Stock` and `TSE::ETF` freshness stay unavailable.
+- Directory adds and drops stay in masterfiles until the listing apply or delisting path. `LSE::ISEM` / `LSE::GMPP`, `OBRA11`, B3 residual ISIN/sector fills, ASX debt ISINs, SET `BSET100`, and same-ISIN unique-name copies were not applied.
+- `b3_instruments_equities` stayed on the 2026-08-19 network snapshot after cache fallback and was not marked unavailable.
+
+### Verification
+
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract.
+- Snapshot: 63,824 primary tickers, 92,030 listing rows, 62,554 primary ISINs (98.0%), 62,298 sector/category values, 33 entry-quality warnings, and 11,374 source-gap rows. Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
 
 ## [3.36.0] - 2026-08-24
 
