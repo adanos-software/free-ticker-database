@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-27T06:47:28Z",
+    "generated_at": "2026-08-27T09:26:55Z",
     "rows": 92030,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,29 +14,29 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80622,
+      "pass": 80623,
       "source_gap": 11374,
-      "warn": 34
+      "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4582,
-      "official_reference": 82398,
+      "identifier_enriched": 4581,
+      "official_reference": 82399,
       "scoped_source_gap": 238,
       "valid_isin": 4812
     },
     "severity_counts": {
-      "high": 6,
-      "medium": 30,
-      "source_gap": 11650
+      "high": 5,
+      "medium": 29,
+      "source_gap": 11649
     },
     "issue_counts": {
-      "official_reference_gap": 6345,
+      "official_reference_gap": 6344,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1286,
       "expected_missing_primary_isin": 713,
-      "official_name_mismatch": 30,
+      "official_name_mismatch": 29,
       "missing_etf_category": 19,
-      "official_isin_mismatch": 6
+      "official_isin_mismatch": 5
     },
     "top_flagged_exchanges": [
       {
@@ -128,9 +128,9 @@
       },
       {
         "exchange": "Euronext",
-        "pass": 1347,
+        "pass": 1348,
         "source_gap": 128,
-        "warn": 2
+        "warn": 1
       },
       {
         "exchange": "NYSE",
@@ -1575,17 +1575,17 @@
       "listing_key": "KRX::088980",
       "ticker": "088980",
       "exchange": "KRX",
-      "asset_type": "ETF",
+      "asset_type": "Stock",
       "quality_status": "source_gap",
       "quality_score": 90,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
         {
-          "issue_type": "official_reference_gap",
+          "issue_type": "missing_stock_sector",
           "severity": "source_gap",
-          "field": "exchange",
-          "value": "KRX",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
         }
       ]
     },

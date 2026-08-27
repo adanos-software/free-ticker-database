@@ -512,6 +512,8 @@ def metadata_updates_with_typed_leakage(
         field = row.get("field", "")
         if field not in {"stock_sector", "etf_category"}:
             continue
+        if (row.get("decision") or "").strip().lower() == "clear":
+            continue
         target = rows_by_key.get((row.get("ticker", ""), row.get("exchange", "")))
         if not target:
             continue
