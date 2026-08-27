@@ -10,8 +10,14 @@
 - Filled listing-keyed `ASX::USD` as `Currency` from the official Betashares product page (Category Currencies; ASX code USD; ISIN `AU000000USD7`). The NYSE ARCA `USD` primary ticker is a different security and stays unchanged.
 - Accepted `ASX::EBTC` ISIN `AU0000198020` from official ASX ISIN.xls after matching the listing product name to the workbook security type. The remaining 98 ASX rows without ISIN stay blank, including debt/ABS/treasury codes that are not the listed equity or ETF identity.
 
+### Fixed
+
+- Partial official masterfile refresh no longer writes a stale cache snapshot over the committed directory. Cache fallback preserves existing `reference.csv` rows, records the source as unavailable, and does not recode names or drop tickers from an older cache file.
+
 ### Safety
 
+- Live Casablanca `cse_ma_listed_companies` fetch timed out against `www.casablanca-bourse.com` (connection timeout on `/en/marches-produits/actions` and the legacy instruments API). The committed directory is preserved; no Jina or third-party proxy was used. Cache names were not applied onto listings. `CSE_MA::Stock` freshness stays unavailable until the official host is reachable.
+- Live JPX `jpx_tse_stock_detail` probe timed out resolving `quote.jpx.co.jp`. Incomplete or cache-only refresh keeps the existing snapshot. `TSE::ETF` freshness stays unavailable; fields stay blank. No listing dump.
 - Cboe taxonomy stays BATS-only. Remaining NYSE ARCA, Nasdaq, TSX, WSE, Euronext, and BMV ETF categories stay blank without an official product-page asset class, including JULV buffer/outcome, crypto ETPs, GCLO, OVNI overnight, and BMV::QQQ (different ISIN from NASDAQ::QQQ). Same-ISIN peer fill remains unique-value only and found no additional fills.
 - ASX Stock rows still cannot match on security type alone, so debt ISINs are not copied onto stock/ETF listings.
 - Regenerating canonical exports keeps dataset `as_of` at the previous `built_at` so official-directory freshness is not aged by this metadata fill. LSE price-explorer age remains noted on existing identity-conflict contracts. No LSE listing data was changed.
