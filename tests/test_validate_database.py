@@ -633,6 +633,44 @@ def test_validation_report_checks_metadata_override_typing_and_canonical_values(
     assert gates["metadata_updates_noncanonical_typed_values"]["actual"] == 2
 
 
+def test_validation_allows_clearing_etf_category_when_recode_to_stock():
+    row = ticker("088980", asset_type="Stock", stock_sector="", etf_category="")
+    row["exchange"] = "KRX"
+    report = build_validation_report(
+        tickers=[row],
+        listings=[listing(row)],
+        instrument_scopes=[scope(row)],
+        adanos_reference=[adanos_reference(row)],
+        entry_quality=[entry_quality(row)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        review_metadata_updates=[
+            {
+                "ticker": "088980",
+                "exchange": "KRX",
+                "field": "asset_type",
+                "decision": "update",
+                "proposed_value": "Stock",
+                "reason": "official stock",
+            },
+            {
+                "ticker": "088980",
+                "exchange": "KRX",
+                "field": "etf_category",
+                "decision": "clear",
+                "proposed_value": "",
+                "reason": "clear ETF taxonomy after recode",
+            },
+        ],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["metadata_updates_typed_leakage"]["actual"] == 0
+
+
 def test_validation_report_checks_malformed_metadata_override_rows():
     report = build_validation_report(
         tickers=[ticker()],
