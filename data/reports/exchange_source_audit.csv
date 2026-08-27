@@ -41,7 +41,7 @@ KRX,official_full,exchange_directory,903,1088,941,1164,,krx_etf_finder|krx_liste
 LSE,official_full,exchange_directory|listed_companies_subset|security_lookup_subset,4010,3020,13982,9896,,lse_company_reports|lse_instrument_directory|lse_price_explorer,lse_company_reports|lse_instrument_directory,lse_company_reports|lse_instrument_directory|lse_price_explorer,empty_refresh|stale_artifact,11107,6842,780,3485,61.6,66.25,available,refresh_unavailable,not_applicable
 LUSE,official_partial,listed_companies_subset,22,0,15,0,,luse_listed_companies,luse_listed_companies,luse_listed_companies,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 MSE_MW,official_partial,listed_companies_subset,8,0,8,0,,mse_mw_listed_companies,mse_mw_listed_companies,mse_mw_listed_companies,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
-MSX,official_full,exchange_directory,91,0,108,0,,muscat_securities_companies,,muscat_securities_companies,stale_artifact,108,91,13,4,84.26,95.79,available,refresh_required,not_applicable
+MSX,official_full,exchange_directory,91,0,108,0,,muscat_securities_companies,,,,108,91,13,4,84.26,95.79,available,maintain,not_applicable
 Munich,missing,,192,31,0,0,ETF|Stock,,,,,0,0,0,0,,,denominator_missing,official_source_required,not_applicable
 NASDAQ,official_full,corporate_action_daily_list|exchange_directory,3504,1269,8599,1362,,nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange,,nasdaq_trading_system_adds_deletes,stale_artifact,5616,4575,61,980,81.46,82.36,available,refresh_required,not_applicable
 NEO,official_full,exchange_directory,68,179,110,334,,cboe_canada_listing_directory,,,,444,211,66,167,47.52,55.82,available,maintain,not_applicable

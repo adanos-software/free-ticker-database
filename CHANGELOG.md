@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Refreshed the official Muscat `muscat_securities_companies` directory live (108 active-stock rows, identical to the previous snapshot). `MSX::Stock` freshness now passes. The official-full contract still fails license review; recall stays 84.26% (91 of 108) and would fail after license. No MSX listing rows were added, dropped, or recoded.
 - Filled 26 BATS ETF categories from the official Cboe U.S. LMM asset-class file after exact ticker and product-name gates. Canonical mapping stays fail-closed: `US Equity` → Equity, `Outcome-Based` → Alternative, `Single Stock`/`Other` → Other.
 - Filled listing-keyed `ASX::USD` as `Currency` from the official Betashares product page (Category Currencies; ASX code USD; ISIN `AU000000USD7`). The NYSE ARCA `USD` primary ticker is a different security and stays unchanged.
 - Accepted `ASX::EBTC` ISIN `AU0000198020` from official ASX ISIN.xls after matching the listing product name to the workbook security type. The remaining 98 ASX rows without ISIN stay blank, including debt/ABS/treasury codes that are not the listed equity or ETF identity.
@@ -12,7 +13,8 @@
 
 - Cboe taxonomy stays BATS-only. NYSE ARCA, Nasdaq, and other residual ETF categories stay blank without an official product taxonomy. Same-ISIN peer fill remains unique-value only and found no additional fills.
 - ASX Stock rows still cannot match on security type alone, so debt ISINs are not copied onto stock/ETF listings.
-- Regenerating canonical exports advanced `built_at`. `MSX::Stock` now fails the 7-day official snapshot SLA, and LSE price-explorer age is noted on existing identity-conflict contracts. No Muscat or LSE listing data was changed.
+- Regenerating canonical exports advanced `built_at`. LSE price-explorer age remains noted on existing identity-conflict contracts. No LSE listing data was changed.
+- The live Muscat fetch is recorded in `last_refresh` (`2026-08-27T05:35:27Z`). Coverage contracts keep dataset `as_of` at `built_at` and age a post-build official snapshot against the latest refresh envelope, so later targeted fetches of other sources still advance the SLA clock without backdating `generated_at`.
 
 ## [3.36.0] - 2026-08-24
 

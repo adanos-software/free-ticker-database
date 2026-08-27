@@ -2,7 +2,12 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from scripts.build_coverage_contracts import build_contract_rows, source_fresh, source_license_approved
+from scripts.build_coverage_contracts import (
+    build_contract_rows,
+    freshness_as_of,
+    source_fresh,
+    source_license_approved,
+)
 
 
 def source(*, licensed: bool = True, sla: int = 7) -> dict[str, object]:
@@ -91,6 +96,90 @@ def test_future_snapshot_timestamp_is_rejected() -> None:
     )
     assert not ok
     assert "future" in reason
+
+
+def test_post_build_refresh_ages_against_latest_refresh_envelope() -> None:
+    dataset_as_of = datetime(2026, 8, 26, 13, 34, 26, tzinfo=timezone.utc)
+    last_refresh = {
+        "generated_at": "2026-08-28T00:00:00Z",
+        "selected_source_keys": ["other_source"],
+    }
+    detail = {"mode": "network", "generated_at": "2026-08-27T05:35:27Z"}
+    source_as_of = freshness_as_of(
+        dataset_as_of=dataset_as_of,
+        source_detail=detail,
+        last_refresh=last_refresh,
+    )
+    ok, reason = source_fresh(source(licensed=False, sla=7), detail, as_of=source_as_of)
+    assert ok
+    assert "within" in reason
+    assert source_as_of == datetime(2026, 8, 28, tzinfo=timezone.utc)
+    older_as_of = freshness_as_of(
+        dataset_as_of=dataset_as_of,
+        source_detail={"mode": "network", "generated_at": "2026-08-19T08:39:18Z"},
+        last_refresh=last_refresh,
+    )
+    assert older_as_of == dataset_as_of
+
+
+def test_future_snapshot_without_matching_last_refresh_is_still_rejected() -> None:
+    row = build(
+        licensed=False,
+        detail={"mode": "network", "generated_at": "2026-08-18T00:00:00Z"},
+    )
+    assert row["contract_status"] == "fail_freshness"
+    assert "future" in row["freshness_failures"]
+
+
+def test_matching_last_refresh_lets_live_snapshot_pass_freshness() -> None:
+    row = build_contract_rows(
+        references=[reference()],
+        reconciliations=[rec()],
+        sources={"s": source(licensed=False)},
+        source_details={"s": {"mode": "network", "generated_at": "2026-08-18T00:00:00Z"}},
+        exchange_audit={"X": audit()},
+        as_of=datetime(2026, 8, 17, tzinfo=timezone.utc),
+        last_refresh={
+            "generated_at": "2026-08-18T00:00:00Z",
+            "selected_source_keys": ["other"],
+        },
+    )[0]
+    assert row["freshness_status"] == "pass"
+    assert row["contract_status"] == "fail_license"
+
+
+def test_post_build_snapshot_ages_against_later_unrelated_refresh() -> None:
+    row = build_contract_rows(
+        references=[reference()],
+        reconciliations=[rec()],
+        sources={"s": source(licensed=False, sla=7)},
+        source_details={"s": {"mode": "network", "generated_at": "2026-08-18T00:00:00Z"}},
+        exchange_audit={"X": audit()},
+        as_of=datetime(2026, 8, 17, tzinfo=timezone.utc),
+        last_refresh={
+            "generated_at": "2026-08-26T00:00:00Z",
+            "selected_source_keys": ["other"],
+        },
+    )[0]
+    assert row["contract_status"] == "fail_freshness"
+    assert "exceeds" in row["freshness_failures"]
+
+
+def test_snapshot_after_last_refresh_envelope_is_rejected() -> None:
+    row = build_contract_rows(
+        references=[reference()],
+        reconciliations=[rec()],
+        sources={"s": source(licensed=False)},
+        source_details={"s": {"mode": "network", "generated_at": "2026-08-18T00:00:00Z"}},
+        exchange_audit={"X": audit()},
+        as_of=datetime(2026, 8, 17, tzinfo=timezone.utc),
+        last_refresh={
+            "generated_at": "2026-08-17T12:00:00Z",
+            "selected_source_keys": ["s"],
+        },
+    )[0]
+    assert row["contract_status"] == "fail_freshness"
+    assert "future" in row["freshness_failures"]
 
 
 def test_alternate_line_without_reviewed_mapping_gets_no_credit() -> None:

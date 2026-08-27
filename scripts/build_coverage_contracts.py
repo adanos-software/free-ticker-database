@@ -71,6 +71,35 @@ def source_license_approved(
     return True, "verified open derived-facts license"
 
 
+def freshness_as_of(
+    *,
+    dataset_as_of: datetime,
+    source_detail: Mapping[str, Any] | None = None,
+    last_refresh: Mapping[str, Any] | None = None,
+) -> datetime:
+    """Evaluate a post-build official snapshot on its own observation clock.
+
+    Dataset `as_of` stays pinned to built_at so other venues are not aged by a
+    later targeted refresh. A source whose `generated_at` is after built_at but
+    not after the latest recorded `last_refresh` is aged against that envelope
+    so later fetches of other sources still advance the SLA clock.
+    """
+    if not last_refresh:
+        return dataset_as_of
+    refresh_at = parse_time(str(last_refresh.get("generated_at") or ""))
+    generated_at = parse_time(str((source_detail or {}).get("generated_at") or ""))
+    if refresh_at is None or generated_at is None:
+        return dataset_as_of
+    refresh_utc = refresh_at.astimezone(timezone.utc)
+    generated_utc = generated_at.astimezone(timezone.utc)
+    as_of_utc = dataset_as_of.astimezone(timezone.utc)
+    if generated_utc <= as_of_utc:
+        return dataset_as_of
+    if generated_utc > refresh_utc + timedelta(minutes=5):
+        return dataset_as_of
+    return refresh_utc
+
+
 def source_fresh(
     source: Mapping[str, Any], source_detail: Mapping[str, Any] | None, *, as_of: datetime
 ) -> tuple[bool, str]:
@@ -111,6 +140,7 @@ def build_contract_rows(
     source_details: Mapping[str, Mapping[str, Any]],
     exchange_audit: Mapping[str, Mapping[str, Any]],
     as_of: datetime,
+    last_refresh: Mapping[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     official = [
         row for row in references
@@ -179,7 +209,14 @@ def build_contract_rows(
         license_failures: list[str] = []
         for source_key in source_keys:
             source = sources.get(source_key, {})
-            fresh, fresh_reason = source_fresh(source, source_details.get(source_key), as_of=as_of)
+            source_as_of = freshness_as_of(
+                dataset_as_of=as_of,
+                source_detail=source_details.get(source_key),
+                last_refresh=last_refresh,
+            )
+            fresh, fresh_reason = source_fresh(
+                source, source_details.get(source_key), as_of=source_as_of
+            )
             if not fresh:
                 freshness_failures.append(f"{source_key}: {fresh_reason}")
             licensed, license_reason = source_license_approved(source, as_of=as_of)
@@ -257,6 +294,9 @@ def build(
     sources = {str(row.get("key", "")): row for row in sources_payload if isinstance(row, dict)}
     summary_payload = json.loads(summary_json.read_text(encoding="utf-8")) if summary_json.exists() else {}
     details = summary_payload.get("source_details", {}) if isinstance(summary_payload, dict) else {}
+    last_refresh = summary_payload.get("last_refresh") if isinstance(summary_payload, dict) else None
+    if not isinstance(last_refresh, dict):
+        last_refresh = None
     audit = {row.get("exchange", ""): row for row in load_csv(exchange_audit_csv)}
     rows = build_contract_rows(
         references=load_csv(reference_csv),
@@ -265,6 +305,7 @@ def build(
         source_details=details,
         exchange_audit=audit,
         as_of=as_of,
+        last_refresh=last_refresh,
     )
     counts = Counter(str(row["contract_status"]) for row in rows)
     full_rows = [row for row in rows if row["claim_type"] == "official_full"]
