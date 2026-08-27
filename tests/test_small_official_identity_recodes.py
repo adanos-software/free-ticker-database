@@ -121,3 +121,32 @@ def test_lse_isem_ticker_reuse_is_not_copied_from_price_explorer() -> None:
     assert isem["isin"] == "IE00B27YCP72"
     assert isem["asset_type"] == "ETF"
     assert "iShares" in isem["name"]
+
+
+def test_lse_gmp_stock_recode_has_reviewed_listing_events() -> None:
+    path = ROOT / "data" / "history" / "listing_events.csv"
+    with path.open(newline="", encoding="utf-8") as handle:
+        events = [
+            row
+            for row in csv.DictReader(handle)
+            if row.get("listing_key") == "LSE::GMP"
+            and row.get("evidence_status") == "reviewed"
+        ]
+    by_field = {(row.get("field_name"), row.get("event_type")): row for row in events}
+
+    asset_type = by_field[("asset_type", "reclassified")]
+    assert asset_type["old_value"] == "ETF"
+    assert asset_type["new_value"] == "Stock"
+    assert asset_type["source_key"] == "review_metadata_updates"
+    assert asset_type["source_report"] == "data/review_overrides/metadata_updates.csv"
+    assert asset_type["observation_id"] == "LSE::GMP:asset_type"
+    assert asset_type["before_row_sha256"] == (
+        "2495470db22404eb9e1708a2113c87c9fb9ab58d8634c417703d299d8510ae80"
+    )
+
+    category = by_field[("etf_category", "taxonomy_changed")]
+    assert category["old_value"] == "Alternative"
+    assert category["new_value"] == ""
+    assert category["source_key"] == "review_metadata_updates"
+    assert category["observation_id"] == "LSE::GMP:etf_category"
+    assert category["before_row_sha256"] == asset_type["before_row_sha256"]
