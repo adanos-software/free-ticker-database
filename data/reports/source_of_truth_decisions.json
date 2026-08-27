@@ -3,9 +3,9 @@
     "generated_at": "2026-08-27T09:26:59Z",
     "rows": 8582,
     "outcome_totals": {
-      "accepted_source_gap": 5986,
+      "accepted_source_gap": 5987,
       "core_exclusion_candidate": 482,
-      "official_fill_required": 2114
+      "official_fill_required": 2113
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -20,11 +20,11 @@
       "official_current_directory_absent_identifier_gap": 9,
       "official_identifier_not_exposed_source_gap": 268,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 842,
+      "official_industry_taxonomy_unavailable_gap": 843,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 10,
       "official_reference_symbol_collision_gap": 1182,
-      "official_reference_unmatched_source_gap": 5162,
+      "official_reference_unmatched_source_gap": 5161,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 33
     },
@@ -32,11 +32,11 @@
       "missing_etf_category:accepted_source_gap": 13,
       "missing_isin_primary:accepted_source_gap": 285,
       "missing_isin_primary:core_exclusion_candidate": 428,
-      "missing_sector_stock:accepted_source_gap": 1396,
+      "missing_sector_stock:accepted_source_gap": 1397,
       "missing_sector_stock:core_exclusion_candidate": 54,
       "missing_sector_stock:official_fill_required": 62,
       "official_reference_gap:accepted_source_gap": 4292,
-      "official_reference_gap:official_fill_required": 2052
+      "official_reference_gap:official_fill_required": 2051
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -130929,21 +130929,21 @@
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
     },
     {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "LSE::GMP",
       "ticker": "GMP",
       "exchange": "LSE",
-      "asset_type": "ETF",
+      "asset_type": "Stock",
       "name": "Gabelli Merchant Partners PLC",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
+      "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
     },
     {
       "field": "official_reference_gap",

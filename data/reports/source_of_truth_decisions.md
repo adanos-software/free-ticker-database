@@ -8,17 +8,17 @@ This report converts residual source-gap classes into release-trackable outcomes
 
 | Value | Rows |
 |---|---:|
-| accepted_source_gap | 5986 |
-| official_fill_required | 2114 |
+| accepted_source_gap | 5987 |
+| official_fill_required | 2113 |
 | core_exclusion_candidate | 482 |
 
 ## Top Classes
 
 | Value | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5162 |
+| official_reference_unmatched_source_gap | 5161 |
 | official_reference_symbol_collision_gap | 1182 |
-| official_industry_taxonomy_unavailable_gap | 842 |
+| official_industry_taxonomy_unavailable_gap | 843 |
 | otc_sector_source_gap | 554 |
 | official_identifier_not_exposed_source_gap | 268 |
 | fund_or_trust_identifier_gap | 253 |

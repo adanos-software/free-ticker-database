@@ -14,9 +14,9 @@ Generated at: `2026-08-27T09:26:55Z`
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,344 |
+| official_reference_gap | 6,343 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 1,286 |
+| missing_stock_sector | 1,287 |
 | expected_missing_primary_isin | 713 |
 | official_name_mismatch | 29 |
 | missing_etf_category | 19 |
