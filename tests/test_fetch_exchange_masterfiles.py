@@ -2855,6 +2855,12 @@ def test_load_lse_price_explorer_rows_falls_back_to_cache(tmp_path, monkeypatch)
     assert mode == "cache"
 
 
+def test_lse_price_explorer_source_timeout_exceeds_default_pagination_budget() -> None:
+    assert fetch_exchange_masterfiles.SOURCE_TIMEOUT_SECONDS["lse_price_explorer"] > (
+        fetch_exchange_masterfiles.DEFAULT_SOURCE_TIMEOUT_SECONDS
+    )
+
+
 def test_parse_cboe_canada_listing_directory_html_maps_supported_security_types() -> None:
     html = """
     <script>

@@ -60,6 +60,7 @@ MASTERFILE_FIELDNAMES = [
 DEFAULT_SOURCE_TIMEOUT_SECONDS = 90.0
 SOURCE_TIMEOUT_SECONDS = {
     "bme_security_prices_directory": 600.0,
+    "lse_price_explorer": 360.0,
 }
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"

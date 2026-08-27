@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Refreshed the official Muscat `muscat_securities_companies` directory live (108 active-stock rows, identical to the previous snapshot). `MSX::Stock` freshness now passes. The official-full contract still fails license review; recall stays 84.26% (91 of 108) and would fail after license. No MSX listing rows were added, dropped, or recoded.
+- Refreshed the official LSE `lse_price_explorer` directory live (11,107 → 11,124 rows). The previous 90s source timeout aborted pagination and fell back to cache; the per-source budget is now 360s. `lse_price_explorer` freshness now passes. LSE official-full contracts still fail identity review, and `lse_company_reports` / `lse_instrument_directory` stay unavailable. No LSE listing rows were added, dropped, or recoded; directory adds/drops stay in the masterfile until the listing apply path.
 - Filled 26 BATS ETF categories from the official Cboe U.S. LMM asset-class file after exact ticker and product-name gates. Canonical mapping stays fail-closed: `US Equity` → Equity, `Outcome-Based` → Alternative, `Single Stock`/`Other` → Other.
 - Filled 9 NYSE ARCA/Nasdaq ETF categories from official issuer product pages or summary prospectuses after exact ticker gates (Amplify AHBM/ROBX/XQBT/XWNG, KraneShares KAIT, Virtus ZDIS/ZINN, Defiance CROB, xETFs KSMH). Accepted `NYSE ARCA::KAIT` ISIN `US5007671739` from the KraneShares product page.
 - Filled listing-keyed `ASX::USD` as `Currency` from the official Betashares product page (Category Currencies; ASX code USD; ISIN `AU000000USD7`). The NYSE ARCA `USD` primary ticker is a different security and stays unchanged.
@@ -21,6 +21,7 @@
 - Cboe taxonomy stays BATS-only. Remaining NYSE ARCA, Nasdaq, TSX, WSE, Euronext, and BMV ETF categories stay blank without an official product-page asset class, including JULV buffer/outcome, crypto ETPs, GCLO, OVNI overnight, and BMV::QQQ (different ISIN from NASDAQ::QQQ). Same-ISIN peer fill remains unique-value only and found no additional fills.
 - ASX Stock rows still cannot match on security type alone, so debt ISINs are not copied onto stock/ETF listings.
 - Regenerating canonical exports keeps dataset `as_of` at the previous `built_at` so official-directory freshness is not aged by this metadata fill. LSE price-explorer age remains noted on existing identity-conflict contracts. No LSE listing data was changed.
+- The live LSE fetch is recorded in `last_refresh` (`2026-08-27T08:36:47Z`). Dataset `as_of` stays at `built_at`. Six price-explorer tickers that left the directory stay in listings until official delisting evidence; 23 new directory tickers were not dumped into listings.
 - The live Muscat fetch is recorded in `last_refresh` (`2026-08-27T05:35:27Z`). Coverage contracts keep dataset `as_of` at `built_at` and age a post-build official snapshot against the latest refresh envelope, so later targeted fetches of other sources still advance the SLA clock without backdating `generated_at`.
 
 ## [3.36.0] - 2026-08-24
