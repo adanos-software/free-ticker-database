@@ -205,6 +205,8 @@ from scripts.fetch_exchange_masterfiles import (
     load_szse_etf_list_rows,
     merge_summary_errors,
     merge_reference_rows,
+    cache_fallback_source_keys,
+    drop_selected_source_rows,
     dedupe_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
@@ -15983,6 +15985,182 @@ def test_main_marks_empty_partial_refresh_unavailable_and_preserves_rows(tmp_pat
         "selected_source_keys": ["lse_company_reports"],
         "source_modes": {"lse_company_reports": "unavailable"},
     }
+
+
+def test_cache_fallback_source_keys_only_preserves_existing_snapshots() -> None:
+    existing_rows = [{"source_key": "cse_ma_listed_companies", "ticker": "2SAHA"}]
+    assert cache_fallback_source_keys(
+        {"cse_ma_listed_companies": "cache", "jpx_tse_stock_detail": "cache"},
+        {"cse_ma_listed_companies", "jpx_tse_stock_detail"},
+        existing_rows,
+    ) == {"cse_ma_listed_companies"}
+    assert cache_fallback_source_keys(
+        {"cse_ma_listed_companies": "network"},
+        {"cse_ma_listed_companies"},
+        existing_rows,
+    ) == set()
+
+
+def test_drop_selected_source_rows_removes_only_blocked_sources() -> None:
+    rows = [
+        {"source_key": "cse_ma_listed_companies", "ticker": "AFM", "name": "stale cache name"},
+        {"source_key": "muscat_securities_companies", "ticker": "OQGN"},
+    ]
+    assert drop_selected_source_rows(rows, {"cse_ma_listed_companies"}) == [
+        {"source_key": "muscat_securities_companies", "ticker": "OQGN"}
+    ]
+
+
+def test_main_preserves_reference_when_partial_refresh_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    reference_path = tmp_path / "reference.csv"
+    summary_path = tmp_path / "summary.json"
+    existing_rows = [
+        {
+            "source_key": "cse_ma_listed_companies",
+            "provider": "Casablanca Stock Exchange",
+            "source_url": "https://www.casablanca-bourse.com/en/marches-produits/actions",
+            "ticker": "2SAHA",
+            "name": "STROC Industrie",
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "cse_ma_listed_companies",
+            "provider": "Casablanca Stock Exchange",
+            "source_url": "https://www.casablanca-bourse.com/en/marches-produits/actions",
+            "ticker": "AFM",
+            "name": "AFMA SA",
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+    fetch_exchange_masterfiles.write_csv(
+        reference_path,
+        fetch_exchange_masterfiles.MASTERFILE_FIELDNAMES,
+        existing_rows,
+    )
+    summary_path.write_text(
+        json.dumps(
+            {
+                "source_modes": {"cse_ma_listed_companies": "network"},
+                "source_details": {
+                    "cse_ma_listed_companies": {
+                        "mode": "network",
+                        "generated_at": "2026-07-27T00:00:00Z",
+                    }
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_REFERENCE_CSV", reference_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_SUMMARY_JSON", summary_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ROOT", tmp_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "persist_source_metadata", lambda: None)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_all_sources",
+        lambda **_kwargs: (
+            [
+                {
+                    "source_key": "cse_ma_listed_companies",
+                    "provider": "Casablanca Stock Exchange",
+                    "source_url": "https://www.casablanca-bourse.com/en/marches-produits/actions",
+                    "ticker": "AFM",
+                    "name": "AFMA",
+                    "exchange": "CSE_MA",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": "exchange_directory",
+                    "official": "true",
+                }
+            ],
+            {
+                "generated_at": "2026-08-27T07:13:00Z",
+                "source_modes": {"cse_ma_listed_companies": "cache"},
+            },
+        ),
+    )
+
+    fetch_exchange_masterfiles.main(["--source", "cse_ma_listed_companies", "--no-manual"])
+
+    preserved = fetch_exchange_masterfiles.load_csv(reference_path)
+    by_ticker = {row["ticker"]: row for row in preserved}
+    assert set(by_ticker) == {"2SAHA", "AFM"}
+    assert by_ticker["2SAHA"]["name"] == "STROC Industrie"
+    assert by_ticker["AFM"]["name"] == "AFMA SA"
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["source_modes"]["cse_ma_listed_companies"] == "unavailable"
+    assert summary["source_details"]["cse_ma_listed_companies"]["rows"] == 2
+    assert summary["source_details"]["cse_ma_listed_companies"]["generated_at"] == "2026-07-27T00:00:00Z"
+    assert summary["source_details"]["cse_ma_listed_companies"]["last_error"] == (
+        "Cache fallback; preserved 2 existing rows"
+    )
+    assert summary["last_refresh"]["source_modes"]["cse_ma_listed_companies"] == "unavailable"
+
+
+def test_main_keeps_cache_rows_when_partial_refresh_has_no_existing_snapshot(tmp_path, monkeypatch) -> None:
+    reference_path = tmp_path / "reference.csv"
+    summary_path = tmp_path / "summary.json"
+    other_row = {
+        "source_key": "muscat_securities_companies",
+        "provider": "MSX",
+        "source_url": "https://example.test/msx",
+        "ticker": "OQGN",
+        "name": "OQ Gas Networks",
+        "exchange": "MSX",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "exchange_directory",
+        "official": "true",
+    }
+    fetch_exchange_masterfiles.write_csv(
+        reference_path,
+        fetch_exchange_masterfiles.MASTERFILE_FIELDNAMES,
+        [other_row],
+    )
+    summary_path.write_text(json.dumps({"source_modes": {}}), encoding="utf-8")
+    cache_row = {
+        "source_key": "cse_ma_listed_companies",
+        "provider": "Casablanca Stock Exchange",
+        "source_url": "https://www.casablanca-bourse.com/en/marches-produits/actions",
+        "ticker": "AFM",
+        "name": "AFMA SA",
+        "exchange": "CSE_MA",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "exchange_directory",
+        "official": "true",
+    }
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_REFERENCE_CSV", reference_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_SUMMARY_JSON", summary_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ROOT", tmp_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "persist_source_metadata", lambda: None)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_all_sources",
+        lambda **_kwargs: (
+            [cache_row],
+            {
+                "generated_at": "2026-08-27T07:13:00Z",
+                "source_modes": {"cse_ma_listed_companies": "cache"},
+            },
+        ),
+    )
+
+    fetch_exchange_masterfiles.main(["--source", "cse_ma_listed_companies", "--no-manual"])
+
+    by_source = fetch_exchange_masterfiles.load_csv(reference_path)
+    cse_rows = [row for row in by_source if row["source_key"] == "cse_ma_listed_companies"]
+    assert [row["ticker"] for row in cse_rows] == ["AFM"]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["source_modes"]["cse_ma_listed_companies"] == "cache"
 
 
 def test_merge_summary_errors_preserves_unrefreshed_source_errors() -> None:

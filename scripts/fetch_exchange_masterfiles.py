@@ -2875,6 +2875,36 @@ def empty_refresh_source_counts(
     }
 
 
+def cache_fallback_source_keys(
+    source_modes: dict[str, str],
+    selected_source_keys: Iterable[str],
+    existing_rows: Iterable[dict[str, str]],
+) -> set[str]:
+    """Return selected sources that fell back to cache and already have a snapshot.
+
+    Cache rows are not a live official refresh. On a partial fetch they must not
+    replace the committed directory (name recodes, dropped tickers). Sources with
+    no existing snapshot still keep the cache so a first import is possible.
+    """
+    selected = set(selected_source_keys)
+    existing_source_keys = {row.get("source_key", "") for row in existing_rows}
+    return {
+        source_key
+        for source_key, mode in source_modes.items()
+        if source_key in selected and mode == "cache" and source_key in existing_source_keys
+    }
+
+
+def drop_selected_source_rows(
+    rows: Iterable[dict[str, str]],
+    source_keys: Iterable[str],
+) -> list[dict[str, str]]:
+    blocked = set(source_keys)
+    if not blocked:
+        return list(rows)
+    return [row for row in rows if row.get("source_key", "") not in blocked]
+
+
 def load_manual_masterfiles(manual_dir: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     if not manual_dir.exists():
@@ -19452,9 +19482,26 @@ def main(argv: list[str] | None = None) -> None:
     partial_refresh = bool(args.sources or args.rotation_batch_size)
     if partial_refresh and MASTERFILE_REFERENCE_CSV.exists():
         existing_rows = load_csv(MASTERFILE_REFERENCE_CSV)
+        cache_source_keys = cache_fallback_source_keys(
+            summary.get("source_modes", {}),
+            selected_source_keys,
+            existing_rows,
+        )
+        if cache_source_keys:
+            rows = drop_selected_source_rows(rows, cache_source_keys)
+            for source_key in sorted(cache_source_keys):
+                existing_count = sum(1 for row in existing_rows if row.get("source_key") == source_key)
+                summary.setdefault("errors", []).append(
+                    {
+                        "source_key": source_key,
+                        "error": f"Cache fallback; preserved {existing_count} existing rows",
+                    }
+                )
         empty_source_counts = empty_refresh_source_counts(existing_rows, rows, selected_source_keys)
         for source_key, existing_count in empty_source_counts.items():
             summary.setdefault("source_modes", {})[source_key] = "unavailable"
+            if source_key in cache_source_keys:
+                continue
             summary.setdefault("errors", []).append(
                 {
                     "source_key": source_key,
