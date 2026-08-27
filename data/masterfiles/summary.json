@@ -470,7 +470,7 @@
       "official": true,
       "mode": "network",
       "rows": 216,
-      "generated_at": "2026-08-19T15:05:31Z"
+      "generated_at": "2026-08-27T12:33:13Z"
     },
     "b3_bdr_etfs": {
       "provider": "B3",
@@ -478,7 +478,7 @@
       "official": true,
       "mode": "network",
       "rows": 321,
-      "generated_at": "2026-08-19T15:05:31Z"
+      "generated_at": "2026-08-27T12:33:13Z"
     },
     "jse_etf_list": {
       "provider": "JSE",
@@ -1562,12 +1562,14 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-27T08:36:47Z",
+    "generated_at": "2026-08-27T12:33:13Z",
     "selected_source_keys": [
-      "lse_price_explorer"
+      "b3_bdr_etfs",
+      "b3_listed_etfs"
     ],
     "source_modes": {
-      "lse_price_explorer": "network"
+      "b3_bdr_etfs": "network",
+      "b3_listed_etfs": "network"
     }
   }
 }
