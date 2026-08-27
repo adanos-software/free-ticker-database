@@ -97,3 +97,27 @@ def test_exported_listings_match_official_identity_recodes() -> None:
     euronext = _listing("Euronext::CBDG")
     assert euronext["isin"] == "FR001400SUB7"
     assert euronext["name"] == "Compagnie du Cambodge"
+
+    gmp = _listing("LSE::GMP")
+    assert gmp["asset_type"] == "Stock"
+    assert gmp["isin"] == "GB00BD8P0741"
+    assert gmp["etf_category"] == ""
+
+
+def test_lse_gmp_is_official_stock_not_etf() -> None:
+    asset_type = _row("GMP", "LSE", "asset_type")
+    category = _row("GMP", "LSE", "etf_category")
+
+    assert asset_type["decision"] == "update"
+    assert asset_type["proposed_value"] == "Stock"
+    assert "lse_price_explorer" in asset_type["reason"]
+    assert "GB00BD8P0741" in asset_type["reason"]
+    assert category["decision"] == "clear"
+    assert category["proposed_value"] == ""
+
+
+def test_lse_isem_ticker_reuse_is_not_copied_from_price_explorer() -> None:
+    isem = _listing("LSE::ISEM")
+    assert isem["isin"] == "IE00B27YCP72"
+    assert isem["asset_type"] == "ETF"
+    assert "iShares" in isem["name"]
