@@ -124,17 +124,17 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Metric | Value |
 |---|---|
-| freshness_status_totals | {"fresh": 37, "old": 32, "stale": 69} |
-| source_age_bucket_totals | {"age_0_48h": 37, "age_168_336h": 16, "age_48_168h": 69, "age_over_336h": 16} |
-| refresh_priority_totals | {"P1": 4, "P2": 97, "P4": 37} |
-| refresh_queue_totals | {"fresh_no_refresh_needed": 37, "refresh_official_exchange_directory_before_identity_or_collision_work": 2, "refresh_official_subset_before_gap_enrichment": 80, "restore_or_replace_unavailable_source_before_data_fill": 19} |
+| freshness_status_totals | {"fresh": 38, "old": 31, "stale": 69} |
+| source_age_bucket_totals | {"age_0_48h": 38, "age_168_336h": 15, "age_48_168h": 69, "age_over_336h": 16} |
+| refresh_priority_totals | {"P1": 3, "P2": 97, "P4": 38} |
+| refresh_queue_totals | {"fresh_no_refresh_needed": 38, "refresh_official_exchange_directory_before_identity_or_collision_work": 1, "refresh_official_subset_before_gap_enrichment": 80, "restore_or_replace_unavailable_source_before_data_fill": 19} |
 
 ### Highest Priority Source Refresh Batches
 
 | Queue | Scope | Mode | Priority | Sources | Rows | Max Age Hours | Source Gate |
 |---|---|---|---|---:|---:|---:|---|
 | restore_or_replace_unavailable_source_before_data_fill | exchange_directory | unavailable | P1 | 2 | 12007 | 2033.93 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| refresh_official_exchange_directory_before_identity_or_collision_work | exchange_directory | network | P1 | 2 | 11215 | 172.92 | Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated. |
+| refresh_official_exchange_directory_before_identity_or_collision_work | exchange_directory | network | P1 | 1 | 11107 | 172.92 | Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated. |
 | refresh_official_subset_before_gap_enrichment | listed_companies_subset | network | P2 | 55 | 29329 | 172.92 | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | refresh_official_subset_before_gap_enrichment | exchange_directory | network | P2 | 19 | 11306 | 167.39 | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 15 | 17725 | 2033.93 | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
@@ -214,7 +214,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | tadawul_main_market_watch | Saudi Exchange | exchange_directory | network | 413 | 2026-08-21T07:01:15Z | 126.56 | stale | P2 | refresh_official_subset_before_gap_enrichment | refresh_official_subset_before_gap_enrichment | Refresh the official subset source for scope exchange_directory before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | adx_market_watch | ADX | exchange_directory | network | 123 | 2026-08-19T15:05:31Z | 166.49 | stale | P2 | refresh_official_subset_before_gap_enrichment | refresh_official_subset_before_gap_enrichment | Refresh the official subset source for scope exchange_directory before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | qse_market_watch | QSE | exchange_directory | network | 57 | 2026-08-19T14:11:11Z | 167.39 | stale | P2 | refresh_official_subset_before_gap_enrichment | refresh_official_subset_before_gap_enrichment | Refresh the official subset source for scope exchange_directory before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
-| muscat_securities_companies | MSX | exchange_directory | network | 108 | 2026-08-19T08:39:18Z | 172.92 | old | P1 | refresh_official_exchange_directory_before_identity_or_collision_work | refresh_official_exchange_directory_before_identity_or_collision_work | Refresh the official exchange-directory source for scope exchange_directory using mode network. | Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated. |
+| muscat_securities_companies | MSX | exchange_directory | network | 108 | 2026-08-27T05:35:27Z | 0.0 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
 | rse_listed_companies | RSE | listed_companies_subset | network | 1 | 2026-08-19T14:11:11Z | 167.39 | stale | P2 | refresh_official_subset_before_gap_enrichment | refresh_official_subset_before_gap_enrichment | Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | gse_listed_companies | GSE | listed_companies_subset | network | 18 | 2026-08-25T08:23:53Z | 29.18 | fresh | P4 | fresh_no_refresh_needed | no_refresh_needed | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
 | luse_listed_companies | LuSE | listed_companies_subset | unavailable | 15 | 2026-06-02T19:38:59Z | 2033.93 | old | P2 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
@@ -291,16 +291,16 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Priority | Sources |
 |---|---:|
-| P1 | 4 |
+| P1 | 3 |
 | P2 | 97 |
-| P4 | 37 |
+| P4 | 38 |
 
 ## Source Refresh Queues
 
 | Queue | Sources |
 |---|---:|
-| fresh_no_refresh_needed | 37 |
-| refresh_official_exchange_directory_before_identity_or_collision_work | 2 |
+| fresh_no_refresh_needed | 38 |
+| refresh_official_exchange_directory_before_identity_or_collision_work | 1 |
 | refresh_official_subset_before_gap_enrichment | 80 |
 | restore_or_replace_unavailable_source_before_data_fill | 19 |
 
@@ -308,10 +308,10 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Queue | Scope | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | exchange_directory | 19 |
+| fresh_no_refresh_needed | exchange_directory | 20 |
 | fresh_no_refresh_needed | listed_companies_subset | 16 |
 | fresh_no_refresh_needed | security_lookup_subset | 2 |
-| refresh_official_exchange_directory_before_identity_or_collision_work | exchange_directory | 2 |
+| refresh_official_exchange_directory_before_identity_or_collision_work | exchange_directory | 1 |
 | refresh_official_subset_before_gap_enrichment | corporate_action_daily_list | 1 |
 | refresh_official_subset_before_gap_enrichment | exchange_directory | 19 |
 | refresh_official_subset_before_gap_enrichment | interlisted_subset | 1 |
@@ -326,8 +326,8 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Queue | Mode | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | network | 37 |
-| refresh_official_exchange_directory_before_identity_or_collision_work | network | 2 |
+| fresh_no_refresh_needed | network | 38 |
+| refresh_official_exchange_directory_before_identity_or_collision_work | network | 1 |
 | refresh_official_subset_before_gap_enrichment | cache | 1 |
 | refresh_official_subset_before_gap_enrichment | network | 79 |
 | restore_or_replace_unavailable_source_before_data_fill | unavailable | 19 |
@@ -336,8 +336,8 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Queue | Priority | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | P4 | 37 |
-| refresh_official_exchange_directory_before_identity_or_collision_work | P1 | 2 |
+| fresh_no_refresh_needed | P4 | 38 |
+| refresh_official_exchange_directory_before_identity_or_collision_work | P1 | 1 |
 | refresh_official_subset_before_gap_enrichment | P2 | 80 |
 | restore_or_replace_unavailable_source_before_data_fill | P1 | 2 |
 | restore_or_replace_unavailable_source_before_data_fill | P2 | 17 |
@@ -346,8 +346,8 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Age bucket | Sources |
 |---|---:|
-| age_0_48h | 37 |
-| age_168_336h | 16 |
+| age_0_48h | 38 |
+| age_168_336h | 15 |
 | age_48_168h | 69 |
 | age_over_336h | 16 |
 
@@ -355,8 +355,8 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Queue | Age bucket | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | age_0_48h | 37 |
-| refresh_official_exchange_directory_before_identity_or_collision_work | age_168_336h | 2 |
+| fresh_no_refresh_needed | age_0_48h | 38 |
+| refresh_official_exchange_directory_before_identity_or_collision_work | age_168_336h | 1 |
 | refresh_official_subset_before_gap_enrichment | age_168_336h | 14 |
 | refresh_official_subset_before_gap_enrichment | age_48_168h | 65 |
 | refresh_official_subset_before_gap_enrichment | age_over_336h | 1 |
@@ -367,8 +367,8 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Queue | Strategy | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | no_refresh_required | 37 |
-| refresh_official_exchange_directory_before_identity_or_collision_work | refresh_official_exchange_directory_before_identity_or_collision_work | 2 |
+| fresh_no_refresh_needed | no_refresh_required | 38 |
+| refresh_official_exchange_directory_before_identity_or_collision_work | refresh_official_exchange_directory_before_identity_or_collision_work | 1 |
 | refresh_official_subset_before_gap_enrichment | refresh_official_subset_before_gap_enrichment | 80 |
 | restore_or_replace_unavailable_source_before_data_fill | restore_or_replace_unavailable_source_before_data_fill | 19 |
 
@@ -376,8 +376,8 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 
 | Queue | Evidence required | Sources |
 |---|---|---:|
-| fresh_no_refresh_needed | fresh_source_generated_at_with_age_under_48h | 37 |
-| refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count | 2 |
+| fresh_no_refresh_needed | fresh_source_generated_at_with_age_under_48h | 38 |
+| refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count | 1 |
 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count | 80 |
 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | 19 |
 
@@ -386,7 +386,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Queue | Scope | Mode | Priority | Sources | Rows | Max age hours | Strategy | Evidence required | Recommended next source | Source gate |
 |---|---|---|---|---:|---:|---:|---|---|---|---|
 | restore_or_replace_unavailable_source_before_data_fill | exchange_directory | unavailable | P1 | 2 | 12007 | 2033.93 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
-| refresh_official_exchange_directory_before_identity_or_collision_work | exchange_directory | network | P1 | 2 | 11215 | 172.92 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count | Refresh the official exchange-directory source for scope exchange_directory using mode network. | Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated. |
+| refresh_official_exchange_directory_before_identity_or_collision_work | exchange_directory | network | P1 | 1 | 11107 | 172.92 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count | Refresh the official exchange-directory source for scope exchange_directory using mode network. | Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated. |
 | refresh_official_subset_before_gap_enrichment | listed_companies_subset | network | P2 | 55 | 29329 | 172.92 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count | Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | refresh_official_subset_before_gap_enrichment | exchange_directory | network | P2 | 19 | 11306 | 167.39 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count | Refresh the official subset source for scope exchange_directory before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 15 | 17725 | 2033.93 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
@@ -396,7 +396,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | restore_or_replace_unavailable_source_before_data_fill | security_lookup_subset | unavailable | P2 | 1 | 64 | 2033.93 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision | Restore the unavailable official source for scope security_lookup_subset, or document an official replacement/unavailable decision. | Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists. |
 | refresh_official_subset_before_gap_enrichment | corporate_action_daily_list | network | P2 | 1 | 24 | 167.39 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count | Refresh the official subset source for scope corporate_action_daily_list before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
 | refresh_official_subset_before_gap_enrichment | listed_companies_subset | cache | P2 | 1 | 0 | 2033.93 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count | Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work. | Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists. |
-| fresh_no_refresh_needed | exchange_directory | network | P4 | 19 | 69905 | 45.91 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
+| fresh_no_refresh_needed | exchange_directory | network | P4 | 20 | 70013 | 45.91 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope exchange_directory. | Freshness evidence is present; no data change is authorized by freshness alone. |
 | fresh_no_refresh_needed | listed_companies_subset | network | P4 | 16 | 12550 | 45.91 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope listed_companies_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
 | fresh_no_refresh_needed | security_lookup_subset | network | P4 | 2 | 123 | 45.91 | no_refresh_required | fresh_source_generated_at_with_age_under_48h | No refresh needed; retain current fresh source evidence for scope security_lookup_subset. | Freshness evidence is present; no data change is authorized by freshness alone. |
 

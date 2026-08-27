@@ -6,9 +6,9 @@
     "official_full_pass": 0,
     "official_full_fail": 86,
     "status_counts": {
-      "fail_freshness": 3,
+      "fail_freshness": 2,
       "fail_identity_conflict": 36,
-      "fail_license": 47,
+      "fail_license": 48,
       "partial_scope_observed": 48
     },
     "minimum_full_recall_pct": 99.5
@@ -1632,10 +1632,10 @@
       "unclassified_keys": 0,
       "recall_pct": 84.259259,
       "minimum_recall_pct": 99.5,
-      "freshness_status": "fail",
+      "freshness_status": "pass",
       "license_status": "fail",
-      "contract_status": "fail_freshness",
-      "freshness_failures": "muscat_securities_companies: snapshot age 7.20d exceeds 7d SLA",
+      "contract_status": "fail_license",
+      "freshness_failures": "",
       "license_failures": "muscat_securities_companies: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },

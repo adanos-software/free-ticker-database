@@ -763,7 +763,7 @@
       "official": true,
       "mode": "network",
       "rows": 108,
-      "generated_at": "2026-08-19T08:39:18Z"
+      "generated_at": "2026-08-27T05:35:27Z"
     },
     "rse_listed_companies": {
       "provider": "RSE",
@@ -1562,50 +1562,12 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-25T08:23:53Z",
+    "generated_at": "2026-08-27T05:35:27Z",
     "selected_source_keys": [
-      "dse_tz_listed_companies",
-      "egx_listed_stocks",
-      "euronext_equities",
-      "euronext_etfs",
-      "gse_listed_companies",
-      "hkex_securities_list",
-      "hnx_listed_securities",
-      "hose_etf_list",
-      "hose_fund_certificate_list",
-      "hose_listed_stocks",
-      "idx_company_profiles",
-      "idx_listed_companies",
-      "jpx_listed_issues",
-      "jpx_tse_stock_detail",
-      "jse_etf_list",
-      "jse_etn_list",
-      "jse_instrument_search",
-      "krx_etf_finder",
-      "krx_listed_companies",
-      "lse_company_reports"
+      "muscat_securities_companies"
     ],
     "source_modes": {
-      "dse_tz_listed_companies": "network",
-      "egx_listed_stocks": "network",
-      "euronext_equities": "network",
-      "euronext_etfs": "network",
-      "gse_listed_companies": "network",
-      "hkex_securities_list": "network",
-      "hnx_listed_securities": "network",
-      "hose_etf_list": "network",
-      "hose_fund_certificate_list": "network",
-      "hose_listed_stocks": "network",
-      "idx_company_profiles": "network",
-      "idx_listed_companies": "network",
-      "jpx_listed_issues": "network",
-      "jpx_tse_stock_detail": "unavailable",
-      "jse_etf_list": "network",
-      "jse_etn_list": "network",
-      "jse_instrument_search": "cache",
-      "krx_etf_finder": "network",
-      "krx_listed_companies": "network",
-      "lse_company_reports": "unavailable"
+      "muscat_securities_companies": "network"
     }
   }
 }

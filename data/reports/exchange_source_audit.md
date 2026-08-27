@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-08-26T13:34:48Z`
+Generated at: `2026-08-27T05:41:08Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 23, "maintain": 19, "official_source_required": 5, "refresh_required": 26, "refresh_unavailable": 14}`
+- Audit outcomes: `{"denominator_missing": 23, "maintain": 20, "official_source_required": 5, "refresh_required": 25, "refresh_unavailable": 14}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -50,7 +50,7 @@ Generated at: `2026-08-26T13:34:48Z`
 | LSE | official_full | lse_company_reports|lse_instrument_directory|lse_price_explorer |  | 11107 | 61.6 | lse_company_reports|lse_instrument_directory|lse_price_explorer | refresh_unavailable | not_applicable |
 | LUSE | official_partial | luse_listed_companies |  | 0 |  | luse_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
-| MSX | official_full | muscat_securities_companies |  | 108 | 84.26 | muscat_securities_companies | refresh_required | not_applicable |
+| MSX | official_full | muscat_securities_companies |  | 108 | 84.26 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5616 | 81.46 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NEO | official_full | cboe_canada_listing_directory |  | 444 | 47.52 |  | maintain | not_applicable |
