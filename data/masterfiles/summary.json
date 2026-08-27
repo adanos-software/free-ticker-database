@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-08-25T08:23:53Z",
-  "rows": 169445,
+  "rows": 169462,
   "exchanges": [
     "ADX",
     "AMS",
@@ -145,7 +145,7 @@
     "krx_listed_companies": 2761,
     "krx_etf_finder": 1164,
     "lse_company_reports": 12707,
-    "lse_price_explorer": 11107,
+    "lse_price_explorer": 11124,
     "lse_instrument_directory": 64,
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
@@ -274,8 +274,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 11107,
-      "generated_at": "2026-08-19T08:39:18Z"
+      "rows": 11124,
+      "generated_at": "2026-08-27T08:36:47Z"
     },
     "asx_listed_companies": {
       "provider": "ASX",
@@ -1562,12 +1562,12 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-27T05:35:27Z",
+    "generated_at": "2026-08-27T08:36:47Z",
     "selected_source_keys": [
-      "muscat_securities_companies"
+      "lse_price_explorer"
     ],
     "source_modes": {
-      "muscat_securities_companies": "network"
+      "lse_price_explorer": "network"
     }
   }
 }

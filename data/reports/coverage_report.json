@@ -273,22 +273,22 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 11107,
-      "generated_at": "2026-08-19T08:39:18Z",
+      "rows": 11124,
+      "generated_at": "2026-08-27T08:36:47Z",
       "last_error": "",
-      "age_hours": 172.92,
-      "age_bucket": "age_168_336h",
-      "freshness_status": "old",
-      "refresh_priority": "P1",
-      "refresh_queue": "refresh_official_exchange_directory_before_identity_or_collision_work",
-      "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
-      "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
-      "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode network.",
-      "source_gate": "Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated.",
-      "recommended_refresh_action": "refresh_official_exchange_directory_before_identity_or_collision_work",
-      "source_artifact_context": "key=lse_price_explorer;provider=LSE;reference_scope=exchange_directory;official=true;mode=network;rows=11107;last_error=none",
-      "freshness_review_context": "generated_at=2026-08-19T08:39:18Z;age_bucket=age_168_336h;freshness_status=old;refresh_priority=P1",
-      "refresh_gate_context": "refresh_queue=refresh_official_exchange_directory_before_identity_or_collision_work;recommended_refresh_action=refresh_official_exchange_directory_before_identity_or_collision_work;review_strategy=refresh_official_exchange_directory_before_identity_or_collision_work;evidence_required=official_exchange_directory_refresh_artifact_with_generated_at_and_row_count"
+      "age_hours": 0.0,
+      "age_bucket": "age_0_48h",
+      "freshness_status": "fresh",
+      "refresh_priority": "P4",
+      "refresh_queue": "fresh_no_refresh_needed",
+      "review_strategy": "no_refresh_required",
+      "evidence_required": "fresh_source_generated_at_with_age_under_48h",
+      "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope exchange_directory.",
+      "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone.",
+      "recommended_refresh_action": "no_refresh_needed",
+      "source_artifact_context": "key=lse_price_explorer;provider=LSE;reference_scope=exchange_directory;official=true;mode=network;rows=11124;last_error=none",
+      "freshness_review_context": "generated_at=2026-08-27T08:36:47Z;age_bucket=age_0_48h;freshness_status=fresh;refresh_priority=P4",
+      "refresh_gate_context": "refresh_queue=fresh_no_refresh_needed;recommended_refresh_action=no_refresh_needed;review_strategy=no_refresh_required;evidence_required=fresh_source_generated_at_with_age_under_48h"
     },
     {
       "key": "asx_listed_companies",
@@ -3307,35 +3307,31 @@
   "source_freshness_summary": {
     "source_count": 138,
     "freshness_status_totals": {
-      "fresh": 38,
-      "old": 31,
+      "fresh": 39,
+      "old": 30,
       "stale": 69
     },
     "source_age_bucket_totals": {
-      "age_0_48h": 38,
-      "age_168_336h": 15,
+      "age_0_48h": 39,
+      "age_168_336h": 14,
       "age_48_168h": 69,
       "age_over_336h": 16
     },
     "refresh_priority_totals": {
-      "P1": 3,
+      "P1": 2,
       "P2": 97,
-      "P4": 38
+      "P4": 39
     },
     "refresh_queue_totals": {
-      "fresh_no_refresh_needed": 38,
-      "refresh_official_exchange_directory_before_identity_or_collision_work": 1,
+      "fresh_no_refresh_needed": 39,
       "refresh_official_subset_before_gap_enrichment": 80,
       "restore_or_replace_unavailable_source_before_data_fill": 19
     },
     "refresh_queue_scope_totals": {
       "fresh_no_refresh_needed": {
-        "exchange_directory": 20,
+        "exchange_directory": 21,
         "listed_companies_subset": 16,
         "security_lookup_subset": 2
-      },
-      "refresh_official_exchange_directory_before_identity_or_collision_work": {
-        "exchange_directory": 1
       },
       "refresh_official_subset_before_gap_enrichment": {
         "corporate_action_daily_list": 1,
@@ -3353,10 +3349,7 @@
     },
     "refresh_queue_mode_totals": {
       "fresh_no_refresh_needed": {
-        "network": 38
-      },
-      "refresh_official_exchange_directory_before_identity_or_collision_work": {
-        "network": 1
+        "network": 39
       },
       "refresh_official_subset_before_gap_enrichment": {
         "cache": 1,
@@ -3368,10 +3361,7 @@
     },
     "refresh_queue_priority_totals": {
       "fresh_no_refresh_needed": {
-        "P4": 38
-      },
-      "refresh_official_exchange_directory_before_identity_or_collision_work": {
-        "P1": 1
+        "P4": 39
       },
       "refresh_official_subset_before_gap_enrichment": {
         "P2": 80
@@ -3383,10 +3373,7 @@
     },
     "refresh_queue_age_bucket_totals": {
       "fresh_no_refresh_needed": {
-        "age_0_48h": 38
-      },
-      "refresh_official_exchange_directory_before_identity_or_collision_work": {
-        "age_168_336h": 1
+        "age_0_48h": 39
       },
       "refresh_official_subset_before_gap_enrichment": {
         "age_168_336h": 14,
@@ -3399,17 +3386,13 @@
       }
     },
     "recommended_refresh_action_totals": {
-      "no_refresh_needed": 38,
-      "refresh_official_exchange_directory_before_identity_or_collision_work": 1,
+      "no_refresh_needed": 39,
       "refresh_official_subset_before_gap_enrichment": 80,
       "restore_or_replace_unavailable_source_before_data_fill": 19
     },
     "refresh_queue_review_strategy_totals": {
       "fresh_no_refresh_needed": {
-        "no_refresh_required": 38
-      },
-      "refresh_official_exchange_directory_before_identity_or_collision_work": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 1
+        "no_refresh_required": 39
       },
       "refresh_official_subset_before_gap_enrichment": {
         "refresh_official_subset_before_gap_enrichment": 80
@@ -3420,10 +3403,7 @@
     },
     "refresh_queue_evidence_required_totals": {
       "fresh_no_refresh_needed": {
-        "fresh_source_generated_at_with_age_under_48h": 38
-      },
-      "refresh_official_exchange_directory_before_identity_or_collision_work": {
-        "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 1
+        "fresh_source_generated_at_with_age_under_48h": 39
       },
       "refresh_official_subset_before_gap_enrichment": {
         "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 80
@@ -3445,19 +3425,6 @@
         "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
         "recommended_next_source": "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision.",
         "source_gate": "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
-      },
-      {
-        "refresh_queue": "refresh_official_exchange_directory_before_identity_or_collision_work",
-        "reference_scope": "exchange_directory",
-        "mode": "network",
-        "refresh_priority": "P1",
-        "source_count": 1,
-        "total_rows": 11107,
-        "max_age_hours": 172.92,
-        "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
-        "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
-        "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode network.",
-        "source_gate": "Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated."
       },
       {
         "refresh_queue": "refresh_official_subset_before_gap_enrichment",
@@ -3616,7 +3583,7 @@
         "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
       }
     ],
-    "old_official_exchange_directory_count": 3,
+    "old_official_exchange_directory_count": 2,
     "top_old_official_exchange_directories": [
       {
         "key": "otc_markets_stock_screener",
@@ -3624,13 +3591,6 @@
         "mode": "unavailable",
         "rows": 11925,
         "age_hours": 2033.93
-      },
-      {
-        "key": "lse_price_explorer",
-        "provider": "LSE",
-        "mode": "network",
-        "rows": 11107,
-        "age_hours": 172.92
       },
       {
         "key": "cse_ma_listed_companies",
@@ -6043,30 +6003,30 @@
       "cik_coverage": 16,
       "figi_coverage": 6491,
       "lei_coverage": 4338,
-      "masterfile_symbols": 11107,
-      "masterfile_matches": 6842,
-      "masterfile_collisions": 780,
-      "masterfile_missing": 3485,
-      "masterfile_match_rate": 61.6,
-      "masterfile_collision_rate": 7.02,
-      "official_recall_denominator": 11107,
-      "official_recall_matches": 6842,
-      "official_recall_missing": 4265,
-      "official_recall_pct": 61.6,
-      "official_recall_gap_rate": 38.4,
-      "collision_adjusted_recall_denominator": 10327,
-      "collision_adjusted_recall_missing": 3485,
-      "collision_adjusted_recall_pct": 66.25,
-      "collision_adjusted_recall_gap_rate": 33.75,
+      "masterfile_symbols": 11124,
+      "masterfile_matches": 6839,
+      "masterfile_collisions": 787,
+      "masterfile_missing": 3498,
+      "masterfile_match_rate": 61.48,
+      "masterfile_collision_rate": 7.07,
+      "official_recall_denominator": 11124,
+      "official_recall_matches": 6839,
+      "official_recall_missing": 4285,
+      "official_recall_pct": 61.48,
+      "official_recall_gap_rate": 38.52,
+      "collision_adjusted_recall_denominator": 10337,
+      "collision_adjusted_recall_missing": 3498,
+      "collision_adjusted_recall_pct": 66.16,
+      "collision_adjusted_recall_gap_rate": 33.84,
       "collision_adjusted_recall_pass": false,
       "official_recall_target": true,
       "official_recall_pass": false,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4265;symbol_collisions=780",
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4285;symbol_collisions=787",
       "official_recall_decision": "still_actionable",
-      "official_recall_decision_reason": "official_full venue remains below recall target after collision adjustment;true_missing_excluding_collisions=3485;collision_hidden_missing=780",
+      "official_recall_decision_reason": "official_full venue remains below recall target after collision adjustment;true_missing_excluding_collisions=3498;collision_hidden_missing=787",
       "official_recall_next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "official_recall_true_missing_excluding_collisions": 3485,
-      "official_recall_collision_hidden_missing": 780,
+      "official_recall_true_missing_excluding_collisions": 3498,
+      "official_recall_collision_hidden_missing": 787,
       "verification_items": 3669,
       "verification_verified": 3640,
       "verification_reference_gap": 4,
@@ -11365,30 +11325,30 @@
       "cik_coverage": 16,
       "figi_coverage": 6491,
       "lei_coverage": 4338,
-      "masterfile_symbols": 11107,
-      "masterfile_matches": 6842,
-      "masterfile_collisions": 780,
-      "masterfile_missing": 3485,
-      "masterfile_match_rate": 61.6,
-      "masterfile_collision_rate": 7.02,
-      "official_recall_denominator": 11107,
-      "official_recall_matches": 6842,
-      "official_recall_missing": 4265,
-      "official_recall_pct": 61.6,
-      "official_recall_gap_rate": 38.4,
-      "collision_adjusted_recall_denominator": 10327,
-      "collision_adjusted_recall_missing": 3485,
-      "collision_adjusted_recall_pct": 66.25,
-      "collision_adjusted_recall_gap_rate": 33.75,
+      "masterfile_symbols": 11124,
+      "masterfile_matches": 6839,
+      "masterfile_collisions": 787,
+      "masterfile_missing": 3498,
+      "masterfile_match_rate": 61.48,
+      "masterfile_collision_rate": 7.07,
+      "official_recall_denominator": 11124,
+      "official_recall_matches": 6839,
+      "official_recall_missing": 4285,
+      "official_recall_pct": 61.48,
+      "official_recall_gap_rate": 38.52,
+      "collision_adjusted_recall_denominator": 10337,
+      "collision_adjusted_recall_missing": 3498,
+      "collision_adjusted_recall_pct": 66.16,
+      "collision_adjusted_recall_gap_rate": 33.84,
       "collision_adjusted_recall_pass": false,
       "official_recall_target": true,
       "official_recall_pass": false,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4265;symbol_collisions=780",
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4285;symbol_collisions=787",
       "official_recall_decision": "still_actionable",
-      "official_recall_decision_reason": "official_full venue remains below recall target after collision adjustment;true_missing_excluding_collisions=3485;collision_hidden_missing=780",
+      "official_recall_decision_reason": "official_full venue remains below recall target after collision adjustment;true_missing_excluding_collisions=3498;collision_hidden_missing=787",
       "official_recall_next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "official_recall_true_missing_excluding_collisions": 3485,
-      "official_recall_collision_hidden_missing": 780,
+      "official_recall_true_missing_excluding_collisions": 3498,
+      "official_recall_collision_hidden_missing": 787,
       "verification_items": 3669,
       "verification_verified": 3640,
       "verification_reference_gap": 4,
