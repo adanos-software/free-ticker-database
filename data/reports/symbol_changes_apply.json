@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T07:06:56Z",
+    "generated_at": "2026-08-27T17:37:47Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
@@ -8,9 +8,9 @@
     "blocked_rows": 335,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 57,
-      "blocked_old_symbol_not_unique_in_us_scope": 229,
+      "blocked_old_symbol_not_unique_in_us_scope": 228,
       "manual_isin_not_proven_unchanged": 2,
-      "manual_non_us_or_unscoped_source": 44,
+      "manual_non_us_or_unscoped_source": 45,
       "manual_transition_or_shell_name": 3
     }
   },
@@ -398,7 +398,7 @@
       "old_symbol": "UGRO",
       "new_symbol": "FLZH",
       "new_company_name": "Flash Sports & Media Holdings Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "81bd78d4bc6c3d63",
