@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-08-27T06:47:30Z",
+    "generated_at": "2026-08-27T09:26:58Z",
     "rows": 8582,
     "field_totals": {
       "missing_etf_category": 13,
       "missing_isin_primary": 713,
-      "missing_sector_stock": 1511,
-      "official_reference_gap": 6345
+      "missing_sector_stock": 1512,
+      "official_reference_gap": 6344
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -21,11 +21,11 @@
       "official_current_directory_absent_identifier_gap": 9,
       "official_identifier_not_exposed_source_gap": 268,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 841,
+      "official_industry_taxonomy_unavailable_gap": 842,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 10,
       "official_reference_symbol_collision_gap": 1182,
-      "official_reference_unmatched_source_gap": 5163,
+      "official_reference_unmatched_source_gap": 5162,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 33
     },
@@ -44,11 +44,11 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 5,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 841,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 842,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 33,
       "official_reference_gap:official_reference_symbol_collision_gap": 1182,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5163
+      "official_reference_gap:official_reference_unmatched_source_gap": 5162
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -145,12 +145,12 @@
           "rows": 5
         },
         {
-          "exchange": "XHAM",
+          "exchange": "KRX",
           "rows": 4
         },
         {
-          "exchange": "BCBA",
-          "rows": 3
+          "exchange": "XHAM",
+          "rows": 4
         }
       ],
       "official_reference_gap": [
@@ -9432,7 +9432,7 @@
       "ticker": "NUAM",
       "exchange": "SSE_CL",
       "asset_type": "Stock",
-      "name": "Holding Bursátil Regional S.A.",
+      "name": "NUAM S.A.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
@@ -26660,6 +26660,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=KRX::051915;exchange=KRX;ticker=051915;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "KRX::088980",
+      "ticker": "088980",
+      "exchange": "KRX",
+      "asset_type": "Stock",
+      "name": "Macq Kor Infr",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=KRX::088980;exchange=KRX;ticker=088980;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -66372,23 +66389,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=KRX::0036D0;exchange=KRX;ticker=0036D0;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "KRX::088980",
-      "ticker": "088980",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "name": "Macq Kor Infr",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=KRX::088980;exchange=KRX;ticker=088980;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Recoded three listing-keyed identities from exact official exchange directories: `KRX::088980` MKIF / `KR7088980008` from ETF to Stock, `SSE_CL::NUAM` to Bolsa Santiago name `NUAM S.A.`, and `Euronext::CBDG` Compagnie du Cambodge to Euronext ISIN `FR001400SUB7`. `LSE::0I76` stays the global primary for that ISIN because ticker `CBDG` is a distinct OTC security. Those three official-full contracts now fail license review instead of identity. `XETRA::FRE` already matches Xetra all-tradable `DE000FRE5EN2`; the stale listed-companies ISIN was not copied. Ticker-reuse rows (`AMS::HAL`, `Borsa Italiana::COME`, `Euronext::GLDM`, `XETRA::GIJ0`) stay unchanged.
 - Refreshed the official Muscat `muscat_securities_companies` directory live (108 active-stock rows, identical to the previous snapshot). `MSX::Stock` freshness now passes. The official-full contract still fails license review; recall stays 84.26% (91 of 108) and would fail after license. No MSX listing rows were added, dropped, or recoded.
 - Filled 26 BATS ETF categories from the official Cboe U.S. LMM asset-class file after exact ticker and product-name gates. Canonical mapping stays fail-closed: `US Equity` → Equity, `Outcome-Based` → Alternative, `Single Stock`/`Other` → Other.
 - Filled 9 NYSE ARCA/Nasdaq ETF categories from official issuer product pages or summary prospectuses after exact ticker gates (Amplify AHBM/ROBX/XQBT/XWNG, KraneShares KAIT, Virtus ZDIS/ZINN, Defiance CROB, xETFs KSMH). Accepted `NYSE ARCA::KAIT` ISIN `US5007671739` from the KraneShares product page.
@@ -18,9 +19,10 @@
 
 - Live Casablanca `cse_ma_listed_companies` fetch timed out against `www.casablanca-bourse.com` (connection timeout on `/en/marches-produits/actions` and the legacy instruments API). The committed directory is preserved; no Jina or third-party proxy was used. Cache names were not applied onto listings. `CSE_MA::Stock` freshness stays unavailable until the official host is reachable.
 - Live JPX `jpx_tse_stock_detail` probe timed out resolving `quote.jpx.co.jp`. Incomplete or cache-only refresh keeps the existing snapshot. `TSE::ETF` freshness stays unavailable; fields stay blank. No listing dump.
-- Cboe taxonomy stays BATS-only. Remaining NYSE ARCA, Nasdaq, TSX, WSE, Euronext, and BMV ETF categories stay blank without an official product-page asset class, including JULV buffer/outcome, crypto ETPs, GCLO, OVNI overnight, and BMV::QQQ (different ISIN from NASDAQ::QQQ). Same-ISIN peer fill remains unique-value only and found no additional fills.
+- Cboe taxonomy stays BATS-only. Remaining NYSE ARCA, Nasdaq, TSX, WSE, Euronext, and BMV ETF categories stay blank without an official product-page Category/Asset-Class field, including JULV buffer/outcome, crypto ETPs, GCLO, OVNI overnight, and BMV::QQQ (different ISIN from NASDAQ::QQQ). Same-ISIN peer fill remains unique-value only and found no additional fills.
 - ASX Stock rows still cannot match on security type alone, so debt ISINs are not copied onto stock/ETF listings.
 - Regenerating canonical exports keeps dataset `as_of` at the previous `built_at` so official-directory freshness is not aged by this metadata fill. LSE price-explorer age remains noted on existing identity-conflict contracts. No LSE listing data was changed.
+- SET `BSET100` official quote page matches symbol and name `BCAP SET 100 ETF` but does not expose ISIN, so the listing name `BCAP SET100` / `TH8092010009` was not recoded.
 - The live Muscat fetch is recorded in `last_refresh` (`2026-08-27T05:35:27Z`). Coverage contracts keep dataset `as_of` at `built_at` and age a post-build official snapshot against the latest refresh envelope, so later targeted fetches of other sources still advance the SLA clock without backdating `generated_at`.
 
 ## [3.36.0] - 2026-08-24

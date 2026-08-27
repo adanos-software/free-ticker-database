@@ -5,29 +5,29 @@
 | Metric | Value |
 |---|---|
 | tickers | 63824 |
-| core_listings | 61695 |
+| core_listings | 61694 |
 | aliases | 125532 |
-| stocks | 47778 |
-| etfs | 16046 |
+| stocks | 47779 |
+| etfs | 16045 |
 | isin_coverage | 62554 |
-| sector_coverage | 62300 |
+| sector_coverage | 62299 |
 | stock_sector_coverage | 46267 |
-| etf_category_coverage | 16033 |
+| etf_category_coverage | 16032 |
 | cik_coverage | 7828 |
 | figi_coverage | 65397 |
 | lei_coverage | 17788 |
 | listing_status_rows | 107943 |
 | listing_status_intervals | 107943 |
-| listing_events | 82878 |
+| listing_events | 82882 |
 | listing_keys | 92030 |
 | instrument_scope_rows | 92030 |
-| instrument_scope_core | 61695 |
-| instrument_scope_extended | 30335 |
-| instrument_scope_primary_listing | 60982 |
+| instrument_scope_core | 61694 |
+| instrument_scope_extended | 30336 |
+| instrument_scope_primary_listing | 60981 |
 | instrument_scope_primary_listing_missing_isin | 713 |
 | instrument_scope_otc_listing | 11752 |
-| instrument_scope_secondary_cross_listing | 18583 |
-| legacy_primary_ticker_collision_rows | 4766 |
+| instrument_scope_secondary_cross_listing | 18584 |
+| legacy_primary_ticker_collision_rows | 4765 |
 | official_masterfile_symbols | 99291 |
 | official_masterfile_matches | 65167 |
 | official_masterfile_collisions | 13812 |
@@ -442,20 +442,20 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | ISE | official_full | 14 | 14 | 14 | 0 | 12 | 9 | 15 | 9 | 6 | 0 | 60.0 | 40.0 | 100.0 | 0 | mostly_collision_hidden | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=6;symbol_collisions=6 | 100.0 |
 | JSE | official_partial | 212 | 212 | 212 | 2 | 166 | 131 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | KOSDAQ | official_full | 1605 | 1605 | 1605 | 0 | 1578 | 0 | 1820 | 1594 | 3 | 223 | 87.58 | 12.42 | 87.73 | 223 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=226;symbol_collisions=3 | 99.62 |
-| KRX | official_full | 1991 | 1990 | 1988 | 0 | 1793 | 0 | 2105 | 1957 | 14 | 134 | 92.97 | 7.03 | 93.59 | 134 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=148;symbol_collisions=14 | 99.76 |
+| KRX | official_full | 1991 | 1990 | 1987 | 0 | 1793 | 0 | 2105 | 1957 | 14 | 134 | 92.97 | 7.03 | 93.59 | 134 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=148;symbol_collisions=14 | 99.76 |
 | LSE | official_full | 7030 | 7029 | 7014 | 16 | 6491 | 4338 | 11107 | 6842 | 780 | 3485 | 61.6 | 38.4 | 66.25 | 3485 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4265;symbol_collisions=780 | 99.32 |
 | LUSE | official_partial | 22 | 22 | 22 | 0 | 21 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | MSE_MW | official_partial | 8 | 8 | 8 | 0 | 7 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | MSX | official_full | 91 | 91 | 91 | 0 | 0 | 0 | 108 | 91 | 13 | 4 | 84.26 | 15.74 | 95.79 | 4 | mostly_collision_hidden | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=17;symbol_collisions=13 | 100.0 |
 | Munich | missing | 223 | 223 | 185 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | source_unavailable |  |  |
-| NASDAQ | official_full | 4773 | 4719 | 4730 | 3492 | 3389 | 1382 | 5616 | 4575 | 61 | 980 | 81.46 | 18.54 | 82.36 | 980 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1041;symbol_collisions=61 | 99.56 |
+| NASDAQ | official_full | 4773 | 4719 | 4732 | 3492 | 3389 | 1382 | 5616 | 4575 | 61 | 980 | 81.46 | 18.54 | 82.36 | 980 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1041;symbol_collisions=61 | 99.56 |
 | NEO | official_full | 247 | 204 | 230 | 0 | 149 | 1 | 444 | 211 | 66 | 167 | 47.52 | 52.48 | 55.82 | 167 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=233;symbol_collisions=66 | 100.0 |
 | NGX | official_full | 145 | 145 | 145 | 0 | 133 | 76 | 130 | 130 | 0 | 0 | 100.0 | 0.0 | 100.0 | 0 | fixed |  | 100.0 |
 | NMFQS | official_partial | 6 | 6 | 6 | 0 | 6 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  |  |
 | NSE_IN | official_full | 2503 | 2503 | 2503 | 0 | 2489 | 0 | 3202 | 2331 | 390 | 481 | 72.8 | 27.2 | 82.89 | 481 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=871;symbol_collisions=390 | 100.0 |
 | NSE_KE | official_full | 46 | 46 | 46 | 0 | 42 | 1 | 68 | 11 | 25 | 32 | 16.18 | 83.82 | 25.58 | 32 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=57;symbol_collisions=25 | 100.0 |
 | NYSE | official_full | 2024 | 1971 | 2010 | 1942 | 1440 | 994 | 3883 | 1985 | 562 | 1336 | 51.12 | 48.88 | 59.77 | 1336 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1898;symbol_collisions=562 | 100.0 |
-| NYSE ARCA | official_full | 2738 | 2681 | 2719 | 113 | 2099 | 368 | 2708 | 2587 | 29 | 92 | 95.53 | 4.47 | 96.57 | 92 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=121;symbol_collisions=29 | 100.0 |
+| NYSE ARCA | official_full | 2738 | 2682 | 2726 | 113 | 2099 | 368 | 2708 | 2587 | 29 | 92 | 95.53 | 4.47 | 96.57 | 92 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=121;symbol_collisions=29 | 100.0 |
 | NYSE MKT | official_full | 234 | 221 | 232 | 145 | 150 | 51 | 308 | 229 | 31 | 48 | 74.35 | 25.65 | 82.67 | 48 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=79;symbol_collisions=31 | 100.0 |
 | NZX | official_full | 45 | 45 | 43 | 0 | 45 | 1 | 172 | 45 | 126 | 1 | 26.16 | 73.84 | 97.83 | 1 | mostly_collision_hidden | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=127;symbol_collisions=126 | 100.0 |
 | OSL | official_full | 306 | 306 | 293 | 2 | 258 | 243 | 296 | 284 | 7 | 5 | 95.95 | 4.05 | 98.27 | 5 | mostly_collision_hidden | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=12;symbol_collisions=7 | 100.0 |
@@ -622,7 +622,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Singapore | 555 | 551 | 543 | 16 | 40 | 5 |
 | Slovenia | 8 | 8 | 1 | 0 | 1 | 1 |
 | South Africa | 252 | 252 | 227 | 10 | 175 | 141 |
-| South Korea | 3585 | 3583 | 3582 | 1 | 3362 | 0 |
+| South Korea | 3585 | 3583 | 3581 | 1 | 3362 | 0 |
 | Spain | 224 | 224 | 223 | 8 | 210 | 206 |
 | Sri Lanka | 307 | 307 | 307 | 0 | 305 | 0 |
 | Sweden | 817 | 812 | 791 | 5 | 762 | 760 |
@@ -634,7 +634,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | Uganda | 7 | 7 | 7 | 0 | 7 | 7 |
 | United Arab Emirates | 123 | 123 | 123 | 0 | 123 | 0 |
 | United Kingdom | 1306 | 1302 | 1290 | 45 | 1213 | 1022 |
-| United States | 14759 | 13999 | 14086 | 5249 | 10697 | 3770 |
+| United States | 14759 | 14000 | 14095 | 5249 | 10697 | 3770 |
 | Vietnam | 261 | 260 | 261 | 2 | 260 | 0 |
 | Zambia | 22 | 22 | 22 | 0 | 21 | 0 |
 | Zimbabwe | 28 | 28 | 28 | 0 | 25 | 0 |
