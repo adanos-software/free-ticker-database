@@ -1,281 +1,38 @@
 {
   "summary": {
-    "generated_at": "2026-08-25T08:28:23Z",
+    "generated_at": "2026-08-28T18:41:33Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 25,
-    "vanished_rows": 13,
+    "new_rows": 20,
+    "vanished_rows": 18,
     "changed_rows": 12,
     "new_by_source": {
-      "euronext_etfs": 12,
-      "hkex_securities_list": 4,
-      "jse_etf_list": 2,
-      "krx_etf_finder": 3,
-      "krx_listed_companies": 4
+      "set_listed_companies": 2,
+      "sgx_securities_prices": 1,
+      "spotlight_companies_directory": 8,
+      "szse_etf_list": 9
     },
     "vanished_by_source": {
-      "euronext_equities": 3,
-      "euronext_etfs": 2,
-      "hkex_securities_list": 4,
-      "jse_etf_list": 1,
-      "krx_etf_finder": 1,
-      "krx_listed_companies": 2
+      "set_listed_companies": 1,
+      "six_etf_products": 11,
+      "spotlight_companies_directory": 5,
+      "tadawul_main_market_watch": 1
     },
     "changed_by_type": {
-      "isin_change": 3,
-      "name_change": 10
+      "isin_change": 6,
+      "name_change": 6
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VALL",
-      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Accumulating",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000VAHT5T0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VALLD",
-      "name": "Vanguard FTSE Global All-Cap UCITS ETF USD Distributing",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000CVUM3N6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VSML",
-      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Accumulating",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0007TPRF31",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VSMLD",
-      "name": "Vanguard FTSE Global Small-Cap UCITS ETF USD Distributing",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000F8RXD33",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VXUD",
-      "name": "Vanguard FTSE All-World ex-U.S. UCITS ETF USD Distributing",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000G1H7OC0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VXUS",
-      "name": "Vanguard FTSE All-World ex-U.S. UCITS ETF USD Accumulating",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0009A5ADV9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "IQAW",
-      "name": "Invesco All Country World Enhanced Equity UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000S0JMIY6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VALL",
-      "name": "Vanguard FTSE Global All-Cap UCITS ETF - USD Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000VAHT5T0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VSML",
-      "name": "Vanguard FTSE Global Small-Cap UCITS ETF - USD Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0007TPRF31",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VXUS",
-      "name": "Vanguard FTSE All-World ex-U.S. UCITS ETF - USD Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0009A5ADV9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "XAHY",
-      "name": "Xtrackers II EUR High Yield Corporate Bond Active UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3367672022",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "XAIG",
-      "name": "Xtrackers II EUR Investment Grade Corporate Bond Active UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3367672295",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02908",
-      "name": "BJ SPORTS & ENT",
-      "exchange": "HKEX",
+      "source_key": "set_listed_companies",
+      "provider": "SET",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "ticker": "COLOUR",
+      "name": "SALEE COLOUR PUBLIC COMPANY LIMITED",
+      "exchange": "SET",
       "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG1145Y1109",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02909",
-      "name": "IMAGI INT'L-8K",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG476293011",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02910",
-      "name": "ASIA STRAT-10K",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG2163B1721",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "03223",
-      "name": "INGENIC",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CNE100007V07",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jse_etf_list",
-      "provider": "JSE",
-      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v95/ETF%20List%20v.95.xlsx",
-      "ticker": "PWMEXI",
-      "name": "PWM Extra Interest Prescient Feeder Actively Managed ETF",
-      "exchange": "JSE",
-      "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
@@ -284,494 +41,729 @@
       "sector": ""
     },
     {
-      "source_key": "jse_etf_list",
-      "provider": "JSE",
-      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v95/ETF%20List%20v.95.xlsx",
-      "ticker": "RWDVF",
-      "name": "Reitway Global Property Diversified ETF",
-      "exchange": "JSE",
-      "asset_type": "ETF",
+      "source_key": "set_listed_companies",
+      "provider": "SET",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "ticker": "PHAT",
+      "name": "Phatra Group Public Company Limited",
+      "exchange": "SET",
+      "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
       "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "sgx_securities_prices",
+      "provider": "SGX",
+      "source_url": "https://api.sgx.com/securities/v1.1",
+      "ticker": "V8VU",
+      "name": "EliteUKREIT GBP A",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SGXC96079238",
       "cfi": "",
       "sector": "Real Estate"
     },
     {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "0231Z0",
-      "name": "KODEX 코리아TDF2065액티브 적격",
-      "exchange": "KRX",
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01001053",
+      "ticker": "GJAB",
+      "name": "Gullberg & Jansson",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0004576346",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000DLRC",
+      "ticker": "GOSOL",
+      "name": "Gosol Energy Group",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0020845071",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01001481",
+      "ticker": "HAMLET-B",
+      "name": "Hamlet",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0015661152",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000421292",
+      "ticker": "HFRTO-B",
+      "name": "HF Reverse",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0025937899",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000446255",
+      "ticker": "KONT",
+      "name": "KONT",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0007075247",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000486",
+      "ticker": "NIDHOG",
+      "name": "Nidhogg Resources Holding",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0023468624",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000302489",
+      "ticker": "SLOTT-B",
+      "name": "Slottsviken",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000C56Q",
+      "ticker": "UPGRAD",
+      "name": "Upgrade Invest Nordic",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0018536401",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158000",
+      "name": "港股通金融ETF鹏华",
+      "exchange": "SZSE",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR70231Z0004",
+      "isin": "",
       "cfi": "",
       "sector": "Equity"
     },
     {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "0233A0",
-      "name": "ACE 삼성전자SK하이닉스플러스채권혼합50",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KR70233A0001",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "0233J0",
-      "name": "TIGER 삼성전자SK하이닉스미국채혼합50",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KR70233J0002",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "0155E0",
-      "name": "HAECHITECH",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KR70155E0001",
-      "cfi": "",
-      "sector": "Information Technology"
-    },
-    {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "282620",
-      "name": "KIDO INDUSTRIAL",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KR7282620004",
-      "cfi": "",
-      "sector": "Consumer Discretionary"
-    },
-    {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "417030",
-      "name": "Nearthlab",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KR7417030004",
-      "cfi": "",
-      "sector": "Information Technology"
-    },
-    {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "0220W0",
-      "name": "Hanwha M&S",
-      "exchange": "KRX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KR70220W0000",
-      "cfi": "",
-      "sector": "Financials"
-    }
-  ],
-  "vanished": [
-    {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "4HON",
-      "name": "HONEYWELL INTERN",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "secondary_listing_subset",
-      "official": "true",
-      "isin": "US4385162056",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "4QGEN",
-      "name": "QIAGEN",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "secondary_listing_subset",
-      "official": "true",
-      "isin": "NL0015002SN0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_equities",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
-      "ticker": "PRYME",
-      "name": "PRYME",
-      "exchange": "OSL",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "NL0015002E73",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "3SMO",
-      "name": "GRANITESHARES 3X SHORT MODERNA DAILY ETP",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "XS2838543614",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "OP8E",
-      "name": "Ossiam Bloomberg Canada PAB NR UCITS ETF - 1A (EUR)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0006QX3Y11",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "00195",
-      "name": "GREENTECH INTL",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG4100V1133",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02904",
-      "name": "CMON RTS",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG223911333",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02990",
-      "name": "DT CAPITAL-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG2848V1142",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "provider": "HKEX",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "ticker": "02995",
-      "name": "ARTINI HLDG-OLD",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "BMG051121421",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "jse_etf_list",
-      "provider": "JSE",
-      "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v94/ETF%20List%20v.94.xlsx",
-      "ticker": "RWESG",
-      "name": "Reitway Global Property ESG Prescient ETF",
-      "exchange": "JSE",
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158001",
+      "name": "价值ETF嘉实",
+      "exchange": "SZSE",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "listed_companies_subset",
       "official": "true",
       "isin": "",
       "cfi": "",
-      "sector": "Real Estate"
+      "sector": "Equity"
     },
     {
-      "source_key": "krx_etf_finder",
-      "provider": "KRX",
-      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-      "ticker": "397420",
-      "name": "RISE 국채선물5년추종",
-      "exchange": "KRX",
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158005",
+      "name": "工程机械ETF博时",
+      "exchange": "SZSE",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": "true",
-      "isin": "KR7397420001",
+      "isin": "",
       "cfi": "",
-      "sector": "Fixed Income"
+      "sector": "Equity"
     },
     {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "269620",
-      "name": "SYSWORK",
-      "exchange": "KOSDAQ",
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158008",
+      "name": "新能源电池ETF华夏",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158010",
+      "name": "医疗ETF嘉实",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158017",
+      "name": "化工ETF易方达",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "158019",
+      "name": "电池ETF永赢",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "159043",
+      "name": "食品ETF华安",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "szse_etf_list",
+      "provider": "SZSE",
+      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+      "ticker": "159096",
+      "name": "价值ETF华夏",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Equity"
+    }
+  ],
+  "vanished": [
+    {
+      "source_key": "set_listed_companies",
+      "provider": "SET",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "ticker": "COLOR",
+      "name": "SALEE COLOUR PUBLIC COMPANY LIMITED",
+      "exchange": "SET",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "5HED",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE00BF92LR56",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "5HED-USD",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE00BF92LR56",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "5HEDUSD",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE00BF92LR56",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "5HEE",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE00BF92LV92",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "5HEE-EUR",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE00BF92LV92",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "5HEEEUR",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE00BF92LV92",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "OP8E",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE0006QX3Y11",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "OP8E-CAD",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE0006QX3Y11",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "OP8E-EUR",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE0006QX3Y11",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "OP8ECAD",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE0006QX3Y11",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "six_etf_products",
+      "provider": "SIX",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "ticker": "OP8EEUR",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "exchange": "SIX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "IE0006QX3Y11",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT000044KD",
+      "ticker": "AIXIA-B",
+      "name": "Aixia",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0010636837",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000303047",
+      "ticker": "DBP-B",
+      "name": "DBP",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0007185525",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000466",
+      "ticker": "MIR",
+      "name": "Miris",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "XSAT01000466",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000303808",
+      "ticker": "SPERM",
+      "name": "Spermosens",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0015346424",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "provider": "Spotlight",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01001694",
+      "ticker": "UMIDA-B",
+      "name": "Umida",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "listed_companies_subset",
+      "official": "true",
+      "isin": "SE0009190788",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "tadawul_main_market_watch",
+      "provider": "Saudi Exchange",
+      "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+      "ticker": "9590",
+      "name": "ARMAH",
+      "exchange": "TADAWUL",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "KR7269620001",
+      "isin": "SA15TGE4LR12",
       "cfi": "",
-      "sector": "Information Technology"
-    },
-    {
-      "source_key": "krx_listed_companies",
-      "provider": "KRX",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "ticker": "327610",
-      "name": "Femtobiomed",
-      "exchange": "KRX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KR7327610002",
-      "cfi": "",
-      "sector": "Health Care"
+      "sector": ""
     }
   ],
   "changed": [
     {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "RHM3",
+      "source_key": "six_etf_products",
+      "exchange": "SIX",
+      "ticker": "TDIV",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "VanEck Morningstar Developed Markets Dividend Leaders UCITS",
+          "after": "VanEck Morningstar Developed Markets Dividend Leaders"
+        }
+      }
+    },
+    {
+      "source_key": "six_etf_products",
+      "exchange": "SIX",
+      "ticker": "TDIV-CHF",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "VanEck Morningstar Developed Markets Dividend Leaders UCITS",
+          "after": "VanEck Morningstar Developed Markets Dividend Leaders"
+        }
+      }
+    },
+    {
+      "source_key": "six_etf_products",
+      "exchange": "SIX",
+      "ticker": "TDIV-EUR",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "VanEck Morningstar Developed Markets Dividend Leaders UCITS",
+          "after": "VanEck Morningstar Developed Markets Dividend Leaders"
+        }
+      }
+    },
+    {
+      "source_key": "six_etf_products",
+      "exchange": "SIX",
+      "ticker": "TDIVCHF",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "VanEck Morningstar Developed Markets Dividend Leaders UCITS",
+          "after": "VanEck Morningstar Developed Markets Dividend Leaders"
+        }
+      }
+    },
+    {
+      "source_key": "six_etf_products",
+      "exchange": "SIX",
+      "ticker": "TDIVEUR",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "VanEck Morningstar Developed Markets Dividend Leaders UCITS",
+          "after": "VanEck Morningstar Developed Markets Dividend Leaders"
+        }
+      }
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "CHOSA",
       "change_types": [
         "isin_change"
       ],
       "changes": {
         "isin": {
-          "before": "XS3103698299",
-          "after": "XS3447535397"
+          "before": "",
+          "after": "SE0007784319"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00356",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "DT CAPITAL-NEW",
-          "after": "DT CAPITAL"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00585",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "IMAGI INT'L",
-          "after": "IMAGI INT'L-500"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "00789",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "ARTINI HLDG-NEW",
-          "after": "ARTINI HLDG"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01027",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "ASIA STRAT TECH",
-          "after": "ASIA STRAT-1K"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "01566",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "EXALT",
       "change_types": [
         "isin_change"
       ],
       "changes": {
         "isin": {
-          "before": "KYG211751071",
-          "after": "KYG211751154"
+          "before": "",
+          "after": "SE0005223542"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "02559",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "GOMERO",
       "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "DIDA INC",
-          "after": "DIDA INC-PF"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "03185",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "GX FINTECH",
-          "after": "GX INNOVAFIN"
-        }
-      }
-    },
-    {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "08446",
-      "change_types": [
-        "name_change",
         "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "BRIGHTSTAR TECH",
-          "after": "BRIGHTSTAR-NEW"
-        },
         "isin": {
-          "before": "KYG479741038",
-          "after": "KYG479741111"
+          "before": "",
+          "after": "SE0011167535"
         }
       }
     },
     {
-      "source_key": "hkex_securities_list",
-      "exchange": "HKEX",
-      "ticker": "08577",
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "HOME-B",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "",
+          "after": "SE0001426131"
+        }
+      }
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "IMS",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "",
+          "after": "SE0007603402"
+        }
+      }
+    },
+    {
+      "source_key": "spotlight_companies_directory",
+      "exchange": "STO",
+      "ticker": "ZOOM",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "",
+          "after": "SE0012740074"
+        }
+      }
+    },
+    {
+      "source_key": "szse_etf_list",
+      "exchange": "SZSE",
+      "ticker": "159638",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "BRIGHTSTAR TECH",
-          "after": "BRIGHTSTAR-OLD"
-        }
-      }
-    },
-    {
-      "source_key": "hose_listed_stocks",
-      "exchange": "HOSE",
-      "ticker": "LPS",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "LPBank Securities Joint Stock Company",
-          "after": "LPS Securities Joint Stock Company"
-        }
-      }
-    },
-    {
-      "source_key": "krx_listed_companies",
-      "exchange": "KOSDAQ",
-      "ticker": "123010",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "RNT-X",
-          "after": "MSDI"
+          "before": "高端装备ETF嘉实",
+          "after": "航空航天ETF嘉实"
         }
       }
     }

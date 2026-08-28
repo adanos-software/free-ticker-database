@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-25T08:23:53Z",
-  "rows": 169462,
+  "generated_at": "2026-08-28T18:33:49Z",
+  "rows": 169464,
   "exchanges": [
     "ADX",
     "AMS",
@@ -171,10 +171,10 @@
     "sem_isin": 46,
     "set_etf_search": 13,
     "set_stock_search": 944,
-    "set_listed_companies": 930,
+    "set_listed_companies": 931,
     "set_dr_search": 512,
-    "sgx_securities_prices": 746,
-    "six_etf_products": 8976,
+    "sgx_securities_prices": 747,
+    "six_etf_products": 8965,
     "six_etp_products": 850,
     "six_equity_issuers": 241,
     "six_shares_explorer_full": 1,
@@ -182,15 +182,15 @@
     "sse_a_share_list": 2355,
     "bolsa_santiago_instruments": 122,
     "nasdaq_nordic_stockholm_shares": 744,
-    "spotlight_companies_directory": 125,
+    "spotlight_companies_directory": 128,
     "ngm_companies_page": 53,
     "ngm_market_data_equities": 30,
     "nasdaq_nordic_stockholm_trackers": 6,
     "nasdaq_nordic_stockholm_etfs": 35,
     "szse_a_share_list": 2893,
-    "szse_etf_list": 717,
+    "szse_etf_list": 726,
     "szse_b_share_list": 38,
-    "tadawul_main_market_watch": 413,
+    "tadawul_main_market_watch": 412,
     "tase_securities_marketdata": 532,
     "tase_participating_unit_search": 16,
     "tase_etf_marketdata": 467,
@@ -307,8 +307,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 930,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "rows": 931,
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "set_stock_search": {
       "provider": "SET",
@@ -316,7 +316,7 @@
       "official": true,
       "mode": "network",
       "rows": 944,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "set_etf_search": {
       "provider": "SET",
@@ -324,7 +324,7 @@
       "official": true,
       "mode": "network",
       "rows": 13,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "set_dr_search": {
       "provider": "SET",
@@ -332,7 +332,7 @@
       "official": true,
       "mode": "network",
       "rows": 512,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "tmx_listed_issuers": {
       "provider": "TMX",
@@ -429,7 +429,7 @@
       "official": true,
       "mode": "network",
       "rows": 241,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "six_shares_explorer_full": {
       "provider": "SIX",
@@ -445,8 +445,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 8976,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "rows": 8965,
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "six_etp_products": {
       "provider": "SIX",
@@ -454,7 +454,7 @@
       "official": true,
       "mode": "network",
       "rows": 850,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "b3_instruments_equities": {
       "provider": "B3",
@@ -698,8 +698,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 746,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "rows": 747,
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "dfm_listed_securities": {
       "provider": "DFM",
@@ -738,8 +738,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 413,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "rows": 412,
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "adx_market_watch": {
       "provider": "ADX",
@@ -804,7 +804,7 @@
       "official": true,
       "mode": "network",
       "rows": 46,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "use_ug_listed_companies": {
       "provider": "USE Uganda",
@@ -958,8 +958,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 125,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "rows": 128,
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "spotlight_companies_search": {
       "provider": "Spotlight",
@@ -967,7 +967,7 @@
       "official": true,
       "mode": "network",
       "rows": 0,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "ngm_companies_page": {
       "provider": "NGM",
@@ -1062,17 +1062,19 @@
       "provider": "SSE",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "network",
+      "mode": "unavailable",
       "rows": 2355,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-21T07:01:15Z",
+      "last_error": "Empty refresh result; preserved 2355 existing rows"
     },
     "sse_etf_list": {
       "provider": "SSE",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "network",
+      "mode": "unavailable",
       "rows": 920,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-21T07:01:15Z",
+      "last_error": "Empty refresh result; preserved 920 existing rows"
     },
     "szse_a_share_list": {
       "provider": "SZSE",
@@ -1089,15 +1091,15 @@
       "official": true,
       "mode": "network",
       "rows": 38,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "szse_etf_list": {
       "provider": "SZSE",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 717,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "rows": 726,
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "tpex_mainboard_daily_quotes": {
       "provider": "TPEX",
@@ -1241,7 +1243,7 @@
       "official": true,
       "mode": "network",
       "rows": 467,
-      "generated_at": "2026-08-21T07:01:15Z"
+      "generated_at": "2026-08-28T18:33:49Z"
     },
     "tase_foreign_etf_search": {
       "provider": "TASE",
@@ -1445,8 +1447,8 @@
     "nasdaq_nordic_stockholm_trackers": "network",
     "twse_listed_companies": "network",
     "twse_etf_list": "network",
-    "sse_a_share_list": "network",
-    "sse_etf_list": "network",
+    "sse_a_share_list": "unavailable",
+    "sse_etf_list": "unavailable",
     "szse_a_share_list": "unavailable",
     "szse_b_share_list": "network",
     "szse_etf_list": "network",
@@ -1549,6 +1551,14 @@
       "error": "Empty refresh result; preserved 1 existing rows"
     },
     {
+      "source_key": "sse_a_share_list",
+      "error": "Empty refresh result; preserved 2355 existing rows"
+    },
+    {
+      "source_key": "sse_etf_list",
+      "error": "Empty refresh result; preserved 920 existing rows"
+    },
+    {
       "source_key": "szse_a_share_list",
       "error": "Empty refresh result; preserved 2893 existing rows"
     },
@@ -1562,14 +1572,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-27T12:33:13Z",
+    "generated_at": "2026-08-28T18:33:49Z",
     "selected_source_keys": [
-      "b3_bdr_etfs",
-      "b3_listed_etfs"
+      "sem_isin",
+      "set_dr_search",
+      "set_etf_search",
+      "set_listed_companies",
+      "set_stock_search",
+      "sgx_securities_prices",
+      "six_equity_issuers",
+      "six_etf_products",
+      "six_etp_products",
+      "six_shares_explorer_full",
+      "spotlight_companies_directory",
+      "spotlight_companies_search",
+      "sse_a_share_list",
+      "sse_etf_list",
+      "szse_a_share_list",
+      "szse_b_share_list",
+      "szse_etf_list",
+      "tadawul_main_market_watch",
+      "tase_etf_marketdata",
+      "tase_foreign_etf_search"
     ],
     "source_modes": {
-      "b3_bdr_etfs": "network",
-      "b3_listed_etfs": "network"
+      "sem_isin": "network",
+      "set_dr_search": "network",
+      "set_etf_search": "network",
+      "set_listed_companies": "network",
+      "set_stock_search": "network",
+      "sgx_securities_prices": "network",
+      "six_equity_issuers": "network",
+      "six_etf_products": "network",
+      "six_etp_products": "network",
+      "six_shares_explorer_full": "unavailable",
+      "spotlight_companies_directory": "network",
+      "spotlight_companies_search": "network",
+      "sse_a_share_list": "unavailable",
+      "sse_etf_list": "unavailable",
+      "szse_a_share_list": "unavailable",
+      "szse_b_share_list": "network",
+      "szse_etf_list": "network",
+      "tadawul_main_market_watch": "network",
+      "tase_etf_marketdata": "network",
+      "tase_foreign_etf_search": "unavailable"
     }
   }
 }

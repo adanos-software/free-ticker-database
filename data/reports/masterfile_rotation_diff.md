@@ -1,8 +1,8 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-08-25T08:28:23Z`
-- New rows: `25`
-- Vanished rows: `13`
+- Generated at: `2026-08-28T18:41:33Z`
+- New rows: `20`
+- Vanished rows: `18`
 - Changed rows: `12`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
@@ -10,26 +10,23 @@
 
 | Type | Rows |
 |---|---:|
-| isin_change | 3 |
-| name_change | 10 |
+| isin_change | 6 |
+| name_change | 6 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| euronext_etfs | 12 |
-| hkex_securities_list | 4 |
-| jse_etf_list | 2 |
-| krx_etf_finder | 3 |
-| krx_listed_companies | 4 |
+| set_listed_companies | 2 |
+| sgx_securities_prices | 1 |
+| spotlight_companies_directory | 8 |
+| szse_etf_list | 9 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| euronext_equities | 3 |
-| euronext_etfs | 2 |
-| hkex_securities_list | 4 |
-| jse_etf_list | 1 |
-| krx_etf_finder | 1 |
-| krx_listed_companies | 2 |
+| set_listed_companies | 1 |
+| six_etf_products | 11 |
+| spotlight_companies_directory | 5 |
+| tadawul_main_market_watch | 1 |
