@@ -1,21 +1,37 @@
 {
   "summary": {
-    "generated_at": "2026-08-28T18:39:58Z",
+    "generated_at": "2026-08-29T12:40:23Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 335,
+    "blocked_rows": 337,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 57,
+      "blocked_new_symbol_collision": 58,
       "blocked_old_symbol_not_unique_in_us_scope": 228,
       "manual_isin_not_proven_unchanged": 2,
-      "manual_non_us_or_unscoped_source": 45,
+      "manual_non_us_or_unscoped_source": 46,
       "manual_transition_or_shell_name": 3
     }
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "a2bf8fbdad24c97b",
+      "effective_date": "2026-08-27",
+      "old_symbol": "BGI",
+      "new_symbol": "BGICF",
+      "new_company_name": "Birks Group Inc",
+      "status": "manual_non_us_or_unscoped_source"
+    },
+    {
+      "change_id": "eda9ab8030099ef1",
+      "effective_date": "2026-08-27",
+      "old_symbol": "AIHS",
+      "new_symbol": "VAI",
+      "new_company_name": "Valor Energy Inc",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "1e531b1f7b96c42a",
       "effective_date": "2026-08-24",
