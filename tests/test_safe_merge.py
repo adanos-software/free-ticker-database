@@ -550,6 +550,54 @@ def test_reviewed_same_isin_symbol_and_venue_transitions_allow_removals() -> Non
     assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 2
 
 
+def test_reviewed_form25_delisting_requires_exact_absent_row_identity() -> None:
+    isin = "CA09088U1093"
+    before = [row("NYSE MKT", "BGI", name="Birks Group Inc", isin=isin)]
+    transition = reviewed_transition(
+        "NYSE MKT::BGI", "",
+        event_type="delisted", identity_type="exact_isin", identity_value=isin,
+    )
+
+    passed = evaluate(
+        before,
+        [],
+        [],
+        reviewed_transition_rows=[transition],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-31T00:00:00Z",
+        total_shrink_limit=1.0,
+        venue_shrink_limit=1.0,
+    )
+    retained = evaluate(
+        before,
+        before,
+        [],
+        reviewed_transition_rows=[transition],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-31T00:00:00Z",
+        total_shrink_limit=1.0,
+        venue_shrink_limit=1.0,
+    )
+    wrong_identity = transition | {"identity_value": "US53656F1690"}
+    rejected = evaluate(
+        before,
+        [],
+        [],
+        reviewed_transition_rows=[wrong_identity],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-31T00:00:00Z",
+        total_shrink_limit=1.0,
+        venue_shrink_limit=1.0,
+    )
+
+    assert passed["status"] == "pass"
+    assert passed["summary"]["generated_reviewed_transition_evidence_rows"] == 1
+    assert passed["generated_reviewed_transition_evidence"][0]["event_type"] == "delisted"
+    assert retained["summary"]["generated_reviewed_transition_evidence_rows"] == 0
+    assert rejected["status"] == "fail"
+    assert rejected["summary"]["generated_reviewed_transition_evidence_rows"] == 0
+
+
 def test_reviewed_same_cik_transition_requires_both_sec_cache_symbols() -> None:
     before = [row("NASDAQ", "GGRP", name="Glimpse")]
     after = [row("NASDAQ", "BTLN", name="Brightline")]
