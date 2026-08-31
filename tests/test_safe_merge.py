@@ -97,6 +97,7 @@ def official_reference(
     asset_type: str = "Stock",
     official: str = "true",
     listing_status: str = "active",
+    sector: str = "",
 ) -> dict[str, str]:
     return {
         "source_key": "official_exchange_directory",
@@ -110,7 +111,80 @@ def official_reference(
         "reference_scope": "exchange_directory",
         "official": official,
         "isin": isin,
+        "sector": sector,
     }
+
+
+def test_exact_official_reference_allows_blank_taxonomy_fill() -> None:
+    before = [
+        row("BMV", "AC", name="Arca Continental", country="Mexico", country_code="MX", isin="MX01AC100006"),
+        row(
+            "BMV", "QQQ", name="Invesco QQQ Trust", asset_type="ETF",
+            country="United States", country_code="US", isin="US46090E1038",
+        ),
+    ]
+    after = [
+        {**before[0], "stock_sector": "Consumer Staples"},
+        {**before[1], "etf_category": "Equity"},
+    ]
+    report = evaluate(
+        before,
+        after,
+        [],
+        reference_rows=[
+            official_reference(
+                "BMV", "AC", name="ARCA CONTINENTAL, S.A.B. DE C.V.",
+                isin="MX01AC100006", sector="Consumer Staples",
+            ),
+            official_reference(
+                "BMV", "QQQ", name="QQQ *", isin="US46090E1038",
+                asset_type="ETF", sector="Equity",
+            ),
+        ],
+        observed_at="2026-08-31T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+    )
+    assert report["status"] == "pass"
+    assert {
+        (event["listing_key"], event["field_name"], event["new_value"])
+        for event in report["generated_official_change_evidence"]
+    } == {
+        ("BMV::AC", "stock_sector", "Consumer Staples"),
+        ("BMV::QQQ", "etf_category", "Equity"),
+    }
+
+
+def test_official_taxonomy_fill_fails_closed_on_identity_conflict_or_replacement() -> None:
+    baseline = row(
+        "BMV", "AC", name="Arca Continental", country="Mexico",
+        country_code="MX", isin="MX01AC100006",
+    )
+    candidate = {**baseline, "stock_sector": "Consumer Staples"}
+    valid = official_reference(
+        "BMV", "AC", name="Arca Continental", isin="MX01AC100006",
+        sector="Consumer Staples",
+    )
+    cases = [
+        [valid, {**valid, "sector": "Industrials"}],
+        [{**valid, "isin": "US0378331005"}],
+    ]
+    for references in cases:
+        report = evaluate(
+            [baseline], [candidate], [], reference_rows=references,
+            observed_at="2026-08-31T00:00:00Z",
+            reference_source_report="data/masterfiles/reference.csv",
+        )
+        assert report["status"] == "fail"
+        assert report["summary"]["generated_official_change_evidence_rows"] == 0
+
+    replacement = {**baseline, "stock_sector": "Industrials"}
+    report = evaluate(
+        [replacement], [candidate], [], reference_rows=[valid],
+        observed_at="2026-08-31T00:00:00Z",
+        reference_source_report="data/masterfiles/reference.csv",
+    )
+    assert report["status"] == "fail"
+    assert report["summary"]["generated_official_change_evidence_rows"] == 0
 
 
 def test_exact_official_reference_allows_blank_isin_and_derived_country_change() -> None:

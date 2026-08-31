@@ -31,6 +31,7 @@ MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 COVERAGE_EXPANSION_CSV = DATA_DIR / "coverage_expansion_listings.csv"
 LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
+DROP_ENTRIES_CSV = DATA_DIR / "review_overrides" / "drop_entries.csv"
 REPORTS_DIR = DATA_DIR / "reports"
 REPORT_JSON = REPORTS_DIR / "nasdaq_us_new_listings_apply.json"
 REPORT_MD = REPORTS_DIR / "nasdaq_us_new_listings_apply.md"
@@ -369,6 +370,7 @@ def reason_for_skip(
     existing_supplement_keys: set[tuple[str, str]],
     existing_coverage_keys: set[tuple[str, str]],
     newly_seen_ticker_counts: Counter[str],
+    reviewed_drop_keys: set[tuple[str, str]],
     asset_types: set[str],
 ) -> str:
     if not is_supported_reference_row(row, asset_types):
@@ -377,6 +379,8 @@ def reason_for_skip(
         return "already_active_in_previous_reference"
     ticker = row["ticker"]
     exchange = row["exchange"]
+    if (ticker, exchange) in reviewed_drop_keys:
+        return "reviewed_drop_entry"
     if (ticker, exchange) in existing_listing_keys:
         return "already_in_listings"
     if (ticker, exchange) in existing_supplement_keys:
@@ -455,6 +459,7 @@ def apply_new_listings(
     supplement_csv: Path = MASTERFILE_SUPPLEMENT_CSV,
     coverage_expansion_csv: Path = COVERAGE_EXPANSION_CSV,
     listing_transitions_csv: Path = LISTING_TRANSITIONS_CSV,
+    drop_entries_csv: Path = DROP_ENTRIES_CSV,
     report_json: Path = REPORT_JSON,
     report_md: Path = REPORT_MD,
     asset_types: set[str] | None = None,
@@ -468,6 +473,10 @@ def apply_new_listings(
     listings = load_csv(listings_csv)
     existing_supplements = load_csv(supplement_csv)
     reviewed_transitions = load_csv(listing_transitions_csv)
+    reviewed_drop_keys = {
+        (row.get("ticker", ""), row.get("exchange", ""))
+        for row in load_csv(drop_entries_csv)
+    }
 
     previous_active_keys = {
         active_reference_key(row)
@@ -508,6 +517,7 @@ def apply_new_listings(
             existing_supplement_keys=existing_supplement_keys,
             existing_coverage_keys=existing_coverage_keys,
             newly_seen_ticker_counts=newly_seen_ticker_counts,
+            reviewed_drop_keys=reviewed_drop_keys,
             asset_types=asset_types,
         )
         if reason:
@@ -573,6 +583,7 @@ def apply_new_listings(
         "supplement_csv": display_path(supplement_csv),
         "coverage_expansion_csv": display_path(coverage_expansion_csv),
         "listing_transitions_csv": display_path(listing_transitions_csv),
+        "drop_entries_csv": display_path(drop_entries_csv),
         "supported_asset_types": sorted(asset_types),
         "new_supported_rows": len(new_supported_rows),
         "accepted_rows": len(accepted),

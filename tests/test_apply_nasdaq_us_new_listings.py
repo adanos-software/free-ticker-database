@@ -628,3 +628,41 @@ def test_apply_new_listings_skips_keys_already_in_coverage(tmp_path):
     assert report["summary"]["skipped_by_reason"] == {"already_in_coverage": 1}
     with coverage.open(newline="", encoding="utf-8") as handle:
         assert len(list(csv.DictReader(handle))) == 1
+
+
+def test_apply_new_listings_skips_reviewed_drop_entry(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    drops = tmp_path / "drop_entries.csv"
+
+    write_rows(previous_reference, REFERENCE_FIELDS, [])
+    write_rows(
+        current_reference,
+        REFERENCE_FIELDS,
+        [reference_row("BGI", "Birks Group Inc. Common Stock", exchange="NYSE")],
+    )
+    write_rows(listings, LISTING_FIELDS, [])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(
+        drops,
+        ["ticker", "exchange", "confidence", "reason"],
+        [{"ticker": "BGI", "exchange": "NYSE", "confidence": "0.99", "reason": "official delisting"}],
+    )
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["accepted"] == []
+    assert report["summary"]["skipped_by_reason"] == {"reviewed_drop_entry": 1}
