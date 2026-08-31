@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-31T12:24:35Z",
-    "rows": 8697,
+    "generated_at": "2026-08-31T13:06:53Z",
+    "rows": 8700,
     "field_totals": {
       "missing_etf_category": 36,
-      "missing_isin_primary": 751,
-      "missing_sector_stock": 1521,
+      "missing_isin_primary": 753,
+      "missing_sector_stock": 1522,
       "official_reference_gap": 6389
     },
     "class_totals": {
@@ -20,9 +20,9 @@
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 285,
+      "official_identifier_not_exposed_source_gap": 287,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 847,
+      "official_industry_taxonomy_unavailable_gap": 848,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 29,
       "official_reference_symbol_collision_gap": 1191,
@@ -41,12 +41,12 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 273,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 285,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 287,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 8,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 5,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 847,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 848,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 37,
       "official_reference_gap:official_reference_symbol_collision_gap": 1191,
@@ -98,7 +98,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 64
+          "rows": 66
         },
         {
           "exchange": "IDX",
@@ -131,12 +131,12 @@
           "rows": 554
         },
         {
-          "exchange": "XSTU",
+          "exchange": "NASDAQ",
           "rows": 45
         },
         {
-          "exchange": "NASDAQ",
-          "rows": 44
+          "exchange": "XSTU",
+          "rows": 45
         },
         {
           "exchange": "NYSE",
@@ -5868,6 +5868,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::OPAD",
+      "ticker": "OPAD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Offerpad Solutions Inc. - Class A Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::OPAD;exchange=NASDAQ;ticker=OPAD;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::OSPR",
       "ticker": "OSPR",
       "exchange": "NASDAQ",
@@ -6066,6 +6083,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::TJGC;exchange=NASDAQ;ticker=TJGC;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::TRBG",
+      "ticker": "TRBG",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "TurboGen Ltd. - Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::TRBG;exchange=NASDAQ;ticker=TRBG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -28610,6 +28644,23 @@
       "source_gap_context": "listing_key=NASDAQ::THEO;exchange=NASDAQ;ticker=THEO;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::TRBG",
+      "ticker": "TRBG",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "TurboGen Ltd. - Ordinary Shares",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::TRBG;exchange=NASDAQ;ticker=TRBG;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
