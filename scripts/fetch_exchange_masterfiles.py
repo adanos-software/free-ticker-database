@@ -2843,7 +2843,7 @@ def merge_reference_rows(
     preserve_source_keys: Iterable[str] | None = None,
 ) -> list[dict[str, str]]:
     existing_rows = list(existing_rows)
-    refreshed_rows = list(refreshed_rows)
+    refreshed_rows = preserve_descriptive_names(existing_rows, refreshed_rows)
     selected_source_keys = set(source_keys)
     preserved_source_keys = set(preserve_source_keys or ()) | set(
         empty_refresh_source_counts(existing_rows, refreshed_rows, selected_source_keys)
@@ -2851,6 +2851,49 @@ def merge_reference_rows(
     replace_source_keys = selected_source_keys - preserved_source_keys
     preserved_rows = [row for row in existing_rows if row.get("source_key", "") not in replace_source_keys]
     return dedupe_rows([*preserved_rows, *refreshed_rows])
+
+
+def preserve_descriptive_names(
+    existing_rows: Iterable[dict[str, str]],
+    refreshed_rows: Iterable[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Keep a descriptive official name when a refresh degrades it to the ticker."""
+    existing_by_identity = {
+        (
+            row.get("source_key", ""),
+            row.get("exchange", ""),
+            row.get("ticker", ""),
+            row.get("isin", ""),
+        ): row
+        for row in existing_rows
+        if row.get("isin", "")
+    }
+    reconciled: list[dict[str, str]] = []
+    for refreshed in refreshed_rows:
+        row = dict(refreshed)
+        ticker = row.get("ticker", "").strip()
+        name = row.get("name", "").strip()
+        identity = (
+            row.get("source_key", ""),
+            row.get("exchange", ""),
+            ticker,
+            row.get("isin", ""),
+        )
+        existing = existing_by_identity.get(identity)
+        existing_name = (existing or {}).get("name", "").strip()
+        if (
+            ticker
+            and name.casefold() == ticker.casefold()
+            and existing_name
+            and existing_name.casefold() != ticker.casefold()
+        ):
+            row["name"] = existing_name
+            if existing and existing.get("asset_type", ""):
+                row["asset_type"] = existing["asset_type"]
+            if existing and existing.get("sector", "") and not row.get("sector", ""):
+                row["sector"] = existing["sector"]
+        reconciled.append(row)
+    return reconciled
 
 
 def empty_refresh_source_counts(
@@ -6559,6 +6602,8 @@ def parse_bse_india_scrips_payload(payload: list[dict[str, Any]], source: Master
             continue
         ticker = str(record.get("scrip_id") or "").strip().upper()
         name = str(record.get("Scrip_Name") or record.get("Issuer_Name") or "").strip()
+        if name.endswith("-$"):
+            name = name[:-2].rstrip()
         isin = str(record.get("ISIN_NUMBER") or "").strip().upper()
         asset_type = infer_bse_india_asset_type(record)
         key = (ticker, asset_type)
