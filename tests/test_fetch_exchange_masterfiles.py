@@ -15857,6 +15857,45 @@ def test_merge_reference_rows_replaces_only_selected_sources() -> None:
     ]
 
 
+def test_merge_reference_rows_preserves_descriptive_name_from_degraded_refresh() -> None:
+    merged = merge_reference_rows(
+        [
+            {
+                "source_key": "bse_india_scrips",
+                "ticker": "MSCIADD",
+                "name": "DSP MSCI India ETF",
+                "exchange": "BSE_IN",
+                "asset_type": "ETF",
+                "isin": "INF740KA1WV7",
+                "sector": "Equity",
+            }
+        ],
+        [
+            {
+                "source_key": "bse_india_scrips",
+                "ticker": "MSCIADD",
+                "name": "MSCIADD",
+                "exchange": "BSE_IN",
+                "asset_type": "Stock",
+                "isin": "INF740KA1WV7",
+            }
+        ],
+        source_keys={"bse_india_scrips"},
+    )
+
+    assert merged == [
+        {
+            "source_key": "bse_india_scrips",
+            "ticker": "MSCIADD",
+            "name": "DSP MSCI India ETF",
+            "exchange": "BSE_IN",
+            "asset_type": "ETF",
+            "isin": "INF740KA1WV7",
+            "sector": "Equity",
+        }
+    ]
+
+
 def test_merge_reference_rows_preserves_unavailable_selected_sources() -> None:
     merged = merge_reference_rows(
         [
@@ -16646,7 +16685,7 @@ def test_parse_bse_india_scrips_payload_keeps_active_isin_rows_and_etfs() -> Non
     payload = [
         {
             "scrip_id": "RELIANCE",
-            "Scrip_Name": "Reliance Industries Ltd",
+            "Scrip_Name": "Reliance Industries Ltd-$",
             "Status": "Active",
             "Segment": "Equity",
             "ISIN_NUMBER": "INE002A01018",
