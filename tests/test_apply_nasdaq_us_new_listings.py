@@ -441,6 +441,71 @@ def test_apply_new_listings_preserves_metadata_for_reviewed_same_isin_symbol_cha
     assert row["aliases"] == "the glimpse group"
 
 
+def test_apply_new_listings_preserves_identity_for_reviewed_venue_change(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+
+    write_rows(previous_reference, REFERENCE_FIELDS, [])
+    write_rows(
+        current_reference,
+        REFERENCE_FIELDS,
+        [reference_row("OPAD", "Offerpad Solutions Inc. - Class A Common Stock", "NASDAQ")],
+    )
+    predecessor = listing_row("OPAD", exchange="NYSE")
+    predecessor.update(
+        {
+            "name": "Offerpad Solutions Inc",
+            "stock_sector": "Real Estate",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "US67623L5057",
+        }
+    )
+    write_rows(listings, LISTING_FIELDS, [predecessor])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(
+        transitions,
+        TRANSITION_FIELDS,
+        [
+            {
+                "old_listing_key": "NYSE::OPAD",
+                "new_listing_key": "NASDAQ::OPAD",
+                "event_type": "venue_changed",
+                "identity_type": "same_isin",
+                "identity_value": "US67623L5057",
+                "confidence": "0.99",
+                "source_key": "nasdaq_transfer_notice",
+                "source_url": "https://www.nasdaqtrader.com/TraderNews.aspx?id=DTN2026-18",
+                "reason": "Same ticker and CUSIP move from NYSE to Nasdaq",
+            }
+        ],
+    )
+
+    apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["ticker"] == "OPAD"
+    assert row["exchange"] == "NASDAQ"
+    assert row["sector"] == "Real Estate"
+    assert row["country_code"] == "US"
+    assert row["isin"] == "US67623L5057"
+
+
 def test_apply_new_listings_does_not_trust_issuer_only_transition_for_isin(tmp_path):
     previous_reference = tmp_path / "previous.csv"
     current_reference = tmp_path / "current.csv"
