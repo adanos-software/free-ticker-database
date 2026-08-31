@@ -1,20 +1,19 @@
 {
-  "generated_at": "2026-08-31T07:32:26Z",
+  "generated_at": "2026-08-31T15:02:38Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 63,
-  "rotation_vanished_rows": 36,
-  "backlog_rows": 27,
+  "vanished_reference_rows": 51,
+  "rotation_vanished_rows": 0,
+  "backlog_rows": 51,
   "still_in_database": 51,
   "classifier_counts": {
-    "manual_rename_vs_delisting_required": 51,
-    "not_in_database": 12
+    "manual_rename_vs_delisting_required": 51
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 36; still-in-database backlog carried: 27.",
-    "Still in database: 51; not in database: 12.",
+    "Rotation vanished rows: 0; still-in-database backlog carried: 51.",
+    "Still in database: 51; not in database: 0.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -56,7 +55,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ACESEPP",
@@ -76,7 +75,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AUTOPRD",
@@ -96,7 +95,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BANSTEA",
@@ -116,7 +115,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CDG",
@@ -136,7 +135,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "FMEC",
@@ -156,7 +155,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SATTVASUKU",
@@ -176,7 +175,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SINA",
@@ -196,7 +195,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "1368",
@@ -279,26 +278,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "11A",
-      "exchange": "FSX",
-      "name": "QMM HOLDINGS LTD DL-,0001",
-      "isin": "KYG7309R1149",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "QMM HOLDINGS LTD DL-,0001",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "20MP",
       "exchange": "FSX",
       "name": "MOUNTAIN VALLEY MD HLDGS",
@@ -336,7 +315,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2RM",
@@ -356,7 +335,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "37T",
@@ -376,7 +355,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "646",
@@ -416,27 +395,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7300",
-      "exchange": "FSX",
-      "name": "ZEROSTACK CORP.      DL 1",
-      "isin": "CA98956L1013",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ZEROSTACK CORP.      DL 1",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "7YS0",
@@ -456,7 +415,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "87M",
@@ -476,7 +435,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "8L8",
@@ -536,27 +495,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "ALI0",
-      "exchange": "FSX",
-      "name": "ALMONTY INDUSTRIES CDIS/1",
-      "isin": "AU0000157679",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ALMONTY INDUSTRIES CDIS/1",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ANJ",
@@ -576,7 +515,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ANJ0",
@@ -596,27 +535,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "AZO",
-      "exchange": "FSX",
-      "name": "ASTRONOVA INC.     DL-,01",
-      "isin": "US04638F1084",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ASTRONOVA INC.     DL-,01",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "B3H",
@@ -636,7 +555,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "E8X",
@@ -656,7 +575,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ECK",
@@ -679,66 +598,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "F3J",
-      "exchange": "FSX",
-      "name": "LASERNET GROUP AB",
-      "isin": "SE0001338039",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "LASERNET GROUP AB",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "GC30",
-      "exchange": "FSX",
-      "name": "NOVONIX LTD    SP.ADS/4",
-      "isin": "US67010L1008",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "NOVONIX LTD    SP.ADS/4",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "H0T2",
-      "exchange": "FSX",
-      "name": "VCI GLOBAL LTD NEW",
-      "isin": "VGG982184001",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "VCI GLOBAL LTD NEW",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "K9A",
       "exchange": "FSX",
       "name": "RUSH RARE MET. CORP.",
@@ -756,7 +615,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MT1",
@@ -776,67 +635,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "SNG0",
-      "exchange": "FSX",
-      "name": "SINGULUS TECHNOL. EO 1",
-      "isin": "DE000A41YE98",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SINGULUS TECHNOL. EO 1",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "TOY0",
-      "exchange": "FSX",
-      "name": "TOYO CORP. O.N.",
-      "isin": "JP3610000006",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "TOYO CORP. O.N.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "VY9",
-      "exchange": "FSX",
-      "name": "LOYAL METALS LTD.",
-      "isin": "AU0000399131",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "LOYAL METALS LTD.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "W2U1",
@@ -856,7 +655,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "WED",
@@ -1119,26 +918,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "5HED",
-      "exchange": "XETRA",
-      "name": "Ossiam ESG Low Carbon Shiller Barclays CAPE US Sector UCITS ETF - 1A (USD)",
-      "isin": "IE00BF92LR56",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_etfs_etps",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Ossiam ESG Low Carbon Shiller Barclays CAPE US Sector UCITS ETF - 1A (USD)",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "5HEE",
       "exchange": "XETRA",
       "name": "Ossiam ESG Low Carbon Shiller Barclays CAPE US Sector UCITS ETF - 1A (EUR)",
@@ -1156,7 +935,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ECK",
@@ -1216,7 +995,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PGH",
@@ -1237,26 +1016,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "SNG0",
-      "exchange": "XETRA",
-      "name": "SINGULUS TECHNOL. EO 1",
-      "isin": "DE000A41YE98",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SINGULUS TECHNOL. EO 1",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "UAL1",
