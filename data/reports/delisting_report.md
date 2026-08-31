@@ -1,23 +1,23 @@
 # Delisting-candidate report
 
-Generated: 2026-08-24T08:25:40Z
+Generated: 2026-08-31T18:29:54Z
 
 **delisting_detected: True**
 
 Markets checked: US, TSE, NSE_IN, BSE_IN, US_NASDAQ_DELETES
 Markets skipped: ASX (master too small (0); treated as failed)
 
-Candidates: 212 (delisted=0, suspended=30, master_absent=182)
+Candidates: 223 (delisted=1, suspended=29, master_absent=193)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
 | Exchange | Ticker | Classification | Name | ISIN |
 |---|---|---|---|---|
+| BSE_IN | ACESEPP | suspended | Ace Software Exports ltd | IN9849B01026 |
 | BSE_IN | ALSTONE | suspended | Alstone Textiles (India) Ltd | INE184S01024 |
-| BSE_IN | ANANDPROJ | suspended | Anand Projects Ltd | INE134R01013 |
 | BSE_IN | ASHIS | suspended | Ashiana Ispat Ltd | INE587D01012 |
 | BSE_IN | ASHUTPM | suspended | Ashutosh Paper Mills Ltd | INE723K01018 |
-| BSE_IN | ASYL | suspended | Advance Syntex Ltd | INE184U01012 |
+| BSE_IN | AUTOPRD | suspended | Automobile Products of India Ltd | INE0NY101012 |
 | BSE_IN | BCCPP | suspended | BCC Fuba India Ltd | IN9788D01014 |
 | BSE_IN | CHARMS | suspended | Charms Industries Ltd | INE442C01012 |
 | BSE_IN | GGENG | suspended | G G Engineering Ltd | INE694X01030 |
@@ -38,7 +38,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | BSE_IN | SSLEL | suspended | Sir Shadi Lal Enterprises Ltd | INE117H01019 |
 | BSE_IN | SUUMAYA | suspended | Suumaya Corporation Ltd | INE0EMB01015 |
 | BSE_IN | TIAANC | suspended | Tiaan Consumer Ltd | INE864T01011 |
-| BSE_IN | TRUSTWAVE | suspended | Trustwave Securities Ltd | INE668Y01016 |
 | BSE_IN | VASUDHAGAM | suspended | Vasudhagama Enterprises Ltd | INE583K01016 |
 | BSE_IN | WIMPLAST | suspended | Wim Plast Ltd-$ | INE015B01018 |
 | BSE_IN | WINSOME | suspended | Winsome Yarns Ltd | INE784B01035 |
@@ -48,14 +47,19 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | ADTX | master_absent | Aditxt Inc.  | US0070258696 |
 | NASDAQ | AFBI | master_absent | Affinity Bancshares Inc | US00832E1038 |
 | NASDAQ | AGAE | master_absent | Allied Gaming & Entertainment Inc. | US0191701095 |
+| NASDAQ | AIHS | master_absent | Senmiao Technology Ltd | US8172252046 |
 | NASDAQ | ALBT | master_absent | Avalon GloboCare Corp. | US05344R3021 |
 | NASDAQ | ALCY | master_absent | Alchemy Investments Acquisition Corp 1 C | KYG0232F1090 |
+| NASDAQ | ALOT | master_absent | AstroNova Inc | US04638F1084 |
 | NASDAQ | ANSC | master_absent | Agriculture & Natural Solutions Acquisit | KYG0131Y1008 |
 | NASDAQ | APM | master_absent | Aptorum Group Ltd Class A | KYG6096M1069 |
 | NASDAQ | AREB | master_absent | American Rebel Holdings Inc | US02919L8853 |
 | NASDAQ | ASNS | master_absent | Actelis Networks Inc. | US00503R5081 |
 | NASDAQ | ATLN | master_absent | Atlantic International Corp. Common Stoc | US0485921094 |
 | NASDAQ | BAYA | master_absent | Bayview Acquisition Corp Class A Ordinar | KY07323B1007 |
+| NASDAQ | BBCQ | master_absent | Bleichroeder Acquisition Corp. II Class  | KYG1170E1044 |
+| NASDAQ | BCAB | delisted | Bioatla Inc | US09077B1044 |
+| NASDAQ | BCAR | master_absent | D. Boral ARC Acquisition I Corp. Class A | VGG2616F1018 |
 | NASDAQ | BCOW | master_absent | 1895 of Wisconsin Inc Bancorp | US28253R1059 |
 | NASDAQ | BNBX | master_absent | BNB Plus Corp. | US03815U6073 |
 | NASDAQ | BNRG | master_absent | Brenmiller Energy Ltd Ordinary Shares | IL0011415309 |
@@ -79,11 +83,12 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | ETHM | master_absent | Dynamix Corporation | KYG2949D1126 |
 | NASDAQ | EVTV | master_absent | Envirotech Vehicles Inc | US29414V2097 |
 | NASDAQ | FATBB | master_absent | FAT Brands Inc | US30258N6004 |
+| NASDAQ | FBRX | master_absent | Forte Biosciences Inc | US34962G2084 |
 | NASDAQ | FGMC | master_absent | FG Merger II Corp. Common stock | US30334J1025 |
+| NASDAQ | FLZH | master_absent | Flash Sports & Media Holdings, Inc. | US91704K3014 |
 | NASDAQ | FTRK | master_absent | FAST TRACK GROUP | KYG333801093 |
 | NASDAQ | GAMB | master_absent | Gambling.com Group Ltd | JE00BL970N11 |
 | NASDAQ | GBNY | master_absent | Generations Bancorp NY Inc | US37149G1085 |
-| NASDAQ | GGRP | master_absent | The Glimpse Group, Inc. | US37892C1062 |
 | NASDAQ | GIG | master_absent | GigCapital7 Corp. Class A Ordinary Share | US37518P1012 |
 | NASDAQ | GLBZ | master_absent | Glen Burnie Bancorp | US3774071019 |
 | NASDAQ | GOCO | master_absent | GoHealth Inc. | US38046W2044 |
@@ -119,6 +124,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | OLPX | master_absent | Olaplex Holdings Inc | US6793691089 |
 | NASDAQ | ORGN | master_absent | Origin Materials Inc | US68622D1063 |
 | NASDAQ | ORIS | master_absent | Oriental Rise Holdings Limited Ordinary  | KYG6781A1105 |
+| NASDAQ | OSRH | master_absent | OSR Holdings Inc | US68840D1028 |
 | NASDAQ | PAIYY | master_absent | Aesthetic Medical International Holdings | US00809M1045 |
 | NASDAQ | PCSC | master_absent | Perceptive Capital Solutions Corp Class  | KYG700771051 |
 | NASDAQ | PELI | master_absent | Pelican Acquisition Corporation Ordinary | KYG6993G1038 |
@@ -163,6 +169,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NSE_IN | AURIGROW | master_absent | Auri Grow India Limited | INE925Y01036 |
 | NSE_IN | JBCHEPHARM | master_absent | JB Chemicals & Pharmaceuticals Limited | INE572A01036 |
 | NSE_IN | SABEVENTS | master_absent | Sab Events & Governance Now Media Limite | INE860T01019 |
+| NYSE | AREN | master_absent | Arena Group Holdings Inc | US0400441095 |
 | NYSE | AVB | master_absent | AvalonBay Communities Inc | US0534841012 |
 | NYSE | AVNS | master_absent | Avanos Medical Inc | US05350V1061 |
 | NYSE | AXIA | master_absent | AXIA Energia | US15234Q2075 |
@@ -179,15 +186,20 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NYSE | JHG | master_absent | Janus Henderson Group PLC | JE00BYPZJM29 |
 | NYSE | KFS | master_absent | Kingsway Financial Services Inc | US4969042021 |
 | NYSE | KORE | master_absent | KORE Group Holdings Inc | US50066V3050 |
+| NYSE | LEG | master_absent | Leggett & Platt Incorporated | US5246601075 |
 | NYSE | LEGT | master_absent | Legato Merger Corp. III | KYG5451A1031 |
 | NYSE | MDV | master_absent | Modiv Inc | US60784B1017 |
 | NYSE | MVO | master_absent | MV Oil Trust | US5538591091 |
+| NYSE | NCL | master_absent | Northann Corp. | US66373M4087 |
 | NYSE | NOTE | master_absent | FiscalNote Holdings Inc. | US3376551046 |
 | NYSE | NSA | master_absent | National Storage Affiliates Trust | US6378701063 |
+| NYSE | NTZ | master_absent | Natuzzi SpA | US63905A2006 |
 | NYSE | PHXE-P | master_absent | Phoenix Energy One, LLC |  |
 | NYSE | PMNT | master_absent | Perfect Moment Ltd. | US7137151004 |
 | NYSE | PRA | master_absent | ProAssurance Corporation | US74267C1062 |
+| NYSE | RMAX | master_absent | Re Max Holding | US75524W1080 |
 | NYSE | SBDS | master_absent | Solo Brands, Inc. Class A | US83425V2034 |
+| NYSE | SBEV | master_absent | Splash Beverage Group Inc | US84862C3025 |
 | NYSE | SEM | master_absent | Select Medical Holdings | US81619Q1058 |
 | NYSE | SILA | master_absent | Sila Realty Trust, Inc. | US1462805086 |
 | NYSE | SLAI | master_absent | SOLAI Limited | US0554742090 |
@@ -195,22 +207,10 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NYSE | TMHC | master_absent | Taylor Morn Home | US87724P1066 |
 | NYSE | TPTA | master_absent | Terra Property Trust, Inc. 6.00% |  |
 | NYSE | TSEOF | master_absent | Trinseo PLC | IE0000QBK8U7 |
+| NYSE | TWO | master_absent | Two Harbors Investments Corp | US90187B8046 |
 | NYSE | WBS | master_absent | Webster Financial Corporation | US9478901096 |
 | NYSE | WSR | master_absent | Whitestone REIT | US9660842041 |
 | NYSE MKT | DLA | master_absent | Delta Apparel, Inc. |  |
-| NYSE MKT | NCL | master_absent | Northann Corp. | US66373M4087 |
-| NYSE MKT | SBEV | master_absent | Splash Beverage Group Inc | US84862C3025 |
 | NYSE MKT | SGN | master_absent | Signing Day Sports, Inc. | US82670R3057 |
 | TSE | 136A | master_absent | Sankosyoji Co.,Ltd. | JP3331100002 |
-| TSE | 191A | master_absent | MIMOSA CO.,LTD. | JP3907250009 |
-| TSE | 2686 | master_absent | GFOOT CO.,LTD. | JP3536900008 |
-| TSE | 2763 | master_absent | FTGroup CO.,LTD. | JP3166940001 |
-| TSE | 311A | master_absent | NPT CO.,LTD. | JP3165890009 |
-| TSE | 3198 | master_absent | SFP Holdings Co.,Ltd. | JP3162250009 |
-| TSE | 3271 | master_absent | The Global Ltd. | JP3345720001 |
-| TSE | 3681 | master_absent | V-cube,Inc. | JP3829750003 |
-| TSE | 4367 | master_absent | KOEI CHEMICAL COMPANY,LIMITED | JP3286100007 |
-| TSE | 4449 | master_absent | giftee Inc. | JP3264870001 |
-| TSE | 4494 | master_absent | Vario Secure Inc. | JP3778490007 |
-| TSE | 4659 | master_absent | AJIS CO.,LTD. | JP3160720003 |
-| … | … | … | (+12 more) | |
+| … | … | … | (+23 more) | |
