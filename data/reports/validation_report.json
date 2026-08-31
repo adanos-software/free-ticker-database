@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-31T07:42:05Z",
+    "generated_at": "2026-08-31T08:44:36Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": false,
+  "passed": true,
   "summary": {
     "ticker_rows": 63824,
     "listing_rows": 92030,
     "adanos_reference_rows": 63824,
     "entry_quality_rows": 92030,
     "error_gates": 84,
-    "failed_error_gates": 1,
+    "failed_error_gates": 0,
     "info_gates": 5
   },
   "gates": [
@@ -490,14 +490,9 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": false,
-      "actual": 3,
-      "limit": 0,
-      "details": [
-        "BSE_IN::RGIL",
-        "BSE_IN::SPICEISLIN",
-        "BSE_IN::TRUSTWAVE"
-      ]
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "adanos_alias_findings",
@@ -559,7 +554,7 @@
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 33,
+      "actual": 34,
       "limit": null
     },
     {
