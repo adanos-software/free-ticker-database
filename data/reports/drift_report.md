@@ -1,15 +1,16 @@
 # Drift / freshness report
 
-Generated: 2026-08-24T08:09:21Z
-Dataset built_at: 2026-08-21T07:18:05Z (3.0 days ago; threshold 45.0)
+Generated: 2026-08-31T15:13:02Z
+Dataset built_at: 2026-08-31T14:02:51Z (0.0 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
-- Triage sources: {'symbol_changes_review': 20}
+- Triage sources: {'symbol_changes_review': 21}
 
-## Blocked/manual rename review rows: 20
+## Blocked/manual rename review rows: 21
 - ISSC -> IA (Innovative Solutions & Support Inc, 2026-08-18): manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source
 - EQR -> VRMK (Vivmark Residential, 2026-08-18): manual: source exchange scope is not mapped to a safe listing-keyed apply path
+- NCL -> NCLX (Northann Corp, 2026-08-13): blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: FSX::NCL|NYSE::NCL|SET::NCL|WSE::NCL|XSTU::NCL
 - GV -> GVHGF (Visionary Holdings Inc, 2026-07-31): blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::GV
 - HOTH -> RKTO (Rocket One Inc, 2026-05-28): blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::RKTO
 - BTM -> BTMCQ (Bitcoin Depot Inc, 2026-05-22): blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::BTM
@@ -30,44 +31,39 @@ Dataset built_at: 2026-08-21T07:18:05Z (3.0 days ago; threshold 45.0)
 - WW -> WGHTQ (Ww International Inc, 2025-05-15): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 
 ## Quality indicators (release-gate info counts)
-- allowed_warn_rows: 81
-- expected_missing_primary_isin: 690
-- missing_etf_category: 36
-- missing_stock_sector: 1284
-- source_gap_rows: 11460
+- allowed_warn_rows: 32
+- expected_missing_primary_isin: 752
+- missing_etf_category: 46
+- missing_stock_sector: 1298
+- source_gap_rows: 11455
 
-## Quality regressions: 0
+## Quality regressions: 3
+- expected_missing_primary_isin: 690 -> 752 (+62)
+- missing_stock_sector: 1284 -> 1298 (+14)
+- missing_etf_category: 36 -> 46 (+10)
 
-## Official recall regressions: 39
-- AMS official_recall_missing: 228 -> 230 (+2)
-- AMS collision_adjusted_recall_missing: 52 -> 53 (+1)
-- BIST official_recall_missing: 36 -> 40 (+4)
-- BIST collision_adjusted_recall_missing: 15 -> 19 (+4)
-- BK official_recall_missing: 38 -> 39 (+1)
-- BSE_IN official_recall_missing: 2406 -> 2435 (+29)
-- BSE_IN collision_adjusted_recall_missing: 563 -> 590 (+27)
-- Borsa Italiana official_recall_missing: 2647 -> 2653 (+6)
-- Borsa Italiana collision_adjusted_recall_missing: 792 -> 797 (+5)
-- CSE_LK official_recall_missing: 11 -> 13 (+2)
-- CSE_LK collision_adjusted_recall_missing: 11 -> 13 (+2)
-- Euronext official_recall_missing: 666 -> 673 (+7)
-- Euronext collision_adjusted_recall_missing: 300 -> 308 (+8)
-- FSX official_recall_missing: 0 -> 10019 (+10019)
-- FSX collision_adjusted_recall_missing: 0 -> 6074 (+6074)
-- KOSDAQ official_recall_missing: 221 -> 223 (+2)
-- KOSDAQ collision_adjusted_recall_missing: 218 -> 220 (+2)
-- KRX official_recall_missing: 142 -> 145 (+3)
-- KRX collision_adjusted_recall_missing: 128 -> 131 (+3)
-- LSE official_recall_missing: 4240 -> 4265 (+25)
-- LSE collision_adjusted_recall_missing: 3467 -> 3486 (+19)
-- MSX collision_adjusted_recall_missing: 3 -> 4 (+1)
-- NASDAQ official_recall_missing: 1034 -> 1037 (+3)
-- NEO official_recall_missing: 227 -> 233 (+6)
-- NEO collision_adjusted_recall_missing: 163 -> 167 (+4)
-- NSE_IN official_recall_missing: 688 -> 871 (+183)
-- NSE_IN collision_adjusted_recall_missing: 453 -> 481 (+28)
-- SET official_recall_missing: 169 -> 170 (+1)
-- SGX official_recall_missing: 135 -> 136 (+1)
-- SGX collision_adjusted_recall_missing: 13 -> 14 (+1)
+## Official recall regressions: 22
+- AMS official_recall_missing: 230 -> 236 (+6)
+- AMS collision_adjusted_recall_missing: 53 -> 58 (+5)
+- BSE_IN official_recall_missing: 2435 -> 2467 (+32)
+- BSE_IN collision_adjusted_recall_missing: 590 -> 617 (+27)
+- Borsa Italiana official_recall_missing: 2653 -> 2658 (+5)
+- Borsa Italiana collision_adjusted_recall_missing: 797 -> 800 (+3)
+- FSX official_recall_missing: 10019 -> 10101 (+82)
+- FSX collision_adjusted_recall_missing: 6074 -> 6150 (+76)
+- HKEX official_recall_missing: 159 -> 160 (+1)
+- HKEX collision_adjusted_recall_missing: 89 -> 90 (+1)
+- KOSDAQ official_recall_missing: 223 -> 226 (+3)
+- KOSDAQ collision_adjusted_recall_missing: 220 -> 223 (+3)
+- KRX official_recall_missing: 145 -> 148 (+3)
+- KRX collision_adjusted_recall_missing: 131 -> 134 (+3)
+- LSE official_recall_missing: 4265 -> 4285 (+20)
+- LSE collision_adjusted_recall_missing: 3486 -> 3498 (+12)
+- NASDAQ official_recall_missing: 1037 -> 1049 (+12)
+- NASDAQ collision_adjusted_recall_missing: 977 -> 988 (+11)
+- NYSE collision_adjusted_recall_missing: 1336 -> 1339 (+3)
+- OTC official_recall_missing: 3657 -> 3658 (+1)
+- XETRA official_recall_missing: 990 -> 1000 (+10)
+- XETRA collision_adjusted_recall_missing: 285 -> 292 (+7)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._
