@@ -21,7 +21,6 @@ ACCEPTED_ISSUER_EQUITY = {
 
 FAIL_CLOSED_BLANK = {
     ("JULV", "NYSE ARCA"),
-    ("QQQ", "BMV"),
     ("BAVA", "NYSE ARCA"),
     ("BHYP", "NYSE ARCA"),
     ("GCLO", "NYSE ARCA"),

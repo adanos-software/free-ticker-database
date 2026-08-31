@@ -1,6 +1,6 @@
 """Generate narrow, source-backed evidence for safe canonical field changes.
 
-This module deliberately supports only two automatic evidence paths:
+This module deliberately supports only narrow automatic evidence paths:
 
 * an exact active official reference row supplies a valid ISIN for the same
   venue, ticker, asset type and name;
@@ -9,6 +9,11 @@ This module deliberately supports only two automatic evidence paths:
 * any accompanying country changes are the deterministic consequence of the
   ISIN prefix and a country-code/name mapping already present in the trusted
   baseline dataset.
+
+It also supports filling a blank stock sector or ETF category when an exact
+active official listing observation carries the same valid ISIN and asset type.
+Conflicting official taxonomy claims and replacements of existing values remain
+blocked.
 
 It also recognizes an exact venue migration when the same active official
 source observation moves from one venue to one other venue. For US listings it
@@ -189,6 +194,75 @@ def build_official_change_evidence(
         references_by_key[key].append(dict(reference))
 
     evidence: list[dict[str, str]] = []
+
+    # Taxonomy fills are non-destructive only when the canonical security identity
+    # is already stable and every non-empty official claim agrees on the value.
+    for key in sorted(set(before) & set(after)):
+        old_row = before[key]
+        new_row = after[key]
+        asset_type = str(new_row.get("asset_type", "") or "").strip()
+        field = "etf_category" if asset_type == "ETF" else "stock_sector"
+        old_value = str(old_row.get(field, "") or "").strip()
+        new_value = str(new_row.get(field, "") or "").strip()
+        old_isin = str(old_row.get("isin", "") or "").strip().upper()
+        new_isin = str(new_row.get("isin", "") or "").strip().upper()
+        if old_value or not new_value or old_isin != new_isin or not is_valid_isin(new_isin):
+            continue
+
+        identity_references = [
+            reference
+            for reference in references_by_key.get(key, [])
+            if str(reference.get("asset_type", "") or "").strip() == asset_type
+            and str(reference.get("isin", "") or "").strip().upper() == new_isin
+        ]
+        official_values = {
+            str(reference.get("sector", "") or "").strip()
+            for reference in identity_references
+            if str(reference.get("sector", "") or "").strip()
+        }
+        if official_values != {new_value}:
+            continue
+
+        reference = sorted(
+            (
+                reference
+                for reference in identity_references
+                if str(reference.get("sector", "") or "").strip() == new_value
+            ),
+            key=lambda row: (
+                str(row.get("source_key", "")),
+                str(row.get("source_url", "")),
+            ),
+        )[0]
+        source_key = str(reference.get("source_key", "") or "").strip()
+        source_url = str(reference.get("source_url", "") or "").strip()
+        evidence.append(
+            {
+                "listing_key": key,
+                "ticker": str(new_row.get("ticker", "") or ""),
+                "exchange": str(new_row.get("exchange", "") or ""),
+                "event_type": "taxonomy_changed",
+                "field_name": field,
+                "old_value": old_value,
+                "new_value": new_value,
+                "before_row_sha256": row_fingerprint(old_row),
+                "effective_at": "",
+                "observed_at": observed_at,
+                "source_key": source_key,
+                "source_url": source_url,
+                "source_report": source_report,
+                "observation_id": _observation_id(
+                    source_key=source_key,
+                    source_url=source_url,
+                    key=key,
+                    field=field,
+                    old=old_value,
+                    new=new_value,
+                ),
+                "evidence_status": "official",
+            }
+        )
+
     for key in sorted(set(before) & set(after)):
         old_row = before[key]
         new_row = after[key]

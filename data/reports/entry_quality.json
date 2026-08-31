@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-27T09:26:55Z",
+    "generated_at": "2026-08-31T06:43:13Z",
     "rows": 92030,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80623,
-      "source_gap": 11374,
+      "pass": 80624,
+      "source_gap": 11373,
       "warn": 33
     },
     "evidence_level_counts": {
@@ -27,7 +27,7 @@
     "severity_counts": {
       "high": 5,
       "medium": 29,
-      "source_gap": 11649
+      "source_gap": 11648
     },
     "issue_counts": {
       "official_reference_gap": 6343,
@@ -35,7 +35,7 @@
       "missing_stock_sector": 1287,
       "expected_missing_primary_isin": 713,
       "official_name_mismatch": 29,
-      "missing_etf_category": 19,
+      "missing_etf_category": 18,
       "official_isin_mismatch": 5
     },
     "top_flagged_exchanges": [
@@ -67,8 +67,8 @@
       },
       {
         "exchange": "BMV",
-        "pass": 76,
-        "source_gap": 268
+        "pass": 77,
+        "source_gap": 267
       },
       {
         "exchange": "Munich",

@@ -31,7 +31,13 @@ def test_ci_supports_dispatch_and_aggregate_branch_protection_status() -> None:
     assert "\n  canonical-v4:\n" in workflow
     assert "\n  test:\n" in workflow
     assert "name: test" in workflow
-    assert "if: ${{ always() }}" in workflow
+    automation_pr_guard = (
+        "github.event_name != 'pull_request' || github.actor != 'github-actions[bot]' || "
+        "github.event.pull_request.head.repo.full_name != github.repository || "
+        "!startsWith(github.head_ref, 'automation/')"
+    )
+    assert workflow.count(automation_pr_guard) == 3
+    assert f"if: ${{{{ always() && ({automation_pr_guard}) }}}}" in workflow
     assert "needs:\n      - compatibility\n      - canonical-v4" in workflow
     assert 'TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}' in workflow
     assert "COMPATIBILITY_RESULT: ${{ needs.compatibility.result }}" in workflow
