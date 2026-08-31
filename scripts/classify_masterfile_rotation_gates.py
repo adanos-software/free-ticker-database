@@ -9,6 +9,15 @@ from typing import Any
 
 EXPECTED_REVIEW_GATE = "entry_quality_unexpected_warn_count"
 ENTRY_QUALITY_REVIEW_POLICY = "entry_quality_warning"
+REVIEW_REQUIRED_MASTERFILE_FIELDS = {
+    "asset_type",
+    "isin",
+    "listing_status",
+    "official",
+    "reference_scope",
+    "sector",
+}
+MASTERFILE_COMPARE_FIELDS = REVIEW_REQUIRED_MASTERFILE_FIELDS | {"name"}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -56,10 +65,56 @@ def has_valid_failure_count(gate: dict[str, Any], *, minimum_actual: int = 1) ->
     )
 
 
+def classify_critical_rotation_changes(
+    rotation_diff: dict[str, Any] | None,
+) -> tuple[list[dict[str, Any]], bool]:
+    if rotation_diff is None:
+        return [], False
+    changed_rows = rotation_diff.get("changed")
+    if not isinstance(changed_rows, list):
+        return [], True
+
+    critical_changes: list[dict[str, Any]] = []
+    malformed = False
+    for row in changed_rows:
+        if not isinstance(row, dict) or not isinstance(row.get("changes"), dict):
+            malformed = True
+            continue
+        changes = row["changes"]
+        identity = [row.get(field) for field in ("source_key", "exchange", "ticker")]
+        if (
+            not changes
+            or any(not isinstance(value, str) or not value for value in identity)
+            or any(
+                field not in MASTERFILE_COMPARE_FIELDS
+                or not isinstance(change, dict)
+                or not isinstance(change.get("before"), str)
+                or not isinstance(change.get("after"), str)
+                or change["before"] == change["after"]
+                for field, change in changes.items()
+            )
+        ):
+            malformed = True
+            continue
+        fields = sorted(REVIEW_REQUIRED_MASTERFILE_FIELDS.intersection(changes))
+        if not fields:
+            continue
+        critical_changes.append(
+            {
+                "source_key": str(row.get("source_key", "")),
+                "exchange": str(row.get("exchange", "")),
+                "ticker": str(row.get("ticker", "")),
+                "fields": fields,
+            }
+        )
+    return critical_changes, malformed
+
+
 def classify_gate_results(
     entry_quality_gate: dict[str, Any],
     validation_report: dict[str, Any],
     masterfile_summary: dict[str, Any] | None = None,
+    rotation_diff: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     parsed_unexpected_warn_count = parse_nonnegative_int(
         entry_quality_gate.get("unexpected_warn_count")
@@ -174,8 +229,17 @@ def classify_gate_results(
         )
     )
 
+    critical_rotation_changes, rotation_diff_malformed = classify_critical_rotation_changes(
+        rotation_diff
+    )
+    if rotation_diff_malformed:
+        hard_failures.append("masterfile_rotation_diff_malformed")
+
     hard_failures = sorted(set(hard_failures))
-    review_required = bool((unexpected_warn_count or source_review_keys) and not hard_failures)
+    review_required = bool(
+        (unexpected_warn_count or source_review_keys or critical_rotation_changes)
+        and not hard_failures
+    )
     return {
         "passed": not hard_failures,
         "review_required": review_required,
@@ -185,6 +249,8 @@ def classify_gate_results(
         "hard_failures": hard_failures,
         "source_review_count": len(source_review_keys),
         "source_review_keys": source_review_keys,
+        "critical_rotation_change_count": len(critical_rotation_changes),
+        "critical_rotation_changes": critical_rotation_changes,
     }
 
 
@@ -195,6 +261,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--entry-quality-gate", type=Path, required=True)
     parser.add_argument("--validation-report", type=Path, required=True)
     parser.add_argument("--masterfile-summary", type=Path)
+    parser.add_argument("--rotation-diff", type=Path)
     parser.add_argument("--github-output", type=Path)
     return parser.parse_args(argv)
 
@@ -205,6 +272,7 @@ def main(argv: list[str] | None = None) -> int:
         load_json(args.entry_quality_gate),
         load_json(args.validation_report),
         load_json(args.masterfile_summary) if args.masterfile_summary else None,
+        load_json(args.rotation_diff) if args.rotation_diff else None,
     )
     if args.github_output:
         with args.github_output.open("a", encoding="utf-8") as handle:
@@ -213,6 +281,9 @@ def main(argv: list[str] | None = None) -> int:
             handle.write(f"quarantine_count={result['quarantine_count']}\n")
             handle.write(f"source_review_count={result['source_review_count']}\n")
             handle.write(f"source_review_keys={','.join(result['source_review_keys'])}\n")
+            handle.write(
+                f"critical_rotation_change_count={result['critical_rotation_change_count']}\n"
+            )
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0 if result["passed"] else 1
 

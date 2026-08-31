@@ -25,6 +25,8 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "if:" not in rebuild_step
     assert "continue-on-error: true" in validation_step
     assert "scripts/classify_masterfile_rotation_gates.py" in workflow
+    assert "--rotation-diff data/reports/masterfile_rotation_diff.json" in workflow
+    assert "critical_rotation_change_count" in workflow
     assert "steps.release.outputs.review_required != 'true'" in workflow
     no_change_guard = workflow.split('if [ "$diff_count" = "0" ]', 1)[1].split("; then", 1)[0]
     assert 'steps.release.outputs.unexpected_warn_count }}" = "0"' in no_change_guard

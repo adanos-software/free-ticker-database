@@ -464,6 +464,109 @@ def test_classify_gate_results_routes_failed_selected_sources_to_manual_review()
     assert result["source_review_keys"] == ["failed_directory"]
 
 
+def test_classify_gate_results_routes_critical_masterfile_change_to_manual_review() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff={
+            "changed": [
+                {
+                    "source_key": "bse_india_scrips",
+                    "exchange": "BSE_IN",
+                    "ticker": "MSCIADD",
+                    "changes": {
+                        "name": {"before": "MSCIADD", "after": "DSP MSCI India ETF"},
+                        "asset_type": {"before": "Stock", "after": "ETF"},
+                    },
+                }
+            ]
+        },
+    )
+
+    assert result["passed"] is True
+    assert result["review_required"] is True
+    assert result["critical_rotation_change_count"] == 1
+    assert result["critical_rotation_changes"] == [
+        {
+            "source_key": "bse_india_scrips",
+            "exchange": "BSE_IN",
+            "ticker": "MSCIADD",
+            "fields": ["asset_type"],
+        }
+    ]
+
+
+def test_classify_gate_results_keeps_name_only_masterfile_change_automatic() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff={
+            "changed": [
+                {
+                    "source_key": "bse_india_scrips",
+                    "exchange": "BSE_IN",
+                    "ticker": "ABCINDQ",
+                    "changes": {"name": {"before": "ABC India Ltd-$", "after": "ABC India Ltd"}},
+                }
+            ]
+        },
+    )
+
+    assert result["passed"] is True
+    assert result["review_required"] is False
+    assert result["critical_rotation_change_count"] == 0
+
+
+@pytest.mark.parametrize(
+    "rotation_diff",
+    [
+        {"changed": "not-a-list"},
+        {
+            "changed": [
+                {
+                    "source_key": "bse_india_scrips",
+                    "exchange": "BSE_IN",
+                    "ticker": "",
+                    "changes": {"asset_type": {"before": "Stock", "after": "ETF"}},
+                }
+            ]
+        },
+        {
+            "changed": [
+                {
+                    "source_key": "bse_india_scrips",
+                    "exchange": "BSE_IN",
+                    "ticker": "",
+                    "changes": {"name": {"before": "Old name", "after": "New name"}},
+                }
+            ]
+        },
+        {
+            "changed": [
+                {
+                    "source_key": "bse_india_scrips",
+                    "exchange": "BSE_IN",
+                    "ticker": "ABCINDQ",
+                    "changes": {"name": {"before": "Same", "after": "Same"}},
+                }
+            ]
+        },
+    ],
+)
+def test_classify_gate_results_fails_closed_on_malformed_rotation_diff(
+    rotation_diff: dict[str, object],
+) -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff=rotation_diff,
+    )
+
+    assert result["passed"] is False
+    assert result["review_required"] is False
+    assert result["hard_failures"] == ["masterfile_rotation_diff_malformed"]
+
+
 def test_classify_gate_cli_writes_github_outputs_for_review(tmp_path) -> None:
     entry_path = tmp_path / "entry.json"
     validation_path = tmp_path / "validation.json"
@@ -505,4 +608,5 @@ def test_classify_gate_cli_writes_github_outputs_for_review(tmp_path) -> None:
         "quarantine_count=0",
         "source_review_count=0",
         "source_review_keys=",
+        "critical_rotation_change_count=0",
     ]
