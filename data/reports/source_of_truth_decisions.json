@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-08-31T13:06:53Z",
-    "rows": 8700,
+    "generated_at": "2026-08-31T13:39:52Z",
+    "rows": 8699,
     "outcome_totals": {
-      "accepted_source_gap": 6034,
+      "accepted_source_gap": 6033,
       "core_exclusion_candidate": 514,
       "official_fill_required": 2152
     },
@@ -19,7 +19,7 @@
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 287,
+      "official_identifier_not_exposed_source_gap": 286,
       "official_identifier_reference_unmatched_gap": 8,
       "official_industry_taxonomy_unavailable_gap": 848,
       "official_product_reference_unmatched_category_gap": 1,
@@ -31,7 +31,7 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 36,
-      "missing_isin_primary:accepted_source_gap": 297,
+      "missing_isin_primary:accepted_source_gap": 296,
       "missing_isin_primary:core_exclusion_candidate": 456,
       "missing_sector_stock:accepted_source_gap": 1402,
       "missing_sector_stock:core_exclusion_candidate": 58,
@@ -2502,23 +2502,6 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "OIO Group",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::OPAD",
-      "ticker": "OPAD",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Offerpad Solutions Inc. - Class A Common Stock",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",

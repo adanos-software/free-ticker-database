@@ -1,14 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-08-31T13:06:54Z`
+Generated at: `2026-08-31T13:39:52Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `753`
+- Missing primary ISIN rows: `752`
 - Missing stock sectors: `1522`
 - Missing ETF categories: `36`
-- Official symbol collisions tracked in exchange references: `13823`
-- Core rows hidden only by the legacy global-ticker compatibility export: `4772`
+- Official symbol collisions tracked in exchange references: `13824`
+- Core rows hidden only by the legacy global-ticker compatibility export: `4771`
 
 ## Next Safe Batches
 
@@ -20,7 +20,7 @@ Generated at: `2026-08-31T13:06:54Z`
 | 4 | TSXV | missing_isin_primary | 98 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 5 | TSX | missing_isin_primary | 77 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 6 | NYSE ARCA | missing_isin_primary | 74 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
-| 7 | NASDAQ | missing_isin_primary | 66 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 7 | NASDAQ | missing_isin_primary | 65 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 8 | IDX | missing_isin_primary | 62 | candidate_for_official_followup | Official exchange masterfile or reviewed secondary identifier source. | yes |
 | 9 | NYSE | missing_isin_primary | 56 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 10 | BATS | missing_isin_primary | 52 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
@@ -37,7 +37,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 2 | ASX | All | 98 | official_partial | Official ASX ISIN workbook. | no |
 | 3 | TSX | All | 77 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 4 | NYSE ARCA | All | 74 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
-| 5 | NASDAQ | All | 66 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 5 | NASDAQ | All | 65 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 6 | IDX | All | 62 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
 | 7 | NYSE | All | 56 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 8 | BATS | All | 52 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |

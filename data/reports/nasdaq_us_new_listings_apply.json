@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-08-31T13:02:31Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-08-31T13:34:48Z",
+    "previous_reference_csv": "/tmp/opad-fix-reference-before.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -18,27 +18,25 @@
       "NASDAQ": 2
     },
     "accepted_by_target": {
-      "coverage_expansion": 1,
-      "supplement": 1
+      "supplement": 2
     },
     "skipped_by_reason": {}
   },
   "accepted": [
     {
-      "listing_key": "NASDAQ::OPAD",
       "ticker": "OPAD",
-      "exchange": "NASDAQ",
       "name": "Offerpad Solutions Inc.  - Class A Common Stock",
+      "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "stock_sector": "",
-      "etf_category": "",
+      "sector": "Real Estate",
       "country": "United States",
       "country_code": "US",
-      "isin": "",
-      "aliases": "",
+      "isin": "US67623L5057",
+      "aliases": "offerpad solutions",
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "apply_target": "coverage_expansion"
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
     },
     {
       "ticker": "TRBG",

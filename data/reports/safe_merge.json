@@ -7,25 +7,45 @@
   },
   "summary": {
     "before_rows": 92070,
-    "after_rows": 92072,
+    "after_rows": 92071,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NYSE::OPAD"
+  ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NYSE::OPAD",
+      "ticker": "OPAD",
+      "exchange": "NYSE",
+      "event_type": "venue_changed",
+      "field_name": "exchange",
+      "old_value": "NYSE",
+      "new_value": "NASDAQ",
+      "before_row_sha256": "25093085d414d4fe1a0f2464f330686dab54a35b0b67194c76751569e9735e40",
+      "effective_at": "",
+      "observed_at": "2026-08-31T13:38:15Z",
+      "source_key": "nasdaq_transfer_notice",
+      "source_url": "https://www.nasdaqtrader.com/TraderNews.aspx?id=DTN2026-18",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "a8679af7a997b53ef8df3ce1",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -480,9 +500,9 @@
     {
       "exchange": "NYSE",
       "before_rows": 2028,
-      "after_rows": 2028,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 2027,
+      "shrink_pct": 0.04931,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
