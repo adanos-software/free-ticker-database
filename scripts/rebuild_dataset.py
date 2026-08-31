@@ -2717,6 +2717,15 @@ def cleaned_rows():
         prepared_rows.append(merged)
 
     prepared_rows = apply_official_exchange_corrections(prepared_rows)
+    # A reviewed drop can target the corrected canonical venue while the stored
+    # input still carries a stale venue (for example NYSE MKT -> NYSE). Enforce
+    # unconditional drops again after official venue correction so the
+    # correction cannot resurrect an explicitly removed listing.
+    prepared_rows = [
+        row
+        for row in prepared_rows
+        if (row["ticker"], row["exchange"]) not in unconditional_review_drops
+    ]
     prepared_rows = drop_stale_tmx_etf_duplicates(prepared_rows)
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
     stock_name_lookup = build_stock_name_lookup(prepared_rows)
