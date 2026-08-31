@@ -133,6 +133,7 @@ def build_reviewed_transition_evidence(
             continue
         old_exchange, old_ticker = _split_listing_key(old_key)
         new_row = after.get(new_key)
+        before_new_row = before.get(new_key)
         new_exchange, new_ticker = _split_listing_key(new_key)
         if event_type == "delisted":
             shape_is_valid = not new_key
@@ -206,6 +207,54 @@ def build_reviewed_transition_evidence(
                 "evidence_status": "reviewed",
             }
         )
+        if not before_new_row or not new_row or identity_type != "same_isin":
+            continue
+        inherited_event_types = {
+            "isin": "identifier_changed",
+            "country": "country_changed",
+            "country_code": "country_changed",
+            "stock_sector": "taxonomy_changed",
+            "etf_category": "taxonomy_changed",
+        }
+        for inherited_field, inherited_event_type in inherited_event_types.items():
+            prior_value = str(before_new_row.get(inherited_field, "") or "")
+            inherited_value = str(new_row.get(inherited_field, "") or "")
+            predecessor_value = str(old_row.get(inherited_field, "") or "")
+            if (
+                prior_value == inherited_value
+                or not inherited_value
+                or inherited_value != predecessor_value
+            ):
+                continue
+            field_observation_payload = "|".join(
+                (
+                    observation_payload,
+                    inherited_field,
+                    prior_value,
+                    inherited_value,
+                )
+            )
+            evidence.append(
+                {
+                    "listing_key": new_key,
+                    "ticker": new_ticker,
+                    "exchange": new_exchange,
+                    "event_type": inherited_event_type,
+                    "field_name": inherited_field,
+                    "old_value": prior_value,
+                    "new_value": inherited_value,
+                    "before_row_sha256": row_fingerprint(before_new_row),
+                    "effective_at": "",
+                    "observed_at": observed_at,
+                    "source_key": source_key,
+                    "source_url": source_url,
+                    "source_report": source_report,
+                    "observation_id": hashlib.sha256(
+                        field_observation_payload.encode("utf-8")
+                    ).hexdigest()[:24],
+                    "evidence_status": "reviewed",
+                }
+            )
     return evidence
 
 
