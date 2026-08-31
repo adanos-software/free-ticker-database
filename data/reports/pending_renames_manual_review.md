@@ -1,6 +1,6 @@
 # Pending Renames Manual Review
 
-Generated: 2026-08-24T08:09:21Z
+Generated: 2026-08-31T15:13:02Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 
@@ -8,6 +8,7 @@ Rows here are explicitly blocked or manual-review only; no ticker change is auth
 |---|---|---|---|---|---|
 | ISSC | IA | 2026-08-18 | review_verified_rename_or_delisting | manual_isin_not_proven_unchanged | manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source |
 | EQR | VRMK | 2026-08-18 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
+| NCL | NCLX | 2026-08-13 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: FSX::NCL|NYSE::NCL|SET::NCL|WSE::NCL|XSTU::NCL |
 | GV | GVHGF | 2026-07-31 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::GV |
 | HOTH | RKTO | 2026-05-28 | review_duplicate_or_cross_listing | blocked_new_symbol_collision | blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::RKTO |
 | BTM | BTMCQ | 2026-05-22 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::BTM |
