@@ -1,14 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-08-25T08:55:45Z`
+Generated at: `2026-08-31T07:40:57Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `715`
-- Missing stock sectors: `1511`
-- Missing ETF categories: `48`
-- Official symbol collisions tracked in exchange references: `13812`
-- Core rows hidden only by the legacy global-ticker compatibility export: `4766`
+- Missing primary ISIN rows: `713`
+- Missing stock sectors: `1513`
+- Missing ETF categories: `13`
+- Official symbol collisions tracked in exchange references: `13823`
+- Core rows hidden only by the legacy global-ticker compatibility export: `4764`
 
 ## Next Safe Batches
 
@@ -16,11 +16,11 @@ Generated at: `2026-08-25T08:55:45Z`
 |---|---|---|---:|---|---|---|
 | 1 | FSX | missing_sector_stock | 807 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
 | 2 | OTC | missing_sector_stock | 554 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
-| 3 | ASX | missing_isin_primary | 99 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
+| 3 | ASX | missing_isin_primary | 98 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
 | 4 | TSXV | missing_isin_primary | 98 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 5 | TSX | missing_isin_primary | 77 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 6 | IDX | missing_isin_primary | 62 | candidate_for_official_followup | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 7 | NYSE ARCA | missing_isin_primary | 57 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
+| 7 | NYSE ARCA | missing_isin_primary | 56 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
 | 8 | NASDAQ | missing_isin_primary | 54 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 9 | NYSE | missing_isin_primary | 53 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 10 | BATS | missing_isin_primary | 46 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
@@ -33,11 +33,11 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | ASX | All | 99 | official_partial | Official ASX ISIN workbook. | no |
-| 2 | TSXV | All | 98 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 1 | TSXV | All | 98 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 2 | ASX | All | 98 | official_partial | Official ASX ISIN workbook. | no |
 | 3 | TSX | All | 77 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 4 | IDX | All | 62 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 5 | NYSE ARCA | All | 57 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 5 | NYSE ARCA | All | 56 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 6 | NASDAQ | All | 54 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 7 | NYSE | All | 53 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 8 | BATS | All | 46 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
@@ -57,9 +57,9 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 5 | NYSE | Stock | 12 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 6 | Munich | Stock | 10 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 7 | PSE | Stock | 7 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 8 | LSE | Stock | 5 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 9 | XHAM | Stock | 4 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 10 | KRX | Stock | 3 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 8 | LSE | Stock | 6 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 9 | KRX | Stock | 4 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 10 | XHAM | Stock | 4 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 11 | BCBA | Stock | 3 | official_partial | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 12 | XDUS | Stock | 3 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 
@@ -67,11 +67,10 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | BATS | ETF | 26 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 2 | NYSE ARCA | ETF | 15 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 3 | NASDAQ | ETF | 5 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 4 | Euronext | ETF | 1 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 5 | WSE | ETF | 1 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 1 | NYSE ARCA | ETF | 8 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 2 | NASDAQ | ETF | 3 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 3 | Euronext | ETF | 1 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 4 | WSE | ETF | 1 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 
 ## Combined Sector/ETF Category Priority
 
@@ -80,13 +79,13 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 1 | FSX | 807 | 807 | 0 | official_full |
 | 2 | OTC | 554 | 554 | 0 | official_full |
 | 3 | XSTU | 45 | 45 | 0 | missing |
-| 4 | NASDAQ | 43 | 38 | 5 | official_full |
-| 5 | BATS | 26 | 0 | 26 | official_full |
-| 6 | NYSE ARCA | 15 | 0 | 15 | official_full |
-| 7 | NYSE | 12 | 12 | 0 | official_full |
-| 8 | Munich | 10 | 10 | 0 | missing |
-| 9 | PSE | 7 | 7 | 0 | official_full |
-| 10 | LSE | 5 | 5 | 0 | official_full |
+| 4 | NASDAQ | 41 | 38 | 3 | official_full |
+| 5 | NYSE | 12 | 12 | 0 | official_full |
+| 6 | Munich | 10 | 10 | 0 | missing |
+| 7 | NYSE ARCA | 8 | 0 | 8 | official_full |
+| 8 | PSE | 7 | 7 | 0 | official_full |
+| 9 | LSE | 6 | 6 | 0 | official_full |
+| 10 | KRX | 4 | 4 | 0 | official_full |
 | 11 | XHAM | 4 | 4 | 0 | missing |
 | 12 | BCBA | 3 | 3 | 0 | official_partial |
 

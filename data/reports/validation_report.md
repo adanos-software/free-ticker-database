@@ -1,8 +1,8 @@
 # Database Validation Report
 
-Generated at: `2026-08-26T13:43:58Z`
+Generated at: `2026-08-31T07:42:05Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
@@ -13,7 +13,7 @@ Status: `PASS`
 | adanos_reference_rows | 63,824 |
 | entry_quality_rows | 92,030 |
 | error_gates | 84 |
-| failed_error_gates | 0 |
+| failed_error_gates | 1 |
 | info_gates | 5 |
 
 ## Gates
@@ -85,16 +85,16 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 3 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 714 |  |
-| missing_stock_sector | info | PASS | 1286 |  |
-| missing_etf_category | info | PASS | 28 |  |
-| source_gap_rows | info | PASS | 11375 |  |
-| allowed_warn_rows | info | PASS | 34 |  |
+| expected_missing_primary_isin | info | PASS | 713 |  |
+| missing_stock_sector | info | PASS | 1287 |  |
+| missing_etf_category | info | PASS | 18 |  |
+| source_gap_rows | info | PASS | 11389 |  |
+| allowed_warn_rows | info | PASS | 33 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |
@@ -112,4 +112,10 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### entry_quality_unexpected_warn_count
+
+- Actual: `3`
+- `BSE_IN::RGIL`
+- `BSE_IN::SPICEISLIN`
+- `BSE_IN::TRUSTWAVE`
+

@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-26T13:34:26Z",
+  "generated_at": "2026-08-31T07:34:20Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1552,
-  "decision_rows": 5054,
+  "decision_rows": 5055,
   "action_counts": {
     "kept_listing_keyed_identifier": 1330,
-    "proposed_clear_conflicting_identifier": 750,
+    "proposed_clear_conflicting_identifier": 751,
     "quarantined_unresolved_identifier": 2974
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 750,
+  "proposed_clear_rows": 751,
   "quarantined_rows": 2974,
   "retained_rows": 1330,
   "csv": "data/reports/identifier_quarantine.csv",
@@ -58489,7 +58489,20 @@
       "retained_isin": "US46090A6973"
     },
     {
-      "conflict_id": "d3a92387b22ad5f80c93",
+      "conflict_id": "814cac739270d52371ad",
+      "isin": "US46090E1038",
+      "listing_key": "BMV::QQQ",
+      "ticker": "QQQ",
+      "exchange": "BMV",
+      "name": "Invesco QQQ Trust Series 1",
+      "asset_type": "ETF",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "US46090E1038"
+    },
+    {
+      "conflict_id": "814cac739270d52371ad",
       "isin": "US46090E1038",
       "listing_key": "HKEX::03455",
       "ticker": "03455",
@@ -58502,7 +58515,7 @@
       "retained_isin": "US46090E1038"
     },
     {
-      "conflict_id": "d3a92387b22ad5f80c93",
+      "conflict_id": "814cac739270d52371ad",
       "isin": "US46090E1038",
       "listing_key": "HKEX::09455",
       "ticker": "09455",
@@ -58515,7 +58528,7 @@
       "retained_isin": "US46090E1038"
     },
     {
-      "conflict_id": "d3a92387b22ad5f80c93",
+      "conflict_id": "814cac739270d52371ad",
       "isin": "US46090E1038",
       "listing_key": "HKEX::83455",
       "ticker": "83455",
@@ -58528,7 +58541,7 @@
       "retained_isin": "US46090E1038"
     },
     {
-      "conflict_id": "d3a92387b22ad5f80c93",
+      "conflict_id": "814cac739270d52371ad",
       "isin": "US46090E1038",
       "listing_key": "NASDAQ::QQQ",
       "ticker": "QQQ",
