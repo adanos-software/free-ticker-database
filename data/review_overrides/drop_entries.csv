@@ -671,6 +671,7 @@ BEBE-WS,NYSE,0.98,Official US exchange directory does not list this stale non-co
 BEPH,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 BEPI,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 BGI,NYSE,0.99,"Birks Group announced its voluntary NYSE American delisting in an SEC-filed issuer release, with the last NYSE American trading day expected on 2026-08-27; suppress stale NYSE re-imports after the listing moved to OTCQB. Source: https://www.sec.gov/Archives/edgar/data/1179821/000119312526339049/d106749dex991.htm"
+BGI,NYSE MKT,0.99,"Birks Group announced its voluntary NYSE American delisting in an SEC-filed issuer release, with the last NYSE American trading day expected on 2026-08-27; suppress the NYSE MKT source form before canonical venue normalization after the listing moved to OTCQB. Source: https://www.sec.gov/Archives/edgar/data/1179821/000119312526339049/d106749dex991.htm"
 BGR,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 BHV,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 BIII-UN,NYSE,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent from current NASDAQ Trader master, web+adversarial verified)"
