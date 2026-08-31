@@ -18,7 +18,7 @@ def official_delisting_candidate(**overrides: str) -> dict[str, str]:
         "ticker": "DEAD",
         "classification": "delisted",
         "name": "Dead Ltd",
-        "isin": "INE1",
+        "isin": "INE002A01018",
         "source_key": "bse_india_scrips",
         "source_url": BSE_STATUS_URL_TEMPLATE.format(status="Delisted"),
         "observed_at": "2026-04-05T00:00:00Z",
@@ -36,7 +36,7 @@ def official_nasdaq_delete_candidate(**overrides: str) -> dict[str, str]:
         "ticker": "DEAD",
         "classification": "delisted",
         "name": "Dead Inc",
-        "isin": "US1",
+        "isin": "US09077B1044",
         "source_key": "nasdaq_trading_system_adds_deletes",
         "source_url": NASDAQ_ADDS_DELETES_URL,
         "nasdaq_action": "Delete",
@@ -91,6 +91,19 @@ def test_apply_delistings_writes_only_authoritative_bse_delisted(tmp_path: Path)
     assert report["summary"]["blocked_rows"] == 1
     assert report["summary"]["manual_rows"] == 1
     assert read_drop_rows(drops)[0]["ticker"] == "DEAD"
+    transitions = read_drop_rows(tmp_path / "delisting_transitions.csv")
+    assert transitions == [
+        {
+            "old_listing_key": "BSE_IN::DEAD",
+            "new_listing_key": "",
+            "event_type": "delisted",
+            "identity_type": "exact_isin",
+            "identity_value": "INE002A01018",
+            "confidence": "0.99",
+            "source_key": "bse_india_scrips",
+            "source_url": BSE_STATUS_URL_TEMPLATE.format(status="Delisted"),
+        }
+    ]
     assert report["manual"][0]["status"] == "manual_rename_vs_delisting_required"
 
 
@@ -99,7 +112,7 @@ def test_apply_delistings_draft_mode_does_not_mutate_drop_entries(tmp_path: Path
     drops = tmp_path / "drop_entries.csv"
     write_drop_rows(drops, [])
     source.write_text(
-        json.dumps({"candidates": [official_delisting_candidate(name="", isin="")]}),
+        json.dumps({"candidates": [official_delisting_candidate(name="")]}),
         encoding="utf-8",
     )
 
@@ -121,6 +134,27 @@ def test_missing_official_evidence_blocks_auto_drop(tmp_path: Path) -> None:
     write_drop_rows(drops, [])
     source.write_text(json.dumps({"candidates": [{"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted"}]}), encoding="utf-8")
     report = apply_delistings(delisting_report_json=source, drop_entries_csv=drops, report_json=tmp_path / "apply.json", report_md=tmp_path / "apply.md", apply=True)
+    assert report["summary"]["applied_rows"] == 0
+    assert report["blocked"][0]["status"] == "blocked_missing_official_delisting_evidence"
+
+
+def test_official_delete_without_exact_isin_blocks_auto_drop(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    write_drop_rows(drops, [])
+    source.write_text(
+        json.dumps({"candidates": [official_nasdaq_delete_candidate(isin="")]}),
+        encoding="utf-8",
+    )
+
+    report = apply_delistings(
+        delisting_report_json=source,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json",
+        report_md=tmp_path / "apply.md",
+        apply=True,
+    )
+
     assert report["summary"]["applied_rows"] == 0
     assert report["blocked"][0]["status"] == "blocked_missing_official_delisting_evidence"
 
@@ -180,6 +214,7 @@ def test_apply_delistings_writes_official_nasdaq_delete(tmp_path: Path) -> None:
     assert report["summary"]["applied_rows"] == 1
     assert read_drop_rows(drops)[0]["ticker"] == "DEAD"
     assert read_drop_rows(drops)[0]["exchange"] == "NASDAQ"
+    assert read_drop_rows(tmp_path / "delisting_transitions.csv")[0]["old_listing_key"] == "NASDAQ::DEAD"
 
 
 def test_nasdaq_delete_without_action_or_wrong_url_is_blocked(tmp_path: Path) -> None:

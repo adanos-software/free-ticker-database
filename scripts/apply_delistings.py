@@ -13,12 +13,14 @@ try:
         NASDAQ_DELETE_EXCHANGES,
         valid_official_delisting_evidence,
     )
+    from scripts.lib.official_change_evidence import is_valid_isin
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from lib.dataio import display_path, read_json, load_csv, write_csv, write_json
     from lib.delisting_evidence import (
         NASDAQ_DELETE_EXCHANGES,
         valid_official_delisting_evidence,
     )
+    from lib.official_change_evidence import is_valid_isin
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,7 +29,12 @@ DEFAULT_DELISTING_REPORT_JSON = DATA_DIR / "reports" / "delisting_report.json"
 DROP_ENTRIES_CSV = DATA_DIR / "review_overrides" / "drop_entries.csv"
 APPLY_REPORT_JSON = DATA_DIR / "reports" / "delisting_apply.json"
 APPLY_REPORT_MD = DATA_DIR / "reports" / "delisting_apply.md"
+APPLY_TRANSITIONS_CSV = DATA_DIR / "reports" / "delisting_transitions.csv"
 DROP_FIELDS = ["ticker", "exchange", "confidence", "reason"]
+TRANSITION_FIELDS = [
+    "old_listing_key", "new_listing_key", "event_type", "identity_type",
+    "identity_value", "confidence", "source_key", "source_url",
+]
 
 
 def utc_now_iso() -> str:
@@ -47,6 +54,7 @@ def classify_candidate(candidate: dict[str, str]) -> str:
         return (
             "apply_drop_override"
             if valid_official_delisting_evidence(candidate)
+            and is_valid_isin(candidate.get("isin", ""))
             else "blocked_missing_official_delisting_evidence"
         )
     if classification == "master_absent":
@@ -68,14 +76,29 @@ def build_drop_row(candidate: dict[str, str]) -> dict[str, str]:
     }
 
 
+def build_transition_row(candidate: dict[str, str]) -> dict[str, str]:
+    return {
+        "old_listing_key": f"{candidate.get('exchange', '')}::{candidate.get('ticker', '')}",
+        "new_listing_key": "",
+        "event_type": "delisted",
+        "identity_type": "exact_isin",
+        "identity_value": candidate.get("isin", ""),
+        "confidence": "0.99",
+        "source_key": candidate.get("source_key", ""),
+        "source_url": candidate.get("source_url", ""),
+    }
+
+
 def apply_delistings(
     *,
     delisting_report_json: Path = DEFAULT_DELISTING_REPORT_JSON,
     drop_entries_csv: Path = DROP_ENTRIES_CSV,
     report_json: Path = APPLY_REPORT_JSON,
     report_md: Path = APPLY_REPORT_MD,
+    transitions_csv: Path | None = None,
     apply: bool = False,
 ) -> dict[str, Any]:
+    transitions_csv = transitions_csv or report_json.with_name("delisting_transitions.csv")
     source = read_json(delisting_report_json, default={}) or {}
     candidates = list(source.get("candidates", []))
     existing_drop_rows = load_csv(drop_entries_csv)
@@ -121,12 +144,20 @@ def apply_delistings(
         rows = [*existing_drop_rows, *new_drop_rows]
         rows.sort(key=lambda row: (row.get("exchange", ""), row.get("ticker", "")))
         write_csv(drop_entries_csv, DROP_FIELDS, rows)
+    if apply:
+        write_csv(
+            transitions_csv,
+            TRANSITION_FIELDS,
+            [build_transition_row(row) for row in applied],
+        )
 
     summary = {
         "generated_at": utc_now_iso(),
         "apply": apply,
         "delisting_report_json": display_path(delisting_report_json, ROOT),
         "drop_entries_csv": display_path(drop_entries_csv, ROOT),
+        "transitions_csv": display_path(transitions_csv, ROOT),
+        "transition_rows": len(applied) if apply else 0,
         "applied_rows": len(applied), "already_applied_rows": len(already_applied),
         "drafted_rows": len(drafted),
         "blocked_rows": len(blocked),
@@ -186,6 +217,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--drop-entries-csv", type=Path, default=DROP_ENTRIES_CSV)
     parser.add_argument("--report-json", type=Path, default=APPLY_REPORT_JSON)
     parser.add_argument("--report-md", type=Path, default=APPLY_REPORT_MD)
+    parser.add_argument("--transitions-csv", type=Path, default=APPLY_TRANSITIONS_CSV)
     parser.add_argument("--apply", action="store_true", help="Write eligible drop overrides. Without this, only draft/report.")
     return parser.parse_args(argv)
 
@@ -197,6 +229,7 @@ def main(argv: list[str] | None = None) -> int:
         drop_entries_csv=args.drop_entries_csv,
         report_json=args.report_json,
         report_md=args.report_md,
+        transitions_csv=args.transitions_csv,
         apply=args.apply,
     )
     return 0

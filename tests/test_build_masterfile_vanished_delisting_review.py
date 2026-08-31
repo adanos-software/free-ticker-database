@@ -9,6 +9,7 @@ from scripts.lib.delisting_evidence import BSE_STATUS_URL_TEMPLATE, evidence_obs
 
 
 LISTING_FIELDS = ["ticker", "exchange", "name", "isin"]
+VALID_BSE_ISIN = "INE002A01018"
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
@@ -43,7 +44,7 @@ def official_bse_delisted(ticker: str = "DEAD") -> dict[str, str]:
         "ticker": ticker,
         "classification": "delisted",
         "name": "Dead Ltd",
-        "isin": "INE1",
+        "isin": VALID_BSE_ISIN,
         "source_key": "bse_india_scrips",
         "source_url": BSE_STATUS_URL_TEMPLATE.format(status="Delisted"),
         "observed_at": "2026-04-05T00:00:00Z",
@@ -137,8 +138,8 @@ def test_official_delisting_evidence_is_reported_not_applied(tmp_path: Path) -> 
     drops.write_text("ticker,exchange,confidence,reason\n", encoding="utf-8")
     report = run_review(
         tmp_path,
-        vanished=[vanished_ref("DEAD", "BSE_IN", source_key="bse_india_scrips", isin="INE1")],
-        listings=[{"ticker": "DEAD", "exchange": "BSE_IN", "name": "Dead Ltd", "isin": "INE1"}],
+        vanished=[vanished_ref("DEAD", "BSE_IN", source_key="bse_india_scrips", isin=VALID_BSE_ISIN)],
+        listings=[{"ticker": "DEAD", "exchange": "BSE_IN", "name": "Dead Ltd", "isin": VALID_BSE_ISIN}],
         delisting_candidates=[official_bse_delisted()],
     )
     row = report["rows"][0]
@@ -170,7 +171,7 @@ def test_ticker_reuse_does_not_inherit_foreign_delisting_evidence(tmp_path: Path
 def test_blank_listing_isin_does_not_inherit_vanished_feed_evidence(tmp_path: Path) -> None:
     report = run_review(
         tmp_path,
-        vanished=[vanished_ref("DEAD", "BSE_IN", source_key="bse_india_scrips", isin="INE1")],
+        vanished=[vanished_ref("DEAD", "BSE_IN", source_key="bse_india_scrips", isin=VALID_BSE_ISIN)],
         listings=[{"ticker": "DEAD", "exchange": "BSE_IN", "name": "Dead Ltd", "isin": ""}],
         delisting_candidates=[official_bse_delisted("DEAD")],
     )

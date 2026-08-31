@@ -44,7 +44,7 @@ jobs:
         if: steps.apply.outputs.symbol_changes_applied == 'true'
         run: |
           cp data/listings.csv /tmp/listings-before.csv
-          python scripts/rebuild_canonical.py --apply-identity-fixes
+          python scripts/rebuild_canonical.py
           python scripts/check_safe_merge.py \
             --before /tmp/listings-before.csv \
             --after data/listings.csv \
