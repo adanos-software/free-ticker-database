@@ -6,74 +6,26 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92030,
-    "after_rows": 92070,
+    "before_rows": 92070,
+    "after_rows": 92072,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 2,
-    "evidenced_removed_rows": 2,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 1,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 1,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_official_change_evidence_rows": 0,
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NYSE MKT::AREN",
-    "NYSE MKT::BGI"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
-    {
-      "listing_key": "OTC::RLFTF",
-      "field_name": "name",
-      "old_value": "Relief Therapeutics Holding SA",
-      "new_value": "MindMaze Therapeutics Holding SA"
-    }
-  ],
-  "generated_official_change_evidence": [
-    {
-      "listing_key": "NYSE MKT::AREN",
-      "ticker": "AREN",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "82b2b7860287bf5696fac1b703a79ad1b0424152e5ddfbedc8ec570e29c0e5bf",
-      "effective_at": "",
-      "observed_at": "2026-08-31T12:23:40Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "337f83e73b9f0effd3e9faf3",
-      "evidence_status": "official"
-    }
-  ],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NYSE MKT::BGI",
-      "ticker": "BGI",
-      "exchange": "NYSE MKT",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "Birks Group Inc",
-      "new_value": "",
-      "before_row_sha256": "51ccb59fe7a7a2497e7d4c23eb42c28747e2e9ef140c397b45f2e4c71ed06464",
-      "effective_at": "",
-      "observed_at": "2026-08-31T12:23:40Z",
-      "source_key": "birks_sec_form25",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1179821/000119312526353495/d142836d25.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "b3b2ce875c1afce92d169cab",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -122,7 +74,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1366,
+      "before_rows": 1372,
       "after_rows": 1372,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -473,8 +425,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4773,
-      "after_rows": 4784,
+      "before_rows": 4784,
+      "after_rows": 4786,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -527,7 +479,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2024,
+      "before_rows": 2028,
       "after_rows": 2028,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -536,7 +488,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2738,
+      "before_rows": 2758,
       "after_rows": 2758,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -545,10 +497,10 @@
     },
     {
       "exchange": "NYSE MKT",
-      "before_rows": 234,
+      "before_rows": 233,
       "after_rows": 233,
-      "shrink_pct": 0.42735,
-      "removed_rows": 2,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
