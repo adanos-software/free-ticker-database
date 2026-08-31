@@ -379,7 +379,10 @@ def reason_for_skip(
         return "already_active_in_previous_reference"
     ticker = row["ticker"]
     exchange = row["exchange"]
-    if (ticker, exchange) in reviewed_drop_keys:
+    reviewed_drop_candidates = {(ticker, exchange)}
+    if exchange == "NYSE MKT":
+        reviewed_drop_candidates.add((ticker, "NYSE"))
+    if reviewed_drop_candidates & reviewed_drop_keys:
         return "reviewed_drop_entry"
     if (ticker, exchange) in existing_listing_keys:
         return "already_in_listings"
