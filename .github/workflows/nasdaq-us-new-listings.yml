@@ -110,7 +110,7 @@ jobs:
           delete-branch: true
           commit-message: Update Nasdaq US new listings
           title: "Update Nasdaq US new listings"
-          draft: ${{ steps.apply.outputs.coverage_expansion_rows != '0' }}
+          draft: ${{ steps.apply.outputs.coverage_expansion_rows != '0' && 'always-true' || 'false' }}
           body: |
             Automated Nasdaq Trader US listing refresh.
 
@@ -128,6 +128,21 @@ jobs:
             - no Units, Rights, Warrants, Preferreds, Notes, or non-stock-like names
 
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
+
+      - name: Require manual review for listing collisions
+        if: >-
+          steps.cpr.outputs.pull-request-number != '' &&
+          steps.apply.outputs.coverage_expansion_rows != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          if [ "$(gh pr view "$PR_NUMBER" --json autoMergeRequest --jq '.autoMergeRequest != null')" = "true" ]; then
+            gh pr merge "$PR_NUMBER" --disable-auto
+          fi
+          if [ "$(gh pr view "$PR_NUMBER" --json isDraft --jq '.isDraft')" != "true" ]; then
+            gh pr ready "$PR_NUMBER" --undo
+          fi
 
       - name: Dispatch CI for automation pull request
         if: steps.cpr.outputs.pull-request-number != ''
