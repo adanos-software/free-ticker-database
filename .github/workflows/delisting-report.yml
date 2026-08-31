@@ -42,17 +42,19 @@ jobs:
 
       - name: Apply verified delisting classes
         id: apply
-        run: python scripts/apply_delistings.py --apply
+        run: |
+          cp data/listings.csv /tmp/listings-before.csv
+          python scripts/apply_delistings.py --apply
 
       - name: Rebuild derived exports and reports
         if: steps.apply.outputs.delistings_applied == 'true'
         run: |
-          cp data/listings.csv /tmp/listings-before.csv
-          python scripts/rebuild_canonical.py --apply-identity-fixes
+          python scripts/rebuild_canonical.py
           python scripts/check_safe_merge.py \
             --before /tmp/listings-before.csv \
             --after data/listings.csv \
             --events data/history/listing_events.csv \
+            --reviewed-listing-transitions data/reports/delisting_transitions.csv \
             --strict
           python scripts/enrich_global_identifiers.py
           python scripts/build_entry_quality_report.py

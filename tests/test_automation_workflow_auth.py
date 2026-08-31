@@ -110,10 +110,8 @@ def test_operational_rebuilds_use_canonical_entrypoint_and_safe_merge() -> None:
         # Identity dumps are unevidenced and fail safe-merge. Listing ingestion
         # workflows must overlay official rows only; identity clears stay in a
         # separate review path.
-        if filename in {"masterfile-rotation.yml", "nasdaq-us-new-listings.yml"}:
+        if filename != "release.yml":
             assert "python scripts/rebuild_canonical.py --apply-identity-fixes" not in workflow
-        elif filename != "release.yml":
-            assert "python scripts/rebuild_canonical.py --apply-identity-fixes" in workflow
 
 
 def test_masterfile_rotation_keeps_official_name_backfill_report_only() -> None:
