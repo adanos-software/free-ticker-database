@@ -128,13 +128,18 @@ def build_reviewed_transition_evidence(
         old_key = transition.get("old_listing_key", "").strip()
         new_key = transition.get("new_listing_key", "").strip()
         old_row = before.get(old_key)
-        new_row = after.get(new_key)
-        if not old_row or not new_row or old_key in after:
+        event_type = transition.get("event_type", "").strip()
+        if not old_row or old_key in after:
             continue
         old_exchange, old_ticker = _split_listing_key(old_key)
+        new_row = after.get(new_key)
         new_exchange, new_ticker = _split_listing_key(new_key)
-        event_type = transition.get("event_type", "").strip()
-        if event_type == "venue_changed":
+        if event_type == "delisted":
+            shape_is_valid = not new_key
+            field_name, old_value, new_value = "", old_row.get("name", ""), ""
+        elif not new_row:
+            continue
+        elif event_type == "venue_changed":
             shape_is_valid = old_ticker == new_ticker and old_exchange != new_exchange
             field_name, old_value, new_value = "exchange", old_exchange, new_exchange
         elif event_type == "symbol_changed":
@@ -142,11 +147,18 @@ def build_reviewed_transition_evidence(
             field_name, old_value, new_value = "ticker", old_ticker, new_ticker
         else:
             continue
-        if not shape_is_valid or old_row.get("asset_type") != new_row.get("asset_type"):
+        if not shape_is_valid or (
+            new_row and old_row.get("asset_type") != new_row.get("asset_type")
+        ):
             continue
         identity_type = transition.get("identity_type", "").strip()
         identity_value = transition.get("identity_value", "").strip().upper()
-        if identity_type == "same_isin":
+        if event_type == "delisted" and identity_type == "exact_isin":
+            identity_is_valid = bool(
+                is_valid_isin(identity_value)
+                and old_row.get("isin", "").strip().upper() == identity_value
+            )
+        elif identity_type == "same_isin" and new_row:
             identity_is_valid = bool(
                 is_valid_isin(identity_value)
                 and old_row.get("isin", "").strip().upper() == identity_value
