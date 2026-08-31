@@ -2,6 +2,45 @@
 
 ## [Unreleased]
 
+## [3.38.0] - 2026-08-31
+
+### Summary
+
+**Evidence-bound delisting and automation-reliability release.** Publishes the current Nasdaq and official-masterfile rotations, reviewed Form 25 and board-feed delistings, OPAD's same-security venue transfer, and fail-closed workflow hardening accumulated since v3.37.0. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, unresolved source gaps remain explicit, and automation cannot remove or critically recode a listing without exact evidence.
+
+### Added
+
+- Added 41 supported Nasdaq Trader/SEC Stock and ETF listings from 56 newly supported rows. Fourteen non-common securities and one temporary when-issued line remain excluded.
+- Added exact reviewed delisting-transition evidence for SEC Form 25 and authoritative Nasdaq Trader/BSE delisting observations. Every applied removal now carries the listing identity, valid exact ISIN, provenance, confidence, and before-row fingerprint required by strict safe merge.
+- Added regression coverage for stale venue suppression, reviewed listing drops, same-ISIN venue transfers, BSE replica instability, critical masterfile changes, and missing-ISIN delisting rejection.
+
+### Changed
+
+- Rotated official masterfiles with reviewed BSE ISIN changes for `RGIL` and `SPICEISLIN`; retained `TRUSTWAVE` on `INE668Y01016` using the effective BSE capital-reduction notice while keeping the feed disagreement visible for review.
+- Moved `OPAD` from NYSE to Nasdaq as a reviewed same-security venue transfer, preserving ISIN, country, and sector. `TRBG` remains the other valid new Nasdaq listing.
+- Removed stale NYSE American rows for `AREN` and `BGI` with exact official/reviewed evidence, updated `RLFTF` to MindMaze Therapeutics Holding SA, and removed warning exceptions made stale by the current US reference refresh.
+- Refreshed symbol-change, weekly drift/freshness, delisting, masterfile, and public export artifacts. Vanished masterfile rows remain review candidates and are never deleted by the rotation workflow itself.
+- Critical masterfile changes to asset type, ISIN, listing status, official/reference scope, and sector now require explicit review evidence before CI or auto-merge can pass.
+
+### Fixed
+
+- Stopped stale `NYSE MKT::BGI` from being reintroduced after venue normalization by reapplying reviewed drops after official venue correction and covering both raw and canonical venue keys.
+- Stabilized inconsistent BSE replicas by stripping the technical trailing `-$` display marker and preserving a reviewed descriptive name, asset type, and sector when an otherwise identical official row degrades its name to the ticker.
+- Fixed weekly delisting safe merge by snapshotting the canonical baseline before apply, passing generated exact transition evidence to the gate, and removing unrelated global identity-fix application from delisting and symbol-change ingestion.
+- Prevented unsupported collision/coverage-expansion automation changes from auto-merging; they return to Draft for review. Redundant automation PR CI is skipped while the explicit exact-commit CI remains authoritative.
+
+### Safety
+
+- Missing or invalid ISINs, unevidenced removals, critical-field changes, ticker reuse, ambiguous identity transitions, and upstream fetch failures remain fail-closed.
+- Suspended BSE rows remain listed by policy; `master_absent` rows require manual rename-versus-delisting review. Failed official fetches skip the affected market and preserve the last committed directory.
+- Identity clears remain in their dedicated review path instead of being applied as a side effect of scheduled delisting or symbol-change jobs.
+
+### Verification
+
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, strict merge contract, and release acceptance gates.
+- Live workflow reproductions completed with 0 unevidenced removals and 0 unevidenced critical changes. The stabilized BSE refresh produced 0 spurious changes, and the final weekly delisting run applied `NASDAQ::BCAB` from exact Nasdaq evidence.
+- Snapshot: 63,855 primary tickers, 92,070 listing rows, 62,553 primary ISINs (98.0%), 62,297 sector/category values, 32 entry-quality warnings, and 11,455 source-gap rows. Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
+
 ## [3.37.0] - 2026-08-27
 
 ### Summary
