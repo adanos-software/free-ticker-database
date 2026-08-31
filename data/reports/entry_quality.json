@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-31T09:21:55Z",
-    "rows": 92030,
+    "generated_at": "2026-08-31T12:24:31Z",
+    "rows": 92070,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,28 +14,28 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80607,
-      "source_gap": 11389,
-      "warn": 34
+      "pass": 80584,
+      "source_gap": 11454,
+      "warn": 32
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4584,
-      "official_reference": 82381,
+      "identifier_enriched": 4609,
+      "official_reference": 82394,
       "scoped_source_gap": 238,
-      "valid_isin": 4827
+      "valid_isin": 4829
     },
     "severity_counts": {
       "high": 6,
-      "medium": 29,
-      "source_gap": 11667
+      "medium": 27,
+      "source_gap": 11770
     },
     "issue_counts": {
-      "official_reference_gap": 6362,
+      "official_reference_gap": 6389,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1287,
-      "expected_missing_primary_isin": 713,
-      "official_name_mismatch": 29,
-      "missing_etf_category": 18,
+      "missing_stock_sector": 1297,
+      "expected_missing_primary_isin": 751,
+      "missing_etf_category": 46,
+      "official_name_mismatch": 27,
       "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
@@ -61,9 +61,9 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4494,
-        "source_gap": 274,
-        "warn": 5
+        "pass": 4481,
+        "source_gap": 299,
+        "warn": 4
       },
       {
         "exchange": "BMV",
@@ -71,14 +71,14 @@
         "source_gap": 267
       },
       {
-        "exchange": "Munich",
-        "source_gap": 223
+        "exchange": "NYSE ARCA",
+        "pass": 2520,
+        "source_gap": 236,
+        "warn": 2
       },
       {
-        "exchange": "NYSE ARCA",
-        "pass": 2525,
-        "source_gap": 211,
-        "warn": 2
+        "exchange": "Munich",
+        "source_gap": 223
       },
       {
         "exchange": "XDUS",
@@ -111,14 +111,14 @@
         "source_gap": 150
       },
       {
+        "exchange": "BATS",
+        "pass": 1223,
+        "source_gap": 149
+      },
+      {
         "exchange": "XETRA",
         "pass": 4171,
         "source_gap": 144
-      },
-      {
-        "exchange": "BATS",
-        "pass": 1225,
-        "source_gap": 141
       },
       {
         "exchange": "TSXV",
@@ -134,9 +134,9 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1925,
-        "source_gap": 93,
-        "warn": 6
+        "pass": 1924,
+        "source_gap": 99,
+        "warn": 5
       },
       {
         "exchange": "JSE",
