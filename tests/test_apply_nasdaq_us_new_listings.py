@@ -630,7 +630,7 @@ def test_apply_new_listings_skips_keys_already_in_coverage(tmp_path):
         assert len(list(csv.DictReader(handle))) == 1
 
 
-def test_apply_new_listings_skips_reviewed_drop_entry(tmp_path):
+def test_apply_new_listings_skips_canonical_drop_for_nyse_mkt_source_row(tmp_path):
     previous_reference = tmp_path / "previous.csv"
     current_reference = tmp_path / "current.csv"
     listings = tmp_path / "listings.csv"
@@ -642,7 +642,7 @@ def test_apply_new_listings_skips_reviewed_drop_entry(tmp_path):
     write_rows(
         current_reference,
         REFERENCE_FIELDS,
-        [reference_row("BGI", "Birks Group Inc. Common Stock", exchange="NYSE")],
+        [reference_row("BGI", "Birks Group Inc. Common Stock", exchange="NYSE MKT")],
     )
     write_rows(listings, LISTING_FIELDS, [])
     write_rows(supplements, SUPPLEMENT_FIELDS, [])
