@@ -1,4 +1,5 @@
 listing_key,ticker,exchange,issue_types,reason
+BSE_IN::TRUSTWAVE,TRUSTWAVE,BSE_IN,official_isin_mismatch,"Reviewed 2026-08-31 identifier conflict: the current BSE scrip-master feed reports INE668Y01024, but BSE's 2026-08-27 listing notice explicitly admits the post-reduction shares under INE668Y01016 effective 2026-08-31; retain the notice-backed ISIN pending source-feed correction."
 Euronext::GLDM,GLDM,Euronext,official_isin_mismatch,Provider-backed identifier review: EODHD valid ISIN and OpenFIGI mapping were persisted through the rebuild; local official-reference disagreement remains explicit pending source reconciliation.
 LSE::0GB5,0GB5,LSE,official_name_mismatch,LSE price-explorer dropped 0GB5 (Nilörngruppen); remaining official match is stale lse_company_reports name. Keep listing name; vanished classifier is manual_rename_vs_delisting_required
 LSE::ISEM,ISEM,LSE,official_isin_mismatch|official_name_mismatch,Provider-backed identifier review: EODHD valid ISIN and OpenFIGI mapping were persisted through the rebuild; local official-reference disagreement remains explicit pending source reconciliation.
