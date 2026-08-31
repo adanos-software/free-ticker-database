@@ -2124,6 +2124,43 @@ def test_cleaned_rows_backfills_unique_official_isin(monkeypatch):
     assert cleaned[0]["isin"] == "GB0007655250"
 
 
+def test_cleaned_rows_enforces_drop_after_official_exchange_correction(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "BGI",
+        "name": "Birks Group Inc",
+        "exchange": "NYSE MKT",
+        "asset_type": "Stock",
+        "sector": "Consumer Discretionary",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "CA09088U1093",
+        "aliases": "birks group|birks",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_review_overrides",
+        lambda: (defaultdict(set), defaultdict(dict), {("BGI", "NYSE")}),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_reviewed_transition_replacements", lambda: {})
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "apply_official_exchange_corrections",
+        lambda rows: [{**item, "exchange": "NYSE"} for item in rows],
+    )
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned == []
+
+
 def test_cleaned_rows_does_not_backfill_unreviewed_foreign_otc_us_isin(monkeypatch):
     from scripts import rebuild_dataset
 
