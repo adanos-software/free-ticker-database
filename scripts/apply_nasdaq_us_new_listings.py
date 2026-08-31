@@ -601,6 +601,7 @@ def apply_new_listings(
     write_markdown(report_md, report)
     set_github_output("new_listings_applied", "true" if accepted else "false")
     set_github_output("accepted_rows", str(len(accepted)))
+    set_github_output("coverage_expansion_rows", str(len(accepted_coverage)))
     print(json.dumps(summary, indent=2, sort_keys=True))
     return report
 
