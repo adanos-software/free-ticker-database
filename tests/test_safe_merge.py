@@ -598,6 +598,66 @@ def test_reviewed_form25_delisting_requires_exact_absent_row_identity() -> None:
     assert rejected["summary"]["generated_reviewed_transition_evidence_rows"] == 0
 
 
+def test_reviewed_same_isin_venue_change_evidences_inherited_metadata() -> None:
+    isin = "US67623L5057"
+    predecessor = row(
+        "NYSE",
+        "OPAD",
+        name="Offerpad Solutions Inc",
+        isin=isin,
+        stock_sector="Real Estate",
+    )
+    incomplete_replacement = row(
+        "NASDAQ",
+        "OPAD",
+        name="Offerpad Solutions Inc. - Class A Common Stock",
+    )
+    completed_replacement = incomplete_replacement | {
+        "isin": isin,
+        "stock_sector": "Real Estate",
+    }
+    transition = reviewed_transition(
+        "NYSE::OPAD",
+        "NASDAQ::OPAD",
+        event_type="venue_changed",
+        identity_type="same_isin",
+        identity_value=isin,
+    )
+
+    passed = evaluate(
+        [predecessor, incomplete_replacement],
+        [completed_replacement],
+        [],
+        reviewed_transition_rows=[transition],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-31T00:00:00Z",
+        total_shrink_limit=1.0,
+        venue_shrink_limit=1.0,
+    )
+    wrong_sector = evaluate(
+        [predecessor, incomplete_replacement],
+        [completed_replacement | {"stock_sector": "Technology"}],
+        [],
+        reviewed_transition_rows=[transition],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-08-31T00:00:00Z",
+        total_shrink_limit=1.0,
+        venue_shrink_limit=1.0,
+    )
+
+    assert passed["status"] == "pass"
+    assert passed["summary"]["generated_reviewed_transition_evidence_rows"] == 3
+    assert wrong_sector["status"] == "fail"
+    assert wrong_sector["unevidenced_critical_field_changes"] == [
+        {
+            "listing_key": "NASDAQ::OPAD",
+            "field_name": "stock_sector",
+            "old_value": "",
+            "new_value": "Technology",
+        }
+    ]
+
+
 def test_reviewed_same_cik_transition_requires_both_sec_cache_symbols() -> None:
     before = [row("NASDAQ", "GGRP", name="Glimpse")]
     after = [row("NASDAQ", "BTLN", name="Brightline")]

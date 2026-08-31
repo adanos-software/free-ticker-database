@@ -1,6 +1,6 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-08-31T13:02:31Z`
+- Generated at: `2026-08-31T13:34:48Z`
 - New supported rows: `2`
 - Accepted rows: `2`
 - Skipped rows: `0`
@@ -10,7 +10,7 @@
 
 | Ticker | Exchange | Name | Asset type | Target | Source |
 |---|---|---|---|---|---|
-| OPAD | NASDAQ | Offerpad Solutions Inc.  - Class A Common Stock | Stock | coverage_expansion | nasdaq_listed |
+| OPAD | NASDAQ | Offerpad Solutions Inc.  - Class A Common Stock | Stock | supplement | nasdaq_listed |
 | TRBG | NASDAQ | TurboGen Ltd. - Ordinary Shares | Stock | supplement | nasdaq_listed |
 
 ## Skipped

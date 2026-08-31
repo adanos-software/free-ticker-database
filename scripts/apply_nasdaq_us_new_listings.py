@@ -249,7 +249,7 @@ def sec_venue_change_identity_peers(
     return peers
 
 
-def reviewed_symbol_change_identity_peers(
+def reviewed_transition_identity_peers(
     row: dict[str, str],
     listings: Iterable[dict[str, str]],
     reviewed_transitions: Iterable[dict[str, str]],
@@ -259,7 +259,7 @@ def reviewed_symbol_change_identity_peers(
         transition
         for transition in reviewed_transitions
         if transition.get("new_listing_key") == new_listing_key
-        and transition.get("event_type") == "symbol_changed"
+        and transition.get("event_type") in {"symbol_changed", "venue_changed"}
         and transition.get("identity_type") == "same_isin"
         and transition.get("identity_value", "").strip()
     ]
@@ -549,7 +549,7 @@ def apply_new_listings(
         )
         security_identity_peers.extend(
             peer
-            for peer in reviewed_symbol_change_identity_peers(row, listings, reviewed_transitions)
+            for peer in reviewed_transition_identity_peers(row, listings, reviewed_transitions)
             if peer not in security_identity_peers
         )
         identity_peers.extend(peer for peer in security_identity_peers if peer not in identity_peers)
@@ -601,6 +601,7 @@ def apply_new_listings(
     write_markdown(report_md, report)
     set_github_output("new_listings_applied", "true" if accepted else "false")
     set_github_output("accepted_rows", str(len(accepted)))
+    set_github_output("coverage_expansion_rows", str(len(accepted_coverage)))
     print(json.dumps(summary, indent=2, sort_keys=True))
     return report
 
