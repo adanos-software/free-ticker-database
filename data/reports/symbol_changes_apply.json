@@ -1,13 +1,13 @@
 {
   "summary": {
-    "generated_at": "2026-08-30T11:52:46Z",
+    "generated_at": "2026-09-01T11:36:45Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 337,
+    "blocked_rows": 338,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 58,
+      "blocked_new_symbol_collision": 59,
       "blocked_old_symbol_not_unique_in_us_scope": 228,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 46,
@@ -16,6 +16,14 @@
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "0fdd935aadd2a0ab",
+      "effective_date": "2026-08-31",
+      "old_symbol": "AREN",
+      "new_symbol": "PAAI",
+      "new_company_name": "Arena Group Holdings Inc",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "a2bf8fbdad24c97b",
       "effective_date": "2026-08-27",
