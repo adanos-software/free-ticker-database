@@ -259,7 +259,11 @@ def reviewed_transition_identity_peers(
         transition
         for transition in reviewed_transitions
         if transition.get("new_listing_key") == new_listing_key
-        and transition.get("event_type") in {"symbol_changed", "venue_changed"}
+        and transition.get("event_type") in {
+            "listing_changed",
+            "symbol_changed",
+            "venue_changed",
+        }
         and transition.get("identity_type") == "same_isin"
         and transition.get("identity_value", "").strip()
     ]

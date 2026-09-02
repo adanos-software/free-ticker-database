@@ -11,7 +11,7 @@ CRITICAL_FIELDS = (
     "name", "asset_type", "country", "country_code", "isin", "stock_sector", "etf_category",
 )
 REMOVAL_EVENT_TYPES = {
-    "delisted", "symbol_changed", "venue_changed", "venue_reconciled", "merged",
+    "delisted", "listing_changed", "symbol_changed", "venue_changed", "venue_reconciled", "merged",
 }
 FIELD_EVENT_TYPES = {
     "name": {"renamed", "name_changed"},
