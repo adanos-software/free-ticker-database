@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-02T05:34:37Z",
+    "generated_at": "2026-09-02T06:44:08Z",
     "rows": 92073,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80581,
-      "source_gap": 11460,
+      "pass": 80577,
+      "source_gap": 11464,
       "warn": 32
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4610,
-      "official_reference": 82395,
+      "identifier_enriched": 4614,
+      "official_reference": 82391,
       "scoped_source_gap": 238,
       "valid_isin": 4830
     },
     "severity_counts": {
       "high": 6,
       "medium": 27,
-      "source_gap": 11779
+      "source_gap": 11783
     },
     "issue_counts": {
-      "official_reference_gap": 6391,
+      "official_reference_gap": 6395,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1298,
       "expected_missing_primary_isin": 755,
@@ -8085,6 +8085,24 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "STO::2CUREX",
+      "ticker": "2CUREX",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "STO",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -18335,24 +18353,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::706",
-      "ticker": "706",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     }

@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-02T05:33:42Z",
+  "generated_at": "2026-09-02T06:37:51Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1796,
+  "reconciled_rows": 1797,
   "applied_rows": 0,
-  "proposed_rows": 1796,
+  "proposed_rows": 1797,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -21199,6 +21199,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
       "observation_id": "e43511ad5a5b5e2edf155a9f",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "LSE::TENG",
+      "action": "proposed",
+      "ticker": "TENG",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "isin": "GB00BF188X60",
+      "old_name": "Ten Lifestyle Group PLC",
+      "new_name": "TEN TECHNOLOGIES GROUP PLC",
+      "source_key": "lse_price_explorer",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "observation_id": "c94e22f0bba5dfaaac945b86",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
