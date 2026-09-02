@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99391,
-    "matched": 65160,
+    "official_symbols": 99376,
+    "matched": 65154,
     "collisions": 13826,
-    "missing": 20405
+    "missing": 20396
   },
   "exchanges": [
     {
@@ -338,8 +338,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1614,
-      "matched": 1274,
+      "official_symbols": 1615,
+      "matched": 1275,
       "collisions": 57,
       "missing": 283,
       "collision_examples": [
@@ -3015,10 +3015,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5626,
-      "matched": 4574,
-      "collisions": 62,
-      "missing": 990,
+      "official_symbols": 5608,
+      "matched": 4566,
+      "collisions": 61,
+      "missing": 981,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3110,16 +3110,6 @@
           "exchange": "NASDAQ"
         },
         {
-          "ticker": "AACBR",
-          "name": "Artius II Acquisition Inc.",
-          "exchange": "NASDAQ"
-        },
-        {
-          "ticker": "AACBU",
-          "name": "Artius II Acquisition Inc.",
-          "exchange": "NASDAQ"
-        },
-        {
           "ticker": "AACIU",
           "name": "Armada Acquisition Corp. III - Units",
           "exchange": "NASDAQ"
@@ -3152,6 +3142,16 @@
         {
           "ticker": "AACPW",
           "name": "Apogee Acquisition Corp - Warrant",
+          "exchange": "NASDAQ"
+        },
+        {
+          "ticker": "ABLVW",
+          "name": "Able View Global Inc. - Warrant",
+          "exchange": "NASDAQ"
+        },
+        {
+          "ticker": "ACAAU",
+          "name": "Averin Capital Acquisition Corp. - Units",
           "exchange": "NASDAQ"
         }
       ]
@@ -3611,9 +3611,9 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3888,
-      "matched": 1986,
-      "collisions": 562,
+      "official_symbols": 3887,
+      "matched": 1984,
+      "collisions": 563,
       "missing": 1340,
       "collision_examples": [
         {
@@ -3681,6 +3681,15 @@
           ]
         },
         {
+          "ticker": "AEMC",
+          "name": "C2 Blockchain, Inc.",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "NYSE ARCA",
+            "TSXV"
+          ]
+        },
+        {
           "ticker": "AEON",
           "name": "AEON Biopharma, Inc.",
           "target_exchange": "NYSE",
@@ -3695,19 +3704,16 @@
           "existing_exchanges": [
             "ASX"
           ]
-        },
-        {
-          "ticker": "AGIG",
-          "name": "ABUNDIA GLOBAL IMPACT GROUP, INC.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE MKT"
-          ]
         }
       ],
       "missing_examples": [
         {
           "ticker": "AAC-UN",
+          "name": "Ares Acquisition Corp III",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "AAC-WT",
           "name": "Ares Acquisition Corp III",
           "exchange": "NYSE"
         },
@@ -3750,18 +3756,13 @@
           "ticker": "ABR-PF",
           "name": "ARBOR REALTY TRUST INC",
           "exchange": "NYSE"
-        },
-        {
-          "ticker": "ABXL",
-          "name": "Abacus Global Management, Inc. 9.875% Fixed Rate Senior Notes due 2028",
-          "exchange": "NYSE"
         }
       ]
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2721,
-      "matched": 2600,
+      "official_symbols": 2724,
+      "matched": 2603,
       "collisions": 29,
       "missing": 92,
       "collision_examples": [

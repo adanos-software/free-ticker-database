@@ -1,7 +1,7 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-09-02T06:45:27Z",
+    "generated_at": "2026-09-02T11:45:50Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
@@ -9,9 +9,11 @@
   "passed": true,
   "quarantine_count": 0,
   "quarantined": [],
-  "stale_allowlist": [],
-  "stale_allowlist_count": 0,
+  "stale_allowlist": [
+    "NYSE::BBBY"
+  ],
+  "stale_allowlist_count": 1,
   "unexpected_warn_count": 0,
   "unexpected_warns": [],
-  "warn_count": 32
+  "warn_count": 31
 }

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-02T06:34:41Z",
-  "rows": 169512,
+  "generated_at": "2026-09-02T11:40:23Z",
+  "rows": 169508,
   "exchanges": [
     "ADX",
     "AMS",
@@ -97,7 +97,7 @@
     "b3_listed_etfs": 216,
     "b3_bdr_etfs": 321,
     "b3_instruments_equities": 1294,
-    "nasdaq_other_listed": 7588,
+    "nasdaq_other_listed": 7592,
     "nasdaq_trading_system_adds_deletes": 24,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
@@ -150,8 +150,8 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5594,
-    "sec_company_tickers_exchange": 10160,
+    "nasdaq_listed": 5591,
+    "sec_company_tickers_exchange": 10155,
     "cboe_canada_listing_directory": 444,
     "ngx_company_profile_directory": 130,
     "ngx_equities_price_list": 130,
@@ -224,16 +224,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5594,
-      "generated_at": "2026-09-02T06:34:41Z"
+      "rows": 5591,
+      "generated_at": "2026-09-02T11:40:23Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7588,
-      "generated_at": "2026-09-02T05:32:53Z"
+      "rows": 7592,
+      "generated_at": "2026-09-02T11:40:23Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1320,10 +1320,9 @@
       "provider": "SEC",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 10160,
-      "generated_at": "2026-08-31T13:34:44Z",
-      "last_error": "Cache fallback; preserved 10160 existing rows"
+      "mode": "network",
+      "rows": 10155,
+      "generated_at": "2026-09-02T11:40:23Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1477,7 +1476,7 @@
     "upcom_registered_securities": "network",
     "vienna_listed_companies": "network",
     "zagreb_securities_directory": "network",
-    "sec_company_tickers_exchange": "unavailable",
+    "sec_company_tickers_exchange": "network",
     "otc_markets_security_profile": "network",
     "otc_markets_stock_screener": "unavailable",
     "nasdaq_trading_system_adds_deletes": "network",
@@ -1541,10 +1540,6 @@
       "error": "Empty refresh result; preserved 11925 existing rows"
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "error": "Cache fallback; preserved 10160 existing rows"
-    },
-    {
       "source_key": "six_shares_explorer_full",
       "error": "Empty refresh result; preserved 1 existing rows"
     },
@@ -1562,50 +1557,16 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-09-02T06:34:41Z",
+    "generated_at": "2026-09-02T11:40:23Z",
     "selected_source_keys": [
-      "lse_instrument_directory",
-      "lse_instrument_search",
-      "lse_price_explorer",
-      "luse_listed_companies",
-      "mse_mw_listed_companies",
-      "muscat_securities_companies",
       "nasdaq_listed",
-      "nasdaq_mutual_fund_quotes",
-      "nasdaq_nordic_copenhagen_etf_search",
-      "nasdaq_nordic_copenhagen_etfs",
-      "nasdaq_nordic_copenhagen_shares",
-      "nasdaq_nordic_copenhagen_shares_search",
-      "nasdaq_nordic_helsinki_etfs",
-      "nasdaq_nordic_helsinki_shares",
-      "nasdaq_nordic_helsinki_shares_search",
-      "nasdaq_nordic_iceland_shares",
-      "nasdaq_nordic_stockholm_etfs",
-      "nasdaq_nordic_stockholm_shares",
-      "nasdaq_nordic_stockholm_shares_search",
-      "nasdaq_nordic_stockholm_trackers"
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "lse_instrument_directory": "unavailable",
-      "lse_instrument_search": "network",
-      "lse_price_explorer": "network",
-      "luse_listed_companies": "unavailable",
-      "mse_mw_listed_companies": "unavailable",
-      "muscat_securities_companies": "network",
       "nasdaq_listed": "network",
-      "nasdaq_mutual_fund_quotes": "network",
-      "nasdaq_nordic_copenhagen_etf_search": "network",
-      "nasdaq_nordic_copenhagen_etfs": "network",
-      "nasdaq_nordic_copenhagen_shares": "network",
-      "nasdaq_nordic_copenhagen_shares_search": "network",
-      "nasdaq_nordic_helsinki_etfs": "network",
-      "nasdaq_nordic_helsinki_shares": "network",
-      "nasdaq_nordic_helsinki_shares_search": "network",
-      "nasdaq_nordic_iceland_shares": "network",
-      "nasdaq_nordic_stockholm_etfs": "network",
-      "nasdaq_nordic_stockholm_shares": "network",
-      "nasdaq_nordic_stockholm_shares_search": "network",
-      "nasdaq_nordic_stockholm_trackers": "network"
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }

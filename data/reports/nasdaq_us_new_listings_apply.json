@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-09-02T06:36:00Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-09-02T11:40:30Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,13 +11,111 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
+    "new_supported_rows": 6,
+    "accepted_rows": 6,
     "skipped_rows": 0,
-    "accepted_by_exchange": {},
-    "accepted_by_target": {},
+    "accepted_by_exchange": {
+      "BATS": 1,
+      "NASDAQ": 1,
+      "NYSE": 1,
+      "NYSE ARCA": 3
+    },
+    "accepted_by_target": {
+      "supplement": 6
+    },
     "skipped_by_reason": {}
   },
-  "accepted": [],
+  "accepted": [
+    {
+      "ticker": "SKHQ",
+      "name": "Leverage Shares 2X Short Sk Hynix Daily ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "YFOR",
+      "name": "YYForce Inc. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "HOS",
+      "name": "Hornbeck Offshore Services, Inc. Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "DIVH",
+      "name": "Integrity Dividend Harvest ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "UCBG",
+      "name": "State Street SPDR UC Investments 90/10 Endowment Strategy Index ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "VOOY",
+      "name": "XFUNDS Large Cap Income ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    }
+  ],
   "skipped": []
 }

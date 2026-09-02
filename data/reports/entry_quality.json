@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-09-02T06:44:08Z",
-    "rows": 92073,
+    "generated_at": "2026-09-02T11:44:33Z",
+    "rows": 92079,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,28 +14,28 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80577,
-      "source_gap": 11464,
-      "warn": 32
+      "pass": 80566,
+      "source_gap": 11482,
+      "warn": 31
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4614,
-      "official_reference": 82391,
+      "identifier_enriched": 4626,
+      "official_reference": 82385,
       "scoped_source_gap": 238,
       "valid_isin": 4830
     },
     "severity_counts": {
       "high": 6,
-      "medium": 27,
-      "source_gap": 11783
+      "medium": 26,
+      "source_gap": 11807
     },
     "issue_counts": {
-      "official_reference_gap": 6395,
+      "official_reference_gap": 6407,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1298,
-      "expected_missing_primary_isin": 755,
-      "missing_etf_category": 48,
-      "official_name_mismatch": 27,
+      "missing_stock_sector": 1300,
+      "expected_missing_primary_isin": 761,
+      "missing_etf_category": 52,
+      "official_name_mismatch": 26,
       "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
@@ -61,8 +61,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4481,
-        "source_gap": 301,
+        "source_gap": 311,
+        "pass": 4472,
         "warn": 4
       },
       {
@@ -73,7 +73,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2518,
-        "source_gap": 240,
+        "source_gap": 243,
         "warn": 2
       },
       {
@@ -113,7 +113,7 @@
       {
         "exchange": "BATS",
         "pass": 1223,
-        "source_gap": 149
+        "source_gap": 150
       },
       {
         "exchange": "XETRA",
@@ -134,9 +134,9 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1923,
-        "source_gap": 100,
-        "warn": 5
+        "pass": 1921,
+        "source_gap": 104,
+        "warn": 4
       },
       {
         "exchange": "JSE",
