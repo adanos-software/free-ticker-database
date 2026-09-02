@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-08-31T15:02:41Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-09-02T05:32:57Z",
+    "previous_reference_csv": "/tmp/reference-before-final-nasdaq.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,13 +11,119 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
-    "skipped_rows": 0,
-    "accepted_by_exchange": {},
-    "accepted_by_target": {},
-    "skipped_by_reason": {}
+    "new_supported_rows": 7,
+    "accepted_rows": 5,
+    "skipped_rows": 2,
+    "accepted_by_exchange": {
+      "NASDAQ": 2,
+      "NYSE": 1,
+      "NYSE ARCA": 2
+    },
+    "accepted_by_target": {
+      "coverage_expansion": 3,
+      "supplement": 2
+    },
+    "skipped_by_reason": {
+      "already_in_listings": 1,
+      "excluded_non_common_stock": 1
+    }
   },
-  "accepted": [],
-  "skipped": []
+  "accepted": [
+    {
+      "ticker": "GIXI",
+      "name": "Gix Internet Ltd. - Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "listing_key": "NASDAQ::SGLD",
+      "ticker": "SGLD",
+      "exchange": "NASDAQ",
+      "name": "Scorpio Gold Corporation - Common Stock",
+      "asset_type": "Stock",
+      "stock_sector": "",
+      "etf_category": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "apply_target": "coverage_expansion"
+    },
+    {
+      "listing_key": "NYSE::MVPA",
+      "ticker": "MVPA",
+      "exchange": "NYSE",
+      "name": "Miller Value Partners Appreciation ETF",
+      "asset_type": "ETF",
+      "stock_sector": "",
+      "etf_category": "Equity",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "apply_target": "coverage_expansion"
+    },
+    {
+      "ticker": "AGGM",
+      "name": "iShares 1-10 Year U.S. Aggregate Bond ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "listing_key": "NYSE ARCA::HXF",
+      "ticker": "HXF",
+      "exchange": "NYSE ARCA",
+      "name": "Mast HedgeIndex Managed Futures Strategy ETF",
+      "asset_type": "ETF",
+      "stock_sector": "",
+      "etf_category": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "apply_target": "coverage_expansion"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "ISRL",
+      "exchange": "NASDAQ",
+      "name": "Defiance KSM Israel 120 ETF",
+      "asset_type": "ETF",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "TLACU",
+      "exchange": "NASDAQ",
+      "name": "Three Lions Acquisition Corp. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    }
+  ]
 }
