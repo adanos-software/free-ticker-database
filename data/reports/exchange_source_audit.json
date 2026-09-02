@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T05:34:41Z",
+  "generated_at": "2026-09-02T06:44:16Z",
   "summary": {
     "venues": 87,
     "venue_status_counts": {
@@ -9,13 +9,13 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 24,
-      "maintain": 9,
+      "maintain": 10,
       "official_source_required": 5,
-      "refresh_required": 34,
+      "refresh_required": 33,
       "refresh_unavailable": 15
     },
     "unavailable_venues": 15,
-    "nonfresh_venues": 68,
+    "nonfresh_venues": 63,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -491,8 +491,8 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares",
-      "source_blocker_classes": "stale_artifact",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -501,7 +501,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_nonfresh_source"
+      "promotion_readiness": "blocked_denominator_missing"
     },
     {
       "exchange": "CSE_LK",
@@ -698,8 +698,8 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares",
-      "source_blocker_classes": "stale_artifact",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -708,7 +708,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_nonfresh_source"
+      "promotion_readiness": "blocked_denominator_missing"
     },
     {
       "exchange": "HKEX",
@@ -790,8 +790,8 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_nordic_iceland_shares",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_nordic_iceland_shares",
-      "source_blocker_classes": "stale_artifact",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -800,7 +800,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_nonfresh_source"
+      "promotion_readiness": "blocked_denominator_missing"
     },
     {
       "exchange": "IDX",
@@ -923,19 +923,19 @@
       "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "current_stock_rows": 4011,
       "current_etf_rows": 3019,
-      "official_active_stock_rows": 13984,
-      "official_active_etf_rows": 9911,
+      "official_active_stock_rows": 13981,
+      "official_active_etf_rows": 9917,
       "missing_product_classes": "",
       "official_source_keys": "lse_company_reports|lse_instrument_directory|lse_price_explorer",
       "unavailable_source_keys": "lse_company_reports|lse_instrument_directory",
-      "nonfresh_source_keys": "lse_company_reports|lse_instrument_directory|lse_price_explorer",
-      "source_blocker_classes": "empty_refresh|stale_artifact",
-      "official_denominator": 11124,
-      "official_matches": 6839,
-      "official_collisions": 787,
-      "official_missing": 3498,
-      "official_recall_pct": 61.48,
-      "collision_adjusted_recall_pct": 66.16,
+      "nonfresh_source_keys": "lse_company_reports|lse_instrument_directory",
+      "source_blocker_classes": "empty_refresh",
+      "official_denominator": 11127,
+      "official_matches": 6838,
+      "official_collisions": 788,
+      "official_missing": 3501,
+      "official_recall_pct": 61.45,
+      "collision_adjusted_recall_pct": 66.14,
       "denominator_status": "available",
       "audit_outcome": "refresh_unavailable",
       "promotion_readiness": "not_applicable"
@@ -997,8 +997,8 @@
       "missing_product_classes": "",
       "official_source_keys": "muscat_securities_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "muscat_securities_companies",
-      "source_blocker_classes": "stale_artifact",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 108,
       "official_matches": 91,
       "official_collisions": 13,
@@ -1006,7 +1006,7 @@
       "official_recall_pct": 84.26,
       "collision_adjusted_recall_pct": 95.79,
       "denominator_status": "available",
-      "audit_outcome": "refresh_required",
+      "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1112,8 +1112,8 @@
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_mutual_fund_quotes",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "nasdaq_mutual_fund_quotes",
-      "source_blocker_classes": "stale_artifact",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1122,7 +1122,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_nonfresh_source"
+      "promotion_readiness": "blocked_denominator_missing"
     },
     {
       "exchange": "NSE_IN",
@@ -1567,12 +1567,12 @@
       "reference_scopes": "listed_companies_subset",
       "current_stock_rows": 863,
       "current_etf_rows": 15,
-      "official_active_stock_rows": 952,
+      "official_active_stock_rows": 950,
       "official_active_etf_rows": 41,
       "missing_product_classes": "",
       "official_source_keys": "nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory",
       "unavailable_source_keys": "ngm_market_data_equities",
-      "nonfresh_source_keys": "nasdaq_nordic_stockholm_etfs|nasdaq_nordic_stockholm_shares|nasdaq_nordic_stockholm_trackers|ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory",
+      "nonfresh_source_keys": "ngm_companies_page|ngm_market_data_equities|spotlight_companies_directory",
       "source_blocker_classes": "empty_refresh|stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,

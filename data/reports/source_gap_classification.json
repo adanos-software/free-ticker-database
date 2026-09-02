@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-09-02T05:34:42Z",
-    "rows": 8705,
+    "generated_at": "2026-09-02T06:44:20Z",
+    "rows": 8709,
     "field_totals": {
       "missing_etf_category": 37,
       "missing_isin_primary": 755,
       "missing_sector_stock": 1522,
-      "official_reference_gap": 6391
+      "official_reference_gap": 6395
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -26,8 +26,8 @@
       "official_industry_taxonomy_unavailable_gap": 849,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 29,
-      "official_reference_symbol_collision_gap": 1193,
-      "official_reference_unmatched_source_gap": 5198,
+      "official_reference_symbol_collision_gap": 1194,
+      "official_reference_unmatched_source_gap": 5201,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 36
     },
@@ -51,8 +51,8 @@
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 849,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 36,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1193,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5198
+      "official_reference_gap:official_reference_symbol_collision_gap": 1194,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5201
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -66163,6 +66163,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=ICE_IS::OLGERD;exchange=ICE_IS;ticker=OLGERD;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "ICE_IS::SIMINN",
+      "ticker": "SIMINN",
+      "exchange": "ICE_IS",
+      "asset_type": "Stock",
+      "name": "Síminn hf",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=ICE_IS::SIMINN;exchange=ICE_IS;ticker=SIMINN;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -139660,6 +139677,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "STO::2CUREX",
+      "ticker": "2CUREX",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "2cureX AB",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=STO::2CUREX;exchange=STO;ticker=2CUREX;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "STO::AERW B",
       "ticker": "AERW B",
       "exchange": "STO",
@@ -139688,6 +139722,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=STO::AMH2 B;exchange=STO;ticker=AMH2 B;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "STO::ANOT",
+      "ticker": "ANOT",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Anoto Group AB",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=STO::ANOT;exchange=STO;ticker=ANOT;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -140013,6 +140064,23 @@
       "source_gap_context": "listing_key=STO::GOSOL;exchange=STO;ticker=GOSOL;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "STO::GUARD",
+      "ticker": "GUARD",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Guard Therapeutics International Ab",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=STO::GUARD;exchange=STO;ticker=GUARD;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",

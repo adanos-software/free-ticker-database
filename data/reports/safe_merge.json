@@ -6,243 +6,26 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92070,
+    "before_rows": 92073,
     "after_rows": 92073,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 3,
-    "evidenced_removed_rows": 3,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 12,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 1,
-    "generated_reviewed_transition_evidence_rows": 7
+    "generated_official_change_evidence_rows": 0,
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::CMII",
-    "NYSE MKT::ZONE",
-    "NYSE::SBEV"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "field_name": "name",
-      "old_value": "Inection Point Acquisition Corp. VII  - Class A Ordinary Shares",
-      "new_value": "Inflection Point Acquisition Corp. VII"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Cayman Islands"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "KY"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "KYG2296M1033"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Financials"
-    },
-    {
-      "listing_key": "NASDAQ::REAX",
-      "field_name": "name",
-      "old_value": "Real Brokerage Inc",
-      "new_value": "Real REMAX Group Inc."
-    },
-    {
-      "listing_key": "NASDAQ::REAX",
-      "field_name": "country",
-      "old_value": "Canada",
-      "new_value": "United States"
-    },
-    {
-      "listing_key": "NASDAQ::REAX",
-      "field_name": "country_code",
-      "old_value": "CA",
-      "new_value": "US"
-    },
-    {
-      "listing_key": "NASDAQ::REAX",
-      "field_name": "isin",
-      "old_value": "CA75585H2063",
-      "new_value": "US7761051082"
-    },
-    {
-      "listing_key": "NYSE MKT::EDVA",
-      "field_name": "name",
-      "old_value": "Endovia Health Sciences, Inc. Common Stock",
-      "new_value": "Endovia Health Sciences, Inc."
-    },
-    {
-      "listing_key": "NYSE MKT::EDVA",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "US84862C3025"
-    },
-    {
-      "listing_key": "NYSE MKT::EDVA",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Health Care"
-    }
-  ],
-  "generated_official_change_evidence": [
-    {
-      "listing_key": "NYSE MKT::ZONE",
-      "ticker": "ZONE",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "bd2feda19bf6953417683218f631ee29940ff13da82b26960d083b48dd3f6e5c",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "4531bc9bded6c6bb85997ce9",
-      "evidence_status": "official"
-    }
-  ],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NASDAQ::CMII",
-      "ticker": "CMII",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "CMII",
-      "new_value": "IPXG",
-      "before_row_sha256": "268162e84c2c80d50f42dd6ab62be90fefa60dcce93fff1bca8089ea92dc351c",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2088805/000121390026093821/ea0303421-8k_inflection7.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "906a6d7efcbb6191ffcbda85",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "ticker": "IPXG",
-      "exchange": "NASDAQ",
-      "event_type": "identifier_changed",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "KYG2296M1033",
-      "before_row_sha256": "99ffc524407453651315cb6f22ecca7976d835ec1a8db9659aeb95d9b185ffa3",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2088805/000121390026093821/ea0303421-8k_inflection7.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "105be056a65a43f5e8ad1bd7",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "ticker": "IPXG",
-      "exchange": "NASDAQ",
-      "event_type": "country_changed",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Cayman Islands",
-      "before_row_sha256": "99ffc524407453651315cb6f22ecca7976d835ec1a8db9659aeb95d9b185ffa3",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2088805/000121390026093821/ea0303421-8k_inflection7.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "7f3d96d516400f5fad6dc2ea",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "ticker": "IPXG",
-      "exchange": "NASDAQ",
-      "event_type": "country_changed",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "KY",
-      "before_row_sha256": "99ffc524407453651315cb6f22ecca7976d835ec1a8db9659aeb95d9b185ffa3",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2088805/000121390026093821/ea0303421-8k_inflection7.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "86ff4a7e716aed7f16a55fa9",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::IPXG",
-      "ticker": "IPXG",
-      "exchange": "NASDAQ",
-      "event_type": "taxonomy_changed",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Financials",
-      "before_row_sha256": "99ffc524407453651315cb6f22ecca7976d835ec1a8db9659aeb95d9b185ffa3",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2088805/000121390026093821/ea0303421-8k_inflection7.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "b8583883047f3ddd90274073",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NYSE::SBEV",
-      "ticker": "SBEV",
-      "exchange": "NYSE",
-      "event_type": "listing_changed",
-      "field_name": "listing_key",
-      "old_value": "NYSE::SBEV",
-      "new_value": "NYSE MKT::EDVA",
-      "before_row_sha256": "fabcf1aaaf6ec0cc895027f26dbe971d2b8869b31d757b51e937fcdb29396dd6",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_issuer_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1553788/000173112226001120/e7881_ex99-1.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "0a15046897d855a38a05db10",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NYSE MKT::EDVA",
-      "ticker": "EDVA",
-      "exchange": "NYSE MKT",
-      "event_type": "identifier_changed",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "US84862C3025",
-      "before_row_sha256": "fdb5eddd4d371fb0adfe31c88910d5d0c643ce8a894308e2eb4a8ef9db6bb9ad",
-      "effective_at": "",
-      "observed_at": "2026-09-02T05:33:42Z",
-      "source_key": "sec_issuer_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1553788/000173112226001120/e7881_ex99-1.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "5ce7fdc3b612b73fa226af19",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -642,10 +425,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4785,
+      "before_rows": 4786,
       "after_rows": 4786,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -696,16 +479,16 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2027,
+      "before_rows": 2028,
       "after_rows": 2028,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2758,
+      "before_rows": 2760,
       "after_rows": 2760,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -714,10 +497,10 @@
     },
     {
       "exchange": "NYSE MKT",
-      "before_rows": 233,
+      "before_rows": 232,
       "after_rows": 232,
-      "shrink_pct": 0.429185,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },

@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-09-02T05:34:42Z",
-    "rows": 8705,
+    "generated_at": "2026-09-02T06:44:21Z",
+    "rows": 8709,
     "outcome_totals": {
-      "accepted_source_gap": 6037,
+      "accepted_source_gap": 6038,
       "core_exclusion_candidate": 516,
-      "official_fill_required": 2152
+      "official_fill_required": 2155
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -25,8 +25,8 @@
       "official_industry_taxonomy_unavailable_gap": 849,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 29,
-      "official_reference_symbol_collision_gap": 1193,
-      "official_reference_unmatched_source_gap": 5198,
+      "official_reference_symbol_collision_gap": 1194,
+      "official_reference_unmatched_source_gap": 5201,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 36
     },
@@ -37,8 +37,8 @@
       "missing_sector_stock:accepted_source_gap": 1403,
       "missing_sector_stock:core_exclusion_candidate": 57,
       "missing_sector_stock:official_fill_required": 62,
-      "official_reference_gap:accepted_source_gap": 4301,
-      "official_reference_gap:official_fill_required": 2090
+      "official_reference_gap:accepted_source_gap": 4302,
+      "official_reference_gap:official_fill_required": 2093
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -100469,6 +100469,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "STO::GUARD",
+      "ticker": "GUARD",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Guard Therapeutics International Ab",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "STO::H100",
       "ticker": "H100",
       "exchange": "STO",
@@ -130457,6 +130474,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "ICE_IS::SIMINN",
+      "ticker": "SIMINN",
+      "exchange": "ICE_IS",
+      "asset_type": "Stock",
+      "name": "Síminn hf",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "JSE::4SI",
       "ticker": "4SI",
       "exchange": "JSE",
@@ -141575,6 +141609,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "STO::2CUREX",
+      "ticker": "2CUREX",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "2cureX AB",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "STO::AERW B",
       "ticker": "AERW B",
       "exchange": "STO",
@@ -141597,6 +141648,23 @@
       "exchange": "STO",
       "asset_type": "Stock",
       "name": "Amhult 2 Ab",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "STO::ANOT",
+      "ticker": "ANOT",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Anoto Group AB",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
