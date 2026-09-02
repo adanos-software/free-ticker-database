@@ -4,7 +4,11 @@ import csv
 import json
 from pathlib import Path
 
-from scripts.apply_nasdaq_us_new_listings import apply_new_listings, resolved_listing_metadata
+from scripts.apply_nasdaq_us_new_listings import (
+    apply_new_listings,
+    resolved_listing_metadata,
+    reviewed_transition_identity_peers,
+)
 
 
 REFERENCE_FIELDS = [
@@ -504,6 +508,25 @@ def test_apply_new_listings_preserves_identity_for_reviewed_venue_change(tmp_pat
     assert row["sector"] == "Real Estate"
     assert row["country_code"] == "US"
     assert row["isin"] == "US67623L5057"
+
+
+def test_reviewed_listing_change_can_preserve_identity_across_symbol_and_venue() -> None:
+    predecessor = listing_row("SBEV", exchange="NYSE")
+    predecessor["isin"] = "US84862C3025"
+    candidate = {"ticker": "EDVA", "exchange": "NYSE MKT", "asset_type": "Stock"}
+    transitions = [
+        {
+            "old_listing_key": "NYSE::SBEV",
+            "new_listing_key": "NYSE MKT::EDVA",
+            "event_type": "listing_changed",
+            "identity_type": "same_isin",
+            "identity_value": "US84862C3025",
+        }
+    ]
+
+    assert reviewed_transition_identity_peers(candidate, [predecessor], transitions) == [
+        predecessor
+    ]
 
 
 def test_apply_new_listings_does_not_trust_issuer_only_transition_for_isin(tmp_path):

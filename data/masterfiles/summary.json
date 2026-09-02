@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-31T14:58:55Z",
-  "rows": 169506,
+  "generated_at": "2026-09-02T05:32:53Z",
+  "rows": 169511,
   "exchanges": [
     "ADX",
     "AMS",
@@ -97,7 +97,7 @@
     "b3_listed_etfs": 216,
     "b3_bdr_etfs": 321,
     "b3_instruments_equities": 1294,
-    "nasdaq_other_listed": 7587,
+    "nasdaq_other_listed": 7588,
     "nasdaq_trading_system_adds_deletes": 24,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
@@ -150,7 +150,7 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5590,
+    "nasdaq_listed": 5594,
     "sec_company_tickers_exchange": 10160,
     "cboe_canada_listing_directory": 444,
     "ngx_company_profile_directory": 130,
@@ -224,16 +224,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5590,
-      "generated_at": "2026-08-31T13:34:44Z"
+      "rows": 5594,
+      "generated_at": "2026-09-02T05:32:53Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7587,
-      "generated_at": "2026-08-31T13:34:44Z"
+      "rows": 7588,
+      "generated_at": "2026-09-02T05:32:53Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1320,9 +1320,10 @@
       "provider": "SEC",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "network",
+      "mode": "unavailable",
       "rows": 10160,
-      "generated_at": "2026-08-31T13:34:44Z"
+      "generated_at": "2026-08-31T13:34:44Z",
+      "last_error": "Cache fallback; preserved 10160 existing rows"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1476,7 +1477,7 @@
     "upcom_registered_securities": "network",
     "vienna_listed_companies": "network",
     "zagreb_securities_directory": "network",
-    "sec_company_tickers_exchange": "network",
+    "sec_company_tickers_exchange": "unavailable",
     "otc_markets_security_profile": "network",
     "otc_markets_stock_screener": "unavailable",
     "nasdaq_trading_system_adds_deletes": "network",
@@ -1540,6 +1541,10 @@
       "error": "Empty refresh result; preserved 11925 existing rows"
     },
     {
+      "source_key": "sec_company_tickers_exchange",
+      "error": "Cache fallback; preserved 10160 existing rows"
+    },
+    {
       "source_key": "six_shares_explorer_full",
       "error": "Empty refresh result; preserved 1 existing rows"
     },
@@ -1557,50 +1562,16 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-08-31T14:58:55Z",
+    "generated_at": "2026-09-02T05:32:53Z",
     "selected_source_keys": [
-      "boursa_kuwait_stocks",
-      "bse_bw_listed_companies",
-      "bse_hu_listed_companies",
-      "bse_india_scrips",
-      "bursa_closing_prices",
-      "bursa_equity_isin",
-      "bvb_fund_units_directory",
-      "bvb_shares_directory",
-      "bvc_colombia_issuers",
-      "bvl_issuers_directory",
-      "byma_equity_details",
-      "cboe_canada_listing_directory",
-      "cse_lk_all_security_code",
-      "cse_lk_company_info_summary",
-      "cse_ma_listed_companies",
-      "deutsche_boerse_etfs_etps",
-      "deutsche_boerse_frankfurt_all_tradable_equities",
-      "deutsche_boerse_listed_companies",
-      "deutsche_boerse_xetra_all_tradable_equities",
-      "dfm_listed_securities"
+      "nasdaq_listed",
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "boursa_kuwait_stocks": "network",
-      "bse_bw_listed_companies": "network",
-      "bse_hu_listed_companies": "network",
-      "bse_india_scrips": "network",
-      "bursa_closing_prices": "network",
-      "bursa_equity_isin": "network",
-      "bvb_fund_units_directory": "network",
-      "bvb_shares_directory": "network",
-      "bvc_colombia_issuers": "unavailable",
-      "bvl_issuers_directory": "network",
-      "byma_equity_details": "network",
-      "cboe_canada_listing_directory": "network",
-      "cse_lk_all_security_code": "network",
-      "cse_lk_company_info_summary": "network",
-      "cse_ma_listed_companies": "unavailable",
-      "deutsche_boerse_etfs_etps": "network",
-      "deutsche_boerse_frankfurt_all_tradable_equities": "network",
-      "deutsche_boerse_listed_companies": "network",
-      "deutsche_boerse_xetra_all_tradable_equities": "network",
-      "dfm_listed_securities": "network"
+      "nasdaq_listed": "network",
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "unavailable"
     }
   }
 }

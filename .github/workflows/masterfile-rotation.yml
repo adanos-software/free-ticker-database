@@ -8,6 +8,7 @@ on:
 permissions:
   actions: write
   contents: write
+  issues: write
   pull-requests: write
 
 jobs:
@@ -89,12 +90,15 @@ jobs:
       - name: Check entry quality gate
         id: entry_quality_gate
         continue-on-error: true
-        run: python scripts/check_entry_quality_gate.py
+        run: |
+          rm -f data/reports/entry_quality_gate.json
+          python scripts/check_entry_quality_gate.py
 
       - name: Validate database release gates
         id: database_gates
         continue-on-error: true
         run: |
+          rm -f data/reports/validation_report.json
           python scripts/validate_database.py
 
       - name: Classify release gate result
@@ -103,6 +107,8 @@ jobs:
           python scripts/classify_masterfile_rotation_gates.py \
             --entry-quality-gate data/reports/entry_quality_gate.json \
             --validation-report data/reports/validation_report.json \
+            --entry-quality-outcome "${{ steps.entry_quality_gate.outcome }}" \
+            --database-outcome "${{ steps.database_gates.outcome }}" \
             --masterfile-summary data/masterfiles/summary.json \
             --rotation-diff data/reports/masterfile_rotation_diff.json \
             --github-output "$GITHUB_OUTPUT"
@@ -172,7 +178,7 @@ jobs:
             Unexpected entry-quality warnings: `${{ steps.release.outputs.unexpected_warn_count }}`
             Critical masterfile field changes: `${{ steps.release.outputs.critical_rotation_change_count }}`
 
-            Draft review PRs are never dispatched to CI or enabled for automerge.
+            Draft review PRs run CI but are never enabled for automerge.
 
             Diff report: `data/reports/masterfile_rotation_diff.md`
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
@@ -181,16 +187,26 @@ jobs:
         if: steps.cpr.outputs.pull-request-number != ''
         env:
           GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
-          is_draft=$(gh pr view "${{ steps.cpr.outputs.pull-request-number }}" --json isDraft --jq .isDraft)
-          if [ "${{ steps.release.outputs.review_required }}" = "true" ] && [ "$is_draft" != "true" ]; then
-            gh pr ready "${{ steps.cpr.outputs.pull-request-number }}" --undo
-          elif [ "${{ steps.release.outputs.review_required }}" != "true" ] && [ "$is_draft" = "true" ]; then
-            gh pr ready "${{ steps.cpr.outputs.pull-request-number }}"
+          if [ "${{ steps.release.outputs.review_required }}" = "true" ]; then
+            gh label create automation-review-required \
+              --color D4C5F9 \
+              --description "Automation data changes require manual review" \
+              --force
+            gh pr edit "$PR_NUMBER" --add-label automation-review-required
+            if [ "$(gh pr view "$PR_NUMBER" --json isDraft --jq '.isDraft')" != "true" ]; then
+              gh pr ready "$PR_NUMBER" --undo
+            fi
+          elif [ "$(gh pr view "$PR_NUMBER" --json labels --jq 'any(.labels[]; .name == "automation-review-required")')" = "true" ]; then
+            if [ "$(gh pr view "$PR_NUMBER" --json isDraft --jq '.isDraft')" = "true" ]; then
+              gh pr ready "$PR_NUMBER"
+            fi
+            gh pr edit "$PR_NUMBER" --remove-label automation-review-required
           fi
 
       - name: Dispatch CI for automation pull request
-        if: steps.cpr.outputs.pull-request-number != '' && steps.release.outputs.review_required != 'true'
+        if: steps.cpr.outputs.pull-request-number != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run ci.yml --ref automation/masterfile-rotation

@@ -115,6 +115,8 @@ def classify_gate_results(
     validation_report: dict[str, Any],
     masterfile_summary: dict[str, Any] | None = None,
     rotation_diff: dict[str, Any] | None = None,
+    entry_quality_outcome: str | None = None,
+    database_outcome: str | None = None,
 ) -> dict[str, Any]:
     parsed_unexpected_warn_count = parse_nonnegative_int(
         entry_quality_gate.get("unexpected_warn_count")
@@ -212,6 +214,14 @@ def classify_gate_results(
         hard_failures.append("database_validation_report_inconsistent")
     if not validation_report.get("passed") and not failed_error_gates:
         hard_failures.append("unclassified_database_validation_failure")
+    if entry_quality_outcome is not None:
+        expected_outcome = "success" if entry_quality_gate.get("passed") else "failure"
+        if entry_quality_outcome != expected_outcome:
+            hard_failures.append("entry_quality_step_outcome_mismatch")
+    if database_outcome is not None:
+        expected_outcome = "success" if validation_report.get("passed") else "failure"
+        if database_outcome != expected_outcome:
+            hard_failures.append("database_validation_step_outcome_mismatch")
 
     masterfile_summary = masterfile_summary or {}
     source_details = masterfile_summary.get("source_details", {})
@@ -262,6 +272,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--validation-report", type=Path, required=True)
     parser.add_argument("--masterfile-summary", type=Path)
     parser.add_argument("--rotation-diff", type=Path)
+    parser.add_argument("--entry-quality-outcome", choices=("success", "failure"))
+    parser.add_argument("--database-outcome", choices=("success", "failure"))
     parser.add_argument("--github-output", type=Path)
     return parser.parse_args(argv)
 
@@ -273,6 +285,8 @@ def main(argv: list[str] | None = None) -> int:
         load_json(args.validation_report),
         load_json(args.masterfile_summary) if args.masterfile_summary else None,
         load_json(args.rotation_diff) if args.rotation_diff else None,
+        args.entry_quality_outcome,
+        args.database_outcome,
     )
     if args.github_output:
         with args.github_output.open("a", encoding="utf-8") as handle:

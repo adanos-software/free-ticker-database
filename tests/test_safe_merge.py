@@ -550,6 +550,34 @@ def test_reviewed_same_isin_symbol_and_venue_transitions_allow_removals() -> Non
     assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 2
 
 
+def test_reviewed_listing_change_allows_combined_symbol_and_venue_change() -> None:
+    isin = "US84862C3025"
+    before = [
+        row("NYSE", "SBEV", name="Splash Beverage Group", isin=isin),
+        row("NYSE MKT", "EDVA", name="Endovia Health Sciences"),
+    ]
+    after = [
+        row("NYSE MKT", "EDVA", name="Endovia Health Sciences", isin=isin),
+    ]
+    transition = reviewed_transition(
+        "NYSE::SBEV", "NYSE MKT::EDVA",
+        event_type="listing_changed", identity_type="same_isin", identity_value=isin,
+    )
+
+    report = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=[transition],
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-09-02T00:00:00Z",
+        allow_large_evidenced_removal=True,
+    )
+
+    assert report["status"] == "pass"
+    assert report["summary"]["generated_reviewed_transition_evidence_rows"] >= 1
+
+
 def test_reviewed_form25_delisting_requires_exact_absent_row_identity() -> None:
     isin = "CA09088U1093"
     before = [row("NYSE MKT", "BGI", name="Birks Group Inc", isin=isin)]

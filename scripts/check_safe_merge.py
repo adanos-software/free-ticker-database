@@ -146,6 +146,9 @@ def build_reviewed_transition_evidence(
         elif event_type == "symbol_changed":
             shape_is_valid = old_exchange == new_exchange and old_ticker != new_ticker
             field_name, old_value, new_value = "ticker", old_ticker, new_ticker
+        elif event_type == "listing_changed":
+            shape_is_valid = old_exchange != new_exchange and old_ticker != new_ticker
+            field_name, old_value, new_value = "listing_key", old_key, new_key
         else:
             continue
         if not shape_is_valid or (

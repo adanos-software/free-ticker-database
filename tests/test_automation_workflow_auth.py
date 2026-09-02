@@ -121,6 +121,32 @@ def test_masterfile_rotation_keeps_official_name_backfill_report_only() -> None:
     assert "python scripts/backfill_official_name_mismatches.py --exchange ASX --apply" not in workflow
 
 
+def test_nasdaq_refresh_routes_entry_quality_warnings_to_draft_review() -> None:
+    workflow = (WORKFLOW_DIR / "nasdaq-us-new-listings.yml").read_text(encoding="utf-8")
+
+    assert "id: entry_quality_gate" in workflow
+    assert "id: database_gates" in workflow
+    assert workflow.count("continue-on-error: true") >= 2
+    assert "python scripts/classify_masterfile_rotation_gates.py" in workflow
+    assert "--entry-quality-gate data/reports/entry_quality_gate.json" in workflow
+    assert "--validation-report data/reports/validation_report.json" in workflow
+    assert 'rm -f data/reports/entry_quality_gate.json' in workflow
+    assert 'rm -f data/reports/validation_report.json' in workflow
+    assert '--entry-quality-outcome "${{ steps.entry_quality_gate.outcome }}"' in workflow
+    assert '--database-outcome "${{ steps.database_gates.outcome }}"' in workflow
+    assert "draft: ${{ (steps.release.outputs.review_required == 'true'" in workflow
+    assert (
+        "steps.release.outputs.review_required != 'true'" in workflow
+    )
+    restore_step = workflow.index("Restore pull request after review conditions clear")
+    dispatch_step = workflow.index("Dispatch CI for automation pull request")
+    assert restore_step < dispatch_step
+    assert 'gh pr ready "$PR_NUMBER"' in workflow
+    assert "issues: write" in workflow
+    assert workflow.count("automation-review-required") >= 3
+    assert "if: steps.cpr.outputs.pull-request-number != ''\n        env:" in workflow[dispatch_step:]
+
+
 def test_listing_refreshes_pass_previous_official_reference_to_safe_merge() -> None:
     expected_snapshots = {
         "masterfile-rotation.yml": "/tmp/reference-before-masterfile-rotation.csv",

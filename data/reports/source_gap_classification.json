@@ -1,44 +1,46 @@
 {
   "summary": {
-    "generated_at": "2026-08-31T18:32:46Z",
-    "rows": 8699,
+    "generated_at": "2026-09-02T05:34:42Z",
+    "rows": 8705,
     "field_totals": {
-      "missing_etf_category": 36,
-      "missing_isin_primary": 752,
+      "missing_etf_category": 37,
+      "missing_isin_primary": 755,
       "missing_sector_stock": 1522,
-      "official_reference_gap": 6389
+      "official_reference_gap": 6391
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
       "adr_cdr_or_depositary_sector_gap": 16,
       "capital_pool_or_halted_identifier_gap": 33,
-      "debt_or_securitized_identifier_gap": 84,
+      "debt_or_securitized_identifier_gap": 85,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 5,
       "exchange_industry_source_gap": 62,
-      "fund_or_trust_identifier_gap": 273,
+      "fixed_income_etf_category_gap": 1,
+      "fund_or_trust_identifier_gap": 275,
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 286,
       "official_identifier_reference_unmatched_gap": 8,
-      "official_industry_taxonomy_unavailable_gap": 848,
+      "official_industry_taxonomy_unavailable_gap": 849,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 29,
-      "official_reference_symbol_collision_gap": 1191,
+      "official_reference_symbol_collision_gap": 1193,
       "official_reference_unmatched_source_gap": 5198,
       "otc_sector_source_gap": 554,
-      "shell_or_cpc_sector_gap": 37
+      "shell_or_cpc_sector_gap": 36
     },
     "class_by_field": {
       "missing_etf_category:digital_asset_etf_category_gap": 1,
       "missing_etf_category:equity_etf_category_gap": 5,
+      "missing_etf_category:fixed_income_etf_category_gap": 1,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 29,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 44,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
-      "missing_isin_primary:debt_or_securitized_identifier_gap": 84,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 273,
+      "missing_isin_primary:debt_or_securitized_identifier_gap": 85,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 275,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 286,
@@ -46,17 +48,17 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 5,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 848,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 849,
       "missing_sector_stock:otc_sector_source_gap": 554,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 37,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1191,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 36,
+      "official_reference_gap:official_reference_symbol_collision_gap": 1193,
       "official_reference_gap:official_reference_unmatched_source_gap": 5198
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
         {
           "exchange": "NYSE ARCA",
-          "rows": 22
+          "rows": 23
         },
         {
           "exchange": "NASDAQ",
@@ -94,11 +96,11 @@
         },
         {
           "exchange": "NYSE ARCA",
-          "rows": 74
+          "rows": 76
         },
         {
           "exchange": "NASDAQ",
-          "rows": 65
+          "rows": 66
         },
         {
           "exchange": "IDX",
@@ -106,7 +108,7 @@
         },
         {
           "exchange": "NYSE",
-          "rows": 56
+          "rows": 57
         },
         {
           "exchange": "BATS",
@@ -132,7 +134,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 45
+          "rows": 46
         },
         {
           "exchange": "XSTU",
@@ -181,15 +183,15 @@
           "rows": 214
         },
         {
+          "exchange": "NYSE ARCA",
+          "rows": 174
+        },
+        {
           "exchange": "AMS",
           "rows": 173
         },
         {
           "exchange": "NSE_IN",
-          "rows": 172
-        },
-        {
-          "exchange": "NYSE ARCA",
           "rows": 172
         },
         {
@@ -360,12 +362,12 @@
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
-        "field": "official_reference_gap",
-        "gap_class": "official_reference_unmatched_source_gap",
-        "exchange": "CSE_MA",
+        "field": "missing_isin_primary",
+        "gap_class": "fund_or_trust_identifier_gap",
+        "exchange": "NYSE ARCA",
         "rows": 65,
-        "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-        "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+        "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+        "source_gate": "Exact fund/trust symbol and product name with checksum."
       }
     ],
     "policy": {
@@ -662,6 +664,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::AESL;exchange=NYSE ARCA;ticker=AESL;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "NYSE ARCA::AGGM",
+      "ticker": "AGGM",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "iShares 1-10 Year U.S. Aggregate Bond ETF",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::AGGM;exchange=NYSE ARCA;ticker=AGGM;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -5715,6 +5734,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::GIXI",
+      "ticker": "GIXI",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Gix Internet Ltd. - Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::GIXI;exchange=NASDAQ;ticker=GIXI;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::GRSD",
       "ticker": "GRSD",
       "exchange": "NASDAQ",
@@ -5726,23 +5762,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::GRSD;exchange=NASDAQ;ticker=GRSD;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::IPXG",
-      "ticker": "IPXG",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Inection Point Acquisition Corp. VII - Class A Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::IPXG;exchange=NASDAQ;ticker=IPXG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -5964,6 +5983,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::RARE;exchange=NASDAQ;ticker=RARE;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::SGLD",
+      "ticker": "SGLD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Scorpio Gold Corporation - Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::SGLD;exchange=NASDAQ;ticker=SGLD;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -7007,6 +7043,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NYSE::MVPA",
+      "ticker": "MVPA",
+      "exchange": "NYSE",
+      "asset_type": "ETF",
+      "name": "Miller Value Partners Appreciation ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NYSE::MVPA;exchange=NYSE;ticker=MVPA;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NYSE::OTAX",
       "ticker": "OTAX",
       "exchange": "NYSE",
@@ -7993,6 +8046,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NYSE ARCA::AGGM",
+      "ticker": "AGGM",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "iShares 1-10 Year U.S. Aggregate Bond ETF",
+      "gap_class": "debt_or_securitized_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
+      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
+      "source_gap_context": "listing_key=NYSE ARCA::AGGM;exchange=NYSE ARCA;ticker=AGGM;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NYSE ARCA::AHBM",
       "ticker": "AHBM",
       "exchange": "NYSE ARCA",
@@ -8446,6 +8516,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=NYSE ARCA::HXE;exchange=NYSE ARCA;ticker=HXE;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NYSE ARCA::HXF",
+      "ticker": "HXF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Mast HedgeIndex Managed Futures Strategy ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NYSE ARCA::HXF;exchange=NYSE ARCA;ticker=HXF;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -9179,23 +9266,6 @@
       "source_gap_context": "listing_key=NYSE MKT::DLA;exchange=NYSE MKT;ticker=DLA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE MKT::EDVA",
-      "ticker": "EDVA",
-      "exchange": "NYSE MKT",
-      "asset_type": "Stock",
-      "name": "Endovia Health Sciences, Inc. Common Stock",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE MKT::EDVA;exchange=NYSE MKT;ticker=EDVA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -28274,6 +28344,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "NASDAQ::GIXI",
+      "ticker": "GIXI",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Gix Internet Ltd. - Ordinary Shares",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::GIXI;exchange=NASDAQ;ticker=GIXI;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "NASDAQ::GUAC",
       "ticker": "GUAC",
       "exchange": "NASDAQ",
@@ -28338,23 +28425,6 @@
       "source_gap_context": "listing_key=NASDAQ::IPVV;exchange=NASDAQ;ticker=IPVV;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NASDAQ::IPXG",
-      "ticker": "IPXG",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Inection Point Acquisition Corp. VII - Class A Ordinary Shares",
-      "gap_class": "shell_or_cpc_sector_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence.",
-      "source_gap_context": "listing_key=NASDAQ::IPXG;exchange=NASDAQ;ticker=IPXG;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -28574,6 +28644,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NASDAQ::RVYL;exchange=NASDAQ;ticker=RVYL;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::SGLD",
+      "ticker": "SGLD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Scorpio Gold Corporation - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::SGLD;exchange=NASDAQ;ticker=SGLD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -29016,23 +29103,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NYSE::VMRK;exchange=NYSE;ticker=VMRK;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NYSE MKT::EDVA",
-      "ticker": "EDVA",
-      "exchange": "NYSE MKT",
-      "asset_type": "Stock",
-      "name": "Endovia Health Sciences, Inc. Common Stock",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NYSE MKT::EDVA;exchange=NYSE MKT;ticker=EDVA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -80447,6 +80517,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NYSE ARCA::GBF",
+      "ticker": "GBF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "iShares Government/Credit Bond ETF",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::GBF;exchange=NYSE ARCA;ticker=GBF;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NYSE ARCA::GEOA",
       "ticker": "GEOA",
       "exchange": "NYSE ARCA",
@@ -81412,6 +81499,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::MTUL;exchange=NYSE ARCA;ticker=MTUL;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE ARCA::MVPA",
+      "ticker": "MVPA",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Miller Value Partners Appreciation ETF",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::MVPA;exchange=NYSE ARCA;ticker=MVPA;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",

@@ -59,6 +59,30 @@ def test_classify_gate_results_routes_only_new_warnings_to_manual_review() -> No
     assert result["hard_failures"] == []
 
 
+@pytest.mark.parametrize(
+    ("entry_outcome", "database_outcome", "expected_failure"),
+    [
+        ("success", "failure", "entry_quality_step_outcome_mismatch"),
+        ("failure", "success", "database_validation_step_outcome_mismatch"),
+    ],
+)
+def test_classify_gate_results_rejects_step_outcome_report_mismatch(
+    entry_outcome: str,
+    database_outcome: str,
+    expected_failure: str,
+) -> None:
+    subjects = [subject("LSE::0I4T")]
+    result = classify_gate_results(
+        entry_gate(unexpected=1, unexpected_warning_subjects=subjects),
+        validation_report("entry_quality_unexpected_warn_count", unexpected_warn_count=1),
+        entry_quality_outcome=entry_outcome,
+        database_outcome=database_outcome,
+    )
+
+    assert result["passed"] is False
+    assert expected_failure in result["hard_failures"]
+
+
 def subject(listing_key: str, issue_type: str = "country_isin_mismatch") -> dict[str, str]:
     return {"listing_key": listing_key, "issue_type": issue_type}
 

@@ -8,6 +8,7 @@ on:
 permissions:
   actions: write
   contents: write
+  issues: write
   pull-requests: write
 
 jobs:
@@ -70,15 +71,52 @@ jobs:
           python scripts/build_adanos_ticker_reference.py
           python scripts/update_readme_snapshot.py
 
-      - name: Validate release gates
+      - name: Validate technical release gates
         if: steps.apply.outputs.new_listings_applied == 'true'
         run: |
           python -m pytest tests/ -q
-          python scripts/check_entry_quality_gate.py
           python scripts/check_readme_snapshot.py
           python scripts/check_commercial_source_options.py
           python scripts/check_exchange_scope_decisions.py
+
+      - name: Check entry quality gate
+        if: steps.apply.outputs.new_listings_applied == 'true'
+        id: entry_quality_gate
+        continue-on-error: true
+        run: |
+          rm -f data/reports/entry_quality_gate.json
+          python scripts/check_entry_quality_gate.py
+
+      - name: Validate database release gates
+        if: steps.apply.outputs.new_listings_applied == 'true'
+        id: database_gates
+        continue-on-error: true
+        run: |
+          rm -f data/reports/validation_report.json
           python scripts/validate_database.py
+
+      - name: Classify release gate result
+        if: steps.apply.outputs.new_listings_applied == 'true'
+        id: release
+        run: |
+          python scripts/classify_masterfile_rotation_gates.py \
+            --entry-quality-gate data/reports/entry_quality_gate.json \
+            --validation-report data/reports/validation_report.json \
+            --entry-quality-outcome "${{ steps.entry_quality_gate.outcome }}" \
+            --database-outcome "${{ steps.database_gates.outcome }}" \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Summarize manual data review
+        if: >-
+          steps.apply.outputs.new_listings_applied == 'true' &&
+          steps.release.outputs.review_required == 'true'
+        run: |
+          {
+            echo "### Nasdaq refresh needs data review"
+            echo
+            echo "The refresh completed technically, but introduced ${{ steps.release.outputs.unexpected_warn_count }} new entry-quality warning(s)."
+            echo "The generated data diff will be preserved in a draft pull request instead of failing the scheduled workflow."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Detect substantive changes
         id: changes
@@ -110,7 +148,7 @@ jobs:
           delete-branch: true
           commit-message: Update Nasdaq US new listings
           title: "Update Nasdaq US new listings"
-          draft: ${{ steps.apply.outputs.coverage_expansion_rows != '0' && 'always-true' || 'false' }}
+          draft: ${{ (steps.release.outputs.review_required == 'true' || steps.apply.outputs.coverage_expansion_rows != '0') && 'always-true' || 'false' }}
           body: |
             Automated Nasdaq Trader US listing refresh.
 
@@ -127,21 +165,46 @@ jobs:
             - potentially foreign share lines do not receive an unsupported US domicile default
             - no Units, Rights, Warrants, Preferreds, Notes, or non-stock-like names
 
+            Entry-quality review required: `${{ steps.release.outputs.review_required }}`
+            Unexpected entry-quality warnings: `${{ steps.release.outputs.unexpected_warn_count }}`
+
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
 
-      - name: Require manual review for listing collisions
+      - name: Require manual review for data warnings or listing collisions
         if: >-
           steps.cpr.outputs.pull-request-number != '' &&
-          steps.apply.outputs.coverage_expansion_rows != '0'
+          (steps.release.outputs.review_required == 'true' ||
+          steps.apply.outputs.coverage_expansion_rows != '0')
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
+          gh label create automation-review-required \
+            --color D4C5F9 \
+            --description "Automation data changes require manual review" \
+            --force
+          gh pr edit "$PR_NUMBER" --add-label automation-review-required
           if [ "$(gh pr view "$PR_NUMBER" --json autoMergeRequest --jq '.autoMergeRequest != null')" = "true" ]; then
             gh pr merge "$PR_NUMBER" --disable-auto
           fi
           if [ "$(gh pr view "$PR_NUMBER" --json isDraft --jq '.isDraft')" != "true" ]; then
             gh pr ready "$PR_NUMBER" --undo
+          fi
+
+      - name: Restore pull request after review conditions clear
+        if: >-
+          steps.cpr.outputs.pull-request-number != '' &&
+          steps.release.outputs.review_required != 'true' &&
+          steps.apply.outputs.coverage_expansion_rows == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          if [ "$(gh pr view "$PR_NUMBER" --json labels --jq 'any(.labels[]; .name == "automation-review-required")')" = "true" ]; then
+            if [ "$(gh pr view "$PR_NUMBER" --json isDraft --jq '.isDraft')" = "true" ]; then
+              gh pr ready "$PR_NUMBER"
+            fi
+            gh pr edit "$PR_NUMBER" --remove-label automation-review-required
           fi
 
       - name: Dispatch CI for automation pull request
@@ -153,6 +216,7 @@ jobs:
       - name: Enable automerge
         if: >-
           steps.cpr.outputs.pull-request-number != '' &&
+          steps.release.outputs.review_required != 'true' &&
           steps.apply.outputs.coverage_expansion_rows == '0'
         env:
           GH_TOKEN: ${{ github.token }}
