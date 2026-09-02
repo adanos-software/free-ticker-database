@@ -32,7 +32,9 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert 'steps.release.outputs.unexpected_warn_count }}" = "0"' in no_change_guard
     assert "steps.release.outputs.review_required" not in no_change_guard
     assert "draft: ${{ steps.release.outputs.review_required == 'true' }}" in workflow
-    assert 'gh pr ready "${{ steps.cpr.outputs.pull-request-number }}" --undo' in workflow
+    assert 'gh pr ready "$PR_NUMBER" --undo' in workflow
+    assert 'gh pr edit "$PR_NUMBER" --add-label automation-review-required' in workflow
+    assert 'gh pr edit "$PR_NUMBER" --remove-label automation-review-required' in workflow
     assert 'diff_count" = "0"' in workflow
     assert "source-only review remains in the summary" in workflow
     assert "timestamp-only churn discarded" in workflow
