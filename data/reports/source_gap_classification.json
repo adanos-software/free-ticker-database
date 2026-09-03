@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-09-02T11:44:45Z",
-    "rows": 8733,
+    "generated_at": "2026-09-03T11:44:32Z",
+    "rows": 8739,
     "field_totals": {
-      "missing_etf_category": 41,
-      "missing_isin_primary": 761,
-      "missing_sector_stock": 1524,
+      "missing_etf_category": 43,
+      "missing_isin_primary": 764,
+      "missing_sector_stock": 1525,
       "official_reference_gap": 6407
     },
     "class_totals": {
@@ -14,43 +14,43 @@
       "capital_pool_or_halted_identifier_gap": 33,
       "debt_or_securitized_identifier_gap": 85,
       "digital_asset_etf_category_gap": 1,
-      "equity_etf_category_gap": 7,
+      "equity_etf_category_gap": 8,
       "exchange_industry_source_gap": 62,
       "fixed_income_etf_category_gap": 1,
-      "fund_or_trust_identifier_gap": 279,
+      "fund_or_trust_identifier_gap": 281,
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 288,
+      "official_identifier_not_exposed_source_gap": 289,
       "official_identifier_reference_unmatched_gap": 8,
       "official_industry_taxonomy_unavailable_gap": 851,
       "official_product_reference_unmatched_category_gap": 1,
-      "official_product_taxonomy_unavailable_gap": 31,
+      "official_product_taxonomy_unavailable_gap": 32,
       "official_reference_symbol_collision_gap": 1199,
       "official_reference_unmatched_source_gap": 5208,
       "otc_sector_source_gap": 554,
-      "shell_or_cpc_sector_gap": 36
+      "shell_or_cpc_sector_gap": 37
     },
     "class_by_field": {
       "missing_etf_category:digital_asset_etf_category_gap": 1,
-      "missing_etf_category:equity_etf_category_gap": 7,
+      "missing_etf_category:equity_etf_category_gap": 8,
       "missing_etf_category:fixed_income_etf_category_gap": 1,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 31,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 32,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 44,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 85,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 279,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 281,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 288,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 289,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 8,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 5,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 851,
       "missing_sector_stock:otc_sector_source_gap": 554,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 36,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 37,
       "official_reference_gap:official_reference_symbol_collision_gap": 1199,
       "official_reference_gap:official_reference_unmatched_source_gap": 5208
     },
@@ -58,7 +58,7 @@
       "missing_etf_category": [
         {
           "exchange": "NYSE ARCA",
-          "rows": 26
+          "rows": 28
         },
         {
           "exchange": "BATS",
@@ -92,7 +92,7 @@
         },
         {
           "exchange": "NYSE ARCA",
-          "rows": 79
+          "rows": 81
         },
         {
           "exchange": "TSX",
@@ -100,7 +100,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 67
+          "rows": 68
         },
         {
           "exchange": "IDX",
@@ -134,7 +134,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 47
+          "rows": 48
         },
         {
           "exchange": "XSTU",
@@ -354,20 +354,20 @@
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
+        "field": "missing_isin_primary",
+        "gap_class": "fund_or_trust_identifier_gap",
+        "exchange": "NYSE ARCA",
+        "rows": 70,
+        "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+        "source_gate": "Exact fund/trust symbol and product name with checksum."
+      },
+      {
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "BSE_IN",
         "rows": 70,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-      },
-      {
-        "field": "missing_isin_primary",
-        "gap_class": "fund_or_trust_identifier_gap",
-        "exchange": "NYSE ARCA",
-        "rows": 68,
-        "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-        "source_gate": "Exact fund/trust symbol and product name with checksum."
       }
     ],
     "policy": {
@@ -974,6 +974,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "NYSE ARCA::PJSM",
+      "ticker": "PJSM",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "PGIM Jennison Small-Mid Cap Core Equity ETF",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::PJSM;exchange=NYSE ARCA;ticker=PJSM;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "NYSE ARCA::REIX",
       "ticker": "REIX",
       "exchange": "NYSE ARCA",
@@ -1019,6 +1036,23 @@
       "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
       "source_gap_context": "listing_key=NYSE ARCA::TIPF;exchange=NYSE ARCA;ticker=TIPF;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "NYSE ARCA::TSCZ",
+      "ticker": "TSCZ",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "T. Rowe Price Securitized Income ETF",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "source_gap_context": "listing_key=NYSE ARCA::TSCZ;exchange=NYSE ARCA;ticker=TSCZ;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
     },
@@ -5938,6 +5972,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::NSAI",
+      "ticker": "NSAI",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "NorthStrive Acquisition Corp I. - Class A Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::NSAI;exchange=NASDAQ;ticker=NSAI;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::OFAL",
       "ticker": "OFAL",
       "exchange": "NASDAQ",
@@ -8913,6 +8964,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NYSE ARCA::PJSM",
+      "ticker": "PJSM",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "PGIM Jennison Small-Mid Cap Core Equity ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NYSE ARCA::PJSM;exchange=NYSE ARCA;ticker=PJSM;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NYSE ARCA::QVMT",
       "ticker": "QVMT",
       "exchange": "NYSE ARCA",
@@ -9179,6 +9247,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=NYSE ARCA::TSCV;exchange=NYSE ARCA;ticker=TSCV;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NYSE ARCA::TSCZ",
+      "ticker": "TSCZ",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "T. Rowe Price Securitized Income ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NYSE ARCA::TSCZ;exchange=NYSE ARCA;ticker=TSCZ;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -28695,6 +28780,23 @@
       "recommended_next_source": "Current issuer business description or official industry classification.",
       "source_gate": "Canonical sector requires active operating-business evidence.",
       "source_gap_context": "listing_key=NASDAQ::NCO;exchange=NASDAQ;ticker=NCO;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::NSAI",
+      "ticker": "NSAI",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "NorthStrive Acquisition Corp I. - Class A Ordinary Shares",
+      "gap_class": "shell_or_cpc_sector_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Current issuer business description or official industry classification.",
+      "source_gate": "Canonical sector requires active operating-business evidence.",
+      "source_gap_context": "listing_key=NASDAQ::NSAI;exchange=NASDAQ;ticker=NSAI;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
     },
