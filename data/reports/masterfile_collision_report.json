@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99380,
-    "matched": 65157,
-    "collisions": 13826,
-    "missing": 20397
+    "official_symbols": 99384,
+    "matched": 65155,
+    "collisions": 13827,
+    "missing": 20402
   },
   "exchanges": [
     {
@@ -4755,10 +4755,10 @@
     },
     {
       "exchange": "SET",
-      "official_symbols": 944,
+      "official_symbols": 945,
       "matched": 774,
       "collisions": 133,
-      "missing": 37,
+      "missing": 38,
       "collision_examples": [
         {
           "ticker": "AAI",
@@ -4901,10 +4901,10 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 746,
-      "matched": 610,
-      "collisions": 122,
-      "missing": 14,
+      "official_symbols": 749,
+      "matched": 609,
+      "collisions": 123,
+      "missing": 17,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4997,8 +4997,18 @@
       ],
       "missing_examples": [
         {
+          "ticker": "9PQ",
+          "name": "XMH Hldgs",
+          "exchange": "SGX"
+        },
+        {
           "ticker": "AMQ",
           "name": "Ambiq Micro",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "B96",
+          "name": "Amova AsiaCredit USD",
           "exchange": "SGX"
         },
         {
@@ -5035,16 +5045,6 @@
           "ticker": "UGBD",
           "name": "Grab US SDR 2to1",
           "exchange": "SGX"
-        },
-        {
-          "ticker": "UGGD",
-          "name": "Sea US SDR 50to1",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "UGS",
-          "name": "ULTRAGREEN AI SGD",
-          "exchange": "SGX"
         }
       ]
     },
@@ -5060,9 +5060,9 @@
     {
       "exchange": "TADAWUL",
       "official_symbols": 413,
-      "matched": 198,
+      "matched": 197,
       "collisions": 210,
-      "missing": 5,
+      "missing": 6,
       "collision_examples": [
         {
           "ticker": "1201",
@@ -5160,6 +5160,11 @@
         {
           "ticker": "4190",
           "name": "JARIR",
+          "exchange": "TADAWUL"
+        },
+        {
+          "ticker": "4328",
+          "name": "LADUN",
           "exchange": "TADAWUL"
         },
         {

@@ -1,10 +1,10 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-09-02T06:35:57Z`
+- Generated at: `2026-09-04T11:16:47Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `59`
-- Rotation vanished rows: `8`
-- Backlog rows: `51`
-- Still in database: `56`
+- Vanished reference rows: `85`
+- Rotation vanished rows: `29`
+- Backlog rows: `56`
+- Still in database: `64`
 - Applied drops: `0`
 
 ## Classifier counts
@@ -12,8 +12,8 @@
 | Action | Rows |
 |---|---:|
 | blocked_suspended_kept_by_policy | 2 |
-| manual_rename_vs_delisting_required | 54 |
-| not_in_database | 3 |
+| manual_rename_vs_delisting_required | 62 |
+| not_in_database | 21 |
 
 ## Rows still in the database
 
@@ -53,15 +53,23 @@
 | FSX | W2U1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | WED | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00195 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
-| ICE_IS | SIMINN | nasdaq_nordic_iceland_shares | manual_rename_vs_delisting_required | rotation |
+| ICE_IS | SIMINN | nasdaq_nordic_iceland_shares | manual_rename_vs_delisting_required | backlog |
 | JSE | RWESG | jse_etf_list | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 269620 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KRX | 397420 | krx_etf_finder | manual_rename_vs_delisting_required | backlog |
-| LSE | 0JTT | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
+| LSE | 0JTT | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
 | OSL | PRYME | euronext_equities | manual_rename_vs_delisting_required | backlog |
-| STO | 2CUREX | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | rotation |
-| STO | ANOT | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | rotation |
-| STO | GUARD | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | rotation |
+| SET | COLOR | set_listed_companies | manual_rename_vs_delisting_required | rotation |
+| SGX | LIW | sgx_securities_prices | manual_rename_vs_delisting_required | rotation |
+| SSE | 560650 | sse_etf_list | manual_rename_vs_delisting_required | rotation |
+| STO | 2CUREX | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
+| STO | ANOT | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
+| STO | C100 | spotlight_companies_directory | manual_rename_vs_delisting_required | rotation |
+| STO | GUARD | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
+| STO | PLEJD | spotlight_companies_directory | manual_rename_vs_delisting_required | rotation |
+| STO | SERV | spotlight_companies_directory | manual_rename_vs_delisting_required | rotation |
+| STO | SMOL | spotlight_companies_directory | manual_rename_vs_delisting_required | rotation |
+| TADAWUL | 9590 | tadawul_main_market_watch | manual_rename_vs_delisting_required | rotation |
 | TSE | 2763 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 311A | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 4171 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
@@ -79,6 +87,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 8; still-in-database backlog carried: 51.
-- Still in database: 56; not in database: 3.
+- Rotation vanished rows: 29; still-in-database backlog carried: 56.
+- Still in database: 64; not in database: 21.
 - Applied drops from this classifier: 0.

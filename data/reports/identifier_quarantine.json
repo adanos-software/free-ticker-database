@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-03T11:41:59Z",
+  "generated_at": "2026-09-04T11:18:11Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1552,
   "decision_rows": 5055,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1330,
-    "proposed_clear_conflicting_identifier": 751,
-    "quarantined_unresolved_identifier": 2974
+    "kept_listing_keyed_identifier": 1329,
+    "proposed_clear_conflicting_identifier": 750,
+    "quarantined_unresolved_identifier": 2976
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 751,
-  "quarantined_rows": 2974,
-  "retained_rows": 1330,
+  "proposed_clear_rows": 750,
+  "quarantined_rows": 2976,
+  "retained_rows": 1329,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -48512,9 +48512,9 @@
       "exchange": "FSX",
       "name": "MEDIMI AB AK",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0001860511"
     },
     {
@@ -48525,9 +48525,9 @@
       "exchange": "STO",
       "name": "Servana Ab",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "SE0001860511"
     },
     {
