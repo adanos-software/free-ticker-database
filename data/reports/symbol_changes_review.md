@@ -1,6 +1,6 @@
 # Symbol Changes Review
 
-Generated at: `2026-09-01T11:36:28Z`
+Generated at: `2026-09-04T11:15:10Z`
 
 Daily secondary-source symbol-change feed. Rows are review signals, not automatic canonical ticker updates.
 
@@ -8,18 +8,18 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Metric | Rows |
 |---|---:|
-| Fetched rows | 238 |
-| Merged history rows | 338 |
-| Review rows | 338 |
+| Fetched rows | 234 |
+| Merged history rows | 339 |
+| Review rows | 339 |
 | Direct symbol-change apply allowed rows | 0 |
 
 ## Symbol-Change Backlog
 
 - Status: `listing_keyed_symbol_change_review_queue_open`
-- Rows: `338`
+- Rows: `339`
 - Rename/delisting review rows: `2`
 - Duplicate/cross-listing review rows: `53`
-- Already reflected audit rows: `236`
+- Already reflected audit rows: `237`
 - Out-of-scope collision blocked rows: `24`
 - Missing source-scope mapping rows: `10`
 - No-dataset-match documentation rows: `13`
@@ -31,7 +31,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Status | Rows |
 |---|---:|
-| new_symbol_present_old_symbol_missing | 239 |
+| new_symbol_present_old_symbol_missing | 240 |
 | no_matching_listing | 14 |
 | old_and_new_symbols_present | 57 |
 | old_symbol_present_new_symbol_missing | 10 |
@@ -41,7 +41,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Queue | Rows |
 |---|---:|
-| audit_already_reflected | 236 |
+| audit_already_reflected | 237 |
 | blocked_missing_source_scope_mapping | 10 |
 | blocked_out_of_scope_symbol_collision | 24 |
 | document_no_dataset_match | 13 |
@@ -54,7 +54,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 |---|---:|
 | audit_already_reflected:older_than_90d | 188 |
 | audit_already_reflected:recent_30d | 15 |
-| audit_already_reflected:recent_7d | 9 |
+| audit_already_reflected:recent_7d | 10 |
 | audit_already_reflected:recent_90d | 24 |
 | blocked_missing_source_scope_mapping:older_than_90d | 8 |
 | blocked_missing_source_scope_mapping:recent_30d | 1 |
@@ -77,7 +77,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Queue / Priority | Rows |
 |---|---:|
-| audit_already_reflected:P4 | 236 |
+| audit_already_reflected:P4 | 237 |
 | blocked_missing_source_scope_mapping:P2 | 10 |
 | blocked_out_of_scope_symbol_collision:P2 | 24 |
 | document_no_dataset_match:P3 | 13 |
@@ -89,7 +89,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | Queue / Scope Status | Rows |
 |---|---:|
 | audit_already_reflected:global_symbol_collision_outside_source_scope | 55 |
-| audit_already_reflected:matches_within_source_scope | 181 |
+| audit_already_reflected:matches_within_source_scope | 182 |
 | blocked_missing_source_scope_mapping:unscoped_source_hint | 10 |
 | blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope | 24 |
 | document_no_dataset_match:matches_within_source_scope | 13 |
@@ -100,7 +100,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Queue / Match Status | Rows |
 |---|---:|
-| audit_already_reflected:new_symbol_present_old_symbol_missing | 236 |
+| audit_already_reflected:new_symbol_present_old_symbol_missing | 237 |
 | blocked_missing_source_scope_mapping:new_symbol_present_old_symbol_missing | 3 |
 | blocked_missing_source_scope_mapping:no_matching_listing | 1 |
 | blocked_missing_source_scope_mapping:old_and_new_symbols_present | 4 |
@@ -115,7 +115,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Queue | Listing-Key Status | Rows |
 |---|---|---:|
-| audit_already_reflected | new_scoped_listing_key_only | 236 |
+| audit_already_reflected | new_scoped_listing_key_only | 237 |
 | blocked_missing_source_scope_mapping | new_scoped_listing_key_only | 3 |
 | blocked_missing_source_scope_mapping | no_scoped_listing_key_match | 1 |
 | blocked_missing_source_scope_mapping | old_and_new_scoped_listing_keys_present | 4 |
@@ -131,7 +131,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | Queue | Source Hint | Rows |
 |---|---|---:|
 | audit_already_reflected | OTC | 13 |
-| audit_already_reflected | US_LISTED | 223 |
+| audit_already_reflected | US_LISTED | 224 |
 | blocked_missing_source_scope_mapping | missing | 10 |
 | blocked_out_of_scope_symbol_collision | OTC | 17 |
 | blocked_out_of_scope_symbol_collision | US_LISTED | 7 |
@@ -144,7 +144,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Queue | Source Confidence | Rows |
 |---|---|---:|
-| audit_already_reflected | secondary_review | 236 |
+| audit_already_reflected | secondary_review | 237 |
 | blocked_missing_source_scope_mapping | secondary_review | 10 |
 | blocked_out_of_scope_symbol_collision | secondary_review | 24 |
 | document_no_dataset_match | secondary_review | 13 |
@@ -155,7 +155,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Queue | Strategy | Rows |
 |---|---|---:|
-| audit_already_reflected | audit_already_reflected_no_canonical_change | 236 |
+| audit_already_reflected | audit_already_reflected_no_canonical_change | 237 |
 | blocked_missing_source_scope_mapping | map_source_exchange_scope_before_symbol_review | 10 |
 | blocked_out_of_scope_symbol_collision | block_until_source_scope_and_non_symbol_identity_resolved | 24 |
 | document_no_dataset_match | document_no_dataset_match_without_canonical_action | 13 |
@@ -183,7 +183,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | document_no_dataset_match | P3 | recent_90d | matches_within_source_scope | document_no_dataset_match_without_canonical_action | official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event | Official exchange scope mapping, or document the event as outside the dataset. | No dataset action without scoped official mapping to an existing or intended listing. | 2 |
 | document_no_dataset_match | P3 | older_than_90d | matches_within_source_scope | document_no_dataset_match_without_canonical_action | official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event | Official exchange scope mapping, or document the event as outside the dataset. | No dataset action without scoped official mapping to an existing or intended listing. | 8 |
 | audit_already_reflected | P4 | recent_7d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 5 |
-| audit_already_reflected | P4 | recent_7d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 4 |
+| audit_already_reflected | P4 | recent_7d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 5 |
 | audit_already_reflected | P4 | recent_30d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 12 |
 | audit_already_reflected | P4 | recent_30d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 3 |
 | audit_already_reflected | P4 | recent_90d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 21 |
@@ -198,7 +198,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | P1 | action_required_duplicate_or_cross_listing | 53 |
 | P1 | action_required_possible_rename_or_delisting | 2 |
 | P4 | already_reflected_in_scope_with_global_symbol_collision | 55 |
-| P4 | already_reflected_in_source_scope | 181 |
+| P4 | already_reflected_in_source_scope | 182 |
 | P2 | hold_out_of_scope_symbol_collision | 18 |
 | P2 | manual_review_due_to_out_of_scope_collision | 6 |
 | P2 | manual_scope_mapping_required | 10 |
@@ -211,7 +211,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | P1 | 55 |
 | P2 | 34 |
 | P3 | 13 |
-| P4 | 236 |
+| P4 | 237 |
 
 ## Recency
 
@@ -219,7 +219,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 |---|---:|
 | older_than_90d | 220 |
 | recent_30d | 34 |
-| recent_7d | 45 |
+| recent_7d | 46 |
 | recent_90d | 39 |
 
 ## Time-Sensitive P1 Review
@@ -259,14 +259,14 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | P3:recent_90d | 2 |
 | P4:older_than_90d | 188 |
 | P4:recent_30d | 15 |
-| P4:recent_7d | 9 |
+| P4:recent_7d | 10 |
 | P4:recent_90d | 24 |
 
 ## Apply Eligibility
 
 | Eligibility | Rows |
 |---|---:|
-| audit_only_no_apply | 236 |
+| audit_only_no_apply | 237 |
 | blocked_until_exchange_scope_resolved | 34 |
 | no_dataset_action_without_scope_mapping | 13 |
 | requires_official_venue_confirmation | 55 |
@@ -275,7 +275,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Readiness | Rows |
 |---|---:|
-| audit_only_no_canonical_change | 236 |
+| audit_only_no_canonical_change | 237 |
 | blocked_until_listing_keyed_official_symbol_change_evidence | 55 |
 | blocked_until_source_exchange_scope_and_non_symbol_identity_evidence | 34 |
 | document_or_ignore_until_scoped_official_dataset_match | 13 |
@@ -290,7 +290,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Evidence Gate | Rows |
 |---|---:|
-| audit_only_confirm_no_canonical_change_needed | 236 |
+| audit_only_confirm_no_canonical_change_needed | 237 |
 | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | 53 |
 | official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | 2 |
 | official_exchange_scope_and_non_symbol_identity_evidence_before_apply | 24 |
@@ -301,7 +301,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Action | Rows |
 |---|---:|
-| already_reflected_or_new_symbol_added_in_source_scope | 239 |
+| already_reflected_or_new_symbol_added_in_source_scope | 240 |
 | do_not_apply_from_symbol_match_review_exchange_scope_first | 18 |
 | ignore_or_map_exchange_scope_before_applying | 14 |
 | review_duplicate_or_cross_listing_state_in_source_scope | 57 |
@@ -312,7 +312,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | Scope Status | Rows |
 |---|---:|
 | global_symbol_collision_outside_source_scope | 79 |
-| matches_within_source_scope | 249 |
+| matches_within_source_scope | 250 |
 | unscoped_source_hint | 10 |
 
 ## Policy
