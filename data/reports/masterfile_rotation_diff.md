@@ -1,30 +1,39 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-09-02T06:35:57Z`
-- New rows: `9`
-- Vanished rows: `8`
-- Changed rows: `4`
+- Generated at: `2026-09-04T11:16:46Z`
+- New rows: `46`
+- Vanished rows: `29`
+- Changed rows: `30`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| isin_change | 1 |
-| name_change | 3 |
+| isin_change | 9 |
+| name_change | 21 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| lse_price_explorer | 6 |
-| nasdaq_nordic_iceland_shares | 1 |
-| nasdaq_nordic_stockholm_shares | 2 |
+| set_dr_search | 7 |
+| set_listed_companies | 2 |
+| set_stock_search | 1 |
+| sgx_securities_prices | 4 |
+| spotlight_companies_directory | 10 |
+| sse_a_share_list | 2 |
+| sse_etf_list | 7 |
+| szse_etf_list | 11 |
+| tadawul_main_market_watch | 2 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| lse_price_explorer | 3 |
-| nasdaq_nordic_iceland_shares | 1 |
-| nasdaq_nordic_stockholm_shares | 4 |
+| set_listed_companies | 1 |
+| sgx_securities_prices | 1 |
+| six_etf_products | 11 |
+| spotlight_companies_directory | 13 |
+| sse_etf_list | 1 |
+| tadawul_main_market_watch | 2 |

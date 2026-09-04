@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-03T11:44:19Z",
+    "generated_at": "2026-09-04T11:23:09Z",
     "rows": 92082,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80566,
-      "source_gap": 11485,
+      "pass": 80562,
+      "source_gap": 11489,
       "warn": 31
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4626,
-      "official_reference": 82388,
+      "identifier_enriched": 4627,
+      "official_reference": 82384,
       "scoped_source_gap": 238,
-      "valid_isin": 4830
+      "valid_isin": 4833
     },
     "severity_counts": {
       "high": 6,
       "medium": 26,
-      "source_gap": 11813
+      "source_gap": 11817
     },
     "issue_counts": {
-      "official_reference_gap": 6407,
+      "official_reference_gap": 6411,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1301,
       "expected_missing_primary_isin": 764,
@@ -14837,6 +14837,24 @@
       ]
     },
     {
+      "listing_key": "SSE::560650",
+      "ticker": "560650",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "SSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "XSTU::56S1",
       "ticker": "56S1",
       "exchange": "XSTU",
@@ -18335,24 +18353,6 @@
           "field": "exchange",
           "value": "FSX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::703",
-      "ticker": "703",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }
