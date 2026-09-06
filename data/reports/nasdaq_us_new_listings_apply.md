@@ -1,21 +1,24 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-09-03T11:40:12Z`
-- New supported rows: `5`
-- Accepted rows: `3`
-- Skipped rows: `2`
+- Generated at: `2026-09-06T11:18:16Z`
+- New supported rows: `8`
+- Accepted rows: `5`
+- Skipped rows: `3`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
 | Ticker | Exchange | Name | Asset type | Target | Source |
 |---|---|---|---|---|---|
-| NSAI | NASDAQ | NorthStrive Acquisition Corp I. - Class A Ordinary Shares | Stock | supplement | nasdaq_listed |
-| PJSM | NYSE ARCA | PGIM Jennison Small-Mid Cap Core Equity ETF | ETF | supplement | nasdaq_other_listed |
-| TSCZ | NYSE ARCA | T. Rowe Price Securitized Income ETF | ETF | supplement | nasdaq_other_listed |
+| HQDG | NASDAQ | Raub Brock Dividend Growth ETF | ETF | supplement | nasdaq_listed |
+| JONE | NASDAQ | Jones Ventures INTL Acquisition1 Corp - Class A Ordinary Shares | Stock | supplement | nasdaq_listed |
+| SGRX | NASDAQ | SANGRIX INC. - Class A Ordinary Shares | Stock | supplement | nasdaq_listed |
+| XTND | NYSE | Xtend AI Robotics, Inc. Common Stock | Stock | supplement | nasdaq_other_listed |
+| PJIN | NYSE ARCA | PGIM Jennison International Core Equity ETF | ETF | supplement | nasdaq_other_listed |
 
 ## Skipped
 
 | Reason | Rows |
 |---|---:|
 | excluded_non_common_stock | 2 |
+| temporary_when_issued_line | 1 |
