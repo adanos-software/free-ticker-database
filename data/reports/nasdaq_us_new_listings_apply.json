@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-09-03T11:40:12Z",
+    "generated_at": "2026-09-06T11:18:16Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -11,24 +11,41 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 5,
-    "accepted_rows": 3,
-    "skipped_rows": 2,
+    "new_supported_rows": 8,
+    "accepted_rows": 5,
+    "skipped_rows": 3,
     "accepted_by_exchange": {
-      "NASDAQ": 1,
-      "NYSE ARCA": 2
+      "NASDAQ": 3,
+      "NYSE": 1,
+      "NYSE ARCA": 1
     },
     "accepted_by_target": {
-      "supplement": 3
+      "supplement": 5
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 2
+      "excluded_non_common_stock": 2,
+      "temporary_when_issued_line": 1
     }
   },
   "accepted": [
     {
-      "ticker": "NSAI",
-      "name": "NorthStrive Acquisition Corp I. - Class A Ordinary Shares",
+      "ticker": "HQDG",
+      "name": "Raub Brock Dividend Growth ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "JONE",
+      "name": "Jones Ventures INTL Acquisition1 Corp - Class A Ordinary Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -42,10 +59,25 @@
       "apply_target": "supplement"
     },
     {
-      "ticker": "PJSM",
-      "name": "PGIM Jennison Small-Mid Cap Core Equity ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
+      "ticker": "SGRX",
+      "name": "SANGRIX INC. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "XTND",
+      "name": "Xtend AI Robotics, Inc. Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
       "sector": "",
       "country": "United States",
       "country_code": "US",
@@ -57,8 +89,8 @@
       "apply_target": "supplement"
     },
     {
-      "ticker": "TSCZ",
-      "name": "T. Rowe Price Securitized Income ETF",
+      "ticker": "PJIN",
+      "name": "PGIM Jennison International Core Equity ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -74,19 +106,27 @@
   ],
   "skipped": [
     {
-      "ticker": "NSAIR",
+      "ticker": "JONER",
       "exchange": "NASDAQ",
-      "name": "NorthStrive Acquisition Corp I. - Rights",
+      "name": "Jones Ventures INTL Acquisition1 Corp - Rights",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "NSAIW",
-      "exchange": "NASDAQ",
-      "name": "NorthStrive Acquisition Corp I. - Warrants",
+      "ticker": "NMCO.V",
+      "exchange": "NYSE",
+      "name": "Nuveen Municipal Credit Opportunities Fund Rights (expiring October 7, 2026) Rights when issued",
       "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "temporary_when_issued_line"
+    },
+    {
+      "ticker": "RIV.R",
+      "exchange": "NYSE",
+      "name": "RiverNorth Opportunities Fund, Inc. Rights (expiring September 23, 2026) Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
       "skip_reason": "excluded_non_common_stock"
     }
   ]

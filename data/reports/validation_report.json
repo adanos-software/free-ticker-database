@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-03T11:45:46Z",
+    "generated_at": "2026-09-06T11:22:35Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
-    "ticker_rows": 63867,
-    "listing_rows": 92082,
-    "adanos_reference_rows": 63867,
-    "entry_quality_rows": 92082,
+    "ticker_rows": 63872,
+    "listing_rows": 92087,
+    "adanos_reference_rows": 63872,
+    "entry_quality_rows": 92087,
     "error_gates": 84,
-    "failed_error_gates": 0,
+    "failed_error_gates": 1,
     "info_gates": 5
   },
   "gates": [
@@ -490,9 +490,14 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 3,
+      "limit": 0,
+      "details": [
+        "NASDAQ::BTOG",
+        "NYSE::BEN",
+        "NYSE::HLX"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -526,28 +531,28 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 764,
+      "actual": 769,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 1301,
+      "actual": 1304,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 54,
+      "actual": 56,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11485,
+      "actual": 11490,
       "limit": null
     },
     {
