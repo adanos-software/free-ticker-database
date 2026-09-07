@@ -1,30 +1,118 @@
 # Delisting-candidate report
 
-Generated: 2026-08-31T18:29:54Z
+Generated: 2026-09-07T13:41:31Z
 
 **delisting_detected: True**
 
-Markets checked: US, TSE, NSE_IN, BSE_IN, US_NASDAQ_DELETES
-Markets skipped: ASX (master too small (0); treated as failed)
+Markets checked: US, ASX, NSE_IN, BSE_IN, US_NASDAQ_DELETES
+Markets skipped: TSE (fetch failed: XLRDError)
 
-Candidates: 223 (delisted=1, suspended=29, master_absent=193)
+Candidates: 291 (delisted=2, suspended=31, master_absent=258)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
 | Exchange | Ticker | Classification | Name | ISIN |
 |---|---|---|---|---|
+| ASX | 5EA | master_absent | 5E ADVANCED MATERIALS INC. | AU0000186207 |
+| ASX | AEL | master_absent | AMPLITUDE ENERGY LIMITED | AU0000361909 |
+| ASX | AEU | master_absent | ATOMIC EAGLE LTD | AU0000433096 |
+| ASX | AHE | master_absent | ADHERIS HEALTH LIMITED | AU0000437493 |
+| ASX | AM3 | master_absent | Amara Minerals Limited | AU0000469801 |
+| ASX | AM5 | master_absent | ANTARES METALS LIMITED | AU0000369829 |
+| ASX | AMU | master_absent | AMERICAN URANIUM LTD | AU0000415879 |
+| ASX | AT4 | master_absent | AMERICAN TUNGSTEN & ANTIMONY LTD | AU0000445603 |
+| ASX | AUV | master_absent | AURAVELLE METALS LIMITED | AU0000418154 |
+| ASX | BCB | master_absent | BOWEN COKING COAL LIMITED | AU000000BCB5 |
+| ASX | BKB | master_absent | BLACK BEAR MINERALS LIMITED | AU0000433351 |
+| ASX | BTL | master_absent | BEETALOO ENERGY AUSTRALIA LIMITED | AU0000401770 |
+| ASX | BTM | master_absent | Breakthrough Minerals Limited | AU0000374274 |
+| ASX | CC5 | master_absent | CLEVER CULTURE SYSTEMS LIMITED | AU0000367153 |
+| ASX | CL8 | master_absent | CL8 HOLDINGS LIMITED | AU000000CL86 |
+| ASX | CP8 | master_absent | CANADIAN PHOSPHATE LIMITED | AU0000384935 |
+| ASX | CQT | master_absent | CONNEQT HEALTH LIMITED | AU0000420739 |
+| ASX | CR3 | master_absent | CORE ENERGY MINERALS LTD | AU0000373722 |
+| ASX | DAI | master_absent | DECIDR AI INDUSTRIES LTD | AU0000386310 |
+| ASX | EM3 | master_absent | EMC GOLD CORPORATION | AU0000445173 |
+| ASX | EMS | master_absent | Eastern Metals Ltd | AU0000173304 |
+| ASX | ERE | master_absent | EUROPEAN RESOURCES LIMITED | AU0000448102 |
+| ASX | ERM | master_absent | EMMERSON RESOURCES LIMITED | AU000000ERM4 |
+| ASX | FEL | master_absent | FORTE ENERGY LIMITED | AU0000456097 |
+| ASX | FTI | master_absent | Fortifai Ltd | AU0000408056 |
+| ASX | G1C | master_absent | GROUP ONE CAPITAL LIMITED | AU0000423741 |
+| ASX | GA8 | master_absent | GOLDARC RESOURCES LIMITED | AU0000419624 |
+| ASX | GBL | master_absent | Great Bear Exploration Ltd | AU0000474363 |
+| ASX | GBM | master_absent | GBM RESOURCES LIMITED. | AU0000443905 |
+| ASX | GG8 | master_absent | GORILLA GOLD MINES LTD | AU0000382079 |
+| ASX | GT3 | master_absent | GREEN360 TECHNOLOGIES LIMITED | AU0000387516 |
+| ASX | GUM | master_absent | GUMTREE AUSTRALIA MARKETS LIMITED | AU0000381691 |
+| ASX | H3E | master_absent | H3 ENERGY LIMITED | AU0000447005 |
+| ASX | HHR | master_absent | HARTSHEAD RESOURCES NL | AU0000154148 |
+| ASX | IBR | master_absent | IRON BEAR RESOURCES LTD | AU0000453557 |
+| ASX | IFG | master_absent | INFOCUS GROUP HOLDINGS LIMITED | AU0000362923 |
+| ASX | IOV | master_absent | ION VIDEO LTD | AU0000440992 |
+| ASX | IRX | master_absent | Inhalerx Ltd | AU0000179475 |
+| ASX | ITS | master_absent | INFOTRUST LTD | AU0000431462 |
+| ASX | IVG | master_absent | INVERT GRAPHITE LIMITED | AU0000378903 |
+| ASX | JAY | master_absent | JAYRIDE GROUP LIMITED | AU000000JAY4 |
+| ASX | JNS | master_absent | JANUS ELECTRIC HOLDINGS LIMITED | AU0000395626 |
+| ASX | L1G | master_absent | L1 GROUP LIMITED | AU0000423501 |
+| ASX | LLM | master_absent | LOYAL METALS LTD | AU0000399131 |
+| ASX | LRM | master_absent | LION ROCK MINERALS LTD | AU000000LRM9 |
+| ASX | M79 | master_absent | MAMMOTH MINERALS LIMITED | AU0000411837 |
+| ASX | M96 | master_absent | Maverick Minerals Australia Ltd | AU0000475568 |
+| ASX | MAUCA | master_absent | Magnetic Resources NL | AU0000MAUCA0 |
+| ASX | MCE | master_absent | MATRIX COMPOSITES & ENGINEERING LIMITED | AU000000MCE6 |
+| ASX | MFGO | master_absent | Magellan Financial Group Ltd | AU0000215808 |
+| ASX | MML | master_absent | MCLAREN MINERALS LIMITED | AU0000221418 |
+| ASX | NFNG | master_absent | Nufarm Finance (NZ) Ltd | NZFCND0004S9 |
+| ASX | NH3 | master_absent | NH3 CLEAN ENERGY LIMITED | AU0000369753 |
+| ASX | NS1 | master_absent | Nodestream Ltd | AU0000481509 |
+| ASX | NUZ | master_absent | NEURIZON THERAPEUTICS LIMITED | AU0000357261 |
+| ASX | OB1 | master_absent | ORBMINCO LIMITED | AU0000371049 |
+| ASX | OLH | master_absent | OLDFIELDS HOLDINGS LIMITED | AU000000OLH6 |
+| ASX | OR3 | master_absent | ORE RESOURCES LIMITED | AU0000436933 |
+| ASX | P1E | master_absent | PURE ONE CORPORATION LIMITED | AU0000442865 |
+| ASX | PKY | master_absent | PATHKEY.AI LTD | AU0000415291 |
+| ASX | PL9 | master_absent | PRAIRIE LITHIUM LIMITED | AU0000421893 |
+| ASX | PLA | master_absent | PACIFIC LIME AND CEMENT LIMITED | AU0000411175 |
+| ASX | PNM | master_absent | PACIFIC NICKEL MINES LIMITED | AU0000123010 |
+| ASX | PVW | master_absent | PVW Resources Ltd | AU0000135188 |
+| ASX | PXR | master_absent | PACIFIC RESOURCES LIMITED | AU0000435281 |
+| ASX | QOR | master_absent | QORIA LIMITED | AU0000278491 |
+| ASX | RA2 | master_absent | RESIMAC PREMIER SERIES 2020-1 |  |
+| ASX | RCM | master_absent | RAPID CRITICAL METALS LIMITED | AU0000398364 |
+| ASX | RG1 | master_absent | REGAL PARTNERS GLOBAL INVESTMENTS LIMITE | AU0000434920 |
+| ASX | RIL | master_absent | REDIVIUM LIMITED | AU0000310211 |
+| ASX | SBZ | master_absent | SCHOOLBLAZER LIMITED | AU0000458531 |
+| ASX | SGH | master_absent | SGH LIMITED | AU0000364754 |
+| ASX | SKM | master_absent | SKYLARK MINERALS LIMITED | AU0000378226 |
+| ASX | SLA | master_absent | SOLARA MINERALS LTD | AU0000385841 |
+| ASX | STV | master_absent | SWIFT TV LTD | AU0000440786 |
+| ASX | TOE | master_absent | TORO ENERGY LIMITED | AU000000TOE6 |
+| ASX | TR8 | master_absent | TARRINA RESOURCES LIMITED | AU0000427221 |
+| ASX | TSR | master_absent | TURNSTONE RESOURCES LTD | AU0000460404 |
+| ASX | TXR | master_absent | TALONX RESOURCES LIMITED | ARDEUT116019 |
+| ASX | USC | master_absent | US1 CRITICAL MINERALS LIMITED | AU0000436891 |
+| ASX | UWC | master_absent | UNDERWOOD CAPITAL LIMITED | AU0000373201 |
+| ASX | VHL | master_absent | VITASORA HEALTH LIMITED | AU0000392748 |
+| ASX | WAK | master_absent | WA KAOLIN LIMITED | AU0000111247 |
+| ASX | WAU | master_absent | Wa Gold Limited | AU0000466021 |
+| ASX | WFE | master_absent | WOLFE ENERGY LIMITED | AU0000458358 |
+| ASX | XRA | master_absent | XENORA MINERALS LTD | AU0000421117 |
+| ASX | YUG | master_absent | YUGO METALS LIMITED | AU0000404998 |
 | BSE_IN | ACESEPP | suspended | Ace Software Exports ltd | IN9849B01026 |
 | BSE_IN | ALSTONE | suspended | Alstone Textiles (India) Ltd | INE184S01024 |
 | BSE_IN | ASHIS | suspended | Ashiana Ispat Ltd | INE587D01012 |
 | BSE_IN | ASHUTPM | suspended | Ashutosh Paper Mills Ltd | INE723K01018 |
-| BSE_IN | AUTOPRD | suspended | Automobile Products of India Ltd | INE0NY101012 |
 | BSE_IN | BCCPP | suspended | BCC Fuba India Ltd | IN9788D01014 |
 | BSE_IN | CHARMS | suspended | Charms Industries Ltd | INE442C01012 |
+| BSE_IN | FCONSUMER | suspended | Future Consumer Ltd | INE220J01025 |
 | BSE_IN | GGENG | suspended | G G Engineering Ltd | INE694X01030 |
 | BSE_IN | GOLKONDA | suspended | Golkonda Aluminium Extrusions Ltd-$ | INE327C01031 |
 | BSE_IN | INRADIA | suspended | India Radiators Ltd | INE461Y01016 |
 | BSE_IN | KEDIACN | suspended | Kedia Construction Company Ltd | INE511J01027 |
 | BSE_IN | KRISHPP | suspended | KRISHIVAL FOODS Ltd | IN90GGO01013 |
+| BSE_IN | MASCH | suspended | Master Chemicals Ltd | INE523D01017 |
 | BSE_IN | OMKARCHEM | suspended | Omkar Speciality Chemicals Ltd | INE474L01016 |
 | BSE_IN | PRABHAPP | suspended | Prabha Energy Ltd | IN90I0M01014 |
 | BSE_IN | PRESSURS | suspended | Pressure Sensitive Systems India Ltd | INE891E01024 |
@@ -38,6 +126,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | BSE_IN | SSLEL | suspended | Sir Shadi Lal Enterprises Ltd | INE117H01019 |
 | BSE_IN | SUUMAYA | suspended | Suumaya Corporation Ltd | INE0EMB01015 |
 | BSE_IN | TIAANC | suspended | Tiaan Consumer Ltd | INE864T01011 |
+| BSE_IN | VARDHMAN | suspended | Vardhman Concrete Ltd | INE115C01014 |
 | BSE_IN | VASUDHAGAM | suspended | Vasudhagama Enterprises Ltd | INE583K01016 |
 | BSE_IN | WIMPLAST | suspended | Wim Plast Ltd-$ | INE015B01018 |
 | BSE_IN | WINSOME | suspended | Winsome Yarns Ltd | INE784B01035 |
@@ -52,13 +141,13 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | ALCY | master_absent | Alchemy Investments Acquisition Corp 1 C | KYG0232F1090 |
 | NASDAQ | ALOT | master_absent | AstroNova Inc | US04638F1084 |
 | NASDAQ | ANSC | master_absent | Agriculture & Natural Solutions Acquisit | KYG0131Y1008 |
+| NASDAQ | APGE | delisted | Apogee Therapeutics, Inc. Common Stock | US03770N1019 |
 | NASDAQ | APM | master_absent | Aptorum Group Ltd Class A | KYG6096M1069 |
 | NASDAQ | AREB | master_absent | American Rebel Holdings Inc | US02919L8853 |
 | NASDAQ | ASNS | master_absent | Actelis Networks Inc. | US00503R5081 |
 | NASDAQ | ATLN | master_absent | Atlantic International Corp. Common Stoc | US0485921094 |
 | NASDAQ | BAYA | master_absent | Bayview Acquisition Corp Class A Ordinar | KY07323B1007 |
 | NASDAQ | BBCQ | master_absent | Bleichroeder Acquisition Corp. II Class  | KYG1170E1044 |
-| NASDAQ | BCAB | delisted | Bioatla Inc | US09077B1044 |
 | NASDAQ | BCAR | master_absent | D. Boral ARC Acquisition I Corp. Class A | VGG2616F1018 |
 | NASDAQ | BCOW | master_absent | 1895 of Wisconsin Inc Bancorp | US28253R1059 |
 | NASDAQ | BNBX | master_absent | BNB Plus Corp. | US03815U6073 |
@@ -74,6 +163,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | CNTA | master_absent | Centessa Pharmaceuticals plc | US1523091007 |
 | NASDAQ | CPRX | master_absent | Catalyst Pharmaceuticals Inc | US14888U1016 |
 | NASDAQ | CREG | master_absent | Smart Powerr Corp | US1689133098 |
+| NASDAQ | CRNX | master_absent | Crinetics Pharmaceuticals Inc | US22663K1079 |
 | NASDAQ | CULL | master_absent | Cullman Bancorp Inc. | US2301531081 |
 | NASDAQ | DEVS | master_absent | DevvStream Corp. Common Stock | CA25189R1001 |
 | NASDAQ | EA | master_absent | Electronic Arts Inc | US2855121099 |
@@ -98,9 +188,9 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | HOTH | master_absent | Hoth Therapeutics Inc | US44148G2049 |
 | NASDAQ | IINN | master_absent | Inspira Technologies Oxy BHN Ltd | IL0011715781 |
 | NASDAQ | IPCX | master_absent | Inflection Point Acquisition Corp. III C | KYG478751020 |
-| NASDAQ | ISRL | master_absent | Israel Acquisitions Corp Class A | KYG496671010 |
 | NASDAQ | ISSC | master_absent | Innovative Solutions and Support | US45769N1054 |
 | NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
+| NASDAQ | JFB | delisted | JFB Construction Holdings Class A Common | US46658E1073 |
 | NASDAQ | KVAC | master_absent | Keen Vision Acquisition Corporation Ordi | VGG524431191 |
 | NASDAQ | LBRDA | master_absent | Liberty Broadband Srs A | US5303071071 |
 | NASDAQ | LBRDK | master_absent | Liberty Broadband Srs C | US5303073051 |
@@ -117,100 +207,10 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | MLAC | master_absent | Mountain Lake Acquisition Corp. Class A  |  |
 | NASDAQ | MRAI | master_absent | Marpai Inc | US5713542083 |
 | NASDAQ | MSW | master_absent | Ming Shing Group Holdings Limited Ordina | KYG614401068 |
+| NASDAQ | NCSM | master_absent | NCS Multistage Holdings Inc | US6288772014 |
 | NASDAQ | NFBK | master_absent | Northfield Bancorp Inc | US66611T1088 |
 | NASDAQ | NUTR | master_absent | Nusatrip Incorporated Common Stock | US67119K1025 |
 | NASDAQ | NUVL | master_absent | Nuvalent Inc | US6707031075 |
 | NASDAQ | NVVE | master_absent | Nuvve Holding Corp | US67079Y4070 |
 | NASDAQ | OLPX | master_absent | Olaplex Holdings Inc | US6793691089 |
-| NASDAQ | ORGN | master_absent | Origin Materials Inc | US68622D1063 |
-| NASDAQ | ORIS | master_absent | Oriental Rise Holdings Limited Ordinary  | KYG6781A1105 |
-| NASDAQ | OSRH | master_absent | OSR Holdings Inc | US68840D1028 |
-| NASDAQ | PAIYY | master_absent | Aesthetic Medical International Holdings | US00809M1045 |
-| NASDAQ | PCSC | master_absent | Perceptive Capital Solutions Corp Class  | KYG700771051 |
-| NASDAQ | PELI | master_absent | Pelican Acquisition Corporation Ordinary | KYG6993G1038 |
-| NASDAQ | PIRBF | master_absent | Piraeus Bank S.A. | GRS831003009 |
-| NASDAQ | PSTV | master_absent | Plus Therapeutics Inc | US72941H8060 |
-| NASDAQ | PTNM | master_absent | Pitanium Ltd | VGG7111A1012 |
-| NASDAQ | QMMM | master_absent | QMMM Holdings Limited Ordinary Shares | KYG7309R1149 |
-| NASDAQ | QVC | master_absent | QVC Group, Inc. - Common Stock |  |
-| NASDAQ | QVCAQ | master_absent | QVC Group Inc | US74915M6057 |
-| NASDAQ | RAAQ | master_absent | Real Asset Acquisition Corp. | KYG739441031 |
-| NASDAQ | REE | master_absent | Ree Automotive Holding Inc | IL0011786154 |
-| NASDAQ | RVPH | master_absent | Reviva Pharmaceuticals Holdings Inc. | US76152G2093 |
-| NASDAQ | RVYL | master_absent | Ryvyl Inc | US39366L3078 |
-| NASDAQ | SDM | master_absent | Smart Digital Group Limited Ordinary Sha | KYG5006S1049 |
-| NASDAQ | SGMO | master_absent | Sangamo Therapeutics Inc | US8006771062 |
-| NASDAQ | SGRP | master_absent | SPAR Group Inc | US7849331035 |
-| NASDAQ | SKYT | master_absent | Skywater Technology Inc | US83089J1088 |
-| NASDAQ | SNBR | master_absent | Sleep Number Corp | US83125X1037 |
-| NASDAQ | STRS | master_absent | Stratus Properties Inc | US8631672016 |
-| NASDAQ | SVAC | master_absent | Spring Valley Acquisition Corp. III | KYG8377R1011 |
-| NASDAQ | TALK | master_absent | Talkspace Inc | US87427V1035 |
-| NASDAQ | TBRG | master_absent | TruBridge Inc. | US2053061030 |
-| NASDAQ | TIRX | master_absent | Tian Ruixiang Holdings Ltd | KYG8884K1444 |
-| NASDAQ | TWNP | master_absent | Twin Hospitality Group Inc. | US9016431069 |
-| NASDAQ | UBXG | master_absent | U-BX Technology Ltd. Ordinary Shares | KYG9161K1206 |
-| NASDAQ | UHGWW | master_absent | United Homes Group Inc. | US91060H1086 |
-| NASDAQ | UOKA | master_absent | MDJM Ltd | KYG592901253 |
-| NASDAQ | VACH | master_absent | Voyager Acquisition Corp |  |
-| NASDAQ | VBIX | master_absent | Viewbix Inc. Common Stock | US9267111022 |
-| NASDAQ | VSEE | master_absent | VSee Health, Inc. | US92919Y1029 |
-| NASDAQ | VSTD | master_absent | Vestand Inc. | US98740Y3027 |
-| NASDAQ | VXRT | master_absent | Vaxart Inc | US92243A2006 |
-| NASDAQ | VYNE | master_absent | Vyne Therapeutics Inc | US92941V2097 |
-| NASDAQ | WGRX | master_absent | Wellgistics Health, Inc. Common Stock | US9495032057 |
-| NASDAQ | WORX | master_absent | Scworx Corp | US78396V3078 |
-| NASDAQ | WTO | master_absent | UTime Limited | KYG9411M1400 |
-| NASDAQ | XOMA | master_absent | XOMA Corp | US98419J2069 |
-| NASDAQ | ZBAI | master_absent | ATIF Holdings Limited | VGG0602B1186 |
-| NASDAQ | ZENV | master_absent | Zenvia Inc | KYG9889V1014 |
-| NASDAQ | ZGM | master_absent | Zenta Group Company Limited Ordinary Sha | KYG988921055 |
-| NASDAQ | ZSPC | master_absent | zSpace, Inc. Common stock | US98980W1071 |
-| NSE_IN | AURIGROW | master_absent | Auri Grow India Limited | INE925Y01036 |
-| NSE_IN | JBCHEPHARM | master_absent | JB Chemicals & Pharmaceuticals Limited | INE572A01036 |
-| NSE_IN | SABEVENTS | master_absent | Sab Events & Governance Now Media Limite | INE860T01019 |
-| NYSE | AREN | master_absent | Arena Group Holdings Inc | US0400441095 |
-| NYSE | AVB | master_absent | AvalonBay Communities Inc | US0534841012 |
-| NYSE | AVNS | master_absent | Avanos Medical Inc | US05350V1061 |
-| NYSE | AXIA | master_absent | AXIA Energia | US15234Q2075 |
-| NYSE | BBBY | master_absent | Bed Bath & Beyond, Inc. | US6903701018 |
-| NYSE | BBU | master_absent | Brookfield Business Partners LP | BMG162341090 |
-| NYSE | BLD | master_absent | Topbuild Corp | US89055F1030 |
-| NYSE | BURU | master_absent | Nuburu Inc. | US67021W4006 |
-| NYSE | CWAN | master_absent | Clearwater Analytics Holdings Inc | US1851231068 |
-| NYSE | CWEN-A | master_absent | Clearway Energy Inc | US18539C1053 |
-| NYSE | EEX | master_absent | Emerald Expositions Events Inc | US29103W1045 |
-| NYSE | EQR | master_absent | Equity Residential | US29476L1070 |
-| NYSE | FIHL | master_absent | Pelagos Insurance Capital Ltd | BMG3398L1182 |
-| NYSE | GTLS | master_absent | Chart Industries Inc | US16115Q3083 |
-| NYSE | JHG | master_absent | Janus Henderson Group PLC | JE00BYPZJM29 |
-| NYSE | KFS | master_absent | Kingsway Financial Services Inc | US4969042021 |
-| NYSE | KORE | master_absent | KORE Group Holdings Inc | US50066V3050 |
-| NYSE | LEG | master_absent | Leggett & Platt Incorporated | US5246601075 |
-| NYSE | LEGT | master_absent | Legato Merger Corp. III | KYG5451A1031 |
-| NYSE | MDV | master_absent | Modiv Inc | US60784B1017 |
-| NYSE | MVO | master_absent | MV Oil Trust | US5538591091 |
-| NYSE | NCL | master_absent | Northann Corp. | US66373M4087 |
-| NYSE | NOTE | master_absent | FiscalNote Holdings Inc. | US3376551046 |
-| NYSE | NSA | master_absent | National Storage Affiliates Trust | US6378701063 |
-| NYSE | NTZ | master_absent | Natuzzi SpA | US63905A2006 |
-| NYSE | PHXE-P | master_absent | Phoenix Energy One, LLC |  |
-| NYSE | PMNT | master_absent | Perfect Moment Ltd. | US7137151004 |
-| NYSE | PRA | master_absent | ProAssurance Corporation | US74267C1062 |
-| NYSE | RMAX | master_absent | Re Max Holding | US75524W1080 |
-| NYSE | SBDS | master_absent | Solo Brands, Inc. Class A | US83425V2034 |
-| NYSE | SBEV | master_absent | Splash Beverage Group Inc | US84862C3025 |
-| NYSE | SEM | master_absent | Select Medical Holdings | US81619Q1058 |
-| NYSE | SILA | master_absent | Sila Realty Trust, Inc. | US1462805086 |
-| NYSE | SLAI | master_absent | SOLAI Limited | US0554742090 |
-| NYSE | STEL | master_absent | Stellar Bancorp, Inc. | US8589271068 |
-| NYSE | TMHC | master_absent | Taylor Morn Home | US87724P1066 |
-| NYSE | TPTA | master_absent | Terra Property Trust, Inc. 6.00% |  |
-| NYSE | TSEOF | master_absent | Trinseo PLC | IE0000QBK8U7 |
-| NYSE | TWO | master_absent | Two Harbors Investments Corp | US90187B8046 |
-| NYSE | WBS | master_absent | Webster Financial Corporation | US9478901096 |
-| NYSE | WSR | master_absent | Whitestone REIT | US9660842041 |
-| NYSE MKT | DLA | master_absent | Delta Apparel, Inc. |  |
-| NYSE MKT | SGN | master_absent | Signing Day Sports, Inc. | US82670R3057 |
-| TSE | 136A | master_absent | Sankosyoji Co.,Ltd. | JP3331100002 |
-| … | … | … | (+23 more) | |
+| … | … | … | (+91 more) | |
