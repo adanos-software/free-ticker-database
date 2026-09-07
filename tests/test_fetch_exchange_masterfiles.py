@@ -15779,6 +15779,18 @@ def test_select_official_sources_rejects_unknown_keys() -> None:
         raise AssertionError("Expected ValueError for unknown source key")
 
 
+def test_select_official_sources_rejects_empty_explicit_keys() -> None:
+    with pytest.raises(ValueError, match="did not contain any source keys"):
+        select_official_sources([",", "  "])
+
+
+def test_select_official_sources_without_keys_returns_all_official_sources() -> None:
+    selected = select_official_sources()
+    assert [source.key for source in selected] == [
+        source.key for source in fetch_exchange_masterfiles.OFFICIAL_SOURCES
+    ]
+
+
 def test_fetch_all_sources_limits_to_selected_sources(monkeypatch) -> None:
     seen: list[str] = []
 

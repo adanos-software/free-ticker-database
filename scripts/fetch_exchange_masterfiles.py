@@ -2798,9 +2798,11 @@ def normalize_source_keys(values: Iterable[str] | None) -> list[str]:
 
 
 def select_official_sources(source_keys: Iterable[str] | None = None) -> list[MasterfileSource]:
+    if source_keys is None:
+        return list(OFFICIAL_SOURCES)
     requested_keys = normalize_source_keys(source_keys)
     if not requested_keys:
-        return list(OFFICIAL_SOURCES)
+        raise ValueError("--source did not contain any source keys")
 
     available = {source.key: source for source in OFFICIAL_SOURCES}
     unknown = [key for key in requested_keys if key not in available]

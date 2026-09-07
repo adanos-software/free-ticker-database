@@ -449,7 +449,7 @@ def test_classify_gate_results_keeps_quarantine_and_unrelated_gates_fatal() -> N
     assert result["hard_failures"] == ["duplicate_listing_key_count", "entry_quality_quarantine"]
 
 
-def test_classify_gate_results_routes_failed_selected_sources_to_manual_review() -> None:
+def test_classify_gate_results_treats_failed_selected_sources_as_ops_notes() -> None:
     result = classify_gate_results(
         entry_gate(),
         validation_report(),
@@ -484,8 +484,46 @@ def test_classify_gate_results_routes_failed_selected_sources_to_manual_review()
     )
 
     assert result["passed"] is True
+    assert result["review_required"] is False
+    assert result["source_review_keys"] == []
+    assert result["fetch_issue_keys"] == ["cached_subset", "failed_directory"]
+    assert result["fetch_issue_count"] == 2
+
+
+def test_classify_gate_results_keeps_identity_review_when_fetch_issues_also_exist() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        {
+            "source_details": {
+                "failed_directory": {
+                    "official": True,
+                    "reference_scope": "exchange_directory",
+                }
+            },
+            "last_refresh": {
+                "selected_source_keys": ["failed_directory"],
+                "source_modes": {"failed_directory": "unavailable"},
+            },
+        },
+        rotation_diff={
+            "changed": [
+                {
+                    "source_key": "bse_india_scrips",
+                    "exchange": "BSE_IN",
+                    "ticker": "MSCIADD",
+                    "changes": {
+                        "asset_type": {"before": "Stock", "after": "ETF"},
+                    },
+                }
+            ]
+        },
+    )
+
+    assert result["passed"] is True
     assert result["review_required"] is True
-    assert result["source_review_keys"] == ["failed_directory"]
+    assert result["fetch_issue_keys"] == ["failed_directory"]
+    assert result["critical_rotation_change_count"] == 1
 
 
 def test_classify_gate_results_routes_critical_masterfile_change_to_manual_review() -> None:
@@ -672,6 +710,8 @@ def test_classify_gate_cli_writes_github_outputs_for_review(tmp_path) -> None:
         "quarantine_count=0",
         "source_review_count=0",
         "source_review_keys=",
+        "fetch_issue_count=0",
+        "fetch_issue_keys=",
         "critical_rotation_change_count=0",
         "unevidenced_listing_field_change_count=0",
     ]

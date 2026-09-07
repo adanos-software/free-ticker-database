@@ -11,11 +11,24 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     workflow = (ROOT / ".github" / "workflows" / "masterfile-rotation.yml").read_text(encoding="utf-8")
 
-    assert "--rotation-batch-size 20" in workflow
+    assert "--rotation-batch-size" in workflow
+    assert 'default: "20"' in workflow
     assert "scripts/build_masterfile_diff_report.py" in workflow
     assert "scripts/build_masterfile_vanished_delisting_review.py" in workflow
     assert "scripts/apply_nasdaq_us_new_listings.py" in workflow
     assert "--asset-type Stock,ETF" in workflow
+    assert "concurrency:" in workflow
+    assert "group: masterfile-rotation" in workflow
+    assert "cancel-in-progress: false" in workflow
+    assert "gh pr list --head automation/masterfile-rotation" in workflow
+    assert "needs.gate.outputs.skip != 'true'" in workflow
+    assert "type: choice" in workflow
+    assert "- sources" in workflow
+    assert "mode=sources requires source_keys" in workflow
+    assert "python scripts/fetch_exchange_masterfiles.py --source" in workflow
+    assert "fetch_issue_count" in workflow
+    assert "Fetch issues (preserved last committed rows, not identity review)" in workflow
+    assert "Fetch misses are ops notes, not identity review" in workflow
     rebuild_step = workflow.split("- name: Rebuild derived exports and reports", 1)[1].split(
         "- name: Enforce safe merge gate", 1
     )[0]

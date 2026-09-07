@@ -4,6 +4,26 @@ on:
   schedule:
     - cron: "07 6 * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: How to select official sources
+        type: choice
+        options:
+          - rotation
+          - sources
+        default: rotation
+      source_keys:
+        description: Comma-separated source keys (mode=sources)
+        type: string
+        required: false
+      batch_size:
+        description: Rotation batch size (mode=rotation)
+        type: string
+        default: "20"
+
+concurrency:
+  group: masterfile-rotation
+  cancel-in-progress: false
 
 permissions:
   actions: write
@@ -12,7 +32,33 @@ permissions:
   pull-requests: write
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.skip.outputs.skip }}
+    steps:
+      - name: Skip if a rotation pull request is already open
+        id: skip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          open_pr=$(gh pr list --head automation/masterfile-rotation --state open --json number --jq '.[0].number // empty')
+          if [ -n "$open_pr" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "open_pr=$open_pr" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Masterfile rotation skipped"
+              echo
+              echo "Pull request #$open_pr is still open on \`automation/masterfile-rotation\`."
+              echo "This run did not fetch a new batch so the open rotation is not overwritten."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
   rotate-masterfiles:
+    needs: gate
+    if: needs.gate.outputs.skip != 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +84,34 @@ jobs:
         run: cp data/masterfiles/reference.csv /tmp/reference-before-masterfile-rotation.csv
 
       - name: Refresh scheduled source batch
-        run: python scripts/fetch_exchange_masterfiles.py --rotation-batch-size 20
+        env:
+          MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode || 'rotation' }}
+          SOURCE_KEYS: ${{ github.event.inputs.source_keys }}
+          BATCH_SIZE: ${{ github.event.inputs.batch_size || '20' }}
+        run: |
+          set -euo pipefail
+          mode="${MODE:-rotation}"
+          batch_size="${BATCH_SIZE:-20}"
+          if ! [[ "$batch_size" =~ ^[1-9][0-9]*$ ]]; then
+            echo "batch_size must be a positive integer, got: $batch_size" >&2
+            exit 1
+          fi
+          case "$mode" in
+            sources)
+              if ! [[ "${SOURCE_KEYS:-}" =~ [^,[:space:]] ]]; then
+                echo "mode=sources requires source_keys" >&2
+                exit 1
+              fi
+              python scripts/fetch_exchange_masterfiles.py --source "$SOURCE_KEYS"
+              ;;
+            rotation)
+              python scripts/fetch_exchange_masterfiles.py --rotation-batch-size "$batch_size"
+              ;;
+            *)
+              echo "Unknown mode: $mode" >&2
+              exit 1
+              ;;
+          esac
 
       - name: Build masterfile rotation diff
         run: |
@@ -121,6 +194,16 @@ jobs:
             --safe-merge data/reports/safe_merge.json \
             --github-output "$GITHUB_OUTPUT"
 
+      - name: Summarize fetch issues
+        if: steps.release.outputs.fetch_issue_count != '0'
+        run: |
+          {
+            echo "### Official source fetch issues"
+            echo
+            echo "Preserved last committed rows for ${{ steps.release.outputs.fetch_issue_count }} source(s): ${{ steps.release.outputs.fetch_issue_keys }}."
+            echo "Fetch misses are ops notes, not identity review, and do not draft the rotation pull request."
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Summarize manual data review
         if: steps.release.outputs.review_required == 'true'
         run: |
@@ -128,7 +211,6 @@ jobs:
             echo "### Masterfile rotation needs data review"
             echo
             echo "The refresh completed technically, but introduced ${{ steps.release.outputs.unexpected_warn_count }} new entry-quality warning(s)."
-            echo "Selected sources requiring review: ${{ steps.release.outputs.source_review_count }} (${{ steps.release.outputs.source_review_keys }})."
             echo "Critical masterfile field changes requiring review: ${{ steps.release.outputs.critical_rotation_change_count }}."
             echo "Unevidenced listing field changes requiring review: ${{ steps.release.outputs.unevidenced_listing_field_change_count }}."
             echo "A substantive generated data diff will be preserved in a draft pull request; source-only review without data changes remains summary-only."
@@ -176,13 +258,14 @@ jobs:
             Automated official masterfile rotation.
 
             This refresh:
-            - rotates a deterministic batch of 20 official source parsers
+            - rotates a deterministic batch of official source parsers
             - emits new, vanished, name, ISIN, and field-change diffs
             - applies only collision-free new US Stock/ETF listings
 
             Vanished listings are reported for delisting classification and are
             never directly deleted by this workflow.
 
+            Fetch issues (preserved last committed rows, not identity review): `${{ steps.release.outputs.fetch_issue_count }}` (${{ steps.release.outputs.fetch_issue_keys }})
             Entry-quality review required: `${{ steps.release.outputs.review_required }}`
             Unexpected entry-quality warnings: `${{ steps.release.outputs.unexpected_warn_count }}`
             Critical masterfile field changes: `${{ steps.release.outputs.critical_rotation_change_count }}`
