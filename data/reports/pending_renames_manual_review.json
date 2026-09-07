@@ -1,23 +1,6 @@
 {
-  "generated_at": "2026-09-07T13:35:12Z",
+  "generated_at": "2026-09-07T14:51:47Z",
   "manual_review_items": [
-    {
-      "apply_status": "blocked_new_symbol_not_active_in_official_master",
-      "apply_status_source": "available",
-      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
-      "effective_date": "2026-09-04",
-      "exchange_scope_status": "matches_within_source_scope",
-      "match_status": "old_symbol_present_new_symbol_missing",
-      "new_company_name": "Sangrix Inc",
-      "new_listing_keys": "",
-      "new_symbol": "SGRX",
-      "old_listing_keys": "NASDAQ::BTOG",
-      "old_symbol": "BTOG",
-      "source_exchange_hint": "US_LISTED",
-      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
-      "triage_source": "symbol_changes_review",
-      "triage_status": "blocked_or_manual"
-    },
     {
       "apply_status": "manual_isin_not_proven_unchanged",
       "apply_status_source": "available",
@@ -87,9 +70,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::RKTO",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-28",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -121,9 +104,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NYSE::KWY",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-20",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -138,9 +121,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::QTEX",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-20",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -155,9 +138,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NYSE::PLGO",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-12",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -189,9 +172,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::ZTG",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-04-14",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -377,5 +360,5 @@
     }
   ],
   "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
-  "rows": 22
+  "rows": 21
 }
