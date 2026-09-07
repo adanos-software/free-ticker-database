@@ -24,9 +24,23 @@ LISTING_INDEX_CSV = DATA_DIR / "listing_index.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 MASTERFILE_SUPPLEMENTAL_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
+LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
+DROP_ENTRIES_CSV = DATA_DIR / "review_overrides" / "drop_entries.csv"
 SYMBOL_CHANGES_CSV = DATA_DIR / "corporate_actions" / "symbol_changes.csv"
 REPORT_JSON = DATA_DIR / "reports" / "symbol_changes_apply.json"
 REPORT_MD = DATA_DIR / "reports" / "symbol_changes_apply.md"
+TRANSITION_FIELDS = [
+    "old_listing_key",
+    "new_listing_key",
+    "event_type",
+    "identity_type",
+    "identity_value",
+    "confidence",
+    "source_key",
+    "source_url",
+    "reason",
+]
+DROP_FIELDS = ["ticker", "exchange", "confidence", "reason"]
 
 US_LISTED_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
 REKEY_FILES = [LISTINGS_CSV, LISTING_INDEX_CSV, IDENTIFIERS_EXTENDED_CSV, MASTERFILE_SUPPLEMENTAL_CSV]
@@ -85,7 +99,27 @@ def classify_rename_candidate(
     if len(old_matches) != 1:
         return "blocked_old_symbol_not_unique_in_us_scope", {}
     if new_matches:
-        return "blocked_new_symbol_collision", {}
+        old_listing = old_matches[0]
+        exchange = old_listing.get("exchange", "")
+        old_key = row_listing_key(old_listing)
+        old_isin = old_listing.get("isin", "").strip()
+        if reference_lookup.get((exchange, old_symbol)):
+            return "blocked_new_symbol_collision", {}
+        if not reference_lookup.get((exchange, new_symbol)):
+            return "blocked_new_symbol_collision", {}
+        if not old_isin:
+            return "manual_successor_exists_missing_isin", {}
+        return "apply_drop_predecessor", {
+            "exchange": exchange,
+            "old_symbol": old_symbol,
+            "new_symbol": new_symbol,
+            "old_listing_key": old_key,
+            "new_listing_key": listing_key(exchange, new_symbol),
+            "isin": old_isin,
+            "source_key": change.get("source", "stockanalysis_symbol_changes"),
+            "source_url": change.get("source_url", ""),
+            "evidence": "official_master_old_absent_new_active_successor_already_listed",
+        }
 
     old_listing = old_matches[0]
     exchange = old_listing.get("exchange", "")
@@ -148,6 +182,60 @@ def rekey_rows(rows: list[dict[str, str]], accepted: list[dict[str, str]]) -> li
     return updated
 
 
+def persist_dropped_predecessors(
+    dropped: list[dict[str, str]],
+    *,
+    listing_transitions_csv: Path,
+    drop_entries_csv: Path,
+) -> None:
+    existing_transitions = load_csv(listing_transitions_csv)
+    existing_drops = load_csv(drop_entries_csv)
+    transition_keys = {
+        (row.get("old_listing_key", ""), row.get("new_listing_key", ""))
+        for row in existing_transitions
+    }
+    drop_keys = {(row.get("ticker", ""), row.get("exchange", "")) for row in existing_drops}
+    for row in dropped:
+        old_key = row["old_listing_key"]
+        transition = {
+            "old_listing_key": old_key,
+            "new_listing_key": "",
+            "event_type": "delisted",
+            "identity_type": "exact_isin",
+            "identity_value": row["isin"],
+            "confidence": "0.99",
+            "source_key": row.get("source_key", "") or "stockanalysis_symbol_changes",
+            "source_url": row.get("source_url", ""),
+            "reason": (
+                f"Official US directory no longer lists {old_key} and already lists "
+                f"{row['new_listing_key']}; the symbol-change feed identifies the successor. "
+                "The existing successor row is not rewritten."
+            ),
+        }
+        if (old_key, "") not in transition_keys:
+            existing_transitions.append(transition)
+            transition_keys.add((old_key, ""))
+        exchange, _, ticker = old_key.partition("::")
+        if (ticker, exchange) not in drop_keys:
+            existing_drops.append(
+                {
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "confidence": "0.99",
+                    "reason": (
+                        f"Reviewed predecessor drop {old_key} after successor "
+                        f"{row['new_listing_key']} was already listed; exact evidence is recorded "
+                        "in listing_transitions.csv."
+                    ),
+                }
+            )
+            drop_keys.add((ticker, exchange))
+    if existing_transitions:
+        write_csv(listing_transitions_csv, TRANSITION_FIELDS, existing_transitions)
+    if existing_drops:
+        write_csv(drop_entries_csv, DROP_FIELDS, existing_drops)
+
+
 def add_alias(value: str, alias: str) -> str:
     alias = alias.strip()
     if not alias:
@@ -167,6 +255,8 @@ def apply_symbol_changes(
     identifiers_extended_csv: Path = IDENTIFIERS_EXTENDED_CSV,
     supplemental_csv: Path = MASTERFILE_SUPPLEMENTAL_CSV,
     reference_csv: Path = MASTERFILE_REFERENCE_CSV,
+    listing_transitions_csv: Path = LISTING_TRANSITIONS_CSV,
+    drop_entries_csv: Path = DROP_ENTRIES_CSV,
     report_json: Path = REPORT_JSON,
     report_md: Path = REPORT_MD,
     dry_run: bool = False,
@@ -177,6 +267,7 @@ def apply_symbol_changes(
     reference_lookup = lookup_by_exchange_symbol(active_reference)
 
     accepted: list[dict[str, str]] = []
+    dropped_predecessors: list[dict[str, str]] = []
     blocked: list[dict[str, str]] = []
     seen_old_keys: set[str] = set()
     for change in changes:
@@ -193,12 +284,18 @@ def apply_symbol_changes(
             "new_company_name": change.get("new_company_name", ""),
             "status": status,
         }
-        if status == "apply":
+        if status in {"apply", "apply_drop_predecessor"}:
             if evidence["old_listing_key"] in seen_old_keys:
                 blocked.append({**row, **evidence, "status": "blocked_duplicate_old_listing_key_candidate"})
                 continue
+            if status == "apply_drop_predecessor" and not str(evidence.get("source_url", "")).startswith("https://"):
+                blocked.append({**row, **evidence, "status": "manual_successor_exists_missing_source_url"})
+                continue
             seen_old_keys.add(evidence["old_listing_key"])
-            accepted.append({**row, **evidence})
+            if status == "apply":
+                accepted.append({**row, **evidence})
+            else:
+                dropped_predecessors.append({**row, **evidence})
         else:
             blocked.append(row)
 
@@ -208,6 +305,12 @@ def apply_symbol_changes(
             if not rows:
                 continue
             write_csv(path, list(rows[0].keys()), rekey_rows(rows, accepted))
+    if dropped_predecessors and not dry_run:
+        persist_dropped_predecessors(
+            dropped_predecessors,
+            listing_transitions_csv=listing_transitions_csv,
+            drop_entries_csv=drop_entries_csv,
+        )
 
     summary = {
         "generated_at": utc_now_iso(),
@@ -215,14 +318,23 @@ def apply_symbol_changes(
         "changes_csv": display_path(changes_csv, ROOT),
         "reference_csv": display_path(reference_csv, ROOT),
         "accepted_rows": len(accepted),
+        "dropped_predecessor_rows": len(dropped_predecessors),
         "blocked_rows": len(blocked),
         "blocked_by_status": dict(sorted(Counter(row["status"] for row in blocked).items())),
     }
-    report = {"summary": summary, "accepted": accepted, "blocked": blocked}
+    report = {
+        "summary": summary,
+        "accepted": accepted,
+        "dropped_predecessors": dropped_predecessors,
+        "blocked": blocked,
+    }
     write_json(report_json, report)
     write_markdown(report_md, report)
-    set_github_output("symbol_changes_applied", "true" if accepted and not dry_run else "false")
-    set_github_output("accepted_rows", str(len(accepted)))
+    set_github_output(
+        "symbol_changes_applied",
+        "true" if (accepted or dropped_predecessors) and not dry_run else "false",
+    )
+    set_github_output("accepted_rows", str(len(accepted) + len(dropped_predecessors)))
     return report
 
 

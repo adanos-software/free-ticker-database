@@ -144,7 +144,9 @@ def test_nasdaq_refresh_routes_entry_quality_warnings_to_draft_review() -> None:
     assert 'gh pr ready "$PR_NUMBER"' in workflow
     assert "issues: write" in workflow
     assert workflow.count("automation-review-required") >= 3
-    assert "if: steps.cpr.outputs.pull-request-number != ''\n        env:" in workflow[dispatch_step:]
+    dispatch_block = workflow[dispatch_step:].split("- name: Enable automerge", 1)[0]
+    assert "steps.release.outputs.review_required != 'true'" in dispatch_block
+    assert "steps.apply.outputs.coverage_expansion_rows == '0'" in dispatch_block
 
 
 def test_listing_refreshes_pass_previous_official_reference_to_safe_merge() -> None:

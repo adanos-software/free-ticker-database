@@ -265,6 +265,7 @@ BSLKW,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent fr
 BTCY,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
 BTM,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: delisted (absent from current NASDAQ Trader master, web+adversarial verified)"
 BTMWW,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent from current NASDAQ Trader master, web+adversarial verified)"
+BTOG,NASDAQ,0.99,Reviewed issuer transition NASDAQ::BTOG to NASDAQ::SGRX; exact evidence is recorded in listing_transitions.csv.
 BUSEP,NASDAQ,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 BWIV-UN,NASDAQ,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the current exchange, indicating the current listing is stale."
 BZFDW,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
@@ -779,6 +780,7 @@ GRX,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/righ
 GTNA,NYSE,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
 GUG,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 HCXY,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+HLX,NYSE,0.99,"Helix Energy Solutions completed its all-stock combination with Hornbeck on 2026-09-01; HLX ceased NYSE trading at the close of 2026-09-01. Exact delisting evidence is recorded in listing_transitions.csv. The existing NYSE::HOS row is not rewritten here."
 HMKIY,NYSE,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 HQH,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 HQL,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope

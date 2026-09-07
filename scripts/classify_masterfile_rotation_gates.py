@@ -110,6 +110,46 @@ def classify_critical_rotation_changes(
     return critical_changes, malformed
 
 
+def classify_safe_merge(
+    safe_merge: dict[str, Any] | None,
+    safe_merge_outcome: str | None,
+) -> dict[str, Any]:
+    if safe_merge is None and safe_merge_outcome is None:
+        return {
+            "hard_failures": [],
+            "unevidenced_field_change_count": 0,
+        }
+    if not isinstance(safe_merge, dict):
+        return {
+            "hard_failures": ["safe_merge_report_malformed"],
+            "unevidenced_field_change_count": 0,
+        }
+    summary = safe_merge.get("summary")
+    if not isinstance(summary, dict):
+        summary = {}
+    status = safe_merge.get("status")
+    unevidenced_removed = parse_nonnegative_int(summary.get("unevidenced_removed_rows"))
+    unevidenced_fields = parse_nonnegative_int(summary.get("unevidenced_critical_field_changes"))
+    hard_failures: list[str] = []
+    if status not in {"pass", "fail"} or unevidenced_removed is None or unevidenced_fields is None:
+        hard_failures.append("safe_merge_report_malformed")
+        return {
+            "hard_failures": hard_failures,
+            "unevidenced_field_change_count": 0,
+        }
+    expected_outcome = "success" if status == "pass" else "failure"
+    if safe_merge_outcome is not None and safe_merge_outcome != expected_outcome:
+        hard_failures.append("safe_merge_step_outcome_mismatch")
+    if unevidenced_removed:
+        hard_failures.append("unevidenced_listing_removals")
+    if status == "fail" and not unevidenced_removed and not unevidenced_fields:
+        hard_failures.append("unclassified_safe_merge_failure")
+    return {
+        "hard_failures": hard_failures,
+        "unevidenced_field_change_count": 0 if unevidenced_removed else unevidenced_fields,
+    }
+
+
 def classify_gate_results(
     entry_quality_gate: dict[str, Any],
     validation_report: dict[str, Any],
@@ -117,6 +157,8 @@ def classify_gate_results(
     rotation_diff: dict[str, Any] | None = None,
     entry_quality_outcome: str | None = None,
     database_outcome: str | None = None,
+    safe_merge: dict[str, Any] | None = None,
+    safe_merge_outcome: str | None = None,
 ) -> dict[str, Any]:
     parsed_unexpected_warn_count = parse_nonnegative_int(
         entry_quality_gate.get("unexpected_warn_count")
@@ -244,10 +286,18 @@ def classify_gate_results(
     )
     if rotation_diff_malformed:
         hard_failures.append("masterfile_rotation_diff_malformed")
+    safe_merge_classification = classify_safe_merge(safe_merge, safe_merge_outcome)
+    hard_failures.extend(safe_merge_classification["hard_failures"])
+    unevidenced_field_change_count = safe_merge_classification["unevidenced_field_change_count"]
 
     hard_failures = sorted(set(hard_failures))
     review_required = bool(
-        (unexpected_warn_count or source_review_keys or critical_rotation_changes)
+        (
+            unexpected_warn_count
+            or source_review_keys
+            or critical_rotation_changes
+            or unevidenced_field_change_count
+        )
         and not hard_failures
     )
     return {
@@ -261,6 +311,7 @@ def classify_gate_results(
         "source_review_keys": source_review_keys,
         "critical_rotation_change_count": len(critical_rotation_changes),
         "critical_rotation_changes": critical_rotation_changes,
+        "unevidenced_listing_field_change_count": unevidenced_field_change_count,
     }
 
 
@@ -272,8 +323,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--validation-report", type=Path, required=True)
     parser.add_argument("--masterfile-summary", type=Path)
     parser.add_argument("--rotation-diff", type=Path)
+    parser.add_argument("--safe-merge", type=Path)
     parser.add_argument("--entry-quality-outcome", choices=("success", "failure"))
     parser.add_argument("--database-outcome", choices=("success", "failure"))
+    parser.add_argument("--safe-merge-outcome", choices=("success", "failure"))
     parser.add_argument("--github-output", type=Path)
     return parser.parse_args(argv)
 
@@ -287,6 +340,8 @@ def main(argv: list[str] | None = None) -> int:
         load_json(args.rotation_diff) if args.rotation_diff else None,
         args.entry_quality_outcome,
         args.database_outcome,
+        load_json(args.safe_merge) if args.safe_merge else None,
+        args.safe_merge_outcome,
     )
     if args.github_output:
         with args.github_output.open("a", encoding="utf-8") as handle:
@@ -297,6 +352,10 @@ def main(argv: list[str] | None = None) -> int:
             handle.write(f"source_review_keys={','.join(result['source_review_keys'])}\n")
             handle.write(
                 f"critical_rotation_change_count={result['critical_rotation_change_count']}\n"
+            )
+            handle.write(
+                "unevidenced_listing_field_change_count="
+                f"{result['unevidenced_listing_field_change_count']}\n"
             )
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0 if result["passed"] else 1

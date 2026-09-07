@@ -192,4 +192,44 @@ def test_apply_symbol_changes_blocks_missing_isin_and_collisions(tmp_path: Path)
     )
 
     assert report["accepted"] == []
-    assert report["summary"]["blocked_by_status"] == {"blocked_new_symbol_collision": 1}
+    assert report["summary"]["blocked_by_status"] == {"manual_successor_exists_missing_isin": 1}
+
+
+def test_apply_symbol_changes_drops_predecessor_when_successor_already_listed(tmp_path: Path) -> None:
+    changes = tmp_path / "symbol_changes.csv"
+    listings = tmp_path / "listings.csv"
+    listing_index = tmp_path / "listing_index.csv"
+    identifiers = tmp_path / "identifiers_extended.csv"
+    supplemental = tmp_path / "supplemental_listings.csv"
+    reference_csv = tmp_path / "reference.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+    drops = tmp_path / "drop_entries.csv"
+
+    write_rows(changes, CHANGE_FIELDS, [change(old="HLX", new="HOS")])
+    write_rows(listings, LISTING_FIELDS, [listing("HLX", isin="US42330P1075"), listing("HOS", isin="")])
+    write_rows(listing_index, INDEX_FIELDS, [])
+    write_rows(identifiers, IDENTIFIER_FIELDS, [])
+    write_rows(supplemental, SUPPLEMENT_FIELDS, [])
+    write_rows(reference_csv, REFERENCE_FIELDS, [reference(ticker="HOS", isin="")])
+    write_rows(transitions, ["old_listing_key", "new_listing_key", "event_type", "identity_type", "identity_value", "confidence", "source_key", "source_url", "reason"], [])
+    write_rows(drops, ["ticker", "exchange", "confidence", "reason"], [])
+
+    report = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        listing_index_csv=listing_index,
+        identifiers_extended_csv=identifiers,
+        supplemental_csv=supplemental,
+        reference_csv=reference_csv,
+        listing_transitions_csv=transitions,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["dropped_predecessor_rows"] == 1
+    assert report["accepted"] == []
+    assert read_rows(listings)[0]["ticker"] == "HLX"
+    assert read_rows(transitions)[0]["old_listing_key"] == "NASDAQ::HLX"
+    assert read_rows(transitions)[0]["event_type"] == "delisted"
+    assert read_rows(drops)[0]["ticker"] == "HLX"

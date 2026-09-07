@@ -32,6 +32,18 @@ MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.cs
 COVERAGE_EXPANSION_CSV = DATA_DIR / "coverage_expansion_listings.csv"
 LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
 DROP_ENTRIES_CSV = DATA_DIR / "review_overrides" / "drop_entries.csv"
+TRANSITION_FIELDNAMES = [
+    "old_listing_key",
+    "new_listing_key",
+    "event_type",
+    "identity_type",
+    "identity_value",
+    "confidence",
+    "source_key",
+    "source_url",
+    "reason",
+]
+DROP_FIELDNAMES = ["ticker", "exchange", "confidence", "reason"]
 REPORTS_DIR = DATA_DIR / "reports"
 REPORT_JSON = REPORTS_DIR / "nasdaq_us_new_listings_apply.json"
 REPORT_MD = REPORTS_DIR / "nasdaq_us_new_listings_apply.md"
@@ -247,6 +259,123 @@ def sec_venue_change_identity_peers(
         if len(previous_sec_rows) == 1:
             peers.append(listing)
     return peers
+
+
+def nasdaq_directory_keys(rows: Iterable[dict[str, str]]) -> set[tuple[str, str]]:
+    keys: set[tuple[str, str]] = set()
+    for row in rows:
+        if row.get("source_key") not in NASDAQ_US_SOURCE_KEYS:
+            continue
+        if row.get("listing_status") != "active" or not normalize_bool(row.get("official", "")):
+            continue
+        exchange = row.get("exchange", "")
+        ticker = row.get("ticker", "")
+        if exchange and ticker:
+            keys.add((exchange, ticker))
+    return keys
+
+
+def official_symbol_change_identity_peers(
+    row: dict[str, str],
+    listings: Iterable[dict[str, str]],
+    previous_reference_rows: Iterable[dict[str, str]],
+    current_reference_rows: Iterable[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Match a newly active Nasdaq directory row to one vanished same-venue listing.
+
+    Identity is the current official name still published for the vanished ticker
+    (typically a lagging SEC row) matching the new directory name. The predecessor
+    must already carry a valid ISIN so the later rebuild can evidence the rekey.
+    """
+    vanished = nasdaq_directory_keys(previous_reference_rows) - nasdaq_directory_keys(
+        current_reference_rows
+    )
+    new_key = (row.get("exchange", ""), row.get("ticker", ""))
+    if not vanished or new_key not in nasdaq_directory_keys(current_reference_rows):
+        return []
+
+    current_rows = list(current_reference_rows)
+    matches: list[dict[str, str]] = []
+    for listing in listings:
+        listing_key_tuple = (listing.get("exchange", ""), listing.get("ticker", ""))
+        if listing_key_tuple not in vanished:
+            continue
+        if listing.get("exchange") != row.get("exchange"):
+            continue
+        if listing.get("asset_type") != row.get("asset_type"):
+            continue
+        if not listing.get("isin", "").strip():
+            continue
+        official_old_names = [
+            candidate.get("name", "")
+            for candidate in current_rows
+            if candidate.get("ticker") == listing.get("ticker")
+            and candidate.get("exchange") == listing.get("exchange")
+            and candidate.get("listing_status") == "active"
+            and normalize_bool(candidate.get("official", ""))
+            and candidate.get("name", "").strip()
+        ]
+        if any(
+            alias_matches_company(name, row.get("name", ""))
+            or alias_matches_company(row.get("name", ""), name)
+            for name in official_old_names
+        ):
+            matches.append(listing)
+    return matches if len(matches) == 1 else []
+
+
+def upsert_csv_rows(
+    path: Path,
+    fieldnames: list[str],
+    new_rows: list[dict[str, str]],
+    key_fields: tuple[str, ...],
+) -> None:
+    existing = load_csv(path)
+    keyed: dict[tuple[str, ...], dict[str, str]] = {}
+    for row in existing:
+        keyed[tuple(row.get(field, "") for field in key_fields)] = {
+            field: row.get(field, "") for field in fieldnames
+        }
+    for row in new_rows:
+        keyed[tuple(row.get(field, "") for field in key_fields)] = {
+            field: row.get(field, "") for field in fieldnames
+        }
+    rows = sorted(keyed.values(), key=lambda row: tuple(row.get(field, "") for field in key_fields))
+    write_csv(path, fieldnames, rows)
+
+
+def persist_detected_symbol_changes(
+    detected: list[dict[str, str]],
+    *,
+    listing_transitions_csv: Path,
+    drop_entries_csv: Path,
+) -> None:
+    if not detected:
+        return
+    upsert_csv_rows(
+        listing_transitions_csv,
+        TRANSITION_FIELDNAMES,
+        detected,
+        ("old_listing_key", "new_listing_key"),
+    )
+    upsert_csv_rows(
+        drop_entries_csv,
+        DROP_FIELDNAMES,
+        [
+            {
+                "ticker": row["old_listing_key"].split("::", 1)[1],
+                "exchange": row["old_listing_key"].split("::", 1)[0],
+                "confidence": "0.99",
+                "reason": (
+                    "Detected official Nasdaq directory ticker change "
+                    f"{row['old_listing_key']} to {row['new_listing_key']}; "
+                    "exact evidence is recorded in listing_transitions.csv."
+                ),
+            }
+            for row in detected
+        ],
+        ("ticker", "exchange"),
+    )
 
 
 def reviewed_transition_identity_peers(
@@ -516,6 +645,7 @@ def apply_new_listings(
     accepted_supplements: list[dict[str, str]] = []
     accepted_coverage: list[dict[str, str]] = []
     skipped: list[dict[str, str]] = []
+    detected_symbol_changes: list[dict[str, str]] = []
     for row in new_supported_rows:
         reason = reason_for_skip(
             row,
@@ -556,6 +686,33 @@ def apply_new_listings(
             for peer in reviewed_transition_identity_peers(row, listings, reviewed_transitions)
             if peer not in security_identity_peers
         )
+        directory_rename_peers = official_symbol_change_identity_peers(
+            row, listings, previous_rows, current_rows
+        )
+        security_identity_peers.extend(
+            peer for peer in directory_rename_peers if peer not in security_identity_peers
+        )
+        if len(directory_rename_peers) == 1 and directory_rename_peers[0].get("isin", "").strip():
+            old_listing = directory_rename_peers[0]
+            detected_symbol_changes.append(
+                {
+                    "old_listing_key": f"{old_listing['exchange']}::{old_listing['ticker']}",
+                    "new_listing_key": f"{row['exchange']}::{row['ticker']}",
+                    "event_type": "symbol_changed",
+                    "identity_type": "same_isin",
+                    "identity_value": old_listing["isin"].strip().upper(),
+                    "confidence": "0.99",
+                    "source_key": row.get("source_key", "") or "nasdaq_directory_symbol_change",
+                    "source_url": row.get("source_url", ""),
+                    "reason": (
+                        "Official Nasdaq Trader directory dropped "
+                        f"{old_listing['exchange']}::{old_listing['ticker']} and listed "
+                        f"{row['exchange']}::{row['ticker']}; the still-published official name "
+                        "for the vanished ticker matches the new directory name, and the "
+                        f"predecessor ISIN {old_listing['isin'].strip().upper()} is retained."
+                    ),
+                }
+            )
         identity_peers.extend(peer for peer in security_identity_peers if peer not in identity_peers)
         ticker_occupant_matches = any(peer.get("ticker") == row["ticker"] for peer in security_identity_peers)
         if row["ticker"] in existing_tickers and not ticker_occupant_matches:
@@ -574,6 +731,25 @@ def apply_new_listings(
             accepted_supplements.append(supplement)
             accepted.append({**supplement, "apply_target": "supplement"})
             existing_supplement_keys.add((supplement["ticker"], supplement["exchange"]))
+
+    unique_detected_symbol_changes = []
+    seen_old_keys: set[str] = set()
+    seen_new_keys: set[str] = set()
+    for row in detected_symbol_changes:
+        old_key = row["old_listing_key"]
+        new_key = row["new_listing_key"]
+        if old_key in seen_old_keys or new_key in seen_new_keys:
+            continue
+        if not str(row.get("source_url", "")).startswith("https://"):
+            continue
+        seen_old_keys.add(old_key)
+        seen_new_keys.add(new_key)
+        unique_detected_symbol_changes.append(row)
+    persist_detected_symbol_changes(
+        unique_detected_symbol_changes,
+        listing_transitions_csv=listing_transitions_csv,
+        drop_entries_csv=drop_entries_csv,
+    )
 
     supplement_rows = dedupe_supplement_rows([*existing_supplements, *accepted_supplements])
     write_csv(supplement_csv, SUPPLEMENT_FIELDNAMES, supplement_rows)
@@ -595,6 +771,7 @@ def apply_new_listings(
         "new_supported_rows": len(new_supported_rows),
         "accepted_rows": len(accepted),
         "skipped_rows": len(skipped),
+        "detected_symbol_changes": len(unique_detected_symbol_changes),
         "accepted_by_exchange": dict(sorted(Counter(row["exchange"] for row in accepted).items())),
         "accepted_by_target": dict(sorted(Counter(row["apply_target"] for row in accepted).items())),
         "skipped_by_reason": dict(sorted(Counter(row["skip_reason"] for row in skipped).items())),

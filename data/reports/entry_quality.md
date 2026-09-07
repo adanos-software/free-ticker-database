@@ -1,12 +1,12 @@
 # Entry Quality Report
 
-Generated at: `2026-09-03T11:44:19Z`
+Generated at: `2026-09-07T12:41:48Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,566 |
+| pass | 80,565 |
 | source_gap | 11,485 |
 | warn | 31 |
 
@@ -44,7 +44,7 @@ Generated at: `2026-09-03T11:44:19Z`
 | XETRA | 4,171 | 0 | 144 | 0 | 0 |
 | TSXV | 1,283 | 0 | 137 | 2 | 0 |
 | Euronext | 1,348 | 0 | 128 | 1 | 0 |
-| NYSE | 1,921 | 0 | 104 | 4 | 0 |
+| NYSE | 1,920 | 0 | 104 | 4 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 
 ## Notes

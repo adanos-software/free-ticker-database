@@ -15896,6 +15896,66 @@ def test_merge_reference_rows_preserves_descriptive_name_from_degraded_refresh()
     ]
 
 
+def test_merge_reference_rows_preserves_committed_isin_when_refresh_omits_it() -> None:
+    merged = merge_reference_rows(
+        [
+            {
+                "source_key": "spotlight_companies_directory",
+                "ticker": "SAFE",
+                "name": "Safe at Sea",
+                "exchange": "STO",
+                "isin": "SE0005308632",
+            }
+        ],
+        [
+            {
+                "source_key": "spotlight_companies_directory",
+                "ticker": "SAFE",
+                "name": "Safe at Sea",
+                "exchange": "STO",
+                "isin": "",
+            }
+        ],
+        source_keys={"spotlight_companies_directory"},
+    )
+
+    assert merged == [
+        {
+            "source_key": "spotlight_companies_directory",
+            "ticker": "SAFE",
+            "name": "Safe at Sea",
+            "exchange": "STO",
+            "isin": "SE0005308632",
+        }
+    ]
+
+
+def test_merge_reference_rows_keeps_explicit_isin_replacement() -> None:
+    merged = merge_reference_rows(
+        [
+            {
+                "source_key": "spotlight_companies_directory",
+                "ticker": "CHOSA",
+                "name": "CHOSA",
+                "exchange": "STO",
+                "isin": "",
+            }
+        ],
+        [
+            {
+                "source_key": "spotlight_companies_directory",
+                "ticker": "CHOSA",
+                "name": "CHOSA",
+                "exchange": "STO",
+                "isin": "SE0007784319",
+            }
+        ],
+        source_keys={"spotlight_companies_directory"},
+    )
+
+    assert merged[0]["isin"] == "SE0007784319"
+
+
 def test_merge_reference_rows_preserves_unavailable_selected_sources() -> None:
     merged = merge_reference_rows(
         [

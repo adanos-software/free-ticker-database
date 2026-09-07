@@ -62,12 +62,6 @@ jobs:
           python scripts/build_entry_quality_report.py
           python scripts/backfill_official_name_mismatches.py --exchange ASX
           python scripts/rebuild_canonical.py
-          python scripts/check_safe_merge.py \
-            --before /tmp/listings-before.csv \
-            --after data/listings.csv \
-            --events data/history/listing_events.csv \
-            --previous-official-reference /tmp/reference-before-masterfile-rotation.csv \
-            --strict
           python scripts/enrich_global_identifiers.py
           python scripts/build_entry_quality_report.py
           python scripts/build_coverage_report.py
@@ -79,6 +73,18 @@ jobs:
           python scripts/build_alias_quality_report.py
           python scripts/build_adanos_ticker_reference.py
           python scripts/update_readme_snapshot.py
+
+      - name: Enforce safe merge gate
+        id: safe_merge
+        continue-on-error: true
+        run: |
+          rm -f data/reports/safe_merge.json
+          python scripts/check_safe_merge.py \
+            --before /tmp/listings-before.csv \
+            --after data/listings.csv \
+            --events data/history/listing_events.csv \
+            --previous-official-reference /tmp/reference-before-masterfile-rotation.csv \
+            --strict
 
       - name: Validate technical release gates
         run: |
@@ -109,8 +115,10 @@ jobs:
             --validation-report data/reports/validation_report.json \
             --entry-quality-outcome "${{ steps.entry_quality_gate.outcome }}" \
             --database-outcome "${{ steps.database_gates.outcome }}" \
+            --safe-merge-outcome "${{ steps.safe_merge.outcome }}" \
             --masterfile-summary data/masterfiles/summary.json \
             --rotation-diff data/reports/masterfile_rotation_diff.json \
+            --safe-merge data/reports/safe_merge.json \
             --github-output "$GITHUB_OUTPUT"
 
       - name: Summarize manual data review
@@ -122,6 +130,7 @@ jobs:
             echo "The refresh completed technically, but introduced ${{ steps.release.outputs.unexpected_warn_count }} new entry-quality warning(s)."
             echo "Selected sources requiring review: ${{ steps.release.outputs.source_review_count }} (${{ steps.release.outputs.source_review_keys }})."
             echo "Critical masterfile field changes requiring review: ${{ steps.release.outputs.critical_rotation_change_count }}."
+            echo "Unevidenced listing field changes requiring review: ${{ steps.release.outputs.unevidenced_listing_field_change_count }}."
             echo "A substantive generated data diff will be preserved in a draft pull request; source-only review without data changes remains summary-only."
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -177,8 +186,9 @@ jobs:
             Entry-quality review required: `${{ steps.release.outputs.review_required }}`
             Unexpected entry-quality warnings: `${{ steps.release.outputs.unexpected_warn_count }}`
             Critical masterfile field changes: `${{ steps.release.outputs.critical_rotation_change_count }}`
+            Unevidenced listing field changes: `${{ steps.release.outputs.unevidenced_listing_field_change_count }}`
 
-            Draft review PRs run CI but are never enabled for automerge.
+            Draft review PRs are not dispatched to CI or enabled for automerge.
 
             Diff report: `data/reports/masterfile_rotation_diff.md`
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
@@ -206,7 +216,7 @@ jobs:
           fi
 
       - name: Dispatch CI for automation pull request
-        if: steps.cpr.outputs.pull-request-number != ''
+        if: steps.cpr.outputs.pull-request-number != '' && steps.release.outputs.review_required != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run ci.yml --ref automation/masterfile-rotation
