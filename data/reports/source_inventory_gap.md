@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-09-03T11:44:28Z`
+Generated at: `2026-09-07T12:33:00Z`
 
 ## Summary
 
@@ -41,7 +41,7 @@ Generated at: `2026-09-03T11:44:28Z`
 | 17 | ICE_IS | official_partial | 18 | 0 | 0 | nasdaq_iceland_shares | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | parser implemented; residual gaps need ticker-level review |
 | 18 | BSE_HU | official_partial | 50 | 0 | 0 | bse_hu_listed_companies | Budapest Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
 | 19 | VSE | official_partial | 88 | 0 | 6 | vienna_listed_companies | Wiener Boerse | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented as ISIN join against current VSE listings |
-| 20 | BSE_BW | official_partial | 39 | 0 | 3 | bse_bw_listed_companies | BSE Botswana | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official companies page with conservative local listing-name matching |
+| 20 | BSE_BW | official_partial | 39 | 0 | 3 | bse_bw_listed_companies | BSE Botswana | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 26 existing rows | implemented via official companies page with conservative local listing-name matching |
 | 21 | WSE | official_partial | 582 | 0 | 8 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 22 | TASE | official_partial | 801 | 0 | 4 | tase_company_profiles | TASE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
 | 23 | SIX | official_partial | 1263 | 0 | 3 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
@@ -80,7 +80,7 @@ _No rows._
 | 17 | ICE_IS | official_partial | 18 | 0 | 0 | nasdaq_iceland_shares | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | parser implemented; residual gaps need ticker-level review |
 | 18 | BSE_HU | official_partial | 50 | 0 | 0 | bse_hu_listed_companies | Budapest Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
 | 19 | VSE | official_partial | 88 | 0 | 6 | vienna_listed_companies | Wiener Boerse | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented as ISIN join against current VSE listings |
-| 20 | BSE_BW | official_partial | 39 | 0 | 3 | bse_bw_listed_companies | BSE Botswana | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official companies page with conservative local listing-name matching |
+| 20 | BSE_BW | official_partial | 39 | 0 | 3 | bse_bw_listed_companies | BSE Botswana | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 26 existing rows | implemented via official companies page with conservative local listing-name matching |
 | 21 | WSE | official_partial | 582 | 0 | 8 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 22 | TASE | official_partial | 801 | 0 | 4 | tase_company_profiles | TASE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
 | 23 | SIX | official_partial | 1263 | 0 | 3 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |

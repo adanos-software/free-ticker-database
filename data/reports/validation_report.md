@@ -1,8 +1,8 @@
 # Database Validation Report
 
-Generated at: `2026-09-03T11:45:46Z`
+Generated at: `2026-09-07T12:34:13Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
@@ -13,7 +13,7 @@ Status: `PASS`
 | adanos_reference_rows | 63,867 |
 | entry_quality_rows | 92,082 |
 | error_gates | 84 |
-| failed_error_gates | 0 |
+| failed_error_gates | 1 |
 | info_gates | 5 |
 
 ## Gates
@@ -85,7 +85,7 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 2 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
@@ -93,7 +93,7 @@ Status: `PASS`
 | expected_missing_primary_isin | info | PASS | 764 |  |
 | missing_stock_sector | info | PASS | 1301 |  |
 | missing_etf_category | info | PASS | 54 |  |
-| source_gap_rows | info | PASS | 11485 |  |
+| source_gap_rows | info | PASS | 11498 |  |
 | allowed_warn_rows | info | PASS | 32 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -112,4 +112,9 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### entry_quality_unexpected_warn_count
+
+- Actual: `2`
+- `BSE_IN::INTEGFD`
+- `XETRA::TGT`
+

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-03T11:44:19Z",
+    "generated_at": "2026-09-07T12:32:52Z",
     "rows": 92082,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,29 +14,29 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80566,
-      "source_gap": 11485,
-      "warn": 31
+      "pass": 80551,
+      "source_gap": 11498,
+      "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4626,
-      "official_reference": 82388,
+      "identifier_enriched": 4634,
+      "official_reference": 82375,
       "scoped_source_gap": 238,
-      "valid_isin": 4830
+      "valid_isin": 4835
     },
     "severity_counts": {
-      "high": 6,
+      "high": 8,
       "medium": 26,
-      "source_gap": 11813
+      "source_gap": 11826
     },
     "issue_counts": {
-      "official_reference_gap": 6407,
+      "official_reference_gap": 6420,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1301,
       "expected_missing_primary_isin": 764,
       "missing_etf_category": 54,
       "official_name_mismatch": 26,
-      "official_isin_mismatch": 6
+      "official_isin_mismatch": 8
     },
     "top_flagged_exchanges": [
       {
@@ -51,8 +51,8 @@
       },
       {
         "exchange": "FSX",
-        "pass": 7144,
-        "source_gap": 999
+        "pass": 7139,
+        "source_gap": 1004
       },
       {
         "exchange": "B3",
@@ -106,6 +106,12 @@
         "warn": 2
       },
       {
+        "exchange": "XETRA",
+        "pass": 4165,
+        "source_gap": 149,
+        "warn": 1
+      },
+      {
         "exchange": "ASX",
         "pass": 2109,
         "source_gap": 150
@@ -114,11 +120,6 @@
         "exchange": "BATS",
         "pass": 1223,
         "source_gap": 150
-      },
-      {
-        "exchange": "XETRA",
-        "pass": 4171,
-        "source_gap": 144
       },
       {
         "exchange": "TSXV",
@@ -10011,6 +10012,24 @@
       ]
     },
     {
+      "listing_key": "XETRA::333",
+      "ticker": "333",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "FSX::338B",
       "ticker": "338B",
       "exchange": "FSX",
@@ -18296,39 +18315,14 @@
       ]
     },
     {
-      "listing_key": "XSTU::6Z4",
+      "listing_key": "FSX::6Z4",
       "ticker": "6Z4",
-      "exchange": "XSTU",
+      "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
       "quality_score": 90,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::6ZR",
-      "ticker": "6ZR",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 80,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        },
         {
           "issue_type": "official_reference_gap",
           "severity": "source_gap",
@@ -18339,8 +18333,8 @@
       ]
     },
     {
-      "listing_key": "XSTU::703",
-      "ticker": "703",
+      "listing_key": "XSTU::6Z4",
+      "ticker": "6Z4",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",
