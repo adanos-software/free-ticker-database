@@ -154,6 +154,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_szse_b_share_list,
     fetch_szse_etf_list,
     fetch_source_rows_with_mode,
+    select_refresh_sources,
     select_rotation_sources,
     fetch_tmx_money_etfs,
     fetch_tmx_stock_quote_rows,
@@ -391,6 +392,153 @@ def test_select_rotation_sources_uses_deterministic_date_batch() -> None:
     batch_count = 3
     expected_index = datetime.fromisoformat("2026-07-07").date().toordinal() % batch_count
     assert selected == ordered[expected_index * 2:expected_index * 2 + 2]
+
+
+def _source(key: str, scope: str = "listed_companies_subset") -> MasterfileSource:
+    return MasterfileSource(
+        key=key,
+        provider="P",
+        description=key,
+        source_url=f"https://{key}.example",
+        format="x",
+        reference_scope=scope,
+    )
+
+
+def _detail(mode: str, generated_at: str) -> dict[str, str]:
+    return {"mode": mode, "generated_at": generated_at}
+
+
+def test_select_refresh_sources_falls_back_to_ordinal_without_summary() -> None:
+    sources = [_source(key) for key in "abcde"]
+    selected = select_refresh_sources(
+        batch_size=2,
+        rotation_date="2026-07-07",
+        sources=sources,
+        summary={},
+    )
+    assert selected == select_rotation_sources(
+        batch_size=2,
+        rotation_date="2026-07-07",
+        sources=sources,
+    )
+
+
+def test_select_refresh_sources_prefers_stale_directories_over_unavailable() -> None:
+    sources = [
+        _source("unav_old", "exchange_directory"),
+        _source("unav_new", "exchange_directory"),
+        _source("stale_dir", "exchange_directory"),
+        _source("stale_subset"),
+        _source("fresh_dir", "exchange_directory"),
+    ]
+    summary = {
+        "source_details": {
+            "unav_old": _detail("unavailable", "2026-01-01T00:00:00Z"),
+            "unav_new": _detail("unavailable", "2026-06-01T00:00:00Z"),
+            "stale_dir": _detail("network", "2026-06-01T00:00:00Z"),
+            "stale_subset": _detail("network", "2026-05-01T00:00:00Z"),
+            "fresh_dir": _detail("network", "2026-07-06T00:00:00Z"),
+        }
+    }
+    selected = select_refresh_sources(
+        batch_size=3,
+        rotation_date="2026-07-07",
+        sources=sources,
+        summary=summary,
+        sla_days_by_key={
+            "unav_old": 7,
+            "unav_new": 7,
+            "stale_dir": 7,
+            "stale_subset": 7,
+            "fresh_dir": 7,
+        },
+    )
+    assert [source.key for source in selected] == ["stale_dir", "stale_subset", "unav_old"]
+
+
+def test_select_refresh_sources_caps_daily_fetch_issue_retries() -> None:
+    sources = [
+        _source(f"unav{index}", "exchange_directory") for index in range(8)
+    ] + [_source("stale_dir", "exchange_directory")]
+    summary = {
+        "source_details": {
+            **{
+                f"unav{index}": _detail("unavailable", "2026-01-01T00:00:00Z")
+                for index in range(8)
+            },
+            "stale_dir": _detail("network", "2026-01-01T00:00:00Z"),
+        }
+    }
+    selected = select_refresh_sources(
+        batch_size=6,
+        rotation_date="2026-07-07",
+        sources=sources,
+        summary=summary,
+        sla_days_by_key={key: 7 for key in [source.key for source in sources]},
+    )
+    keys = [source.key for source in selected]
+    assert keys[0] == "stale_dir"
+    assert keys[1:] == [f"unav{index}" for index in range(5)]
+
+
+def test_select_refresh_sources_stale_or_unavailable_skips_fresh_rows() -> None:
+    sources = [
+        _source("unav", "exchange_directory"),
+        _source("stale", "exchange_directory"),
+        _source("fresh", "exchange_directory"),
+        _source("cache_hit"),
+    ]
+    summary = {
+        "source_details": {
+            "unav": _detail("unavailable", "2026-01-01T00:00:00Z"),
+            "stale": _detail("network", "2026-01-01T00:00:00Z"),
+            "fresh": _detail("network", "2026-07-06T00:00:00Z"),
+            "cache_hit": _detail("cache", "2026-01-01T00:00:00Z"),
+        }
+    }
+    selected = select_refresh_sources(
+        batch_size=10,
+        rotation_date="2026-07-07",
+        sources=sources,
+        summary=summary,
+        sla_days_by_key={key: 7 for key in [source.key for source in sources]},
+        stale_or_unavailable=True,
+    )
+    assert [source.key for source in selected] == ["unav", "cache_hit", "stale"]
+
+
+def test_select_refresh_sources_uses_ordinal_tie_break_for_equal_age() -> None:
+    sources = [_source(key, "exchange_directory") for key in "abcde"]
+    generated = "2026-01-01T00:00:00Z"
+    summary = {
+        "source_details": {source.key: _detail("network", generated) for source in sources}
+    }
+    selected = select_refresh_sources(
+        batch_size=2,
+        rotation_date="2026-07-07",
+        sources=sources,
+        summary=summary,
+        sla_days_by_key={source.key: 7 for source in sources},
+    )
+    ordinal = select_rotation_sources(
+        batch_size=2,
+        rotation_date="2026-07-07",
+        sources=sources,
+    )
+    assert selected == ordinal
+
+
+def test_select_refresh_cli_rejects_stale_flag_without_batch_size() -> None:
+    with pytest.raises(SystemExit, match="requires --rotation-batch-size"):
+        fetch_exchange_masterfiles.main(["--stale-or-unavailable"])
+
+
+def test_select_refresh_cli_rejects_stale_flag_with_source() -> None:
+    with pytest.raises(SystemExit, match="cannot be combined"):
+        fetch_exchange_masterfiles.main(
+            ["--stale-or-unavailable", "--source", "nasdaq_listed"]
+        )
 
 
 def test_fetch_all_sources_times_out_one_source_and_continues(monkeypatch) -> None:
@@ -18253,6 +18401,8 @@ def test_persist_source_metadata_preserves_reviewed_license_fields(tmp_path, mon
                     "terms_version": "nasdaqtrader-copydisclaim-main-copyright-2021",
                     "terms_sha256": "b" * 64,
                     "license_reviewed_at": "2026-08-20T17:50:00Z",
+                    "freshness_sla_days": 14,
+                    "enabled": True,
                 },
             ]
         ),
@@ -18274,4 +18424,7 @@ def test_persist_source_metadata_preserves_reviewed_license_fields(tmp_path, mon
     assert nasdaq["license_url"] == "https://www.nasdaqtrader.com/Trader.aspx?id=CopyDisclaimMain"
     assert nasdaq["terms_sha256"] == "b" * 64
     assert nasdaq["raw_redistribution_allowed"] is False
+    assert nasdaq["freshness_sla_days"] == 14
+    assert nasdaq["enabled"] is True
     assert "license_status" not in euronext
+    assert "freshness_sla_days" not in euronext

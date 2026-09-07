@@ -3,6 +3,7 @@ name: Daily Masterfile Rotation
 on:
   schedule:
     - cron: "07 6 * * *"
+    - cron: "17 10 * * 1"
   workflow_dispatch:
     inputs:
       mode:
@@ -11,6 +12,7 @@ on:
         options:
           - rotation
           - sources
+          - stale
         default: rotation
       source_keys:
         description: Comma-separated source keys (mode=sources)
@@ -85,7 +87,7 @@ jobs:
 
       - name: Refresh scheduled source batch
         env:
-          MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode || 'rotation' }}
+          MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode || (github.event.schedule == '17 10 * * 1' && 'stale') || 'rotation' }}
           SOURCE_KEYS: ${{ github.event.inputs.source_keys }}
           BATCH_SIZE: ${{ github.event.inputs.batch_size || '20' }}
         run: |
@@ -106,6 +108,9 @@ jobs:
               ;;
             rotation)
               python scripts/fetch_exchange_masterfiles.py --rotation-batch-size "$batch_size"
+              ;;
+            stale)
+              python scripts/fetch_exchange_masterfiles.py --stale-or-unavailable --rotation-batch-size "$batch_size"
               ;;
             *)
               echo "Unknown mode: $mode" >&2

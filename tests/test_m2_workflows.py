@@ -24,8 +24,12 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "needs.gate.outputs.skip != 'true'" in workflow
     assert "type: choice" in workflow
     assert "- sources" in workflow
+    assert "- stale" in workflow
+    assert 'cron: "17 10 * * 1"' in workflow
+    assert "(github.event.schedule == '17 10 * * 1' && 'stale')" in workflow
     assert "mode=sources requires source_keys" in workflow
     assert "python scripts/fetch_exchange_masterfiles.py --source" in workflow
+    assert "--stale-or-unavailable" in workflow
     assert "fetch_issue_count" in workflow
     assert "Fetch issues (preserved last committed rows, not identity review)" in workflow
     assert "Fetch misses are ops notes, not identity review" in workflow
