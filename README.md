@@ -147,9 +147,9 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.38.0",
-    "built_at": "2026-08-31T19:42:14Z",
-    "total_tickers": 63855
+    "version": "3.39.0",
+    "built_at": "2026-09-07T14:11:32Z",
+    "total_tickers": 63869
   },
   "tickers": []
 }

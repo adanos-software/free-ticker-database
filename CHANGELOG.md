@@ -2,6 +2,47 @@
 
 ## [Unreleased]
 
+## [3.39.0] - 2026-09-07
+
+### Summary
+
+**Identity-reviewed listing automation release.** Publishes the Nasdaq and official-masterfile rotations accumulated since v3.38.0, reviewed US corporate-action identities (BEN, BTOG→SGRX, HLX, CMII→IPXG, SBEV→EDVA, REAX), official ISIN reissues, and fail-closed job hardening so scheduled updates stay green without auto-merging unevidenced identity changes. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, unresolved source gaps remain explicit, and automation cannot remove or critically recode a listing without exact evidence.
+
+### Added
+
+- Added supported Nasdaq Trader/SEC Stock and ETF listings across the September refreshes, including `SKHQ`, `YFOR`, `HOS`, `DIVH`, `UCBG`, `VOOY`, `NSAI`, `PJSM`, `TSCZ`, `HQDG`, `JONE`, `XTND`, and `PJIN`. Non-common securities and temporary when-issued lines remain excluded.
+- Added official Deutsche Boerse ETF/ETP rows for `XETRA::EEA1` (`LU3215533467`) and `XETRA::EEAZ` (`LU3351069201`).
+- Added reviewed listing-transition evidence for official Nasdaq directory ticker changes and for dropping a predecessor when the successor is already listed.
+
+### Changed
+
+- Applied reviewed US identities: `NYSE::BEN` to Franklin Templeton (same ticker/CUSIP), `NASDAQ::BTOG` → `NASDAQ::SGRX` same-ISIN `KYG216211345`, `NYSE::HLX` delisted after the Hornbeck close (surviving listing `NYSE::HOS`), plus SEC-evidenced `CMII`→`IPXG`, `SBEV`→`EDVA`, and `REAX` parent/CUSIP replacement.
+- Applied reviewed official ISIN reissues: Integrated Proteins `BSE_IN::INTEGFD` `INE177M01021`, 11880 Solutions `XETRA`/`FSX`/`XSTU::TGT` `DE000A41YFQ4`, and `XSTU::FRE` `DE000FRE5EN2`. BSE `TCC` Concept remains official-only (not a listing).
+- Applied official Nasdaq trading-system deletes for `NASDAQ::APGE` and `NASDAQ::JFB` with exact-ISIN delisting transitions.
+- Rotated official masterfiles, including STOXX name casing on Xtrackers `X600`/`XEST`/`XESU`/`XSXX`. Unavailable official feeds preserve the last committed directory.
+- Refreshed symbol-change, weekly drift/freshness, delisting, and public export artifacts. No unevidenced symbol-change applies landed.
+
+### Fixed
+
+- Daily Nasdaq and masterfile jobs no longer fail closed on structured identity/review events: those runs open a review Draft instead of painting Actions red. Technical crashes, quarantine, unevidenced removals, and unknown gate failures stay fatal.
+- Automation review Drafts are no longer dispatched to merge CI and cannot enable automerge. Warning-free, collision-free updates still dispatch CI and automerge.
+- Official masterfile refresh no longer clears a committed ISIN when a parser omits it. Explicit official ISIN replacements still require the reviewed metadata path.
+- Unevidenced listing field changes in masterfile rotation are review drafts, not job failures. Unevidenced listing removals remain fatal.
+- `apply_nasdaq_us_new_listings` infers official directory ticker changes from a vanished Nasdaq row plus a still-published official name match, and persists the transition plus predecessor drop.
+- `apply_symbol_changes` drops a predecessor when the successor is already listed, the old symbol has left the official master, and the old ISIN plus HTTPS source URL are present.
+
+### Safety
+
+- Missing or invalid ISINs, unevidenced removals, critical-field changes, ticker reuse, ambiguous identity transitions, and upstream fetch failures remain fail-closed.
+- Same-ticker official US name changes and official ISIN replacements stay review-gated until listing-keyed evidence is recorded.
+- Suspended BSE rows remain listed by policy; `master_absent` rows require manual rename-versus-delisting review. Failed official fetches skip the affected market and preserve the last committed directory.
+
+### Verification
+
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract for the landing identity, Nasdaq, masterfile, and delisting PRs.
+- Live workflow reproductions of Daily Nasdaq, Daily Symbol Changes, Daily Masterfile Rotation, Weekly Delisting Candidates, Weekly Drift & Freshness, and Weekly ISIN Validation completed successfully. Review drafts no longer dispatch CI.
+- Snapshot: 63,869 primary tickers, 92,083 listing rows, 62,553 primary ISINs (97.9%), 62,297 sector/category values, 31 entry-quality warnings, and 11,503 source-gap rows. Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
+
 ## [3.38.0] - 2026-08-31
 
 ### Summary
