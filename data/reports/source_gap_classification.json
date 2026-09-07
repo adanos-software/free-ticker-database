@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-09-07T13:19:07Z",
-    "rows": 8747,
+    "generated_at": "2026-09-07T13:43:04Z",
+    "rows": 8765,
     "field_totals": {
       "missing_etf_category": 45,
       "missing_isin_primary": 768,
       "missing_sector_stock": 1527,
-      "official_reference_gap": 6407
+      "official_reference_gap": 6425
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -20,14 +20,14 @@
       "fund_or_trust_identifier_gap": 283,
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
-      "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 291,
-      "official_identifier_reference_unmatched_gap": 8,
+      "official_current_directory_absent_identifier_gap": 9,
+      "official_identifier_not_exposed_source_gap": 282,
+      "official_identifier_reference_unmatched_gap": 10,
       "official_industry_taxonomy_unavailable_gap": 852,
-      "official_product_reference_unmatched_category_gap": 1,
-      "official_product_taxonomy_unavailable_gap": 33,
-      "official_reference_symbol_collision_gap": 1200,
-      "official_reference_unmatched_source_gap": 5207,
+      "official_product_reference_unmatched_category_gap": 2,
+      "official_product_taxonomy_unavailable_gap": 32,
+      "official_reference_symbol_collision_gap": 1201,
+      "official_reference_unmatched_source_gap": 5224,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 38
     },
@@ -35,24 +35,24 @@
       "missing_etf_category:digital_asset_etf_category_gap": 1,
       "missing_etf_category:equity_etf_category_gap": 9,
       "missing_etf_category:fixed_income_etf_category_gap": 1,
-      "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 33,
+      "missing_etf_category:official_product_reference_unmatched_category_gap": 2,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 32,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 44,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 85,
       "missing_isin_primary:fund_or_trust_identifier_gap": 283,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
-      "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 291,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 8,
+      "missing_isin_primary:official_current_directory_absent_identifier_gap": 9,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 282,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 10,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 62,
       "missing_sector_stock:fundlike_stock_sector_gap": 5,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 852,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 38,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1200,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5207
+      "official_reference_gap:official_reference_symbol_collision_gap": 1201,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5224
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -180,11 +180,11 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 222
+          "rows": 226
         },
         {
           "exchange": "NYSE ARCA",
-          "rows": 174
+          "rows": 175
         },
         {
           "exchange": "AMS",
@@ -196,15 +196,15 @@
         },
         {
           "exchange": "FSX",
-          "rows": 157
+          "rows": 162
+        },
+        {
+          "exchange": "XETRA",
+          "rows": 142
         },
         {
           "exchange": "LSE",
           "rows": 139
-        },
-        {
-          "exchange": "XETRA",
-          "rows": 137
         }
       ]
     },
@@ -261,7 +261,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NASDAQ",
-        "rows": 157,
+        "rows": 161,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -277,7 +277,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "FSX",
-        "rows": 136,
+        "rows": 141,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -293,7 +293,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NYSE ARCA",
-        "rows": 122,
+        "rows": 123,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -301,7 +301,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "XETRA",
-        "rows": 90,
+        "rows": 93,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -348,6 +348,14 @@
       {
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
+        "exchange": "BSE_IN",
+        "rows": 73,
+        "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+        "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+      },
+      {
+        "field": "official_reference_gap",
+        "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "Euronext",
         "rows": 73,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
@@ -360,14 +368,6 @@
         "rows": 71,
         "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
         "source_gate": "Exact fund/trust symbol and product name with checksum."
-      },
-      {
-        "field": "official_reference_gap",
-        "gap_class": "official_reference_unmatched_source_gap",
-        "exchange": "BSE_IN",
-        "rows": 70,
-        "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-        "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       }
     ],
     "policy": {
@@ -503,14 +503,14 @@
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "name": "Raub Brock Dividend Growth ETF",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category.",
       "source_gap_context": "listing_key=NASDAQ::HQDG;exchange=NASDAQ;ticker=HQDG;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+      "classification_context": "gap_class=official_product_reference_unmatched_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_reference_unmatched_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -2509,14 +2509,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "BP CAPITAL MARKETS P.L.C.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::BP1;exchange=ASX;ticker=BP1;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2543,14 +2543,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "CAISSE FRANCAISE DE FINANCEMENT LOCAL",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::DXA;exchange=ASX;ticker=DXA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2577,14 +2577,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "LLOYDS BANKING GROUP PLC",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::LO1;exchange=ASX;ticker=LO1;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2730,14 +2730,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "SHINHAN BANK.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::SHZ;exchange=ASX;ticker=SHZ;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2764,14 +2764,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "NEW SOUTH WALES TREASURY CORPORATION",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::XNC;exchange=ASX;ticker=XNC;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2781,14 +2781,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "QUEENSLAND TREASURY CORPORATION",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::XQL;exchange=ASX;ticker=XQL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -2798,14 +2798,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "TREASURY CORPORATION OF VICTORIA",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+      "recommended_next_source": "Current official exchange directory or CSD/security registry.",
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence.",
       "source_gap_context": "listing_key=ASX::XVG;exchange=ASX;ticker=XVG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_current_directory_absent_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_current_directory_absent_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -5960,14 +5960,14 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Jones Ventures INTL Acquisition1 Corp - Class A Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
       "source_gap_context": "listing_key=NASDAQ::JONE;exchange=NASDAQ;ticker=JONE;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -8187,14 +8187,14 @@
       "exchange": "NYSE",
       "asset_type": "Stock",
       "name": "Xtend AI Robotics, Inc. Common Stock",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
       "source_gap_context": "listing_key=NYSE::XTND;exchange=NYSE;ticker=XTND;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -57873,23 +57873,6 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "BSE_IN::AUTOPRD",
-      "ticker": "AUTOPRD",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "name": "Automobile Products of India Ltd",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=BSE_IN::AUTOPRD;exchange=BSE_IN;ticker=AUTOPRD;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
       "listing_key": "BSE_IN::AVASARA",
       "ticker": "AVASARA",
       "exchange": "BSE_IN",
@@ -58105,6 +58088,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=BSE_IN::COVIDH;exchange=BSE_IN;ticker=COVIDH;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "BSE_IN::FCONSUMER",
+      "ticker": "FCONSUMER",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Future Consumer Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::FCONSUMER;exchange=BSE_IN;ticker=FCONSUMER;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -58417,6 +58417,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "BSE_IN::MASCH",
+      "ticker": "MASCH",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Master Chemicals Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::MASCH;exchange=BSE_IN;ticker=MASCH;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "BSE_IN::MCEL",
       "ticker": "MCEL",
       "exchange": "BSE_IN",
@@ -58615,6 +58632,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=BSE_IN::RAMASIGNS;exchange=BSE_IN;ticker=RAMASIGNS;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "BSE_IN::RISHYRN",
+      "ticker": "RISHYRN",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Rishab Special Yarns Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::RISHYRN;exchange=BSE_IN;ticker=RISHYRN;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -58853,6 +58887,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=BSE_IN::TRITON;exchange=BSE_IN;ticker=TRITON;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "BSE_IN::VARDHMAN",
+      "ticker": "VARDHMAN",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Vardhman Concrete Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::VARDHMAN;exchange=BSE_IN;ticker=VARDHMAN;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -64146,6 +64197,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "FSX::6Z4",
+      "ticker": "6Z4",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Crinetics Pharmaceuticals Inc",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::6Z4;exchange=FSX;ticker=6Z4;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "FSX::6ZR",
       "ticker": "6ZR",
       "exchange": "FSX",
@@ -64882,14 +64950,14 @@
       "exchange": "FSX",
       "asset_type": "Stock",
       "name": "elexxion AG",
-      "gap_class": "official_reference_symbol_collision_gap",
+      "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=FSX::E8X;exchange=FSX;ticker=E8X;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -65205,14 +65273,14 @@
       "exchange": "FSX",
       "asset_type": "Stock",
       "name": "Klöckner & Co SE",
-      "gap_class": "official_reference_symbol_collision_gap",
+      "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=FSX::KCO;exchange=FSX;ticker=KCO;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -65285,6 +65353,40 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "FSX::LP1",
+      "ticker": "LP1",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Leggett & Platt Incorporated",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=FSX::LP1;exchange=FSX;ticker=LP1;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "FSX::LVO0",
+      "ticker": "LVO0",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "LivePerson Inc.",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::LVO0;exchange=FSX;ticker=LVO0;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "FSX::M5Z",
       "ticker": "M5Z",
       "exchange": "FSX",
@@ -65332,6 +65434,23 @@
       "source_gap_context": "listing_key=FSX::MK7;exchange=FSX;ticker=MK7;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "FSX::MPCK",
+      "ticker": "MPCK",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "MPC Münchmeyer Petersen Capital AG",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=FSX::MPCK;exchange=FSX;ticker=MPCK;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",
@@ -65959,6 +66078,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=FSX::XXY;exchange=FSX;ticker=XXY;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "FSX::YC7",
+      "ticker": "YC7",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "WA Kaolin Limited",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::YC7;exchange=FSX;ticker=YC7;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -72170,6 +72306,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NASDAQ::HQDG",
+      "ticker": "HQDG",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "Raub Brock Dividend Growth ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::HQDG;exchange=NASDAQ;ticker=HQDG;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NASDAQ::HWAY",
       "ticker": "HWAY",
       "exchange": "NASDAQ",
@@ -73802,6 +73955,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NASDAQ::ISRL",
+      "ticker": "ISRL",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Israel Acquisitions Corp Class A",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::ISRL;exchange=NASDAQ;ticker=ISRL;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NASDAQ::ISSC",
       "ticker": "ISSC",
       "exchange": "NASDAQ",
@@ -73830,6 +74000,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=NASDAQ::ITRM;exchange=NASDAQ;ticker=ITRM;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::JONE",
+      "ticker": "JONE",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Jones Ventures INTL Acquisition1 Corp - Class A Ordinary Shares",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::JONE;exchange=NASDAQ;ticker=JONE;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -74631,6 +74818,23 @@
       "source_gap_context": "listing_key=NASDAQ::SGRP;exchange=NASDAQ;ticker=SGRP;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::SGRX",
+      "ticker": "SGRX",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "SANGRIX INC. - Class A Ordinary Shares",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::SGRX;exchange=NASDAQ;ticker=SGRX;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -80364,23 +80568,6 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "NYSE::TWO",
-      "ticker": "TWO",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Two Harbors Investments Corp",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
-      "source_gap_context": "listing_key=NYSE::TWO;exchange=NYSE;ticker=TWO;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
       "listing_key": "NYSE::WBS",
       "ticker": "WBS",
       "exchange": "NYSE",
@@ -80411,6 +80598,23 @@
       "source_gap_context": "listing_key=NYSE::WSR;exchange=NYSE;ticker=WSR;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE::XTND",
+      "ticker": "XTND",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "name": "Xtend AI Robotics, Inc. Common Stock",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NYSE::XTND;exchange=NYSE;ticker=XTND;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -82417,6 +82621,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::PIN;exchange=NYSE ARCA;ticker=PIN;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE ARCA::PJIN",
+      "ticker": "PJIN",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "PGIM Jennison International Core Equity ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NYSE ARCA::PJIN;exchange=NYSE ARCA;ticker=PJIN;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -147701,6 +147922,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "XETRA::OP8E",
+      "ticker": "OP8E",
+      "exchange": "XETRA",
+      "asset_type": "ETF",
+      "name": "Ossiam Bloomberg Canada PAB UCITS ETF 1A EUR Acc",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=XETRA::OP8E;exchange=XETRA;ticker=OP8E;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "XETRA::OUFE",
       "ticker": "OUFE",
       "exchange": "XETRA",
@@ -147916,6 +148154,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=XETRA::0Q3;exchange=XETRA;ticker=0Q3;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "XETRA::333",
+      "ticker": "333",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "name": "ROSTRA AGC INH O.N. JGE",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=XETRA::333;exchange=XETRA;ticker=333;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -148330,6 +148585,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "XETRA::E8X",
+      "ticker": "E8X",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "name": "ELEXXION AG",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=XETRA::E8X;exchange=XETRA;ticker=E8X;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "XETRA::EAD",
       "ticker": "EAD",
       "exchange": "XETRA",
@@ -148360,6 +148632,23 @@
       "source_gap_context": "listing_key=XETRA::EBEN;exchange=XETRA;ticker=EBEN;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "XETRA::ECK",
+      "ticker": "ECK",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "name": "LUDW.BECK A.RATHAUSECK",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=XETRA::ECK;exchange=XETRA;ticker=ECK;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",
@@ -148530,6 +148819,23 @@
       "source_gap_context": "listing_key=XETRA::JFB;exchange=XETRA;ticker=JFB;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "XETRA::KCO",
+      "ticker": "KCO",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "name": "KLOECKNER + CO SE NA O.N.",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=XETRA::KCO;exchange=XETRA;ticker=KCO;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
