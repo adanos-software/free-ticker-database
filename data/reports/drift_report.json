@@ -1,27 +1,10 @@
 {
-  "built_at": "2026-09-03T11:44:20Z",
+  "built_at": "2026-09-07T14:11:18Z",
   "drift_detected": true,
-  "generated_at": "2026-09-07T13:35:12Z",
-  "manual_review_count": 22,
+  "generated_at": "2026-09-07T14:51:47Z",
+  "manual_review_count": 21,
   "manual_review_report": "data/reports/pending_renames_manual_review.md",
   "manual_review_sample": [
-    {
-      "apply_status": "blocked_new_symbol_not_active_in_official_master",
-      "apply_status_source": "available",
-      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
-      "effective_date": "2026-09-04",
-      "exchange_scope_status": "matches_within_source_scope",
-      "match_status": "old_symbol_present_new_symbol_missing",
-      "new_company_name": "Sangrix Inc",
-      "new_listing_keys": "",
-      "new_symbol": "SGRX",
-      "old_listing_keys": "NASDAQ::BTOG",
-      "old_symbol": "BTOG",
-      "source_exchange_hint": "US_LISTED",
-      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
-      "triage_source": "symbol_changes_review",
-      "triage_status": "blocked_or_manual"
-    },
     {
       "apply_status": "manual_isin_not_proven_unchanged",
       "apply_status_source": "available",
@@ -91,9 +74,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::RKTO",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-28",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -125,9 +108,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NYSE::KWY",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-20",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -142,9 +125,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::QTEX",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-20",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -159,9 +142,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NYSE::PLGO",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-05-12",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -193,9 +176,9 @@
       "triage_status": "blocked_or_manual"
     },
     {
-      "apply_status": "blocked_new_symbol_collision",
+      "apply_status": "",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::ZTG",
+      "blocker_reason": "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first",
       "effective_date": "2026-04-14",
       "exchange_scope_status": "matches_within_source_scope",
       "match_status": "old_and_new_symbols_present",
@@ -522,13 +505,13 @@
       "official_recall_target": false
     },
     "BSE_IN": {
-      "collision_adjusted_recall_missing": 617,
+      "collision_adjusted_recall_missing": 635,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 81.17,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2467;symbol_collisions=1850",
-      "official_recall_missing": 2467,
+      "collision_adjusted_recall_pct": 80.7,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2485;symbol_collisions=1850",
+      "official_recall_missing": 2485,
       "official_recall_pass": false,
-      "official_recall_pct": 51.87,
+      "official_recall_pct": 51.66,
       "official_recall_target": true
     },
     "BVB": {
@@ -652,13 +635,13 @@
       "official_recall_target": true
     },
     "FSX": {
-      "collision_adjusted_recall_missing": 6150,
+      "collision_adjusted_recall_missing": 6179,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 56.49,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=10101;symbol_collisions=3951",
-      "official_recall_missing": 10101,
+      "collision_adjusted_recall_pct": 56.36,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=10129;symbol_collisions=3950",
+      "official_recall_missing": 10129,
       "official_recall_pass": false,
-      "official_recall_pct": 44.15,
+      "official_recall_pct": 44.07,
       "official_recall_target": true
     },
     "GSE": {
@@ -822,13 +805,13 @@
       "official_recall_target": false
     },
     "NASDAQ": {
-      "collision_adjusted_recall_missing": 983,
+      "collision_adjusted_recall_missing": 985,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 82.29,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1044;symbol_collisions=61",
-      "official_recall_missing": 1044,
+      "collision_adjusted_recall_pct": 82.25,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1047;symbol_collisions=62",
+      "official_recall_missing": 1047,
       "official_recall_pass": false,
-      "official_recall_pct": 81.39,
+      "official_recall_pct": 81.34,
       "official_recall_target": true
     },
     "NEO": {
@@ -884,11 +867,11 @@
     "NYSE": {
       "collision_adjusted_recall_missing": 1340,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 59.69,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1903;symbol_collisions=563",
-      "official_recall_missing": 1903,
+      "collision_adjusted_recall_pct": 59.67,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1904;symbol_collisions=564",
+      "official_recall_missing": 1904,
       "official_recall_pass": false,
-      "official_recall_pct": 51.04,
+      "official_recall_pct": 51.02,
       "official_recall_target": true
     },
     "NYSE ARCA": {
@@ -1192,13 +1175,13 @@
       "official_recall_target": false
     },
     "XETRA": {
-      "collision_adjusted_recall_missing": 292,
+      "collision_adjusted_recall_missing": 307,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 93.35,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1000;symbol_collisions=708",
-      "official_recall_missing": 1000,
+      "collision_adjusted_recall_pct": 93.03,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1014;symbol_collisions=707",
+      "official_recall_missing": 1014,
       "official_recall_pass": false,
-      "official_recall_pct": 80.39,
+      "official_recall_pct": 80.15,
       "official_recall_target": true
     },
     "XHAM": {
@@ -1254,84 +1237,112 @@
   },
   "official_recall_regressions": [
     {
-      "current": 4289,
-      "delta": 4,
-      "exchange": "LSE",
+      "current": 2485,
+      "delta": 18,
+      "exchange": "BSE_IN",
       "metric": "official_recall_missing",
-      "previous": 4285
+      "previous": 2467
     },
     {
-      "current": 3501,
+      "current": 635,
+      "delta": 18,
+      "exchange": "BSE_IN",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 617
+    },
+    {
+      "current": 10129,
+      "delta": 28,
+      "exchange": "FSX",
+      "metric": "official_recall_missing",
+      "previous": 10101
+    },
+    {
+      "current": 6179,
+      "delta": 29,
+      "exchange": "FSX",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 6150
+    },
+    {
+      "current": 1047,
       "delta": 3,
-      "exchange": "LSE",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 3498
+      "exchange": "NASDAQ",
+      "metric": "official_recall_missing",
+      "previous": 1044
     },
     {
-      "current": 1903,
+      "current": 985,
+      "delta": 2,
+      "exchange": "NASDAQ",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 983
+    },
+    {
+      "current": 1904,
       "delta": 1,
       "exchange": "NYSE",
       "metric": "official_recall_missing",
-      "previous": 1902
+      "previous": 1903
     },
     {
-      "current": 1340,
-      "delta": 1,
-      "exchange": "NYSE",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 1339
-    },
-    {
-      "current": 80,
-      "delta": 1,
-      "exchange": "NYSE MKT",
+      "current": 1014,
+      "delta": 14,
+      "exchange": "XETRA",
       "metric": "official_recall_missing",
-      "previous": 79
+      "previous": 1000
+    },
+    {
+      "current": 307,
+      "delta": 15,
+      "exchange": "XETRA",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 292
     }
   ],
   "pending_renames_count": 0,
   "pending_renames_sample": [],
   "quality_indicators": {
-    "allowed_warn_rows": 32,
-    "expected_missing_primary_isin": 764,
-    "missing_etf_category": 54,
-    "missing_stock_sector": 1301,
-    "source_gap_rows": 11485
+    "allowed_warn_rows": 31,
+    "expected_missing_primary_isin": 768,
+    "missing_etf_category": 56,
+    "missing_stock_sector": 1303,
+    "source_gap_rows": 11489
   },
   "quality_regressions": [
     {
-      "current": 11485,
-      "delta": 30,
+      "current": 11489,
+      "delta": 4,
       "metric": "source_gap_rows",
-      "previous": 11455
+      "previous": 11485
     },
     {
-      "current": 764,
-      "delta": 12,
+      "current": 768,
+      "delta": 4,
       "metric": "expected_missing_primary_isin",
-      "previous": 752
+      "previous": 764
     },
     {
-      "current": 1301,
-      "delta": 3,
+      "current": 1303,
+      "delta": 2,
       "metric": "missing_stock_sector",
-      "previous": 1298
+      "previous": 1301
     },
     {
-      "current": 54,
-      "delta": 8,
+      "current": 56,
+      "delta": 2,
       "metric": "missing_etf_category",
-      "previous": 46
+      "previous": 54
     }
   ],
   "rename_triage_apply_status_source_totals": {
-    "available": 22
+    "available": 21
   },
-  "rename_triage_count": 22,
+  "rename_triage_count": 21,
   "rename_triage_fallback": false,
   "rename_triage_source_totals": {
-    "symbol_changes_review": 22
+    "symbol_changes_review": 21
   },
   "stale_threshold_days": 45.0,
-  "staleness_days": 4.1
+  "staleness_days": 0.0
 }
