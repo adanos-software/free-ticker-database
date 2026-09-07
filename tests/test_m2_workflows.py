@@ -48,6 +48,10 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "source-only review remains in the summary" in workflow
     assert "timestamp-only churn discarded" in workflow
     assert "gh workflow run ci.yml --ref automation/masterfile-rotation" in workflow
+    dispatch_block = workflow.split("- name: Dispatch CI for automation pull request", 1)[1].split(
+        "- name: Enable automerge", 1
+    )[0]
+    assert "steps.release.outputs.review_required != 'true'" in dispatch_block
     assert "AUTOMATION_PR_TOKEN" not in workflow
 
 

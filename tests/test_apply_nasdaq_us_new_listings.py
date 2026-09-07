@@ -510,6 +510,71 @@ def test_apply_new_listings_preserves_metadata_for_btog_to_sgrx_rename(tmp_path)
     assert row["aliases"] == "bit origin"
 
 
+def test_apply_new_listings_detects_official_directory_ticker_change(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+    drops = tmp_path / "drop_entries.csv"
+
+    write_rows(
+        previous_reference,
+        REFERENCE_FIELDS,
+        [reference_row("BTOG", "Bit Origin Limited - Class A Ordinary Shares", "NASDAQ", source_key="nasdaq_listed")],
+    )
+    write_rows(
+        current_reference,
+        REFERENCE_FIELDS,
+        [
+            reference_row("SGRX", "SANGRIX INC. - Class A Ordinary Shares", "NASDAQ", source_key="nasdaq_listed"),
+            reference_row("BTOG", "SANGRIX INC.", "NASDAQ", source_key="sec_company_tickers_exchange"),
+        ],
+    )
+    predecessor = listing_row("BTOG", exchange="NASDAQ")
+    predecessor.update(
+        {
+            "name": "Bit Origin Ltd",
+            "country": "Cayman Islands",
+            "country_code": "KY",
+            "isin": "KYG216211345",
+        }
+    )
+    write_rows(listings, LISTING_FIELDS, [predecessor])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(transitions, TRANSITION_FIELDS, [])
+    write_rows(drops, ["ticker", "exchange", "confidence", "reason"], [])
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["detected_symbol_changes"] == 1
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["ticker"] == "SGRX"
+    assert row["isin"] == "KYG216211345"
+    with transitions.open(newline="", encoding="utf-8") as handle:
+        transition = next(csv.DictReader(handle))
+    assert transition["old_listing_key"] == "NASDAQ::BTOG"
+    assert transition["new_listing_key"] == "NASDAQ::SGRX"
+    assert transition["identity_value"] == "KYG216211345"
+    with drops.open(newline="", encoding="utf-8") as handle:
+        drop = next(csv.DictReader(handle))
+    assert drop["ticker"] == "BTOG"
+    assert drop["exchange"] == "NASDAQ"
+
+
 def test_apply_new_listings_preserves_identity_for_reviewed_venue_change(tmp_path):
     previous_reference = tmp_path / "previous.csv"
     current_reference = tmp_path / "current.csv"

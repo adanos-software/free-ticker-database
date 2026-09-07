@@ -188,7 +188,7 @@ jobs:
             Critical masterfile field changes: `${{ steps.release.outputs.critical_rotation_change_count }}`
             Unevidenced listing field changes: `${{ steps.release.outputs.unevidenced_listing_field_change_count }}`
 
-            Draft review PRs run CI but are never enabled for automerge.
+            Draft review PRs are not dispatched to CI or enabled for automerge.
 
             Diff report: `data/reports/masterfile_rotation_diff.md`
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
@@ -216,7 +216,7 @@ jobs:
           fi
 
       - name: Dispatch CI for automation pull request
-        if: steps.cpr.outputs.pull-request-number != ''
+        if: steps.cpr.outputs.pull-request-number != '' && steps.release.outputs.review_required != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run ci.yml --ref automation/masterfile-rotation
