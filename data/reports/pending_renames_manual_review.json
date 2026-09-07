@@ -1,6 +1,23 @@
 {
-  "generated_at": "2026-08-31T15:13:02Z",
+  "generated_at": "2026-09-07T13:35:12Z",
   "manual_review_items": [
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-09-04",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Sangrix Inc",
+      "new_listing_keys": "",
+      "new_symbol": "SGRX",
+      "old_listing_keys": "NASDAQ::BTOG",
+      "old_symbol": "BTOG",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
     {
       "apply_status": "manual_isin_not_proven_unchanged",
       "apply_status_source": "available",
@@ -360,5 +377,5 @@
     }
   ],
   "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
-  "rows": 21
+  "rows": 22
 }

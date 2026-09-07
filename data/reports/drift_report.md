@@ -1,13 +1,14 @@
 # Drift / freshness report
 
-Generated: 2026-08-31T15:13:02Z
-Dataset built_at: 2026-08-31T14:02:51Z (0.0 days ago; threshold 45.0)
+Generated: 2026-09-07T13:35:12Z
+Dataset built_at: 2026-09-03T11:44:20Z (4.1 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
-- Triage sources: {'symbol_changes_review': 21}
+- Triage sources: {'symbol_changes_review': 22}
 
-## Blocked/manual rename review rows: 21
+## Blocked/manual rename review rows: 22
+- BTOG -> SGRX (Sangrix Inc, 2026-09-04): Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.
 - ISSC -> IA (Innovative Solutions & Support Inc, 2026-08-18): manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source
 - EQR -> VRMK (Vivmark Residential, 2026-08-18): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 - NCL -> NCLX (Northann Corp, 2026-08-13): blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: FSX::NCL|NYSE::NCL|SET::NCL|WSE::NCL|XSTU::NCL
@@ -32,38 +33,22 @@ Dataset built_at: 2026-08-31T14:02:51Z (0.0 days ago; threshold 45.0)
 
 ## Quality indicators (release-gate info counts)
 - allowed_warn_rows: 32
-- expected_missing_primary_isin: 752
-- missing_etf_category: 46
-- missing_stock_sector: 1298
-- source_gap_rows: 11455
+- expected_missing_primary_isin: 764
+- missing_etf_category: 54
+- missing_stock_sector: 1301
+- source_gap_rows: 11485
 
-## Quality regressions: 3
-- expected_missing_primary_isin: 690 -> 752 (+62)
-- missing_stock_sector: 1284 -> 1298 (+14)
-- missing_etf_category: 36 -> 46 (+10)
+## Quality regressions: 4
+- source_gap_rows: 11455 -> 11485 (+30)
+- expected_missing_primary_isin: 752 -> 764 (+12)
+- missing_stock_sector: 1298 -> 1301 (+3)
+- missing_etf_category: 46 -> 54 (+8)
 
-## Official recall regressions: 22
-- AMS official_recall_missing: 230 -> 236 (+6)
-- AMS collision_adjusted_recall_missing: 53 -> 58 (+5)
-- BSE_IN official_recall_missing: 2435 -> 2467 (+32)
-- BSE_IN collision_adjusted_recall_missing: 590 -> 617 (+27)
-- Borsa Italiana official_recall_missing: 2653 -> 2658 (+5)
-- Borsa Italiana collision_adjusted_recall_missing: 797 -> 800 (+3)
-- FSX official_recall_missing: 10019 -> 10101 (+82)
-- FSX collision_adjusted_recall_missing: 6074 -> 6150 (+76)
-- HKEX official_recall_missing: 159 -> 160 (+1)
-- HKEX collision_adjusted_recall_missing: 89 -> 90 (+1)
-- KOSDAQ official_recall_missing: 223 -> 226 (+3)
-- KOSDAQ collision_adjusted_recall_missing: 220 -> 223 (+3)
-- KRX official_recall_missing: 145 -> 148 (+3)
-- KRX collision_adjusted_recall_missing: 131 -> 134 (+3)
-- LSE official_recall_missing: 4265 -> 4285 (+20)
-- LSE collision_adjusted_recall_missing: 3486 -> 3498 (+12)
-- NASDAQ official_recall_missing: 1037 -> 1049 (+12)
-- NASDAQ collision_adjusted_recall_missing: 977 -> 988 (+11)
-- NYSE collision_adjusted_recall_missing: 1336 -> 1339 (+3)
-- OTC official_recall_missing: 3657 -> 3658 (+1)
-- XETRA official_recall_missing: 990 -> 1000 (+10)
-- XETRA collision_adjusted_recall_missing: 285 -> 292 (+7)
+## Official recall regressions: 5
+- LSE official_recall_missing: 4285 -> 4289 (+4)
+- LSE collision_adjusted_recall_missing: 3498 -> 3501 (+3)
+- NYSE official_recall_missing: 1902 -> 1903 (+1)
+- NYSE collision_adjusted_recall_missing: 1339 -> 1340 (+1)
+- NYSE MKT official_recall_missing: 79 -> 80 (+1)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._
