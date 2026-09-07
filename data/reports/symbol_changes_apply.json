@@ -1,21 +1,700 @@
 {
   "summary": {
-    "generated_at": "2026-09-07T12:27:39Z",
+    "generated_at": "2026-09-07T13:14:56Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 341,
+    "dropped_predecessor_rows": 45,
+    "blocked_rows": 296,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 60,
+      "blocked_new_symbol_collision": 12,
       "blocked_new_symbol_not_active_in_official_master": 1,
-      "blocked_old_symbol_not_unique_in_us_scope": 229,
+      "blocked_old_symbol_not_unique_in_us_scope": 230,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 46,
+      "manual_successor_exists_missing_isin": 2,
       "manual_transition_or_shell_name": 3
     }
   },
   "accepted": [],
+  "dropped_predecessors": [
+    {
+      "change_id": "e4b8dacdf7d4a5f5",
+      "effective_date": "2026-08-18",
+      "old_symbol": "EQR",
+      "new_symbol": "VMRK",
+      "new_company_name": "Vivmark Residential",
+      "status": "apply_drop_predecessor",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::EQR",
+      "new_listing_key": "NYSE::VMRK",
+      "isin": "US29476L1070",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "483371aab93a417c",
+      "effective_date": "2026-08-14",
+      "old_symbol": "BNRG",
+      "new_symbol": "BRNX",
+      "new_company_name": "Brenx Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::BNRG",
+      "new_listing_key": "NASDAQ::BRNX",
+      "isin": "IL0011415309",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "63adbe92e5699a19",
+      "effective_date": "2026-08-07",
+      "old_symbol": "BNZI",
+      "new_symbol": "PARA",
+      "new_company_name": "Banzai International Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::BNZI",
+      "new_listing_key": "NASDAQ::PARA",
+      "isin": "US06682J3086",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "2b82fd8d8ce1d67c",
+      "effective_date": "2026-08-04",
+      "old_symbol": "TOI",
+      "new_symbol": "STLN",
+      "new_company_name": "Starling Oncology Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::TOI",
+      "new_listing_key": "NASDAQ::STLN",
+      "isin": "US68236X1000",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "3a40fbee8917009f",
+      "effective_date": "2026-08-04",
+      "old_symbol": "LSH",
+      "new_symbol": "QNME",
+      "new_company_name": "Quanome Technologies Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::LSH",
+      "new_listing_key": "NASDAQ::QNME",
+      "isin": "US51216F1093",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "22cdba12373c06ac",
+      "effective_date": "2026-08-03",
+      "old_symbol": "PSTV",
+      "new_symbol": "CNSY",
+      "new_company_name": "Cerenome Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::PSTV",
+      "new_listing_key": "NASDAQ::CNSY",
+      "isin": "US72941H8060",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "0f417a3a89dcdf1f",
+      "effective_date": "2026-07-29",
+      "old_symbol": "VYNE",
+      "new_symbol": "YARW",
+      "new_company_name": "Yarrow Bioscience Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::VYNE",
+      "new_listing_key": "NASDAQ::YARW",
+      "isin": "US92941V2097",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "568d692c4472a8db",
+      "effective_date": "2026-07-24",
+      "old_symbol": "GREE",
+      "new_symbol": "VIP",
+      "new_company_name": "Vulcan Infrastructure & Power Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::GREE",
+      "new_listing_key": "NASDAQ::VIP",
+      "isin": "US39531G3083",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "4bfbd41226cf63f0",
+      "effective_date": "2026-07-22",
+      "old_symbol": "WGRX",
+      "new_symbol": "MEDS",
+      "new_company_name": "Datameds Ai Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::WGRX",
+      "new_listing_key": "NASDAQ::MEDS",
+      "isin": "US9495032057",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "4d305a369c45883d",
+      "effective_date": "2026-07-22",
+      "old_symbol": "LMFA",
+      "new_symbol": "PWCM",
+      "new_company_name": "Powercompute Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::LMFA",
+      "new_listing_key": "NASDAQ::PWCM",
+      "isin": "US5020744042",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "1afdfc876937e2b9",
+      "effective_date": "2026-07-22",
+      "old_symbol": "ALBT",
+      "new_symbol": "CHGA",
+      "new_company_name": "Change Agents Corporation",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::ALBT",
+      "new_listing_key": "NASDAQ::CHGA",
+      "isin": "US05344R3021",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "a7e4bdca868141d9",
+      "effective_date": "2026-07-21",
+      "old_symbol": "YOOV",
+      "new_symbol": "CIGL",
+      "new_company_name": "Concorde International Group Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::YOOV",
+      "new_listing_key": "NASDAQ::CIGL",
+      "isin": "VGG2452S1002",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "d321a73dd3cbde14",
+      "effective_date": "2026-07-21",
+      "old_symbol": "PCSC",
+      "new_symbol": "FRNM",
+      "new_company_name": "Freenome Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::PCSC",
+      "new_listing_key": "NASDAQ::FRNM",
+      "isin": "KYG700771051",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "6bdd542bf4528d21",
+      "effective_date": "2026-07-20",
+      "old_symbol": "UBXG",
+      "new_symbol": "MF",
+      "new_company_name": "Mindforge Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::UBXG",
+      "new_listing_key": "NASDAQ::MF",
+      "isin": "KYG9161K1206",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "0a0ee783f171fb74",
+      "effective_date": "2026-07-20",
+      "old_symbol": "APM",
+      "new_symbol": "NIKI",
+      "new_company_name": "Niki Biosolutions Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::APM",
+      "new_listing_key": "NASDAQ::NIKI",
+      "isin": "KYG6096M1069",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "0894d3b6dd10fd29",
+      "effective_date": "2026-07-16",
+      "old_symbol": "WAI",
+      "new_symbol": "DPU",
+      "new_company_name": "Top Kingwin Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::WAI",
+      "new_listing_key": "NASDAQ::DPU",
+      "isin": "KYG8923U1296",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "40a86466c87bbc3b",
+      "effective_date": "2026-07-13",
+      "old_symbol": "SVAC",
+      "new_symbol": "GFUZ",
+      "new_company_name": "General Fusion Group Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::SVAC",
+      "new_listing_key": "NASDAQ::GFUZ",
+      "isin": "KYG8377R1011",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "c0c14691367e1689",
+      "effective_date": "2026-07-09",
+      "old_symbol": "MSW",
+      "new_symbol": "PMA",
+      "new_company_name": "Ming Shing Group Holdings Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::MSW",
+      "new_listing_key": "NASDAQ::PMA",
+      "isin": "KYG614401068",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "b21b826867ff65e1",
+      "effective_date": "2026-07-06",
+      "old_symbol": "LIXT",
+      "new_symbol": "NMAD",
+      "new_company_name": "Nomad Power Solutions Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::LIXT",
+      "new_listing_key": "NASDAQ::NMAD",
+      "isin": "US5393192027",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "f8a3bebe760fa228",
+      "effective_date": "2026-07-02",
+      "old_symbol": "WTO",
+      "new_symbol": "FXHO",
+      "new_company_name": "Utime Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::WTO",
+      "new_listing_key": "NASDAQ::FXHO",
+      "isin": "KYG9411M1400",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "b04f2a49b99c81fb",
+      "effective_date": "2026-07-02",
+      "old_symbol": "RAAQ",
+      "new_symbol": "IQMX",
+      "new_company_name": "Iqm Quantum Computers Oyj",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::RAAQ",
+      "new_listing_key": "NASDAQ::IQMX",
+      "isin": "KYG739441031",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "74b5c71353c87547",
+      "effective_date": "2026-07-02",
+      "old_symbol": "ATLN",
+      "new_symbol": "CIRC",
+      "new_company_name": "Circle8 Group Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::ATLN",
+      "new_listing_key": "NASDAQ::CIRC",
+      "isin": "US0485921094",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "1748124336d670fd",
+      "effective_date": "2026-07-01",
+      "old_symbol": "TBH",
+      "new_symbol": "HODO",
+      "new_company_name": "House Of Doge Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::TBH",
+      "new_listing_key": "NASDAQ::HODO",
+      "isin": "US1048133086",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "c3f86caefb5218b8",
+      "effective_date": "2026-07-01",
+      "old_symbol": "SSSS",
+      "new_symbol": "NSLR",
+      "new_company_name": "Neostellar Capital Corp",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::SSSS",
+      "new_listing_key": "NASDAQ::NSLR",
+      "isin": "US86887Q1094",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "e152bc9194b8f044",
+      "effective_date": "2026-06-29",
+      "old_symbol": "FDP",
+      "new_symbol": "DMC",
+      "new_company_name": "Del Monte Corp",
+      "status": "apply_drop_predecessor",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::FDP",
+      "new_listing_key": "NYSE::DMC",
+      "isin": "KYG367381053",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "81fcd028c63da01b",
+      "effective_date": "2026-06-23",
+      "old_symbol": "LOKV",
+      "new_symbol": "TMS",
+      "new_company_name": "Teamshares Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::LOKV",
+      "new_listing_key": "NASDAQ::TMS",
+      "isin": "KYG5509P1028",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "a7ce50da95ca0854",
+      "effective_date": "2026-06-08",
+      "old_symbol": "USEG",
+      "new_symbol": "BSIN",
+      "new_company_name": "Big Sky Industrial Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::USEG",
+      "new_listing_key": "NASDAQ::BSIN",
+      "isin": "US9118053076",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "809c2e3e0d7ce6ec",
+      "effective_date": "2026-06-03",
+      "old_symbol": "SUUN",
+      "new_symbol": "PBK",
+      "new_company_name": "Powerbank Corp",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::SUUN",
+      "new_listing_key": "NASDAQ::PBK",
+      "isin": "CA73933V1004",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "e2e27c5dc1ff2f93",
+      "effective_date": "2026-05-28",
+      "old_symbol": "HOTH",
+      "new_symbol": "RKTO",
+      "new_company_name": "Rocket One Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::HOTH",
+      "new_listing_key": "NASDAQ::RKTO",
+      "isin": "US44148G2049",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "cbd666455ed4b04b",
+      "effective_date": "2026-05-27",
+      "old_symbol": "AGAE",
+      "new_symbol": "AIFA",
+      "new_company_name": "All In Futuretech Alliance Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::AGAE",
+      "new_listing_key": "NASDAQ::AIFA",
+      "isin": "US0191701095",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "064ee9235e10f3e2",
+      "effective_date": "2026-05-26",
+      "old_symbol": "GIG",
+      "new_symbol": "HDRN",
+      "new_company_name": "Hadron Energy Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::GIG",
+      "new_listing_key": "NASDAQ::HDRN",
+      "isin": "US37518P1012",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "37c291acbe0f805f",
+      "effective_date": "2026-05-20",
+      "old_symbol": "KFS",
+      "new_symbol": "KWY",
+      "new_company_name": "Kingsway Corp",
+      "status": "apply_drop_predecessor",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::KFS",
+      "new_listing_key": "NYSE::KWY",
+      "isin": "US4969042021",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "d7f8f1f244c695a1",
+      "effective_date": "2026-05-20",
+      "old_symbol": "IINN",
+      "new_symbol": "QTEX",
+      "new_company_name": "Qtrex Quantum Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::IINN",
+      "new_listing_key": "NASDAQ::QTEX",
+      "isin": "IL0011715781",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "89f442b06e16deff",
+      "effective_date": "2026-05-18",
+      "old_symbol": "ZBAI",
+      "new_symbol": "AUC",
+      "new_company_name": "Atif Holdings Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::ZBAI",
+      "new_listing_key": "NASDAQ::AUC",
+      "isin": "VGG0602B1186",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "477634f200f5cd7c",
+      "effective_date": "2026-05-18",
+      "old_symbol": "XWIN",
+      "new_symbol": "XMAX",
+      "new_company_name": "Xmax Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::XWIN",
+      "new_listing_key": "NASDAQ::XMAX",
+      "isin": "US66979P3001",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "feefb37a40fb3b3a",
+      "effective_date": "2026-05-18",
+      "old_symbol": "LGCB",
+      "new_symbol": "UZX",
+      "new_company_name": "Linkage Global Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::LGCB",
+      "new_listing_key": "NASDAQ::UZX",
+      "isin": "KYG5500B1023",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "f8b51e267f3a9e12",
+      "effective_date": "2026-05-18",
+      "old_symbol": "CAEP",
+      "new_symbol": "AIIR",
+      "new_company_name": "Air Global PLC",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::CAEP",
+      "new_listing_key": "NASDAQ::AIIR",
+      "isin": "KYG1828A1085",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "85e2496d89cff2f0",
+      "effective_date": "2026-05-13",
+      "old_symbol": "RVYL",
+      "new_symbol": "RTB",
+      "new_company_name": "Rtb Digital Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::RVYL",
+      "new_listing_key": "NASDAQ::RTB",
+      "isin": "US39366L3078",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "528a32c6dc85f177",
+      "effective_date": "2026-05-12",
+      "old_symbol": "FIHL",
+      "new_symbol": "PLGO",
+      "new_company_name": "Pelagos Insurance Capital Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::FIHL",
+      "new_listing_key": "NYSE::PLGO",
+      "isin": "BMG3398L1182",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "9627b7ca9bf17e64",
+      "effective_date": "2026-05-01",
+      "old_symbol": "VBIX",
+      "new_symbol": "QXL",
+      "new_company_name": "Quantum X Labs Inc",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::VBIX",
+      "new_listing_key": "NASDAQ::QXL",
+      "isin": "US9267111022",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "f210742723dfc2af",
+      "effective_date": "2026-04-29",
+      "old_symbol": "ALTS",
+      "new_symbol": "AIFC",
+      "new_company_name": "Ai Financial Corp",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::ALTS",
+      "new_listing_key": "NASDAQ::AIFC",
+      "isin": "CH1130675676",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "00ffb50099e285ff",
+      "effective_date": "2026-04-21",
+      "old_symbol": "ATON",
+      "new_symbol": "ALP",
+      "new_company_name": "Alpha Compute Corp",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::ATON",
+      "new_listing_key": "NASDAQ::ALP",
+      "isin": "VGG7185A1369",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "0942e11fd5a6d220",
+      "effective_date": "2026-04-14",
+      "old_symbol": "ZGM",
+      "new_symbol": "ZTG",
+      "new_company_name": "Zenta Group Co Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::ZGM",
+      "new_listing_key": "NASDAQ::ZTG",
+      "isin": "KYG988921055",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "a459386391b0cc3d",
+      "effective_date": "2026-03-26",
+      "old_symbol": "PELI",
+      "new_symbol": "GLND",
+      "new_company_name": "Greenland Energy Co.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::PELI",
+      "new_listing_key": "NASDAQ::GLND",
+      "isin": "KYG6993G1038",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "63e555785bb11880",
+      "effective_date": "2026-03-16",
+      "old_symbol": "VVPR",
+      "new_symbol": "VIVO",
+      "new_company_name": "Vivopower PLC",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::VVPR",
+      "new_listing_key": "NASDAQ::VIVO",
+      "isin": "GB00BD3VDH82",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    }
+  ],
   "blocked": [
     {
       "change_id": "29a2da5932ea56ac",
@@ -39,7 +718,7 @@
       "old_symbol": "HLX",
       "new_symbol": "HOS",
       "new_company_name": "Hornbeck Offshore Services Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "0fdd935aadd2a0ab",
@@ -98,14 +777,6 @@
       "status": "manual_non_us_or_unscoped_source"
     },
     {
-      "change_id": "e4b8dacdf7d4a5f5",
-      "effective_date": "2026-08-18",
-      "old_symbol": "EQR",
-      "new_symbol": "VMRK",
-      "new_company_name": "Vivmark Residential",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "8df32d20baed0d8e",
       "effective_date": "2026-08-17",
       "old_symbol": "FRTK",
@@ -119,14 +790,6 @@
       "old_symbol": "BBBY",
       "new_symbol": "NXH",
       "new_company_name": "Neighborhood Intelligence Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "483371aab93a417c",
-      "effective_date": "2026-08-14",
-      "old_symbol": "BNRG",
-      "new_symbol": "BRNX",
-      "new_company_name": "Brenx Ltd.",
       "status": "blocked_new_symbol_collision"
     },
     {
@@ -146,52 +809,12 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "63adbe92e5699a19",
-      "effective_date": "2026-08-07",
-      "old_symbol": "BNZI",
-      "new_symbol": "PARA",
-      "new_company_name": "Banzai International Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "2b82fd8d8ce1d67c",
-      "effective_date": "2026-08-04",
-      "old_symbol": "TOI",
-      "new_symbol": "STLN",
-      "new_company_name": "Starling Oncology Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "3a40fbee8917009f",
-      "effective_date": "2026-08-04",
-      "old_symbol": "LSH",
-      "new_symbol": "QNME",
-      "new_company_name": "Quanome Technologies Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "22cdba12373c06ac",
-      "effective_date": "2026-08-03",
-      "old_symbol": "PSTV",
-      "new_symbol": "CNSY",
-      "new_company_name": "Cerenome Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "4b082b3276736a14",
       "effective_date": "2026-07-31",
       "old_symbol": "GV",
       "new_symbol": "GVHGF",
       "new_company_name": "Visionary Holdings Inc",
       "status": "manual_non_us_or_unscoped_source"
-    },
-    {
-      "change_id": "0f417a3a89dcdf1f",
-      "effective_date": "2026-07-29",
-      "old_symbol": "VYNE",
-      "new_symbol": "YARW",
-      "new_company_name": "Yarrow Bioscience Inc",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "df0ce1f20f11b5d6",
@@ -218,100 +841,12 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "568d692c4472a8db",
-      "effective_date": "2026-07-24",
-      "old_symbol": "GREE",
-      "new_symbol": "VIP",
-      "new_company_name": "Vulcan Infrastructure & Power Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "4bfbd41226cf63f0",
-      "effective_date": "2026-07-22",
-      "old_symbol": "WGRX",
-      "new_symbol": "MEDS",
-      "new_company_name": "Datameds Ai Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "4d305a369c45883d",
-      "effective_date": "2026-07-22",
-      "old_symbol": "LMFA",
-      "new_symbol": "PWCM",
-      "new_company_name": "Powercompute Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "1afdfc876937e2b9",
-      "effective_date": "2026-07-22",
-      "old_symbol": "ALBT",
-      "new_symbol": "CHGA",
-      "new_company_name": "Change Agents Corporation",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "a7e4bdca868141d9",
-      "effective_date": "2026-07-21",
-      "old_symbol": "YOOV",
-      "new_symbol": "CIGL",
-      "new_company_name": "Concorde International Group Ltd.",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "d321a73dd3cbde14",
-      "effective_date": "2026-07-21",
-      "old_symbol": "PCSC",
-      "new_symbol": "FRNM",
-      "new_company_name": "Freenome Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "6bdd542bf4528d21",
-      "effective_date": "2026-07-20",
-      "old_symbol": "UBXG",
-      "new_symbol": "MF",
-      "new_company_name": "Mindforge Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "c50c87eac2fa81d6",
       "effective_date": "2026-07-20",
       "old_symbol": "ODV",
       "new_symbol": "OGG",
       "new_company_name": "Osisko Gold Group Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
-    },
-    {
-      "change_id": "0a0ee783f171fb74",
-      "effective_date": "2026-07-20",
-      "old_symbol": "APM",
-      "new_symbol": "NIKI",
-      "new_company_name": "Niki Biosolutions Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "0894d3b6dd10fd29",
-      "effective_date": "2026-07-16",
-      "old_symbol": "WAI",
-      "new_symbol": "DPU",
-      "new_company_name": "Top Kingwin Ltd.",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "40a86466c87bbc3b",
-      "effective_date": "2026-07-13",
-      "old_symbol": "SVAC",
-      "new_symbol": "GFUZ",
-      "new_company_name": "General Fusion Group Ltd.",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "c0c14691367e1689",
-      "effective_date": "2026-07-09",
-      "old_symbol": "MSW",
-      "new_symbol": "PMA",
-      "new_company_name": "Ming Shing Group Holdings Ltd.",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "9d77096cca2a226b",
@@ -330,67 +865,11 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "b21b826867ff65e1",
-      "effective_date": "2026-07-06",
-      "old_symbol": "LIXT",
-      "new_symbol": "NMAD",
-      "new_company_name": "Nomad Power Solutions Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "f8a3bebe760fa228",
-      "effective_date": "2026-07-02",
-      "old_symbol": "WTO",
-      "new_symbol": "FXHO",
-      "new_company_name": "Utime Ltd.",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "b04f2a49b99c81fb",
-      "effective_date": "2026-07-02",
-      "old_symbol": "RAAQ",
-      "new_symbol": "IQMX",
-      "new_company_name": "Iqm Quantum Computers Oyj",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "13617a41b3a6d64f",
       "effective_date": "2026-07-02",
       "old_symbol": "CEPT",
       "new_symbol": "SECZ",
       "new_company_name": "Securitize Corp",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "74b5c71353c87547",
-      "effective_date": "2026-07-02",
-      "old_symbol": "ATLN",
-      "new_symbol": "CIRC",
-      "new_company_name": "Circle8 Group Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "1748124336d670fd",
-      "effective_date": "2026-07-01",
-      "old_symbol": "TBH",
-      "new_symbol": "HODO",
-      "new_company_name": "House Of Doge Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "c3f86caefb5218b8",
-      "effective_date": "2026-07-01",
-      "old_symbol": "SSSS",
-      "new_symbol": "NSLR",
-      "new_company_name": "Neostellar Capital Corp",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "e152bc9194b8f044",
-      "effective_date": "2026-06-29",
-      "old_symbol": "FDP",
-      "new_symbol": "DMC",
-      "new_company_name": "Del Monte Corp",
       "status": "blocked_new_symbol_collision"
     },
     {
@@ -400,14 +879,6 @@
       "new_symbol": "ECHO",
       "new_company_name": "Echostar Corp",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
-    },
-    {
-      "change_id": "81fcd028c63da01b",
-      "effective_date": "2026-06-23",
-      "old_symbol": "LOKV",
-      "new_symbol": "TMS",
-      "new_company_name": "Teamshares Inc",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "708a27067617e2d2",
@@ -471,7 +942,7 @@
       "old_symbol": "VACH",
       "new_symbol": "VRXA",
       "new_company_name": "Veraxa Biotech Holding Ag",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_successor_exists_missing_isin"
     },
     {
       "change_id": "15b3f53c350bc012",
@@ -479,7 +950,7 @@
       "old_symbol": "MLAC",
       "new_symbol": "AVAT",
       "new_company_name": "Avalanche Treasury Corp",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_successor_exists_missing_isin"
     },
     {
       "change_id": "92c91c9ecf8fbe9d",
@@ -487,14 +958,6 @@
       "old_symbol": "LEGT",
       "new_symbol": "ENRD",
       "new_company_name": "Einride Ab",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "a7ce50da95ca0854",
-      "effective_date": "2026-06-08",
-      "old_symbol": "USEG",
-      "new_symbol": "BSIN",
-      "new_company_name": "Big Sky Industrial Inc",
       "status": "blocked_new_symbol_collision"
     },
     {
@@ -512,14 +975,6 @@
       "new_symbol": "PPLI",
       "new_company_name": "People Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
-    },
-    {
-      "change_id": "809c2e3e0d7ce6ec",
-      "effective_date": "2026-06-03",
-      "old_symbol": "SUUN",
-      "new_symbol": "PBK",
-      "new_company_name": "Powerbank Corp",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "c0eb447fe874f923",
@@ -562,30 +1017,6 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "e2e27c5dc1ff2f93",
-      "effective_date": "2026-05-28",
-      "old_symbol": "HOTH",
-      "new_symbol": "RKTO",
-      "new_company_name": "Rocket One Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "cbd666455ed4b04b",
-      "effective_date": "2026-05-27",
-      "old_symbol": "AGAE",
-      "new_symbol": "AIFA",
-      "new_company_name": "All In Futuretech Alliance Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "064ee9235e10f3e2",
-      "effective_date": "2026-05-26",
-      "old_symbol": "GIG",
-      "new_symbol": "HDRN",
-      "new_company_name": "Hadron Energy Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "60f0987926920aa1",
       "effective_date": "2026-05-22",
       "old_symbol": "BTM",
@@ -602,76 +1033,12 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "37c291acbe0f805f",
-      "effective_date": "2026-05-20",
-      "old_symbol": "KFS",
-      "new_symbol": "KWY",
-      "new_company_name": "Kingsway Corp",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "d7f8f1f244c695a1",
-      "effective_date": "2026-05-20",
-      "old_symbol": "IINN",
-      "new_symbol": "QTEX",
-      "new_company_name": "Qtrex Quantum Ltd.",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "89f442b06e16deff",
-      "effective_date": "2026-05-18",
-      "old_symbol": "ZBAI",
-      "new_symbol": "AUC",
-      "new_company_name": "Atif Holdings Ltd.",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "477634f200f5cd7c",
-      "effective_date": "2026-05-18",
-      "old_symbol": "XWIN",
-      "new_symbol": "XMAX",
-      "new_company_name": "Xmax Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "feefb37a40fb3b3a",
-      "effective_date": "2026-05-18",
-      "old_symbol": "LGCB",
-      "new_symbol": "UZX",
-      "new_company_name": "Linkage Global Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "f8b51e267f3a9e12",
-      "effective_date": "2026-05-18",
-      "old_symbol": "CAEP",
-      "new_symbol": "AIIR",
-      "new_company_name": "Air Global PLC",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "4212b620ef741ce3",
       "effective_date": "2026-05-18",
       "old_symbol": "AGH",
       "new_symbol": "PUSA",
       "new_company_name": "Aureus Greenway Holdings Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
-    },
-    {
-      "change_id": "85e2496d89cff2f0",
-      "effective_date": "2026-05-13",
-      "old_symbol": "RVYL",
-      "new_symbol": "RTB",
-      "new_company_name": "Rtb Digital Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "528a32c6dc85f177",
-      "effective_date": "2026-05-12",
-      "old_symbol": "FIHL",
-      "new_symbol": "PLGO",
-      "new_company_name": "Pelagos Insurance Capital Ltd.",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "a3fa4ed6d2046cf8",
@@ -722,14 +1089,6 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "9627b7ca9bf17e64",
-      "effective_date": "2026-05-01",
-      "old_symbol": "VBIX",
-      "new_symbol": "QXL",
-      "new_company_name": "Quantum X Labs Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "8dc027c774b5bd4d",
       "effective_date": "2026-05-01",
       "old_symbol": "MIGI",
@@ -752,14 +1111,6 @@
       "new_symbol": "FABC",
       "new_company_name": "Fabricai Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
-    },
-    {
-      "change_id": "f210742723dfc2af",
-      "effective_date": "2026-04-29",
-      "old_symbol": "ALTS",
-      "new_symbol": "AIFC",
-      "new_company_name": "Ai Financial Corp",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "a62755f1a68360a8",
@@ -794,28 +1145,12 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "00ffb50099e285ff",
-      "effective_date": "2026-04-21",
-      "old_symbol": "ATON",
-      "new_symbol": "ALP",
-      "new_company_name": "Alpha Compute Corp",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "4113931f29233296",
       "effective_date": "2026-04-17",
       "old_symbol": "PSTG",
       "new_symbol": "P",
       "new_company_name": "Everpure Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
-    },
-    {
-      "change_id": "0942e11fd5a6d220",
-      "effective_date": "2026-04-14",
-      "old_symbol": "ZGM",
-      "new_symbol": "ZTG",
-      "new_company_name": "Zenta Group Co Ltd.",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "f8b6b8562d0cdcbe",
@@ -906,14 +1241,6 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "a459386391b0cc3d",
-      "effective_date": "2026-03-26",
-      "old_symbol": "PELI",
-      "new_symbol": "GLND",
-      "new_company_name": "Greenland Energy Co.",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "b99445db47be0165",
       "effective_date": "2026-03-20",
       "old_symbol": "BACQ",
@@ -936,14 +1263,6 @@
       "new_symbol": "ULYX",
       "new_company_name": "Urgently Inc",
       "status": "manual_non_us_or_unscoped_source"
-    },
-    {
-      "change_id": "63e555785bb11880",
-      "effective_date": "2026-03-16",
-      "old_symbol": "VVPR",
-      "new_symbol": "VIVO",
-      "new_company_name": "Vivopower PLC",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "181abcb85243834a",
