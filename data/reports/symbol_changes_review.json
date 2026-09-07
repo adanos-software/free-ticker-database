@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-04T11:15:10Z",
+    "generated_at": "2026-09-07T12:27:22Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -10,14 +10,14 @@
     "policy": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence."
   },
   "summary": {
-    "fetched_rows": 234,
-    "merged_history_rows": 339,
-    "review_rows": 339,
+    "fetched_rows": 231,
+    "merged_history_rows": 341,
+    "review_rows": 341,
     "match_status_counts": {
       "new_symbol_present_old_symbol_missing": 240,
       "no_matching_listing": 14,
-      "old_and_new_symbols_present": 57,
-      "old_symbol_present_new_symbol_missing": 10,
+      "old_and_new_symbols_present": 58,
+      "old_symbol_present_new_symbol_missing": 11,
       "symbol_present_only_outside_source_scope": 18
     },
     "symbol_change_workflow_queue_counts": {
@@ -25,26 +25,26 @@
       "blocked_missing_source_scope_mapping": 10,
       "blocked_out_of_scope_symbol_collision": 24,
       "document_no_dataset_match": 13,
-      "review_duplicate_or_cross_listing": 53,
-      "review_verified_rename_or_delisting": 2
+      "review_duplicate_or_cross_listing": 54,
+      "review_verified_rename_or_delisting": 3
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 339,
-      "verified_rename_or_delisting_review_rows": 2,
-      "duplicate_or_cross_listing_review_rows": 53,
+      "rows": 341,
+      "verified_rename_or_delisting_review_rows": 3,
+      "duplicate_or_cross_listing_review_rows": 54,
       "already_reflected_audit_rows": 237,
       "out_of_scope_collision_blocked_rows": 24,
       "missing_source_scope_mapping_rows": 10,
       "no_dataset_match_documentation_rows": 13,
-      "time_sensitive_review_rows": 41,
+      "time_sensitive_review_rows": 43,
       "direct_symbol_change_apply_allowed_rows": 0,
       "secondary_feed_apply_authorized": false,
       "source_gate": "Symbol-change feed rows are review signals only; ticker, name, listing, or alias changes require listing-keyed official venue or issuer evidence for old/new symbols and issuer identity."
     },
     "review_bucket_counts": {
-      "action_required_duplicate_or_cross_listing": 53,
-      "action_required_possible_rename_or_delisting": 2,
+      "action_required_duplicate_or_cross_listing": 54,
+      "action_required_possible_rename_or_delisting": 3,
       "already_reflected_in_scope_with_global_symbol_collision": 55,
       "already_reflected_in_source_scope": 182,
       "hold_out_of_scope_symbol_collision": 18,
@@ -53,7 +53,7 @@
       "no_dataset_match_for_source_scope": 13
     },
     "review_priority_counts": {
-      "P1": 55,
+      "P1": 57,
       "P2": 34,
       "P3": 13,
       "P4": 237
@@ -71,13 +71,13 @@
     "recency_bucket_counts": {
       "older_than_90d": 220,
       "recent_30d": 34,
-      "recent_7d": 46,
+      "recent_7d": 48,
       "recent_90d": 39
     },
     "review_priority_recency_counts": {
       "P1:older_than_90d": 5,
       "P1:recent_30d": 15,
-      "P1:recent_7d": 26,
+      "P1:recent_7d": 28,
       "P1:recent_90d": 9,
       "P2:older_than_90d": 19,
       "P2:recent_30d": 4,
@@ -108,9 +108,9 @@
       "document_no_dataset_match:recent_90d": 2,
       "review_duplicate_or_cross_listing:older_than_90d": 5,
       "review_duplicate_or_cross_listing:recent_30d": 15,
-      "review_duplicate_or_cross_listing:recent_7d": 25,
+      "review_duplicate_or_cross_listing:recent_7d": 26,
       "review_duplicate_or_cross_listing:recent_90d": 8,
-      "review_verified_rename_or_delisting:recent_7d": 1,
+      "review_verified_rename_or_delisting:recent_7d": 2,
       "review_verified_rename_or_delisting:recent_90d": 1
     },
     "workflow_queue_priority_counts": {
@@ -118,8 +118,8 @@
       "blocked_missing_source_scope_mapping:P2": 10,
       "blocked_out_of_scope_symbol_collision:P2": 24,
       "document_no_dataset_match:P3": 13,
-      "review_duplicate_or_cross_listing:P1": 53,
-      "review_verified_rename_or_delisting:P1": 2
+      "review_duplicate_or_cross_listing:P1": 54,
+      "review_verified_rename_or_delisting:P1": 3
     },
     "workflow_queue_scope_counts": {
       "audit_already_reflected:global_symbol_collision_outside_source_scope": 55,
@@ -127,8 +127,8 @@
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 10,
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 24,
       "document_no_dataset_match:matches_within_source_scope": 13,
-      "review_duplicate_or_cross_listing:matches_within_source_scope": 53,
-      "review_verified_rename_or_delisting:matches_within_source_scope": 2
+      "review_duplicate_or_cross_listing:matches_within_source_scope": 54,
+      "review_verified_rename_or_delisting:matches_within_source_scope": 3
     },
     "workflow_queue_match_status_counts": {
       "audit_already_reflected:new_symbol_present_old_symbol_missing": 237,
@@ -139,8 +139,8 @@
       "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 6,
       "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 18,
       "document_no_dataset_match:no_matching_listing": 13,
-      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 53,
-      "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 2
+      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 54,
+      "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 3
     },
     "workflow_queue_source_hint_counts": {
       "audit_already_reflected": {
@@ -159,10 +159,10 @@
         "US_LISTED": 7
       },
       "review_duplicate_or_cross_listing": {
-        "US_LISTED": 53
+        "US_LISTED": 54
       },
       "review_verified_rename_or_delisting": {
-        "US_LISTED": 2
+        "US_LISTED": 3
       }
     },
     "workflow_queue_source_confidence_counts": {
@@ -179,10 +179,10 @@
         "secondary_review": 13
       },
       "review_duplicate_or_cross_listing": {
-        "secondary_review": 53
+        "secondary_review": 54
       },
       "review_verified_rename_or_delisting": {
-        "secondary_review": 2
+        "secondary_review": 3
       }
     },
     "workflow_queue_issuer_name_review_counts": {
@@ -207,10 +207,10 @@
       "review_duplicate_or_cross_listing": {
         "feed_name_differs_from_scoped_listing_name": 4,
         "feed_name_exactly_matches_scoped_listing_name": 21,
-        "feed_name_partially_overlaps_scoped_listing_name": 28
+        "feed_name_partially_overlaps_scoped_listing_name": 29
       },
       "review_verified_rename_or_delisting": {
-        "feed_name_differs_from_scoped_listing_name": 1,
+        "feed_name_differs_from_scoped_listing_name": 2,
         "feed_name_partially_overlaps_scoped_listing_name": 1
       }
     },
@@ -232,10 +232,10 @@
         "no_scoped_listing_key_match": 13
       },
       "review_duplicate_or_cross_listing": {
-        "old_and_new_scoped_listing_keys_present": 53
+        "old_and_new_scoped_listing_keys_present": 54
       },
       "review_verified_rename_or_delisting": {
-        "old_scoped_listing_key_only": 2
+        "old_scoped_listing_key_only": 3
       }
     },
     "workflow_queue_review_strategy_counts": {
@@ -252,10 +252,10 @@
         "document_no_dataset_match_without_canonical_action": 13
       },
       "review_duplicate_or_cross_listing": {
-        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 53
+        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 54
       },
       "review_verified_rename_or_delisting": {
-        "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 2
+        "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 3
       }
     },
     "top_symbol_change_workflow_batches": [
@@ -264,7 +264,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 25,
+        "rows": 26,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -275,7 +275,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 1,
+        "rows": 2,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -528,33 +528,33 @@
       "audit_only_no_apply": 237,
       "blocked_until_exchange_scope_resolved": 34,
       "no_dataset_action_without_scope_mapping": 13,
-      "requires_official_venue_confirmation": 55
+      "requires_official_venue_confirmation": 57
     },
     "symbol_change_apply_readiness_counts": {
       "audit_only_no_canonical_change": 237,
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 55,
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 57,
       "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 34,
       "document_or_ignore_until_scoped_official_dataset_match": 13
     },
     "verification_evidence_required_counts": {
       "audit_only_confirm_no_canonical_change_needed": 237,
-      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 53,
-      "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 2,
+      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 54,
+      "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 3,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 24,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 13,
       "source_exchange_mapping_before_any_symbol_change_review": 10
     },
-    "time_sensitive_review_rows": 41,
+    "time_sensitive_review_rows": 43,
     "time_sensitive_workflow_queue_counts": {
-      "review_duplicate_or_cross_listing": 40,
-      "review_verified_rename_or_delisting": 1
+      "review_duplicate_or_cross_listing": 41,
+      "review_verified_rename_or_delisting": 2
     },
     "time_sensitive_recency_counts": {
       "recent_30d": 15,
-      "recent_7d": 26
+      "recent_7d": 28
     },
     "time_sensitive_apply_readiness_counts": {
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 41
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 43
     },
     "top_time_sensitive_symbol_change_batches": [
       {
@@ -563,7 +563,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_and_new_symbols_present",
         "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
-        "rows": 25,
+        "rows": 26,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -575,7 +575,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_symbol_present_new_symbol_missing",
         "listing_key_review_status": "old_scoped_listing_key_only",
-        "rows": 1,
+        "rows": 2,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -598,16 +598,98 @@
       "already_reflected_or_new_symbol_added_in_source_scope": 240,
       "do_not_apply_from_symbol_match_review_exchange_scope_first": 18,
       "ignore_or_map_exchange_scope_before_applying": 14,
-      "review_duplicate_or_cross_listing_state_in_source_scope": 57,
-      "review_possible_rename_or_delisting_in_source_scope": 10
+      "review_duplicate_or_cross_listing_state_in_source_scope": 58,
+      "review_possible_rename_or_delisting_in_source_scope": 11
     },
     "exchange_scope_status_counts": {
       "global_symbol_collision_outside_source_scope": 79,
-      "matches_within_source_scope": 250,
+      "matches_within_source_scope": 252,
       "unscoped_source_hint": 10
     }
   },
   "review_items": [
+    {
+      "change_id": "29a2da5932ea56ac",
+      "effective_date": "2026-09-04",
+      "old_symbol": "BTOG",
+      "new_symbol": "SGRX",
+      "new_company_name": "Sangrix Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/sgrx/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-09-07T12:27:22Z",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "review_bucket": "action_required_possible_rename_or_delisting",
+      "review_priority": "P1",
+      "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
+      "effective_age_days": 3,
+      "recency_bucket": "recent_7d",
+      "apply_eligibility": "requires_official_venue_confirmation",
+      "verification_evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
+      "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
+      "source_gate": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "recommended_action": "review_possible_rename_or_delisting_in_source_scope",
+      "exchange_scope_status": "matches_within_source_scope",
+      "old_listing_keys": "NASDAQ::BTOG",
+      "new_listing_keys": "",
+      "old_scoped_listing_keys": "NASDAQ::BTOG",
+      "new_scoped_listing_keys": "",
+      "listing_key_review_status": "old_scoped_listing_key_only",
+      "scoped_listing_names": "Bit Origin Ltd",
+      "issuer_name_review_status": "feed_name_differs_from_scoped_listing_name",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=1;new_match_count=0;old_scoped_match_count=1;new_scoped_match_count=0;old_scoped_listing_keys=NASDAQ::BTOG;new_scoped_listing_keys=none",
+      "workflow_review_context": "workflow_queue=review_verified_rename_or_delisting;review_bucket=action_required_possible_rename_or_delisting;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
+      "old_match_count": 1,
+      "new_match_count": 0,
+      "old_scoped_match_count": 1,
+      "new_scoped_match_count": 0
+    },
+    {
+      "change_id": "1e395a2d73692545",
+      "effective_date": "2026-09-02",
+      "old_symbol": "YYGH",
+      "new_symbol": "YFOR",
+      "new_company_name": "Yy Group Holding Ltd.",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/yfor/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-09-07T12:27:22Z",
+      "match_status": "old_and_new_symbols_present",
+      "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
+      "review_bucket": "action_required_duplicate_or_cross_listing",
+      "review_priority": "P1",
+      "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
+      "effective_age_days": 5,
+      "recency_bucket": "recent_7d",
+      "apply_eligibility": "requires_official_venue_confirmation",
+      "verification_evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
+      "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key.",
+      "recommended_action": "review_duplicate_or_cross_listing_state_in_source_scope",
+      "exchange_scope_status": "matches_within_source_scope",
+      "old_listing_keys": "NASDAQ::YYGH",
+      "new_listing_keys": "NASDAQ::YFOR",
+      "old_scoped_listing_keys": "NASDAQ::YYGH",
+      "new_scoped_listing_keys": "NASDAQ::YFOR",
+      "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
+      "scoped_listing_names": "YY Group Holding Limited Class A Ordinary Shares|YYForce Inc. - Class A Ordinary Shares",
+      "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=1;new_scoped_match_count=1;old_scoped_listing_keys=NASDAQ::YYGH;new_scoped_listing_keys=NASDAQ::YFOR",
+      "workflow_review_context": "workflow_queue=review_duplicate_or_cross_listing;review_bucket=action_required_duplicate_or_cross_listing;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "old_match_count": 1,
+      "new_match_count": 1,
+      "old_scoped_match_count": 1,
+      "new_scoped_match_count": 1
+    },
     {
       "change_id": "0cbcfd2f44726ac8",
       "effective_date": "2026-09-02",
