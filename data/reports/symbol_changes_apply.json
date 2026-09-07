@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-09-07T13:14:56Z",
+    "generated_at": "2026-09-07T14:52:06Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
@@ -9,8 +9,7 @@
     "blocked_rows": 296,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 12,
-      "blocked_new_symbol_not_active_in_official_master": 1,
-      "blocked_old_symbol_not_unique_in_us_scope": 230,
+      "blocked_old_symbol_not_unique_in_us_scope": 231,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 46,
       "manual_successor_exists_missing_isin": 2,
@@ -702,7 +701,7 @@
       "old_symbol": "BTOG",
       "new_symbol": "SGRX",
       "new_company_name": "Sangrix Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "1e395a2d73692545",
