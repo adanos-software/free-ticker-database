@@ -2843,6 +2843,7 @@ def merge_reference_rows(
     preserve_source_keys: Iterable[str] | None = None,
 ) -> list[dict[str, str]]:
     existing_rows = list(existing_rows)
+    refreshed_rows = preserve_existing_isins(existing_rows, refreshed_rows)
     refreshed_rows = preserve_descriptive_names(existing_rows, refreshed_rows)
     selected_source_keys = set(source_keys)
     preserved_source_keys = set(preserve_source_keys or ()) | set(
@@ -2851,6 +2852,37 @@ def merge_reference_rows(
     replace_source_keys = selected_source_keys - preserved_source_keys
     preserved_rows = [row for row in existing_rows if row.get("source_key", "") not in replace_source_keys]
     return dedupe_rows([*preserved_rows, *refreshed_rows])
+
+
+def preserve_existing_isins(
+    existing_rows: Iterable[dict[str, str]],
+    refreshed_rows: Iterable[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Keep a committed official ISIN when a refresh omits it.
+
+    Partial parser misses (empty ISIN on an otherwise successful row) are not
+    treated as identifier deletions. Explicit ISIN replacements still land.
+    """
+    existing_isins: dict[tuple[str, str, str], str] = {}
+    for row in existing_rows:
+        source_key = str(row.get("source_key", "") or "")
+        exchange = str(row.get("exchange", "") or "")
+        ticker = str(row.get("ticker", "") or "")
+        isin = str(row.get("isin", "") or "").strip()
+        if source_key and exchange and ticker and isin:
+            existing_isins[(source_key, exchange, ticker)] = isin
+    reconciled: list[dict[str, str]] = []
+    for refreshed in refreshed_rows:
+        row = dict(refreshed)
+        key = (
+            str(row.get("source_key", "") or ""),
+            str(row.get("exchange", "") or ""),
+            str(row.get("ticker", "") or ""),
+        )
+        if not str(row.get("isin", "") or "").strip() and key in existing_isins:
+            row["isin"] = existing_isins[key]
+        reconciled.append(row)
+    return reconciled
 
 
 def preserve_descriptive_names(

@@ -445,6 +445,71 @@ def test_apply_new_listings_preserves_metadata_for_reviewed_same_isin_symbol_cha
     assert row["aliases"] == "the glimpse group"
 
 
+def test_apply_new_listings_preserves_metadata_for_btog_to_sgrx_rename(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+
+    write_rows(previous_reference, REFERENCE_FIELDS, [])
+    write_rows(
+        current_reference,
+        REFERENCE_FIELDS,
+        [reference_row("SGRX", "SANGRIX INC. - Class A Ordinary Shares", "NASDAQ", source_key="nasdaq_listed")],
+    )
+    predecessor = listing_row("BTOG", exchange="NASDAQ")
+    predecessor.update(
+        {
+            "name": "Bit Origin Ltd",
+            "country": "Cayman Islands",
+            "country_code": "KY",
+            "isin": "KYG216211345",
+            "aliases": "bit origin",
+        }
+    )
+    write_rows(listings, LISTING_FIELDS, [predecessor])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(
+        transitions,
+        TRANSITION_FIELDS,
+        [
+            {
+                "old_listing_key": "NASDAQ::BTOG",
+                "new_listing_key": "NASDAQ::SGRX",
+                "event_type": "symbol_changed",
+                "identity_type": "same_isin",
+                "identity_value": "KYG216211345",
+                "confidence": "0.99",
+                "source_key": "sec_6k_name_symbol_change",
+                "source_url": "https://www.sec.gov/example",
+                "reason": "CUSIP unchanged",
+            }
+        ],
+    )
+
+    apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["ticker"] == "SGRX"
+    assert row["isin"] == "KYG216211345"
+    assert row["country"] == "Cayman Islands"
+    assert row["country_code"] == "KY"
+    assert row["aliases"] == "bit origin"
+
+
 def test_apply_new_listings_preserves_identity_for_reviewed_venue_change(tmp_path):
     previous_reference = tmp_path / "previous.csv"
     current_reference = tmp_path / "current.csv"

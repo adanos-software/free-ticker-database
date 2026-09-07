@@ -17,7 +17,7 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "scripts/apply_nasdaq_us_new_listings.py" in workflow
     assert "--asset-type Stock,ETF" in workflow
     rebuild_step = workflow.split("- name: Rebuild derived exports and reports", 1)[1].split(
-        "- name: Validate technical release gates", 1
+        "- name: Enforce safe merge gate", 1
     )[0]
     validation_step = workflow.split("- name: Validate technical release gates", 1)[1].split(
         "- name: Detect substantive changes", 1
@@ -26,7 +26,16 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "continue-on-error: true" in validation_step
     assert "scripts/classify_masterfile_rotation_gates.py" in workflow
     assert "--rotation-diff data/reports/masterfile_rotation_diff.json" in workflow
+    assert "--safe-merge data/reports/safe_merge.json" in workflow
     assert "critical_rotation_change_count" in workflow
+    assert "unevidenced_listing_field_change_count" in workflow
+    assert "- name: Enforce safe merge gate" in workflow
+    safe_merge_step = workflow.split("- name: Enforce safe merge gate", 1)[1].split(
+        "- name: Validate technical release gates", 1
+    )[0]
+    assert "continue-on-error: true" in safe_merge_step
+    assert "scripts/check_safe_merge.py" in safe_merge_step
+    assert "scripts/check_safe_merge.py" not in rebuild_step
     assert "steps.release.outputs.review_required != 'true'" in workflow
     no_change_guard = workflow.split('if [ "$diff_count" = "0" ]', 1)[1].split("; then", 1)[0]
     assert 'steps.release.outputs.unexpected_warn_count }}" = "0"' in no_change_guard

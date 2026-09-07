@@ -520,6 +520,46 @@ def test_classify_gate_results_routes_critical_masterfile_change_to_manual_revie
     ]
 
 
+def test_classify_gate_results_routes_unevidenced_listing_field_changes_to_manual_review() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        safe_merge={
+            "status": "fail",
+            "summary": {
+                "unevidenced_removed_rows": 0,
+                "unevidenced_critical_field_changes": 1,
+            },
+        },
+        safe_merge_outcome="failure",
+    )
+
+    assert result["passed"] is True
+    assert result["review_required"] is True
+    assert result["unevidenced_listing_field_change_count"] == 1
+    assert result["hard_failures"] == []
+
+
+def test_classify_gate_results_keeps_unevidenced_listing_removals_fatal() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        safe_merge={
+            "status": "fail",
+            "summary": {
+                "unevidenced_removed_rows": 1,
+                "unevidenced_critical_field_changes": 1,
+            },
+        },
+        safe_merge_outcome="failure",
+    )
+
+    assert result["passed"] is False
+    assert result["review_required"] is False
+    assert "unevidenced_listing_removals" in result["hard_failures"]
+    assert result["unevidenced_listing_field_change_count"] == 0
+
+
 def test_classify_gate_results_keeps_name_only_masterfile_change_automatic() -> None:
     result = classify_gate_results(
         entry_gate(),
@@ -633,4 +673,5 @@ def test_classify_gate_cli_writes_github_outputs_for_review(tmp_path) -> None:
         "source_review_count=0",
         "source_review_keys=",
         "critical_rotation_change_count=0",
+        "unevidenced_listing_field_change_count=0",
     ]
