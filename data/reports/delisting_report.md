@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-09-07T13:41:31Z
+Generated: 2026-09-07T14:52:01Z
 
 **delisting_detected: True**
 
 Markets checked: US, ASX, NSE_IN, BSE_IN, US_NASDAQ_DELETES
 Markets skipped: TSE (fetch failed: XLRDError)
 
-Candidates: 291 (delisted=2, suspended=31, master_absent=258)
+Candidates: 289 (delisted=0, suspended=31, master_absent=258)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -141,7 +141,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | ALCY | master_absent | Alchemy Investments Acquisition Corp 1 C | KYG0232F1090 |
 | NASDAQ | ALOT | master_absent | AstroNova Inc | US04638F1084 |
 | NASDAQ | ANSC | master_absent | Agriculture & Natural Solutions Acquisit | KYG0131Y1008 |
-| NASDAQ | APGE | delisted | Apogee Therapeutics, Inc. Common Stock | US03770N1019 |
 | NASDAQ | APM | master_absent | Aptorum Group Ltd Class A | KYG6096M1069 |
 | NASDAQ | AREB | master_absent | American Rebel Holdings Inc | US02919L8853 |
 | NASDAQ | ASNS | master_absent | Actelis Networks Inc. | US00503R5081 |
@@ -190,7 +189,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | IPCX | master_absent | Inflection Point Acquisition Corp. III C | KYG478751020 |
 | NASDAQ | ISSC | master_absent | Innovative Solutions and Support | US45769N1054 |
 | NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
-| NASDAQ | JFB | delisted | JFB Construction Holdings Class A Common | US46658E1073 |
 | NASDAQ | KVAC | master_absent | Keen Vision Acquisition Corporation Ordi | VGG524431191 |
 | NASDAQ | LBRDA | master_absent | Liberty Broadband Srs A | US5303071071 |
 | NASDAQ | LBRDK | master_absent | Liberty Broadband Srs C | US5303073051 |
@@ -213,4 +211,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | NUVL | master_absent | Nuvalent Inc | US6707031075 |
 | NASDAQ | NVVE | master_absent | Nuvve Holding Corp | US67079Y4070 |
 | NASDAQ | OLPX | master_absent | Olaplex Holdings Inc | US6793691089 |
-| … | … | … | (+91 more) | |
+| NASDAQ | ORGN | master_absent | Origin Materials Inc | US68622D1063 |
+| NASDAQ | ORIS | master_absent | Oriental Rise Holdings Limited Ordinary  | KYG6781A1105 |
+| … | … | … | (+89 more) | |
