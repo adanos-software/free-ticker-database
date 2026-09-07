@@ -1,21 +1,20 @@
 {
-  "generated_at": "2026-09-07T13:22:02Z",
+  "generated_at": "2026-09-07T14:56:01Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 93,
-  "rotation_vanished_rows": 38,
-  "backlog_rows": 55,
+  "vanished_reference_rows": 72,
+  "rotation_vanished_rows": 0,
+  "backlog_rows": 72,
   "still_in_database": 72,
   "classifier_counts": {
-    "blocked_suspended_kept_by_policy": 1,
-    "manual_rename_vs_delisting_required": 71,
-    "not_in_database": 21
+    "blocked_suspended_kept_by_policy": 4,
+    "manual_rename_vs_delisting_required": 68
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 38; still-in-database backlog carried: 55.",
-    "Still in database: 72; not in database: 21.",
+    "Rotation vanished rows: 0; still-in-database backlog carried: 72.",
+    "Still in database: 72; not in database: 0.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -69,8 +68,8 @@
       "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
       "evidence_source_key": "bse_india_scrips",
       "evidence_source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "evidence_observation_id": "obs_19568c2e1ecf664e7a35938b",
-      "evidence_observed_at": "2026-08-31T18:29:54Z",
+      "evidence_observation_id": "obs_066eb7232f82d55ced9b5647",
+      "evidence_observed_at": "2026-09-07T13:41:31Z",
       "official_name": "Ace Software Exports ltd",
       "listing_name": "Ace Software Exports ltd",
       "listing_isin": "IN9849B01026",
@@ -124,20 +123,20 @@
       "exchange": "BSE_IN",
       "name": "Future Consumer Ltd",
       "isin": "INE220J01025",
-      "classification": "master_absent",
+      "classification": "suspended",
       "source_key": "bse_india_scrips",
       "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
+      "evidence_source_key": "bse_india_scrips",
+      "evidence_source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "evidence_observation_id": "obs_35564f91ae0a9f6eaf30e40f",
+      "evidence_observed_at": "2026-09-07T13:41:31Z",
       "official_name": "Future Consumer Ltd",
       "listing_name": "Future Consumer Ltd",
       "listing_isin": "INE220J01025",
       "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "classifier_action": "blocked_suspended_kept_by_policy",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "FMEC",
@@ -164,20 +163,20 @@
       "exchange": "BSE_IN",
       "name": "Master Chemicals Ltd",
       "isin": "INE523D01017",
-      "classification": "master_absent",
+      "classification": "suspended",
       "source_key": "bse_india_scrips",
       "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
+      "evidence_source_key": "bse_india_scrips",
+      "evidence_source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "evidence_observation_id": "obs_2e3bfd51c2ca61a43f62802f",
+      "evidence_observed_at": "2026-09-07T13:41:31Z",
       "official_name": "Master Chemicals Ltd",
       "listing_name": "Master Chemicals Ltd",
       "listing_isin": "INE523D01017",
       "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "classifier_action": "blocked_suspended_kept_by_policy",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RISHYRN",
@@ -197,7 +196,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SATTVASUKU",
@@ -224,20 +223,20 @@
       "exchange": "BSE_IN",
       "name": "Vardhman Concrete Ltd",
       "isin": "INE115C01014",
-      "classification": "master_absent",
+      "classification": "suspended",
       "source_key": "bse_india_scrips",
       "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
+      "evidence_source_key": "bse_india_scrips",
+      "evidence_source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "evidence_observation_id": "obs_ab3bef9ed4642fa5a0d60ef3",
+      "evidence_observed_at": "2026-09-07T13:41:31Z",
       "official_name": "Vardhman Concrete Ltd",
       "listing_name": "Vardhman Concrete Ltd",
       "listing_isin": "INE115C01014",
       "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "classifier_action": "blocked_suspended_kept_by_policy",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SINA",
@@ -297,7 +296,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "7130",
@@ -360,26 +359,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "1C8",
-      "exchange": "FSX",
-      "name": "DRAGON MINING LTD",
-      "isin": "AU0000321754",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "DRAGON MINING LTD",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "20MP",
       "exchange": "FSX",
       "name": "MOUNTAIN VALLEY MD HLDGS",
@@ -420,66 +399,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "2DL0",
-      "exchange": "FSX",
-      "name": "NDATALYZE CORP.",
-      "isin": "CA63948H1055",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "NDATALYZE CORP.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "2N9",
-      "exchange": "FSX",
-      "name": "JTC PLC            LS-,01",
-      "isin": "JE00BF4X3P53",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "JTC PLC            LS-,01",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "2QE",
-      "exchange": "FSX",
-      "name": "2CUREX AB         SEK-,10",
-      "isin": "SE0010468124",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "2CUREX AB         SEK-,10",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "2RM",
       "exchange": "FSX",
       "name": "RE/MAX HLDGS A  DL -,0001",
@@ -500,26 +419,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "333",
-      "exchange": "FSX",
-      "name": "ROSTRA AGC INH O.N. JGE",
-      "isin": "DE000A0N3UD5",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ROSTRA AGC INH O.N. JGE",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "37T",
       "exchange": "FSX",
       "name": "FORTE BIOSCIENCES INC.",
@@ -538,66 +437,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "4940",
-      "exchange": "FSX",
-      "name": "PREDICTIVE DISC. LTD.DEF.",
-      "isin": "AU0000480329",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "PREDICTIVE DISC. LTD.DEF.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "56R1",
-      "exchange": "FSX",
-      "name": "ENVUE MEDICAL INC.DL-,001",
-      "isin": "US63008J8844",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ENVUE MEDICAL INC.DL-,001",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "5UU1",
-      "exchange": "FSX",
-      "name": "VIA OPTRON.HLDG SP.ADS/1",
-      "isin": "US91823Y1091",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "VIA OPTRON.HLDG SP.ADS/1",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "646",
@@ -637,7 +476,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "7111",
@@ -760,26 +599,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "9F9",
-      "exchange": "FSX",
-      "name": "ELEKTROIMPORTOREN NK -,05",
-      "isin": "NO0010911902",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ELEKTROIMPORTOREN NK -,05",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "ANJ",
       "exchange": "FSX",
       "name": "ANDREW PELLER LTD A",
@@ -840,66 +659,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "BZA",
-      "exchange": "FSX",
-      "name": "EPH INVEST S.P.A.",
-      "isin": "IT0005623845",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "EPH INVEST S.P.A.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "C0A",
-      "exchange": "FSX",
-      "name": "NEUROTHERA LABS INC.",
-      "isin": "CA64136J1012",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "NEUROTHERA LABS INC.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "CAP",
-      "exchange": "FSX",
-      "name": "SCP STAN.CAP.PART. INH ON",
-      "isin": "DE000A12UPJ7",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SCP STAN.CAP.PART. INH ON",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "E8X",
       "exchange": "FSX",
       "name": "ELEXXION AG",
@@ -920,26 +679,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "EBR0",
-      "exchange": "FSX",
-      "name": "STRATA INVEST.H.CDI/1:1",
-      "isin": "AU0000276149",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "STRATA INVEST.H.CDI/1:1",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "ECK",
       "exchange": "FSX",
       "name": "LUDW.BECK A.RATHAUSECK",
@@ -958,46 +697,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "HIN",
-      "exchange": "FSX",
-      "name": "HILLGROVE RESOURCES LTD.",
-      "isin": "AU000000HGO6",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "HILLGROVE RESOURCES LTD.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "HR90",
-      "exchange": "FSX",
-      "name": "REDIVIUM LTD.",
-      "isin": "AU0000310211",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "REDIVIUM LTD.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "K9A",
@@ -1037,7 +736,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "LVO0",
@@ -1057,7 +756,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MPCK",
@@ -1077,7 +776,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MT1",
@@ -1098,86 +797,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "MUH0",
-      "exchange": "FSX",
-      "name": "NCS MULTISTAGE HLD.DL-,01",
-      "isin": "US6288772014",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "NCS MULTISTAGE HLD.DL-,01",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "SEP0",
-      "exchange": "FSX",
-      "name": "SECURE WASTE INFRASTRUCT.",
-      "isin": "CA8139211038",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SECURE WASTE INFRASTRUCT.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "UGE0",
-      "exchange": "FSX",
-      "name": "FLASH SPORTS AND ME. O.N.",
-      "isin": "US91704K3014",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "FLASH SPORTS AND ME. O.N.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "UW9",
-      "exchange": "FSX",
-      "name": "COSMOS EXPLORATION LTD.",
-      "isin": "AU0000178113",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "COSMOS EXPLORATION LTD.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "W2U1",
@@ -1237,7 +856,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "00195",
@@ -1597,27 +1216,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "5HED",
-      "exchange": "XETRA",
-      "name": "OSSIAM-O.ESG LC S.B.C.US",
-      "isin": "IE00BF92LR56",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "OSSIAM-O.ESG LC S.B.C.US",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "5HEE",
@@ -1640,26 +1239,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "CAP",
-      "exchange": "XETRA",
-      "name": "SCP STAN.CAP.PART. INH ON",
-      "isin": "DE000A12UPJ7",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SCP STAN.CAP.PART. INH ON",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "E8X",
       "exchange": "XETRA",
       "name": "ELEXXION AG",
@@ -1677,7 +1256,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ECK",
@@ -1697,7 +1276,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ECK",
@@ -1757,7 +1336,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MPCK",
@@ -1777,7 +1356,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "OP8E",
@@ -1817,7 +1396,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PGH",
@@ -1877,7 +1456,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     }
   ]
 }
