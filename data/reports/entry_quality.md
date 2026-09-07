@@ -1,12 +1,12 @@
 # Entry Quality Report
 
-Generated at: `2026-09-07T13:43:03Z`
+Generated at: `2026-09-07T14:11:27Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,551 |
+| pass | 80,549 |
 | source_gap | 11,503 |
 | warn | 31 |
 
@@ -30,7 +30,7 @@ Generated at: `2026-09-07T13:43:03Z`
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,139 | 0 | 1,004 | 0 | 0 |
 | B3 | 1,241 | 0 | 340 | 0 | 0 |
-| NASDAQ | 4,471 | 0 | 315 | 4 | 0 |
+| NASDAQ | 4,469 | 0 | 315 | 4 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
 | NYSE ARCA | 2,518 | 0 | 246 | 2 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
