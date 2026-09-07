@@ -1,19 +1,19 @@
 # Official reference reconciliation
 
-- Active official source rows: **169,419**
-- Source-specific venue/symbol keys: **169,418**
-- Coverage-credited keys: **94,807**
-- Exact identity conflicts: **12,534**
-- In-scope missing listings: **48,476**
+- Active official source rows: **169,460**
+- Source-specific venue/symbol keys: **169,459**
+- Coverage-credited keys: **94,791**
+- Exact identity conflicts: **12,530**
+- In-scope missing listings: **48,535**
 
 | Classification | Keys |
 |---|---:|
-| `alternate_listing_line` | 3,527 |
+| `alternate_listing_line` | 3,532 |
 | `ambiguous_same_venue_identifier` | 193 |
-| `exact_identity_conflict` | 12,534 |
-| `exact_match` | 94,807 |
-| `missing_from_database` | 48,476 |
-| `normalization_candidate` | 1,848 |
-| `out_of_scope` | 8,033 |
+| `exact_identity_conflict` | 12,530 |
+| `exact_match` | 94,791 |
+| `missing_from_database` | 48,535 |
+| `normalization_candidate` | 1,847 |
+| `out_of_scope` | 8,031 |
 
 Coverage credit is venue-specific and identity-aware. Cross-venue ISIN matches and normalized-symbol/name candidates are review queues, not completeness credit.

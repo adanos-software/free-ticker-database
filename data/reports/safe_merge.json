@@ -6,46 +6,57 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92081,
+    "before_rows": 92085,
     "after_rows": 92085,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 5,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::BTOG"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
+  "critical_field_changes": [
     {
-      "listing_key": "NASDAQ::BTOG",
-      "ticker": "BTOG",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "BTOG",
-      "new_value": "SGRX",
-      "before_row_sha256": "6bcfe2f95c71892ab5cd8bdbfaaa655f2ea36e5900ae80884f59d89eb8aca950",
-      "effective_at": "",
-      "observed_at": "2026-09-07T13:16:41Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "dd5cb47c33154790a314a0eb",
-      "evidence_status": "reviewed"
+      "listing_key": "BSE_IN::INTEGFD",
+      "field_name": "isin",
+      "old_value": "INE177M01013",
+      "new_value": "INE177M01021"
+    },
+    {
+      "listing_key": "FSX::TGT",
+      "field_name": "isin",
+      "old_value": "DE0005118806",
+      "new_value": "DE000A41YFQ4"
+    },
+    {
+      "listing_key": "XETRA::TGT",
+      "field_name": "isin",
+      "old_value": "DE0005118806",
+      "new_value": "DE000A41YFQ4"
+    },
+    {
+      "listing_key": "XSTU::FRE",
+      "field_name": "isin",
+      "old_value": "DE0005785604",
+      "new_value": "DE000FRE5EN2"
+    },
+    {
+      "listing_key": "XSTU::TGT",
+      "field_name": "isin",
+      "old_value": "DE0005118806",
+      "new_value": "DE000A41YFQ4"
     }
   ],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -445,10 +456,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4788,
+      "before_rows": 4790,
       "after_rows": 4790,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -499,7 +510,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2028,
+      "before_rows": 2029,
       "after_rows": 2029,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -508,7 +519,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2765,
+      "before_rows": 2766,
       "after_rows": 2766,
       "shrink_pct": 0.0,
       "removed_rows": 0,
