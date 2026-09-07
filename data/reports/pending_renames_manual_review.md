@@ -1,11 +1,12 @@
 # Pending Renames Manual Review
 
-Generated: 2026-08-31T15:13:02Z
+Generated: 2026-09-07T13:35:12Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 
 | Old | New | Effective | Queue | Apply status | Blocker |
 |---|---|---|---|---|---|
+| BTOG | SGRX | 2026-09-04 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
 | ISSC | IA | 2026-08-18 | review_verified_rename_or_delisting | manual_isin_not_proven_unchanged | manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source |
 | EQR | VRMK | 2026-08-18 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
 | NCL | NCLX | 2026-08-13 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: FSX::NCL|NYSE::NCL|SET::NCL|WSE::NCL|XSTU::NCL |
