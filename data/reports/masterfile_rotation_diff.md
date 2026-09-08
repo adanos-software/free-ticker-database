@@ -1,7 +1,7 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-09-08T07:29:49Z`
-- New rows: `315`
+- Generated at: `2026-09-08T08:16:16Z`
+- New rows: `314`
 - Vanished rows: `28`
 - Changed rows: `35`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
@@ -21,7 +21,7 @@
 | bist_kap_mkk_listed_securities | 4 |
 | bme_security_prices_directory | 5 |
 | euronext_equities | 10 |
-| nse_india_securities_available | 289 |
+| nse_india_securities_available | 288 |
 | set_stock_search | 1 |
 | sgx_securities_prices | 4 |
 | tadawul_main_market_watch | 2 |

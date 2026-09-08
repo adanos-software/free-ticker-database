@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-09-08T07:29:49Z",
+    "generated_at": "2026-09-08T08:16:16Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 315,
+    "new_rows": 314,
     "vanished_rows": 28,
     "changed_rows": 35,
     "new_by_source": {
       "bist_kap_mkk_listed_securities": 4,
       "bme_security_prices_directory": 5,
       "euronext_equities": 10,
-      "nse_india_securities_available": 289,
+      "nse_india_securities_available": 288,
       "set_stock_search": 1,
       "sgx_securities_prices": 4,
       "tadawul_main_market_watch": 2
@@ -2179,21 +2179,6 @@
       "isin": "INF205KA1CA1",
       "cfi": "",
       "sector": "Equity"
-    },
-    {
-      "source_key": "nse_india_securities_available",
-      "provider": "NSE India",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "ticker": "JAYKAY-RE1",
-      "name": "Jaykay Enterprises Limited-RE",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "INE903A20025",
-      "cfi": "",
-      "sector": ""
     },
     {
       "source_key": "nse_india_securities_available",

@@ -1,5 +1,5 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-09-08T07:29:50Z`
+- Generated at: `2026-09-08T08:16:16Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
 - Vanished reference rows: `123`
 - Rotation vanished rows: `28`
