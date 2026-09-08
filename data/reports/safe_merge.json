@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 5,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,38 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "Borsa Italiana::EPH",
+      "field_name": "isin",
+      "old_value": "IT0005623845",
+      "new_value": "IT0005730095"
+    },
+    {
+      "listing_key": "Euronext::ALCPB",
+      "field_name": "isin",
+      "old_value": "FR0011053636",
+      "new_value": "FR0014019Y19"
+    },
+    {
+      "listing_key": "NSE_IN::GOLDADD",
+      "field_name": "isin",
+      "old_value": "INF740KA1SW3",
+      "new_value": "INF740KA1ZP2"
+    },
+    {
+      "listing_key": "NSE_IN::SILVERADD",
+      "field_name": "isin",
+      "old_value": "INF740KA1RE3",
+      "new_value": "INF740KA1ZQ0"
+    },
+    {
+      "listing_key": "NSE_IN::TDPOWERSYS",
+      "field_name": "isin",
+      "old_value": "INE419M01027",
+      "new_value": "INE419M01035"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [

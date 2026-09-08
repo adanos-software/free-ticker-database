@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-08T06:54:52Z",
+    "generated_at": "2026-09-08T09:13:09Z",
     "rows": 92083,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,29 +14,29 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80541,
-      "source_gap": 11506,
-      "warn": 36
+      "pass": 80696,
+      "source_gap": 11356,
+      "warn": 31
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4638,
-      "official_reference": 82368,
+      "identifier_enriched": 4489,
+      "official_reference": 82518,
       "scoped_source_gap": 240,
-      "valid_isin": 4837
+      "valid_isin": 4836
     },
     "severity_counts": {
-      "high": 11,
-      "medium": 28,
-      "source_gap": 11841
+      "high": 6,
+      "medium": 26,
+      "source_gap": 11691
     },
     "issue_counts": {
-      "official_reference_gap": 6428,
+      "official_reference_gap": 6278,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1302,
       "expected_missing_primary_isin": 768,
       "missing_etf_category": 56,
-      "official_name_mismatch": 28,
-      "official_isin_mismatch": 11
+      "official_name_mismatch": 26,
+      "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
       {
@@ -95,12 +95,6 @@
         "source_gap": 173
       },
       {
-        "exchange": "NSE_IN",
-        "pass": 2335,
-        "source_gap": 165,
-        "warn": 3
-      },
-      {
         "exchange": "LSE",
         "pass": 6876,
         "source_gap": 152,
@@ -129,9 +123,9 @@
       },
       {
         "exchange": "Euronext",
-        "pass": 1343,
+        "pass": 1344,
         "source_gap": 132,
-        "warn": 2
+        "warn": 1
       },
       {
         "exchange": "NYSE",
@@ -143,6 +137,11 @@
         "exchange": "JSE",
         "source_gap": 89,
         "pass": 123
+      },
+      {
+        "exchange": "TASE",
+        "pass": 717,
+        "source_gap": 84
       }
     ]
   },
@@ -11160,24 +11159,6 @@
       ]
     },
     {
-      "listing_key": "NSE_IN::3IINFOLTD",
-      "ticker": "3IINFOLTD",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NSE_IN",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::3JDA",
       "ticker": "3JDA",
       "exchange": "XSTU",
@@ -18347,6 +18328,24 @@
           "field": "exchange",
           "value": "FSX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::6Z4",
+      "ticker": "6Z4",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }

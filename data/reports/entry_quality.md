@@ -1,26 +1,26 @@
 # Entry Quality Report
 
-Generated at: `2026-09-08T06:54:52Z`
+Generated at: `2026-09-08T09:13:09Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,541 |
-| source_gap | 11,506 |
-| warn | 36 |
+| pass | 80,696 |
+| source_gap | 11,356 |
+| warn | 31 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,428 |
+| official_reference_gap | 6,278 |
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 1,302 |
 | expected_missing_primary_isin | 768 |
 | missing_etf_category | 56 |
-| official_name_mismatch | 28 |
-| official_isin_mismatch | 11 |
+| official_name_mismatch | 26 |
+| official_isin_mismatch | 6 |
 
 ## Top Flagged Exchanges
 
@@ -37,15 +37,15 @@ Generated at: `2026-09-08T06:54:52Z`
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | TSX | 2,122 | 0 | 174 | 0 | 0 |
 | AMS | 373 | 0 | 173 | 0 | 0 |
-| NSE_IN | 2,335 | 0 | 165 | 3 | 0 |
 | LSE | 6,876 | 0 | 152 | 2 | 0 |
 | ASX | 2,109 | 0 | 150 | 0 | 0 |
 | BATS | 1,223 | 0 | 150 | 0 | 0 |
 | XETRA | 4,166 | 0 | 149 | 0 | 0 |
 | TSXV | 1,283 | 0 | 137 | 2 | 0 |
-| Euronext | 1,343 | 0 | 132 | 2 | 0 |
+| Euronext | 1,344 | 0 | 132 | 1 | 0 |
 | NYSE | 1,920 | 0 | 105 | 4 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
+| TASE | 717 | 0 | 84 | 0 | 0 |
 
 ## Notes
 

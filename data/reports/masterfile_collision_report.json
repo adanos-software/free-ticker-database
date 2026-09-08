@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99449,
-    "matched": 65138,
-    "collisions": 13811,
-    "missing": 20500
+    "official_symbols": 99715,
+    "matched": 65288,
+    "collisions": 13897,
+    "missing": 20530
   },
   "exchanges": [
     {
@@ -3328,10 +3328,10 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 3222,
-      "matched": 2338,
-      "collisions": 376,
-      "missing": 508,
+      "official_symbols": 3488,
+      "matched": 2488,
+      "collisions": 462,
+      "missing": 538,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -3344,6 +3344,14 @@
         {
           "ticker": "A2ZINFRA",
           "name": "A2Z Infra Engineering Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
+          "ticker": "ABAN",
+          "name": "Aban Offshore Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
@@ -3384,6 +3392,14 @@
           ]
         },
         {
+          "ticker": "ACSTECH",
+          "name": "ACS Technologies Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
           "ticker": "ADDIND",
           "name": "Addi Industries Limited",
           "target_exchange": "NSE_IN",
@@ -3394,22 +3410,6 @@
         {
           "ticker": "ADOR",
           "name": "Ador Welding Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "ADVIKCA",
-          "name": "Advik Capital Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "AFIL",
-          "name": "Akme Fintrade (India) Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
@@ -3430,6 +3430,11 @@
         {
           "ticker": "ABH",
           "name": "ABH Healthcare Limited",
+          "exchange": "NSE_IN"
+        },
+        {
+          "ticker": "ABINFRA",
+          "name": "A B Infrabuild Limited",
           "exchange": "NSE_IN"
         },
         {
@@ -3460,11 +3465,6 @@
         {
           "ticker": "ADISOFT",
           "name": "Adisoft Technologies Limited",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ADVAIT",
-          "name": "Advait Energy Transitions Limited",
           "exchange": "NSE_IN"
         }
       ]
