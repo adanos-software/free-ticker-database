@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Rebuild now strips leading/trailing whitespace (including NBSP and tabs) from security names, and validation fails closed on untrimmed names in `tickers.csv`, `listings.csv`, and `core_listings.csv`.
+- Rebuild now strips leading/trailing whitespace (including NBSP and tabs) from security names, and validation fails closed on untrimmed names in `tickers.csv`, `listings.csv`, and `core_listings.csv`. The safe-merge gate treats whitespace-only name diffs as non-critical, matching row fingerprints.
 - Cleared ticker-homonym ISINs on US listings whose official directory identity did not match the foreign primary sharing that ISIN (e.g. `NYSE::DLR` Digital Realty vs `TSX::DLR` Global X ETF, `NYSE ARCA::ETHW` Bitwise vs WisdomTree ETC). Missing identifier is retained; no replacement ISIN is invented.
 - Applied listing-keyed official ISIN recodes for matching Frankfurt identities (e.g. `FSX::UN0` Uniper `DE000UNSE026`, `FSX::AWC` American Water Works `US0304201033`) and `OTC::VGLS` `US91822T2006`.
 - Corrected `NASDAQ::AAPB` to the official Nasdaq listed name GraniteShares 2x Long AAPL Daily ETF.

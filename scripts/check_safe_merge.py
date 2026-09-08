@@ -14,14 +14,16 @@ from typing import Any
 try:
     from scripts.lib.merge_evidence import (
         CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
-        event_has_provenance, event_timestamp_is_valid, listing_key, row_fingerprint,
+        canonical_row_payload, event_has_provenance, event_timestamp_is_valid,
+        listing_key, row_fingerprint,
     )
     from scripts.lib.official_change_evidence import build_official_change_evidence
     from scripts.lib.official_change_evidence import is_valid_isin
 except ModuleNotFoundError:  # pragma: no cover
     from lib.merge_evidence import (
         CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
-        event_has_provenance, event_timestamp_is_valid, listing_key, row_fingerprint,
+        canonical_row_payload, event_has_provenance, event_timestamp_is_valid,
+        listing_key, row_fingerprint,
     )
     from lib.official_change_evidence import build_official_change_evidence
     from lib.official_change_evidence import is_valid_isin
@@ -318,9 +320,11 @@ def evaluate(
     changes: list[dict[str, str]] = []
     unevidenced_changes: list[dict[str, str]] = []
     for key in sorted(set(before) & set(after)):
+        before_payload = canonical_row_payload(before[key])
+        after_payload = canonical_row_payload(after[key])
         for field in CRITICAL_FIELDS:
-            old = str(before[key].get(field, "") or "")
-            new = str(after[key].get(field, "") or "")
+            old = before_payload[field]
+            new = after_payload[field]
             if old == new:
                 continue
             change = {"listing_key": key, "field_name": field, "old_value": old, "new_value": new}
