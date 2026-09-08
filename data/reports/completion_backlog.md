@@ -1,14 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-09-08T06:55:01Z`
+Generated at: `2026-09-08T09:34:32Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `768`
-- Missing stock sectors: `1527`
+- Missing stock sectors: `1523`
 - Missing ETF categories: `45`
-- Official symbol collisions tracked in exchange references: `13811`
-- Core rows hidden only by the legacy global-ticker compatibility export: `4770`
+- Official symbol collisions tracked in exchange references: `13894`
+- Core rows hidden only by the legacy global-ticker compatibility export: `4768`
 
 ## Next Safe Batches
 
@@ -24,7 +24,7 @@ Generated at: `2026-09-08T06:55:01Z`
 | 8 | IDX | missing_isin_primary | 62 | candidate_for_official_followup | Official exchange masterfile or reviewed secondary identifier source. | yes |
 | 9 | NYSE | missing_isin_primary | 59 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 10 | BATS | missing_isin_primary | 53 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
-| 11 | NASDAQ | missing_sector_stock | 49 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 11 | NASDAQ | missing_sector_stock | 45 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 12 | XSTU | missing_sector_stock | 45 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
@@ -52,7 +52,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 |---|---|---|---:|---|---|---|
 | 1 | FSX | Stock | 807 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 2 | OTC | Stock | 554 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
-| 3 | NASDAQ | Stock | 49 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 3 | NASDAQ | Stock | 45 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 4 | XSTU | Stock | 45 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 5 | NYSE | Stock | 15 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 6 | Munich | Stock | 10 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -80,7 +80,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 |---|---|---:|---:|---:|---|
 | 1 | FSX | 807 | 807 | 0 | official_full |
 | 2 | OTC | 554 | 554 | 0 | official_full |
-| 3 | NASDAQ | 56 | 49 | 7 | official_full |
+| 3 | NASDAQ | 52 | 45 | 7 | official_full |
 | 4 | XSTU | 45 | 45 | 0 | missing |
 | 5 | NYSE ARCA | 29 | 0 | 29 | official_full |
 | 6 | NYSE | 16 | 15 | 1 | official_full |
