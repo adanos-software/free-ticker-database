@@ -6611,6 +6611,13 @@ def nse_india_record_get(record: dict[str, str], *keys: str) -> str:
     return ""
 
 
+NSE_INDIA_RIGHTS_TICKER_RE = re.compile(r"-RE\d*$")
+
+
+def is_nse_india_rights_ticker(ticker: str) -> bool:
+    return bool(NSE_INDIA_RIGHTS_TICKER_RE.search(str(ticker or "").strip().upper()))
+
+
 NSE_INDIA_ETF_UNDERLYING_SECTOR = {
     "EQUITY": "Equity",
     "DEBT": "Fixed Income",
@@ -6690,7 +6697,7 @@ def parse_nse_india_equity_csv(
         record = normalize_nse_india_csv_record(raw_record)
         ticker = (record.get("SYMBOL") or "").strip().upper()
         series = (record.get("SERIES") or "").strip().upper()
-        if series not in allowed_series or ticker.endswith("-RE"):
+        if series not in allowed_series or is_nse_india_rights_ticker(ticker):
             continue
         name = nse_india_record_get(record, "NAME OF COMPANY", "NAME_OF_COMPANY")
         isin = nse_india_record_get(record, "ISIN NUMBER", "ISIN_NUMBER")
