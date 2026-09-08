@@ -6602,7 +6602,32 @@ def normalize_nse_india_csv_record(record: dict[str, Any]) -> dict[str, str]:
     return {str(key or "").strip(): str(value or "").strip() for key, value in record.items()}
 
 
-def normalize_nse_india_etf_category(underlying: str, name: str) -> str:
+def nse_india_record_get(record: dict[str, str], *keys: str) -> str:
+    folded = {key.casefold(): value for key, value in record.items()}
+    for key in keys:
+        value = record.get(key) or folded.get(key.casefold(), "")
+        if value:
+            return value
+    return ""
+
+
+NSE_INDIA_ETF_UNDERLYING_SECTOR = {
+    "EQUITY": "Equity",
+    "DEBT": "Fixed Income",
+    "COMMODITY": "Commodity",
+    "GLOBAL INDICES": "Equity",
+    "HYBRID": "Multi-Asset",
+}
+
+
+def normalize_nse_india_etf_category(
+    underlying: str,
+    name: str,
+    etf_underlying: str = "",
+) -> str:
+    mapped = NSE_INDIA_ETF_UNDERLYING_SECTOR.get(etf_underlying.strip().upper())
+    if mapped:
+        return mapped
     value = f"{underlying} {name}".lower()
     if not value.strip():
         return ""
@@ -6658,15 +6683,23 @@ def parse_nse_india_equity_csv(
     reader = csv.DictReader(io.StringIO(text.lstrip("\ufeff")))
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
-    allowed_series = {"SM", "ST"} if sme else {"EQ"}
+    # BE/BZ are still listed (trade-to-trade). Prefer EQ when both series exist.
+    allowed_series = {"SM", "ST"} if sme else {"EQ", "BE", "BZ"}
+    candidates: list[tuple[int, str, str, str]] = []
     for raw_record in reader:
         record = normalize_nse_india_csv_record(raw_record)
         ticker = (record.get("SYMBOL") or "").strip().upper()
         series = (record.get("SERIES") or "").strip().upper()
-        if series not in allowed_series or ticker.endswith("-RE") or ticker in seen:
+        if series not in allowed_series or ticker.endswith("-RE"):
             continue
-        name = record.get("NAME OF COMPANY") or record.get("NAME_OF_COMPANY") or ""
-        isin = record.get("ISIN NUMBER") or record.get("ISIN_NUMBER") or ""
+        name = nse_india_record_get(record, "NAME OF COMPANY", "NAME_OF_COMPANY")
+        isin = nse_india_record_get(record, "ISIN NUMBER", "ISIN_NUMBER")
+        rank = 0 if series in {"EQ", "SM", "ST"} else 1
+        candidates.append((rank, ticker, name, isin))
+    candidates.sort()
+    for _rank, ticker, name, isin in candidates:
+        if ticker in seen:
+            continue
         row = build_nse_india_row(
             source,
             ticker=ticker,
@@ -6692,12 +6725,13 @@ def parse_nse_india_etf_csv(
     seen: set[str] = set()
     for raw_record in reader:
         record = normalize_nse_india_csv_record(raw_record)
-        ticker = (record.get("Symbol") or record.get("SYMBOL") or "").strip().upper()
+        ticker = nse_india_record_get(record, "Symbol", "SYMBOL").upper()
         if not ticker or ticker in seen:
             continue
-        underlying = record.get("Underlying", "")
-        security_name = record.get("SecurityName", "")
-        isin = record.get("ISINNumber", "")
+        underlying = nse_india_record_get(record, "Underlying Asset", "Underlying")
+        etf_underlying = nse_india_record_get(record, "ETF Underlying")
+        security_name = nse_india_record_get(record, "SecurityName", "Security Name")
+        isin = nse_india_record_get(record, "ISINNumber", "ISIN Number", "ISIN")
         row = build_nse_india_row(
             source,
             ticker=ticker,
@@ -6705,7 +6739,11 @@ def parse_nse_india_etf_csv(
             isin=isin,
             asset_type="ETF",
             source_url=source_url,
-            sector=normalize_nse_india_etf_category(underlying, security_name),
+            sector=normalize_nse_india_etf_category(
+                underlying,
+                security_name,
+                etf_underlying=etf_underlying,
+            ),
         )
         if row:
             rows.append(row)

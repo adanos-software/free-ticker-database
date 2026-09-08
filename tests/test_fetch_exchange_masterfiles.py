@@ -16881,6 +16881,64 @@ def test_parse_nse_india_etf_csv_maps_conservative_categories() -> None:
     ]
 
 
+def test_parse_nse_india_etf_csv_reads_underlying_asset_and_etf_underlying() -> None:
+    source = MasterfileSource(
+        key="nse_india_securities_available",
+        provider="NSE India",
+        description="Official NSE India securities",
+        source_url="https://www.nseindia.com/static/market-data/securities-available-for-trading",
+        format="nse_india_securities_available_csv",
+    )
+    text = "\n".join(
+        [
+            "Symbol,Underlying Asset,SecurityName,DateofListing,MarketLot,ISINNumber,FaceValue,ETF Underlying,Underlying Key",
+            "ABSLBANETF,Nifty Bank,BIRLASLAMC-ABSLBANETF,16-Mar-20,1,INF209KB17D5,10,EQUITY,Nifty Bank",
+            "SILVERADD,DSP Silver ETF,DSPAMC-DSPSILVETF,09-Aug-22,1,INF740KA1ZQ0,1,COMMODITY,Silver",
+            "LIQUIDBEES,Government Securities,NIPINDETFLIQUIDBEES,16-Jul-03,1,INF732E01037,1000,DEBT,Overnight ETFs and Liquid ETF",
+            "HNGSNGBEES,Hang Seng,NIPINDETFHNGSNGBEES,01-Jan-10,1,INF204KB18I3,1,GLOBAL INDICES,Hang Seng",
+            "HYBRIDETF,Hybrid Basket,HYBRIDETF,01-Jan-24,1,INF204KB14I2,10,Hybrid,Hybrid",
+        ]
+    )
+
+    rows = parse_nse_india_etf_csv(text, source, source_url="https://example.com/etf.csv")
+
+    assert [(row["ticker"], row["sector"]) for row in rows] == [
+        ("ABSLBANETF", "Equity"),
+        ("SILVERADD", "Commodity"),
+        ("LIQUIDBEES", "Fixed Income"),
+        ("HNGSNGBEES", "Equity"),
+        ("HYBRIDETF", "Multi-Asset"),
+    ]
+
+
+def test_parse_nse_india_equity_csv_keeps_trade_to_trade_series() -> None:
+    source = MasterfileSource(
+        key="nse_india_securities_available",
+        provider="NSE India",
+        description="Official NSE India securities",
+        source_url="https://www.nseindia.com/static/market-data/securities-available-for-trading",
+        format="nse_india_securities_available_csv",
+    )
+    text = "\n".join(
+        [
+            "SYMBOL,NAME OF COMPANY,SERIES,DATE OF LISTING,PAID UP VALUE,ISIN NUMBER,FACE VALUE",
+            "HEG,HEG Limited,BE,01-Jan-90,10,INE545A01024,10",
+            "RELIANCE,Reliance Industries Limited,EQ,01-Jan-90,10,INE002A01018,10",
+            "RELIANCE,Reliance Industries Limited,BE,01-Jan-90,10,INE002A01018,10",
+            "WATCHED,Watched Limited,BZ,01-Jan-90,10,INE545A01016,10",
+            "RIGHTS-RE,Rights Co,EQ,01-Jan-90,10,INE002A01018,10",
+        ]
+    )
+
+    rows = parse_nse_india_equity_csv(text, source, source_url="https://example.com/equity.csv")
+
+    assert [(row["ticker"], row["isin"]) for row in rows] == [
+        ("RELIANCE", "INE002A01018"),
+        ("HEG", "INE545A01024"),
+        ("WATCHED", "INE545A01016"),
+    ]
+
+
 def test_nse_india_source_is_modeled_as_official_exchange_directory() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "nse_india_securities_available")
 
