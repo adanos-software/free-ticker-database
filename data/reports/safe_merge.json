@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92038,
-    "after_rows": 92036,
-    "overall_shrink_pct": 0.002173,
-    "removed_rows": 2,
-    "evidenced_removed_rows": 2,
+    "before_rows": 92036,
+    "after_rows": 92037,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 6,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -21,12 +21,46 @@
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::BTAI",
-    "NASDAQ::LPSN"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "HKEX::00948",
+      "field_name": "isin",
+      "old_value": "BMG6847W1064",
+      "new_value": "BMG6847W1148"
+    },
+    {
+      "listing_key": "HKEX::01712",
+      "field_name": "country",
+      "old_value": "Australia",
+      "new_value": "Hong Kong"
+    },
+    {
+      "listing_key": "HKEX::01712",
+      "field_name": "country_code",
+      "old_value": "AU",
+      "new_value": "HK"
+    },
+    {
+      "listing_key": "HKEX::01712",
+      "field_name": "isin",
+      "old_value": "AU0000321754",
+      "new_value": "HK0001353686"
+    },
+    {
+      "listing_key": "HKEX::01777",
+      "field_name": "isin",
+      "old_value": "KYG3311L1041",
+      "new_value": "KYG3311L1124"
+    },
+    {
+      "listing_key": "HKEX::01803",
+      "field_name": "isin",
+      "old_value": "KYG1145Y1026",
+      "new_value": "KYG1145Y1281"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -428,10 +462,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4747,
+      "before_rows": 4745,
       "after_rows": 4745,
-      "shrink_pct": 0.042132,
-      "removed_rows": 2,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -501,7 +535,7 @@
     {
       "exchange": "NYSE MKT",
       "before_rows": 232,
-      "after_rows": 232,
+      "after_rows": 233,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

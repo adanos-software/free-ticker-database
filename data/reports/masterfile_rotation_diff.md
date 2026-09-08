@@ -1,42 +1,41 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-09-08T08:16:16Z`
-- New rows: `314`
-- Vanished rows: `28`
-- Changed rows: `35`
+- Generated at: `2026-09-08T09:33:20Z`
+- New rows: `73`
+- Vanished rows: `174`
+- Changed rows: `43`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 22 |
-| isin_change | 7 |
-| name_change | 6 |
+| field_change | 1 |
+| isin_change | 5 |
+| name_change | 40 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| bist_kap_mkk_listed_securities | 4 |
-| bme_security_prices_directory | 5 |
-| euronext_equities | 10 |
-| nse_india_securities_available | 288 |
-| set_stock_search | 1 |
-| sgx_securities_prices | 4 |
-| tadawul_main_market_watch | 2 |
+| bse_india_scrips | 5 |
+| hkex_securities_list | 12 |
+| krx_etf_finder | 5 |
+| krx_listed_companies | 1 |
+| lse_price_explorer | 15 |
+| nasdaq_listed | 4 |
+| nasdaq_other_listed | 5 |
+| sec_company_tickers_exchange | 26 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| adx_market_watch | 1 |
-| bist_kap_mkk_listed_securities | 1 |
-| bme_security_prices_directory | 6 |
-| euronext_equities | 7 |
-| nse_india_securities_available | 2 |
-| pse_listed_company_directory | 1 |
-| sgx_securities_prices | 1 |
-| tadawul_main_market_watch | 2 |
-| twse_listed_companies | 1 |
-| upcom_registered_securities | 6 |
+| bse_india_scrips | 143 |
+| hkex_securities_list | 3 |
+| krx_etf_finder | 1 |
+| krx_listed_companies | 3 |
+| lse_price_explorer | 5 |
+| nasdaq_listed | 7 |
+| nasdaq_other_listed | 1 |
+| sec_company_tickers_exchange | 11 |

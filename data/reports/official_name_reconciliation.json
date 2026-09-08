@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-08T11:14:14Z",
+  "generated_at": "2026-09-08T11:30:36Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1796,
+  "reconciled_rows": 1797,
   "applied_rows": 0,
-  "proposed_rows": 1796,
+  "proposed_rows": 1797,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -15004,6 +15004,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
       "observation_id": "6764ec8131c5d5fcf55f53ad",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "KRX::002420",
+      "action": "proposed",
+      "ticker": "002420",
+      "exchange": "KRX",
+      "asset_type": "Stock",
+      "isin": "KR7002420008",
+      "old_name": "The Century Co., Ltd.",
+      "new_name": "Wooyang P&L",
+      "source_key": "krx_listed_companies",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "observation_id": "11f90f58721c3e095047f23b",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

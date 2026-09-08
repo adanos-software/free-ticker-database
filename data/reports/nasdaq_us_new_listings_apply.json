@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-09-08T06:49:45Z",
+    "generated_at": "2026-09-08T09:33:23Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -11,14 +11,104 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
-    "skipped_rows": 0,
+    "new_supported_rows": 9,
+    "accepted_rows": 1,
+    "skipped_rows": 8,
     "detected_symbol_changes": 0,
-    "accepted_by_exchange": {},
-    "accepted_by_target": {},
-    "skipped_by_reason": {}
+    "accepted_by_exchange": {
+      "NYSE MKT": 1
+    },
+    "accepted_by_target": {
+      "coverage_expansion": 1
+    },
+    "skipped_by_reason": {
+      "already_in_listings": 5,
+      "excluded_non_common_stock": 2,
+      "temporary_when_issued_line": 1
+    }
   },
-  "accepted": [],
-  "skipped": []
+  "accepted": [
+    {
+      "listing_key": "NYSE MKT::AUXX",
+      "ticker": "AUXX",
+      "exchange": "NYSE MKT",
+      "name": "Gold X2 Mining Inc. Common Shares",
+      "asset_type": "Stock",
+      "stock_sector": "",
+      "etf_category": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "apply_target": "coverage_expansion"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "HQDG",
+      "exchange": "NASDAQ",
+      "name": "Raub Brock Dividend Growth ETF",
+      "asset_type": "ETF",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "JONE",
+      "exchange": "NASDAQ",
+      "name": "Jones Ventures INTL Acquisition1 Corp - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "JONER",
+      "exchange": "NASDAQ",
+      "name": "Jones Ventures INTL Acquisition1 Corp - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "SGRX",
+      "exchange": "NASDAQ",
+      "name": "SANGRIX INC. - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "NMCO.V",
+      "exchange": "NYSE",
+      "name": "Nuveen Municipal Credit Opportunities Fund Rights (expiring October 7, 2026) Rights when issued",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "temporary_when_issued_line"
+    },
+    {
+      "ticker": "RIV.R",
+      "exchange": "NYSE",
+      "name": "RiverNorth Opportunities Fund, Inc. Rights (expiring September 23, 2026) Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "XTND",
+      "exchange": "NYSE",
+      "name": "Xtend AI Robotics, Inc. Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "PJIN",
+      "exchange": "NYSE ARCA",
+      "name": "PGIM Jennison International Core Equity ETF",
+      "asset_type": "ETF",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    }
+  ]
 }
