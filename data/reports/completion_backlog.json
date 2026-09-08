@@ -234,7 +234,7 @@
       "etf_missing_count": 1,
       "exchange": "NYSE MKT",
       "field": "missing_isin_primary",
-      "missing_count": 13,
+      "missing_count": 14,
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
@@ -243,7 +243,7 @@
       "reference_scopes": "exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_eodhd_metadata.py",
-      "stock_missing_count": 12,
+      "stock_missing_count": 13,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -1035,10 +1035,10 @@
     },
     "field_totals": {
       "missing_etf_category": 45,
-      "missing_isin_primary": 768,
+      "missing_isin_primary": 769,
       "missing_sector_stock": 1523
     },
-    "generated_at": "2026-09-08T09:34:32Z",
+    "generated_at": "2026-09-08T11:44:32Z",
     "legacy_primary_ticker_collision_rows": 4768,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1322,7 +1322,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 13894,
+    "official_masterfile_collisions": 13896,
     "rows": 54
   }
 }

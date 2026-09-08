@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-09-08T09:34:32Z`
+Generated at: `2026-09-08T11:44:32Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `768`
+- Missing primary ISIN rows: `769`
 - Missing stock sectors: `1523`
 - Missing ETF categories: `45`
-- Official symbol collisions tracked in exchange references: `13894`
+- Official symbol collisions tracked in exchange references: `13896`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4768`
 
 ## Next Safe Batches
