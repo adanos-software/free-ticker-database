@@ -462,7 +462,7 @@
       "etf_missing_count": 0,
       "exchange": "NASDAQ",
       "field": "missing_sector_stock",
-      "missing_count": 49,
+      "missing_count": 45,
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -471,7 +471,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 49,
+      "stock_missing_count": 45,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -1036,10 +1036,10 @@
     "field_totals": {
       "missing_etf_category": 45,
       "missing_isin_primary": 768,
-      "missing_sector_stock": 1527
+      "missing_sector_stock": 1523
     },
-    "generated_at": "2026-09-08T06:55:01Z",
-    "legacy_primary_ticker_collision_rows": 4770,
+    "generated_at": "2026-09-08T09:34:32Z",
+    "legacy_primary_ticker_collision_rows": 4768,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",
@@ -1293,13 +1293,13 @@
         "etf_missing_count": 0,
         "exchange": "NASDAQ",
         "field": "missing_sector_stock",
-        "missing_count": 49,
+        "missing_count": 45,
         "official_source_count": 3,
         "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-        "stock_missing_count": 49,
+        "stock_missing_count": 45,
         "target_field": "stock_sector",
         "venue_status": "official_full",
         "why_next": "highest remaining missing-count workflow"
@@ -1322,7 +1322,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 13811,
+    "official_masterfile_collisions": 13894,
     "rows": 54
   }
 }

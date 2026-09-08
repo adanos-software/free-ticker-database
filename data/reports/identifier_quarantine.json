@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-08T09:12:53Z",
+  "generated_at": "2026-09-08T09:32:00Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 1552,
-  "decision_rows": 5055,
+  "conflict_count": 1547,
+  "decision_rows": 5042,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1330,
-    "proposed_clear_conflicting_identifier": 751,
-    "quarantined_unresolved_identifier": 2974
+    "kept_listing_keyed_identifier": 1328,
+    "proposed_clear_conflicting_identifier": 750,
+    "quarantined_unresolved_identifier": 2964
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 751,
-  "quarantined_rows": 2974,
-  "retained_rows": 1330,
+  "proposed_clear_rows": 750,
+  "quarantined_rows": 2964,
+  "retained_rows": 1328,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -3785,7 +3785,7 @@
       "retained_isin": "BMG275871231"
     },
     {
-      "conflict_id": "e76c1c3cf391be02fbef",
+      "conflict_id": "0fe96904c6c918f843dc",
       "isin": "BMG3398L1182",
       "listing_key": "FSX::U0K",
       "ticker": "U0K",
@@ -3798,20 +3798,7 @@
       "retained_isin": "BMG3398L1182"
     },
     {
-      "conflict_id": "e76c1c3cf391be02fbef",
-      "isin": "BMG3398L1182",
-      "listing_key": "NYSE::FIHL",
-      "ticker": "FIHL",
-      "exchange": "NYSE",
-      "name": "Pelagos Insurance Capital Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "BMG3398L1182"
-    },
-    {
-      "conflict_id": "e76c1c3cf391be02fbef",
+      "conflict_id": "0fe96904c6c918f843dc",
       "isin": "BMG3398L1182",
       "listing_key": "NYSE::PLGO",
       "ticker": "PLGO",
@@ -8879,45 +8866,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "CH1109575535"
-    },
-    {
-      "conflict_id": "b136becca9ccb1c0253f",
-      "isin": "CH1130675676",
-      "listing_key": "NASDAQ::ALTS",
-      "ticker": "ALTS",
-      "exchange": "NASDAQ",
-      "name": "ALT5 Sigma Corporation",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH1130675676"
-    },
-    {
-      "conflict_id": "b136becca9ccb1c0253f",
-      "isin": "CH1130675676",
-      "listing_key": "SIX::ALTS",
-      "ticker": "ALTS",
-      "exchange": "SIX",
-      "name": "21Shares Crypto Mid-Cap Index ETP EUR",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH1130675676"
-    },
-    {
-      "conflict_id": "b136becca9ccb1c0253f",
-      "isin": "CH1130675676",
-      "listing_key": "SIX::ALTS-USD",
-      "ticker": "ALTS-USD",
-      "exchange": "SIX",
-      "name": "21Shares Crypto Mid-Cap Index ETP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH1130675676"
     },
     {
       "conflict_id": "95ce9b8210f6a9c15a37",
@@ -34933,32 +34881,6 @@
       "retained_isin": "IL0011199242"
     },
     {
-      "conflict_id": "79f19eb4ad999e71ab7e",
-      "isin": "IL0011715781",
-      "listing_key": "NASDAQ::IINN",
-      "ticker": "IINN",
-      "exchange": "NASDAQ",
-      "name": "Inspira Technologies Oxy BHN Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IL0011715781"
-    },
-    {
-      "conflict_id": "79f19eb4ad999e71ab7e",
-      "isin": "IL0011715781",
-      "listing_key": "NASDAQ::QTEX",
-      "ticker": "QTEX",
-      "exchange": "NASDAQ",
-      "name": "QTREX Quantum Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IL0011715781"
-    },
-    {
       "conflict_id": "fbd08a1fc851a691d3d5",
       "isin": "IL0011765935",
       "listing_key": "OTC::NXSNF",
@@ -53978,32 +53900,6 @@
       "retained_isin": "US1011211018"
     },
     {
-      "conflict_id": "f46d9eac374c52cb7c62",
-      "isin": "US1048133086",
-      "listing_key": "NASDAQ::HODO",
-      "ticker": "HODO",
-      "exchange": "NASDAQ",
-      "name": "House of Doge Inc. - Common Stock",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US1048133086"
-    },
-    {
-      "conflict_id": "f46d9eac374c52cb7c62",
-      "isin": "US1048133086",
-      "listing_key": "NASDAQ::TBH",
-      "ticker": "TBH",
-      "exchange": "NASDAQ",
-      "name": "Brag House Holdings, Inc. Common Stock",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US1048133086"
-    },
-    {
       "conflict_id": "4790708f5bc3a8dd27fc",
       "isin": "US10482B1017",
       "listing_key": "FSX::42V",
@@ -57824,32 +57720,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US43300A2033"
-    },
-    {
-      "conflict_id": "6b0556a3a32187e854d5",
-      "isin": "US44148G2049",
-      "listing_key": "NASDAQ::HOTH",
-      "ticker": "HOTH",
-      "exchange": "NASDAQ",
-      "name": "Hoth Therapeutics Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US44148G2049"
-    },
-    {
-      "conflict_id": "6b0556a3a32187e854d5",
-      "isin": "US44148G2049",
-      "listing_key": "NASDAQ::RKTO",
-      "ticker": "RKTO",
-      "exchange": "NASDAQ",
-      "name": "Rocket One Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US44148G2049"
     },
     {
       "conflict_id": "94fb27153de572024f43",
@@ -63013,32 +62883,6 @@
       "retained_isin": "US8683581024"
     },
     {
-      "conflict_id": "ec1b19fd2b0090cba91a",
-      "isin": "US86887Q1094",
-      "listing_key": "NASDAQ::NSLR",
-      "ticker": "NSLR",
-      "exchange": "NASDAQ",
-      "name": "Neostellar Capital Corp.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US86887Q1094"
-    },
-    {
-      "conflict_id": "ec1b19fd2b0090cba91a",
-      "isin": "US86887Q1094",
-      "listing_key": "NASDAQ::SSSS",
-      "ticker": "SSSS",
-      "exchange": "NASDAQ",
-      "name": "SuRo Capital Corp",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US86887Q1094"
-    },
-    {
       "conflict_id": "55aa8d54d2ce5464a02e",
       "isin": "US87157D1090",
       "listing_key": "FSX::SJN",
@@ -64092,7 +63936,7 @@
       "retained_isin": "US9038991025"
     },
     {
-      "conflict_id": "7e6d4e010af906cc17f4",
+      "conflict_id": "ee84c9e241b99488e73d",
       "isin": "US9118053076",
       "listing_key": "FSX::UE22",
       "ticker": "UE22",
@@ -64105,25 +63949,12 @@
       "retained_isin": "US9118053076"
     },
     {
-      "conflict_id": "7e6d4e010af906cc17f4",
+      "conflict_id": "ee84c9e241b99488e73d",
       "isin": "US9118053076",
       "listing_key": "NASDAQ::BSIN",
       "ticker": "BSIN",
       "exchange": "NASDAQ",
       "name": "Big Sky Industrial Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US9118053076"
-    },
-    {
-      "conflict_id": "7e6d4e010af906cc17f4",
-      "isin": "US9118053076",
-      "listing_key": "NASDAQ::USEG",
-      "ticker": "USEG",
-      "exchange": "NASDAQ",
-      "name": "US Energy Corp",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
