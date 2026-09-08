@@ -9,27 +9,27 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 61,718 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,846 | Rows in `data/tickers.csv`; one primary row per security. |
+| Core listings | 61,731 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 63,856 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 92,037 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,770 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 16,076 | Primary ticker rows where `asset_type=ETF`. |
+| Stocks | 47,768 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 16,088 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 125,525 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 62,530 (97.9%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 65,352 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 62,278 (97.5%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 46,247 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 16,031 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 61,718 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 60,949 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 769 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 30,319 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Aliases | 125,535 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 62,517 (97.9%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 65,330 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 62,295 (97.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 46,252 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 16,043 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 61,731 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 60,938 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 793 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 30,306 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 49 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 5 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 11,442 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality source-gap rows | 11,452 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
 | Entry quality warn rows | 31 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
@@ -199,20 +199,20 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 6,896 |
-| NASDAQ | 4,586 |
-| LSE | 3,560 |
+| OTC | 6,894 |
+| NASDAQ | 4,590 |
+| LSE | 3,559 |
 | TSE | 3,201 |
 | SZSE | 3,111 |
 | HKEX | 2,840 |
 | SSE | 2,793 |
 | BSE_IN | 2,684 |
-| NYSE ARCA | 2,672 |
+| NYSE ARCA | 2,674 |
 | NSE_IN | 2,379 |
 | XETRA | 2,237 |
-| NYSE | 1,880 |
+| NYSE | 1,883 |
 | KRX | 1,990 |
-| TSX | 1,687 |
+| TSX | 1,684 |
 | KOSDAQ | 1,603 |
 | B3 | 1,578 |
 | ASX | 1,396 |

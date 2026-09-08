@@ -391,6 +391,34 @@ def test_normalize_input_row_repairs_mojibake_name():
     assert normalize_input_row(row)["name"] == "Grupo Aeroméxico, S.A.B. de C.V."
 
 
+def test_normalize_input_row_strips_name_whitespace():
+    from scripts.rebuild_dataset import normalize_input_row
+
+    spaced = normalize_input_row(
+        {"ticker": "ADTX", "exchange": "NASDAQ", "asset_type": "Stock", "name": "Aditxt Inc. "}
+    )
+    nbsp = normalize_input_row(
+        {
+            "ticker": "AMAR",
+            "exchange": "IDX",
+            "asset_type": "Stock",
+            "name": "Bank Amar Indonesia\xa0",
+        }
+    )
+    tabbed = normalize_input_row(
+        {
+            "ticker": "0DZP",
+            "exchange": "LSE",
+            "asset_type": "ETF",
+            "name": "UBS LFS MSCI EMU UCITS ETF (EUR) A-dis\t",
+        }
+    )
+
+    assert spaced["name"] == "Aditxt Inc."
+    assert nbsp["name"] == "Bank Amar Indonesia"
+    assert tabbed["name"] == "UBS LFS MSCI EMU UCITS ETF (EUR) A-dis"
+
+
 def test_normalize_input_row_preserves_legitimate_non_ascii_name():
     from scripts.rebuild_dataset import normalize_input_row
 

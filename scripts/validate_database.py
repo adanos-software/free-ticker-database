@@ -294,6 +294,14 @@ def invalid_asset_type_rows(rows: list[dict[str, str]], id_field: str) -> list[s
     return [row.get(id_field, "") for row in rows if row.get("asset_type") not in ASSET_TYPES]
 
 
+def rows_with_untrimmed_names(rows: list[dict[str, str]], id_field: str) -> list[str]:
+    return [
+        f"{row.get(id_field, '')}:{row.get('name', '')!r}"
+        for row in rows
+        if row.get("name", "") != row.get("name", "").strip()
+    ]
+
+
 def adanos_reference_rows_with_untrimmed_names(rows: list[dict[str, str]]) -> list[str]:
     return [
         f"{row.get('exchange', '')}::{row.get('ticker', '')}:{row.get('name', '')!r}"
@@ -1034,6 +1042,21 @@ def build_validation_report(
                 "adanos_reference_untrimmed_name_count",
                 len(adanos_reference_rows_with_untrimmed_names(adanos_reference)),
                 adanos_reference_rows_with_untrimmed_names(adanos_reference),
+            ),
+            fail_gate(
+                "untrimmed_ticker_name_count",
+                len(rows_with_untrimmed_names(tickers, "ticker")),
+                rows_with_untrimmed_names(tickers, "ticker"),
+            ),
+            fail_gate(
+                "untrimmed_listing_name_count",
+                len(rows_with_untrimmed_names(listings, "listing_key")),
+                rows_with_untrimmed_names(listings, "listing_key"),
+            ),
+            fail_gate(
+                "untrimmed_core_listing_name_count",
+                len(rows_with_untrimmed_names(core_listings, "listing_key")),
+                rows_with_untrimmed_names(core_listings, "listing_key"),
             ),
             fail_gate(
                 "invalid_isin_rows",
