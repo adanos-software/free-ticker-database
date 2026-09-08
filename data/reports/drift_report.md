@@ -1,7 +1,7 @@
 # Drift / freshness report
 
-Generated: 2026-09-07T14:51:47Z
-Dataset built_at: 2026-09-07T14:11:18Z (0.0 days ago; threshold 45.0)
+Generated: 2026-09-08T09:29:57Z
+Dataset built_at: 2026-09-08T09:13:01Z (0.0 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
@@ -34,24 +34,27 @@ Dataset built_at: 2026-09-07T14:11:18Z (0.0 days ago; threshold 45.0)
 - allowed_warn_rows: 31
 - expected_missing_primary_isin: 768
 - missing_etf_category: 56
-- missing_stock_sector: 1303
-- source_gap_rows: 11489
+- missing_stock_sector: 1302
+- source_gap_rows: 11356
 
-## Quality regressions: 4
-- source_gap_rows: 11485 -> 11489 (+4)
-- expected_missing_primary_isin: 764 -> 768 (+4)
-- missing_stock_sector: 1301 -> 1303 (+2)
-- missing_etf_category: 54 -> 56 (+2)
+## Quality regressions: 0
 
-## Official recall regressions: 9
-- BSE_IN official_recall_missing: 2467 -> 2485 (+18)
-- BSE_IN collision_adjusted_recall_missing: 617 -> 635 (+18)
-- FSX official_recall_missing: 10101 -> 10129 (+28)
-- FSX collision_adjusted_recall_missing: 6150 -> 6179 (+29)
-- NASDAQ official_recall_missing: 1044 -> 1047 (+3)
-- NASDAQ collision_adjusted_recall_missing: 983 -> 985 (+2)
-- NYSE official_recall_missing: 1903 -> 1904 (+1)
-- XETRA official_recall_missing: 1000 -> 1014 (+14)
-- XETRA collision_adjusted_recall_missing: 292 -> 307 (+15)
+## Official recall regressions: 16
+- BIST official_recall_missing: 40 -> 44 (+4)
+- BIST collision_adjusted_recall_missing: 19 -> 22 (+3)
+- Borsa Italiana official_recall_missing: 2658 -> 2659 (+1)
+- Borsa Italiana collision_adjusted_recall_missing: 800 -> 801 (+1)
+- Euronext official_recall_missing: 672 -> 678 (+6)
+- Euronext collision_adjusted_recall_missing: 308 -> 314 (+6)
+- ISE official_recall_missing: 6 -> 7 (+1)
+- NSE_IN official_recall_missing: 871 -> 1000 (+129)
+- NSE_IN collision_adjusted_recall_missing: 481 -> 538 (+57)
+- OSL official_recall_missing: 12 -> 13 (+1)
+- SET official_recall_missing: 170 -> 171 (+1)
+- SET collision_adjusted_recall_missing: 37 -> 38 (+1)
+- SGX official_recall_missing: 136 -> 140 (+4)
+- SGX collision_adjusted_recall_missing: 14 -> 17 (+3)
+- TADAWUL official_recall_missing: 215 -> 216 (+1)
+- TADAWUL collision_adjusted_recall_missing: 5 -> 6 (+1)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._
