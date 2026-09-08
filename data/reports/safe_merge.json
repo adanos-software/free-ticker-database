@@ -6,64 +6,26 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92085,
+    "before_rows": 92083,
     "after_rows": 92083,
-    "overall_shrink_pct": 0.002172,
-    "removed_rows": 2,
-    "evidenced_removed_rows": 2,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 2
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::APGE",
-    "NASDAQ::JFB"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NASDAQ::APGE",
-      "ticker": "APGE",
-      "exchange": "NASDAQ",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "Apogee Therapeutics, Inc. Common Stock",
-      "new_value": "",
-      "before_row_sha256": "dfee92e51f81460ca81be990f0095b51b9068806af1593c34a585a36ac2e603f",
-      "effective_at": "",
-      "observed_at": "2026-09-07T14:11:10Z",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "source_report": "data/reports/delisting_transitions.csv",
-      "observation_id": "7fc3e3aa4b808765b641eaf2",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::JFB",
-      "ticker": "JFB",
-      "exchange": "NASDAQ",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "JFB Construction Holdings Class A Common Stock",
-      "new_value": "",
-      "before_row_sha256": "b7c906fb37515726f69637d969668438f4bc4b8d2f8b132a57ffa705e8ba33cb",
-      "effective_at": "",
-      "observed_at": "2026-09-07T14:11:10Z",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "source_report": "data/reports/delisting_transitions.csv",
-      "observation_id": "562e0e712c35489617d72416",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -463,10 +425,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4790,
+      "before_rows": 4788,
       "after_rows": 4788,
-      "shrink_pct": 0.041754,
-      "removed_rows": 2,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },

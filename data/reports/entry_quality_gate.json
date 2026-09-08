@@ -1,17 +1,53 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-09-07T14:11:53Z",
+    "generated_at": "2026-09-08T06:55:50Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
   "allowed_warn_count": 31,
-  "passed": true,
+  "passed": false,
   "quarantine_count": 0,
   "quarantined": [],
   "stale_allowlist": [],
   "stale_allowlist_count": 0,
-  "unexpected_warn_count": 0,
-  "unexpected_warns": [],
-  "warn_count": 31
+  "unexpected_warn_count": 5,
+  "unexpected_warning_subjects": [
+    {
+      "issue_type": "official_isin_mismatch",
+      "listing_key": "Borsa Italiana::EPH"
+    },
+    {
+      "issue_type": "official_isin_mismatch",
+      "listing_key": "Euronext::ALCPB"
+    },
+    {
+      "issue_type": "official_isin_mismatch",
+      "listing_key": "NSE_IN::GOLDADD"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NSE_IN::GOLDADD"
+    },
+    {
+      "issue_type": "official_isin_mismatch",
+      "listing_key": "NSE_IN::SILVERADD"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NSE_IN::SILVERADD"
+    },
+    {
+      "issue_type": "official_isin_mismatch",
+      "listing_key": "NSE_IN::TDPOWERSYS"
+    }
+  ],
+  "unexpected_warns": [
+    "Borsa Italiana::EPH",
+    "Euronext::ALCPB",
+    "NSE_IN::GOLDADD",
+    "NSE_IN::SILVERADD",
+    "NSE_IN::TDPOWERSYS"
+  ],
+  "warn_count": 36
 }

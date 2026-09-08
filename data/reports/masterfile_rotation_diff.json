@@ -1,107 +1,5872 @@
 {
   "summary": {
-    "generated_at": "2026-09-07T14:56:00Z",
+    "generated_at": "2026-09-08T06:49:42Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 2,
-    "vanished_rows": 0,
-    "changed_rows": 4,
+    "new_rows": 95,
+    "vanished_rows": 75,
+    "changed_rows": 234,
     "new_by_source": {
-      "deutsche_boerse_etfs_etps": 2
+      "bist_kap_mkk_listed_securities": 4,
+      "bme_security_prices_directory": 5,
+      "euronext_equities": 10,
+      "nse_india_securities_available": 69,
+      "set_stock_search": 1,
+      "sgx_securities_prices": 4,
+      "tadawul_main_market_watch": 2
     },
-    "vanished_by_source": {},
+    "vanished_by_source": {
+      "adx_market_watch": 1,
+      "bist_kap_mkk_listed_securities": 1,
+      "bme_security_prices_directory": 6,
+      "euronext_equities": 7,
+      "nse_india_securities_available": 49,
+      "pse_listed_company_directory": 1,
+      "sgx_securities_prices": 1,
+      "tadawul_main_market_watch": 2,
+      "twse_listed_companies": 1,
+      "upcom_registered_securities": 6
+    },
     "changed_by_type": {
-      "name_change": 4
+      "field_change": 222,
+      "isin_change": 7,
+      "name_change": 6
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "EEA1",
-      "name": "BNP Paribas Easy MSCI China A UCITS ETF Capitalization",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
+      "source_key": "bist_kap_mkk_listed_securities",
+      "provider": "KAP/MKK",
+      "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+      "ticker": "INTET",
+      "name": "İNTETRA TEKNOLOJİ VE BİLİŞİM HİZMETLERİ A.Ş.",
+      "exchange": "BIST",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "LU3215533467",
+      "isin": "TREINTR00017",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "ticker": "EEAZ",
-      "name": "BNP Paribas Easy MSCI World ex USA Min TE UCITS ETF Capitalization",
-      "exchange": "XETRA",
+      "source_key": "bist_kap_mkk_listed_securities",
+      "provider": "KAP/MKK",
+      "source_url": "https://www.mkk.com.tr/api/getSecurities",
+      "ticker": "ISX30",
+      "name": "İŞ PORTFÖY BIST 30 ENDEKSİ HİSSE SENEDİ YOĞUN BORSA YATIRIM FONU",
+      "exchange": "BIST",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "LU3351069201",
+      "isin": "TRYISPO01942",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "bist_kap_mkk_listed_securities",
+      "provider": "KAP/MKK",
+      "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+      "ticker": "KPEKS",
+      "name": "KAPEKS KİMYA SANAYİ A.Ş.",
+      "exchange": "BIST",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "TREKPKS00023",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "bist_kap_mkk_listed_securities",
+      "provider": "KAP/MKK",
+      "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+      "ticker": "USHOL",
+      "name": "US YATIRIM HOLDİNG A.Ş.",
+      "exchange": "BIST",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "TREIFTY00019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S0083",
+      "name": "ALAR 2.000",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0107601033",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S3832",
+      "name": "ALGEBRA 64 AUREA",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0175472002",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S4024",
+      "name": "ALCLANO DE LA LUZ",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0108003007",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "SCALD",
+      "name": "ALDICER",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0105976007",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "SL088",
+      "name": "ALGENID INVERSIONES",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0108015035",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "NABDD",
+      "name": "NABLA IPO DIST.",
+      "exchange": "Borsa Italiana",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IT0005730384",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "2OPMP",
+      "name": "OPMOBILITY",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "secondary_listing_subset",
+      "official": "true",
+      "isin": "FR0000124570",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "ALHYF",
+      "name": "LHYFE",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "FR0014009YQ1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "ALPER",
+      "name": "PERRIER (GERARD)",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "FR0000061459",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "DV31",
+      "name": "DRONEVOLTBS2031",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "FR001401ARU9",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "MHMDS",
+      "name": "MYHOTELMATCH DS",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "FR001401ANO1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "MLKPS",
+      "name": "K PRIME CAPITAL",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0105698007",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "MLOBT",
+      "name": "ORIENTE BT SIGI",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "PTOBW0AM0008",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "GDL",
+      "name": "GDL MANAGEMENT GRP",
+      "exchange": "ISE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "IE000HBCCM49",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "OMC",
+      "name": "OMC TANKERS",
+      "exchange": "OSL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "NO0013759159",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "ABH",
+      "name": "ABH Healthcare Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1R2M01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "AFFORDABLE",
+      "name": "Affordable Robotic & Automation Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE692Z01013",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ALKALI",
+      "name": "Alkali Metals Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE773I01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "ASHUTOSH",
+      "name": "Ashutosh Fibre Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE19FR01012",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "AUGMONT",
+      "name": "Augmont Enterprises Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE16W401027",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "AUTOIND",
+      "name": "Autoline Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE718H01014",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BIRLACABLE",
+      "name": "Birla Cable Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE800A01015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BLUECOAST",
+      "name": "Blue Coast Hotels Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE472B01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BODALCHEM",
+      "name": "Bodal Chemicals Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE338D01028",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BROOKS",
+      "name": "Brooks Laboratories Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE650L01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BURNPUR",
+      "name": "Burnpur Cement Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE817H01022",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CLEDUCATE",
+      "name": "CL Educate Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE201M01029",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "COFFEEDAY",
+      "name": "Coffee Day Enterprises Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE335K01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CORDSCABLE",
+      "name": "Cords Cable Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE792I01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "CREDENT",
+      "name": "Credent Connect N Care Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1KPX01025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "DBEIL",
+      "name": "Deepak Builders & Engineers India Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0OPA01027",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "DEEPA",
+      "name": "Deepa Jewellers Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1M2N01020",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ECOSMOBLTY",
+      "name": "Ecos (India) Mobility & Hospitality Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE06HJ01020",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/eq_etfseclist.csv",
+      "ticker": "ENERGYAXIS",
+      "name": "AXISAMC - ENERGYAXIS",
+      "exchange": "NSE_IN",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INF846KA1598",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ESDS",
+      "name": "ESDS Software Solution Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0DRI01029",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "FASCINATE",
+      "name": "Fascinate Textiles Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1Q2D01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "FMNL",
+      "name": "Future Market Networks Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE360L01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "GAJA",
+      "name": "Gaja Alternative Asset Management Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE18UN01038",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "GAYAPROJ",
+      "name": "Gayatri Projects Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE336H01023",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "GFSTEELS",
+      "name": "Grand Foundry Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE534A01028",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "GLOTTIS",
+      "name": "Glottis Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0TQE01026",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "HILTON",
+      "name": "Hilton Metal Forging Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE788H01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "HORIZONIND",
+      "name": "Horizon Industrial Parks Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE685T01010",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "INSPIRISYS",
+      "name": "Inspirisys Solutions Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE020G01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/eq_etfseclist.csv",
+      "ticker": "IVZBANKNF",
+      "name": "RELIGARAMC - IVZBANKNF",
+      "exchange": "NSE_IN",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INF205KA1CB9",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/eq_etfseclist.csv",
+      "ticker": "IVZSENSEX",
+      "name": "RELIGARAMC - IVZSENSEX",
+      "exchange": "NSE_IN",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INF205KA1CA1",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "JOCIL",
+      "name": "Jocil Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE839G01010",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "KDGREEN",
+      "name": "KD Green Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE348N01042",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "KOPRAN",
+      "name": "Kopran Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE082A01010",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "KRIDHANINF",
+      "name": "Kridhan Infra Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE524L01026",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "LALITHAA",
+      "name": "Lalithaa Jewellery Mart Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0K9O01026",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "LOKESHMACH",
+      "name": "Lokesh Machines Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE397H01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "LUMINO",
+      "name": "Lumino Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE185Q01025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "MADHURKNIT",
+      "name": "Madhur Knit Crafts Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1P5601010",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MGEL",
+      "name": "Mangalam Global Enterprise Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0APB01032",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MITCON",
+      "name": "MITCON Consultancy & Engineering Services Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE828O01033",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MODINATUR",
+      "name": "Modi Naturals Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE537F01012",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MODISONLTD",
+      "name": "MODISON LIMITED",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE737D01021",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MOTOGENFIN",
+      "name": "The Motor & General Finance Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE861B01023",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "NGIL",
+      "name": "Nakoda Group of Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE236Y01012",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/eq_etfseclist.csv",
+      "ticker": "NIF500BETA",
+      "name": "UTIAMC - NIF500BETA",
+      "exchange": "NSE_IN",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INF789F1AG76",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "NOIDATOLL",
+      "name": "Noida Toll Bridge Company Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE781B01015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "PALREDTEC",
+      "name": "Palred Technologies Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE218G01033",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "PENINLAND",
+      "name": "Peninsula Land Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE138A01028",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "PERNIASPOP",
+      "name": "Purple Style Labs Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0I1B01016",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "QUICKHEAL",
+      "name": "Quick Heal Technologies Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE306L01010",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "RUBYMILLS",
+      "name": "The Ruby Mills Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE301D01026",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SHANKESH",
+      "name": "Shankesh Jewellers Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1WFC01025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "SHANTIINOR",
+      "name": "Shanti Inorganics Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1ZEE01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SHIVALIK",
+      "name": "Shivalik Rasayan Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE788J01021",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SHIVAMAUTO",
+      "name": "Shivam Autotech Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE637H01024",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/eq_etfseclist.csv",
+      "ticker": "SILVER001",
+      "name": "Quant_AMC - SILVER001",
+      "exchange": "NSE_IN",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INF966L01EI5",
+      "cfi": "",
+      "sector": "Commodity"
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "SKYTECH",
+      "name": "Skytech Infinite Platform Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0VFE01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SKYWAYS",
+      "name": "Skyways Air Services Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0PX301025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "SUMAX",
+      "name": "Sumax Engineering Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE11Z001019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SUNSHINE",
+      "name": "Sunshine Pictures Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1B3O01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SYMBIOTEC",
+      "name": "Symbiotec Pharmalab Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE899I01028",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "TEMPSENS",
+      "name": "Tempsens Instruments (India) Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE1KZI01025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "THACKER",
+      "name": "Thacker & Company Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE077P01034",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "UNITEDPOLY",
+      "name": "United Polyfab Gujarat Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE368U01029",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VERTOZ",
+      "name": "Vertoz Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE188Y01031",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VITAL",
+      "name": "Vital Chemtech Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0L4K01016",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VIVIANA",
+      "name": "Viviana Power Tech Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0MEG01014",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VLEGOV",
+      "name": "VL E-Governance & IT Solutions Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE03HW01020",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "set_stock_search",
+      "provider": "SET",
+      "source_url": "https://www.set.or.th/api/set/stock/list",
+      "ticker": "FLE",
+      "name": "Frontline Engineering Public Company Limited",
+      "exchange": "SET",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Industrials"
+    },
+    {
+      "source_key": "sgx_securities_prices",
+      "provider": "SGX",
+      "source_url": "https://api.sgx.com/securities/v1.1",
+      "ticker": "9PQ",
+      "name": "XMH Hldgs",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SGXE88677617",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "sgx_securities_prices",
+      "provider": "SGX",
+      "source_url": "https://api.sgx.com/securities/v1.1",
+      "ticker": "B95",
+      "name": "Amova AsiaCredit SGD-H",
+      "exchange": "SGX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SGXC98258004",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "sgx_securities_prices",
+      "provider": "SGX",
+      "source_url": "https://api.sgx.com/securities/v1.1",
+      "ticker": "B96",
+      "name": "Amova AsiaCredit USD",
+      "exchange": "SGX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SGXC94281125",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "sgx_securities_prices",
+      "provider": "SGX",
+      "source_url": "https://api.sgx.com/securities/v1.1",
+      "ticker": "V8VU",
+      "name": "EliteUKREIT GBP A",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SGXC96079238",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "tadawul_main_market_watch",
+      "provider": "Saudi Exchange",
+      "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+      "ticker": "4328",
+      "name": "LADUN",
+      "exchange": "TADAWUL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SA16K0123K10",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "tadawul_main_market_watch",
+      "provider": "Saudi Exchange",
+      "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+      "ticker": "6022",
+      "name": "ARMAH",
+      "exchange": "TADAWUL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SA16K0RIU311",
       "cfi": "",
       "sector": ""
     }
   ],
-  "vanished": [],
+  "vanished": [
+    {
+      "source_key": "adx_market_watch",
+      "provider": "ADX",
+      "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+      "ticker": "TAQA",
+      "name": "Abu Dhabi National Energy Company",
+      "exchange": "ADX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "AEA002401015",
+      "cfi": "",
+      "sector": "Utilities"
+    },
+    {
+      "source_key": "bist_kap_mkk_listed_securities",
+      "provider": "KAP/MKK",
+      "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+      "ticker": "MARKA",
+      "name": "US YATIRIM HOLDİNG A.Ş.",
+      "exchange": "BIST",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "TREIFTY00019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S0127",
+      "name": "ALLOCATION",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0108381031",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S0129",
+      "name": "ALMABENI FINANCIERA",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0108397037",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S3122",
+      "name": "ALCESTIS INVESTMEN",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0108002033",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S3129",
+      "name": "ALKARIKA",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0169092030",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S3189",
+      "name": "ALPHA PROTECCION",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0155278031",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S4147",
+      "name": "ALORAM INVERSIONES",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0108636004",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "2OPM",
+      "name": "OPMOBILITY",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "secondary_listing_subset",
+      "official": "true",
+      "isin": "FR0000124570",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "4BYND",
+      "name": "BEYOND MEAT",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "secondary_listing_subset",
+      "official": "true",
+      "isin": "US08862E3071",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "LHYFE",
+      "name": "LHYFE",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "FR0014009YQ1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "MLAIG",
+      "name": "ANDINO GLOBAL",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0105744009",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "MLOKP",
+      "name": "OK PROPERTIES",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0105698007",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "PERR",
+      "name": "PERRIER (GERARD)",
+      "exchange": "Euronext",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "FR0000061459",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "ELIMP",
+      "name": "ELEKTROIMPORTØREN",
+      "exchange": "OSL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "NO0010911902",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "AARNAV",
+      "name": "Aarnav Fashions Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE750R01016",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ABINFRA",
+      "name": "A B Infrabuild Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE00YB01025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ACSTECH",
+      "name": "ACS Technologies Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE366C01021",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ALPHAGEO",
+      "name": "Alphageo (India) Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE137C01018",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "AMBALALSA",
+      "name": "Ambalal Sarabhai Enterprises Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE432A01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ARIES",
+      "name": "Aries Agro Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE298I01015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BI",
+      "name": "Bilcare Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE986A01012",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BLUECHIP",
+      "name": "Blue Chip India Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE657B01025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CALSOFT",
+      "name": "California Software Company Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE526B01014",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CRSL",
+      "name": "Cressanda Railway Solutions Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE716D01033",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CTE",
+      "name": "Cambridge Technology Enterprises Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE627H01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "DAICHI",
+      "name": "Dai-Ichi Karkaria Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE928C01010",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "DHABRIYA",
+      "name": "Dhabriya Polywood Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE260R01016",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "DTIL",
+      "name": "Dhunseri Tea & Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE341R01014",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "EBIX",
+      "name": "EBIX Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE432F01032",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "GVPTECH",
+      "name": "GVP Infotech Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE382T01030",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "HEG",
+      "name": "HEG Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE545A01024",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "HFCL",
+      "name": "HFCL Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE548A01028",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "INDIAGLYCO",
+      "name": "India Glycols Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE560A01023",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "KALYANIFRG",
+      "name": "Kalyani Forge Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE314G01014",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "KAYA",
+      "name": "Kaya Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE587G01015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "KOTARISUG",
+      "name": "Kothari Sugars And Chemicals Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE419A01022",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "KRONOX",
+      "name": "Kronox Lab Sciences Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0ATZ01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "LEENEE",
+      "name": "Lee & Nee Softwares Exports Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE791B01014",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MANAKSTEEL",
+      "name": "Manaksia Steels Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE824Q01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MANBRO",
+      "name": "Manbro Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE348N01042",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MINALIND",
+      "name": "Minal Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE097E01028",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MPDL",
+      "name": "MPDL Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE493H01014",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "MYSORPETRO",
+      "name": "Mysore Petro Chemicals Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE741A01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "NATCAPSUQ",
+      "name": "Natural Capsules Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE936B01015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "NIRAJISPAT",
+      "name": "Niraj Ispat Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE326T01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "PAR",
+      "name": "Par Drugs And Chemicals Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE04LG01015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "RBZJEWEL",
+      "name": "RBZ Jewellers Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0PEQ01016",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "RNBDENIMS",
+      "name": "R&B Denims Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE012Q01039",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SCPL",
+      "name": "Sheetal Cool Products Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE501Y01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SHAHALLOYS",
+      "name": "Shah Alloys Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE640C01011",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SIGIND",
+      "name": "Signet Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE529F01035",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SIGMAADV",
+      "name": "SIGMA ADVANCED SYSTEMS LIMITED",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE933B01012",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SONAMLTD",
+      "name": "SONAM LIMITED",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE00LM01029",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SRIKPRIND",
+      "name": "Sri KPR Industries Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE009C01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SUPTANERY",
+      "name": "Super Tannery Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE460D01038",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SWARAJ",
+      "name": "Swaraj Suiting Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0GMR01016",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SWISSMLTRY",
+      "name": "Swiss Military Consumer Goods Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE010C01025",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "TIJARIA",
+      "name": "Tijaria Polypipes Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE440L01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "TPHQ",
+      "name": "Teamo Productions HQ Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE065J01024",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "UCAL",
+      "name": "UCAL LIMITED",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE139B01016",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VALIANTLAB",
+      "name": "Valiant Laboratories Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0JWS01017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VCL",
+      "name": "Vaxtex Cotfab Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE098201036",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VIRTUALG",
+      "name": "Virtual Global Education Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE247C01023",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "pse_listed_company_directory",
+      "provider": "PSE",
+      "source_url": "https://frames.pse.com.ph/listedCompany",
+      "ticker": "RRHI",
+      "name": "Robinsons Retail Holdings, Inc.",
+      "exchange": "PSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "PHY7318T1017",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "sgx_securities_prices",
+      "provider": "SGX",
+      "source_url": "https://api.sgx.com/securities/v1.1",
+      "ticker": "LIW",
+      "name": "Eagle HTrust USD",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SGXC28500103",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "tadawul_main_market_watch",
+      "provider": "Saudi Exchange",
+      "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+      "ticker": "9535",
+      "name": "LADUN",
+      "exchange": "TADAWUL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SA15IG94KVH6",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "tadawul_main_market_watch",
+      "provider": "Saudi Exchange",
+      "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+      "ticker": "9590",
+      "name": "ARMAH",
+      "exchange": "TADAWUL",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "SA15TGE4LR12",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "twse_listed_companies",
+      "provider": "TWSE",
+      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap03_L",
+      "ticker": "2867",
+      "name": "三商美邦人壽保險股份有限公司",
+      "exchange": "TWSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "TW0002867009",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "upcom_registered_securities",
+      "provider": "HNX",
+      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+      "ticker": "BCG",
+      "name": "CTCP Tập đoàn Bamboo Capital",
+      "exchange": "UPCOM",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "VN000000BCG5",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "upcom_registered_securities",
+      "provider": "HNX",
+      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+      "ticker": "BCR",
+      "name": "CTCP BCG Land",
+      "exchange": "UPCOM",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "VN000000BCR2",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "upcom_registered_securities",
+      "provider": "HNX",
+      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+      "ticker": "DAN",
+      "name": "Công ty cổ phần Dược Danapha",
+      "exchange": "UPCOM",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "VN000000DAN1",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "upcom_registered_securities",
+      "provider": "HNX",
+      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+      "ticker": "DVT",
+      "name": "Công ty Cổ phần Đào tạo và Dịch vụ Giao thông vận tải Bình Định",
+      "exchange": "UPCOM",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "VN000000DVT4",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "upcom_registered_securities",
+      "provider": "HNX",
+      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+      "ticker": "LTG",
+      "name": "CTCP Tập đoàn Lộc Trời",
+      "exchange": "UPCOM",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "VN000000LTG8",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "upcom_registered_securities",
+      "provider": "HNX",
+      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+      "ticker": "VTS",
+      "name": "CTCP Gạch ngói Từ Sơn",
+      "exchange": "UPCOM",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "VN000000VTS2",
+      "cfi": "",
+      "sector": ""
+    }
+  ],
   "changed": [
     {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "exchange": "XETRA",
-      "ticker": "X600",
+      "source_key": "bme_security_prices_directory",
+      "exchange": "BME",
+      "ticker": "EBROM",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Xtrackers Stoxx Europe 600 II UCITS ETF 1C",
-          "after": "Xtrackers STOXX Europe 600 II UCITS ETF 1C"
+          "before": "EBRO EV",
+          "after": "EBRO MOTORS"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "exchange": "XETRA",
-      "ticker": "XEST",
+      "source_key": "euronext_equities",
+      "exchange": "Borsa Italiana",
+      "ticker": "EPH",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "Xtrackers Euro Stoxx UCITS ETF 1C",
-          "after": "Xtrackers Euro STOXX UCITS ETF 1C"
+        "isin": {
+          "before": "IT0005623845",
+          "after": "IT0005730095"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "exchange": "XETRA",
-      "ticker": "XESU",
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "1DHL",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Xtrackers Stoxx Europe 600 II UCITS ETF 1D",
-          "after": "Xtrackers STOXX Europe 600 II UCITS ETF 1D"
+          "before": "DEUTSCHE POST",
+          "after": "DHL"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_etfs_etps",
-      "exchange": "XETRA",
-      "ticker": "XSXX",
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "2DHL",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Xtrackers Euro Stoxx UCITS ETF 1D",
-          "after": "Xtrackers Euro STOXX UCITS ETF 1D"
+          "before": "DEUTSCHE POST",
+          "after": "DHL"
+        }
+      }
+    },
+    {
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "4DHL",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "DEUTSCHE POST",
+          "after": "DHL"
+        }
+      }
+    },
+    {
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "ALCPB",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "FR0011053636",
+          "after": "FR0014019Y19"
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ABSLBANETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ABSLMSCIN",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ABSLNN50ET",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ABSLPSE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ALPHA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ALPHAETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ALPL30IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "AONETMMQ50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "AONETOTAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "AUTOBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "AUTOIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BANKIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BANKNIFTY1",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BBETF0432",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BBNPNBETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BFSI",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BNKETFAXIS",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BSE500IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BSLSENETFG",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CASHIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CEMNTGROWW",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CHEMICAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "COMMOIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CONS",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CONSUMAXIS",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CONSUMBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CONSUMER",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CONSUMIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CORDELIA",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "INE0LZF01013",
+          "after": "INE0LZF01039"
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "CPSEETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "DIVOPPBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EBBETF0430",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EBBETF0431",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EBBETF0433",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ELM250",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ELMDIV",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EMETAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EMULTIMQ",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ENERGY",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ENEXT50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EQUAL50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EQUAL50ADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ESG",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EVIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "EVINDIA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "FINIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "FLEXIADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "FMCGADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "FMCGIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GILT10BETA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GILT5BETA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GILT5YBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GOLDADD",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "INF740KA1SW3",
+          "after": "INF740KA1ZP2"
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWCAPM",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWCHEM",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWDEFNC",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWEV",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWHOSPI",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWLIQID",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWLOVOL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWMC150",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWMETAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWMOM50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWN200",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWNET",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWNXT50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWPOWER",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWPSE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWPSUBK",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWRAIL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWRLTY",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWSC250",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GROWWSLVR",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Commodity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GSEC10IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "GSEC10YEAR",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCGROWTH",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCLOWVOL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCMID150",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCMOMENT",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCNEXT50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCNIF100",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCNIFBAN",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCNIFIT",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCNIMEG",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCPSUBK",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCPVTBAN",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCQUAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCSML250",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HDFCVALUE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HEALTHADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HEALTHAXIS",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HEALTHCARE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HEALTHIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HEALTHY",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HNGSNGBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "HYBRIDETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ICICIB22",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "INFRA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "INFRABEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "INFRAIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "INSUREIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "INTERNET",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "IT",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ITADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ITAXIS",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ITBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ITBETA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ITETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "ITIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "JUNIORBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LARGEMID50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LICNETFGSC",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LICNETFN50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LICNETFSEN",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LICNFNHGP",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LICNMID100",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LIQGRWBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LIQUID1",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LIQUIDIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Fixed Income",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LOWVOL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LOWVOL1",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LTGILTBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "LTGILTCASE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MAFANG",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MAHKTECH",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MAKEINDIA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MANUFGBEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MASPTOP50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "METAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "METALIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MID150",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MID150CASE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MIDCAP",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MIDCAPETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MIDCAPIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MIDQ50ADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MIDSMALL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MNC",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOALPHA50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOCAPITAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MODEFENCE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOENERGY",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOGSEC",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOINFRA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOIPO",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOLOWVOL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOM30IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOM50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMENTUM",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMENTUM30",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMENTUM50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMETAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMGF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMIDMTM",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMNC",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOMOMENTUM",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MON100",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MON50EQUAL",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MONEXT50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MONQ50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOOILGAS",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOPSE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOREALTY",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOSERVICE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOSMALL250",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MOTOUR",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MSCI360",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MSCIADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MSCIINDIA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "MULTICAP",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NEXT30ADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NEXT50",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NEXT50ADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NEXT50BETA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NEXT50ETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NEXT50IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NIFTYETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NPBET",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NV20",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NV20BEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "NV20IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "OILIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "PHARMABEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "PSUBANK",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "PSUBANKADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "PVTBANKADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "PVTBKGROWW",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "QUAL30IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "QUALITY30",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBIBPB",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBIETFCON",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBIETFIT",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBIETFPB",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBIETFQLTY",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBILIQETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBIMIDMOM",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBINEQWETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBINMID150",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBISMLETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SBIVALETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SELECTIPO",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SENSEXADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SETF10GILT",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SILVER1",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Commodity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SILVERADD",
+      "change_types": [
+        "isin_change",
+        "field_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "INF740KA1RE3",
+          "after": "INF740KA1ZQ0"
+        },
+        "sector": {
+          "before": "Commodity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SILVERIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Commodity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SMALL250",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SMALLADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SMALLGROWW",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SMALLIETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SML100CASE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SNXT30BEES",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "SNXT50BETA",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TATSILV",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Commodity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TCC",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "INE887D01016",
+          "after": "INE887D01024"
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TDPOWERSYS",
+      "change_types": [
+        "isin_change"
+      ],
+      "changes": {
+        "isin": {
+          "before": "INE419M01027",
+          "after": "INE419M01035"
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TECH",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TNIDETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TOP100CASE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TOP10ADD",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TOP15IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "TOP20",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "VAL30IETF",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "VALUE",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "VALUEAXIS",
+      "change_types": [
+        "field_change"
+      ],
+      "changes": {
+        "sector": {
+          "before": "Equity",
+          "after": ""
+        }
+      }
+    },
+    {
+      "source_key": "tadawul_main_market_watch",
+      "exchange": "TADAWUL",
+      "ticker": "9562",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "FOOD GATE",
+          "after": "FOODS GATE"
+        }
+      }
+    },
+    {
+      "source_key": "twse_listed_companies",
+      "exchange": "TWSE",
+      "ticker": "2072",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "世紀離岸風電設備股份有限公司",
+          "after": "世紀能源設備股份有限公司"
         }
       }
     }

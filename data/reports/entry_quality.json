@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-07T14:11:27Z",
+    "generated_at": "2026-09-08T06:54:52Z",
     "rows": 92083,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,29 +14,29 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80549,
-      "source_gap": 11503,
-      "warn": 31
+      "pass": 80541,
+      "source_gap": 11506,
+      "warn": 36
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4636,
-      "official_reference": 82371,
+      "identifier_enriched": 4638,
+      "official_reference": 82368,
       "scoped_source_gap": 240,
-      "valid_isin": 4836
+      "valid_isin": 4837
     },
     "severity_counts": {
-      "high": 6,
-      "medium": 26,
-      "source_gap": 11838
+      "high": 11,
+      "medium": 28,
+      "source_gap": 11841
     },
     "issue_counts": {
-      "official_reference_gap": 6425,
+      "official_reference_gap": 6428,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1302,
       "expected_missing_primary_isin": 768,
       "missing_etf_category": 56,
-      "official_name_mismatch": 26,
-      "official_isin_mismatch": 6
+      "official_name_mismatch": 28,
+      "official_isin_mismatch": 11
     },
     "top_flagged_exchanges": [
       {
@@ -96,8 +96,9 @@
       },
       {
         "exchange": "NSE_IN",
-        "pass": 2331,
-        "source_gap": 172
+        "pass": 2335,
+        "source_gap": 165,
+        "warn": 3
       },
       {
         "exchange": "LSE",
@@ -128,9 +129,9 @@
       },
       {
         "exchange": "Euronext",
-        "pass": 1348,
-        "source_gap": 128,
-        "warn": 1
+        "pass": 1343,
+        "source_gap": 132,
+        "warn": 2
       },
       {
         "exchange": "NYSE",
@@ -7653,6 +7654,24 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "TWSE::2867",
+      "ticker": "2867",
+      "exchange": "TWSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TWSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -18328,24 +18347,6 @@
           "field": "exchange",
           "value": "FSX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::6Z4",
-      "ticker": "6Z4",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }
