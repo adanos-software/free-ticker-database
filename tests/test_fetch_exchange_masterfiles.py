@@ -541,6 +541,46 @@ def test_select_refresh_cli_rejects_stale_flag_with_source() -> None:
         )
 
 
+def test_select_refresh_sources_stale_or_unavailable_returns_empty_when_fresh() -> None:
+    sources = [_source("fresh", "exchange_directory")]
+    selected = select_refresh_sources(
+        batch_size=20,
+        rotation_date="2026-07-07",
+        sources=sources,
+        summary={"source_details": {"fresh": _detail("network", "2026-07-06T00:00:00Z")}},
+        sla_days_by_key={"fresh": 7},
+        stale_or_unavailable=True,
+    )
+    assert selected == []
+
+
+def test_fetch_all_sources_empty_selection_does_not_expand_to_catalog(monkeypatch) -> None:
+    seen: list[str] = []
+
+    def fake_fetch(source, session=None):
+        seen.append(source.key)
+        return [], "network"
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_source_rows_with_mode", fake_fetch)
+    rows, summary = fetch_all_sources(include_manual=False, sources=[])
+    assert seen == []
+    assert rows == []
+    assert summary.get("source_modes", {}) == {}
+
+
+def test_main_skips_when_stale_selection_is_empty(monkeypatch, capsys) -> None:
+    monkeypatch.setattr(fetch_exchange_masterfiles, "select_refresh_sources", lambda **_kwargs: [])
+
+    def fail_fetch(**_kwargs):
+        raise AssertionError("fetch_all_sources must not run for an empty stale selection")
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_all_sources", fail_fetch)
+    fetch_exchange_masterfiles.main(["--stale-or-unavailable", "--rotation-batch-size", "20"])
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["skipped"] is True
+    assert payload["stale_or_unavailable"] is True
+
+
 def test_fetch_all_sources_times_out_one_source_and_continues(monkeypatch) -> None:
     import time
 
@@ -16538,6 +16578,23 @@ def test_build_summary_preserves_unavailable_generated_at_for_selected_refresh()
     )
 
     assert summary["source_details"]["mse_mw_listed_companies"]["generated_at"] == "2026-05-16T10:00:00Z"
+
+
+def test_build_summary_keeps_previous_generated_at_when_refreshed_keys_are_empty() -> None:
+    summary = fetch_exchange_masterfiles.build_summary(
+        [],
+        source_modes={"nasdaq_listed": "network"},
+        generated_at="2026-07-07T00:00:00Z",
+        source_metadata_overrides={
+            "nasdaq_listed": {
+                "mode": "network",
+                "generated_at": "2026-07-01T00:00:00Z",
+            }
+        },
+        refreshed_source_keys=[],
+    )
+
+    assert summary["source_details"]["nasdaq_listed"]["generated_at"] == "2026-07-01T00:00:00Z"
 
 
 def test_build_summary_updates_generated_at_for_selected_network_refresh() -> None:

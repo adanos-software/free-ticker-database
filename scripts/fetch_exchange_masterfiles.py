@@ -2922,7 +2922,7 @@ def select_refresh_sources(
 ) -> list[MasterfileSource]:
     if batch_size <= 0:
         raise ValueError("--rotation-batch-size must be greater than zero")
-    catalog = list(sources or OFFICIAL_SOURCES)
+    catalog = list(OFFICIAL_SOURCES if sources is None else sources)
     if not catalog:
         return []
     details = load_source_details(summary)
@@ -19503,7 +19503,10 @@ def build_summary(
         for error in source_errors or []
         if error.get("source_key") and error.get("error")
     }
-    refreshed = set(refreshed_source_keys or source_modes.keys() or source_counts.keys())
+    if refreshed_source_keys is None:
+        refreshed = set(source_modes.keys() or source_counts.keys())
+    else:
+        refreshed = set(refreshed_source_keys)
     def source_generated_at(source_key: str) -> str:
         mode = source_modes.get(source_key, source_metadata_overrides.get(source_key, {}).get("mode", "unknown"))
         previous_generated_at = str(source_metadata_overrides.get(source_key, {}).get("generated_at", ""))
@@ -19555,7 +19558,7 @@ def fetch_all_sources(
     errors: list[dict[str, str]] = []
     source_modes: dict[str, str] = {}
     generated_at = utc_now_iso()
-    selected_sources = list(sources or OFFICIAL_SOURCES)
+    selected_sources = list(OFFICIAL_SOURCES if sources is None else sources)
     for source in selected_sources:
         try:
             if (
@@ -19718,6 +19721,19 @@ def main(argv: list[str] | None = None) -> None:
             selected_sources = select_official_sources(args.sources)
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
+
+    if not selected_sources:
+        print(
+            json.dumps(
+                {
+                    "skipped": True,
+                    "reason": "no stale or selected sources to refresh",
+                    "stale_or_unavailable": bool(args.stale_or_unavailable),
+                },
+                indent=2,
+            )
+        )
+        return
 
     rows, summary = fetch_all_sources(
         include_manual=not args.no_manual,
