@@ -2798,9 +2798,11 @@ def normalize_source_keys(values: Iterable[str] | None) -> list[str]:
 
 
 def select_official_sources(source_keys: Iterable[str] | None = None) -> list[MasterfileSource]:
+    if source_keys is None:
+        return list(OFFICIAL_SOURCES)
     requested_keys = normalize_source_keys(source_keys)
     if not requested_keys:
-        return list(OFFICIAL_SOURCES)
+        raise ValueError("--source did not contain any source keys")
 
     available = {source.key: source for source in OFFICIAL_SOURCES}
     unknown = [key for key in requested_keys if key not in available]
@@ -2833,6 +2835,160 @@ def select_rotation_sources(
     batch_index = selected_date.toordinal() % batch_count
     start = batch_index * batch_size
     return ordered[start:start + batch_size]
+
+
+FETCH_ISSUE_MODES = {"unavailable", "cache"}
+DEFAULT_FETCH_ISSUE_RETRY_LIMIT = 5
+
+
+def _parse_rotation_as_of(rotation_date: str | None) -> datetime:
+    if rotation_date:
+        try:
+            parsed = datetime.fromisoformat(rotation_date)
+        except ValueError as exc:
+            raise ValueError("--rotation-date must be YYYY-MM-DD") from exc
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed
+    return datetime.now(timezone.utc)
+
+
+def _parse_generated_at(value: object) -> datetime | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed
+
+
+def _source_age_days(generated_at: datetime | None, as_of: datetime) -> int | None:
+    if generated_at is None:
+        return None
+    return (as_of.astimezone(timezone.utc).date() - generated_at.astimezone(timezone.utc).date()).days
+
+
+def default_freshness_sla_days(source: MasterfileSource) -> int:
+    return 7 if source.reference_scope == "exchange_directory" else 30
+
+
+def load_source_sla_days() -> dict[str, int]:
+    sla_days: dict[str, int] = {}
+    for key, row in load_existing_source_metadata().items():
+        raw = row.get("freshness_sla_days")
+        if isinstance(raw, bool):
+            continue
+        if isinstance(raw, int) and raw > 0:
+            sla_days[key] = raw
+        elif isinstance(raw, str) and raw.isdigit() and int(raw) > 0:
+            sla_days[key] = int(raw)
+    return sla_days
+
+
+def load_source_details(summary: dict[str, Any] | None = None) -> dict[str, dict[str, Any]]:
+    payload = summary
+    if payload is None:
+        if not MASTERFILE_SUMMARY_JSON.exists():
+            return {}
+        try:
+            loaded = json.loads(MASTERFILE_SUMMARY_JSON.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return {}
+        payload = loaded
+    if not isinstance(payload, dict):
+        return {}
+    details = payload.get("source_details", {})
+    if not isinstance(details, dict):
+        return {}
+    return {
+        str(key): value
+        for key, value in details.items()
+        if isinstance(value, dict)
+    }
+
+
+def select_refresh_sources(
+    *,
+    batch_size: int,
+    rotation_date: str | None = None,
+    sources: Iterable[MasterfileSource] | None = None,
+    summary: dict[str, Any] | None = None,
+    sla_days_by_key: dict[str, int] | None = None,
+    stale_or_unavailable: bool = False,
+    fetch_issue_retry_limit: int | None = None,
+) -> list[MasterfileSource]:
+    if batch_size <= 0:
+        raise ValueError("--rotation-batch-size must be greater than zero")
+    catalog = list(OFFICIAL_SOURCES if sources is None else sources)
+    if not catalog:
+        return []
+    details = load_source_details(summary)
+    if not details and not stale_or_unavailable:
+        return select_rotation_sources(
+            batch_size=batch_size,
+            rotation_date=rotation_date,
+            sources=catalog,
+        )
+
+    as_of = _parse_rotation_as_of(rotation_date)
+    sla_days_by_key = sla_days_by_key if sla_days_by_key is not None else load_source_sla_days()
+    ordinal_keys = {
+        source.key
+        for source in select_rotation_sources(
+            batch_size=batch_size,
+            rotation_date=rotation_date,
+            sources=catalog,
+        )
+    }
+    if fetch_issue_retry_limit is None:
+        fetch_issue_retry_limit = (
+            batch_size if stale_or_unavailable else min(DEFAULT_FETCH_ISSUE_RETRY_LIMIT, batch_size)
+        )
+
+    fetch_issues: list[MasterfileSource] = []
+    stale: list[MasterfileSource] = []
+    remaining: list[MasterfileSource] = []
+    for source in catalog:
+        detail = details.get(source.key, {})
+        mode = str(detail.get("mode") or "")
+        age_days = _source_age_days(_parse_generated_at(detail.get("generated_at")), as_of)
+        sla = sla_days_by_key.get(source.key, default_freshness_sla_days(source))
+        if mode in FETCH_ISSUE_MODES:
+            fetch_issues.append(source)
+        elif age_days is None or age_days >= sla:
+            stale.append(source)
+        else:
+            remaining.append(source)
+
+    def sort_key(source: MasterfileSource) -> tuple[int, int, int, str]:
+        detail = details.get(source.key, {})
+        age_days = _source_age_days(_parse_generated_at(detail.get("generated_at")), as_of)
+        age_rank = -(age_days if age_days is not None else 10**9)
+        directory_rank = 0 if source.reference_scope == "exchange_directory" else 1
+        ordinal_rank = 0 if source.key in ordinal_keys else 1
+        return (directory_rank, age_rank, ordinal_rank, source.key)
+
+    fetch_issues.sort(key=sort_key)
+    stale.sort(key=sort_key)
+    remaining.sort(key=sort_key)
+    if stale_or_unavailable:
+        queue = [*fetch_issues, *stale]
+    else:
+        queue = [*stale, *fetch_issues[:fetch_issue_retry_limit], *remaining]
+
+    selected: list[MasterfileSource] = []
+    seen: set[str] = set()
+    for source in queue:
+        if source.key in seen:
+            continue
+        seen.add(source.key)
+        selected.append(source)
+        if len(selected) >= batch_size:
+            break
+    return selected
 
 
 def merge_reference_rows(
@@ -19347,7 +19503,10 @@ def build_summary(
         for error in source_errors or []
         if error.get("source_key") and error.get("error")
     }
-    refreshed = set(refreshed_source_keys or source_modes.keys() or source_counts.keys())
+    if refreshed_source_keys is None:
+        refreshed = set(source_modes.keys() or source_counts.keys())
+    else:
+        refreshed = set(refreshed_source_keys)
     def source_generated_at(source_key: str) -> str:
         mode = source_modes.get(source_key, source_metadata_overrides.get(source_key, {}).get("mode", "unknown"))
         previous_generated_at = str(source_metadata_overrides.get(source_key, {}).get("generated_at", ""))
@@ -19399,7 +19558,7 @@ def fetch_all_sources(
     errors: list[dict[str, str]] = []
     source_modes: dict[str, str] = {}
     generated_at = utc_now_iso()
-    selected_sources = list(sources or OFFICIAL_SOURCES)
+    selected_sources = list(OFFICIAL_SOURCES if sources is None else sources)
     for source in selected_sources:
         try:
             if (
@@ -19466,6 +19625,8 @@ PRESERVED_SOURCE_GOVERNANCE_FIELDS = (
     "terms_version",
     "terms_sha256",
     "license_reviewed_at",
+    "freshness_sla_days",
+    "enabled",
 )
 
 
@@ -19533,6 +19694,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="YYYY-MM-DD date used for deterministic rotation selection; defaults to today UTC.",
     )
+    parser.add_argument(
+        "--stale-or-unavailable",
+        action="store_true",
+        help="Refresh only unavailable, cache-fallback, or SLA-breached sources instead of the full catalog.",
+    )
     return parser.parse_args(argv)
 
 
@@ -19541,15 +19707,33 @@ def main(argv: list[str] | None = None) -> None:
     try:
         if args.sources and args.rotation_batch_size:
             raise ValueError("--source cannot be combined with --rotation-batch-size")
+        if args.sources and args.stale_or_unavailable:
+            raise ValueError("--source cannot be combined with --stale-or-unavailable")
+        if args.stale_or_unavailable and not args.rotation_batch_size:
+            raise ValueError("--stale-or-unavailable requires --rotation-batch-size")
         if args.rotation_batch_size:
-            selected_sources = select_rotation_sources(
+            selected_sources = select_refresh_sources(
                 batch_size=args.rotation_batch_size,
                 rotation_date=args.rotation_date,
+                stale_or_unavailable=args.stale_or_unavailable,
             )
         else:
             selected_sources = select_official_sources(args.sources)
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
+
+    if not selected_sources:
+        print(
+            json.dumps(
+                {
+                    "skipped": True,
+                    "reason": "no stale or selected sources to refresh",
+                    "stale_or_unavailable": bool(args.stale_or_unavailable),
+                },
+                indent=2,
+            )
+        )
+        return
 
     rows, summary = fetch_all_sources(
         include_manual=not args.no_manual,

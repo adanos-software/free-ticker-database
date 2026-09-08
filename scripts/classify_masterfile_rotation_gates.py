@@ -9,6 +9,7 @@ from typing import Any
 
 EXPECTED_REVIEW_GATE = "entry_quality_unexpected_warn_count"
 ENTRY_QUALITY_REVIEW_POLICY = "entry_quality_warning"
+FETCH_ISSUE_MODES = {"unavailable", "cache"}
 REVIEW_REQUIRED_MASTERFILE_FIELDS = {
     "asset_type",
     "isin",
@@ -270,16 +271,21 @@ def classify_gate_results(
     last_refresh = masterfile_summary.get("last_refresh", {})
     selected_source_keys = last_refresh.get("selected_source_keys", [])
     refresh_modes = last_refresh.get("source_modes", {})
-    source_review_keys = sorted(
-        source_key
-        for source_key in selected_source_keys
-        if refresh_modes.get(source_key) == "unavailable"
-        or (
-            source_details.get(source_key, {}).get("official")
-            and source_details.get(source_key, {}).get("reference_scope") == "exchange_directory"
-            and refresh_modes.get(source_key) != "network"
-        )
+    # Fetch misses preserve last committed rows; they are ops notes, not identity review.
+    fetch_issue_keys = sorted(
+        {
+            source_key
+            for source_key in selected_source_keys
+            if refresh_modes.get(source_key) in FETCH_ISSUE_MODES
+            or (
+                source_details.get(source_key, {}).get("official")
+                and source_details.get(source_key, {}).get("reference_scope")
+                == "exchange_directory"
+                and refresh_modes.get(source_key) not in {"network", None, ""}
+            )
+        }
     )
+    source_review_keys: list[str] = []
 
     critical_rotation_changes, rotation_diff_malformed = classify_critical_rotation_changes(
         rotation_diff
@@ -294,7 +300,6 @@ def classify_gate_results(
     review_required = bool(
         (
             unexpected_warn_count
-            or source_review_keys
             or critical_rotation_changes
             or unevidenced_field_change_count
         )
@@ -309,6 +314,8 @@ def classify_gate_results(
         "hard_failures": hard_failures,
         "source_review_count": len(source_review_keys),
         "source_review_keys": source_review_keys,
+        "fetch_issue_count": len(fetch_issue_keys),
+        "fetch_issue_keys": fetch_issue_keys,
         "critical_rotation_change_count": len(critical_rotation_changes),
         "critical_rotation_changes": critical_rotation_changes,
         "unevidenced_listing_field_change_count": unevidenced_field_change_count,
@@ -350,6 +357,8 @@ def main(argv: list[str] | None = None) -> int:
             handle.write(f"quarantine_count={result['quarantine_count']}\n")
             handle.write(f"source_review_count={result['source_review_count']}\n")
             handle.write(f"source_review_keys={','.join(result['source_review_keys'])}\n")
+            handle.write(f"fetch_issue_count={result['fetch_issue_count']}\n")
+            handle.write(f"fetch_issue_keys={','.join(result['fetch_issue_keys'])}\n")
             handle.write(
                 f"critical_rotation_change_count={result['critical_rotation_change_count']}\n"
             )
