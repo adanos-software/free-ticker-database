@@ -9,9 +9,9 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 61,744 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Core listings | 61,745 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
 | Primary tickers | 63,870 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 92,083 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Full listing rows | 92,084 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
 | Stocks | 47,794 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 16,076 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
@@ -22,9 +22,9 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Sector/category coverage | 62,298 (97.5%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 46,267 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,031 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 61,744 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core listing-scope rows | 61,745 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 60,976 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 768 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Core primary rows missing ISIN | 769 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 30,339 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 49 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
