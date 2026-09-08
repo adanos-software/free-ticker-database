@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-09-08T09:32:00Z",
+    "generated_at": "2026-09-08T11:14:14Z",
     "contracts": 134,
     "official_full_contracts": 86,
     "official_full_pass": 0,
@@ -1235,7 +1235,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_freshness",
-      "freshness_failures": "hkex_securities_list: snapshot age 14.05d exceeds 7d SLA",
+      "freshness_failures": "hkex_securities_list: snapshot age 14.12d exceeds 7d SLA",
       "license_failures": "hkex_securities_list: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1260,7 +1260,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_freshness",
-      "freshness_failures": "hkex_securities_list: snapshot age 14.05d exceeds 7d SLA",
+      "freshness_failures": "hkex_securities_list: snapshot age 14.12d exceeds 7d SLA",
       "license_failures": "hkex_securities_list: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1285,7 +1285,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_freshness",
-      "freshness_failures": "hnx_listed_securities: snapshot age 14.05d exceeds 7d SLA",
+      "freshness_failures": "hnx_listed_securities: snapshot age 14.12d exceeds 7d SLA",
       "license_failures": "hnx_listed_securities: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1385,7 +1385,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_identity_conflict",
-      "freshness_failures": "idx_company_profiles: snapshot age 14.05d exceeds 7d SLA",
+      "freshness_failures": "idx_company_profiles: snapshot age 14.12d exceeds 7d SLA",
       "license_failures": "idx_company_profiles: license_status is not verified_open | idx_listed_companies: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1460,7 +1460,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_freshness",
-      "freshness_failures": "krx_listed_companies: snapshot age 14.05d exceeds 7d SLA",
+      "freshness_failures": "krx_listed_companies: snapshot age 14.12d exceeds 7d SLA",
       "license_failures": "krx_listed_companies: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1485,7 +1485,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_freshness",
-      "freshness_failures": "krx_etf_finder: snapshot age 14.05d exceeds 7d SLA",
+      "freshness_failures": "krx_etf_finder: snapshot age 14.12d exceeds 7d SLA",
       "license_failures": "krx_etf_finder: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1510,7 +1510,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_freshness",
-      "freshness_failures": "krx_listed_companies: snapshot age 14.05d exceeds 7d SLA",
+      "freshness_failures": "krx_listed_companies: snapshot age 14.12d exceeds 7d SLA",
       "license_failures": "krx_listed_companies: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -1676,11 +1676,11 @@
       "denominator_method": "exchange_audit_official_active_product_rows",
       "denominator": 8593,
       "observed_reference_keys": 4358,
-      "covered_reference_keys": 3308,
-      "missing_reference_keys": 5285,
+      "covered_reference_keys": 3306,
+      "missing_reference_keys": 5287,
       "identity_conflict_keys": 184,
       "unclassified_keys": 0,
-      "recall_pct": 38.496451,
+      "recall_pct": 38.473176,
       "minimum_recall_pct": 99.5,
       "freshness_status": "pass",
       "license_status": "fail",
@@ -2935,7 +2935,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_freshness",
-      "freshness_failures": "jpx_listed_issues: snapshot age 14.05d exceeds 7d SLA | jpx_tse_stock_detail: latest refresh is unavailable",
+      "freshness_failures": "jpx_listed_issues: snapshot age 14.12d exceeds 7d SLA | jpx_tse_stock_detail: latest refresh is unavailable",
       "license_failures": "jpx_listed_issues: license_status is not verified_open | jpx_tse_stock_detail: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -2960,7 +2960,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_identity_conflict",
-      "freshness_failures": "jpx_listed_issues: snapshot age 14.05d exceeds 7d SLA | jpx_tse_stock_detail: latest refresh is unavailable",
+      "freshness_failures": "jpx_listed_issues: snapshot age 14.12d exceeds 7d SLA | jpx_tse_stock_detail: latest refresh is unavailable",
       "license_failures": "jpx_listed_issues: license_status is not verified_open | jpx_tse_stock_detail: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },

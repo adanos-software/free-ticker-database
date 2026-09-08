@@ -1,6 +1,6 @@
 # Source-of-Truth Decisions
 
-Generated at: `2026-09-08T09:34:32Z`
+Generated at: `2026-09-08T11:14:32Z`
 
 This report converts residual source-gap classes into release-trackable outcomes. It does not fill fields and does not drop rows automatically.
 
@@ -20,8 +20,8 @@ This report converts residual source-gap classes into release-trackable outcomes
 | official_reference_symbol_collision_gap | 1060 |
 | official_industry_taxonomy_unavailable_gap | 848 |
 | otc_sector_source_gap | 554 |
-| official_identifier_not_exposed_source_gap | 289 |
 | fund_or_trust_identifier_gap | 283 |
+| official_identifier_not_exposed_source_gap | 282 |
 | debt_or_securitized_identifier_gap | 85 |
 | exchange_industry_source_gap | 62 |
 | adr_cdr_or_depositary_identifier_gap | 44 |
@@ -32,8 +32,8 @@ This report converts residual source-gap classes into release-trackable outcomes
 | adr_cdr_or_depositary_sector_gap | 16 |
 | official_identifier_reference_unmatched_gap | 10 |
 | equity_etf_category_gap | 9 |
+| official_current_directory_absent_identifier_gap | 9 |
 | fundlike_stock_sector_gap | 5 |
-| official_current_directory_absent_identifier_gap | 2 |
 | official_product_reference_unmatched_category_gap | 2 |
 | digital_asset_etf_category_gap | 1 |
 
