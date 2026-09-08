@@ -20,7 +20,8 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "concurrency:" in workflow
     assert "group: masterfile-rotation" in workflow
     assert "cancel-in-progress: false" in workflow
-    assert "gh pr list --head automation/masterfile-rotation" in workflow
+    assert "GH_REPO: ${{ github.repository }}" in workflow
+    assert 'gh pr list --repo "$GH_REPO" --head automation/masterfile-rotation' in workflow
     assert "needs.gate.outputs.skip != 'true'" in workflow
     assert "type: choice" in workflow
     assert "- sources" in workflow
