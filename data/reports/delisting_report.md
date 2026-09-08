@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-09-07T14:52:01Z
+Generated: 2026-09-08T09:30:19Z
 
 **delisting_detected: True**
 
 Markets checked: US, ASX, NSE_IN, BSE_IN, US_NASDAQ_DELETES
 Markets skipped: TSE (fetch failed: XLRDError)
 
-Candidates: 289 (delisted=0, suspended=31, master_absent=258)
+Candidates: 424 (delisted=2, suspended=163, master_absent=259)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -100,117 +100,117 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | ASX | WFE | master_absent | WOLFE ENERGY LIMITED | AU0000458358 |
 | ASX | XRA | master_absent | XENORA MINERALS LTD | AU0000421117 |
 | ASX | YUG | master_absent | YUGO METALS LIMITED | AU0000404998 |
+| BSE_IN | 4THGEN | suspended | Fourth Generation Information Systems Lt | INE739B01039 |
+| BSE_IN | AANANDALAK | suspended | Aananda Lakshmi Spinning Mills Ltd | INE197R01010 |
+| BSE_IN | AARSHYAM | suspended | Aar Shyam India Investment Company Ltd | INE512R01010 |
+| BSE_IN | ACEEDU | suspended | ACE Edutrend Ltd | INE715F01014 |
 | BSE_IN | ACESEPP | suspended | Ace Software Exports ltd | IN9849B01026 |
+| BSE_IN | ADJIA | suspended | Adjia Technologies Ltd | INE0G0V01018 |
+| BSE_IN | ADVIKLA | suspended | Advik Laboratories Ltd | INE537C01019 |
+| BSE_IN | AIRLTD | suspended | Avishkar Infra Realty Ltd | INE433O01024 |
+| BSE_IN | ALCHCORP | suspended | Alchemist Corporation Ltd | INE057D01016 |
 | BSE_IN | ALSTONE | suspended | Alstone Textiles (India) Ltd | INE184S01024 |
+| BSE_IN | AMALGAM | suspended | Amalgamated Electricity Company Ltd | INE492N01022 |
+| BSE_IN | AMARSEC | suspended | Amarnath Securities Ltd | INE745P01010 |
+| BSE_IN | AMITINT | suspended | Amit International Ltd | INE053D01015 |
+| BSE_IN | ANANDPROJ | suspended | Anand Projects Ltd | INE134R01013 |
+| BSE_IN | APIL | suspended | Avi Products India Ltd | INE316O01021 |
+| BSE_IN | ARISINT | suspended | Aris International Ltd | INE588E01026 |
 | BSE_IN | ASHIS | suspended | Ashiana Ispat Ltd | INE587D01012 |
+| BSE_IN | ASHOKRE | suspended | Ashoka Refineries Ltd | INE760M01016 |
 | BSE_IN | ASHUTPM | suspended | Ashutosh Paper Mills Ltd | INE723K01018 |
+| BSE_IN | ASYL | suspended | Advance Syntex Ltd | INE184U01012 |
+| BSE_IN | AUTOPRD | suspended | Automobile Products of India Ltd | INE0NY101012 |
+| BSE_IN | AVASARA | suspended | Avasara Finance Ltd | INE759D01017 |
+| BSE_IN | AXENTRA | suspended | Axentra Corp Ltd | INE919M01026 |
+| BSE_IN | BARONINF | suspended | Baron Infotech Ltd | INE228B01017 |
 | BSE_IN | BCCPP | suspended | BCC Fuba India Ltd | IN9788D01014 |
+| BSE_IN | BCLENTERPR | suspended | BCL Enterprises Ltd | INE368E01023 |
+| BSE_IN | BGLOBAL | suspended | Bharatiya Global Infomedia Ltd | INE224M01013 |
+| BSE_IN | BHATEXT | suspended | Bharat Textiles & Proofing Industries Lt | INE201N01019 |
+| BSE_IN | BJDUP | suspended | BJ Duplex Boards Ltd | INE265C01025 |
+| BSE_IN | BLUECHIP | suspended | Blue Chip India Ltd | INE657B01025 |
+| BSE_IN | BLUEGOD | suspended | Bluegod Entertainment Ltd | INE924N01024 |
+| BSE_IN | BPCAP | suspended | B. P. Capital Ltd | INE947C01010 |
+| BSE_IN | CAPFIN | suspended | Capfin India Ltd | INE960C01013 |
+| BSE_IN | CARNATIN | suspended | Carnation Industries Ltd | INE081B01028 |
 | BSE_IN | CHARMS | suspended | Charms Industries Ltd | INE442C01012 |
+| BSE_IN | CITURGIA | suspended | Citurgia Biochemicals Ltd | INE795B01031 |
+| BSE_IN | CITYON | suspended | Cityon Systems (India) Ltd | INE324P01014 |
+| BSE_IN | CLCIND | suspended | CLC Industries Ltd | INE376C01038 |
+| BSE_IN | CLENON | suspended | Clenon Enterprises Ltd | INE769B01028 |
+| BSE_IN | CMICABLES | suspended | CMI Ltd | INE981B01011 |
+| BSE_IN | COLAB | suspended | Colab Platforms Ltd | INE317W01030 |
+| BSE_IN | CRESANTO | suspended | Cresanto Global Ltd | INE741C01017 |
+| BSE_IN | DIAMANT | suspended | Diamant Infrastructure Ltd | INE206I01026 |
+| BSE_IN | DJSSS | suspended | DJS Stock & Shares Ltd | INE234E01027 |
+| BSE_IN | DOLPHMED | suspended | Dolphin Medical Services Ltd | INE796B01013 |
+| BSE_IN | EDUCOMP | suspended | Educomp Solutions Ltd | INE216H01027 |
+| BSE_IN | ENCASH | suspended | Encash Entertainment Ltd | INE552Q01018 |
 | BSE_IN | FCONSUMER | suspended | Future Consumer Ltd | INE220J01025 |
+| BSE_IN | GEETANJ | suspended | Geetanjali Credit and Capital Ltd | INE263R01010 |
 | BSE_IN | GGENG | suspended | G G Engineering Ltd | INE694X01030 |
 | BSE_IN | GOLKONDA | suspended | Golkonda Aluminium Extrusions Ltd-$ | INE327C01031 |
+| BSE_IN | GTEIT | suspended | G-Tech Info-Training Ltd | INE634D01038 |
+| BSE_IN | HARIGOV | suspended | Popees Baby Care India Limited | INE167F01018 |
+| BSE_IN | HEMORGANIC | suspended | Hemo Organic Ltd | INE422G01015 |
+| BSE_IN | HIIL | suspended | Hindusthan Insulators & Industries Ltd | INE799B01025 |
+| BSE_IN | HRMNYCP | suspended | Harmony Capital Service Ltd | INE264N01017 |
+| BSE_IN | INANISEC | suspended | Inani Securities Ltd | INE224C01014 |
+| BSE_IN | INDICAP | suspended | Inditrade Capital Ltd | INE347H01012 |
+| BSE_IN | INNOCORP | suspended | Innocorp Ltd | INE214B01017 |
+| BSE_IN | INOVSYNTH | suspended | Innovassynth Technologies (India) Ltd | INE690J01011 |
 | BSE_IN | INRADIA | suspended | India Radiators Ltd | INE461Y01016 |
+| BSE_IN | INTEGSW | suspended | Integra Switchgear Ltd | INE0IPL01018 |
+| BSE_IN | INTERDIGI | suspended | Interworld Digital Ltd-$ | INE177D01020 |
+| BSE_IN | IPOWER | suspended | I-Power Solutions India Ltd | INE468F01010 |
+| BSE_IN | IYKOTHITE | suspended | Iykot Hitech Toolroom Ltd | INE079L01013 |
+| BSE_IN | JAYTEX | suspended | Jaybharat Textiles and Real Estate Ltd | INE091E01039 |
+| BSE_IN | JDL | suspended | Jaisukh Dealers Ltd | INE190P01019 |
+| BSE_IN | JMGCORP | suspended | JMG Corporation Ltd | INE745F01011 |
+| BSE_IN | JPTSEC | suspended | JPT Securities Ltd | INE630C01012 |
+| BSE_IN | KANDAGIRI | suspended | Kandagiri Spinning Mills Ltd-$ | INE292D01019 |
 | BSE_IN | KEDIACN | suspended | Kedia Construction Company Ltd | INE511J01027 |
+| BSE_IN | KIRANPR | suspended | Kiran Print Pack Ltd | INE516D01011 |
+| BSE_IN | KKPLASTICK | suspended | Kkalpana Plastick Ltd | INE465K01016 |
+| BSE_IN | KLGCAP | suspended | KLG Capital Services Ltd | INE929C01018 |
+| BSE_IN | KLIFESTYL | suspended | K-Lifestyle & Industries Ltd | INE218A01028 |
+| BSE_IN | KONARKSY | suspended | Konark Synthetic Ltd | INE517D01019 |
 | BSE_IN | KRISHPP | suspended | KRISHIVAL FOODS Ltd | IN90GGO01013 |
+| BSE_IN | LADIAMO | suspended | Laser Diamonds Ltd | INE995E01015 |
+| BSE_IN | LYNMC | suspended | Lynx Machinery & Commercials Ltd | INE732D01014 |
 | BSE_IN | MASCH | suspended | Master Chemicals Ltd | INE523D01017 |
+| BSE_IN | MATHEWE | suspended | Mathew Easow Research Securities Ltd | INE963B01019 |
+| BSE_IN | MEGFI | suspended | Mega Fin India Ltd | INE524D01015 |
+| BSE_IN | MINOLTAF | suspended | Minolta Finance Ltd | INE514C01026 |
+| BSE_IN | MORARJEE | suspended | Morarjee Textiles Ltd | INE161G01027 |
+| BSE_IN | MSRINDIA | suspended | MSR India Ltd | INE331L01026 |
+| BSE_IN | MUDUNURU | suspended | Mudunuru Ltd | INE491C01027 |
+| BSE_IN | NAGAFERT | suspended | Nagarjuna Fertilizers and Chemicals Ltd | INE454M01024 |
+| BSE_IN | NATURO | suspended | Naturo Indiabull Ltd | INE0JNB01012 |
+| BSE_IN | NDMETAL | suspended | ND Metal Industries Ltd | INE643D01013 |
+| BSE_IN | NNTL | suspended | N2N Technologies Ltd | INE043F01011 |
+| BSE_IN | OLYMTFI | suspended | Olympic Management & Financial Services  | INE091N01014 |
+| BSE_IN | OMANSH | suspended | Omansh Enterprises Ltd | INE378P01036 |
+| BSE_IN | OMKAR | suspended | Omkar Overseas Ltd | INE680D01015 |
 | BSE_IN | OMKARCHEM | suspended | Omkar Speciality Chemicals Ltd | INE474L01016 |
+| BSE_IN | ORTEL | suspended | Ortel Communications Ltd | INE849L01019 |
+| BSE_IN | OSCARGLO | suspended | Oscar Global Ltd | INE473F01010 |
+| BSE_IN | OSWALOR | suspended | Oswal Overseas Ltd | INE906K01027 |
+| BSE_IN | OSWAYRN | suspended | Oswal Yarns Ltd | INE670H01017 |
+| BSE_IN | OTCO | suspended | OTCO International Ltd | INE910B01028 |
+| BSE_IN | PARMAX | suspended | Parmax Pharma Ltd | INE240T01014 |
+| BSE_IN | PEOPLIN | suspended | Peoples Investments Ltd | INE644U01015 |
+| BSE_IN | PHOTON | suspended | Photon Capital Advisors Ltd | INE107J01016 |
+| BSE_IN | PIONAGR | suspended | Pioneer Agro Extracts Ltd | INE062E01014 |
+| BSE_IN | PITHP | suspended | Pithampur Poly Products Ltd | INE747D01012 |
+| BSE_IN | PMTELELIN | suspended | P.M. Telelinks Ltd | INE092C01015 |
+| BSE_IN | POLYTEX | suspended | Polytex India Ltd | INE012F01016 |
 | BSE_IN | PRABHAPP | suspended | Prabha Energy Ltd | IN90I0M01014 |
+| BSE_IN | PREMCAPM | suspended | Premium Capital Market & Investments Ltd | INE555D01019 |
 | BSE_IN | PRESSURS | suspended | Pressure Sensitive Systems India Ltd | INE891E01024 |
+| BSE_IN | PROGREXV | suspended | Progrex Ventures Ltd | INE421E01012 |
 | BSE_IN | PVVIPP | suspended | PVV Infra Ltd | IN9428B01029 |
-| BSE_IN | RAMASIGNS | suspended | Ramasigns Industries Ltd | INE650D01026 |
-| BSE_IN | SELLWIN | suspended | Sellwin Traders Ltd | INE195F01027 |
-| BSE_IN | SIKOZY | suspended | Sikozy Realtors Ltd | INE528E01022 |
-| BSE_IN | SILVERLINE | suspended | Silverline Technologies Ltd | INE368A01021 |
-| BSE_IN | SIPTL | suspended | Sharanam Infraproject and Trading Ltd | INE104S01022 |
-| BSE_IN | SSFLPP | suspended | Spandana Sphoorty Financial Ltd | IN9572J01019 |
-| BSE_IN | SSLEL | suspended | Sir Shadi Lal Enterprises Ltd | INE117H01019 |
-| BSE_IN | SUUMAYA | suspended | Suumaya Corporation Ltd | INE0EMB01015 |
-| BSE_IN | TIAANC | suspended | Tiaan Consumer Ltd | INE864T01011 |
-| BSE_IN | VARDHMAN | suspended | Vardhman Concrete Ltd | INE115C01014 |
-| BSE_IN | VASUDHAGAM | suspended | Vasudhagama Enterprises Ltd | INE583K01016 |
-| BSE_IN | WIMPLAST | suspended | Wim Plast Ltd-$ | INE015B01018 |
-| BSE_IN | WINSOME | suspended | Winsome Yarns Ltd | INE784B01035 |
-| BSE_IN | YARNPP | suspended | Yarn Syndicate Ltd | IN9564C01011 |
-| NASDAQ | AACB | master_absent | Artius II Acquisition Inc. Class A Ordin | KYG0509J1159 |
-| NASDAQ | ABVE | master_absent | Above Food Ingredients Inc. Common Stock | CA00373V1004 |
-| NASDAQ | ADTX | master_absent | Aditxt Inc.  | US0070258696 |
-| NASDAQ | AFBI | master_absent | Affinity Bancshares Inc | US00832E1038 |
-| NASDAQ | AGAE | master_absent | Allied Gaming & Entertainment Inc. | US0191701095 |
-| NASDAQ | AIHS | master_absent | Senmiao Technology Ltd | US8172252046 |
-| NASDAQ | ALBT | master_absent | Avalon GloboCare Corp. | US05344R3021 |
-| NASDAQ | ALCY | master_absent | Alchemy Investments Acquisition Corp 1 C | KYG0232F1090 |
-| NASDAQ | ALOT | master_absent | AstroNova Inc | US04638F1084 |
-| NASDAQ | ANSC | master_absent | Agriculture & Natural Solutions Acquisit | KYG0131Y1008 |
-| NASDAQ | APM | master_absent | Aptorum Group Ltd Class A | KYG6096M1069 |
-| NASDAQ | AREB | master_absent | American Rebel Holdings Inc | US02919L8853 |
-| NASDAQ | ASNS | master_absent | Actelis Networks Inc. | US00503R5081 |
-| NASDAQ | ATLN | master_absent | Atlantic International Corp. Common Stoc | US0485921094 |
-| NASDAQ | BAYA | master_absent | Bayview Acquisition Corp Class A Ordinar | KY07323B1007 |
-| NASDAQ | BBCQ | master_absent | Bleichroeder Acquisition Corp. II Class  | KYG1170E1044 |
-| NASDAQ | BCAR | master_absent | D. Boral ARC Acquisition I Corp. Class A | VGG2616F1018 |
-| NASDAQ | BCOW | master_absent | 1895 of Wisconsin Inc Bancorp | US28253R1059 |
-| NASDAQ | BNBX | master_absent | BNB Plus Corp. | US03815U6073 |
-| NASDAQ | BNRG | master_absent | Brenmiller Energy Ltd Ordinary Shares | IL0011415309 |
-| NASDAQ | BNZI | master_absent | Banzai International Inc | US06682J3086 |
-| NASDAQ | BOCN | master_absent | Blue Ocean Acquisition Corp | KYG1330L1059 |
-| NASDAQ | CAEP | master_absent | Cantor Equity Partners III, Inc. Class A | KYG1828A1085 |
-| NASDAQ | CCIX | master_absent | Churchill Capital Corp IX | KYG213011094 |
-| NASDAQ | CCRN | master_absent | Cross Country Healthcare Inc | US2274831047 |
-| NASDAQ | CEPT | master_absent | Cantor Equity Partners II, Inc. | KYG1827K1076 |
-| NASDAQ | CIMG | master_absent | CIMG Inc | US67073S3076 |
-| NASDAQ | CIZN | master_absent | Citizens Holding Company | US1747151025 |
-| NASDAQ | CNTA | master_absent | Centessa Pharmaceuticals plc | US1523091007 |
-| NASDAQ | CPRX | master_absent | Catalyst Pharmaceuticals Inc | US14888U1016 |
-| NASDAQ | CREG | master_absent | Smart Powerr Corp | US1689133098 |
-| NASDAQ | CRNX | master_absent | Crinetics Pharmaceuticals Inc | US22663K1079 |
-| NASDAQ | CULL | master_absent | Cullman Bancorp Inc. | US2301531081 |
-| NASDAQ | DEVS | master_absent | DevvStream Corp. Common Stock | CA25189R1001 |
-| NASDAQ | EA | master_absent | Electronic Arts Inc | US2855121099 |
-| NASDAQ | ELSE | master_absent | Electro-Sensors Inc | US2852331022 |
-| NASDAQ | EMPG | master_absent | Empro Group Inc. Ordinary shares | KYG3041J1067 |
-| NASDAQ | ESPR | master_absent | Esperion Therapeutics Inc | US29664W1053 |
-| NASDAQ | ETHM | master_absent | Dynamix Corporation | KYG2949D1126 |
-| NASDAQ | EVTV | master_absent | Envirotech Vehicles Inc | US29414V2097 |
-| NASDAQ | FATBB | master_absent | FAT Brands Inc | US30258N6004 |
-| NASDAQ | FBRX | master_absent | Forte Biosciences Inc | US34962G2084 |
-| NASDAQ | FGMC | master_absent | FG Merger II Corp. Common stock | US30334J1025 |
-| NASDAQ | FLZH | master_absent | Flash Sports & Media Holdings, Inc. | US91704K3014 |
-| NASDAQ | FTRK | master_absent | FAST TRACK GROUP | KYG333801093 |
-| NASDAQ | GAMB | master_absent | Gambling.com Group Ltd | JE00BL970N11 |
-| NASDAQ | GBNY | master_absent | Generations Bancorp NY Inc | US37149G1085 |
-| NASDAQ | GIG | master_absent | GigCapital7 Corp. Class A Ordinary Share | US37518P1012 |
-| NASDAQ | GLBZ | master_absent | Glen Burnie Bancorp | US3774071019 |
-| NASDAQ | GOCO | master_absent | GoHealth Inc. | US38046W2044 |
-| NASDAQ | GREE | master_absent | Greenidge Generation Holdings Inc | US39531G3083 |
-| NASDAQ | GV | master_absent | Visionary Education Technology Holdings  | CA92838F2008 |
-| NASDAQ | HEPA | master_absent | Hepion Pharmaceuticals Inc | US4268971045 |
-| NASDAQ | HOTH | master_absent | Hoth Therapeutics Inc | US44148G2049 |
-| NASDAQ | IINN | master_absent | Inspira Technologies Oxy BHN Ltd | IL0011715781 |
-| NASDAQ | IPCX | master_absent | Inflection Point Acquisition Corp. III C | KYG478751020 |
-| NASDAQ | ISSC | master_absent | Innovative Solutions and Support | US45769N1054 |
-| NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
-| NASDAQ | KVAC | master_absent | Keen Vision Acquisition Corporation Ordi | VGG524431191 |
-| NASDAQ | LBRDA | master_absent | Liberty Broadband Srs A | US5303071071 |
-| NASDAQ | LBRDK | master_absent | Liberty Broadband Srs C | US5303073051 |
-| NASDAQ | LGCB | master_absent | Linkage Global Inc Ordinary Shares | KYG5500B1023 |
-| NASDAQ | LIXT | master_absent | Lixte Biotechnology Holdings Inc | US5393192027 |
-| NASDAQ | LMFA | master_absent | LM Funding America Inc | US5020744042 |
-| NASDAQ | LOKV | master_absent | Live Oak Acquisition Corp. V Class A Ord | KYG5509P1028 |
-| NASDAQ | LPRO | master_absent | Open Lending Corp | US68373J1043 |
-| NASDAQ | LSH | master_absent | Lakeside Holding Limited Common Stock | US51216F1093 |
-| NASDAQ | LYRA | master_absent | Lyra Therapeutics Inc | US55234L1052 |
-| NASDAQ | MAPS | master_absent | WM Technology Inc | US92971A1097 |
-| NASDAQ | MAXN | master_absent | Maxeon Solar Technologies Ltd | SGXZ57724486 |
-| NASDAQ | MEHA | master_absent | Functional Brands, Inc. Common Stock | US3609481037 |
-| NASDAQ | MLAC | master_absent | Mountain Lake Acquisition Corp. Class A  |  |
-| NASDAQ | MRAI | master_absent | Marpai Inc | US5713542083 |
-| NASDAQ | MSW | master_absent | Ming Shing Group Holdings Limited Ordina | KYG614401068 |
-| NASDAQ | NCSM | master_absent | NCS Multistage Holdings Inc | US6288772014 |
-| NASDAQ | NFBK | master_absent | Northfield Bancorp Inc | US66611T1088 |
-| NASDAQ | NUTR | master_absent | Nusatrip Incorporated Common Stock | US67119K1025 |
-| NASDAQ | NUVL | master_absent | Nuvalent Inc | US6707031075 |
-| NASDAQ | NVVE | master_absent | Nuvve Holding Corp | US67079Y4070 |
-| NASDAQ | OLPX | master_absent | Olaplex Holdings Inc | US6793691089 |
-| NASDAQ | ORGN | master_absent | Origin Materials Inc | US68622D1063 |
-| NASDAQ | ORIS | master_absent | Oriental Rise Holdings Limited Ordinary  | KYG6781A1105 |
-| … | … | … | (+89 more) | |
+| BSE_IN | RAJVIR | suspended | Rajvir Industries Ltd | INE011H01014 |
+| BSE_IN | RAMAPETRO | suspended | Rama Petrochemicals Ltd | INE783A01013 |
+| … | … | … | (+224 more) | |
