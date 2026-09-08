@@ -1038,8 +1038,8 @@
       "missing_isin_primary": 768,
       "missing_sector_stock": 1527
     },
-    "generated_at": "2026-09-07T13:19:07Z",
-    "legacy_primary_ticker_collision_rows": 4772,
+    "generated_at": "2026-09-08T06:55:01Z",
+    "legacy_primary_ticker_collision_rows": 4770,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",
@@ -1322,7 +1322,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 13828,
+    "official_masterfile_collisions": 13811,
     "rows": 54
   }
 }

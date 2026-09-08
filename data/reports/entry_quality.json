@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-07T14:11:27Z",
+    "generated_at": "2026-09-08T09:13:09Z",
     "rows": 92083,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80549,
-      "source_gap": 11503,
+      "pass": 80696,
+      "source_gap": 11356,
       "warn": 31
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4636,
-      "official_reference": 82371,
+      "identifier_enriched": 4489,
+      "official_reference": 82518,
       "scoped_source_gap": 240,
       "valid_isin": 4836
     },
     "severity_counts": {
       "high": 6,
       "medium": 26,
-      "source_gap": 11838
+      "source_gap": 11691
     },
     "issue_counts": {
-      "official_reference_gap": 6425,
+      "official_reference_gap": 6278,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1302,
       "expected_missing_primary_isin": 768,
@@ -95,11 +95,6 @@
         "source_gap": 173
       },
       {
-        "exchange": "NSE_IN",
-        "pass": 2331,
-        "source_gap": 172
-      },
-      {
         "exchange": "LSE",
         "pass": 6876,
         "source_gap": 152,
@@ -128,8 +123,8 @@
       },
       {
         "exchange": "Euronext",
-        "pass": 1348,
-        "source_gap": 128,
+        "pass": 1344,
+        "source_gap": 132,
         "warn": 1
       },
       {
@@ -142,6 +137,11 @@
         "exchange": "JSE",
         "source_gap": 89,
         "pass": 123
+      },
+      {
+        "exchange": "TASE",
+        "pass": 717,
+        "source_gap": 84
       }
     ]
   },
@@ -7657,6 +7657,24 @@
       ]
     },
     {
+      "listing_key": "TWSE::2867",
+      "ticker": "2867",
+      "exchange": "TWSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TWSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "FSX::28L",
       "ticker": "28L",
       "exchange": "FSX",
@@ -11137,24 +11155,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "NSE_IN::3IINFOLTD",
-      "ticker": "3IINFOLTD",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NSE_IN",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },

@@ -1,16 +1,16 @@
 {
   "global": {
-    "official_symbols": 99428,
-    "matched": 65141,
-    "collisions": 13826,
-    "missing": 20461
+    "official_symbols": 99715,
+    "matched": 65288,
+    "collisions": 13897,
+    "missing": 20530
   },
   "exchanges": [
     {
       "exchange": "ADX",
-      "official_symbols": 123,
+      "official_symbols": 122,
       "matched": 85,
-      "collisions": 32,
+      "collisions": 31,
       "missing": 6,
       "collision_examples": [
         {
@@ -594,10 +594,10 @@
     },
     {
       "exchange": "BIST",
-      "official_symbols": 652,
-      "matched": 612,
-      "collisions": 21,
-      "missing": 19,
+      "official_symbols": 655,
+      "matched": 611,
+      "collisions": 22,
+      "missing": 22,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -724,13 +724,13 @@
           "exchange": "BIST"
         },
         {
-          "ticker": "KARCL",
-          "name": "KARDEM\u0130R \u00c7EL\u0130K SANAY\u0130 A.\u015e.",
+          "ticker": "ISX30",
+          "name": "\u0130\u015e PORTF\u00d6Y BIST 30 ENDEKS\u0130 H\u0130SSE SENED\u0130 YO\u011eUN BORSA YATIRIM FONU",
           "exchange": "BIST"
         },
         {
-          "ticker": "LXGYO",
-          "name": "LUXERA GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
+          "ticker": "KARCL",
+          "name": "KARDEM\u0130R \u00c7EL\u0130K SANAY\u0130 A.\u015e.",
           "exchange": "BIST"
         }
       ]
@@ -890,10 +890,10 @@
     },
     {
       "exchange": "BME",
-      "official_symbols": 272,
+      "official_symbols": 271,
       "matched": 246,
       "collisions": 0,
-      "missing": 26,
+      "missing": 25,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -932,18 +932,18 @@
           "exchange": "BME"
         },
         {
+          "ticker": "S0083",
+          "name": "ALAR 2.000",
+          "exchange": "BME"
+        },
+        {
           "ticker": "S0084",
           "name": "ALAVA INVERSIONES",
           "exchange": "BME"
         },
         {
-          "ticker": "S0127",
-          "name": "ALLOCATION",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S0129",
-          "name": "ALMABENI FINANCIERA",
+          "ticker": "S0203",
+          "name": "1948 INVERSIONS",
           "exchange": "BME"
         }
       ]
@@ -1253,10 +1253,10 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2908,
+      "official_symbols": 2909,
       "matched": 250,
       "collisions": 1858,
-      "missing": 800,
+      "missing": 801,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1747,10 +1747,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2013,
-      "matched": 1341,
+      "official_symbols": 2015,
+      "matched": 1337,
       "collisions": 364,
-      "missing": 308,
+      "missing": 314,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -2475,9 +2475,9 @@
     },
     {
       "exchange": "ISE",
-      "official_symbols": 15,
+      "official_symbols": 16,
       "matched": 9,
-      "collisions": 6,
+      "collisions": 7,
       "missing": 0,
       "collision_examples": [
         {
@@ -2498,6 +2498,14 @@
             "FSX",
             "STO",
             "XSTU"
+          ]
+        },
+        {
+          "ticker": "GDL",
+          "name": "GDL MANAGEMENT GRP",
+          "target_exchange": "ISE",
+          "existing_exchanges": [
+            "TSX"
           ]
         },
         {
@@ -3320,10 +3328,10 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 3202,
-      "matched": 2331,
-      "collisions": 390,
-      "missing": 481,
+      "official_symbols": 3488,
+      "matched": 2488,
+      "collisions": 462,
+      "missing": 538,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -3336,6 +3344,14 @@
         {
           "ticker": "A2ZINFRA",
           "name": "A2Z Infra Engineering Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
+          "ticker": "ABAN",
+          "name": "Aban Offshore Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
@@ -3398,14 +3414,6 @@
           "existing_exchanges": [
             "BSE_IN"
           ]
-        },
-        {
-          "ticker": "ADVIKCA",
-          "name": "Advik Capital Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
         }
       ],
       "missing_examples": [
@@ -3417,6 +3425,11 @@
         {
           "ticker": "ABCOTS",
           "name": "A B Cotspin India Limited",
+          "exchange": "NSE_IN"
+        },
+        {
+          "ticker": "ABH",
+          "name": "ABH Healthcare Limited",
           "exchange": "NSE_IN"
         },
         {
@@ -3452,11 +3465,6 @@
         {
           "ticker": "ADISOFT",
           "name": "Adisoft Technologies Limited",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ADVAIT",
-          "name": "Advait Energy Transitions Limited",
           "exchange": "NSE_IN"
         }
       ]
@@ -4176,8 +4184,8 @@
     {
       "exchange": "OSL",
       "official_symbols": 296,
-      "matched": 284,
-      "collisions": 7,
+      "matched": 283,
+      "collisions": 8,
       "missing": 5,
       "collision_examples": [
         {
@@ -4211,6 +4219,14 @@
           "target_exchange": "OSL",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "OMC",
+          "name": "OMC TANKERS",
+          "target_exchange": "OSL",
+          "existing_exchanges": [
+            "NYSE"
           ]
         },
         {
@@ -4410,8 +4426,8 @@
     },
     {
       "exchange": "PSE",
-      "official_symbols": 385,
-      "matched": 155,
+      "official_symbols": 384,
+      "matched": 154,
       "collisions": 119,
       "missing": 111,
       "collision_examples": [
@@ -4755,10 +4771,10 @@
     },
     {
       "exchange": "SET",
-      "official_symbols": 944,
+      "official_symbols": 945,
       "matched": 774,
       "collisions": 133,
-      "missing": 37,
+      "missing": 38,
       "collision_examples": [
         {
           "ticker": "AAI",
@@ -4901,10 +4917,10 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 746,
-      "matched": 610,
-      "collisions": 122,
-      "missing": 14,
+      "official_symbols": 749,
+      "matched": 609,
+      "collisions": 123,
+      "missing": 17,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4997,8 +5013,18 @@
       ],
       "missing_examples": [
         {
+          "ticker": "9PQ",
+          "name": "XMH Hldgs",
+          "exchange": "SGX"
+        },
+        {
           "ticker": "AMQ",
           "name": "Ambiq Micro",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "B96",
+          "name": "Amova AsiaCredit USD",
           "exchange": "SGX"
         },
         {
@@ -5035,16 +5061,6 @@
           "ticker": "UGBD",
           "name": "Grab US SDR 2to1",
           "exchange": "SGX"
-        },
-        {
-          "ticker": "UGGD",
-          "name": "Sea US SDR 50to1",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "UGS",
-          "name": "ULTRAGREEN AI SGD",
-          "exchange": "SGX"
         }
       ]
     },
@@ -5060,9 +5076,9 @@
     {
       "exchange": "TADAWUL",
       "official_symbols": 413,
-      "matched": 198,
+      "matched": 197,
       "collisions": 210,
-      "missing": 5,
+      "missing": 6,
       "collision_examples": [
         {
           "ticker": "1201",
@@ -5160,6 +5176,11 @@
         {
           "ticker": "4190",
           "name": "JARIR",
+          "exchange": "TADAWUL"
+        },
+        {
+          "ticker": "4328",
+          "name": "LADUN",
           "exchange": "TADAWUL"
         },
         {
@@ -5554,8 +5575,8 @@
     },
     {
       "exchange": "TWSE",
-      "official_symbols": 1095,
-      "matched": 1015,
+      "official_symbols": 1094,
+      "matched": 1014,
       "collisions": 31,
       "missing": 49,
       "collision_examples": [
@@ -5678,7 +5699,7 @@
         },
         {
           "ticker": "2072",
-          "name": "\u4e16\u7d00\u96e2\u5cb8\u98a8\u96fb\u8a2d\u5099\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "name": "\u4e16\u7d00\u80fd\u6e90\u8a2d\u5099\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "exchange": "TWSE"
         },
         {
@@ -5695,10 +5716,10 @@
     },
     {
       "exchange": "UPCOM",
-      "official_symbols": 824,
+      "official_symbols": 818,
       "matched": 2,
-      "collisions": 524,
-      "missing": 298,
+      "collisions": 520,
+      "missing": 296,
       "collision_examples": [
         {
           "ticker": "AAH",
@@ -5824,11 +5845,6 @@
           "exchange": "UPCOM"
         },
         {
-          "ticker": "BCR",
-          "name": "CTCP BCG Land",
-          "exchange": "UPCOM"
-        },
-        {
           "ticker": "BDG",
           "name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n May m\u1eb7c B\u00ecnh D\u01b0\u01a1ng",
           "exchange": "UPCOM"
@@ -5846,6 +5862,11 @@
         {
           "ticker": "BHI",
           "name": "T\u1ed5ng CTCP B\u1ea3o hi\u1ec3m S\u00e0i G\u00f2n - H\u00e0 N\u1ed9i",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "BLF",
+          "name": "CTCP Th\u1ee7y s\u1ea3n B\u1ea1c Li\u00eau",
           "exchange": "UPCOM"
         }
       ]

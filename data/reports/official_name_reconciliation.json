@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-07T14:11:10Z",
+  "generated_at": "2026-09-08T09:12:53Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1797,
+  "reconciled_rows": 1796,
   "applied_rows": 0,
-  "proposed_rows": 1797,
+  "proposed_rows": 1796,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -229,21 +229,6 @@
       "reference_scope": "security_lookup_subset",
       "source_url": "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
       "observation_id": "aaf476dbf3d6d1b4c1b083c9",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "BIST::MARKA",
-      "action": "proposed",
-      "ticker": "MARKA",
-      "exchange": "BIST",
-      "asset_type": "Stock",
-      "isin": "TREIFTY00019",
-      "old_name": "MARKA YATIRIM HOLDİNG A.Ş.",
-      "new_name": "US YATIRIM HOLDİNG A.Ş.",
-      "source_key": "bist_kap_mkk_listed_securities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
-      "observation_id": "2b8cbc56b6d7da578936784f",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
