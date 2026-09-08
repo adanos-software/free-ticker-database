@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-08T11:30:52Z",
+    "generated_at": "2026-09-08T13:16:15Z",
     "rows": 92037,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80564,
-      "source_gap": 11442,
+      "pass": 80554,
+      "source_gap": 11452,
       "warn": 31
     },
     "evidence_level_counts": {
@@ -27,13 +27,13 @@
     "severity_counts": {
       "high": 6,
       "medium": 26,
-      "source_gap": 11770
+      "source_gap": 11783
     },
     "issue_counts": {
       "official_reference_gap": 6359,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1299,
-      "expected_missing_primary_isin": 769,
+      "missing_stock_sector": 1288,
+      "expected_missing_primary_isin": 793,
       "missing_etf_category": 56,
       "official_name_mismatch": 26,
       "official_isin_mismatch": 6
@@ -51,8 +51,8 @@
       },
       {
         "exchange": "FSX",
-        "pass": 7139,
-        "source_gap": 1004
+        "pass": 7153,
+        "source_gap": 990
       },
       {
         "exchange": "B3",
@@ -61,8 +61,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 272,
-        "pass": 4469,
+        "source_gap": 276,
+        "pass": 4465,
         "warn": 4
       },
       {
@@ -72,8 +72,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2518,
-        "source_gap": 246,
+        "pass": 2516,
+        "source_gap": 248,
         "warn": 2
       },
       {
@@ -101,6 +101,11 @@
         "source_gap": 173
       },
       {
+        "exchange": "BATS",
+        "pass": 1211,
+        "source_gap": 162
+      },
+      {
         "exchange": "LSE",
         "pass": 6875,
         "source_gap": 153,
@@ -109,11 +114,6 @@
       {
         "exchange": "ASX",
         "pass": 2109,
-        "source_gap": 150
-      },
-      {
-        "exchange": "BATS",
-        "pass": 1223,
         "source_gap": 150
       },
       {
@@ -135,8 +135,8 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1919,
-        "source_gap": 102,
+        "pass": 1916,
+        "source_gap": 105,
         "warn": 4
       },
       {
@@ -3620,12 +3620,12 @@
       ]
     },
     {
-      "listing_key": "FSX::11L",
+      "listing_key": "XSTU::11L",
       "ticker": "11L",
-      "exchange": "FSX",
+      "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 90,
+      "quality_score": 80,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
         {
@@ -3634,18 +3634,7 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::11L",
-      "ticker": "11L",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
+        },
         {
           "issue_type": "venue_missing_official_source",
           "severity": "source_gap",
@@ -11304,24 +11293,6 @@
       ]
     },
     {
-      "listing_key": "FSX::3MB",
-      "ticker": "3MB",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::3MJ",
       "ticker": "3MJ",
       "exchange": "XSTU",
@@ -13132,24 +13103,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::4AS",
-      "ticker": "4AS",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -16483,24 +16436,6 @@
       ]
     },
     {
-      "listing_key": "FSX::61L0",
-      "ticker": "61L0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::639",
       "ticker": "639",
       "exchange": "XSTU",
@@ -17134,24 +17069,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::6BB",
-      "ticker": "6BB",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -18335,6 +18252,103 @@
     {
       "listing_key": "FSX::6Z2",
       "ticker": "6Z2",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6Z4",
+      "ticker": "6Z4",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::6Z4",
+      "ticker": "6Z4",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6ZR",
+      "ticker": "6ZR",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::703",
+      "ticker": "703",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::706",
+      "ticker": "706",
       "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",

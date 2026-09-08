@@ -1431,7 +1431,7 @@ def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     normalized = dict(row)
     exchange = normalized.get("exchange", "")
     ticker = normalized.get("ticker", "").strip().upper()
-    name = repair_mojibake_text(normalized.get("name", ""))
+    name = repair_mojibake_text(normalized.get("name", "")).strip()
     normalized["name"] = name
     if exchange in EXCHANGE_ALIASES:
         normalized["exchange"] = EXCHANGE_ALIASES[exchange]
@@ -2819,7 +2819,7 @@ def cleaned_rows():
 
         output_row = {
             "ticker": row["ticker"],
-            "name": repair_mojibake_text(row["name"]),
+            "name": repair_mojibake_text(row["name"]).strip(),
             "exchange": row["exchange"],
             "asset_type": row["asset_type"],
             "sector": normalize_sector(row.get("sector", ""), row["asset_type"]),

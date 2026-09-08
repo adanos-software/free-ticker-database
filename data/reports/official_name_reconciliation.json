@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-08T11:30:36Z",
+  "generated_at": "2026-09-08T13:15:59Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1797,
+  "reconciled_rows": 1791,
   "applied_rows": 0,
-  "proposed_rows": 1797,
+  "proposed_rows": 1791,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -10462,21 +10462,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "FSX::RMP1",
-      "action": "proposed",
-      "ticker": "RMP1",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "isin": "GB00BJT0FF39",
-      "old_name": "RM PLC",
-      "new_name": "RM PLC      LS-,022857142",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "observation_id": "898692d0a498a8103a90f77d",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "FSX::RP8",
       "action": "proposed",
       "ticker": "RP8",
@@ -11119,36 +11104,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
       "observation_id": "5e3b94e989aafaefacb4a5f2",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "FSX::SPYI",
-      "action": "proposed",
-      "ticker": "SPYI",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "isin": "IE00B3YLTY66",
-      "old_name": "State Street SPDR MSCI All Country World Investable Market UCITS ETF",
-      "new_name": "ST.STR.SP.MS.ACWIM UC.ETF",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "observation_id": "3322191d8537943ec9a935b2",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "FSX::SPYW",
-      "action": "proposed",
-      "ticker": "SPYW",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "isin": "IE00B5M1WJ87",
-      "old_name": "SPDR S&P Euro Dividend Aristocrats UCITS ETF",
-      "new_name": "SPDR S+P EO DIV.ARIST.ETF",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "observation_id": "39e13218175e60ca4ed34f4a",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -18322,21 +18277,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::COPB",
-      "action": "proposed",
-      "ticker": "COPB",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "GB00B15KXQ89",
-      "old_name": "WisdomTree Copper",
-      "new_name": "WISDOMTREE COMMODITY SECURITIES LTD WISDOMTREE COPPER",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "97c353867a9cf828cd58526f",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::CREI",
       "action": "proposed",
       "ticker": "CREI",
@@ -21832,21 +21772,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::WBIO",
-      "action": "proposed",
-      "ticker": "WBIO",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "IE000O8KMPM1",
-      "old_name": "WisdomTree BioRevolution UCITS ETF - USD Acc GBP",
-      "new_name": "WISDOMTREE ISSUER ICAV WISDOMTREE BIOREV UCITS ETF USD ACC",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "85e43cd38f3efcff1035e8b4",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::WCAT",
       "action": "proposed",
       "ticker": "WCAT",
@@ -21859,21 +21784,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
       "observation_id": "e0d3b0abb3473383e7dc0405",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "LSE::WDNA",
-      "action": "proposed",
-      "ticker": "WDNA",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "IE000O8KMPM1",
-      "old_name": "WisdomTree BioRevolution UCITS ETF - USD Acc",
-      "new_name": "WISDOMTREE ISSUER ICAV WISDOMTREE BIOREV UCITS ETF USD ACC",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "fe4639a9ed26ccbc9afe6f70",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

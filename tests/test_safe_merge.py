@@ -43,6 +43,23 @@ def test_stale_event_cannot_authorize_removal() -> None:
     assert report["status"] == "fail"
 
 
+def test_whitespace_only_name_change_is_not_a_critical_field_change() -> None:
+    before = [row("NASDAQ", "ADTX", name="Aditxt Inc. ")]
+    after = [row("NASDAQ", "ADTX", name="Aditxt Inc.")]
+    report = evaluate(before, after, [])
+    assert report["status"] == "pass"
+    assert report["summary"]["critical_field_changes"] == 0
+    assert report["summary"]["unevidenced_critical_field_changes"] == 0
+
+
+def test_nbsp_only_name_change_is_not_a_critical_field_change() -> None:
+    before = [row("IDX", "AMAR", name="Bank Amar Indonesia\xa0")]
+    after = [row("IDX", "AMAR", name="Bank Amar Indonesia")]
+    report = evaluate(before, after, [])
+    assert report["status"] == "pass"
+    assert report["summary"]["critical_field_changes"] == 0
+
+
 def test_critical_change_requires_exact_old_new_and_fingerprint() -> None:
     before = [row("NASDAQ", "A", isin="US0378331005")]
     after = [row("NASDAQ", "A", isin="")]
