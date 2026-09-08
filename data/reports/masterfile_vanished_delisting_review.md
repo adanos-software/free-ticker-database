@@ -1,9 +1,9 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-09-08T06:49:43Z`
+- Generated at: `2026-09-08T07:29:50Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `147`
-- Rotation vanished rows: `75`
-- Backlog rows: `72`
+- Vanished reference rows: `123`
+- Rotation vanished rows: `28`
+- Backlog rows: `95`
 - Still in database: `105`
 - Applied drops: `0`
 
@@ -13,7 +13,7 @@
 |---|---:|
 | blocked_suspended_kept_by_policy | 4 |
 | manual_rename_vs_delisting_required | 101 |
-| not_in_database | 42 |
+| not_in_database | 18 |
 
 ## Rows still in the database
 
@@ -72,29 +72,29 @@
 | KOSDAQ | 269620 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KRX | 397420 | krx_etf_finder | manual_rename_vs_delisting_required | backlog |
 | LSE | 0JTT | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | AARNAV | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | ALPHAGEO | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | ARIES | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | CALSOFT | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | CTE | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | DTIL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | GVPTECH | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | HEG | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | HFCL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | INDIAGLYCO | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | KALYANIFRG | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | KAYA | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | KOTARISUG | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | MANAKSTEEL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | NATCAPSUQ | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | PAR | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | SHAHALLOYS | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | SIGIND | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | SIGMAADV | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | SONAMLTD | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | SWARAJ | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | UCAL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | VCL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | AARNAV | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | ALPHAGEO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | ARIES | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | CALSOFT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | CTE | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | DTIL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | GVPTECH | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | HEG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | HFCL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | INDIAGLYCO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | KALYANIFRG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | KAYA | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | KOTARISUG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | MANAKSTEEL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | NATCAPSUQ | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | PAR | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | SHAHALLOYS | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | SIGIND | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | SIGMAADV | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | SONAMLTD | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | SWARAJ | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | UCAL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | VCL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | OSL | ELIMP | euronext_equities | manual_rename_vs_delisting_required | rotation |
 | OSL | PRYME | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | PSE | RRHI | pse_listed_company_directory | manual_rename_vs_delisting_required | rotation |
@@ -128,6 +128,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 75; still-in-database backlog carried: 72.
-- Still in database: 105; not in database: 42.
+- Rotation vanished rows: 28; still-in-database backlog carried: 95.
+- Still in database: 105; not in database: 18.
 - Applied drops from this classifier: 0.

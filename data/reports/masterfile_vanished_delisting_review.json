@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-08T06:49:43Z",
+  "generated_at": "2026-09-08T07:29:50Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 147,
-  "rotation_vanished_rows": 75,
-  "backlog_rows": 72,
+  "vanished_reference_rows": 123,
+  "rotation_vanished_rows": 28,
+  "backlog_rows": 95,
   "still_in_database": 105,
   "classifier_counts": {
     "blocked_suspended_kept_by_policy": 4,
     "manual_rename_vs_delisting_required": 101,
-    "not_in_database": 42
+    "not_in_database": 18
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 75; still-in-database backlog carried: 72.",
-    "Still in database: 105; not in database: 42.",
+    "Rotation vanished rows: 28; still-in-database backlog carried: 95.",
+    "Still in database: 105; not in database: 18.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -1277,47 +1277,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "ABINFRA",
-      "exchange": "NSE_IN",
-      "name": "A B Infrabuild Limited",
-      "isin": "INE00YB01025",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "A B Infrabuild Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "ACSTECH",
-      "exchange": "NSE_IN",
-      "name": "ACS Technologies Limited",
-      "isin": "INE366C01021",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ACS Technologies Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ALPHAGEO",
@@ -1337,27 +1297,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "AMBALALSA",
-      "exchange": "NSE_IN",
-      "name": "Ambalal Sarabhai Enterprises Limited",
-      "isin": "INE432A01017",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Ambalal Sarabhai Enterprises Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ARIES",
@@ -1377,27 +1317,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "BI",
-      "exchange": "NSE_IN",
-      "name": "Bilcare Limited",
-      "isin": "INE986A01012",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Bilcare Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BLUECHIP",
@@ -1437,27 +1357,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "CRSL",
-      "exchange": "NSE_IN",
-      "name": "Cressanda Railway Solutions Limited",
-      "isin": "INE716D01033",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Cressanda Railway Solutions Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CTE",
@@ -1477,47 +1377,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "DAICHI",
-      "exchange": "NSE_IN",
-      "name": "Dai-Ichi Karkaria Limited",
-      "isin": "INE928C01010",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Dai-Ichi Karkaria Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "DHABRIYA",
-      "exchange": "NSE_IN",
-      "name": "Dhabriya Polywood Limited",
-      "isin": "INE260R01016",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Dhabriya Polywood Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "DTIL",
@@ -1537,27 +1397,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "EBIX",
-      "exchange": "NSE_IN",
-      "name": "EBIX Limited",
-      "isin": "INE432F01032",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "EBIX Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "GVPTECH",
@@ -1577,7 +1417,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "HEG",
@@ -1597,7 +1437,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "HFCL",
@@ -1617,7 +1457,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "INDIAGLYCO",
@@ -1637,7 +1477,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KALYANIFRG",
@@ -1657,7 +1497,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KAYA",
@@ -1677,7 +1517,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KOTARISUG",
@@ -1697,47 +1537,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "KRONOX",
-      "exchange": "NSE_IN",
-      "name": "Kronox Lab Sciences Limited",
-      "isin": "INE0ATZ01017",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Kronox Lab Sciences Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "LEENEE",
-      "exchange": "NSE_IN",
-      "name": "Lee & Nee Softwares Exports Limited",
-      "isin": "INE791B01014",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Lee & Nee Softwares Exports Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MANAKSTEEL",
@@ -1757,7 +1557,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MANBRO",
@@ -1772,66 +1572,6 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "Manbro Industries Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "MINALIND",
-      "exchange": "NSE_IN",
-      "name": "Minal Industries Limited",
-      "isin": "INE097E01028",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Minal Industries Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "MPDL",
-      "exchange": "NSE_IN",
-      "name": "MPDL Limited",
-      "isin": "INE493H01014",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "MPDL Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "MYSORPETRO",
-      "exchange": "NSE_IN",
-      "name": "Mysore Petro Chemicals Limited",
-      "isin": "INE741A01011",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Mysore Petro Chemicals Limited",
       "listing_name": "",
       "listing_isin": "",
       "still_in_database": false,
@@ -1857,27 +1597,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "NIRAJISPAT",
-      "exchange": "NSE_IN",
-      "name": "Niraj Ispat Industries Limited",
-      "isin": "INE326T01011",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Niraj Ispat Industries Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PAR",
@@ -1897,67 +1617,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "RBZJEWEL",
-      "exchange": "NSE_IN",
-      "name": "RBZ Jewellers Limited",
-      "isin": "INE0PEQ01016",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "RBZ Jewellers Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "RNBDENIMS",
-      "exchange": "NSE_IN",
-      "name": "R&B Denims Limited",
-      "isin": "INE012Q01039",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "R&B Denims Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "SCPL",
-      "exchange": "NSE_IN",
-      "name": "Sheetal Cool Products Limited",
-      "isin": "INE501Y01019",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Sheetal Cool Products Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SHAHALLOYS",
@@ -1977,7 +1637,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SIGIND",
@@ -1997,7 +1657,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SIGMAADV",
@@ -2017,7 +1677,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SONAMLTD",
@@ -2037,47 +1697,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "SRIKPRIND",
-      "exchange": "NSE_IN",
-      "name": "Sri KPR Industries Limited",
-      "isin": "INE009C01019",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Sri KPR Industries Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "SUPTANERY",
-      "exchange": "NSE_IN",
-      "name": "Super Tannery Limited",
-      "isin": "INE460D01038",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Super Tannery Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SWARAJ",
@@ -2097,67 +1717,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "SWISSMLTRY",
-      "exchange": "NSE_IN",
-      "name": "Swiss Military Consumer Goods Limited",
-      "isin": "INE010C01025",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Swiss Military Consumer Goods Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "TIJARIA",
-      "exchange": "NSE_IN",
-      "name": "Tijaria Polypipes Limited",
-      "isin": "INE440L01017",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Tijaria Polypipes Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "TPHQ",
-      "exchange": "NSE_IN",
-      "name": "Teamo Productions HQ Limited",
-      "isin": "INE065J01024",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Teamo Productions HQ Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "UCAL",
@@ -2177,27 +1737,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "VALIANTLAB",
-      "exchange": "NSE_IN",
-      "name": "Valiant Laboratories Limited",
-      "isin": "INE0JWS01017",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Valiant Laboratories Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VCL",
@@ -2217,27 +1757,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "VIRTUALG",
-      "exchange": "NSE_IN",
-      "name": "Virtual Global Education Limited",
-      "isin": "INE247C01023",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Virtual Global Education Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ELIMP",
