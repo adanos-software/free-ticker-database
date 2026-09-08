@@ -2,6 +2,43 @@
 
 ## [Unreleased]
 
+## [3.40.0] - 2026-09-08
+
+### Summary
+
+**Official-directory parser and reviewed-rotation release.** Publishes the first live daily masterfile rotation, NSE India official-directory parser repairs, reviewed official ISIN reissues, and Nasdaq trading-system deletes accumulated since v3.39.0. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, unresolved source gaps remain explicit, and automation cannot remove or critically recode a listing without exact evidence.
+
+### Added
+
+- Added `NYSE MKT::AUXX` Gold X2 Mining Inc. as an additional US venue of the existing `TSXV::AUXX` issuer (`CA38076G1037`). The ticker collision with the TSXV primary stays explicit in coverage expansion.
+- Landed one serialized official masterfile rotation lane with skip-if-open, SLA-aware stale retries, and `workflow_dispatch` modes `rotation|sources|stale`. Fetch misses preserve the last committed directory as ops notes and no longer draft identity review by themselves.
+
+### Changed
+
+- Applied reviewed official ISIN reissues: `Borsa Italiana::EPH` `IT0005730095`, `Euronext::ALCPB` `FR0014019Y19`, `NSE_IN::GOLDADD` `INF740KA1ZP2`, `NSE_IN::SILVERADD` `INF740KA1ZQ0`, `NSE_IN::TDPOWERSYS` `INE419M01035`, `HKEX::00948` `BMG6847W1148`, `HKEX::01712` `HK0001353686` (Dragon Mining holding-company scheme AU→HK), `HKEX::01777` `KYG3311L1124`, and `HKEX::01803` `KYG1145Y1281`. Reviewed DSP Gold/Silver ETF names are retained. Official-only NSE `CORDELIA`/`TCC` and SET `TCC` stay untouched.
+- Applied official Nasdaq trading-system deletes for `NASDAQ::BTAI` and `NASDAQ::LPSN` with listing-keyed drop evidence.
+- Refreshed official masterfile, symbol-change, weekly drift/freshness, delisting, and public export artifacts. Symbol-change apply accepted no new successor listings; evidenced predecessor drops landed. No unevidenced listing removals.
+
+### Fixed
+
+- NSE India ETF parser reads the live `Underlying Asset` / `ETF Underlying` schema instead of the retired `Underlying` column, so official ETF sectors are no longer blanked.
+- NSE India equity parser keeps trade-to-trade `BE`/`BZ` series (preferring `EQ`) so T2T names no longer vanish from the official directory while still listed on `EQUITY_L`.
+- NSE India rights skip matches `-RE` and numbered `-RE<n>` suffixes (`JAYKAY-RE1`) without treating `-REIT` as a rights issue.
+- Daily masterfile rotation skip-if-open uses the GitHub API with `GH_REPO` instead of local git, so the gate works before checkout.
+- Selected official fetch misses (`unavailable`/`cache`) are no longer classified as identity `review_required`. Empty explicit `source_keys` and empty stale selections no longer expand to the full 138-source catalog.
+
+### Safety
+
+- Missing or invalid ISINs, unevidenced removals, critical-field changes, ticker reuse, ambiguous identity transitions, and upstream fetch failures remain fail-closed.
+- Official same-ticker US names stay review unless already overridden. Official ISIN replacements stay `review_required` at rotation-classify until listings are evidenced via listing-keyed `metadata_updates`.
+- Listings apply remains gated to collision-free new US Stock/ETF rows. Numbered NSE rights issues are not listings. EQ→BE names are not dropped.
+
+### Verification
+
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract for the NSE parser, rotation-landing, ISIN-reissue, symbol-change, and delisting PRs.
+- Live workflow reproductions of Daily Masterfile Rotation, Daily Nasdaq US New Listings, Daily Symbol Changes, Weekly Delisting Candidates, Weekly Drift & Freshness, and Weekly ISIN Validation completed successfully. Identity-review drafts stayed fail-closed until listing-keyed evidence landed.
+- Snapshot: 63,846 primary tickers, 92,037 listing rows, 62,530 primary ISINs (97.9%), 62,278 sector/category values, 31 entry-quality warnings, and 11,442 source-gap rows. Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
+
 ## [3.39.0] - 2026-09-07
 
 ### Summary
