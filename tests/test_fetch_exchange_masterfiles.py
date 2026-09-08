@@ -274,6 +274,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_mse_mw_mainboard_html,
     parse_msx_companies_payload,
     parse_qse_market_watch_payload,
+    is_nse_india_rights_ticker,
     parse_nse_india_equity_csv,
     parse_nse_india_etf_csv,
     parse_nse_ke_listed_companies_html,
@@ -16927,6 +16928,7 @@ def test_parse_nse_india_equity_csv_keeps_trade_to_trade_series() -> None:
             "RELIANCE,Reliance Industries Limited,BE,01-Jan-90,10,INE002A01018,10",
             "WATCHED,Watched Limited,BZ,01-Jan-90,10,INE545A01016,10",
             "RIGHTS-RE,Rights Co,EQ,01-Jan-90,10,INE002A01018,10",
+            "JAYKAY-RE1,Jaykay Enterprises Limited-RE,EQ,01-Jan-90,10,INE903A20025,10",
         ]
     )
 
@@ -16937,6 +16939,15 @@ def test_parse_nse_india_equity_csv_keeps_trade_to_trade_series() -> None:
         ("HEG", "INE545A01024"),
         ("WATCHED", "INE545A01016"),
     ]
+
+
+def test_is_nse_india_rights_ticker_matches_numbered_suffixes() -> None:
+    assert is_nse_india_rights_ticker("JAYKAY-RE")
+    assert is_nse_india_rights_ticker("JAYKAY-RE1")
+    assert is_nse_india_rights_ticker("FOO-RE10")
+    assert not is_nse_india_rights_ticker("JAYKAY")
+    assert not is_nse_india_rights_ticker("SHARE")
+    assert not is_nse_india_rights_ticker("FOO-REIT")
 
 
 def test_nse_india_source_is_modeled_as_official_exchange_directory() -> None:
