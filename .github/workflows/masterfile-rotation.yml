@@ -43,8 +43,9 @@ jobs:
         id: skip
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          open_pr=$(gh pr list --head automation/masterfile-rotation --state open --json number --jq '.[0].number // empty')
+          open_pr=$(gh pr list --repo "$GH_REPO" --head automation/masterfile-rotation --state open --json number --jq '.[0].number // empty')
           if [ -n "$open_pr" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
             echo "open_pr=$open_pr" >> "$GITHUB_OUTPUT"
