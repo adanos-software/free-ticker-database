@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-09-08T09:33:23Z",
+    "generated_at": "2026-09-09T11:19:44Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -11,28 +11,27 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 9,
-    "accepted_rows": 1,
-    "skipped_rows": 8,
+    "new_supported_rows": 6,
+    "accepted_rows": 3,
+    "skipped_rows": 3,
     "detected_symbol_changes": 0,
     "accepted_by_exchange": {
-      "NYSE MKT": 1
+      "NASDAQ": 3
     },
     "accepted_by_target": {
-      "coverage_expansion": 1
+      "coverage_expansion": 1,
+      "supplement": 2
     },
     "skipped_by_reason": {
-      "already_in_listings": 5,
-      "excluded_non_common_stock": 2,
-      "temporary_when_issued_line": 1
+      "excluded_non_common_stock": 3
     }
   },
   "accepted": [
     {
-      "listing_key": "NYSE MKT::AUXX",
-      "ticker": "AUXX",
-      "exchange": "NYSE MKT",
-      "name": "Gold X2 Mining Inc. Common Shares",
+      "listing_key": "NASDAQ::AMAC",
+      "ticker": "AMAC",
+      "exchange": "NASDAQ",
+      "name": "AMR Resources Acquisition Corp - Class A Ordinary Shares",
       "asset_type": "Stock",
       "stock_sector": "",
       "etf_category": "",
@@ -40,75 +39,65 @@
       "country_code": "",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "apply_target": "coverage_expansion"
+    },
+    {
+      "ticker": "KRSA",
+      "name": "Korsana Biosciences, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "NXAT",
+      "name": "Nexus Advanced Technologies Inc. - Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
     }
   ],
   "skipped": [
     {
-      "ticker": "HQDG",
+      "ticker": "AMACW",
       "exchange": "NASDAQ",
-      "name": "Raub Brock Dividend Growth ETF",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "already_in_listings"
-    },
-    {
-      "ticker": "JONE",
-      "exchange": "NASDAQ",
-      "name": "Jones Ventures INTL Acquisition1 Corp - Class A Ordinary Shares",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "already_in_listings"
-    },
-    {
-      "ticker": "JONER",
-      "exchange": "NASDAQ",
-      "name": "Jones Ventures INTL Acquisition1 Corp - Rights",
+      "name": "AMR Resources Acquisition Corp - Warrants",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "SGRX",
+      "ticker": "CHAD",
       "exchange": "NASDAQ",
-      "name": "SANGRIX INC. - Class A Ordinary Shares",
+      "name": "DeFi Development Corp. - Variable Rate Series C Perpetual Preferred Stock",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
-      "skip_reason": "already_in_listings"
-    },
-    {
-      "ticker": "NMCO.V",
-      "exchange": "NYSE",
-      "name": "Nuveen Municipal Credit Opportunities Fund Rights (expiring October 7, 2026) Rights when issued",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "temporary_when_issued_line"
-    },
-    {
-      "ticker": "RIV.R",
-      "exchange": "NYSE",
-      "name": "RiverNorth Opportunities Fund, Inc. Rights (expiring September 23, 2026) Rights",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "XTND",
-      "exchange": "NYSE",
-      "name": "Xtend AI Robotics, Inc. Common Stock",
+      "ticker": "NXATW",
+      "exchange": "NASDAQ",
+      "name": "Nexus Advanced Technologies Inc. - Warrant",
       "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "already_in_listings"
-    },
-    {
-      "ticker": "PJIN",
-      "exchange": "NYSE ARCA",
-      "name": "PGIM Jennison International Core Equity ETF",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "already_in_listings"
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
     }
   ]
 }

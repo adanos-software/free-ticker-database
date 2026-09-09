@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92036,
-    "after_rows": 92037,
+    "before_rows": 92037,
+    "after_rows": 92040,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 6,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,44 +23,7 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
-    {
-      "listing_key": "HKEX::00948",
-      "field_name": "isin",
-      "old_value": "BMG6847W1064",
-      "new_value": "BMG6847W1148"
-    },
-    {
-      "listing_key": "HKEX::01712",
-      "field_name": "country",
-      "old_value": "Australia",
-      "new_value": "Hong Kong"
-    },
-    {
-      "listing_key": "HKEX::01712",
-      "field_name": "country_code",
-      "old_value": "AU",
-      "new_value": "HK"
-    },
-    {
-      "listing_key": "HKEX::01712",
-      "field_name": "isin",
-      "old_value": "AU0000321754",
-      "new_value": "HK0001353686"
-    },
-    {
-      "listing_key": "HKEX::01777",
-      "field_name": "isin",
-      "old_value": "KYG3311L1041",
-      "new_value": "KYG3311L1124"
-    },
-    {
-      "listing_key": "HKEX::01803",
-      "field_name": "isin",
-      "old_value": "KYG1145Y1026",
-      "new_value": "KYG1145Y1281"
-    }
-  ],
+  "critical_field_changes": [],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -463,7 +426,7 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4745,
-      "after_rows": 4745,
+      "after_rows": 4748,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -534,7 +497,7 @@
     },
     {
       "exchange": "NYSE MKT",
-      "before_rows": 232,
+      "before_rows": 233,
       "after_rows": 233,
       "shrink_pct": 0.0,
       "removed_rows": 0,
