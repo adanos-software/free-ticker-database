@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-09-09T11:27:32Z`
+Generated at: `2026-09-10T11:21:07Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 63,858 |
-| listing_rows | 92,040 |
-| adanos_reference_rows | 63,858 |
-| entry_quality_rows | 92,040 |
+| ticker_rows | 63,867 |
+| listing_rows | 92,051 |
+| adanos_reference_rows | 63,867 |
+| entry_quality_rows | 92,051 |
 | error_gates | 87 |
-| failed_error_gates | 0 |
+| failed_error_gates | 1 |
 | info_gates | 5 |
 
 ## Gates
@@ -88,15 +88,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 2 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 796 |  |
+| expected_missing_primary_isin | info | PASS | 807 |  |
 | missing_stock_sector | info | PASS | 1291 |  |
-| missing_etf_category | info | PASS | 56 |  |
-| source_gap_rows | info | PASS | 11461 |  |
+| missing_etf_category | info | PASS | 67 |  |
+| source_gap_rows | info | PASS | 12354 |  |
 | allowed_warn_rows | info | PASS | 31 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -115,4 +115,9 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### entry_quality_unexpected_warn_count
+
+- Actual: `2`
+- `Euronext::ALNRG`
+- `HKEX::01218`
+

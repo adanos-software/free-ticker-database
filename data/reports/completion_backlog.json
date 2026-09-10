@@ -41,10 +41,10 @@
     {
       "asset_type": "All",
       "confidence_policy": "Broker/API candidates must write audit reports and pass venue, type, name, expected US prefix, numeric-token, and checksum gates before reviewed apply.",
-      "etf_missing_count": 84,
+      "etf_missing_count": 87,
       "exchange": "NYSE ARCA",
       "field": "missing_isin_primary",
-      "missing_count": 84,
+      "missing_count": 87,
       "notes": "Residual US gaps are mostly ETF tails; keep in small batches.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -98,10 +98,10 @@
     {
       "asset_type": "All",
       "confidence_policy": "Broker/API candidates must write audit reports and pass venue, type, name, expected US prefix, numeric-token, and checksum gates before reviewed apply.",
-      "etf_missing_count": 65,
+      "etf_missing_count": 73,
       "exchange": "BATS",
       "field": "missing_isin_primary",
-      "missing_count": 65,
+      "missing_count": 73,
       "notes": "Residual US gaps are mostly ETF tails; keep in small batches.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -915,14 +915,33 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 29,
+      "etf_missing_count": 31,
       "exchange": "NYSE ARCA",
       "field": "missing_etf_category",
-      "missing_count": 29,
+      "missing_count": 31,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 1,
+      "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
+      "reference_scopes": "corporate_action_daily_list|exchange_directory",
+      "review_needed": true,
+      "script": "scripts/backfill_sector_from_isin_peers.py; scripts/backfill_etf_categories_from_names.py",
+      "stock_missing_count": 0,
+      "target_field": "etf_category",
+      "venue_status": "official_full"
+    },
+    {
+      "asset_type": "ETF",
+      "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
+      "etf_missing_count": 13,
+      "exchange": "BATS",
+      "field": "missing_etf_category",
+      "missing_count": 13,
+      "notes": "ETF rows should target etf_category, not stock_sector.",
+      "official_source_count": 2,
+      "priority_bucket": "ranked_by_missing_count",
+      "priority_rank": 2,
       "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
@@ -940,25 +959,6 @@
       "missing_count": 7,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 3,
-      "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 2,
-      "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
-      "reference_scopes": "corporate_action_daily_list|exchange_directory",
-      "review_needed": true,
-      "script": "scripts/backfill_sector_from_isin_peers.py; scripts/backfill_etf_categories_from_names.py",
-      "stock_missing_count": 0,
-      "target_field": "etf_category",
-      "venue_status": "official_full"
-    },
-    {
-      "asset_type": "ETF",
-      "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 6,
-      "exchange": "BATS",
-      "field": "missing_etf_category",
-      "missing_count": 6,
-      "notes": "ETF rows should target etf_category, not stock_sector.",
-      "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 3,
       "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
@@ -1034,12 +1034,12 @@
       "missing_sector_stock": 26
     },
     "field_totals": {
-      "missing_etf_category": 45,
-      "missing_isin_primary": 796,
+      "missing_etf_category": 54,
+      "missing_isin_primary": 807,
       "missing_sector_stock": 1518
     },
-    "generated_at": "2026-09-09T11:26:25Z",
-    "legacy_primary_ticker_collision_rows": 4770,
+    "generated_at": "2026-09-10T11:19:56Z",
+    "legacy_primary_ticker_collision_rows": 4772,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",
@@ -1055,13 +1055,12 @@
     "next_action_gate_totals": {
       "asx_residual_review_blocks_direct_apply": 1,
       "canada_residual_review_blocks_direct_identifier_apply": 2,
-      "openfigi_missing_isin_probe_no_apply_candidates": 1,
       "sec_sic_otc_no_apply_candidates": 1,
-      "source_gap_classification_blocks_direct_apply": 2,
+      "source_gap_classification_blocks_direct_apply": 3,
       "ungated_review_policy": 5
     },
     "next_action_source_gap_class_totals": {
-      "fund_or_trust_identifier_gap": 1,
+      "fund_or_trust_identifier_gap": 2,
       "official_industry_taxonomy_unavailable_gap": 1,
       "otc_sector_source_gap": 1
     },
@@ -1162,10 +1161,10 @@
       {
         "action_rank": 5,
         "confidence_policy": "Exact fund/trust symbol and product name with checksum.",
-        "etf_missing_count": 84,
+        "etf_missing_count": 87,
         "exchange": "NYSE ARCA",
         "field": "missing_isin_primary",
-        "missing_count": 84,
+        "missing_count": 87,
         "official_source_count": 2,
         "openfigi_probe_accepted_isin_updates": 0,
         "openfigi_probe_candidates": 46,
@@ -1180,7 +1179,7 @@
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
         "source_gap_class": "fund_or_trust_identifier_gap",
-        "source_gap_rows": 73,
+        "source_gap_rows": 75,
         "stock_missing_count": 0,
         "target_field": "isin",
         "venue_status": "official_full",
@@ -1230,11 +1229,11 @@
       },
       {
         "action_rank": 8,
-        "confidence_policy": "OpenFIGI no-apply probe evidence keeps the residual explicit; apply only future rows with valid ISIN, ticker, exchange-code, expected-prefix, numeric-token, name, and checksum gates.",
-        "etf_missing_count": 65,
+        "confidence_policy": "Exact fund/trust symbol and product name with checksum.",
+        "etf_missing_count": 73,
         "exchange": "BATS",
         "field": "missing_isin_primary",
-        "missing_count": 65,
+        "missing_count": 73,
         "official_source_count": 2,
         "openfigi_probe_accepted_isin_updates": 0,
         "openfigi_probe_candidates": 21,
@@ -1243,15 +1242,17 @@
           "missing_isin": 17,
           "no_openfigi_match": 4
         },
-        "recommended_source": "Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source.",
-        "residual_gate": "openfigi_missing_isin_probe_no_apply_candidates",
+        "recommended_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+        "residual_gate": "source_gap_classification_blocks_direct_apply",
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
+        "source_gap_class": "fund_or_trust_identifier_gap",
+        "source_gap_rows": 70,
         "stock_missing_count": 0,
         "target_field": "isin",
         "venue_status": "official_full",
-        "why_next": "OpenFIGI no-apply residual review-gated workflow"
+        "why_next": "source-gap classification review-gated workflow"
       },
       {
         "action_rank": 9,
@@ -1322,7 +1323,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 13895,
+    "official_masterfile_collisions": 13891,
     "rows": 54
   }
 }

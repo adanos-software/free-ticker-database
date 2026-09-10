@@ -1,36 +1,38 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-09-09T11:19:40Z`
-- New rows: `45`
-- Vanished rows: `25`
-- Changed rows: `105`
+- Generated at: `2026-09-10T11:12:18Z`
+- New rows: `38`
+- Vanished rows: `1333`
+- Changed rows: `22`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| name_change | 105 |
+| field_change | 1 |
+| isin_change | 2 |
+| name_change | 20 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| bme_security_prices_directory | 3 |
-| bse_india_scrips | 1 |
-| deutsche_boerse_frankfurt_all_tradable_equities | 22 |
-| deutsche_boerse_xetra_all_tradable_equities | 5 |
-| lse_price_explorer | 6 |
-| nasdaq_listed | 6 |
-| psx_dps_symbols | 2 |
+| b3_instruments_equities | 1 |
+| hkex_securities_list | 1 |
+| krx_listed_companies | 1 |
+| nasdaq_other_listed | 12 |
+| nse_india_securities_available | 1 |
+| sec_company_tickers_exchange | 22 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| bme_security_prices_directory | 3 |
-| bse_india_scrips | 1 |
-| deutsche_boerse_frankfurt_all_tradable_equities | 10 |
-| deutsche_boerse_xetra_all_tradable_equities | 1 |
-| lse_price_explorer | 6 |
-| nasdaq_listed | 4 |
+| b3_instruments_equities | 1291 |
+| cboe_canada_listing_directory | 1 |
+| euronext_equities | 2 |
+| hkex_securities_list | 2 |
+| nasdaq_other_listed | 1 |
+| nse_india_securities_available | 5 |
+| sec_company_tickers_exchange | 31 |

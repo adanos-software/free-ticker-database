@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T11:21:08Z",
+  "generated_at": "2026-09-10T11:14:02Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
   "reconciled_rows": 1791,
   "applied_rows": 0,
@@ -199,21 +199,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
       "observation_id": "6d88e52fc1a41ffe5fdb1e08",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "B3::BCTE39",
-      "action": "proposed",
-      "ticker": "BCTE39",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "isin": "BRBCTEBDR005",
-      "old_name": "GLOBAL X CLEANTECH ETF",
-      "new_name": "GLOBAL X CLIMATETECH ETF",
-      "source_key": "b3_instruments_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities",
-      "observation_id": "92c48b285a16dc3148bafe3c",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -12739,6 +12724,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
       "observation_id": "a632cdb4775cc24b875e7c8c",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "HKEX::02490",
+      "action": "proposed",
+      "ticker": "02490",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "isin": "KYG540821132",
+      "old_name": "LC LOGISTICS",
+      "new_name": "LC HOLDING",
+      "source_key": "hkex_securities_list",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "observation_id": "96d8e9b170df7ea0d6fdaccc",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

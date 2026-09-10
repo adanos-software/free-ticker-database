@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-09T11:27:32Z",
+    "generated_at": "2026-09-10T11:21:07Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
-    "ticker_rows": 63858,
-    "listing_rows": 92040,
-    "adanos_reference_rows": 63858,
-    "entry_quality_rows": 92040,
+    "ticker_rows": 63867,
+    "listing_rows": 92051,
+    "adanos_reference_rows": 63867,
+    "entry_quality_rows": 92051,
     "error_gates": 87,
-    "failed_error_gates": 0,
+    "failed_error_gates": 1,
     "info_gates": 5
   },
   "gates": [
@@ -511,9 +511,13 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 2,
+      "limit": 0,
+      "details": [
+        "Euronext::ALNRG",
+        "HKEX::01218"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -547,7 +551,7 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 796,
+      "actual": 807,
       "limit": null
     },
     {
@@ -561,14 +565,14 @@
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 56,
+      "actual": 67,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11461,
+      "actual": 12354,
       "limit": null
     },
     {
