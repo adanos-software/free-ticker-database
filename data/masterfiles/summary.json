@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-09T11:12:44Z",
-  "rows": 169776,
+  "generated_at": "2026-09-10T11:45:00Z",
+  "rows": 169779,
   "exchanges": [
     "ADX",
     "AMS",
@@ -97,7 +97,7 @@
     "b3_listed_etfs": 216,
     "b3_bdr_etfs": 321,
     "b3_instruments_equities": 1294,
-    "nasdaq_other_listed": 7597,
+    "nasdaq_other_listed": 7608,
     "nasdaq_trading_system_adds_deletes": 24,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
@@ -150,8 +150,8 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5591,
-    "sec_company_tickers_exchange": 10170,
+    "nasdaq_listed": 5592,
+    "sec_company_tickers_exchange": 10161,
     "cboe_canada_listing_directory": 444,
     "ngx_company_profile_directory": 130,
     "ngx_equities_price_list": 130,
@@ -224,16 +224,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5591,
-      "generated_at": "2026-09-09T11:12:44Z"
+      "rows": 5592,
+      "generated_at": "2026-09-10T11:45:00Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7597,
-      "generated_at": "2026-09-08T09:30:45Z"
+      "rows": 7608,
+      "generated_at": "2026-09-10T11:45:00Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1324,8 +1324,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 10170,
-      "generated_at": "2026-09-08T09:30:45Z"
+      "rows": 10161,
+      "generated_at": "2026-09-10T11:45:00Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1572,50 +1572,16 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-09-09T11:12:44Z",
+    "generated_at": "2026-09-10T11:45:00Z",
     "selected_source_keys": [
-      "adx_market_watch",
-      "b3_instruments_equities",
-      "bahrain_bourse_listed_companies",
-      "bist_kap_mkk_listed_securities",
-      "bme_security_prices_directory",
-      "bolsa_santiago_instruments",
-      "boursa_kuwait_stocks",
-      "bse_india_scrips",
-      "bvb_shares_directory",
-      "cse_lk_all_security_code",
-      "cse_lk_company_info_summary",
-      "cse_ma_listed_companies",
-      "deutsche_boerse_frankfurt_all_tradable_equities",
-      "deutsche_boerse_xetra_all_tradable_equities",
-      "dfm_listed_securities",
-      "lse_price_explorer",
-      "muscat_securities_companies",
       "nasdaq_listed",
-      "otc_markets_stock_screener",
-      "psx_dps_symbols"
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "adx_market_watch": "network",
-      "b3_instruments_equities": "unavailable",
-      "bahrain_bourse_listed_companies": "network",
-      "bist_kap_mkk_listed_securities": "network",
-      "bme_security_prices_directory": "network",
-      "bolsa_santiago_instruments": "unavailable",
-      "boursa_kuwait_stocks": "network",
-      "bse_india_scrips": "network",
-      "bvb_shares_directory": "network",
-      "cse_lk_all_security_code": "network",
-      "cse_lk_company_info_summary": "network",
-      "cse_ma_listed_companies": "unavailable",
-      "deutsche_boerse_frankfurt_all_tradable_equities": "network",
-      "deutsche_boerse_xetra_all_tradable_equities": "network",
-      "dfm_listed_securities": "network",
-      "lse_price_explorer": "network",
-      "muscat_securities_companies": "network",
       "nasdaq_listed": "network",
-      "otc_markets_stock_screener": "unavailable",
-      "psx_dps_symbols": "network"
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }
