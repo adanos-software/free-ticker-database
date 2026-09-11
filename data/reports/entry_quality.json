@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-09-09T11:26:13Z",
-    "rows": 92040,
+    "generated_at": "2026-09-10T11:49:18Z",
+    "rows": 92054,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,35 +14,35 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80548,
-      "source_gap": 11461,
+      "pass": 80539,
+      "source_gap": 11484,
       "warn": 31
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4581,
-      "official_reference": 82388,
+      "identifier_enriched": 4590,
+      "official_reference": 82393,
       "scoped_source_gap": 238,
       "valid_isin": 4833
     },
     "severity_counts": {
       "high": 6,
       "medium": 26,
-      "source_gap": 11795
+      "source_gap": 11832
     },
     "issue_counts": {
-      "official_reference_gap": 6365,
+      "official_reference_gap": 6374,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1291,
-      "expected_missing_primary_isin": 796,
-      "missing_etf_category": 56,
+      "missing_stock_sector": 1293,
+      "expected_missing_primary_isin": 810,
+      "missing_etf_category": 68,
       "official_name_mismatch": 26,
       "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8482,
-        "source_gap": 3257,
+        "pass": 8481,
+        "source_gap": 3258,
         "warn": 13
       },
       {
@@ -61,8 +61,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 279,
-        "pass": 4465,
+        "source_gap": 287,
+        "pass": 4460,
         "warn": 4
       },
       {
@@ -73,7 +73,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2516,
-        "source_gap": 248,
+        "source_gap": 251,
         "warn": 2
       },
       {
@@ -103,7 +103,7 @@
       {
         "exchange": "BATS",
         "pass": 1211,
-        "source_gap": 162
+        "source_gap": 170
       },
       {
         "exchange": "LSE",
@@ -135,8 +135,8 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1916,
-        "source_gap": 105,
+        "pass": 1913,
+        "source_gap": 108,
         "warn": 4
       },
       {
