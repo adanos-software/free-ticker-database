@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-10T11:46:57Z",
+  "generated_at": "2026-09-11T11:13:03Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1791,
+  "reconciled_rows": 1792,
   "applied_rows": 0,
-  "proposed_rows": 1791,
+  "proposed_rows": 1792,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -12739,6 +12739,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
       "observation_id": "a632cdb4775cc24b875e7c8c",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "HKEX::02490",
+      "action": "proposed",
+      "ticker": "02490",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "isin": "KYG540821132",
+      "old_name": "LC LOGISTICS",
+      "new_name": "LC HOLDING",
+      "source_key": "hkex_securities_list",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "observation_id": "96d8e9b170df7ea0d6fdaccc",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
