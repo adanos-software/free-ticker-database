@@ -3107,6 +3107,42 @@ def empty_refresh_source_counts(
     }
 
 
+# A live parser that returns a handful of rows against a large committed
+# directory is a truncated fetch, not a delisting wave. PR #351 saw
+# b3_instruments_equities drop 1294 → 4 and classified 1291 rows vanished.
+COLLAPSE_PRESERVE_MIN_EXISTING = 100
+COLLAPSE_PRESERVE_MAX_KEPT_RATIO = 0.1
+
+
+def collapsed_refresh_source_counts(
+    existing_rows: Iterable[dict[str, str]],
+    refreshed_rows: Iterable[dict[str, str]],
+    source_keys: Iterable[str],
+) -> dict[str, tuple[int, int]]:
+    """Return selected sources whose live refresh kept under 10% of a large snapshot."""
+    selected_source_keys = set(source_keys)
+    existing_counts: dict[str, int] = {}
+    refreshed_counts: dict[str, int] = {}
+    for row in existing_rows:
+        source_key = row.get("source_key", "")
+        if source_key in selected_source_keys:
+            existing_counts[source_key] = existing_counts.get(source_key, 0) + 1
+    for row in refreshed_rows:
+        source_key = row.get("source_key", "")
+        if source_key in selected_source_keys:
+            refreshed_counts[source_key] = refreshed_counts.get(source_key, 0) + 1
+    collapsed: dict[str, tuple[int, int]] = {}
+    for source_key, existing_count in existing_counts.items():
+        refreshed_count = refreshed_counts.get(source_key, 0)
+        if (
+            existing_count >= COLLAPSE_PRESERVE_MIN_EXISTING
+            and refreshed_count > 0
+            and refreshed_count < existing_count * COLLAPSE_PRESERVE_MAX_KEPT_RATIO
+        ):
+            collapsed[source_key] = (existing_count, refreshed_count)
+    return collapsed
+
+
 def cache_fallback_source_keys(
     source_modes: dict[str, str],
     selected_source_keys: Iterable[str],
@@ -19813,6 +19849,22 @@ def main(argv: list[str] | None = None) -> None:
                 {
                     "source_key": source_key,
                     "error": f"Empty refresh result; preserved {existing_count} existing rows",
+                }
+            )
+        collapsed_source_counts = collapsed_refresh_source_counts(
+            existing_rows, rows, selected_source_keys
+        )
+        for source_key, (existing_count, refreshed_count) in collapsed_source_counts.items():
+            summary.setdefault("source_modes", {})[source_key] = "unavailable"
+            if source_key in cache_source_keys or source_key in empty_source_counts:
+                continue
+            summary.setdefault("errors", []).append(
+                {
+                    "source_key": source_key,
+                    "error": (
+                        f"Collapsed refresh {refreshed_count}/{existing_count} rows; "
+                        f"preserved {existing_count} existing rows"
+                    ),
                 }
             )
         unavailable_source_keys = {
