@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-09-10T11:09:54Z",
-  "rows": 168481,
+  "rows": 169772,
   "exchanges": [
     "ADX",
     "AMS",
@@ -96,7 +96,7 @@
     "athex_sector_classification": 126,
     "b3_listed_etfs": 216,
     "b3_bdr_etfs": 321,
-    "b3_instruments_equities": 4,
+    "b3_instruments_equities": 1295,
     "nasdaq_other_listed": 7608,
     "nasdaq_trading_system_adds_deletes": 24,
     "byma_equity_details": 92,
@@ -1372,7 +1372,7 @@
     "six_shares_explorer_full": "unavailable",
     "six_etf_products": "network",
     "six_etp_products": "network",
-    "b3_instruments_equities": "network",
+    "b3_instruments_equities": "cache",
     "b3_listed_etfs": "network",
     "b3_bdr_etfs": "network",
     "jse_etf_list": "network",
@@ -1564,6 +1564,10 @@
     {
       "source_key": "tase_participating_unit_search",
       "error": "Empty refresh result; preserved 16 existing rows"
+    },
+    {
+      "source_key": "b3_instruments_equities",
+      "error": "Partial refresh collapsed 1294\u21924 rows; preserved last committed directory plus VGRH11"
     }
   ],
   "last_refresh": {
