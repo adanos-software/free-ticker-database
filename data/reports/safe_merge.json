@@ -6,26 +6,46 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92040,
-    "after_rows": 92054,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "before_rows": 92054,
+    "after_rows": 92053,
+    "overall_shrink_pct": 0.001086,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::AIHS"
+  ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NASDAQ::AIHS",
+      "ticker": "AIHS",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Senmiao Technology Ltd",
+      "new_value": "",
+      "before_row_sha256": "982e8351968008cf271056797122ba8fe55e72e4f006168a3b108d00961167f1",
+      "effective_at": "",
+      "observed_at": "2026-09-11T11:19:39Z",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "43bdd30a0551e672c338744f",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -74,7 +94,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1373,
+      "before_rows": 1381,
       "after_rows": 1381,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -425,10 +445,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4748,
-      "after_rows": 4751,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "before_rows": 4751,
+      "after_rows": 4750,
+      "shrink_pct": 0.021048,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -488,7 +508,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2766,
+      "before_rows": 2769,
       "after_rows": 2769,
       "shrink_pct": 0.0,
       "removed_rows": 0,

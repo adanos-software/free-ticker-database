@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-09-10T11:49:31Z",
-    "rows": 8759,
+    "generated_at": "2026-09-11T11:22:03Z",
+    "rows": 8758,
     "field_totals": {
       "missing_etf_category": 55,
       "missing_isin_primary": 810,
       "missing_sector_stock": 1520,
-      "official_reference_gap": 6374
+      "official_reference_gap": 6373
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -27,7 +27,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 42,
       "official_reference_symbol_collision_gap": 1067,
-      "official_reference_unmatched_source_gap": 5307,
+      "official_reference_unmatched_source_gap": 5306,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 38
     },
@@ -52,7 +52,7 @@
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 38,
       "official_reference_gap:official_reference_symbol_collision_gap": 1067,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5307
+      "official_reference_gap:official_reference_unmatched_source_gap": 5306
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -184,7 +184,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 186
+          "rows": 185
         },
         {
           "exchange": "NYSE ARCA",
@@ -285,7 +285,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NASDAQ",
-        "rows": 128,
+        "rows": 127,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -76176,23 +76176,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=NASDAQ::AFBI;exchange=NASDAQ;ticker=AFBI;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NASDAQ::AIHS",
-      "ticker": "AIHS",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Senmiao Technology Ltd",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=NASDAQ::AIHS;exchange=NASDAQ;ticker=AIHS;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
