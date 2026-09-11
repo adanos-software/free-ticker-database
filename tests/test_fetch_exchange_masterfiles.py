@@ -207,6 +207,7 @@ from scripts.fetch_exchange_masterfiles import (
     merge_summary_errors,
     merge_reference_rows,
     cache_fallback_source_keys,
+    collapsed_refresh_source_counts,
     drop_selected_source_rows,
     dedupe_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
@@ -16222,6 +16223,32 @@ def test_merge_reference_rows_preserves_selected_source_when_refresh_is_empty() 
     )
 
     assert merged == [existing_row]
+
+
+def test_collapsed_refresh_source_counts_flags_truncated_large_directory() -> None:
+    existing = [
+        {"source_key": "b3_instruments_equities", "ticker": f"T{i}"}
+        for i in range(1294)
+    ]
+    refreshed = [
+        {"source_key": "b3_instruments_equities", "ticker": "AALR3"},
+        {"source_key": "b3_instruments_equities", "ticker": "ABCB4"},
+        {"source_key": "b3_instruments_equities", "ticker": "VGRH11"},
+        {"source_key": "b3_instruments_equities", "ticker": "PETR4"},
+        {"source_key": "nasdaq_other_listed", "ticker": "DICE"},
+    ]
+    collapsed = collapsed_refresh_source_counts(
+        existing + [{"source_key": "nasdaq_other_listed", "ticker": "OLD"}],
+        refreshed,
+        {"b3_instruments_equities", "nasdaq_other_listed"},
+    )
+    assert collapsed == {"b3_instruments_equities": (1294, 4)}
+
+
+def test_collapsed_refresh_source_counts_ignores_modest_shrinks() -> None:
+    existing = [{"source_key": "src", "ticker": f"T{i}"} for i in range(200)]
+    refreshed = [{"source_key": "src", "ticker": f"T{i}"} for i in range(80)]
+    assert collapsed_refresh_source_counts(existing, refreshed, {"src"}) == {}
 
 
 def test_main_marks_empty_partial_refresh_unavailable_and_preserves_rows(tmp_path, monkeypatch) -> None:
