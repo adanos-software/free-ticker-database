@@ -6,9 +6,9 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92054,
-    "after_rows": 92053,
-    "overall_shrink_pct": 0.001086,
+    "before_rows": 92053,
+    "after_rows": 92062,
+    "overall_shrink_pct": 0.0,
     "removed_rows": 1,
     "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
@@ -16,36 +16,38 @@
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_official_change_evidence_rows": 1,
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [
-    "NASDAQ::AIHS"
+    "NYSE MKT::PHGE"
   ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
+  "generated_official_change_evidence": [
     {
-      "listing_key": "NASDAQ::AIHS",
-      "ticker": "AIHS",
-      "exchange": "NASDAQ",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "Senmiao Technology Ltd",
-      "new_value": "",
-      "before_row_sha256": "982e8351968008cf271056797122ba8fe55e72e4f006168a3b108d00961167f1",
+      "listing_key": "NYSE MKT::PHGE",
+      "ticker": "PHGE",
+      "exchange": "NYSE MKT",
+      "event_type": "venue_reconciled",
+      "field_name": "exchange",
+      "old_value": "NYSE MKT",
+      "new_value": "NYSE",
+      "before_row_sha256": "18c1fcbae768a74077586ab06d554c3775e0d34a76111295f74e75fcd5516714",
       "effective_at": "",
-      "observed_at": "2026-09-11T11:19:39Z",
-      "source_key": "stockanalysis_symbol_changes",
-      "source_url": "https://stockanalysis.com/actions/changes/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "43bdd30a0551e672c338744f",
-      "evidence_status": "reviewed"
+      "observed_at": "2026-09-11T11:46:59Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "e4605ac1e20e31efa5b22bd8",
+      "evidence_status": "official"
     }
   ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -95,7 +97,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1381,
-      "after_rows": 1381,
+      "after_rows": 1382,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -445,10 +447,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4751,
-      "after_rows": 4750,
-      "shrink_pct": 0.021048,
-      "removed_rows": 1,
+      "before_rows": 4750,
+      "after_rows": 4757,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -500,7 +502,7 @@
     {
       "exchange": "NYSE",
       "before_rows": 2025,
-      "after_rows": 2025,
+      "after_rows": 2026,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -520,7 +522,7 @@
       "before_rows": 233,
       "after_rows": 233,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
