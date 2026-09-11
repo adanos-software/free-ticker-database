@@ -1,8 +1,8 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-09-10T11:45:10Z`
-- New supported rows: `16`
-- Accepted rows: `14`
+- Generated at: `2026-09-11T11:45:14Z`
+- New supported rows: `11`
+- Accepted rows: `9`
 - Skipped rows: `2`
 - Supported asset types: `ETF, Stock`
 
@@ -10,24 +10,19 @@
 
 | Ticker | Exchange | Name | Asset type | Target | Source |
 |---|---|---|---|---|---|
-| DICE | BATS | Tema Trading & Prediction Markets ETF | ETF | supplement | nasdaq_other_listed |
-| KATT | BATS | T-REX 2X Long PURR Daily Target ETF | ETF | supplement | nasdaq_other_listed |
-| TRXS | BATS | Canary Staked TRX ETF | ETF | coverage_expansion | nasdaq_other_listed |
-| VEGX | BATS | International Vegan Climate ETF | ETF | supplement | nasdaq_other_listed |
-| XLCD | BATS | MicroSectors -3x Short Communication Services (XLC) ETNs | ETF | supplement | nasdaq_other_listed |
-| XLCU | BATS | MicroSectors 3x Long Communication Services (XLC) ETNs | ETF | supplement | nasdaq_other_listed |
-| XLPD | BATS | MicroSectors -3x Short Consumer Staples (XLP) ETNs | ETF | supplement | nasdaq_other_listed |
-| XLPU | BATS | MicroSectors 3x Long Consumer Staples (XLP) ETNs | ETF | supplement | nasdaq_other_listed |
-| ATTT | NASDAQ | Atlas Trinity Tech Limited - Ordinary Shares | Stock | supplement | nasdaq_listed |
-| CCML | NASDAQ | Roundhill MLCC & Electronic Components ETF | ETF | supplement | nasdaq_listed |
-| EOCN | NASDAQ | Eocene Ltd. - Ordinary Shares | Stock | supplement | nasdaq_listed |
-| MFSD | NYSE ARCA | MFS Active Short Duration Income ETF | ETF | supplement | nasdaq_other_listed |
-| MFSX | NYSE ARCA | MFS Active Short Muni Bond ETF | ETF | supplement | nasdaq_other_listed |
-| NRAM | NYSE ARCA | Yorkville America Next Generation Memory Index ETF | ETF | coverage_expansion | nasdaq_other_listed |
+| MLCC | BATS | Global X MLCC & Electronic Components ETF | ETF | supplement | nasdaq_other_listed |
+| ACBE | NASDAQ | Pacer Metaurus Enhanced Core Income Autocallable ETF | ETF | supplement | nasdaq_listed |
+| ACBH | NASDAQ | Pacer Metaurus High Income Autocallable ETF | ETF | supplement | nasdaq_listed |
+| AIFR | NASDAQ | Defiance Global Foundries ETF | ETF | supplement | nasdaq_listed |
+| AIMG | NASDAQ | Defiance AI Magnificent 10 ETF | ETF | supplement | nasdaq_listed |
+| BRTM | NASDAQ | B&R Technology Merger Corp. - Class A Ordinary Shares | Stock | supplement | nasdaq_listed |
+| CRAM | NASDAQ | Defiance China Memory ETF | ETF | supplement | nasdaq_listed |
+| VEEM | NASDAQ | VanEck MSCI EM Analyst Sentiment ETF | ETF | supplement | nasdaq_listed |
+| HLSQ | NYSE MKT | Tessera Defense and Homeland Security Inc. Common Stock | Stock | supplement | nasdaq_other_listed |
 
 ## Skipped
 
 | Reason | Rows |
 |---|---:|
 | excluded_non_common_stock | 1 |
-| not_stock_like_name | 1 |
+| reviewed_drop_entry | 1 |

@@ -9,27 +9,27 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 61,747 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,869 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 92,053 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,771 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 16,098 | Primary ticker rows where `asset_type=ETF`. |
+| Core listings | 61,756 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 63,878 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 92,062 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 47,773 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 16,105 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 125,547 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| Aliases | 125,556 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 62,516 (97.9%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 65,329 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
 | Sector/category coverage | 62,294 (97.5%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 46,251 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,043 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 61,747 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core listing-scope rows | 61,756 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 60,937 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 810 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Core primary rows missing ISIN | 819 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 30,306 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 49 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 5 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 11,483 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality source-gap rows | 11,492 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
 | Entry quality warn rows | 31 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
@@ -200,7 +200,7 @@ Top exchanges by primary ticker count:
 | Exchange | Tickers |
 |---|---:|
 | OTC | 6,894 |
-| NASDAQ | 4,594 |
+| NASDAQ | 4,601 |
 | LSE | 3,559 |
 | TSE | 3,201 |
 | SZSE | 3,111 |
@@ -210,7 +210,7 @@ Top exchanges by primary ticker count:
 | NYSE ARCA | 2,676 |
 | NSE_IN | 2,379 |
 | XETRA | 2,237 |
-| NYSE | 1,883 |
+| NYSE | 1,884 |
 | KRX | 1,990 |
 | TSX | 1,684 |
 | KOSDAQ | 1,603 |
