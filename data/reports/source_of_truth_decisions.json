@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-09-10T11:49:32Z",
-    "rows": 8759,
+    "generated_at": "2026-09-11T11:22:03Z",
+    "rows": 8758,
     "outcome_totals": {
       "accepted_source_gap": 5944,
       "core_exclusion_candidate": 554,
-      "official_fill_required": 2261
+      "official_fill_required": 2260
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -26,7 +26,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 42,
       "official_reference_symbol_collision_gap": 1067,
-      "official_reference_unmatched_source_gap": 5307,
+      "official_reference_unmatched_source_gap": 5306,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 38
     },
@@ -38,7 +38,7 @@
       "missing_sector_stock:core_exclusion_candidate": 59,
       "missing_sector_stock:official_fill_required": 63,
       "official_reference_gap:accepted_source_gap": 4176,
-      "official_reference_gap:official_fill_required": 2198
+      "official_reference_gap:official_fill_required": 2197
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -135358,23 +135358,6 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Affinity Bancshares Inc",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NASDAQ::AIHS",
-      "ticker": "AIHS",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Senmiao Technology Ltd",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
