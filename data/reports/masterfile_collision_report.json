@@ -2,8 +2,8 @@
   "global": {
     "official_symbols": 99635,
     "matched": 65169,
-    "collisions": 13895,
-    "missing": 20571
+    "collisions": 13897,
+    "missing": 20569
   },
   "exchanges": [
     {
@@ -3024,9 +3024,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5617,
-      "matched": 4573,
+      "matched": 4574,
       "collisions": 64,
-      "missing": 980,
+      "missing": 979,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3620,9 +3620,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3886,
-      "matched": 1981,
-      "collisions": 564,
-      "missing": 1341,
+      "matched": 1980,
+      "collisions": 566,
+      "missing": 1340,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3689,15 +3689,6 @@
           ]
         },
         {
-          "ticker": "AEMC",
-          "name": "C2 Blockchain, Inc.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE ARCA",
-            "TSXV"
-          ]
-        },
-        {
           "ticker": "AEON",
           "name": "AEON Biopharma, Inc.",
           "target_exchange": "NYSE",
@@ -3711,6 +3702,14 @@
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "ASX"
+          ]
+        },
+        {
+          "ticker": "AGIG",
+          "name": "ABUNDIA GLOBAL IMPACT GROUP, INC.",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "NYSE MKT"
           ]
         }
       ],

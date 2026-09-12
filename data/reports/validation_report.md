@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-09-11T11:50:39Z`
+Generated at: `2026-09-12T11:18:06Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 63,878 |
-| listing_rows | 92,062 |
-| adanos_reference_rows | 63,878 |
-| entry_quality_rows | 92,062 |
+| ticker_rows | 63,880 |
+| listing_rows | 92,064 |
+| adanos_reference_rows | 63,880 |
+| entry_quality_rows | 92,064 |
 | error_gates | 87 |
-| failed_error_gates | 0 |
+| failed_error_gates | 1 |
 | info_gates | 5 |
 
 ## Gates
@@ -88,15 +88,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 3 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 819 |  |
-| missing_stock_sector | info | PASS | 1295 |  |
-| missing_etf_category | info | PASS | 75 |  |
-| source_gap_rows | info | PASS | 11492 |  |
+| expected_missing_primary_isin | info | PASS | 821 |  |
+| missing_stock_sector | info | PASS | 1296 |  |
+| missing_etf_category | info | PASS | 76 |  |
+| source_gap_rows | info | PASS | 11497 |  |
 | allowed_warn_rows | info | PASS | 31 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -115,4 +115,10 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### entry_quality_unexpected_warn_count
+
+- Actual: `3`
+- `NASDAQ::CYCN`
+- `NASDAQ::PMA`
+- `NASDAQ::YYGH`
+
