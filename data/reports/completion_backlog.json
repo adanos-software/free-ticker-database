@@ -41,7 +41,7 @@
     {
       "asset_type": "All",
       "confidence_policy": "Broker/API candidates must write audit reports and pass venue, type, name, expected US prefix, numeric-token, and checksum gates before reviewed apply.",
-      "etf_missing_count": 32,
+      "etf_missing_count": 33,
       "exchange": "NASDAQ",
       "field": "missing_isin_primary",
       "missing_count": 87,
@@ -53,7 +53,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-      "stock_missing_count": 55,
+      "stock_missing_count": 54,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -462,7 +462,7 @@
       "etf_missing_count": 0,
       "exchange": "NASDAQ",
       "field": "missing_sector_stock",
-      "missing_count": 50,
+      "missing_count": 51,
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -471,7 +471,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 50,
+      "stock_missing_count": 51,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -934,12 +934,12 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 14,
-      "exchange": "BATS",
+      "etf_missing_count": 15,
+      "exchange": "NASDAQ",
       "field": "missing_etf_category",
-      "missing_count": 14,
+      "missing_count": 15,
       "notes": "ETF rows should target etf_category, not stock_sector.",
-      "official_source_count": 2,
+      "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 2,
       "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
@@ -954,11 +954,11 @@
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
       "etf_missing_count": 14,
-      "exchange": "NASDAQ",
+      "exchange": "BATS",
       "field": "missing_etf_category",
       "missing_count": 14,
       "notes": "ETF rows should target etf_category, not stock_sector.",
-      "official_source_count": 3,
+      "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 3,
       "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
@@ -1034,11 +1034,11 @@
       "missing_sector_stock": 26
     },
     "field_totals": {
-      "missing_etf_category": 62,
+      "missing_etf_category": 63,
       "missing_isin_primary": 819,
-      "missing_sector_stock": 1522
+      "missing_sector_stock": 1523
     },
-    "generated_at": "2026-09-11T11:49:28Z",
+    "generated_at": "2026-09-13T06:28:56Z",
     "legacy_primary_ticker_collision_rows": 4772,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1161,7 +1161,7 @@
       {
         "action_rank": 5,
         "confidence_policy": "Broker/API candidates must write audit reports and pass venue, type, name, expected US prefix, numeric-token, and checksum gates before reviewed apply.",
-        "etf_missing_count": 32,
+        "etf_missing_count": 33,
         "exchange": "NASDAQ",
         "field": "missing_isin_primary",
         "missing_count": 87,
@@ -1170,7 +1170,7 @@
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-        "stock_missing_count": 55,
+        "stock_missing_count": 54,
         "target_field": "isin",
         "venue_status": "official_full",
         "why_next": "highest remaining missing-count workflow"
@@ -1294,13 +1294,13 @@
         "etf_missing_count": 0,
         "exchange": "NASDAQ",
         "field": "missing_sector_stock",
-        "missing_count": 50,
+        "missing_count": 51,
         "official_source_count": 3,
         "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-        "stock_missing_count": 50,
+        "stock_missing_count": 51,
         "target_field": "stock_sector",
         "venue_status": "official_full",
         "why_next": "highest remaining missing-count workflow"
@@ -1323,7 +1323,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 13895,
+    "official_masterfile_collisions": 13897,
     "rows": 54
   }
 }

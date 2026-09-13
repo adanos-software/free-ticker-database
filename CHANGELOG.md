@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Reviewed Nasdaq identity events that blocked #356 automerge: drop predecessor `NASDAQ::CYCN` after the Korsana merger (successor `NASDAQ::KRSA`, post-split ISIN `US23255M3034`), move `NASDAQ::YYGH` to `NASDAQ::YFOR` with unchanged ISIN `VGG9888Q1110`, and rename `NASDAQ::PMA` to PMA Graphene Technology Group (same CUSIP/ISIN). Accepted `GEMQ` and `OCLT`; rights/warrants stay excluded.
+
 ### Fixed
 
 - Rebuild now strips leading/trailing whitespace (including NBSP and tabs) from security names, and validation fails closed on untrimmed names in `tickers.csv`, `listings.csv`, and `core_listings.csv`. The safe-merge gate treats whitespace-only name diffs as non-critical, matching row fingerprints.
