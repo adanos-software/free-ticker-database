@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99635,
-    "matched": 65167,
-    "collisions": 13897,
-    "missing": 20571
+    "official_symbols": 99687,
+    "matched": 65166,
+    "collisions": 13893,
+    "missing": 20628
   },
   "exchanges": [
     {
@@ -137,8 +137,8 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 610,
-      "matched": 374,
+      "official_symbols": 609,
+      "matched": 373,
       "collisions": 178,
       "missing": 58,
       "collision_examples": [
@@ -278,15 +278,20 @@
     },
     {
       "exchange": "B3",
-      "official_symbols": 1294,
-      "matched": 1212,
+      "official_symbols": 1353,
+      "matched": 1220,
       "collisions": 0,
-      "missing": 82,
+      "missing": 133,
       "collision_examples": [],
       "missing_examples": [
         {
           "ticker": "ABTC11",
           "name": "BTG PACTUAL TEVA AUVP BITCOIN FEAR ARB FDO DE IND",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AGGX11",
+          "name": "TREND ETF BLOOMBERG AGG US BONDS CL DE \u00cdND RL",
           "exchange": "B3"
         },
         {
@@ -310,6 +315,16 @@
           "exchange": "B3"
         },
         {
+          "ticker": "AXIA15",
+          "name": "AXIA ENERGIA S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AZPE11",
+          "name": "AZ QUEST PANORAMA CR\u00c9DITO ESTRUTURADO FII RESP LTD",
+          "exchange": "B3"
+        },
+        {
           "ticker": "AZUL3",
           "name": "AZUL S.A.",
           "exchange": "B3"
@@ -317,21 +332,6 @@
         {
           "ticker": "AZUL97",
           "name": "AZUL S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "AZUL98",
-          "name": "AZUL S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "AZUL99",
-          "name": "AZUL S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BAOM39",
-          "name": "ISHARES CORE 40/60 MODERATE ALLOCATION ETF",
           "exchange": "B3"
         }
       ]
@@ -1253,9 +1253,9 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2909,
+      "official_symbols": 2907,
       "matched": 250,
-      "collisions": 1858,
+      "collisions": 1856,
       "missing": 801,
       "collision_examples": [
         {
@@ -1747,10 +1747,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2015,
+      "official_symbols": 2016,
       "matched": 1337,
       "collisions": 364,
-      "missing": 314,
+      "missing": 315,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -2030,10 +2030,10 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3206,
-      "matched": 3039,
+      "official_symbols": 3207,
+      "matched": 3038,
       "collisions": 70,
-      "missing": 97,
+      "missing": 99,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -2546,9 +2546,9 @@
     {
       "exchange": "KOSDAQ",
       "official_symbols": 1819,
-      "matched": 1593,
+      "matched": 1592,
       "collisions": 3,
-      "missing": 223,
+      "missing": 224,
       "collision_examples": [
         {
           "ticker": "002230",
@@ -3166,8 +3166,8 @@
     },
     {
       "exchange": "NEO",
-      "official_symbols": 444,
-      "matched": 211,
+      "official_symbols": 443,
+      "matched": 210,
       "collisions": 66,
       "missing": 167,
       "collision_examples": [
@@ -3328,10 +3328,10 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 3488,
-      "matched": 2488,
-      "collisions": 462,
-      "missing": 538,
+      "official_symbols": 3485,
+      "matched": 2485,
+      "collisions": 460,
+      "missing": 540,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -4425,10 +4425,10 @@
     },
     {
       "exchange": "PSE",
-      "official_symbols": 384,
+      "official_symbols": 385,
       "matched": 154,
       "collisions": 119,
-      "missing": 111,
+      "missing": 112,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -4770,10 +4770,10 @@
     },
     {
       "exchange": "SET",
-      "official_symbols": 945,
-      "matched": 774,
+      "official_symbols": 942,
+      "matched": 772,
       "collisions": 133,
-      "missing": 38,
+      "missing": 37,
       "collision_examples": [
         {
           "ticker": "AAI",
