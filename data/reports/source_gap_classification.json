@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-09-12T11:16:56Z",
-    "rows": 8783,
+    "generated_at": "2026-09-13T06:27:02Z",
+    "rows": 8781,
     "field_totals": {
       "missing_etf_category": 63,
-      "missing_isin_primary": 821,
+      "missing_isin_primary": 819,
       "missing_sector_stock": 1523,
       "official_reference_gap": 6376
     },
@@ -22,7 +22,7 @@
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 308,
+      "official_identifier_not_exposed_source_gap": 306,
       "official_identifier_reference_unmatched_gap": 8,
       "official_industry_taxonomy_unavailable_gap": 846,
       "official_product_reference_unmatched_category_gap": 1,
@@ -45,7 +45,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 317,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 22,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 308,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 306,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 8,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
       "missing_sector_stock:exchange_industry_source_gap": 63,
@@ -94,7 +94,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 89
+          "rows": 87
         },
         {
           "exchange": "NYSE ARCA",
@@ -6909,23 +6909,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::KRSA",
-      "ticker": "KRSA",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Korsana Biosciences, Inc. - Common Stock",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::KRSA;exchange=NASDAQ;ticker=KRSA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::MEDP",
       "ticker": "MEDP",
       "exchange": "NASDAQ",
@@ -7430,23 +7413,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::XTER;exchange=NASDAQ;ticker=XTER;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::YFOR",
-      "ticker": "YFOR",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "YYForce Inc. - Class A Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::YFOR;exchange=NASDAQ;ticker=YFOR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },

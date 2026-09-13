@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-09-12T11:16:43Z",
-    "rows": 92064,
+    "generated_at": "2026-09-13T06:27:01Z",
+    "rows": 92062,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,28 +14,28 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80533,
+      "pass": 80534,
       "source_gap": 11497,
-      "warn": 34
+      "warn": 31
     },
     "evidence_level_counts": {
       "identifier_enriched": 4592,
-      "official_reference": 82401,
+      "official_reference": 82399,
       "scoped_source_gap": 238,
       "valid_isin": 4833
     },
     "severity_counts": {
       "high": 6,
-      "medium": 29,
-      "source_gap": 11856
+      "medium": 26,
+      "source_gap": 11854
     },
     "issue_counts": {
       "official_reference_gap": 6376,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1296,
-      "expected_missing_primary_isin": 821,
+      "expected_missing_primary_isin": 819,
       "missing_etf_category": 76,
-      "official_name_mismatch": 29,
+      "official_name_mismatch": 26,
       "official_isin_mismatch": 6
     },
     "top_flagged_exchanges": [
@@ -62,8 +62,8 @@
       {
         "exchange": "NASDAQ",
         "source_gap": 297,
-        "pass": 4455,
-        "warn": 7
+        "pass": 4456,
+        "warn": 4
       },
       {
         "exchange": "BMV",

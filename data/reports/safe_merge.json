@@ -6,26 +6,146 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92062,
-    "after_rows": 92064,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "before_rows": 92064,
+    "after_rows": 92062,
+    "overall_shrink_pct": 0.002172,
+    "removed_rows": 2,
+    "evidenced_removed_rows": 2,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 5,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 5
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::CYCN",
+    "NASDAQ::YYGH"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "NASDAQ::KRSA",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US23255M3034"
+    },
+    {
+      "listing_key": "NASDAQ::PMA",
+      "field_name": "name",
+      "old_value": "Ming Shing Group Holdings Limited Ordinary Shares",
+      "new_value": "PMA Graphene Technology Group Inc. - Class A Ordinary Shares"
+    },
+    {
+      "listing_key": "NASDAQ::YFOR",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "British Virgin Islands"
+    },
+    {
+      "listing_key": "NASDAQ::YFOR",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "VG"
+    },
+    {
+      "listing_key": "NASDAQ::YFOR",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "VGG9888Q1110"
+    }
+  ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NASDAQ::CYCN",
+      "ticker": "CYCN",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Cyclerion Therapeutics Inc",
+      "new_value": "",
+      "before_row_sha256": "5d2a6ba229fef3c41674205fa380dcaf399cd6a6a942531c3f5b1b27ff6d1a45",
+      "effective_at": "",
+      "observed_at": "2026-09-13T06:26:46Z",
+      "source_key": "sec_8k_name_symbol_change",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1755237/000119312526389318/0001193125-26-389318.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "4229bc8bbd41e1ea96535e2d",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::YYGH",
+      "ticker": "YYGH",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "YYGH",
+      "new_value": "YFOR",
+      "before_row_sha256": "21bd8c35b62a15fb727ce7a2003eb226f91efab18172addc99429a1588cb6ae9",
+      "effective_at": "",
+      "observed_at": "2026-09-13T06:26:46Z",
+      "source_key": "issuer_name_symbol_change",
+      "source_url": "https://www.prnewswire.com/news-releases/yy-group-enters-new-era-as-yyforce-expanding-ai-automation-and-human-robot-workforce-strategy-nasdaq-ticker-changes-to-yfor-302865108.html",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "0a52834367bada2833a3a1ac",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::YFOR",
+      "ticker": "YFOR",
+      "exchange": "NASDAQ",
+      "event_type": "identifier_changed",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "VGG9888Q1110",
+      "before_row_sha256": "5ff3fb0429f6a9cf91d1d4c21246877208b3aaf2919e291e532c81b28ce87b3e",
+      "effective_at": "",
+      "observed_at": "2026-09-13T06:26:46Z",
+      "source_key": "issuer_name_symbol_change",
+      "source_url": "https://www.prnewswire.com/news-releases/yy-group-enters-new-era-as-yyforce-expanding-ai-automation-and-human-robot-workforce-strategy-nasdaq-ticker-changes-to-yfor-302865108.html",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "786cacd2835ae6540329fba4",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::YFOR",
+      "ticker": "YFOR",
+      "exchange": "NASDAQ",
+      "event_type": "country_changed",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "British Virgin Islands",
+      "before_row_sha256": "5ff3fb0429f6a9cf91d1d4c21246877208b3aaf2919e291e532c81b28ce87b3e",
+      "effective_at": "",
+      "observed_at": "2026-09-13T06:26:46Z",
+      "source_key": "issuer_name_symbol_change",
+      "source_url": "https://www.prnewswire.com/news-releases/yy-group-enters-new-era-as-yyforce-expanding-ai-automation-and-human-robot-workforce-strategy-nasdaq-ticker-changes-to-yfor-302865108.html",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "dea2661bf7c30e9d60f89dc7",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::YFOR",
+      "ticker": "YFOR",
+      "exchange": "NASDAQ",
+      "event_type": "country_changed",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "VG",
+      "before_row_sha256": "5ff3fb0429f6a9cf91d1d4c21246877208b3aaf2919e291e532c81b28ce87b3e",
+      "effective_at": "",
+      "observed_at": "2026-09-13T06:26:46Z",
+      "source_key": "issuer_name_symbol_change",
+      "source_url": "https://www.prnewswire.com/news-releases/yy-group-enters-new-era-as-yyforce-expanding-ai-automation-and-human-robot-workforce-strategy-nasdaq-ticker-changes-to-yfor-302865108.html",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "b5e450e0b54a207537472534",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -425,10 +545,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4757,
-      "after_rows": 4759,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "before_rows": 4759,
+      "after_rows": 4757,
+      "shrink_pct": 0.042026,
+      "removed_rows": 2,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },

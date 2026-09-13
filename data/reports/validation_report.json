@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-12T11:18:06Z",
+    "generated_at": "2026-09-13T06:27:43Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": false,
+  "passed": true,
   "summary": {
-    "ticker_rows": 63880,
-    "listing_rows": 92064,
-    "adanos_reference_rows": 63880,
-    "entry_quality_rows": 92064,
+    "ticker_rows": 63878,
+    "listing_rows": 92062,
+    "adanos_reference_rows": 63878,
+    "entry_quality_rows": 92062,
     "error_gates": 87,
-    "failed_error_gates": 1,
+    "failed_error_gates": 0,
     "info_gates": 5
   },
   "gates": [
@@ -511,14 +511,9 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": false,
-      "actual": 3,
-      "limit": 0,
-      "details": [
-        "NASDAQ::CYCN",
-        "NASDAQ::PMA",
-        "NASDAQ::YYGH"
-      ]
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "adanos_alias_findings",
@@ -552,7 +547,7 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 821,
+      "actual": 819,
       "limit": null
     },
     {
