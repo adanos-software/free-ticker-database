@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-09-11T11:17:50Z",
+    "generated_at": "2026-09-13T11:48:36Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
@@ -8,9 +8,9 @@
     "dropped_predecessor_rows": 1,
     "blocked_rows": 343,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 13,
+      "blocked_new_symbol_collision": 11,
       "blocked_new_symbol_not_active_in_official_master": 1,
-      "blocked_old_symbol_not_unique_in_us_scope": 276,
+      "blocked_old_symbol_not_unique_in_us_scope": 278,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 46,
       "manual_successor_exists_missing_isin": 2,
@@ -20,16 +20,16 @@
   "accepted": [],
   "dropped_predecessors": [
     {
-      "change_id": "eda9ab8030099ef1",
-      "effective_date": "2026-08-27",
-      "old_symbol": "AIHS",
-      "new_symbol": "VAI",
-      "new_company_name": "Valor Energy Inc",
+      "change_id": "0fdd935aadd2a0ab",
+      "effective_date": "2026-08-31",
+      "old_symbol": "AREN",
+      "new_symbol": "PAAI",
+      "new_company_name": "Arena Group Holdings Inc",
       "status": "apply_drop_predecessor",
-      "exchange": "NASDAQ",
-      "old_listing_key": "NASDAQ::AIHS",
-      "new_listing_key": "NASDAQ::VAI",
-      "isin": "US8172252046",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::AREN",
+      "new_listing_key": "NYSE::PAAI",
+      "isin": "US0400441095",
       "source_key": "stockanalysis_symbol_changes",
       "source_url": "https://stockanalysis.com/actions/changes/",
       "evidence": "official_master_old_absent_new_active_successor_already_listed"
@@ -74,7 +74,7 @@
       "old_symbol": "YYGH",
       "new_symbol": "YFOR",
       "new_company_name": "Yy Group Holding Ltd.",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "0cbcfd2f44726ac8",
@@ -85,20 +85,20 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
-      "change_id": "0fdd935aadd2a0ab",
-      "effective_date": "2026-08-31",
-      "old_symbol": "AREN",
-      "new_symbol": "PAAI",
-      "new_company_name": "Arena Group Holdings Inc",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
       "change_id": "a2bf8fbdad24c97b",
       "effective_date": "2026-08-27",
       "old_symbol": "BGI",
       "new_symbol": "BGICF",
       "new_company_name": "Birks Group Inc",
       "status": "manual_non_us_or_unscoped_source"
+    },
+    {
+      "change_id": "eda9ab8030099ef1",
+      "effective_date": "2026-08-27",
+      "old_symbol": "AIHS",
+      "new_symbol": "VAI",
+      "new_company_name": "Valor Energy Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "1e531b1f7b96c42a",
