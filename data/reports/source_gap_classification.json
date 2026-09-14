@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-09-14T12:45:16Z",
-    "rows": 8784,
+    "generated_at": "2026-09-14T13:27:47Z",
+    "rows": 8800,
     "field_totals": {
       "missing_etf_category": 63,
       "missing_isin_primary": 819,
       "missing_sector_stock": 1523,
-      "official_reference_gap": 6379
+      "official_reference_gap": 6395
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
@@ -27,8 +27,8 @@
       "official_industry_taxonomy_unavailable_gap": 846,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 48,
-      "official_reference_symbol_collision_gap": 1071,
-      "official_reference_unmatched_source_gap": 5308,
+      "official_reference_symbol_collision_gap": 1068,
+      "official_reference_unmatched_source_gap": 5327,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 39
     },
@@ -53,8 +53,8 @@
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 846,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 39,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1071,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5308
+      "official_reference_gap:official_reference_symbol_collision_gap": 1068,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5327
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -182,11 +182,15 @@
         },
         {
           "exchange": "BSE_IN",
-          "rows": 206
+          "rows": 211
         },
         {
           "exchange": "NASDAQ",
           "rows": 186
+        },
+        {
+          "exchange": "FSX",
+          "rows": 175
         },
         {
           "exchange": "AMS",
@@ -197,12 +201,8 @@
           "rows": 174
         },
         {
-          "exchange": "FSX",
-          "rows": 166
-        },
-        {
           "exchange": "XETRA",
-          "rows": 143
+          "rows": 144
         },
         {
           "exchange": "LSE",
@@ -247,7 +247,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "BSE_IN",
-        "rows": 202,
+        "rows": 207,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -269,19 +269,19 @@
       },
       {
         "field": "official_reference_gap",
+        "gap_class": "official_reference_unmatched_source_gap",
+        "exchange": "FSX",
+        "rows": 154,
+        "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+        "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+      },
+      {
+        "field": "official_reference_gap",
         "gap_class": "official_reference_symbol_collision_gap",
         "exchange": "OTC",
         "rows": 149,
         "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
         "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-      },
-      {
-        "field": "official_reference_gap",
-        "gap_class": "official_reference_unmatched_source_gap",
-        "exchange": "FSX",
-        "rows": 145,
-        "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-        "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
         "field": "official_reference_gap",
@@ -303,7 +303,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "XETRA",
-        "rows": 93,
+        "rows": 95,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -58878,6 +58878,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "BSE_IN::AADIIND",
+      "ticker": "AADIIND",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Aadi Industries Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::AADIIND;exchange=BSE_IN;ticker=AADIIND;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "BSE_IN::AANANDALAK",
       "ticker": "AANANDALAK",
       "exchange": "BSE_IN",
@@ -59575,6 +59592,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "BSE_IN::CEREBRAINT",
+      "ticker": "CEREBRAINT",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Cerebra Integrated Technologies Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::CEREBRAINT;exchange=BSE_IN;ticker=CEREBRAINT;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "BSE_IN::CGFL",
       "ticker": "CGFL",
       "exchange": "BSE_IN",
@@ -59858,6 +59892,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=BSE_IN::ENCASH;exchange=BSE_IN;ticker=ENCASH;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "BSE_IN::ENCODE",
+      "ticker": "ENCODE",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Encode Packaging India Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::ENCODE;exchange=BSE_IN;ticker=ENCODE;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -61530,6 +61581,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "BSE_IN::SARUPINDUS",
+      "ticker": "SARUPINDUS",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "Sarup Industries Ltd-$",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::SARUPINDUS;exchange=BSE_IN;ticker=SARUPINDUS;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "BSE_IN::SASHWAT",
       "ticker": "SASHWAT",
       "exchange": "BSE_IN",
@@ -61847,6 +61915,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=BSE_IN::SOFTBPO;exchange=BSE_IN;ticker=SOFTBPO;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "BSE_IN::SPELS",
+      "ticker": "SPELS",
+      "exchange": "BSE_IN",
+      "asset_type": "Stock",
+      "name": "SPEL Semiconductor Ltd",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BSE_IN::SPELS;exchange=BSE_IN;ticker=SPELS;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -67378,6 +67463,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "FSX::4GB",
+      "ticker": "4GB",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Gossamer Bio Inc",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::4GB;exchange=FSX;ticker=4GB;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "FSX::4GC",
       "ticker": "4GC",
       "exchange": "FSX",
@@ -68653,6 +68755,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "FSX::J3KA",
+      "ticker": "J3KA",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "ATMOFIZER TECHNOL.INC. B",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::J3KA;exchange=FSX;ticker=J3KA;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "FSX::J9K",
       "ticker": "J9K",
       "exchange": "FSX",
@@ -68681,6 +68800,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=FSX::JMT2;exchange=FSX;ticker=JMT2;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "FSX::JN9",
+      "ticker": "JN9",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Spirit Blockchain Capital Inc.",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::JN9;exchange=FSX;ticker=JN9;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -68993,6 +69129,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "FSX::NF0",
+      "ticker": "NF0",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "New Fortress Energy Inc.",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::NF0;exchange=FSX;ticker=NF0;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "FSX::NI8",
       "ticker": "NI8",
       "exchange": "FSX",
@@ -69061,6 +69214,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "FSX::ONK",
+      "ticker": "ONK",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "ONEOK Inc",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::ONK;exchange=FSX;ticker=ONK;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "FSX::P11A",
       "ticker": "P11A",
       "exchange": "FSX",
@@ -69112,6 +69282,40 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "FSX::QR20",
+      "ticker": "QR20",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "LION COPPER AND GOLD CORP",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::QR20;exchange=FSX;ticker=QR20;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "FSX::RUOC",
+      "ticker": "RUOC",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Ocean Power Technologies Inc",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::RUOC;exchange=FSX;ticker=RUOC;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "FSX::RWMA",
       "ticker": "RWMA",
       "exchange": "FSX",
@@ -69123,6 +69327,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=FSX::RWMA;exchange=FSX;ticker=RWMA;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "FSX::S35A",
+      "ticker": "S35A",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "STRIA LITHIUM",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::S35A;exchange=FSX;ticker=S35A;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -69174,6 +69395,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=FSX::T0A;exchange=FSX;ticker=T0A;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "FSX::TEV",
+      "ticker": "TEV",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Teva Pharmaceutical Industries Limited",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=FSX::TEV;exchange=FSX;ticker=TEV;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -79368,14 +79606,14 @@
       "exchange": "NSE_IN",
       "asset_type": "Stock",
       "name": "Lasa Supergenerics Limited",
-      "gap_class": "official_reference_symbol_collision_gap",
+      "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=NSE_IN::LASA;exchange=NSE_IN;ticker=LASA;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -79453,14 +79691,14 @@
       "exchange": "NSE_IN",
       "asset_type": "Stock",
       "name": "SEL Manufacturing Company Limited",
-      "gap_class": "official_reference_symbol_collision_gap",
+      "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=NSE_IN::SELMC;exchange=NSE_IN;ticker=SELMC;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -139985,6 +140223,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "SGX::BQF",
+      "ticker": "BQF",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "name": "XMH",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=SGX::BQF;exchange=SGX;ticker=BQF;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "SGX::LIW",
       "ticker": "LIW",
       "exchange": "SGX",
@@ -148689,6 +148944,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "XETRA::B72",
+      "ticker": "B72",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "name": "ATAIBECKLEY INC. O.N.",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=XETRA::B72;exchange=XETRA;ticker=B72;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "XETRA::B8A",
       "ticker": "B8A",
       "exchange": "XETRA",
@@ -149323,14 +149595,14 @@
       "exchange": "XETRA",
       "asset_type": "Stock",
       "name": "ONEOK, Inc.",
-      "gap_class": "official_reference_symbol_collision_gap",
+      "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=XETRA::ONK;exchange=XETRA;ticker=ONK;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
