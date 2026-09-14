@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-09-08T09:30:19Z
+Generated: 2026-09-14T14:25:15Z
 
 **delisting_detected: True**
 
 Markets checked: US, ASX, NSE_IN, BSE_IN, US_NASDAQ_DELETES
 Markets skipped: TSE (fetch failed: XLRDError)
 
-Candidates: 424 (delisted=2, suspended=163, master_absent=259)
+Candidates: 400 (delisted=3, suspended=169, master_absent=228)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -101,6 +101,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | ASX | XRA | master_absent | XENORA MINERALS LTD | AU0000421117 |
 | ASX | YUG | master_absent | YUGO METALS LIMITED | AU0000404998 |
 | BSE_IN | 4THGEN | suspended | Fourth Generation Information Systems Lt | INE739B01039 |
+| BSE_IN | AADIIND | suspended | Aadi Industries Ltd | INE563D01013 |
 | BSE_IN | AANANDALAK | suspended | Aananda Lakshmi Spinning Mills Ltd | INE197R01010 |
 | BSE_IN | AARSHYAM | suspended | Aar Shyam India Investment Company Ltd | INE512R01010 |
 | BSE_IN | ACEEDU | suspended | ACE Edutrend Ltd | INE715F01014 |
@@ -134,6 +135,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | BSE_IN | BPCAP | suspended | B. P. Capital Ltd | INE947C01010 |
 | BSE_IN | CAPFIN | suspended | Capfin India Ltd | INE960C01013 |
 | BSE_IN | CARNATIN | suspended | Carnation Industries Ltd | INE081B01028 |
+| BSE_IN | CEREBRAINT | suspended | Cerebra Integrated Technologies Ltd | INE345B01019 |
 | BSE_IN | CHARMS | suspended | Charms Industries Ltd | INE442C01012 |
 | BSE_IN | CITURGIA | suspended | Citurgia Biochemicals Ltd | INE795B01031 |
 | BSE_IN | CITYON | suspended | Cityon Systems (India) Ltd | INE324P01014 |
@@ -147,6 +149,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | BSE_IN | DOLPHMED | suspended | Dolphin Medical Services Ltd | INE796B01013 |
 | BSE_IN | EDUCOMP | suspended | Educomp Solutions Ltd | INE216H01027 |
 | BSE_IN | ENCASH | suspended | Encash Entertainment Ltd | INE552Q01018 |
+| BSE_IN | ENCODE | suspended | Encode Packaging India Ltd | INE900O01014 |
 | BSE_IN | FCONSUMER | suspended | Future Consumer Ltd | INE220J01025 |
 | BSE_IN | GEETANJ | suspended | Geetanjali Credit and Capital Ltd | INE263R01010 |
 | BSE_IN | GGENG | suspended | G G Engineering Ltd | INE694X01030 |
@@ -176,6 +179,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | BSE_IN | KLGCAP | suspended | KLG Capital Services Ltd | INE929C01018 |
 | BSE_IN | KLIFESTYL | suspended | K-Lifestyle & Industries Ltd | INE218A01028 |
 | BSE_IN | KONARKSY | suspended | Konark Synthetic Ltd | INE517D01019 |
+| BSE_IN | KRISHNACAP | suspended | Krishna Capital and Securities Ltd | INE897B01019 |
 | BSE_IN | KRISHPP | suspended | KRISHIVAL FOODS Ltd | IN90GGO01013 |
 | BSE_IN | LADIAMO | suspended | Laser Diamonds Ltd | INE995E01015 |
 | BSE_IN | LYNMC | suspended | Lynx Machinery & Commercials Ltd | INE732D01014 |
@@ -209,8 +213,4 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | BSE_IN | PRABHAPP | suspended | Prabha Energy Ltd | IN90I0M01014 |
 | BSE_IN | PREMCAPM | suspended | Premium Capital Market & Investments Ltd | INE555D01019 |
 | BSE_IN | PRESSURS | suspended | Pressure Sensitive Systems India Ltd | INE891E01024 |
-| BSE_IN | PROGREXV | suspended | Progrex Ventures Ltd | INE421E01012 |
-| BSE_IN | PVVIPP | suspended | PVV Infra Ltd | IN9428B01029 |
-| BSE_IN | RAJVIR | suspended | Rajvir Industries Ltd | INE011H01014 |
-| BSE_IN | RAMAPETRO | suspended | Rama Petrochemicals Ltd | INE783A01013 |
-| … | … | … | (+224 more) | |
+| … | … | … | (+200 more) | |

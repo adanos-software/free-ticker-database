@@ -6,26 +6,82 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92061,
-    "after_rows": 92061,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "before_rows": 92060,
+    "after_rows": 92057,
+    "overall_shrink_pct": 0.003259,
+    "removed_rows": 3,
+    "evidenced_removed_rows": 3,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 3
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::ATAI",
+    "NASDAQ::KHC",
+    "NYSE::TEVA"
+  ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NASDAQ::ATAI",
+      "ticker": "ATAI",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "AtaiBeckley Inc.",
+      "new_value": "",
+      "before_row_sha256": "590f27b5ad1981f13bd6defb567006da6ee74680588e07ed9356419717c0b22b",
+      "effective_at": "",
+      "observed_at": "2026-09-14T14:26:39Z",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "source_report": "data/reports/delisting_transitions.csv",
+      "observation_id": "0527ef0adcc0a8e00809b0b8",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::KHC",
+      "ticker": "KHC",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Kraft Heinz Co",
+      "new_value": "",
+      "before_row_sha256": "585e575e39dc9e9da641d012b20b4aba7c61a2144c382c1e98471ea3f641ee78",
+      "effective_at": "",
+      "observed_at": "2026-09-14T14:26:39Z",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "source_report": "data/reports/delisting_transitions.csv",
+      "observation_id": "4c41bb5a17712df3ec8ab9cd",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NYSE::TEVA",
+      "ticker": "TEVA",
+      "exchange": "NYSE",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Teva Pharmaceutical Industries Limited",
+      "new_value": "",
+      "before_row_sha256": "5f06f2ee1d9b7b28225bd8e27d38e251feee40b7d250ed2bf1c180bbb28ff8bb",
+      "effective_at": "",
+      "observed_at": "2026-09-14T14:26:39Z",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "source_report": "data/reports/delisting_transitions.csv",
+      "observation_id": "84c61c0712a981003f7a5eb5",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -425,10 +481,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4757,
-      "after_rows": 4757,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "before_rows": 4756,
+      "after_rows": 4754,
+      "shrink_pct": 0.042052,
+      "removed_rows": 2,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -480,9 +536,9 @@
     {
       "exchange": "NYSE",
       "before_rows": 2025,
-      "after_rows": 2025,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 2024,
+      "shrink_pct": 0.049383,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
