@@ -1,6 +1,6 @@
 # Pending Renames Manual Review
 
-Generated: 2026-09-08T09:29:57Z
+Generated: 2026-09-14T14:16:50Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 
@@ -10,14 +10,9 @@ Rows here are explicitly blocked or manual-review only; no ticker change is auth
 | EQR | VRMK | 2026-08-18 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
 | NCL | NCLX | 2026-08-13 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: FSX::NCL|NYSE::NCL|SET::NCL|WSE::NCL|XSTU::NCL |
 | GV | GVHGF | 2026-07-31 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::GV |
-| HOTH | RKTO | 2026-05-28 | review_duplicate_or_cross_listing | none | manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first |
 | BTM | BTMCQ | 2026-05-22 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::BTM |
-| KFS | KWY | 2026-05-20 | review_duplicate_or_cross_listing | none | manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first |
-| IINN | QTEX | 2026-05-20 | review_duplicate_or_cross_listing | none | manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first |
-| FIHL | PLGO | 2026-05-12 | review_duplicate_or_cross_listing | none | manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first |
 | ETHM | DYNC | 2026-05-01 | review_verified_rename_or_delisting | manual_isin_not_proven_unchanged | manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source |
-| ZGM | ZTG | 2026-04-14 | review_duplicate_or_cross_listing | none | manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first |
-| CIGL | YOOV | 2026-04-13 | review_duplicate_or_cross_listing | blocked_new_symbol_collision | blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: NASDAQ::YOOV |
+| CIGL | YOOV | 2026-04-13 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
 | CAPT | CPTAF | 2026-04-08 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::CAPT|TSXV::CAPT |
 | QH | QHUOY | 2026-04-02 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::QH|SET::QH |
 | KBFR | LVROF | 2026-02-23 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE ARCA::KBFR |
