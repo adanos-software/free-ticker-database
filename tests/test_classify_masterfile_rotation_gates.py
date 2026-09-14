@@ -548,12 +548,14 @@ def test_classify_gate_results_routes_critical_masterfile_change_to_manual_revie
     assert result["passed"] is True
     assert result["review_required"] is True
     assert result["critical_rotation_change_count"] == 1
+    assert result["identity_review_change_count"] == 1
     assert result["critical_rotation_changes"] == [
         {
             "source_key": "bse_india_scrips",
             "exchange": "BSE_IN",
             "ticker": "MSCIADD",
             "fields": ["asset_type"],
+            "after": {"asset_type": "ETF"},
         }
     ]
 
@@ -617,6 +619,116 @@ def test_classify_gate_results_keeps_name_only_masterfile_change_automatic() -> 
     assert result["passed"] is True
     assert result["review_required"] is False
     assert result["critical_rotation_change_count"] == 0
+    assert result["identity_review_change_count"] == 0
+
+
+def _isin_change(*, ticker: str = "ALNRG", exchange: str = "Euronext") -> dict[str, object]:
+    return {
+        "changed": [
+            {
+                "source_key": "euronext_equities",
+                "exchange": exchange,
+                "ticker": ticker,
+                "changes": {
+                    "isin": {"before": "FR0013399359", "after": "FR001401A702"},
+                },
+            }
+        ]
+    }
+
+
+def test_directory_only_official_isin_change_is_not_identity_review() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff=_isin_change(ticker="1OKE"),
+        listings=[],
+    )
+
+    assert result["passed"] is True
+    assert result["review_required"] is False
+    assert result["critical_rotation_change_count"] == 1
+    assert result["identity_review_change_count"] == 0
+
+
+def test_official_isin_change_stays_review_when_listing_snapshot_is_unknown() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff=_isin_change(),
+    )
+
+    assert result["review_required"] is True
+    assert result["identity_review_change_count"] == 1
+
+
+def test_official_isin_change_is_not_review_when_listing_already_has_new_isin() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff=_isin_change(),
+        listings=[
+            {
+                "listing_key": "Euronext::ALNRG",
+                "ticker": "ALNRG",
+                "exchange": "Euronext",
+                "isin": "FR001401A702",
+                "asset_type": "Stock",
+            }
+        ],
+    )
+
+    assert result["review_required"] is False
+    assert result["identity_review_change_count"] == 0
+
+
+def test_official_isin_change_is_not_review_when_metadata_updates_authorize_it() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff=_isin_change(),
+        listings=[
+            {
+                "listing_key": "Euronext::ALNRG",
+                "ticker": "ALNRG",
+                "exchange": "Euronext",
+                "isin": "FR0013399359",
+                "asset_type": "Stock",
+            }
+        ],
+        metadata_updates=[
+            {
+                "ticker": "ALNRG",
+                "exchange": "Euronext",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "FR001401A702",
+            }
+        ],
+    )
+
+    assert result["review_required"] is False
+    assert result["identity_review_change_count"] == 0
+
+
+def test_official_isin_change_stays_review_when_listing_still_has_old_isin() -> None:
+    result = classify_gate_results(
+        entry_gate(),
+        validation_report(),
+        rotation_diff=_isin_change(),
+        listings=[
+            {
+                "listing_key": "Euronext::ALNRG",
+                "ticker": "ALNRG",
+                "exchange": "Euronext",
+                "isin": "FR0013399359",
+                "asset_type": "Stock",
+            }
+        ],
+    )
+
+    assert result["review_required"] is True
+    assert result["identity_review_change_count"] == 1
 
 
 @pytest.mark.parametrize(
@@ -713,5 +825,6 @@ def test_classify_gate_cli_writes_github_outputs_for_review(tmp_path) -> None:
         "fetch_issue_count=0",
         "fetch_issue_keys=",
         "critical_rotation_change_count=0",
+        "identity_review_change_count=0",
         "unevidenced_listing_field_change_count=0",
     ]

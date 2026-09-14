@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from collections import Counter
 from pathlib import Path
@@ -106,9 +107,106 @@ def classify_critical_rotation_changes(
                 "exchange": str(row.get("exchange", "")),
                 "ticker": str(row.get("ticker", "")),
                 "fields": fields,
+                "after": {
+                    field: str(changes[field]["after"])
+                    for field in fields
+                },
             }
         )
     return critical_changes, malformed
+
+
+def _listing_lookup(listings: list[dict[str, str]] | None) -> dict[str, dict[str, str]] | None:
+    if listings is None:
+        return None
+    by_key: dict[str, dict[str, str]] = {}
+    for row in listings:
+        key = str(row.get("listing_key") or "").strip()
+        if not key:
+            exchange = str(row.get("exchange") or "").strip()
+            ticker = str(row.get("ticker") or "").strip()
+            if exchange and ticker:
+                key = f"{exchange}::{ticker}"
+        if key:
+            by_key[key] = row
+    return by_key
+
+
+def _authorized_metadata_values(
+    metadata_updates: list[dict[str, str]] | None,
+) -> set[tuple[str, str, str, str]]:
+    authorized: set[tuple[str, str, str, str]] = set()
+    for row in metadata_updates or []:
+        if str(row.get("decision") or "").strip() != "update":
+            continue
+        ticker = str(row.get("ticker") or "").strip()
+        exchange = str(row.get("exchange") or "").strip()
+        field = str(row.get("field") or "").strip()
+        value = str(row.get("proposed_value") or "").strip()
+        if not ticker or not exchange or not field:
+            continue
+        authorized.add((ticker, exchange, field, value))
+        if field in {"stock_sector", "etf_category"}:
+            authorized.add((ticker, exchange, "sector", value))
+    return authorized
+
+
+def _listing_field_value(listing: dict[str, str], field: str) -> str | None:
+    if field == "isin":
+        return str(listing.get("isin") or "").strip()
+    if field == "asset_type":
+        return str(listing.get("asset_type") or "").strip()
+    if field == "sector":
+        asset_type = str(listing.get("asset_type") or "").strip()
+        if asset_type == "ETF":
+            return str(listing.get("etf_category") or "").strip()
+        return str(listing.get("stock_sector") or "").strip()
+    return None
+
+
+def identity_review_changes(
+    critical_changes: list[dict[str, Any]],
+    listings: list[dict[str, str]] | None,
+    metadata_updates: list[dict[str, str]] | None,
+) -> list[dict[str, Any]]:
+    """Keep only official critical diffs that would recode an existing listing without evidence.
+
+    Unknown listing snapshot stays fail-closed (all critical diffs remain identity review).
+    Official-directory rows with no listing are ops notes, not identity review.
+    """
+    listing_by_key = _listing_lookup(listings)
+    if listing_by_key is None:
+        return list(critical_changes)
+    authorized = _authorized_metadata_values(metadata_updates)
+    kept: list[dict[str, Any]] = []
+    for change in critical_changes:
+        exchange = str(change.get("exchange") or "")
+        ticker = str(change.get("ticker") or "")
+        listing = listing_by_key.get(f"{exchange}::{ticker}")
+        if listing is None:
+            continue
+        remaining: list[str] = []
+        after_values = change.get("after") if isinstance(change.get("after"), dict) else {}
+        for field in change.get("fields") or []:
+            proposed = str(after_values.get(field) or "").strip()
+            current = _listing_field_value(listing, field)
+            if current is None:
+                remaining.append(field)
+                continue
+            if proposed and current == proposed:
+                continue
+            metadata_field = "stock_sector" if field == "sector" and listing.get("asset_type") != "ETF" else field
+            if listing.get("asset_type") == "ETF" and field == "sector":
+                metadata_field = "etf_category"
+            if proposed and (
+                (ticker, exchange, field, proposed) in authorized
+                or (ticker, exchange, metadata_field, proposed) in authorized
+            ):
+                continue
+            remaining.append(field)
+        if remaining:
+            kept.append({**change, "fields": remaining})
+    return kept
 
 
 def classify_safe_merge(
@@ -160,6 +258,8 @@ def classify_gate_results(
     database_outcome: str | None = None,
     safe_merge: dict[str, Any] | None = None,
     safe_merge_outcome: str | None = None,
+    listings: list[dict[str, str]] | None = None,
+    metadata_updates: list[dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     parsed_unexpected_warn_count = parse_nonnegative_int(
         entry_quality_gate.get("unexpected_warn_count")
@@ -292,6 +392,9 @@ def classify_gate_results(
     )
     if rotation_diff_malformed:
         hard_failures.append("masterfile_rotation_diff_malformed")
+    identity_changes = identity_review_changes(
+        critical_rotation_changes, listings, metadata_updates
+    )
     safe_merge_classification = classify_safe_merge(safe_merge, safe_merge_outcome)
     hard_failures.extend(safe_merge_classification["hard_failures"])
     unevidenced_field_change_count = safe_merge_classification["unevidenced_field_change_count"]
@@ -300,7 +403,7 @@ def classify_gate_results(
     review_required = bool(
         (
             unexpected_warn_count
-            or critical_rotation_changes
+            or identity_changes
             or unevidenced_field_change_count
         )
         and not hard_failures
@@ -318,6 +421,8 @@ def classify_gate_results(
         "fetch_issue_keys": fetch_issue_keys,
         "critical_rotation_change_count": len(critical_rotation_changes),
         "critical_rotation_changes": critical_rotation_changes,
+        "identity_review_change_count": len(identity_changes),
+        "identity_review_changes": identity_changes,
         "unevidenced_listing_field_change_count": unevidenced_field_change_count,
     }
 
@@ -331,11 +436,20 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--masterfile-summary", type=Path)
     parser.add_argument("--rotation-diff", type=Path)
     parser.add_argument("--safe-merge", type=Path)
+    parser.add_argument("--listings", type=Path)
+    parser.add_argument("--metadata-updates", type=Path)
     parser.add_argument("--entry-quality-outcome", choices=("success", "failure"))
     parser.add_argument("--database-outcome", choices=("success", "failure"))
     parser.add_argument("--safe-merge-outcome", choices=("success", "failure"))
     parser.add_argument("--github-output", type=Path)
     return parser.parse_args(argv)
+
+
+def _load_csv(path: Path | None) -> list[dict[str, str]] | None:
+    if path is None:
+        return None
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -349,6 +463,8 @@ def main(argv: list[str] | None = None) -> int:
         args.database_outcome,
         load_json(args.safe_merge) if args.safe_merge else None,
         args.safe_merge_outcome,
+        listings=_load_csv(args.listings),
+        metadata_updates=_load_csv(args.metadata_updates),
     )
     if args.github_output:
         with args.github_output.open("a", encoding="utf-8") as handle:
@@ -361,6 +477,9 @@ def main(argv: list[str] | None = None) -> int:
             handle.write(f"fetch_issue_keys={','.join(result['fetch_issue_keys'])}\n")
             handle.write(
                 f"critical_rotation_change_count={result['critical_rotation_change_count']}\n"
+            )
+            handle.write(
+                f"identity_review_change_count={result['identity_review_change_count']}\n"
             )
             handle.write(
                 "unevidenced_listing_field_change_count="

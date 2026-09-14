@@ -18,6 +18,7 @@ ICE_IS,official_partial,official_public_subset,retain_official_partial,blocked_n
 JSE,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete directory; stock coverage; >=99.5% collision-adjusted recall; explicit redistribution rights,jse_reference_data,2026-08-02
 LUSE,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-02
 MSE_MW,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-02
+Munich,missing,unofficial_source_gap,retain_missing,no_free_official_directory,Do not invent listings or sectors. Require a free official Boerse Muenchen cash-market directory before treating Munich as official_full.,,2026-09-14
 NMFQS,official_partial,official_security_lookup_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-02
 PSE_CZ,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-02
 RSE,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-02
@@ -32,3 +33,7 @@ VSE,official_partial,official_public_subset,retain_official_partial,blocked_nonf
 WSE,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-02
 ZSE,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-03
 ZSE_ZW,official_partial,official_public_subset,retain_official_partial,blocked_nonfresh_source,Fresh complete exchange directory; all product classes; >=99.5% collision-adjusted recall,,2026-08-03
+XDUS,missing,unofficial_source_gap,retain_missing,no_free_official_directory,Do not invent listings or sectors. Require a free official Boerse Duesseldorf cash-market directory before treating XDUS as official_full.,,2026-09-14
+XHAM,missing,unofficial_source_gap,retain_missing,no_free_official_directory,Do not invent listings or sectors. Require a free official Hamburg cash-market directory before treating XHAM as official_full.,,2026-09-14
+XHAN,missing,unofficial_source_gap,retain_missing,no_free_official_directory,Do not invent listings or sectors. Require a free official Hanover cash-market directory before treating XHAN as official_full.,,2026-09-14
+XSTU,missing,unofficial_source_gap,retain_missing,no_free_official_directory,Do not invent listings or sectors. Boerse Stuttgart master data is sold commercially; keep XSTU as an explicit unofficial source gap.,,2026-09-14
