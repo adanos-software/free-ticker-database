@@ -1,33 +1,30 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-09-14T13:17:43Z`
-- New rows: `37`
-- Vanished rows: `33`
-- Changed rows: `73`
+- Generated at: `2026-09-14T16:24:46Z`
+- New rows: `206`
+- Vanished rows: `395`
+- Changed rows: `13`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 1 |
-| name_change | 72 |
+| field_change | 10 |
+| name_change | 3 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| bist_kap_mkk_listed_securities | 5 |
-| bse_india_scrips | 1 |
-| deutsche_boerse_frankfurt_all_tradable_equities | 27 |
-| deutsche_boerse_xetra_all_tradable_equities | 3 |
-| sgx_securities_prices | 1 |
+| asx_listed_companies | 191 |
+| bmv_market_data_securities | 7 |
+| bmv_stock_search | 8 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| bse_india_scrips | 7 |
-| deutsche_boerse_frankfurt_all_tradable_equities | 20 |
-| deutsche_boerse_xetra_all_tradable_equities | 3 |
-| sgx_securities_prices | 3 |
+| asx_listed_companies | 133 |
+| bmv_market_data_securities | 2 |
+| bvb_shares_directory | 260 |

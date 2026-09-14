@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-14T13:26:58Z",
+  "generated_at": "2026-09-14T16:26:37Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1794,
+  "reconciled_rows": 1792,
   "applied_rows": 0,
-  "proposed_rows": 1794,
+  "proposed_rows": 1792,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -364,36 +364,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=ICGROETF",
       "observation_id": "f359b670438bb2641fa6ba2f",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "BVB::MACO",
-      "action": "proposed",
-      "ticker": "MACO",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "isin": "ROMACOACNOR0",
-      "old_name": "Macofil SA",
-      "new_name": "MACOFIL SA TG. JIU",
-      "source_key": "bvb_shares_directory",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=MACO",
-      "observation_id": "534464218b2a0c4ddaba6aeb",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "BVB::SATU",
-      "action": "proposed",
-      "ticker": "SATU",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "isin": "ROSATUACNOR8",
-      "old_name": "Saturn SA",
-      "new_name": "SATURN SA ALBA IULIA",
-      "source_key": "bvb_shares_directory",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=SATU",
-      "observation_id": "7031f8047b0ba7f087a3d4e5",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

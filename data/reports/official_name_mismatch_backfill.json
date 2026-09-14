@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-09-14T12:39:21Z",
+    "generated_at": "2026-09-14T16:28:53Z",
     "policy": {
       "source_authority": "Name backfill candidates require active official masterfile references for the exact ticker and exchange.",
       "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
@@ -10,10 +10,35 @@
     "supported_exchanges": [
       "ASX"
     ],
-    "rows_reviewed": 0,
-    "updates_emitted": 0,
-    "accepted_by_exchange": {},
+    "rows_reviewed": 2,
+    "updates_emitted": 2,
+    "accepted_by_exchange": {
+      "ASX": 2
+    },
     "skipped_by_exchange": {}
   },
-  "items": []
+  "items": [
+    {
+      "listing_key": "ASX::PDI",
+      "ticker": "PDI",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "current_name": "PREDICTIVE DISCOVERY LIMITED",
+      "proposed_name": "Pdi Gold Limited",
+      "decision": "accept",
+      "official_sources": "asx_listed_companies",
+      "supporting_sources": "asx_listed_companies"
+    },
+    {
+      "listing_key": "ASX::WEB",
+      "ticker": "WEB",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "current_name": "WEB Travel Group Ltd",
+      "proposed_name": "Webbeds Group Limited",
+      "decision": "accept",
+      "official_sources": "asx_listed_companies",
+      "supporting_sources": "asx_listed_companies"
+    }
+  ]
 }

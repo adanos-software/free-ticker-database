@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-14T12:34:04Z",
-  "rows": 169854,
+  "generated_at": "2026-09-14T16:22:56Z",
+  "rows": 169665,
   "exchanges": [
     "ADX",
     "AMS",
@@ -91,7 +91,7 @@
     "adx_market_watch": 122,
     "euronext_etfs": 4096,
     "euronext_equities": 3847,
-    "asx_listed_companies": 1987,
+    "asx_listed_companies": 2045,
     "asx_investment_products": 457,
     "athex_sector_classification": 126,
     "b3_listed_etfs": 216,
@@ -107,14 +107,14 @@
     "bme_security_prices_directory": 271,
     "bme_listed_companies": 123,
     "bmv_issuer_directory": 76,
-    "bmv_stock_search": 10,
-    "bmv_market_data_securities": 10,
+    "bmv_market_data_securities": 15,
+    "bmv_stock_search": 18,
     "bmv_etf_search": 5,
     "bmv_capital_trust_search": 5,
     "bse_bw_listed_companies": 26,
     "bse_hu_listed_companies": 19,
     "bse_india_scrips": 4997,
-    "bvb_shares_directory": 349,
+    "bvb_shares_directory": 89,
     "bvb_fund_units_directory": 10,
     "bvc_colombia_issuers": 3,
     "bvl_issuers_directory": 31,
@@ -281,10 +281,9 @@
       "provider": "ASX",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 1987,
-      "generated_at": "2026-07-19T09:54:21Z",
-      "last_error": "Empty refresh result; preserved 1987 existing rows"
+      "mode": "network",
+      "rows": 2045,
+      "generated_at": "2026-09-14T16:22:56Z"
     },
     "cboe_canada_listing_directory": {
       "provider": "Cboe Canada",
@@ -843,9 +842,9 @@
       "provider": "BVB",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "cache",
-      "rows": 349,
-      "generated_at": "2026-09-14T12:34:04Z"
+      "mode": "network",
+      "rows": 89,
+      "generated_at": "2026-09-14T16:22:56Z"
     },
     "bvb_fund_units_directory": {
       "provider": "BVB",
@@ -875,19 +874,17 @@
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 10,
-      "generated_at": "2026-08-02T08:35:09Z",
-      "last_error": "Empty refresh result; preserved 10 existing rows"
+      "mode": "network",
+      "rows": 18,
+      "generated_at": "2026-09-14T16:22:56Z"
     },
     "bmv_capital_trust_search": {
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
+      "mode": "network",
       "rows": 5,
-      "generated_at": "2026-08-02T08:35:09Z",
-      "last_error": "Empty refresh result; preserved 5 existing rows"
+      "generated_at": "2026-09-14T16:22:56Z"
     },
     "bmv_etf_search": {
       "provider": "BMV",
@@ -901,10 +898,9 @@
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 10,
-      "generated_at": "2026-08-02T08:35:09Z",
-      "last_error": "Empty refresh result; preserved 9 existing rows"
+      "mode": "network",
+      "rows": 15,
+      "generated_at": "2026-09-14T16:22:56Z"
     },
     "bmv_issuer_directory": {
       "provider": "BMV",
@@ -1352,7 +1348,7 @@
     "lse_instrument_search": "network",
     "lse_instrument_directory": "unavailable",
     "lse_price_explorer": "network",
-    "asx_listed_companies": "unavailable",
+    "asx_listed_companies": "network",
     "cboe_canada_listing_directory": "network",
     "asx_investment_products": "network",
     "set_listed_companies": "network",
@@ -1420,14 +1416,14 @@
     "nzx_instruments": "network",
     "nasdaq_mutual_fund_quotes": "network",
     "zse_zw_listed_companies": "network",
-    "bvb_shares_directory": "cache",
+    "bvb_shares_directory": "network",
     "bvb_fund_units_directory": "network",
     "ngx_equities_price_list": "network",
     "ngx_company_profile_directory": "network",
-    "bmv_stock_search": "unavailable",
-    "bmv_capital_trust_search": "unavailable",
+    "bmv_stock_search": "network",
+    "bmv_capital_trust_search": "network",
     "bmv_etf_search": "network",
-    "bmv_market_data_securities": "unavailable",
+    "bmv_market_data_securities": "network",
     "bmv_issuer_directory": "network",
     "nasdaq_nordic_stockholm_shares": "network",
     "nasdaq_nordic_stockholm_shares_search": "network",
@@ -1487,24 +1483,8 @@
   },
   "errors": [
     {
-      "source_key": "asx_listed_companies",
-      "error": "Empty refresh result; preserved 1987 existing rows"
-    },
-    {
       "source_key": "bme_listed_values",
       "error": "BME listed values rows unavailable"
-    },
-    {
-      "source_key": "bmv_capital_trust_search",
-      "error": "Empty refresh result; preserved 5 existing rows"
-    },
-    {
-      "source_key": "bmv_market_data_securities",
-      "error": "Empty refresh result; preserved 9 existing rows"
-    },
-    {
-      "source_key": "bmv_stock_search",
-      "error": "Empty refresh result; preserved 10 existing rows"
     },
     {
       "source_key": "bolsa_santiago_instruments",
@@ -1569,56 +1549,52 @@
     {
       "source_key": "upcom_registered_securities",
       "error": "Empty refresh result; preserved 818 existing rows"
-    },
-    {
-      "source_key": "bvb_shares_directory",
-      "error": "Partial refresh collapsed 349→89 rows; preserved last committed directory"
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-09-14T12:34:04Z",
+    "generated_at": "2026-09-14T16:22:56Z",
     "selected_source_keys": [
-      "adx_market_watch",
-      "bahrain_bourse_listed_companies",
-      "bist_kap_mkk_listed_securities",
+      "asx_listed_companies",
+      "bme_listed_values",
+      "bmv_capital_trust_search",
+      "bmv_market_data_securities",
+      "bmv_stock_search",
       "bolsa_santiago_instruments",
-      "boursa_kuwait_stocks",
-      "bse_india_scrips",
       "bvb_shares_directory",
-      "cse_lk_all_security_code",
-      "cse_lk_company_info_summary",
       "cse_ma_listed_companies",
-      "deutsche_boerse_frankfurt_all_tradable_equities",
-      "deutsche_boerse_xetra_all_tradable_equities",
-      "dfm_listed_securities",
-      "idx_company_profiles",
       "jpx_listed_issues",
+      "jse_instrument_search",
+      "lse_company_reports",
+      "lse_instrument_directory",
+      "luse_listed_companies",
+      "mse_mw_listed_companies",
+      "ngm_market_data_equities",
       "otc_markets_stock_screener",
-      "sgx_securities_prices",
-      "tadawul_main_market_watch",
-      "twse_listed_companies",
+      "szse_a_share_list",
+      "tase_foreign_etf_search",
+      "tase_participating_unit_search",
       "upcom_registered_securities"
     ],
     "source_modes": {
-      "adx_market_watch": "network",
-      "bahrain_bourse_listed_companies": "network",
-      "bist_kap_mkk_listed_securities": "network",
+      "asx_listed_companies": "network",
+      "bme_listed_values": "unavailable",
+      "bmv_capital_trust_search": "network",
+      "bmv_market_data_securities": "network",
+      "bmv_stock_search": "network",
       "bolsa_santiago_instruments": "unavailable",
-      "boursa_kuwait_stocks": "network",
-      "bse_india_scrips": "network",
-      "bvb_shares_directory": "cache",
-      "cse_lk_all_security_code": "network",
-      "cse_lk_company_info_summary": "network",
+      "bvb_shares_directory": "network",
       "cse_ma_listed_companies": "unavailable",
-      "deutsche_boerse_frankfurt_all_tradable_equities": "network",
-      "deutsche_boerse_xetra_all_tradable_equities": "network",
-      "dfm_listed_securities": "network",
-      "idx_company_profiles": "network",
       "jpx_listed_issues": "unavailable",
+      "jse_instrument_search": "cache",
+      "lse_company_reports": "unavailable",
+      "lse_instrument_directory": "unavailable",
+      "luse_listed_companies": "unavailable",
+      "mse_mw_listed_companies": "unavailable",
+      "ngm_market_data_equities": "unavailable",
       "otc_markets_stock_screener": "unavailable",
-      "sgx_securities_prices": "network",
-      "tadawul_main_market_watch": "network",
-      "twse_listed_companies": "network",
+      "szse_a_share_list": "unavailable",
+      "tase_foreign_etf_search": "unavailable",
+      "tase_participating_unit_search": "unavailable",
       "upcom_registered_securities": "unavailable"
     }
   }

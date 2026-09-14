@@ -1,4 +1,5 @@
 # Safe merge gate
 
-Status: **PASS**
+Status: **FAIL**
 
+- 1 critical field changes lack exact evidence

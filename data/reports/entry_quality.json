@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-14T13:27:42Z",
+    "generated_at": "2026-09-14T16:32:55Z",
     "rows": 92060,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,29 +14,29 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80514,
-      "source_gap": 11515,
-      "warn": 31
+      "pass": 80380,
+      "source_gap": 11646,
+      "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4598,
-      "official_reference": 82378,
-      "scoped_source_gap": 238,
-      "valid_isin": 4846
+      "identifier_enriched": 4693,
+      "official_reference": 82245,
+      "scoped_source_gap": 239,
+      "valid_isin": 4883
     },
     "severity_counts": {
-      "high": 6,
-      "medium": 26,
-      "source_gap": 11873
+      "high": 7,
+      "medium": 28,
+      "source_gap": 11998
     },
     "issue_counts": {
-      "official_reference_gap": 6395,
+      "official_reference_gap": 6528,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1296,
+      "missing_stock_sector": 1288,
       "expected_missing_primary_isin": 819,
       "missing_etf_category": 76,
-      "official_name_mismatch": 26,
-      "official_isin_mismatch": 6
+      "official_name_mismatch": 28,
+      "official_isin_mismatch": 7
     },
     "top_flagged_exchanges": [
       {
@@ -67,13 +67,20 @@
       },
       {
         "exchange": "BMV",
-        "pass": 77,
-        "source_gap": 267
+        "pass": 84,
+        "source_gap": 259,
+        "warn": 1
       },
       {
         "exchange": "NYSE ARCA",
         "pass": 2516,
         "source_gap": 251,
+        "warn": 2
+      },
+      {
+        "exchange": "ASX",
+        "pass": 2009,
+        "source_gap": 248,
         "warn": 2
       },
       {
@@ -115,11 +122,6 @@
         "exchange": "XETRA",
         "pass": 4164,
         "source_gap": 151
-      },
-      {
-        "exchange": "ASX",
-        "pass": 2109,
-        "source_gap": 150
       },
       {
         "exchange": "TSXV",
