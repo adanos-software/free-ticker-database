@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-14T13:26:58Z",
+  "generated_at": "2026-09-14T15:17:41Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 1525,
-  "decision_rows": 4957,
+  "conflict_count": 1526,
+  "decision_rows": 4961,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1280,
+    "kept_listing_keyed_identifier": 1283,
     "proposed_clear_conflicting_identifier": 733,
-    "quarantined_unresolved_identifier": 2944
+    "quarantined_unresolved_identifier": 2945
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 733,
-  "quarantined_rows": 2944,
-  "retained_rows": 1280,
+  "quarantined_rows": 2945,
+  "retained_rows": 1283,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -61581,6 +61581,58 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US8447411088"
+    },
+    {
+      "conflict_id": "22befb41654950ea29ea",
+      "isin": "US84615Q1031",
+      "listing_key": "FSX::SPX",
+      "ticker": "SPX",
+      "exchange": "FSX",
+      "name": "Space Exploration Technologies Corp.",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "reviewed_listing_keyed_resolution",
+      "retained_isin": "US84615Q1031"
+    },
+    {
+      "conflict_id": "22befb41654950ea29ea",
+      "isin": "US84615Q1031",
+      "listing_key": "NASDAQ::SPCX",
+      "ticker": "SPCX",
+      "exchange": "NASDAQ",
+      "name": "Space Exploration Technologies Corp. - Class A Common Stock",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "reviewed_listing_keyed_resolution",
+      "retained_isin": "US84615Q1031"
+    },
+    {
+      "conflict_id": "22befb41654950ea29ea",
+      "isin": "US84615Q1031",
+      "listing_key": "VSE::SPCX",
+      "ticker": "SPCX",
+      "exchange": "VSE",
+      "name": "Space Exploration Technologies Corp.",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "reviewed_listing_keyed_resolution",
+      "retained_isin": "US84615Q1031"
+    },
+    {
+      "conflict_id": "22befb41654950ea29ea",
+      "isin": "US84615Q1031",
+      "listing_key": "XETRA::SPX",
+      "ticker": "SPX",
+      "exchange": "XETRA",
+      "name": "SPACE EXPL.TECHS. CL.A",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
+      "evidence_status": "reviewed_listing_keyed_resolution",
+      "retained_isin": "US84615Q1031"
     },
     {
       "conflict_id": "d0b7112d38b25940e6d8",
