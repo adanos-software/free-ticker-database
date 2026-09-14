@@ -1,12 +1,12 @@
 # Entry Quality Report
 
-Generated at: `2026-09-14T13:27:42Z`
+Generated at: `2026-09-14T15:17:57Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,514 |
+| pass | 80,515 |
 | source_gap | 11,515 |
 | warn | 31 |
 
@@ -14,7 +14,7 @@ Generated at: `2026-09-14T13:27:42Z`
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,395 |
+| official_reference_gap | 6,394 |
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 1,296 |
 | expected_missing_primary_isin | 819 |
@@ -40,7 +40,7 @@ Generated at: `2026-09-14T13:27:42Z`
 | TSX | 2,122 | 0 | 174 | 0 | 0 |
 | BATS | 1,211 | 0 | 171 | 0 | 0 |
 | LSE | 6,875 | 0 | 153 | 2 | 0 |
-| XETRA | 4,164 | 0 | 151 | 0 | 0 |
+| XETRA | 4,165 | 0 | 151 | 0 | 0 |
 | ASX | 2,109 | 0 | 150 | 0 | 0 |
 | TSXV | 1,283 | 0 | 137 | 2 | 0 |
 | Euronext | 1,344 | 0 | 132 | 1 | 0 |

@@ -16,7 +16,7 @@ Rows: `38`
 | 7 | BSE_IN | 79.98 | 631 | 1845 | collision_free_supplement |
 | 8 | NSE_IN | 82.15 | 540 | 460 | collision_free_supplement |
 | 9 | Euronext | 80.93 | 315 | 364 | not_in_supplement_allowlist |
-| 10 | XETRA | 92.85 | 315 | 707 | collision_free_supplement |
+| 10 | XETRA | 92.85 | 315 | 706 | collision_free_supplement |
 | 11 | UPCOM | 0.67 | 296 | 520 | not_in_supplement_allowlist |
 | 12 | BATS | 81.99 | 282 | 57 | not_in_supplement_allowlist |
 | 13 | KOSDAQ | 87.67 | 224 | 3 | not_in_supplement_allowlist |
