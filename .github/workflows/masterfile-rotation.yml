@@ -124,6 +124,12 @@ jobs:
           python scripts/build_masterfile_diff_report.py \
             --previous-reference /tmp/reference-before-masterfile-rotation.csv
 
+      - name: Apply evidenced official ISIN replacements
+        run: |
+          python scripts/apply_official_identity_updates.py \
+            --rotation-diff data/reports/masterfile_rotation_diff.json \
+            --execute
+
       - name: Classify vanished official-reference rows
         run: python scripts/build_masterfile_vanished_delisting_review.py
 
@@ -198,6 +204,8 @@ jobs:
             --masterfile-summary data/masterfiles/summary.json \
             --rotation-diff data/reports/masterfile_rotation_diff.json \
             --safe-merge data/reports/safe_merge.json \
+            --listings data/listings.csv \
+            --metadata-updates data/review_overrides/metadata_updates.csv \
             --github-output "$GITHUB_OUTPUT"
 
       - name: Summarize fetch issues
@@ -217,7 +225,8 @@ jobs:
             echo "### Masterfile rotation needs data review"
             echo
             echo "The refresh completed technically, but introduced ${{ steps.release.outputs.unexpected_warn_count }} new entry-quality warning(s)."
-            echo "Critical masterfile field changes requiring review: ${{ steps.release.outputs.critical_rotation_change_count }}."
+            echo "Critical masterfile field changes: ${{ steps.release.outputs.critical_rotation_change_count }}."
+            echo "Identity-review field changes: ${{ steps.release.outputs.identity_review_change_count }}."
             echo "Unevidenced listing field changes requiring review: ${{ steps.release.outputs.unevidenced_listing_field_change_count }}."
             echo "A substantive generated data diff will be preserved in a draft pull request; source-only review without data changes remains summary-only."
           } >> "$GITHUB_STEP_SUMMARY"
@@ -275,6 +284,7 @@ jobs:
             Entry-quality review required: `${{ steps.release.outputs.review_required }}`
             Unexpected entry-quality warnings: `${{ steps.release.outputs.unexpected_warn_count }}`
             Critical masterfile field changes: `${{ steps.release.outputs.critical_rotation_change_count }}`
+            Identity-review field changes: `${{ steps.release.outputs.identity_review_change_count }}`
             Unevidenced listing field changes: `${{ steps.release.outputs.unevidenced_listing_field_change_count }}`
 
             Draft review PRs are not dispatched to CI or enabled for automerge.

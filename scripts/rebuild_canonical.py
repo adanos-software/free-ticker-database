@@ -20,6 +20,7 @@ try:
     from scripts import (
         build_adanos_ticker_reference, build_canonical_v4, build_coverage_contracts,
         build_coverage_report, build_entry_quality_report, build_exchange_source_audit,
+        build_official_full_recall_action_queue,
         build_listing_history, build_reference_reconciliation,
         build_source_gap_classification, build_source_of_truth_decisions,
         enrich_global_identifiers, normalize_source_registry, update_readme_snapshot,
@@ -36,6 +37,7 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution
     import build_coverage_report
     import build_entry_quality_report
     import build_exchange_source_audit
+    import build_official_full_recall_action_queue
     import build_listing_history
     import build_reference_reconciliation
     import build_source_gap_classification
@@ -563,6 +565,7 @@ def rebuild(
     # listing snapshot. Rebuild those inputs here instead of trusting stale
     # committed reports from an earlier dataset.
     build_coverage_report.build_report()
+    build_official_full_recall_action_queue.main([])
     if build_exchange_source_audit.main([]) != 0:
         raise SystemExit("exchange source audit failed")
     rebuild_validation_dependents()

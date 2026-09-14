@@ -24,6 +24,7 @@ ALLOWED_PUBLIC_SCOPES = {
     "official_public_subset",
     "official_security_lookup_subset",
     "official_full_licensed_internal",
+    "unofficial_source_gap",
 }
 BLOCKING_REASON_CODES = {
     "blocked_denominator_missing",
@@ -31,6 +32,9 @@ BLOCKING_REASON_CODES = {
     "blocked_product_class_gap",
     "blocked_recall_below_99_5",
     "blocked_source_unavailable",
+}
+MISSING_REASON_CODES = {
+    "no_free_official_directory",
 }
 
 
@@ -50,55 +54,76 @@ def validate(decisions_path: Path, audit_path: Path) -> list[str]:
     partial = {
         row["exchange"]: row for row in audit_rows if row.get("venue_status") == "official_partial"
     }
+    missing_venues = {
+        row["exchange"]: row for row in audit_rows if row.get("venue_status") == "missing"
+    }
+    required = set(partial) | set(missing_venues)
     decision_exchanges = [row.get("exchange", "") for row in decisions]
     duplicates = sorted(
         {exchange for exchange in decision_exchanges if exchange and decision_exchanges.count(exchange) > 1}
     )
     if duplicates:
         errors.append(f"duplicate decisions: {', '.join(duplicates)}")
-    missing = sorted(set(partial) - set(decision_exchanges))
-    extra = sorted(set(decision_exchanges) - set(partial))
+    missing = sorted(required - set(decision_exchanges))
+    extra = sorted(set(decision_exchanges) - required)
     if missing:
-        errors.append(f"missing partial-exchange decisions: {', '.join(missing)}")
+        errors.append(f"missing venue-scope decisions: {', '.join(missing)}")
     if extra:
-        errors.append(f"decisions for non-partial exchanges: {', '.join(extra)}")
+        errors.append(f"decisions for venues that are not official_partial or missing: {', '.join(extra)}")
 
     for line_number, row in enumerate(decisions, start=2):
         exchange = row.get("exchange", "")
-        audit = partial.get(exchange)
+        audit = partial.get(exchange) or missing_venues.get(exchange)
+        if audit and row.get("current_venue_status") != audit.get("venue_status"):
+            errors.append(
+                f"line {line_number}: current_venue_status {row.get('current_venue_status')!r} "
+                f"does not match audit venue_status {audit.get('venue_status')!r}"
+            )
         for field in FIELDNAMES:
             if field != "commercial_option_key" and not row.get(field, "").strip():
                 errors.append(f"line {line_number}: {field} is required")
-        if row.get("current_venue_status") != "official_partial":
-            errors.append(f"line {line_number}: current_venue_status must be official_partial")
+        venue_status = row.get("current_venue_status")
         public_scope = row.get("public_scope")
         if public_scope == "official_full_public":
             errors.append(f"line {line_number}: official_full_public requires promotion evidence")
         elif public_scope not in ALLOWED_PUBLIC_SCOPES:
             errors.append(f"line {line_number}: unsupported public_scope")
-        if row.get("decision") != "retain_official_partial":
-            errors.append(f"line {line_number}: decision must retain official_partial")
         reviewed_reason = row.get("reason_code", "").strip()
-        if reviewed_reason and reviewed_reason not in BLOCKING_REASON_CODES:
-            errors.append(
-                f"line {line_number}: {exchange} has unsupported reviewed reason_code "
-                f"{reviewed_reason!r}"
-            )
-        if audit:
-            current_readiness = audit.get("promotion_readiness", "").strip()
-            if current_readiness == "ready_for_manual_scope_review":
+        if venue_status == "missing":
+            if row.get("decision") != "retain_missing":
+                errors.append(f"line {line_number}: missing venues must retain_missing")
+            if public_scope != "unofficial_source_gap":
+                errors.append(f"line {line_number}: missing venues must use unofficial_source_gap")
+            if reviewed_reason not in MISSING_REASON_CODES:
                 errors.append(
-                    f"line {line_number}: {exchange} current audit has no promotion blocker; "
-                    "explicit scope review is required"
+                    f"line {line_number}: {exchange} has unsupported missing reason_code "
+                    f"{reviewed_reason!r}"
                 )
-            elif current_readiness not in BLOCKING_REASON_CODES:
+        else:
+            if venue_status != "official_partial":
+                errors.append(f"line {line_number}: current_venue_status must be official_partial or missing")
+            if row.get("decision") != "retain_official_partial":
+                errors.append(f"line {line_number}: decision must retain official_partial")
+            if reviewed_reason and reviewed_reason not in BLOCKING_REASON_CODES:
                 errors.append(
-                    f"line {line_number}: {exchange} current audit has unsupported "
-                    f"promotion_readiness {current_readiness!r}"
+                    f"line {line_number}: {exchange} has unsupported reviewed reason_code "
+                    f"{reviewed_reason!r}"
                 )
-        if audit and "security_lookup_subset" in audit.get("reference_scopes", ""):
-            if public_scope != "official_security_lookup_subset":
-                errors.append(f"line {line_number}: security lookup evidence needs lookup subset scope")
+            if audit and audit.get("venue_status") == "official_partial":
+                current_readiness = audit.get("promotion_readiness", "").strip()
+                if current_readiness == "ready_for_manual_scope_review":
+                    errors.append(
+                        f"line {line_number}: {exchange} current audit has no promotion blocker; "
+                        "explicit scope review is required"
+                    )
+                elif current_readiness not in BLOCKING_REASON_CODES:
+                    errors.append(
+                        f"line {line_number}: {exchange} current audit has unsupported "
+                        f"promotion_readiness {current_readiness!r}"
+                    )
+            if audit and "security_lookup_subset" in audit.get("reference_scopes", ""):
+                if public_scope != "official_security_lookup_subset":
+                    errors.append(f"line {line_number}: security lookup evidence needs lookup subset scope")
         if public_scope == "official_full_licensed_internal" and not row.get("commercial_option_key"):
             errors.append(f"line {line_number}: licensed internal scope requires a commercial option")
         try:

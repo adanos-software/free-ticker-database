@@ -40,6 +40,10 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Brazil",
         "country_code": "BR",
     },
+    "BVB": {
+        "country": "Romania",
+        "country_code": "RO",
+    },
     "BHB": {
         "country": "Bahrain",
         "country_code": "BH",
@@ -60,6 +64,10 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Sri Lanka",
         "country_code": "LK",
     },
+    "CSE_MA": {
+        "country": "Morocco",
+        "country_code": "MA",
+    },
     "DFM": {
         "country": "United Arab Emirates",
         "country_code": "AE",
@@ -68,6 +76,10 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Hong Kong",
         "country_code": "HK",
     },
+    "HNX": {
+        "country": "Vietnam",
+        "country_code": "VN",
+    },
     "MSX": {
         "country": "Oman",
         "country_code": "OM",
@@ -75,6 +87,14 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
     "NSE_IN": {
         "country": "India",
         "country_code": "IN",
+    },
+    "NSE_KE": {
+        "country": "Kenya",
+        "country_code": "KE",
+    },
+    "PSE": {
+        "country": "Philippines",
+        "country_code": "PH",
     },
     "NZX": {
         "country": "New Zealand",

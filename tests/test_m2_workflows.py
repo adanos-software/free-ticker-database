@@ -43,9 +43,13 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "if:" not in rebuild_step
     assert "continue-on-error: true" in validation_step
     assert "scripts/classify_masterfile_rotation_gates.py" in workflow
+    assert "scripts/apply_official_identity_updates.py" in workflow
+    assert "--listings data/listings.csv" in workflow
+    assert "--metadata-updates data/review_overrides/metadata_updates.csv" in workflow
     assert "--rotation-diff data/reports/masterfile_rotation_diff.json" in workflow
     assert "--safe-merge data/reports/safe_merge.json" in workflow
     assert "critical_rotation_change_count" in workflow
+    assert "identity_review_change_count" in workflow
     assert "unevidenced_listing_field_change_count" in workflow
     assert "- name: Enforce safe merge gate" in workflow
     safe_merge_step = workflow.split("- name: Enforce safe merge gate", 1)[1].split(

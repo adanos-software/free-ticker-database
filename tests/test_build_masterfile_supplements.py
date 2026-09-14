@@ -4,6 +4,38 @@ from scripts.build_masterfile_supplements import build_supplement_rows
 from scripts.rebuild_dataset import merge_supplemental_ticker_rows
 
 
+def test_build_supplement_rows_allows_collision_free_cse_ma_official_directory():
+    core_rows = [{"ticker": "IAM", "exchange": "CSE_MA", "name": "Ittissalat Al-Maghrib"}]
+    masterfile_rows = [
+        {
+            "ticker": "NEWCO",
+            "name": "New Moroccan Issuer",
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "cse_ma_listed_companies",
+            "source_url": "https://example.com/cse",
+        },
+        {
+            "ticker": "IAM",
+            "name": "Ittissalat Al-Maghrib",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "nasdaq_listed",
+            "source_url": "https://example.com/nasdaq",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert [row["ticker"] for row in rows] == ["NEWCO"]
+    assert rows[0]["country_code"] == "MA"
+    assert summary["colliding_rows_skipped"] == 0
+
+
 def test_build_supplement_rows_keeps_only_safe_tse_rows():
     core_rows = [
         {"ticker": "1301", "exchange": "TWSE", "name": "Formosa Plastics Corporation"},

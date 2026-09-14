@@ -63,6 +63,90 @@ def test_validate_rejects_full_public_claim_for_blocked_exchange(tmp_path: Path)
     assert any("official_full_public" in error for error in errors)
 
 
+def test_validate_requires_decision_for_missing_venues(tmp_path: Path) -> None:
+    audit = tmp_path / "audit.csv"
+    decisions = tmp_path / "decisions.csv"
+    write_csv(
+        audit,
+        list(audit_row().keys()),
+        [
+            {**audit_row("AAA"), "venue_status": "official_partial"},
+            {
+                "exchange": "XSTU",
+                "venue_status": "missing",
+                "reference_scopes": "",
+                "promotion_readiness": "not_applicable",
+            },
+        ],
+    )
+    write_csv(decisions, MODULE.FIELDNAMES, [decision_row("AAA")])
+
+    errors = MODULE.validate(decisions, audit)
+
+    assert any("XSTU" in error for error in errors)
+
+
+def test_validate_accepts_honest_missing_venue_gap(tmp_path: Path) -> None:
+    audit = tmp_path / "audit.csv"
+    decisions = tmp_path / "decisions.csv"
+    write_csv(
+        audit,
+        list(audit_row().keys()),
+        [
+            {
+                "exchange": "XSTU",
+                "venue_status": "missing",
+                "reference_scopes": "",
+                "promotion_readiness": "not_applicable",
+            }
+        ],
+    )
+    write_csv(
+        decisions,
+        MODULE.FIELDNAMES,
+        [
+            {
+                "exchange": "XSTU",
+                "current_venue_status": "missing",
+                "public_scope": "unofficial_source_gap",
+                "decision": "retain_missing",
+                "reason_code": "no_free_official_directory",
+                "required_evidence": "Free official Stuttgart directory",
+                "commercial_option_key": "",
+                "reviewed_at": "2026-09-14",
+            }
+        ],
+    )
+
+    assert MODULE.validate(decisions, audit) == []
+
+
+def test_validate_rejects_missing_claim_for_partial_audit_venue(tmp_path: Path) -> None:
+    audit = tmp_path / "audit.csv"
+    decisions = tmp_path / "decisions.csv"
+    write_csv(audit, list(audit_row().keys()), [audit_row("AAA")])
+    write_csv(
+        decisions,
+        MODULE.FIELDNAMES,
+        [
+            {
+                "exchange": "AAA",
+                "current_venue_status": "missing",
+                "public_scope": "unofficial_source_gap",
+                "decision": "retain_missing",
+                "reason_code": "no_free_official_directory",
+                "required_evidence": "Free official directory",
+                "commercial_option_key": "",
+                "reviewed_at": "2026-09-14",
+            }
+        ],
+    )
+
+    errors = MODULE.validate(decisions, audit)
+
+    assert any("does not match audit venue_status" in error for error in errors)
+
+
 def test_validate_accepts_review_gated_subset(tmp_path: Path) -> None:
     audit = tmp_path / "audit.csv"
     decisions = tmp_path / "decisions.csv"
