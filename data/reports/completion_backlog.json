@@ -821,32 +821,13 @@
       "asset_type": "Stock",
       "confidence_policy": "Accept only canonical stock sectors after source-specific normalization and issuer/name gates.",
       "etf_missing_count": 0,
-      "exchange": "BMV",
-      "field": "missing_sector_stock",
-      "missing_count": 1,
-      "notes": "Source research needed before applying.",
-      "official_source_count": 5,
-      "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 22,
-      "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
-      "reference_scopes": "listed_companies_subset",
-      "review_needed": true,
-      "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 1,
-      "target_field": "stock_sector",
-      "venue_status": "official_partial"
-    },
-    {
-      "asset_type": "Stock",
-      "confidence_policy": "Accept only canonical stock sectors after source-specific normalization and issuer/name gates.",
-      "etf_missing_count": 0,
       "exchange": "HKEX",
       "field": "missing_sector_stock",
       "missing_count": 1,
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 23,
+      "priority_rank": 22,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -865,7 +846,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 24,
+      "priority_rank": 23,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -884,7 +865,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 25,
+      "priority_rank": 24,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -903,7 +884,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 26,
+      "priority_rank": 25,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "listed_companies_subset",
       "review_needed": true,
@@ -1031,14 +1012,14 @@
     "exchanges_by_field": {
       "missing_etf_category": 6,
       "missing_isin_primary": 22,
-      "missing_sector_stock": 26
+      "missing_sector_stock": 25
     },
     "field_totals": {
       "missing_etf_category": 63,
       "missing_isin_primary": 819,
-      "missing_sector_stock": 1523
+      "missing_sector_stock": 1522
     },
-    "generated_at": "2026-09-14T13:27:47Z",
+    "generated_at": "2026-09-14T16:33:10Z",
     "legacy_primary_ticker_collision_rows": 4772,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1055,12 +1036,13 @@
     "next_action_gate_totals": {
       "asx_residual_review_blocks_direct_apply": 1,
       "canada_residual_review_blocks_direct_identifier_apply": 2,
+      "openfigi_missing_isin_probe_no_apply_candidates": 1,
       "sec_sic_otc_no_apply_candidates": 1,
-      "source_gap_classification_blocks_direct_apply": 3,
+      "source_gap_classification_blocks_direct_apply": 2,
       "ungated_review_policy": 5
     },
     "next_action_source_gap_class_totals": {
-      "fund_or_trust_identifier_gap": 2,
+      "fund_or_trust_identifier_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 1,
       "otc_sector_source_gap": 1
     },
@@ -1229,7 +1211,7 @@
       },
       {
         "action_rank": 8,
-        "confidence_policy": "Exact fund/trust symbol and product name with checksum.",
+        "confidence_policy": "OpenFIGI no-apply probe evidence keeps the residual explicit; apply only future rows with valid ISIN, ticker, exchange-code, expected-prefix, numeric-token, name, and checksum gates.",
         "etf_missing_count": 74,
         "exchange": "BATS",
         "field": "missing_isin_primary",
@@ -1242,17 +1224,15 @@
           "missing_isin": 17,
           "no_openfigi_match": 4
         },
-        "recommended_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-        "residual_gate": "source_gap_classification_blocks_direct_apply",
+        "recommended_source": "Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source.",
+        "residual_gate": "openfigi_missing_isin_probe_no_apply_candidates",
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-        "source_gap_class": "fund_or_trust_identifier_gap",
-        "source_gap_rows": 71,
         "stock_missing_count": 0,
         "target_field": "isin",
         "venue_status": "official_full",
-        "why_next": "source-gap classification review-gated workflow"
+        "why_next": "OpenFIGI no-apply residual review-gated workflow"
       },
       {
         "action_rank": 9,
@@ -1323,7 +1303,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 13891,
-    "rows": 54
+    "official_masterfile_collisions": 13811,
+    "rows": 53
   }
 }

@@ -1,30 +1,208 @@
 {
-  "status": "pass",
+  "status": "fail",
   "thresholds": {
     "total_shrink_pct": 0.25,
     "venue_shrink_pct": 2.0,
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 92061,
-    "after_rows": 92061,
+    "before_rows": 92060,
+    "after_rows": 92060,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
-    "unevidenced_critical_field_changes": 0,
+    "critical_field_changes": 8,
+    "unevidenced_critical_field_changes": 1,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
+    "generated_official_change_evidence_rows": 7,
     "generated_reviewed_transition_evidence_rows": 0
   },
-  "failures": [],
+  "failures": [
+    "1 critical field changes lack exact evidence"
+  ],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
-  "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [],
+  "unevidenced_critical_field_changes": [
+    {
+      "listing_key": "ASX::ADV",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    }
+  ],
+  "critical_field_changes": [
+    {
+      "listing_key": "ASX::ADV",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "BMV::AC",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "BMV::CMRB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "BMV::GMD",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "BMV::GNP",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "BMV::HOTEL",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "BMV::Q",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "BMV::RA",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    }
+  ],
+  "generated_official_change_evidence": [
+    {
+      "listing_key": "BMV::AC",
+      "ticker": "AC",
+      "exchange": "BMV",
+      "event_type": "taxonomy_changed",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Staples",
+      "before_row_sha256": "ad34988e27410c13977cf3b1b5a3fb76897914e218975782e74bcc640667113c",
+      "effective_at": "",
+      "observed_at": "2026-09-14T16:26:37Z",
+      "source_key": "bmv_market_data_securities",
+      "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "9bb20f241fb21460d3397f32",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "BMV::CMRB",
+      "ticker": "CMRB",
+      "exchange": "BMV",
+      "event_type": "taxonomy_changed",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary",
+      "before_row_sha256": "9d1811da0901e99506da4132e14f315a2024b79ed5974a83e29ed49dbaa1ea88",
+      "effective_at": "",
+      "observed_at": "2026-09-14T16:26:37Z",
+      "source_key": "bmv_market_data_securities",
+      "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "a3fe6450bc06fc7f0314f8c0",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "BMV::GMD",
+      "ticker": "GMD",
+      "exchange": "BMV",
+      "event_type": "taxonomy_changed",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials",
+      "before_row_sha256": "2841fdcd9bfcfcf8f48e14ce9c1c838b721a9fbd93dfcf5afb8632dfd1470cf5",
+      "effective_at": "",
+      "observed_at": "2026-09-14T16:26:37Z",
+      "source_key": "bmv_market_data_securities",
+      "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "961aeac71588346f5de22b0e",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "BMV::GNP",
+      "ticker": "GNP",
+      "exchange": "BMV",
+      "event_type": "taxonomy_changed",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials",
+      "before_row_sha256": "85371903efa616ad16f0790e973d0ba455c478e439a6b1db2b570515785b0f7e",
+      "effective_at": "",
+      "observed_at": "2026-09-14T16:26:37Z",
+      "source_key": "bmv_market_data_securities",
+      "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "e57f7811d7ce45604eb0fca7",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "BMV::HOTEL",
+      "ticker": "HOTEL",
+      "exchange": "BMV",
+      "event_type": "taxonomy_changed",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary",
+      "before_row_sha256": "71ebb2ee82ed0ef711a3212130737d4e4be7caa4f451784e69bc23dc929717aa",
+      "effective_at": "",
+      "observed_at": "2026-09-14T16:26:37Z",
+      "source_key": "bmv_market_data_securities",
+      "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "21c5d95222c4306e6b2cc07d",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "BMV::Q",
+      "ticker": "Q",
+      "exchange": "BMV",
+      "event_type": "taxonomy_changed",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials",
+      "before_row_sha256": "a06d7c1fe6ed79c52c6dab379edb8786366400ee4c24b64da88d77475c639ba1",
+      "effective_at": "",
+      "observed_at": "2026-09-14T16:26:37Z",
+      "source_key": "bmv_market_data_securities",
+      "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "fc54a2b31437975193595a12",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "BMV::RA",
+      "ticker": "RA",
+      "exchange": "BMV",
+      "event_type": "taxonomy_changed",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials",
+      "before_row_sha256": "84f99892df778d6f45a14ac76e3d6a6373760b1aae51c4281d27d3c172711ec9",
+      "effective_at": "",
+      "observed_at": "2026-09-14T16:26:37Z",
+      "source_key": "bmv_market_data_securities",
+      "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "1396d5d97c0b66bd4096c4c5",
+      "evidence_status": "official"
+    }
+  ],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
@@ -425,8 +603,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4757,
-      "after_rows": 4757,
+      "before_rows": 4756,
+      "after_rows": 4756,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

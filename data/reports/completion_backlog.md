@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-09-14T13:27:47Z`
+Generated at: `2026-09-14T16:33:10Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `819`
-- Missing stock sectors: `1523`
+- Missing stock sectors: `1522`
 - Missing ETF categories: `63`
-- Official symbol collisions tracked in exchange references: `13891`
+- Official symbol collisions tracked in exchange references: `13811`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4772`
 
 ## Next Safe Batches
@@ -21,7 +21,7 @@ Generated at: `2026-09-14T13:27:47Z`
 | 5 | NASDAQ | missing_isin_primary | 87 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 6 | NYSE ARCA | missing_isin_primary | 87 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
 | 7 | TSX | missing_isin_primary | 77 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
-| 8 | BATS | missing_isin_primary | 74 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
+| 8 | BATS | missing_isin_primary | 74 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
 | 9 | IDX | missing_isin_primary | 62 | candidate_for_official_followup | Official exchange masterfile or reviewed secondary identifier source. | yes |
 | 10 | NYSE | missing_isin_primary | 62 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 11 | NASDAQ | missing_sector_stock | 51 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |

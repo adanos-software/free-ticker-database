@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T13:27:45Z",
+  "generated_at": "2026-09-14T16:33:04Z",
   "summary": {
     "venues": 87,
     "venue_status_counts": {
@@ -8,13 +8,13 @@
       "official_partial": 33
     },
     "audit_outcome_counts": {
-      "denominator_missing": 24,
+      "denominator_missing": 26,
       "maintain": 22,
       "official_source_required": 5,
       "refresh_required": 21,
-      "refresh_unavailable": 15
+      "refresh_unavailable": 13
     },
-    "unavailable_venues": 15,
+    "unavailable_venues": 13,
     "nonfresh_venues": 60,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
@@ -72,13 +72,13 @@
       "reference_scopes": "listed_companies_subset",
       "current_stock_rows": 1727,
       "current_etf_rows": 532,
-      "official_active_stock_rows": 1843,
-      "official_active_etf_rows": 601,
+      "official_active_stock_rows": 1861,
+      "official_active_etf_rows": 641,
       "missing_product_classes": "",
       "official_source_keys": "asx_investment_products|asx_listed_companies",
-      "unavailable_source_keys": "asx_listed_companies",
-      "nonfresh_source_keys": "asx_investment_products|asx_listed_companies",
-      "source_blocker_classes": "empty_refresh|stale_artifact",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "asx_investment_products",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -86,8 +86,8 @@
       "official_recall_pct": null,
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
-      "audit_outcome": "refresh_unavailable",
-      "promotion_readiness": "blocked_source_unavailable"
+      "audit_outcome": "denominator_missing",
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "ATHEX",
@@ -279,13 +279,13 @@
       "reference_scopes": "listed_companies_subset",
       "current_stock_rows": 189,
       "current_etf_rows": 155,
-      "official_active_stock_rows": 94,
-      "official_active_etf_rows": 12,
+      "official_active_stock_rows": 109,
+      "official_active_etf_rows": 10,
       "missing_product_classes": "",
       "official_source_keys": "bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search",
-      "unavailable_source_keys": "bmv_capital_trust_search|bmv_market_data_securities|bmv_stock_search",
-      "nonfresh_source_keys": "bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search",
-      "source_blocker_classes": "empty_refresh|stale_artifact",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "bmv_etf_search|bmv_issuer_directory",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -293,8 +293,8 @@
       "official_recall_pct": null,
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
-      "audit_outcome": "refresh_unavailable",
-      "promotion_readiness": "blocked_source_unavailable"
+      "audit_outcome": "denominator_missing",
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "BSE_BW",
@@ -371,19 +371,19 @@
       "reference_scopes": "exchange_directory|listed_companies_subset",
       "current_stock_rows": 87,
       "current_etf_rows": 5,
-      "official_active_stock_rows": 349,
+      "official_active_stock_rows": 89,
       "official_active_etf_rows": 10,
       "missing_product_classes": "",
       "official_source_keys": "bvb_fund_units_directory|bvb_shares_directory",
       "unavailable_source_keys": "",
       "nonfresh_source_keys": "bvb_fund_units_directory",
-      "source_blocker_classes": "cache_only|stale_artifact",
-      "official_denominator": 349,
-      "official_matches": 86,
-      "official_collisions": 119,
-      "official_missing": 144,
-      "official_recall_pct": 24.64,
-      "collision_adjusted_recall_pct": 37.39,
+      "source_blocker_classes": "stale_artifact",
+      "official_denominator": 89,
+      "official_matches": 44,
+      "official_collisions": 39,
+      "official_missing": 6,
+      "official_recall_pct": 49.44,
+      "collision_adjusted_recall_pct": 88.0,
       "denominator_status": "available",
       "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"

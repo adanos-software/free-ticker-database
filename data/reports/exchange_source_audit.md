@@ -1,16 +1,16 @@
 # Exchange Source Audit
 
-Generated at: `2026-09-14T13:27:45Z`
+Generated at: `2026-09-14T16:33:04Z`
 
 - Venues: `87`
 - Venue status: `{"missing": 5, "official_full": 49, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 22, "official_source_required": 5, "refresh_required": 21, "refresh_unavailable": 15}`
+- Audit outcomes: `{"denominator_missing": 26, "maintain": 22, "official_source_required": 5, "refresh_required": 21, "refresh_unavailable": 13}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
 | ADX | official_full | adx_market_watch |  | 122 | 69.67 |  | maintain | not_applicable |
 | AMS | official_full | euronext_equities|euronext_etfs |  | 609 | 61.25 | euronext_etfs | refresh_required | not_applicable |
-| ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_investment_products|asx_listed_companies | refresh_unavailable | blocked_source_unavailable |
+| ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_investment_products | denominator_missing | blocked_nonfresh_source |
 | ATHEX | official_partial | athex_sector_classification | ETF | 0 |  | athex_sector_classification | denominator_missing | blocked_nonfresh_source |
 | B3 | official_full | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs |  | 1353 | 90.17 | b3_bdr_etfs|b3_listed_etfs | refresh_required | not_applicable |
 | BATS | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 1623 | 79.11 | nasdaq_other_listed|nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
@@ -19,11 +19,11 @@ Generated at: `2026-09-14T13:27:45Z`
 | BIST | official_full | bist_kap_mkk_listed_securities |  | 660 | 92.58 |  | maintain | not_applicable |
 | BK | official_full | boursa_kuwait_stocks |  | 140 | 72.14 |  | maintain | not_applicable |
 | BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 271 | 90.77 | bme_etf_list|bme_listed_companies|bme_security_prices_directory | refresh_required | not_applicable |
-| BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search | refresh_unavailable | blocked_source_unavailable |
+| BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_etf_search|bmv_issuer_directory | denominator_missing | blocked_nonfresh_source |
 | BSE_BW | official_partial | bse_bw_listed_companies | ETF | 0 |  | bse_bw_listed_companies | denominator_missing | blocked_nonfresh_source |
 | BSE_HU | official_partial | bse_hu_listed_companies | ETF | 0 |  | bse_hu_listed_companies | denominator_missing | blocked_nonfresh_source |
 | BSE_IN | official_full | bse_india_scrips |  | 4997 | 50.45 |  | maintain | not_applicable |
-| BVB | official_full | bvb_fund_units_directory|bvb_shares_directory |  | 349 | 24.64 | bvb_fund_units_directory | refresh_required | not_applicable |
+| BVB | official_full | bvb_fund_units_directory|bvb_shares_directory |  | 89 | 49.44 | bvb_fund_units_directory | refresh_required | not_applicable |
 | BVC | official_partial | bvc_colombia_issuers |  | 0 |  | bvc_colombia_issuers | refresh_unavailable | blocked_source_unavailable |
 | BVL | official_partial | bvl_issuers_directory |  | 0 |  | bvl_issuers_directory | denominator_missing | blocked_nonfresh_source |
 | Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2907 | 8.6 | euronext_etfs | refresh_required | not_applicable |
