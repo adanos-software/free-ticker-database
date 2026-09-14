@@ -7,32 +7,45 @@
   },
   "summary": {
     "before_rows": 92061,
-    "after_rows": 92061,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "after_rows": 92060,
+    "overall_shrink_pct": 0.001086,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 1,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::BBCQ"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "Euronext::ALNRG",
-      "field_name": "isin",
-      "old_value": "FR0013399359",
-      "new_value": "FR001401A702"
+      "listing_key": "NASDAQ::BBCQ",
+      "ticker": "BBCQ",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Bleichroeder Acquisition Corp. II Class A Ordinary Shares",
+      "new_value": "",
+      "before_row_sha256": "a6f2498c825fdf98f52b117e5094389412ec58d23a26888a78307db723ab01db",
+      "effective_at": "",
+      "observed_at": "2026-09-14T12:43:15Z",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "7faa709326953b6eaf5bf9ec",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -433,9 +446,9 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4757,
-      "after_rows": 4757,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 4756,
+      "shrink_pct": 0.021022,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
