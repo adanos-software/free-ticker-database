@@ -1,50 +1,61 @@
 {
   "summary": {
-    "generated_at": "2026-09-08T09:30:20Z",
+    "generated_at": "2026-09-14T14:25:15Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "transitions_csv": "data/reports/delisting_transitions.csv",
-    "transition_rows": 2,
-    "applied_rows": 2,
+    "transition_rows": 3,
+    "applied_rows": 3,
     "already_applied_rows": 0,
     "drafted_rows": 0,
-    "blocked_rows": 163,
-    "manual_rows": 259,
+    "blocked_rows": 169,
+    "manual_rows": 228,
     "status_counts": {
-      "apply_drop_override": 2,
-      "blocked_suspended_kept_by_policy": 163,
-      "manual_rename_vs_delisting_required": 259
+      "apply_drop_override": 3,
+      "blocked_suspended_kept_by_policy": 169,
+      "manual_rename_vs_delisting_required": 228
     }
   },
   "applied": [
     {
       "exchange": "NASDAQ",
-      "ticker": "BTAI",
-      "name": "BioXcel Therapeutics Inc",
-      "isin": "US09075P2048",
+      "ticker": "ATAI",
+      "name": "AtaiBeckley Inc.",
+      "isin": "NL0015000DX5",
       "classification": "delisted",
       "status": "apply_drop_override",
       "source_key": "nasdaq_trading_system_adds_deletes",
       "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_9b0bfb8e6de21dc722d6e46f",
-      "nasdaq_action": "Delete"
+      "observation_id": "obs_3ab0a38a3b292253f326efba"
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "LPSN",
-      "name": "LivePerson Inc",
-      "isin": "US5381461012",
+      "ticker": "KHC",
+      "name": "Kraft Heinz Co",
+      "isin": "US5007541064",
       "classification": "delisted",
       "status": "apply_drop_override",
       "source_key": "nasdaq_trading_system_adds_deletes",
       "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_16d3d1348b7bc8e627163b8d",
-      "nasdaq_action": "Delete"
+      "observation_id": "obs_19c59f5ea5365ed1d632a840"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "TEVA",
+      "name": "Teva Pharmaceutical Industries Limited",
+      "isin": "US8816242098",
+      "classification": "delisted",
+      "status": "apply_drop_override",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "observed_at": "2026-09-14T14:25:15Z",
+      "effective_at": "",
+      "observation_id": "obs_960713ad17e1010cf0d4bdba"
     }
   ],
   "already_applied": [],
@@ -59,9 +70,22 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_bdd7dab24fe356f7ed230c01"
+      "observation_id": "obs_47ab944b37e42c68b9215024"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "AADIIND",
+      "name": "Aadi Industries Ltd",
+      "isin": "INE563D01013",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy",
+      "source_key": "bse_india_scrips",
+      "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "observed_at": "2026-09-14T14:25:15Z",
+      "effective_at": "",
+      "observation_id": "obs_a680e95f9415a0702759ef84"
     },
     {
       "exchange": "BSE_IN",
@@ -72,9 +96,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_369bb3a7703aab76ac78ace9"
+      "observation_id": "obs_fb187d5014a6f847410c2b0a"
     },
     {
       "exchange": "BSE_IN",
@@ -85,9 +109,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d043b9b97a62696d8cdb103a"
+      "observation_id": "obs_d95ff7eb9e426fa2edd10571"
     },
     {
       "exchange": "BSE_IN",
@@ -98,9 +122,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_c8f0feda41346668201d4034"
+      "observation_id": "obs_986a791199ab7a343a6c3b62"
     },
     {
       "exchange": "BSE_IN",
@@ -111,9 +135,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_127714f37a47896efe80222f"
+      "observation_id": "obs_9b6a4c5166dd019b2b30b192"
     },
     {
       "exchange": "BSE_IN",
@@ -124,9 +148,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_3ab7fb0c83d504dc7b200780"
+      "observation_id": "obs_0f6ca96a292ba3ffaacc51f8"
     },
     {
       "exchange": "BSE_IN",
@@ -137,9 +161,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_f46cb34a79801b21aa7d07d3"
+      "observation_id": "obs_6df93fa0f20259cf91d605e2"
     },
     {
       "exchange": "BSE_IN",
@@ -150,9 +174,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_68c62396615f574810696479"
+      "observation_id": "obs_aca351f888cf04105547a49a"
     },
     {
       "exchange": "BSE_IN",
@@ -163,9 +187,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_4c180cefd7840e002d3e153a"
+      "observation_id": "obs_4d5372b3373a5963daa7667a"
     },
     {
       "exchange": "BSE_IN",
@@ -176,9 +200,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_f4e0b2576618b8605f52ff1c"
+      "observation_id": "obs_d428b212e6e9116458756329"
     },
     {
       "exchange": "BSE_IN",
@@ -189,9 +213,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d2d5c26a6a28d37eb5698f4d"
+      "observation_id": "obs_7c1cf7cd51c0c46326e69f56"
     },
     {
       "exchange": "BSE_IN",
@@ -202,9 +226,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_31d15c88e09e4fa8541799a2"
+      "observation_id": "obs_e82ce3536ad671a7e984aeab"
     },
     {
       "exchange": "BSE_IN",
@@ -215,9 +239,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_92409f0967be0330d032edca"
+      "observation_id": "obs_e3e7b29ebb4ad136488b7d2b"
     },
     {
       "exchange": "BSE_IN",
@@ -228,9 +252,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0fb4a429ef77f81d01d114ba"
+      "observation_id": "obs_d0e7104028eacab00b3b3290"
     },
     {
       "exchange": "BSE_IN",
@@ -241,9 +265,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_96b0cfffaad60a63feca6c72"
+      "observation_id": "obs_07ba5c4e4f774f59e8d30c75"
     },
     {
       "exchange": "BSE_IN",
@@ -254,9 +278,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fd66aed740e14bc0469db898"
+      "observation_id": "obs_70db7938cf1c4df656a9483b"
     },
     {
       "exchange": "BSE_IN",
@@ -267,9 +291,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0c85d3fa429ca7ae04e11328"
+      "observation_id": "obs_c28bcea19cfe1f70332d492b"
     },
     {
       "exchange": "BSE_IN",
@@ -280,9 +304,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_00bea886298e1566874d2fa6"
+      "observation_id": "obs_cebdb4edb0a3ab12c3ec0fa4"
     },
     {
       "exchange": "BSE_IN",
@@ -293,9 +317,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d72733ff7806ce5f50b68bbd"
+      "observation_id": "obs_08b8fdf8b23cbf7d57ddb299"
     },
     {
       "exchange": "BSE_IN",
@@ -306,9 +330,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_3a7a9bf9acb0e3d780190444"
+      "observation_id": "obs_5596440a314ab7dbe64456cb"
     },
     {
       "exchange": "BSE_IN",
@@ -319,9 +343,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_32964aaf4919a7229e9ab3a9"
+      "observation_id": "obs_06c963add2dc78c771ad1ff3"
     },
     {
       "exchange": "BSE_IN",
@@ -332,9 +356,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_192c4e2d494154fe1a67a0e3"
+      "observation_id": "obs_06cdf8d3538f55a1b1ae4cbe"
     },
     {
       "exchange": "BSE_IN",
@@ -345,9 +369,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_8cf6e98d28d26fc5e9b9f60e"
+      "observation_id": "obs_16349322ffbf29b6b9277c67"
     },
     {
       "exchange": "BSE_IN",
@@ -358,9 +382,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_47a24d27d656e25a8bda9a7f"
+      "observation_id": "obs_2b7e8c4fa548677e943c9978"
     },
     {
       "exchange": "BSE_IN",
@@ -371,9 +395,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fa36ce4d6bb7a4c0051f8bb9"
+      "observation_id": "obs_5ba099f9902718743b947481"
     },
     {
       "exchange": "BSE_IN",
@@ -384,9 +408,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_528f5156028340ebcdd77cca"
+      "observation_id": "obs_fcd9092a15040fecc6bf6cb8"
     },
     {
       "exchange": "BSE_IN",
@@ -397,9 +421,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_5a9b55ff8f2dbe022b4c18d8"
+      "observation_id": "obs_f9afea94f7d65f2ce68148b3"
     },
     {
       "exchange": "BSE_IN",
@@ -410,9 +434,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_cfb0cfa6907424162d800012"
+      "observation_id": "obs_dffa1d133e501a369a659904"
     },
     {
       "exchange": "BSE_IN",
@@ -423,9 +447,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_36b3d145ad99887abe66faeb"
+      "observation_id": "obs_e39b4161a61f08204819575e"
     },
     {
       "exchange": "BSE_IN",
@@ -436,9 +460,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fd93643edf30da78b55933c1"
+      "observation_id": "obs_696935a04085d8f4ef9b2aeb"
     },
     {
       "exchange": "BSE_IN",
@@ -449,9 +473,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fe4689f79d9dd82f31b7ebdd"
+      "observation_id": "obs_5cbb9d23e902df42d7097974"
     },
     {
       "exchange": "BSE_IN",
@@ -462,9 +486,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_9a0e44bfaab25ea7df42351e"
+      "observation_id": "obs_1fd7e14739771c5b2b82e42e"
     },
     {
       "exchange": "BSE_IN",
@@ -475,9 +499,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_64149de46ab0c6803b0e019d"
+      "observation_id": "obs_e19421eb510699e1d43d43dd"
     },
     {
       "exchange": "BSE_IN",
@@ -488,9 +512,22 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_785f073f7559389d816fa8cf"
+      "observation_id": "obs_1644f68bb8ac360f013d2a5c"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "CEREBRAINT",
+      "name": "Cerebra Integrated Technologies Ltd",
+      "isin": "INE345B01019",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy",
+      "source_key": "bse_india_scrips",
+      "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "observed_at": "2026-09-14T14:25:15Z",
+      "effective_at": "",
+      "observation_id": "obs_7d34563a2a075da5f7126124"
     },
     {
       "exchange": "BSE_IN",
@@ -501,9 +538,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_58b44eb3e133fc8c4766cd98"
+      "observation_id": "obs_a11e18128c9139f6b6963faf"
     },
     {
       "exchange": "BSE_IN",
@@ -514,9 +551,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_4338b61445096c00d9ba2e65"
+      "observation_id": "obs_36cd7d8b28133ba571c8fe57"
     },
     {
       "exchange": "BSE_IN",
@@ -527,9 +564,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_e09667c15d06228711aeee35"
+      "observation_id": "obs_0939959e6cd3ac39eb705260"
     },
     {
       "exchange": "BSE_IN",
@@ -540,9 +577,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_7b147cd5fa074f36905b3bce"
+      "observation_id": "obs_6d21243f28f091fc5607340c"
     },
     {
       "exchange": "BSE_IN",
@@ -553,9 +590,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_83bf2ec80460eff3e79c5728"
+      "observation_id": "obs_877e1044ca0ae028da6771d3"
     },
     {
       "exchange": "BSE_IN",
@@ -566,9 +603,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_2ea25df1d6c4c404d1fc4940"
+      "observation_id": "obs_29c8d53ec1839888808afbd6"
     },
     {
       "exchange": "BSE_IN",
@@ -579,9 +616,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_5a9c9bf69afcdc74553f6052"
+      "observation_id": "obs_f176c24bd3718d1d2c88fd53"
     },
     {
       "exchange": "BSE_IN",
@@ -592,9 +629,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_3aa2a5b41a7c6a928ac37a30"
+      "observation_id": "obs_99ab84259c6a06e72ae1046b"
     },
     {
       "exchange": "BSE_IN",
@@ -605,9 +642,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_a4263118458099ffe08d764d"
+      "observation_id": "obs_a3dcadd86c30d77e5e09779d"
     },
     {
       "exchange": "BSE_IN",
@@ -618,9 +655,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_eb35c949953ef0d3b200cc73"
+      "observation_id": "obs_66d43ec57a3e550cf8a82b05"
     },
     {
       "exchange": "BSE_IN",
@@ -631,9 +668,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_4d5932754b6a261feccba669"
+      "observation_id": "obs_698e284cd86f9483b87baca0"
     },
     {
       "exchange": "BSE_IN",
@@ -644,9 +681,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_06450d88a0f4e3cc210c4b44"
+      "observation_id": "obs_4160c504b501d65448a96b72"
     },
     {
       "exchange": "BSE_IN",
@@ -657,9 +694,22 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_907c31ec8965b4cec3634ec3"
+      "observation_id": "obs_250a6e3ee5e6c07f16da04fa"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "ENCODE",
+      "name": "Encode Packaging India Ltd",
+      "isin": "INE900O01014",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy",
+      "source_key": "bse_india_scrips",
+      "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "observed_at": "2026-09-14T14:25:15Z",
+      "effective_at": "",
+      "observation_id": "obs_18bdd549445c184c4b61ceac"
     },
     {
       "exchange": "BSE_IN",
@@ -670,9 +720,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_bf7e9bfc0eb4cba459479a9a"
+      "observation_id": "obs_2e3ae597e5cfae2ca6a7c4c3"
     },
     {
       "exchange": "BSE_IN",
@@ -683,9 +733,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_ec6fc9d5961b40ff5ab9971a"
+      "observation_id": "obs_e843ef53a0ea3881e5ef441c"
     },
     {
       "exchange": "BSE_IN",
@@ -696,9 +746,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_5f44ae3aebc7925e3856c631"
+      "observation_id": "obs_38ebcde1e2e00076510d9518"
     },
     {
       "exchange": "BSE_IN",
@@ -709,9 +759,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_5a6fe2d94f11f60d6e65ff38"
+      "observation_id": "obs_20dd0b5e536d99dc3d7f7c88"
     },
     {
       "exchange": "BSE_IN",
@@ -722,9 +772,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_8a64951dae17111e6553ce97"
+      "observation_id": "obs_7ce823fb3331a22743dae83c"
     },
     {
       "exchange": "BSE_IN",
@@ -735,9 +785,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_ad19285d93b620d779181ac1"
+      "observation_id": "obs_c5f1cc3ba4922ea8246115ee"
     },
     {
       "exchange": "BSE_IN",
@@ -748,9 +798,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_8483b44cda4a4b9600dba519"
+      "observation_id": "obs_381014597e405abc0a4cffe1"
     },
     {
       "exchange": "BSE_IN",
@@ -761,9 +811,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_9c11bba9f58ff0aed557a979"
+      "observation_id": "obs_8859faae822e7a97d11ef1a4"
     },
     {
       "exchange": "BSE_IN",
@@ -774,9 +824,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_5773abe150bdf235d5017645"
+      "observation_id": "obs_888bbfb3977dfda0b24dc7f5"
     },
     {
       "exchange": "BSE_IN",
@@ -787,9 +837,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_e7e0aa631fe60913832a2b3b"
+      "observation_id": "obs_4b623e1bea79f6fd27f537d7"
     },
     {
       "exchange": "BSE_IN",
@@ -800,9 +850,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_40c2b1d2686b42b741e7199e"
+      "observation_id": "obs_167680bfcddba1724c318d38"
     },
     {
       "exchange": "BSE_IN",
@@ -813,9 +863,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_259ec88ac7241138d2f345d0"
+      "observation_id": "obs_66f6ef1c14fd33f04f288e8c"
     },
     {
       "exchange": "BSE_IN",
@@ -826,9 +876,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0f7e096b0da9e06c84948836"
+      "observation_id": "obs_1eb5a5242aaf5aa242140fec"
     },
     {
       "exchange": "BSE_IN",
@@ -839,9 +889,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_7e2b50aaac579d5bd9f2481f"
+      "observation_id": "obs_9718ff5e6c88495d22336cfa"
     },
     {
       "exchange": "BSE_IN",
@@ -852,9 +902,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_545d58cadf2dc87016218cfd"
+      "observation_id": "obs_d7b02bca6ac1a229370bc863"
     },
     {
       "exchange": "BSE_IN",
@@ -865,9 +915,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_f70d166cac41c0ade2edb9b1"
+      "observation_id": "obs_32c8a9898ab326151e7f6e9c"
     },
     {
       "exchange": "BSE_IN",
@@ -878,9 +928,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fdddc7cd18b46e517d9b1029"
+      "observation_id": "obs_05852b9ef7b485146e79e2fb"
     },
     {
       "exchange": "BSE_IN",
@@ -891,9 +941,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_69864416cdb042f0f639b749"
+      "observation_id": "obs_500817eb558a4d63e6fa8dd5"
     },
     {
       "exchange": "BSE_IN",
@@ -904,9 +954,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_5e4f89e635b752bbceabfe27"
+      "observation_id": "obs_d79e552676925e0fcf4b98a6"
     },
     {
       "exchange": "BSE_IN",
@@ -917,9 +967,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_c9dd77d1bc46dffbc08c470f"
+      "observation_id": "obs_b9e5ff1d2138b0f11798539f"
     },
     {
       "exchange": "BSE_IN",
@@ -930,9 +980,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_28022048250e8e3d113585ac"
+      "observation_id": "obs_75cf754830ba5dc8e29916b5"
     },
     {
       "exchange": "BSE_IN",
@@ -943,9 +993,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_93161ec96375492bba236466"
+      "observation_id": "obs_9f1bd8a3e84dcda87441166b"
     },
     {
       "exchange": "BSE_IN",
@@ -956,9 +1006,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_cce9e80af41ae53e7e497fb0"
+      "observation_id": "obs_3acfcefe7b9492cae2989284"
     },
     {
       "exchange": "BSE_IN",
@@ -969,9 +1019,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d702b6ab9cc7906638265b9f"
+      "observation_id": "obs_57b43fe20c3721cec7ef50ae"
     },
     {
       "exchange": "BSE_IN",
@@ -982,9 +1032,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_87bf92f187a5a2a68e7d7b40"
+      "observation_id": "obs_0f0427b7948d54aabc56db32"
     },
     {
       "exchange": "BSE_IN",
@@ -995,9 +1045,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_a9f2119a703e59636e186817"
+      "observation_id": "obs_342bcbb04ba3b62dccf34b30"
     },
     {
       "exchange": "BSE_IN",
@@ -1008,9 +1058,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d46e2a358d4b46faab5a538f"
+      "observation_id": "obs_f4ac170f05d2a6730e671c77"
     },
     {
       "exchange": "BSE_IN",
@@ -1021,9 +1071,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_dd1c35b6ed25cccabe81a9d2"
+      "observation_id": "obs_9cb9ca5d083d6e729d8c0bdc"
     },
     {
       "exchange": "BSE_IN",
@@ -1034,9 +1084,22 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_01e4f6fa62786bd8219f5d5a"
+      "observation_id": "obs_facce344039fecf64d41ac79"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "KRISHNACAP",
+      "name": "Krishna Capital and Securities Ltd",
+      "isin": "INE897B01019",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy",
+      "source_key": "bse_india_scrips",
+      "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "observed_at": "2026-09-14T14:25:15Z",
+      "effective_at": "",
+      "observation_id": "obs_92ae2438c8dc2e5ff4c8d14e"
     },
     {
       "exchange": "BSE_IN",
@@ -1047,9 +1110,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_4338804437eadc84678a39fe"
+      "observation_id": "obs_85b98261e399c91c0199870b"
     },
     {
       "exchange": "BSE_IN",
@@ -1060,9 +1123,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_b6b40a45aff03e021ccf10e4"
+      "observation_id": "obs_6bfa2347d882796945d1f67c"
     },
     {
       "exchange": "BSE_IN",
@@ -1073,9 +1136,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_33e45157040ed09a84e28da9"
+      "observation_id": "obs_12c3ed5c383a3218129a274c"
     },
     {
       "exchange": "BSE_IN",
@@ -1086,9 +1149,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_e85f0c114c51b23d5f7ba0c9"
+      "observation_id": "obs_bab8fdd740bd10bed63f8622"
     },
     {
       "exchange": "BSE_IN",
@@ -1099,9 +1162,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_a335ce3328b32b2bb2cc9e16"
+      "observation_id": "obs_1cac28cd3f87aada2aa607b1"
     },
     {
       "exchange": "BSE_IN",
@@ -1112,9 +1175,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0d6148d804190ea631179562"
+      "observation_id": "obs_3b91aebf724fd6d89e1a71bd"
     },
     {
       "exchange": "BSE_IN",
@@ -1125,9 +1188,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_aaf69b619b7c2172e911d10d"
+      "observation_id": "obs_15dae1e1440c49bd3fe0904b"
     },
     {
       "exchange": "BSE_IN",
@@ -1138,9 +1201,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_438ae30c416ea3faf681cf99"
+      "observation_id": "obs_8cadff930139c8be0a1f0ff4"
     },
     {
       "exchange": "BSE_IN",
@@ -1151,9 +1214,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_4870d8c1264a90fc15d6c044"
+      "observation_id": "obs_47f0b830c64222c22e5af57a"
     },
     {
       "exchange": "BSE_IN",
@@ -1164,9 +1227,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0186a5704ef6c03cb721ab63"
+      "observation_id": "obs_3f525d8c884d626d720d3408"
     },
     {
       "exchange": "BSE_IN",
@@ -1177,9 +1240,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_a238524465243d93d221014f"
+      "observation_id": "obs_019753b222f5c76adfc8e849"
     },
     {
       "exchange": "BSE_IN",
@@ -1190,9 +1253,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1cd70a4e370d14012a08acf6"
+      "observation_id": "obs_e8c8383fe23f484d306c717c"
     },
     {
       "exchange": "BSE_IN",
@@ -1203,9 +1266,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_64991d2deec59e0ed24396b6"
+      "observation_id": "obs_2b83f5d61eea5966e1315661"
     },
     {
       "exchange": "BSE_IN",
@@ -1216,9 +1279,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1e34375086597d02748895c6"
+      "observation_id": "obs_37f90f657f04c4585501ec90"
     },
     {
       "exchange": "BSE_IN",
@@ -1229,9 +1292,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1a01266b2a89436a7dea6ac9"
+      "observation_id": "obs_0d513d634a31cfdbad0417f0"
     },
     {
       "exchange": "BSE_IN",
@@ -1242,9 +1305,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_ceeeb96401b3ad52c3efdf2b"
+      "observation_id": "obs_8f01ed250917ec672094d69d"
     },
     {
       "exchange": "BSE_IN",
@@ -1255,9 +1318,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_133028bdd1f12bd08a50dfe5"
+      "observation_id": "obs_c25f6556974b9346e54b61ad"
     },
     {
       "exchange": "BSE_IN",
@@ -1268,9 +1331,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_498daa8086546bebd290eaa9"
+      "observation_id": "obs_55572a14b7fb0c203bdbe7bc"
     },
     {
       "exchange": "BSE_IN",
@@ -1281,9 +1344,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_97a416a95a83d6d260ffc094"
+      "observation_id": "obs_ecdd49660a54262709f54687"
     },
     {
       "exchange": "BSE_IN",
@@ -1294,9 +1357,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_7114ebaa9e750cdb3cab0f89"
+      "observation_id": "obs_f54aabb76022d9a9c15d6f4d"
     },
     {
       "exchange": "BSE_IN",
@@ -1307,9 +1370,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_93a23292940061f24196fe44"
+      "observation_id": "obs_0e2ab3984f837e2b10684365"
     },
     {
       "exchange": "BSE_IN",
@@ -1320,9 +1383,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_b64cd0b6232401130ced8222"
+      "observation_id": "obs_dd487c6171dfd8693ae0adea"
     },
     {
       "exchange": "BSE_IN",
@@ -1333,9 +1396,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fa05111ff880f0c08983006f"
+      "observation_id": "obs_effa08dffa7f1543088ef2c2"
     },
     {
       "exchange": "BSE_IN",
@@ -1346,9 +1409,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_b620bf34464e100e1a915a5e"
+      "observation_id": "obs_95c10c20adf8ad479f22bc2e"
     },
     {
       "exchange": "BSE_IN",
@@ -1359,9 +1422,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_edb263d64be38ccaa2a04e52"
+      "observation_id": "obs_0d7ae8a4f41295bf9022ee04"
     },
     {
       "exchange": "BSE_IN",
@@ -1372,9 +1435,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_9c57771be46cea8f3ffe68c9"
+      "observation_id": "obs_1b523e19d0b31979fea91140"
     },
     {
       "exchange": "BSE_IN",
@@ -1385,9 +1448,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_43b8b14cc0f767c38316107a"
+      "observation_id": "obs_edb57fac6b849a6c52c2745c"
     },
     {
       "exchange": "BSE_IN",
@@ -1398,9 +1461,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_8f2865896c19fbc8488e37e5"
+      "observation_id": "obs_ff57068ecdf5925d7bd452b8"
     },
     {
       "exchange": "BSE_IN",
@@ -1411,9 +1474,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fffe0a11efc15494a818b128"
+      "observation_id": "obs_3034526fa7ea4d846cefef1e"
     },
     {
       "exchange": "BSE_IN",
@@ -1424,9 +1487,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_903f7d876544d93532c2083c"
+      "observation_id": "obs_bfd89510947612ac78bab2d1"
     },
     {
       "exchange": "BSE_IN",
@@ -1437,9 +1500,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_936fac6872477344da7fac1a"
+      "observation_id": "obs_2b8650b152bb181ce445e81c"
     },
     {
       "exchange": "BSE_IN",
@@ -1450,9 +1513,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_ce8777f4948f26205039fe1f"
+      "observation_id": "obs_cdb3b0822a3c142d86deb243"
     },
     {
       "exchange": "BSE_IN",
@@ -1463,9 +1526,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_c9b1fe44c61e8c4bc5ed797b"
+      "observation_id": "obs_1d195d43e11f3913d07fc771"
     },
     {
       "exchange": "BSE_IN",
@@ -1476,9 +1539,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1470fdd5aea5cc26cb755c84"
+      "observation_id": "obs_1a5f9b56a5607039c656a460"
     },
     {
       "exchange": "BSE_IN",
@@ -1489,9 +1552,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_b51a8da5cdbf9a3bf0bcacc9"
+      "observation_id": "obs_dbc2fdc4665e0c80d3f6959e"
     },
     {
       "exchange": "BSE_IN",
@@ -1502,9 +1565,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_393495884da73ce78cd41872"
+      "observation_id": "obs_8b8076a9d7f1c23db8fb63f1"
     },
     {
       "exchange": "BSE_IN",
@@ -1515,9 +1578,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_2b524ac786a6a7862563e92f"
+      "observation_id": "obs_da49e979eda551c8903862d3"
     },
     {
       "exchange": "BSE_IN",
@@ -1528,9 +1591,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_f506870f32cbb6b2791bf5b9"
+      "observation_id": "obs_c2d45c40b18b7545fb0ab25a"
     },
     {
       "exchange": "BSE_IN",
@@ -1541,9 +1604,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0b3121d316aa28b23007be7d"
+      "observation_id": "obs_45df80e882d65e31093a8a60"
     },
     {
       "exchange": "BSE_IN",
@@ -1554,9 +1617,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fbdc0ac30db4811f5c83e3af"
+      "observation_id": "obs_19d1ed6daf60b4a8da78a7b8"
     },
     {
       "exchange": "BSE_IN",
@@ -1567,9 +1630,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fee08fb3ee558df5194b3b64"
+      "observation_id": "obs_5035e36f683cc222e4a5737b"
     },
     {
       "exchange": "BSE_IN",
@@ -1580,9 +1643,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_6d52b8b6e521572a52e3ea54"
+      "observation_id": "obs_91336cbc91617b8c16d1286f"
     },
     {
       "exchange": "BSE_IN",
@@ -1593,9 +1656,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1a1a26810b8593cdabd38d08"
+      "observation_id": "obs_feeb5b03cb50c651b1dd7c4f"
     },
     {
       "exchange": "BSE_IN",
@@ -1606,9 +1669,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0f26a20a7a520bdb04476b46"
+      "observation_id": "obs_d2b04189afbb0104e44be8e1"
     },
     {
       "exchange": "BSE_IN",
@@ -1619,9 +1682,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_451ffdb2e1c58ff6b33788f2"
+      "observation_id": "obs_88bfefc31152acfa69593cc7"
     },
     {
       "exchange": "BSE_IN",
@@ -1632,9 +1695,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_289047b3258fb326826520a5"
+      "observation_id": "obs_54d0190c925f6015ffe84c29"
     },
     {
       "exchange": "BSE_IN",
@@ -1645,9 +1708,22 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d85a6d1260ff750571592037"
+      "observation_id": "obs_132bf013b92e0014ff4a9d98"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SARUPINDUS",
+      "name": "Sarup Industries Ltd-$",
+      "isin": "INE305D01019",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy",
+      "source_key": "bse_india_scrips",
+      "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "observed_at": "2026-09-14T14:25:15Z",
+      "effective_at": "",
+      "observation_id": "obs_4fe2e94431f00731d692dcf7"
     },
     {
       "exchange": "BSE_IN",
@@ -1658,9 +1734,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fb3ebee506c3de1f20e81259"
+      "observation_id": "obs_9b9396413eb950feaedee491"
     },
     {
       "exchange": "BSE_IN",
@@ -1671,9 +1747,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_93527a3590225864749faa85"
+      "observation_id": "obs_67f9cc975fee6fe6ea2bbf78"
     },
     {
       "exchange": "BSE_IN",
@@ -1684,9 +1760,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_e7402aec76e2abc02fbfaff0"
+      "observation_id": "obs_74cf599827d58be1fb16f8e7"
     },
     {
       "exchange": "BSE_IN",
@@ -1697,9 +1773,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_8479f2f347548fb28ba0902a"
+      "observation_id": "obs_97b89dc827d9e0eb60e47090"
     },
     {
       "exchange": "BSE_IN",
@@ -1710,9 +1786,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_76d2ad513ffa3ebf15791971"
+      "observation_id": "obs_30f32c43265ad6eec8ccb8c6"
     },
     {
       "exchange": "BSE_IN",
@@ -1723,9 +1799,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_5af4274155752b870a3ea19c"
+      "observation_id": "obs_a3b39fa13244abf5f7a6d272"
     },
     {
       "exchange": "BSE_IN",
@@ -1736,9 +1812,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_480e26d28017acc8142e9b42"
+      "observation_id": "obs_8485b962c56c48b6a22cde80"
     },
     {
       "exchange": "BSE_IN",
@@ -1749,9 +1825,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_36365b61bad725c561827b5a"
+      "observation_id": "obs_a2ccadf9d8e731a1841981cd"
     },
     {
       "exchange": "BSE_IN",
@@ -1762,9 +1838,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1965ca8f89d8dd60593612be"
+      "observation_id": "obs_4fd82da164bc60afbf1b9fb6"
     },
     {
       "exchange": "BSE_IN",
@@ -1775,9 +1851,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_130d149827ae609fd076344a"
+      "observation_id": "obs_ae080a8fe525aad3a1da7fb4"
     },
     {
       "exchange": "BSE_IN",
@@ -1788,9 +1864,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_10e33a1f4d8b44a16029b013"
+      "observation_id": "obs_baa53b1795030bfdc38c82a5"
     },
     {
       "exchange": "BSE_IN",
@@ -1801,9 +1877,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_15e7f50f05733035f82c2e31"
+      "observation_id": "obs_6691e5bebcf4880b585b8b4c"
     },
     {
       "exchange": "BSE_IN",
@@ -1814,9 +1890,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_9fbc32b3ac0ee51201fef2ee"
+      "observation_id": "obs_cb06ff46b16380d594c1cb70"
     },
     {
       "exchange": "BSE_IN",
@@ -1827,9 +1903,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d4c321d5a50fc4d90b65a207"
+      "observation_id": "obs_7bf6461b328baf0828e10cff"
     },
     {
       "exchange": "BSE_IN",
@@ -1840,9 +1916,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_2e8826bb649c94d0fc2e9cca"
+      "observation_id": "obs_0366020bf82aa9d78e96aa07"
     },
     {
       "exchange": "BSE_IN",
@@ -1853,9 +1929,22 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_ffb33f91a13ba35b7e10ea96"
+      "observation_id": "obs_5fe0293abb3ac5a90ce531d6"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SPELS",
+      "name": "SPEL Semiconductor Ltd",
+      "isin": "INE252A01019",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy",
+      "source_key": "bse_india_scrips",
+      "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
+      "observed_at": "2026-09-14T14:25:15Z",
+      "effective_at": "",
+      "observation_id": "obs_ea10ffbf05242851173e00b6"
     },
     {
       "exchange": "BSE_IN",
@@ -1866,9 +1955,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1c3f990903b81675cb72130e"
+      "observation_id": "obs_9a617e657013bd3fa0e79988"
     },
     {
       "exchange": "BSE_IN",
@@ -1879,9 +1968,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_f60f5bb2e5d8b9ec6d90a2c9"
+      "observation_id": "obs_55137dc87736adbe5b69b983"
     },
     {
       "exchange": "BSE_IN",
@@ -1892,9 +1981,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1ab0a45616b99923992831fc"
+      "observation_id": "obs_e6de93eaeb6fbd6c699ec2a5"
     },
     {
       "exchange": "BSE_IN",
@@ -1905,9 +1994,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_25df3aff6867d7cc585b113c"
+      "observation_id": "obs_9e5bdd2e3b0aac555aed2bfa"
     },
     {
       "exchange": "BSE_IN",
@@ -1918,9 +2007,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_26acc63c60ffa7e988a7c69b"
+      "observation_id": "obs_ca993eaccc01e181698d6089"
     },
     {
       "exchange": "BSE_IN",
@@ -1931,9 +2020,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_0dbcaaa0e3f9af5dacd612b6"
+      "observation_id": "obs_fe3e5a39f9e36481733f444a"
     },
     {
       "exchange": "BSE_IN",
@@ -1944,9 +2033,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_6a1f6bcdc326fd2bbda27de7"
+      "observation_id": "obs_2b873c2544debe82e92ea4d5"
     },
     {
       "exchange": "BSE_IN",
@@ -1957,9 +2046,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_ccc4d78d1e659076af10350a"
+      "observation_id": "obs_105752be8026401f1f8a0f8b"
     },
     {
       "exchange": "BSE_IN",
@@ -1970,9 +2059,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_e68a688e43f2f538b5a1eec0"
+      "observation_id": "obs_fb9898237d5cc2f621d8c631"
     },
     {
       "exchange": "BSE_IN",
@@ -1983,9 +2072,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_14797b061eafc176b02513a6"
+      "observation_id": "obs_59a02f63d5269b0bb6acf9d7"
     },
     {
       "exchange": "BSE_IN",
@@ -1996,9 +2085,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_7c635383bc63bdafbda7c257"
+      "observation_id": "obs_32ea253b6fc6eaf70f1c9953"
     },
     {
       "exchange": "BSE_IN",
@@ -2009,9 +2098,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_1b83708818dca7e64bdccbd8"
+      "observation_id": "obs_959d93702d3cd9629483c482"
     },
     {
       "exchange": "BSE_IN",
@@ -2022,9 +2111,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_069b04bc4bf1e80df0b51d36"
+      "observation_id": "obs_d21bc984721b42b6b17c1635"
     },
     {
       "exchange": "BSE_IN",
@@ -2035,9 +2124,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_08843116f2f4c1f5b8b3cc42"
+      "observation_id": "obs_e01fe6d563cd3af015981cad"
     },
     {
       "exchange": "BSE_IN",
@@ -2048,9 +2137,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_77bea51e2aa9111eb74e2e91"
+      "observation_id": "obs_9a1145ef91e910ccea98b651"
     },
     {
       "exchange": "BSE_IN",
@@ -2061,9 +2150,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_de8bae1e393c6ff32b25d255"
+      "observation_id": "obs_5194c0a4b767ecdef7cd6cd5"
     },
     {
       "exchange": "BSE_IN",
@@ -2074,9 +2163,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_deb686d2667bb31dfce8c408"
+      "observation_id": "obs_eee62e67a22c5b4172ed2936"
     },
     {
       "exchange": "BSE_IN",
@@ -2087,9 +2176,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_669a497c5d16dd892e67aef0"
+      "observation_id": "obs_879c4da22ff8c1e53d1ba892"
     },
     {
       "exchange": "BSE_IN",
@@ -2100,9 +2189,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_6910f7eb9b782134b5d9d1ad"
+      "observation_id": "obs_fe57ac14f00114a5916a862a"
     },
     {
       "exchange": "BSE_IN",
@@ -2113,9 +2202,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_6c3f10838b025f93f60b6114"
+      "observation_id": "obs_68b9730cec32fa8707d03173"
     },
     {
       "exchange": "BSE_IN",
@@ -2126,9 +2215,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_d83eec94409967415ed3fe63"
+      "observation_id": "obs_1b6d6235274ad87825aa9ab0"
     },
     {
       "exchange": "BSE_IN",
@@ -2139,9 +2228,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_b5c63640b0230255588f05d4"
+      "observation_id": "obs_c5a4ac9f17894c76d79dba50"
     },
     {
       "exchange": "BSE_IN",
@@ -2152,9 +2241,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_fdabfe88ab7c3e5a592cad89"
+      "observation_id": "obs_d9e893fb3764b1407a3508a1"
     },
     {
       "exchange": "BSE_IN",
@@ -2165,9 +2254,9 @@
       "status": "blocked_suspended_kept_by_policy",
       "source_key": "bse_india_scrips",
       "source_url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w?Group=&Scripcode=&industry=&segment=Equity&status=Suspended",
-      "observed_at": "2026-09-08T09:30:19Z",
+      "observed_at": "2026-09-14T14:25:15Z",
       "effective_at": "",
-      "observation_id": "obs_54b0fd356747699bf6b41067"
+      "observation_id": "obs_1d7f2c7db089502350cd53b9"
     }
   ],
   "manual": [
@@ -3331,7 +3420,7 @@
     {
       "exchange": "NASDAQ",
       "ticker": "ADTX",
-      "name": "Aditxt Inc. ",
+      "name": "Aditxt Inc.",
       "isin": "US0070258696",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
@@ -3346,45 +3435,6 @@
       "ticker": "AFBI",
       "name": "Affinity Bancshares Inc",
       "isin": "US00832E1038",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "AGAE",
-      "name": "Allied Gaming & Entertainment Inc.",
-      "isin": "US0191701095",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "AIHS",
-      "name": "Senmiao Technology Ltd",
-      "isin": "US8172252046",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "ALBT",
-      "name": "Avalon GloboCare Corp.",
-      "isin": "US05344R3021",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -3434,19 +3484,6 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "APM",
-      "name": "Aptorum Group Ltd Class A",
-      "isin": "KYG6096M1069",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "AREB",
       "name": "American Rebel Holdings Inc",
       "isin": "US02919L8853",
@@ -3473,35 +3510,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "ATLN",
-      "name": "Atlantic International Corp. Common Stock",
-      "isin": "US0485921094",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "BAYA",
       "name": "Bayview Acquisition Corp Class A Ordinary Shares",
       "isin": "KY07323B1007",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "BBCQ",
-      "name": "Bleichroeder Acquisition Corp. II Class A Ordinary Shares",
-      "isin": "KYG1170E1044",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -3551,32 +3562,6 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "BNRG",
-      "name": "Brenmiller Energy Ltd Ordinary Shares",
-      "isin": "IL0011415309",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "BNZI",
-      "name": "Banzai International Inc",
-      "isin": "US06682J3086",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "BOCN",
       "name": "Blue Ocean Acquisition Corp",
       "isin": "KYG1330L1059",
@@ -3590,9 +3575,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "CAEP",
-      "name": "Cantor Equity Partners III, Inc. Class A Ordinary Shares",
-      "isin": "KYG1828A1085",
+      "ticker": "BRNS",
+      "name": "Barinthus Biotherapeutics plc",
+      "isin": "US91864C1071",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -3915,19 +3900,6 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "GIG",
-      "name": "GigCapital7 Corp. Class A Ordinary Share",
-      "isin": "US37518P1012",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "GLBZ",
       "name": "Glen Burnie Bancorp",
       "isin": "US3774071019",
@@ -3941,9 +3913,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "GOCO",
-      "name": "GoHealth Inc.",
-      "isin": "US38046W2044",
+      "ticker": "GLMD",
+      "name": "Galmed Pharmaceuticals Ltd",
+      "isin": "IL0011313900",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -3954,9 +3926,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "GREE",
-      "name": "Greenidge Generation Holdings Inc",
-      "isin": "US39531G3083",
+      "ticker": "GOCO",
+      "name": "GoHealth Inc.",
+      "isin": "US38046W2044",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -3983,32 +3955,6 @@
       "ticker": "HEPA",
       "name": "Hepion Pharmaceuticals Inc",
       "isin": "US4268971045",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "HOTH",
-      "name": "Hoth Therapeutics Inc",
-      "isin": "US44148G2049",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "IINN",
-      "name": "Inspira Technologies Oxy BHN Ltd",
-      "isin": "IL0011715781",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4071,6 +4017,19 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "KWM",
+      "name": "K Wave Media Ltd.",
+      "isin": "KYG531511098",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "LBRDA",
       "name": "Liberty Broadband Srs A",
       "isin": "US5303071071",
@@ -4097,74 +4056,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "LGCB",
-      "name": "Linkage Global Inc Ordinary Shares",
-      "isin": "KYG5500B1023",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "LIXT",
-      "name": "Lixte Biotechnology Holdings Inc",
-      "isin": "US5393192027",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "LMFA",
-      "name": "LM Funding America Inc",
-      "isin": "US5020744042",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "LOKV",
-      "name": "Live Oak Acquisition Corp. V Class A Ordinary Shares",
-      "isin": "KYG5509P1028",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "LPRO",
       "name": "Open Lending Corp",
       "isin": "US68373J1043",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "LSH",
-      "name": "Lakeside Holding Limited Common Stock",
-      "isin": "US51216F1093",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4243,19 +4137,6 @@
       "ticker": "MRAI",
       "name": "Marpai Inc",
       "isin": "US5713542083",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "MSW",
-      "name": "Ming Shing Group Holdings Limited Ordinary Shares",
-      "isin": "KYG614401068",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4396,48 +4277,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "PCSC",
-      "name": "Perceptive Capital Solutions Corp Class A Ordinary Shares",
-      "isin": "KYG700771051",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "PELI",
-      "name": "Pelican Acquisition Corporation Ordinary Shares",
-      "isin": "KYG6993G1038",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "PIRBF",
       "name": "Piraeus Bank S.A.",
       "isin": "GRS831003009",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "PSTV",
-      "name": "Plus Therapeutics Inc",
-      "isin": "US72941H8060",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4500,9 +4342,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "RAAQ",
-      "name": "Real Asset Acquisition Corp.",
-      "isin": "KYG739441031",
+      "ticker": "RAY",
+      "name": "Raytech Holding Limited Ordinary Shares",
+      "isin": "VGG7385S1193",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4529,19 +4371,6 @@
       "ticker": "RVPH",
       "name": "Reviva Pharmaceuticals Holdings Inc.",
       "isin": "US76152G2093",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "RVYL",
-      "name": "Ryvyl Inc",
-      "isin": "US39366L3078",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4630,19 +4459,6 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "SVAC",
-      "name": "Spring Valley Acquisition Corp. III",
-      "isin": "KYG8377R1011",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "TALK",
       "name": "Talkspace Inc",
       "isin": "US87427V1035",
@@ -4695,19 +4511,6 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "UBXG",
-      "name": "U-BX Technology Ltd. Ordinary Shares",
-      "isin": "KYG9161K1206",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "UHGWW",
       "name": "United Homes Group Inc.",
       "isin": "US91060H1086",
@@ -4737,19 +4540,6 @@
       "ticker": "VACH",
       "name": "Voyager Acquisition Corp",
       "isin": "",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "VBIX",
-      "name": "Viewbix Inc. Common Stock",
-      "isin": "US9267111022",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4799,48 +4589,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "VYNE",
-      "name": "Vyne Therapeutics Inc",
-      "isin": "US92941V2097",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "WGRX",
-      "name": "Wellgistics Health, Inc. Common Stock",
-      "isin": "US9495032057",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "WORX",
       "name": "Scworx Corp",
       "isin": "US78396V3078",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "WTO",
-      "name": "UTime Limited",
-      "isin": "KYG9411M1400",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4864,48 +4615,9 @@
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "YYGH",
-      "name": "YY Group Holding Limited Class A Ordinary Shares",
-      "isin": "VGG9888Q1110",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "ZBAI",
-      "name": "ATIF Holdings Limited",
-      "isin": "VGG0602B1186",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
       "ticker": "ZENV",
       "name": "Zenvia Inc",
       "isin": "KYG9889V1014",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "ZGM",
-      "name": "Zenta Group Company Limited Ordinary Shares",
-      "isin": "KYG988921055",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -4968,6 +4680,19 @@
     },
     {
       "exchange": "NSE_IN",
+      "ticker": "LASA",
+      "name": "Lasa Supergenerics Limited",
+      "isin": "INE670X01014",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NSE_IN",
       "ticker": "SABEVENTS",
       "name": "Sab Events & Governance Now Media Limited",
       "isin": "INE860T01019",
@@ -4993,10 +4718,10 @@
       "observation_id": ""
     },
     {
-      "exchange": "NYSE",
-      "ticker": "AREN",
-      "name": "Arena Group Holdings Inc",
-      "isin": "US0400441095",
+      "exchange": "NSE_IN",
+      "ticker": "SELMC",
+      "name": "SEL Manufacturing Company Limited",
+      "isin": "INE105I01020",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -5085,19 +4810,6 @@
     },
     {
       "exchange": "NYSE",
-      "ticker": "BURU",
-      "name": "Nuburu Inc.",
-      "isin": "US67021W4006",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NYSE",
       "ticker": "CWAN",
       "name": "Clearwater Analytics Holdings Inc",
       "isin": "US1851231068",
@@ -5137,32 +4849,6 @@
     },
     {
       "exchange": "NYSE",
-      "ticker": "EQR",
-      "name": "Equity Residential",
-      "isin": "US29476L1070",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NYSE",
-      "ticker": "FIHL",
-      "name": "Pelagos Insurance Capital Ltd",
-      "isin": "BMG3398L1182",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NYSE",
       "ticker": "GTLS",
       "name": "Chart Industries Inc",
       "isin": "US16115Q3083",
@@ -5179,19 +4865,6 @@
       "ticker": "JHG",
       "name": "Janus Henderson Group PLC",
       "isin": "JE00BYPZJM29",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NYSE",
-      "ticker": "KFS",
-      "name": "Kingsway Financial Services Inc",
-      "isin": "US4969042021",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -5309,6 +4982,19 @@
       "ticker": "NTZ",
       "name": "Natuzzi SpA",
       "isin": "US63905A2006",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "PHGE",
+      "name": "Biomx Inc",
+      "isin": "US09090D5095",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
