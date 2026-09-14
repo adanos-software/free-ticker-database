@@ -10,8 +10,8 @@ Rows: `38`
 | 1 | FSX | 56.28 | 6196 | 3949 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.05 | 3513 | 790 | not_in_supplement_allowlist |
-| 4 | NYSE | 59.64 | 1340 | 566 | not_in_supplement_allowlist |
-| 5 | NASDAQ | 82.33 | 981 | 64 | not_in_supplement_allowlist |
+| 4 | NYSE | 59.67 | 1339 | 566 | not_in_supplement_allowlist |
+| 5 | NASDAQ | 82.32 | 982 | 64 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.79 | 801 | 1856 | not_in_supplement_allowlist |
 | 7 | BSE_IN | 80.01 | 631 | 1846 | collision_free_supplement |
 | 8 | NSE_IN | 82.15 | 540 | 460 | collision_free_supplement |
@@ -27,11 +27,11 @@ Rows: `38`
 | 18 | B3 | 90.17 | 133 | 0 | collision_free_supplement |
 | 19 | PSE | 57.89 | 112 | 119 | collision_free_supplement |
 | 20 | HKEX | 96.84 | 99 | 70 | collision_free_supplement |
-| 21 | NYSE ARCA | 96.59 | 92 | 29 | not_in_supplement_allowlist |
+| 21 | NYSE ARCA | 96.6 | 92 | 29 | not_in_supplement_allowlist |
 | 22 | TSE | 98.39 | 66 | 335 | collision_free_supplement |
 | 23 | AMS | 86.54 | 58 | 178 | collision_free_supplement |
 | 24 | TWSE | 95.39 | 49 | 31 | collision_free_supplement |
-| 25 | NYSE MKT | 82.61 | 48 | 32 | not_in_supplement_allowlist |
+| 25 | NYSE MKT | 82.67 | 48 | 32 | not_in_supplement_allowlist |
 | 26 | SET | 95.43 | 37 | 133 | not_in_supplement_allowlist |
 | 27 | HNX | 76.47 | 32 | 163 | collision_free_supplement |
 | 28 | NSE_KE | 25.58 | 32 | 25 | collision_free_supplement |
