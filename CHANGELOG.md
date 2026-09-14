@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Reviewed official masterfile rotation #359: landed the healthy B3 directory refresh (1294→1353) and listing-keyed Energisme reverse-split ISIN `Euronext::ALNRG` `FR001401A702`. Left Easyknit `HKEX::01218` and Euronext `1OKE`/`2OKE`/`4OKE` official ISIN recodes fail-closed. Vanished rows stay classified, not deleted.
 - Reviewed Nasdaq identity events that blocked #356 automerge: drop predecessor `NASDAQ::CYCN` after the Korsana merger (successor `NASDAQ::KRSA`, post-split ISIN `US23255M3034`), move `NASDAQ::YYGH` to `NASDAQ::YFOR` with unchanged ISIN `VGG9888Q1110`, and rename `NASDAQ::PMA` to PMA Graphene Technology Group (same CUSIP/ISIN). Accepted `GEMQ` and `OCLT`; rights/warrants stay excluded.
 
 ### Fixed

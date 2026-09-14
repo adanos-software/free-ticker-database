@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-09-13T11:51:19Z`
+Generated at: `2026-09-14T12:04:51Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,534 |
-| source_gap | 11,496 |
+| pass | 80,529 |
+| source_gap | 11,501 |
 | warn | 31 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,375 |
+| official_reference_gap | 6,380 |
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 1,296 |
 | expected_missing_primary_isin | 819 |
@@ -29,15 +29,15 @@ Generated at: `2026-09-13T11:51:19Z`
 | OTC | 8,481 | 0 | 3,258 | 13 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,149 | 0 | 994 | 0 | 0 |
-| B3 | 1,241 | 0 | 340 | 0 | 0 |
+| B3 | 1,243 | 0 | 338 | 0 | 0 |
 | NASDAQ | 4,456 | 0 | 297 | 4 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
 | NYSE ARCA | 2,516 | 0 | 251 | 2 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | BSE_IN | 2,525 | 0 | 206 | 1 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
+| AMS | 372 | 0 | 174 | 0 | 0 |
 | TSX | 2,122 | 0 | 174 | 0 | 0 |
-| AMS | 373 | 0 | 173 | 0 | 0 |
 | BATS | 1,211 | 0 | 171 | 0 | 0 |
 | LSE | 6,875 | 0 | 153 | 2 | 0 |
 | XETRA | 4,165 | 0 | 150 | 0 | 0 |
