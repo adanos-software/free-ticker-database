@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99687,
-    "matched": 65166,
-    "collisions": 13893,
-    "missing": 20628
+    "official_symbols": 99691,
+    "matched": 65148,
+    "collisions": 13891,
+    "missing": 20652
   },
   "exchanges": [
     {
@@ -31,7 +31,7 @@
         },
         {
           "ticker": "AGIX",
-          "name": "KraneShares Artificial Intelligence & Technology ETF",
+          "name": "KraneShares Public-Private AI & Technology ETF",
           "target_exchange": "ADX",
           "existing_exchanges": [
             "NASDAQ"
@@ -594,10 +594,10 @@
     },
     {
       "exchange": "BIST",
-      "official_symbols": 655,
+      "official_symbols": 660,
       "matched": 611,
       "collisions": 22,
-      "missing": 22,
+      "missing": 27,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -719,6 +719,11 @@
           "exchange": "BIST"
         },
         {
+          "ticker": "ISMDL",
+          "name": "\u0130\u015e PORTF\u00d6Y BIST 100 ENDEKS\u0130 MODEL PORTF\u00d6Y H\u0130SSE SENED\u0130 YO\u011eUN BORSA YATIRIM FONU.",
+          "exchange": "BIST"
+        },
+        {
           "ticker": "ISVEA",
           "name": "\u0130SVEA SERAM\u0130K VE BANYO \u00dcR\u00dcNLER\u0130 SANAY\u0130 A.\u015e.",
           "exchange": "BIST"
@@ -726,11 +731,6 @@
         {
           "ticker": "ISX30",
           "name": "\u0130\u015e PORTF\u00d6Y BIST 30 ENDEKS\u0130 H\u0130SSE SENED\u0130 YO\u011eUN BORSA YATIRIM FONU",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "KARCL",
-          "name": "KARDEM\u0130R \u00c7EL\u0130K SANAY\u0130 A.\u015e.",
           "exchange": "BIST"
         }
       ]
@@ -950,9 +950,9 @@
     },
     {
       "exchange": "BSE_IN",
-      "official_symbols": 5003,
-      "matched": 2526,
-      "collisions": 1846,
+      "official_symbols": 4997,
+      "matched": 2521,
+      "collisions": 1845,
       "missing": 631,
       "collision_examples": [
         {
@@ -1889,10 +1889,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18122,
-      "matched": 7977,
-      "collisions": 3949,
-      "missing": 6196,
+      "official_symbols": 18129,
+      "matched": 7968,
+      "collisions": 3948,
+      "missing": 6213,
       "collision_examples": [
         {
           "ticker": "00X0",
@@ -4916,10 +4916,10 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 749,
-      "matched": 609,
+      "official_symbols": 747,
+      "matched": 608,
       "collisions": 123,
-      "missing": 17,
+      "missing": 16,
       "collision_examples": [
         {
           "ticker": "500",
@@ -5017,6 +5017,11 @@
           "exchange": "SGX"
         },
         {
+          "ticker": "9SY",
+          "name": "Astaka Hldgs",
+          "exchange": "SGX"
+        },
+        {
           "ticker": "AMQ",
           "name": "Ambiq Micro",
           "exchange": "SGX"
@@ -5029,11 +5034,6 @@
         {
           "ticker": "EGX",
           "name": "EGP ENERGY CORP",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "EYZR",
-          "name": "G Invacom R",
           "exchange": "SGX"
         },
         {
@@ -5878,9 +5878,9 @@
     {
       "exchange": "XETRA",
       "official_symbols": 5113,
-      "matched": 4094,
+      "matched": 4091,
       "collisions": 707,
-      "missing": 312,
+      "missing": 315,
       "collision_examples": [
         {
           "ticker": "01P",
