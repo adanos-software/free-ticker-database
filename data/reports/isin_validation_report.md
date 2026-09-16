@@ -1,26 +1,26 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-08-10T09:18:27Z
+Generated: 2026-09-14T14:34:10Z
 
 **isin_issues_detected: True**
 
-ISINs validated: 62308 | match=60482 mismatch=105 no_data=1721
+ISINs validated: 62514 | match=60706 mismatch=103 no_data=1705
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `105` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1721` (provider coverage gap)
+- Mismatch residuals: `103` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1705` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 27 |
+| OTC | 28 |
 | NSE_IN | 11 |
-| NASDAQ | 10 |
+| NASDAQ | 8 |
 | BSE_IN | 7 |
 | Bursa | 6 |
 | LSE | 5 |
@@ -31,7 +31,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | SGX | 3 |
 | TSXV | 3 |
 | B3 | 2 |
-| FSX | 2 |
 | NYSE | 2 |
 | SIX | 2 |
 | WSE | 2 |
@@ -41,6 +40,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | BATS | 1 |
 | BIST | 1 |
 | CSE_MA | 1 |
+| FSX | 1 |
 | JSE | 1 |
 | NSE_KE | 1 |
 | OSL | 1 |
@@ -50,33 +50,33 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 596 |
+| OTC | 593 |
 | B3 | 220 |
 | TPEX | 196 |
 | NYSE ARCA | 121 |
-| NASDAQ | 98 |
-| TSX | 95 |
+| NASDAQ | 94 |
+| TSX | 94 |
 | TSXV | 71 |
 | BATS | 69 |
 | ASX | 39 |
-| FSX | 33 |
 | EGX | 28 |
-| SET | 16 |
+| FSX | 23 |
+| SET | 17 |
 | JSE | 15 |
+| NYSE | 14 |
 | BSE_IN | 13 |
-| NYSE | 13 |
 | NGX | 9 |
 | SZSE | 6 |
-| STO | 5 |
+| LSE | 5 |
 | CSE_MA | 4 |
-| LSE | 4 |
 | SSE_CL | 4 |
+| STO | 4 |
 | ATHEX | 3 |
 | BCBA | 3 |
-| Euronext | 3 |
 | KRX | 3 |
 | NEO | 3 |
 | NSE_KE | 3 |
+| NYSE MKT | 3 |
 | OSL | 3 |
 | PSX | 3 |
 | SEM | 3 |
@@ -85,7 +85,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 
 | ISIN | Our ticker | Our name | OpenFIGI ticker(s) | OpenFIGI name | Triage |
 |---|---|---|---|---|---|
-| AU000000AWC3 | AWC | American Water Works Company I | AWCAUD,AWCEUR,AWCUSD | ALUMINA LTD | review_required_openfigi_resolves_different_security |
 | AU000000ODM3 | G11 | G11 RESOURCES LIMITED | 09Z | ODIN METALS LTD | review_required_openfigi_resolves_different_security |
 | AU000000PTM6 | PTMGF | L1 Group Limited | PTMAUD | PLATINUM ASSET MANAGEMENT | review_required_openfigi_resolves_different_security |
 | BRPMSPCPA000 | PMSP11B | PREFEITURA MUNICIPAL DE SAO PA | PMSP11BL | CEPAC - AGUA ESPRAIADA | review_required_openfigi_resolves_different_security |
@@ -115,7 +114,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | HK0000055787 | HIUC | China Taiping Insurance Holdin | JFTHAII | JPMORGAN THAILAND FD-ACC USD | review_required_openfigi_resolves_different_security |
 | HK0000171949 | BJWTF | Beijing Enterprises Water Grou | BJEHF 6.15 11/14/22 | KEEN BOND INVESTMENT LTD | review_required_openfigi_resolves_different_security |
 | IE0007WMHDE3 | EUGD | HANetf ICAV - European Green D | 8GRT,ASWAD,ETFHGR8 | MAKING EUROPE GREAT AGAIN UC | review_required_openfigi_resolves_different_security |
-| IL0011715781 | IINN | Inspira Technologies Oxy BHN L | QTEX | QTREX QUANTUM LTD | review_required_openfigi_resolves_different_security |
 | INE030P01017 | ALSL | Alacrity Securities Ltd | ALSE | RNIT AI SOLUTIONS LTD | review_required_openfigi_resolves_different_security |
 | INE058F01019 | ALUFLUOR | Alufluoride Ltd | ALFD | ALUFLOURIDE LTD | review_required_openfigi_resolves_different_security |
 | INE0M3I01029 | AMBEY | Ambey Laboratories Limited | DHANSA | DHANSA LABS LTD | review_required_openfigi_resolves_different_security |
@@ -180,7 +178,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | US3135866040 | FNMFM | Federal National Mortgage Asso | FNMA 5.1 PERP +E | FANNIE MAE | review_required_openfigi_resolves_different_security |
 | US3135868103 | FNMFO | Federal National Mortgage Asso | FNMA 5.375 PERP | FANNIE MAE | review_required_openfigi_resolves_different_security |
 | US33739Q3092 | FDIV | MarketDesk Focused U.S. Divide | HISF | FIRST TR HI INC STRAT FOC | review_required_openfigi_resolves_different_security |
-| US44148G2049 | HOTH | Hoth Therapeutics Inc | HOTHUSD,RKTO | ROCKET ONE INC | review_required_openfigi_resolves_different_security |
 | US44987J1034 | IOOFF | Insignia Financial Ltd | IOOFY | IOOF HOLDINGS LTD-SPON ADR | review_required_openfigi_resolves_different_security |
 | US48135NTM82 | VYLD | Inverse VIX Short-Term Futures | JPM 5 08/28/28 MTn | JPMORGAN CHASE FINANCIAL | review_required_openfigi_resolves_different_security |
 | US48837P1021 | KMGH | Kemiao Garment Holding Group | WGSK | WORLD GU SHAN KANG HOLDING G | review_required_openfigi_resolves_different_security |
@@ -189,4 +186,5 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | US67073S3076 | CIMG | CIMG Inc | NUZEEUR,NUZEGBP | NUZEE INC | review_required_openfigi_resolves_different_security |
 | US69290X1019 | PDLB | Ponce Financial Group Inc | PDLBUSD | PDL COMMUNITY BANCORP | review_required_openfigi_resolves_different_security |
 | US83548F2002 | SONM | DNA X, Inc. | SONMEUR,SONMGBP,SONMUSD | SONIM TECHNOLOGIES INC | review_required_openfigi_resolves_different_security |
+| US91822T2006 | VGLS | SB Technology Holdings Inc. | BIOM | BIOMOLECULAR LIFE HOLDINGS I | review_required_openfigi_resolves_different_security |
 | ZAE000261392 | UMMIEA | Absa re Momentum International | UBS 0 08/22/28 @ | UBS AG LONDON | review_required_openfigi_resolves_different_security |
