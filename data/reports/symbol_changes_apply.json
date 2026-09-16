@@ -1,40 +1,24 @@
 {
   "summary": {
-    "generated_at": "2026-09-14T12:41:52Z",
+    "generated_at": "2026-09-16T11:28:40Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "dropped_predecessor_rows": 1,
-    "blocked_rows": 347,
+    "dropped_predecessor_rows": 0,
+    "blocked_rows": 348,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 12,
       "blocked_new_symbol_not_active_in_official_master": 1,
       "blocked_old_symbol_not_unique_in_us_scope": 281,
       "manual_isin_not_proven_unchanged": 2,
-      "manual_non_us_or_unscoped_source": 46,
+      "manual_non_us_or_unscoped_source": 47,
       "manual_successor_exists_missing_isin": 2,
       "manual_transition_or_shell_name": 3
     }
   },
   "accepted": [],
-  "dropped_predecessors": [
-    {
-      "change_id": "21a75e050a955da0",
-      "effective_date": "2026-08-28",
-      "old_symbol": "BBCQ",
-      "new_symbol": "PSQL",
-      "new_company_name": "Pasqal Holding SA",
-      "status": "apply_drop_predecessor",
-      "exchange": "NASDAQ",
-      "old_listing_key": "NASDAQ::BBCQ",
-      "new_listing_key": "NASDAQ::PSQL",
-      "isin": "KYG1170E1044",
-      "source_key": "stockanalysis_symbol_changes",
-      "source_url": "https://stockanalysis.com/actions/changes/",
-      "evidence": "official_master_old_absent_new_active_successor_already_listed"
-    }
-  ],
+  "dropped_predecessors": [],
   "blocked": [
     {
       "change_id": "d444715d180700dc",
@@ -106,6 +90,14 @@
       "old_symbol": "AREN",
       "new_symbol": "PAAI",
       "new_company_name": "Arena Group Holdings Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "21a75e050a955da0",
+      "effective_date": "2026-08-28",
+      "old_symbol": "BBCQ",
+      "new_symbol": "PSQL",
+      "new_company_name": "Pasqal Holding SA",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -1482,7 +1474,7 @@
       "old_symbol": "NAOV",
       "new_symbol": "FEED",
       "new_company_name": "Envue Medical Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "84b6bfa949b78b1d",
