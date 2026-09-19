@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-09-16T11:28:40Z",
+    "generated_at": "2026-09-19T10:55:33Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 348,
+    "blocked_rows": 351,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 12,
-      "blocked_new_symbol_not_active_in_official_master": 1,
-      "blocked_old_symbol_not_unique_in_us_scope": 281,
+      "blocked_new_symbol_not_active_in_official_master": 3,
+      "blocked_old_symbol_not_unique_in_us_scope": 282,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 47,
       "manual_successor_exists_missing_isin": 2,
@@ -21,11 +21,27 @@
   "dropped_predecessors": [],
   "blocked": [
     {
+      "change_id": "7db8560be6b62da6",
+      "effective_date": "2026-09-18",
+      "old_symbol": "HCWC",
+      "new_symbol": "HOST",
+      "new_company_name": "Host Digital Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
+    {
+      "change_id": "37ae0256fe9b9bab",
+      "effective_date": "2026-09-17",
+      "old_symbol": "ANY",
+      "new_symbol": "DRK",
+      "new_company_name": "Darkhorse Technologies Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
+    {
       "change_id": "d444715d180700dc",
       "effective_date": "2026-09-11",
       "old_symbol": "PHGE",
       "new_symbol": "HLSQ",
-      "new_company_name": "Tessera Defense And Homeland Security Inc",
+      "new_company_name": "Tessera Defense & Homeland Security Inc",
       "status": "blocked_new_symbol_collision"
     },
     {
@@ -43,6 +59,14 @@
       "new_symbol": "EOCN",
       "new_company_name": "Eocene Ltd.",
       "status": "blocked_new_symbol_collision"
+    },
+    {
+      "change_id": "f0e70fbf10b803c2",
+      "effective_date": "2026-09-09",
+      "old_symbol": "RSMIY",
+      "new_symbol": "RML",
+      "new_company_name": "Resolution Minerals Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "bdba1770f9bdd1a7",
@@ -73,7 +97,7 @@
       "effective_date": "2026-09-02",
       "old_symbol": "YYGH",
       "new_symbol": "YFOR",
-      "new_company_name": "Yy Group Holding Ltd.",
+      "new_company_name": "Yyforce Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -89,7 +113,7 @@
       "effective_date": "2026-08-31",
       "old_symbol": "AREN",
       "new_symbol": "PAAI",
-      "new_company_name": "Arena Group Holdings Inc",
+      "new_company_name": "Paradiumai Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -361,7 +385,7 @@
       "effective_date": "2026-07-09",
       "old_symbol": "MSW",
       "new_symbol": "PMA",
-      "new_company_name": "Ming Shing Group Holdings Ltd.",
+      "new_company_name": "Pma Graphene Technology Group Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -521,7 +545,7 @@
       "effective_date": "2026-06-11",
       "old_symbol": "VACH",
       "new_symbol": "VRXA",
-      "new_company_name": "Veraxa Biotech Holding Ag",
+      "new_company_name": "Veraxa Biotech Ag",
       "status": "manual_successor_exists_missing_isin"
     },
     {
@@ -1553,7 +1577,7 @@
       "effective_date": "2025-11-28",
       "old_symbol": "CHEK",
       "new_symbol": "MBAI",
-      "new_company_name": "Check-cap Ltd.",
+      "new_company_name": "Mbody Ai Ltd.",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
