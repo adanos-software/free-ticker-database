@@ -32,20 +32,20 @@
     },
     {
       "exchange": "NYSE",
-      "collision_adjusted_recall_pct": 59.64,
-      "true_missing_excluding_collisions": 1340,
-      "collision_hidden_missing": 566,
-      "official_recall_pct": 50.95,
+      "collision_adjusted_recall_pct": 59.71,
+      "true_missing_excluding_collisions": 1339,
+      "collision_hidden_missing": 564,
+      "official_recall_pct": 51.04,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 4
     },
     {
       "exchange": "NASDAQ",
-      "collision_adjusted_recall_pct": 82.33,
-      "true_missing_excluding_collisions": 981,
-      "collision_hidden_missing": 64,
-      "official_recall_pct": 81.4,
+      "collision_adjusted_recall_pct": 82.39,
+      "true_missing_excluding_collisions": 980,
+      "collision_hidden_missing": 63,
+      "official_recall_pct": 81.47,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 5
@@ -112,10 +112,10 @@
     },
     {
       "exchange": "BATS",
-      "collision_adjusted_recall_pct": 81.99,
+      "collision_adjusted_recall_pct": 82.15,
       "true_missing_excluding_collisions": 282,
       "collision_hidden_missing": 57,
-      "official_recall_pct": 79.11,
+      "official_recall_pct": 79.29,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 12
@@ -202,7 +202,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "collision_adjusted_recall_pct": 96.59,
+      "collision_adjusted_recall_pct": 96.6,
       "true_missing_excluding_collisions": 92,
       "collision_hidden_missing": 29,
       "official_recall_pct": 95.57,
@@ -379,7 +379,17 @@
       "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 38
+    },
+    {
+      "exchange": "TXSE",
+      "collision_adjusted_recall_pct": 0.0,
+      "true_missing_excluding_collisions": 1,
+      "collision_hidden_missing": 3,
+      "official_recall_pct": 0.0,
+      "supplement_lane": "not_in_supplement_allowlist",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 39
     }
   ],
-  "count": 38
+  "count": 39
 }
