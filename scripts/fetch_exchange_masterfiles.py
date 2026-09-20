@@ -1036,6 +1036,7 @@ JS_IDENTIFIER_RE = re.compile(r"^[A-Za-z_$][A-Za-z0-9_$]*$")
 
 OTHER_LISTED_EXCHANGE_MAP = {
     "A": "NYSE MKT",
+    "F": "TXSE",
     "M": "NYSE CHICAGO",
     "N": "NYSE",
     "P": "NYSE ARCA",
