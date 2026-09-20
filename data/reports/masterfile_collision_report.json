@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99691,
-    "matched": 65149,
-    "collisions": 13890,
-    "missing": 20652
+    "official_symbols": 99731,
+    "matched": 65158,
+    "collisions": 13892,
+    "missing": 20681
   },
   "exchanges": [
     {
@@ -338,8 +338,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1623,
-      "matched": 1284,
+      "official_symbols": 1637,
+      "matched": 1298,
       "collisions": 57,
       "missing": 282,
       "collision_examples": [
@@ -1253,10 +1253,10 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2907,
+      "official_symbols": 2908,
       "matched": 250,
       "collisions": 1856,
-      "missing": 801,
+      "missing": 802,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -2030,10 +2030,10 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3207,
-      "matched": 3038,
-      "collisions": 70,
-      "missing": 99,
+      "official_symbols": 3204,
+      "matched": 3027,
+      "collisions": 69,
+      "missing": 108,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -2545,10 +2545,10 @@
     },
     {
       "exchange": "KOSDAQ",
-      "official_symbols": 1819,
-      "matched": 1592,
+      "official_symbols": 1814,
+      "matched": 1588,
       "collisions": 3,
-      "missing": 224,
+      "missing": 223,
       "collision_examples": [
         {
           "ticker": "002230",
@@ -2630,10 +2630,10 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2108,
-      "matched": 1955,
+      "official_symbols": 2109,
+      "matched": 1953,
       "collisions": 14,
-      "missing": 139,
+      "missing": 142,
       "collision_examples": [
         {
           "ticker": "000850",
@@ -2763,18 +2763,18 @@
           "exchange": "KRX"
         },
         {
-          "ticker": "006380",
-          "name": "CAPRO",
+          "ticker": "0065G0",
+          "name": "KODEX \ucc28\uc774\ub098\ud14c\ud06cTOP10",
           "exchange": "KRX"
         }
       ]
     },
     {
       "exchange": "LSE",
-      "official_symbols": 11137,
-      "matched": 6834,
-      "collisions": 790,
-      "missing": 3513,
+      "official_symbols": 11140,
+      "matched": 6828,
+      "collisions": 793,
+      "missing": 3519,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -3023,10 +3023,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5617,
-      "matched": 4572,
-      "collisions": 64,
-      "missing": 981,
+      "official_symbols": 5628,
+      "matched": 4585,
+      "collisions": 63,
+      "missing": 980,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3078,6 +3078,14 @@
           ]
         },
         {
+          "ticker": "ANY",
+          "name": "DarkHorse Technologies Inc.",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "BSE_HU"
+          ]
+        },
+        {
           "ticker": "ASD",
           "name": "Defiance Autism Impact ETF",
           "target_exchange": "NASDAQ",
@@ -3100,14 +3108,6 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "LSE"
-          ]
-        },
-        {
-          "ticker": "BID",
-          "name": "Tribeca Strategic Acquisition Corp. - Class A Ordinary Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "HOSE"
           ]
         }
       ],
@@ -3166,8 +3166,8 @@
     },
     {
       "exchange": "NEO",
-      "official_symbols": 443,
-      "matched": 210,
+      "official_symbols": 442,
+      "matched": 209,
       "collisions": 66,
       "missing": 167,
       "collision_examples": [
@@ -3328,10 +3328,10 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 3485,
+      "official_symbols": 3498,
       "matched": 2485,
       "collisions": 460,
-      "missing": 540,
+      "missing": 553,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -3619,10 +3619,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3886,
-      "matched": 1980,
-      "collisions": 566,
-      "missing": 1340,
+      "official_symbols": 3887,
+      "matched": 1984,
+      "collisions": 564,
+      "missing": 1339,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3768,8 +3768,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2730,
-      "matched": 2609,
+      "official_symbols": 2733,
+      "matched": 2612,
       "collisions": 29,
       "missing": 92,
       "collision_examples": [
@@ -4425,10 +4425,10 @@
     },
     {
       "exchange": "PSE",
-      "official_symbols": 385,
-      "matched": 154,
+      "official_symbols": 381,
+      "matched": 153,
       "collisions": 119,
-      "missing": 112,
+      "missing": 109,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -4582,10 +4582,10 @@
     },
     {
       "exchange": "PSX",
-      "official_symbols": 722,
+      "official_symbols": 724,
       "matched": 390,
       "collisions": 142,
-      "missing": 190,
+      "missing": 192,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -5715,6 +5715,47 @@
           "ticker": "2248",
           "name": "\u83ef\u52dd\u6c7d\u8eca\u96fb\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "exchange": "TWSE"
+        }
+      ]
+    },
+    {
+      "exchange": "TXSE",
+      "official_symbols": 4,
+      "matched": 0,
+      "collisions": 3,
+      "missing": 1,
+      "collision_examples": [
+        {
+          "ticker": "ILS",
+          "name": "Brookmont Catastrophic Bond ETF",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "LSE",
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "OILT",
+          "name": "Texas Capital Texas Oil Index ETF",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "TXS",
+          "name": "Texas Capital Texas Equity Index ETF",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "PWRX",
+          "name": "Westwood Salient Enhanced Power & Infrastructure ETF",
+          "exchange": "TXSE"
         }
       ]
     },

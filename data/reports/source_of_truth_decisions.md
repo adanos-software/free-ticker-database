@@ -1,6 +1,6 @@
 # Source-of-Truth Decisions
 
-Generated at: `2026-09-14T15:17:59Z`
+Generated at: `2026-09-20T18:50:24Z`
 
 This report converts residual source-gap classes into release-trackable outcomes. It does not fill fields and does not drop rows automatically.
 
@@ -8,33 +8,33 @@ This report converts residual source-gap classes into release-trackable outcomes
 
 | Value | Rows |
 |---|---:|
-| accepted_source_gap | 5956 |
-| official_fill_required | 2280 |
-| core_exclusion_candidate | 563 |
+| accepted_source_gap | 5997 |
+| official_fill_required | 2306 |
+| core_exclusion_candidate | 599 |
 
 ## Top Classes
 
 | Value | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5326 |
-| official_reference_symbol_collision_gap | 1068 |
-| official_industry_taxonomy_unavailable_gap | 846 |
+| official_reference_unmatched_source_gap | 5349 |
+| official_reference_symbol_collision_gap | 1071 |
+| official_industry_taxonomy_unavailable_gap | 849 |
 | otc_sector_source_gap | 554 |
-| fund_or_trust_identifier_gap | 317 |
-| official_identifier_not_exposed_source_gap | 299 |
-| debt_or_securitized_identifier_gap | 87 |
+| fund_or_trust_identifier_gap | 348 |
+| official_identifier_not_exposed_source_gap | 316 |
+| debt_or_securitized_identifier_gap | 89 |
+| official_product_taxonomy_unavailable_gap | 69 |
 | exchange_industry_source_gap | 63 |
-| official_product_taxonomy_unavailable_gap | 48 |
 | adr_cdr_or_depositary_identifier_gap | 44 |
-| shell_or_cpc_sector_gap | 39 |
+| shell_or_cpc_sector_gap | 42 |
 | capital_pool_or_halted_identifier_gap | 33 |
 | inactive_or_legacy_identifier_gap | 22 |
 | adr_cdr_or_depositary_sector_gap | 16 |
-| equity_etf_category_gap | 10 |
-| official_current_directory_absent_identifier_gap | 9 |
+| equity_etf_category_gap | 15 |
 | official_identifier_reference_unmatched_gap | 8 |
 | fundlike_stock_sector_gap | 5 |
-| fixed_income_etf_category_gap | 2 |
+| fixed_income_etf_category_gap | 4 |
+| official_current_directory_absent_identifier_gap | 2 |
 | commodity_etf_category_gap | 1 |
 
 ## Policy

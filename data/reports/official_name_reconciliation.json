@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-14T15:17:41Z",
+  "generated_at": "2026-09-20T18:43:57Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1794,
+  "reconciled_rows": 1795,
   "applied_rows": 0,
-  "proposed_rows": 1794,
+  "proposed_rows": 1795,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -22294,6 +22294,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
       "observation_id": "04947a244e6fc98dd9a80bb4",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "NSE_IN::PNC",
+      "action": "proposed",
+      "ticker": "PNC",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "isin": "INE392B01011",
+      "old_name": "Pritish Nandy Communications Limited",
+      "new_name": "PNC Media and Entertainment Limited",
+      "source_key": "nse_india_securities_available",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "observation_id": "f08a35672bded0e1ac334920",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

@@ -9,28 +9,28 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 61,754 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,876 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 92,061 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,770 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 16,106 | Primary ticker rows where `asset_type=ETF`. |
+| Core listings | 61,801 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 63,913 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 92,105 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 47,778 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 16,135 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 91 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 125,550 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 62,514 (97.9%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 65,326 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 62,290 (97.5%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 46,247 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 16,043 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 61,754 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 60,935 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 819 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 30,307 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
-| Official full exchanges | 49 | Exchange codes backed by a complete official exchange directory. |
+| Aliases | 125,577 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 62,517 (97.8%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 65,316 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 62,293 (97.5%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 46,249 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 16,044 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 61,801 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 60,939 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 862 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 30,304 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Official full exchanges | 50 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 5 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 11,515 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
-| Entry quality warn rows | 31 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
+| Entry quality source-gap rows | 11,583 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality warn rows | 37 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
 
@@ -199,18 +199,18 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 6,894 |
-| NASDAQ | 4,601 |
-| LSE | 3,559 |
+| OTC | 6,893 |
+| NASDAQ | 4,616 |
+| LSE | 3,560 |
 | TSE | 3,201 |
 | SZSE | 3,111 |
 | HKEX | 2,840 |
 | SSE | 2,793 |
 | BSE_IN | 2,684 |
-| NYSE ARCA | 2,676 |
+| NYSE ARCA | 2,684 |
 | NSE_IN | 2,379 |
 | XETRA | 2,237 |
-| NYSE | 1,883 |
+| NYSE | 1,886 |
 | KRX | 1,990 |
 | TSX | 1,684 |
 | KOSDAQ | 1,603 |
@@ -330,7 +330,7 @@ python3 scripts/rebuild_dataset.py
 
 The primary-ticker universe covers 86 exchanges. Source coverage is explicit: 48 exchanges are `official_full`, 33 are `official_partial`, and 6 current-scope exchanges have an official-source candidate awaiting parser implementation; a partial listing-company page or security lookup is never presented as a complete exchange directory. Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
 
-Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source coverage status: `5` missing current-scope exchanges, `5` parser todo rows, `0` real global-expansion candidates, `49` official-full exchanges, and `33` official-partial exchanges. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
+Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source coverage status: `5` missing current-scope exchanges, `5` parser todo rows, `0` real global-expansion candidates, `50` official-full exchanges, and `33` official-partial exchanges. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
 
 [`data/reports/exchange_source_audit.md`](data/reports/exchange_source_audit.md) is the one-row-per-exchange operational audit for product-class gaps, source freshness and availability, official denominators, recall, blocker class, and promotion readiness. [`data/masterfiles/exchange_scope_decisions.csv`](data/masterfiles/exchange_scope_decisions.csv) gives every partial exchange a distribution-safe public scope. Its `reason_code` records the blocker observed at review time; validation remains fail-closed by requiring the current audit to contain a known promotion blocker, without invalidating a safe retained scope merely because another blocker becomes higher priority. A current audit with no blocker requires explicit scope review. Commercial products are only evaluation candidates: [`data/masterfiles/commercial_source_options.csv`](data/masterfiles/commercial_source_options.csv) does not grant redistribution rights, and its validator requires explicit contract review or prior written permission.
 

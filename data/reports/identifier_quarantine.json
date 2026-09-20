@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-14T15:17:41Z",
+  "generated_at": "2026-09-20T18:43:57Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1526,
-  "decision_rows": 4961,
+  "decision_rows": 4960,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1283,
+    "kept_listing_keyed_identifier": 1279,
     "proposed_clear_conflicting_identifier": 733,
-    "quarantined_unresolved_identifier": 2945
+    "quarantined_unresolved_identifier": 2948
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 733,
-  "quarantined_rows": 2945,
-  "retained_rows": 1283,
+  "quarantined_rows": 2948,
+  "retained_rows": 1279,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -59841,59 +59841,46 @@
       "retained_isin": "US6821891057"
     },
     {
-      "conflict_id": "600c9cf5ec85f11e0e4e",
+      "conflict_id": "e4127f8121c64e0fb4b4",
       "isin": "US6826801036",
       "listing_key": "FSX::ONK",
       "ticker": "ONK",
       "exchange": "FSX",
       "name": "ONEOK Inc",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US6826801036"
     },
     {
-      "conflict_id": "600c9cf5ec85f11e0e4e",
-      "isin": "US6826801036",
-      "listing_key": "LSE::0KCI",
-      "ticker": "0KCI",
-      "exchange": "LSE",
-      "name": "ONEOK Inc.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US6826801036"
-    },
-    {
-      "conflict_id": "600c9cf5ec85f11e0e4e",
+      "conflict_id": "e4127f8121c64e0fb4b4",
       "isin": "US6826801036",
       "listing_key": "NYSE::OKE",
       "ticker": "OKE",
       "exchange": "NYSE",
       "name": "ONEOK Inc",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US6826801036"
     },
     {
-      "conflict_id": "600c9cf5ec85f11e0e4e",
+      "conflict_id": "e4127f8121c64e0fb4b4",
       "isin": "US6826801036",
       "listing_key": "XETRA::ONK",
       "ticker": "ONK",
       "exchange": "XETRA",
       "name": "ONEOK, Inc.",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US6826801036"
     },
     {
-      "conflict_id": "600c9cf5ec85f11e0e4e",
+      "conflict_id": "e4127f8121c64e0fb4b4",
       "isin": "US6826801036",
       "listing_key": "XSTU::ONK",
       "ticker": "ONK",
@@ -59901,8 +59888,8 @@
       "name": "ONEOK (ONK.SG)",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
-      "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
-      "evidence_status": "official_exact_listing_match",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US6826801036"
     },
     {
