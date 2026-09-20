@@ -446,6 +446,16 @@ def main() -> None:
     write_report(report)
     print(json.dumps(report["summary"], indent=2))
     if args.strict and report["status"] != "pass":
+        print(
+            json.dumps(
+                {
+                    "failures": report["failures"],
+                    "unevidenced_removed_listing_keys": report["unevidenced_removed_listing_keys"],
+                    "evidenced_removed_listing_keys": report["evidenced_removed_listing_keys"],
+                },
+                indent=2,
+            )
+        )
         raise SystemExit("safe merge gate failed")
 
 

@@ -665,6 +665,7 @@ def test_parse_other_listed_maps_exchange_codes():
             "ACT Symbol|Security Name|Exchange|CQS Symbol|ETF|Round Lot Size|Test Issue|NASDAQ Symbol",
             "IBM|International Business Machines|N|IBM|N|100|N|IBM",
             "SPY|SPDR S&P 500 ETF TRUST|P|SPY|Y|100|N|SPY",
+            "TXS|Texas Capital Texas Equity Index ETF|F|TXS|Y|100|N|TXS",
             "File Creation Time: 04022026",
         ]
     )
@@ -691,6 +692,18 @@ def test_parse_other_listed_maps_exchange_codes():
             "ticker": "SPY",
             "name": "SPDR S&P 500 ETF TRUST",
             "exchange": "NYSE ARCA",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "TXS",
+            "name": "Texas Capital Texas Equity Index ETF",
+            "exchange": "TXSE",
             "asset_type": "ETF",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
