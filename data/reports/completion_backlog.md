@@ -1,14 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-09-20T18:50:24Z`
+Generated at: `2026-09-20T19:34:36Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `862`
+- Missing primary ISIN rows: `860`
 - Missing stock sectors: `1529`
 - Missing ETF categories: `91`
-- Official symbol collisions tracked in exchange references: `13892`
-- Core rows hidden only by the legacy global-ticker compatibility export: `4781`
+- Official symbol collisions tracked in exchange references: `13893`
+- Core rows hidden only by the legacy global-ticker compatibility export: `4780`
 
 ## Next Safe Batches
 
@@ -16,7 +16,7 @@ Generated at: `2026-09-20T18:50:24Z`
 |---|---|---|---:|---|---|---|
 | 1 | FSX | missing_sector_stock | 799 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
 | 2 | OTC | missing_sector_stock | 554 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
-| 3 | NASDAQ | missing_isin_primary | 105 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 3 | NASDAQ | missing_isin_primary | 104 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 4 | ASX | missing_isin_primary | 98 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
 | 5 | TSXV | missing_isin_primary | 98 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 6 | NYSE ARCA | missing_isin_primary | 95 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
@@ -33,7 +33,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NASDAQ | All | 105 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 1 | NASDAQ | All | 104 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 2 | TSXV | All | 98 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 3 | ASX | All | 98 | official_partial | Official ASX ISIN workbook. | no |
 | 4 | NYSE ARCA | All | 95 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
@@ -44,7 +44,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 9 | NEO | All | 43 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 10 | SSE | All | 35 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
 | 11 | SSE_CL | All | 27 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 12 | NYSE MKT | All | 20 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 12 | NYSE MKT | All | 19 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
 
 ## Top Missing Stock Sectors
 

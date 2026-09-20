@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-20T18:43:57Z",
+  "generated_at": "2026-09-20T19:32:40Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 1526,
-  "decision_rows": 4960,
+  "conflict_count": 1527,
+  "decision_rows": 4963,
   "action_counts": {
     "kept_listing_keyed_identifier": 1279,
     "proposed_clear_conflicting_identifier": 733,
-    "quarantined_unresolved_identifier": 2948
+    "quarantined_unresolved_identifier": 2951
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 733,
-  "quarantined_rows": 2948,
+  "quarantined_rows": 2951,
   "retained_rows": 1279,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -33878,6 +33878,45 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "IL0011199242"
+    },
+    {
+      "conflict_id": "4372711952d3d1de1499",
+      "isin": "IL0011336851",
+      "listing_key": "FSX::7CC",
+      "ticker": "7CC",
+      "exchange": "FSX",
+      "name": "Check-Cap Ltd",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "IL0011336851"
+    },
+    {
+      "conflict_id": "4372711952d3d1de1499",
+      "isin": "IL0011336851",
+      "listing_key": "NASDAQ::MBAI",
+      "ticker": "MBAI",
+      "exchange": "NASDAQ",
+      "name": "MBody AI Ltd. - Ordinary Share",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "IL0011336851"
+    },
+    {
+      "conflict_id": "4372711952d3d1de1499",
+      "isin": "IL0011336851",
+      "listing_key": "XSTU::7CC",
+      "ticker": "7CC",
+      "exchange": "XSTU",
+      "name": "Check-Cap Ltd",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "IL0011336851"
     },
     {
       "conflict_id": "fbd08a1fc851a691d3d5",

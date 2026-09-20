@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-09-20T18:50:11Z`
+Generated at: `2026-09-20T19:32:57Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 80,485 |
+| pass | 80,487 |
 | source_gap | 11,583 |
-| warn | 37 |
+| warn | 33 |
 
 ## Issue Counts
 
@@ -17,9 +17,9 @@ Generated at: `2026-09-20T18:50:11Z`
 | official_reference_gap | 6,420 |
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 1,306 |
-| expected_missing_primary_isin | 862 |
+| expected_missing_primary_isin | 860 |
 | missing_etf_category | 109 |
-| official_name_mismatch | 31 |
+| official_name_mismatch | 27 |
 | official_isin_mismatch | 7 |
 
 ## Top Flagged Exchanges
@@ -30,7 +30,7 @@ Generated at: `2026-09-20T18:50:11Z`
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,141 | 0 | 1,002 | 0 | 0 |
 | B3 | 1,243 | 0 | 338 | 0 | 0 |
-| NASDAQ | 4,449 | 0 | 320 | 6 | 0 |
+| NASDAQ | 4,450 | 0 | 320 | 4 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
 | NYSE ARCA | 2,511 | 0 | 264 | 2 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
@@ -44,7 +44,7 @@ Generated at: `2026-09-20T18:50:11Z`
 | ASX | 2,109 | 0 | 150 | 0 | 0 |
 | TSXV | 1,283 | 0 | 137 | 2 | 0 |
 | Euronext | 1,344 | 0 | 132 | 1 | 0 |
-| NYSE | 1,914 | 0 | 108 | 6 | 0 |
+| NYSE | 1,914 | 0 | 108 | 4 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 
 ## Notes

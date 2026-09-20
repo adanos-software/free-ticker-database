@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-09-20T18:50:19Z`
+Generated at: `2026-09-20T19:32:52Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -52,15 +52,15 @@ Generated at: `2026-09-20T18:50:19Z`
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSX | official_full | muscat_securities_companies |  | 108 | 84.26 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5628 | 81.47 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
+| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5628 | 81.45 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NEO | official_full | cboe_canada_listing_directory |  | 442 | 47.29 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_equities_price_list | refresh_required | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
 | NSE_IN | official_full | nse_india_securities_available |  | 3498 | 71.04 |  | maintain | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 68 | 16.18 |  | maintain | not_applicable |
-| NYSE | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 3887 | 51.04 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
+| NYSE | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 3887 | 50.99 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2733 | 95.57 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
-| NYSE MKT | official_full | nasdaq_other_listed | ETF | 308 | 74.03 |  | maintain | not_applicable |
+| NYSE MKT | official_full | nasdaq_other_listed | ETF | 308 | 74.35 |  | maintain | not_applicable |
 | NZX | official_full | nzx_instruments |  | 172 | 26.16 |  | maintain | not_applicable |
 | OSL | official_full | euronext_equities|euronext_etfs |  | 296 | 95.61 | euronext_etfs | refresh_required | not_applicable |
 | OTC | official_full | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange |  | 11925 | 69.32 | otc_markets_security_profile|otc_markets_stock_screener | refresh_unavailable | not_applicable |
