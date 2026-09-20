@@ -1,11 +1,11 @@
 {
   "version": "4.0.0",
-  "generated_at": "2026-09-14T15:17:41Z",
-  "git_commit": "b16b952f99bf338ca957fce08d23ddc8b078568e",
-  "source_dataset_sha256": "8ff2af37ae94800aa603199da0b39a71c8203e14489c01a311c7f11b1042e57b",
+  "generated_at": "2026-09-20T19:32:40Z",
+  "git_commit": "f086b48a13a5fc06f0ea302dc0dca154fd409ea1",
+  "source_dataset_sha256": "406c6c13b2385a3e761d3e929c04b0638bc8b9d0598e5a5183955f7c35893914",
   "schema_contract_sha256": "fb37be89eeb2468747b935424ddefbc0b0dec5229de25459bac27b8d380daf34",
   "schema_sql_sha256": "4502f51da85227c10d0a29b651ef804a37fa4c1ab0f46d45a73168aacd5495f4",
-  "aggregate_sha256": "6e8962d337a75221f40eff516e60fe3e25bf3e74df51b978c8b073f06b77e0b2",
+  "aggregate_sha256": "2a2ae57862dd85152f6c9da0ea068f3423bf2f44c1db368c1deea4ba794a50c4",
   "files": [
     {
       "path": "sources.csv",
@@ -14,8 +14,8 @@
     },
     {
       "path": "source_observations.csv",
-      "sha256": "c101aa1b7de922d5c0494fe0ab5a39bc8d8a6520d830b31ae5e19649991d807a",
-      "rows": 171840
+      "sha256": "c53e3d06a76b011363c305b5e0bcebec9bd6dab3f873fe0cd463e5bd33d0f180",
+      "rows": 171898
     },
     {
       "path": "venues.csv",
@@ -24,60 +24,60 @@
     },
     {
       "path": "issuers.csv",
-      "sha256": "9ccdf5c899f77e481021fb94e146bc01c93693dd749daf02d8c77bb0cacc55a0",
-      "rows": 72064
+      "sha256": "f88e7f707d2c6be9d9039f24962c90473a5de30e8b836769748fd0c442d53249",
+      "rows": 72109
     },
     {
       "path": "instruments.csv",
-      "sha256": "a53380e4af0b204d8f6d6e348d8253da60df103594e31596d0645f99fa1bf3b4",
-      "rows": 72064
+      "sha256": "13a52e67668bde512d11e7b2939f18f2c2487c258f708e1ec19ebe34164a7d0c",
+      "rows": 72109
     },
     {
       "path": "listings.csv",
-      "sha256": "3db6e426c0571f836859c0e7eba3661af2f38eea7bc9cd8a70093b4a74e3590d",
-      "rows": 92063
+      "sha256": "6dc013775c6431b94c7b6e8a0b3565243d3c9c9a0025e7078448eaa3d3e6cf7c",
+      "rows": 92105
     },
     {
       "path": "identifier_assertions.csv",
-      "sha256": "54f78d25d721c9ddcc12bcca96f1d0d2b9c32b51e004079a6cb04a5c137e8700",
-      "rows": 165907
+      "sha256": "2176309069a1ae32fd184bb9a751b7d4852037cf8e9f37787b5a5a399c8174d2",
+      "rows": 165908
     },
     {
       "path": "field_assertions.csv",
-      "sha256": "f14544877fcd850f03c5be82e3081bb425e59ff45ae905ba69b3158ce4d41e0c",
-      "rows": 205654
+      "sha256": "d4f100bb9709bd6566bdc6a734c3586dac18fbdab1a7fa5720c643c51c835fc9",
+      "rows": 205641
     },
     {
       "path": "provenance_gaps.csv",
-      "sha256": "37b1eeb61db78a9c616cc15d756a48d51577797e8a268cce61885f2cdec512e2",
-      "rows": 280227
+      "sha256": "8ea765476db2f2b87766d787152ff3bde99dc3b6a9cc17e03b4e62e0e5b7d484",
+      "rows": 280373
     },
     {
       "path": "listing_events.csv",
-      "sha256": "e59144332b8fc4568b6a3b8e791d32ab9e4854f5daecab9174ffe90c6ba4ced9",
-      "rows": 76374
+      "sha256": "ec414b7cdf3bfd82fb279b6134679b57b1250737d1e69bfdcfe30233deba8771",
+      "rows": 76435
     },
     {
       "path": "coverage_contracts.csv",
-      "sha256": "bf71d365b6ab4470d8c49be628ef7349ae3078f6f5961be3b9130d711a3505d9",
-      "rows": 134
+      "sha256": "70e2c37c9c2012efbb5d1a073f61d9fd1fb2b04b04dddffb32860bb7c8e5c43f",
+      "rows": 135
     }
   ],
   "counts": {
     "sources": 145,
-    "source_observations": 171840,
+    "source_observations": 171898,
     "venues": 87,
-    "issuers": 72064,
-    "instruments": 72064,
-    "listings": 92063,
-    "identifier_assertions": 165907,
-    "field_assertions": 205654,
-    "provenance_gaps": 280227,
-    "listing_events": 76374,
-    "coverage_contracts": 134
+    "issuers": 72109,
+    "instruments": 72109,
+    "listings": 92105,
+    "identifier_assertions": 165908,
+    "field_assertions": 205641,
+    "provenance_gaps": 280373,
+    "listing_events": 76435,
+    "coverage_contracts": 135
   },
   "identity_quarantine": {
-    "conflict_groups": 1489,
-    "listing_rows": 4879
+    "conflict_groups": 1490,
+    "listing_rows": 4881
   }
 }

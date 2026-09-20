@@ -618,6 +618,7 @@ KTF,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/righ
 KTH,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 KUYA,NEO,0.99,"Official Cboe Canada active listing directory no longer lists KUYA as an active NEO security, so the remaining NEO core row is stale."
 KW,NYSE,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
+KWM,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::KWM to NASDAQ::NXAT; exact evidence is recorded in listing_transitions.csv.
 KYN,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 KZR,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
 L38,SGX,0.99,Official SGX delisting announcement identifies AF Global Limited - SG1C01001033 - L38 and delists it from the Official List effective 24 April 2026; drop stale non-current row.
@@ -851,6 +852,7 @@ PFIBAC,CPH,0.99,Official Nasdaq Nordic Copenhagen shares directory does not list
 PFIDKA,CPH,0.99,Official Nasdaq Nordic Copenhagen shares directory does not list this symbol as an active Copenhagen share and the remaining core row is a fund or investment-product line rather than a common equity.
 PFIGLA,CPH,0.99,Official Nasdaq Nordic Copenhagen shares directory does not list this symbol as an active Copenhagen share and the remaining core row is a fund or investment-product line rather than a common equity.
 PGZ,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+PHGE,NYSE,0.99,Reviewed issuer ticker transition NYSE::PHGE to NYSE MKT::HLSQ; exact evidence is recorded in listing_transitions.csv.
 PHSE,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
 PIM,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 PIXEL,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do not return an active exact Stockholm share while the current NGM company directory exposes the Pixelfox company profile without an active primary symbol for this ticker; the remaining STO core row is stale.
@@ -1243,6 +1245,7 @@ ZIVO,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather
 ZJZZT,NASDAQ,0.99,Official exchange directory marks this symbol as test.
 ZLSUF,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 ZOR,ASX,0.98,"Current official ASX listed-companies CSV fetched 2026-07-07 does not list ZOR, and the residual row name is only an instrument descriptor (ORDINARY UNLISTED/LISTED - COSACS) with no current issuer identity or ISIN; drop stale non-core row."
+ZONE,NYSE,0.99,Reviewed issuer venue transition NYSE::ZONE to NYSE MKT::ZONE; exact evidence is recorded in listing_transitions.csv.
 ZPTA,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCID rather than the current exchange, indicating the current listing is stale."
 ZTST,BATS,0.99,"No official active exchange reference exists for ZTST and the remaining BATS row is only a code placeholder, so it should not stay in the core dataset."
 ZVSA,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
