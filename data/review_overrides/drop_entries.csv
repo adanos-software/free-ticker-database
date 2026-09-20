@@ -602,6 +602,7 @@ KCHVU,NASDAQ,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/p
 KDEV,STO,0.99,Official Nasdaq Nordic Stockholm directory lists ISIN SE0002190926 under the active ticker KDV-B; the remaining KDEV row is a stale pre-rename ticker.
 KEY-PL,NYSE,0.98,Yahoo Finance identifies KEY-PL as KeyCorp depositary shares rather than the common equity; preferred or depositary lines are excluded from the stock universe.
 KFW,ASX,0.99,"Current official ASX listed-companies CSV fetched 2026-07-07 does not list KFW, and issuer evidence identifies KfW securities as medium-term note/debt instruments rather than a current stock/ETF listing; drop stale non-core row."
+KHC,NASDAQ,0.99,Reviewed issuer venue transition NASDAQ::KHC to NYSE::KHC; exact evidence is recorded in listing_transitions.csv.
 KKRS,NYSE,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: KKR Group Finance Co. IX LLC 4.625% Subordinated Notes due 2061"
 KLGDD,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 KLTO,NASDAQ,0.96,"Renamed/re-tickered to GRML (same-issuer, web+CIK verified 2026-06-19); stale old symbol"
@@ -1128,6 +1129,7 @@ TRNSF,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do n
 TRPEF,OTC,high,"Redundant grey-market OTC shadow of TC Energy (primary TRP/NYSE, correct ISIN CA87807B1076); TC Energy keeps one OTC shadow (TCEYF). OpenFIGI ISIN-validation triage 2026-06-22."
 TRPPF,OTC,high,Redundant grey-market OTC shadow of TC Energy carrying a wrong ISIN (AU0000180887=Tissue Repair Ltd); primary TRP/NYSE. OpenFIGI ISIN-validation triage 2026-06-22.
 TRPRF,OTC,high,Redundant grey-market OTC shadow of TC Energy carrying a wrong ISIN (AU0000180887=Tissue Repair Ltd); primary TRP/NYSE. OpenFIGI ISIN-validation triage 2026-06-22.
+TRT,NYSE MKT,0.99,Reviewed issuer venue transition NYSE MKT::TRT to NASDAQ::TRT; exact evidence is recorded in listing_transitions.csv.
 TRVN,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 TTSH,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 TUFE,BVB,0.99,Current official BVB active shares directory does not list this symbol and the official BVB detail page marks it as Delistata.
