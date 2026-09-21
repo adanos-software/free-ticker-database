@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-20T19:32:40Z",
+  "generated_at": "2026-09-21T12:45:40Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1527,
   "decision_rows": 4963,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1279,
-    "proposed_clear_conflicting_identifier": 733,
-    "quarantined_unresolved_identifier": 2951
+    "kept_listing_keyed_identifier": 1281,
+    "proposed_clear_conflicting_identifier": 734,
+    "quarantined_unresolved_identifier": 2948
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 733,
-  "quarantined_rows": 2951,
-  "retained_rows": 1279,
+  "proposed_clear_rows": 734,
+  "quarantined_rows": 2948,
+  "retained_rows": 1281,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -33991,9 +33991,9 @@
       "exchange": "BSE_IN",
       "name": "Popees Baby Care India Limited",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "INE167F01018"
     },
     {
@@ -34004,9 +34004,9 @@
       "exchange": "BSE_IN",
       "name": "Koiya International Ltd",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "INE167F01018"
     },
     {
@@ -54635,9 +54635,9 @@
       "exchange": "FSX",
       "name": "Devon Energy Corporation",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US25179M1036"
     },
     {
@@ -54648,9 +54648,9 @@
       "exchange": "LSE",
       "name": "Devon Energy Corp.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US25179M1036"
     },
     {
@@ -54661,9 +54661,9 @@
       "exchange": "NYSE",
       "name": "Devon Energy Corporation",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US25179M1036"
     },
     {
@@ -54674,9 +54674,9 @@
       "exchange": "XETRA",
       "name": "DEVON ENERGY CORP. DL-,10",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US25179M1036"
     },
     {
@@ -57339,9 +57339,9 @@
       "exchange": "BMV",
       "name": "Invesco QQQ Trust Series 1",
       "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57352,9 +57352,9 @@
       "exchange": "HKEX",
       "name": "INVESCO QQQ",
       "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57367,7 +57367,7 @@
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "official_exact_listing_match",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57380,7 +57380,7 @@
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "official_exact_listing_match",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57391,9 +57391,9 @@
       "exchange": "NASDAQ",
       "name": "Invesco QQQ Trust",
       "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US46090E1038"
     },
     {
