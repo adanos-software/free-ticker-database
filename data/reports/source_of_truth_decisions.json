@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-09-21T12:52:00Z",
-    "rows": 8772,
+    "generated_at": "2026-09-21T14:37:32Z",
+    "rows": 8771,
     "outcome_totals": {
       "accepted_source_gap": 5998,
-      "core_exclusion_candidate": 599,
+      "core_exclusion_candidate": 598,
       "official_fill_required": 2175
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
-      "adr_cdr_or_depositary_sector_gap": 16,
+      "adr_cdr_or_depositary_sector_gap": 15,
       "capital_pool_or_halted_identifier_gap": 33,
       "commodity_etf_category_gap": 1,
       "debt_or_securitized_identifier_gap": 89,
@@ -36,7 +36,7 @@
       "missing_isin_primary:accepted_source_gap": 324,
       "missing_isin_primary:core_exclusion_candidate": 536,
       "missing_sector_stock:accepted_source_gap": 1403,
-      "missing_sector_stock:core_exclusion_candidate": 63,
+      "missing_sector_stock:core_exclusion_candidate": 62,
       "missing_sector_stock:official_fill_required": 63,
       "official_reference_gap:accepted_source_gap": 4180,
       "official_reference_gap:official_fill_required": 2112
@@ -112043,23 +112043,6 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Canonical sector requires active operating-business evidence."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NYSE::CSAN",
-      "ticker": "CSAN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Cosan SA ADR",
-      "gap_class": "adr_cdr_or_depositary_sector_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
