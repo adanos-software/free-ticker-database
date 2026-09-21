@@ -802,32 +802,13 @@
       "asset_type": "Stock",
       "confidence_policy": "Accept only canonical stock sectors after source-specific normalization and issuer/name gates.",
       "etf_missing_count": 0,
-      "exchange": "BMV",
-      "field": "missing_sector_stock",
-      "missing_count": 1,
-      "notes": "Source research needed before applying.",
-      "official_source_count": 5,
-      "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 21,
-      "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
-      "reference_scopes": "listed_companies_subset",
-      "review_needed": true,
-      "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 1,
-      "target_field": "stock_sector",
-      "venue_status": "official_partial"
-    },
-    {
-      "asset_type": "Stock",
-      "confidence_policy": "Accept only canonical stock sectors after source-specific normalization and issuer/name gates.",
-      "etf_missing_count": 0,
       "exchange": "HKEX",
       "field": "missing_sector_stock",
       "missing_count": 1,
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 22,
+      "priority_rank": 21,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -846,7 +827,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 23,
+      "priority_rank": 22,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -865,7 +846,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 24,
+      "priority_rank": 23,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "exchange_directory",
       "review_needed": true,
@@ -884,7 +865,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 25,
+      "priority_rank": 24,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "listed_companies_subset",
       "review_needed": true,
@@ -903,7 +884,7 @@
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
-      "priority_rank": 26,
+      "priority_rank": 25,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
       "reference_scopes": "listed_companies_subset",
       "review_needed": true,
@@ -1031,14 +1012,14 @@
     "exchanges_by_field": {
       "missing_etf_category": 6,
       "missing_isin_primary": 22,
-      "missing_sector_stock": 26
+      "missing_sector_stock": 25
     },
     "field_totals": {
       "missing_etf_category": 91,
       "missing_isin_primary": 860,
-      "missing_sector_stock": 1529
+      "missing_sector_stock": 1528
     },
-    "generated_at": "2026-09-21T12:52:00Z",
+    "generated_at": "2026-09-21T16:37:55Z",
     "legacy_primary_ticker_collision_rows": 4780,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1323,7 +1304,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 13905,
-    "rows": 54
+    "official_masterfile_collisions": 13825,
+    "rows": 53
   }
 }

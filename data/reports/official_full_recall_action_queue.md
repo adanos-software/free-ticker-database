@@ -22,27 +22,27 @@ Rows: `39`
 | 13 | KOSDAQ | 87.69 | 223 | 3 | not_in_supplement_allowlist |
 | 14 | PSX | 67.01 | 192 | 142 | not_in_supplement_allowlist |
 | 15 | NEO | 55.59 | 167 | 66 | not_in_supplement_allowlist |
-| 16 | BVB | 37.39 | 144 | 119 | collision_free_supplement |
-| 17 | KRX | 93.22 | 142 | 14 | not_in_supplement_allowlist |
-| 18 | B3 | 90.17 | 133 | 0 | collision_free_supplement |
-| 19 | PSE | 58.4 | 109 | 119 | collision_free_supplement |
-| 20 | HKEX | 96.56 | 108 | 69 | collision_free_supplement |
-| 21 | NYSE ARCA | 96.6 | 92 | 29 | not_in_supplement_allowlist |
-| 22 | TSE | 98.39 | 66 | 335 | collision_free_supplement |
-| 23 | AMS | 86.54 | 58 | 178 | collision_free_supplement |
-| 24 | TWSE | 95.39 | 49 | 31 | collision_free_supplement |
-| 25 | NYSE MKT | 82.67 | 48 | 31 | not_in_supplement_allowlist |
-| 26 | SET | 95.43 | 37 | 133 | not_in_supplement_allowlist |
-| 27 | HNX | 76.47 | 32 | 163 | collision_free_supplement |
-| 28 | NSE_KE | 25.58 | 32 | 25 | collision_free_supplement |
-| 29 | BIST | 95.62 | 28 | 22 | collision_free_supplement |
-| 30 | BME | 90.77 | 25 | 0 | not_in_supplement_allowlist |
-| 31 | IDX | 97.55 | 19 | 187 | not_in_supplement_allowlist |
-| 32 | CSE_MA | 5.56 | 17 | 64 | collision_free_supplement |
-| 33 | SGX | 97.43 | 16 | 123 | collision_free_supplement |
-| 34 | CSE_LK | 96.23 | 12 | 0 | collision_free_supplement |
-| 35 | BK | 90.18 | 11 | 28 | collision_free_supplement |
-| 36 | DFM | 83.33 | 9 | 17 | collision_free_supplement |
-| 37 | ADX | 93.33 | 6 | 32 | collision_free_supplement |
+| 16 | KRX | 93.22 | 142 | 14 | not_in_supplement_allowlist |
+| 17 | B3 | 90.17 | 133 | 0 | collision_free_supplement |
+| 18 | PSE | 58.4 | 109 | 119 | collision_free_supplement |
+| 19 | HKEX | 96.56 | 108 | 69 | collision_free_supplement |
+| 20 | NYSE ARCA | 96.6 | 92 | 29 | not_in_supplement_allowlist |
+| 21 | TSE | 98.39 | 66 | 335 | collision_free_supplement |
+| 22 | AMS | 86.54 | 58 | 178 | collision_free_supplement |
+| 23 | TWSE | 95.39 | 49 | 31 | collision_free_supplement |
+| 24 | NYSE MKT | 82.67 | 48 | 31 | not_in_supplement_allowlist |
+| 25 | SET | 95.43 | 37 | 133 | not_in_supplement_allowlist |
+| 26 | HNX | 76.47 | 32 | 163 | collision_free_supplement |
+| 27 | NSE_KE | 25.58 | 32 | 25 | collision_free_supplement |
+| 28 | BIST | 95.62 | 28 | 22 | collision_free_supplement |
+| 29 | BME | 90.77 | 25 | 0 | not_in_supplement_allowlist |
+| 30 | IDX | 97.55 | 19 | 187 | not_in_supplement_allowlist |
+| 31 | CSE_MA | 5.56 | 17 | 64 | collision_free_supplement |
+| 32 | SGX | 97.43 | 16 | 123 | collision_free_supplement |
+| 33 | CSE_LK | 96.23 | 12 | 0 | collision_free_supplement |
+| 34 | BK | 90.18 | 11 | 28 | collision_free_supplement |
+| 35 | DFM | 83.33 | 9 | 17 | collision_free_supplement |
+| 36 | ADX | 93.33 | 6 | 32 | collision_free_supplement |
+| 37 | BVB | 88.0 | 6 | 39 | collision_free_supplement |
 | 38 | BHB | 87.5 | 4 | 9 | collision_free_supplement |
 | 39 | TXSE | 0.0 | 1 | 3 | not_in_supplement_allowlist |
