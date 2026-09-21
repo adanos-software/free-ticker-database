@@ -2,10 +2,10 @@
   "rows": [
     {
       "exchange": "FSX",
-      "collision_adjusted_recall_pct": 56.19,
-      "true_missing_excluding_collisions": 6213,
-      "collision_hidden_missing": 3948,
-      "official_recall_pct": 43.95,
+      "collision_adjusted_recall_pct": 56.08,
+      "true_missing_excluding_collisions": 6238,
+      "collision_hidden_missing": 3950,
+      "official_recall_pct": 43.88,
       "supplement_lane": "refresh_only",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 1
@@ -62,10 +62,10 @@
     },
     {
       "exchange": "BSE_IN",
-      "collision_adjusted_recall_pct": 79.98,
-      "true_missing_excluding_collisions": 631,
-      "collision_hidden_missing": 1845,
-      "official_recall_pct": 50.45,
+      "collision_adjusted_recall_pct": 79.99,
+      "true_missing_excluding_collisions": 663,
+      "collision_hidden_missing": 1852,
+      "official_recall_pct": 51.31,
       "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 7
@@ -81,22 +81,22 @@
       "rank": 8
     },
     {
+      "exchange": "XETRA",
+      "collision_adjusted_recall_pct": 92.68,
+      "true_missing_excluding_collisions": 323,
+      "collision_hidden_missing": 708,
+      "official_recall_pct": 79.86,
+      "supplement_lane": "collision_free_supplement",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 9
+    },
+    {
       "exchange": "Euronext",
       "collision_adjusted_recall_pct": 80.93,
       "true_missing_excluding_collisions": 315,
       "collision_hidden_missing": 364,
       "official_recall_pct": 66.32,
       "supplement_lane": "not_in_supplement_allowlist",
-      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 9
-    },
-    {
-      "exchange": "XETRA",
-      "collision_adjusted_recall_pct": 92.85,
-      "true_missing_excluding_collisions": 315,
-      "collision_hidden_missing": 706,
-      "official_recall_pct": 80.03,
-      "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 10
     },
@@ -282,10 +282,10 @@
     },
     {
       "exchange": "BIST",
-      "collision_adjusted_recall_pct": 95.77,
-      "true_missing_excluding_collisions": 27,
+      "collision_adjusted_recall_pct": 95.62,
+      "true_missing_excluding_collisions": 28,
       "collision_hidden_missing": 22,
-      "official_recall_pct": 92.58,
+      "official_recall_pct": 92.44,
       "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 29
@@ -322,10 +322,10 @@
     },
     {
       "exchange": "SGX",
-      "collision_adjusted_recall_pct": 97.44,
+      "collision_adjusted_recall_pct": 97.43,
       "true_missing_excluding_collisions": 16,
       "collision_hidden_missing": 123,
-      "official_recall_pct": 81.39,
+      "official_recall_pct": 81.37,
       "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 33
@@ -362,10 +362,10 @@
     },
     {
       "exchange": "ADX",
-      "collision_adjusted_recall_pct": 93.41,
+      "collision_adjusted_recall_pct": 93.33,
       "true_missing_excluding_collisions": 6,
-      "collision_hidden_missing": 31,
-      "official_recall_pct": 69.67,
+      "collision_hidden_missing": 32,
+      "official_recall_pct": 68.85,
       "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 37

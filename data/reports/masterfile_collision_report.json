@@ -1,16 +1,16 @@
 {
   "global": {
-    "official_symbols": 99731,
-    "matched": 65156,
-    "collisions": 13893,
-    "missing": 20682
+    "official_symbols": 99930,
+    "matched": 65277,
+    "collisions": 13905,
+    "missing": 20748
   },
   "exchanges": [
     {
       "exchange": "ADX",
       "official_symbols": 122,
-      "matched": 85,
-      "collisions": 31,
+      "matched": 84,
+      "collisions": 32,
       "missing": 6,
       "collision_examples": [
         {
@@ -19,6 +19,14 @@
           "target_exchange": "ADX",
           "existing_exchanges": [
             "EGX"
+          ]
+        },
+        {
+          "ticker": "ADID",
+          "name": "Abu Dhabi National Investment and Development - P.J.S.C",
+          "target_exchange": "ADX",
+          "existing_exchanges": [
+            "BSE_HU"
           ]
         },
         {
@@ -90,15 +98,6 @@
           "existing_exchanges": [
             "TSX",
             "WSE"
-          ]
-        },
-        {
-          "ticker": "CBI",
-          "name": "Commercial Bank International",
-          "target_exchange": "ADX",
-          "existing_exchanges": [
-            "TASE",
-            "TSXV"
           ]
         }
       ],
@@ -594,10 +593,10 @@
     },
     {
       "exchange": "BIST",
-      "official_symbols": 660,
+      "official_symbols": 661,
       "matched": 611,
       "collisions": 22,
-      "missing": 27,
+      "missing": 28,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -699,6 +698,11 @@
           "exchange": "BIST"
         },
         {
+          "ticker": "BKRGY",
+          "name": "BAKIRCI GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
           "ticker": "CITAS",
           "name": "\u00c7\u0130TLEK\u00c7\u0130 MA\u011eAZACILIK GIDA A.\u015e.",
           "exchange": "BIST"
@@ -726,11 +730,6 @@
         {
           "ticker": "ISVEA",
           "name": "\u0130SVEA SERAM\u0130K VE BANYO \u00dcR\u00dcNLER\u0130 SANAY\u0130 A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "ISX30",
-          "name": "\u0130\u015e PORTF\u00d6Y BIST 30 ENDEKS\u0130 H\u0130SSE SENED\u0130 YO\u011eUN BORSA YATIRIM FONU",
           "exchange": "BIST"
         }
       ]
@@ -950,10 +949,10 @@
     },
     {
       "exchange": "BSE_IN",
-      "official_symbols": 4997,
-      "matched": 2521,
-      "collisions": 1845,
-      "missing": 631,
+      "official_symbols": 5165,
+      "matched": 2650,
+      "collisions": 1852,
+      "missing": 663,
       "collision_examples": [
         {
           "ticker": "20MICRONS",
@@ -1435,7 +1434,7 @@
         },
         {
           "ticker": "JXG.N0000",
-          "name": "JANASHAKTHI LIMITED",
+          "name": "JANASHAKTHI PLC",
           "exchange": "CSE_LK"
         },
         {
@@ -1889,10 +1888,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18129,
-      "matched": 7968,
-      "collisions": 3948,
-      "missing": 6213,
+      "official_symbols": 18154,
+      "matched": 7966,
+      "collisions": 3950,
+      "missing": 6238,
       "collision_examples": [
         {
           "ticker": "00X0",
@@ -4916,8 +4915,8 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 747,
-      "matched": 608,
+      "official_symbols": 746,
+      "matched": 607,
       "collisions": 123,
       "missing": 16,
       "collision_examples": [
@@ -5918,10 +5917,10 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5113,
-      "matched": 4092,
-      "collisions": 706,
-      "missing": 315,
+      "official_symbols": 5119,
+      "matched": 4088,
+      "collisions": 708,
+      "missing": 323,
       "collision_examples": [
         {
           "ticker": "01P",

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-20T19:32:57Z",
+    "generated_at": "2026-09-21T12:51:47Z",
     "rows": 92103,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80487,
-      "source_gap": 11583,
+      "pass": 80615,
+      "source_gap": 11455,
       "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4619,
-      "official_reference": 82396,
+      "identifier_enriched": 4496,
+      "official_reference": 82524,
       "scoped_source_gap": 238,
-      "valid_isin": 4850
+      "valid_isin": 4845
     },
     "severity_counts": {
       "high": 7,
       "medium": 27,
-      "source_gap": 11982
+      "source_gap": 11854
     },
     "issue_counts": {
-      "official_reference_gap": 6420,
+      "official_reference_gap": 6292,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 1306,
       "expected_missing_primary_isin": 860,
@@ -51,8 +51,8 @@
       },
       {
         "exchange": "FSX",
-        "pass": 7141,
-        "source_gap": 1002
+        "pass": 7139,
+        "source_gap": 1004
       },
       {
         "exchange": "B3",
@@ -81,12 +81,6 @@
         "source_gap": 223
       },
       {
-        "exchange": "BSE_IN",
-        "pass": 2520,
-        "source_gap": 211,
-        "warn": 1
-      },
-      {
         "exchange": "XDUS",
         "source_gap": 199
       },
@@ -113,13 +107,13 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 4165,
-        "source_gap": 151
+        "pass": 4164,
+        "source_gap": 152
       },
       {
         "exchange": "ASX",
-        "pass": 2109,
-        "source_gap": 150
+        "pass": 2113,
+        "source_gap": 146
       },
       {
         "exchange": "TSXV",
@@ -143,6 +137,11 @@
         "exchange": "JSE",
         "source_gap": 89,
         "pass": 123
+      },
+      {
+        "exchange": "TASE",
+        "pass": 717,
+        "source_gap": 84
       }
     ]
   },
@@ -12398,6 +12397,24 @@
       ]
     },
     {
+      "listing_key": "SGX::42S",
+      "ticker": "42S",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "SGX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "Munich::42S",
       "ticker": "42S",
       "exchange": "Munich",
@@ -14395,24 +14412,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "BSE_IN::4THGEN",
-      "ticker": "4THGEN",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "BSE_IN",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },

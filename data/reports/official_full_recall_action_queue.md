@@ -7,16 +7,16 @@ Rows: `39`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
-| 1 | FSX | 56.19 | 6213 | 3948 | refresh_only |
+| 1 | FSX | 56.08 | 6238 | 3950 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 65.99 | 3519 | 793 | not_in_supplement_allowlist |
 | 4 | NYSE | 59.66 | 1340 | 565 | not_in_supplement_allowlist |
 | 5 | NASDAQ | 82.39 | 980 | 64 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.76 | 802 | 1856 | not_in_supplement_allowlist |
-| 7 | BSE_IN | 79.98 | 631 | 1845 | collision_free_supplement |
+| 7 | BSE_IN | 79.99 | 663 | 1852 | collision_free_supplement |
 | 8 | NSE_IN | 81.8 | 553 | 460 | collision_free_supplement |
-| 9 | Euronext | 80.93 | 315 | 364 | not_in_supplement_allowlist |
-| 10 | XETRA | 92.85 | 315 | 706 | collision_free_supplement |
+| 9 | XETRA | 92.68 | 323 | 708 | collision_free_supplement |
+| 10 | Euronext | 80.93 | 315 | 364 | not_in_supplement_allowlist |
 | 11 | UPCOM | 0.67 | 296 | 520 | not_in_supplement_allowlist |
 | 12 | BATS | 82.15 | 282 | 57 | not_in_supplement_allowlist |
 | 13 | KOSDAQ | 87.69 | 223 | 3 | not_in_supplement_allowlist |
@@ -35,14 +35,14 @@ Rows: `39`
 | 26 | SET | 95.43 | 37 | 133 | not_in_supplement_allowlist |
 | 27 | HNX | 76.47 | 32 | 163 | collision_free_supplement |
 | 28 | NSE_KE | 25.58 | 32 | 25 | collision_free_supplement |
-| 29 | BIST | 95.77 | 27 | 22 | collision_free_supplement |
+| 29 | BIST | 95.62 | 28 | 22 | collision_free_supplement |
 | 30 | BME | 90.77 | 25 | 0 | not_in_supplement_allowlist |
 | 31 | IDX | 97.55 | 19 | 187 | not_in_supplement_allowlist |
 | 32 | CSE_MA | 5.56 | 17 | 64 | collision_free_supplement |
-| 33 | SGX | 97.44 | 16 | 123 | collision_free_supplement |
+| 33 | SGX | 97.43 | 16 | 123 | collision_free_supplement |
 | 34 | CSE_LK | 96.23 | 12 | 0 | collision_free_supplement |
 | 35 | BK | 90.18 | 11 | 28 | collision_free_supplement |
 | 36 | DFM | 83.33 | 9 | 17 | collision_free_supplement |
-| 37 | ADX | 93.41 | 6 | 31 | collision_free_supplement |
+| 37 | ADX | 93.33 | 6 | 32 | collision_free_supplement |
 | 38 | BHB | 87.5 | 4 | 9 | collision_free_supplement |
 | 39 | TXSE | 0.0 | 1 | 3 | not_in_supplement_allowlist |
