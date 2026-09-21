@@ -1,17 +1,17 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-09-14T14:34:10Z
+Generated: 2026-09-21T14:39:24Z
 
 **isin_issues_detected: True**
 
-ISINs validated: 62514 | match=60706 mismatch=103 no_data=1705
+ISINs validated: 62518 | match=60707 mismatch=104 no_data=1707
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `103` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1705` (provider coverage gap)
+- Mismatch residuals: `104` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1707` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
@@ -20,7 +20,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 |---|---:|
 | OTC | 28 |
 | NSE_IN | 11 |
-| NASDAQ | 8 |
+| NASDAQ | 9 |
 | BSE_IN | 7 |
 | Bursa | 6 |
 | LSE | 5 |
@@ -54,7 +54,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | B3 | 220 |
 | TPEX | 196 |
 | NYSE ARCA | 121 |
-| NASDAQ | 94 |
+| NASDAQ | 95 |
 | TSX | 94 |
 | TSXV | 71 |
 | BATS | 69 |
@@ -100,6 +100,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | CA5545151063 | DVX.P | Drummond Ventures Corp. | MACK,MKGSF | MACKAY GOLD & SILVER CORP | review_required_openfigi_resolves_different_security |
 | CA69002L1067 | OZBKF | Valkea Resources Corp. | OZCAD | OUTBACK GOLDFIELDS CORP | review_required_openfigi_resolves_different_security |
 | CA78460T1057 | SNCAF | AtkinsRéalis Group Inc | SNCCAD,SNCEUR,SNCGBP | SNC-LAVALIN GROUP INC | review_required_openfigi_resolves_different_security |
+| CA84841L4073 | DRK | DarkHorse Technologies Inc. -  | ANY1EUR,ANY1GBP,ANY1USD | SPHERE 3D CORP | review_required_openfigi_resolves_different_security |
 | CH0024666528 | HT5 | HT5 N LTD | 0QQI,1Z3,CNTL | CENTIEL AG | review_required_openfigi_resolves_different_security |
 | CH0304280636 | HSRN | HelveticStar Holding Ag | HELHCHF,HELHEUR,HSR | HELVETIC STAR AG | review_required_openfigi_resolves_different_security |
 | FI0009013429 | CYJBY | Hiab Oyj | CGCBVGBP,CGCBVGBX,CGCBVUSD | CARGOTEC OYJ-B SHARE | review_required_openfigi_resolves_different_security |
