@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99930,
-    "matched": 65277,
-    "collisions": 13905,
-    "missing": 20748
+    "official_symbols": 99670,
+    "matched": 65235,
+    "collisions": 13825,
+    "missing": 20610
   },
   "exchanges": [
     {
@@ -1090,59 +1090,11 @@
     },
     {
       "exchange": "BVB",
-      "official_symbols": 349,
-      "matched": 86,
-      "collisions": 119,
-      "missing": 144,
+      "official_symbols": 89,
+      "matched": 44,
+      "collisions": 39,
+      "missing": 6,
       "collision_examples": [
-        {
-          "ticker": "AAB",
-          "name": "AGROLAND AGRIBUSINESS",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "CPH",
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "ABN",
-          "name": "ABN Systems International",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "AMS"
-          ]
-        },
-        {
-          "ticker": "ADS",
-          "name": "ADIDAS AG",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "ASX",
-            "FSX",
-            "OSL",
-            "XETRA",
-            "XSTU"
-          ]
-        },
-        {
-          "ticker": "AG",
-          "name": "AGROLAND BUSINESS SYSTEM S.A.",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "NYSE",
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "ALB",
-          "name": "ALBAPAM S.A.",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "ASX",
-            "BME",
-            "NYSE"
-          ]
-        },
         {
           "ticker": "ALR",
           "name": "ALRO S.A.",
@@ -1164,88 +1116,108 @@
           ]
         },
         {
-          "ticker": "ALV",
-          "name": "ALLIANZ SE",
+          "ticker": "AQ",
+          "name": "AQUILA PART PROD COM",
           "target_exchange": "BVB",
           "existing_exchanges": [
-            "FSX",
-            "Munich",
-            "NYSE",
-            "TSXV",
-            "XDUS",
-            "XHAN",
-            "XSTU"
+            "STO"
           ]
         },
         {
-          "ticker": "ALW",
-          "name": "VISUAL FAN",
+          "ticker": "ARM",
+          "name": "ARMATURA S.A.",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "BME",
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ARS",
+          "name": "AEROSTAR S.A.",
           "target_exchange": "BVB",
           "existing_exchanges": [
             "LSE"
           ]
         },
         {
-          "ticker": "AMAL",
-          "name": "INTERNATIONAL CAVIAR CORPORATION SA CALAN",
+          "ticker": "ARTE",
+          "name": "ARTEGO SA",
           "target_exchange": "BVB",
           "existing_exchanges": [
+            "Euronext"
+          ]
+        },
+        {
+          "ticker": "BCM",
+          "name": "CASA DE BUCOVINA-CLUB DE MUNTE",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "ASX",
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "BIO",
+          "name": "BIOFARM S.A.",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "ASX",
+            "NYSE",
+            "VSE",
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "BRK",
+          "name": "SSIF BRK FINANCIAL GROUP SA",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "ASX",
             "LSE",
-            "NASDAQ",
-            "SIX",
-            "TASE"
+            "NEO"
+          ]
+        },
+        {
+          "ticker": "BVB",
+          "name": "BURSA DE VALORI BUCURESTI SA",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "FSX",
+            "XETRA",
+            "XSTU"
           ]
         }
       ],
       "missing_examples": [
         {
-          "ticker": "2P",
-          "name": "2PERFORMANT NETWORK SA",
+          "ticker": "CAOR",
+          "name": "SIF HOTELURI SA",
           "exchange": "BVB"
         },
         {
-          "ticker": "4RT",
-          "name": "FORT SA",
+          "ticker": "CNTE",
+          "name": "CONTED SA",
           "exchange": "BVB"
         },
         {
-          "ticker": "ADISS",
-          "name": "ADISS",
+          "ticker": "ELJ",
+          "name": "ELECTROAPARATAJ S.A.",
           "exchange": "BVB"
         },
         {
-          "ticker": "ADMY",
-          "name": "ADMET SA GALATI",
+          "ticker": "UAM",
+          "name": "UAMT S.A.",
           "exchange": "BVB"
         },
         {
-          "ticker": "AGCM",
-          "name": "AGROMEC SA CIOROGARLA",
+          "ticker": "UZT",
+          "name": "UZTEL S.A.",
           "exchange": "BVB"
         },
         {
-          "ticker": "ALCQ",
-          "name": "ALCOM SA TIMISOARA",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ALDANI",
-          "name": "ALDANI MASTER CAPITAL S.A.",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ALRV",
-          "name": "ALIMENTARA SA Slatina",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ANIM",
-          "name": "STUDIOUL CINEMATOGRAFIC ANIMAFILM SA BUCURESTI",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ARCU",
-          "name": "SIFI CLUJ RETAIL SA Bucuresti",
+          "ticker": "VESY",
+          "name": "VES SA",
           "exchange": "BVB"
         }
       ]

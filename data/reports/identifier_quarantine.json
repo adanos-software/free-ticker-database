@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-21T12:45:40Z",
+  "generated_at": "2026-09-21T16:33:05Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 1527,
   "decision_rows": 4963,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1281,
-    "proposed_clear_conflicting_identifier": 734,
-    "quarantined_unresolved_identifier": 2948
+    "kept_listing_keyed_identifier": 1283,
+    "proposed_clear_conflicting_identifier": 735,
+    "quarantined_unresolved_identifier": 2945
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 734,
-  "quarantined_rows": 2948,
-  "retained_rows": 1281,
+  "proposed_clear_rows": 735,
+  "quarantined_rows": 2945,
+  "retained_rows": 1283,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -57339,9 +57339,9 @@
       "exchange": "BMV",
       "name": "Invesco QQQ Trust Series 1",
       "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57352,9 +57352,9 @@
       "exchange": "HKEX",
       "name": "INVESCO QQQ",
       "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57367,7 +57367,7 @@
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57380,7 +57380,7 @@
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US46090E1038"
     },
     {
@@ -57391,9 +57391,9 @@
       "exchange": "NASDAQ",
       "name": "Invesco QQQ Trust",
       "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US46090E1038"
     },
     {
