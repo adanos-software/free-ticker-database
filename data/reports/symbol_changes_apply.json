@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-09-19T10:55:33Z",
+    "generated_at": "2026-09-23T11:32:03Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 351,
+    "blocked_rows": 352,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 12,
-      "blocked_new_symbol_not_active_in_official_master": 3,
-      "blocked_old_symbol_not_unique_in_us_scope": 282,
+      "blocked_new_symbol_collision": 11,
+      "blocked_new_symbol_not_active_in_official_master": 2,
+      "blocked_old_symbol_not_unique_in_us_scope": 285,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 47,
       "manual_successor_exists_missing_isin": 2,
@@ -21,12 +21,20 @@
   "dropped_predecessors": [],
   "blocked": [
     {
+      "change_id": "8e8b32078e4003a6",
+      "effective_date": "2026-09-22",
+      "old_symbol": "BRR",
+      "new_symbol": "SVIA",
+      "new_company_name": "Silvia Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
+    {
       "change_id": "7db8560be6b62da6",
       "effective_date": "2026-09-18",
       "old_symbol": "HCWC",
       "new_symbol": "HOST",
       "new_company_name": "Host Digital Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "37ae0256fe9b9bab",
@@ -34,7 +42,7 @@
       "old_symbol": "ANY",
       "new_symbol": "DRK",
       "new_company_name": "Darkhorse Technologies Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "d444715d180700dc",
@@ -42,7 +50,7 @@
       "old_symbol": "PHGE",
       "new_symbol": "HLSQ",
       "new_company_name": "Tessera Defense & Homeland Security Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "aae72e7b293ba54e",
@@ -74,7 +82,7 @@
       "old_symbol": "KWM",
       "new_symbol": "NXAT",
       "new_company_name": "Nexus Advanced Technologies Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "b41ffb92124b2e19",
