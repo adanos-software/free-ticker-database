@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-09-21T12:52:00Z`
+Generated at: `2026-09-21T14:37:32Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `860`
-- Missing stock sectors: `1529`
+- Missing stock sectors: `1528`
 - Missing ETF categories: `91`
 - Official symbol collisions tracked in exchange references: `13905`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4780`
@@ -54,7 +54,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 2 | OTC | Stock | 554 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 3 | NASDAQ | Stock | 56 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 4 | XSTU | Stock | 46 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 5 | NYSE | Stock | 16 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 5 | NYSE | Stock | 15 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 6 | Munich | Stock | 10 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 7 | PSE | Stock | 7 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 8 | LSE | Stock | 6 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
@@ -84,7 +84,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 4 | XSTU | 46 | 46 | 0 | missing |
 | 5 | NYSE ARCA | 39 | 0 | 39 | official_full |
 | 6 | BATS | 24 | 0 | 24 | official_full |
-| 7 | NYSE | 17 | 16 | 1 | official_full |
+| 7 | NYSE | 16 | 15 | 1 | official_full |
 | 8 | Munich | 10 | 10 | 0 | missing |
 | 9 | PSE | 7 | 7 | 0 | official_full |
 | 10 | LSE | 6 | 6 | 0 | official_full |

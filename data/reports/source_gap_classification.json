@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-09-21T12:52:00Z",
-    "rows": 8772,
+    "generated_at": "2026-09-21T14:37:31Z",
+    "rows": 8771,
     "field_totals": {
       "missing_etf_category": 91,
       "missing_isin_primary": 860,
-      "missing_sector_stock": 1529,
+      "missing_sector_stock": 1528,
       "official_reference_gap": 6292
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
-      "adr_cdr_or_depositary_sector_gap": 16,
+      "adr_cdr_or_depositary_sector_gap": 15,
       "capital_pool_or_halted_identifier_gap": 33,
       "commodity_etf_category_gap": 1,
       "debt_or_securitized_identifier_gap": 89,
@@ -47,7 +47,7 @@
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 314,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 8,
-      "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 16,
+      "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 15,
       "missing_sector_stock:exchange_industry_source_gap": 63,
       "missing_sector_stock:fundlike_stock_sector_gap": 5,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 849,
@@ -144,7 +144,7 @@
         },
         {
           "exchange": "NYSE",
-          "rows": 16
+          "rows": 15
         },
         {
           "exchange": "Munich",
@@ -31657,23 +31657,6 @@
       "source_gap_context": "listing_key=NYSE::BBAR;exchange=NYSE;ticker=BBAR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NYSE::CSAN",
-      "ticker": "CSAN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Cosan SA ADR",
-      "gap_class": "adr_cdr_or_depositary_sector_gap",
-      "review_needed": "true",
-      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
-      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
-      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope.",
-      "source_gap_context": "listing_key=NYSE::CSAN;exchange=NYSE;ticker=CSAN;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=adr_cdr_or_depositary_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=adr_cdr_or_depositary_sector_gap"
     },
     {
       "field": "missing_sector_stock",

@@ -7,32 +7,45 @@
   },
   "summary": {
     "before_rows": 92103,
-    "after_rows": 92103,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "after_rows": 92102,
+    "overall_shrink_pct": 0.001086,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 1,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NYSE::CSAN"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "BSE_IN::VOLKAI",
-      "field_name": "isin",
-      "old_value": "INE820M01018",
-      "new_value": "INE820M01026"
+      "listing_key": "NYSE::CSAN",
+      "ticker": "CSAN",
+      "exchange": "NYSE",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Cosan SA ADR",
+      "new_value": "",
+      "before_row_sha256": "6a133d16542415f9e5b020a7dcc402f7523f9f6733878761e0128c30c5668d12",
+      "effective_at": "",
+      "observed_at": "2026-09-21T14:35:05Z",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "source_report": "data/reports/delisting_transitions.csv",
+      "observation_id": "c7db7ac050397690c049037e",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -487,9 +500,9 @@
     {
       "exchange": "NYSE",
       "before_rows": 2026,
-      "after_rows": 2026,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 2025,
+      "shrink_pct": 0.049358,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
