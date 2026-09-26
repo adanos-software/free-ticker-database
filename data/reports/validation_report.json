@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-21T12:53:24Z",
+    "generated_at": "2026-09-26T11:47:47Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
-    "ticker_rows": 63912,
-    "listing_rows": 92103,
-    "adanos_reference_rows": 63912,
-    "entry_quality_rows": 92103,
+    "ticker_rows": 63949,
+    "listing_rows": 92142,
+    "adanos_reference_rows": 63949,
+    "entry_quality_rows": 92142,
     "error_gates": 87,
-    "failed_error_gates": 0,
+    "failed_error_gates": 1,
     "info_gates": 5
   },
   "gates": [
@@ -511,9 +511,14 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 3,
+      "limit": 0,
+      "details": [
+        "NASDAQ::INVE",
+        "NYSE::HCWC",
+        "OTC::DAZSF"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -547,28 +552,28 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 860,
+      "actual": 899,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 1306,
+      "actual": 1311,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 109,
+      "actual": 143,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11455,
+      "actual": 11504,
       "limit": null
     },
     {

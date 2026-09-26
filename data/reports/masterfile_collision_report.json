@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99930,
-    "matched": 65277,
-    "collisions": 13905,
-    "missing": 20748
+    "official_symbols": 99968,
+    "matched": 65305,
+    "collisions": 13907,
+    "missing": 20756
   },
   "exchanges": [
     {
@@ -337,8 +337,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1637,
-      "matched": 1298,
+      "official_symbols": 1646,
+      "matched": 1307,
       "collisions": 57,
       "missing": 282,
       "collision_examples": [
@@ -3022,10 +3022,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5628,
-      "matched": 4584,
-      "collisions": 64,
-      "missing": 980,
+      "official_symbols": 5646,
+      "matched": 4596,
+      "collisions": 65,
+      "missing": 985,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3618,10 +3618,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3887,
-      "matched": 1982,
-      "collisions": 565,
-      "missing": 1340,
+      "official_symbols": 3891,
+      "matched": 1983,
+      "collisions": 566,
+      "missing": 1342,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3767,8 +3767,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2733,
-      "matched": 2612,
+      "official_symbols": 2739,
+      "matched": 2618,
       "collisions": 29,
       "missing": 92,
       "collision_examples": [
@@ -5719,10 +5719,10 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 4,
+      "official_symbols": 5,
       "matched": 0,
       "collisions": 3,
-      "missing": 1,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "ILS",
@@ -5751,6 +5751,11 @@
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "CTAG",
+          "name": "Calamos Timpani Active SMID Growth ETF",
+          "exchange": "TXSE"
+        },
         {
           "ticker": "PWRX",
           "name": "Westwood Salient Enhanced Power & Infrastructure ETF",

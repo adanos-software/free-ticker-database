@@ -7,32 +7,81 @@
   },
   "summary": {
     "before_rows": 92103,
-    "after_rows": 92103,
+    "after_rows": 92142,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "removed_rows": 3,
+    "evidenced_removed_rows": 3,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 1,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 3
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::BRR",
+    "NASDAQ::DOMO",
+    "NASDAQ::HVII"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "BSE_IN::VOLKAI",
-      "field_name": "isin",
-      "old_value": "INE820M01018",
-      "new_value": "INE820M01026"
+      "listing_key": "NASDAQ::BRR",
+      "ticker": "BRR",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "BRR",
+      "new_value": "SVIA",
+      "before_row_sha256": "f399a7f62dde33f8b1ed74bfd7268bb073bf966f0b976c375c3f672eadf259a0",
+      "effective_at": "",
+      "observed_at": "2026-09-26T11:45:17Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "aa806f03235ed45d33d598ff",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::DOMO",
+      "ticker": "DOMO",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "DOMO",
+      "new_value": "HUCK",
+      "before_row_sha256": "f42a45e1e7dc806994847cf6502b58cb0889f0f7a08852bcac4760bf54df6eab",
+      "effective_at": "",
+      "observed_at": "2026-09-26T11:45:17Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "8eed0b005764c694760d0b63",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::HVII",
+      "ticker": "HVII",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "HVII",
+      "new_value": "ONEN",
+      "before_row_sha256": "b1f2eed0acbb7aa5d0a9934df168787af9d5ce3f2e095867f17626dfff43b43d",
+      "effective_at": "",
+      "observed_at": "2026-09-26T11:45:17Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "eecce1d393f3ddb13212f17a",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -82,7 +131,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1396,
-      "after_rows": 1396,
+      "after_rows": 1406,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -433,9 +482,9 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4774,
-      "after_rows": 4774,
+      "after_rows": 4794,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 3,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -487,7 +536,7 @@
     {
       "exchange": "NYSE",
       "before_rows": 2026,
-      "after_rows": 2026,
+      "after_rows": 2027,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -496,7 +545,7 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2777,
-      "after_rows": 2777,
+      "after_rows": 2785,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
