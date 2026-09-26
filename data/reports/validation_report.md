@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-09-21T12:53:24Z`
+Generated at: `2026-09-26T11:47:47Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 63,912 |
-| listing_rows | 92,103 |
-| adanos_reference_rows | 63,912 |
-| entry_quality_rows | 92,103 |
+| ticker_rows | 63,949 |
+| listing_rows | 92,142 |
+| adanos_reference_rows | 63,949 |
+| entry_quality_rows | 92,142 |
 | error_gates | 87 |
-| failed_error_gates | 0 |
+| failed_error_gates | 1 |
 | info_gates | 5 |
 
 ## Gates
@@ -88,15 +88,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 3 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 860 |  |
-| missing_stock_sector | info | PASS | 1306 |  |
-| missing_etf_category | info | PASS | 109 |  |
-| source_gap_rows | info | PASS | 11455 |  |
+| expected_missing_primary_isin | info | PASS | 899 |  |
+| missing_stock_sector | info | PASS | 1311 |  |
+| missing_etf_category | info | PASS | 143 |  |
+| source_gap_rows | info | PASS | 11504 |  |
 | allowed_warn_rows | info | PASS | 33 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -115,4 +115,10 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### entry_quality_unexpected_warn_count
+
+- Actual: `3`
+- `NASDAQ::INVE`
+- `NYSE::HCWC`
+- `OTC::DAZSF`
+

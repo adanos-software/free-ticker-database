@@ -8352,6 +8352,7 @@ BATS::DASX,DASX,BATS,US46092D4916,isin
 BATS::DASX,DASX,BATS,tradr 2x long dash,name
 BATS::DASX,DASX,BATS,investment managers ii - tradr 2x long dash,name
 BATS::DAUG,DAUG,BATS,US33740F8547,isin
+BATS::DCAP,DCAP,BATS,t-strive digital credit preferred income,name
 BATS::DDEC,DDEC,BATS,US33740U4067,isin
 BATS::DDFD,DDFD,BATS,US45784N4372,isin
 BATS::DDFF,DDFF,BATS,US45784N3952,isin
@@ -8442,6 +8443,7 @@ BATS::DOGG,DOGG,BATS,US33738D8469,isin
 BATS::DOGG,DOGG,BATS,ft vest djia dogs 10 target income,name
 BATS::DOJE,DOJE,BATS,US26923N2154,isin
 BATS::DOJE,DOJE,BATS,rex-osprey doge,name
+BATS::DQSE,DQSE,BATS,ft vest nasdaq-100 dual directional buffer,name
 BATS::DRAG,DRAG,BATS,US77926X8746,isin
 BATS::DRAG,DRAG,BATS,roundhill china dragons,name
 BATS::DRAM,DRAM,BATS,US77926X3200,isin
@@ -9643,6 +9645,7 @@ BATS::QMFE,QMFE,BATS,US33740F1286,isin
 BATS::QMMY,QMMY,BATS,US33740F2680,isin
 BATS::QMNV,QMNV,BATS,US33740U5130,isin
 BATS::QQAU,QQAU,BATS,US2189466301,isin
+BATS::QQBF,QQBF,BATS,ft vest nasdaq-100 quarterly 15 buffer,name
 BATS::QSE,QSE,BATS,corgi growth & technology 10% structured buffer,name
 BATS::QSOL,QSOL,BATS,US67122G1067,isin
 BATS::QSOL,QSOL,BATS,invesco galaxy solana,name
@@ -9756,6 +9759,7 @@ BATS::SCOW,SCOW,BATS,US69374H2206,isin
 BATS::SCOW,SCOW,BATS,pacer s&p smallcap 600 quality fcf aristocrats,name
 BATS::SDVD,SDVD,BATS,US33738D8204,isin
 BATS::SDVD,SDVD,BATS,ft vest smid rising dividend achievers target income,name
+BATS::SECA,SECA,BATS,main active rotation,name
 BATS::SECT,SECT,BATS,US66538H5919,isin
 BATS::SECT,SECT,BATS,main sector rotation,name
 BATS::SECU,SECU,BATS,US0925288195,isin
@@ -10258,10 +10262,16 @@ BATS::XTJL,XTJL,BATS,US45783Y8066,isin
 BATS::XTOC,XTOC,BATS,US45783Y8306,isin
 BATS::XUSP,XUSP,BATS,US45783Y6995,isin
 BATS::XUSP,XUSP,BATS,innovator uncapped accelerated u.s. equity,name
+BATS::XVAD,XVAD,BATS,ft vest amd & target income,name
 BATS::XVAP,XVAP,BATS,ft vest aapl & target income,name
+BATS::XVAZ,XVAZ,BATS,ft vest amzn & target income,name
+BATS::XVGL,XVGL,BATS,ft vest goog & target income,name
+BATS::XVMS,XVMS,BATS,ft vest msft & target income,name
+BATS::XVMT,XVMT,BATS,ft vest meta & target income,name
 BATS::XVNV,XVNV,BATS,ft vest nvda & target income,name
 BATS::XVOL,XVOL,BATS,US8863647447,isin
 BATS::XVOL,XVOL,BATS,acruence active hedge u.s. equity,name
+BATS::XVPT,XVPT,BATS,ft vest pltr & target income,name
 BATS::XVSP,XVSP,BATS,ft vest spcx & target income,name
 BATS::XVTS,XVTS,BATS,ft vest tsla & target income,name
 BATS::XVV,XVV,BATS,US46436E5693,isin
@@ -49846,6 +49856,8 @@ NASDAQ::ADP,ADP,NASDAQ,automatic data processing,name
 NASDAQ::ADPT,ADPT,NASDAQ,US00650F1093,isin
 NASDAQ::ADPT,ADPT,NASDAQ,00650F,wkn
 NASDAQ::ADPT,ADPT,NASDAQ,adaptive biotechnologies,name
+NASDAQ::ADRX,ADRX,NASDAQ,adarx pharmaceuticals,name
+NASDAQ::ADRX,ADRX,NASDAQ,adarx,name
 NASDAQ::ADSE,ADSE,NASDAQ,IE000DU292E6,isin
 NASDAQ::ADSE,ADSE,NASDAQ,A3DA9W,wkn
 NASDAQ::ADSE,ADSE,NASDAQ,tec energy,name
@@ -51144,8 +51156,6 @@ NASDAQ::BRNX,BRNX,NASDAQ,IL0012008152,isin
 NASDAQ::BRNX,BRNX,NASDAQ,brenx,name
 NASDAQ::BRNY,BRNY,NASDAQ,US02072L6496,isin
 NASDAQ::BRNY,BRNY,NASDAQ,burney u.s. factor rotation,name
-NASDAQ::BRR,BRR,NASDAQ,KYG2296A1094,isin
-NASDAQ::BRR,BRR,NASDAQ,procap financial,name
 NASDAQ::BRRR,BRRR,NASDAQ,US91916J1007,isin
 NASDAQ::BRRR,BRRR,NASDAQ,coinshares bitcoin,name
 NASDAQ::BRTM,BRTM,NASDAQ,b&r technology merger,name
@@ -51677,6 +51687,7 @@ NASDAQ::CHEF,CHEF,NASDAQ,the chefs warehouse,name
 NASDAQ::CHGA,CHGA,NASDAQ,change agents,name
 NASDAQ::CHGX,CHGX,NASDAQ,US46144X1072,isin
 NASDAQ::CHGX,CHGX,NASDAQ,stance sustainable beta,name
+NASDAQ::CHIP,CHIP,NASDAQ,rex ai chipmaking,name
 NASDAQ::CHKP,CHKP,NASDAQ,IL0010824113,isin
 NASDAQ::CHKP,CHKP,NASDAQ,901638,wkn
 NASDAQ::CHKP,CHKP,NASDAQ,check point software technologies,name
@@ -52496,7 +52507,6 @@ NASDAQ::DOMH,DOMH,NASDAQ,US0088753043,isin
 NASDAQ::DOMH,DOMH,NASDAQ,A3DMBK,wkn
 NASDAQ::DOMH,DOMH,NASDAQ,dominari holdings,name
 NASDAQ::DOMH,DOMH,NASDAQ,dominari,name
-NASDAQ::DOMO,DOMO,NASDAQ,US2575541055,isin
 NASDAQ::DOO,DOO,NASDAQ,CA05577W2004,isin
 NASDAQ::DOO,DOO,NASDAQ,A1WZCD,wkn
 NASDAQ::DORM,DORM,NASDAQ,US2582781009,isin
@@ -52971,6 +52981,7 @@ NASDAQ::ESQ,ESQ,NASDAQ,esquire financial,name
 NASDAQ::ESTA,ESTA,NASDAQ,VGG312491084,isin
 NASDAQ::ESTA,ESTA,NASDAQ,establishment labs holdings,name
 NASDAQ::ESTA,ESTA,NASDAQ,establishment labs,name
+NASDAQ::ESYN,ESYN,NASDAQ,enersyn global,name
 NASDAQ::ETEC,ETEC,NASDAQ,US2924681057,isin
 NASDAQ::ETEC,ETEC,NASDAQ,breakthrough environmental solutions,name
 NASDAQ::ETHB,ETHB,NASDAQ,staked ethereum of fractional undivided beneficial interest,name
@@ -54448,6 +54459,7 @@ NASDAQ::HUBC,HUBC,NASDAQ,hub cyber security,name
 NASDAQ::HUBG,HUBG,NASDAQ,US4433201062,isin
 NASDAQ::HUBG,HUBG,NASDAQ,899799,wkn
 NASDAQ::HUBG,HUBG,NASDAQ,hub group,name
+NASDAQ::HUCK,HUCK,NASDAQ,US2575541055,isin
 NASDAQ::HUDI,HUDI,NASDAQ,KYG4645E1052,isin
 NASDAQ::HUDI,HUDI,NASDAQ,huadi international group,name
 NASDAQ::HUDI,HUDI,NASDAQ,huadi international,name
@@ -54474,8 +54486,6 @@ NASDAQ::HUT,HUT,NASDAQ,A3ES40,wkn
 NASDAQ::HUT,HUT,NASDAQ,hut 8,name
 NASDAQ::HUTG,HUTG,NASDAQ,US88340W7801,isin
 NASDAQ::HUTG,HUTG,NASDAQ,2x long hut,name
-NASDAQ::HVII,HVII,NASDAQ,KYG4405D1079,isin
-NASDAQ::HVII,HVII,NASDAQ,hennessy capital investment vii,name
 NASDAQ::HVMC,HVMC,NASDAQ,KYG4569C1015,isin
 NASDAQ::HVMC,HVMC,NASDAQ,highview merger,name
 NASDAQ::HWAY,HWAY,NASDAQ,US8829277263,isin
@@ -54493,6 +54503,7 @@ NASDAQ::HWIV,HWIV,NASDAQ,hotchkis & wiley international value,name
 NASDAQ::HWKN,HWKN,NASDAQ,US4202611095,isin
 NASDAQ::HWKN,HWKN,NASDAQ,420261,wkn
 NASDAQ::HWKN,HWKN,NASDAQ,hawkins,name
+NASDAQ::HWMV,HWMV,NASDAQ,hotchkis & wiley mid-cap value,name
 NASDAQ::HWSM,HWSM,NASDAQ,US44134R4386,isin
 NASDAQ::HWSM,HWSM,NASDAQ,hotchkis & wiley smid cap diversified value,name
 NASDAQ::HXHX,HXHX,NASDAQ,KYG4290D1051,isin
@@ -56361,6 +56372,7 @@ NASDAQ::MYCM,MYCM,NASDAQ,ssga my2033 corporate bond,name
 NASDAQ::MYCN,MYCN,NASDAQ,US78470P7399,isin
 NASDAQ::MYCN,MYCN,NASDAQ,ssga my2034 corporate bond,name
 NASDAQ::MYCO,MYCO,NASDAQ,ssga my2035 corporate bond,name
+NASDAQ::MYCP,MYCP,NASDAQ,state street my2036 corporate bond,name
 NASDAQ::MYFW,MYFW,NASDAQ,US33751L1052,isin
 NASDAQ::MYFW,MYFW,NASDAQ,33751L,wkn
 NASDAQ::MYFW,MYFW,NASDAQ,first western financial,name
@@ -56375,6 +56387,7 @@ NASDAQ::MYHD,MYHD,NASDAQ,US78470P5492,isin
 NASDAQ::MYHD,MYHD,NASDAQ,state street my2030 high yield corporate bond,name
 NASDAQ::MYHE,MYHE,NASDAQ,US78470P5310,isin
 NASDAQ::MYHE,MYHE,NASDAQ,state street my2031 high yield corporate bond,name
+NASDAQ::MYHF,MYHF,NASDAQ,state street my2032 high yield corporate bond,name
 NASDAQ::MYMF,MYMF,NASDAQ,US78470P7217,isin
 NASDAQ::MYMF,MYMF,NASDAQ,ssga my2026 municipal bond,name
 NASDAQ::MYMG,MYMG,NASDAQ,US78470P7134,isin
@@ -56386,6 +56399,7 @@ NASDAQ::MYMI,MYMI,NASDAQ,ssga my2029 municipal bond,name
 NASDAQ::MYMJ,MYMJ,NASDAQ,US78470P6714,isin
 NASDAQ::MYMJ,MYMJ,NASDAQ,ssga my2030 municipal bond,name
 NASDAQ::MYMK,MYMK,NASDAQ,ssga my2031 municipal bond,name
+NASDAQ::MYML,MYML,NASDAQ,state street my2032 municipal bond,name
 NASDAQ::MYPS,MYPS,NASDAQ,US72815G1085,isin
 NASDAQ::MYPS,MYPS,NASDAQ,A3CSZN,wkn
 NASDAQ::MYPS,MYPS,NASDAQ,playstudios,name
@@ -56833,6 +56847,7 @@ NASDAQ::NVYY,NVYY,NASDAQ,graniteshares yieldboost nvda,name
 NASDAQ::NWBI,NWBI,NASDAQ,US6673401039,isin
 NASDAQ::NWBI,NWBI,NASDAQ,A0YF80,wkn
 NASDAQ::NWBI,NWBI,NASDAQ,northwest bancshares,name
+NASDAQ::NWCL,NWCL,NASDAQ,newcleo,name
 NASDAQ::NWE,NWE,NASDAQ,US6680743050,isin
 NASDAQ::NWE,NWE,NASDAQ,A0DLGF,wkn
 NASDAQ::NWE,NWE,NASDAQ,northwestern,name
@@ -57034,6 +57049,8 @@ NASDAQ::ONDS,ONDS,NASDAQ,ondas holdings,name
 NASDAQ::ONDS,ONDS,NASDAQ,ondas,name
 NASDAQ::ONEG,ONEG,NASDAQ,KYG6826S1003,isin
 NASDAQ::ONEG,ONEG,NASDAQ,oneconstruction group,name
+NASDAQ::ONEN,ONEN,NASDAQ,KYG4405D1079,isin
+NASDAQ::ONEN,ONEN,NASDAQ,one nuclear energy,name
 NASDAQ::ONEQ,ONEQ,NASDAQ,US3159128087,isin
 NASDAQ::ONEQ,ONEQ,NASDAQ,fidelity nasdaq composite,name
 NASDAQ::ONEW,ONEW,NASDAQ,US68280L1017,isin
@@ -57275,6 +57292,7 @@ NASDAQ::PAYS,PAYS,NASDAQ,paysign,name
 NASDAQ::PAYX,PAYX,NASDAQ,US7043261079,isin
 NASDAQ::PAYX,PAYX,NASDAQ,704326,wkn
 NASDAQ::PAYX,PAYX,NASDAQ,paychex,name
+NASDAQ::PBCS,PBCS,NASDAQ,building block world consumer staples,name
 NASDAQ::PBEU,PBEU,NASDAQ,US88635A1051,isin
 NASDAQ::PBEU,PBEU,NASDAQ,building block european banks,name
 NASDAQ::PBFS,PBFS,NASDAQ,US7235611065,isin
@@ -57300,6 +57318,8 @@ NASDAQ::PBQQ,PBQQ,NASDAQ,US69420N5106,isin
 NASDAQ::PBQQ,PBQQ,NASDAQ,pgim laddered nasdaq-100 buffer 12,name
 NASDAQ::PBRG,PBRG,NASDAQ,US88340F7125,isin
 NASDAQ::PBRG,PBRG,NASDAQ,2x long pbr,name
+NASDAQ::PBUB,PBUB,NASDAQ,building block us banks,name
+NASDAQ::PBWN,PBWN,NASDAQ,building block world ex us industrials,name
 NASDAQ::PBYI,PBYI,NASDAQ,US74587V1070,isin
 NASDAQ::PBYI,PBYI,NASDAQ,puma biotechnology,name
 NASDAQ::PC,PC,NASDAQ,KYG722282012,isin
@@ -57967,6 +57987,7 @@ NASDAQ::QQEW,QQEW,NASDAQ,nasdaq-100 equal weighted,name
 NASDAQ::QQEW,QQEW,NASDAQ,first nasdaq-100 equal weighted,name
 NASDAQ::QQHG,QQHG,NASDAQ,US46127B4032,isin
 NASDAQ::QQHG,QQHG,NASDAQ,invesco qqq advantage,name
+NASDAQ::QQI,QQI,NASDAQ,invesco nasdaq international innovators 100,name
 NASDAQ::QQLV,QQLV,NASDAQ,US46138G4257,isin
 NASDAQ::QQLV,QQLV,NASDAQ,invesco qqq low volatility,name
 NASDAQ::QQMG,QQMG,NASDAQ,US46138G5403,isin
@@ -57974,6 +57995,7 @@ NASDAQ::QQQ,QQQ,NASDAQ,US46090E1038,isin
 NASDAQ::QQQ,QQQ,NASDAQ,invesco qqq,name
 NASDAQ::QQQA,QQQA,NASDAQ,US74347G6715,isin
 NASDAQ::QQQA,QQQA,NASDAQ,nasdaq-100 dorsey wright momentum,name
+NASDAQ::QQQB,QQQB,NASDAQ,vistashares shield nasdaq 100 enhanced protection,name
 NASDAQ::QQQE,QQQE,NASDAQ,US25459Y2072,isin
 NASDAQ::QQQE,QQQE,NASDAQ,direxion nasdaq-100 equal weighted,name
 NASDAQ::QQQG,QQQG,NASDAQ,US69374H3295,isin
@@ -59313,6 +59335,8 @@ NASDAQ::SVCC,SVCC,NASDAQ,stellar v capital,name
 NASDAQ::SVCO,SVCO,NASDAQ,US82728C1027,isin
 NASDAQ::SVCO,SVCO,NASDAQ,A40B02,wkn
 NASDAQ::SVCO,SVCO,NASDAQ,silvaco group,name
+NASDAQ::SVIA,SVIA,NASDAQ,KYG2296A1094,isin
+NASDAQ::SVIA,SVIA,NASDAQ,silvia,name
 NASDAQ::SVIV,SVIV,NASDAQ,KYG8377G1055,isin
 NASDAQ::SVIV,SVIV,NASDAQ,spring valley acquisition iv,name
 NASDAQ::SVRA,SVRA,NASDAQ,US8051111016,isin
@@ -59678,6 +59702,7 @@ NASDAQ::TONX,TONX,NASDAQ,A40PX4,wkn
 NASDAQ::TONX,TONX,NASDAQ,ton strategy,name
 NASDAQ::TOP,TOP,NASDAQ,KYG989A61029,isin
 NASDAQ::TOP,TOP,NASDAQ,zhong yang financial group,name
+NASDAQ::TORK,TORK,NASDAQ,kraneshares actuator,name
 NASDAQ::TOUR,TOUR,NASDAQ,US89977P1066,isin
 NASDAQ::TOUR,TOUR,NASDAQ,89977P,wkn
 NASDAQ::TOUR,TOUR,NASDAQ,tuniu,name
@@ -59896,6 +59921,7 @@ NASDAQ::TWNP,TWNP,NASDAQ,twin hospitality,name
 NASDAQ::TWST,TWST,NASDAQ,US90184D1000,isin
 NASDAQ::TWST,TWST,NASDAQ,90184D,wkn
 NASDAQ::TWST,TWST,NASDAQ,twist bioscience,name
+NASDAQ::TXCA,TXCA,NASDAQ,northern california intermediate tax-exempt bond,name
 NASDAQ::TXG,TXG,NASDAQ,US88025U1097,isin
 NASDAQ::TXG,TXG,NASDAQ,88025U,wkn
 NASDAQ::TXG,TXG,NASDAQ,10x genomics,name
@@ -59904,6 +59930,7 @@ NASDAQ::TXMD,TXMD,NASDAQ,therapeuticsmd,name
 NASDAQ::TXN,TXN,NASDAQ,US8825081040,isin
 NASDAQ::TXN,TXN,NASDAQ,882508,wkn
 NASDAQ::TXN,TXN,NASDAQ,texas instruments,name
+NASDAQ::TXNY,TXNY,NASDAQ,northern new york intermediate tax-exempt bond,name
 NASDAQ::TXRH,TXRH,NASDAQ,US8826811098,isin
 NASDAQ::TXRH,TXRH,NASDAQ,882681,wkn
 NASDAQ::TXRH,TXRH,NASDAQ,texas roadhouse,name
@@ -60303,6 +60330,8 @@ NASDAQ::VMBS,VMBS,NASDAQ,vanguard mortgage-backed securities,name
 NASDAQ::VMD,VMD,NASDAQ,CA92663R1055,isin
 NASDAQ::VMD,VMD,NASDAQ,A2G832,wkn
 NASDAQ::VMD,VMD,NASDAQ,viemed healthcare,name
+NASDAQ::VMHY,VMHY,NASDAQ,victoryshares municipal high yield,name
+NASDAQ::VMSD,VMSD,NASDAQ,victoryshares short-duration municipal,name
 NASDAQ::VNCE,VNCE,NASDAQ,US92719W2070,isin
 NASDAQ::VNCE,VNCE,NASDAQ,A2H5UL,wkn
 NASDAQ::VNCE,VNCE,NASDAQ,vince holding,name
@@ -60331,6 +60360,7 @@ NASDAQ::VONG,VONG,NASDAQ,US92206C6802,isin
 NASDAQ::VONG,VONG,NASDAQ,vanguard russell 1000 growth,name
 NASDAQ::VONV,VONV,NASDAQ,US92206C7149,isin
 NASDAQ::VONV,VONV,NASDAQ,vanguard russell 1000 value,name
+NASDAQ::VOOB,VOOB,NASDAQ,vistashares shield s&p 500 enhanced protection,name
 NASDAQ::VOR,VOR,NASDAQ,US9290332074,isin
 NASDAQ::VOR,VOR,NASDAQ,vor biopharma,name
 NASDAQ::VOTE,VOTE,NASDAQ,US29287L1061,isin
@@ -66893,6 +66923,7 @@ NYSE ARCA::AHYB,AHYB,NYSE ARCA,US0250723311,isin
 NYSE ARCA::AHYB,AHYB,NYSE ARCA,american century select high yield,name
 NYSE ARCA::AIBD,AIBD,NYSE ARCA,US25461A6929,isin
 NYSE ARCA::AIBD,AIBD,NYSE ARCA,direxion ai and big data bear 2x,name
+NYSE ARCA::AIBF,AIBF,NYSE ARCA,future ai beneficiaries,name
 NYSE ARCA::AIBU,AIBU,NYSE ARCA,US25461A7182,isin
 NYSE ARCA::AIBU,AIBU,NYSE ARCA,direxion ai and big data bull 2x,name
 NYSE ARCA::AIEQ,AIEQ,NYSE ARCA,US26924G8134,isin
@@ -68077,6 +68108,7 @@ NYSE ARCA::EMTY,EMTY,NYSE ARCA,US74347B3675,isin
 NYSE ARCA::EMTY,EMTY,NYSE ARCA,decline of the retail store,name
 NYSE ARCA::ENFR,ENFR,NYSE ARCA,US00162Q6769,isin
 NYSE ARCA::ENFR,ENFR,NYSE ARCA,alerian energy infrastructure,name
+NYSE ARCA::ENRG,ENRG,NYSE ARCA,ninepoint north american energy independence,name
 NYSE ARCA::EOCT,EOCT,NYSE ARCA,US45782C6232,isin
 NYSE ARCA::EOCT,EOCT,NYSE ARCA,innovator emerging markets power buffer,name
 NYSE ARCA::EPAI,EPAI,NYSE ARCA,US41151J6120,isin
@@ -68672,6 +68704,7 @@ NYSE ARCA::GCC,GCC,NYSE ARCA,continuous commodity,name
 NYSE ARCA::GCLO,GCLO,NYSE ARCA,guggenheim investment grade clo,name
 NYSE ARCA::GCOR,GCOR,NYSE ARCA,US38149W1018,isin
 NYSE ARCA::GCOR,GCOR,NYSE ARCA,goldman sachs access u.s. aggregate bond,name
+NYSE ARCA::GCPU,GCPU,NYSE ARCA,grayscale ai compute,name
 NYSE ARCA::GDLC,GDLC,NYSE ARCA,KYG407051088,isin
 NYSE ARCA::GDLC,GDLC,NYSE ARCA,grayscale coindesk crypto 5,name
 NYSE ARCA::GDOC,GDOC,NYSE ARCA,US38149W7700,isin
@@ -69815,6 +69848,7 @@ NYSE ARCA::MFUS,MFUS,NYSE ARCA,US72202L3630,isin
 NYSE ARCA::MFUS,MFUS,NYSE ARCA,pimco rafi dynamic multi-factor u.s. equity,name
 NYSE ARCA::MGC,MGC,NYSE ARCA,US9219108738,isin
 NYSE ARCA::MGC,MGC,NYSE ARCA,vanguard mega cap,name
+NYSE ARCA::MGIN,MGIN,NYSE ARCA,man active global infrastructure,name
 NYSE ARCA::MGK,MGK,NYSE ARCA,US9219108167,isin
 NYSE ARCA::MGK,MGK,NYSE ARCA,vanguard mega cap growth,name
 NYSE ARCA::MGMT,MGMT,NYSE ARCA,US90470L5509,isin
@@ -69885,6 +69919,7 @@ NYSE ARCA::MNA,MNA,NYSE ARCA,US45409B8000,isin
 NYSE ARCA::MNA,MNA,NYSE ARCA,iq merger arbitrage,name
 NYSE ARCA::MNBD,MNBD,NYSE ARCA,US00162Q4111,isin
 NYSE ARCA::MNBD,MNBD,NYSE ARCA,alps intermediate municipal bond,name
+NYSE ARCA::MNGB,MNGB,NYSE ARCA,yorkville america 2x inverse mangos plus target,name
 NYSE ARCA::MNGU,MNGU,NYSE ARCA,3x long mangos+ ex private companies etns,name
 NYSE ARCA::MNGZ,MNGZ,NYSE ARCA,yorkville america 2x long mangos plus target,name
 NYSE ARCA::MNRS,MNRS,NYSE ARCA,US38963H2067,isin
@@ -70011,6 +70046,7 @@ NYSE ARCA::NDIV,NDIV,NYSE ARCA,amplify natural resources dividend income,name
 NYSE ARCA::NDIV,NDIV,NYSE ARCA,amplify - amplify natural resources dividend income,name
 NYSE ARCA::NDVG,NDVG,NYSE ARCA,US67092P8216,isin
 NYSE ARCA::NDVG,NDVG,NYSE ARCA,nuveen dividend growth,name
+NYSE ARCA::NECK,NECK,NYSE ARCA,xetfs ai bottlenecks,name
 NYSE ARCA::NEMD,NEMD,NYSE ARCA,US64135A7880,isin
 NYSE ARCA::NEMD,NEMD,NYSE ARCA,neuberger berman emerging markets debt hard currency,name
 NYSE ARCA::NETL,NETL,NYSE ARCA,US26922A2481,isin
@@ -71327,6 +71363,7 @@ NYSE ARCA::TKNQ,TKNQ,NYSE ARCA,amplify tokenization technology leaders,name
 NYSE ARCA::TKNZ,TKNZ,NYSE ARCA,US87279N1000,isin
 NYSE ARCA::TKNZ,TKNZ,NYSE ARCA,t. rowe price active crypto,name
 NYSE ARCA::TLH,TLH,NYSE ARCA,US4642886539,isin
+NYSE ARCA::TLIE,TLIE,NYSE ARCA,american beacon the london income equity,name
 NYSE ARCA::TLTD,TLTD,NYSE ARCA,US33939L8037,isin
 NYSE ARCA::TLTD,TLTD,NYSE ARCA,morningstar developed markets ex-us factor tilt,name
 NYSE ARCA::TLTE,TLTE,NYSE ARCA,US33939L3087,isin
@@ -71554,6 +71591,7 @@ NYSE ARCA::UYM,UYM,NYSE ARCA,US74347R7769,isin
 NYSE ARCA::UYM,UYM,NYSE ARCA,ultra basic materials,name
 NYSE ARCA::VABS,VABS,NYSE ARCA,US92790A6038,isin
 NYSE ARCA::VABS,VABS,NYSE ARCA,virtus newfleet abs/mbs,name
+NYSE ARCA::VAIC,VAIC,NYSE ARCA,vegashares us equity autocallable conservative income,name
 NYSE ARCA::VALQ,VALQ,NYSE ARCA,US0250722081,isin
 NYSE ARCA::VALQ,VALQ,NYSE ARCA,american century stoxx u.s. quality value,name
 NYSE ARCA::VAW,VAW,NYSE ARCA,US92204A8018,isin
@@ -76180,6 +76218,7 @@ NYSE::PMNT,PMNT,NYSE,perfect moment,name
 NYSE::PMT,PMT,NYSE,US70931T1034,isin
 NYSE::PMT,PMT,NYSE,70931T,wkn
 NYSE::PMT,PMT,NYSE,pennymac mortgage investment trust,name
+NYSE::PNAQ,PNAQ,NYSE,pinnacle acquisition,name
 NYSE::PNC,PNC,NYSE,US6934751057,isin
 NYSE::PNC,PNC,NYSE,693475,wkn
 NYSE::PNC,PNC,NYSE,pnc financial services group,name

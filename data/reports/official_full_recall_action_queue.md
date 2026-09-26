@@ -10,15 +10,15 @@ Rows: `39`
 | 1 | FSX | 56.08 | 6238 | 3950 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 65.99 | 3519 | 793 | not_in_supplement_allowlist |
-| 4 | NYSE | 59.66 | 1340 | 565 | not_in_supplement_allowlist |
-| 5 | NASDAQ | 82.39 | 980 | 64 | not_in_supplement_allowlist |
+| 4 | NYSE | 59.64 | 1342 | 566 | not_in_supplement_allowlist |
+| 5 | NASDAQ | 82.35 | 985 | 65 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.76 | 802 | 1856 | not_in_supplement_allowlist |
 | 7 | BSE_IN | 79.99 | 663 | 1852 | collision_free_supplement |
 | 8 | NSE_IN | 81.8 | 553 | 460 | collision_free_supplement |
 | 9 | XETRA | 92.68 | 323 | 708 | collision_free_supplement |
 | 10 | Euronext | 80.93 | 315 | 364 | not_in_supplement_allowlist |
 | 11 | UPCOM | 0.67 | 296 | 520 | not_in_supplement_allowlist |
-| 12 | BATS | 82.15 | 282 | 57 | not_in_supplement_allowlist |
+| 12 | BATS | 82.25 | 282 | 57 | not_in_supplement_allowlist |
 | 13 | KOSDAQ | 87.69 | 223 | 3 | not_in_supplement_allowlist |
 | 14 | PSX | 67.01 | 192 | 142 | not_in_supplement_allowlist |
 | 15 | NEO | 55.59 | 167 | 66 | not_in_supplement_allowlist |
@@ -27,7 +27,7 @@ Rows: `39`
 | 18 | B3 | 90.17 | 133 | 0 | collision_free_supplement |
 | 19 | PSE | 58.4 | 109 | 119 | collision_free_supplement |
 | 20 | HKEX | 96.56 | 108 | 69 | collision_free_supplement |
-| 21 | NYSE ARCA | 96.6 | 92 | 29 | not_in_supplement_allowlist |
+| 21 | NYSE ARCA | 96.61 | 92 | 29 | not_in_supplement_allowlist |
 | 22 | TSE | 98.39 | 66 | 335 | collision_free_supplement |
 | 23 | AMS | 86.54 | 58 | 178 | collision_free_supplement |
 | 24 | TWSE | 95.39 | 49 | 31 | collision_free_supplement |
@@ -45,4 +45,4 @@ Rows: `39`
 | 36 | DFM | 83.33 | 9 | 17 | collision_free_supplement |
 | 37 | ADX | 93.33 | 6 | 32 | collision_free_supplement |
 | 38 | BHB | 87.5 | 4 | 9 | collision_free_supplement |
-| 39 | TXSE | 0.0 | 1 | 3 | not_in_supplement_allowlist |
+| 39 | TXSE | 0.0 | 2 | 3 | not_in_supplement_allowlist |

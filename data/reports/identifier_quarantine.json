@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-21T12:45:40Z",
+  "generated_at": "2026-09-26T11:45:17Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 1527,
-  "decision_rows": 4963,
+  "conflict_count": 1528,
+  "decision_rows": 4966,
   "action_counts": {
     "kept_listing_keyed_identifier": 1281,
     "proposed_clear_conflicting_identifier": 734,
-    "quarantined_unresolved_identifier": 2948
+    "quarantined_unresolved_identifier": 2951
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 734,
-  "quarantined_rows": 2948,
+  "quarantined_rows": 2951,
   "retained_rows": 1281,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -54795,6 +54795,45 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US25746U1097"
+    },
+    {
+      "conflict_id": "5f075bd4421f0e4fb454",
+      "isin": "US2575541055",
+      "listing_key": "FSX::1ON",
+      "ticker": "1ON",
+      "exchange": "FSX",
+      "name": "Domo Inc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "US2575541055"
+    },
+    {
+      "conflict_id": "5f075bd4421f0e4fb454",
+      "isin": "US2575541055",
+      "listing_key": "NASDAQ::HUCK",
+      "ticker": "HUCK",
+      "exchange": "NASDAQ",
+      "name": "Huckleberry.ai, Inc. - Class B Common Stock",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "US2575541055"
+    },
+    {
+      "conflict_id": "5f075bd4421f0e4fb454",
+      "isin": "US2575541055",
+      "listing_key": "XSTU::1ON",
+      "ticker": "1ON",
+      "exchange": "XSTU",
+      "name": "Domo Inc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "US2575541055"
     },
     {
       "conflict_id": "d85a0a961bb0a6499156",

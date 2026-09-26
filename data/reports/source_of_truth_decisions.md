@@ -1,6 +1,6 @@
 # Source-of-Truth Decisions
 
-Generated at: `2026-09-21T12:52:00Z`
+Generated at: `2026-09-26T11:46:57Z`
 
 This report converts residual source-gap classes into release-trackable outcomes. It does not fill fields and does not drop rows automatically.
 
@@ -8,34 +8,34 @@ This report converts residual source-gap classes into release-trackable outcomes
 
 | Value | Rows |
 |---|---:|
-| accepted_source_gap | 5998 |
-| official_fill_required | 2175 |
-| core_exclusion_candidate | 599 |
+| accepted_source_gap | 6041 |
+| official_fill_required | 2180 |
+| core_exclusion_candidate | 635 |
 
 ## Top Classes
 
 | Value | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5218 |
-| official_reference_symbol_collision_gap | 1074 |
-| official_industry_taxonomy_unavailable_gap | 849 |
+| official_reference_unmatched_source_gap | 5222 |
+| official_reference_symbol_collision_gap | 1080 |
+| official_industry_taxonomy_unavailable_gap | 852 |
 | otc_sector_source_gap | 554 |
-| fund_or_trust_identifier_gap | 348 |
-| official_identifier_not_exposed_source_gap | 314 |
-| debt_or_securitized_identifier_gap | 89 |
-| official_product_taxonomy_unavailable_gap | 69 |
+| fund_or_trust_identifier_gap | 377 |
+| official_identifier_not_exposed_source_gap | 319 |
+| debt_or_securitized_identifier_gap | 94 |
+| official_product_taxonomy_unavailable_gap | 91 |
 | exchange_industry_source_gap | 63 |
 | adr_cdr_or_depositary_identifier_gap | 44 |
-| shell_or_cpc_sector_gap | 42 |
+| shell_or_cpc_sector_gap | 44 |
 | capital_pool_or_halted_identifier_gap | 33 |
 | inactive_or_legacy_identifier_gap | 22 |
+| equity_etf_category_gap | 18 |
 | adr_cdr_or_depositary_sector_gap | 16 |
-| equity_etf_category_gap | 15 |
+| fixed_income_etf_category_gap | 8 |
 | official_identifier_reference_unmatched_gap | 8 |
 | fundlike_stock_sector_gap | 5 |
-| fixed_income_etf_category_gap | 4 |
+| digital_asset_etf_category_gap | 2 |
 | official_current_directory_absent_identifier_gap | 2 |
-| commodity_etf_category_gap | 1 |
 
 ## Policy
 
