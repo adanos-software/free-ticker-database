@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-09-24T11:42:14Z",
+    "generated_at": "2026-09-27T11:59:45Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 352,
+    "blocked_rows": 353,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 11,
-      "blocked_new_symbol_not_active_in_official_master": 2,
+      "blocked_new_symbol_not_active_in_official_master": 3,
       "blocked_old_symbol_not_unique_in_us_scope": 286,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 46,
@@ -20,6 +20,14 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "bcfe6c93c245a418",
+      "effective_date": "2026-09-24",
+      "old_symbol": "DOMO",
+      "new_symbol": "HUCK",
+      "new_company_name": "Huckleberryai Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
     {
       "change_id": "8e8b32078e4003a6",
       "effective_date": "2026-09-22",
