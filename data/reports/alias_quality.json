@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-09-28T09:09:46Z",
-    "rows": 125617,
+    "generated_at": "2026-09-28T13:54:33Z",
+    "rows": 127973,
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "aliases_csv": "data/aliases.csv"
@@ -9,19 +9,19 @@
   },
   "summary": {
     "status_counts": {
-      "reject": 66666,
-      "accept": 58485,
-      "review": 466
+      "reject": 67899,
+      "accept": 59596,
+      "review": 478
     },
     "detection_policy_counts": {
-      "identifier_only": 66666,
-      "safe_natural_language": 58485,
-      "symbol_alias_only": 466
+      "identifier_only": 67899,
+      "safe_natural_language": 59596,
+      "symbol_alias_only": 478
     },
     "reason_counts": {
-      "identifier_alias": 66666,
-      "accepted_name_alias": 58485,
-      "same_as_ticker": 464,
+      "identifier_alias": 67899,
+      "accepted_name_alias": 59596,
+      "same_as_ticker": 476,
       "exchange_ticker_alias": 2
     },
     "alias_type_status_counts": {
@@ -29,14 +29,14 @@
         "review": 2
       },
       "isin": {
-        "reject": 62519
+        "reject": 63753
       },
       "name": {
-        "accept": 58485,
-        "review": 464
+        "accept": 59596,
+        "review": 476
       },
       "wkn": {
-        "reject": 4147
+        "reject": 4146
       }
     }
   },
@@ -345,6 +345,26 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "ADISOFT",
+        "alias": "adisoft",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "ADISS",
+        "alias": "adiss",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "ADJIA",
         "alias": "adjia",
         "alias_type": "name",
@@ -357,6 +377,26 @@
       {
         "ticker": "ADYEN",
         "alias": "adyen",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "AEGEUS",
+        "alias": "aegeus",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "AEQUS",
+        "alias": "aequs",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",
@@ -497,46 +537,6 @@
       {
         "ticker": "AMERISE",
         "alias": "amerise",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "AMPVOLTS",
-        "alias": "ampvolts",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "AMTEX",
-        "alias": "amtex",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ANNSD",
-        "alias": "annsd",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ANTARCHILE",
-        "alias": "antarchile",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",

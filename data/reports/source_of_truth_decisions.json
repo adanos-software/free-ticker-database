@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-09-28T12:28:42Z",
-    "rows": 11746,
+    "generated_at": "2026-09-28T13:54:24Z",
+    "rows": 11744,
     "outcome_totals": {
-      "accepted_source_gap": 8809,
+      "accepted_source_gap": 8808,
       "core_exclusion_candidate": 757,
-      "official_fill_required": 2180
+      "official_fill_required": 2179
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 46,
@@ -20,14 +20,14 @@
       "fund_or_trust_identifier_gap": 453,
       "fundlike_stock_sector_gap": 25,
       "inactive_or_legacy_identifier_gap": 22,
-      "official_current_directory_absent_identifier_gap": 9,
-      "official_identifier_not_exposed_source_gap": 348,
+      "official_current_directory_absent_identifier_gap": 2,
+      "official_identifier_not_exposed_source_gap": 355,
       "official_identifier_reference_unmatched_gap": 8,
       "official_industry_taxonomy_unavailable_gap": 3295,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 211,
-      "official_reference_symbol_collision_gap": 1080,
-      "official_reference_unmatched_source_gap": 5222,
+      "official_reference_symbol_collision_gap": 1079,
+      "official_reference_unmatched_source_gap": 5221,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 52
     },
@@ -38,8 +38,8 @@
       "missing_sector_stock:accepted_source_gap": 3849,
       "missing_sector_stock:core_exclusion_candidate": 94,
       "missing_sector_stock:official_fill_required": 63,
-      "official_reference_gap:accepted_source_gap": 4185,
-      "official_reference_gap:official_fill_required": 2117
+      "official_reference_gap:accepted_source_gap": 4184,
+      "official_reference_gap:official_fill_required": 2116
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -7026,14 +7026,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "BP CAPITAL MARKETS P.L.C.",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -7043,14 +7043,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "CAISSE FRANCAISE DE FINANCEMENT LOCAL",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -7060,14 +7060,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "LLOYDS BANKING GROUP PLC",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -7077,14 +7077,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "SHINHAN BANK.",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -7094,14 +7094,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "NEW SOUTH WALES TREASURY CORPORATION",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -7111,14 +7111,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "QUEENSLAND TREASURY CORPORATION",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -7128,14 +7128,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "TREASURY CORPORATION OF VICTORIA",
-      "gap_class": "official_current_directory_absent_identifier_gap",
+      "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -89510,23 +89510,6 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "QVC Group Inc",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NASDAQ::RAY",
-      "ticker": "RAY",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Raytech Holding Limited Ordinary Shares",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -186784,23 +186767,6 @@
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "name": "Tema International Defense Innovation ETF",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NASDAQ::GLMD",
-      "ticker": "GLMD",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Galmed Pharmaceuticals Ltd",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
