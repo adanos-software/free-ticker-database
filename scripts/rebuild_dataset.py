@@ -2556,7 +2556,10 @@ def merge_supplemental_ticker_rows(base_rows: list[dict[str, str]]) -> list[dict
     for row in supplemental_rows:
         key = (row["ticker"], row["exchange"])
         if key in merged_rows:
-            merged_rows[key] = merge_ticker_row(merged_rows[key], row)
+            refresh = dict(row)
+            refresh["country"] = ""
+            refresh["country_code"] = ""
+            merged_rows[key] = merge_ticker_row(merged_rows[key], refresh)
         else:
             merged_rows[key] = {
                 "ticker": row["ticker"],
