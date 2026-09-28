@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-28T13:43:05Z",
-  "rows": 170262,
+  "generated_at": "2026-09-28T18:10:57Z",
+  "rows": 170011,
   "exchanges": [
     "ADX",
     "AMS",
@@ -115,7 +115,7 @@
     "bse_bw_listed_companies": 26,
     "bse_hu_listed_companies": 19,
     "bse_india_scrips": 5165,
-    "bvb_shares_directory": 349,
+    "bvb_shares_directory": 89,
     "bvb_fund_units_directory": 10,
     "bvc_colombia_issuers": 3,
     "bvl_issuers_directory": 31,
@@ -123,7 +123,7 @@
     "bursa_equity_isin": 1142,
     "nasdaq_nordic_copenhagen_shares": 145,
     "nasdaq_nordic_copenhagen_etfs": 1,
-    "cse_lk_all_security_code": 306,
+    "cse_lk_all_security_code": 315,
     "cse_lk_company_info_summary": 318,
     "cse_ma_listed_companies": 82,
     "dfm_listed_securities": 71,
@@ -617,10 +617,9 @@
       "provider": "CSE Sri Lanka",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 306,
-      "generated_at": "2026-09-21T12:40:24Z",
-      "last_error": "Empty refresh result; preserved 306 existing rows"
+      "mode": "network",
+      "rows": 315,
+      "generated_at": "2026-09-28T18:10:57Z"
     },
     "cse_lk_company_info_summary": {
       "provider": "CSE Sri Lanka",
@@ -789,10 +788,9 @@
       "provider": "LuSE",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
+      "mode": "network",
       "rows": 15,
-      "generated_at": "2026-06-02T19:38:59Z",
-      "last_error": "Empty refresh result; preserved 15 existing rows"
+      "generated_at": "2026-09-28T18:10:57Z"
     },
     "bolsa_santiago_instruments": {
       "provider": "Bolsa de Santiago",
@@ -847,10 +845,9 @@
       "provider": "BVB",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "cache",
-      "rows": 349,
-      "generated_at": "2026-09-14T12:34:04Z",
-      "last_error": "Partial refresh collapsed 349\u219289 rows; preserved last committed directory"
+      "mode": "network",
+      "rows": 89,
+      "generated_at": "2026-09-28T18:10:57Z"
     },
     "bvb_fund_units_directory": {
       "provider": "BVB",
@@ -1399,7 +1396,7 @@
     "egx_listed_stocks": "network",
     "bvl_issuers_directory": "network",
     "cse_ma_listed_companies": "unavailable",
-    "cse_lk_all_security_code": "unavailable",
+    "cse_lk_all_security_code": "network",
     "cse_lk_company_info_summary": "network",
     "dse_tz_listed_companies": "network",
     "bvc_colombia_issuers": "unavailable",
@@ -1420,14 +1417,14 @@
     "muscat_securities_companies": "network",
     "rse_listed_companies": "network",
     "gse_listed_companies": "network",
-    "luse_listed_companies": "unavailable",
+    "luse_listed_companies": "network",
     "bolsa_santiago_instruments": "unavailable",
     "sem_isin": "network",
     "use_ug_listed_companies": "network",
     "nzx_instruments": "network",
     "nasdaq_mutual_fund_quotes": "network",
     "zse_zw_listed_companies": "network",
-    "bvb_shares_directory": "cache",
+    "bvb_shares_directory": "network",
     "bvb_fund_units_directory": "network",
     "ngx_equities_price_list": "network",
     "ngx_company_profile_directory": "unavailable",
@@ -1526,16 +1523,8 @@
       "error": "Empty refresh result; preserved 5165 existing rows"
     },
     {
-      "source_key": "bvb_shares_directory",
-      "error": "Partial refresh collapsed 349\u219289 rows; preserved last committed directory"
-    },
-    {
       "source_key": "bvc_colombia_issuers",
       "error": "Empty refresh result; preserved 3 existing rows"
-    },
-    {
-      "source_key": "cse_lk_all_security_code",
-      "error": "Empty refresh result; preserved 306 existing rows"
     },
     {
       "source_key": "cse_ma_listed_companies",
@@ -1556,10 +1545,6 @@
     {
       "source_key": "lse_instrument_directory",
       "error": "Empty refresh result; preserved 64 existing rows"
-    },
-    {
-      "source_key": "luse_listed_companies",
-      "error": "Empty refresh result; preserved 15 existing rows"
     },
     {
       "source_key": "mse_mw_listed_companies",
@@ -1603,50 +1588,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-09-28T13:43:05Z",
+    "generated_at": "2026-09-28T18:10:57Z",
     "selected_source_keys": [
-      "bme_security_prices_directory",
-      "boursa_kuwait_stocks",
+      "b3_instruments_equities",
+      "bme_listed_values",
+      "bolsa_santiago_instruments",
       "bse_india_scrips",
-      "cboe_canada_listing_directory",
+      "bvb_shares_directory",
       "cse_lk_all_security_code",
-      "cse_lk_company_info_summary",
-      "euronext_equities",
-      "hkex_securities_list",
-      "hnx_listed_securities",
-      "krx_etf_finder",
-      "krx_listed_companies",
-      "lse_price_explorer",
-      "muscat_securities_companies",
+      "cse_ma_listed_companies",
+      "jpx_listed_issues",
+      "jse_instrument_search",
+      "lse_company_reports",
+      "lse_instrument_directory",
+      "luse_listed_companies",
+      "ngm_market_data_equities",
       "ngx_company_profile_directory",
-      "nse_india_securities_available",
-      "nse_ke_listed_companies",
-      "nzx_instruments",
-      "pse_listed_company_directory",
+      "otc_markets_stock_screener",
       "psx_dps_symbols",
-      "qse_market_watch"
+      "szse_a_share_list",
+      "tase_foreign_etf_search",
+      "tase_participating_unit_search",
+      "upcom_registered_securities"
     ],
     "source_modes": {
-      "bme_security_prices_directory": "network",
-      "boursa_kuwait_stocks": "network",
+      "b3_instruments_equities": "unavailable",
+      "bme_listed_values": "unavailable",
+      "bolsa_santiago_instruments": "unavailable",
       "bse_india_scrips": "unavailable",
-      "cboe_canada_listing_directory": "network",
-      "cse_lk_all_security_code": "unavailable",
-      "cse_lk_company_info_summary": "network",
-      "euronext_equities": "network",
-      "hkex_securities_list": "network",
-      "hnx_listed_securities": "network",
-      "krx_etf_finder": "network",
-      "krx_listed_companies": "network",
-      "lse_price_explorer": "network",
-      "muscat_securities_companies": "network",
+      "bvb_shares_directory": "network",
+      "cse_lk_all_security_code": "network",
+      "cse_ma_listed_companies": "unavailable",
+      "jpx_listed_issues": "unavailable",
+      "jse_instrument_search": "cache",
+      "lse_company_reports": "unavailable",
+      "lse_instrument_directory": "unavailable",
+      "luse_listed_companies": "network",
+      "ngm_market_data_equities": "unavailable",
       "ngx_company_profile_directory": "unavailable",
-      "nse_india_securities_available": "network",
-      "nse_ke_listed_companies": "network",
-      "nzx_instruments": "network",
-      "pse_listed_company_directory": "network",
+      "otc_markets_stock_screener": "unavailable",
       "psx_dps_symbols": "unavailable",
-      "qse_market_watch": "network"
+      "szse_a_share_list": "unavailable",
+      "tase_foreign_etf_search": "unavailable",
+      "tase_participating_unit_search": "unavailable",
+      "upcom_registered_securities": "unavailable"
     }
   }
 }

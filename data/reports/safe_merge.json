@@ -6,125 +6,26 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97142,
+    "before_rows": 97196,
     "after_rows": 97196,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 2,
-    "evidenced_removed_rows": 2,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 10,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 2
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NSE_IN::HEG",
-    "NSE_IN::SANGINITA"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
-    {
-      "listing_key": "HKEX::01196",
-      "field_name": "isin",
-      "old_value": "BMG7403L1046",
-      "new_value": "BMG7403L1384"
-    },
-    {
-      "listing_key": "HKEX::02113",
-      "field_name": "isin",
-      "old_value": "KYG2031R1020",
-      "new_value": "KYG2031R1103"
-    },
-    {
-      "listing_key": "HKEX::02728",
-      "field_name": "name",
-      "old_value": "JINTAI ENERGY H",
-      "new_value": "JINTAI ENGY-NEW"
-    },
-    {
-      "listing_key": "HKEX::02728",
-      "field_name": "isin",
-      "old_value": "KYG5141G1064",
-      "new_value": "KYG5141G1148"
-    },
-    {
-      "listing_key": "HKEX::08337",
-      "field_name": "isin",
-      "old_value": "KYG276801183",
-      "new_value": "KYG276801340"
-    },
-    {
-      "listing_key": "LSE::MKA",
-      "field_name": "name",
-      "old_value": "Mkango Resources Ltd",
-      "new_value": "Mkango Magnetic Materials Limited"
-    },
-    {
-      "listing_key": "LSE::MKA",
-      "field_name": "isin",
-      "old_value": "CA60686A4090",
-      "new_value": "CA60701M1077"
-    },
-    {
-      "listing_key": "NSE_IN::TAALTECH",
-      "field_name": "isin",
-      "old_value": "INE524T01011",
-      "new_value": "INE524T01029"
-    },
-    {
-      "listing_key": "TSXV::MKA",
-      "field_name": "name",
-      "old_value": "Mkango Resources Ltd",
-      "new_value": "Mkango Magnetic Materials Limited"
-    },
-    {
-      "listing_key": "TSXV::MKA",
-      "field_name": "isin",
-      "old_value": "CA60686A4090",
-      "new_value": "CA60701M1077"
-    }
-  ],
+  "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NSE_IN::HEG",
-      "ticker": "HEG",
-      "exchange": "NSE_IN",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HEG",
-      "new_value": "HEGAM",
-      "before_row_sha256": "526fc3c4361b981f6f9673d7d4f74f387a04cfb824e1ecdc33e575e8c54652d5",
-      "effective_at": "",
-      "observed_at": "2026-09-28T14:38:56Z",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/corporate/HEG_03092026165419_HEGAM_PR.pdf",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "b0cb01cfdc276e4de2d26557",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NSE_IN::SANGINITA",
-      "ticker": "SANGINITA",
-      "exchange": "NSE_IN",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "SANGINITA",
-      "new_value": "AGASTYAEN",
-      "before_row_sha256": "476f6dafb97ffa1d2a947ff541b17468269f2c206f7fe73e341457f85492e393",
-      "effective_at": "",
-      "observed_at": "2026-09-28T14:38:56Z",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://www.msei.in/SX-Content/Circulars/2026/September/Circular-19771.pdf",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "1826a3b2e899e6fe12a50789",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -398,7 +299,7 @@
     },
     {
       "exchange": "HKEX",
-      "before_rows": 3165,
+      "before_rows": 3198,
       "after_rows": 3198,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -560,10 +461,10 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3446,
+      "before_rows": 3466,
       "after_rows": 3466,
       "shrink_pct": 0.0,
-      "removed_rows": 2,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -614,7 +515,7 @@
     },
     {
       "exchange": "OSL",
-      "before_rows": 312,
+      "before_rows": 313,
       "after_rows": 313,
       "shrink_pct": 0.0,
       "removed_rows": 0,

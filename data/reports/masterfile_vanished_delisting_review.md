@@ -1,10 +1,10 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-09-21T12:43:49Z`
+- Generated at: `2026-09-28T18:12:27Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `258`
-- Rotation vanished rows: `29`
-- Backlog rows: `229`
-- Still in database: `237`
+- Vanished reference rows: `497`
+- Rotation vanished rows: `260`
+- Backlog rows: `237`
+- Still in database: `427`
 - Applied drops: `0`
 
 ## Classifier counts
@@ -12,14 +12,14 @@
 | Action | Rows |
 |---|---:|
 | blocked_suspended_kept_by_policy | 8 |
-| manual_rename_vs_delisting_required | 229 |
-| not_in_database | 21 |
+| manual_rename_vs_delisting_required | 419 |
+| not_in_database | 70 |
 
 ## Rows still in the database
 
 | Exchange | Ticker | Source | Action | Origin |
 |---|---|---|---|---|
-| ADX | BILDCO | adx_market_watch | manual_rename_vs_delisting_required | rotation |
+| ADX | BILDCO | adx_market_watch | manual_rename_vs_delisting_required | backlog |
 | AMS | FER | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | BIPD11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | BIPE11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
@@ -36,12 +36,12 @@
 | B3 | XPIN11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | BIST | MARKA | bist_kap_mkk_listed_securities | manual_rename_vs_delisting_required | backlog |
 | BK | KPPC | boursa_kuwait_stocks | manual_rename_vs_delisting_required | backlog |
-| BMV | CSPXN | bmv_etf_search | manual_rename_vs_delisting_required | rotation |
-| BMV | GENIUS21 | bmv_etf_search | manual_rename_vs_delisting_required | rotation |
-| BMV | IUHCN | bmv_etf_search | manual_rename_vs_delisting_required | rotation |
-| BMV | QQQ | bmv_etf_search | manual_rename_vs_delisting_required | rotation |
+| BMV | CSPXN | bmv_etf_search | manual_rename_vs_delisting_required | backlog |
+| BMV | GENIUS21 | bmv_etf_search | manual_rename_vs_delisting_required | backlog |
+| BMV | IUHCN | bmv_etf_search | manual_rename_vs_delisting_required | backlog |
+| BMV | QQQ | bmv_etf_search | manual_rename_vs_delisting_required | backlog |
 | BSE_HU | DUNAHOUSE | bse_hu_listed_companies | manual_rename_vs_delisting_required | backlog |
-| BSE_IN | ACCELERATE | bse_india_scrips | manual_rename_vs_delisting_required | rotation |
+| BSE_IN | ACCELERATE | bse_india_scrips | manual_rename_vs_delisting_required | backlog |
 | BSE_IN | ACESEPP | bse_india_scrips | blocked_suspended_kept_by_policy | backlog |
 | BSE_IN | BANSTEA | bse_india_scrips | manual_rename_vs_delisting_required | backlog |
 | BSE_IN | CDG | bse_india_scrips | manual_rename_vs_delisting_required | backlog |
@@ -54,9 +54,200 @@
 | BSE_IN | RISHYRN | bse_india_scrips | manual_rename_vs_delisting_required | backlog |
 | BSE_IN | SATTVASUKU | bse_india_scrips | manual_rename_vs_delisting_required | backlog |
 | BSE_IN | SHARP | bse_india_scrips | blocked_suspended_kept_by_policy | backlog |
-| BSE_IN | SRDAPRT | bse_india_scrips | manual_rename_vs_delisting_required | rotation |
+| BSE_IN | SRDAPRT | bse_india_scrips | manual_rename_vs_delisting_required | backlog |
 | BSE_IN | VARDHMAN | bse_india_scrips | blocked_suspended_kept_by_policy | backlog |
+| BVB | 2P | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | 4RT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ADISS | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ADMY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ADS | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | AGCM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ALCQ | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ALDANI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ALRV | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ALV | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ANIM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ARCU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ARCV | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ARJI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ARMT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ATRD | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | AUXI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | AVIO | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BADE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BALN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BAYN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BBGA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BENTO | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BIBU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BIOW | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BLEA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BMW | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BNAT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BONA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BRCR | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BRNA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BUCS | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | BUCU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CAB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CACU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CAIN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CBKN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CCOM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CFED | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CHIA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CICE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CICO | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CLAIM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CLUB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CMBU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CMVX | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COBL | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COBU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COCR | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COEC | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COET | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COKG | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COKJ | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COLK | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COMY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CONK | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COTM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COUT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | COVB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CPHA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CRMC | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | CRPC | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DBK | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DENT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DIAS | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DOIS | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DTE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DTG | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | DUPX | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ELCT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ELEL | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ELER | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ELJA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ELRD | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ELZY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | EMAI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | EOAN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | EPN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | FACY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | FAMZ | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | FEP | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | FERO | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | FIMA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | FOJE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | FOSB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | GALF | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | GHIM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | GRIU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | GROB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | GSH | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | HAI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | HLEB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IAMU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IANY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IASX | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ICEV | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | ICMA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | INCT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | INMA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IORB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IPHI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IPRO | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IPRU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | IUBR | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | JTG | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | LCSI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | LHA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | LIH | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | LITO | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MACO | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MALI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MEBY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MECA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MECP | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MEOR | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MEOY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MESA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | METT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MINX | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MOBE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MOBG | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MOBT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MODY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | MOIB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | NAXY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | NCHI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | NEOL | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | NRF | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | NTEX | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | NUIA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | OMAL | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PACY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PCTM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PELA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PETY | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | POTI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PRBU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PRDI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PRIB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PRSN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | PVBS | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | RANT | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | RCHI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | REFE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | RELE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | REMM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | REVA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | RORX | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | RRD | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SAP | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SATU | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SCBC | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SCDM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SECE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SEOL | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SEOM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SERC | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SEVE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SIDG | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SIE | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SIEP | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SIGS | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
 | BVB | SINA | bvb_shares_directory | manual_rename_vs_delisting_required | backlog |
+| BVB | SIRJ | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SLBB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SOMR | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SOPL | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | SOTA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | STKP | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | STNM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | STOF | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | STOZ | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TALD | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TIGH | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TRGI | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TRNG | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TRSK | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TRVM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TSND | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | TUAA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | UARG | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | UCET | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | UNISEM | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | UPRR | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | URBA | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | URCB | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | UTGR | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | UZC | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | UZIN | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | VAC | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
+| BVB | VITK | bvb_shares_directory | manual_rename_vs_delisting_required | rotation |
 | Bursa | 1368 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 1503 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 7130 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
@@ -81,7 +272,7 @@
 | FSX | 8L8 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 8L8C | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 8XG0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| FSX | ACT | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| FSX | ACT | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | ANJ | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | ANJ0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | B3H | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -99,7 +290,7 @@
 | FSX | NF0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | ONK | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | QR20 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| FSX | RFM | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| FSX | RFM | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | RUOC | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | S35A | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | TEV | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -166,7 +357,6 @@
 | NSE_IN | CTE | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | DTIL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | GVPTECH | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | HEG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | HFCL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | INDIAGLYCO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | KALYANIFRG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
@@ -220,7 +410,7 @@
 | PSE | RRHI | pse_listed_company_directory | manual_rename_vs_delisting_required | backlog |
 | SET | CIMBT | set_stock_search | manual_rename_vs_delisting_required | backlog |
 | SET | GLAND | set_stock_search | manual_rename_vs_delisting_required | backlog |
-| SGX | 42S | sgx_securities_prices | manual_rename_vs_delisting_required | rotation |
+| SGX | 42S | sgx_securities_prices | manual_rename_vs_delisting_required | backlog |
 | SGX | BQF | sgx_securities_prices | manual_rename_vs_delisting_required | backlog |
 | SGX | LIW | sgx_securities_prices | manual_rename_vs_delisting_required | backlog |
 | STO | 2CUREX | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
@@ -238,15 +428,15 @@
 | XETRA | 333 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | 5HEE | deutsche_boerse_etfs_etps | manual_rename_vs_delisting_required | backlog |
 | XETRA | 5HEE | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| XETRA | ACT | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| XETRA | ACT | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | B72 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | BCIX | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| XETRA | DY6 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| XETRA | DY6 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | E8X | deutsche_boerse_listed_companies | manual_rename_vs_delisting_required | backlog |
 | XETRA | ECK | deutsche_boerse_listed_companies | manual_rename_vs_delisting_required | backlog |
 | XETRA | ECK | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| XETRA | HDX1 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
-| XETRA | HDXM | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| XETRA | HDX1 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| XETRA | HDXM | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | INW | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | KCO | deutsche_boerse_listed_companies | manual_rename_vs_delisting_required | backlog |
 | XETRA | MPCK | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -260,6 +450,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 29; still-in-database backlog carried: 229.
-- Still in database: 237; not in database: 21.
+- Rotation vanished rows: 260; still-in-database backlog carried: 237.
+- Still in database: 427; not in database: 70.
 - Applied drops from this classifier: 0.
