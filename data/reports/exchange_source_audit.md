@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-09-28T14:41:58Z`
+Generated at: `2026-09-28T18:21:02Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 24, "maintain": 15, "official_source_required": 5, "refresh_required": 24, "refresh_unavailable": 20}`
+- Audit outcomes: `{"denominator_missing": 25, "maintain": 16, "official_source_required": 5, "refresh_required": 24, "refresh_unavailable": 18}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -23,13 +23,13 @@ Generated at: `2026-09-28T14:41:58Z`
 | BSE_BW | official_partial | bse_bw_listed_companies | ETF | 0 |  | bse_bw_listed_companies | denominator_missing | blocked_nonfresh_source |
 | BSE_HU | official_partial | bse_hu_listed_companies | ETF | 0 |  | bse_hu_listed_companies | denominator_missing | blocked_nonfresh_source |
 | BSE_IN | official_full | bse_india_scrips |  | 5165 | 97.02 | bse_india_scrips | refresh_unavailable | not_applicable |
-| BVB | official_full | bvb_fund_units_directory|bvb_shares_directory |  | 349 | 69.05 | bvb_fund_units_directory|bvb_shares_directory | refresh_required | not_applicable |
+| BVB | official_full | bvb_fund_units_directory|bvb_shares_directory |  | 89 | 56.18 | bvb_fund_units_directory | refresh_required | not_applicable |
 | BVC | official_partial | bvc_colombia_issuers |  | 0 |  | bvc_colombia_issuers | refresh_unavailable | blocked_source_unavailable |
 | BVL | official_partial | bvl_issuers_directory |  | 0 |  | bvl_issuers_directory | denominator_missing | blocked_nonfresh_source |
 | Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2904 | 8.54 | euronext_etfs | refresh_required | not_applicable |
 | Bursa | official_partial | bursa_closing_prices|bursa_equity_isin |  | 0 |  | bursa_closing_prices|bursa_equity_isin | denominator_missing | blocked_nonfresh_source |
 | CPH | official_partial | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares |  | 0 |  | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares | denominator_missing | blocked_nonfresh_source |
-| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 318 | 99.06 | cse_lk_all_security_code | refresh_unavailable | not_applicable |
+| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 318 | 99.06 |  | maintain | not_applicable |
 | CSE_MA | official_full | cse_ma_listed_companies |  | 82 | 21.95 | cse_ma_listed_companies | refresh_unavailable | not_applicable |
 | DFM | official_full | dfm_listed_securities |  | 71 | 76.06 | dfm_listed_securities | refresh_required | not_applicable |
 | DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  | dse_tz_listed_companies | denominator_missing | blocked_nonfresh_source |
@@ -48,7 +48,7 @@ Generated at: `2026-09-28T14:41:58Z`
 | KOSDAQ | official_full | krx_listed_companies |  | 1818 | 87.35 |  | maintain | not_applicable |
 | KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2109 | 92.41 |  | maintain | not_applicable |
 | LSE | official_full | lse_company_reports|lse_instrument_directory|lse_price_explorer |  | 11175 | 61.08 | lse_company_reports|lse_instrument_directory | refresh_unavailable | not_applicable |
-| LUSE | official_partial | luse_listed_companies |  | 0 |  | luse_listed_companies | refresh_unavailable | blocked_source_unavailable |
+| LUSE | official_partial | luse_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSX | official_full | muscat_securities_companies |  | 108 | 86.11 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |

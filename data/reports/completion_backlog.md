@@ -1,14 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-09-28T13:54:25Z`
+Generated at: `2026-09-28T18:21:07Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `1028`
-- Missing stock sectors: `4006`
+- Missing stock sectors: `4023`
 - Missing ETF categories: `410`
-- Official symbol collisions tracked in exchange references: `11486`
-- Core rows hidden only by the legacy global-ticker compatibility export: `4783`
+- Official symbol collisions tracked in exchange references: `11429`
+- Core rows hidden only by the legacy global-ticker compatibility export: `4785`
 
 ## Next Safe Batches
 
@@ -25,7 +25,7 @@ Generated at: `2026-09-28T13:54:25Z`
 | 9 | XETRA | missing_etf_category | 141 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 10 | TSXV | missing_isin_primary | 98 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 11 | BATS | missing_isin_primary | 98 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
-| 12 | HKEX | missing_sector_stock | 84 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 12 | HKEX | missing_sector_stock | 92 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 
@@ -54,10 +54,10 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 2 | FSX | Stock | 794 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 3 | OTC | Stock | 554 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 4 | BVB | Stock | 143 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 5 | HKEX | Stock | 84 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 5 | HKEX | Stock | 92 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 6 | NASDAQ | Stock | 61 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 7 | XSTU | Stock | 46 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 8 | NSE_IN | Stock | 39 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 7 | NSE_IN | Stock | 47 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 8 | XSTU | Stock | 46 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 9 | HNX | Stock | 32 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 10 | XETRA | Stock | 29 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 11 | PSE | Stock | 24 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -89,11 +89,11 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 4 | XETRA | 170 | 29 | 141 | official_full |
 | 5 | BVB | 143 | 143 | 0 | official_full |
 | 6 | NASDAQ | 100 | 61 | 39 | official_full |
-| 7 | HKEX | 84 | 84 | 0 | official_full |
+| 7 | HKEX | 92 | 92 | 0 | official_full |
 | 8 | TSX | 70 | 0 | 70 | official_full |
-| 9 | NYSE ARCA | 46 | 0 | 46 | official_full |
-| 10 | XSTU | 46 | 46 | 0 | missing |
-| 11 | NSE_IN | 39 | 39 | 0 | official_full |
+| 9 | NSE_IN | 47 | 47 | 0 | official_full |
+| 10 | NYSE ARCA | 46 | 0 | 46 | official_full |
+| 11 | XSTU | 46 | 46 | 0 | missing |
 | 12 | BATS | 33 | 0 | 33 | official_full |
 
 ## Model Migration Prep

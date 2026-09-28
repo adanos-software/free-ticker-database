@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-09-28T14:42:05Z`
+Generated at: `2026-09-28T18:20:54Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 82,729 |
-| source_gap | 14,432 |
+| pass | 82,676 |
+| source_gap | 14,485 |
 | warn | 35 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,314 |
+| official_reference_gap | 6,505 |
 | missing_stock_sector | 3,907 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 1,028 |
@@ -39,10 +39,10 @@ Generated at: `2026-09-28T14:42:05Z`
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | AMS | 537 | 0 | 201 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
+| BVB | 49 | 0 | 198 | 0 | 0 |
 | BATS | 1,210 | 0 | 196 | 0 | 0 |
 | LSE | 6,875 | 0 | 153 | 2 | 0 |
 | ASX | 2,113 | 0 | 146 | 0 | 0 |
-| BVB | 102 | 0 | 145 | 0 | 0 |
 | TSXV | 1,282 | 0 | 137 | 3 | 0 |
 | HKEX | 3,059 | 0 | 138 | 1 | 0 |
 | Euronext | 1,341 | 0 | 135 | 1 | 0 |

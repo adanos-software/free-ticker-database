@@ -1,8 +1,8 @@
 {
   "global": {
-    "official_symbols": 100054,
-    "matched": 70266,
-    "collisions": 11498,
+    "official_symbols": 99794,
+    "matched": 70075,
+    "collisions": 11429,
     "missing": 18290
   },
   "exchanges": [
@@ -933,47 +933,11 @@
     },
     {
       "exchange": "BVB",
-      "official_symbols": 349,
-      "matched": 241,
-      "collisions": 108,
+      "official_symbols": 89,
+      "matched": 50,
+      "collisions": 39,
       "missing": 0,
       "collision_examples": [
-        {
-          "ticker": "AAB",
-          "name": "AGROLAND AGRIBUSINESS",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "CPH",
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "ABN",
-          "name": "ABN Systems International",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "AMS"
-          ]
-        },
-        {
-          "ticker": "AG",
-          "name": "AGROLAND BUSINESS SYSTEM S.A.",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "NYSE",
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "ALB",
-          "name": "ALBAPAM S.A.",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "ASX",
-            "BME",
-            "NYSE"
-          ]
-        },
         {
           "ticker": "ALR",
           "name": "ALRO S.A.",
@@ -995,39 +959,76 @@
           ]
         },
         {
-          "ticker": "ALW",
-          "name": "VISUAL FAN",
+          "ticker": "AQ",
+          "name": "AQUILA PART PROD COM",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ARM",
+          "name": "ARMATURA S.A.",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "BME",
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ARS",
+          "name": "AEROSTAR S.A.",
           "target_exchange": "BVB",
           "existing_exchanges": [
             "LSE"
           ]
         },
         {
-          "ticker": "AMAL",
-          "name": "INTERNATIONAL CAVIAR CORPORATION SA CALAN",
+          "ticker": "ARTE",
+          "name": "ARTEGO SA",
           "target_exchange": "BVB",
           "existing_exchanges": [
+            "Euronext"
+          ]
+        },
+        {
+          "ticker": "BCM",
+          "name": "CASA DE BUCOVINA-CLUB DE MUNTE",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "ASX",
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "BIO",
+          "name": "BIOFARM S.A.",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "ASX",
+            "NYSE",
+            "VSE",
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "BRK",
+          "name": "SSIF BRK FINANCIAL GROUP SA",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "ASX",
             "LSE",
-            "NASDAQ",
-            "SIX",
-            "TASE"
+            "NEO"
           ]
         },
         {
-          "ticker": "ANTA",
-          "name": "ROMANTA ESTIVAL 2002 SA NEPTUN",
+          "ticker": "BVB",
+          "name": "BURSA DE VALORI BUCURESTI SA",
           "target_exchange": "BVB",
           "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "APP",
-          "name": "APPRAISAL & VALUATION",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "NASDAQ",
-            "SET"
+            "FSX",
+            "XETRA",
+            "XSTU"
           ]
         }
       ],
