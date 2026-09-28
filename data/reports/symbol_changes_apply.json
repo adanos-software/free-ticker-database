@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-09-27T11:59:45Z",
+    "generated_at": "2026-09-28T13:49:48Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "dropped_predecessor_rows": 0,
-    "blocked_rows": 353,
+    "dropped_predecessor_rows": 2,
+    "blocked_rows": 351,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 11,
-      "blocked_new_symbol_not_active_in_official_master": 3,
-      "blocked_old_symbol_not_unique_in_us_scope": 286,
+      "blocked_new_symbol_collision": 9,
+      "blocked_new_symbol_not_active_in_official_master": 1,
+      "blocked_old_symbol_not_unique_in_us_scope": 288,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 46,
       "manual_successor_exists_missing_isin": 2,
@@ -18,7 +18,38 @@
     }
   },
   "accepted": [],
-  "dropped_predecessors": [],
+  "dropped_predecessors": [
+    {
+      "change_id": "aae72e7b293ba54e",
+      "effective_date": "2026-09-10",
+      "old_symbol": "RAY",
+      "new_symbol": "ATTT",
+      "new_company_name": "Atlas Trinity Tech Limited",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::RAY",
+      "new_listing_key": "NASDAQ::ATTT",
+      "isin": "VGG7385S1193",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    },
+    {
+      "change_id": "9b38883b745fd42a",
+      "effective_date": "2026-09-10",
+      "old_symbol": "GLMD",
+      "new_symbol": "EOCN",
+      "new_company_name": "Eocene Ltd.",
+      "status": "apply_drop_predecessor",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::GLMD",
+      "new_listing_key": "NASDAQ::EOCN",
+      "isin": "IL0011313900",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "official_master_old_absent_new_active_successor_already_listed"
+    }
+  ],
   "blocked": [
     {
       "change_id": "bcfe6c93c245a418",
@@ -26,7 +57,7 @@
       "old_symbol": "DOMO",
       "new_symbol": "HUCK",
       "new_company_name": "Huckleberryai Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "8e8b32078e4003a6",
@@ -34,7 +65,7 @@
       "old_symbol": "BRR",
       "new_symbol": "SVIA",
       "new_company_name": "Silvia Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "7db8560be6b62da6",
@@ -59,22 +90,6 @@
       "new_symbol": "HLSQ",
       "new_company_name": "Tessera Defense & Homeland Security Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
-    },
-    {
-      "change_id": "aae72e7b293ba54e",
-      "effective_date": "2026-09-10",
-      "old_symbol": "RAY",
-      "new_symbol": "ATTT",
-      "new_company_name": "Atlas Trinity Tech Limited",
-      "status": "blocked_new_symbol_collision"
-    },
-    {
-      "change_id": "9b38883b745fd42a",
-      "effective_date": "2026-09-10",
-      "old_symbol": "GLMD",
-      "new_symbol": "EOCN",
-      "new_company_name": "Eocene Ltd.",
-      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "f0e70fbf10b803c2",
