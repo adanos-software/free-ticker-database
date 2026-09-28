@@ -140,6 +140,9 @@ jobs:
             --previous-reference /tmp/reference-before-masterfile-rotation.csv \
             --asset-type Stock,ETF
 
+      - name: Promote official directory listings
+        run: python scripts/build_masterfile_supplements.py
+
       - name: Rebuild derived exports and reports
         run: |
           cp data/listings.csv /tmp/listings-before.csv

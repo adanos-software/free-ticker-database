@@ -566,8 +566,8 @@ def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_p
             "exchange": "TSE",
             "asset_type": "Stock",
             "sector": "",
-            "country": "Japan",
-            "country_code": "JP",
+            "country": "",
+            "country_code": "",
             "isin": "JP0000000001",
             "aliases": "legacy",
         },
@@ -716,3 +716,147 @@ def test_build_supplement_rows_refreshes_existing_fsx_without_universe_expansion
         "colliding_rows_skipped": 0,
         "refresh_only_missing_rows_skipped": 1,
     }
+
+
+def test_build_supplement_rows_adds_same_isin_cross_listings():
+    core_rows: list[dict[str, str]] = []
+    masterfile_rows = [
+        {
+            "ticker": "PFIZER",
+            "name": "Pfizer Limited",
+            "exchange": "NSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "nse",
+            "source_url": "https://example.com/nse",
+            "isin": "INE182A01018",
+        },
+        {
+            "ticker": "PFIZER",
+            "name": "Pfizer Ltd",
+            "exchange": "BSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "bse",
+            "source_url": "https://example.com/bse",
+            "isin": "INE182A01018",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert {(row["exchange"], row["ticker"], row["isin"]) for row in rows} == {
+        ("NSE_IN", "PFIZER", "INE182A01018"),
+        ("BSE_IN", "PFIZER", "INE182A01018"),
+    }
+    assert summary["safe_missing_rows"] == 2
+    assert summary["colliding_rows_skipped"] == 0
+    assert summary["coverage_expansion_missing_rows"] == 0
+
+
+def test_build_supplement_rows_expands_conflicting_isin_ticker_homonyms():
+    core_rows: list[dict[str, str]] = []
+    masterfile_rows = [
+        {
+            "ticker": "4190",
+            "name": "JARIR",
+            "exchange": "TADAWUL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "tadawul",
+            "source_url": "https://example.com/tadawul",
+            "isin": "SA000A0BLA62",
+        },
+        {
+            "ticker": "4190",
+            "name": "Other Co",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "twse",
+            "source_url": "https://example.com/twse",
+            "isin": "TW0004190001",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == []
+    assert summary["safe_missing_rows"] == 0
+    assert summary["coverage_expansion_missing_rows"] == 2
+    assert {row["listing_key"] for row in summary["coverage_expansion_rows"]} == {
+        "TADAWUL::4190",
+        "TWSE::4190",
+    }
+
+
+def test_build_supplement_rows_skips_ticker_homonyms_with_mixed_isins():
+    core_rows = [
+        {
+            "ticker": "MSFT",
+            "exchange": "NASDAQ",
+            "name": "Microsoft Corporation",
+            "isin": "US5949181045",
+        },
+        {
+            "ticker": "MSFT",
+            "exchange": "LSE",
+            "name": "LS 1x Microsoft Tracker ETP Securities",
+            "isin": "XS2337100320",
+        },
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "MSFT",
+            "name": "LS 1x Microsoft Tracker ETP",
+            "exchange": "AMS",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "euronext",
+            "source_url": "https://example.com/ams",
+            "isin": "XS2337100320",
+        }
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == []
+    assert summary["safe_missing_rows"] == 0
+    assert summary["colliding_rows_skipped"] == 1
+
+
+def test_build_supplement_rows_cross_lists_when_core_shares_isin():
+    core_rows = [
+        {
+            "ticker": "EQNR",
+            "exchange": "NYSE",
+            "name": "Equinor ASA",
+            "isin": "NO0010096985",
+        }
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "EQNR",
+            "name": "EQUINOR",
+            "exchange": "OSL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "osl",
+            "source_url": "https://example.com/osl",
+            "isin": "NO0010096985",
+        }
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert len(rows) == 1
+    assert rows[0]["exchange"] == "OSL"
+    assert rows[0]["isin"] == "NO0010096985"
+    assert summary["safe_missing_rows"] == 1
+    assert summary["colliding_rows_skipped"] == 0
