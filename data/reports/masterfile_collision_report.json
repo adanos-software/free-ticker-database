@@ -1,17 +1,17 @@
 {
   "global": {
     "official_symbols": 99968,
-    "matched": 65306,
-    "collisions": 13907,
-    "missing": 20755
+    "matched": 65386,
+    "collisions": 13914,
+    "missing": 20668
   },
   "exchanges": [
     {
       "exchange": "ADX",
       "official_symbols": 122,
-      "matched": 84,
-      "collisions": 32,
-      "missing": 6,
+      "matched": 85,
+      "collisions": 33,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -120,16 +120,6 @@
         {
           "ticker": "LUXURY",
           "name": "Boreas S&P Absolute Luxury UCITS ETF \u2013 AED (Dist)",
-          "exchange": "ADX"
-        },
-        {
-          "ticker": "MANAZEL",
-          "name": "Manazel PJSC",
-          "exchange": "ADX"
-        },
-        {
-          "ticker": "QIC",
-          "name": "Umm Al Qaiwain General Investment Co. P.S.C",
           "exchange": "ADX"
         }
       ]
@@ -278,9 +268,9 @@
     {
       "exchange": "B3",
       "official_symbols": 1353,
-      "matched": 1220,
+      "matched": 1223,
       "collisions": 0,
-      "missing": 133,
+      "missing": 130,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -324,12 +314,12 @@
           "exchange": "B3"
         },
         {
-          "ticker": "AZUL3",
+          "ticker": "AZUL97",
           "name": "AZUL S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "AZUL97",
+          "ticker": "AZUL98",
           "name": "AZUL S.A.",
           "exchange": "B3"
         }
@@ -490,9 +480,9 @@
     {
       "exchange": "BHB",
       "official_symbols": 41,
-      "matched": 28,
+      "matched": 31,
       "collisions": 9,
-      "missing": 4,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "ABC",
@@ -573,30 +563,15 @@
           "ticker": "EBRIT",
           "name": "Eskan Bank Realty Income Trust",
           "exchange": "BHB"
-        },
-        {
-          "ticker": "GFH",
-          "name": "GFH Financial Group B.S.C.",
-          "exchange": "BHB"
-        },
-        {
-          "ticker": "INOVEST",
-          "name": "INOVEST B.S.C.",
-          "exchange": "BHB"
-        },
-        {
-          "ticker": "ITHMR",
-          "name": "Ithmaar Holding B.S.C.",
-          "exchange": "BHB"
         }
       ]
     },
     {
       "exchange": "BIST",
       "official_symbols": 661,
-      "matched": 611,
+      "matched": 613,
       "collisions": 22,
-      "missing": 28,
+      "missing": 26,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -737,9 +712,9 @@
     {
       "exchange": "BK",
       "official_symbols": 140,
-      "matched": 101,
+      "matched": 110,
       "collisions": 28,
-      "missing": 11,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "ABK",
@@ -841,48 +816,8 @@
           "exchange": "BK"
         },
         {
-          "ticker": "EKTTITAB",
-          "name": "Ekttitab Holding",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "GFH",
-          "name": "GFH Bank B.S.C.",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "INOVEST",
-          "name": "Inovest BSC",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "MANAZEL",
-          "name": "Manazel Holding",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "MAZAYA",
-          "name": "Al Mazaya Holding",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "MKHZN",
-          "name": "Agility Public Warehousing",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "NIH",
-          "name": "National International Holding K.S.C",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "NIND",
-          "name": "National Industries Group Holding",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "QIC",
-          "name": "Umm Al Qaiwain General Investment Co PSC",
+          "ticker": "SHUAIBA",
+          "name": "Shuaiba Industrial Co. (K.S.P.C)",
           "exchange": "BK"
         }
       ]
@@ -950,9 +885,9 @@
     {
       "exchange": "BSE_IN",
       "official_symbols": 5165,
-      "matched": 2650,
-      "collisions": 1852,
-      "missing": 663,
+      "matched": 2667,
+      "collisions": 1853,
+      "missing": 645,
       "collision_examples": [
         {
           "ticker": "20MICRONS",
@@ -1458,8 +1393,8 @@
       "exchange": "CSE_MA",
       "official_symbols": 82,
       "matched": 1,
-      "collisions": 64,
-      "missing": 17,
+      "collisions": 65,
+      "missing": 16,
       "collision_examples": [
         {
           "ticker": "ADH",
@@ -1541,12 +1476,12 @@
           ]
         },
         {
-          "ticker": "ATW",
-          "name": "ATTIJARIWAFA BANK",
+          "ticker": "ATL",
+          "name": "ATLANTASANAD",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
-            "XETRA",
-            "XSTU"
+            "BSE_IN",
+            "NSE_IN"
           ]
         }
       ],
@@ -1554,11 +1489,6 @@
         {
           "ticker": "2SAHA",
           "name": "SAHAM ASSURANCE",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "ATL",
-          "name": "ATLANTASANAD",
           "exchange": "CSE_MA"
         },
         {
@@ -1600,15 +1530,20 @@
           "ticker": "LBV",
           "name": "LABEL VIE",
           "exchange": "CSE_MA"
+        },
+        {
+          "ticker": "LHM",
+          "name": "Holcim Maroc S.A",
+          "exchange": "CSE_MA"
         }
       ]
     },
     {
       "exchange": "DFM",
       "official_symbols": 71,
-      "matched": 45,
+      "matched": 52,
       "collisions": 17,
-      "missing": 9,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "ALEC",
@@ -1698,43 +1633,8 @@
       ],
       "missing_examples": [
         {
-          "ticker": "EKTTITAB",
-          "name": "Ekttitab Holding Company K.S.C.C",
-          "exchange": "DFM"
-        },
-        {
           "ticker": "ETIHADENERGY",
           "name": "Etihad Energy Holding P.J.S.C",
-          "exchange": "DFM"
-        },
-        {
-          "ticker": "GFH",
-          "name": "GFH Bank B.S.C.",
-          "exchange": "DFM"
-        },
-        {
-          "ticker": "ITHMR",
-          "name": "Ithmaar Holding B.S.C",
-          "exchange": "DFM"
-        },
-        {
-          "ticker": "MAZAYA",
-          "name": "Al Mazaya Holding Company",
-          "exchange": "DFM"
-        },
-        {
-          "ticker": "MKHZN",
-          "name": "Agility The Public Warehousing Company K.S.C",
-          "exchange": "DFM"
-        },
-        {
-          "ticker": "NIH",
-          "name": "National International Holding Company",
-          "exchange": "DFM"
-        },
-        {
-          "ticker": "NIND",
-          "name": "National Industries Group Holding S.A.K",
           "exchange": "DFM"
         },
         {
@@ -2030,9 +1930,9 @@
     {
       "exchange": "HKEX",
       "official_symbols": 3204,
-      "matched": 3027,
+      "matched": 3039,
       "collisions": 69,
-      "missing": 108,
+      "missing": 96,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -2171,9 +2071,9 @@
     {
       "exchange": "HNX",
       "official_symbols": 299,
-      "matched": 104,
+      "matched": 105,
       "collisions": 163,
-      "missing": 32,
+      "missing": 31,
       "collision_examples": [
         {
           "ticker": "ADC",
@@ -3328,9 +3228,9 @@
     {
       "exchange": "NSE_IN",
       "official_symbols": 3498,
-      "matched": 2485,
+      "matched": 2503,
       "collisions": 460,
-      "missing": 553,
+      "missing": 535,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -4916,9 +4816,9 @@
     {
       "exchange": "SGX",
       "official_symbols": 746,
-      "matched": 607,
+      "matched": 611,
       "collisions": 123,
-      "missing": 16,
+      "missing": 12,
       "collision_examples": [
         {
           "ticker": "500",
@@ -5041,16 +4941,6 @@
           "exchange": "SGX"
         },
         {
-          "ticker": "JCO",
-          "name": "JustCo",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "JFQ",
-          "name": "AnnicaHoldings",
-          "exchange": "SGX"
-        },
-        {
           "ticker": "Q50",
           "name": "A CGS FG Next50 SGD",
           "exchange": "SGX"
@@ -5058,6 +4948,16 @@
         {
           "ticker": "UGBD",
           "name": "Grab US SDR 2to1",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "UGGD",
+          "name": "Sea US SDR 50to1",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "UXSD",
+          "name": "SpaceX US SDR 100to1",
           "exchange": "SGX"
         }
       ]
@@ -5074,9 +4974,9 @@
     {
       "exchange": "TADAWUL",
       "official_symbols": 413,
-      "matched": 197,
+      "matched": 200,
       "collisions": 210,
-      "missing": 6,
+      "missing": 3,
       "collision_examples": [
         {
           "ticker": "1201",
@@ -5162,21 +5062,6 @@
       ],
       "missing_examples": [
         {
-          "ticker": "2250",
-          "name": "SIIG",
-          "exchange": "TADAWUL"
-        },
-        {
-          "ticker": "4148",
-          "name": "ALWASAIL INDUSTRIAL",
-          "exchange": "TADAWUL"
-        },
-        {
-          "ticker": "4190",
-          "name": "JARIR",
-          "exchange": "TADAWUL"
-        },
-        {
           "ticker": "4328",
           "name": "LADUN",
           "exchange": "TADAWUL"
@@ -5197,8 +5082,8 @@
       "exchange": "TSE",
       "official_symbols": 4444,
       "matched": 4043,
-      "collisions": 335,
-      "missing": 66,
+      "collisions": 336,
+      "missing": 65,
       "collision_examples": [
         {
           "ticker": "1305",
@@ -5298,11 +5183,6 @@
           "exchange": "TSE"
         },
         {
-          "ticker": "2250",
-          "name": "iShares MSCI Japan Climate Action ETF",
-          "exchange": "TSE"
-        },
-        {
           "ticker": "25935",
           "name": "Class-A Preferred Stock of ITO EN,LTD.",
           "exchange": "TSE"
@@ -5330,6 +5210,11 @@
         {
           "ticker": "548A",
           "name": "SystemEXE,Inc.",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "549A",
+          "name": "HITO-TO-HITO Holdings Co.,Ltd.",
           "exchange": "TSE"
         }
       ]
@@ -5580,8 +5465,8 @@
       "exchange": "TWSE",
       "official_symbols": 1094,
       "matched": 1014,
-      "collisions": 31,
-      "missing": 49,
+      "collisions": 34,
+      "missing": 46,
       "collision_examples": [
         {
           "ticker": "1589",
@@ -5600,11 +5485,27 @@
           ]
         },
         {
+          "ticker": "2250",
+          "name": "\u7b2c\u4e00\u5316\u6210\u63a7\u80a1(\u958b\u66fc)\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TADAWUL"
+          ]
+        },
+        {
           "ticker": "2762",
           "name": "\u4e16\u754c\u5065\u8eab\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "target_exchange": "TWSE",
           "existing_exchanges": [
             "TSE"
+          ]
+        },
+        {
+          "ticker": "4148",
+          "name": "\u5168\u5b87\u751f\u6280\u63a7\u80a1\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TADAWUL"
           ]
         },
         {
@@ -5624,6 +5525,14 @@
           ]
         },
         {
+          "ticker": "4190",
+          "name": "\u4f50\u767b\u59ae\u7d72\u96c6\u5718\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TADAWUL"
+          ]
+        },
+        {
           "ticker": "4195",
           "name": "\u57fa\u9f8d\u7c73\u514b\u65af\u751f\u7269\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "target_exchange": "TWSE",
@@ -5637,30 +5546,6 @@
           "target_exchange": "TWSE",
           "existing_exchanges": [
             "TSE"
-          ]
-        },
-        {
-          "ticker": "4582",
-          "name": "\u805a\u6046\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "target_exchange": "TWSE",
-          "existing_exchanges": [
-            "TPEX"
-          ]
-        },
-        {
-          "ticker": "5225",
-          "name": "\u6771\u79d1\u63a7\u80a1\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "target_exchange": "TWSE",
-          "existing_exchanges": [
-            "Bursa"
-          ]
-        },
-        {
-          "ticker": "5236",
-          "name": "\u51cc\u967d\u5275\u65b0\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "target_exchange": "TWSE",
-          "existing_exchanges": [
-            "Bursa"
           ]
         }
       ],

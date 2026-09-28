@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-28T09:08:40Z",
+  "generated_at": "2026-09-28T11:09:50Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 1528,
-  "decision_rows": 4966,
+  "conflict_count": 1529,
+  "decision_rows": 4969,
   "action_counts": {
     "kept_listing_keyed_identifier": 1281,
     "proposed_clear_conflicting_identifier": 734,
-    "quarantined_unresolved_identifier": 2951
+    "quarantined_unresolved_identifier": 2954
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 734,
-  "quarantined_rows": 2951,
+  "quarantined_rows": 2954,
   "retained_rows": 1281,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -2912,6 +2912,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "BE0974363955"
+    },
+    {
+      "conflict_id": "b4b79310d030d2ec3ae6",
+      "isin": "BH000A0CAQK6",
+      "listing_key": "BHB::GFH",
+      "ticker": "GFH",
+      "exchange": "BHB",
+      "name": "GFH Financial Group B.S.C.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "BH000A0CAQK6"
+    },
+    {
+      "conflict_id": "b4b79310d030d2ec3ae6",
+      "isin": "BH000A0CAQK6",
+      "listing_key": "BK::GFH",
+      "ticker": "GFH",
+      "exchange": "BK",
+      "name": "GFH Bank B.S.C.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "BH000A0CAQK6"
+    },
+    {
+      "conflict_id": "b4b79310d030d2ec3ae6",
+      "isin": "BH000A0CAQK6",
+      "listing_key": "DFM::GFH",
+      "ticker": "GFH",
+      "exchange": "DFM",
+      "name": "GFH Bank B.S.C.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "BH000A0CAQK6"
     },
     {
       "conflict_id": "9209cabaa6bf31ae034f",
