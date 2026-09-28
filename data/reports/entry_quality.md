@@ -1,25 +1,25 @@
 # Entry Quality Report
 
-Generated at: `2026-09-28T13:54:11Z`
+Generated at: `2026-09-28T14:42:05Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 82,702 |
-| source_gap | 14,406 |
-| warn | 34 |
+| pass | 82,729 |
+| source_gap | 14,432 |
+| warn | 35 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,300 |
-| missing_stock_sector | 3,889 |
+| official_reference_gap | 6,314 |
+| missing_stock_sector | 3,907 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 1,028 |
 | missing_etf_category | 434 |
-| official_name_mismatch | 28 |
+| official_name_mismatch | 29 |
 | official_isin_mismatch | 7 |
 
 ## Top Flagged Exchanges
@@ -43,9 +43,9 @@ Generated at: `2026-09-28T13:54:11Z`
 | LSE | 6,875 | 0 | 153 | 2 | 0 |
 | ASX | 2,113 | 0 | 146 | 0 | 0 |
 | BVB | 102 | 0 | 145 | 0 | 0 |
-| TSXV | 1,283 | 0 | 137 | 2 | 0 |
-| Euronext | 1,344 | 0 | 132 | 1 | 0 |
-| HKEX | 3,035 | 0 | 129 | 1 | 0 |
+| TSXV | 1,282 | 0 | 137 | 3 | 0 |
+| HKEX | 3,059 | 0 | 138 | 1 | 0 |
+| Euronext | 1,341 | 0 | 135 | 1 | 0 |
 
 ## Notes
 
