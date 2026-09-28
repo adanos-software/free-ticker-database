@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-09-27T12:28:05Z",
-    "rows": 8857,
+    "generated_at": "2026-09-28T09:09:04Z",
+    "rows": 8856,
     "outcome_totals": {
       "accepted_source_gap": 6042,
-      "core_exclusion_candidate": 635,
+      "core_exclusion_candidate": 634,
       "official_fill_required": 2180
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 44,
-      "adr_cdr_or_depositary_sector_gap": 16,
+      "adr_cdr_or_depositary_sector_gap": 15,
       "capital_pool_or_halted_identifier_gap": 33,
       "commodity_etf_category_gap": 1,
       "debt_or_securitized_identifier_gap": 94,
@@ -20,8 +20,8 @@
       "fund_or_trust_identifier_gap": 377,
       "fundlike_stock_sector_gap": 5,
       "inactive_or_legacy_identifier_gap": 22,
-      "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 320,
+      "official_current_directory_absent_identifier_gap": 9,
+      "official_identifier_not_exposed_source_gap": 313,
       "official_identifier_reference_unmatched_gap": 8,
       "official_industry_taxonomy_unavailable_gap": 853,
       "official_product_reference_unmatched_category_gap": 1,
@@ -36,7 +36,7 @@
       "missing_isin_primary:accepted_source_gap": 330,
       "missing_isin_primary:core_exclusion_candidate": 570,
       "missing_sector_stock:accepted_source_gap": 1407,
-      "missing_sector_stock:core_exclusion_candidate": 65,
+      "missing_sector_stock:core_exclusion_candidate": 64,
       "missing_sector_stock:official_fill_required": 63,
       "official_reference_gap:accepted_source_gap": 4184,
       "official_reference_gap:official_fill_required": 2117
@@ -2113,14 +2113,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "BP CAPITAL MARKETS P.L.C.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
     },
     {
       "field": "missing_isin_primary",
@@ -2130,14 +2130,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "CAISSE FRANCAISE DE FINANCEMENT LOCAL",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
     },
     {
       "field": "missing_isin_primary",
@@ -2147,14 +2147,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "LLOYDS BANKING GROUP PLC",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
     },
     {
       "field": "missing_isin_primary",
@@ -2164,14 +2164,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "SHINHAN BANK.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
     },
     {
       "field": "missing_isin_primary",
@@ -2181,14 +2181,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "NEW SOUTH WALES TREASURY CORPORATION",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
     },
     {
       "field": "missing_isin_primary",
@@ -2198,14 +2198,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "QUEENSLAND TREASURY CORPORATION",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
     },
     {
       "field": "missing_isin_primary",
@@ -2215,14 +2215,14 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "TREASURY CORPORATION OF VICTORIA",
-      "gap_class": "official_identifier_not_exposed_source_gap",
+      "gap_class": "official_current_directory_absent_identifier_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
     },
     {
       "field": "missing_isin_primary",
@@ -113386,23 +113386,6 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Canonical sector requires active operating-business evidence."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NYSE::CSAN",
-      "ticker": "CSAN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Cosan SA ADR",
-      "gap_class": "adr_cdr_or_depositary_sector_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",

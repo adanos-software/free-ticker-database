@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-09-27T12:27:52Z",
-    "rows": 92143,
+    "generated_at": "2026-09-28T09:09:01Z",
+    "rows": 92142,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,36 +14,36 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80603,
-      "source_gap": 11504,
-      "warn": 36
+      "pass": 80605,
+      "source_gap": 11503,
+      "warn": 34
     },
     "evidence_level_counts": {
       "identifier_enriched": 4504,
-      "official_reference": 82555,
+      "official_reference": 82554,
       "scoped_source_gap": 238,
       "valid_isin": 4846
     },
     "severity_counts": {
       "high": 7,
-      "medium": 30,
-      "source_gap": 11943
+      "medium": 28,
+      "source_gap": 11942
     },
     "issue_counts": {
       "official_reference_gap": 6301,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1312,
+      "missing_stock_sector": 1311,
       "expected_missing_primary_isin": 900,
       "missing_etf_category": 143,
-      "official_name_mismatch": 30,
+      "official_name_mismatch": 28,
       "official_isin_mismatch": 7
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8483,
+        "pass": 8484,
         "source_gap": 3254,
-        "warn": 15
+        "warn": 14
       },
       {
         "exchange": "XSTU",
@@ -57,8 +57,8 @@
       {
         "exchange": "NASDAQ",
         "source_gap": 348,
-        "pass": 4442,
-        "warn": 5
+        "pass": 4443,
+        "warn": 4
       },
       {
         "exchange": "B3",
@@ -130,7 +130,7 @@
       {
         "exchange": "NYSE",
         "pass": 1913,
-        "source_gap": 109,
+        "source_gap": 108,
         "warn": 5
       },
       {
