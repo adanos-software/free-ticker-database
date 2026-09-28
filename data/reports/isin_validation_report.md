@@ -1,17 +1,17 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-09-21T14:39:24Z
+Generated: 2026-09-28T16:24:30Z
 
 **isin_issues_detected: True**
 
-ISINs validated: 62518 | match=60707 mismatch=104 no_data=1707
+ISINs validated: 63783 | match=61929 mismatch=123 no_data=1731
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `104` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1707` (provider coverage gap)
+- Mismatch residuals: `123` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1731` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
@@ -19,9 +19,9 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | Exchange | Rows |
 |---|---:|
 | OTC | 28 |
-| NSE_IN | 11 |
+| NSE_IN | 21 |
+| BSE_IN | 14 |
 | NASDAQ | 9 |
-| BSE_IN | 7 |
 | Bursa | 6 |
 | LSE | 5 |
 | TSX | 4 |
@@ -33,6 +33,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | B3 | 2 |
 | NYSE | 2 |
 | SIX | 2 |
+| TADAWUL | 2 |
 | WSE | 2 |
 | AMS | 1 |
 | ASX | 1 |
@@ -50,8 +51,8 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 593 |
-| B3 | 220 |
+| OTC | 594 |
+| B3 | 222 |
 | TPEX | 196 |
 | NYSE ARCA | 121 |
 | NASDAQ | 95 |
@@ -60,15 +61,17 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | BATS | 69 |
 | ASX | 39 |
 | EGX | 28 |
+| BSE_IN | 25 |
 | FSX | 23 |
 | SET | 17 |
 | JSE | 15 |
 | NYSE | 14 |
-| BSE_IN | 13 |
 | NGX | 9 |
+| HKEX | 7 |
 | SZSE | 6 |
+| CSE_MA | 5 |
 | LSE | 5 |
-| CSE_MA | 4 |
+| CSE_LK | 4 |
 | SSE_CL | 4 |
 | STO | 4 |
 | ATHEX | 3 |
@@ -78,8 +81,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | NSE_KE | 3 |
 | NYSE MKT | 3 |
 | OSL | 3 |
-| PSX | 3 |
-| SEM | 3 |
 
 ## Mismatch review queue
 
@@ -123,18 +124,35 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INE188A01015 | FACT | Fertilizers and Chemicals Trav | FCT | FERTILISERS & CHEM TRAVANCR | review_required_openfigi_resolves_different_security |
 | INE312B01027 | SJCORP | S J Corporation Ltd | SJCL | SJ CORP LTD | review_required_openfigi_resolves_different_security |
 | INE626H01019 | ZBINTXPP | Binayak Tex Processors Ltd | BYT | BINAYAKA TEXTILE PROC LTD | review_required_openfigi_resolves_different_security |
+| INE644K01016 | BMBMUMG | BMB Music & Magnetics Ltd | BOKA | BOKADIA FILMS LTD | review_required_openfigi_resolves_different_security |
 | INE902G01016 | KGPETRO | KG Petrochem Ltd | KGP | KG PETROLEUM CHEM LTD | review_required_openfigi_resolves_different_security |
+| INF109K1A153 | EVIETF | ICICI Prudential Nifty EV & Ne | ICPNERG | ICIC PRU NI EV NE AG ETF-RG | review_required_openfigi_resolves_different_security |
+| INF109K1A344 | TOP15IETF | ICICI Prudential Nifty Top 15  | ICPNTRG | ICIC PRU NI TP 15 EQ ETF-RG | review_required_openfigi_resolves_different_security |
+| INF109KC17C7 | MOM30IETF | ICICI Prudential Nifty 200 Mom | MOM30IET | IPRU NIFTY200 MOMENTUM30 ETF | review_required_openfigi_resolves_different_security |
+| INF174KA1A94 | PVTBANK | KOTAKMAMC - PVTBANK | KTNPBRG | KOTAK NIFTY PVT BANK ETF RG | review_required_openfigi_resolves_different_security |
+| INF205KA1CB9 | IVZBANKNF | RELIGARAMC - IVZBANKNF | INIFBRG | INV IND NIF BK ETF RG | review_required_openfigi_resolves_different_security |
 | INF209KC1134 | ABGSEC | Aditya Birla Sun Life CRISIL B | ACBRGLT | AB CRSL BRD GLT ETF | review_required_openfigi_resolves_different_security |
+| INF247L01EV3 | MOCAPITAL | Motilal Oswal Nifty Capital Ma | MONCARG | MOTI OSW NIF CAP MAR ETF-RG | review_required_openfigi_resolves_different_security |
 | INF247L01FC0 | MON50EQUAL | Motilal Oswal Nifty 50 Equal W | MONEWRG | MOT OSW NI 50 EQ WE ETF-RG | review_required_openfigi_resolves_different_security |
 | INF247L01FK3 | MOMGF | Motilal Oswal Nifty India Manu | MONIMRG | MOT OSW NIF IND MAN ETF-RG | review_required_openfigi_resolves_different_security |
 | INF247L01FP2 | MOTOUR | Motilal Oswal Nifty India Tour | MOSNTRG | MOTI OSW NIF IND TOU ETF-RG | review_required_openfigi_resolves_different_security |
 | INF247L01FQ0 | MOMIDMTM | Motilal Oswal Nifty Midcap150  | MOMM5RG | MOTIL OS N MCP150 M50 ETF-RG | review_required_openfigi_resolves_different_security |
 | INF247L01FR8 | MOALPHA50 | Motilal Oswal Nifty Alpha 50 E | MONA5RG | MOTI OSW NIF AI 50 ETF- RG | review_required_openfigi_resolves_different_security |
 | INF247L01GJ3 | MOSERVICE | Motilal Oswal Nifty Services S | MONSSRG | MTIL OSWL NFTY SRVC SCTR ETF | review_required_openfigi_resolves_different_security |
+| INF247L01HG7 | MOMETAL | MOTILALAMC - MOMETAL | MONMERG | MOTILAL OSWL NIF METL ETF RG | review_required_openfigi_resolves_different_security |
+| INF247L01HH5 | MOOILGAS | MOTILALAMC - MOOILGAS | MONOGRG | MOTILAL OSWL NFY O&G ETF RG | review_required_openfigi_resolves_different_security |
+| INF666M01OT5 | PVTBKGROWW | GROWWAMC - PVTBKGROWW | GNIPBRG | GROWW NIFTY PRIV BANK ETF-RG | review_required_openfigi_resolves_different_security |
+| INF666M01PG9 | SMALLGROWW | GROWWAMC - SMALLGROWW | GNSMQRG | GRW NFT SC 250 MQ 100 ETF RG | review_required_openfigi_resolves_different_security |
+| INF666M01PH7 | CEMNTGROWW | GROWWAMC - CEMNTGROWW | GRNCERG | GROWW NIFTY CEMENTS ETF-RG | review_required_openfigi_resolves_different_security |
+| INF740KA1ZI7 | GSEC10ADD | DSPAMC - GSEC10ADD | DGSEC10 | DSP NIFTY 10 YR BM G-SEC | review_required_openfigi_resolves_different_security |
 | INF754K01TF1 | EMULTIMQ | Edelweiss Nifty500 Multicap Mo | EDENM50 | EDEL NF500 MLT MOM QLT50 ETF | review_required_openfigi_resolves_different_security |
+| INF754K01XG1 | EMETAL | EDELAMC - EMETAL | EDNMERG | EDELWEISS NIFTY METAL ETF RG | review_required_openfigi_resolves_different_security |
 | INF767K01SM1 | LICMFGOLD | LICMF LICGoldETF | LICMFGLD | LIC MF GOLD ETF | review_required_openfigi_resolves_different_security |
-| KE0000000547 | KENGEN | KENGEN CO. PLC | KEGC | KENYA ELECTRICITY GENERATING | review_required_openfigi_resolves_different_security |
-| KYG2296A1094 | BRR | ProCap Financial, Inc. | CCCMEUR,CCCMUSD | COLUMBUS CIRCLE CAPITAL CO-A | review_required_openfigi_resolves_different_security |
+| INF769K01LJ8 | MIDSMALL | Mirae Asset Nifty Midsmallcap4 | MS400MQ | MA MS400 MOM QUAL | review_required_openfigi_resolves_different_security |
+| INF769K01RJ5 | HYBRIDETF | MIRAEAMC - HYBRIDETF | MANMPRG | MIRAE AST N200 PLS 8-13 G 50 | review_required_openfigi_resolves_different_security |
+| INF789F1AG68 | LIQUIDBETA | UTIAMC - LIQUIDBETA | UTINLRG | UTI NIFTY 1D RATE LQD ETF-RG | review_required_openfigi_resolves_different_security |
+| KE0000000547 | KEGN | KenGen Ltd Ord. 2.50 | KEGC | KENYA ELECTRICITY GENERATING | review_required_openfigi_resolves_different_security |
+| KYG2296A1094 | SVIA | Silvia, Inc. - Common Stock | CCCMEUR,CCCMUSD | COLUMBUS CIRCLE CAPITAL CO-A | review_required_openfigi_resolves_different_security |
 | KYG8232Y1017 | PENG | Penguin Solutions, Inc. | SGH2EUR,SGH2GBP,SGH2USD | SMART GLOBAL HOLDINGS INC | review_required_openfigi_resolves_different_security |
 | LK0036N00000 | CPRT.N0000 | KERNER HAUS GLOBAL SOLUTIONS P | CPRT | CEYLON PRINTERS PLC | review_required_openfigi_resolves_different_security |
 | LK0113N00007 | LOLC.N0000 | L O L C HOLDINGS PLC | LOLC | LOLC HOLDINGS LTD | review_required_openfigi_resolves_different_security |
@@ -151,6 +169,8 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | NO0013711721 | KMCP | KMC PROPERTIES | 0N0L,5FM0,BINT | BEVEST ASA | review_required_openfigi_resolves_different_security |
 | PLDRD2400010 | DRF | Dr.Finance SA | D24,D241PLN,D24PLN | DORADCY24 SA | review_required_openfigi_resolves_different_security |
 | PLPZUGD00010 | ETFPZUGOLD | ETFPZUGOLD | ETFP2PLN,ETFPZUG | PZU ETF GOLD PORTFELOWY FIZ | review_required_openfigi_resolves_different_security |
+| SA000A0B89Q3 | 2250 | SIIG | SIIG,SIIGSAR | SAUDI IND INVESTMENT GROUP | review_required_openfigi_resolves_different_security |
+| SA76IG4JGIH1 | 7205 | DBS | ADDAR | DAR ALBALAD FOR BUSINESS SOL | review_required_openfigi_resolves_different_security |
 | SG1B56010922 | F13 | Fu Yu Corporation Ltd | FUYU,FUYVF | FU YU CORP LTD | review_required_openfigi_resolves_different_security |
 | SG2B91959363 | 5RC | ES Group (Holdings) Limited | ESG | ES GROUP HOLDINGS LTD | review_required_openfigi_resolves_different_security |
 | SGXE45420721 | 1Y1 | 9R Limited | 9R | 9R LTD | review_required_openfigi_resolves_different_security |
