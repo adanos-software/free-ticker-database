@@ -3,7 +3,7 @@
 Official_full venues still below 99.5% collision-adjusted recall.
 Collision-hidden symbols are listed separately and must not be added as a second primary.
 
-Rows: `39`
+Rows: `35`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
@@ -13,8 +13,8 @@ Rows: `39`
 | 4 | NYSE | 59.63 | 1342 | 566 | not_in_supplement_allowlist |
 | 5 | NASDAQ | 82.37 | 984 | 65 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.76 | 802 | 1856 | not_in_supplement_allowlist |
-| 7 | BSE_IN | 79.99 | 663 | 1852 | collision_free_supplement |
-| 8 | NSE_IN | 81.8 | 553 | 460 | collision_free_supplement |
+| 7 | BSE_IN | 80.53 | 645 | 1853 | collision_free_supplement |
+| 8 | NSE_IN | 82.39 | 535 | 460 | collision_free_supplement |
 | 9 | XETRA | 92.68 | 323 | 708 | collision_free_supplement |
 | 10 | Euronext | 80.93 | 315 | 364 | not_in_supplement_allowlist |
 | 11 | UPCOM | 0.67 | 296 | 520 | not_in_supplement_allowlist |
@@ -24,25 +24,21 @@ Rows: `39`
 | 15 | NEO | 55.59 | 167 | 66 | not_in_supplement_allowlist |
 | 16 | BVB | 37.39 | 144 | 119 | collision_free_supplement |
 | 17 | KRX | 93.22 | 142 | 14 | not_in_supplement_allowlist |
-| 18 | B3 | 90.17 | 133 | 0 | collision_free_supplement |
+| 18 | B3 | 90.39 | 130 | 0 | collision_free_supplement |
 | 19 | PSE | 58.4 | 109 | 119 | collision_free_supplement |
-| 20 | HKEX | 96.56 | 108 | 69 | collision_free_supplement |
+| 20 | HKEX | 96.94 | 96 | 69 | collision_free_supplement |
 | 21 | NYSE ARCA | 96.61 | 92 | 29 | not_in_supplement_allowlist |
-| 22 | TSE | 98.39 | 66 | 335 | collision_free_supplement |
+| 22 | TSE | 98.42 | 65 | 336 | collision_free_supplement |
 | 23 | AMS | 86.54 | 58 | 178 | collision_free_supplement |
-| 24 | TWSE | 95.39 | 49 | 31 | collision_free_supplement |
-| 25 | NYSE MKT | 82.67 | 48 | 31 | not_in_supplement_allowlist |
+| 24 | NYSE MKT | 82.67 | 48 | 31 | not_in_supplement_allowlist |
+| 25 | TWSE | 95.66 | 46 | 34 | collision_free_supplement |
 | 26 | SET | 95.43 | 37 | 133 | not_in_supplement_allowlist |
-| 27 | HNX | 76.47 | 32 | 163 | collision_free_supplement |
-| 28 | NSE_KE | 25.58 | 32 | 25 | collision_free_supplement |
-| 29 | BIST | 95.62 | 28 | 22 | collision_free_supplement |
+| 27 | NSE_KE | 25.58 | 32 | 25 | collision_free_supplement |
+| 28 | HNX | 77.21 | 31 | 163 | collision_free_supplement |
+| 29 | BIST | 95.93 | 26 | 22 | collision_free_supplement |
 | 30 | BME | 90.77 | 25 | 0 | not_in_supplement_allowlist |
 | 31 | IDX | 97.55 | 19 | 187 | not_in_supplement_allowlist |
-| 32 | CSE_MA | 5.56 | 17 | 64 | collision_free_supplement |
-| 33 | SGX | 97.43 | 16 | 123 | collision_free_supplement |
-| 34 | CSE_LK | 96.23 | 12 | 0 | collision_free_supplement |
-| 35 | BK | 90.18 | 11 | 28 | collision_free_supplement |
-| 36 | DFM | 83.33 | 9 | 17 | collision_free_supplement |
-| 37 | ADX | 93.33 | 6 | 32 | collision_free_supplement |
-| 38 | BHB | 87.5 | 4 | 9 | collision_free_supplement |
-| 39 | TXSE | 0.0 | 2 | 3 | not_in_supplement_allowlist |
+| 32 | CSE_MA | 5.88 | 16 | 65 | collision_free_supplement |
+| 33 | CSE_LK | 96.23 | 12 | 0 | collision_free_supplement |
+| 34 | SGX | 98.07 | 12 | 123 | collision_free_supplement |
+| 35 | TXSE | 0.0 | 2 | 3 | not_in_supplement_allowlist |
