@@ -1,17 +1,17 @@
 {
   "global": {
     "official_symbols": 99968,
-    "matched": 65386,
-    "collisions": 13914,
-    "missing": 20668
+    "matched": 70229,
+    "collisions": 11487,
+    "missing": 18252
   },
   "exchanges": [
     {
       "exchange": "ADX",
       "official_symbols": 122,
-      "matched": 85,
-      "collisions": 33,
-      "missing": 4,
+      "matched": 92,
+      "collisions": 30,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -35,14 +35,6 @@
           "target_exchange": "ADX",
           "existing_exchanges": [
             "OTC"
-          ]
-        },
-        {
-          "ticker": "AGIX",
-          "name": "KraneShares Public-Private AI & Technology ETF",
-          "target_exchange": "ADX",
-          "existing_exchanges": [
-            "NASDAQ"
           ]
         },
         {
@@ -75,6 +67,7 @@
           "name": "APEX INVESTMENT P.S.C",
           "target_exchange": "ADX",
           "existing_exchanges": [
+            "BSE_IN",
             "LSE",
             "NSE_IN"
           ]
@@ -99,116 +92,107 @@
             "TSX",
             "WSE"
           ]
+        },
+        {
+          "ticker": "CBI",
+          "name": "Commercial Bank International",
+          "target_exchange": "ADX",
+          "existing_exchanges": [
+            "TASE",
+            "TSXV"
+          ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "EIC",
-          "name": "Emirates Insurance Co",
-          "exchange": "ADX"
-        },
-        {
-          "ticker": "EMOBILITY",
-          "name": "Emirates Mobility Company",
-          "exchange": "ADX"
-        },
-        {
-          "ticker": "GCCDIV",
-          "name": "Lunate Solactive GCC Shariah Dividend ETF",
-          "exchange": "ADX"
-        },
-        {
-          "ticker": "LUXURY",
-          "name": "Boreas S&P Absolute Luxury UCITS ETF \u2013 AED (Dist)",
-          "exchange": "ADX"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "AMS",
       "official_symbols": 609,
-      "matched": 373,
-      "collisions": 178,
-      "missing": 58,
+      "matched": 565,
+      "collisions": 40,
+      "missing": 4,
       "collision_examples": [
         {
-          "ticker": "2AAP",
-          "name": "Leverage Shares 2x Apple ETP Securities",
+          "ticker": "ADPT",
+          "name": "Pantarai ADAPT ETP",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "AGIL",
+          "name": "Agility Capital H",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "BME"
+          ]
+        },
+        {
+          "ticker": "AMDY",
+          "name": "IncomeShares AMD Options ETP",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "AMZN",
+          "name": "LS 1x Amazon Tracker ETP",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "BMV",
+            "NASDAQ",
+            "NEO",
+            "SSE_CL"
+          ]
+        },
+        {
+          "ticker": "AMZY",
+          "name": "IncomeShares Amazon (AMZN) Options ETP",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "AWSR",
+          "name": "UBS MSCI ACWI Socially Responsible UCITS ETF hEUR acc",
           "target_exchange": "AMS",
           "existing_exchanges": [
             "LSE"
           ]
         },
         {
-          "ticker": "2AMD",
-          "name": "Leverage Shares 2x Advanced Micro Devices ETP Securities",
+          "ticker": "CBSE",
+          "name": "UBS BBG MSCI Euro Area Liquid Corp Sustainable UCITS ETF EUR dis",
           "target_exchange": "AMS",
           "existing_exchanges": [
-            "LSE"
+            "NYSE ARCA"
           ]
         },
         {
-          "ticker": "2AMZ",
-          "name": "Leverage Shares 2x Amazon ETP Securities",
+          "ticker": "CETH",
+          "name": "CoinShares Ethereum Staking ETP",
           "target_exchange": "AMS",
           "existing_exchanges": [
-            "LSE"
+            "BATS"
           ]
         },
         {
-          "ticker": "2BAB",
-          "name": "Leverage Shares 2x Alibaba ETP Securities",
+          "ticker": "CRWY",
+          "name": "IncomeShares CoreWeave (CRWV) Options ETP",
           "target_exchange": "AMS",
           "existing_exchanges": [
-            "LSE"
+            "TSX"
           ]
         },
         {
-          "ticker": "2FB",
-          "name": "Leverage Shares 2x Facebook ETP Securities",
+          "ticker": "DRMY",
+          "name": "IncomeShares Memory (DRAM) Options ETP",
           "target_exchange": "AMS",
           "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2GOO",
-          "name": "Leverage Shares 2x Alphabet ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2NFL",
-          "name": "Leverage Shares 2x Netflix ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2TSL",
-          "name": "Leverage Shares 2x Tesla ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "2VIS",
-          "name": "Leverage Shares 2x Visa ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "3AAP",
-          "name": "Leverage Shares 3x Apple ETP Securities",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "LSE"
+            "NYSE ARCA"
           ]
         }
       ],
@@ -219,48 +203,18 @@
           "exchange": "AMS"
         },
         {
-          "ticker": "B1TA",
-          "name": "iSh AT1 Bond Active EUR (Dist)",
+          "ticker": "NAIW",
+          "name": "NAI WARRANTS",
           "exchange": "AMS"
         },
         {
-          "ticker": "BLC3",
-          "name": "Leverage Shares 3x Long Blockchain Leaders ETP",
+          "ticker": "PPLA",
+          "name": "PPLA European Unit",
           "exchange": "AMS"
         },
         {
-          "ticker": "BLCY",
-          "name": "IncomeShares Blockchain Leaders ETP",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "BLNT",
-          "name": "iSh Brzil LTN BRL Gvt Bnd UCTS ETF US Ac",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "BSEU",
-          "name": "BlueSphere European Equity UCITS ETF",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "BSTE",
-          "name": "BlueSphere US Technology UCITS ETF",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "BSUE",
-          "name": "BlueSphere US Equity UCITS ETF",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "BSWE",
-          "name": "BlueSphere World Equity UCITS ETF",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "ECLU",
-          "name": "iShares \u20ac AAA CLO Active UCITS ETF EUR (Dist)",
+          "ticker": "QEVW",
+          "name": "QEV WARRANTS",
           "exchange": "AMS"
         }
       ]
@@ -268,9 +222,9 @@
     {
       "exchange": "B3",
       "official_symbols": 1353,
-      "matched": 1223,
+      "matched": 1228,
       "collisions": 0,
-      "missing": 130,
+      "missing": 125,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -304,23 +258,23 @@
           "exchange": "B3"
         },
         {
-          "ticker": "AXIA15",
-          "name": "AXIA ENERGIA S.A.",
-          "exchange": "B3"
-        },
-        {
           "ticker": "AZPE11",
           "name": "AZ QUEST PANORAMA CR\u00c9DITO ESTRUTURADO FII RESP LTD",
           "exchange": "B3"
         },
         {
-          "ticker": "AZUL97",
-          "name": "AZUL S.A.",
+          "ticker": "BAOM39",
+          "name": "ISHARES CORE 40/60 MODERATE ALLOCATION ETF",
           "exchange": "B3"
         },
         {
-          "ticker": "AZUL98",
-          "name": "AZUL S.A.",
+          "ticker": "BBAS11",
+          "name": "BCO BRASIL S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BBAX39",
+          "name": "JPMORGAN BETABUILDERS DEV ASIA PACIFIC-EX JPN ETF",
           "exchange": "B3"
         }
       ]
@@ -329,8 +283,8 @@
       "exchange": "BATS",
       "official_symbols": 1646,
       "matched": 1307,
-      "collisions": 57,
-      "missing": 282,
+      "collisions": 58,
+      "missing": 281,
       "collision_examples": [
         {
           "ticker": "ALA",
@@ -569,9 +523,9 @@
     {
       "exchange": "BIST",
       "official_symbols": 661,
-      "matched": 613,
+      "matched": 639,
       "collisions": 22,
-      "missing": 26,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -656,65 +610,14 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "AAGYO",
-          "name": "A\u011eAO\u011eLU AVRASYA GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "ALBTN",
-          "name": "ALBAYRAK HAZIR BETON SANAY\u0130 VE T\u0130CARET A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "BETAE",
-          "name": "BETA ENERJ\u0130 VE TEKNOLOJ\u0130 A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "BKRGY",
-          "name": "BAKIRCI GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "CITAS",
-          "name": "\u00c7\u0130TLEK\u00c7\u0130 MA\u011eAZACILIK GIDA A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "EKDMR",
-          "name": "EK\u0130NC\u0130LER DEM\u0130R VE \u00c7EL\u0130K SANAY\u0130 A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "EKIM",
-          "name": "EK\u0130M TUR\u0130ZM T\u0130CARET VE SANAY\u0130 A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "GOLDA",
-          "name": "GOLDA GIDA SANAY\u0130 VE T\u0130CARET A.\u015e.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "ISMDL",
-          "name": "\u0130\u015e PORTF\u00d6Y BIST 100 ENDEKS\u0130 MODEL PORTF\u00d6Y H\u0130SSE SENED\u0130 YO\u011eUN BORSA YATIRIM FONU.",
-          "exchange": "BIST"
-        },
-        {
-          "ticker": "ISVEA",
-          "name": "\u0130SVEA SERAM\u0130K VE BANYO \u00dcR\u00dcNLER\u0130 SANAY\u0130 A.\u015e.",
-          "exchange": "BIST"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "BK",
       "official_symbols": 140,
-      "matched": 110,
+      "matched": 112,
       "collisions": 28,
-      "missing": 2,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ABK",
@@ -809,18 +712,7 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "ALENMA",
-          "name": "ALENMA' Real Estate Co. k.s.c.p",
-          "exchange": "BK"
-        },
-        {
-          "ticker": "SHUAIBA",
-          "name": "Shuaiba Industrial Co. (K.S.P.C)",
-          "exchange": "BK"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "BME",
@@ -885,88 +777,104 @@
     {
       "exchange": "BSE_IN",
       "official_symbols": 5165,
-      "matched": 2667,
-      "collisions": 1853,
-      "missing": 645,
+      "matched": 5011,
+      "collisions": 120,
+      "missing": 34,
       "collision_examples": [
         {
-          "ticker": "20MICRONS",
-          "name": "20 Microns Ltd",
+          "ticker": "ACL",
+          "name": "Andhra Cements Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "ASX",
+            "TSXV"
           ]
         },
         {
-          "ticker": "21STCENMGM",
-          "name": "Twentyfirst Century Management Services Ltd",
+          "ticker": "AGL",
+          "name": "Allcargo Global Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "ASX",
+            "NYSE"
           ]
         },
         {
-          "ticker": "360ONE",
-          "name": "360 ONE WAM LTD",
+          "ticker": "AHCL",
+          "name": "Anlon Healthcare Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "PSX"
           ]
         },
         {
-          "ticker": "3IINFOLTD",
-          "name": "3i Infotech Ltd",
+          "ticker": "ALPHA",
+          "name": "Kotak Nifty Alpha 50 ETF",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "ATHEX"
           ]
         },
         {
-          "ticker": "3MINDIA",
-          "name": "3M India Ltd",
+          "ticker": "AMAL",
+          "name": "Amal Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "LSE",
+            "NASDAQ",
+            "SIX",
+            "TASE"
           ]
         },
         {
-          "ticker": "3PLAND",
-          "name": "3P Land Holdings Ltd",
+          "ticker": "AMPL",
+          "name": "AMPL Capital Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "NASDAQ"
           ]
         },
         {
-          "ticker": "5PAISA",
-          "name": "5paisa Capital Ltd",
+          "ticker": "AMS",
+          "name": "AMS Polymers Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "ASX",
+            "BME",
+            "LSE",
+            "NYSE MKT"
           ]
         },
         {
-          "ticker": "63MOONS",
-          "name": "63 Moons Technologies Ltd",
+          "ticker": "ANL",
+          "name": "Accretion Nutraveda Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "FSX",
+            "NASDAQ",
+            "XETRA",
+            "XSTU"
           ]
         },
         {
-          "ticker": "AAATECH",
-          "name": "AAA Technologies Ltd",
+          "ticker": "APL",
+          "name": "Asston Pharmaceuticals Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "FSX",
+            "PSE",
+            "PSX",
+            "TSXV",
+            "WSE"
           ]
         },
         {
-          "ticker": "AADHARHFC",
-          "name": "Aadhar Housing Finance Ltd",
+          "ticker": "ARIS",
+          "name": "ArisInfra Solutions Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
-            "NSE_IN"
+            "NYSE",
+            "TSX"
           ]
         }
       ],
@@ -1026,9 +934,9 @@
     {
       "exchange": "BVB",
       "official_symbols": 349,
-      "matched": 86,
-      "collisions": 119,
-      "missing": 144,
+      "matched": 241,
+      "collisions": 108,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -1045,18 +953,6 @@
           "target_exchange": "BVB",
           "existing_exchanges": [
             "AMS"
-          ]
-        },
-        {
-          "ticker": "ADS",
-          "name": "ADIDAS AG",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "ASX",
-            "FSX",
-            "OSL",
-            "XETRA",
-            "XSTU"
           ]
         },
         {
@@ -1099,20 +995,6 @@
           ]
         },
         {
-          "ticker": "ALV",
-          "name": "ALLIANZ SE",
-          "target_exchange": "BVB",
-          "existing_exchanges": [
-            "FSX",
-            "Munich",
-            "NYSE",
-            "TSXV",
-            "XDUS",
-            "XHAN",
-            "XSTU"
-          ]
-        },
-        {
           "ticker": "ALW",
           "name": "VISUAL FAN",
           "target_exchange": "BVB",
@@ -1130,67 +1012,33 @@
             "SIX",
             "TASE"
           ]
+        },
+        {
+          "ticker": "ANTA",
+          "name": "ROMANTA ESTIVAL 2002 SA NEPTUN",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "APP",
+          "name": "APPRAISAL & VALUATION",
+          "target_exchange": "BVB",
+          "existing_exchanges": [
+            "NASDAQ",
+            "SET"
+          ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "2P",
-          "name": "2PERFORMANT NETWORK SA",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "4RT",
-          "name": "FORT SA",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ADISS",
-          "name": "ADISS",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ADMY",
-          "name": "ADMET SA GALATI",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "AGCM",
-          "name": "AGROMEC SA CIOROGARLA",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ALCQ",
-          "name": "ALCOM SA TIMISOARA",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ALDANI",
-          "name": "ALDANI MASTER CAPITAL S.A.",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ALRV",
-          "name": "ALIMENTARA SA Slatina",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ANIM",
-          "name": "STUDIOUL CINEMATOGRAFIC ANIMAFILM SA BUCURESTI",
-          "exchange": "BVB"
-        },
-        {
-          "ticker": "ARCU",
-          "name": "SIFI CLUJ RETAIL SA Bucuresti",
-          "exchange": "BVB"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "Borsa Italiana",
       "official_symbols": 2908,
       "matched": 250,
-      "collisions": 1856,
-      "missing": 802,
+      "collisions": 1897,
+      "missing": 761,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1332,16 +1180,11 @@
     {
       "exchange": "CSE_LK",
       "official_symbols": 318,
-      "matched": 306,
+      "matched": 315,
       "collisions": 0,
-      "missing": 12,
+      "missing": 3,
       "collision_examples": [],
       "missing_examples": [
-        {
-          "ticker": "ATL.R0000",
-          "name": "AMANA TAKAFUL  PLC",
-          "exchange": "CSE_LK"
-        },
         {
           "ticker": "CALC.U0000",
           "name": "CAL FIVE YEAR CLOSED END FUND (\u201cUnits\u201d)",
@@ -1356,45 +1199,15 @@
           "ticker": "CALU.U0000",
           "name": "CAL THREE YEAR CLOSED END FUND (\u201cUnits\u201d)",
           "exchange": "CSE_LK"
-        },
-        {
-          "ticker": "HNBF.R0000",
-          "name": "HNB FINANCE PLC",
-          "exchange": "CSE_LK"
-        },
-        {
-          "ticker": "HNBF.R0001",
-          "name": "HNB FINANCE PLC",
-          "exchange": "CSE_LK"
-        },
-        {
-          "ticker": "JXG.N0000",
-          "name": "JANASHAKTHI PLC",
-          "exchange": "CSE_LK"
-        },
-        {
-          "ticker": "LVEF.R0000",
-          "name": "LVL ENERGY FUND PLC",
-          "exchange": "CSE_LK"
-        },
-        {
-          "ticker": "MBSL.P0000",
-          "name": "MERCHANT BANK OF SRI LANKA & FINANCE PLC",
-          "exchange": "CSE_LK"
-        },
-        {
-          "ticker": "MBSL.R0001",
-          "name": "MERCHANT BANK OF SRI LANKA & FINANCE PLC",
-          "exchange": "CSE_LK"
         }
       ]
     },
     {
       "exchange": "CSE_MA",
       "official_symbols": 82,
-      "matched": 1,
-      "collisions": 65,
-      "missing": 16,
+      "matched": 18,
+      "collisions": 64,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ADH",
@@ -1417,7 +1230,8 @@
           "name": "AFRIC INDUSTRIES SA",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
-            "ASX"
+            "ASX",
+            "NZX"
           ]
         },
         {
@@ -1485,65 +1299,14 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "2SAHA",
-          "name": "SAHAM ASSURANCE",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "BAL",
-          "name": "BALIMA",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "DHO",
-          "name": "DELTA HOLDING SA",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "DLM",
-          "name": "DELATTRE LEVIVIER MAROC",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "DWY",
-          "name": "DISWAY",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "DYT",
-          "name": "DISTY TECHNOLOGIES",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "EQD",
-          "name": "EQDOM",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "GAZ",
-          "name": "AFRIQUIA GAZ",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "LBV",
-          "name": "LABEL VIE",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "LHM",
-          "name": "Holcim Maroc S.A",
-          "exchange": "CSE_MA"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "DFM",
       "official_symbols": 71,
-      "matched": 52,
-      "collisions": 17,
-      "missing": 2,
+      "matched": 54,
+      "collisions": 16,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "ALEC",
@@ -1633,11 +1396,6 @@
       ],
       "missing_examples": [
         {
-          "ticker": "ETIHADENERGY",
-          "name": "Etihad Energy Holding P.J.S.C",
-          "exchange": "DFM"
-        },
-        {
           "ticker": "TKFULEM-RI24",
           "name": "Takaful Emarat - Rights Issue 2024",
           "exchange": "DFM"
@@ -1648,8 +1406,8 @@
       "exchange": "Euronext",
       "official_symbols": 2016,
       "matched": 1337,
-      "collisions": 364,
-      "missing": 315,
+      "collisions": 369,
+      "missing": 310,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1790,8 +1548,8 @@
       "exchange": "FSX",
       "official_symbols": 18154,
       "matched": 7966,
-      "collisions": 3950,
-      "missing": 6238,
+      "collisions": 4262,
+      "missing": 5926,
       "collision_examples": [
         {
           "ticker": "00X0",
@@ -1930,9 +1688,9 @@
     {
       "exchange": "HKEX",
       "official_symbols": 3204,
-      "matched": 3039,
+      "matched": 3134,
       "collisions": 69,
-      "missing": 96,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -2017,53 +1775,8 @@
       ],
       "missing_examples": [
         {
-          "ticker": "00068",
-          "name": "MANYCORE TECH",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "00537",
-          "name": "RIGOL",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "00625",
-          "name": "SHEIN-W",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01081",
-          "name": "DAJIN",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01187",
-          "name": "COFOE MEDICAL",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01191",
-          "name": "CREALIGHTS",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01236",
-          "name": "LDROBOT",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01377",
-          "name": "DTECH",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01392",
-          "name": "HQVT",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01511",
-          "name": "UISEE TECH",
+          "ticker": "06228",
+          "name": "MERDEKAGOLD-DRS",
           "exchange": "HKEX"
         }
       ]
@@ -2071,9 +1784,9 @@
     {
       "exchange": "HNX",
       "official_symbols": 299,
-      "matched": 105,
+      "matched": 136,
       "collisions": 163,
-      "missing": 31,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ADC",
@@ -2108,6 +1821,7 @@
             "NYSE",
             "SET",
             "WSE",
+            "XETRA",
             "XSTU"
           ]
         },
@@ -2176,58 +1890,7 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "AMV",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n SXKD D\u01b0\u1ee3c v\u00e0 trang thi\u1ebft b\u1ecb y t\u1ebf Vi\u1ec7t M\u1ef9",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "BBS",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Vicem bao b\u00ec B\u00fat S\u01a1n",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "BXH",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Vicem Bao b\u00ec H\u1ea3i Ph\u00f2ng",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "CET",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n HTC Holding",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "CJC",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n C\u01a1 \u0111i\u1ec7n Mi\u1ec1n Trung",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "CX8",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n \u0110\u1ea7u t\u01b0 v\u00e0 X\u00e2y l\u1eafp Constrexim s\u1ed1 8",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "DNC",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n \u0110i\u1ec7n n\u01b0\u1edbc l\u1eafp m\u00e1y H\u1ea3i Ph\u00f2ng",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "DTK",
-          "name": "T\u1ed5ng c\u00f4ng ty \u0110i\u1ec7n l\u1ef1c TKV - CTCP",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "ECI",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n T\u1eadp \u0111o\u00e0n ECI",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "HDA",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n H\u00e3ng s\u01a1n \u0110\u00f4ng \u00c1",
-          "exchange": "HNX"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "IDX",
@@ -2306,6 +1969,7 @@
           "name": "Apexindo Pratama Duta Tbk",
           "target_exchange": "IDX",
           "existing_exchanges": [
+            "BSE_IN",
             "LSE",
             "NSE_IN"
           ]
@@ -2672,8 +2336,8 @@
       "exchange": "LSE",
       "official_symbols": 11140,
       "matched": 6828,
-      "collisions": 793,
-      "missing": 3519,
+      "collisions": 850,
+      "missing": 3462,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2812,9 +2476,9 @@
     {
       "exchange": "MSX",
       "official_symbols": 108,
-      "matched": 91,
+      "matched": 93,
       "collisions": 13,
-      "missing": 4,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "AMAT",
@@ -2899,16 +2563,6 @@
       ],
       "missing_examples": [
         {
-          "ticker": "OCCI",
-          "name": "OMAN CHROMITE",
-          "exchange": "MSX"
-        },
-        {
-          "ticker": "OMIF",
-          "name": "OMIFCO",
-          "exchange": "MSX"
-        },
-        {
           "ticker": "OOMP",
           "name": "OMAN OIL- PREF.",
           "exchange": "MSX"
@@ -2924,8 +2578,8 @@
       "exchange": "NASDAQ",
       "official_symbols": 5647,
       "matched": 4598,
-      "collisions": 65,
-      "missing": 984,
+      "collisions": 67,
+      "missing": 982,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3067,8 +2721,8 @@
       "exchange": "NEO",
       "official_symbols": 442,
       "matched": 209,
-      "collisions": 66,
-      "missing": 167,
+      "collisions": 67,
+      "missing": 166,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -3076,6 +2730,7 @@
           "target_exchange": "NEO",
           "existing_exchanges": [
             "ASX",
+            "BSE_IN",
             "FSX",
             "Munich",
             "NSE_IN",
@@ -3228,59 +2883,10 @@
     {
       "exchange": "NSE_IN",
       "official_symbols": 3498,
-      "matched": 2503,
-      "collisions": 460,
-      "missing": 535,
+      "matched": 3428,
+      "collisions": 70,
+      "missing": 0,
       "collision_examples": [
-        {
-          "ticker": "3BBLACKBIO",
-          "name": "3B Blackbio Dx Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "A2ZINFRA",
-          "name": "A2Z Infra Engineering Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "ABAN",
-          "name": "Aban Offshore Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "ABANSENT",
-          "name": "Abans Enterprises Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "ABMKNO",
-          "name": "ABM Knowledgeware Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "ACGL",
-          "name": "Automobile Corporation of Goa Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "BSE_IN",
-            "NASDAQ"
-          ]
-        },
         {
           "ticker": "ACL",
           "name": "Andhra Cements Limited",
@@ -3291,89 +2897,92 @@
           ]
         },
         {
-          "ticker": "ACSTECH",
-          "name": "ACS Technologies Limited",
+          "ticker": "AGL",
+          "name": "Allcargo Global Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
-            "BSE_IN"
+            "ASX",
+            "NYSE"
           ]
         },
         {
-          "ticker": "ADDIND",
-          "name": "Addi Industries Limited",
+          "ticker": "AHCL",
+          "name": "Anlon Healthcare Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
-            "BSE_IN"
+            "PSX"
           ]
         },
         {
-          "ticker": "ADOR",
-          "name": "Ador Welding Limited",
+          "ticker": "ALPHA",
+          "name": "KOTAKMAMC-KOTAKALPHA",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
-            "BSE_IN"
+            "ATHEX"
+          ]
+        },
+        {
+          "ticker": "AMAL",
+          "name": "Amal Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "LSE",
+            "NASDAQ",
+            "SIX",
+            "TASE"
+          ]
+        },
+        {
+          "ticker": "APS",
+          "name": "Australian Premium Solar (India) Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "ARIS",
+          "name": "Arisinfra Solutions Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "NYSE",
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "BALCO",
+          "name": "Solve Plastic Products Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "STO"
+          ]
+        },
+        {
+          "ticker": "BETA",
+          "name": "Beta Drugs Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "BOSS",
+          "name": "Boss Packaging Solutions Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "FSX",
+            "XETRA"
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "AASTHA",
-          "name": "Aastha Spintex Limited",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABCOTS",
-          "name": "A B Cotspin India Limited",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABH",
-          "name": "ABH Healthcare Limited",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABINFRA",
-          "name": "A B Infrabuild Limited",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABSL10BANK",
-          "name": "BIRLASLAMC - ABSL10BANK",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABSLBANETF",
-          "name": "BIRLASLAMC-ABSLBANETF",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABSLMSCIN",
-          "name": "BIRLASLAMC - ABSLMSCIN",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABSLNN50ET",
-          "name": "BIRLASLAMC-ABSLNN50ET",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ABSLPSE",
-          "name": "BIRLASLAMC-ABSLPSE",
-          "exchange": "NSE_IN"
-        },
-        {
-          "ticker": "ADISOFT",
-          "name": "Adisoft Technologies Limited",
-          "exchange": "NSE_IN"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "NSE_KE",
       "official_symbols": 68,
-      "matched": 11,
-      "collisions": 25,
-      "missing": 32,
+      "matched": 44,
+      "collisions": 24,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ARM",
@@ -3455,73 +3064,23 @@
           ]
         },
         {
-          "ticker": "EABL",
-          "name": "East African Breweries Ltd Ord 2.00",
+          "ticker": "EQTY",
+          "name": "Equity Group Holdings Ord 0.50",
           "target_exchange": "NSE_KE",
           "existing_exchanges": [
-            "DSE_TZ"
+            "NYSE ARCA",
+            "TSXV"
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "ABSA",
-          "name": "Absa Bank Kenya PLC",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "BRIT",
-          "name": "Britam Holdings Ltd Ord 0.10",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "CABL",
-          "name": "E.A.Cables PLC Ord 0.50",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "COOP",
-          "name": "The Co-operative Bank of Kenya Ltd Ord 1.00",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "CTUM",
-          "name": "Centum Investment Co Ltd Ord 0.50",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "DTK",
-          "name": "Diamond Trust Bank Kenya Ltd Ord 4.00",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "EGAD",
-          "name": "Eaagads Ltd Ord 1.25 AIMS",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "EVRD",
-          "name": "Eveready East Africa Ltd Ord.1.00",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "FMLY",
-          "name": "Family Bank Limited",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "HAFR",
-          "name": "Home Afrika Ltd Ord 1.00",
-          "exchange": "NSE_KE"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "NYSE",
       "official_symbols": 3890,
       "matched": 1982,
-      "collisions": 566,
-      "missing": 1342,
+      "collisions": 571,
+      "missing": 1337,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3669,8 +3228,8 @@
       "exchange": "NYSE ARCA",
       "official_symbols": 2739,
       "matched": 2618,
-      "collisions": 29,
-      "missing": 92,
+      "collisions": 30,
+      "missing": 91,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -3716,6 +3275,14 @@
           ]
         },
         {
+          "ticker": "CLUB",
+          "name": "Billionaires Club ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "BVB"
+          ]
+        },
+        {
           "ticker": "CSRA",
           "name": "Cohen & Steers Real Assets Active ETF",
           "target_exchange": "NYSE ARCA",
@@ -3749,14 +3316,6 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "PSX"
-          ]
-        },
-        {
-          "ticker": "GGM",
-          "name": "GGM Macro Alignment ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "TSXV"
           ]
         }
       ],
@@ -3817,8 +3376,8 @@
       "exchange": "NYSE MKT",
       "official_symbols": 308,
       "matched": 229,
-      "collisions": 31,
-      "missing": 48,
+      "collisions": 33,
+      "missing": 46,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3855,6 +3414,14 @@
             "IDX",
             "NYSE",
             "STO"
+          ]
+        },
+        {
+          "ticker": "CET",
+          "name": "Central Securities Corporation Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "HNX"
           ]
         },
         {
@@ -3899,14 +3466,6 @@
             "SET",
             "XETRA"
           ]
-        },
-        {
-          "ticker": "EIM",
-          "name": "Eaton Vance Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "ICE_IS"
-          ]
         }
       ],
       "missing_examples": [
@@ -3918,11 +3477,6 @@
         {
           "ticker": "BESS.W",
           "name": "Bimergen Energy Corporation Warrants, each share exercisable to purchase one share of Common Stock",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "CET",
-          "name": "Central Securities Corporation Common Stock",
           "exchange": "NYSE MKT"
         },
         {
@@ -3959,14 +3513,19 @@
           "ticker": "ERH",
           "name": "Allspring Utilities and High Income Fund Common Shares",
           "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "EVV",
+          "name": "Eaton Vance Limited Duration Income Fund Common Shares of Beneficial Interest",
+          "exchange": "NYSE MKT"
         }
       ]
     },
     {
       "exchange": "NZX",
       "official_symbols": 172,
-      "matched": 45,
-      "collisions": 126,
+      "matched": 84,
+      "collisions": 87,
       "missing": 1,
       "collision_examples": [
         {
@@ -3979,20 +3538,13 @@
           ]
         },
         {
-          "ticker": "AFI",
-          "name": "Australian Foundation Investment Company Limited Ord Shares",
-          "target_exchange": "NZX",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
           "ticker": "AFT",
           "name": "AFT Pharmaceuticals Ltd Ordinary Shares",
           "target_exchange": "NZX",
           "existing_exchanges": [
             "FSX",
-            "JSE"
+            "JSE",
+            "XETRA"
           ]
         },
         {
@@ -4011,16 +3563,6 @@
           "existing_exchanges": [
             "ASX",
             "NYSE"
-          ]
-        },
-        {
-          "ticker": "AIA",
-          "name": "Auckland International Airport Limited Ordinary Shares",
-          "target_exchange": "NZX",
-          "existing_exchanges": [
-            "ASX",
-            "ATHEX",
-            "NASDAQ"
           ]
         },
         {
@@ -4049,14 +3591,6 @@
           ]
         },
         {
-          "ticker": "ANZ",
-          "name": "ANZ Group Holdings Limited Ordinary Shares",
-          "target_exchange": "NZX",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
           "ticker": "AOF",
           "name": "AoFrio Limited Ordinary Shares",
           "target_exchange": "NZX",
@@ -4068,6 +3602,36 @@
             "XETRA",
             "XHAN",
             "XSTU"
+          ]
+        },
+        {
+          "ticker": "APA",
+          "name": "Smart Asia Pacific ETF Units",
+          "target_exchange": "NZX",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "APL",
+          "name": "Asset Plus Limited Ordinary Shares",
+          "target_exchange": "NZX",
+          "existing_exchanges": [
+            "FSX",
+            "PSE",
+            "PSX",
+            "TSXV",
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "ARB",
+          "name": "ArborGen Holdings Limited Ordinary Shares",
+          "target_exchange": "NZX",
+          "existing_exchanges": [
+            "ASX",
+            "NYSE ARCA",
+            "TSX"
           ]
         }
       ],
@@ -4082,9 +3646,9 @@
     {
       "exchange": "OSL",
       "official_symbols": 296,
-      "matched": 283,
-      "collisions": 8,
-      "missing": 5,
+      "matched": 289,
+      "collisions": 6,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "BINT",
@@ -4095,28 +3659,12 @@
           ]
         },
         {
-          "ticker": "BORR",
-          "name": "BORR DRILLING",
-          "target_exchange": "OSL",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
           "ticker": "CAPT",
           "name": "CAPITAL TANKERS",
           "target_exchange": "OSL",
           "existing_exchanges": [
             "NASDAQ",
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "GKP",
-          "name": "GULF KEYSTONE PET",
-          "target_exchange": "OSL",
-          "existing_exchanges": [
-            "LSE"
           ]
         },
         {
@@ -4155,28 +3703,8 @@
       ],
       "missing_examples": [
         {
-          "ticker": "BOHUS",
-          "name": "BOHUS",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "GOLDR",
-          "name": "GOLD ROAD INTL",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "PLCAN",
-          "name": "PELICAN AQUA HLDNG",
-          "exchange": "OSL"
-        },
-        {
           "ticker": "QGAS",
           "name": "QUESTERRE EN PREF",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "VOIM",
-          "name": "VOIM",
           "exchange": "OSL"
         }
       ]
@@ -4325,9 +3853,9 @@
     {
       "exchange": "PSE",
       "official_symbols": 381,
-      "matched": 153,
+      "matched": 170,
       "collisions": 119,
-      "missing": 109,
+      "missing": 92,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -4355,6 +3883,7 @@
           "target_exchange": "PSE",
           "existing_exchanges": [
             "ASX",
+            "BSE_IN",
             "NSE_IN",
             "SET",
             "STO"
@@ -4468,13 +3997,13 @@
           "exchange": "PSE"
         },
         {
-          "ticker": "ALHI",
-          "name": "Anchor Land Holdings, Inc.",
+          "ticker": "ALTP2",
+          "name": "Alternergy Holdings Corporation Preferred Shares 2 \u2013 Series A",
           "exchange": "PSE"
         },
         {
-          "ticker": "ALTP2",
-          "name": "Alternergy Holdings Corporation Preferred Shares 2 \u2013 Series A",
+          "ticker": "APB2R",
+          "name": "Ayala Corporation Class ``B`` Series 2 Preferred Shares",
           "exchange": "PSE"
         }
       ]
@@ -4483,8 +4012,8 @@
       "exchange": "PSX",
       "official_symbols": 724,
       "matched": 390,
-      "collisions": 142,
-      "missing": 192,
+      "collisions": 143,
+      "missing": 191,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -4816,9 +4345,9 @@
     {
       "exchange": "SGX",
       "official_symbols": 746,
-      "matched": 611,
-      "collisions": 123,
-      "missing": 12,
+      "matched": 624,
+      "collisions": 122,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4863,7 +4392,8 @@
           "existing_exchanges": [
             "FSX",
             "NASDAQ",
-            "TSXV"
+            "TSXV",
+            "XETRA"
           ]
         },
         {
@@ -4909,58 +4439,7 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "9PQ",
-          "name": "XMH Hldgs",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "9SY",
-          "name": "Astaka Hldgs",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "AMQ",
-          "name": "Ambiq Micro",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "B96",
-          "name": "Amova AsiaCredit USD",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "EGX",
-          "name": "EGP ENERGY CORP",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "GLU",
-          "name": "Lion SG Phy Gold US$",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "Q50",
-          "name": "A CGS FG Next50 SGD",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "UGBD",
-          "name": "Grab US SDR 2to1",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "UGGD",
-          "name": "Sea US SDR 50to1",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "UXSD",
-          "name": "SpaceX US SDR 100to1",
-          "exchange": "SGX"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "SSE_CL",
@@ -4974,9 +4453,9 @@
     {
       "exchange": "TADAWUL",
       "official_symbols": 413,
-      "matched": 200,
+      "matched": 203,
       "collisions": 210,
-      "missing": 3,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "1201",
@@ -5060,30 +4539,14 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "4328",
-          "name": "LADUN",
-          "exchange": "TADAWUL"
-        },
-        {
-          "ticker": "7205",
-          "name": "DBS",
-          "exchange": "TADAWUL"
-        },
-        {
-          "ticker": "9655",
-          "name": "MSGA",
-          "exchange": "TADAWUL"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "TSE",
       "official_symbols": 4444,
-      "matched": 4043,
+      "matched": 4102,
       "collisions": 336,
-      "missing": 65,
+      "missing": 6,
       "collision_examples": [
         {
           "ticker": "1305",
@@ -5193,28 +4656,8 @@
           "exchange": "TSE"
         },
         {
-          "ticker": "542A",
-          "name": "Vitabrid Japan Inc.",
-          "exchange": "TSE"
-        },
-        {
-          "ticker": "544A",
-          "name": "GMS Group Co.,Ltd.",
-          "exchange": "TSE"
-        },
-        {
-          "ticker": "545A",
-          "name": "Toranvia Co.,Ltd.",
-          "exchange": "TSE"
-        },
-        {
-          "ticker": "548A",
-          "name": "SystemEXE,Inc.",
-          "exchange": "TSE"
-        },
-        {
-          "ticker": "549A",
-          "name": "HITO-TO-HITO Holdings Co.,Ltd.",
+          "ticker": "6965",
+          "name": "HAMAMATSU PHOTONICS K.K.",
           "exchange": "TSE"
         }
       ]
@@ -5464,9 +4907,9 @@
     {
       "exchange": "TWSE",
       "official_symbols": 1094,
-      "matched": 1014,
+      "matched": 1016,
       "collisions": 34,
-      "missing": 46,
+      "missing": 44,
       "collision_examples": [
         {
           "ticker": "1589",
@@ -5652,8 +5095,8 @@
       "exchange": "UPCOM",
       "official_symbols": 818,
       "matched": 2,
-      "collisions": 520,
-      "missing": 296,
+      "collisions": 523,
+      "missing": 293,
       "collision_examples": [
         {
           "ticker": "AAH",
@@ -5686,6 +5129,7 @@
           "target_exchange": "UPCOM",
           "existing_exchanges": [
             "ASX",
+            "BSE_IN",
             "FSX",
             "Munich",
             "NSE_IN",
@@ -5727,6 +5171,7 @@
           "target_exchange": "UPCOM",
           "existing_exchanges": [
             "ASX",
+            "BSE_IN",
             "NSE_IN",
             "SET",
             "STO"
@@ -5769,11 +5214,6 @@
           "exchange": "UPCOM"
         },
         {
-          "ticker": "BAL",
-          "name": "CTCP Bao b\u00ec Bia - R\u01b0\u1ee3u - N\u01b0\u1edbc gi\u1ea3i kh\u00e1t",
-          "exchange": "UPCOM"
-        },
-        {
           "ticker": "BBM",
           "name": "CTCP Bia H\u00e0 N\u1ed9i - Nam \u0110\u1ecbnh",
           "exchange": "UPCOM"
@@ -5794,13 +5234,18 @@
           "exchange": "UPCOM"
         },
         {
-          "ticker": "BHI",
-          "name": "T\u1ed5ng CTCP B\u1ea3o hi\u1ec3m S\u00e0i G\u00f2n - H\u00e0 N\u1ed9i",
+          "ticker": "BLF",
+          "name": "CTCP Th\u1ee7y s\u1ea3n B\u1ea1c Li\u00eau",
           "exchange": "UPCOM"
         },
         {
-          "ticker": "BLF",
-          "name": "CTCP Th\u1ee7y s\u1ea3n B\u1ea1c Li\u00eau",
+          "ticker": "BLI",
+          "name": "T\u1ed5ng CTCP B\u1ea3o hi\u1ec3m B\u1ea3o Long",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "BMF",
+          "name": "CTCP V\u1eadt li\u1ec7u X\u00e2y d\u1ef1ng v\u00e0 Ch\u1ea5t \u0111\u1ed1t \u0110\u1ed3ng Nai",
           "exchange": "UPCOM"
         }
       ]
@@ -5808,78 +5253,16 @@
     {
       "exchange": "XETRA",
       "official_symbols": 5119,
-      "matched": 4088,
-      "collisions": 708,
-      "missing": 323,
+      "matched": 4947,
+      "collisions": 170,
+      "missing": 2,
       "collision_examples": [
-        {
-          "ticker": "01P",
-          "name": "MEDPACE HOLDINGS   DL-,01",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "FSX",
-            "XSTU"
-          ]
-        },
-        {
-          "ticker": "07G0",
-          "name": "CORPAY INC.",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "FSX"
-          ]
-        },
-        {
-          "ticker": "0AK",
-          "name": "ARAMARK           DL -,01",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "FSX",
-            "XSTU"
-          ]
-        },
-        {
-          "ticker": "0EF",
-          "name": "E.L.F. BEAUTY INC  DL-,01",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "FSX",
-            "XSTU"
-          ]
-        },
-        {
-          "ticker": "0GS",
-          "name": "GUIDEWIRE SOFTWA.DL-,0001",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "FSX",
-            "XSTU"
-          ]
-        },
         {
           "ticker": "0GZK",
           "name": "BNP PAR.ISS. O.E. ETC",
           "target_exchange": "XETRA",
           "existing_exchanges": [
             "LSE"
-          ]
-        },
-        {
-          "ticker": "0L5",
-          "name": "LAMB WESTON HLDGS    DL 1",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "FSX",
-            "XSTU"
-          ]
-        },
-        {
-          "ticker": "0L8",
-          "name": "LANTHEUS HLDGS     DL-,01",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "FSX",
-            "XSTU"
           ]
         },
         {
@@ -5891,63 +5274,81 @@
           ]
         },
         {
-          "ticker": "0M5",
-          "name": "BILL HOLDINGS   DL-,00001",
+          "ticker": "3QQQ",
+          "name": "WITR MU.AS.I.NA100 3X 62",
           "target_exchange": "XETRA",
           "existing_exchanges": [
-            "FSX"
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "42Z",
+          "name": "REVOLUTION MED.  DL-,0001",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "SGX"
+          ]
+        },
+        {
+          "ticker": "5ESG",
+          "name": "IN.MK.-I.S+P",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "ADG",
+          "name": "AMG CRITICAL MATER. EO-02",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        },
+        {
+          "ticker": "ADTC",
+          "name": "AEI-GL.D.C.E DLA",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "OTC"
+          ]
+        },
+        {
+          "ticker": "ARMY",
+          "name": "LEVERAGE SHARES ARM ETP",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "Euronext",
+            "LSE",
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ASCI",
+          "name": "ABRDN3FUSUCHETF ETFDLA",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ATEA",
+          "name": "IM4-E.T1 C.B.E. EOA",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "OSL"
           ]
         }
       ],
       "missing_examples": [
         {
-          "ticker": "08D",
-          "name": "MIRUM PHARMAC.   DL-,0001",
+          "ticker": "M5S",
+          "name": "H2 CORE AG INH O.N.",
           "exchange": "XETRA"
         },
         {
-          "ticker": "0Q30",
-          "name": "BEYOND MEAT INC O.N.",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "0YB0",
-          "name": "IONQ INC. CL.A   DL-,0001",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "1170",
-          "name": "ARISTA NET.INC. NEW O.N.",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "1B8",
-          "name": "ONDAS INC.       DL-,0001",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "1GBS",
-          "name": "GBS SOFTWARE AG INH O.N.",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "1S2",
-          "name": "FIGMA INC. A O.N.",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "1SMA",
-          "name": "SMAG MOB.ANT.MASTS INH ON",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "1XJ",
-          "name": "VIPER ENERGY DL-,000001",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "21GR",
-          "name": "21SHARES GRAM ETPOE",
+          "ticker": "PO1",
+          "name": "POB AG NA O.N.",
           "exchange": "XETRA"
         }
       ]

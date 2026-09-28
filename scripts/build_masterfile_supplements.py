@@ -22,6 +22,20 @@ LISTINGS_CSV = DATA_DIR / "listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 MASTERFILE_SUPPLEMENT_SUMMARY_JSON = DATA_DIR / "masterfiles" / "supplemental_summary.json"
+COVERAGE_EXPANSION_CSV = DATA_DIR / "coverage_expansion_listings.csv"
+COVERAGE_EXPANSION_FIELDS = [
+    "listing_key",
+    "ticker",
+    "exchange",
+    "name",
+    "asset_type",
+    "stock_sector",
+    "etf_category",
+    "country",
+    "country_code",
+    "isin",
+    "aliases",
+]
 
 SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
     "AMS": {
@@ -149,6 +163,7 @@ SUPPLEMENT_REFRESH_ONLY_EXCHANGES = {"FSX"}
 
 SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
     re.compile(r"\babs trust\b", re.IGNORECASE),
+    re.compile(r"(?:^|[\s-])drs(?:$|[\s-])", re.IGNORECASE),
 ]
 
 SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE: dict[str, set[str]] = {
@@ -172,6 +187,46 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> 
         writer.writerows(rows)
 
 
+def official_isin(row: dict[str, str]) -> str:
+    return (row.get("isin") or "").strip().upper()
+
+
+def append_coverage_expansion_rows(rows: list[dict[str, str]]) -> int:
+    if not rows:
+        return 0
+    existing = load_csv(COVERAGE_EXPANSION_CSV) if COVERAGE_EXPANSION_CSV.exists() else []
+    seen = {
+        row.get("listing_key") or f"{row['exchange']}::{row['ticker']}"
+        for row in existing
+    }
+    added: list[dict[str, str]] = []
+    for row in rows:
+        listing_key = row.get("listing_key") or f"{row['exchange']}::{row['ticker']}"
+        if listing_key in seen:
+            continue
+        seen.add(listing_key)
+        added.append({field: row.get(field, "") for field in COVERAGE_EXPANSION_FIELDS})
+        added[-1]["listing_key"] = listing_key
+    if not added:
+        return 0
+    raw = COVERAGE_EXPANSION_CSV.read_bytes() if COVERAGE_EXPANSION_CSV.exists() else b""
+    newline = "\r\n" if raw.endswith(b"\r\n") else "\n"
+    prefix = "" if not raw or raw.endswith(newline.encode("utf-8")) else newline
+    with COVERAGE_EXPANSION_CSV.open("a", encoding="utf-8", newline="") as handle:
+        if prefix:
+            handle.write(prefix)
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=COVERAGE_EXPANSION_FIELDS,
+            extrasaction="ignore",
+            lineterminator=newline,
+        )
+        if not raw:
+            writer.writeheader()
+        writer.writerows(added)
+    return len(added)
+
+
 def build_supplement_rows(
     core_rows: list[dict[str, str]],
     masterfile_rows: list[dict[str, str]],
@@ -188,7 +243,8 @@ def build_supplement_rows(
         core_rows_by_key[row_key] = row
 
     supplements: list[dict[str, str]] = []
-    eligible_missing_exchanges_by_ticker: dict[str, set[str]] = {}
+    coverage_expansion_rows: list[dict[str, str]] = []
+    eligible_by_ticker: dict[str, list[dict[str, str]]] = {}
     for row in masterfile_rows:
         exchange = row["exchange"]
         if exchange not in SUPPLEMENT_EXCHANGES:
@@ -201,10 +257,7 @@ def build_supplement_rows(
         )
         if row.get("reference_scope") not in allowed_reference_scopes:
             continue
-        ticker = row["ticker"]
-        if core_exchanges_by_ticker.get(ticker):
-            continue
-        eligible_missing_exchanges_by_ticker.setdefault(ticker, set()).add(exchange)
+        eligible_by_ticker.setdefault(row["ticker"], []).append(row)
 
     summary: dict[str, Any] = {
         "supplement_rows": 0,
@@ -212,26 +265,15 @@ def build_supplement_rows(
         "refreshable_existing_rows": 0,
         "colliding_rows_skipped": 0,
         "refresh_only_missing_rows_skipped": 0,
+        "coverage_expansion_missing_rows": 0,
         "by_exchange": {},
+        "coverage_expansion_rows": [],
     }
 
     seen: set[tuple[str, str]] = set()
-    for row in masterfile_rows:
-        exchange = row["exchange"]
-        if exchange not in SUPPLEMENT_EXCHANGES:
-            continue
-        if row.get("listing_status") != "active":
-            continue
-        allowed_reference_scopes = SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE.get(
-            exchange,
-            {"exchange_directory"},
-        )
-        if row.get("reference_scope") not in allowed_reference_scopes:
-            continue
 
-        ticker = row["ticker"]
-        exchanges = core_exchanges_by_ticker.get(ticker, set())
-        stats = summary["by_exchange"].setdefault(
+    def exchange_stats(exchange: str) -> dict[str, int]:
+        return summary["by_exchange"].setdefault(
             exchange,
             {
                 "safe_missing_rows": 0,
@@ -239,40 +281,23 @@ def build_supplement_rows(
                 "colliding_rows_skipped": 0,
             },
         )
-        if exchanges and exchanges != {exchange}:
-            summary["colliding_rows_skipped"] += 1
-            stats["colliding_rows_skipped"] += 1
-            continue
-        if not exchanges and exchange in SUPPLEMENT_REFRESH_ONLY_EXCHANGES:
-            summary["refresh_only_missing_rows_skipped"] += 1
-            stats["refresh_only_missing_rows_skipped"] = stats.get("refresh_only_missing_rows_skipped", 0) + 1
-            continue
-        if not exchanges and len(eligible_missing_exchanges_by_ticker.get(ticker, set())) > 1:
-            summary["colliding_rows_skipped"] += 1
-            stats["colliding_rows_skipped"] += 1
-            continue
 
-        existing_row = core_rows_by_key.get((ticker, exchange))
-        if existing_row and not rows_refer_to_same_entity(existing_row, row):
-            summary["colliding_rows_skipped"] += 1
-            stats["colliding_rows_skipped"] += 1
-            continue
+    def skip_collision(exchange: str) -> None:
+        summary["colliding_rows_skipped"] += 1
+        exchange_stats(exchange)["colliding_rows_skipped"] += 1
 
-        key = (ticker, exchange)
-        if key in seen:
-            continue
-        seen.add(key)
-
+    def make_candidate(row: dict[str, str]) -> dict[str, str] | None:
+        exchange = row["exchange"]
         exchange_meta = SUPPLEMENT_EXCHANGES[exchange]
         candidate = {
-            "ticker": ticker,
+            "ticker": row["ticker"],
             "name": row["name"],
             "exchange": exchange,
             "asset_type": row["asset_type"],
             "sector": row.get("sector", ""),
             "country": exchange_meta["country"],
             "country_code": exchange_meta["country_code"],
-            "isin": "",
+            "isin": official_isin(row),
             "aliases": "",
             "source_key": row.get("source_key", ""),
             "source_url": row.get("source_url", ""),
@@ -281,25 +306,118 @@ def build_supplement_rows(
         if candidate["asset_type"] == "Stock" and any(
             pattern.search(candidate["name"]) for pattern in SUPPLEMENT_EXCLUDED_STOCK_PATTERNS
         ):
-            summary["colliding_rows_skipped"] += 1
-            stats["colliding_rows_skipped"] += 1
-            continue
+            return None
         if should_exclude_stock_row(candidate):
-            summary["colliding_rows_skipped"] += 1
-            stats["colliding_rows_skipped"] += 1
+            return None
+        return candidate
+
+    def as_coverage_row(candidate: dict[str, str]) -> dict[str, str]:
+        return {
+            "listing_key": f"{candidate['exchange']}::{candidate['ticker']}",
+            "ticker": candidate["ticker"],
+            "exchange": candidate["exchange"],
+            "name": candidate["name"],
+            "asset_type": candidate["asset_type"],
+            "stock_sector": candidate.get("sector", ""),
+            "etf_category": "",
+            "country": candidate.get("country", ""),
+            "country_code": candidate.get("country_code", ""),
+            "isin": candidate.get("isin", ""),
+            "aliases": candidate.get("aliases", ""),
+        }
+
+    for row in masterfile_rows:
+        exchange = row["exchange"]
+        if exchange not in SUPPLEMENT_EXCHANGES:
+            continue
+        if row.get("listing_status") != "active":
+            continue
+        allowed_reference_scopes = SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE.get(
+            exchange,
+            {"exchange_directory"},
+        )
+        if row.get("reference_scope") not in allowed_reference_scopes:
             continue
 
-        if exchanges == {exchange}:
+        ticker = row["ticker"]
+        key = (ticker, exchange)
+        if key in seen:
+            continue
+        stats = exchange_stats(exchange)
+        core_exchanges = core_exchanges_by_ticker.get(ticker, set())
+        existing_row = core_rows_by_key.get(key)
+
+        if exchange in SUPPLEMENT_REFRESH_ONLY_EXCHANGES and existing_row is None:
+            summary["refresh_only_missing_rows_skipped"] += 1
+            stats["refresh_only_missing_rows_skipped"] = stats.get("refresh_only_missing_rows_skipped", 0) + 1
+            continue
+
+        candidate = make_candidate(row)
+        if candidate is None:
+            skip_collision(exchange)
+            continue
+
+        if existing_row:
+            if not rows_refer_to_same_entity(existing_row, row):
+                skip_collision(exchange)
+                continue
+            seen.add(key)
             summary["refreshable_existing_rows"] += 1
             stats["refreshable_existing_rows"] += 1
-        else:
-            summary["safe_missing_rows"] += 1
-            stats["safe_missing_rows"] += 1
+            supplements.append(candidate)
+            continue
 
+        if exchange == "B3" and candidate["asset_type"] == "ETF":
+            skip_collision(exchange)
+            continue
+
+        peers = eligible_by_ticker.get(ticker, [])
+        peer_isins = {official_isin(peer) for peer in peers if official_isin(peer)}
+        peer_exchanges = {peer["exchange"] for peer in peers}
+
+        if core_exchanges:
+            core_isins = {
+                official_isin(core_rows_by_key[(ticker, core_exchange)])
+                for core_exchange in core_exchanges
+                if (ticker, core_exchange) in core_rows_by_key
+            }
+            core_isins.discard("")
+            master_isin = official_isin(row)
+            # Only attach a new venue when every existing same-ticker row is the
+            # same instrument. Mixed ISINs on one ticker are homonyms, not duals.
+            if master_isin and core_isins == {master_isin}:
+                seen.add(key)
+                summary["safe_missing_rows"] += 1
+                stats["safe_missing_rows"] += 1
+                supplements.append(candidate)
+                continue
+            skip_collision(exchange)
+            continue
+
+        if len(peer_exchanges) > 1:
+            shared_isin = next(iter(peer_isins), "") if len(peer_isins) == 1 else ""
+            if shared_isin and all(official_isin(peer) == shared_isin for peer in peers):
+                seen.add(key)
+                summary["safe_missing_rows"] += 1
+                stats["safe_missing_rows"] += 1
+                supplements.append(candidate)
+                continue
+            if len(peer_isins) >= 2:
+                seen.add(key)
+                coverage_expansion_rows.append(as_coverage_row(candidate))
+                continue
+            skip_collision(exchange)
+            continue
+
+        seen.add(key)
+        summary["safe_missing_rows"] += 1
+        stats["safe_missing_rows"] += 1
         supplements.append(candidate)
 
     supplements.sort(key=lambda row: (row["exchange"], row["ticker"]))
     summary["supplement_rows"] = len(supplements)
+    summary["coverage_expansion_missing_rows"] = len(coverage_expansion_rows)
+    summary["coverage_expansion_rows"] = coverage_expansion_rows
     return supplements, summary
 
 
@@ -357,6 +475,8 @@ def main() -> dict[str, Any]:
         "reference_scope",
     ]
     write_csv(MASTERFILE_SUPPLEMENT_CSV, fieldnames, supplement_rows)
+    expansion_rows = list(summary.pop("coverage_expansion_rows", []))
+    summary["coverage_expansion_rows_appended"] = append_coverage_expansion_rows(expansion_rows)
     MASTERFILE_SUPPLEMENT_SUMMARY_JSON.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))
     return summary
