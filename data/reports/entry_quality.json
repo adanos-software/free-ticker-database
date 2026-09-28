@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-09-21T12:51:47Z",
-    "rows": 92103,
+    "generated_at": "2026-09-28T09:09:01Z",
+    "rows": 92142,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,35 +14,35 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 80615,
-      "source_gap": 11455,
-      "warn": 33
+      "pass": 80605,
+      "source_gap": 11503,
+      "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4496,
-      "official_reference": 82524,
+      "identifier_enriched": 4504,
+      "official_reference": 82554,
       "scoped_source_gap": 238,
-      "valid_isin": 4845
+      "valid_isin": 4846
     },
     "severity_counts": {
       "high": 7,
-      "medium": 27,
-      "source_gap": 11854
+      "medium": 28,
+      "source_gap": 11942
     },
     "issue_counts": {
-      "official_reference_gap": 6292,
+      "official_reference_gap": 6301,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1306,
-      "expected_missing_primary_isin": 860,
-      "missing_etf_category": 109,
-      "official_name_mismatch": 27,
+      "missing_stock_sector": 1311,
+      "expected_missing_primary_isin": 900,
+      "missing_etf_category": 143,
+      "official_name_mismatch": 28,
       "official_isin_mismatch": 7
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8483,
-        "source_gap": 3255,
+        "pass": 8484,
+        "source_gap": 3254,
         "warn": 14
       },
       {
@@ -55,26 +55,26 @@
         "source_gap": 1004
       },
       {
+        "exchange": "NASDAQ",
+        "source_gap": 348,
+        "pass": 4443,
+        "warn": 4
+      },
+      {
         "exchange": "B3",
         "source_gap": 338,
         "pass": 1243
       },
       {
-        "exchange": "NASDAQ",
-        "source_gap": 320,
-        "pass": 4450,
-        "warn": 4
+        "exchange": "NYSE ARCA",
+        "pass": 2509,
+        "source_gap": 274,
+        "warn": 2
       },
       {
         "exchange": "BMV",
         "pass": 77,
         "source_gap": 267
-      },
-      {
-        "exchange": "NYSE ARCA",
-        "pass": 2511,
-        "source_gap": 264,
-        "warn": 2
       },
       {
         "exchange": "Munich",
@@ -86,8 +86,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1211,
-        "source_gap": 185
+        "pass": 1210,
+        "source_gap": 196
       },
       {
         "exchange": "AMS",
@@ -129,9 +129,9 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1914,
+        "pass": 1913,
         "source_gap": 108,
-        "warn": 4
+        "warn": 5
       },
       {
         "exchange": "JSE",

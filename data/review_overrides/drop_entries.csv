@@ -186,6 +186,7 @@ BRE2,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do no
 BRGC,OTC,high,"OpenFIGI ISIN-validation symbol-reconciliation 2026-06-22: Renamed + retickered to North America Lithium and Gold Corp (OTC:NALG, 2026-01); old symbol BRGC defunct."
 BRLSW,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
 BRQSF,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
+BRR,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::BRR to NASDAQ::SVIA; exact evidence is recorded in listing_transitions.csv.
 BRRWW,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: ProCap Financial, Inc. - Warrant."
 BRSHF,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 BSLK,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
@@ -264,6 +265,7 @@ CRAQU,NASDAQ,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/p
 CRBD,NYSE,0.95,OpenFIGI securityType=non-equity; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 CREV,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 CRUST-B,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do not return an active exact Stockholm share while the current NGM company directory exposes no active primary symbol for this ticker; the remaining STO core row is stale.
+CSAN,NYSE,0.99,Official Nasdaq Trader trading-system delete for NYSE::CSAN Cosan SA ADR; exact evidence is recorded in listing_transitions.csv.
 CSGS,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
 CSMXCP,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
 CSSEQ,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
@@ -329,6 +331,7 @@ DKINVO,CPH,0.99,Official Nasdaq Nordic Copenhagen shares directory does not list
 DLAPQ,NYSE MKT,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 DMYY,NYSE MKT,0.96,"Yahoo Finance resolves this symbol to PNK rather than the current exchange, indicating the current listing is stale."
 DMYYU,OTC,0.95,"dMY Squared Technology — defunct SPAC unit, no current listing (verified v3.30.31 + 2026-06-19)"
+DOMO,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::DOMO to NASDAQ::HUCK; exact evidence is recorded in listing_transitions.csv.
 DRH,NYSE,0.96,"Yahoo Finance resolves this symbol to NasdaqGS rather than the current exchange, indicating the current listing is stale."
 DTB,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 DTCK,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: delisted (absent from current NASDAQ Trader master, web+adversarial verified)"
