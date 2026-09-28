@@ -2,10 +2,6 @@
 
 ## [Unreleased]
 
-### Added
-
-- Landed 81 collision-free official common-stock listings from the DivvyDiary sitemap discovery funnel (NSE/BSE India, HKEX, B3 commons, ADX/DFM/Kuwait/Bahrain, Tadawul, SGX, BIST, HNX). Sitemap is discovery only; ticker, name, and ISIN come from official masterfile cache. Globally colliding tickers, B3 units, SDRs, BVB/OTC/FSX/XETRA/LSE, and venues outside the supplement allowlist stay deferred.
-
 ### Changed
 
 - Rotation identity lane: apply listing-keyed official ISIN replacements when the listing still has the previous ISIN and the name still matches the official directory; directory-only recodes and name-mismatch pairs no longer draft the daily rotation. Easyknit-style ticker-reuse stays fail-closed.
