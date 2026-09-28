@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-28T12:28:18Z",
+  "generated_at": "2026-09-28T13:50:18Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2093,
-  "decision_rows": 6711,
+  "conflict_count": 2094,
+  "decision_rows": 6714,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1496,
-    "proposed_clear_conflicting_identifier": 1125,
-    "quarantined_unresolved_identifier": 4090
+    "kept_listing_keyed_identifier": 1498,
+    "proposed_clear_conflicting_identifier": 1127,
+    "quarantined_unresolved_identifier": 4089
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1125,
-  "quarantined_rows": 4090,
-  "retained_rows": 1496,
+  "proposed_clear_rows": 1127,
+  "quarantined_rows": 4089,
+  "retained_rows": 1498,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -36857,29 +36857,42 @@
       "retained_isin": "INE530D01012"
     },
     {
-      "conflict_id": "594ae1ec8cea7056d8e7",
+      "conflict_id": "36bfcbaa6d675acf1d62",
       "isin": "INE545A01024",
       "listing_key": "BSE_IN::HEG",
       "ticker": "HEG",
       "exchange": "BSE_IN",
       "name": "HEG Advanced Materials Ltd",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "INE545A01024"
     },
     {
-      "conflict_id": "594ae1ec8cea7056d8e7",
+      "conflict_id": "36bfcbaa6d675acf1d62",
       "isin": "INE545A01024",
       "listing_key": "NSE_IN::HEG",
       "ticker": "HEG",
       "exchange": "NSE_IN",
       "name": "HEG Limited",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "INE545A01024"
+    },
+    {
+      "conflict_id": "36bfcbaa6d675acf1d62",
+      "isin": "INE545A01024",
+      "listing_key": "NSE_IN::HEGAM",
+      "ticker": "HEGAM",
+      "exchange": "NSE_IN",
+      "name": "HEG Advanced Materials Limited",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "INE545A01024"
     },
     {
@@ -36959,6 +36972,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "INE695B01025"
+    },
+    {
+      "conflict_id": "c079e26679cb07029e45",
+      "isin": "INE753W01010",
+      "listing_key": "NSE_IN::AGASTYAEN",
+      "ticker": "AGASTYAEN",
+      "exchange": "NSE_IN",
+      "name": "Agastya Energy and Infrastructure Limited",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "INE753W01010"
+    },
+    {
+      "conflict_id": "c079e26679cb07029e45",
+      "isin": "INE753W01010",
+      "listing_key": "NSE_IN::SANGINITA",
+      "ticker": "SANGINITA",
+      "exchange": "NSE_IN",
+      "name": "Sanginita Chemicals Limited",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "INE753W01010"
     },
     {
       "conflict_id": "97185b3b061c9eabd315",
@@ -43013,9 +43052,9 @@
       "exchange": "Borsa Italiana",
       "name": "Compagnia dei Caraibi Spa",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "IT0005453235"
     },
     {
@@ -43028,7 +43067,7 @@
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "official_exact_listing_match",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "IT0005453235"
     },
     {

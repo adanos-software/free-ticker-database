@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-28T12:28:18Z",
+  "generated_at": "2026-09-28T13:50:18Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1895,
+  "reconciled_rows": 1896,
   "applied_rows": 0,
-  "proposed_rows": 1895,
+  "proposed_rows": 1896,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -17242,6 +17242,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "KRX::381970",
+      "action": "proposed",
+      "ticker": "381970",
+      "exchange": "KRX",
+      "asset_type": "Stock",
+      "isin": "KR7381970003",
+      "old_name": "K Car Co Ltd",
+      "new_name": "KG Mobility Platform",
+      "source_key": "krx_listed_companies",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+      "observation_id": "12ea9b31e73461994c41e74e",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "KRX::385560",
       "action": "proposed",
       "ticker": "385560",
@@ -21719,11 +21734,11 @@
       "asset_type": "ETF",
       "isin": "IE00BMYDMC42",
       "old_name": "L&G Quality Equity Dividends ESG Exclusions Emerging Markets UCITS ETF",
-      "new_name": "LEGAL & GENERAL UCITS ETF PLC L&G EM QUALITY DIV EQ WEIGHT USD DIST",
+      "new_name": "LEGAL & GENERAL UCITS ETF PLC L&G EM QUALITY DIV USD DIST",
       "source_key": "lse_price_explorer",
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "cf410affe5ce77cb7029cba4",
+      "observation_id": "30c5c5604a6a0ec38da02c8c",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
