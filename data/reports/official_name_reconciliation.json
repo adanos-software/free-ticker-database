@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-28T18:14:30Z",
+  "generated_at": "2026-09-29T07:39:18Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1894,
+  "reconciled_rows": 1893,
   "applied_rows": 0,
-  "proposed_rows": 1894,
+  "proposed_rows": 1893,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -9634,21 +9634,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
       "observation_id": "94f449b0cc603c46f24d8c71",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "FSX::M4I",
-      "action": "proposed",
-      "ticker": "M4I",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "isin": "US57636Q1040",
-      "old_name": "Mastercard Inc",
-      "new_name": "MASTERCARD INC.A DL-,0001",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "observation_id": "54a865a66dad63e41dcb02e1",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -20122,6 +20107,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "LSE::EDVD",
+      "action": "proposed",
+      "ticker": "EDVD",
+      "exchange": "LSE",
+      "asset_type": "ETF",
+      "isin": "IE00B6YX5B26",
+      "old_name": "SPDR S&P Emerging Markets Dividend Aristocrats UCITS ETF",
+      "new_name": "SSGA SPDR ETFS EUROPE I PLC SS SPDR S&P EMER MARKETS DVD UCIT ETF $",
+      "source_key": "lse_price_explorer",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "observation_id": "1d94a67a31b766c02245ba3d",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "LSE::EEIE",
       "action": "proposed",
       "ticker": "EEIE",
@@ -27724,21 +27724,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
       "observation_id": "b82a39beb773324bc2a2bb7d",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "XETRA::M4I",
-      "action": "proposed",
-      "ticker": "M4I",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "isin": "US57636Q1040",
-      "old_name": "Mastercard Inc",
-      "new_name": "MASTERCARD INC.A DL-,0001",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "observation_id": "951425bb24f267e1bdeb7c59",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

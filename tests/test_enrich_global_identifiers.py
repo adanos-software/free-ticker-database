@@ -261,7 +261,7 @@ def test_build_base_identifier_rows_does_not_preserve_stale_isin(tmp_path, monke
     identifiers_extended = tmp_path / "identifiers_extended.csv"
     identifiers_extended.write_text(
         "listing_key,ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source\n"
-        "NASDAQ::AEC,AEC,NASDAQ,CA00830W1059,,BBG00QFZ5HJ5,,,,OpenFIGI,,\n",
+        "NASDAQ::AEC,AEC,NASDAQ,CA00830W1059,,BBG00QFZ5HJ5,,AR5L2ODV9HN37376R084,OpenFIGI,,GLEIF\n",
         encoding="utf-8",
     )
     monkeypatch.setattr("scripts.enrich_global_identifiers.LISTINGS_CSV", listings)
@@ -272,6 +272,8 @@ def test_build_base_identifier_rows_does_not_preserve_stale_isin(tmp_path, monke
     assert rows[0]["isin"] == ""
     assert rows[0]["figi"] == ""
     assert rows[0]["figi_source"] == ""
+    assert rows[0]["lei"] == ""
+    assert rows[0]["lei_source"] == ""
 
 
 def test_build_base_identifier_rows_drops_extended_values_when_core_isin_changes(

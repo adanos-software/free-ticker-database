@@ -347,7 +347,6 @@ DVR,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list t
 DVS,NYSE,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
 DXYN,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
 DXYZ,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
-DYNC,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
 DYNT,NASDAQ,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
 EAI,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 EARN,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
@@ -1309,3 +1308,66 @@ RAY,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::RAY after successor NASDAQ::AT
 GLMD,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::GLMD after successor NASDAQ::EOCN was already listed; exact evidence is recorded in listing_transitions.csv.
 HEG,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::HEG to NSE_IN::HEGAM; exact evidence is recorded in listing_transitions.csv.
 SANGINITA,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::SANGINITA to NSE_IN::AGASTYAEN; exact evidence is recorded in listing_transitions.csv.
+DRIVE,ADX,0.99,Reviewed issuer ticker transition ADX::DRIVE to ADX::EMOBILITY; exact evidence is recorded in listing_transitions.csv.
+IEX,AMS,0.99,Reviewed issuer ticker transition AMS::IEX to AMS::HWK; exact evidence is recorded in listing_transitions.csv.
+AKTR,ATHEX,0.99,Reviewed issuer ticker transition ATHEX::AKTR to ATHEX::INKAT; exact evidence is recorded in listing_transitions.csv.
+MARKA,BIST,0.99,Reviewed issuer ticker transition BIST::MARKA to BIST::USHOL; exact evidence is recorded in listing_transitions.csv.
+ASHIKA,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::ASHIKA to BSE_IN::ASHIKAG; exact evidence is recorded in listing_transitions.csv.
+JETMALL,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::JETMALL to BSE_IN::ARTEMISADR; exact evidence is recorded in listing_transitions.csv.
+ZARDIINV,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::ZARDIINV to BSE_IN::ARDIALL; exact evidence is recorded in listing_transitions.csv.
+MCEL,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::MCEL to BSE_IN::MACHLTD; exact evidence is recorded in listing_transitions.csv.
+FMEC,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::FMEC to BSE_IN::DHVIJAFIN; exact evidence is recorded in listing_transitions.csv.
+JAIHINDS,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::JAIHINDS to BSE_IN::JAIHIND; exact evidence is recorded in listing_transitions.csv.
+HARIGOV,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::HARIGOV to BSE_IN::POPEES; exact evidence is recorded in listing_transitions.csv.
+GENESIS,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::GENESIS to BSE_IN::CCME; exact evidence is recorded in listing_transitions.csv.
+CDG,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::CDG to BSE_IN::JUJHARLOGI; exact evidence is recorded in listing_transitions.csv.
+GVTD,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::GVTD to BSE_IN::GVT&D; exact evidence is recorded in listing_transitions.csv.
+SHARP,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SHARP to BSE_IN::SMAART; exact evidence is recorded in listing_transitions.csv.
+NIRBHAYIND,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::NIRBHAYIND to BSE_IN::CRAFTROOT; exact evidence is recorded in listing_transitions.csv.
+BJDUP,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::BJDUP to BSE_IN::PRABHATAM; exact evidence is recorded in listing_transitions.csv.
+SATTVASUKU,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SATTVASUKU to BSE_IN::TAVEXIA; exact evidence is recorded in listing_transitions.csv.
+SUMUKA,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SUMUKA to BSE_IN::GUJJUBHAI; exact evidence is recorded in listing_transitions.csv.
+INDSOYA,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::INDSOYA to BSE_IN::APOLLOIN; exact evidence is recorded in listing_transitions.csv.
+VRWODAR,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::VRWODAR to BSE_IN::MEGAMONT; exact evidence is recorded in listing_transitions.csv.
+MANBRO,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::MANBRO to BSE_IN::KDGREEN; exact evidence is recorded in listing_transitions.csv.
+RISHYRN,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::RISHYRN to BSE_IN::IMPERA; exact evidence is recorded in listing_transitions.csv.
+SERIND,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SERIND to BSE_IN::DESIFARMS; exact evidence is recorded in listing_transitions.csv.
+ARYAVAN,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::ARYAVAN to BSE_IN::ECOFINITY; exact evidence is recorded in listing_transitions.csv.
+OMANSH,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::OMANSH to BSE_IN::PIPAN; exact evidence is recorded in listing_transitions.csv.
+CHECKPOINT,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::CHECKPOINT to BSE_IN::CENTUPLE; exact evidence is recorded in listing_transitions.csv.
+NIBEORD,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::NIBEORD to BSE_IN::GDIL; exact evidence is recorded in listing_transitions.csv.
+GLOBOFFS,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::GLOBOFFS to BSE_IN::GARWAOFFS; exact evidence is recorded in listing_transitions.csv.
+SOFTBPO,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SOFTBPO to BSE_IN::IDREAM; exact evidence is recorded in listing_transitions.csv.
+BIJHANS,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::BIJHANS to BSE_IN::ARVAYA; exact evidence is recorded in listing_transitions.csv.
+RLFL,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::RLFL to BSE_IN::RAAMA; exact evidence is recorded in listing_transitions.csv.
+MIDWEST,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::MIDWEST to BSE_IN::REMAGNET; exact evidence is recorded in listing_transitions.csv.
+PRATIKSH,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::PRATIKSH to BSE_IN::VELLORA; exact evidence is recorded in listing_transitions.csv.
+GOPAIST,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::GOPAIST to BSE_IN::CASTORA; exact evidence is recorded in listing_transitions.csv.
+LKPFIN,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::LKPFIN to BSE_IN::GYFTR; exact evidence is recorded in listing_transitions.csv.
+KSHITIJ,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::KSHITIJ to BSE_IN::MANGLAM; exact evidence is recorded in listing_transitions.csv.
+YASTF,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::YASTF to BSE_IN::LEXGLOBAL; exact evidence is recorded in listing_transitions.csv.
+BANGANGA,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::BANGANGA to BSE_IN::ASGARD; exact evidence is recorded in listing_transitions.csv.
+NEWMKTADV,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::NEWMKTADV to BSE_IN::NEWMKTAVE; exact evidence is recorded in listing_transitions.csv.
+MADHUSE,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::MADHUSE to BSE_IN::MSLGLOBAL; exact evidence is recorded in listing_transitions.csv.
+BANSTEA,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::BANSTEA to BSE_IN::NOVYRA; exact evidence is recorded in listing_transitions.csv.
+ZSANMCOM,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::ZSANMCOM to BSE_IN::TANDHANIN; exact evidence is recorded in listing_transitions.csv.
+COVIDH,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::COVIDH to BSE_IN::ISERA; exact evidence is recorded in listing_transitions.csv.
+BLUEGOD,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::BLUEGOD to BSE_IN::STARBEAM; exact evidence is recorded in listing_transitions.csv.
+ABHIJIT,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::ABHIJIT to BSE_IN::MALTLAND; exact evidence is recorded in listing_transitions.csv.
+SRDAPRT,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SRDAPRT to BSE_IN::FRESITA; exact evidence is recorded in listing_transitions.csv.
+GULFNAV,DFM,0.99,Reviewed issuer ticker transition DFM::GULFNAV to DFM::ETIHADENERGY; exact evidence is recorded in listing_transitions.csv.
+KOJAMO,HEL,0.99,Reviewed issuer ticker transition HEL::KOJAMO to HEL::LUMO; exact evidence is recorded in listing_transitions.csv.
+MIX,LSE,0.99,Reviewed issuer ticker transition LSE::MIX to LSE::GHV2; exact evidence is recorded in listing_transitions.csv.
+NCA2,LSE,0.99,Reviewed issuer ticker transition LSE::NCA2 to LSE::OVCT; exact evidence is recorded in listing_transitions.csv.
+GSEO,LSE,0.99,Reviewed issuer ticker transition LSE::GSEO to LSE::ENRG; exact evidence is recorded in listing_transitions.csv.
+JLEN,LSE,0.99,Reviewed issuer ticker transition LSE::JLEN to LSE::FGEN; exact evidence is recorded in listing_transitions.csv.
+JAB,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::JAB to NASDAQ::ATLQ; exact evidence is recorded in listing_transitions.csv.
+AMBEY,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::AMBEY to NSE_IN::DHANSA; exact evidence is recorded in listing_transitions.csv.
+LYPSAGEMS,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::LYPSAGEMS to NSE_IN::AURUS; exact evidence is recorded in listing_transitions.csv.
+SILLYMONKS,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::SILLYMONKS to NSE_IN::CRESTO; exact evidence is recorded in listing_transitions.csv.
+ASLIND,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::ASLIND to NSE_IN::AVATAR; exact evidence is recorded in listing_transitions.csv.
+MIRCELECTR,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::MIRCELECTR to NSE_IN::ONIDA; exact evidence is recorded in listing_transitions.csv.
+GUJGASLTD,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::GUJGASLTD to NSE_IN::GUJENERGY; exact evidence is recorded in listing_transitions.csv.
+TFBANK,STO,0.99,Reviewed issuer ticker transition STO::TFBANK to STO::AVARDA; exact evidence is recorded in listing_transitions.csv.
+ISSC,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::ISSC to NASDAQ::IA; exact evidence is recorded in listing_transitions.csv.
+ETHM,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::ETHM to NASDAQ::DYNC; exact evidence is recorded in listing_transitions.csv.
