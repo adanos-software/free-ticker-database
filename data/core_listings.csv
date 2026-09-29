@@ -178,6 +178,7 @@ AMS::EPAD,EPAD,AMS,iShares MSCI Europe Paris-Aligned Climate UCITS ETF EUR Dist,
 AMS::ERC,ERC,AMS,Er Capital N.V.,Stock,Real Estate,,Netherlands,NL,NL0010389508,,NL0010389508,primary_listing
 AMS::ESCE,ESCE,AMS,iShares MSCI Europe Small Cap UCITS ETF EUR (Acc),ETF,,Equity,Ireland,IE,IE0000N55FP4,,IE0000N55FP4,primary_listing
 AMS::ESP,ESP,AMS,Esperite N.V.,Stock,Health Care,,Netherlands,NL,NL0009272137,,NL0009272137,primary_listing
+AMS::ESPX,ESPX,AMS,iShares S&P 500 ESG UCITS ETF USD (Acc),ETF,,Equity,,,,,AMS::ESPX,primary_listing_missing_isin
 AMS::ETH0E,ETH0E,AMS,VALOUR ETHEREUM ZERO,ETF,,Alternative,Switzerland,CH,CH0585378752,valour ethereum zero,CH0585378752,primary_listing
 AMS::EURP,EURP,AMS,iShares Europe Domestic Focus UCITS ETF EUR (Acc),ETF,,,Ireland,IE,IE000P2CI9P3,europe domestic focus,IE000P2CI9P3,primary_listing
 AMS::EUS3,EUS3,AMS,WisdomTree Long USD Short EUR 3x Daily,ETF,,Leveraged/Inverse,Jersey,JE,JE00B3QQ4551,,JE00B3QQ4551,primary_listing
@@ -466,6 +467,7 @@ ASX::AHL,AHL,ASX,Adrad Holdings Limited,Stock,Consumer Discretionary,,Australia,
 ASX::AHN,AHN,ASX,ATHENA RESOURCES LIMITED,Stock,Materials,,Australia,AU,AU000000AHN1,athena resources,AU000000AHN1,primary_listing
 ASX::AI1,AI1,ASX,ADISYN LTD,Stock,Information Technology,,Australia,AU,AU0000108367,adisyn,AU0000108367,primary_listing
 ASX::AIA,AIA,ASX,Auckland International Airport Ltd,Stock,Industrials,,New Zealand,NZ,NZAIAE0002S6,,NZAIAE0002S6,primary_listing
+ASX::AIH,AIH,ASX,ADVANCED INNERGY HOLDINGS LIMITED,Stock,Health Care,,,,,advanced innergy holdings|advanced innergy,ASX::AIH,primary_listing_missing_isin
 ASX::AIM,AIM,ASX,Ai-Media Technologies Ltd,Stock,Information Technology,,Australia,AU,AU0000101636,ai-media technologies|ai-media,AU0000101636,primary_listing
 ASX::AIQ,AIQ,ASX,Alternative Investment Trust,Stock,Financials,,Australia,AU,AU000000AIQ2,alternative investment trust,AU000000AIQ2,primary_listing
 ASX::AIS,AIS,ASX,Aeris Resources Ltd,Stock,Materials,,Australia,AU,AU000000AIS8,aeris resources,AU000000AIS8,primary_listing
@@ -2376,7 +2378,7 @@ ASX::TWD,TWD,ASX,TAMAWOOD LIMITED,Stock,Consumer Discretionary,,Australia,AU,AU0
 ASX::TWE,TWE,ASX,TREASURY WINE ESTATES LIMITED,Stock,Consumer Staples,,Australia,AU,AU000000TWE9,treasury wine estates,AU000000TWE9,primary_listing
 ASX::TWL,TWL,ASX,TRADE WINDOW HOLDINGS LIMITED,Stock,Information Technology,,New Zealand,NZ,NZTWLE0004S0,trade window holdings|trade window,NZTWLE0004S0,primary_listing
 ASX::TWR,TWR,ASX,TOWER LIMITED,Stock,Financials,,New Zealand,NZ,NZTWRE0011S2,tower,NZTWRE0011S2,primary_listing
-ASX::TXR,TXR,ASX,TALONX RESOURCES LIMITED,Stock,Materials,,Australia,AU,ARDEUT116019,talonx resources,ARDEUT116019,primary_listing
+ASX::TXR,TXR,ASX,TALONX RESOURCES LIMITED,Stock,Materials,,Australia,AU,,talonx resources,ASX::TXR,primary_listing_missing_isin
 ASX::TYR,TYR,ASX,TYRO PAYMENTS LIMITED,Stock,Information Technology,,Australia,AU,AU0000066508,tyro payments,AU0000066508,primary_listing
 ASX::TYX,TYX,ASX,TYRANNA RESOURCES LIMITED,Stock,Materials,,Australia,AU,AU000000TYX5,tyranna resources,AU000000TYX5,primary_listing
 ASX::TZL,TZL,ASX,TZ LIMITED,Stock,Industrials,,Australia,AU,AU000000TZL7,,AU000000TZL7,primary_listing
@@ -4726,6 +4728,7 @@ BATS::FAUG,FAUG,BATS,FT Cboe Vest U.S. Equity Buffer ETF - August,ETF,,Alternati
 BATS::FB,FB,BATS,ProShares S&P 500 Dynamic Buffer ETF,ETF,,Alternative,United States,US,US74349Y6133,s&p 500 dynamic buffer,US74349Y6133,primary_listing
 BATS::FBCG,FBCG,BATS,Fidelity® Blue Chip Growth ETF,ETF,,Equity,United States,US,US3160923526,fidelity blue chip growth,US3160923526,primary_listing
 BATS::FBCV,FBCV,BATS,Fidelity® Blue Chip Value ETF,ETF,,Equity,United States,US,US3160923450,fidelity blue chip value,US3160923450,primary_listing
+BATS::FBTC,FBTC,BATS,Fidelity Wise Origin Bitcoin Trust,ETF,,Other,,,,fidelity wise origin bitcoin|fidelity physical bitcoin etp,BATS::FBTC,primary_listing_missing_isin
 BATS::FBUF,FBUF,BATS,Fidelity Dynamic Buffered Equity ETF,ETF,,Equity,United States,US,US31624J7375,fidelity dynamic buffered equity,US31624J7375,primary_listing
 BATS::FCLD,FCLD,BATS,Fidelity Cloud Computing ETF,ETF,,Equity,United States,US,US3160922460,fidelity cloud computing,US3160922460,primary_listing
 BATS::FCPI,FCPI,BATS,Fidelity® Stocks for Inflation ETF,ETF,,Equity,United States,US,US3160923864,fidelity stocks for inflation,US3160923864,primary_listing
@@ -5232,6 +5235,7 @@ BATS::OVT,OVT,BATS,Overlay Shares Short Term Bond ETF,ETF,,Equity,United States,
 BATS::PAPR,PAPR,BATS,Innovator S&P 500 Power Buffer ETF - April New,ETF,,Equity,United States,US,US45782C8709,,US45782C8709,primary_listing
 BATS::PATX,PATX,BATS,Tradr 2X Long PATH Daily ETF,ETF,,Other,United States,US,US46092D2779,tradr 2x long path,US46092D2779,primary_listing
 BATS::PAUG,PAUG,BATS,Innovator U.S. Equity Power Buffer ETF - August,ETF,,Equity,United States,US,US45782C6802,innovator u.s. equity power buffer,US45782C6802,primary_listing
+BATS::PAVE,PAVE,BATS,Global X U.S. Infrastructure Development ETF,ETF,,Equity,,,,,BATS::PAVE,primary_listing_missing_isin
 BATS::PAWZ,PAWZ,BATS,ProShares Pet Care,ETF,,Equity,United States,US,US74348A1455,pet care,US74348A1455,primary_listing
 BATS::PAYH,PAYH,BATS,TrueShares S&P Autocallable High Income ETF,ETF,,Alternative,United States,US,US2103225825,trueshares s&p autocallable high income,US2103225825,primary_listing
 BATS::PAYR,PAYR,BATS,Federated Hermes Enhanced Income ETF,ETF,,Equity,United States,US,US31423L8836,federated hermes enhanced income,US31423L8836,primary_listing
@@ -5636,6 +5640,7 @@ BATS::WLDR,WLDR,BATS,Affinity World Leaders Equity ETF,ETF,,Equity,United States
 BATS::WLDU,WLDU,BATS,Leverage Shares 2x Long World Stock Daily ETF,ETF,,Other,United States,US,US88340C4877,2x long world stock,US88340C4877,primary_listing
 BATS::WMTI,WMTI,BATS,REX ETF Trust REX WMT Growth &,ETF,,Equity,United States,US,US7615628754,rex rex wmt growth,US7615628754,primary_listing
 BATS::WPAY,WPAY,BATS,Roundhill ETF Trust Roundhill W,ETF,,Equity,United States,US,US77926X5858,,US77926X5858,primary_listing
+BATS::WTAI,WTAI,BATS,WisdomTree Trust - WisdomTree Artificial Intelligence and Innovation Fund,ETF,,Equity,,,,artificial intelligence and innovation,BATS::WTAI,primary_listing_missing_isin
 BATS::WTLS,WTLS,BATS,WisdomTree Trust - WisdomTree Efficient Long/Short US Equity Fund,ETF,,Other,United States,US,US97717Y2616,efficient long/short us equity,US97717Y2616,primary_listing
 BATS::WUGI,WUGI,BATS,Esoterica NextG Economy ETF,ETF,,Equity,United States,US,US2965821091,esoterica nextg economy,US2965821091,primary_listing
 BATS::WULX,WULX,BATS,Tradr 2X Long WULF Daily ETF,ETF,,Other,United States,US,US46092D4593,tradr 2x long wulf,US46092D4593,primary_listing
@@ -6876,7 +6881,7 @@ BMV::CADUA,CADUA,BMV,Corpovael S.A.B. de C.V,Stock,Real Estate,,Mexico,MX,MX01CA
 BMV::CEMEXCPO,CEMEXCPO,BMV,CEMEX S.A.B. de C.V.,Stock,Materials,,Mexico,MX,MXP225611567,cemex,MXP225611567,primary_listing
 BMV::CHDRAUIB,CHDRAUIB,BMV,Grupo Comercial Chedraui S.A.B. de C.V,Stock,Consumer Staples,,Mexico,MX,MX01CH170002,grupo comercial chedraui,MX01CH170002,primary_listing
 BMV::CIDMEGA,CIDMEGA,BMV,Grupe S.A.B. de C.V,Stock,Consumer Discretionary,,Mexico,MX,MX01CI030007,grupe,MX01CI030007,primary_listing
-BMV::CIEB,CIEB,BMV,Corporación Interamericana de Entretenimiento S.A.B. de C.V,Stock,Financials,,Egypt,EG,EGS60041C018,corporacion interamericana de entretenimiento,EGS60041C018,primary_listing
+BMV::CIEB,CIEB,BMV,Corporación Interamericana de Entretenimiento S.A.B. de C.V,Stock,Financials,,,,,corporacion interamericana de entretenimiento,BMV::CIEB,primary_listing_missing_isin
 BMV::CMOCTEZ,CMOCTEZ,BMV,Corporación Moctezuma S.A.B. de C.V,Stock,Materials,,Mexico,MX,MXP314311103,corporacion moctezuma,MXP314311103,primary_listing
 BMV::CMRB,CMRB,BMV,CMR S.A.B. de C.V,Stock,,,Mexico,MX,MX01CM020002,,MX01CM020002,primary_listing
 BMV::COLLADO,COLLADO,BMV,G Collado S.A.B. de C.V,Stock,Materials,,Mexico,MX,MXP201301019,g collado,MXP201301019,primary_listing
@@ -20076,7 +20081,7 @@ IDX::EKAD,EKAD,IDX,Ekadharma International Tbk,Stock,Materials,,Indonesia,ID,ID1
 IDX::ELIT,ELIT,IDX,PT Data Sinergitama Jaya Tbk,Stock,Information Technology,,Mauritius,MU,MU0780N00000,pt data sinergitama jaya tbk|pt data sinergitama jaya,MU0780N00000,primary_listing
 IDX::ELPI,ELPI,IDX,PT Pelayaran Nasional Ekalya P,Stock,Industrials,,Indonesia,ID,ID1000170905,,ID1000170905,primary_listing
 IDX::ELTY,ELTY,IDX,Bakrieland Development Tbk,Stock,Real Estate,,Indonesia,ID,ID1000088701,bakrieland development tbk|bakrieland development,ID1000088701,primary_listing
-IDX::EMDE,EMDE,IDX,Megapolitan Developments Tbk,Stock,Real Estate,,Indonesia,ID,AREDER010016,megapolitan developments tbk|megapolitan developments,AREDER010016,primary_listing
+IDX::EMDE,EMDE,IDX,Megapolitan Developments Tbk,Stock,Real Estate,,Indonesia,ID,,megapolitan developments tbk|megapolitan developments,IDX::EMDE,primary_listing_missing_isin
 IDX::EMTK,EMTK,IDX,Elang Mahkota Teknologi Tbk,Stock,Communication Services,,Indonesia,ID,ID1000113905,elang mahkota teknologi tbk|elang mahkota teknologi,ID1000113905,primary_listing
 IDX::ENAK,ENAK,IDX,Champ Resto Indonesia PT,Stock,Consumer Discretionary,,Indonesia,ID,ID1000166101,champ resto indonesia pt,ID1000166101,primary_listing
 IDX::ENVY,ENVY,IDX,Envy Technologies Indonesia Tbk PT,Stock,Information Technology,,Indonesia,ID,ID1000149909,envy technologies indonesia tbk pt,ID1000149909,primary_listing
@@ -20316,6 +20321,7 @@ IDX::MLPT,MLPT,IDX,Multipolar Technology Tbk,Stock,Information Technology,,Indon
 IDX::MMIX,MMIX,IDX,Multi Medika Internasional,Stock,Health Care,,Indonesia,ID,ID1000178700,multi medika internasional,ID1000178700,primary_listing
 IDX::MMLP,MMLP,IDX,PT Mega Manunggal Property Tbk.,Stock,Real Estate,,,,,pt mega manunggal property tbk,IDX::MMLP,primary_listing_missing_isin
 IDX::MNCN,MNCN,IDX,Media Nusantara Citra Tbk PT,Stock,Communication Services,,Indonesia,ID,ID1000106206,media nusantara citra tbk pt,ID1000106206,primary_listing
+IDX::MOLI,MOLI,IDX,Madusari Murni Indah Tbk PT,Stock,Materials,,Indonesia,ID,,madusari murni indah tbk pt,IDX::MOLI,primary_listing_missing_isin
 IDX::MORA,MORA,IDX,Ekamas Mora Republik Tbk.,Stock,Communication Services,,Indonesia,ID,ID1000170608,ekamas mora republik tbk,ID1000170608,primary_listing
 IDX::MPIX,MPIX,IDX,PT Mitra Pedagang Indonesia Tb,Stock,Information Technology,,Indonesia,ID,ID1000203201,pt mitra pedagang indonesia tb,ID1000203201,primary_listing
 IDX::MPMX,MPMX,IDX,Mitra Pinasthika Mustika Tbk,Stock,Consumer Discretionary,,Indonesia,ID,ID1000127202,mitra pinasthika mustika tbk|mitra pinasthika mustika,ID1000127202,primary_listing
@@ -20403,6 +20409,7 @@ IDX::PNLF,PNLF,IDX,Panin Financial Tbk,Stock,Financials,,Indonesia,ID,ID10000956
 IDX::PNSE,PNSE,IDX,Pudjiadi & Sons Tbk,Stock,Consumer Discretionary,,Indonesia,ID,ID1000124803,pudjiadi & sons tbk|pudjiadi & sons,ID1000124803,primary_listing
 IDX::POLA,POLA,IDX,PT Pool Advista Finance Tbk.,Stock,Financials,,,,,pt pool advista finance tbk,IDX::POLA,primary_listing_missing_isin
 IDX::POLI,POLI,IDX,Pollux Investasi Internasional Tbk PT,Stock,Real Estate,,Indonesia,ID,ID1000147606,pollux investasi internasional tbk pt,ID1000147606,primary_listing
+IDX::POLL,POLL,IDX,Pollux Properti Indonesia Tbk PT,Stock,Real Estate,,Indonesia,ID,,pollux properti indonesia tbk pt,IDX::POLL,primary_listing_missing_isin
 IDX::POLU,POLU,IDX,Golden Flower Tbk PT,Stock,Consumer Discretionary,,Indonesia,ID,ID1000149206,golden flower tbk pt,ID1000149206,primary_listing
 IDX::PORT,PORT,IDX,PT Nusantara Pelabuhan Handal Tbk.,Stock,Industrials,,,,,pt nusantara pelabuhan handal tbk,IDX::PORT,primary_listing_missing_isin
 IDX::POSA,POSA,IDX,Bliss Properti Indonesia Tbk PT,Stock,Real Estate,,Indonesia,ID,ID1000148703,bliss properti indonesia tbk pt,ID1000148703,primary_listing
@@ -26870,6 +26877,7 @@ LSE::META,META,LSE,WisdomTree Industrial Metals Enhanced,ETF,,Equity,Ireland,IE,
 LSE::METG,METG,LSE,ISHARES IV PLC ISHARES ESS METALS PRODS UCITS ETF USD A,ETF,,Equity,Ireland,IE,IE000ROSD5J6,,IE000ROSD5J6,primary_listing
 LSE::METI,METI,LSE,IncomeShares META Options ETP GBP,ETF,,Alternative,United Kingdom,GB,XS2901885553,incomeshares meta options etp,XS2901885553,primary_listing
 LSE::METP,METP,LSE,ETC Group Global Metaverse UCITS ETF USD Accumulation GBP,ETF,,Equity,Ireland,IE,IE000KDY10O3,,IE000KDY10O3,primary_listing
+LSE::METR,METR,LSE,ETC Group Global Metaverse UCITS ETF USD Accumulation,ETF,,Equity,United Kingdom,GB,,,LSE::METR,primary_listing_missing_isin
 LSE::MEUD,MEUD,LSE,Amundi Stoxx Europe 600 UCITS ETF C GBP,ETF,,Equity,Luxembourg,LU,LU0908500753,,LU0908500753,primary_listing
 LSE::MEX,MEX,LSE,Tortilla Mexican Grill PLC,Stock,Information Technology,,United Kingdom,GB,GB00BNYDGZ21,tortilla mexican grill,GB00BNYDGZ21,primary_listing
 LSE::MEXP,MEXP,LSE,Finamex Mexico S&P/BMV International UMS Sovereign Bond 5-10yr UCITS ETF Acc GBP,ETF,,Equity,Ireland,IE,IE000RI14ZD9,finamex mexico s&p/bmv international ums sovereign bond 5-10yr,IE000RI14ZD9,primary_listing
@@ -27257,6 +27265,8 @@ LSE::RCH,RCH,LSE,Reach PLC,Stock,Communication Services,,United Kingdom,GB,GB000
 LSE::RCN,RCN,LSE,Redcentric,Stock,Information Technology,,United Kingdom,GB,GB00BVV5L858,redcentric,GB00BVV5L858,primary_listing
 LSE::RCP,RCP,LSE,RIT Capital Partners,Stock,Financials,,United Kingdom,GB,GB0007366395,rit capital partners,GB0007366395,primary_listing
 LSE::RDT,RDT,LSE,Rosslyn Data Technologies plc,Stock,Information Technology,,United Kingdom,GB,GB00BMV2DB09,rosslyn data technologies,GB00BMV2DB09,primary_listing
+LSE::RE,RE,LSE,R.E.A. Holdings plc,Stock,Financials,,,,,,LSE::RE,primary_listing_missing_isin
+LSE::RE-B,RE-B,LSE,R.E.A. Holdings plc,Stock,Consumer Staples,,,,,,LSE::RE-B,primary_listing_missing_isin
 LSE::REAT,REAT,LSE,React Group PLC,Stock,Industrials,,United Kingdom,GB,GB00BPCTRB97,react group|react,GB00BPCTRB97,primary_listing
 LSE::REC,REC,LSE,Record PLC,Stock,Financials,,United Kingdom,GB,GB00B28ZPS36,record|record resources,GB00B28ZPS36,primary_listing
 LSE::RECI,RECI,LSE,Real Estate Credit Investments Limited,Stock,Financials,,United Kingdom,GB,GB00B0HW5366,real estate credit investments,GB00B0HW5366,primary_listing
@@ -32935,6 +32945,7 @@ NASDAQ::VSEE,VSEE,NASDAQ,"VSee Health, Inc.",Stock,Health Care,,United States,US
 NASDAQ::VSME,VSME,NASDAQ,VS Media Holdings Limited Class A Ordinary Shares,Stock,Communication Services,,British Virgin Islands,VG,VGG9517U1113,vs media holdings,VGG9517U1113,primary_listing
 NASDAQ::VSMV,VSMV,NASDAQ,VictoryShares US Multi-Factor Minimum Volatility,ETF,,Equity,United States,US,US92647N6913,victoryshares us multi-factor minimum volatility,US92647N6913,primary_listing
 NASDAQ::VSNT,VSNT,NASDAQ,"Versant Media Group, Inc.",Stock,Communication Services,,United States,US,US9252831030,versant media group|versant media group when-issued|versant media,US9252831030,primary_listing
+NASDAQ::VSOL,VSOL,NASDAQ,VanEck Solana ETF Shares of Beneficial Interest,ETF,,Alternative,,,,vaneck solana of beneficial interest,NASDAQ::VSOL,primary_listing_missing_isin
 NASDAQ::VSTD,VSTD,NASDAQ,Vestand Inc.,Stock,Consumer Discretionary,,United States,US,US98740Y3027,vestand,US98740Y3027,primary_listing
 NASDAQ::VSTL,VSTL,NASDAQ,Defiance Daily Target 2X Long VST ETF,ETF,,Other,United States,US,US88636Y3009,defiance target 2x long vst,US88636Y3009,primary_listing
 NASDAQ::VSTM,VSTM,NASDAQ,Verastem Inc,Stock,Health Care,,United States,US,US92337C2035,verastem,US92337C2035,primary_listing
@@ -33218,6 +33229,7 @@ NEO::CESG-B,CESG-B,NEO,CI First Asset MSCI World ESG Impact ETF,ETF,,Equity,Cana
 NEO::CHCL-B,CHCL-B,NEO,CI Global Healthcare Leaders Index ETF,ETF,,Equity,Canada,CA,,,NEO::CHCL-B,primary_listing_missing_isin
 NEO::CIE,CIE,NEO,iShares International Fundamental Common Class,ETF,,Equity,Canada,CA,CA46432Y2050,international fundamental common class|international fundamental,CA46432Y2050,primary_listing
 NEO::CJP,CJP,NEO,iShares Japan Fundamental Hedged Common Class,ETF,,Alternative,Canada,CA,CA46433V2003,japan fundamental common class,CA46433V2003,primary_listing
+NEO::CLU,CLU,NEO,iShares US Fundamental Hedged Common Class,ETF,,Equity,,,,us fundamental common class,NEO::CLU,primary_listing_missing_isin
 NEO::CLU-C,CLU-C,NEO,iSHARES US FUNDAMENTAL INDEX ETF,ETF,,Equity,Canada,CA,,us fundamental,NEO::CLU-C,primary_listing_missing_isin
 NEO::CNQY,CNQY,NEO,Purpose Canadian Natural Resources (CNQ) Yield Shares ETF,ETF,,Equity,Canada,CA,CA74643V1094,purpose canadian natural resources cnq yield,CA74643V1094,primary_listing
 NEO::COLA,COLA,NEO,Coca-Cola Co CDR,Stock,,,Canada,CA,CA19123A1093,,CA19123A1093,primary_listing
@@ -33267,7 +33279,7 @@ NEO::FEPY,FEPY,NEO,Fidelity Equity Premium Yield ETF Series L,ETF,,Equity,Canada
 NEO::FEQT,FEQT,NEO,Fidelity All-in-One Equity ETF Fund,ETF,,Equity,Canada,CA,CA31581D1033,fidelity all-in-one equity,CA31581D1033,primary_listing
 NEO::FFIX,FFIX,NEO,Fidelity All-in-One Fixed Income ETF,ETF,,Fixed Income,Canada,CA,CA31581F1080,fidelity all-in-one fixed income,CA31581F1080,primary_listing
 NEO::FGRO,FGRO,NEO,Fidelity All-in-One Growth ETF,ETF,,Equity,Canada,CA,CA31581P1062,fidelity all-in-one growth|fidelity all in one growth,CA31581P1062,primary_listing
-NEO::FGX,FGX,NEO,Faircourt Gold Income Corp,ETF,,Equity,Australia,AU,AU000000FGX1,faircourt gold income,AU000000FGX1,primary_listing
+NEO::FGX,FGX,NEO,Faircourt Gold Income Corp,ETF,,Equity,,,,faircourt gold income,NEO::FGX,primary_listing_missing_isin
 NEO::FINN,FINN,NEO,Fidelity Global Innovators ETF,ETF,,Equity,Canada,CA,CA3162411084,fidelity global innovators,CA3162411084,primary_listing
 NEO::FIXD,FIXD,NEO,Evolve Active Core Fixed Income ETF,ETF,,Fixed Income,Canada,CA,CA30053A1003,evolve active core fixed income,CA30053A1003,primary_listing
 NEO::FJFG,FJFG,NEO,First Trust JFL Global Equity ETF,ETF,,Equity,Canada,CA,CA33740W1059,jfl global equity|first jfl global equity,CA33740W1059,primary_listing
@@ -34803,6 +34815,7 @@ NYSE ARCA::CMDT,CMDT,NYSE ARCA,PIMCO Commodity Strategy Active Exchange-Traded F
 NYSE ARCA::CMDY,CMDY,NYSE ARCA,iShares Bloomberg Roll Select Broad Commodity ETF,ETF,,Commodity,United States,US,US46431W5985,bloomberg roll select broad commodity,US46431W5985,primary_listing
 NYSE ARCA::CMF,CMF,NYSE ARCA,iShares California Muni Bond ETF,ETF,,Fixed Income,United States,US,US4642883569,california muni bond,US4642883569,primary_listing
 NYSE ARCA::CNBS,CNBS,NYSE ARCA,Amplify Seymour Cannabis ETF,ETF,,Equity,United States,US,US0321088546,amplify seymour cannabis,US0321088546,primary_listing
+NYSE ARCA::CNEQ,CNEQ,NYSE ARCA,The Alger ETF Trust,ETF,,Equity,United States,US,,,NYSE ARCA::CNEQ,primary_listing_missing_isin
 NYSE ARCA::CNRG,CNRG,NYSE ARCA,SPDR® Kensho Clean Power ETF,ETF,,Equity,United States,US,US78468R6559,kensho clean power,US78468R6559,primary_listing
 NYSE ARCA::CNXT,CNXT,NYSE ARCA,VanEck ChiNext ETF,ETF,,Equity,United States,US,US92189F6271,vaneck chinext,US92189F6271,primary_listing
 NYSE ARCA::COAL,COAL,NYSE ARCA,Range Global Coal ETF,ETF,,Equity,United States,US,US3015054675,range global coal,US3015054675,primary_listing
@@ -34814,7 +34827,7 @@ NYSE ARCA::CONY,CONY,NYSE ARCA,YieldMax™ COIN Option Income Strategy ETF,ETF,,
 NYSE ARCA::COPX,COPX,NYSE ARCA,Global X Copper Miners ETF,ETF,,Equity,United States,US,US37954Y8306,,US37954Y8306,primary_listing
 NYSE ARCA::COPZ,COPZ,NYSE ARCA,Defiance Daily Target 2X Long Copper Miners ETF,ETF,,Other,United States,US,US88636J2950,defiance target 2x long copper miners,US88636J2950,primary_listing
 NYSE ARCA::CORB,CORB,NYSE ARCA,AB Core Bond ETF,ETF,,Fixed Income,United States,US,US00039J7569,,US00039J7569,primary_listing
-NYSE ARCA::CORN,CORN,NYSE ARCA,Teucrium Corn Fund,ETF,,Commodity,Jersey,JE,JE00BN7KB441,teucrium corn,JE00BN7KB441,primary_listing
+NYSE ARCA::CORN,CORN,NYSE ARCA,Teucrium Corn Fund,ETF,,Commodity,,,,teucrium corn,NYSE ARCA::CORN,primary_listing_missing_isin
 NYSE ARCA::CORP,CORP,NYSE ARCA,PIMCO Investment Grade Corporate Bond Index Exchange-Traded Fund,ETF,,Fixed Income,United States,US,US72201R8170,pimco investment grade corporate bond exchange-traded,US72201R8170,primary_listing
 NYSE ARCA::CPER,CPER,NYSE ARCA,United States Copper Index Fund LP,ETF,,Commodity,United States,US,US9117181043,united states copper,US9117181043,primary_listing
 NYSE ARCA::CPII,CPII,NYSE ARCA,American Beacon Select Funds,ETF,,Fixed Income,United States,US,US8863645532,american beacon select funds,US8863645532,primary_listing
@@ -35170,6 +35183,7 @@ NYSE ARCA::EVX,EVX,NYSE ARCA,VanEck Environmental Services ETF,ETF,,Equity,Unite
 NYSE ARCA::EWA,EWA,NYSE ARCA,iShares MSCI Australia ETF,ETF,,Equity,United States,US,US4642861037,,US4642861037,primary_listing
 NYSE ARCA::EWC,EWC,NYSE ARCA,iShares MSCI Canada ETF,ETF,,Equity,United States,US,US4642865095,,US4642865095,primary_listing
 NYSE ARCA::EWD,EWD,NYSE ARCA,iShares MSCI Sweden ETF,ETF,,Equity,United States,US,US4642867562,,US4642867562,primary_listing
+NYSE ARCA::EWG,EWG,NYSE ARCA,iShares MSCI Germany ETF,ETF,,Equity,,,,,NYSE ARCA::EWG,primary_listing_missing_isin
 NYSE ARCA::EWH,EWH,NYSE ARCA,iShares MSCI Hong Kong ETF,ETF,,Equity,United States,US,US4642868719,,US4642868719,primary_listing
 NYSE ARCA::EWI,EWI,NYSE ARCA,iShares MSCI Italy ETF,ETF,,Equity,United States,US,US46434G8309,,US46434G8309,primary_listing
 NYSE ARCA::EWJ,EWJ,NYSE ARCA,iShares MSCI Japan ETF,ETF,,Equity,United States,US,US46434G8226,,US46434G8226,primary_listing
@@ -35702,6 +35716,7 @@ NYSE ARCA::INOV,INOV,NYSE ARCA,Innovator International Developed Power Buffer ET
 NYSE ARCA::INQQ,INQQ,NYSE ARCA,India Internet & Ecommerce ETF,ETF,,Equity,United States,US,US3015055581,india internet & ecommerce,US3015055581,primary_listing
 NYSE ARCA::INTF,INTF,NYSE ARCA,iShares Edge MSCI Multifactor Intl ETF,ETF,,Equity,United States,US,US46434V2741,edge msci multifactor intl,US46434V2741,primary_listing
 NYSE ARCA::INVG,INVG,NYSE ARCA,GMO Systematic Investment Grade Credit ETF,ETF,,Fixed Income,United States,US,US90139K5065,gmo systematic investment grade credit,US90139K5065,primary_listing
+NYSE ARCA::INVN,INVN,NYSE ARCA,The Alger ETF Trust,ETF,,Equity,United States,US,,,NYSE ARCA::INVN,primary_listing_missing_isin
 NYSE ARCA::IOCT,IOCT,NYSE ARCA,Innovator International Developed Power Buffer ETF - October,ETF,,Alternative,United States,US,US45782C6315,,US45782C6315,primary_listing
 NYSE ARCA::ION,ION,NYSE ARCA,Proshares S&P Global Core Battery Metals ETF,ETF,,Equity,United States,US,US74347G2672,s&p global core battery metals,US74347G2672,primary_listing
 NYSE ARCA::IOO,IOO,NYSE ARCA,iShares Global 100 ETF,ETF,,Equity,United States,US,US4642875722,,US4642875722,primary_listing
@@ -37000,7 +37015,7 @@ NYSE ARCA::WCMI,WCMI,NYSE ARCA,First Trust WCM International Equity ETF,ETF,,Equ
 NYSE ARCA::WCPB,WCPB,NYSE ARCA,Weitz Core Plus Bond ETF,ETF,,Fixed Income,United States,US,US6649258802,weitz core plus bond,US6649258802,primary_listing
 NYSE ARCA::WDEF,WDEF,NYSE ARCA,WisdomTree Europe Defense Fund,ETF,,Equity,United States,US,US97717Y3374,europe defense,US97717Y3374,primary_listing
 NYSE ARCA::WDIV,WDIV,NYSE ARCA,SPDR® S&P Global Dividend ETF,ETF,,Equity,United States,US,US78463X4593,,US78463X4593,primary_listing
-NYSE ARCA::WEAT,WEAT,NYSE ARCA,Teucrium Wheat,ETF,,Commodity,Jersey,JE,JE00BN7KB664,teucrium wheat,JE00BN7KB664,primary_listing
+NYSE ARCA::WEAT,WEAT,NYSE ARCA,Teucrium Wheat,ETF,,Commodity,,,,teucrium wheat,NYSE ARCA::WEAT,primary_listing_missing_isin
 NYSE ARCA::WEBL,WEBL,NYSE ARCA,Direxion Daily Dow Jones Internet Bull 3X Shares,ETF,,Other,United States,US,US25460E3642,direxion dow jones internet bull 3x,US25460E3642,primary_listing
 NYSE ARCA::WEBS,WEBS,NYSE ARCA,Direxion Daily Dow Jones Internet Bear 3X Shares,ETF,,Other,United States,US,US25460G6668,direxion dow jones internet bear 3x,US25460G6668,primary_listing
 NYSE ARCA::WEEL,WEEL,NYSE ARCA,Peerless Option Income Wheel ETF,ETF,,Alternative,United States,US,US88636J4105,peerless option income wheel,US88636J4105,primary_listing
@@ -40044,14 +40059,14 @@ PSX::NATF,NATF,PSX,National Foods Ltd,Stock,Consumer Staples,,Pakistan,PK,PK0037
 PSX::NBPGETF,NBPGETF,PSX,NBP Pakistan G ETFXD,ETF,,Equity,Pakistan,PK,PK0089106048,nbp pakistan g etfxd,PK0089106048,primary_listing
 PSX::NCML,NCML,PSX,Nazir Cotton Mills Ltd,Stock,Materials,,Pakistan,PK,PK0109701018,nazir cotton mills,PK0109701018,primary_listing
 PSX::NCPL,NCPL,PSX,Nishat Chunian Power Ltd,Stock,Utilities,,Pakistan,PK,PK0098301010,nishat chunian power,PK0098301010,primary_listing
-PSX::NESTLE,NESTLE,PSX,Nestle Pakistan Ltd,Stock,Consumer Staples,,Nigeria,NG,NGNESTLE0006,nestle pakistan,NGNESTLE0006,primary_listing
+PSX::NESTLE,NESTLE,PSX,Nestle Pakistan Ltd,Stock,Consumer Staples,,,,,nestle pakistan,PSX::NESTLE,primary_listing_missing_isin
 PSX::NETSOL,NETSOL,PSX,NetSol Technologies Ltd,Stock,Information Technology,,Pakistan,PK,PK0084201018,,PK0084201018,primary_listing
 PSX::NEXT,NEXT,PSX,Next Capital Ltd,Stock,Financials,,Pakistan,PK,PK0103501018,next capital,PK0103501018,primary_listing
 PSX::NITGETF,NITGETF,PSX,NIT PakistanXD,ETF,,Equity,Pakistan,PK,PK0096106015,nit pakistanxd,PK0096106015,primary_listing
 PSX::NML,NML,PSX,Nishat Mills Ltd,Stock,Materials,,Pakistan,PK,PK0005501017,nishat mills,PK0005501017,primary_listing
 PSX::NONS,NONS,PSX,Noon Sugar Mills Ltd,Stock,Consumer Staples,,Pakistan,PK,PK0010501010,noon sugar mills,PK0010501010,primary_listing
 PSX::NPL,NPL,PSX,Nishat Power Ltd,Stock,Utilities,,Pakistan,PK,PK0094301014,nishat power,PK0094301014,primary_listing
-PSX::NRL,NRL,PSX,National Refinery Ltd,Stock,Energy,,Mauritius,MU,MU0049N00000,national refinery,MU0049N00000,primary_listing
+PSX::NRL,NRL,PSX,National Refinery Ltd,Stock,Energy,,,,,national refinery,PSX::NRL,primary_listing_missing_isin
 PSX::NRSL,NRSL,PSX,Nimir Resins Ltd,Stock,Materials,,Pakistan,PK,PK0056501015,nimir resins,PK0056501015,primary_listing
 PSX::NSRM,NSRM,PSX,National Silk and Rayon Mills Limited,Stock,Materials,,Pakistan,PK,PK0006401019,national silk and rayon mills,PK0006401019,primary_listing
 PSX::OBOY,OBOY,PSX,Oilboy Energy L,Stock,Energy,,Pakistan,PK,PK0074701019,,PK0074701019,primary_listing
@@ -40361,7 +40376,7 @@ SET::B,B,SET,BEGISTICS PUBLIC COMPANY LIMITED,Stock,Industrials,,Thailand,TH,TH0
 SET::B-WORK,B-WORK,SET,Bualuang Office Leasehold REIT,Stock,Real Estate,,Thailand,TH,TH8427010005,bualuang office leasehold reit,TH8427010005,primary_listing
 SET::B52,B52,SET,B-52 Capital Public Company Limited,Stock,Consumer Discretionary,,Thailand,TH,TH0045D10Z07,b-52 capital public,TH0045D10Z07,primary_listing
 SET::BA,BA,SET,BANGKOK AIRWAYS PUBLIC COMPANY LIMITED,Stock,Industrials,,Thailand,TH,TH4403010010,bangkok airways public,TH4403010010,primary_listing
-SET::BAFS,BAFS,SET,Bangkok Aviation Fuel Services Public Company Limited,Stock,Industrials,,Pakistan,PK,PK0027901013,bangkok aviation fuel services public,PK0027901013,primary_listing
+SET::BAFS,BAFS,SET,Bangkok Aviation Fuel Services Public Company Limited,Stock,Industrials,,,,,bangkok aviation fuel services public,SET::BAFS,primary_listing_missing_isin
 SET::BANPU,BANPU,SET,Banpu Public Company Limited,Stock,Energy,,Thailand,TH,TH0148A10Z06,banpu public,TH0148A10Z06,primary_listing
 SET::BAREIT,BAREIT,SET,BA Airport Leasehold Real Estate Investment Trust,Stock,Real Estate,,Thailand,TH,THA996010007,ba airport leasehold real estate investment trust,THA996010007,primary_listing
 SET::BAY,BAY,SET,Bank of Ayudhya PCL,Stock,Financials,,Thailand,TH,TH0023010000,,TH0023010000,primary_listing
@@ -40744,7 +40759,7 @@ SET::PLE,PLE,SET,Power Line Engineering Public Company Limited,Stock,Industrials
 SET::PM,PM,SET,PREMIER MARKETING PUBLIC COMPANY LIMITED,Stock,Consumer Staples,,Thailand,TH,TH0977010Z09,premier marketing public,TH0977010Z09,primary_listing
 SET::PMC,PMC,SET,PMC LABEL MATERIALS PUBLIC COMPANY LIMITED,Stock,Materials,,Thailand,TH,THC302010002,pmc label materials public,THC302010002,primary_listing
 SET::PMTA,PMTA,SET,PM Thoresen Asia Holdings PCL,Stock,Materials,,Thailand,TH,TH6252010009,pm thoresen asia holdings pcl|pm thoresen asia holdings,TH6252010009,primary_listing
-SET::PORT,PORT,SET,Sahathai Terminal Public Company Limited,Stock,Industrials,,Indonesia,ID,ID1000138209,sahathai terminal public,ID1000138209,primary_listing
+SET::PORT,PORT,SET,Sahathai Terminal Public Company Limited,Stock,Industrials,,,,,sahathai terminal public,SET::PORT,primary_listing_missing_isin
 SET::PPM,PPM,SET,PORN PROM METAL PUBLIC COMPANY LIMITED,Stock,Industrials,,Thailand,TH,TH0806010Z00,porn prom metal public,TH0806010Z00,primary_listing
 SET::PPP,PPP,SET,Premier Products Public Company Limited,Stock,Materials,,Thailand,TH,TH4263010001,premier products public,TH4263010001,primary_listing
 SET::PPPM,PPPM,SET,PP PRIME Public Company Limited,Stock,Consumer Staples,,Thailand,TH,TH0435B10Z07,pp prime public,TH0435B10Z07,primary_listing
@@ -41019,7 +41034,7 @@ SET::UHERO,UHERO,SET,United Hero ETF,ETF,,Equity,Thailand,TH,THHERO070007,united
 SET::UKEM,UKEM,SET,Union Petrochemical Public Company Limited,Stock,Industrials,,Thailand,TH,TH0927010Z04,union petrochemical public,TH0927010Z04,primary_listing
 SET::UMI,UMI,SET,THE UNION MOSAIC INDUSTRY PUBLIC COMPANY LIMITED,Stock,Materials,,Thailand,TH,TH0160010Z02,the union mosaic industry public,TH0160010Z02,primary_listing
 SET::UMS,UMS,SET,UNIQUE MINING SERVICES PUBLIC COMPANY LIMITED,Stock,Energy,,Thailand,TH,TH0775010Z07,unique mining services public,TH0775010Z07,primary_listing
-SET::UNIQ,UNIQ,SET,Unique Engineering and Construction Public Company Limited,Stock,Industrials,,Indonesia,ID,ID1000159502,unique engineering and construction public,ID1000159502,primary_listing
+SET::UNIQ,UNIQ,SET,Unique Engineering and Construction Public Company Limited,Stock,Industrials,,,,,unique engineering and construction public,SET::UNIQ,primary_listing_missing_isin
 SET::UP,UP,SET,UNION PLASTIC PUBLIC COMPANY LIMITED,Stock,Materials,,Thailand,TH,TH0029010004,union plastic public,TH0029010004,primary_listing
 SET::UPF,UPF,SET,Union Pioneer Public Company Limited,Stock,Consumer Discretionary,,Thailand,TH,TH0031010000,union pioneer public,TH0031010000,primary_listing
 SET::UPOIC,UPOIC,SET,United Palm Oil Industry Public Company Limited,Stock,Consumer Staples,,Thailand,TH,TH0227010Z09,united palm oil industry public,TH0227010Z09,primary_listing
@@ -55665,7 +55680,7 @@ TSX::DND,DND,TSX,Dye & Durham Limited,Stock,Information Technology,,Canada,CA,CA
 TSX::DNG,DNG,TSX,Dynacor Gold Mines Inc.,Stock,Materials,,Canada,CA,CA26779X1015,dynacor gold mines,CA26779X1015,primary_listing
 TSX::DNTL,DNTL,TSX,dentalcorp Holdings Ltd.,Stock,Health Care,,Canada,CA,,dentalcorp holdings,TSX::DNTL,primary_listing_missing_isin
 TSX::DOL,DOL,TSX,Dollarama Inc,Stock,Consumer Discretionary,,Canada,CA,CA25675T1075,dollarama,CA25675T1075,primary_listing
-TSX::DPM,DPM,TSX,Dundee Precious Metals Inc,Stock,Materials,,Australia,AU,AU0000413890,dundee precious metals,AU0000413890,primary_listing
+TSX::DPM,DPM,TSX,Dundee Precious Metals Inc,Stock,Materials,,,,,dundee precious metals,TSX::DPM,primary_listing_missing_isin
 TSX::DR,DR,TSX,Medical Facilities Corporation,Stock,Health Care,,Canada,CA,CA58457V5036,medical facilities,CA58457V5036,primary_listing
 TSX::DRCU,DRCU,TSX,Desjardins RI Active Canadian Bond - Net-Zero Emissions Pathway ETF,ETF,,Fixed Income,Canada,CA,CA25059Q1090,desjardins ri active canadian bond - net-zero emissions pathway,CA25059Q1090,primary_listing
 TSX::DRFC,DRFC,TSX,Desjardins RI Canada Multifactor - Net-Zero Emissions Pathway ETF,ETF,,Equity,Canada,CA,CA25059K1021,desjardins ri canada multifactor - net-zero emissions pathway,CA25059K1021,primary_listing
@@ -56219,6 +56234,7 @@ TSX::LMAX,LMAX,TSX,Hamilton Healthcare YIELD MAXIMIZER ETF,ETF,,Equity,Canada,CA
 TSX::LN,LN,TSX,Loncor Gold Inc.,Stock,Materials,,Canada,CA,,loncor gold,TSX::LN,primary_listing_missing_isin
 TSX::LNF,LNF,TSX,Leon's Furniture Limited,Stock,Consumer Discretionary,,Canada,CA,CA5266821092,leons furniture,CA5266821092,primary_listing
 TSX::LNR,LNR,TSX,Linamar Corporation,Stock,Consumer Discretionary,,Canada,CA,CA53278L1076,linamar,CA53278L1076,primary_listing
+TSX::LONG,LONG,TSX,CI Global Longevity Economy Fund,ETF,,Equity,Canada,CA,,ci global longevity economy,TSX::LONG,primary_listing_missing_isin
 TSX::LORL,LORL,TSX,L’Oréal CDR (CAD Hedged),Stock,Communication Services,,Canada,CA,CA50214W1068,,CA50214W1068,primary_listing
 TSX::LPAY,LPAY,TSX,Global X Long-Term U.S. Treasury Premium Yield ETF,ETF,,Fixed Income,Canada,CA,CA37963H1091,long-term u.s. treasury premium yield,CA37963H1091,primary_listing
 TSX::LS,LS,TSX,Middlefield Healthcare & Life Sciences ETF,ETF,,Equity,Canada,CA,CA5963361079,middlefield healthcare & life sciences,CA5963361079,primary_listing
@@ -57912,6 +57928,7 @@ TSXV::IRO,IRO,TSXV,Inter-Rock Minerals Inc.,Stock,Consumer Staples,,Canada,CA,CA
 TSXV::ISGI,ISGI,TSXV,InsuraGuest Technologies Inc.,Stock,Information Technology,,Canada,CA,CA4578001006,insuraguest technologies|insuraguest,CA4578001006,primary_listing
 TSXV::ITR,ITR,TSXV,Integra Resources Corp.,Stock,Materials,,Canada,CA,CA45826T3010,,CA45826T3010,primary_listing
 TSXV::IVS,IVS,TSXV,Inventus Mining Corp.,Stock,Materials,,Canada,CA,CA4612172003,inventus mining,CA4612172003,primary_listing
+TSXV::IVX,IVX,TSXV,Inventronics Ltd,Stock,Industrials,,,,,inventronics,TSXV::IVX,primary_listing_missing_isin
 TSXV::IZ,IZ,TSXV,International Zeolite Corp.,Stock,Materials,,Canada,CA,,international zeolite,TSXV::IZ,primary_listing_missing_isin
 TSXV::IZN,IZN,TSXV,InZinc Mining Ltd.,Stock,Materials,,Canada,CA,CA46187R1082,inzinc mining,CA46187R1082,primary_listing
 TSXV::IZZ,IZZ,TSXV,International Prospect Ventures Ltd.,Stock,Materials,,Canada,CA,CA4601961085,international prospect ventures,CA4601961085,primary_listing
@@ -58303,6 +58320,7 @@ TSXV::RCK,RCK,TSXV,Rock Tech Lithium Inc.,Stock,Materials,,Canada,CA,CA77273P201
 TSXV::RCR.P,RCR.P,TSXV,Canna 8 Investment Trust,Stock,Financials,,Canada,CA,CA13766K1021,canna 8 investment trust|canna 8 investment,CA13766K1021,primary_listing
 TSXV::RCT,RCT,TSXV,Rochester Resources Ltd,Stock,Materials,,Canada,CA,CA77174P3007,rochester resources,CA77174P3007,primary_listing
 TSXV::RDG,RDG,TSXV,Ridgeline Minerals Corp,Stock,Materials,,Canada,CA,CA7660871004,ridgeline minerals,CA7660871004,primary_listing
+TSXV::RDS,RDS,TSXV,Ressources Minieres Radisson Inc,Stock,Materials,,,,,ressources minieres radisson,TSXV::RDS,primary_listing_missing_isin
 TSXV::RDU,RDU,TSXV,Radius Gold Inc.,Stock,Materials,,Canada,CA,CA7504681007,radius gold,CA7504681007,primary_listing
 TSXV::RE,RE,TSXV,RE Royalties Ltd,Stock,,,Canada,CA,CA75527Q1081,re royalties,CA75527Q1081,primary_listing
 TSXV::REBL.P,REBL.P,TSXV,Genesis Acquisition Corp.,Stock,Financials,,Canada,CA,CA37182V1031,genesis acquisition,CA37182V1031,primary_listing
@@ -62313,7 +62331,9 @@ XETRA::O5G,O5G,XETRA,"CPI PROPERTY GRP   EO-,10",Stock,Real Estate,,Luxembourg,L
 XETRA::OBCK,OBCK,XETRA,Ottobock SE & Co. KGaA,Stock,Health Care,,Germany,DE,DE000BCK2223,ottobock,DE000BCK2223,primary_listing
 XETRA::OBGE,OBGE,XETRA,ODDO BHF Global Equity Active UCITS ETF – Accumulating,ETF,,Equity,Ireland,IE,IE0001O9L5K4,oddo bhf global equity active accumulating,IE0001O9L5K4,primary_listing
 XETRA::OBS,OBS,XETRA,ORBIS SE O.N.,Stock,Information Technology,,Germany,DE,DE0005228779,orbis,DE0005228779,primary_listing
+XETRA::OD7D,OD7D,XETRA,WisdomTree Corn EUR,ETF,,Commodity,Jersey,JE,JE00BN7KB441,,JE00BN7KB441,primary_listing
 XETRA::OD7N,OD7N,XETRA,WisdomTree Silver EUR,ETF,,Equity,United Kingdom,GB,GB00B15KY328,,GB00B15KY328,primary_listing
+XETRA::OD7S,OD7S,XETRA,WisdomTree Wheat ETC,ETF,,Commodity,Jersey,JE,JE00BN7KB664,wheat etc,JE00BN7KB664,primary_listing
 XETRA::ODBA,ODBA,XETRA,ODDO BHF Global Balanced Allocation Active UCITS ETF - Accumulating,ETF,,Alternative,Ireland,IE,IE000V0Q8BV4,oddo bhf global balanced allocation active - accumulating,IE000V0Q8BV4,primary_listing
 XETRA::ODUS,ODUS,XETRA,ODDO BHF US Equity Active UCITS ETF – Accumulating,ETF,,Equity,Ireland,IE,IE000YR7N5U8,oddo bhf us equity active accumulating,IE000YR7N5U8,primary_listing
 XETRA::OEL,OEL,XETRA,ADM Hamburg AG,Stock,Consumer Staples,,Germany,DE,DE0007269003,adm hamburg,DE0007269003,primary_listing
