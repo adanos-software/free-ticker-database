@@ -33,6 +33,36 @@ STOLEN_ISIN_CLEARS = {
     ("ETHA", "NASDAQ"): "BRETHABDR006",
     ("BSOL", "NYSE ARCA"): "DE000A4A59D2",
     ("BOD-EQO", "BSE_BW"): "GB00B5TFC825",
+    ("PAVE", "BATS"): "IE00BLCHJ534",
+    ("WTAI", "BATS"): "IE00BDVPNG13",
+    ("FBTC", "BATS"): "CA31580V1040",
+    ("VSOL", "NASDAQ"): "DE000A3GSUD3",
+    ("EWG", "NYSE ARCA"): "BRBEWGBDR000",
+    ("CORN", "NYSE ARCA"): "JE00BN7KB441",
+    ("WEAT", "NYSE ARCA"): "JE00BN7KB664",
+    ("INVN", "NYSE ARCA"): "US45170X2053",
+    ("CNEQ", "NYSE ARCA"): "US45170X2053",
+    ("RE", "LSE"): "CA75527Q1081",
+    ("RE-B", "LSE"): "CA75527Q1081",
+    ("METR", "LSE"): "ARP6558L1178",
+    ("ESPX", "AMS"): "CA30052U2065",
+    ("AIH", "ASX"): "US00809M1045",
+    ("TXR", "ASX"): "ARDEUT116019",
+    ("BAFS", "SET"): "PK0027901013",
+    ("PORT", "SET"): "ID1000138209",
+    ("UNIQ", "SET"): "ID1000159502",
+    ("EMDE", "IDX"): "AREDER010016",
+    ("MOLI", "IDX"): "ARP689251337",
+    ("POLL", "IDX"): "ARP7905G1652",
+    ("NESTLE", "PSX"): "NGNESTLE0006",
+    ("NRL", "PSX"): "MU0049N00000",
+    ("CIEB", "BMV"): "EGS60041C018",
+    ("CLU", "NEO"): "AU0000113490",
+    ("FGX", "NEO"): "AU000000FGX1",
+    ("DPM", "TSX"): "AU0000413890",
+    ("LONG", "TSX"): "ARP6356B1059",
+    ("IVX", "TSXV"): "AU000000IVX4",
+    ("RDS", "TSXV"): "AU000000RDS3",
 }
 
 COUNTRY_CLEARS = {
@@ -52,6 +82,39 @@ COUNTRY_CLEARS = {
     ("ETHA", "NASDAQ"),
     ("BSOL", "NYSE ARCA"),
     ("BOD-EQO", "BSE_BW"),
+    ("PAVE", "BATS"),
+    ("WTAI", "BATS"),
+    ("FBTC", "BATS"),
+    ("VSOL", "NASDAQ"),
+    ("EWG", "NYSE ARCA"),
+    ("CORN", "NYSE ARCA"),
+    ("WEAT", "NYSE ARCA"),
+    ("RE", "LSE"),
+    ("RE-B", "LSE"),
+    ("ESPX", "AMS"),
+    ("AIH", "ASX"),
+    ("BAFS", "SET"),
+    ("PORT", "SET"),
+    ("UNIQ", "SET"),
+    ("NESTLE", "PSX"),
+    ("NRL", "PSX"),
+    ("CIEB", "BMV"),
+    ("CLU", "NEO"),
+    ("FGX", "NEO"),
+    ("DPM", "TSX"),
+    ("IVX", "TSXV"),
+    ("RDS", "TSXV"),
+}
+
+ISIN_ONLY_COUNTRY_KEEPS = {
+    ("INVN", "NYSE ARCA"): ("United States", "US"),
+    ("CNEQ", "NYSE ARCA"): ("United States", "US"),
+    ("METR", "LSE"): ("United Kingdom", "GB"),
+    ("TXR", "ASX"): ("Australia", "AU"),
+    ("EMDE", "IDX"): ("Indonesia", "ID"),
+    ("MOLI", "IDX"): ("Indonesia", "ID"),
+    ("POLL", "IDX"): ("Indonesia", "ID"),
+    ("LONG", "TSX"): ("Canada", "CA"),
 }
 
 
@@ -100,6 +163,47 @@ def test_lloyds_otc_keeps_uk_country() -> None:
         and row.get("field") in {"country", "country_code"}
     ]
     assert lloyds == []
+
+
+def test_identiv_and_isem_are_not_recode_targets() -> None:
+    inve_isin = [
+        row
+        for row in load_csv(METADATA)
+        if row.get("ticker") == "INVE"
+        and row.get("exchange") == "NASDAQ"
+        and row.get("field") == "isin"
+    ]
+    assert inve_isin == []
+    isem = _metadata("ISEM", "LSE", "isin")
+    assert isem["decision"] == "update"
+    assert isem["proposed_value"] == "IE00B27YCP72"
+    rea = _metadata("RE", "LSE", "isin")
+    assert rea["proposed_value"] == ""
+    assert "GB0002349065" not in rea["reason"]
+
+
+def test_cleared_stolen_isins_leave_identiv_and_venue_countries() -> None:
+    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
+    for (ticker, exchange), stolen in STOLEN_ISIN_CLEARS.items():
+        row = listings[f"{exchange}::{ticker}"]
+        assert row["isin"] == "", (exchange, ticker, stolen, row["isin"])
+    for ticker, exchange in COUNTRY_CLEARS:
+        row = listings[f"{exchange}::{ticker}"]
+        assert row["country"] == "", (exchange, ticker, row["country"])
+        assert row["country_code"] == "", (exchange, ticker, row["country_code"])
+    for (ticker, exchange), (country, code) in ISIN_ONLY_COUNTRY_KEEPS.items():
+        row = listings[f"{exchange}::{ticker}"]
+        assert row["isin"] == ""
+        assert row["country"] == country
+        assert row["country_code"] == code
+    inve = listings["NASDAQ::INVE"]
+    assert inve["isin"] == "US45170X2053"
+    assert inve["country"] == "United States"
+    assert listings["FSX::INVN"]["isin"] == "US45170X2053"
+    assert listings["XSTU::INVN"]["isin"] == "US45170X2053"
+    assert listings["LSE::ISEM"]["isin"] == "IE00B27YCP72"
+    assert listings["TSX::FBTC"]["isin"] == "CA31580V1040"
+    assert listings["TSXV::RE"]["isin"] == "CA75527Q1081"
 
 
 def test_issc_and_ethm_nasdaq_symbol_changes() -> None:

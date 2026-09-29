@@ -12,6 +12,7 @@
 
 ### Fixed
 
+- Cleared stolen ticker-homonym ISINs (and stolen ISIN-prefix countries) on disjoint namesakes including `BATS::PAVE`/`WTAI`/`FBTC`, `NASDAQ::VSOL`, `NYSE ARCA::EWG`/`CORN`/`WEAT`/`INVN`/`CNEQ`, `LSE::RE`/`RE-B`/`METR`, `AMS::ESPX`, and leftover ASX/SET/IDX/PSX/BMV/NEO/TSX/TSXV collisions. No replacement ISIN is invented. `NASDAQ::INVE` keeps Identiv `US45170X2053`; official `LSE::RE` `GB0002349065` is not filled here.
 - Cleared stolen ticker-homonym ISINs (and stolen ISIN-prefix countries) on disjoint issuers such as `FSX::CU2`, `LSE::MAST`, `OTC::ARDDF`/`CRRNF`/`HLTFF`/`LLDTF`/`LLOBF`/`VDTA`/`EXCH`, `ASX::MA1`, and US Cboe/NYSE namesake ETFs. No replacement ISIN is invented. Empty-ISIN rows no longer keep a GLEIF LEI from the old identifier.
 - Applied official-directory leftover ticker drops (same ISIN, successor still listed, predecessor absent from the live directory), including NSE/BSE symbol changes, `NASDAQ::ISSC`→`IA`, `NASDAQ::ETHM`→`DYNC`, and collision-hidden Nasdaq successors `VIP`/`MEDS`/`MF`/`CIRC`/`TMS` via coverage expansion. `LSE::MAST` stays listed with a cleared ISIN. Removed the stale `OTC::DAZSF` entry-quality allowlist row.
 - Rebuild now strips leading/trailing whitespace (including NBSP and tabs) from security names, and validation fails closed on untrimmed names in `tickers.csv`, `listings.csv`, and `core_listings.csv`. The safe-merge gate treats whitespace-only name diffs as non-critical, matching row fingerprints.

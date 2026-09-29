@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-29T07:39:18Z",
+  "generated_at": "2026-09-29T15:22:54Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2049,
-  "decision_rows": 6587,
+  "conflict_count": 2038,
+  "decision_rows": 6556,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1421,
-    "proposed_clear_conflicting_identifier": 1080,
-    "quarantined_unresolved_identifier": 4086
+    "kept_listing_keyed_identifier": 1417,
+    "proposed_clear_conflicting_identifier": 1076,
+    "quarantined_unresolved_identifier": 4063
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1080,
-  "quarantined_rows": 4086,
-  "retained_rows": 1421,
+  "proposed_clear_rows": 1076,
+  "quarantined_rows": 4063,
+  "retained_rows": 1417,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -65,110 +65,6 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "AN8068571086"
-    },
-    {
-      "conflict_id": "019be6f1f3ee066bbfa1",
-      "isin": "ARP6356B1059",
-      "listing_key": "BCBA::LONG",
-      "ticker": "LONG",
-      "exchange": "BCBA",
-      "name": "Longvie SA",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP6356B1059"
-    },
-    {
-      "conflict_id": "019be6f1f3ee066bbfa1",
-      "isin": "ARP6356B1059",
-      "listing_key": "TSX::LONG",
-      "ticker": "LONG",
-      "exchange": "TSX",
-      "name": "CI Global Longevity Economy Fund",
-      "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP6356B1059"
-    },
-    {
-      "conflict_id": "7ef91472d8294205e24d",
-      "isin": "ARP6558L1178",
-      "listing_key": "BCBA::METR",
-      "ticker": "METR",
-      "exchange": "BCBA",
-      "name": "Metrogas SA",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP6558L1178"
-    },
-    {
-      "conflict_id": "7ef91472d8294205e24d",
-      "isin": "ARP6558L1178",
-      "listing_key": "LSE::METR",
-      "ticker": "METR",
-      "exchange": "LSE",
-      "name": "ETC Group Global Metaverse UCITS ETF USD Accumulation",
-      "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP6558L1178"
-    },
-    {
-      "conflict_id": "9cbf0872b30ed0a054f3",
-      "isin": "ARP689251337",
-      "listing_key": "BCBA::MOLI",
-      "ticker": "MOLI",
-      "exchange": "BCBA",
-      "name": "Molinos Rio de la Plata SA",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP689251337"
-    },
-    {
-      "conflict_id": "9cbf0872b30ed0a054f3",
-      "isin": "ARP689251337",
-      "listing_key": "IDX::MOLI",
-      "ticker": "MOLI",
-      "exchange": "IDX",
-      "name": "Madusari Murni Indah Tbk PT",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP689251337"
-    },
-    {
-      "conflict_id": "07c32418eba5a9c09661",
-      "isin": "ARP7905G1652",
-      "listing_key": "BCBA::POLL",
-      "ticker": "POLL",
-      "exchange": "BCBA",
-      "name": "Polledo S.A.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP7905G1652"
-    },
-    {
-      "conflict_id": "07c32418eba5a9c09661",
-      "isin": "ARP7905G1652",
-      "listing_key": "IDX::POLL",
-      "ticker": "POLL",
-      "exchange": "IDX",
-      "name": "Pollux Properti Indonesia Tbk PT",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "ARP7905G1652"
     },
     {
       "conflict_id": "3d625f4806054536b1e6",
@@ -1055,58 +951,6 @@
       "retained_isin": "AU000000IMD5"
     },
     {
-      "conflict_id": "9a5ec38a7ae9e4cf9a83",
-      "isin": "AU000000IVX4",
-      "listing_key": "ASX::IVX",
-      "ticker": "IVX",
-      "exchange": "ASX",
-      "name": "Invion Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000IVX4"
-    },
-    {
-      "conflict_id": "9a5ec38a7ae9e4cf9a83",
-      "isin": "AU000000IVX4",
-      "listing_key": "FSX::7C8",
-      "ticker": "7C8",
-      "exchange": "FSX",
-      "name": "Invion Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000IVX4"
-    },
-    {
-      "conflict_id": "9a5ec38a7ae9e4cf9a83",
-      "isin": "AU000000IVX4",
-      "listing_key": "OTC::IVIXF",
-      "ticker": "IVIXF",
-      "exchange": "OTC",
-      "name": "Invion Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000IVX4"
-    },
-    {
-      "conflict_id": "9a5ec38a7ae9e4cf9a83",
-      "isin": "AU000000IVX4",
-      "listing_key": "TSXV::IVX",
-      "ticker": "IVX",
-      "exchange": "TSXV",
-      "name": "Inventronics Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000IVX4"
-    },
-    {
       "conflict_id": "67e0fd5e7fb147e4e578",
       "isin": "AU000000LLC3",
       "listing_key": "ASX::LLC",
@@ -1417,32 +1261,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU000000RAC3"
-    },
-    {
-      "conflict_id": "6619c12434c021d6543f",
-      "isin": "AU000000RDS3",
-      "listing_key": "ASX::RDS",
-      "ticker": "RDS",
-      "exchange": "ASX",
-      "name": "Redstone Resources Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000RDS3"
-    },
-    {
-      "conflict_id": "6619c12434c021d6543f",
-      "isin": "AU000000RDS3",
-      "listing_key": "TSXV::RDS",
-      "ticker": "RDS",
-      "exchange": "TSXV",
-      "name": "Ressources Minieres Radisson Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000RDS3"
     },
     {
       "conflict_id": "91831097c1675ba26cb9",
@@ -1911,32 +1729,6 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "AU00000BEAR2"
-    },
-    {
-      "conflict_id": "c41368c24b1fd21540e6",
-      "isin": "AU0000113490",
-      "listing_key": "ASX::CLU",
-      "ticker": "CLU",
-      "exchange": "ASX",
-      "name": "CLUEY LTD",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000113490"
-    },
-    {
-      "conflict_id": "c41368c24b1fd21540e6",
-      "isin": "AU0000113490",
-      "listing_key": "NEO::CLU",
-      "ticker": "CLU",
-      "exchange": "NEO",
-      "name": "iShares US Fundamental Hedged Common Class",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000113490"
     },
     {
       "conflict_id": "96b8d021f572fff977e0",
@@ -5722,32 +5514,6 @@
       "retained_isin": "CA29408C1005"
     },
     {
-      "conflict_id": "b5b77cf17995ecdf4ab1",
-      "isin": "CA30052U2065",
-      "listing_key": "AMS::ESPX",
-      "ticker": "ESPX",
-      "exchange": "AMS",
-      "name": "iShares S&P 500 ESG UCITS ETF USD (Acc)",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA30052U2065"
-    },
-    {
-      "conflict_id": "b5b77cf17995ecdf4ab1",
-      "isin": "CA30052U2065",
-      "listing_key": "TSX::ESPX",
-      "ticker": "ESPX",
-      "exchange": "TSX",
-      "name": "Evolve S&P 500® Enhanced Yield Fund CAD Hedged",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA30052U2065"
-    },
-    {
       "conflict_id": "fb1ae4b6052cb8220252",
       "isin": "CA3025862010",
       "listing_key": "LSE::FP",
@@ -6474,58 +6240,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "CA68390D1069"
-    },
-    {
-      "conflict_id": "e5c19b82bfdce0929162",
-      "isin": "CA75527Q1081",
-      "listing_key": "LSE::RE",
-      "ticker": "RE",
-      "exchange": "LSE",
-      "name": "R.E.A. Holdings plc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA75527Q1081"
-    },
-    {
-      "conflict_id": "e5c19b82bfdce0929162",
-      "isin": "CA75527Q1081",
-      "listing_key": "LSE::RE-B",
-      "ticker": "RE-B",
-      "exchange": "LSE",
-      "name": "R.E.A. Holdings plc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA75527Q1081"
-    },
-    {
-      "conflict_id": "e5c19b82bfdce0929162",
-      "isin": "CA75527Q1081",
-      "listing_key": "OTC::RROYF",
-      "ticker": "RROYF",
-      "exchange": "OTC",
-      "name": "RE Royalties Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA75527Q1081"
-    },
-    {
-      "conflict_id": "e5c19b82bfdce0929162",
-      "isin": "CA75527Q1081",
-      "listing_key": "TSXV::RE",
-      "ticker": "RE",
-      "exchange": "TSXV",
-      "name": "RE Royalties Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA75527Q1081"
     },
     {
       "conflict_id": "ea27b3600e8f56ed049a",
@@ -41901,58 +41615,6 @@
       "retained_isin": "JE00B3MW7P88"
     },
     {
-      "conflict_id": "49729114c33380210901",
-      "isin": "JE00BN7KB664",
-      "listing_key": "Euronext::WEATP",
-      "ticker": "WEATP",
-      "exchange": "Euronext",
-      "name": "WisdomTree Wheat EUR",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "JE00BN7KB664"
-    },
-    {
-      "conflict_id": "49729114c33380210901",
-      "isin": "JE00BN7KB664",
-      "listing_key": "NYSE ARCA::WEAT",
-      "ticker": "WEAT",
-      "exchange": "NYSE ARCA",
-      "name": "Teucrium Wheat",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "JE00BN7KB664"
-    },
-    {
-      "conflict_id": "49729114c33380210901",
-      "isin": "JE00BN7KB664",
-      "listing_key": "TSE::1695",
-      "ticker": "1695",
-      "exchange": "TSE",
-      "name": "WisdomTree Wheat",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "JE00BN7KB664"
-    },
-    {
-      "conflict_id": "49729114c33380210901",
-      "isin": "JE00BN7KB664",
-      "listing_key": "XETRA::OD7S",
-      "ticker": "OD7S",
-      "exchange": "XETRA",
-      "name": "WisdomTree Wheat ETC",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "JE00BN7KB664"
-    },
-    {
       "conflict_id": "10234eadeb7a0e751fdf",
       "isin": "JE00BRX98089",
       "listing_key": "AMS::CVC",
@@ -59516,45 +59178,6 @@
       "retained_isin": "US0080731088"
     },
     {
-      "conflict_id": "7ce1990666af80d620e4",
-      "isin": "US00809M1045",
-      "listing_key": "ASX::AIH",
-      "ticker": "AIH",
-      "exchange": "ASX",
-      "name": "ADVANCED INNERGY HOLDINGS LIMITED",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US00809M1045"
-    },
-    {
-      "conflict_id": "7ce1990666af80d620e4",
-      "isin": "US00809M1045",
-      "listing_key": "NASDAQ::PAIYY",
-      "ticker": "PAIYY",
-      "exchange": "NASDAQ",
-      "name": "Aesthetic Medical International Holdings Group Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US00809M1045"
-    },
-    {
-      "conflict_id": "7ce1990666af80d620e4",
-      "isin": "US00809M1045",
-      "listing_key": "OTC::PAIYY",
-      "ticker": "PAIYY",
-      "exchange": "OTC",
-      "name": "Aesthetic Medical International Holdings Group Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US00809M1045"
-    },
-    {
       "conflict_id": "2fbc3e4b929a385ac181",
       "isin": "US0082521081",
       "listing_key": "FSX::AFS",
@@ -70436,7 +70059,7 @@
       "retained_isin": "US45168D1046"
     },
     {
-      "conflict_id": "05388f4ccc2b2accec4c",
+      "conflict_id": "a2b5858d7529ee111063",
       "isin": "US45170X2053",
       "listing_key": "FSX::INVN",
       "ticker": "INVN",
@@ -70449,7 +70072,7 @@
       "retained_isin": "US45170X2053"
     },
     {
-      "conflict_id": "05388f4ccc2b2accec4c",
+      "conflict_id": "a2b5858d7529ee111063",
       "isin": "US45170X2053",
       "listing_key": "NASDAQ::INVE",
       "ticker": "INVE",
@@ -70462,33 +70085,7 @@
       "retained_isin": "US45170X2053"
     },
     {
-      "conflict_id": "05388f4ccc2b2accec4c",
-      "isin": "US45170X2053",
-      "listing_key": "NYSE ARCA::CNEQ",
-      "ticker": "CNEQ",
-      "exchange": "NYSE ARCA",
-      "name": "The Alger ETF Trust",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US45170X2053"
-    },
-    {
-      "conflict_id": "05388f4ccc2b2accec4c",
-      "isin": "US45170X2053",
-      "listing_key": "NYSE ARCA::INVN",
-      "ticker": "INVN",
-      "exchange": "NYSE ARCA",
-      "name": "The Alger ETF Trust",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US45170X2053"
-    },
-    {
-      "conflict_id": "05388f4ccc2b2accec4c",
+      "conflict_id": "a2b5858d7529ee111063",
       "isin": "US45170X2053",
       "listing_key": "XSTU::INVN",
       "ticker": "INVN",
