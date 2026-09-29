@@ -220,6 +220,10 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["b3_improvement_action_queue"] == "data/reports/b3_improvement_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["asx_scope_review_queue"] == "data/reports/asx_scope_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
+    assert (
+        RELEASE_SOURCE_REPORTS["official_full_recall_action_queue"]
+        == "data/reports/official_full_recall_action_queue.json"
+    )
     assert RELEASE_SOURCE_REPORTS["m3_correctness_campaigns"] == "data/reports/m3_correctness_campaigns.json"
     assert RELEASE_SOURCE_REPORTS["m3_sector_category_campaign"] == "data/reports/m3_sector_category_campaign.json"
     assert RELEASE_SOURCE_REPORTS["m3_name_freshness_campaign"] == "data/reports/m3_name_freshness_campaign.json"

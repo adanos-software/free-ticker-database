@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +35,10 @@ CSV_FIELDS = [
     "supplement_lane",
     "next_action",
 ]
+
+
+def utc_now_iso() -> str:
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def supplement_lane(exchange: str) -> str:
@@ -78,8 +83,23 @@ def build_queue(coverage_report: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
-def write_reports(queue: list[dict[str, Any]], *, json_out: Path, csv_out: Path, md_out: Path) -> None:
-    json_out.write_text(json.dumps({"rows": queue, "count": len(queue)}, indent=2) + "\n", encoding="utf-8")
+def write_reports(
+    queue: list[dict[str, Any]],
+    *,
+    json_out: Path,
+    csv_out: Path,
+    md_out: Path,
+    generated_at: str | None = None,
+) -> None:
+    generated_at = generated_at or utc_now_iso()
+    json_out.write_text(
+        json.dumps(
+            {"generated_at": generated_at, "rows": queue, "count": len(queue)},
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     with csv_out.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=CSV_FIELDS)
         writer.writeheader()
