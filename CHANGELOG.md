@@ -35,6 +35,7 @@
 - Cleared ticker-homonym ISINs on US listings whose official directory identity did not match the foreign primary sharing that ISIN (e.g. `NYSE::DLR` Digital Realty vs `TSX::DLR` Global X ETF, `NYSE ARCA::ETHW` Bitwise vs WisdomTree ETC). Missing identifier is retained; no replacement ISIN is invented.
 - Applied listing-keyed official ISIN recodes for matching Frankfurt identities (e.g. `FSX::UN0` Uniper `DE000UNSE026`, `FSX::AWC` American Water Works `US0304201033`) and `OTC::VGLS` `US91822T2006`.
 - Corrected `NASDAQ::AAPB` to the official Nasdaq listed name GraniteShares 2x Long AAPL Daily ETF.
+- Registered `official_full_recall_action_queue` in the release-acceptance source-report list and persist `generated_at`, so tag workflows fail closed on unlisted review queues.
 
 ### Safety
 

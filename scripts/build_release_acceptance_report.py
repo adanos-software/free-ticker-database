@@ -77,6 +77,7 @@ RELEASE_SOURCE_REPORTS = {
     "asx_residual_review": "data/reports/asx_residual_review.json",
     "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
     "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
+    "official_full_recall_action_queue": "data/reports/official_full_recall_action_queue.json",
     "adanos_alias_audit": "data/reports/adanos_alias_audit.json",
     "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json",
     "m3_correctness_campaigns": "data/reports/m3_correctness_campaigns.json",
