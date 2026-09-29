@@ -2,23 +2,51 @@
 
 ## [Unreleased]
 
+## [3.41.0] - 2026-09-29
+
+### Summary
+
+**Identity-reviewed stolen-ISIN, official-directory, and rotation-hardening release.** Publishes stolen ticker-homonym ISIN clears, leftover official ticker drops, official directory promotions, Nasdaq identity moves, and fail-closed rotation identity-lane hardening accumulated since v3.40.0. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, unresolved source gaps remain explicit, and automation cannot remove or critically recode a listing without exact evidence.
+
+### Added
+
+- Added 81 official listings discovered via the DivvyDiary sitemap funnel. Sitemap URLs are discovery only; ticker, name, and ISIN come from official masterfile cache rows. Globally colliding tickers, B3 units, SDRs, and deferred XETRA/BVB/OTC/FSX/LSE rows stay out.
+- Promoted official directory listings and same-ISIN duals (including NSE+BSE cross-listings) instead of skipping every same-ticker pair. Ticker homonyms with mixed ISINs stay skipped. New official rows still receive country; refresh of current keys does not backfill country.
+- Recoded `NASDAQ::SPCX` to Space Exploration Technologies Class A (`US84615Q1031`) after ticker reuse, with the matching Xetra supplement. The stale SPAC/New Issue ETF identity stays on `SPCK` (`US19423L6728`).
+- Mapped TXSE as a venue. It is not added to `exchange_scope_decisions` until an official-source audit lists it.
+
 ### Changed
 
 - Rotation identity lane: apply listing-keyed official ISIN replacements when the listing still has the previous ISIN and the name still matches the official directory; directory-only recodes and name-mismatch pairs no longer draft the daily rotation. Easyknit-style ticker-reuse stays fail-closed.
 - Rank official_full `still_actionable` venues by collision-adjusted true-missing count, and allow collision-free masterfile supplements for `CSE_MA`, `NSE_KE`, `BVB`, `PSE`, and `HNX`.
 - Record German regional venues (`XSTU`, `Munich`, `XDUS`, `XHAN`, `XHAM`) as explicit unofficial source gaps. No free official directory; do not invent listings or sectors. OTC stock-sector residuals stay review-gated.
+- Preserve the last committed official directory when a live refresh collapses (keeps under 10% of a large snapshot), same as an empty fetch. Truncated B3 instruments no longer classify the rest as vanished.
 - Reviewed official masterfile rotation #359: landed the healthy B3 directory refresh (1294→1353) and listing-keyed Energisme reverse-split ISIN `Euronext::ALNRG` `FR001401A702`. Left Easyknit `HKEX::01218` and Euronext `1OKE`/`2OKE`/`4OKE` official ISIN recodes fail-closed. Vanished rows stay classified, not deleted.
 - Reviewed Nasdaq identity events that blocked #356 automerge: drop predecessor `NASDAQ::CYCN` after the Korsana merger (successor `NASDAQ::KRSA`, post-split ISIN `US23255M3034`), move `NASDAQ::YYGH` to `NASDAQ::YFOR` with unchanged ISIN `VGG9888Q1110`, and rename `NASDAQ::PMA` to PMA Graphene Technology Group (same CUSIP/ISIN). Accepted `GEMQ` and `OCLT`; rights/warrants stay excluded.
+- Recorded Nasdaq ticker/venue moves: `ANY`→`DRK`, `KHC` Nasdaq→NYSE, `TRT` NYSE American→Nasdaq, `NASDAQ::INVE` Identiv rename, and `NYSE::CSAN` delist, plus later reviewed US identity refreshes.
+- Applied official-directory leftover ticker drops (same ISIN, successor still listed, predecessor absent from the live directory), including NSE/BSE symbol changes, `NASDAQ::ISSC`→`IA`, `NASDAQ::ETHM`→`DYNC`, and collision-hidden Nasdaq successors `VIP`/`MEDS`/`MF`/`CIRC`/`TMS` via coverage expansion. `LSE::MAST` stays listed with a cleared ISIN. Removed the stale `OTC::DAZSF` entry-quality allowlist row.
+- Refreshed official masterfile, Nasdaq, symbol-change, weekly drift/freshness, delisting, OpenFIGI, and public export artifacts. No unevidenced listing removals.
 
 ### Fixed
 
 - Cleared stolen ticker-homonym ISINs (and stolen ISIN-prefix countries) on disjoint namesakes including `BATS::PAVE`/`WTAI`/`FBTC`, `NASDAQ::VSOL`, `NYSE ARCA::EWG`/`CORN`/`WEAT`/`INVN`/`CNEQ`, `LSE::RE`/`RE-B`/`METR`, `AMS::ESPX`, and leftover ASX/SET/IDX/PSX/BMV/NEO/TSX/TSXV collisions. No replacement ISIN is invented. `NASDAQ::INVE` keeps Identiv `US45170X2053`; official `LSE::RE` `GB0002349065` is not filled here.
 - Cleared stolen ticker-homonym ISINs (and stolen ISIN-prefix countries) on disjoint issuers such as `FSX::CU2`, `LSE::MAST`, `OTC::ARDDF`/`CRRNF`/`HLTFF`/`LLDTF`/`LLOBF`/`VDTA`/`EXCH`, `ASX::MA1`, and US Cboe/NYSE namesake ETFs. No replacement ISIN is invented. Empty-ISIN rows no longer keep a GLEIF LEI from the old identifier.
-- Applied official-directory leftover ticker drops (same ISIN, successor still listed, predecessor absent from the live directory), including NSE/BSE symbol changes, `NASDAQ::ISSC`→`IA`, `NASDAQ::ETHM`→`DYNC`, and collision-hidden Nasdaq successors `VIP`/`MEDS`/`MF`/`CIRC`/`TMS` via coverage expansion. `LSE::MAST` stays listed with a cleared ISIN. Removed the stale `OTC::DAZSF` entry-quality allowlist row.
 - Rebuild now strips leading/trailing whitespace (including NBSP and tabs) from security names, and validation fails closed on untrimmed names in `tickers.csv`, `listings.csv`, and `core_listings.csv`. The safe-merge gate treats whitespace-only name diffs as non-critical, matching row fingerprints.
 - Cleared ticker-homonym ISINs on US listings whose official directory identity did not match the foreign primary sharing that ISIN (e.g. `NYSE::DLR` Digital Realty vs `TSX::DLR` Global X ETF, `NYSE ARCA::ETHW` Bitwise vs WisdomTree ETC). Missing identifier is retained; no replacement ISIN is invented.
 - Applied listing-keyed official ISIN recodes for matching Frankfurt identities (e.g. `FSX::UN0` Uniper `DE000UNSE026`, `FSX::AWC` American Water Works `US0304201033`) and `OTC::VGLS` `US91822T2006`.
 - Corrected `NASDAQ::AAPB` to the official Nasdaq listed name GraniteShares 2x Long AAPL Daily ETF.
+
+### Safety
+
+- Missing or invalid ISINs, unevidenced removals, critical-field changes, ticker reuse, ambiguous identity transitions, and upstream fetch failures remain fail-closed.
+- Stolen-ISIN clears blank the identifier; they do not invent a replacement ISIN. Allowlisted ticker-reuse (`AGNT`/`PN`/`RTB`/`RUM`, NYSE `AIB`/`GORO`/`SRXH`/`TGB`/`HCWC`, `LSE::ISEM`) stays listed. Vanished US names are not auto-dropped or inferred as OTC.
+- Official same-ticker US names stay review unless already overridden. Official ISIN replacements stay `review_required` at rotation-classify until listings are evidenced via listing-keyed `metadata_updates`.
+- German regional venues remain unofficial source gaps. MarketScreener, DivvyDiary, and Onvista are not ingest sources. B3/BVB collapse stays blocked.
+
+### Verification
+
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract for the stolen-ISIN, directory-promote, rotation-identity, Nasdaq, and leftover-ticker PRs.
+- Snapshot: 65,363 primary tickers, 97,141 listing rows, 63,758 primary ISINs (97.5%), 60,911 sector/category values, 35 entry-quality warnings, and 14,483 source-gap rows. Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
 
 ## [3.40.0] - 2026-09-08
 
