@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- Cleared stolen ticker-homonym ISINs (and stolen ISIN-prefix countries) on disjoint issuers such as `FSX::CU2`, `LSE::MAST`, `OTC::ARDDF`/`CRRNF`/`HLTFF`/`LLDTF`/`LLOBF`/`VDTA`/`EXCH`, `ASX::MA1`, and US Cboe/NYSE namesake ETFs. No replacement ISIN is invented. Empty-ISIN rows no longer keep a GLEIF LEI from the old identifier.
+- Applied official-directory leftover ticker drops (same ISIN, successor still listed, predecessor absent from the live directory), including NSE/BSE symbol changes, `NASDAQ::ISSC`→`IA`, `NASDAQ::ETHM`→`DYNC`, and collision-hidden Nasdaq successors `VIP`/`MEDS`/`MF`/`CIRC`/`TMS` via coverage expansion. `LSE::MAST` stays listed with a cleared ISIN. Removed the stale `OTC::DAZSF` entry-quality allowlist row.
 - Rebuild now strips leading/trailing whitespace (including NBSP and tabs) from security names, and validation fails closed on untrimmed names in `tickers.csv`, `listings.csv`, and `core_listings.csv`. The safe-merge gate treats whitespace-only name diffs as non-critical, matching row fingerprints.
 - Cleared ticker-homonym ISINs on US listings whose official directory identity did not match the foreign primary sharing that ISIN (e.g. `NYSE::DLR` Digital Realty vs `TSX::DLR` Global X ETF, `NYSE ARCA::ETHW` Bitwise vs WisdomTree ETC). Missing identifier is retained; no replacement ISIN is invented.
 - Applied listing-keyed official ISIN recodes for matching Frankfurt identities (e.g. `FSX::UN0` Uniper `DE000UNSE026`, `FSX::AWC` American Water Works `US0304201033`) and `OTC::VGLS` `US91822T2006`.

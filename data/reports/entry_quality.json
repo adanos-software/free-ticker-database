@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-09-28T18:20:54Z",
-    "rows": 97196,
+    "generated_at": "2026-09-29T07:45:56Z",
+    "rows": 97141,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,27 +14,27 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 82676,
-      "source_gap": 14485,
+      "pass": 82648,
+      "source_gap": 14458,
       "warn": 35
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4550,
-      "official_reference": 87404,
-      "scoped_source_gap": 238,
-      "valid_isin": 5004
+      "identifier_enriched": 4478,
+      "official_reference": 87412,
+      "scoped_source_gap": 251,
+      "valid_isin": 5000
     },
     "severity_counts": {
       "high": 7,
       "medium": 29,
-      "source_gap": 15161
+      "source_gap": 15143
     },
     "issue_counts": {
-      "official_reference_gap": 6505,
-      "missing_stock_sector": 3907,
+      "official_reference_gap": 6442,
+      "missing_stock_sector": 3933,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 1028,
-      "missing_etf_category": 434,
+      "expected_missing_primary_isin": 1046,
+      "missing_etf_category": 435,
       "official_name_mismatch": 29,
       "official_isin_mismatch": 7
     },
@@ -51,18 +51,18 @@
       },
       {
         "exchange": "BSE_IN",
-        "pass": 2828,
-        "source_gap": 2264,
+        "pass": 2811,
+        "source_gap": 2238,
         "warn": 1
       },
       {
         "exchange": "FSX",
-        "pass": 7148,
-        "source_gap": 995
+        "pass": 7147,
+        "source_gap": 996
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 346,
+        "source_gap": 350,
         "pass": 4443,
         "warn": 4
       },
@@ -78,8 +78,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2509,
-        "source_gap": 274,
+        "pass": 2508,
+        "source_gap": 275,
         "warn": 2
       },
       {
@@ -90,7 +90,7 @@
       {
         "exchange": "TSX",
         "pass": 2127,
-        "source_gap": 244
+        "source_gap": 245
       },
       {
         "exchange": "Munich",
@@ -99,7 +99,12 @@
       {
         "exchange": "AMS",
         "pass": 537,
-        "source_gap": 201
+        "source_gap": 200
+      },
+      {
+        "exchange": "BATS",
+        "pass": 1206,
+        "source_gap": 200
       },
       {
         "exchange": "XDUS",
@@ -111,20 +116,15 @@
         "pass": 49
       },
       {
-        "exchange": "BATS",
-        "pass": 1210,
-        "source_gap": 196
-      },
-      {
         "exchange": "LSE",
         "pass": 6875,
-        "source_gap": 153,
+        "source_gap": 149,
         "warn": 2
       },
       {
         "exchange": "ASX",
-        "pass": 2113,
-        "source_gap": 146
+        "pass": 2112,
+        "source_gap": 147
       },
       {
         "exchange": "TSXV",

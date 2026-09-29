@@ -193,6 +193,7 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         if isin and existing_isin and existing_isin != isin:
             existing_row = {}
         figi = existing_row.get("figi", "") if isin else ""
+        lei = existing_row.get("lei", "") if isin else ""
         rows.append(
             {
                 "listing_key": listing_key,
@@ -202,10 +203,10 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
                 "wkn": existing_row.get("wkn", ""),
                 "figi": figi,
                 "cik": existing_row.get("cik", ""),
-                "lei": existing_row.get("lei", ""),
+                "lei": lei,
                 "figi_source": existing_row.get("figi_source", "") if figi else "",
                 "cik_source": existing_row.get("cik_source", ""),
-                "lei_source": existing_row.get("lei_source", ""),
+                "lei_source": existing_row.get("lei_source", "") if lei else "",
                 "name": listing_row["name"],
                 "country": listing_row["country"],
                 "country_code": listing_row.get("country_code", ""),
