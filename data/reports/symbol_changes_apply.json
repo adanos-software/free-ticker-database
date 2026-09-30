@@ -1,56 +1,32 @@
 {
   "summary": {
-    "generated_at": "2026-09-28T13:49:48Z",
+    "generated_at": "2026-09-30T12:31:14Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "dropped_predecessor_rows": 2,
-    "blocked_rows": 351,
+    "dropped_predecessor_rows": 0,
+    "blocked_rows": 354,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 9,
-      "blocked_new_symbol_not_active_in_official_master": 1,
-      "blocked_old_symbol_not_unique_in_us_scope": 288,
-      "manual_isin_not_proven_unchanged": 2,
+      "blocked_new_symbol_not_active_in_official_master": 2,
+      "blocked_old_symbol_not_unique_in_us_scope": 292,
       "manual_non_us_or_unscoped_source": 46,
       "manual_successor_exists_missing_isin": 2,
       "manual_transition_or_shell_name": 3
     }
   },
   "accepted": [],
-  "dropped_predecessors": [
-    {
-      "change_id": "aae72e7b293ba54e",
-      "effective_date": "2026-09-10",
-      "old_symbol": "RAY",
-      "new_symbol": "ATTT",
-      "new_company_name": "Atlas Trinity Tech Limited",
-      "status": "apply_drop_predecessor",
-      "exchange": "NASDAQ",
-      "old_listing_key": "NASDAQ::RAY",
-      "new_listing_key": "NASDAQ::ATTT",
-      "isin": "VGG7385S1193",
-      "source_key": "stockanalysis_symbol_changes",
-      "source_url": "https://stockanalysis.com/actions/changes/",
-      "evidence": "official_master_old_absent_new_active_successor_already_listed"
-    },
-    {
-      "change_id": "9b38883b745fd42a",
-      "effective_date": "2026-09-10",
-      "old_symbol": "GLMD",
-      "new_symbol": "EOCN",
-      "new_company_name": "Eocene Ltd.",
-      "status": "apply_drop_predecessor",
-      "exchange": "NASDAQ",
-      "old_listing_key": "NASDAQ::GLMD",
-      "new_listing_key": "NASDAQ::EOCN",
-      "isin": "IL0011313900",
-      "source_key": "stockanalysis_symbol_changes",
-      "source_url": "https://stockanalysis.com/actions/changes/",
-      "evidence": "official_master_old_absent_new_active_successor_already_listed"
-    }
-  ],
+  "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "1f9261e775710bc0",
+      "effective_date": "2026-09-28",
+      "old_symbol": "FGNX",
+      "new_symbol": "FGC",
+      "new_company_name": "Fg Nexus Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
     {
       "change_id": "bcfe6c93c245a418",
       "effective_date": "2026-09-24",
@@ -89,6 +65,22 @@
       "old_symbol": "PHGE",
       "new_symbol": "HLSQ",
       "new_company_name": "Tessera Defense & Homeland Security Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "aae72e7b293ba54e",
+      "effective_date": "2026-09-10",
+      "old_symbol": "RAY",
+      "new_symbol": "ATTT",
+      "new_company_name": "Atlas Trinity Tech Limited",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "9b38883b745fd42a",
+      "effective_date": "2026-09-10",
+      "old_symbol": "GLMD",
+      "new_symbol": "EOCN",
+      "new_company_name": "Eocene Ltd.",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -193,7 +185,7 @@
       "old_symbol": "ISSC",
       "new_symbol": "IA",
       "new_company_name": "Innovative Solutions & Support Inc",
-      "status": "manual_isin_not_proven_unchanged"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "b757299775ae44f9",
@@ -849,7 +841,7 @@
       "old_symbol": "ETHM",
       "new_symbol": "DYNC",
       "new_company_name": "Dynamix Corp",
-      "status": "manual_isin_not_proven_unchanged"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "525f87a03045648c",
