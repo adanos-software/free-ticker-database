@@ -9,6 +9,7 @@ from scripts.lib.delisting_evidence import (
     BSE_STATUS_URL_TEMPLATE,
     NASDAQ_ADDS_DELETES_URL,
     evidence_observation_id,
+    valid_official_delisting_evidence,
 )
 
 
@@ -215,6 +216,9 @@ def test_apply_delistings_writes_official_nasdaq_delete(tmp_path: Path) -> None:
     assert read_drop_rows(drops)[0]["ticker"] == "DEAD"
     assert read_drop_rows(drops)[0]["exchange"] == "NASDAQ"
     assert read_drop_rows(tmp_path / "delisting_transitions.csv")[0]["old_listing_key"] == "NASDAQ::DEAD"
+    applied = report["applied"][0]
+    assert applied["nasdaq_action"] == "Delete"
+    assert valid_official_delisting_evidence(applied)
 
 
 def test_nasdaq_delete_without_action_or_wrong_url_is_blocked(tmp_path: Path) -> None:
