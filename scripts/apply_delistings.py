@@ -120,6 +120,7 @@ def apply_delistings(
             "isin": candidate.get("isin", ""),
             "classification": candidate.get("classification", ""), "status": status,
             "source_key": candidate.get("source_key", ""), "source_url": candidate.get("source_url", ""),
+            "nasdaq_action": candidate.get("nasdaq_action", ""),
             "observed_at": candidate.get("observed_at", ""), "effective_at": candidate.get("effective_at", ""),
             "observation_id": candidate.get("observation_id", ""),
         }
