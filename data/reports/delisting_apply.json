@@ -1,35 +1,63 @@
 {
   "summary": {
-    "generated_at": "2026-09-28T15:58:08Z",
+    "generated_at": "2026-10-02T10:39:22Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "transitions_csv": "data/reports/delisting_transitions.csv",
-    "transition_rows": 1,
-    "applied_rows": 1,
+    "transition_rows": 3,
+    "applied_rows": 3,
     "already_applied_rows": 0,
     "drafted_rows": 0,
     "blocked_rows": 0,
-    "manual_rows": 234,
+    "manual_rows": 240,
     "status_counts": {
-      "apply_drop_override": 1,
-      "manual_rename_vs_delisting_required": 234
+      "apply_drop_override": 3,
+      "manual_rename_vs_delisting_required": 240
     }
   },
   "applied": [
     {
       "exchange": "NASDAQ",
-      "ticker": "IPEX",
-      "name": "Inflection Point Acquisition Corp. V",
-      "isin": "KYG6001J1076",
+      "ticker": "COLA",
+      "name": "Columbus Acquisition Corp Ordinary Shares",
+      "isin": "KYG2295P1072",
       "classification": "delisted",
       "status": "apply_drop_override",
       "source_key": "nasdaq_trading_system_adds_deletes",
       "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "observed_at": "2026-09-28T15:58:08Z",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-02T07:25:22Z",
       "effective_at": "",
-      "observation_id": "obs_eaecc27188fea69932e884e4",
-      "nasdaq_action": "Delete"
+      "observation_id": "obs_0a514f7054e7c7dd5b85270f"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "FSEA",
+      "name": "First Seacoast Bancorp",
+      "isin": "US33631F1049",
+      "classification": "delisted",
+      "status": "apply_drop_override",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-02T07:25:22Z",
+      "effective_at": "",
+      "observation_id": "obs_104f4c0b19b3f9e0668a6821"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "NSTS",
+      "name": "NSTS Bancorp Inc",
+      "isin": "US6293JP1094",
+      "classification": "delisted",
+      "status": "apply_drop_override",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-02T07:25:22Z",
+      "effective_at": "",
+      "observation_id": "obs_0aeaa240c02f803ec083f488"
     }
   ],
   "already_applied": [],
@@ -45,6 +73,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -58,6 +87,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -71,6 +101,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -84,6 +115,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -97,6 +129,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -110,6 +143,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -123,6 +157,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -136,6 +171,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -149,6 +185,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -162,6 +199,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -175,6 +213,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -188,6 +227,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -201,6 +241,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -214,6 +255,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -227,6 +269,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -240,6 +283,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -253,6 +297,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -266,6 +311,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -279,6 +325,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -292,6 +339,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -305,6 +353,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -318,6 +367,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -331,6 +381,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -344,6 +395,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -357,6 +409,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -370,6 +423,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -383,6 +437,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -396,6 +451,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -409,6 +465,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -422,6 +479,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -435,6 +493,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -448,6 +507,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -461,6 +521,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -474,6 +535,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -487,6 +549,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -500,6 +563,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -513,6 +577,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -526,6 +591,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -539,6 +605,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -552,6 +619,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -565,6 +633,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -578,6 +647,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -591,6 +661,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -604,6 +675,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -617,6 +689,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -630,6 +703,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -643,6 +717,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -656,6 +731,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -669,6 +745,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -682,6 +759,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -695,6 +773,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -708,6 +787,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -721,6 +801,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -734,6 +815,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -747,6 +829,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -760,6 +843,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -773,6 +857,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -786,6 +871,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -799,6 +885,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -812,6 +899,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -825,6 +913,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -838,6 +927,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -851,6 +941,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -864,6 +955,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -877,6 +969,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -890,6 +983,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -903,6 +997,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -916,6 +1011,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -929,6 +1025,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -942,6 +1039,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -955,6 +1053,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -968,6 +1067,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -981,6 +1081,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -994,6 +1095,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1007,6 +1109,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1020,6 +1123,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1033,6 +1137,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1046,6 +1151,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1054,11 +1160,12 @@
       "exchange": "ASX",
       "ticker": "TXR",
       "name": "TALONX RESOURCES LIMITED",
-      "isin": "ARDEUT116019",
+      "isin": "",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1072,6 +1179,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1085,6 +1193,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1098,6 +1207,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1111,6 +1221,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1124,6 +1235,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1137,6 +1249,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1150,6 +1263,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1163,6 +1277,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1176,6 +1291,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1189,6 +1305,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1202,6 +1319,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1215,6 +1333,21 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "AIXC",
+      "name": "AIxCrypto Holdings, Inc.",
+      "isin": "US74754R3012",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1228,6 +1361,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1241,6 +1375,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1254,6 +1389,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1267,6 +1403,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1280,6 +1417,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1293,6 +1431,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1306,6 +1445,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1319,6 +1459,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1332,6 +1473,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1345,6 +1487,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1358,6 +1501,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1371,6 +1515,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1384,6 +1529,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1397,6 +1543,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1410,6 +1557,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1423,6 +1571,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1436,6 +1585,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1449,6 +1599,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1462,6 +1613,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1475,6 +1627,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1488,6 +1641,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1501,6 +1655,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1514,6 +1669,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1527,6 +1683,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1540,6 +1697,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1553,6 +1711,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1566,19 +1725,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "ETHM",
-      "name": "Dynamix Corporation",
-      "isin": "KYG2949D1126",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1592,6 +1739,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1605,6 +1753,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1618,6 +1767,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1631,6 +1781,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1644,6 +1795,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1657,6 +1809,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1670,6 +1823,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1683,6 +1837,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1696,6 +1851,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1709,6 +1865,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1722,6 +1879,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1735,6 +1893,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1748,6 +1907,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1761,6 +1921,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1774,6 +1935,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1787,6 +1949,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1800,19 +1963,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "ISSC",
-      "name": "Innovative Solutions and Support",
-      "isin": "US45769N1054",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1826,6 +1977,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1839,6 +1991,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1852,6 +2005,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1865,6 +2019,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1878,6 +2033,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1891,6 +2047,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1904,6 +2061,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1917,6 +2075,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1930,6 +2089,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1943,6 +2103,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1956,6 +2117,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1969,6 +2131,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1982,6 +2145,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -1995,6 +2159,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2008,6 +2173,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2021,6 +2187,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2034,6 +2201,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2047,6 +2215,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2060,6 +2229,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2073,6 +2243,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2086,6 +2257,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2099,6 +2271,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2112,6 +2285,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2125,6 +2299,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2138,6 +2313,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2151,6 +2327,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2164,6 +2341,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2177,6 +2355,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2190,6 +2369,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2203,6 +2383,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2216,6 +2397,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2229,6 +2411,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2242,6 +2425,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2255,6 +2439,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2268,6 +2453,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2281,6 +2467,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2294,6 +2481,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2307,6 +2495,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2320,6 +2509,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2333,6 +2523,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2346,6 +2537,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2359,6 +2551,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2372,6 +2565,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2385,6 +2579,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2398,6 +2593,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2411,6 +2607,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2424,6 +2621,21 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "VRME",
+      "name": "VerifyMe Inc",
+      "isin": "US92346X2062",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2437,6 +2649,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2450,6 +2663,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2463,6 +2677,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2476,6 +2691,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2489,6 +2705,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2502,6 +2719,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2515,6 +2733,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2528,6 +2747,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2541,6 +2761,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2554,6 +2775,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2567,6 +2789,35 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NSE_IN",
+      "ticker": "SECL",
+      "name": "Salasar Exteriors and Contour Limited",
+      "isin": "INE00Y701026",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "AMZE",
+      "name": "Amaze Holdings Inc",
+      "isin": "US35804X2009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2580,6 +2831,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2593,6 +2845,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2606,6 +2859,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2619,6 +2873,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2632,6 +2887,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2645,6 +2901,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2658,6 +2915,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2671,6 +2929,21 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "DBRG",
+      "name": "Digitalbridge Group Inc",
+      "isin": "US25401T6038",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2684,6 +2957,35 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "GBTG",
+      "name": "Global Business Travel Group Inc",
+      "isin": "US37890B1008",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "GETY",
+      "name": "Getty Images Holdings Inc.",
+      "isin": "US3742751056",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2697,6 +2999,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2710,6 +3013,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2723,6 +3027,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2736,6 +3041,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2749,6 +3055,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2762,6 +3069,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2775,6 +3083,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2788,6 +3097,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2801,6 +3111,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2814,6 +3125,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2827,6 +3139,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2840,6 +3153,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2853,6 +3167,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2866,6 +3181,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2879,6 +3195,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2892,6 +3209,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2905,6 +3223,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2918,6 +3237,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2931,6 +3251,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2944,6 +3265,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2957,6 +3279,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2970,6 +3293,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2983,6 +3307,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -2996,6 +3321,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -3009,6 +3335,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -3022,6 +3349,21 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "VACI",
+      "name": "Viking Acquisition Corp. I",
+      "isin": "KYG9582G1047",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -3035,6 +3377,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -3048,6 +3391,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -3061,6 +3405,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
@@ -3074,6 +3419,7 @@
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
+      "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""

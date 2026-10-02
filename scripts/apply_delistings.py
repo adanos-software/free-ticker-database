@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import os
 from collections import Counter
 from datetime import datetime, timezone
@@ -89,6 +90,29 @@ def build_transition_row(candidate: dict[str, str]) -> dict[str, str]:
     }
 
 
+def append_drop_rows(path: Path, rows: list[dict[str, str]]) -> None:
+    """Append drop rows in place. Do not rewrite-sort the existing file."""
+    if not rows:
+        return
+    raw = path.read_bytes() if path.exists() else b""
+    if not raw:
+        write_csv(path, DROP_FIELDS, rows)
+        return
+    newline = "\r\n" if raw.endswith(b"\r\n") else "\n"
+    prefix = "" if raw.endswith(newline.encode("utf-8")) else newline
+    with path.open("a", encoding="utf-8", newline="") as handle:
+        if prefix:
+            handle.write(prefix)
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=DROP_FIELDS,
+            extrasaction="ignore",
+            lineterminator=newline,
+        )
+        for row in rows:
+            writer.writerow({field: row.get(field, "") for field in DROP_FIELDS})
+
+
 def apply_delistings(
     *,
     delisting_report_json: Path = DEFAULT_DELISTING_REPORT_JSON,
@@ -142,9 +166,7 @@ def apply_delistings(
             manual.append(row)
 
     if apply and new_drop_rows:
-        rows = [*existing_drop_rows, *new_drop_rows]
-        rows.sort(key=lambda row: (row.get("exchange", ""), row.get("ticker", "")))
-        write_csv(drop_entries_csv, DROP_FIELDS, rows)
+        append_drop_rows(drop_entries_csv, new_drop_rows)
     if apply:
         write_csv(
             transitions_csv,

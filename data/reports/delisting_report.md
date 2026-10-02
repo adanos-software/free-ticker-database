@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-09-28T15:58:08Z
+Generated: 2026-10-02T07:25:22Z
 
 **delisting_detected: True**
 
 Markets checked: US, ASX, NSE_IN, US_NASDAQ_DELETES
 Markets skipped: TSE (fetch failed: XLRDError); BSE_IN (fetch failed: JSONDecodeError: Expecting value: line 1 column 1 (char 0))
 
-Candidates: 235 (delisted=1, suspended=0, master_absent=234)
+Candidates: 243 (delisted=3, suspended=0, master_absent=240)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -91,7 +91,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | ASX | TOE | master_absent | TORO ENERGY LIMITED | AU000000TOE6 |
 | ASX | TR8 | master_absent | TARRINA RESOURCES LIMITED | AU0000427221 |
 | ASX | TSR | master_absent | TURNSTONE RESOURCES LTD | AU0000460404 |
-| ASX | TXR | master_absent | TALONX RESOURCES LIMITED | ARDEUT116019 |
+| ASX | TXR | master_absent | TALONX RESOURCES LIMITED |  |
 | ASX | USC | master_absent | US1 CRITICAL MINERALS LIMITED | AU0000436891 |
 | ASX | UWC | master_absent | UNDERWOOD CAPITAL LIMITED | AU0000373201 |
 | ASX | VHL | master_absent | VITASORA HEALTH LIMITED | AU0000392748 |
@@ -104,6 +104,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | ABVE | master_absent | Above Food Ingredients Inc. Common Stock | CA00373V1004 |
 | NASDAQ | ADTX | master_absent | Aditxt Inc. | US0070258696 |
 | NASDAQ | AFBI | master_absent | Affinity Bancshares Inc | US00832E1038 |
+| NASDAQ | AIXC | master_absent | AIxCrypto Holdings, Inc. | US74754R3012 |
 | NASDAQ | ALCY | master_absent | Alchemy Investments Acquisition Corp 1 C | KYG0232F1090 |
 | NASDAQ | ALOT | master_absent | AstroNova Inc | US04638F1084 |
 | NASDAQ | ANSC | master_absent | Agriculture & Natural Solutions Acquisit | KYG0131Y1008 |
@@ -122,6 +123,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | CIMG | master_absent | CIMG Inc | US67073S3076 |
 | NASDAQ | CIZN | master_absent | Citizens Holding Company | US1747151025 |
 | NASDAQ | CNTA | master_absent | Centessa Pharmaceuticals plc | US1523091007 |
+| NASDAQ | COLA | delisted | Columbus Acquisition Corp Ordinary Share | KYG2295P1072 |
 | NASDAQ | CPRX | master_absent | Catalyst Pharmaceuticals Inc | US14888U1016 |
 | NASDAQ | CREG | master_absent | Smart Powerr Corp | US1689133098 |
 | NASDAQ | CRNX | master_absent | Crinetics Pharmaceuticals Inc | US22663K1079 |
@@ -131,7 +133,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | ELSE | master_absent | Electro-Sensors Inc | US2852331022 |
 | NASDAQ | EMPG | master_absent | Empro Group Inc. Ordinary shares | KYG3041J1067 |
 | NASDAQ | ESPR | master_absent | Esperion Therapeutics Inc | US29664W1053 |
-| NASDAQ | ETHM | master_absent | Dynamix Corporation | KYG2949D1126 |
 | NASDAQ | EVTV | master_absent | Envirotech Vehicles Inc | US29414V2097 |
 | NASDAQ | FATBB | master_absent | FAT Brands Inc | US30258N6004 |
 | NASDAQ | FBRX | master_absent | Forte Biosciences Inc | US34962G2084 |
@@ -139,6 +140,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | FGMC | master_absent | FG Merger II Corp. Common stock | US30334J1025 |
 | NASDAQ | FGNX | master_absent | FG Nexus Inc. | US30329Y4035 |
 | NASDAQ | FLZH | master_absent | Flash Sports & Media Holdings, Inc. | US91704K3014 |
+| NASDAQ | FSEA | delisted | First Seacoast Bancorp | US33631F1049 |
 | NASDAQ | FTRK | master_absent | FAST TRACK GROUP | KYG333801093 |
 | NASDAQ | GAMB | master_absent | Gambling.com Group Ltd | JE00BL970N11 |
 | NASDAQ | GBNY | master_absent | Generations Bancorp NY Inc | US37149G1085 |
@@ -149,8 +151,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | HVII | master_absent | Hennessy Capital Investment Corp. VII Or | KYG4405D1079 |
 | NASDAQ | HWH | master_absent | HWH International Inc | US44852G1013 |
 | NASDAQ | IPCX | master_absent | Inflection Point Acquisition Corp. III C | KYG478751020 |
-| NASDAQ | IPEX | delisted | Inflection Point Acquisition Corp. V | KYG6001J1076 |
-| NASDAQ | ISSC | master_absent | Innovative Solutions and Support | US45769N1054 |
 | NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
 | NASDAQ | KVAC | master_absent | Keen Vision Acquisition Corporation Ordi | VGG524431191 |
 | NASDAQ | LBRDA | master_absent | Liberty Broadband Srs A | US5303071071 |
@@ -165,6 +165,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | NCSM | master_absent | NCS Multistage Holdings Inc | US6288772014 |
 | NASDAQ | NFBK | master_absent | Northfield Bancorp Inc | US66611T1088 |
 | NASDAQ | NHIC | master_absent | NewHold Investment Corp III Class A Ordi | KYG6486E1026 |
+| NASDAQ | NSTS | delisted | NSTS Bancorp Inc | US6293JP1094 |
 | NASDAQ | NUTR | master_absent | Nusatrip Incorporated Common Stock | US67119K1025 |
 | NASDAQ | NUVL | master_absent | Nuvalent Inc | US6707031075 |
 | NASDAQ | NVVE | master_absent | Nuvve Holding Corp | US67079Y4070 |
@@ -198,6 +199,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | UHGWW | master_absent | United Homes Group Inc. | US91060H1086 |
 | NASDAQ | UOKA | master_absent | MDJM Ltd | KYG592901253 |
 | NASDAQ | VACH | master_absent | Voyager Acquisition Corp |  |
+| NASDAQ | VRME | master_absent | VerifyMe Inc | US92346X2062 |
 | NASDAQ | VSEE | master_absent | VSee Health, Inc. | US92919Y1029 |
 | NASDAQ | VSTD | master_absent | Vestand Inc. | US98740Y3027 |
 | NASDAQ | VXRT | master_absent | Vaxart Inc | US92243A2006 |
@@ -209,8 +211,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NSE_IN | AURIGROW | master_absent | Auri Grow India Limited | INE925Y01036 |
 | NSE_IN | JBCHEPHARM | master_absent | JB Chemicals & Pharmaceuticals Limited | INE572A01036 |
 | NSE_IN | SABEVENTS | master_absent | Sab Events & Governance Now Media Limite | INE860T01019 |
-| NYSE | AVB | master_absent | AvalonBay Communities Inc | US0534841012 |
-| NYSE | AVNS | master_absent | Avanos Medical Inc | US05350V1061 |
-| NYSE | AXIA | master_absent | AXIA Energia | US15234Q2075 |
-| NYSE | BBBY | master_absent | Bed Bath & Beyond, Inc. | US6903701018 |
-| … | … | … | (+35 more) | |
+| NSE_IN | SECL | master_absent | Salasar Exteriors and Contour Limited | INE00Y701026 |
+| NYSE | AMZE | master_absent | Amaze Holdings Inc | US35804X2009 |
+| … | … | … | (+43 more) | |

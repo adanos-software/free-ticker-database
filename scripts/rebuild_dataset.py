@@ -3010,8 +3010,14 @@ def drop_stale_tmx_etf_duplicates(rows: list[dict[str, str]]) -> list[dict[str, 
         ]
         if not exact_official_peers:
             continue
+        official_tickers = {row["ticker"] for row in exact_official_peers}
         for row in peers:
             if row in exact_official_peers:
+                continue
+            ticker = row.get("ticker", "")
+            # Share-class suffixes (.B, .U, .V, ...) are distinct listings, not
+            # stale ticker reuse. Vanished TMX classes stay until evidenced.
+            if any(ticker.startswith(f"{official}.") for official in official_tickers):
                 continue
             stale_listing_keys.add(row_listing_key(row))
 
