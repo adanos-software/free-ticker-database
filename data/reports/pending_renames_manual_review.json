@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T15:40:18Z",
+  "generated_at": "2026-10-02T07:25:25Z",
   "manual_review_items": [
     {
       "apply_status": "manual_non_us_or_unscoped_source",
@@ -15,23 +15,6 @@
       "old_symbol": "BGI",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
-      "triage_source": "symbol_changes_review",
-      "triage_status": "blocked_or_manual"
-    },
-    {
-      "apply_status": "manual_isin_not_proven_unchanged",
-      "apply_status_source": "available",
-      "blocker_reason": "manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source",
-      "effective_date": "2026-08-18",
-      "exchange_scope_status": "matches_within_source_scope",
-      "match_status": "old_symbol_present_new_symbol_missing",
-      "new_company_name": "Innovative Solutions & Support Inc",
-      "new_listing_keys": "",
-      "new_symbol": "IA",
-      "old_listing_keys": "NASDAQ::ISSC",
-      "old_symbol": "ISSC",
-      "source_exchange_hint": "US_LISTED",
-      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
       "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
@@ -100,23 +83,6 @@
       "old_symbol": "BTM",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
-      "triage_source": "symbol_changes_review",
-      "triage_status": "blocked_or_manual"
-    },
-    {
-      "apply_status": "manual_isin_not_proven_unchanged",
-      "apply_status_source": "available",
-      "blocker_reason": "manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source",
-      "effective_date": "2026-05-01",
-      "exchange_scope_status": "matches_within_source_scope",
-      "match_status": "old_symbol_present_new_symbol_missing",
-      "new_company_name": "Dynamix Corp",
-      "new_listing_keys": "",
-      "new_symbol": "DYNC",
-      "old_listing_keys": "NASDAQ::ETHM",
-      "old_symbol": "ETHM",
-      "source_exchange_hint": "US_LISTED",
-      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
       "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
@@ -292,5 +258,5 @@
     }
   ],
   "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
-  "rows": 17
+  "rows": 15
 }
