@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-02T13:07:57Z",
+  "generated_at": "2026-10-02T19:36:43Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2039,
   "decision_rows": 6558,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1417,
-    "proposed_clear_conflicting_identifier": 1076,
-    "quarantined_unresolved_identifier": 4065
+    "kept_listing_keyed_identifier": 1416,
+    "proposed_clear_conflicting_identifier": 1073,
+    "quarantined_unresolved_identifier": 4069
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1076,
-  "quarantined_rows": 4065,
-  "retained_rows": 1417,
+  "proposed_clear_rows": 1073,
+  "quarantined_rows": 4069,
+  "retained_rows": 1416,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -1712,9 +1712,9 @@
       "exchange": "ASX",
       "name": "Betashares Australian Equities Bear Complex ETF",
       "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU00000BEAR2"
     },
     {
@@ -1725,9 +1725,9 @@
       "exchange": "TSXV",
       "name": "Big Bear Gold Corp.",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU00000BEAR2"
     },
     {
@@ -1777,9 +1777,9 @@
       "exchange": "ASX",
       "name": "Australian Clinical Labs Ltd",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU0000148496"
     },
     {
@@ -1790,9 +1790,9 @@
       "exchange": "TSXV",
       "name": "A.C.L. Construction Ltd.",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU0000148496"
     },
     {
@@ -5482,9 +5482,9 @@
       "exchange": "FSX",
       "name": "EnviroGold Global Limited",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA29408C1005"
     },
     {
@@ -5495,9 +5495,9 @@
       "exchange": "OTC",
       "name": "NVRO Metals Limited",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA29408C1005"
     },
     {
@@ -5508,9 +5508,9 @@
       "exchange": "TSXV",
       "name": "NVRO MetaNVRO",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA29408C1005"
     },
     {
@@ -52438,9 +52438,9 @@
       "exchange": "FSX",
       "name": "Prosafe SE",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "NO0010861990"
     },
     {
@@ -52451,9 +52451,9 @@
       "exchange": "OSL",
       "name": "PROSAFE",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "NO0010861990"
     },
     {
@@ -52464,9 +52464,9 @@
       "exchange": "TSXV",
       "name": "Prism Resources Inc.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "NO0010861990"
     },
     {

@@ -22,7 +22,7 @@ Rows: `24`
 | 13 | KRX | 93.03 | 146 | 14 | not_in_supplement_allowlist |
 | 14 | B3 | 90.76 | 125 | 0 | collision_free_supplement |
 | 15 | PSE | 64.89 | 92 | 120 | collision_free_supplement |
-| 16 | NYSE ARCA | 96.65 | 91 | 30 | not_in_supplement_allowlist |
+| 16 | NYSE ARCA | 96.69 | 90 | 31 | not_in_supplement_allowlist |
 | 17 | NYSE MKT | 82.97 | 47 | 33 | not_in_supplement_allowlist |
 | 18 | TWSE | 95.85 | 44 | 35 | collision_free_supplement |
 | 19 | SET | 95.42 | 37 | 134 | not_in_supplement_allowlist |
