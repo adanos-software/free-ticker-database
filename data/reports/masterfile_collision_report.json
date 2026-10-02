@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99810,
-    "matched": 70105,
-    "collisions": 11422,
-    "missing": 18283
+    "official_symbols": 99897,
+    "matched": 70102,
+    "collisions": 11443,
+    "missing": 18352
   },
   "exchanges": [
     {
@@ -522,8 +522,8 @@
     },
     {
       "exchange": "BIST",
-      "official_symbols": 661,
-      "matched": 639,
+      "official_symbols": 663,
+      "matched": 641,
       "collisions": 22,
       "missing": 0,
       "collision_examples": [
@@ -1547,11 +1547,19 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18154,
-      "matched": 7966,
-      "collisions": 4262,
-      "missing": 5926,
+      "official_symbols": 18226,
+      "matched": 7955,
+      "collisions": 4278,
+      "missing": 5993,
       "collision_examples": [
+        {
+          "ticker": "0080",
+          "name": "SVEAFASTIGHETER AB",
+          "target_exchange": "FSX",
+          "existing_exchanges": [
+            "Bursa"
+          ]
+        },
         {
           "ticker": "00X0",
           "name": "WITR H.COM.SEC.Z12/UN.IDX",
@@ -1618,14 +1626,6 @@
         },
         {
           "ticker": "00XR",
-          "name": "WITR H.COM.SEC.Z12/UN.IDX",
-          "target_exchange": "FSX",
-          "existing_exchanges": [
-            "XETRA"
-          ]
-        },
-        {
-          "ticker": "00XS",
           "name": "WITR H.COM.SEC.Z12/UN.IDX",
           "target_exchange": "FSX",
           "existing_exchanges": [
@@ -4200,8 +4200,8 @@
     {
       "exchange": "SET",
       "official_symbols": 942,
-      "matched": 772,
-      "collisions": 133,
+      "matched": 771,
+      "collisions": 134,
       "missing": 37,
       "collision_examples": [
         {
@@ -4345,10 +4345,10 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 746,
+      "official_symbols": 748,
       "matched": 624,
       "collisions": 122,
-      "missing": 0,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4440,7 +4440,18 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "SJJR",
+          "name": "First Sponsor Gp R1",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "ZNIR",
+          "name": "First Sponsor Gp R",
+          "exchange": "SGX"
+        }
+      ]
     },
     {
       "exchange": "SSE_CL",
@@ -4912,9 +4923,9 @@
     },
     {
       "exchange": "TWSE",
-      "official_symbols": 1094,
+      "official_symbols": 1095,
       "matched": 1016,
-      "collisions": 34,
+      "collisions": 35,
       "missing": 44,
       "collision_examples": [
         {
@@ -5258,9 +5269,9 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5119,
-      "matched": 4947,
-      "collisions": 170,
+      "official_symbols": 5129,
+      "matched": 4954,
+      "collisions": 173,
       "missing": 2,
       "collision_examples": [
         {
@@ -5320,6 +5331,15 @@
           ]
         },
         {
+          "ticker": "AMX",
+          "name": "A.S.E.B.AC.ETF EUR-U.-ETF",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "ASX",
+            "TASE"
+          ]
+        },
+        {
           "ticker": "ARMY",
           "name": "LEVERAGE SHARES ARM ETP",
           "target_exchange": "XETRA",
@@ -5335,14 +5355,6 @@
           "target_exchange": "XETRA",
           "existing_exchanges": [
             "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "ATEA",
-          "name": "IM4-E.T1 C.B.E. EOA",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "OSL"
           ]
         }
       ],

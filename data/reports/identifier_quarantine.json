@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-02T06:00:02Z",
+  "generated_at": "2026-10-02T06:33:28Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2038,
-  "decision_rows": 6556,
+  "conflict_count": 2039,
+  "decision_rows": 6558,
   "action_counts": {
     "kept_listing_keyed_identifier": 1417,
     "proposed_clear_conflicting_identifier": 1076,
-    "quarantined_unresolved_identifier": 4063
+    "quarantined_unresolved_identifier": 4065
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1076,
-  "quarantined_rows": 4063,
+  "quarantined_rows": 4065,
   "retained_rows": 1417,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -49192,6 +49192,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "LU2439734141"
+    },
+    {
+      "conflict_id": "59f85682bf59a6974562",
+      "isin": "LU2446383254",
+      "listing_key": "Euronext::SRI3C",
+      "ticker": "SRI3C",
+      "exchange": "Euronext",
+      "name": "BNP Paribas Easy € Corp Bond SRI PAB 1-3Y UCITS ETF Acc",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "LU2446383254"
+    },
+    {
+      "conflict_id": "59f85682bf59a6974562",
+      "isin": "LU2446383254",
+      "listing_key": "XETRA::EEA3",
+      "ticker": "EEA3",
+      "exchange": "XETRA",
+      "name": "BNPPE-EO CB SP 1-3Y UEEOA",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "LU2446383254"
     },
     {
       "conflict_id": "05b452d5dea0e2d1105d",

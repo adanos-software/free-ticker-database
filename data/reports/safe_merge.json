@@ -6,47 +6,25 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97140,
-    "after_rows": 97168,
+    "before_rows": 97168,
+    "after_rows": 97178,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 1,
+    "generated_official_change_evidence_rows": 0,
     "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NYSE MKT::AMZE"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
-  "generated_official_change_evidence": [
-    {
-      "listing_key": "NYSE MKT::AMZE",
-      "ticker": "AMZE",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "28f0ca88bdc4f7ccd11a90a1f9f66c93daf135e2519033cf834030968fe0de42",
-      "effective_at": "",
-      "observed_at": "2026-10-02T06:00:02Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "68e1772c5d5af90b56c178e7",
-      "evidence_status": "official"
-    }
-  ],
+  "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
@@ -96,7 +74,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1406,
+      "before_rows": 1413,
       "after_rows": 1413,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -124,7 +102,7 @@
     {
       "exchange": "BIST",
       "before_rows": 641,
-      "after_rows": 641,
+      "after_rows": 643,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -447,7 +425,7 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4796,
+      "before_rows": 4806,
       "after_rows": 4806,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -501,7 +479,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2026,
+      "before_rows": 2030,
       "after_rows": 2030,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -510,7 +488,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2785,
+      "before_rows": 2793,
       "after_rows": 2793,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -519,10 +497,10 @@
     },
     {
       "exchange": "NYSE MKT",
-      "before_rows": 234,
+      "before_rows": 233,
       "after_rows": 233,
-      "shrink_pct": 0.42735,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -781,7 +759,7 @@
     {
       "exchange": "XETRA",
       "before_rows": 5179,
-      "after_rows": 5179,
+      "after_rows": 5187,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
