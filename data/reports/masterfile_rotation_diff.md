@@ -1,41 +1,41 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-10-02T06:29:53Z`
-- New rows: `133`
-- Vanished rows: `58`
-- Changed rows: `77`
+- Generated at: `2026-10-02T11:27:52Z`
+- New rows: `128`
+- Vanished rows: `120`
+- Changed rows: `9`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 15 |
-| name_change | 62 |
+| name_change | 9 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| bist_kap_mkk_listed_securities | 2 |
-| deutsche_boerse_frankfurt_all_tradable_equities | 98 |
-| deutsche_boerse_xetra_all_tradable_equities | 11 |
-| nasdaq_trading_system_adds_deletes | 9 |
-| newconnect_listed_companies | 3 |
-| otc_markets_security_profile | 1 |
-| psx_listed_companies | 5 |
-| set_stock_search | 1 |
-| sgx_securities_prices | 2 |
-| twse_listed_companies | 1 |
+| set_dr_search | 39 |
+| tase_securities_marketdata | 4 |
+| tmx_etf_screener | 59 |
+| tmx_interlisted_companies | 3 |
+| tpex_emerging_basic_info | 9 |
+| tpex_etf_filter | 2 |
+| tpex_mainboard_basic_info | 4 |
+| tpex_mainboard_daily_quotes | 5 |
+| twse_etf_list | 3 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| deutsche_boerse_frankfurt_all_tradable_equities | 26 |
-| deutsche_boerse_xetra_all_tradable_equities | 1 |
-| nasdaq_trading_system_adds_deletes | 24 |
-| newconnect_listed_companies | 4 |
-| ngx_equities_price_list | 1 |
-| psx_listed_companies | 1 |
-| set_stock_search | 1 |
+| bme_listed_companies | 1 |
+| tase_securities_marketdata | 3 |
+| tmx_etf_screener | 13 |
+| tmx_interlisted_companies | 6 |
+| tmx_listed_issuers | 81 |
+| tpex_emerging_basic_info | 8 |
+| tpex_etf_filter | 1 |
+| tpex_mainboard_basic_info | 2 |
+| tpex_mainboard_daily_quotes | 5 |
