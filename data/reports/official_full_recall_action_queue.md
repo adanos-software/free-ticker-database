@@ -7,7 +7,7 @@ Rows: `24`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
-| 1 | FSX | 57.34 | 5926 | 4262 | refresh_only |
+| 1 | FSX | 57.03 | 5993 | 4278 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.16 | 3492 | 857 | not_in_supplement_allowlist |
 | 4 | NYSE | 59.88 | 1330 | 569 | not_in_supplement_allowlist |
@@ -24,8 +24,8 @@ Rows: `24`
 | 15 | PSE | 64.89 | 92 | 120 | collision_free_supplement |
 | 16 | NYSE ARCA | 96.65 | 91 | 30 | not_in_supplement_allowlist |
 | 17 | NYSE MKT | 83.21 | 46 | 33 | not_in_supplement_allowlist |
-| 18 | TWSE | 95.85 | 44 | 34 | collision_free_supplement |
-| 19 | SET | 95.43 | 37 | 133 | not_in_supplement_allowlist |
+| 18 | TWSE | 95.85 | 44 | 35 | collision_free_supplement |
+| 19 | SET | 95.42 | 37 | 134 | not_in_supplement_allowlist |
 | 20 | BSE_IN | 99.35 | 33 | 121 | collision_free_supplement |
 | 21 | BME | 90.74 | 25 | 0 | not_in_supplement_allowlist |
 | 22 | IDX | 97.67 | 18 | 188 | not_in_supplement_allowlist |
