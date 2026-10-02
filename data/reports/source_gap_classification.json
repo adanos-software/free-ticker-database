@@ -1,40 +1,40 @@
 {
   "summary": {
-    "generated_at": "2026-10-02T10:40:38Z",
-    "rows": 12047,
+    "generated_at": "2026-10-02T11:05:43Z",
+    "rows": 12052,
     "field_totals": {
-      "missing_etf_category": 434,
-      "missing_isin_primary": 1104,
+      "missing_etf_category": 435,
+      "missing_isin_primary": 1107,
       "missing_sector_stock": 4050,
-      "official_reference_gap": 6459
+      "official_reference_gap": 6460
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 46,
       "adr_cdr_or_depositary_sector_gap": 18,
       "capital_pool_or_halted_identifier_gap": 33,
-      "commodity_etf_category_gap": 18,
+      "commodity_etf_category_gap": 19,
       "debt_or_securitized_identifier_gap": 110,
       "digital_asset_etf_category_gap": 3,
       "equity_etf_category_gap": 149,
       "exchange_industry_source_gap": 63,
       "fixed_income_etf_category_gap": 33,
-      "fund_or_trust_identifier_gap": 496,
+      "fund_or_trust_identifier_gap": 498,
       "fundlike_stock_sector_gap": 25,
       "inactive_or_legacy_identifier_gap": 25,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 378,
+      "official_identifier_not_exposed_source_gap": 379,
       "official_identifier_reference_unmatched_gap": 13,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 3337,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 230,
-      "official_reference_symbol_collision_gap": 1103,
+      "official_reference_symbol_collision_gap": 1104,
       "official_reference_unmatched_source_gap": 5356,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 53
     },
     "class_by_field": {
-      "missing_etf_category:commodity_etf_category_gap": 18,
+      "missing_etf_category:commodity_etf_category_gap": 19,
       "missing_etf_category:digital_asset_etf_category_gap": 3,
       "missing_etf_category:equity_etf_category_gap": 149,
       "missing_etf_category:fixed_income_etf_category_gap": 33,
@@ -43,10 +43,10 @@
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 46,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 33,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 110,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 496,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 498,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 25,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 378,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 379,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 13,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 18,
@@ -55,7 +55,7 @@
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 3337,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 53,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1103,
+      "official_reference_gap:official_reference_symbol_collision_gap": 1104,
       "official_reference_gap:official_reference_unmatched_source_gap": 5356
     },
     "top_exchanges_by_field": {
@@ -78,7 +78,7 @@
         },
         {
           "exchange": "BATS",
-          "rows": 39
+          "rows": 40
         },
         {
           "exchange": "BSE_IN",
@@ -116,7 +116,7 @@
         },
         {
           "exchange": "BATS",
-          "rows": 113
+          "rows": 115
         },
         {
           "exchange": "ASX",
@@ -337,7 +337,7 @@
         "field": "missing_isin_primary",
         "gap_class": "fund_or_trust_identifier_gap",
         "exchange": "BATS",
-        "rows": 110,
+        "rows": 112,
         "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
@@ -905,6 +905,23 @@
       "source_gap_context": "listing_key=BATS::ASSX;exchange=BATS;ticker=ASSX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "BATS::BCOM",
+      "ticker": "BCOM",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Rareview Bloomberg Commodity Index ETF",
+      "gap_class": "commodity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic product evidence; commodity tokens alone need review if ambiguous.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic commodity exposure evidence.",
+      "source_gap_context": "listing_key=BATS::BCOM;exchange=BATS;ticker=BCOM;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=commodity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=commodity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -9851,6 +9868,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "BATS::BCOM",
+      "ticker": "BCOM",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Rareview Bloomberg Commodity Index ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::BCOM;exchange=BATS;ticker=BCOM;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "BATS::BRZD",
       "ticker": "BRZD",
       "exchange": "BATS",
@@ -10678,6 +10712,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=BATS::MLCC;exchange=BATS;ticker=MLCC;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "BATS::MN",
+      "ticker": "MN",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Corgi MANGOS ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=BATS::MN;exchange=BATS;ticker=MN;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -19688,6 +19739,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE MKT::MINE;exchange=NYSE MKT;ticker=MINE;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NYSE MKT::NSTR",
+      "ticker": "NSTR",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "name": "NorthStar Earth & Space Enterprises, Inc. Common Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NYSE MKT::NSTR;exchange=NYSE MKT;ticker=NSTR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -135713,6 +135781,23 @@
       "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
       "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
       "source_gap_context": "listing_key=NYSE::EEX;exchange=NYSE;ticker=EEX;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE::GBTG",
+      "ticker": "GBTG",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "name": "Global Business Travel Group Inc",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE::GBTG;exchange=NYSE;ticker=GBTG;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
