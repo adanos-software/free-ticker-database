@@ -6,82 +6,26 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97178,
-    "after_rows": 97175,
-    "overall_shrink_pct": 0.003087,
-    "removed_rows": 3,
-    "evidenced_removed_rows": 3,
+    "before_rows": 97175,
+    "after_rows": 97178,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 3
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::COLA",
-    "NASDAQ::FSEA",
-    "NASDAQ::NSTS"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NASDAQ::COLA",
-      "ticker": "COLA",
-      "exchange": "NASDAQ",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "Columbus Acquisition Corp Ordinary Shares",
-      "new_value": "",
-      "before_row_sha256": "d2bf0928ecf4781d6f10bda788dbd239bb07962944514fb731d5c00f27cf7a55",
-      "effective_at": "",
-      "observed_at": "2026-10-02T10:40:21Z",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "source_report": "data/reports/delisting_transitions.csv",
-      "observation_id": "c4f1506641b2367e5d6a9fb7",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::FSEA",
-      "ticker": "FSEA",
-      "exchange": "NASDAQ",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "First Seacoast Bancorp",
-      "new_value": "",
-      "before_row_sha256": "a5632450cefb480c4612b0bc659f866835f9b9359ee06bdfcf756e88781eff35",
-      "effective_at": "",
-      "observed_at": "2026-10-02T10:40:21Z",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "source_report": "data/reports/delisting_transitions.csv",
-      "observation_id": "d47f04c23414e6c041467505",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::NSTS",
-      "ticker": "NSTS",
-      "exchange": "NASDAQ",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "NSTS Bancorp Inc",
-      "new_value": "",
-      "before_row_sha256": "97004a22dbd5970c0bfed8d6d82272e55f7fd19c466ee2ae45de5d8b0634bd27",
-      "effective_at": "",
-      "observed_at": "2026-10-02T10:40:21Z",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "source_report": "data/reports/delisting_transitions.csv",
-      "observation_id": "7880d5ee07bdb20adcc999da",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -131,7 +75,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1413,
-      "after_rows": 1413,
+      "after_rows": 1415,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -481,10 +425,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4806,
+      "before_rows": 4803,
       "after_rows": 4803,
-      "shrink_pct": 0.062422,
-      "removed_rows": 3,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -554,7 +498,7 @@
     {
       "exchange": "NYSE MKT",
       "before_rows": 233,
-      "after_rows": 233,
+      "after_rows": 234,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
