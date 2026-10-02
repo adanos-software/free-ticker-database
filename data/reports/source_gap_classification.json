@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-10-02T12:34:18Z",
-    "rows": 12051,
+    "generated_at": "2026-10-02T13:10:35Z",
+    "rows": 12053,
     "field_totals": {
       "missing_etf_category": 435,
-      "missing_isin_primary": 1107,
-      "missing_sector_stock": 4050,
+      "missing_isin_primary": 1108,
+      "missing_sector_stock": 4051,
       "official_reference_gap": 6459
     },
     "class_totals": {
@@ -22,7 +22,7 @@
       "fundlike_stock_sector_gap": 25,
       "inactive_or_legacy_identifier_gap": 25,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 379,
+      "official_identifier_not_exposed_source_gap": 380,
       "official_identifier_reference_unmatched_gap": 13,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 3337,
@@ -31,7 +31,7 @@
       "official_reference_symbol_collision_gap": 1104,
       "official_reference_unmatched_source_gap": 5355,
       "otc_sector_source_gap": 554,
-      "shell_or_cpc_sector_gap": 53
+      "shell_or_cpc_sector_gap": 54
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 19,
@@ -46,7 +46,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 498,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 25,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 379,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 380,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 13,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 18,
@@ -54,7 +54,7 @@
       "missing_sector_stock:fundlike_stock_sector_gap": 25,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 3337,
       "missing_sector_stock:otc_sector_source_gap": 554,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 53,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 54,
       "official_reference_gap:official_reference_symbol_collision_gap": 1104,
       "official_reference_gap:official_reference_unmatched_source_gap": 5355
     },
@@ -108,7 +108,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 142
+          "rows": 143
         },
         {
           "exchange": "NYSE ARCA",
@@ -166,7 +166,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 66
+          "rows": 67
         },
         {
           "exchange": "NSE_IN",
@@ -15336,6 +15336,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::RZAI;exchange=NASDAQ;ticker=RZAI;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::SAIQ",
+      "ticker": "SAIQ",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "WISeSat.Space Holdings Corp. - Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::SAIQ;exchange=NASDAQ;ticker=SAIQ;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -82097,6 +82114,23 @@
       "source_gap_context": "listing_key=NASDAQ::RZAI;exchange=NASDAQ;ticker=RZAI;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::SAIQ",
+      "ticker": "SAIQ",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "WISeSat.Space Holdings Corp. - Ordinary Shares",
+      "gap_class": "shell_or_cpc_sector_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Current issuer business description or official industry classification.",
+      "source_gate": "Canonical sector requires active operating-business evidence.",
+      "source_gap_context": "listing_key=NASDAQ::SAIQ;exchange=NASDAQ;ticker=SAIQ;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
     },
     {
       "field": "missing_sector_stock",

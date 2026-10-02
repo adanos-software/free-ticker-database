@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-02T12:34:05Z",
-    "rows": 97177,
+    "generated_at": "2026-10-02T13:10:22Z",
+    "rows": 97178,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,25 +15,25 @@
   "summary": {
     "status_counts": {
       "pass": 82603,
-      "source_gap": 14537,
+      "source_gap": 14538,
       "warn": 37
     },
     "evidence_level_counts": {
       "identifier_enriched": 4479,
-      "official_reference": 87431,
+      "official_reference": 87432,
       "scoped_source_gap": 256,
       "valid_isin": 5011
     },
     "severity_counts": {
       "high": 7,
       "medium": 31,
-      "source_gap": 15259
+      "source_gap": 15261
     },
     "issue_counts": {
       "official_reference_gap": 6459,
-      "missing_stock_sector": 3943,
+      "missing_stock_sector": 3944,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 1107,
+      "expected_missing_primary_isin": 1108,
       "missing_etf_category": 463,
       "official_name_mismatch": 31,
       "official_isin_mismatch": 7
@@ -62,7 +62,7 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 364,
+        "source_gap": 365,
         "pass": 4432,
         "warn": 7
       },

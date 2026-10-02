@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-10-02T12:34:19Z",
-    "rows": 12051,
+    "generated_at": "2026-10-02T13:10:36Z",
+    "rows": 12053,
     "outcome_totals": {
-      "accepted_source_gap": 8930,
-      "core_exclusion_candidate": 808,
+      "accepted_source_gap": 8931,
+      "core_exclusion_candidate": 809,
       "official_fill_required": 2313
     },
     "class_totals": {
@@ -21,7 +21,7 @@
       "fundlike_stock_sector_gap": 25,
       "inactive_or_legacy_identifier_gap": 25,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 379,
+      "official_identifier_not_exposed_source_gap": 380,
       "official_identifier_reference_unmatched_gap": 13,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 3337,
@@ -30,15 +30,15 @@
       "official_reference_symbol_collision_gap": 1104,
       "official_reference_unmatched_source_gap": 5355,
       "otc_sector_source_gap": 554,
-      "shell_or_cpc_sector_gap": 53
+      "shell_or_cpc_sector_gap": 54
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 435,
-      "missing_isin_primary:accepted_source_gap": 394,
+      "missing_isin_primary:accepted_source_gap": 395,
       "missing_isin_primary:core_exclusion_candidate": 712,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 3891,
-      "missing_sector_stock:core_exclusion_candidate": 96,
+      "missing_sector_stock:core_exclusion_candidate": 97,
       "missing_sector_stock:official_fill_required": 63,
       "official_reference_gap:accepted_source_gap": 4210,
       "official_reference_gap:official_fill_required": 2249
@@ -10054,6 +10054,23 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Roze AI Inc. - Common Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::SAIQ",
+      "ticker": "SAIQ",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "WISeSat.Space Holdings Corp. - Ordinary Shares",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -165213,6 +165230,23 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Rainier Acquisition Corporation - Class A Ordinary Shares",
+      "gap_class": "shell_or_cpc_sector_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Canonical sector requires active operating-business evidence."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::SAIQ",
+      "ticker": "SAIQ",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "WISeSat.Space Holdings Corp. - Ordinary Shares",
       "gap_class": "shell_or_cpc_sector_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
