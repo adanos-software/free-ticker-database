@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-02T07:25:11Z",
-  "rows": 170110,
+  "generated_at": "2026-10-02T13:05:52Z",
+  "rows": 170111,
   "exchanges": [
     "ADX",
     "AMS",
@@ -99,7 +99,6 @@
     "b3_bdr_etfs": 321,
     "b3_instruments_equities": 1353,
     "nasdaq_other_listed": 7661,
-    "nasdaq_trading_system_adds_deletes": 9,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
     "bist_kap_mkk_listed_securities": 663,
@@ -151,8 +150,9 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5633,
+    "nasdaq_listed": 5634,
     "sec_company_tickers_exchange": 10220,
+    "nasdaq_trading_system_adds_deletes": 9,
     "cboe_canada_listing_directory": 443,
     "ngx_company_profile_directory": 130,
     "ngx_equities_price_list": 129,
@@ -225,8 +225,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5633,
-      "generated_at": "2026-10-02T07:25:11Z"
+      "rows": 5634,
+      "generated_at": "2026-10-02T13:05:52Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
@@ -234,7 +234,7 @@
       "official": true,
       "mode": "network",
       "rows": 7661,
-      "generated_at": "2026-10-02T07:25:11Z"
+      "generated_at": "2026-10-02T13:05:52Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1330,7 +1330,7 @@
       "official": true,
       "mode": "network",
       "rows": 10220,
-      "generated_at": "2026-10-02T07:25:11Z"
+      "generated_at": "2026-10-02T13:05:52Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1508,6 +1508,10 @@
       "error": "Empty refresh result; preserved 5 existing rows"
     },
     {
+      "source_key": "bmv_issuer_directory",
+      "error": "Empty refresh result; preserved 76 existing rows"
+    },
+    {
       "source_key": "bmv_market_data_securities",
       "error": "Empty refresh result; preserved 9 existing rows"
     },
@@ -1586,57 +1590,19 @@
     {
       "source_key": "upcom_registered_securities",
       "error": "Empty refresh result; preserved 818 existing rows"
-    },
-    {
-      "source_key": "bmv_issuer_directory",
-      "error": "Empty refresh result; preserved 76 existing rows"
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-10-02T06:29:46Z",
+    "generated_at": "2026-10-02T13:05:52Z",
     "selected_source_keys": [
-      "adx_market_watch",
-      "bahrain_bourse_listed_companies",
-      "bist_kap_mkk_listed_securities",
-      "bmv_issuer_directory",
-      "deutsche_boerse_frankfurt_all_tradable_equities",
-      "deutsche_boerse_xetra_all_tradable_equities",
-      "dfm_listed_securities",
-      "idx_company_profiles",
-      "nasdaq_trading_system_adds_deletes",
-      "newconnect_listed_companies",
-      "ngm_companies_page",
-      "ngx_equities_price_list",
-      "otc_markets_security_profile",
-      "pse_cz_shares_directory",
-      "psx_listed_companies",
-      "sem_isin",
-      "set_stock_search",
-      "sgx_securities_prices",
-      "tadawul_main_market_watch",
-      "twse_listed_companies"
+      "nasdaq_listed",
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "adx_market_watch": "network",
-      "bahrain_bourse_listed_companies": "network",
-      "bist_kap_mkk_listed_securities": "network",
-      "bmv_issuer_directory": "unavailable",
-      "deutsche_boerse_frankfurt_all_tradable_equities": "network",
-      "deutsche_boerse_xetra_all_tradable_equities": "network",
-      "dfm_listed_securities": "network",
-      "idx_company_profiles": "network",
-      "nasdaq_trading_system_adds_deletes": "network",
-      "newconnect_listed_companies": "network",
-      "ngm_companies_page": "network",
-      "ngx_equities_price_list": "network",
-      "otc_markets_security_profile": "network",
-      "pse_cz_shares_directory": "network",
-      "psx_listed_companies": "network",
-      "sem_isin": "network",
-      "set_stock_search": "network",
-      "sgx_securities_prices": "network",
-      "tadawul_main_market_watch": "network",
-      "twse_listed_companies": "network"
+      "nasdaq_listed": "network",
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }
