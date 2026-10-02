@@ -4,7 +4,7 @@ import csv
 import json
 from pathlib import Path
 
-from scripts.apply_delistings import apply_delistings
+from scripts.apply_delistings import apply_delistings, drop_key
 from scripts.lib.delisting_evidence import (
     BSE_STATUS_URL_TEMPLATE,
     NASDAQ_ADDS_DELETES_URL,
@@ -252,3 +252,34 @@ def test_nasdaq_delete_without_action_or_wrong_url_is_blocked(tmp_path: Path) ->
     assert {row["status"] for row in report["blocked"]} == {
         "blocked_missing_official_delisting_evidence"
     }
+
+
+def test_apply_delistings_appends_without_rewriting_existing_order(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    existing = [
+        {"ticker": "ZZZ", "exchange": "NYSE", "confidence": "0.99", "reason": "seed"},
+        {"ticker": "AAA", "exchange": "NASDAQ", "confidence": "0.99", "reason": "seed"},
+    ]
+    write_drop_rows(drops, existing)
+    original = drops.read_bytes()
+    source.write_text(
+        json.dumps({"candidates": [official_nasdaq_delete_candidate()]}),
+        encoding="utf-8",
+    )
+
+    report = apply_delistings(
+        delisting_report_json=source,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json",
+        report_md=tmp_path / "apply.md",
+        apply=True,
+    )
+
+    assert report["summary"]["applied_rows"] == 1
+    assert drops.read_bytes().startswith(original)
+    assert [drop_key(row) for row in read_drop_rows(drops)] == [
+        ("NYSE", "ZZZ"),
+        ("NASDAQ", "AAA"),
+        ("NASDAQ", "DEAD"),
+    ]

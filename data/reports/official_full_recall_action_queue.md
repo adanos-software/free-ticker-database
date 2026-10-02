@@ -11,7 +11,7 @@ Rows: `24`
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.16 | 3492 | 857 | not_in_supplement_allowlist |
 | 4 | NYSE | 59.88 | 1330 | 569 | not_in_supplement_allowlist |
-| 5 | NASDAQ | 82.43 | 983 | 61 | not_in_supplement_allowlist |
+| 5 | NASDAQ | 82.39 | 985 | 62 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 24.63 | 759 | 1897 | not_in_supplement_allowlist |
 | 7 | Euronext | 81.04 | 312 | 369 | not_in_supplement_allowlist |
 | 8 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |

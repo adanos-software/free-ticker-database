@@ -828,6 +828,79 @@ def test_drop_stale_tmx_etf_duplicates_prefers_current_official_symbol(monkeypat
     assert [row["ticker"] for row in cleaned] == ["SPXI", "QQD", "QQD.U", "MUSA"]
 
 
+def test_drop_stale_tmx_etf_duplicates_keeps_share_class_suffixes(monkeypatch):
+    from scripts import rebuild_dataset
+
+    rows = [
+        {
+            "ticker": "GIQG",
+            "name": "Guardian i3 Global Quality Growth ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "CA40136W1023",
+            "aliases": [],
+        },
+        {
+            "ticker": "GIQG.B",
+            "name": "Guardian i3 Global Quality Growth ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "CA40136W1023",
+            "aliases": [],
+        },
+        {
+            "ticker": "RUQO",
+            "name": "RBC Target 2026 U.S. Corporate Bond ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "CA7493311046",
+            "aliases": [],
+        },
+        {
+            "ticker": "RUQO.U",
+            "name": "RBC Target 2026 U.S. Corporate Bond ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "CA7493312036",
+            "aliases": [],
+        },
+    ]
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("GIQG", "ETF"): (
+                {
+                    "ticker": "GIQG",
+                    "exchange": "TSX",
+                    "asset_type": "ETF",
+                    "name": "Guardian i3 Global Quality Growth ETF",
+                },
+            ),
+            ("RUQO", "ETF"): (
+                {
+                    "ticker": "RUQO",
+                    "exchange": "TSX",
+                    "asset_type": "ETF",
+                    "name": "RBC Target 2026 U.S. Corporate Bond ETF",
+                },
+            ),
+        },
+    )
+
+    cleaned = rebuild_dataset.drop_stale_tmx_etf_duplicates(rows)
+
+    assert [row["ticker"] for row in cleaned] == ["GIQG", "GIQG.B", "RUQO", "RUQO.U"]
+
+
 def test_should_drop_contextual_alias_drops_untrusted_shared_alias():
     from scripts.rebuild_dataset import should_drop_contextual_alias
 

@@ -2,17 +2,17 @@
 
 - Active official source rows: **170,000**
 - Source-specific venue/symbol keys: **169,999**
-- Coverage-credited keys: **100,012**
+- Coverage-credited keys: **100,006**
 - Exact identity conflicts: **12,514**
-- In-scope missing listings: **43,993**
+- In-scope missing listings: **43,999**
 
 | Classification | Keys |
 |---|---:|
 | `alternate_listing_line` | 3,403 |
 | `ambiguous_same_venue_identifier` | 193 |
 | `exact_identity_conflict` | 12,514 |
-| `exact_match` | 100,012 |
-| `missing_from_database` | 43,993 |
+| `exact_match` | 100,006 |
+| `missing_from_database` | 43,999 |
 | `normalization_candidate` | 1,810 |
 | `out_of_scope` | 8,074 |
 
