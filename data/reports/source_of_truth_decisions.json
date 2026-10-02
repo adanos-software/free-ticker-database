@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-10-02T11:05:44Z",
-    "rows": 12052,
+    "generated_at": "2026-10-02T12:34:19Z",
+    "rows": 12051,
     "outcome_totals": {
       "accepted_source_gap": 8930,
       "core_exclusion_candidate": 808,
-      "official_fill_required": 2314
+      "official_fill_required": 2313
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 46,
@@ -28,7 +28,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 230,
       "official_reference_symbol_collision_gap": 1104,
-      "official_reference_unmatched_source_gap": 5356,
+      "official_reference_unmatched_source_gap": 5355,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 53
     },
@@ -41,7 +41,7 @@
       "missing_sector_stock:core_exclusion_candidate": 96,
       "missing_sector_stock:official_fill_required": 63,
       "official_reference_gap:accepted_source_gap": 4210,
-      "official_reference_gap:official_fill_required": 2250
+      "official_reference_gap:official_fill_required": 2249
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -194708,23 +194708,6 @@
       "exchange": "NYSE",
       "asset_type": "Stock",
       "name": "Chart Industries Inc",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NYSE::HCWC",
-      "ticker": "HCWC",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Healthy Choice Wellness Corp.",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
