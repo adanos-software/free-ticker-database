@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97178,
-    "after_rows": 97228,
+    "before_rows": 97228,
+    "after_rows": 97235,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,14 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "AMS::3DIS",
+      "field_name": "isin",
+      "old_value": "XS2335553801",
+      "new_value": "XS3467854462"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -39,7 +46,7 @@
     {
       "exchange": "AMS",
       "before_rows": 737,
-      "after_rows": 737,
+      "after_rows": 742,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -479,7 +486,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2029,
+      "before_rows": 2030,
       "after_rows": 2030,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -597,7 +604,7 @@
     {
       "exchange": "SGX",
       "before_rows": 630,
-      "after_rows": 630,
+      "after_rows": 632,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -686,7 +693,7 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2372,
+      "before_rows": 2421,
       "after_rows": 2421,
       "shrink_pct": 0.0,
       "removed_rows": 0,

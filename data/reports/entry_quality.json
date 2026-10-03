@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-02T19:37:02Z",
-    "rows": 97228,
+    "generated_at": "2026-10-03T11:45:31Z",
+    "rows": 97235,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,27 +14,27 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 82521,
-      "source_gap": 14669,
+      "pass": 82518,
+      "source_gap": 14679,
       "warn": 38
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4551,
-      "official_reference": 87387,
+      "identifier_enriched": 4552,
+      "official_reference": 87388,
       "scoped_source_gap": 268,
-      "valid_isin": 5022
+      "valid_isin": 5027
     },
     "severity_counts": {
       "high": 8,
       "medium": 31,
-      "source_gap": 15452
+      "source_gap": 15462
     },
     "issue_counts": {
-      "official_reference_gap": 6554,
-      "missing_stock_sector": 3944,
+      "official_reference_gap": 6560,
+      "missing_stock_sector": 3945,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 1156,
-      "missing_etf_category": 511,
+      "missing_etf_category": 514,
       "official_name_mismatch": 31,
       "official_isin_mismatch": 8
     },
@@ -109,8 +109,8 @@
       },
       {
         "exchange": "AMS",
-        "pass": 537,
-        "source_gap": 200
+        "pass": 538,
+        "source_gap": 204
       },
       {
         "exchange": "XDUS",
@@ -140,8 +140,8 @@
       },
       {
         "exchange": "Euronext",
-        "pass": 1341,
-        "source_gap": 135,
+        "pass": 1340,
+        "source_gap": 136,
         "warn": 1
       }
     ]
@@ -17644,6 +17644,24 @@
       ]
     },
     {
+      "listing_key": "SSE::560650",
+      "ticker": "560650",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "SSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "TSE::560A",
       "ticker": "560A",
       "exchange": "TSE",
@@ -18483,24 +18501,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::59P",
-      "ticker": "59P",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }

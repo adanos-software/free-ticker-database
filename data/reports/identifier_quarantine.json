@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-02T19:36:43Z",
+  "generated_at": "2026-10-03T11:39:41Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2039,
-  "decision_rows": 6558,
+  "decision_rows": 6559,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1416,
+    "kept_listing_keyed_identifier": 1417,
     "proposed_clear_conflicting_identifier": 1073,
     "quarantined_unresolved_identifier": 4069
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1073,
   "quarantined_rows": 4069,
-  "retained_rows": 1416,
+  "retained_rows": 1417,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -84996,7 +84996,20 @@
       "retained_isin": "XS3306517338"
     },
     {
-      "conflict_id": "2d7d4ed9b81043c722c0",
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
+      "isin": "XS3467854462",
+      "listing_key": "AMS::3DIS",
+      "ticker": "3DIS",
+      "exchange": "AMS",
+      "name": "Leverage Shares 3x Disney ETP Securities",
+      "asset_type": "ETF",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "XS3467854462"
+    },
+    {
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
       "isin": "XS3467854462",
       "listing_key": "LSE::3DIE",
       "ticker": "3DIE",
@@ -85009,7 +85022,7 @@
       "retained_isin": "XS3467854462"
     },
     {
-      "conflict_id": "2d7d4ed9b81043c722c0",
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
       "isin": "XS3467854462",
       "listing_key": "LSE::DIS3",
       "ticker": "DIS3",
@@ -85022,7 +85035,7 @@
       "retained_isin": "XS3467854462"
     },
     {
-      "conflict_id": "2d7d4ed9b81043c722c0",
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
       "isin": "XS3467854462",
       "listing_key": "XETRA::3DIE",
       "ticker": "3DIE",

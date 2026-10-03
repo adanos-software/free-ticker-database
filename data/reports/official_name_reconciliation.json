@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-02T19:36:43Z",
+  "generated_at": "2026-10-03T11:39:41Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1890,
+  "reconciled_rows": 1892,
   "applied_rows": 0,
-  "proposed_rows": 1890,
+  "proposed_rows": 1892,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -169,6 +169,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
       "observation_id": "fca45f171567f15f40041406",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "AMS::SSAC",
+      "action": "proposed",
+      "ticker": "SSAC",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "isin": "IE00B6R52259",
+      "old_name": "iShares MSCI ACWI UCITS ETF USD (Acc) EUR",
+      "new_name": "iShares MSCI All Country World UCITS ETF",
+      "source_key": "euronext_etfs",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "observation_id": "ff0f4b185b7dcbe9ada230a3",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -15274,6 +15289,21 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
       "observation_id": "86e96c73f4e58435c7d3da4f",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "HOSE::LIX",
+      "action": "proposed",
+      "ticker": "LIX",
+      "exchange": "HOSE",
+      "asset_type": "Stock",
+      "isin": "VN000000LIX6",
+      "old_name": "Lix Detergent JSC",
+      "new_name": "LIX Joint Stock Company",
+      "source_key": "hose_listed_stocks",
+      "reference_scope": "listed_companies_subset",
+      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
+      "observation_id": "aadc24818e6ef0ca5c386f7e",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
