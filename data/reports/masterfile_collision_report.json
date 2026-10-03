@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99821,
-    "matched": 70021,
-    "collisions": 11446,
-    "missing": 18354
+    "official_symbols": 99906,
+    "matched": 70026,
+    "collisions": 11471,
+    "missing": 18409
   },
   "exchanges": [
     {
@@ -107,8 +107,8 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 609,
-      "matched": 565,
+      "official_symbols": 613,
+      "matched": 569,
       "collisions": 40,
       "missing": 4,
       "collision_examples": [
@@ -1036,10 +1036,10 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2904,
+      "official_symbols": 2963,
       "matched": 248,
-      "collisions": 1897,
-      "missing": 759,
+      "collisions": 1916,
+      "missing": 799,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1405,10 +1405,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2015,
-      "matched": 1334,
-      "collisions": 369,
-      "missing": 312,
+      "official_symbols": 2037,
+      "matched": 1333,
+      "collisions": 375,
+      "missing": 329,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -4346,9 +4346,9 @@
     {
       "exchange": "SGX",
       "official_symbols": 748,
-      "matched": 624,
+      "matched": 626,
       "collisions": 122,
-      "missing": 2,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4440,18 +4440,7 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "SJJR",
-          "name": "First Sponsor Gp R1",
-          "exchange": "SGX"
-        },
-        {
-          "ticker": "ZNIR",
-          "name": "First Sponsor Gp R",
-          "exchange": "SGX"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "SSE_CL",

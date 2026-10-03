@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-02T11:27:54Z",
+  "generated_at": "2026-10-03T11:37:51Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 579,
-  "rotation_vanished_rows": 120,
-  "backlog_rows": 459,
-  "still_in_database": 569,
+  "vanished_reference_rows": 619,
+  "rotation_vanished_rows": 50,
+  "backlog_rows": 569,
+  "still_in_database": 579,
   "classifier_counts": {
-    "manual_rename_vs_delisting_required": 569,
-    "not_in_database": 10
+    "manual_rename_vs_delisting_required": 579,
+    "not_in_database": 40
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 120; still-in-database backlog carried: 459.",
-    "Still in database: 569; not in database: 10.",
+    "Rotation vanished rows: 50; still-in-database backlog carried: 569.",
+    "Still in database: 579; not in database: 40.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -57,6 +57,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "ONSW",
+      "exchange": "AMS",
+      "name": "iShares € Overnight Rate Swap UCITS ETF",
+      "isin": "IE0005RKXDO7",
+      "classification": "master_absent",
+      "source_key": "euronext_etfs",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "iShares € Overnight Rate Swap UCITS ETF",
+      "listing_name": "iShares € Overnight Rate Swap UCITS ETF",
+      "listing_isin": "IE0005RKXDO7",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "BIPD11",
@@ -516,7 +536,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CSPXN",
@@ -4619,6 +4639,46 @@
       "origin": "backlog"
     },
     {
+      "ticker": "5HEE",
+      "exchange": "Borsa Italiana",
+      "name": "OSSIAM ESG LOW CARB SH CAPE US UCITS ETF",
+      "isin": "IE00BF92LV92",
+      "classification": "master_absent",
+      "source_key": "euronext_etfs",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "OSSIAM ESG LOW CARB SH CAPE US UCITS ETF",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "PHOT",
+      "exchange": "Borsa Italiana",
+      "name": "Defiance Photonics UCITS ETF",
+      "isin": "IE000W1S2PT6",
+      "classification": "master_absent",
+      "source_key": "euronext_etfs",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Defiance Photonics UCITS ETF",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "1368",
       "exchange": "Bursa",
       "name": "UEM EDGENTA BERHAD",
@@ -4717,6 +4777,46 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "HAMO",
+      "exchange": "Euronext",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "euronext_etfs",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_isin": "CH1218734544",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASH",
+      "exchange": "Euronext",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "euronext_etfs",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "LHYFE",
@@ -8364,6 +8464,26 @@
       "name": "CIMB THAI BANK PUBLIC COMPANY LIMITED",
       "isin": "",
       "classification": "master_absent",
+      "source_key": "set_listed_companies",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "CIMB THAI BANK PUBLIC COMPANY LIMITED",
+      "listing_name": "CIMB THAI BANK PUBLIC COMPANY LIMITED",
+      "listing_isin": "TH0041010Y05",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "CIMBT",
+      "exchange": "SET",
+      "name": "CIMB THAI BANK PUBLIC COMPANY LIMITED",
+      "isin": "",
+      "classification": "master_absent",
       "source_key": "set_stock_search",
       "source_url": "https://www.set.or.th/api/set/stock/list",
       "evidence_source_key": "",
@@ -8377,6 +8497,46 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "COLOR",
+      "exchange": "SET",
+      "name": "SALEE COLOUR PUBLIC COMPANY LIMITED",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "set_listed_companies",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "SALEE COLOUR PUBLIC COMPANY LIMITED",
+      "listing_name": "Salee Colour Public Company Limited",
+      "listing_isin": "TH1064010008",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "GLAND",
+      "exchange": "SET",
+      "name": "GRAND CANAL LAND PUBLIC COMPANY LIMITED",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "set_listed_companies",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "GRAND CANAL LAND PUBLIC COMPANY LIMITED",
+      "listing_name": "GRAND CANAL LAND PUBLIC COMPANY LIMITED",
+      "listing_isin": "TH0538A10Z04",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "GLAND",
@@ -8397,6 +8557,46 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "LRH",
+      "exchange": "SET",
+      "name": "LAGUNA RESORTS & HOTELS PUBLIC COMPANY LIMITED",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "set_listed_companies",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "LAGUNA RESORTS & HOTELS PUBLIC COMPANY LIMITED",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "THCOM",
+      "exchange": "SET",
+      "name": "THAICOM PUBLIC COMPANY LIMITED",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "set_listed_companies",
+      "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "THAICOM PUBLIC COMPANY LIMITED",
+      "listing_name": "Thaicom Public Company Limited",
+      "listing_isin": "TH0380010Y07",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "THCOM",
@@ -8479,6 +8679,766 @@
       "origin": "backlog"
     },
     {
+      "ticker": "5HED",
+      "exchange": "SIX",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "isin": "IE00BF92LR56",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "5HED-USD",
+      "exchange": "SIX",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "isin": "IE00BF92LR56",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "5HEDUSD",
+      "exchange": "SIX",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "isin": "IE00BF92LR56",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A USD",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "5HEE",
+      "exchange": "SIX",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "isin": "IE00BF92LV92",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "5HEE-EUR",
+      "exchange": "SIX",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "isin": "IE00BF92LV92",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "5HEEEUR",
+      "exchange": "SIX",
+      "name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "isin": "IE00BF92LV92",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Ossiam ESG LC Shiller Barc. CAPE US Sector UCITS ETF 1A EUR",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "ABLDE",
+      "exchange": "SIX",
+      "name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "isin": "CH1484603522",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "ABLDE-EUR",
+      "exchange": "SIX",
+      "name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "isin": "CH1484603522",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "ABLDEEUR",
+      "exchange": "SIX",
+      "name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "isin": "CH1484603522",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "ABLDESW",
+      "exchange": "SIX",
+      "name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "isin": "CH1484603522",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "ABLDESW-EUR",
+      "exchange": "SIX",
+      "name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "isin": "CH1484603522",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "ABLDESWEUR",
+      "exchange": "SIX",
+      "name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "isin": "CH1484603522",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ETP on Adaptivv Bitcoin Gold EUR Hedged ETF Index",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMO",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_isin": "CH1218734544",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMO-CHF",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMO-EUR",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMO-GBP",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMO-USD",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMOCHF",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMOEUR",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMOGBP",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HAMOUSD",
+      "exchange": "SIX",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "isin": "CH1218734544",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Crypto Momentum Factor ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASH",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASH-CHF",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASH-EUR",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASH-GBP",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASH-USD",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASHCHF",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASHEUR",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASHGBP",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "HASHUSD",
+      "exchange": "SIX",
+      "name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "isin": "CH1184151731",
+      "classification": "master_absent",
+      "source_key": "six_etp_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Hashdex Nasdaq CME Crypto Index ETP",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "OP8E",
+      "exchange": "SIX",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "isin": "IE0006QX3Y11",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "OP8E-CAD",
+      "exchange": "SIX",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "isin": "IE0006QX3Y11",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "OP8E-EUR",
+      "exchange": "SIX",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "isin": "IE0006QX3Y11",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "OP8ECAD",
+      "exchange": "SIX",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "isin": "IE0006QX3Y11",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "OP8EEUR",
+      "exchange": "SIX",
+      "name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "isin": "IE0006QX3Y11",
+      "classification": "master_absent",
+      "source_key": "six_etf_products",
+      "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "OSSIAM BLOOMBERG CANADA PAB NR - UCITS ETF 1A (EUR)",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "PEDU",
+      "exchange": "SIX",
+      "name": "Perrot Duval Holding SA",
+      "isin": "CH0252620700",
+      "classification": "master_absent",
+      "source_key": "six_equity_issuers",
+      "source_url": "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Perrot Duval Holding SA",
+      "listing_name": "Perrot Duval Holding SA",
+      "listing_isin": "CH0252620700",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "WIHN",
+      "exchange": "SIX",
+      "name": "WISeKey International Holding AG",
+      "isin": "CH1276062754",
+      "classification": "master_absent",
+      "source_key": "six_equity_issuers",
+      "source_url": "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "WISeKey International Holding AG",
+      "listing_name": "Wisekey International Holding AG",
+      "listing_isin": "CH1276062754",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "560650",
+      "exchange": "SSE",
+      "name": "核心50ETF民生加银",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "sse_etf_list",
+      "source_url": "https://www.sse.com.cn/assortment/fund/etf/list/",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "核心50ETF民生加银",
+      "listing_name": "核心50ETF民生加银",
+      "listing_isin": "CNE100005BW6",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "2CUREX",
       "exchange": "STO",
       "name": "2cureX",
@@ -8539,6 +9499,46 @@
       "origin": "backlog"
     },
     {
+      "ticker": "LIGR-BTA",
+      "exchange": "STO",
+      "name": "Lightning Group",
+      "isin": "SE0029951441",
+      "classification": "master_absent",
+      "source_key": "spotlight_companies_directory",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000528855",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Lightning Group",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "PRPORT",
+      "exchange": "STO",
+      "name": "Proport Invest",
+      "isin": "SE0027767724",
+      "classification": "master_absent",
+      "source_key": "spotlight_companies_directory",
+      "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000501660",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Proport Invest",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "9590",
       "exchange": "TADAWUL",
       "name": "ARMAH",
@@ -8576,7 +9576,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "LPSN",
@@ -8596,7 +9596,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TRAN",
@@ -8616,7 +9616,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "00793B",
@@ -8636,7 +9636,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2938",
@@ -8656,7 +9656,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "3085",
@@ -8676,7 +9676,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "3659",
@@ -8696,7 +9696,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "4150",
@@ -8716,7 +9716,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "4527",
@@ -8736,67 +9736,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "5301",
-      "exchange": "TPEX",
-      "name": "寶得利",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "tpex_mainboard_daily_quotes",
-      "source_url": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "寶得利",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "5371",
-      "exchange": "TPEX",
-      "name": "中強光電股份有限公司",
-      "isin": "TW0005371009",
-      "classification": "master_absent",
-      "source_key": "tpex_mainboard_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_O.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "中強光電股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "5371",
-      "exchange": "TPEX",
-      "name": "中光電",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "tpex_mainboard_daily_quotes",
-      "source_url": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "中光電",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "6618",
@@ -8816,87 +9756,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7812",
-      "exchange": "TPEX",
-      "name": "稜研科技股份有限公司",
-      "isin": "TW0007812B10",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "稜研科技股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7825",
-      "exchange": "TPEX",
-      "name": "和亞智慧科技股份有限公司",
-      "isin": "TW0007825B15",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "和亞智慧科技股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7834",
-      "exchange": "TPEX",
-      "name": "來毅數位科技股份有限公司",
-      "isin": "TW0007834B14",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "來毅數位科技股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7856",
-      "exchange": "TPEX",
-      "name": "漢民測試系統股份有限公司",
-      "isin": "TW0007856B17",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "漢民測試系統股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "8183",
@@ -8916,7 +9776,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "8183",
@@ -8936,7 +9796,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2763",
@@ -9079,46 +9939,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "AII",
-      "exchange": "TSX",
-      "name": "Almonty Industries Inc.",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "tmx_interlisted_companies",
-      "source_url": "https://www.tsx.com/files/trading/interlisted-companies.txt",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Almonty Industries Inc.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "APS",
-      "exchange": "TSX",
-      "name": "Aptose Biosciences Inc.",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "tmx_interlisted_companies",
-      "source_url": "https://www.tsx.com/files/trading/interlisted-companies.txt",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Aptose Biosciences Inc.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "BGAU",
       "exchange": "TSX",
       "name": "Blossom Gold Inc.",
@@ -9136,7 +9956,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CLCH",
@@ -9156,7 +9976,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "FBT.F",
@@ -9176,7 +9996,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "FLOT.B",
@@ -9196,7 +10016,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "FLOT.U",
@@ -9216,7 +10036,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "GIQG.B",
@@ -9236,7 +10056,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MCYC",
@@ -9256,7 +10076,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MDEF",
@@ -9276,7 +10096,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MHDC",
@@ -9296,7 +10116,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MHDU",
@@ -9316,27 +10136,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "NCAP",
-      "exchange": "TSX",
-      "name": "Ninepoint Capital Appreciation Fund ETF",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "tmx_etf_screener",
-      "source_url": "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Ninepoint Capital Appreciation Fund ETF",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "OLA",
@@ -9356,7 +10156,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RFA",
@@ -9376,7 +10176,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RGQO",
@@ -9396,7 +10196,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RQO",
@@ -9416,7 +10216,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RUQO",
@@ -9436,7 +10236,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RUQO.U",
@@ -9456,7 +10256,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "URC",
@@ -9476,7 +10276,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AB-H",
@@ -9496,7 +10296,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ACL",
@@ -9516,7 +10316,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AFCC-H",
@@ -9536,7 +10336,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AKH-H",
@@ -9556,7 +10356,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AUR-H",
@@ -9576,7 +10376,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BAL-H",
@@ -9596,7 +10396,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BAV-H",
@@ -9616,7 +10416,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BEAR",
@@ -9636,7 +10436,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BER-H",
@@ -9656,7 +10456,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BRL-H",
@@ -9676,7 +10476,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CEL-H",
@@ -9696,7 +10496,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CEO-H",
@@ -9716,7 +10516,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CLZ",
@@ -9736,7 +10536,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CLZ-H",
@@ -9756,7 +10556,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CMO-H",
@@ -9776,7 +10576,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CRG",
@@ -9796,7 +10596,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "DIG-H",
@@ -9816,7 +10616,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "EDW-H",
@@ -9836,7 +10636,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "EPO-H",
@@ -9856,7 +10656,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "FBR-H",
@@ -9876,7 +10676,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "GAR-H",
@@ -9896,7 +10696,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "GOP-H",
@@ -9916,7 +10716,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "IBC-H",
@@ -9936,7 +10736,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "JCI-H",
@@ -9956,7 +10756,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "JSPX",
@@ -9976,7 +10776,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KLE-H",
@@ -9996,7 +10796,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KUR-H",
@@ -10016,7 +10816,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KYS-H",
@@ -10036,7 +10836,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "LAF",
@@ -10056,7 +10856,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "LRC-H",
@@ -10076,7 +10876,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "LX-H",
@@ -10096,7 +10896,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MAZ-H",
@@ -10116,7 +10916,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MBI-H",
@@ -10136,7 +10936,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MMX",
@@ -10156,7 +10956,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MTN-H",
@@ -10176,7 +10976,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MUST-H",
@@ -10196,7 +10996,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MVI-H",
@@ -10216,7 +11016,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MXL-H",
@@ -10236,7 +11036,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NFG",
@@ -10256,7 +11056,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NKW-H",
@@ -10276,7 +11076,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NMG-H",
@@ -10296,7 +11096,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NOVA",
@@ -10316,7 +11116,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NRZ-H",
@@ -10336,7 +11136,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NVRO",
@@ -10356,7 +11156,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NZP",
@@ -10376,7 +11176,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ODX-H",
@@ -10396,7 +11196,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "OGW",
@@ -10416,7 +11216,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "OTMC",
@@ -10436,7 +11236,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "OTS-H",
@@ -10456,7 +11256,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PAR-H",
@@ -10476,7 +11276,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PEZM-H",
@@ -10496,7 +11296,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PLO-H",
@@ -10516,7 +11316,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PRS-H",
@@ -10536,7 +11336,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PTP-H",
@@ -10556,7 +11356,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RGM-H",
@@ -10576,7 +11376,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RUN-H",
@@ -10596,7 +11396,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SA-H",
@@ -10616,7 +11416,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SAI-H",
@@ -10636,7 +11436,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SC-H",
@@ -10656,7 +11456,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SEVA",
@@ -10676,7 +11476,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SKEL",
@@ -10696,7 +11496,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "STR-H",
@@ -10716,7 +11516,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TIP-H",
@@ -10736,7 +11536,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TMS-H",
@@ -10756,7 +11556,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TNO-H",
@@ -10776,7 +11576,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TOTC",
@@ -10796,7 +11596,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TTO-H",
@@ -10816,7 +11616,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "UNO-H",
@@ -10836,7 +11636,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VDO-H",
@@ -10856,7 +11656,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VENT",
@@ -10876,7 +11676,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VKG-H",
@@ -10896,7 +11696,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VMY-H",
@@ -10916,7 +11716,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VTEN",
@@ -10936,7 +11736,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VYC-H",
@@ -10956,7 +11756,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "WOI-H",
@@ -10976,7 +11776,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "WT-H",
@@ -10996,7 +11796,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "YAK-H",
@@ -11016,7 +11816,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ZCC-H",
@@ -11036,7 +11836,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ZKL-H",
@@ -11056,7 +11856,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ZZE-H",
@@ -11076,7 +11876,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2867",

@@ -1,24 +1,24 @@
 # Entry Quality Report
 
-Generated at: `2026-10-02T19:37:02Z`
+Generated at: `2026-10-03T11:45:31Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 82,521 |
-| source_gap | 14,669 |
+| pass | 82,518 |
+| source_gap | 14,679 |
 | warn | 38 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,554 |
-| missing_stock_sector | 3,944 |
+| official_reference_gap | 6,560 |
+| missing_stock_sector | 3,945 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 1,156 |
-| missing_etf_category | 511 |
+| missing_etf_category | 514 |
 | official_name_mismatch | 31 |
 | official_isin_mismatch | 8 |
 
@@ -39,13 +39,13 @@ Generated at: `2026-10-02T19:37:02Z`
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | BATS | 1,203 | 0 | 212 | 0 | 0 |
 | TSXV | 1,213 | 0 | 206 | 3 | 0 |
-| AMS | 537 | 0 | 200 | 0 | 0 |
+| AMS | 538 | 0 | 204 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | BVB | 49 | 0 | 198 | 0 | 0 |
 | LSE | 6,875 | 0 | 149 | 2 | 0 |
 | ASX | 2,110 | 0 | 149 | 0 | 0 |
 | HKEX | 3,059 | 0 | 138 | 1 | 0 |
-| Euronext | 1,341 | 0 | 135 | 1 | 0 |
+| Euronext | 1,340 | 0 | 136 | 1 | 0 |
 
 ## Notes
 
