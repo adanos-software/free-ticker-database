@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-10-02T19:37:04Z",
-    "rows": 12244,
+    "generated_at": "2026-10-03T11:41:48Z",
+    "rows": 12243,
     "field_totals": {
       "missing_etf_category": 483,
       "missing_isin_primary": 1156,
       "missing_sector_stock": 4051,
-      "official_reference_gap": 6554
+      "official_reference_gap": 6553
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 46,
@@ -29,7 +29,7 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 249,
       "official_reference_symbol_collision_gap": 1120,
-      "official_reference_unmatched_source_gap": 5434,
+      "official_reference_unmatched_source_gap": 5433,
       "otc_sector_source_gap": 554,
       "shell_or_cpc_sector_gap": 54
     },
@@ -56,7 +56,7 @@
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 54,
       "official_reference_gap:official_reference_symbol_collision_gap": 1120,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5434
+      "official_reference_gap:official_reference_unmatched_source_gap": 5433
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -137498,23 +137498,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=NYSE::GTLS;exchange=NYSE;ticker=GTLS;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NYSE::HCWC",
-      "ticker": "HCWC",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Healthy Choice Wellness Corp.",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=NYSE::HCWC;exchange=NYSE;ticker=HCWC;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

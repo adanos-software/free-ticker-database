@@ -6,26 +6,46 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97178,
-    "after_rows": 97228,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "before_rows": 97228,
+    "after_rows": 97227,
+    "overall_shrink_pct": 0.001029,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NYSE::HCWC"
+  ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NYSE::HCWC",
+      "ticker": "HCWC",
+      "exchange": "NYSE",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Healthy Choice Wellness Corp.",
+      "new_value": "",
+      "before_row_sha256": "70b1f57d39c3c41f6942ad74af04edcad93d4e1eb504a45c9ee38f72377be107",
+      "effective_at": "",
+      "observed_at": "2026-10-03T11:39:15Z",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "c0971439234503c3df05254b",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -479,10 +499,10 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2029,
-      "after_rows": 2030,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "before_rows": 2030,
+      "after_rows": 2029,
+      "shrink_pct": 0.049261,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -686,7 +706,7 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2372,
+      "before_rows": 2421,
       "after_rows": 2421,
       "shrink_pct": 0.0,
       "removed_rows": 0,
