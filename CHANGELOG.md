@@ -10,6 +10,7 @@
 ### Fixed
 
 - `apply_symbol_changes` predecessor drops now require a same-exchange US successor, a matching successor ISIN when present, and `names_refer_to_same_identity`. Cross-venue US reuse returns `manual_cross_venue_ticker_reuse` instead of dropping the old listing.
+- Filled official LSE `RE.` / `RE.B` identifiers from live `lse_price_explorer`: `LSE::RE` R.E.A. Holdings ordinary `GB0002349065` and `LSE::RE-B` 9% cumulative preferred `GB0007185639`, with United Kingdom / `GB`. The 2026-09-29 clear of stolen RE Royalties `CA75527Q1081` stands; `TSXV::RE` / `OTC::RROYF` keep that ISIN. `Euronext::RE` Colas and `FSX::BY0` are unchanged. Names, sectors, and FIGIs were not recoded. Not EODHD or Twelve Data.
 
 ### Safety
 
@@ -18,6 +19,7 @@
 ### Verification
 
 - Rebuild without `--apply-identity-fixes` / `--apply-official-name-updates`. TWSE collision-adjusted official recall is 100% (35 remaining misses are collision-hidden). Entry-quality warn count unchanged; `NYSE::HCWC` stays on the name-mismatch allowlist.
+- Live `lse_price_explorer` on 2026-10-04: `RE.` ORD 25P `GB0002349065`; `RE.B` 9% CUM PRF #1 `GB0007185639`.
 
 ## [3.41.0] - 2026-09-29
 

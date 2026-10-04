@@ -6,46 +6,63 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97228,
-    "after_rows": 97227,
-    "overall_shrink_pct": 0.001029,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "before_rows": 97272,
+    "after_rows": 97272,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 6,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NYSE::HCWC"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
+  "critical_field_changes": [
     {
-      "listing_key": "NYSE::HCWC",
-      "ticker": "HCWC",
-      "exchange": "NYSE",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "Healthy Choice Wellness Corp.",
-      "new_value": "",
-      "before_row_sha256": "70b1f57d39c3c41f6942ad74af04edcad93d4e1eb504a45c9ee38f72377be107",
-      "effective_at": "",
-      "observed_at": "2026-10-03T11:39:15Z",
-      "source_key": "stockanalysis_symbol_changes",
-      "source_url": "https://stockanalysis.com/actions/changes/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "c0971439234503c3df05254b",
-      "evidence_status": "reviewed"
+      "listing_key": "LSE::RE",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "United Kingdom"
+    },
+    {
+      "listing_key": "LSE::RE",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "GB"
+    },
+    {
+      "listing_key": "LSE::RE",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "GB0002349065"
+    },
+    {
+      "listing_key": "LSE::RE-B",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "United Kingdom"
+    },
+    {
+      "listing_key": "LSE::RE-B",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "GB"
+    },
+    {
+      "listing_key": "LSE::RE-B",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "GB0007185639"
     }
   ],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -500,9 +517,9 @@
     {
       "exchange": "NYSE",
       "before_rows": 2030,
-      "after_rows": 2029,
-      "shrink_pct": 0.049261,
-      "removed_rows": 1,
+      "after_rows": 2030,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -724,8 +741,8 @@
     },
     {
       "exchange": "TWSE",
-      "before_rows": 1241,
-      "after_rows": 1241,
+      "before_rows": 1285,
+      "after_rows": 1285,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

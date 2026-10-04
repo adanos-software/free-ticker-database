@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T06:55:25Z",
+  "generated_at": "2026-10-04T12:15:22Z",
   "summary": {
     "venues": 88,
     "venue_status_counts": {
@@ -9,13 +9,13 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 24,
-      "maintain": 5,
+      "maintain": 3,
       "official_source_required": 5,
-      "refresh_required": 35,
+      "refresh_required": 37,
       "refresh_unavailable": 19
     },
     "unavailable_venues": 19,
-    "nonfresh_venues": 72,
+    "nonfresh_venues": 80,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -261,7 +261,7 @@
       "missing_product_classes": "",
       "official_source_keys": "bme_etf_list|bme_listed_companies|bme_security_prices_directory",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "bme_security_prices_directory",
+      "nonfresh_source_keys": "bme_etf_list|bme_listed_companies|bme_security_prices_directory",
       "source_blocker_classes": "stale_artifact",
       "official_denominator": 270,
       "official_matches": 245,
@@ -1411,8 +1411,8 @@
       "missing_product_classes": "",
       "official_source_keys": "rse_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "rse_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1421,7 +1421,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "SEM",
@@ -1641,7 +1641,7 @@
       "missing_product_classes": "",
       "official_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata",
       "unavailable_source_keys": "tase_foreign_etf_search|tase_participating_unit_search",
-      "nonfresh_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search",
+      "nonfresh_source_keys": "tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata",
       "source_blocker_classes": "empty_refresh|stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
@@ -1664,8 +1664,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1674,7 +1674,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "TSE",
@@ -1710,8 +1710,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 785,
       "official_matches": 590,
       "official_collisions": 189,
@@ -1719,7 +1719,7 @@
       "official_recall_pct": 75.16,
       "collision_adjusted_recall_pct": 98.99,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1733,8 +1733,8 @@
       "missing_product_classes": "",
       "official_source_keys": "tmx_interlisted_companies|tmx_listed_issuers",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "tmx_interlisted_companies|tmx_listed_issuers",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 1518,
       "official_matches": 1322,
       "official_collisions": 193,
@@ -1742,7 +1742,7 @@
       "official_recall_pct": 87.09,
       "collision_adjusted_recall_pct": 99.77,
       "denominator_status": "available",
-      "audit_outcome": "maintain",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1756,7 +1756,7 @@
       "missing_product_classes": "",
       "official_source_keys": "twse_etf_list|twse_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "twse_listed_companies",
+      "nonfresh_source_keys": "twse_etf_list|twse_listed_companies",
       "source_blocker_classes": "stale_artifact",
       "official_denominator": 1095,
       "official_matches": 1060,
@@ -1825,8 +1825,8 @@
       "missing_product_classes": "",
       "official_source_keys": "use_ug_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "use_ug_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1835,7 +1835,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "VSE",
@@ -1848,8 +1848,8 @@
       "missing_product_classes": "ETF",
       "official_source_keys": "vienna_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "vienna_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -1858,7 +1858,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_product_class_gap"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "WSE",
@@ -2009,8 +2009,8 @@
       "missing_product_classes": "",
       "official_source_keys": "zagreb_securities_directory",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "zagreb_securities_directory",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -2019,7 +2019,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "ZSE_ZW",
@@ -2032,8 +2032,8 @@
       "missing_product_classes": "",
       "official_source_keys": "zse_zw_listed_companies",
       "unavailable_source_keys": "",
-      "nonfresh_source_keys": "",
-      "source_blocker_classes": "",
+      "nonfresh_source_keys": "zse_zw_listed_companies",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -2042,7 +2042,7 @@
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
       "audit_outcome": "denominator_missing",
-      "promotion_readiness": "blocked_denominator_missing"
+      "promotion_readiness": "blocked_nonfresh_source"
     }
   ]
 }
