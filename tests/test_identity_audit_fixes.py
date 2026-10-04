@@ -42,8 +42,6 @@ STOLEN_ISIN_CLEARS = {
     ("WEAT", "NYSE ARCA"): "JE00BN7KB664",
     ("INVN", "NYSE ARCA"): "US45170X2053",
     ("CNEQ", "NYSE ARCA"): "US45170X2053",
-    ("RE", "LSE"): "CA75527Q1081",
-    ("RE-B", "LSE"): "CA75527Q1081",
     ("METR", "LSE"): "ARP6558L1178",
     ("ESPX", "AMS"): "CA30052U2065",
     ("AIH", "ASX"): "US00809M1045",
@@ -89,8 +87,6 @@ COUNTRY_CLEARS = {
     ("EWG", "NYSE ARCA"),
     ("CORN", "NYSE ARCA"),
     ("WEAT", "NYSE ARCA"),
-    ("RE", "LSE"),
-    ("RE-B", "LSE"),
     ("ESPX", "AMS"),
     ("AIH", "ASX"),
     ("BAFS", "SET"),
@@ -177,9 +173,38 @@ def test_identiv_and_isem_are_not_recode_targets() -> None:
     isem = _metadata("ISEM", "LSE", "isin")
     assert isem["decision"] == "update"
     assert isem["proposed_value"] == "IE00B27YCP72"
+
+
+def test_lse_rea_official_directory_isin_fill() -> None:
     rea = _metadata("RE", "LSE", "isin")
-    assert rea["proposed_value"] == ""
-    assert "GB0002349065" not in rea["reason"]
+    assert rea["decision"] == "update"
+    assert rea["proposed_value"] == "GB0002349065"
+    assert "CA75527Q1081" in rea["reason"]
+    assert "lse_price_explorer" in rea["reason"]
+    preferred = _metadata("RE-B", "LSE", "isin")
+    assert preferred["decision"] == "update"
+    assert preferred["proposed_value"] == "GB0007185639"
+    assert "CA75527Q1081" in preferred["reason"]
+    country = _metadata("RE", "LSE", "country")
+    assert country["decision"] == "update"
+    assert country["proposed_value"] == "United Kingdom"
+    code = _metadata("RE", "LSE", "country_code")
+    assert code["decision"] == "update"
+    assert code["proposed_value"] == "GB"
+    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
+    assert listings["LSE::RE"]["isin"] == "GB0002349065"
+    assert listings["LSE::RE"]["country"] == "United Kingdom"
+    assert listings["LSE::RE"]["country_code"] == "GB"
+    assert listings["LSE::RE"]["name"] == "R.E.A. Holdings plc"
+    assert listings["LSE::RE-B"]["isin"] == "GB0007185639"
+    assert listings["LSE::RE-B"]["country"] == "United Kingdom"
+    assert listings["LSE::RE-B"]["country_code"] == "GB"
+    assert listings["LSE::RE-B"]["name"] == "R.E.A. Holdings plc"
+    assert listings["FSX::BY0"]["isin"] == "GB0002349065"
+    assert listings["TSXV::RE"]["isin"] == "CA75527Q1081"
+    assert listings["OTC::RROYF"]["isin"] == "CA75527Q1081"
+    assert listings["Euronext::RE"]["isin"] == "FR0000121634"
+    assert listings["Euronext::RE"]["name"] == "Colas Sa"
 
 
 def test_cleared_stolen_isins_leave_identiv_and_venue_countries() -> None:

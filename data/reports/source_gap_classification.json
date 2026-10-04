@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-10-04T06:50:32Z",
-    "rows": 12251,
+    "generated_at": "2026-10-04T12:15:29Z",
+    "rows": 12248,
     "field_totals": {
       "missing_etf_category": 483,
-      "missing_isin_primary": 1156,
-      "missing_sector_stock": 4058,
+      "missing_isin_primary": 1154,
+      "missing_sector_stock": 4057,
       "official_reference_gap": 6554
     },
     "class_totals": {
@@ -23,9 +23,9 @@
       "inactive_or_legacy_identifier_gap": 25,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 380,
-      "official_identifier_reference_unmatched_gap": 13,
+      "official_identifier_reference_unmatched_gap": 11,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 3344,
+      "official_industry_taxonomy_unavailable_gap": 3343,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 249,
       "official_reference_symbol_collision_gap": 1120,
@@ -47,12 +47,12 @@
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 25,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 380,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 13,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 11,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 18,
       "missing_sector_stock:exchange_industry_source_gap": 63,
       "missing_sector_stock:fundlike_stock_sector_gap": 25,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 3344,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 3343,
       "missing_sector_stock:otc_sector_source_gap": 554,
       "missing_sector_stock:shell_or_cpc_sector_gap": 54,
       "official_reference_gap:official_reference_symbol_collision_gap": 1120,
@@ -150,7 +150,7 @@
         },
         {
           "exchange": "FSX",
-          "rows": 795
+          "rows": 794
         },
         {
           "exchange": "OTC",
@@ -249,7 +249,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 772,
+        "rows": 771,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -13993,40 +13993,6 @@
       "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
       "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
       "source_gap_context": "listing_key=LSE::MAST;exchange=LSE;ticker=MAST;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "LSE::RE",
-      "ticker": "RE",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "name": "R.E.A. Holdings plc",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=LSE::RE;exchange=LSE;ticker=RE;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "LSE::RE-B",
-      "ticker": "RE-B",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "name": "R.E.A. Holdings plc",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=LSE::RE-B;exchange=LSE;ticker=RE-B;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
@@ -73187,23 +73153,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=FSX::BVXB;exchange=FSX;ticker=BVXB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "FSX::BY0",
-      "ticker": "BY0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "R.E.A. Holdings plc",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::BY0;exchange=FSX;ticker=BY0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
