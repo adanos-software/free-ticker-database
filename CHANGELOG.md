@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+### Added
+
+- Restored `NYSE::HCWC` Healthy Choice Wellness Corp. (`US42227T1051`). `NYSE MKT::HOST` Host Digital Inc. Class A remains a distinct listing; the stockanalysis `HCWC→HOST` row is ticker reuse, not a successor.
+- Ingested 44 official TWSE mainboard/TIB stocks that were true-missing from `listings.csv`, with ISINs from the TWSE ISIN table. Cayman holdings use bilingual official directory + ISIN-table names so the numeric-namespace gate keeps `KYG` ISINs. The 35 collision-hidden TWSE tickers stay out.
+
+### Fixed
+
+- `apply_symbol_changes` predecessor drops now require a same-exchange US successor, a matching successor ISIN when present, and `names_refer_to_same_identity`. Cross-venue US reuse returns `manual_cross_venue_ticker_reuse` instead of dropping the old listing.
+
+### Safety
+
+- `TPEX::2938` keeps Bedding World / class ISIN `TW0002938B10`. Official name updates and identity clears were not applied. Collision-hidden tickers are not added as a second primary.
+
+### Verification
+
+- Rebuild without `--apply-identity-fixes` / `--apply-official-name-updates`. TWSE collision-adjusted official recall is 100% (35 remaining misses are collision-hidden). Entry-quality warn count unchanged; `NYSE::HCWC` stays on the name-mismatch allowlist.
+
 ## [3.41.0] - 2026-09-29
 
 ### Summary

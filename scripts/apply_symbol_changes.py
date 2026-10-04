@@ -9,10 +9,12 @@ from typing import Any
 
 try:
     from scripts.lib.dataio import display_path, load_csv, write_csv, write_json
+    from scripts.lib.identity_integrity import names_refer_to_same_identity
     from scripts.lib.keys import listing_key, row_listing_key
     from scripts.lib.normalize import normalize_bool, normalize_symbol
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from lib.dataio import display_path, load_csv, write_csv, write_json
+    from lib.identity_integrity import names_refer_to_same_identity
     from lib.keys import listing_key, row_listing_key
     from lib.normalize import normalize_bool, normalize_symbol
 
@@ -95,20 +97,44 @@ def classify_rename_candidate(
         if normalize_symbol(row.get("ticker", "")) == old_symbol
         and row.get("exchange") in US_LISTED_EXCHANGES
     ]
-    new_matches = [row for row in listings if normalize_symbol(row.get("ticker", "")) == new_symbol]
     if len(old_matches) != 1:
         return "blocked_old_symbol_not_unique_in_us_scope", {}
-    if new_matches:
-        old_listing = old_matches[0]
-        exchange = old_listing.get("exchange", "")
+
+    old_listing = old_matches[0]
+    exchange = old_listing.get("exchange", "")
+    same_exchange_successors = [
+        row
+        for row in listings
+        if normalize_symbol(row.get("ticker", "")) == new_symbol and row.get("exchange") == exchange
+    ]
+    if same_exchange_successors:
         old_key = row_listing_key(old_listing)
         old_isin = old_listing.get("isin", "").strip()
+        if len(same_exchange_successors) != 1:
+            return "blocked_new_symbol_collision", {}
+        successor = same_exchange_successors[0]
         if reference_lookup.get((exchange, old_symbol)):
             return "blocked_new_symbol_collision", {}
         if not reference_lookup.get((exchange, new_symbol)):
             return "blocked_new_symbol_collision", {}
         if not old_isin:
             return "manual_successor_exists_missing_isin", {}
+        successor_isin = successor.get("isin", "").strip()
+        if successor_isin and successor_isin != old_isin:
+            return "manual_successor_isin_mismatch", {}
+        asset_type = old_listing.get("asset_type", "") or successor.get("asset_type", "")
+        if not names_refer_to_same_identity(
+            old_listing.get("name", ""),
+            successor.get("name", ""),
+            asset_type,
+        ):
+            return "manual_ticker_reuse_name_mismatch", {}
+        official_new_rows = reference_lookup.get((exchange, new_symbol), [])
+        if official_new_rows and not any(
+            names_refer_to_same_identity(old_listing.get("name", ""), row.get("name", ""), asset_type)
+            for row in official_new_rows
+        ):
+            return "manual_ticker_reuse_name_mismatch", {}
         return "apply_drop_predecessor", {
             "exchange": exchange,
             "old_symbol": old_symbol,
@@ -121,8 +147,26 @@ def classify_rename_candidate(
             "evidence": "official_master_old_absent_new_active_successor_already_listed",
         }
 
-    old_listing = old_matches[0]
-    exchange = old_listing.get("exchange", "")
+    cross_venue_successors = [
+        row
+        for row in listings
+        if normalize_symbol(row.get("ticker", "")) == new_symbol
+        and row.get("exchange") in US_LISTED_EXCHANGES
+        and row.get("exchange") != exchange
+    ]
+    if cross_venue_successors:
+        return "manual_cross_venue_ticker_reuse", {
+            "exchange": exchange,
+            "old_symbol": old_symbol,
+            "new_symbol": new_symbol,
+            "old_listing_key": row_listing_key(old_listing),
+            "new_listing_key": row_listing_key(cross_venue_successors[0]),
+            "isin": old_listing.get("isin", "").strip(),
+            "source_key": change.get("source", "stockanalysis_symbol_changes"),
+            "source_url": change.get("source_url", ""),
+            "evidence": "new_symbol_already_listed_on_another_us_venue",
+        }
+
     old_key = row_listing_key(old_listing)
     new_key = listing_key(exchange, new_symbol)
     if any(row_listing_key(row) == new_key for row in listings):

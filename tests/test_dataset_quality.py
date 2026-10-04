@@ -720,6 +720,24 @@ def test_namespace_collision_respects_manual_isin_corrections(monkeypatch):
     ) is False
 
 
+def test_twse_cayman_namespace_keeps_official_bilingual_names() -> None:
+    from scripts.rebuild_dataset import is_namespace_collision_row
+
+    chinese = "鮮活控股股份有限公司"
+    english = "SUNJUICE"
+    bilingual = f"{chinese}({english})"
+    row = {
+        "ticker": "1256",
+        "name": bilingual,
+        "exchange": "TWSE",
+        "asset_type": "Stock",
+        "isin": "KYG858681003",
+    }
+
+    assert is_namespace_collision_row(row, [bilingual, "sunjuice"], set()) is False
+    assert is_namespace_collision_row({**row, "name": chinese}, [chinese, english], set()) is True
+
+
 def test_cleanse_conflicting_isin_rows_clears_peer_company_contamination():
     from scripts.rebuild_dataset import cleanse_conflicting_isin_rows
 

@@ -233,3 +233,131 @@ def test_apply_symbol_changes_drops_predecessor_when_successor_already_listed(tm
     assert read_rows(transitions)[0]["old_listing_key"] == "NASDAQ::HLX"
     assert read_rows(transitions)[0]["event_type"] == "delisted"
     assert read_rows(drops)[0]["ticker"] == "HLX"
+
+
+def _empty_symbol_change_paths(tmp_path: Path) -> dict[str, Path]:
+    return {
+        "listing_index_csv": tmp_path / "listing_index.csv",
+        "identifiers_extended_csv": tmp_path / "identifiers_extended.csv",
+        "supplemental_csv": tmp_path / "supplemental_listings.csv",
+        "listing_transitions_csv": tmp_path / "listing_transitions.csv",
+        "drop_entries_csv": tmp_path / "drop_entries.csv",
+        "report_json": tmp_path / "report.json",
+        "report_md": tmp_path / "report.md",
+    }
+
+
+def test_apply_symbol_changes_blocks_cross_venue_ticker_reuse(tmp_path: Path) -> None:
+    """HCWC (NYSE Healthy Choice) vs HOST (NYSE MKT Host Digital) is ticker reuse, not a successor."""
+    changes = tmp_path / "symbol_changes.csv"
+    listings = tmp_path / "listings.csv"
+    reference_csv = tmp_path / "reference.csv"
+    paths = _empty_symbol_change_paths(tmp_path)
+
+    write_rows(changes, CHANGE_FIELDS, [change(old="HCWC", new="HOST")])
+    write_rows(
+        listings,
+        LISTING_FIELDS,
+        [
+            {
+                **listing("HCWC", isin="US42227T1051"),
+                "listing_key": "NYSE::HCWC",
+                "exchange": "NYSE",
+                "name": "Healthy Choice Wellness Corp.",
+                "aliases": "healthy choice wellness",
+            },
+            {
+                **listing("HOST", isin=""),
+                "listing_key": "NYSE MKT::HOST",
+                "exchange": "NYSE MKT",
+                "name": "Host Digital Inc. Class A Common Stock",
+                "aliases": "host digital",
+            },
+        ],
+    )
+    write_rows(paths["listing_index_csv"], INDEX_FIELDS, [])
+    write_rows(paths["identifiers_extended_csv"], IDENTIFIER_FIELDS, [])
+    write_rows(paths["supplemental_csv"], SUPPLEMENT_FIELDS, [])
+    write_rows(
+        reference_csv,
+        REFERENCE_FIELDS,
+        [
+            {**reference(ticker="HOST", isin=""), "exchange": "NYSE", "name": "Host Digital Inc."},
+            {
+                **reference(ticker="HOST", isin=""),
+                "exchange": "NYSE MKT",
+                "name": "Host Digital Inc. Class A Common Stock",
+                "source_key": "nasdaq_other_listed",
+            },
+        ],
+    )
+    write_rows(
+        paths["listing_transitions_csv"],
+        ["old_listing_key", "new_listing_key", "event_type", "identity_type", "identity_value", "confidence", "source_key", "source_url", "reason"],
+        [],
+    )
+    write_rows(paths["drop_entries_csv"], ["ticker", "exchange", "confidence", "reason"], [])
+
+    report = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        reference_csv=reference_csv,
+        **paths,
+    )
+
+    assert report["accepted"] == []
+    assert report["summary"]["dropped_predecessor_rows"] == 0
+    assert report["summary"]["blocked_by_status"] == {"manual_cross_venue_ticker_reuse": 1}
+    assert read_rows(listings)[0]["listing_key"] == "NYSE::HCWC"
+    assert read_rows(paths["drop_entries_csv"]) == []
+    assert read_rows(paths["listing_transitions_csv"]) == []
+
+
+def test_apply_symbol_changes_blocks_same_exchange_name_mismatch_reuse(tmp_path: Path) -> None:
+    changes = tmp_path / "symbol_changes.csv"
+    listings = tmp_path / "listings.csv"
+    reference_csv = tmp_path / "reference.csv"
+    paths = _empty_symbol_change_paths(tmp_path)
+
+    write_rows(changes, CHANGE_FIELDS, [change(old="HCWC", new="HOST")])
+    write_rows(
+        listings,
+        LISTING_FIELDS,
+        [
+            {
+                **listing("HCWC", isin="US42227T1051"),
+                "name": "Healthy Choice Wellness Corp.",
+            },
+            {
+                **listing("HOST", isin=""),
+                "name": "Host Digital Inc. Class A Common Stock",
+            },
+        ],
+    )
+    write_rows(paths["listing_index_csv"], INDEX_FIELDS, [])
+    write_rows(paths["identifiers_extended_csv"], IDENTIFIER_FIELDS, [])
+    write_rows(paths["supplemental_csv"], SUPPLEMENT_FIELDS, [])
+    write_rows(
+        reference_csv,
+        REFERENCE_FIELDS,
+        [{**reference(ticker="HOST", isin=""), "name": "Host Digital Inc."}],
+    )
+    write_rows(
+        paths["listing_transitions_csv"],
+        ["old_listing_key", "new_listing_key", "event_type", "identity_type", "identity_value", "confidence", "source_key", "source_url", "reason"],
+        [],
+    )
+    write_rows(paths["drop_entries_csv"], ["ticker", "exchange", "confidence", "reason"], [])
+
+    report = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        reference_csv=reference_csv,
+        **paths,
+    )
+
+    assert report["accepted"] == []
+    assert report["summary"]["dropped_predecessor_rows"] == 0
+    assert report["summary"]["blocked_by_status"] == {"manual_ticker_reuse_name_mismatch": 1}
+    assert read_rows(listings)[0]["ticker"] == "HCWC"
+    assert read_rows(paths["drop_entries_csv"]) == []
