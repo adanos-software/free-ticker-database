@@ -3,7 +3,7 @@
 Official_full venues still below 99.5% collision-adjusted recall.
 Collision-hidden symbols are listed separately and must not be added as a second primary.
 
-Rows: `24`
+Rows: `23`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
@@ -24,10 +24,9 @@ Rows: `24`
 | 15 | PSE | 64.89 | 92 | 120 | collision_free_supplement |
 | 16 | NYSE ARCA | 96.69 | 90 | 31 | not_in_supplement_allowlist |
 | 17 | NYSE MKT | 82.97 | 47 | 33 | not_in_supplement_allowlist |
-| 18 | TWSE | 95.85 | 44 | 35 | collision_free_supplement |
-| 19 | SET | 95.42 | 37 | 134 | not_in_supplement_allowlist |
-| 20 | BSE_IN | 99.35 | 33 | 121 | collision_free_supplement |
-| 21 | BME | 90.74 | 25 | 0 | not_in_supplement_allowlist |
-| 22 | IDX | 97.67 | 18 | 188 | not_in_supplement_allowlist |
-| 23 | CSE_LK | 99.06 | 3 | 0 | collision_free_supplement |
-| 24 | TXSE | 0.0 | 2 | 3 | not_in_supplement_allowlist |
+| 18 | SET | 95.42 | 37 | 134 | not_in_supplement_allowlist |
+| 19 | BSE_IN | 99.35 | 33 | 121 | collision_free_supplement |
+| 20 | BME | 90.74 | 25 | 0 | not_in_supplement_allowlist |
+| 21 | IDX | 97.67 | 18 | 188 | not_in_supplement_allowlist |
+| 22 | CSE_LK | 99.06 | 3 | 0 | collision_free_supplement |
+| 23 | TXSE | 0.0 | 2 | 3 | not_in_supplement_allowlist |

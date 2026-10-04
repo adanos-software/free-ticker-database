@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-10-03T11:41:44Z`
+Generated at: `2026-10-04T06:55:25Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -83,7 +83,7 @@ Generated at: `2026-10-03T11:41:44Z`
 | TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 92.3 | jpx_listed_issues|jpx_tse_stock_detail | refresh_unavailable | not_applicable |
 | TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 785 | 75.16 |  | maintain | not_applicable |
 | TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1518 | 87.09 |  | maintain | not_applicable |
-| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1095 | 92.79 | twse_listed_companies | refresh_required | not_applicable |
+| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1095 | 96.8 | twse_listed_companies | refresh_required | not_applicable |
 | TXSE | official_full | nasdaq_other_listed |  | 5 | 0.0 |  | maintain | not_applicable |
 | UPCOM | official_full | upcom_registered_securities |  | 818 | 0.24 | upcom_registered_securities | refresh_unavailable | not_applicable |
 | USE_UG | official_partial | use_ug_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
