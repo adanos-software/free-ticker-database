@@ -1,39 +1,24 @@
 {
   "summary": {
-    "generated_at": "2026-10-03T11:37:18Z",
+    "generated_at": "2026-10-04T12:18:24Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "dropped_predecessor_rows": 1,
-    "blocked_rows": 355,
+    "dropped_predecessor_rows": 0,
+    "blocked_rows": 356,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 10,
-      "blocked_new_symbol_not_active_in_official_master": 1,
-      "blocked_old_symbol_not_unique_in_us_scope": 293,
-      "manual_non_us_or_unscoped_source": 46,
+      "blocked_new_symbol_collision": 5,
+      "blocked_new_symbol_not_active_in_official_master": 2,
+      "blocked_old_symbol_not_unique_in_us_scope": 292,
+      "manual_cross_venue_ticker_reuse": 5,
+      "manual_non_us_or_unscoped_source": 47,
       "manual_successor_exists_missing_isin": 2,
       "manual_transition_or_shell_name": 3
     }
   },
   "accepted": [],
-  "dropped_predecessors": [
-    {
-      "change_id": "7db8560be6b62da6",
-      "effective_date": "2026-09-18",
-      "old_symbol": "HCWC",
-      "new_symbol": "HOST",
-      "new_company_name": "Host Digital Inc",
-      "status": "apply_drop_predecessor",
-      "exchange": "NYSE",
-      "old_listing_key": "NYSE::HCWC",
-      "new_listing_key": "NYSE::HOST",
-      "isin": "US42227T1051",
-      "source_key": "stockanalysis_symbol_changes",
-      "source_url": "https://stockanalysis.com/actions/changes/",
-      "evidence": "official_master_old_absent_new_active_successor_already_listed"
-    }
-  ],
+  "dropped_predecessors": [],
   "blocked": [
     {
       "change_id": "87bb3f3e9ef4a8dd",
@@ -66,6 +51,14 @@
       "new_symbol": "SVIA",
       "new_company_name": "Silvia Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "7db8560be6b62da6",
+      "effective_date": "2026-09-18",
+      "old_symbol": "HCWC",
+      "new_symbol": "HOST",
+      "new_company_name": "Host Digital Inc",
+      "status": "manual_cross_venue_ticker_reuse"
     },
     {
       "change_id": "37ae0256fe9b9bab",
@@ -233,7 +226,7 @@
       "old_symbol": "BBBY",
       "new_symbol": "NXH",
       "new_company_name": "Neighborhood Intelligence Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_new_symbol_not_active_in_official_master"
     },
     {
       "change_id": "483371aab93a417c",
@@ -473,7 +466,7 @@
       "old_symbol": "CEPT",
       "new_symbol": "SECZ",
       "new_company_name": "Securitize Corp",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_cross_venue_ticker_reuse"
     },
     {
       "change_id": "74b5c71353c87547",
@@ -601,7 +594,7 @@
       "old_symbol": "LEGT",
       "new_symbol": "ENRD",
       "new_company_name": "Einride Ab",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_cross_venue_ticker_reuse"
     },
     {
       "change_id": "a7ce50da95ca0854",
@@ -1873,7 +1866,7 @@
       "old_symbol": "BTCM",
       "new_symbol": "SLAI",
       "new_company_name": "Solai Ltd.",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "3bc4508f5613d5bb",
@@ -2529,7 +2522,7 @@
       "old_symbol": "SNPX",
       "new_symbol": "TAOX",
       "new_company_name": "Tao Synergies Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_cross_venue_ticker_reuse"
     },
     {
       "change_id": "982df8bf01778926",
@@ -2665,7 +2658,7 @@
       "old_symbol": "TOPW",
       "new_symbol": "SORA",
       "new_company_name": "Asiastrategy",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_cross_venue_ticker_reuse"
     },
     {
       "change_id": "cda3d5e1291f7297",
