@@ -1,7 +1,7 @@
 # Drift / freshness report
 
-Generated: 2026-10-02T07:25:25Z
-Dataset built_at: 2026-10-02T06:35:05Z (0.0 days ago; threshold 45.0)
+Generated: 2026-10-05T16:13:31Z
+Dataset built_at: 2026-10-04T12:15:19Z (1.2 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
@@ -25,26 +25,22 @@ Dataset built_at: 2026-10-02T06:35:05Z (0.0 days ago; threshold 45.0)
 - WW -> WGHTQ (Ww International Inc, 2025-05-15): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 
 ## Quality indicators (release-gate info counts)
-- allowed_warn_rows: 35
-- expected_missing_primary_isin: 1076
-- missing_etf_category: 435
-- missing_stock_sector: 3933
-- source_gap_rows: 14483
+- allowed_warn_rows: 39
+- expected_missing_primary_isin: 1154
+- missing_etf_category: 511
+- missing_stock_sector: 3950
+- source_gap_rows: 14675
 
 ## Quality regressions: 4
-- source_gap_rows: 14432 -> 14483 (+51)
-- expected_missing_primary_isin: 1028 -> 1076 (+48)
-- missing_stock_sector: 3907 -> 3933 (+26)
-- missing_etf_category: 434 -> 435 (+1)
+- source_gap_rows: 14483 -> 14675 (+192)
+- expected_missing_primary_isin: 1076 -> 1154 (+78)
+- missing_stock_sector: 3933 -> 3950 (+17)
+- missing_etf_category: 435 -> 511 (+76)
 
-## Official recall regressions: 8
-- FSX official_recall_missing: 10188 -> 10271 (+83)
-- FSX collision_adjusted_recall_missing: 5926 -> 5993 (+67)
-- NASDAQ collision_adjusted_recall_missing: 982 -> 983 (+1)
-- SET official_recall_missing: 170 -> 171 (+1)
-- SGX official_recall_missing: 122 -> 124 (+2)
-- SGX collision_adjusted_recall_missing: 0 -> 2 (+2)
-- TWSE official_recall_missing: 78 -> 79 (+1)
-- XETRA official_recall_missing: 172 -> 175 (+3)
+## Official recall regressions: 4
+- NASDAQ official_recall_missing: 1044 -> 1048 (+4)
+- NASDAQ collision_adjusted_recall_missing: 983 -> 986 (+3)
+- NYSE MKT official_recall_missing: 79 -> 80 (+1)
+- NYSE MKT collision_adjusted_recall_missing: 46 -> 47 (+1)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._
