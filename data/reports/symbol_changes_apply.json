@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-10-04T12:18:24Z",
+    "generated_at": "2026-10-06T13:16:10Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 356,
+    "blocked_rows": 357,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 5,
+      "blocked_new_symbol_collision": 6,
       "blocked_new_symbol_not_active_in_official_master": 2,
       "blocked_old_symbol_not_unique_in_us_scope": 292,
       "manual_cross_venue_ticker_reuse": 5,
@@ -20,6 +20,14 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "b9edba604cc21b76",
+      "effective_date": "2026-10-01",
+      "old_symbol": "VRME",
+      "new_symbol": "OPNW",
+      "new_company_name": "Openworld Inc",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "87bb3f3e9ef4a8dd",
       "effective_date": "2026-09-30",

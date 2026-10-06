@@ -1,9 +1,9 @@
 # Symbol Changes Apply
 
-- Generated at: `2026-10-04T12:18:24Z`
+- Generated at: `2026-10-06T13:16:10Z`
 - Dry run: `false`
 - Accepted rows: `0`
-- Blocked/manual rows: `356`
+- Blocked/manual rows: `357`
 
 ## Accepted
 
@@ -13,7 +13,7 @@ No rename rows satisfied the official-evidence apply gate.
 
 | Status | Rows |
 |---|---:|
-| blocked_new_symbol_collision | 5 |
+| blocked_new_symbol_collision | 6 |
 | blocked_new_symbol_not_active_in_official_master | 2 |
 | blocked_old_symbol_not_unique_in_us_scope | 292 |
 | manual_cross_venue_ticker_reuse | 5 |
