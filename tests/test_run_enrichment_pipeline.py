@@ -10,9 +10,11 @@ def test_pipeline_default_stages_are_safe_and_ordered():
     assert names[:3] == ["fetch_masterfiles", "fetch_symbol_changes", "completion_backlog_before"]
     assert "same_isin_sector_peer_backfill" in names
     assert "financedatabase_sector_backfill" in names
-    assert names[-14:] == [
+    assert names[-16:] == [
         "build_etf_universe_completeness",
         "build_entry_quality_report",
+        "build_isin_identity_collision_review_queue",
+        "build_trust_report",
         "build_cfi_code_review",
         "check_entry_quality_gate",
         "build_ohlcv_plausibility_report",
@@ -36,7 +38,9 @@ def test_pipeline_default_stages_are_safe_and_ordered():
     assert names[names.index("build_coverage_report") + 1] == "build_source_inventory"
     assert names[names.index("build_source_inventory") + 1] == "build_etf_universe_completeness"
     assert names[names.index("build_etf_universe_completeness") + 1] == "build_entry_quality_report"
-    assert names[names.index("build_entry_quality_report") + 1] == "build_cfi_code_review"
+    assert names[names.index("build_entry_quality_report") + 1] == "build_isin_identity_collision_review_queue"
+    assert names[names.index("build_isin_identity_collision_review_queue") + 1] == "build_trust_report"
+    assert names[names.index("build_trust_report") + 1] == "build_cfi_code_review"
     assert names[names.index("build_cfi_code_review") + 1] == "check_entry_quality_gate"
     assert "eodhd_reviewed_isin_backfill" not in names
     assert all("--apply" not in stage.command for stage in stages)

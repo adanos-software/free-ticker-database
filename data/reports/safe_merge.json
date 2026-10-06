@@ -6,63 +6,70 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97272,
-    "after_rows": 97272,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "before_rows": 97178,
+    "after_rows": 97177,
+    "overall_shrink_pct": 0.001029,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 6,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 2
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "STO::CELLI"
+  ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "LSE::RE",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "United Kingdom"
-    },
-    {
-      "listing_key": "LSE::RE",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "GB"
-    },
-    {
-      "listing_key": "LSE::RE",
+      "listing_key": "STO::CI",
       "field_name": "isin",
-      "old_value": "",
-      "new_value": "GB0002349065"
-    },
-    {
-      "listing_key": "LSE::RE-B",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "United Kingdom"
-    },
-    {
-      "listing_key": "LSE::RE-B",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "GB"
-    },
-    {
-      "listing_key": "LSE::RE-B",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "GB0007185639"
+      "old_value": "SE0017885379",
+      "new_value": "SE0025940513"
     }
   ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "STO::CELLI",
+      "ticker": "CELLI",
+      "exchange": "STO",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "CELLI",
+      "new_value": "CI",
+      "before_row_sha256": "d930dd31fb04839de731813031d8c26a4683a8e01b7ccacff5a8e176e2655270",
+      "effective_at": "",
+      "observed_at": "2026-10-06T06:18:19Z",
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "source_url": "https://view.news.eu.nasdaq.com/view?id=b6b7aaa229113d06097e841aa9539b5ad&lang=en&src=rss",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "e3eaaaa4deada5c53f108cba",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "STO::CI",
+      "ticker": "CI",
+      "exchange": "STO",
+      "event_type": "identifier_changed",
+      "field_name": "isin",
+      "old_value": "SE0017885379",
+      "new_value": "SE0025940513",
+      "before_row_sha256": "a7a18ebad323109c70963a7b786f50729bc0d9f861090eeb3e66c9894169cdb0",
+      "effective_at": "",
+      "observed_at": "2026-10-06T06:18:19Z",
+      "source_key": "nasdaq_nordic_stockholm_shares",
+      "source_url": "https://view.news.eu.nasdaq.com/view?id=b6b7aaa229113d06097e841aa9539b5ad&lang=en&src=rss",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "14413fd9bba1118db4bd863b",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -111,8 +118,8 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1415,
-      "after_rows": 1415,
+      "before_rows": 1413,
+      "after_rows": 1413,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -462,8 +469,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4804,
-      "after_rows": 4804,
+      "before_rows": 4806,
+      "after_rows": 4806,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -534,8 +541,8 @@
     },
     {
       "exchange": "NYSE MKT",
-      "before_rows": 234,
-      "after_rows": 234,
+      "before_rows": 233,
+      "after_rows": 233,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -670,9 +677,9 @@
     {
       "exchange": "STO",
       "before_rows": 877,
-      "after_rows": 877,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 876,
+      "shrink_pct": 0.114025,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -723,8 +730,8 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2421,
-      "after_rows": 2421,
+      "before_rows": 2372,
+      "after_rows": 2372,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -741,8 +748,8 @@
     },
     {
       "exchange": "TWSE",
-      "before_rows": 1285,
-      "after_rows": 1285,
+      "before_rows": 1241,
+      "after_rows": 1241,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

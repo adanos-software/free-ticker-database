@@ -94,9 +94,23 @@ def test_final_identity_pass_discards_intermediate_decisions(monkeypatch) -> Non
 def test_validation_dependents_are_rebuilt_in_dependency_order(monkeypatch) -> None:
     calls: list[str] = []
     monkeypatch.setattr(canonical.build_entry_quality_report, "main", lambda argv: calls.append("entry_quality"))
+    monkeypatch.setattr(
+        canonical.build_isin_identity_collision_review_queue,
+        "main",
+        lambda argv: calls.append("collision_queue"),
+    )
+    monkeypatch.setattr(canonical.build_trust_report, "main", lambda argv: calls.append("trust"))
     monkeypatch.setattr(canonical.build_source_gap_classification, "main", lambda argv: calls.append("source_gap"))
     monkeypatch.setattr(canonical.build_source_of_truth_decisions, "main", lambda argv: calls.append("source_truth"))
     monkeypatch.setattr(canonical.build_adanos_ticker_reference, "main", lambda argv: calls.append("adanos") or 0)
     monkeypatch.setattr(canonical.update_readme_snapshot, "main", lambda argv: calls.append("readme") or 0)
     canonical.rebuild_validation_dependents()
-    assert calls == ["entry_quality", "source_gap", "source_truth", "adanos", "readme"]
+    assert calls == [
+        "entry_quality",
+        "collision_queue",
+        "trust",
+        "source_gap",
+        "source_truth",
+        "adanos",
+        "readme",
+    ]

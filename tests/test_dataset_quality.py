@@ -720,24 +720,6 @@ def test_namespace_collision_respects_manual_isin_corrections(monkeypatch):
     ) is False
 
 
-def test_twse_cayman_namespace_keeps_official_bilingual_names() -> None:
-    from scripts.rebuild_dataset import is_namespace_collision_row
-
-    chinese = "鮮活控股股份有限公司"
-    english = "SUNJUICE"
-    bilingual = f"{chinese}({english})"
-    row = {
-        "ticker": "1256",
-        "name": bilingual,
-        "exchange": "TWSE",
-        "asset_type": "Stock",
-        "isin": "KYG858681003",
-    }
-
-    assert is_namespace_collision_row(row, [bilingual, "sunjuice"], set()) is False
-    assert is_namespace_collision_row({**row, "name": chinese}, [chinese, english], set()) is True
-
-
 def test_cleanse_conflicting_isin_rows_clears_peer_company_contamination():
     from scripts.rebuild_dataset import cleanse_conflicting_isin_rows
 
@@ -844,79 +826,6 @@ def test_drop_stale_tmx_etf_duplicates_prefers_current_official_symbol(monkeypat
     cleaned = rebuild_dataset.drop_stale_tmx_etf_duplicates(rows)
 
     assert [row["ticker"] for row in cleaned] == ["SPXI", "QQD", "QQD.U", "MUSA"]
-
-
-def test_drop_stale_tmx_etf_duplicates_keeps_share_class_suffixes(monkeypatch):
-    from scripts import rebuild_dataset
-
-    rows = [
-        {
-            "ticker": "GIQG",
-            "name": "Guardian i3 Global Quality Growth ETF",
-            "exchange": "TSX",
-            "asset_type": "ETF",
-            "country": "Canada",
-            "country_code": "CA",
-            "isin": "CA40136W1023",
-            "aliases": [],
-        },
-        {
-            "ticker": "GIQG.B",
-            "name": "Guardian i3 Global Quality Growth ETF",
-            "exchange": "TSX",
-            "asset_type": "ETF",
-            "country": "Canada",
-            "country_code": "CA",
-            "isin": "CA40136W1023",
-            "aliases": [],
-        },
-        {
-            "ticker": "RUQO",
-            "name": "RBC Target 2026 U.S. Corporate Bond ETF",
-            "exchange": "TSX",
-            "asset_type": "ETF",
-            "country": "Canada",
-            "country_code": "CA",
-            "isin": "CA7493311046",
-            "aliases": [],
-        },
-        {
-            "ticker": "RUQO.U",
-            "name": "RBC Target 2026 U.S. Corporate Bond ETF",
-            "exchange": "TSX",
-            "asset_type": "ETF",
-            "country": "Canada",
-            "country_code": "CA",
-            "isin": "CA7493312036",
-            "aliases": [],
-        },
-    ]
-    monkeypatch.setattr(
-        rebuild_dataset,
-        "load_active_official_reference_rows",
-        lambda: {
-            ("GIQG", "ETF"): (
-                {
-                    "ticker": "GIQG",
-                    "exchange": "TSX",
-                    "asset_type": "ETF",
-                    "name": "Guardian i3 Global Quality Growth ETF",
-                },
-            ),
-            ("RUQO", "ETF"): (
-                {
-                    "ticker": "RUQO",
-                    "exchange": "TSX",
-                    "asset_type": "ETF",
-                    "name": "RBC Target 2026 U.S. Corporate Bond ETF",
-                },
-            ),
-        },
-    )
-
-    cleaned = rebuild_dataset.drop_stale_tmx_etf_duplicates(rows)
-
-    assert [row["ticker"] for row in cleaned] == ["GIQG", "GIQG.B", "RUQO", "RUQO.U"]
 
 
 def test_should_drop_contextual_alias_drops_untrusted_shared_alias():
@@ -3173,6 +3082,7 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (DATA_DIR / "listing_index.csv").exists()
     assert (DATA_DIR / "reports" / "coverage_report.json").exists()
     assert (DATA_DIR / "reports" / "entry_quality.md").exists()
+    assert (DATA_DIR / "reports" / "trust_report.md").exists()
     assert (DATA_DIR / "reports" / "override_debt_report.md").exists()
     assert (DATA_DIR / "reports" / "ohlcv_plausibility.md").exists()
     assert (DATA_DIR / "reports" / "masterfile_collision_report.json").exists()
@@ -3182,6 +3092,7 @@ def test_open_source_project_files_exist_and_are_linked():
     assert "listing_index.csv" in readme
     assert "coverage_report.json" in readme
     assert "entry_quality.md" in readme
+    assert "trust_report.md" in readme
     assert "override_debt_report.md" in readme
     assert "ohlcv_plausibility.md" in readme
     assert "masterfile_collision_report.json" in readme

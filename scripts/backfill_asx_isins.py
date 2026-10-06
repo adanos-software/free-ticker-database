@@ -72,15 +72,24 @@ def download_asx_isin_xls(url: str, *, timeout_seconds: float) -> bytes:
     return response.content
 
 
+def asx_cell(record: dict[str, Any], *names: str) -> str:
+    lowered = {str(key).strip().lower(): record[key] for key in record}
+    for name in names:
+        value = str(lowered.get(name.lower(), "") or "").strip()
+        if value and value.lower() != "nan":
+            return value
+    return ""
+
+
 def parse_asx_isin_xls(xls_bytes: bytes) -> list[AsxIsinRow]:
     dataframe = pd.read_excel(BytesIO(xls_bytes), sheet_name="ISIN", dtype=str).fillna("")
     rows: list[AsxIsinRow] = []
     seen: set[str] = set()
     for record in dataframe.to_dict("records"):
-        ticker = str(record.get("ASX code") or "").strip().upper()
-        name = str(record.get("Company name") or "").strip()
-        security_type = str(record.get("Security type") or "").strip()
-        isin = str(record.get("ISIN code") or "").strip().upper()
+        ticker = asx_cell(record, "ASX code").upper()
+        name = asx_cell(record, "Company name")
+        security_type = asx_cell(record, "Security type")
+        isin = asx_cell(record, "ISIN code", "ISIN").upper()
         if not ticker or not name or ticker in seen or not is_valid_isin(isin):
             continue
         seen.add(ticker)

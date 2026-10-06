@@ -1,0 +1,204 @@
+{
+  "_meta": {
+    "generated_at": "2026-10-06T08:47:12Z",
+    "source_files": {
+      "listings_csv": "data/listings.csv",
+      "instrument_scopes_csv": "data/instrument_scopes.csv",
+      "entry_quality_csv": "data/reports/entry_quality.csv",
+      "isin_identity_collision_review_queue_csv": "data/reports/isin_identity_collision_review_queue.csv",
+      "identifier_quarantine_csv": "data/reports/identifier_quarantine.csv",
+      "adanos_alias_audit_json": "data/reports/adanos_alias_audit.json",
+      "coverage_report_json": "data/reports/coverage_report.json",
+      "trust_audit_json": "data/reports/trust_audit.json",
+      "entry_quality_warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
+    },
+    "policy": "Trust is measured on instrument_scope=core only. accepted_source_gap does not count as filled. Known identity bugs must be zero; 99% completeness is a fill rate, not a correctness claim. This report does not authorize inferred identifiers, sectors, categories, names, or symbol changes. A failing trust report is not a merge blocker."
+  },
+  "policy": "Trust is measured on instrument_scope=core only. accepted_source_gap does not count as filled. Known identity bugs must be zero; 99% completeness is a fill rate, not a correctness claim. This report does not authorize inferred identifiers, sectors, categories, names, or symbol changes. A failing trust report is not a merge blocker.",
+  "claim_allowed": false,
+  "status": "fail",
+  "failing_checks": [
+    "core_identity_known_bugs_zero",
+    "core_taxonomy_coverage_99",
+    "core_official_name_hard_mismatches_zero",
+    "core_equity_recall_99",
+    "stratified_audit_99"
+  ],
+  "universe": {
+    "name": "instrument_scope=core",
+    "rows": 63299,
+    "joined_listings": 63299,
+    "scope_rows": 63299
+  },
+  "completeness": {
+    "isin": {
+      "n": 63299,
+      "filled": 62706,
+      "missing": 593,
+      "pct": 99.06,
+      "fills_needed_for_99": 0,
+      "pass": true
+    },
+    "country": {
+      "n": 63299,
+      "filled": 63234,
+      "missing": 65,
+      "pct": 99.9,
+      "fills_needed_for_99": 0,
+      "pass": true
+    },
+    "taxonomy": {
+      "n": 63299,
+      "filled": 61691,
+      "missing": 1608,
+      "pct": 97.46,
+      "fills_needed_for_99": 976,
+      "pass": false
+    },
+    "missing_isin_by_exchange": {
+      "ASX": 98,
+      "TSX": 80,
+      "TSXV": 73,
+      "NYSE ARCA": 53,
+      "NASDAQ": 51,
+      "NEO": 44,
+      "SSE": 34,
+      "BATS": 30,
+      "SSE_CL": 27,
+      "NYSE": 23,
+      "BMV": 18,
+      "SZSE": 12
+    },
+    "missing_sector_by_exchange": {
+      "FSX": 858,
+      "HKEX": 105,
+      "PSE": 82,
+      "XSTU": 57,
+      "NASDAQ": 52,
+      "HNX": 32,
+      "BVB": 31,
+      "TSXV": 29,
+      "BIST": 24,
+      "BCBA": 23,
+      "BSE_IN": 22,
+      "NYSE": 21
+    },
+    "missing_category_by_exchange": {
+      "AMS": 26,
+      "TSE": 23,
+      "NYSE ARCA": 6,
+      "TSX": 4,
+      "NASDAQ": 2,
+      "NYSE": 2,
+      "BATS": 1,
+      "Euronext": 1
+    }
+  },
+  "identity": {
+    "official_isin_mismatch": 4,
+    "official_name_mismatch": 3,
+    "open_collision_groups": 7,
+    "quarantine_unresolved": 1156,
+    "quarantine_proposed_clear": 249,
+    "quarantine_kept": 575
+  },
+  "entry_quality_status": {
+    "pass": 58806,
+    "source_gap": 4486,
+    "warn": 7
+  },
+  "checks": [
+    {
+      "name": "core_identity_known_bugs_zero",
+      "status": "fail",
+      "details": {
+        "official_isin_mismatch": 4,
+        "official_isin_mismatch_unexpected": 0,
+        "official_isin_mismatch_reviewed_holds": 4,
+        "open_collision_groups": 7,
+        "sample_mismatch": [],
+        "sample_collision_isins": [
+          "AU000000TLG7",
+          "CA3025862010",
+          "AU000000CRB1",
+          "AU0000253502",
+          "CA41752L1076",
+          "CA5910881096",
+          "SE0000722365"
+        ]
+      }
+    },
+    {
+      "name": "core_isin_coverage_99",
+      "status": "pass",
+      "details": {
+        "n": 63299,
+        "filled": 62706,
+        "missing": 593,
+        "pct": 99.06,
+        "fills_needed_for_99": 0,
+        "pass": true
+      }
+    },
+    {
+      "name": "core_taxonomy_coverage_99",
+      "status": "fail",
+      "details": {
+        "n": 63299,
+        "filled": 61691,
+        "missing": 1608,
+        "pct": 97.46,
+        "fills_needed_for_99": 976,
+        "pass": false
+      }
+    },
+    {
+      "name": "core_country_coverage_99",
+      "status": "pass",
+      "details": {
+        "n": 63299,
+        "filled": 63234,
+        "missing": 65,
+        "pct": 99.9,
+        "fills_needed_for_99": 0,
+        "pass": true
+      }
+    },
+    {
+      "name": "core_official_name_hard_mismatches_zero",
+      "status": "fail",
+      "details": {
+        "official_name_mismatch": 3,
+        "sample": [
+          "TSXV::AXO",
+          "TSXV::MKA",
+          "TSXV::MKT"
+        ]
+      }
+    },
+    {
+      "name": "core_equity_recall_99",
+      "status": "fail",
+      "details": {
+        "status": "blocked_wrong_denominator",
+        "collision_adjusted_recall_pct": 79.25,
+        "reason": "Official recall still uses all-tradable directories, not common-stock+ETF."
+      }
+    },
+    {
+      "name": "adanos_alias_safe",
+      "status": "pass",
+      "details": {
+        "blocking_issue_count": 0
+      }
+    },
+    {
+      "name": "stratified_audit_99",
+      "status": "fail",
+      "details": {
+        "audit_present": false,
+        "reason": "missing_audit"
+      }
+    }
+  ]
+}

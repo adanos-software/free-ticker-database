@@ -51,6 +51,30 @@ def test_parse_asx_isin_xls_filters_blank_and_invalid_rows():
     ]
 
 
+def test_parse_asx_isin_xls_accepts_current_uppercase_headers():
+    buffer = BytesIO()
+    dataframe = pd.DataFrame(
+        [
+            {
+                "ASX CODE": "BHP",
+                "COMPANY NAME": "BHP GROUP LIMITED",
+                "SECURITY TYPE": "ORDINARY FULLY PAID",
+                "ISIN": "AU000000BHP4",
+            }
+        ]
+    )
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        dataframe.to_excel(writer, sheet_name="ISIN", index=False)
+    assert parse_asx_isin_xls(buffer.getvalue()) == [
+        AsxIsinRow(
+            ticker="BHP",
+            name="BHP GROUP LIMITED",
+            security_type="ORDINARY FULLY PAID",
+            isin="AU000000BHP4",
+        )
+    ]
+
+
 def test_load_asx_missing_isin_rows_filters_exchange_and_empty_isin(tmp_path):
     path = tmp_path / "tickers.csv"
     with path.open("w", newline="", encoding="utf-8") as handle:

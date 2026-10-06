@@ -1,3 +1,376 @@
 ticker,exchange,name,tv_symbol,tv_name,tv_exchange,tv_type,tv_subtype,tv_isin,tv_asset_class,category_update,decision
-ICCROETF,BVB,Intercapital ETF D.o.o.,ICCROETF,InterCapital CROBEX10tr UCITS ETF,BVB,fund,etf,HRICAMFC10C4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
-ICGROETF,BVB,Intercapital ETF D.o.o.,ICGROETF,INTERCAPITAL EUR ROMANIA GOVT BOND 5-10YR UCITS ETF,BVB,fund,etf,HRICAMFRGBB8,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+5PSU,XETRA,PIMCO Advantage StocksPLUS US Large Cap UCITS ETF USD Accumulation,5PSU,PIMCO Fds. Glb. Invt. Series Plc - StocksPLUS Fund,XETR,fund,etf,IE000KR2IEH1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AAVD,XETRA,ACATIS Altersvorsorgedepot UCITS ETF,AAVD,ACATIS Altersvorsorgedepot UCITS ETF Units,XETR,fund,etf,DE000A428XC1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ABND,NYSE ARCA,American Century Core Plus Income ETF,ABND,American Century Core Plus Income ETF,AMEX,fund,etf,US0250723980,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+ACBE,NASDAQ,Pacer Metaurus Enhanced Core Income Autocallable ETF,ACBE,Pacer Metaurus Enhanced Core Income Autocallable ETF,NASDAQ,fund,etf,US69384J8852,4071518f1736a5a43dae51b47590322f,Alternative,accept
+ACBH,NASDAQ,Pacer Metaurus High Income Autocallable ETF,ACBH,Pacer Metaurus High Income Autocallable ETF,NASDAQ,fund,etf,US69384J8027,4071518f1736a5a43dae51b47590322f,Alternative,accept
+ACIG,BATS,Hartford Alpha Capture International Growth ETF,ACIG,Hartford Alpha Capture International Growth ETF,CBOE,fund,etf,US41653L7846,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ACSM,BATS,Hartford Alpha Capture SMID Cap ETF,ACSM,Hartford Alpha Capture SMID Cap ETF,CBOE,fund,etf,US41653L7929,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AEMC,NYSE ARCA,Harbor AlphaEdge Mid Cap Core ETF,AEMC,Harbor AlphaEdge Mid Cap Core ETF,AMEX,fund,etf,US41151J5627,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AEMG,NYSE ARCA,Harbor AlphaEdge Mid Cap Growth ETF,AEMG,Harbor AlphaEdge Mid Cap Growth ETF,AMEX,fund,etf,US41151J5544,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AEMV,NYSE ARCA,Harbor AlphaEdge Mid Cap Value ETF,AEMV,Harbor AlphaEdge Mid Cap Value ETF,AMEX,fund,etf,US41151J5478,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AENP,TSX,AGF Enhanced U.S. Income Plus Fund,AENP,AGF Enhanced U.S. Income Plus Fund Trust Unit,TSX,fund,etf,CA00113F1009,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AESB,NYSE ARCA,Harbor AlphaEdge Small Cap Core ETF,AESB,Harbor AlphaEdge Small Cap Core ETF,AMEX,fund,etf,US41151J5395,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AESG,NYSE ARCA,Harbor AlphaEdge Small Cap Growth ETF,AESG,Harbor AlphaEdge Small Cap Growth ETF,AMEX,fund,etf,US41151J5213,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AESL,NYSE ARCA,Harbor AlphaEdge Small Cap Value ETF,AESL,Harbor AlphaEdge Small Cap Value ETF,AMEX,fund,etf,US41151J5130,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AFDM,NASDAQ,First Trust Active Factor International ETF,AFDM,First Trust Active Factor International ETF,NASDAQ,fund,etf,US33739P6088,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AFEM,NASDAQ,First Trust Active Factor Emerging Markets ETF,AFEM,First Trust Active Factor Emerging Markets ETF,NASDAQ,fund,etf,US33739P7078,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AGAE,XETRA,BNP Paribas Easy II Global High Yield Opportunities UCITS ETF EUR (H) Acc ETF,AGAE,BNP PARIBAS EASY II Global High Yield Opportunities UCITS ETF Accum -H- EUR,XETR,fund,etf,IE000C5H8FC1,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+AGGM,NYSE ARCA,iShares 1-10 Year U.S. Aggregate Bond ETF,AGGM,iShares 1-10 Year U.S. Aggregate Bond ETF,AMEX,fund,etf,US4642885960,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+AIBF,NYSE ARCA,iShares Future AI Beneficiaries ETF,AIBF,iShares Future AI Beneficiaries ETF,AMEX,fund,etf,US46438T4085,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AICH,NASDAQ,China AI ETF,AICH,China AI ETF,NASDAQ,fund,etf,US88636N6351,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AIFR,NASDAQ,Defiance Global Foundries ETF,AIFR,Defiance Global Foundries ETF,NASDAQ,fund,etf,US88637M6021,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AIMG,NASDAQ,Defiance AI Magnificent 10 ETF,AIMG,Defiance AI Magnificent 10 ETF,NASDAQ,fund,etf,US88636V7367,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AMDU,TSX,SavvyLong (2X) AMD ETF,AMDU,SavvyLong (2X) AMD ETF,TSX,fund,etf,CA54315B3911,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ASPF,XETRA,Amundi S&P 500 Financials UCITS ETF Acc,ASPF,Amundi ETF ICAV - Amundi S&P 500 Financials UCITS ETF Accum USD,XETR,fund,etf,IE000MNNJDT4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ASSX,BATS,T-REX 2X Long ASST Daily Target ETF,ASSX,T-REX 2X Long ASST Daily Target ETF,CBOE,fund,etf,US26923Y8646,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ASWS,XETRA,HE2I-ICS500OIE DLD,ASWS,Infrastructure Capital S&P 500 Option Income UCITS ETF CHF,XETR,fund,etf,IE000SKTEI24,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AT,BATS,Defiance Robotics Actuators ETF,AT,Defiance Robotics Actuators ETF,CBOE,fund,etf,US2689612990,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AVNC,NYSE ARCA,Avantis All International Core Equity ETF,AVNC,Avantis All International Core Equity ETF,AMEX,fund,etf,US02507A8870,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AWEX,XETRA,Xtrackers FTSE All-World ex US UCITS ETF 1C,AWEX,Xtrackers FTSE All-World Ex US UCITS ETF Accum-1C- USD,XETR,fund,etf,IE000YKHGYN2,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AWHD,XETRA,Amundi S&P All World High Dividend Yield UCITS ETF Dist,AWHD,Amundi ETF ICAV - Amundi S&P All World High Dividend Yield UCITS ETF USD,XETR,fund,etf,IE000LEIJUY9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AZBE,XETRA,AGIE-SM.GL.EQAC (H)EOA,AZBE,Allianz Smart Global Equity Active UCITS ETF Accum Shs -(H)- EUR,XETR,fund,etf,IE00018QXOE3,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AZBQ,XETRA,Allianz Smart Global Equity Active UCITS ETF - USD Acc,AZBQ,Allianz Smart Global Equity Active UCITS ETF Accum USD,XETR,fund,etf,IE000NZURBQ4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AZCQ,XETRA,Allianz Smart Europe Equity Active UCITS ETF - EUR Acc,AZCQ,Allianz Smart Europe Equity Active UCITS ETF Accum EUR,XETR,fund,etf,IE000519M2U5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AZFE,XETRA,AGIE-SM.US EQAC (H)EOA,AZFE,Allianz Smart US Equity Active UCITS ETF Accum Shs -(H)- EUR,XETR,fund,etf,IE000X8XBOX6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+AZFQ,XETRA,Allianz Smart US Equity Active UCITS ETF - USD Acc,AZFQ,Allianz Smart US Equity Active UCITS ETF Accum USD,XETR,fund,etf,IE000LST78X7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+B1LD,XETRA,iShares Europe Infrastructure Builders UCITS ETF EUR (Acc),B1LD,iShares II PLC - iShares Europe Infrastructure Builders UCITS ETF AccumEUR,XETR,fund,etf,IE000PTMIE90,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+BAVA,NYSE ARCA,Bitwise Avalanche ETF,BAVA,Bitwise Avalanche ETF,AMEX,fund,etf,US0919491078,1af0389838508d7016a9841eb6273962,,unsupported_asset_class
+BBLS,NYSE ARCA,Munificent Seven ETF,BBLS,Munificent Seven ETF,AMEX,fund,etf,US41151J4489,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+BCT1,XETRA,BIT Global Technology Leaders UCITS ETF,BCT1,BIT Global Technology Leaders Accumulating Units -UCITS ETF-,XETR,fund,etf,DE000A4231H9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+BGI,TSX,Brookfield Global Infrastructure Securities Income Fund,,,,,,,,,no_tradingview_match
+BHYP,NYSE ARCA,Bitwise Hyperliquid ETF,BHYP,Bitwise Hyperliquid ETF Common Shares of Beneficial Interest,AMEX,fund,etf,US09175T1060,1af0389838508d7016a9841eb6273962,,unsupported_asset_class
+BSMA,NASDAQ,Invesco BulletShares 2036 Municipal Bond ETF,BSMA,Invesco BulletShares 2036 Municipal Bond ETF,NASDAQ,fund,etf,US46139W7341,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+BTA,NYSE ARCA,Beacon Tactical Alternatives Risk ETF,BTA,Beacon Tactical Alternatives Risk ETF,AMEX,fund,etf,US6649257655,4071518f1736a5a43dae51b47590322f,Alternative,accept
+BUIL,BATS,Rebuild America ETF,BUIL,Rebuild America ETF,CBOE,fund,etf,US00777X3970,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CAKD,XETRA,Calamos Autocallable Income UCITS ETF USD Dis,CAKD,Waystone ETF ICAV - Calamos Autocallable Income UCITS ETF USD,XETR,fund,etf,IE000ZDPZL69,4071518f1736a5a43dae51b47590322f,Alternative,accept
+CAPA,BATS,Defiance AI Capacitors Leaders ETF,CAPA,Defiance AI Capacitors Leaders ETF,CBOE,fund,etf,US88636X1871,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CAPQ,TSX,Capital Group Global Developed Equity Select ETF (Canada),CAPQ,Capital Group Global Developed Equity Select ETF Trust Units,TSX,fund,etf,CA14023G1081,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CCGP,TSX,Counterpoint Global CIBC Global Permanence ETF,CCGP,Counterpoint Global CIBC Global Permanence ETF Trust Units,TSX,fund,etf,CA22228F1062,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CCIP,TSX,Counterpoint Global CIBC International Permanence ETF,CCIP,Counterpoint Global CIBC International Permanence ETF Trust Units,TSX,fund,etf,CA22228G1046,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CCML,NASDAQ,Roundhill MLCC & Electronic Components ETF,CCML,Roundhill MLCC & Electronic Components ETF,NASDAQ,fund,etf,US77926Y8315,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CCUL,TSX,Counterpoint Global CIBC U.S. Large Cap Growth ETF,CCUL,Counterpoint Global CIBC U.S. Large Cap Growth ETF Trust Units,TSX,fund,etf,CA22228E1097,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CCUS,TSX,Counterpoint Global CIBC U.S. Small Cap Growth ETF,CCUS,Counterpoint Global CIBC U.S. Small Cap Growth ETF Trust Units,TSX,fund,etf,CA22228C1032,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CEMY,XETRA,iShares World Equity High Income Active UCITS ETF EUR Hedged (Acc),CEMY,iShares World Equity High Income Active UCITS ETF AccumHedged EUR,XETR,fund,etf,IE000EB0LQO5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CEPP,XETRA,iShares S&P 500 3% Capped UCITS ETF EUR Hedged (Acc),CEPP,iShares S&P 500 3% Capped UCITS ETF AccumHedged EUR,XETR,fund,etf,IE0001ARVVZ9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CGFS,BATS,CG Flagship Equity ETF,CGFS,CG Flagship Equity ETF,CBOE,fund,etf,US26824D7619,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CHIP,NASDAQ,REX AI Chipmaking ETF,CHIP,REX AI Chipmaking ETF,NASDAQ,fund,etf,US7615628184,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CMAX,TSX,Hamilton Canadian Equity YIELD MAXIMIZER TM ETF,CMAX,Hamilton Canadian Equity YIELD MAXIMIZERTM ETF Trust Units E,TSX,fund,etf,CA40704T1012,c05f85d35d1cd0be6ebb2af4be16e06a,,name_mismatch
+CMCC,TSX,Global X All-In-One Commodity Producers Equity Covered Call ETF,CMCC,Global X All-In-One Commodity Producers Equity Covered Call ETF Trust Units A,TSX,fund,etf,CA37966H1064,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CMEA,XETRA,L&G Market Neutral Commodities UCITS ETF - EUR Hedged Accumulating ETF,CMEA,L&G Market Neutral Commodities UCITS ETF Accum Hedged EUR,XETR,fund,etf,IE0004QLGLF6,8fe80395f389e29e3ea42210337f0350,Commodity,accept
+CNUD,XETRA,UBS MSCI World Small Cap UCITS ETF USD acc,CNUD,UBS (Irl) ETF PLC - UBS MSCI World Small Cap UCITS ETF,XETR,fund,etf,IE000AZ2HZ31,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CRAM,NASDAQ,Defiance China Memory ETF,CRAM,Defiance China Memory ETF,NASDAQ,fund,etf,US88637M8001,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CSEP,BATS,Corgi U.S. Equities 15% Structured Buffer ETF - September Series,CSEP,Corgi U.S. Equities 15% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N4549,4071518f1736a5a43dae51b47590322f,Alternative,accept
+CSXE,XETRA,AIS-AMUN STEUR600 U.ETF D,CSXE,Amundi Core Stoxx Europe 600 UCITS ETF D-EUR- Distribution,XETR,fund,etf,LU0908500837,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+CTSE,BATS,Corgi U.S. Equities 30% Structured Buffer ETF - September Series,CTSE,Corgi U.S. Equities 30% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N6783,4071518f1736a5a43dae51b47590322f,Alternative,accept
+CUTE,TSX,Evolve Canadian Utilities Yield Fund,CUTE,Evolve Canadian Utilities Yield Fund Unhedged ETF Trust Units,TSX,fund,etf,CA30055F1071,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DACU,TSX,Desjardins Active Canadian Bond Universe ETF,DACU,Desjardins Active Canadian Bond Universe ETF Trust Unit,TSX,fund,etf,CA25060X1015,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+DAGL,TSX,Desjardins Global Opportunities ETF,DAGL,Desjardins Global Opportunities ETF Trust Units,TSX,fund,etf,CA25061C1068,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DBAR,NYSE ARCA,IMGP DBI Absolute Return ETF,DBAR,IMGP DBI Absolute Return ETF,AMEX,fund,etf,US53700T6608,4071518f1736a5a43dae51b47590322f,Alternative,accept
+DCAP,BATS,T-Strive Digital Credit Preferred Income ETF,DCAP,T-Strive Digital Credit Preferred Income ETF,CBOE,fund,etf,US26923V5223,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+DGGB,TSX,Desjardins Global Government Bond Index ETF,DGGB,Desjardins Global Government Bond Index ETF Hedged Trust Unit,TSX,fund,etf,CA25059V1085,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+DICE,BATS,Tema Trading & Prediction Markets ETF,DICE,Tema Trading & Prediction Markets ETF,CBOE,fund,etf,US87975E7278,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DIGG,XETRA,L.U.-B.V.D.W.I.UE DLD,DIGG,Chimera UCITS ICAV - Boreas VettaFi Dividend Winners in Natural Resources UCITS ETF Unhedged USD,XETR,fund,etf,IE000JY1X8B3,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DIVH,NYSE ARCA,Integrity Dividend Harvest ETF,DIVH,Integrity Dividend Harvest ETF,AMEX,fund,etf,US30151E4263,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DIVY.U,TSX,Global X Active U.S. Dividend ETF,DIVY.U,Global X Active U.S. Dividend ETF Trust Units A,TSX,fund,etf,CA37966U1075,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DMXU,NYSE ARCA,Xtrackers Bloomberg Developed Markets ex US Equity ETF,DMXU,Xtrackers Bloomberg Developed Markets ex US Equity ETF,AMEX,fund,etf,US2330512185,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DQSE,BATS,FT Vest Nasdaq-100 Dual Directional Buffer ETF - September,DQSE,FT Vest Nasdaq-100 Dual Directional Buffer ETF - September,CBOE,fund,etf,US33740U2244,4071518f1736a5a43dae51b47590322f,Alternative,accept
+DSPC,BATS,Leverage Shares 1X Short SPCX Daily ETF,DSPC,Leverage Shares 1X Short SPCX Daily ETF,CBOE,fund,etf,US88340F1599,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DUIG,TSX,Desjardins US Investment Grade Corporate Bond Index ETF,DUIG,Desjardins US Investment Grade Corporate Bond Index ETF Hedged Units Trust Units,TSX,fund,etf,CA25058U1012,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+DZEU,XETRA,DZ BANK Euro STOXX 50 UCITS ETF,DZEU,HANetf II ICAV - DZ Bank EURO STOXX 50 UCITS ETF,XETR,fund,etf,IE000LOAUP03,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DZMU,XETRA,DZ BANK MSCI World UCITS ETF,DZMU,HANetf DZ Bank MSCI World ETF,XETR,fund,etf,IE000B5MAME7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DZMW,XETRA,DZ BANK MSCI World UCITS ETF,DZMW,HANetf DZ Bank MSCI World ETF,XETR,fund,etf,IE000B5MAME7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DZUS,XETRA,DZ BANK S&P 500 UCITS ETF,DZUS,HANetf II ICAV - DZ Bank S&P 500 UCITS ETF,XETR,fund,etf,IE000DN1DKF8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+DZUU,XETRA,DZ BANK S&P 500 UCITS ETF,DZUU,HANetf II ICAV - DZ Bank S&P 500 UCITS ETF,XETR,fund,etf,IE000DN1DKF8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+E600,XETRA,iShares STOXX Europe 600 UCITS ETF EUR (Acc),E600,iShares II PLC - iShares STOXX Europe 600 UCITS ETF AccumEUR,XETR,fund,etf,IE000XSFZL82,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EAFH,BATS,Xtrackers MSCI EAFE 50% Hedged Equity ETF,EAFH,Xtrackers MSCI EAFE 50% Hedged Equity ETF,CBOE,fund,etf,US23306X7536,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EDHE,XETRA,Amundi MSCI EMU High Dividend UCITS ETF Dist,EDHE,Amundi MSCI EMU High Dividend UCITS ETF FCP Units -D,XETR,fund,etf,FR0014018VJ3,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EDMB,XETRA,iShares U.S. Equity High Income Active UCITS ETF EUR Hedged (Acc),EDMB,iShares III PLC - iShares U.S. Equity High Income Active UCITS ETF Accum Hedged EUR,XETR,fund,etf,IE00008UMP12,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EEA0,XETRA,"BNP Paribas Easy Global Equity Long/Short UCITS ETF RH, C",EEA0,BNP Paribas Easy Global Equity Long/Short - UCITS ETF Capitalisation -UCITS ETF RH USD-,XETR,fund,etf,LU3405561609,4071518f1736a5a43dae51b47590322f,Alternative,accept
+EEA1,XETRA,BNP Paribas Easy MSCI China A UCITS ETF Capitalization,EEA1,BNP Paribas Easy MSCI China A Capitalisation UCITS ETF USD,XETR,fund,etf,LU3215533467,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EEAP,XETRA,BNP Paribas Easy MSCI World ex USA UCITS ETF Capitalisation,EEAP,BNP Paribas Easy SICAV - MSCI World ex USA ETF Capitalisation -UCITS ETF-,XETR,fund,etf,LU3215527659,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EEAS,XETRA,BNP Paribas Easy Global Equity Long/Short UCITS ETF Capitalisation,EEAS,BNP Paribas Easy SICAV - Global Equity Long/Short UCITS ETF Capitalisation,XETR,fund,etf,LU3307220965,4071518f1736a5a43dae51b47590322f,Alternative,accept
+EEAT,XETRA,BNP Paribas Easy European Equity Buffer June UCITS ETF Capitalisation,EEAT,BNP Paribas Easy SICAV - BNP Paribas Easy European Equity Buffer (June) -UCITS ETF- Capitalisation,XETR,fund,etf,LU3307215619,4071518f1736a5a43dae51b47590322f,Alternative,accept
+EEAU,XETRA,BNP Paribas Easy Managed Futures UCITS ETF Capitalisation,EEAU,BNP Paribas Easy SICAV - Managed Futures ETF Capitalisation,XETR,fund,etf,LU3307218399,4071518f1736a5a43dae51b47590322f,Alternative,accept
+EEAV,XETRA,BNP Paribas Easy Equity Premium Income UCITS ETF Capitalisation,EEAV,BNP Paribas Easy Equity Premium Income UCITS ETF Capitalisation,XETR,fund,etf,LU3307219520,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EEAW,XETRA,BNP Paribas Easy Equity Premium Income UCITS ETF Distribution,EEAW,BNP Paribas Easy SICAV Equity Premium Income Distribution -UCITS ETF D-,XETR,fund,etf,LU3307219793,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EEAX,XETRA,BNP Paribas Easy European Equity Buffer June UCITS ETF Capitalisation,EEAX,BNP Paribas Easy SICAV - BNP Paribas Easy European Equity Buffer (June) -UCITS ETF- Distribution,XETR,fund,etf,LU3307215700,4071518f1736a5a43dae51b47590322f,Alternative,accept
+EEAY,XETRA,BNP Paribas Easy MSCI World ex USA Min TE UCITS ETF Capitalisation,EEAY,BNP Paribas Easy SICAV - MSCI World ex USA Min TE -UCITS ETF- Capitalisation,XETR,fund,etf,LU3307214216,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EEGF,XETRA,ERSTE ETF Global Equities UCITS ETF Class Acc EUR,EEGF,ERSTE ETF GLOBAL EQUITIES UCITS ETF AccumEUR,XETR,fund,etf,IE000GVBJMO6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EHFC,XETRA,Amundi MSCI Europe High Dividend Factor UCITS ETF Dist,EHFC,Amundi Index Solutions SICAV - Amundi MSCI Europe High Dividend Factor ETF Distribution -UCITS ETF D-,XETR,fund,etf,LU3402750635,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EMGD,XETRA,Franklin FTSE Emerging Markets UCITS ETF Dis,EMGD,Franklin FTSE Emerging Markets UCITS ETF USD,XETR,fund,etf,IE000GTF7GF4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EMSE,BATS,Corgi Emerging Markets Equities 15% Structured Buffer ETF - September Series,EMSE,Corgi Emerging Markets Equities 15% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N7104,4071518f1736a5a43dae51b47590322f,Alternative,accept
+ENHE,NASDAQ,iShares Enhanced Emerging Markets Active ETF,ENHE,iShares Enhanced Emerging Markets Active ETF,NASDAQ,fund,etf,US09290C6324,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ENRG,NYSE ARCA,Ninepoint North American Energy Independence ETF,ENRG,Ninepoint North American Energy Independence ETF,AMEX,fund,etf,US45259A8291,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ESUF,XETRA,ERSTE ETF US Equities UCITS ETF Class Acc USD,ESUF,ERSTE ETF US EQUITIES UCITS ETF AccumUSD,XETR,fund,etf,IE000UKN7GP4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ETC,TSX,Evolve Cryptocurrencies ETF,ETC,Evolve Cryptocurrencies ETF CAD Unhedged,TSX,fund,etf,CA3005342033,1af0389838508d7016a9841eb6273962,,unsupported_asset_class
+EUFG,XETRA,iShares Europe Foreign Focus UCITS ETF EUR (Acc),EUFG,iShares Europe Foreign Focus UCITS ETF Accum Shs EUR,XETR,fund,etf,IE00078SFIQ6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+EUG0,XETRA,PIMCO Advantage Euro Government Bond UCITS ETF,EUG0,PIMCO Advantage Euro Government Bond UCITS ETF AccumEUR,XETR,fund,etf,IE000HDPAH09,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+FEMO,TSX,Fidelity Emerging Markets Opportunities Fund,FEMO,Fidelity Emerging Markets Opportunities Fund ETF Series units Trust Units,TSX,fund,etf,CA3159541075,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FFAB,TSX,Fidelity Alternative Bond Fund,FFAB,Fidelity Alternative Bond Fund ETF Series units Trust Units,TSX,fund,etf,CA31582Q1037,4071518f1736a5a43dae51b47590322f,Alternative,accept
+FGCV,TSX,Fidelity Global Concentrated Value Fund,FGCV,Fidelity Global Concentrated Value Fund ETF Trust Units,TSX,fund,etf,CA3161971021,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FGZI,XETRA,UBS Core EURO STOXX 50 UCITS ETF EUR acc,FGZI,UBS Core EURO STOXX 50 UCITS ETF Shs -A- Capitalisation,XETR,fund,etf,LU0950668367,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FGZJ,XETRA,UBSIE-GL.T.Y.E. DLA,FGZJ,UBS Global Equity Income Plus UCITS ETF Accum Shs USD,XETR,fund,etf,IE000B4NK9I9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FGZK,XETRA,UBS IE-GL.EQ.IP DLD,FGZK,UBS Global Equity Income Plus UCITS ETF Shs USD,XETR,fund,etf,IE000TGK2UK9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FJ7G,XETRA,UmweltBank UCITS-ETF Europe SDG Focus,FJ7G,UmweltBank UCITS-ETF - Europe SDG Focus Capitalisation Units P,XETR,fund,etf,LU3401048544,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FMAB,TSX,Fidelity Multi-Alt Balanced Fund,FMAB,Fidelity Multi-Alt Balanced Fund Trust Unit,TSX,fund,etf,CA31625L1031,4071518f1736a5a43dae51b47590322f,Alternative,accept
+FRUT,NYSE ARCA,Yorkville America MANGOS Plus Index ETF,FRUT,Yorkville America MANGOS Plus Index ETF,AMEX,fund,etf,US89844T8449,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FTCD,XETRA,Franklin S&P 500 Consumer Discretionary UCITS ETF,FTCD,Franklin S&P 500 Consumer Discretionary UCITS ETF AccumUSD,XETR,fund,etf,IE000PEYL7P5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FTFN,XETRA,Franklin S&P 500 Financials UCITS ETF,FTFN,Franklin S&P 500 Financials UCITS ETF AccumUSD,XETR,fund,etf,IE000KG7KXI7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FTSA,XETRA,iShares FTSE All-World UCITS ETF USD (Dist),FTSA,iShares FTSE All-World UCITS ETF USD,XETR,fund,etf,IE000OL3XN92,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+FTTC,XETRA,Franklin S&P 500 Information Technology UCITS ETF,FTTC,Franklin S&P 500 Information Technology UCITS ETF AccumUSD,XETR,fund,etf,IE000EQGURT5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GCAG,XETRA,Goldman Sachs Global Credit Plus Active UCITS ETF EUR Hedged (Dist),GCAG,Goldman Sachs ETF ICAV - Goldman Sachs Global Credit Plus Active UCITS ETF,XETR,fund,etf,IE000CWXN435,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+GCLO,NYSE ARCA,Guggenheim Investment Grade CLO ETF,GCLO,Guggenheim Investment Grade CLO ETF,AMEX,fund,etf,US40169J4572,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+GCPU,NYSE ARCA,Grayscale AI Compute ETF,GCPU,Grayscale AI Compute ETF,AMEX,fund,etf,US38963H2067,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GDEM,XETRA,Goldman Sachs Alpha Enhanced Emerging Markets Equity Active UCITS ETF - Class USD (Dist),GDEM,Goldman Sachs Alpha Enhanced Emerging Markets Equity Active UCITS ETF - USD,XETR,fund,etf,IE00084KY2F2,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GDEU,XETRA,Goldman Sachs Alpha Enhanced Europe Equity Active UCITS ETF - Class EUR (Dist),GDEU,Goldman Sachs Alpha Enhanced Europe Equity Active UCITS ETF EUR,XETR,fund,etf,IE000DQAQ6J3,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GEEQ,NYSE ARCA,Guggenheim Enhanced Equity Income ETF,GEEQ,Guggenheim Enhanced Equity Income ETF,AMEX,fund,etf,US40169J4408,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GEMQ,NASDAQ,Goldman Sachs Data Enhanced Emerging Markets Equity ETF,GEMQ,Goldman Sachs Data Enhanced Emerging Markets Equity ETF,NASDAQ,fund,etf,US38149W3907,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GIAI,TSX,Guardian i3 AI Technology and Innovation Fund,GIAI,Guardian i3 AI Technology and Innovation Fund Trust Unit,TSX,fund,etf,CA4009241064,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GICD,TSX,Guardian i3 Canadian Dividend Growth Fund,GICD,Guardian i3 Canadian Dividend Growth Fund ETF Trust Units,TSX,fund,etf,CA4009171006,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GIGD,TSX,Guardian i3 Global Dividend Growth Fund,GIGD,Guardian i3 Global Dividend Growth Fund Trust Units,TSX,fund,etf,CA4009191061,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GIGF,TSX,Guardian i3 Global Core Equity Fund,GIGF,Guardian i3 Global Core Equity Fund Trust Units -Unhedged ETF-,TSX,fund,etf,CA40136W2013,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GIGF.F,TSX,Guardian i3 Global Core Equity Fund,GIGF.F,Guardian i3 Global Core Equity Fund Trust Units -Hedged ETF-,TSX,fund,etf,CA40136W1023,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GLIG,XETRA,AB Global Corporate Bond Portfolio UCITS ETF,GLIG,AB SICAV I SICAV - Global Corporate Bond Portfolio -UCITS ETF- Capitalisation,XETR,fund,etf,LU3322522080,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+GQDW,XETRA,Goldman Sachs Alpha Enhanced World Equity Active UCITS ETF - Class USD (Dist),GQDW,Goldman Sachs Alpha Enhanced World Equity Active UCITS ETF USD,XETR,fund,etf,IE000PXXRS03,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GQUD,XETRA,Goldman Sachs Alpha Enhanced US Equity Active UCITS ETF - Class USD (Dist),GQUD,Goldman Sachs Alpha Enhanced US Equity Active UCITS ETF USD,XETR,fund,etf,IE000PH09T78,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GQWX,XETRA,GSAENH US EQ.AC EOA,GQWX,Goldman Sachs Alpha Enhanced World ex USA Equity Active UCITS ETF Accum USD,XETR,fund,etf,IE0004VOU3Y2,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GQXU,XETRA,GSAENH US EQ.AC EOD,GQXU,Goldman Sachs Alpha Enhanced World ex USA Equity Active UCITS ETF USD,XETR,fund,etf,IE000XE0DHJ5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+GSIN,XETRA,Goldman Sachs Global Income Bond Opportunities Active UCITS ETF EUR Hedged (Q-Dist),GSIN,Goldman Sachs Global Income Bond Opportunities Active UCITS ETF EUR,XETR,fund,etf,IE000D3E0G47,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+HBIT,NYSE ARCA,Hedgeye Hedged Bitcoin ETF,HBIT,Hedgeye Hedged Bitcoin ETF,AMEX,fund,etf,US26923V3731,1af0389838508d7016a9841eb6273962,,unsupported_asset_class
+HHII,TSX,Harvest International High Income Shares ETF,HHII,Harvest International High Income Shares ETF Trust Units A,TSX,fund,etf,CA41757X1069,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+HPYG,TSX,Harvest Premium Yield Gold ETF,HPYG,Harvest Premium Yield Gold ETF Trust Units A,TSX,fund,etf,CA41757W1086,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+HQDG,NASDAQ,Raub Brock Dividend Growth ETF,HQDG,Raub Brock Dividend Growth ETF,NASDAQ,fund,etf,US88636N7672,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+HSEP,BATS,Corgi U.S. Equities 100% Structured Buffer ETF - September Series,HSEP,Corgi U.S. Equities 100% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N6866,4071518f1736a5a43dae51b47590322f,Alternative,accept
+HUMM,NYSE ARCA,800VDC AI Datacenter Ecosystem ETF,HUMM,800VDC AI Datacenter Ecosystem ETF,AMEX,fund,etf,US41151J3986,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+HWGV,NASDAQ,Hotchkis & Wiley Global Value Fund,HWGV,Hotchkis & Wiley Global Value Fund ETF,NASDAQ,fund,etf,US44134R3966,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+HWMV,NASDAQ,Hotchkis & Wiley Mid-Cap Value Fund,HWMV,Hotchkis & Wiley Mid-Cap Value Fund ETF,NASDAQ,fund,etf,US44134R3883,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+HXA,NYSE ARCA,Mast HedgeIndex Corporate Arbitrage ETF,HXA,Mast HedgeIndex Corporate Arbitrage ETF,AMEX,fund,etf,US30254T4452,4071518f1736a5a43dae51b47590322f,Alternative,accept
+HXC,NYSE ARCA,Mast HedgeIndex Strategic Commodities ETF,HXC,Mast HedgeIndex Strategic Commodities ETF,AMEX,fund,etf,US30254T4114,8fe80395f389e29e3ea42210337f0350,Commodity,accept
+HXE,NYSE ARCA,Mast HedgeIndex Adaptive Equities ETF,HXE,Mast HedgeIndex Adaptive Equities ETF,AMEX,fund,etf,US30254T4296,4071518f1736a5a43dae51b47590322f,Alternative,accept
+HXF,NYSE ARCA,Mast HedgeIndex Managed Futures Strategy ETF,HXF,Mast HedgeIndex Managed Futures Strategy ETF,AMEX,fund,etf,US30254T4379,4071518f1736a5a43dae51b47590322f,Alternative,accept
+IBQT,TSX,iShares Equity + Bitcoin ETF Portfolio,IBQT,iShares Equity + Bitcoin ETF Portfolio Canadian Dollar Denominated Units Trust Units,TSX,fund,etf,CA46438X1024,c05f85d35d1cd0be6ebb2af4be16e06a,,name_mismatch
+ICMO,NASDAQ,Symmetry Panoramic International Country Momentum ETF,ICMO,Symmetry Panoramic International Country Momentum ETF,NASDAQ,fund,etf,US87190B8708,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+IDSE,BATS,Corgi International Developed Equities 15% Structured Buffer ETF - September Series,IDSE,Corgi International Developed Equities 15% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N6940,4071518f1736a5a43dae51b47590322f,Alternative,accept
+IIME,TSX,IA Clarington International Multifactor Equity Fund,IIME,IA Clarington International Multifactor Equity Fund Trust Unit,TSX,fund,etf,CA45075N1042,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+IQGR,NASDAQ,Astoria International Quality Growth Kings ETF,IQGR,Astoria International Quality Growth Kings ETF,NASDAQ,fund,etf,US02072Q8794,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+IQGU,XETRA,IM2-IGLEX USEEQ DLA,IQGU,Invesco Markets II PLC - Invesco Global ex USA Enhanced Equity UCITS ETF Accum USD AccumUSD,XETR,fund,etf,IE0002QTP7B2,,,unsupported_asset_class
+IQJA,XETRA,IM2-INVESCO JPEE UETF DLA,IQJA,Invesco Japan Enhanced Equity UCITS ETF Accum Hedged USD,XETR,fund,etf,IE00068R3DX9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+IQSW,XETRA,Invesco All Country World Enhanced Equity UCITS ETF Acc,IQSW,Invesco All Country World Enhanced Equity UCITS ETF,XETR,fund,etf,IE000S0JMIY6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+IQUE,XETRA,Invesco US Enhanced Equity UCITS ETF EUR Hdg Acc,IQUE,Invesco US Enhanced Equity UCITS ETF Accum Hedged EUR,XETR,fund,etf,IE000WN3JW15,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JEPH,TSX,JPMorgan US Equity Premium Income Active ETF - CAD Hedged,JEPH,JPMorgan US Equity Premium Income Active ETF Canadian dollar denominated hedged units Trust Units -Hedged-,TSX,fund,etf,CA46660K1093,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JGAE,XETRA,JPM Global Equity Active UCITS ETF - EUR (acc),JGAE,JPMorgan ETFs (Ireland) ICAV - Global Equity Active UCITS ETF AccumEUR,XETR,fund,etf,IE000MTYM4K8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JGDE,XETRA,JPM Global Equity Active UCITS ETF - USD (dist),JGDE,JPMorgan ETFs (Ireland) ICAV - Global Equity Active UCITS ETF USD,XETR,fund,etf,IE000245C884,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JGHE,XETRA,JPM Global Equity Active UCITS ETF - EUR Hedged (acc),JGHE,JPMorgan ETFs (Ireland) ICAV - Global Equity Active UCITS ETF AccumHedged EUR,XETR,fund,etf,IE000BHH6TY7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JINT,NASDAQ,Janus Henderson International Core Alpha ETF,JINT,Janus Henderson International Core Alpha ETF,NASDAQ,fund,etf,US47103U5974,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JLOE,XETRA,JPM Emerging Markets Local Currency Bond Active UCITS ETF - EUR Hedged (acc),JLOE,JPMorgan ETFS Ireland ICAV - Emerging Markets Local Currency Bond Active UCITS ETF Accum Hedged EUR,XETR,fund,etf,IE0008EMOWT3,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+JPQH,TSX,JPMorgan Nasdaq Equity Premium Income Active ETF - CAD Hedged,JPQH,JPMorgan Nasdaq Equity Premium Income Active ETF Canadian dollar denominated Hedged Units Trust Unit -Hedged-,TSX,fund,etf,CA48134U1012,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JQTY,NYSE ARCA,Jensen U.S. Quality Index ETF,JQTY,Jensen U.S. Quality Index ETF,AMEX,fund,etf,US89834G5475,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JTEN,XETRA,iShares US Large Cap Moderate Buffer Jun UCITS ETF USD (Acc),JTEN,iShares US Large Cap Moderate Buffer Jun UCITS ETF Accum USD,XETR,fund,etf,IE000CZQJXB8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JULV,NYSE ARCA,VanEck U.S. Equity Buffer ETF - July,JULV,VanEck U.S. Equity Buffer ETF - July,AMEX,fund,etf,US92189H5651,4071518f1736a5a43dae51b47590322f,Alternative,accept
+JURU,XETRA,Jury Global High Dividend UCITS ETF - Distributing,JURU,HANetf ICAV - JURY Global High Dividend UCITS ETF Accum USD,XETR,fund,etf,IE0002HWPU75,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JURY,XETRA,Jury Global High Dividend UCITS ETF - Distributing,JURY,HANetf ICAV - JURY Global High Dividend UCITS ETF Accum USD,XETR,fund,etf,IE0002HWPU75,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JXUD,XETRA,JPM Global ex US Research Enhanced Index Equity Active UCITS ETF - USD (dist),JXUD,JPMorgan ETFs (Ireland) ICAV - Global ex US Research Enhanced Index Equity Active UCITS ETF - USD,XETR,fund,etf,IE000QC2YB58,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JXUE,XETRA,JPM Global ex US Research Enhanced Index Equity Active UCITS ETF - EUR Hedged (acc),JXUE,JPMorgan ETFs (Ireland) ICAV - Global ex US Research Enhanced Index Equity Active UCITS ETF Accum- EUR,XETR,fund,etf,IE0008DO91F6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+JXUS,XETRA,JPM Global ex US Research Enhanced Index Equity Active UCITS ETF - USD (acc),JXUS,JPMorgan ETFs (Ireland) ICAV - Global ex US Research Enhanced Index Equity Active UCITS ETF Accums- USD,XETR,fund,etf,IE0006FBEDB6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+KATT,BATS,T-REX 2X Long PURR Daily Target ETF,KATT,T-REX 2X Long PURR Daily Target ETF,CBOE,fund,etf,US26923V2741,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+KCHP,NYSE ARCA,KICK Korea Semiconductor Index ETF,KCHP,KICK Korea Semiconductor Index ETF,AMEX,fund,etf,US30151E2366,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+KPO,BATS,Kensington Premium Opportunities ETF,KPO,Kensington Premium Opportunities ETF,CBOE,fund,etf,US56167R7961,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+LLMA,BATS,Global X LLM ETF,LLMA,Global X LLM ETF,CBOE,fund,etf,US37966B7459,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+LPSV,NYSE ARCA,Lone Peak SMID Value ETF,LPSV,Lone Peak SMID Value ETF,AMEX,fund,etf,US3014718684,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+LQEU,XETRA,LAIQON - European Equity AI Optimized Active UCITS ETF Acc,LQEU,LAIQON - European Equity AI Optimized Active UCITS ETF AccumEUR,XETR,fund,etf,IE000L98FUF7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+LUNC,NYSE ARCA,Longnook Uncommon Compounders ETF,LUNC,Longnook Uncommon Compounders ETF,AMEX,fund,etf,US26824D6884,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+LYYE,XETRA,Amundi MSCI USA ESG Broad Transition UCITS ETF EUR Hedged Acc,LYYE,Amundi ETF ICAV - Amundi MSCI USA ESG Broad Transition UCITS ETF Accum Hedged EUR,XETR,fund,etf,IE00098YDEH5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+LYYF,XETRA,Amundi MSCI USA ESG Broad Transition UCITS ETF EUR Hedged Dist,LYYF,Amundi S&P 500 Climate Transition UCITS ETF,XETR,fund,etf,IE000MC1J5C5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MBNK,TSX,Mulvihill Canadian Bank ETF,MBNK,Mulvihill Canadian Bank ETF,TSX,fund,etf,CA62580P1027,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MFEH,XETRA,iMGP DBi Managed Futures Fund R EUR HP UCITS ETF,MFEH,iMGP SICAV - DBi Managed Futures Fund ETF Capitalisation -R EUR HP UCITS ETF-,XETR,fund,etf,LU3359622902,4071518f1736a5a43dae51b47590322f,Alternative,accept
+MFSD,NYSE ARCA,MFS Active Short Duration Income ETF,MFSD,MFS Active Short Duration Income ETF,AMEX,fund,etf,US55286W8689,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MFSX,NYSE ARCA,MFS Active Short Muni Bond ETF,MFSX,MFS Active Short Muni Bond ETF,AMEX,fund,etf,US55286W8762,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MGAP,TSX,Manulife Growth ETF Portfolio,MGAP,Manulife Growth ETF Portfolio Common Units Trust Units,TSX,fund,etf,CA6259601095,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+MGIN,NYSE ARCA,Man Active Global Infrastructure ETF,MGIN,Man Active Global Infrastructure ETF,AMEX,fund,etf,US56164V5012,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MIX,TSX,Hamilton Enhanced Mixed Asset Allocation ETF,MIX,Hamilton Enhanced Mixed Asset Allocation ETF Class E,TSX,fund,etf,CA4069111074,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+MLCC,BATS,Global X MLCC & Electronic Components ETF,MLCC,Global X MLCC & Electronic Components ETF,CBOE,fund,etf,US37966B7525,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MLRG,TSX,Madison US Large Cap ETF,MLRG,Madison US Large Cap ETF Trust Unit -Unhedged-,TSX,fund,etf,CA5579192066,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MMHI,NYSE ARCA,NYLIM MacKay Muni High Income ETF,MMHI,NYLIM MacKay Muni High Income ETF,AMEX,fund,etf,US64953X5068,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MNGB,NYSE ARCA,Yorkville America 2X Inverse MANGOS Plus Daily Target ETF,MNGB,Yorkville America 2X Inverse MANGOS Plus Daily Target ETF,AMEX,fund,etf,US89844T8514,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MNGU,NYSE ARCA,MicroSectors 3x Long MANGOS+ ex Private Companies ETNs,MNGU,MicroSectors 3x Long MANGOS+ ex Private Companies ETNs,AMEX,fund,etf,US06367V6911,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MNGZ,NYSE ARCA,Yorkville America 2X Long MANGOS Plus Daily Target ETF,MNGZ,Yorkville America 2X Long MANGOS Plus Daily Target ETF,AMEX,fund,etf,US89844T8696,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MO0E,XETRA,VE-AGRIBUSINESS 1DLA,MO0E,VanEck UCITS ETFs plc - VanEck Agribusiness UCITS ETF USD Accum A USD,XETR,fund,etf,IE000GLK5WA7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MSGR,NYSE ARCA,Direxion mRNA ETF,,,,,,,,,no_tradingview_match
+MUNF,NYSE ARCA,Northern Trust 2036 Tax-Exempt Distributing Ladder ETF,MUNF,Northern Trust 2036 Tax-Exempt Distributing Ladder ETF,AMEX,fund,etf,US66516K5092,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MUNG,NYSE ARCA,Northern Trust 2046 Tax-Exempt Distributing Ladder ETF,MUNG,Northern Trust 2046 Tax-Exempt Distributing Ladder ETF,AMEX,fund,etf,US66516K6082,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MUNH,NYSE ARCA,Northern Trust 2056 Tax-Exempt Distributing Ladder ETF,MUNH,Northern Trust 2056 Tax-Exempt Distributing Ladder ETF,AMEX,fund,etf,US66516K7072,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MUNJ,NYSE ARCA,Northern Trust 2031 Tax-Exempt Distributing Ladder ETF,MUNJ,Northern Trust 2031 Tax-Exempt Distributing Ladder ETF,AMEX,fund,etf,US66516K4004,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MUY,NASDAQ,YieldMax MU Option Income Strategy ETF,MUY,YieldMax MU Option Income Strategy ETF,NASDAQ,fund,etf,US88636Y4668,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MWDD,XETRA,IMI MS WOR DLD,MWDD,Invesco Markets PLC - Invesco MSCI World UCITS ETF USD,XETR,fund,etf,IE000K8VMPE9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+MYCP,NASDAQ,State Street My2036 Corporate Bond ETF,MYCP,State Street My2036 Corporate Bond ETF,NASDAQ,fund,etf,US78470P4990,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MYHF,NASDAQ,State Street My2032 High Yield Corporate Bond ETF,MYHF,State Street My2032 High Yield Corporate Bond ETF,NASDAQ,fund,etf,US78470P4818,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+MYML,NASDAQ,State Street My2032 Municipal Bond ETF,MYML,State Street My2032 Municipal Bond ETF,NASDAQ,fund,etf,US78470P5153,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+NBBX,TSX,NBI Canadian Bond Index Fund,NBBX,NBI Canadian Bond Index Fund,TSX,fund,etf,CA62881B1094,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+NBCG,TSX,NBI Canadian Equity Growth Fund,NBCG,NBI Canadian Equity Growth Fund,TSX,fund,etf,CA62881T1003,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NBCX,TSX,NBI Canadian Equity Index Fund,NBCX,NBI Canadian Equity Index Fund,TSX,fund,etf,CA62882H1055,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NBEM,TSX,NBI Diversified Emerging Markets Equity Fund,NBEM,NBI Diversified Emerging Markets Equity Fund,TSX,fund,etf,CA62880Q1072,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NBIV,TSX,NBI International Value Fund,NBIV,NBI International Value Fund,TSX,fund,etf,CA62881X1015,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NBLD,TSX,NBI Balanced ETF Portfolio,NBLD,NBI Balanced ETF Portfolio Trust Units,TSX,fund,etf,CA62880W1041,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+NBUX,TSX,NBI U.S. Equity Index Fund,NBUX,NBI U.S. Equity Index Fund,TSX,fund,etf,CA62881G1081,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NCNS,TSX,NBI Conservative ETF Portfolio,NCNS,NBI Conservative ETF Portfolio Trust Units,TSX,fund,etf,CA62880V1067,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+NECK,NYSE ARCA,xETFs AI Bottlenecks ETF,NECK,xETFs AI Bottlenecks ETF,AMEX,fund,etf,US30191Y2000,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NEQT,TSX,NBI Equity ETF Portfolio,NEQT,NBI Equity ETF Portfolio Trust Units,TSX,fund,etf,CA62881A1012,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NGRW,TSX,NBI Growth ETF Portfolio,NGRW,NBI Growth ETF Portfolio Trust Units,TSX,fund,etf,CA62881F1009,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+NMEQ,TSX,Meritage Tactical ETF Equity Portfolio,NMEQ,Meritage Tactical ETF Equity Portfolio,TSX,fund,etf,CA59002R1047,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NMGR,TSX,Meritage Tactical ETF Growth Portfolio,NMGR,Meritage Tactical ETF Growth Portfolio,TSX,fund,etf,CA59002P1080,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+NMMO,TSX,Meritage Tactical ETF Moderate Portfolio,NMMO,Meritage Tactical ETF Moderate Portfolio,TSX,fund,etf,CA59002T1003,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+NQQQ,XETRA,HANETF-HAN ND100 DAI.CO.C,NQQQ,HAN Nasdaq 100 Daily Covered Call UCITS ETF Unhedged USD,XETR,fund,etf,IE0008IQ0DI1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NRAM,NYSE ARCA,Yorkville America Next Generation Memory Index ETF,NRAM,Yorkville America Next Generation Memory Index ETF,AMEX,fund,etf,US89844T8779,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NRR,NYSE ARCA,Common Shares of Beneficial Interest of Bitwise NEAR ETF,NRR,Bitwise NEAR ETF,AMEX,fund,etf,US0919521015,1af0389838508d7016a9841eb6273962,,name_mismatch
+NSDC,TSX,NBI SmartData Canadian Equity Fund,NSDC,NBI SmartData Canadian Equity Fund,TSX,fund,etf,CA62880Y1007,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NSDG,TSX,NBI SmartData Global Equity Fund,NSDG,NBI SmartData Global Equity Fund ETF,TSX,fund,etf,CA62880X1024,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NTHM,TSX,NBI Thematic Rotation ETF,NTHM,NBI Thematic Rotation ETF Trust Units,TSX,fund,etf,CA62881C1077,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+NUIB,NASDAQ,Nuveen Impact Bond ETF,NUIB,Nuveen Impact Bond ETF,NASDAQ,fund,etf,US67092P6640,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+OCT,NYSE ARCA,VanEck U.S. Equity Buffer ETF - October,OCT,VanEck U.S. Equity Buffer ETF - October,AMEX,fund,etf,US92189Y8167,4071518f1736a5a43dae51b47590322f,Alternative,accept
+OCTI,BATS,AllianzIM International Equity Buffer15 Uncapped Oct ETF,OCTI,AllianzIM International Equity Buffer15 Uncapped Oct ETF,CBOE,fund,etf,US00888H3802,4071518f1736a5a43dae51b47590322f,Alternative,accept
+ORBU,TSX,SavvyLong (2X) SpaceX ETF,ORBU,SavvyLong (2X) SpaceX ETF,TSX,fund,etf,CA54315B3671,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+OSLU,XETRA,Ossiam Shiller Barclays CAPE US Market Neutral - UCITS ETF 1C (USD),OSLU,Ossiam Shiller Barclays Cape R Us Market Neutral Etf,XETR,fund,etf,LU3138596575,4071518f1736a5a43dae51b47590322f,Alternative,accept
+PAVE.U,TSX,Global X U.S. Infrastructure Development Index ETF,PAVE.U,Global X U.S. Infrastructure Development Index ETF Trust Units A,TSX,fund,etf,CA37966P1080,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PAYI,TSX,Brompton Utilities & Infrastructure HighPay ETF,PAYI,Brompton Utilities & Infrastructure HighPay ETF Trust Unit,TSX,fund,etf,CA11224A1049,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PAYU,TSX,Brompton U.S. Equity HighPay ETF,PAYU,Brompton U.S. Equity HighPay ETF CAD Units Trust Units,TSX,fund,etf,CA11223F1045,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PBCS,NASDAQ,Portfolio Building Block World Consumer Staples ETF,PBCS,Portfolio Building Block World Consumer Staples ETF,NASDAQ,fund,etf,US88636N7425,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PBUB,NASDAQ,Portfolio Building Block US Banks ETF,PBUB,Portfolio Building Block US Banks ETF,NASDAQ,fund,etf,US88636N7268,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PBWN,NASDAQ,Portfolio Building Block World Ex US Industrials ETF,PBWN,Portfolio Building Block World Ex US Industrials ETF,NASDAQ,fund,etf,US88636N7342,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PCPC,BATS,Porter & Company Property & Casualty Index ETF,PCPC,Porter & Company Property & Casualty Index ETF,CBOE,fund,etf,US26923V5637,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PDWD,XETRA,Pictet AI Enhanced World Equity UCITS ETF - Class USD Dist,PDWD,Pictet AI Enhanced World Equity UCITS ETF Shs USD,XETR,fund,etf,IE00043ZI3D8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PDWX,XETRA,Pictet AI Enhanced World ex US Equity UCITS ETF - Class USD Dist,PDWX,Pictet AI Enhanced World ex-US Equity UCITS ETF Shs - USD,XETR,fund,etf,IE000RYWBSX8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PFRD,TSX,Mulvihill Split Preferred Share ETF,PFRD,Mulvihill Split Preferred Share ETF,TSX,fund,etf,CA62579A1084,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+PFRX,NYSE ARCA,Putnam Focused U.S. Research ETF,PFRX,Putnam Focused U.S. Research ETF,AMEX,fund,etf,US7467297229,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PGRX,TSX,Purpose Global Resource Fund,PGRX,Purpose Global Resource Fund Trust Units,TSX,fund,etf,CA74644N1069,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PHWD,XETRA,Pictet AI Enhanced World Equity UCITS ETF - Class EUR Hedged Acc,PHWD,Pictet AI Enhanced World Equity UCITS ETF Accum Shs - Hedged EUR,XETR,fund,etf,IE000X3D1YS5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PJIN,NYSE ARCA,PGIM Jennison International Core Equity ETF,PJIN,PGIM Jennison International Core Equity ETF,AMEX,fund,etf,US69344A6771,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PJSM,NYSE ARCA,PGIM Jennison Small-Mid Cap Core Equity ETF,PJSM,PGIM Jennison Small-Mid Cap Core Equity ETF,AMEX,fund,etf,US69344A6854,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PQDW,XETRA,Pictet AI Enhanced World Equity UCITS ETF - Class USD Acc,PQDW,Pictet AI Enhanced World Equity UCITS ETF Accum Shs USD,XETR,fund,etf,IE000JBZXFH0,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PQED,XETRA,Pictet AI Enhanced European Equity UCITS ETF - Class EUR Dist,PQED,Pictet AI Enhanced European Equity UCITS ETF Shs EUR,XETR,fund,etf,IE0007Z19996,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PQEU,XETRA,Pictet AI Enhanced European Equity UCITS ETF - Class EUR Acc,PQEU,Pictet AI Enhanced European Equity UCITS ETF Accum Shs EUR,XETR,fund,etf,IE000XFUFRR4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PQXU,XETRA,Pictet AI Enhanced World ex US Equity UCITS ETF - Class USD Acc,PQXU,Pictet AI Enhanced World ex-US Equity UCITS ETF Accum Shs - USD,XETR,fund,etf,IE000MS76E73,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PRAM,BATS,Defiance Memory & Photonics ETF,PRAM,Defiance Memory & Photonics ETF,CBOE,fund,etf,US26922B2795,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PSOX,BATS,Tema MLCC & PowerSemi ETF,PSOX,Tema MLCC & PowerSemi ETF,CBOE,fund,etf,US87975E7351,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PSY,TSX,Purpose Structured Equity Yield Fund,PSY,Purpose Structured Equity Yield Fund Trust Units,TSX,fund,etf,CA74643Y1034,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+PTAM,XETRA,Performance Trust Total Return Bond UCITS ETF - Acc,PTAM,Performance Trust Total Return Bond UCITS ETF Accum Shs USD,XETR,fund,etf,IE000X5OD4M3,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+QPEU,XETRA,State Street SPDR S&P Europe Quality Aristocrats UCITS ETF (Acc),QPEU,SSGA SPDR ETFs Europe I Plc - State Street SPDR S&P Europe Quality Aristocrats UCITS ETF Accum EUR,XETR,fund,etf,IE000ZEOCR03,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+QQBF,BATS,FT Vest Nasdaq-100 Quarterly 15 Buffer ETF,QQBF,FT Vest Nasdaq-100 Quarterly 15 Buffer ETF,CBOE,fund,etf,US33740U2160,4071518f1736a5a43dae51b47590322f,Alternative,accept
+QQI,NASDAQ,Invesco Nasdaq International Innovators 100 ETF,QQI,Invesco Nasdaq International Innovators 100 ETF,NASDAQ,fund,etf,US46138G3671,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+QQQB,NASDAQ,VistaShares Shield Nasdaq 100 Enhanced Protection ETF,QQQB,VistaShares Shield Nasdaq 100 Enhanced Protection ETF,NASDAQ,fund,etf,US45259A1429,4071518f1736a5a43dae51b47590322f,Alternative,accept
+QQSE,BATS,Corgi Growth & Technology 15% Structured Buffer ETF - September Series,QQSE,Corgi Growth & Technology 15% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N7286,4071518f1736a5a43dae51b47590322f,Alternative,accept
+QREM,XETRA,CT QR Series Emerging Markets Equity Active UCITS ETF Acc EUR,QREM,CT QR Series Emerging Markets Equity Active UCITS ETF Accum USD,XETR,fund,etf,IE000DE2VF85,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+QREX,XETRA,CT QR Series Emerging Markets Equity Active UCITS ETF Acc USD,QREX,CT QR Series Emerging Markets Equity Active UCITS ETF Accum USD,XETR,fund,etf,IE000DE2VF85,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+QRMD,XETRA,CT QR Series Emerging Markets Equity Active UCITS ETF Inc USD,QRMD,CT QR Series Emerging Markets Equity Active UCITS ETF USD,XETR,fund,etf,IE000FW1REY9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+QRMW,XETRA,CT QR Series Emerging Markets Equity Active UCITS ETF Inc EUR,QRMW,CT QR Series Emerging Markets Equity Active UCITS ETF USD,XETR,fund,etf,IE000FW1REY9,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+QSE,BATS,Corgi Growth & Technology 10% Structured Buffer ETF - September Series,QSE,Corgi Growth & Technology 10% Structured Buffer ETF- September Series,CBOE,fund,etf,US21874N7369,4071518f1736a5a43dae51b47590322f,Alternative,accept
+RBNU,TSX,SavvyLong (2X) HOOD ETF,RBNU,SavvyLong (2X) HOOD ETF,TSX,fund,etf,CA54315B4331,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+RCEG,XETRA,Robeco Climate Euro Government Bond UCITS ETF EUR Acc,RCEG,Robeco UCITS ICAV - Robeco Climate Euro Government Bond UCITS ETF Accum- EUR,XETR,fund,etf,IE000D1DAPO5,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+REIX,NYSE ARCA,NYLIM CBRE Real Estate & Infrastructure ETF,REIX,NYLIM CBRE Real Estate & Infrastructure ETF,AMEX,fund,etf,US45409F7107,c05f85d35d1cd0be6ebb2af4be16e06a,Real Estate,accept
+S3RA,XETRA,Seraphim New Space UCITS ETF,S3RA,Seraphim New Space UCITS ETF,XETR,fund,etf,IE000SDZFVP4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+S4RF,XETRA,iMGP Sirios Absolute Return Fund R EUR HP PR UCITS ETF,S4RF,iMGP SICAV - Sirios Absolute Return Fund - R EUR HP PR UCITS ETF- Capitalisation,XETR,fund,etf,LU3334220699,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+SACE,XETRA,Schroder Global Equity Custom Active UCITS ETF USD ACC,SACE,Schroder ETFs ICAV - Schroder Global Equity Custom Active UCITS ETF AccumUSD,XETR,fund,etf,IE000GML9HQ4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SALI,NYSE ARCA,Schroders US Autocallable Ladder Income ETF,SALI,Schroders US Autocallable Ladder Income ETF,AMEX,fund,etf,US00775Y2155,4071518f1736a5a43dae51b47590322f,Alternative,accept
+SC2X,XETRA,Scalable MSCI AC World Leveraged Daily Swap Xtrackers UCITS ETF 1C,SC2X,Scalable MSCI AC World Leveraged Daily Swap Xtrackers UCITS ETF 1C Capitalisation,XETR,fund,etf,LU3386643970,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SCOM,XETRA,State Street SPDR Commodity UCITS ETF (Acc),SCOM,SSGA SPDR ETFs Europe II Plc - Commodity UCITS ETF,XETR,fund,etf,IE0006HIE7H2,8fe80395f389e29e3ea42210337f0350,Commodity,accept
+SCSE,BATS,Corgi U.S. Small-Cap 15% Structured Buffer ETF - September Series,SCSE,Corgi U.S. Small-Cap 15% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N6601,4071518f1736a5a43dae51b47590322f,Alternative,accept
+SECA,BATS,Main Active Rotation ETF,SECA,Main Active Rotation ETF,CBOE,fund,etf,US66537J7708,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SEIU,XETRA,Schroder US Equity Active UCITS ETF ACC USD,SEIU,Schroder US Equity Active UCITS ETF Accum USD,XETR,fund,etf,IE0003OZJ573,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SEPC,BATS,Corgi U.S. Equities 10% Structured Buffer ETF - September Series,SEPC,Corgi U.S. Equities 10% Structured Buffer ETF - September Series,CBOE,fund,etf,US21874N4473,4071518f1736a5a43dae51b47590322f,Alternative,accept
+SJEA,XETRA,Schroder Japan Equity Active UCITS ETF JPY ACC,SJEA,Schroder Japan Equity Active UCITS ETF Accum - JPY,XETR,fund,etf,IE000MMDB5G8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SKHQ,BATS,Leverage Shares 2X Short Sk Hynix Daily ETF,SKHQ,Leverage Shares 2X Short Sk Hynix Daily ETF,CBOE,fund,etf,US88340F1839,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+STLZ,XETRA,proud@work UCITS ETF,STLZ,proud@work UCITS ETF,XETR,fund,etf,DE000A41ZZJ4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+STT6,XETRA,iShares STOXX Europe 600 UCITS ETF EUR (Dist),STT6,iShares II PLC - iShares STOXX Europe 600 UCITS ETF EUR,XETR,fund,etf,IE0004YCLDW1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SUUE,XETRA,Schroder Europe Equity Active UCITS ETF EUR ACC,SUUE,Schroder Europe Equity Active UCITS ETF AccumEUR,XETR,fund,etf,IE000RJ3QL33,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SVCL,TSX,Global X Enhanced Silver Miners Covered Call ETF,SVCL,Global X Enhanced Silver Miners Covered Call ETF Trust Units A,TSX,fund,etf,CA37966N1033,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SWWD,XETRA,State Street SPDR MSCI World UCITS ETF (Dist),SWWD,State Street SPDR MSCI World UCITS ETF - USD,XETR,fund,etf,IE000P60WPS6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+SXHI,TSX,Ninepoint SpaceX HighShares ETF,SXHI,Ninepoint SpaceX HighShares ETF Trust Units,TSX,fund,etf,CA65446J1030,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+T05A,XETRA,iShares STOXX Global Select Dividend 100 UCITS ETF (DE) EUR Hedged (Acc),T05A,iShares STOXX Global Select Dividend 100 UCITS ETF (DE) Accumulating Units -EUR Hedged (Acc)-,XETR,fund,etf,DE000A2QP4F7,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TBCK,TSX,TD Target 2031 Investment Grade Bond Fund,TBCK,TD Target 2031 Investment Grade Bond Fund Trust Units,TSX,fund,etf,CA87253L1040,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TCAN,NASDAQ,21Shares Canton Network ETF,TCAN,21Shares Canton Network ETF,NASDAQ,fund,etf,US53656H6788,1af0389838508d7016a9841eb6273962,,unsupported_asset_class
+TCCB,TSX,TD Canadian Corporate Bond Fund,TCCB,TD Canadian Corporate Bond Fund Trust Unit,TSX,fund,etf,CA87818T1057,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TCQE,XETRA,Trading Central Quant Europe 50 Equity UCITS ETF,TCQE,Trading Central Quant Europe 50 Equity UCITS ETF Accum EUR,XETR,fund,etf,IE000DN0XQM1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TDEM,NASDAQ,T. Rowe Price Dynamic Emerging Markets Bond ETF,TDEM,T. Rowe Price Dynamic Emerging Markets Bond ETF,NASDAQ,fund,etf,US87283Q5861,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TDNA,NASDAQ,T. Rowe Price Biotech ETF,TDNA,T. Rowe Price Biotech ETF,NASDAQ,fund,etf,US87283Q6109,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TGRZ,NASDAQ,China AI Tigers LLM ETF,TGRZ,China AI Tigers LLM ETF,NASDAQ,fund,etf,US88636N7755,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+THYP,NASDAQ,21Shares Hyperliquid ETF,THYP,21shares Hyperliquid Staking ETF,NASDAQ,fund,etf,US90137V1089,1af0389838508d7016a9841eb6273962,,unsupported_asset_class
+TIPE,NYSE ARCA,Northern Trust 2031 Inflation-Linked Distributing Ladder ETF,TIPE,Northern Trust 2031 Inflation-Linked Distributing Ladder ETF,AMEX,fund,etf,US66516K8062,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TIPF,NYSE ARCA,Northern Trust 2036 Inflation-Linked Distributing Ladder ETF,TIPF,Northern Trust 2036 Inflation-Linked Distributing Ladder ETF,AMEX,fund,etf,US66516K8898,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TIPG,NYSE ARCA,Northern Trust 2046 Inflation-Linked Distributing Ladder ETF,TIPG,Northern Trust 2046 Inflation-Linked Distributing Ladder ETF,AMEX,fund,etf,US66516K8716,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TIPH,NYSE ARCA,Northern Trust 2056 Inflation-Linked Distributing Ladder ETF,TIPH,Northern Trust 2056 Inflation-Linked Distributing Ladder ETF,AMEX,fund,etf,US66516K8633,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TIZE,NYSE ARCA,TCW Securitized Income ETF,TIZE,TCW Securitized Income ETF,AMEX,fund,etf,US87191E2046,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TLIE,NYSE ARCA,American Beacon The London Company Income Equity ETF,TLIE,American Beacon The London Company Income Equity ETF,AMEX,fund,etf,US02368W8047,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TMID,NASDAQ,T. Rowe Price Mid Cap Equity Research ETF,TMID,T. Rowe Price Mid Cap Equity Research ETF,NASDAQ,fund,etf,US87283Q5788,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TORK,NASDAQ,KraneShares Actuator ETF,TORK,KraneShares Actuator ETF,NASDAQ,fund,etf,US50077M2035,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TRIL,BATS,VegaShares Trillions ETF,TRIL,VegaShares Trillions ETF,CBOE,fund,etf,US88636N8662,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TRXS,BATS,Canary Staked TRX ETF,TRXS,Canary Staked TRX ETF,CBOE,fund,etf,US13724E1073,1af0389838508d7016a9841eb6273962,,unsupported_asset_class
+TSCZ,NYSE ARCA,T. Rowe Price Securitized Income ETF,TSCZ,T. Rowe Price Securitized Income ETF,AMEX,fund,etf,US87283Q5606,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TSEE,NASDAQ,T. Rowe Price Small Cap ETF,TSEE,T. Rowe Price Small Cap ETF,NASDAQ,fund,etf,US87283Q5523,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+TSTB,TSX,TD Short Term Bond Fund,TSTB,TD Short Term Bond Fund Trust Unit,TSX,fund,etf,CA87810B1022,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TUST,TSX,TD Ultra Short Term Bond Fund,TUST,TD Ultra Short Term Bond Fund Trust Unit,TSX,fund,etf,CA87810N1069,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TXCA,NASDAQ,Northern Trust California Intermediate Tax-Exempt Bond ETF,TXCA,Northern Trust California Intermediate Tax-Exempt Bond ETF,NASDAQ,fund,etf,US66516K8559,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+TXNY,NASDAQ,Northern Trust New York Intermediate Tax-Exempt Bond ETF,TXNY,Northern Trust New York Intermediate Tax-Exempt Bond ETF,NASDAQ,fund,etf,US66516K8484,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+UCBG,NYSE ARCA,State Street SPDR UC Investments 90/10 Endowment Strategy Index ETF,UCBG,State Street SPDR UC Investments 90/10 Endowment Strategy Index ETF,AMEX,fund,etf,US78468R3747,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+UCSH.V,TSX,Global X USD High Interest Savings ETF,UCSH.V,Global X USD High Interest Savings ETF US Accumulating Units Trust Units,TSX,fund,etf,CA37964R2054,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+UQM1,XETRA,UniActive Q Equities Emerging Markets Enhanced UCITS ETF USD (Acc),UQM1,UniActive Q Equities Emerging Markets Enhanced UCITS ETF AccumUSD,XETR,fund,etf,IE000DUSV4J5,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+URCC,TSX,Global X Uranium Covered Call ETF,URCC,Global X Uranium Covered Call ETF Trust Units A,TSX,fund,etf,CA37966K1093,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+USME,XETRA,Franklin US Mega Cap 100 UCITS ETF EUR Hedged (Acc),USME,Franklin US Mega Cap 100 UCITS ETF AccumHedged EUR,XETR,fund,etf,IE000JQ1PF28,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+USOA,XETRA,Xtrackers MSCI USA Swap II UCITS ETF 1D,USOA,Xtrackers MSCI USA Swap II UCITS ETF -1D- USD,XETR,fund,etf,IE000FW16TX1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+V1VA,XETRA,Vanguard Russell 1000 U.S. Value UCITS ETF USD Acc,V1VA,Vanguard Russell 1000 U.S. Value UCITS ETF,XETR,fund,etf,IE000US24HF4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+V2SA,XETRA,Vanguard Russell 2000 U.S. Small-Cap UCITS ETF USD Acc,V2SA,Vanguard Russell 2000 U.S. Small-Cap UCITS ETF Accum Shs USD,XETR,fund,etf,IE000GTBEXG4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VAIC,NYSE ARCA,VegaShares US Equity Autocallable Conservative Income ETF,VAIC,VegaShares US Equity Autocallable Conservative Income ETF,AMEX,fund,etf,US92255C6075,4071518f1736a5a43dae51b47590322f,Alternative,accept
+VEEM,NASDAQ,VanEck MSCI EM Analyst Sentiment ETF,VEEM,VanEck MSCI EM Analyst Sentiment ETF,NASDAQ,fund,etf,US92189H6154,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VEGX,BATS,International Vegan Climate ETF,VEGX,International Vegan Climate ETF,CBOE,fund,etf,US26922B3520,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VEXA,XETRA,Vanguard FTSE Eurozone UCITS ETF Accumulating,VEXA,Vanguard Funds PLC - Vanguard FTSE Eurozone UCITS ETF EUR,XETR,fund,etf,IE000Q4J3CW6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VEXD,XETRA,Vanguard FTSE Eurozone UCITS ETF Distributing,VEXD,Vanguard Funds PLC - Vanguard FTSE Eurozone UCITS ETF EUR,XETR,fund,etf,IE000VH3JSL8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VGLA,XETRA,Vanguard FTSE Global All-Cap UCITS ETF USD Accumulating,VGLA,Vanguard FTSE Global All-Cap UCITS ETF Accum USD,XETR,fund,etf,IE000VAHT5T0,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VGLD,XETRA,Vanguard FTSE Global All-Cap UCITS ETF USD Distributing,VGLD,Vanguard FTSE Global All-Cap UCITS ETF,XETR,fund,etf,IE000CVUM3N6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VGSA,XETRA,Vanguard FTSE Global Small-Cap UCITS ETF USD Accumulating,VGSA,Vanguard FTSE Global Small-Cap UCITS ETF Accun USD,XETR,fund,etf,IE0007TPRF31,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VGSD,XETRA,Vanguard FTSE Global Small-Cap UCITS ETF USD Distributing,VGSD,Vanguard Funds plc - Vanguard FTSE Global Small-Cap UCITS ETF,XETR,fund,etf,IE000F8RXD33,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VIGG,TSX,Vanguard Developed ex-North America Dividend Appreciation Index ETF,VIGG,Vanguard Developed ex-North America Dividend Appreciation Index ETF Trust Units,TSX,fund,etf,CA92214A1066,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VMHY,NASDAQ,VictoryShares Municipal High Yield ETF,VMHY,VictoryShares Municipal High Yield ETF,NASDAQ,fund,etf,US92647N3787,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+VMSD,NASDAQ,VictoryShares Short-Duration Municipal ETF,VMSD,VictoryShares Short-Duration Municipal ETF,NASDAQ,fund,etf,US92647N3605,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+VOOB,NASDAQ,VistaShares Shield S&P 500 Enhanced Protection ETF,VOOB,VistaShares Shield S&P 500 Enhanced Protection ETF,NASDAQ,fund,etf,US45259A1593,4071518f1736a5a43dae51b47590322f,Alternative,accept
+VOOY,NYSE ARCA,XFUNDS Large Cap Income ETF,VOOY,XFUNDS Large Cap Income ETF,AMEX,fund,etf,US88636Y4742,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VRGU,XETRA,Vanguard Russell 1000 U.S. Growth UCITS ETF USD Acc,VRGU,VANGUARD RUSSELL 1000 U.S. GROWTH UCITS ETF AccumUSD,XETR,fund,etf,IE000J7AY5Y3,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VUDH,TSX,Vanguard U.S. High Dividend Yield Index ETF (CAD-hedged),VUDH,Vanguard U.S. High Dividend Yield Index ETF Hedged Trust Units,TSX,fund,etf,CA92213Y1051,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VUPA,XETRA,Vanguard Russell U.S. Mid-Cap UCITS ETF USD Acc,VUPA,Vanguard Russell U.S. Mid-Cap UCITS ETF Accum USD,XETR,fund,etf,IE000650M1V4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+VXUD,XETRA,Vanguard FTSE All-World ex-U.S. UCITS ETF USD Distributing,VXUD,Vanguard FTSE All-World Ex-U.S. UCITS ETF,XETR,fund,etf,IE000G1H7OC0,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WDVA,XETRA,WisdomTree Global High Dividend UCITS ETF - USD Acc,WDVA,WisdomTree Global High Dividend UCITS ETF Accum USD,XETR,fund,etf,IE000CO65C82,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WDVD,XETRA,WisdomTree Global High Dividend UCITS ETF - USD,WDVD,WisdomTree Global High Dividend UCITS ETF USD,XETR,fund,etf,IE000Q0CAPZ0,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WEBC,XETRA,Amundi MSCI North America ESG Broad Transition UCITS ETF Dist,WEBC,Amundi MSCI North America ESG Broad Transition UCITS ETF- EUR,XETR,fund,etf,IE000MJIXFE0,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WGDP,XETRA,Amundi FTSE All World GDP - Weighted UCITS ETF Acc,WGDP,Amundi FTSE All World GDP-Weighted UCITS ETF,XETR,fund,etf,IE000KCKFHE8,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WLSH,XETRA,Amundi MSCI World Screened UCITS ETF EUR Hedged Acc,WLSH,Amundi ETF ICAV - Amundi MSCI World Screened UCITS ETF Accum Hedged EUR,XETR,fund,etf,IE000Q5CPXZ1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WLXU,XETRA,Amundi MSCI World Ex USA Screened UCITS ETF Acc,WLXU,Amundi MSCI World Ex USA Screened UCITS ETF Act C USD,XETR,fund,etf,FR0013209921,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WROE,XETRA,BNP Paribas Easy II World Active Factor Rotation UCITS ETF EUR H Acc,WROE,BNP Paribas Easy II World Active Factor Rotation UCITS ETF Accum(H) EUR,XETR,fund,etf,IE0001858L90,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WROT,XETRA,BNP Paribas Easy II World Active Factor Rotation UCITS ETF USD Acc,WROT,BNP PARIBAS EASY II WORLD ACTIVE FACTOR ROTATION UCITS ETF Accum USD,XETR,fund,etf,IE0004GONJX4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WTWE,XETRA,L&G WTW Global Equity Diversified UCITS ETF - EUR Hedged Accumulating ETF,WTWE,L&G WTW Global Equity Diversified UCITS ETF Accum Shs Hedged EUR,XETR,fund,etf,IE000JMMZAP4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WTWG,XETRA,L&G WTW Global Equity Diversified UCITS ETF - USD Accumulating ETF,WTWG,L&G WTW GLOBAL EQUITY DIVERSIFIED UCITS ETF Accum USD,XETR,fund,etf,IE000GUIUCJ1,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WUSA,XETRA,Amundi Core MSCI USA Swap UCITS ETF Acc,WUSA,Amundi Index Solutions SICAV - Amundi Core MSCI USA Swap Capitalisation -UCITS ETF A-,XETR,fund,etf,LU3332965949,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+WUSH,XETRA,Amundi Core MSCI USA Swap UCITS ETF EUR Hedged Acc,WUSH,Amundi Core MSCI USA Swap Capitalisation -UCITS ETF EUR H A-,XETR,fund,etf,LU3332966160,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+X600,XETRA,Xtrackers STOXX Europe 600 II UCITS ETF 1C,X600,Xtrackers Stoxx Europe 600 II UCITS ETF Accum-1C- EUR,XETR,fund,etf,IE00003M6Z62,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XCSH,NASDAQ,XFUNDS 1-3 Month BOX ETF,XCSH,XFUNDS 1-3 Month BOX ETF,NASDAQ,fund,etf,US88636X1798,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XEST,XETRA,Xtrackers Euro STOXX UCITS ETF 1C,XEST,Xtrackers Euro Stoxx UCITS ETF Accum-1C- EUR,XETR,fund,etf,IE000G5ERG83,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XIUS,XETRA,Xtrackers MSCI USA Swap II UCITS ETF 1C,XIUS,Xtrackers (IE) plc - Xtrackers MSCI USA Swap II UCITS ETF Accum-1C- USD,XETR,fund,etf,IE000PDUVTF3,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XLCD,BATS,MicroSectors -3x Short Communication Services (XLC) ETNs,XLCD,MicroSectors -3x Short Communication Services (XLC) ETN Structured Note,CBOE,fund,etf,US06367V8651,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XLCU,BATS,MicroSectors 3x Long Communication Services (XLC) ETNs,XLCU,MicroSectors 3x Long Communication Services (XLC) ETNs,CBOE,fund,etf,US06367V8735,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XLPD,BATS,MicroSectors -3x Short Consumer Staples (XLP) ETNs,XLPD,MicroSectors -3x Short Consumer Staples (XLP) ETNs,CBOE,fund,etf,US06367V8404,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XLPU,BATS,MicroSectors 3x Long Consumer Staples (XLP) ETNs,XLPU,MicroSectors 3x Long Consumer Staples (XLP) ETNs Structured Note,CBOE,fund,etf,US06367V8578,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XMIW,XETRA,Xtrackers MSCI World Industrials UCITS ETF 1D,XMIW,Xtrackers (IE) PLC - Xtrackers MSCI World Industrials UCITS ETF -1D- USD,XETR,fund,etf,IE000VCTBRW6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XMUW,XETRA,Xtrackers MSCI World Utilities UCITS ETF 1D,XMUW,Xtrackers (IE) PLC - Xtrackers MSCI World Utilities UCITS ETF -1D- USD,XETR,fund,etf,IE000ME8PWJ4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XPFI,XETRA,Xtrackers PostFinance Global Portfolio Xtrackers UCITS ETF 1C,XPFI,Xtrackers SICAV - PostFinance Global Portfolio Xtrackers UCITS ETF Capitalisation -1C-,XETR,fund,etf,LU3254343414,b090e99b8d95f5837ec178c2d3d3fc50,Alternative,accept
+XSXX,XETRA,Xtrackers Euro STOXX UCITS ETF 1D,XSXX,Xtrackers EURO Stoxx UCITS ETF -1D- EUR,XETR,fund,etf,IE000I687JU4,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XUSM,NASDAQ,MarketDesk International Momentum ETF,XUSM,MarketDesk International Momentum ETF,NASDAQ,fund,etf,US26824D7122,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+XVAD,BATS,FT Vest AMD & Target Income ETF,XVAD,FT Vest AMD & Target Income ETF,CBOE,fund,etf,US33738D6976,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XVAZ,BATS,FT Vest AMZN & Target Income ETF,XVAZ,FT Vest AMZN & Target Income ETF,CBOE,fund,etf,US33738D6711,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XVGL,BATS,FT Vest GOOG & Target Income ETF,XVGL,FT Vest GOOG & Target Income ETF,CBOE,fund,etf,US33738D6489,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XVMS,BATS,FT Vest MSFT & Target Income ETF,XVMS,FT Vest MSFT & Target Income ETF,CBOE,fund,etf,US33738D6141,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XVMT,BATS,FT Vest META & Target Income ETF,XVMT,FT Vest META & Target Income ETF,CBOE,fund,etf,US33738D5986,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XVPT,BATS,FT Vest PLTR & Target Income ETF,XVPT,FT Vest PLTR & Target Income ETF,CBOE,fund,etf,US33738D5564,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XVSP,BATS,FT Vest SPCX & Target Income ETF,XVSP,FT Vest SPCX & Target Income ETF,CBOE,fund,etf,US33738D4815,4071518f1736a5a43dae51b47590322f,Alternative,accept
+XX,BATS,"Roundhill S&P 500 Target 10,000 2030 ETF",XX,"Roundhill S&P 500 Target 10,000 2030 ETF",CBOE,fund,etf,US77926Y8232,4071518f1736a5a43dae51b47590322f,Alternative,accept
+YRAM,NASDAQ,YieldMax Memory and Storage Portfolio Option Income ETF,YRAM,YieldMax Memory and Storage Portfolio Option Income ETF,NASDAQ,fund,etf,US88634T2380,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ZAPP,XETRA,Global X U.S. Electrification UCITS ETF,ZAPP,Global X ETFS ICAV - Global X U.S. Electrification UCITS ETF,XETR,fund,etf,IE00070SLDT6,c05f85d35d1cd0be6ebb2af4be16e06a,Equity,accept
+ZCDX,TSX,BMO Credit Stress Opportunities ETF,ZCDX,BMO Credit Stress Opportunities ETF Trust Units,TSX,fund,etf,CA05595J1167,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+ZCDX.U,TSX,BMO Credit Stress Opportunities ETF,ZCDX.U,BMO Credit Stress Opportunities ETF USD Units,TSX,fund,etf,CA05595J1084,b6e443a6c4a8a2e7918c5dbf3d45c796,Fixed Income,accept
+ZCSH,NYSE ARCA,The Zcash ETF Shares,ZCSH,Grayscale Zcash Trust,AMEX,fund,etf,US38964G1085,1af0389838508d7016a9841eb6273962,,name_mismatch
