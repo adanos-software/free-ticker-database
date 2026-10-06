@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-06T08:47:12Z",
+    "generated_at": "2026-10-06T14:35:46Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -49,10 +49,10 @@
     },
     "taxonomy": {
       "n": 63299,
-      "filled": 61907,
-      "missing": 1392,
-      "pct": 97.8,
-      "fills_needed_for_99": 760,
+      "filled": 62295,
+      "missing": 1004,
+      "pct": 98.41,
+      "fills_needed_for_99": 372,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -70,7 +70,7 @@
       "SZSE": 12
     },
     "missing_sector_by_exchange": {
-      "FSX": 646,
+      "FSX": 258,
       "HKEX": 105,
       "PSE": 82,
       "XSTU": 53,
@@ -103,8 +103,8 @@
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 58806,
-    "source_gap": 4486,
+    "pass": 58995,
+    "source_gap": 4297,
     "warn": 7
   },
   "checks": [
@@ -145,10 +145,10 @@
       "status": "fail",
       "details": {
         "n": 63299,
-        "filled": 61691,
-        "missing": 1608,
-        "pct": 97.46,
-        "fills_needed_for_99": 976,
+        "filled": 62295,
+        "missing": 1004,
+        "pct": 98.41,
+        "fills_needed_for_99": 372,
         "pass": false
       }
     },
