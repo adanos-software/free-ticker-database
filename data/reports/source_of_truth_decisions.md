@@ -8,9 +8,9 @@ This report converts residual source-gap classes into release-trackable outcomes
 
 | Value | Rows |
 |---|---:|
-| accepted_source_gap | 6072 |
-| official_fill_required | 2314 |
-| core_exclusion_candidate | 494 |
+| accepted_source_gap | 5905 |
+| official_fill_required | 2310 |
+| core_exclusion_candidate | 484 |
 
 ## Top Classes
 
@@ -18,20 +18,20 @@ This report converts residual source-gap classes into release-trackable outcomes
 |---|---:|
 | official_reference_unmatched_source_gap | 5355 |
 | official_reference_symbol_collision_gap | 1103 |
-| official_industry_taxonomy_unavailable_gap | 1071 |
+| official_industry_taxonomy_unavailable_gap | 904 |
 | otc_sector_source_gap | 552 |
 | fund_or_trust_identifier_gap | 241 |
 | official_identifier_not_exposed_source_gap | 158 |
 | debt_or_securitized_identifier_gap | 77 |
-| exchange_industry_source_gap | 63 |
-| shell_or_cpc_sector_gap | 46 |
+| exchange_industry_source_gap | 59 |
+| shell_or_cpc_sector_gap | 43 |
 | adr_cdr_or_depositary_identifier_gap | 42 |
 | capital_pool_or_halted_identifier_gap | 32 |
 | official_product_taxonomy_unavailable_gap | 23 |
 | fundlike_stock_sector_gap | 21 |
 | equity_etf_category_gap | 20 |
 | inactive_or_legacy_identifier_gap | 20 |
-| adr_cdr_or_depositary_sector_gap | 15 |
+| adr_cdr_or_depositary_sector_gap | 8 |
 | official_identifier_reference_unmatched_gap | 12 |
 | official_current_directory_absent_identifier_gap | 9 |
 | fixed_income_etf_category_gap | 8 |

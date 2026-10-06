@@ -14,7 +14,7 @@ Universe: `instrument_scope=core` — 63,299 rows.
 |---|---:|---:|---:|---:|---:|---|
 | isin | 62,706 | 63,299 | 99.06% | 593 | 0 | true |
 | country | 63,234 | 63,299 | 99.90% | 65 | 0 | true |
-| taxonomy | 61,691 | 63,299 | 97.46% | 1,608 | 976 | false |
+| taxonomy | 61,907 | 63,299 | 97.8% | 1,392 | 760 | false |
 
 ## Identity
 

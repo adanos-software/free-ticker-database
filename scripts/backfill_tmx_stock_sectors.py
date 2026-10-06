@@ -30,6 +30,7 @@ DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_up
 
 TMX_STOCK_SECTOR_MAP = {
     "Comm. & Media": "Communication Services",
+    "Consumer Products & Services": "Consumer Discretionary",
     "Financial Services": "Financials",
     "Industrial Products & Services": "Industrials",
     "Life Sciences": "Health Care",

@@ -14,29 +14,29 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 85505,
-      "source_gap": 11647,
+      "pass": 85694,
+      "source_gap": 11458,
       "warn": 24
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4472,
       "official_reference": 87431,
-      "scoped_source_gap": 260,
-      "valid_isin": 5013
+      "identifier_enriched": 4472,
+      "valid_isin": 5013,
+      "scoped_source_gap": 260
     },
     "severity_counts": {
+      "source_gap": 11730,
       "high": 6,
-      "medium": 19,
-      "source_gap": 11946
+      "medium": 19
     },
     "issue_counts": {
       "official_reference_gap": 6458,
-      "venue_missing_official_source": 3287,
-      "missing_stock_sector": 1541,
+      "missing_stock_sector": 1325,
       "expected_missing_primary_isin": 593,
-      "missing_etf_category": 67,
+      "official_isin_mismatch": 6,
+      "venue_missing_official_source": 3287,
       "official_name_mismatch": 19,
-      "official_isin_mismatch": 6
+      "missing_etf_category": 67
     },
     "top_flagged_exchanges": [
       {
@@ -51,18 +51,18 @@
       },
       {
         "exchange": "FSX",
-        "source_gap": 993,
-        "pass": 7150
+        "pass": 7339,
+        "source_gap": 804
       },
       {
         "exchange": "B3",
-        "source_gap": 346,
-        "pass": 1243
+        "pass": 1243,
+        "source_gap": 346
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 292,
-        "pass": 4513
+        "pass": 4513,
+        "source_gap": 292
       },
       {
         "exchange": "BMV",
@@ -90,8 +90,8 @@
       },
       {
         "exchange": "BVB",
-        "source_gap": 192,
-        "pass": 55
+        "pass": 55,
+        "source_gap": 192
       },
       {
         "exchange": "TSX",
@@ -139,8 +139,8 @@
       },
       {
         "exchange": "JSE",
-        "source_gap": 89,
-        "pass": 123
+        "pass": 123,
+        "source_gap": 89
       }
     ]
   },
