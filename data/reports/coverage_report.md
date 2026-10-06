@@ -10,8 +10,8 @@
 | stocks | 48666 |
 | etfs | 16725 |
 | isin_coverage | 64130 |
-| sector_coverage | 63562 |
-| stock_sector_coverage | 46898 |
+| sector_coverage | 63743 |
+| stock_sector_coverage | 47079 |
 | etf_category_coverage | 16664 |
 | cik_coverage | 7843 |
 | figi_coverage | 65158 |

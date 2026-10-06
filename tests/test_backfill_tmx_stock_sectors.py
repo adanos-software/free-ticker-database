@@ -37,6 +37,7 @@ def test_load_tmx_sector_rows_parses_header_and_rows():
 def test_normalize_tmx_sector_maps_supported_official_values():
     assert normalize_tmx_sector("Mining") == "Materials"
     assert normalize_tmx_sector("Technology") == "Information Technology"
+    assert normalize_tmx_sector("Consumer Products & Services") == "Consumer Discretionary"
     assert normalize_tmx_sector("CPC") == ""
 
 
