@@ -1,21 +1,21 @@
 {
   "version": "4.0.0",
-  "generated_at": "2026-10-06T08:46:55Z",
-  "git_commit": "f51a946a678f1e5f4ace67a8b0faa725f7521edc",
-  "source_dataset_sha256": "877c45f4898bc534064891bddccc9cc71a369e24317e4f8c2eb0dd05b436a66e",
+  "generated_at": "2026-10-07T13:12:51Z",
+  "git_commit": "2d62200679b2ab4cbf3bcde87044f367cacef8be",
+  "source_dataset_sha256": "042d39a3ad260833355dcfab32de1a5d39b599e9f34d7cedb58a2fcd151e13b7",
   "schema_contract_sha256": "fb37be89eeb2468747b935424ddefbc0b0dec5229de25459bac27b8d380daf34",
   "schema_sql_sha256": "4502f51da85227c10d0a29b651ef804a37fa4c1ab0f46d45a73168aacd5495f4",
-  "aggregate_sha256": "b557dbc1715b0a7086d0df82c962e49d8b0fc27584de9249a8da8f4a94c6f0e7",
+  "aggregate_sha256": "3d90cd29f0ab7ada37610af41eebdbef1987eb6552e6f8232bf779577a9adde8",
   "files": [
     {
       "path": "sources.csv",
-      "sha256": "7a5476445b442c62c94f5209c9842d15d9ca457d2666b9bbe3f6830989988761",
-      "rows": 145
+      "sha256": "52cffe7f180f026247e330b8b0fd40e2a3705202f44870c1d4eab171a3ca9149",
+      "rows": 147
     },
     {
       "path": "source_observations.csv",
-      "sha256": "d1182d217ee8cb31fedca2eece7055a76f326eb442130ab8702350493fbb701b",
-      "rows": 182165
+      "sha256": "e0893efbcd43d5f51d4b49b9847eb7c4108c438380fa58bac9ca09c7fb847e45",
+      "rows": 183338
     },
     {
       "path": "venues.csv",
@@ -24,56 +24,56 @@
     },
     {
       "path": "issuers.csv",
-      "sha256": "781318d98c7c1a19ae6c06c8ce02b705c161ba634aaa4cfef3a51a9fae6bd2c4",
-      "rows": 74648
+      "sha256": "a7cfe6171c50dbf0c69f5c34c466db797f03c032e5f4a6864943f45a9dbe1b72",
+      "rows": 74747
     },
     {
       "path": "instruments.csv",
-      "sha256": "79c0d1dec6be8c2e3e0b4981b2f4b36824bc38e2064d24b99942890e57751c5d",
-      "rows": 74648
+      "sha256": "ca8d3fcb0b68e8353a98cf1b92fc7de38eddd8bbd8e615f73e0a58defc594a68",
+      "rows": 74747
     },
     {
       "path": "listings.csv",
-      "sha256": "ad0b8f19f3146179f7dd7f2dc4a2691b528d23febf7314e73b27a8ccebf7554c",
-      "rows": 97179
+      "sha256": "0ff3675eba7ff25e01e4f4fd19e799f7da399a688868ff4d5c0bf53255bafd4b",
+      "rows": 97279
     },
     {
       "path": "identifier_assertions.csv",
-      "sha256": "757b120ad3631431d34c1a230fea99007c4408de973e89b41006cd7c1f40e024",
-      "rows": 168437
+      "sha256": "c9f3c82b40c3b3404823d2cb4a268aaeb0db4ea90d8e566eb1b2813fdde83d79",
+      "rows": 168481
     },
     {
       "path": "field_assertions.csv",
-      "sha256": "e1e824106e401bb5fee2920a5382928f8174d5457c184df28fdba9ca036a0a48",
-      "rows": 220673
+      "sha256": "1f061940042f25fe2cca07a02200310a18afed4368bf1d5cd7a7f05c1006d900",
+      "rows": 220545
     },
     {
       "path": "provenance_gaps.csv",
-      "sha256": "59b4c9c1fcac75417357cf9a48ff1712faec1b1b1fa8a2d10771d365b4bf5efa",
-      "rows": 291416
+      "sha256": "6d2dfd2ead35e58849ac37103dbe8e7cbcbda41ac6b623dbc2a5fb7540696f1a",
+      "rows": 292725
     },
     {
       "path": "listing_events.csv",
-      "sha256": "a3209cf5f1283b249dcecea0a91f179d19a944c015f1e431173d0170c9846ee9",
-      "rows": 86949
+      "sha256": "cd5f307b3efcb158ac8716e5be9a0caa7e0c7d8a4e6d63ef281654d8825818aa",
+      "rows": 88122
     },
     {
       "path": "coverage_contracts.csv",
-      "sha256": "b6f20dbe8953cb1b4e3114b19bd858bf73c26794fb8b0913c499f638fb47293d",
+      "sha256": "823be5ff4b47964c47cf23b22851d04e7b20ceeebd12ed95be08d4c1e031629d",
       "rows": 135
     }
   ],
   "counts": {
-    "sources": 145,
-    "source_observations": 182165,
+    "sources": 147,
+    "source_observations": 183338,
     "venues": 87,
-    "issuers": 74648,
-    "instruments": 74648,
-    "listings": 97179,
-    "identifier_assertions": 168437,
-    "field_assertions": 220673,
-    "provenance_gaps": 291416,
-    "listing_events": 86949,
+    "issuers": 74747,
+    "instruments": 74747,
+    "listings": 97279,
+    "identifier_assertions": 168481,
+    "field_assertions": 220545,
+    "provenance_gaps": 292725,
+    "listing_events": 88122,
     "coverage_contracts": 135
   },
   "identity_quarantine": {

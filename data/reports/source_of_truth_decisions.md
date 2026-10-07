@@ -1,6 +1,6 @@
 # Source-of-Truth Decisions
 
-Generated at: `2026-10-06T08:47:13Z`
+Generated at: `2026-10-07T13:13:12Z`
 
 This report converts residual source-gap classes into release-trackable outcomes. It does not fill fields and does not drop rows automatically.
 
@@ -8,34 +8,34 @@ This report converts residual source-gap classes into release-trackable outcomes
 
 | Value | Rows |
 |---|---:|
-| accepted_source_gap | 5905 |
-| official_fill_required | 2310 |
-| core_exclusion_candidate | 484 |
+| accepted_source_gap | 5622 |
+| official_fill_required | 2390 |
+| core_exclusion_candidate | 527 |
 
 ## Top Classes
 
 | Value | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5355 |
-| official_reference_symbol_collision_gap | 1103 |
-| official_industry_taxonomy_unavailable_gap | 904 |
+| official_reference_unmatched_source_gap | 5433 |
+| official_reference_symbol_collision_gap | 1120 |
+| official_industry_taxonomy_unavailable_gap | 553 |
 | otc_sector_source_gap | 552 |
-| fund_or_trust_identifier_gap | 241 |
-| official_identifier_not_exposed_source_gap | 158 |
-| debt_or_securitized_identifier_gap | 77 |
+| fund_or_trust_identifier_gap | 285 |
+| official_identifier_not_exposed_source_gap | 167 |
+| debt_or_securitized_identifier_gap | 83 |
 | exchange_industry_source_gap | 59 |
-| shell_or_cpc_sector_gap | 43 |
+| official_product_taxonomy_unavailable_gap | 43 |
 | adr_cdr_or_depositary_identifier_gap | 42 |
+| equity_etf_category_gap | 40 |
+| shell_or_cpc_sector_gap | 40 |
 | capital_pool_or_halted_identifier_gap | 32 |
-| official_product_taxonomy_unavailable_gap | 23 |
-| fundlike_stock_sector_gap | 21 |
-| equity_etf_category_gap | 20 |
 | inactive_or_legacy_identifier_gap | 20 |
-| adr_cdr_or_depositary_sector_gap | 8 |
-| official_identifier_reference_unmatched_gap | 12 |
-| official_current_directory_absent_identifier_gap | 9 |
-| fixed_income_etf_category_gap | 8 |
-| commodity_etf_category_gap | 7 |
+| fundlike_stock_sector_gap | 18 |
+| fixed_income_etf_category_gap | 17 |
+| official_identifier_reference_unmatched_gap | 13 |
+| commodity_etf_category_gap | 9 |
+| adr_cdr_or_depositary_sector_gap | 7 |
+| digital_asset_etf_category_gap | 2 |
 
 ## Policy
 
