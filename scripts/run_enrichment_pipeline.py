@@ -220,6 +220,18 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 notes="Refresh listing-keyed deterministic quality status for every row.",
             ),
             StageCommand(
+                name="build_isin_identity_collision_review_queue",
+                command=[py, "scripts/build_isin_identity_collision_review_queue.py"],
+                mutates_data=True,
+                notes="Refresh listing-keyed ISIN identity collision groups before the trust report reads them.",
+            ),
+            StageCommand(
+                name="build_trust_report",
+                command=[py, "scripts/build_trust_report.py"],
+                mutates_data=True,
+                notes="Measure core-universe trust metrics without authorizing fills or a 99% claim.",
+            ),
+            StageCommand(
                 name="build_cfi_code_review",
                 command=[py, "scripts/build_cfi_code_review.py"],
                 mutates_data=True,

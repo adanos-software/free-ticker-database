@@ -36,6 +36,7 @@ if str(ROOT) not in sys.path:
 REPORTS_DIR = ROOT / "data" / "reports"
 
 DEFAULT_LISTINGS_CSV = ROOT / "data" / "listings.csv"
+DEFAULT_SAME_ISSUER_CSV = ROOT / "data" / "review_overrides" / "isin_identity_same_issuer.csv"
 DEFAULT_CSV_OUT = REPORTS_DIR / "isin_identity_collision_review_queue.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "isin_identity_collision_review_queue.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "isin_identity_collision_review_queue.md"
@@ -51,6 +52,7 @@ RECOMMENDED_NEXT_SOURCE = (
     "master keyed to the exact listing_key."
 )
 CLOSURE_STATUS_OPEN = "open_needs_official_identifier_evidence"
+CLOSURE_STATUS_CLOSED_SAME_ISSUER = "closed_same_issuer_reviewed"
 
 CSV_FIELDNAMES = [
     "isin",
@@ -189,6 +191,45 @@ def display_path(path: Path) -> str:
 def load_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+def split_listing_keys(value: str) -> set[str]:
+    return {part.strip() for part in (value or "").split("|") if part.strip()}
+
+
+def load_same_issuer_reviews(path: Path) -> dict[str, set[str]]:
+    """Load reviewed same-issuer ISIN groups. Duplicate ISINs are rejected."""
+
+    if not path.exists():
+        return {}
+    reviews: dict[str, set[str]] = {}
+    for row in load_csv(path):
+        isin = (row.get("isin") or "").strip()
+        if not isin:
+            continue
+        if isin in reviews:
+            raise ValueError(f"duplicate same-issuer review for ISIN {isin}")
+        reviews[isin] = split_listing_keys(row.get("listing_keys", ""))
+    return reviews
+
+
+def apply_same_issuer_closure(
+    row: dict[str, Any],
+    reviews: dict[str, set[str]],
+) -> dict[str, Any]:
+    """Close a collision group only when its current listing_keys are a subset of the review.
+
+    An extra listing_key re-opens the group. Empty current keys never close.
+    This does not mutate ISINs, names, or countries.
+    """
+
+    reviewed = reviews.get(row["isin"])
+    if not reviewed:
+        return row
+    current = split_listing_keys(row.get("listing_keys", ""))
+    if current and current <= reviewed:
+        row["closure_status"] = CLOSURE_STATUS_CLOSED_SAME_ISSUER
+    return row
 
 
 def _strip_noise(name: str, fold) -> str:
@@ -364,6 +405,7 @@ def build_queue_rows(
     *,
     isin_valid_fn,
     country_from_isin_fn,
+    same_issuer_reviews: dict[str, set[str]] | None = None,
 ) -> list[dict[str, Any]]:
     by_isin: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in listings_rows:
@@ -371,6 +413,7 @@ def build_queue_rows(
         if isin:
             by_isin[isin].append(row)
 
+    reviews = same_issuer_reviews or {}
     queue_rows: list[dict[str, Any]] = []
     for isin, rows in by_isin.items():
         if len(rows) < 2:
@@ -379,11 +422,14 @@ def build_queue_rows(
         if len(clusters) < 2:
             continue
         queue_rows.append(
-            build_collision_row(
-                isin,
-                clusters,
-                isin_valid_fn=isin_valid_fn,
-                country_from_isin_fn=country_from_isin_fn,
+            apply_same_issuer_closure(
+                build_collision_row(
+                    isin,
+                    clusters,
+                    isin_valid_fn=isin_valid_fn,
+                    country_from_isin_fn=country_from_isin_fn,
+                ),
+                reviews,
             )
         )
     queue_rows.sort(
@@ -453,18 +499,25 @@ def build_payload(
     listings_csv: Path,
     isin_valid_fn,
     country_from_isin_fn,
+    same_issuer_csv: Path | None = None,
 ) -> dict[str, Any]:
     generated_at = utc_now_iso()
     listings_rows = load_csv(listings_csv)
+    review_path = DEFAULT_SAME_ISSUER_CSV if same_issuer_csv is None else same_issuer_csv
+    reviews = load_same_issuer_reviews(review_path)
     queue_rows = build_queue_rows(
         listings_rows,
         isin_valid_fn=isin_valid_fn,
         country_from_isin_fn=country_from_isin_fn,
+        same_issuer_reviews=reviews,
     )
+    source_files = {"listings_csv": display_path(listings_csv)}
+    if review_path.exists():
+        source_files["same_issuer_csv"] = display_path(review_path)
     return {
         "_meta": {
             "generated_at": generated_at,
-            "source_files": {"listings_csv": display_path(listings_csv)},
+            "source_files": source_files,
             "policy": (
                 "ISIN identity collisions are reported for review only. No ISIN, country, "
                 "name, or scope change is authorized without official listing-keyed evidence."
@@ -507,6 +560,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
         f"| Listings involved | {summary['listings_involved']} |",
         f"| Ticker-collision groups | {summary['ticker_collision_groups']} |",
         f"| Open groups | {summary['open_groups']} |",
+        f"| Closed same-issuer reviewed | {summary['closed_groups']} |",
         f"| Direct identifier apply allowed rows | {summary['direct_identifier_apply_allowed_rows']} |",
         "",
         "## Decision Candidates",
@@ -532,7 +586,8 @@ def render_markdown(payload: dict[str, Any]) -> str:
             "| --- | --- | ---: | --- | --- |",
         ]
     )
-    for row in payload["items"][:40]:
+    open_items = [row for row in payload["items"] if str(row["closure_status"]).startswith("open")]
+    for row in open_items[:40]:
         lines.append(
             "| "
             + " | ".join(
@@ -568,28 +623,31 @@ def write_outputs(payload: dict[str, Any], csv_out: Path, json_out: Path, md_out
     md_out.write_text(render_markdown(payload), encoding="utf-8")
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build an ISIN identity collision review queue.")
     parser.add_argument("--listings-csv", type=Path, default=DEFAULT_LISTINGS_CSV)
+    parser.add_argument("--same-issuer-csv", type=Path, default=DEFAULT_SAME_ISSUER_CSV)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
     from scripts.rebuild_dataset import country_from_isin, is_valid_isin
 
-    args = parse_args()
+    args = parse_args(argv)
     payload = build_payload(
         listings_csv=args.listings_csv,
         isin_valid_fn=is_valid_isin,
         country_from_isin_fn=country_from_isin,
+        same_issuer_csv=args.same_issuer_csv,
     )
     write_outputs(payload, args.csv_out, args.json_out, args.md_out)
     print(
         f"Wrote {payload['summary']['collision_groups']} ISIN identity collision groups "
-        f"({payload['summary']['ticker_collision_groups']} ticker-collision suspected) "
+        f"({payload['summary']['ticker_collision_groups']} ticker-collision suspected, "
+        f"{payload['summary']['closed_groups']} closed same-issuer reviewed) "
         f"covering {payload['summary']['listings_involved']} listings."
     )
 

@@ -22,7 +22,9 @@ try:
         build_coverage_report, build_entry_quality_report, build_exchange_source_audit,
         build_official_full_recall_action_queue,
         build_listing_history, build_reference_reconciliation,
+        build_isin_identity_collision_review_queue,
         build_source_gap_classification, build_source_of_truth_decisions,
+        build_trust_report,
         enrich_global_identifiers, normalize_source_registry, update_readme_snapshot,
     )
     from scripts.lib.identity_integrity import (
@@ -40,8 +42,10 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution
     import build_official_full_recall_action_queue
     import build_listing_history
     import build_reference_reconciliation
+    import build_isin_identity_collision_review_queue
     import build_source_gap_classification
     import build_source_of_truth_decisions
+    import build_trust_report
     import enrich_global_identifiers
     import normalize_source_registry
     import update_readme_snapshot
@@ -506,6 +510,8 @@ def rebuild_validation_dependents() -> None:
     """Regenerate every validator input derived from the rebuilt current dataset."""
 
     build_entry_quality_report.main([])
+    build_isin_identity_collision_review_queue.main([])
+    build_trust_report.main([])
     build_source_gap_classification.main([])
     build_source_of_truth_decisions.main([])
     if build_adanos_ticker_reference.main([]) != 0:

@@ -16,7 +16,7 @@ COVERAGE = ROOT / "data/coverage_expansion_listings.csv"
 STOLEN_ISIN_CLEARS = {
     ("CU2", "FSX"): "LU1681042864",
     ("MAST", "LSE"): "US57636Q1040",
-    ("MA1", "ASX"): "US57636Q1040",
+
     ("ARDDF", "OTC"): "DE0005103006",
     ("CRRNF", "OTC"): "CH0012142631",
     ("HLTFF", "OTC"): "DE000A161408",
@@ -42,10 +42,11 @@ STOLEN_ISIN_CLEARS = {
     ("WEAT", "NYSE ARCA"): "JE00BN7KB664",
     ("INVN", "NYSE ARCA"): "US45170X2053",
     ("CNEQ", "NYSE ARCA"): "US45170X2053",
+    ("RE", "LSE"): "CA75527Q1081",
+    ("RE-B", "LSE"): "CA75527Q1081",
     ("METR", "LSE"): "ARP6558L1178",
     ("ESPX", "AMS"): "CA30052U2065",
-    ("AIH", "ASX"): "US00809M1045",
-    ("TXR", "ASX"): "ARDEUT116019",
+
     ("BAFS", "SET"): "PK0027901013",
     ("PORT", "SET"): "ID1000138209",
     ("UNIQ", "SET"): "ID1000159502",
@@ -61,12 +62,51 @@ STOLEN_ISIN_CLEARS = {
     ("LONG", "TSX"): "ARP6356B1059",
     ("IVX", "TSXV"): "AU000000IVX4",
     ("RDS", "TSXV"): "AU000000RDS3",
+    ("BEAR", "TSXV"): "AU00000BEAR2",
+    ("CYG", "TSXV"): "AU000000CYG6",
+    ("ACL", "TSXV"): "AU0000148496",
+    ("RBX", "TSXV"): "AU0000152803",
+    ("MMX", "TSXV"): "US5732841060",
+    ("MMXLF", "OTC"): "US5732841060",
+    ("SPYR", "OTC"): "IE00BKWQ0C77",
+    ("WELX", "OTC"): "IE000EFHIFG3",
+    ("WTER", "OTC"): "IE000X9TLGN8",
+    ("VISM", "OTC"): "AU0000026171",
+    ("ROYL", "OTC"): "AU0000233397",
+    ("DOD", "SET"): "US25746U1097",
+    ("CPW", "SET"): "IL0010824113",
+    ("MCHT", "OTC"): "IE00BM8QS095",
+    ("STTX", "OTC"): "IE00BKWQ0N82",
+    ("ICBU", "OTC"): "IE00BDQZ5152",
+    ("WEBC", "OTC"): "IE000MJIXFE0",
+    ("PTAM", "OTC"): "IE000X5OD4M3",
+    ("FLXP", "OTC"): "IE00BMDPBY65",
+    ("CSOL", "OTC"): "CH1385084384",
+    ("FLES", "OTC"): "IE00BFWXDY69",
+    ("XSVT", "OTC"): "LU0460391732",
+    ("ARIN", "SET"): "IL0003660136",
+    ("RLCO", "IDX"): "IL0003930174",
+    ("TKN", "TSX"): "TH6927010004",
+    ("ASMMF", "OTC"): "NL0000334118",
+    ("SHR", "SET"): "CH0024638212",
+    ("DUSIT", "SET"): "CA24463V1013",
+    ("PRINC", "SET"): "GB00B0MDF233",
+    ("TIPS", "OTC"): "IE00BZ0G8977",
+    ("CHMMF", "OTC"): "LU1834983634",
+    ("CNFN", "OTC"): "EGS738I1C018",
+    ("BYSD", "OTC"): "IL0007590198",
+    ("EGIL", "OTC"): "IE00B3B8PX14",
+    ("ASEKF", "OTC"): "JP3965410008",
+    ("BCDRF", "OTC"): "CA8119161054",
+    ("SARDF", "OTC"): "CA8119161054",
+    ("ABIT", "OTC"): "IE000SBHVL31",
+    ("GORO", "NYSE"): "US38068T1051",
 }
 
 COUNTRY_CLEARS = {
     ("CU2", "FSX"),
     ("MAST", "LSE"),
-    ("MA1", "ASX"),
+
     ("ARDDF", "OTC"),
     ("CRRNF", "OTC"),
     ("HLTFF", "OTC"),
@@ -87,8 +127,10 @@ COUNTRY_CLEARS = {
     ("EWG", "NYSE ARCA"),
     ("CORN", "NYSE ARCA"),
     ("WEAT", "NYSE ARCA"),
+    ("RE", "LSE"),
+    ("RE-B", "LSE"),
     ("ESPX", "AMS"),
-    ("AIH", "ASX"),
+
     ("BAFS", "SET"),
     ("PORT", "SET"),
     ("UNIQ", "SET"),
@@ -100,17 +142,55 @@ COUNTRY_CLEARS = {
     ("DPM", "TSX"),
     ("IVX", "TSXV"),
     ("RDS", "TSXV"),
+    ("BEAR", "TSXV"),
+    ("CYG", "TSXV"),
+    ("ACL", "TSXV"),
+    ("RBX", "TSXV"),
+    ("MMX", "TSXV"),
+    ("MMXLF", "OTC"),
+    ("SPYR", "OTC"),
+    ("WELX", "OTC"),
+    ("WTER", "OTC"),
+    ("VISM", "OTC"),
+    ("ROYL", "OTC"),
+    ("DOD", "SET"),
+    ("CPW", "SET"),
+    ("MCHT", "OTC"),
+    ("STTX", "OTC"),
+    ("ICBU", "OTC"),
+    ("WEBC", "OTC"),
+    ("PTAM", "OTC"),
+    ("FLXP", "OTC"),
+    ("CSOL", "OTC"),
+    ("FLES", "OTC"),
+    ("XSVT", "OTC"),
+    ("ARIN", "SET"),
+    ("RLCO", "IDX"),
+    ("TKN", "TSX"),
+    ("ASMMF", "OTC"),
+    ("SHR", "SET"),
+    ("DUSIT", "SET"),
+    ("PRINC", "SET"),
+    ("TIPS", "OTC"),
+    ("CHMMF", "OTC"),
+    ("CNFN", "OTC"),
+    ("BYSD", "OTC"),
+    ("EGIL", "OTC"),
+    ("BCDRF", "OTC"),
+    ("SARDF", "OTC"),
+    ("ABIT", "OTC"),
+    ("GORO", "NYSE"),
 }
 
 ISIN_ONLY_COUNTRY_KEEPS = {
     ("INVN", "NYSE ARCA"): ("United States", "US"),
     ("CNEQ", "NYSE ARCA"): ("United States", "US"),
     ("METR", "LSE"): ("United Kingdom", "GB"),
-    ("TXR", "ASX"): ("Australia", "AU"),
     ("EMDE", "IDX"): ("Indonesia", "ID"),
     ("MOLI", "IDX"): ("Indonesia", "ID"),
     ("POLL", "IDX"): ("Indonesia", "ID"),
     ("LONG", "TSX"): ("Canada", "CA"),
+    ("ASEKF", "OTC"): ("Japan", "JP"),
 }
 
 
@@ -173,38 +253,9 @@ def test_identiv_and_isem_are_not_recode_targets() -> None:
     isem = _metadata("ISEM", "LSE", "isin")
     assert isem["decision"] == "update"
     assert isem["proposed_value"] == "IE00B27YCP72"
-
-
-def test_lse_rea_official_directory_isin_fill() -> None:
     rea = _metadata("RE", "LSE", "isin")
-    assert rea["decision"] == "update"
-    assert rea["proposed_value"] == "GB0002349065"
-    assert "CA75527Q1081" in rea["reason"]
-    assert "lse_price_explorer" in rea["reason"]
-    preferred = _metadata("RE-B", "LSE", "isin")
-    assert preferred["decision"] == "update"
-    assert preferred["proposed_value"] == "GB0007185639"
-    assert "CA75527Q1081" in preferred["reason"]
-    country = _metadata("RE", "LSE", "country")
-    assert country["decision"] == "update"
-    assert country["proposed_value"] == "United Kingdom"
-    code = _metadata("RE", "LSE", "country_code")
-    assert code["decision"] == "update"
-    assert code["proposed_value"] == "GB"
-    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
-    assert listings["LSE::RE"]["isin"] == "GB0002349065"
-    assert listings["LSE::RE"]["country"] == "United Kingdom"
-    assert listings["LSE::RE"]["country_code"] == "GB"
-    assert listings["LSE::RE"]["name"] == "R.E.A. Holdings plc"
-    assert listings["LSE::RE-B"]["isin"] == "GB0007185639"
-    assert listings["LSE::RE-B"]["country"] == "United Kingdom"
-    assert listings["LSE::RE-B"]["country_code"] == "GB"
-    assert listings["LSE::RE-B"]["name"] == "R.E.A. Holdings plc"
-    assert listings["FSX::BY0"]["isin"] == "GB0002349065"
-    assert listings["TSXV::RE"]["isin"] == "CA75527Q1081"
-    assert listings["OTC::RROYF"]["isin"] == "CA75527Q1081"
-    assert listings["Euronext::RE"]["isin"] == "FR0000121634"
-    assert listings["Euronext::RE"]["name"] == "Colas Sa"
+    assert rea["proposed_value"] == ""
+    assert "GB0002349065" not in rea["reason"]
 
 
 def test_cleared_stolen_isins_leave_identiv_and_venue_countries() -> None:
@@ -229,6 +280,121 @@ def test_cleared_stolen_isins_leave_identiv_and_venue_countries() -> None:
     assert listings["LSE::ISEM"]["isin"] == "IE00B27YCP72"
     assert listings["TSX::FBTC"]["isin"] == "CA31580V1040"
     assert listings["TSXV::RE"]["isin"] == "CA75527Q1081"
+    assert listings["ASX::BEAR"]["isin"] == "AU00000BEAR2"
+    assert listings["ASX::CYG"]["isin"] == "AU000000CYG6"
+    assert listings["ASX::ACL"]["isin"] == "AU0000148496"
+    assert listings["ASX::RBX"]["isin"] == "AU0000152803"
+    assert listings["NYSE::MLM"]["isin"] == "US5732841060"
+    assert listings["XETRA::SPYR"]["isin"] == "IE00BKWQ0C77"
+    assert listings["XETRA::WELX"]["isin"] == "IE000EFHIFG3"
+    assert listings["XETRA::WTER"]["isin"] == "IE000X9TLGN8"
+    assert listings["ASX::VISM"]["isin"] == "AU0000026171"
+    assert listings["ASX::ROYL"]["isin"] == "AU0000233397"
+    assert listings["NYSE::D"]["isin"] == "US25746U1097"
+    assert listings["NASDAQ::CHKP"]["isin"] == "IL0010824113"
+    assert listings["LSE::MCHT"]["isin"] == "IE00BM8QS095"
+    assert listings["LSE::TELE"]["isin"] == "IE00BKWQ0N82"
+    assert listings["LSE::ICBU"]["isin"] == "IE00BDQZ5152"
+    assert listings["XETRA::WEBC"]["isin"] == "IE000MJIXFE0"
+    assert listings["XETRA::PTAM"]["isin"] == "IE000X5OD4M3"
+    assert listings["LSE::EUPA"]["isin"] == "IE00BMDPBY65"
+    assert listings["SIX::CSOL"]["isin"] == "CH1385084384"
+    assert listings["LSE::FLES"]["isin"] == "IE00BFWXDY69"
+    assert listings["LSE::XBCU"]["isin"] == "LU0460391732"
+    assert listings["TASE::ARIN"]["isin"] == "IL0003660136"
+    assert listings["TASE::RLCO"]["isin"] == "IL0003930174"
+    assert listings["SET::TKN"]["isin"] == "TH6927010004"
+    assert listings["AMS::ASM"]["isin"] == "NL0000334118"
+    assert listings["OTC::ASMXF"]["isin"] == "NL0000334118"
+    assert listings["SIX::SCHN"]["isin"] == "CH0024638212"
+    assert listings["FSX::DTC"]["isin"] == "CA24463V1013"
+    assert listings["LSE::POS"]["isin"] == "GB00B0MDF233"
+    assert listings["LSE::UTIP"]["isin"] == "IE00BZ0G8977"
+    assert listings["Euronext::CHM"]["isin"] == "LU1834983634"
+    assert listings["EGX::SRWA"]["isin"] == "EGS738I1C018"
+    assert listings["TASE::GVYM"]["isin"] == "IL0007590198"
+    assert listings["LSE::IGIL"]["isin"] == "IE00B3B8PX14"
+    assert listings["TSE::207A"]["isin"] == "JP3965410008"
+    assert listings["TSE::7259"]["isin"] == "JP3102000001"
+    assert listings["OTC::ASEKY"]["isin"] == "US00956Q1067"
+    assert listings["NYSE::SA"]["isin"] == "CA8119161054"
+    assert listings["FSX::SRM"]["isin"] == "CA8119161054"
+    assert listings["XSTU::SRM"]["isin"] == "CA8119161054"
+    assert listings["XETRA::ABIU"]["isin"] == "IE000SBHVL31"
+    assert listings["TSE::542A"]["isin"] == "JP3800210001"
+    assert listings["TSE::581A"]["isin"] == "JP3306510003"
+
+
+def test_asx_official_isins_replace_cleared_stolen_values() -> None:
+    cases = {
+        ("AIH", "ASX"): ("AU0000423667", "US00809M1045"),
+        ("MA1", "ASX"): ("AU0000380917", "US57636Q1040"),
+        ("TXR", "ASX"): ("AU0000450611", "ARDEUT116019"),
+    }
+    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
+    for (ticker, exchange), (official, stolen) in cases.items():
+        row = _metadata(ticker, exchange, "isin")
+        assert row["decision"] == "update"
+        assert row["proposed_value"] == official
+        assert stolen in row["reason"]
+        assert official != stolen
+        listing = listings[f"{exchange}::{ticker}"]
+        assert listing["isin"] == official
+        assert stolen not in listing["isin"]
+
+
+def test_tgb_isin_follows_issuer_rebrand() -> None:
+    row = _metadata("TGB", "NYSE", "isin")
+    assert row["decision"] == "update"
+    assert row["proposed_value"] == "CA89472Y1079"
+    assert "CA8765111064" in row["reason"]
+    udm = _metadata("UDM", "FSX", "name")
+    assert udm["decision"] == "update"
+    assert udm["proposed_value"] == "Trekor Metals Ltd"
+    listings = {item["listing_key"]: item for item in load_csv(LISTINGS)}
+    assert listings["NYSE::TGB"]["isin"] == "CA89472Y1079"
+    assert listings["NYSE::TGB"]["name"] == "Trekor Metals Ltd"
+    assert listings["FSX::UDM"]["name"] == "Trekor Metals Ltd"
+    assert listings["LSE::TKO"]["isin"] == "CA89472Y1079"
+
+
+def test_official_name_updates_match_listing_keyed_directories() -> None:
+    cases = {
+        ("AGNT", "NASDAQ"): "AGNT, Inc.",
+        ("AIB", "NYSE"): "AIB Data Centers Inc.",
+        ("GORO", "NYSE"): "Goldgroup Mining Inc.",
+        ("PN", "NASDAQ"): "PN Smart Energy Limited",
+        ("RAVI", "NYSE ARCA"): "Northern Trust Ultra-Short Fixed Income ETF",
+        ("RTB", "NASDAQ"): "RTB Digital, Inc.",
+        ("RUM", "NASDAQ"): "RUM Group Inc.",
+        ("SRXH", "NYSE"): "SRX Global Inc.",
+        ("TGB", "NYSE"): "Trekor Metals Ltd",
+    }
+    for (ticker, exchange), name in cases.items():
+        row = _metadata(ticker, exchange, "name")
+        assert row["decision"] == "update"
+        assert row["proposed_value"] == name
+        assert row["confidence"] == "0.96"
+
+
+def test_hvii_symbol_change_does_not_copy_cayman_isin() -> None:
+    row = _transition("NASDAQ::HVII")
+    assert row["new_listing_key"] == "NASDAQ::ONEN"
+    assert row["event_type"] == "symbol_changed"
+    assert row["identity_type"] == "same_issuer"
+    assert "KYG4405D1079" not in row["identity_value"]
+    assert row["source_url"].startswith("https://")
+    drops = {(item["ticker"], item["exchange"]) for item in load_csv(DROPS)}
+    assert ("HVII", "NASDAQ") in drops
+    onen_isin = [
+        item
+        for item in load_csv(METADATA)
+        if item.get("ticker") == "ONEN"
+        and item.get("exchange") == "NASDAQ"
+        and item.get("field") == "isin"
+    ]
+    assert all("KYG4405D1079" not in item.get("proposed_value", "") for item in onen_isin)
+    assert all("KYG4405D1079" not in item.get("reason", "") for item in onen_isin)
 
 
 def test_issc_and_ethm_nasdaq_symbol_changes() -> None:
@@ -271,6 +437,30 @@ def test_official_directory_leftover_symbol_changes() -> None:
         assert row["identity_type"] == "same_isin"
         assert row["identity_value"] == isin
         assert row["source_url"].startswith("https://")
+
+
+def test_cell_impact_reverse_split_overrides() -> None:
+    row = _metadata("CI", "STO", "isin")
+    assert row["decision"] == "update"
+    assert row["proposed_value"] == "SE0025940513"
+    assert "SE0017885379" in row["reason"]
+    transition = _transition("STO::CELLI")
+    assert transition["new_listing_key"] == "STO::CI"
+    assert transition["event_type"] == "symbol_changed"
+    assert transition["identity_type"] == "same_isin"
+    assert transition["identity_value"] == "SE0025940513"
+    assert transition["source_url"].startswith("https://")
+    drops = {(item["ticker"], item["exchange"]) for item in load_csv(DROPS)}
+    assert ("CELLI", "STO") in drops
+    assert ("CI", "STO") not in drops
+
+
+def test_cell_impact_listings_follow_official_isin() -> None:
+    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
+    assert listings["STO::CI"]["isin"] == "SE0025940513"
+    assert "STO::CELLI" not in listings
+    allow = [row for row in load_csv(ALLOWLIST) if row.get("listing_key") == "STO::CI"]
+    assert allow == []
 
 
 def test_dazsf_stale_allowlist_row_removed() -> None:

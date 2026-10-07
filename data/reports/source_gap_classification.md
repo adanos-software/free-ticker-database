@@ -1,65 +1,65 @@
 # Source Gap Classification
 
-Generated at: `2026-10-04T12:15:29Z`
+Generated at: `2026-10-07T13:13:11Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Official reference-gap rows classified: `6554`
-- Missing primary ISIN rows classified: `1154`
-- Missing stock-sector rows classified: `4057`
-- Missing ETF-category rows classified: `483`
+- Official reference-gap rows classified: `6553`
+- Missing primary ISIN rows classified: `645`
+- Missing stock-sector rows classified: `1229`
+- Missing ETF-category rows classified: `112`
 
 ## Top Classes
 
 | Class | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5434 |
-| official_industry_taxonomy_unavailable_gap | 3343 |
+| official_reference_unmatched_source_gap | 5433 |
 | official_reference_symbol_collision_gap | 1120 |
-| otc_sector_source_gap | 554 |
-| fund_or_trust_identifier_gap | 540 |
-| official_identifier_not_exposed_source_gap | 380 |
-| official_product_taxonomy_unavailable_gap | 249 |
-| equity_etf_category_gap | 168 |
-| debt_or_securitized_identifier_gap | 116 |
-| exchange_industry_source_gap | 63 |
-| shell_or_cpc_sector_gap | 54 |
-| adr_cdr_or_depositary_identifier_gap | 46 |
-| fixed_income_etf_category_gap | 42 |
-| capital_pool_or_halted_identifier_gap | 33 |
-| fundlike_stock_sector_gap | 25 |
-| inactive_or_legacy_identifier_gap | 25 |
-| commodity_etf_category_gap | 20 |
-| adr_cdr_or_depositary_sector_gap | 18 |
-| official_identifier_reference_unmatched_gap | 11 |
-| digital_asset_etf_category_gap | 3 |
+| official_industry_taxonomy_unavailable_gap | 553 |
+| otc_sector_source_gap | 552 |
+| fund_or_trust_identifier_gap | 285 |
+| official_identifier_not_exposed_source_gap | 167 |
+| debt_or_securitized_identifier_gap | 83 |
+| exchange_industry_source_gap | 59 |
+| official_product_taxonomy_unavailable_gap | 43 |
+| adr_cdr_or_depositary_identifier_gap | 42 |
+| equity_etf_category_gap | 40 |
+| shell_or_cpc_sector_gap | 40 |
+| capital_pool_or_halted_identifier_gap | 32 |
+| inactive_or_legacy_identifier_gap | 20 |
+| fundlike_stock_sector_gap | 18 |
+| fixed_income_etf_category_gap | 17 |
+| official_identifier_reference_unmatched_gap | 13 |
+| commodity_etf_category_gap | 9 |
+| adr_cdr_or_depositary_sector_gap | 7 |
+| digital_asset_etf_category_gap | 2 |
 
 ## Top Review Batches
 
 | Field | Gap Class | Exchange | Rows | Recommended Next Source | Source Gate |
 |---|---|---|---:|---|---|
 | official_reference_gap | official_reference_unmatched_source_gap | OTC | 3103 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| missing_sector_stock | official_industry_taxonomy_unavailable_gap | BSE_IN | 2038 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
-| missing_sector_stock | official_industry_taxonomy_unavailable_gap | FSX | 771 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
-| missing_sector_stock | otc_sector_source_gap | OTC | 554 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
+| missing_sector_stock | otc_sector_source_gap | OTC | 552 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
 | official_reference_gap | official_reference_unmatched_source_gap | B3 | 338 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| missing_sector_stock | official_industry_taxonomy_unavailable_gap | FSX | 235 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | official_reference_gap | official_reference_symbol_collision_gap | AMS | 169 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_symbol_collision_gap | BMV | 165 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_unmatched_source_gap | BVB | 165 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | FSX | 165 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_symbol_collision_gap | OTC | 151 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
-| missing_sector_stock | official_industry_taxonomy_unavailable_gap | BVB | 143 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
-| missing_isin_primary | fund_or_trust_identifier_gap | TSX | 139 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | official_reference_gap | official_reference_unmatched_source_gap | NASDAQ | 136 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | NYSE ARCA | 124 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| missing_isin_primary | fund_or_trust_identifier_gap | BATS | 112 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
-| missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 105 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | official_reference_gap | official_reference_unmatched_source_gap | XETRA | 96 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | TSX | 94 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| missing_sector_stock | official_industry_taxonomy_unavailable_gap | HKEX | 92 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
+| missing_sector_stock | official_industry_taxonomy_unavailable_gap | HKEX | 91 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | official_reference_gap | official_reference_unmatched_source_gap | BATS | 87 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | BMV | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | TSXV | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| missing_isin_primary | fund_or_trust_identifier_gap | TSX | 83 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
+| official_reference_gap | official_reference_unmatched_source_gap | LSE | 83 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | Euronext | 79 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 
 ## Release Policy
 

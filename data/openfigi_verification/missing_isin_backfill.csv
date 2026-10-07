@@ -1,283 +1,1084 @@
 ticker,exchange,asset_type,name,figi_exch_code,openfigi_ticker,openfigi_name,openfigi_security_type,openfigi_isin,number_tokens_match,name_match,decision
-AAOZ,BATS,ETF,Tradr 2X Short AAOI Daily ETF,US,AAOZ,TRADR 2X SHRT AAOI DAILY ETF,ETP,,True,True,missing_isin
-AAPE,BATS,ETF,Leverage Shares 2X Long AAPL Daily ETF,US,AAPE,LEVERAGE SHARES 2X AAPL ETF,ETP,,True,True,missing_isin
-AAUB,NASDAQ,ETF,Alpha Architect US Equity 4 ETF,US,AAUB,ALPHA ARCHITCT US EQTY 4 ETF,ETP,,True,False,missing_isin
-ACAA,NASDAQ,Stock,Averin Capital Acquisition Corp.,US,ACAA,AVERIN CAP ACQUISITIO C CL-A,Common Stock,,True,False,missing_isin
+001366,SZSE,Stock,Boen Group Co. Ltd. Cl A,CZ,,,,,False,False,no_openfigi_match
+159001,SZSE,ETF,货币ETF易方达,CZ,,,,,False,False,no_openfigi_match
+159003,SZSE,ETF,招商快线ETF,CZ,,,,,False,False,no_openfigi_match
+159930,SZSE,ETF,China Universal Asset Management - CSI Energy Fund,CZ,,,,,False,False,no_openfigi_match
+159931,SZSE,ETF,金融地产ETF汇添富,CZ,,,,,False,False,no_openfigi_match
+159933,SZSE,ETF,金融地产ETF国投瑞银,CZ,,,,,False,False,no_openfigi_match
+159934,SZSE,ETF,黄金ETF易方达,CZ,,,,,False,False,no_openfigi_match
+159935,SZSE,ETF,中证500ETF景顺,CZ,,,,,False,False,no_openfigi_match
+159936,SZSE,ETF,可选消费ETF广发,CZ,,,,,False,False,no_openfigi_match
+301047,SZSE,Stock,Sino BiologicalInc.,CZ,,,,,False,False,no_openfigi_match
+301539,SZSE,Stock,Hongxin Tech Co Ltd,CZ,,,,,False,False,no_openfigi_match
+301589,SZSE,Stock,Novastar Co Ltd,CZ,,,,,False,False,no_openfigi_match
+511600,SSE,ETF,华安日日鑫ETF,CH,511600,HUAAN RIRIXIN MONEY MARKET F,ETP,,True,False,missing_isin
+511650,SSE,ETF,货币ETF华夏,CH,511650,CHINAAMC AMX EXP TRD MNY ETF,ETP,,True,False,missing_isin
+511690,SSE,ETF,交易货币ETF大成,CH,511690,DACHENG TIANYI TRADED MMK-E,ETP,,True,False,missing_isin
+511700,SSE,ETF,货币ETF平安,CH,511700,PINGAN-UOB TRADED MMK FUND-E,ETP,,True,False,missing_isin
+511770,SSE,ETF,金鹰增益货币ETF,CH,511770,GOLDEN CASH PROFIT MMK-E,ETP,,True,False,missing_isin
+511820,SSE,ETF,鹏华添利ETF,CH,511820,PENGHUA PROFIT ADDED MMK-B,ETP,,True,False,missing_isin
+511830,SSE,ETF,货币ETF华泰柏瑞,CH,511830,HUATAI-PB TRADED MONEY MKT A,ETP,,True,False,missing_isin
+511850,SSE,ETF,招商财富宝ETF,CH,511850,CH MERCHANTS CAIFUBAO MMK-E,ETP,,True,False,missing_isin
+511860,SSE,ETF,货币ETF博时,CH,511860,BOSERA MARG RL TM TR MY MF-A,ETP,,True,False,missing_isin
+511880,SSE,ETF,银华日利ETF,CH,511880,YINHUA TRADED MONEY MARKET,ETP,,True,False,missing_isin
+511900,SSE,ETF,富国货币ETF,CH,511900,FULLGOAL SYB EXCH TRA MMKT H,ETP,,True,False,missing_isin
+511930,SSE,ETF,货币ETF国联,CH,511930,GUOLIAN DAILY EARNING MMKF,ETP,,True,False,missing_isin
+511950,SSE,ETF,添利货币ETF广发,CH,511950,GF TIANLI TRADED MONEY MMK F,ETP,,True,False,missing_isin
+511960,SSE,ETF,货币ETF嘉实,CH,511960,HARVEST INSTI EXPRESS MMKT-H,ETP,,True,False,missing_isin
+512070,SSE,ETF,证券保险ETF易方达,CH,512070,E FUND CSI 300 FIN EX BA ETF,ETP,,False,False,missing_isin
+530023,KRX,ETF,Samsung Leverage ChinaA50 Futures ETN(H),KS,530023,SS LEV CH A50 FTRS ETN H 23,ETP,,False,False,missing_isin
+542A,TSE,Stock,Vitabrid Japan Inc.,JT,542A,VITABRID JAPAN INC,Common Stock,,True,True,missing_isin
+544A,TSE,Stock,"GMS Group Co.,Ltd.",JT,544A,GMS GROUP CO LTD,Common Stock,,True,False,missing_isin
+545A,TSE,Stock,"Toranvia Co.,Ltd.",JT,545A,TORANVIA CO LTD,Common Stock,,True,True,missing_isin
+548A,TSE,Stock,"SystemEXE,Inc.",JT,548A,SYSTEMEXE INC,Common Stock,,True,True,missing_isin
+549A,TSE,Stock,"HITO-TO-HITO Holdings Co.,Ltd.",JT,549A,HITO-TO-HITO HOLDINGS CO LTD,Common Stock,,True,True,missing_isin
+550A,TSE,Stock,"SOFTTEX Co.,Ltd.",JT,550A,SOFTTEX CO LTD,Common Stock,,True,True,missing_isin
+554A,TSE,Stock,"Batonz.Co.,Ltd.",JT,554A,BATONZ CO LTD,Common Stock,,True,True,missing_isin
+555A,TSE,Stock,"Hokuoh GROUP,Inc.",JT,555A,HOKUOH GROUP INC,Common Stock,,True,True,missing_isin
+556A,TSE,Stock,"INUNEKO-SEIKATSU Co.,Ltd.",JT,556A,INUNEKO-SEIKATSU CO LTD,Common Stock,,True,True,missing_isin
+557A,TSE,Stock,"Feriest Co.,Ltd.",JT,557A,FERIEST CO LTD,Common Stock,,True,True,missing_isin
+558A,TSE,Stock,SQUEEZE Inc.,JT,558A,SQUEEZE INC,Common Stock,,True,True,missing_isin
+559A,TSE,Stock,"UMENOYADO BREWERY CO.,LTD.",JT,559A,UMENOYADO BREWERY CO LTD,Common Stock,,True,True,missing_isin
+560A,TSE,Stock,OKADA CORPORATION Inc.,JT,560A,OKADA CORP INC,Common Stock,,True,True,missing_isin
+561A,TSE,Stock,"MarksLife Co.,Ltd.",JT,561A,MARKSLIFE CO LTD,Common Stock,,True,True,missing_isin
+562A,TSE,Stock,Houyou Inc.,JT,562A,HOUYOU INC,Common Stock,,True,True,missing_isin
+563A,TSE,ETF,Global X Nasdaq 100 Daily Covered Call ETF,JT,563A,GLOBAL X NASDAQ DAILY CC ETF,ETP,,False,False,missing_isin
+564A,TSE,ETF,Global X S&P Developed Cash Flow Top 100 ETF,JT,564A,GLOBAL X S&P DEV CF 100 ETF,ETP,,True,False,missing_isin
+565A,TSE,Stock,FFF Holdings Co.Ltd,JT,565A,FFF HOLDINGS CO LTD,Common Stock,,True,False,missing_isin
+566A,TSE,ETF,iFreeETF Bloomberg Japan ex-Financials High Dividend 50 Index,JT,566A,IFREEETF BBG JP EXF HI DV 50,ETP,,True,False,missing_isin
+567A,TSE,Stock,"D-Plus Co.,Ltd.",JT,567A,D-PLUS CO LTD,Common Stock,,True,False,missing_isin
+568A,TSE,ETF,iShares Silver ETF,JT,568A,ISHARES SILVER ETF,ETP,,True,True,missing_isin
+569A,TSE,ETF,iShares Platinum ETF,JT,569A,ISHARES PLATINUM ETF,ETP,,True,True,missing_isin
+570A,TSE,ETF,iShares 0-1 Year Japan Government Bond ETF,JT,570A,ISHARES 0-1Y JP GOV BOND ETF,ETP,,True,False,missing_isin
+571A,TSE,ETF,iShares 1-3 Year Japan Government Bond ETF,JT,571A,ISHARES 1-3Y JP GOV BOND ETF,ETP,,True,False,missing_isin
+572A,TSE,ETF,iShares 3-7 Year Japan Government Bond ETF,JT,572A,ISHARES 3-7Y JP GOV BOND,ETP,,True,False,missing_isin
+573A,TSE,ETF,iShares 20+ Year Japan Government Bond ETF,JT,573A,ISHARES 20+Y JP GOV BOND ETF,ETP,,True,False,missing_isin
+574A,TSE,Stock,"LASSIC CO.,LTD.",JT,574A,LASSIC CO LTD,Common Stock,,True,True,missing_isin
+575A,TSE,Stock,"MAEZAWA Holdings CO.,LTD.",JT,575A,MAEZAWA HOLDINGS CO LTD,Common Stock,,True,True,missing_isin
+576A,TSE,ETF,Global X China Tech Covered Call ETF,JT,576A,GLOBAL X CHINA TECH CC ETF,ETP,,True,True,missing_isin
+578A,TSE,ETF,Global X Silver ETF (JPY Hedged),JT,578A,GLOBAL X SILVER JPY HED,ETP,,True,True,missing_isin
+579A,TSE,ETF,Global X Silver Miners ETF,JT,579A,GLOBAL X SILVER MINERS ETF,ETP,,True,True,missing_isin
+580A,TSE,ETF,Global X Copper Miners ETF,JT,580A,GLOBAL X COPPER MINERS ETF,ETP,,True,True,missing_isin
+581A,TSE,Stock,GO Inc.,JT,581A,GO INC,Common Stock,,True,False,missing_isin
+583A,TSE,Stock,"Real Estate Distribution System Co.,Ltd.",JT,583A,REAL ESTATE DISTRIBUTION SYS,Common Stock,,True,True,missing_isin
+584A,TSE,Stock,"LiNKX,Inc.",JT,584A,LINKX INC,Common Stock,,True,True,missing_isin
+585A,TSE,ETF,NV Bottom Up Equity Investment Strategy Active ETF,JT,585A,NV BOTTOM UP EQ INV STRA ACT,ETP,,True,False,missing_isin
+586A,TSE,ETF,NEXT FUNDS Nikkei Japan Entertainment Content Stock Index Exchange Traded Fund,JT,586A,NEXT FD NIKKEI JP ENT CON SK,ETP,,True,False,missing_isin
+589A,TSE,Stock,"NEIS Co.,Ltd.",JT,589A,NEIS CO LTD,Common Stock,,True,False,missing_isin
+590A,TSE,Stock,"giftee Group,Inc.",JT,590A,GIFTEE GROUP INC,Common Stock,,True,True,missing_isin
+591A,TSE,Stock,"SAIJO Co.,LTD.",JT,591A,SAIJO CO LTD,Common Stock,,True,True,missing_isin
+593A,TSE,Stock,"TIER IV,Inc.",JT,593A,TIER IV INC,Common Stock,,True,True,missing_isin
+594A,TSE,Stock,"PRO HOLDINGS Co.,Ltd",JT,594A,PRO HOLDINGS CO LTD,Common Stock,,True,False,missing_isin
+595A,TSE,Stock,"FUJIKOSAN Co.,Ltd.",JT,595A,FUJIKOSAN CO LTD,Common Stock,,True,True,missing_isin
+597A,TSE,Stock,andUS.inc,JT,597A,ANDUS INC,Common Stock,,True,True,missing_isin
+598A,TSE,Stock,"ChatPlus Co.,Ltd.",JT,598A,CHATPLUS CO LTD,Common Stock,,True,True,missing_isin
+600A,TSE,ETF,Nissay ETF Russell 2000,JT,600A,NISSAY ETF RUSSELL 2000,ETP,,True,True,missing_isin
+601956,SSE,Stock,Hubei Donper Electromechanical Group Co. Ltd.,CH,601956,HUBEI DONPER ELECTROMECHAN-A,Common Stock,,True,False,missing_isin
+602A,TSE,Stock,"Rex Advisors Co.,Ltd.",JT,602A,REX ADVISORS CO LTD,Common Stock,,True,True,missing_isin
+603091,SSE,Stock,ZX PACKING ORD A (SHH) EQSW Exp:,CH,603091,ZHEJIANG ZHONGXIN ENVIRONM-A,Common Stock,,True,False,missing_isin
+603150,SSE,Stock,Anhui Higasket Plastics Co.Ltd.,CH,603150,ANHUI HIGASKET PLASTICS CO-A,Common Stock,,True,True,missing_isin
+603207,SSE,Stock,XIAO FANG ORD A (SHH) EQSW Exp:,CH,603207,SHANGHAI XIAO FANG PHARMAC-A,Common Stock,,True,False,missing_isin
+603284,SSE,Stock,Anhui Linping Circular Dvlp Co,CH,603284,ANHUI LINPING CIRCULAR DEV-A,Common Stock,,True,True,missing_isin
+603A,TSE,Stock,i GRID SOLUTIONS Inc.,JT,603A,I GRID SOLUTIONS INC,Common Stock,,True,True,missing_isin
+604A,TSE,Stock,"beABLE CO.,LTD.",JT,604A,BEABLE CO LTD,Common Stock,,True,True,missing_isin
+605068,SSE,Stock,Mingxin Automotive Leather Co. Ltd.,CH,605068,MINGXIN NEW MATERICAL CO L-A,Common Stock,,True,False,missing_isin
+605A,TSE,ETF,NEXT FUNDS Japan Equity Policy Focus Exchange Traded Fund,JT,605A,NEXT FUNDS JP EP FOCUS ETF,ETP,,True,False,missing_isin
+606A,TSE,ETF,Gold 2x Bull ETF,JT,606A,GOLD 2X BULL ETF,ETP,,True,True,missing_isin
+608A,TSE,ETF,Listed Index Fund TSE REIT High Yield 30,JT,608A,LISTED INDEX FUND TR H 30,ETP,,True,False,missing_isin
+609A,TSE,ETF,Global X Japan Wholesale Trade & Resource Business ETF,JT,609A,GLOBAL X JP WS T&R B ETF,ETP,,True,False,missing_isin
+610A,TSE,ETF,Global X Space Tech Top 10 ETF (ex-Japan),JT,610A,GLOBAL X ST TOP 10 ETF,ETP,,True,False,missing_isin
+611A,TSE,ETF,One ETF Japanese Government Bond 27-30 years,JT,611A,ONE ETF JP GV BD 27-30 Y,ETP,,True,False,missing_isin
+612A,TSE,ETF,One ETF JGB Futures Short Index,JT,612A,ONE ETF JGB FS INDEX,ETP,,True,True,missing_isin
+688221,SSE,Stock,Frontier Biopharmaceuticals (Nanjing) Co. Ltd. A,CH,688221,FRONTIER BIOTECHNOLOGIES I-A,Common Stock,,True,False,missing_isin
+688235,SSE,Stock,BeiGene Ltd.,CH,688235,BEONE MEDICINES LTD-A,Common Stock,,True,False,missing_isin
+688450,SSE,Stock,AGIOE ORD A (SHH) EQSW Exp:,CH,688450,SUZHOU AGIOE TECHNOLOGIES -A,Common Stock,,True,False,missing_isin
+688573,SSE,Stock,XINYUREN ORD A (SHH) EQSW Exp:,CH,688573,SHENZHEN XINYUREN TECHNOLO-A,Common Stock,,True,False,missing_isin
+688592,SSE,Stock,COMNAV ORD A (SHH) EQSW Exp:,CH,688592,COMNAV TECHNOLOGY LTD-A,Common Stock,,True,False,missing_isin
+688602,SSE,Stock,CHEMSPEC ORD A (SHH) EQSW Exp:,CH,688602,SHANGHAI CHEMSPEC CORP-A,Common Stock,,True,False,missing_isin
+688603,SSE,Stock,Guangdong Skychem Technology Co. Ltd. A,CH,688603,SHANGHAI SKYCHEM TECHNOLOG-A,Common Stock,,True,False,missing_isin
+688610,SSE,Stock,I-TEK ORD A (SHH) EQSW Exp:,CH,688610,HEFEI I-TEK OPTOELECTRONIC-A,Common Stock,,True,False,missing_isin
+688615,SSE,Stock,INTSIG ORD A (SHH) EQSW Exp:,CH,688615,INTSIG INFORMATION CO LTD-A,Common Stock,,True,False,missing_isin
+688638,SSE,Stock,UTIMES ORD A (SHH) EQSW Exp:,CH,688638,SHENZHEN UTIMES INTELLIGEN-A,Common Stock,,True,False,missing_isin
+688651,SSE,Stock,WEBRAY ORD A (SHH) EQSW Exp:,CH,688651,WEBRAY TECH GROUP INC-A,Common Stock,,True,False,missing_isin
+688671,SSE,Stock,BESCIENT ORD A (SHH) EQSW Exp:,CH,688671,BESCIENT TECHNOLOGIES CO L-A,Common Stock,,True,False,missing_isin
+688693,SSE,Stock,CONVERT ORD A (SHH) EQSW Exp:,CH,688693,SUZHOU CONVERT SEMICONDUCT-A,Common Stock,,True,False,missing_isin
+688710,SSE,Stock,INNOSTAR ORD A (SHH) EQSW Exp:,CH,688710,SHANGHAI INNOSTAR BIO-TECH-A,Common Stock,,True,False,missing_isin
+92015,TSE,Stock,"Series 1 Bond-Type Class Shares of Japan Airlines Co.,Ltd.",JT,92015,JAPAN AIRLINES CO-PREFERENCE,Preference,,False,False,missing_isin
+AAC,NYSE,Stock,Ares Acquisition Corporation III Class A Ordinary Shares,US,AAC,ARES ACQUISITION CORP CL-A,Common Stock,,True,False,missing_isin
+AB-H,TSXV,Stock,Asbestos Corporation Limited,CN,,,,,False,False,no_openfigi_match
+ABND,NYSE ARCA,ETF,American Century Core Plus Income ETF,US,ABND,AMERICN CENT CO PL IN ETF-US,ETP,,True,False,missing_isin
+AC2,ASX,ETF,ALLIED CREDIT ABS TRUST 2025-1P,AT,,,,,False,False,no_openfigi_match
+AC3,ASX,ETF,ALLIED CREDIT ABS TRUST 2025-2,AT,,,,,False,False,no_openfigi_match
+ACBE,NASDAQ,ETF,Pacer Metaurus Enhanced Core Income Autocallable ETF,US,ACBE,PACER MTRS ENHN CR INC A ETF,ETP,,True,False,missing_isin
+ACBH,NASDAQ,ETF,Pacer Metaurus High Income Autocallable ETF,US,ACBH,PACER METAURUS HIGH INC ETF,ETP,,True,True,missing_isin
 ACCL,NASDAQ,Stock,Acco Group Holdings Limited Ordinary Shares,US,ACCL,ACCO GROUP HOLDINGS LTD- A,Common Stock,,True,False,missing_isin
-ACGC,NASDAQ,Stock,ACP Holdings Acquisition Corp.,US,ACGC,ACP HOLDINGS ACQUISITIO-CL A,Common Stock,,True,False,missing_isin
-ACQQ,NASDAQ,ETF,ProShares Nasdaq-100 Autocallable Income ETF,US,ACQQ,PROSHARE NSDQ-100 AC IN ETF,ETP,,True,False,missing_isin
-ACRT,NASDAQ,ETF,ProShares Russell 2000 Autocallable Income ETF,US,ACRT,PROSHARES RTY AUTOCALL ETF,ETP,,False,False,missing_isin
-ACSP,NASDAQ,ETF,ProShares S&P 500 Autocallable Income ETF,US,ACSP,PROSHARES SPX AUTOCALL ETF,ETP,,False,False,missing_isin
-AESP,NASDAQ,Stock,Aeon Acquisition I Corp. - Class A Ordinary Shares,US,AESP,AEON ACQUISITION I CORP-A,Common Stock,,True,True,missing_isin
-AIIR,NASDAQ,Stock,Air Global PLC - Ordinary shares,US,AIIR,AIR HOLDINGS LTD,Common Stock,,True,False,missing_isin
+ACCV,NASDAQ,Stock,Accelevation Holdings Corp. - Class A ordinary shares,US,ACCV,ACCELEVATION HOLDINGS CL-A,Common Stock,,True,False,missing_isin
+ACIG,BATS,ETF,Hartford Alpha Capture International Growth ETF,US,ACIG,HARTFORD ALPH CAPT INTL GRW,ETP,,True,False,missing_isin
+ACL,TSXV,Stock,A.C.L. Construction Ltd.,CN,ACL,ACL CONSTRUCTION LTD,Common Stock,,True,False,missing_isin
+ACS,TSXV,Stock,Archon Minerals Limited,CN,ACS,ARCHON MINERALS LTD,Common Stock,,True,True,missing_isin
+ACSM,BATS,ETF,Hartford Alpha Capture SMID Cap ETF,US,ACSM,HARTFORD ALPH CAPT SMID CAP,ETP,,True,False,missing_isin
+ADBT,NASDAQ,Stock,"Advasa Holdings, Inc. - Common stock",US,ADBT,ADVASA HOLDINGS INC,Common Stock,,True,True,missing_isin
+ADRX,NASDAQ,Stock,"ADARx Pharmaceuticals, Inc. - Common stock",US,ADRX,ADARX PHARMACEUTICALS INC,Common Stock,,True,True,missing_isin
+AEMC,NYSE ARCA,ETF,Harbor AlphaEdge Mid Cap Core ETF,US,AEMC,HARBOR ALPHEDG MC CORE ETF,ETP,,True,False,missing_isin
+AEMG,NYSE ARCA,ETF,Harbor AlphaEdge Mid Cap Growth ETF,US,AEMG,HARBR ALPEDG MID CAP GRW ETF,ETP,,True,False,missing_isin
+AEMV,NYSE ARCA,ETF,Harbor AlphaEdge Mid Cap Value ETF,US,AEMV,HARBOR ALPHAEDGE MC VALU ETF,ETP,,True,False,missing_isin
+AENP,TSX,ETF,AGF Enhanced U.S. Income Plus Fund,CN,AENP,AGF ENHD US INC PS FD ETF,ETP,,True,False,missing_isin
+AER,NYSE,Stock,AerCap Holdings NV,US,AER,AERCAP HOLDINGS NV,Common Stock,,True,True,missing_isin
+AERO,NYSE,Stock,"Grupo Aeroméxico, S.A.B. de C.V.",US,AERO,GRUPO AEROMEXICO SAB DE CV,ADR,,True,True,missing_isin
+AESB,NYSE ARCA,ETF,Harbor AlphaEdge Small Cap Core ETF,US,AESB,HARBOR ALPHEDG SC CORE ETF,ETP,,True,False,missing_isin
+AESG,NYSE ARCA,ETF,Harbor AlphaEdge Small Cap Growth ETF,US,AESG,HARBOR ALPHAEDGE CAP GRW ETF,ETP,,True,True,missing_isin
+AESL,NYSE ARCA,ETF,Harbor AlphaEdge Small Cap Value ETF,US,AESL,HARBOR ALPEDG SMAL CP VL ETF,ETP,,True,False,missing_isin
+AF2,ASX,ETF,ANGLE ASSET FINANCE - RADIAN TRUST 2025-1,AT,,,,,False,False,no_openfigi_match
+AF4,ASX,ETF,AFG 2024-1 TRUST IN RESPECT OF SERIES 2024-1,AT,,,,,False,False,no_openfigi_match
+AF5,ASX,ETF,AFG 2025-1NC TRUST IN RESPECT OF SERIES 2025-1NC,AT,,,,,False,False,no_openfigi_match
+AF6,ASX,ETF,AFG 2025-1 TRUST IN RESPECT OF SERIES 2025-1,AT,,,,,False,False,no_openfigi_match
+AF7,ASX,ETF,ANGLE ASSET FINANCE - RADIAN TRUST 2025-2,AT,,,,,False,False,no_openfigi_match
+AFDM,NASDAQ,ETF,First Trust Active Factor International ETF,US,AFDM,FRST TRST ACT FACT EM ETF-US,ETP,,True,False,missing_isin
+AFEM,NASDAQ,ETF,First Trust Active Factor Emerging Markets ETF,US,AFEM,FRST TRUST AC FACT EM ETF-US,ETP,,True,False,missing_isin
+AFOF11,B3,ETF,Alianza Fofii Fundo De Investimento Imobiliario,BZ,,,,,False,False,no_openfigi_match
+AFR,TSXV,Stock,AFR NuVenture Resources Inc.,CN,,,,,False,False,no_openfigi_match
+AFV.P,TSXV,Stock,Apolo V Acquisition Corp.,CN,,,,,False,False,no_openfigi_match
+AGCX11,B3,ETF,FDO INV IMOB RIO BRAVO RENDA VAREJO - FII,BZ,,,,,False,False,no_openfigi_match
+AGGM,NYSE ARCA,ETF,iShares 1-10 Year U.S. Aggregate Bond ETF,US,AGGM,ISHARES 1-10 YEAR U.S. AGGRE,ETP,,True,False,missing_isin
+AGIG,NYSE MKT,Stock,Abundia Global Impact Group Inc. Common stock,US,AGIG,ABUNDIA GLOBAL IMPACT GROUP,Common Stock,,True,True,missing_isin
+AGMR,TSXV,Stock,Silver Mountain Resources Inc.,CN,AGMR,SILVER MOUNTAIN RESOURCES IN,Common Stock,,True,True,missing_isin
+AGRO,NYSE,Stock,Adecoagro SA,US,AGRO,ADECOAGRO SA,Common Stock,,True,True,missing_isin
+AGUILASCPO,BMV,Stock,OLLAMANI SAB,MM,,,,,False,False,no_openfigi_match
+AHBM,NYSE ARCA,ETF,Amplify Top 10 Asia Memory ETF,US,AHBM,AMPLIFY TOP 10 ASIA MEMORY,ETP,,True,True,missing_isin
+AIBF,NYSE ARCA,ETF,iShares Future AI Beneficiaries ETF,US,AIBF,ISHARES FUTURE AI BENEFS ETF,ETP,,True,True,missing_isin
+AICH,NASDAQ,ETF,China AI ETF,US,AICH,CHINA AI ETF,ETP,,True,True,missing_isin
+AIFR,NASDAQ,ETF,Defiance Global Foundries ETF,US,AIFR,DEFIANCE GLBL FOUNDRIES ETF,ETP,,True,False,missing_isin
+AIH,ASX,Stock,ADVANCED INNERGY HOLDINGS LIMITED,AT,AIH,ADVANCED INNERGY HOLDINGS LT,Common Stock,,True,True,missing_isin
+AIMG,NASDAQ,ETF,Defiance AI Magnificent 10 ETF,US,AIMG,DEFIANCE AI MAGNIFICE 10 ETF,ETP,,True,False,missing_isin
 AIXI,NASDAQ,Stock,Xiao-I Corporation,US,AIXI,XIAO I CORP,ADR,,True,False,missing_isin
-AKAL,BATS,ETF,T-REX 2X Long AKAM Daily Target ETF,US,AKAL,T-REX 2X L AKAM DT TRG  ETF,ETP,,True,False,missing_isin
-ALP,NASDAQ,Stock,Alpha Compute Corp,US,ALP,ALPHA COMPUTE CORP,Common Stock,,True,True,missing_isin
+AJA,TSXV,Stock,Aja Health and Wellness Inc.,CN,AJA,AJA HEALTH AND WELLNESS INC,Common Stock,,True,True,missing_isin
+ALAI,NYSE ARCA,ETF,The Alger ETF Trust,US,ALAI,ALGER AI ENABLE & ADOPT ETF,ETP,,True,False,missing_isin
 ALPS,NASDAQ,Stock,ALPS Group Inc,US,ALPS,ALPS GROUP INC,Common Stock,,True,False,missing_isin
-ALPX,NASDAQ,Stock,Alpex Acquisition Corporation - Class A Ordinary Shares,US,ALPX,ALPEX ACQUISITION CORP-CL A,Common Stock,,True,True,missing_isin
-AMAN,NASDAQ,Stock,Amanat Acquisition Corp,US,AMAN,AMANAT ACQUISITION CORP CL A,Common Stock,,True,True,missing_isin
-AMKX,BATS,ETF,Corgi AMKR 2x Daily ETF,US,AMKX,CORGI AMKR 2X DAILY ETF,ETP,,True,True,missing_isin
-AMZG,BATS,ETF,Leverage Shares 2X Long AMZN Daily ETF,US,AMZG,LEVERAGE SHARES 2X AMZN ETF,ETP,,True,True,missing_isin
-ANGU,NASDAQ,ETF,SEI Ang Research Enhanced U.S. Large Cap ETF,US,ANGU,SEI ANG RESH ENH LRG CAP ETF,ETP,,True,False,missing_isin
-APMC,NASDAQ,Stock,AmperCap Acquisition Company - Ordinary Shares,US,APMC,AMPERCAP ACQUISITION CO,Common Stock,,True,True,missing_isin
-APMD,NASDAQ,Stock,"Apnimed, Inc. - Common Stock",US,APMD,APNIMED INC,Common Stock,,True,True,missing_isin
-APUR,NASDAQ,Stock,Aperture AC,US,APUR,APERTURE AC- CL A,Common Stock,,True,True,missing_isin
-ARCI,NASDAQ,Stock,Archimedes Tech SPAC Partners III Co.,US,ARCI,ARCHIMEDES TECH SPAC PARTNER,Common Stock,,True,True,missing_isin
-ARCL,NASDAQ,Stock,ARC Group Acquisition I Corp,US,ARCL,ARC GROUP ACQUISITION I CORP,Common Stock,,True,True,missing_isin
+ALTERNAB,BMV,Stock,"Alterna Asesoría Internacional, S.A.B. de C.V.",MM,ALTERNAB,ALTERNA ASESORIA INTERNACION,Common Stock,,True,False,missing_isin
+ALTO,IDX,Stock,Tri Banyan Tirta Tbk,IJ,ALTO,TRI BANYAN TIRTA TBK PT,Common Stock,,True,True,missing_isin
+AMAC,NASDAQ,Stock,AMR Resources Acquisition Corp - Class A Ordinary Shares,US,AMAC,AMR RESOURCES ACQUISITION -A,Common Stock,,True,True,missing_isin
+AMAG,IDX,Stock,Asuransi Multi Artha Guna Tbk,IJ,AMAG,ASURANSI MULTI ARTHA GUNA PT,Common Stock,,True,True,missing_isin
+AMDU,TSX,ETF,SavvyLong (2X) AMD ETF,CN,AMDU,SAVVYLONG 2X AMD ETF,ETP,,True,True,missing_isin
+AN3,ASX,Stock,AUSTRALIA AND NEW ZEALAND BANKING GROUP LIMITED.,AT,,,,,False,False,no_openfigi_match
+AO2,ASX,ETF,APOLLO SERIES 2017-2 TRUST,AT,,,,,False,False,no_openfigi_match
+AO3,ASX,ETF,APOLLO SERIES 2018-1 TRUST,AT,,,,,False,False,no_openfigi_match
+APL,TSXV,Stock,Appulse Corporation,CN,APL,APPULSE CORP,Common Stock,,True,True,missing_isin
+AQLL11,B3,ETF,ÁQUILLA FDO INV IMOB - FII,BZ,,,,,False,False,no_openfigi_match
+AQR.P,TSXV,Stock,Anquiro Ventures Ltd.,CN,,,,,False,False,no_openfigi_match
+ARGO,IDX,Stock,Argo Pantes Tbk,IJ,ARGO,ARGO PANTES PT,Common Stock,,True,False,missing_isin
+ARIN,SET,Stock,Arinsiri Land Public Company Limited,TB,ARIN,ARINSIRI LAND PCL,Common Stock,,True,False,missing_isin
+ARKA,IDX,Stock,PT Arkha Jayanti Persada Tbk.,IJ,ARKA,ARKHA JAYANTI PERSADA TBK PT,Common Stock,,True,True,missing_isin
+ARKG,BATS,ETF,ARK Genomic Revolution ETF,US,ARKG,ARK GENOMIC REVOLUTION ETF,ETP,,True,True,missing_isin
+ARKK,BATS,ETF,ARK Innovation ETF,US,ARKK,ARK INNOVATION ETF,ETP,,True,True,missing_isin
 ARKT,BATS,ETF,ARK ETF Trust - Ark Q4 Defined Innovation Etf,US,ARKT,ARK DIET Q4 BUFFER ETF,ETP,,True,False,missing_isin
+ARKY,BATS,ETF,ARK Active Autocallable Income ETF,US,ARKY,ARK ACTIVE AUTOCALL INC ETF,ETP,,True,False,missing_isin
+ARMU,NYSE MKT,ETF,T-Rex 2X Long ARM Daily Target ETF,US,,,,,False,False,no_openfigi_match
 ARWG,BATS,ETF,Archer Investment Series Trust - Archer Growth ETF,US,ARWG,ARCHER GROWTH ETF,ETP,,True,False,missing_isin
-ATTO,NASDAQ,Stock,"Attovia Therapeutics, Inc. - Common Stock",US,ATTO,ATTOVIA THERAPEUTICS INC,Common Stock,,True,True,missing_isin
+ASBH,NYSE,Stock,"American Savings Bank, N.A. Common Stock",US,ASBH,AMERICAN SAVINGS BANK NA,Common Stock,,True,True,missing_isin
+ASPI,NASDAQ,Stock,ASP Isotopes Inc. Common Stock,US,ASPI,ASP ISOTOPES INC,Common Stock,,True,True,missing_isin
+ASPI,IDX,Stock,PT Andalan Sakti Primaindo Tbk.,IJ,ASPI,ANDALAN SAKTI PRIMAINDO TBK,Common Stock,,True,True,missing_isin
+ASRI,IDX,Stock,ALAM SUTERA REALTY Tbk,IJ,ASRI,ALAM SUTERA REALTY TBK PT,Common Stock,,True,True,missing_isin
+ASSX,BATS,ETF,T-REX 2X Long ASST Daily Target ETF,US,ASSX,T-REX 2X LNG AST DLY TRG ETF,ETP,,True,False,missing_isin
+AST,TSXV,Stock,Astron Connect Inc.,CN,AST,ASTRON CONNECT INC,Common Stock,,True,True,missing_isin
+ASX,NYSE,Stock,"ASE Technology Holding Co., Ltd.",US,ASX,ASE TECHNOLOGY HOLDING -ADR,ADR,,True,True,missing_isin
+AT,BATS,ETF,Defiance Robotics Actuators ETF,US,AT,DEFIANCE ROBOTICS ACTUAT ETF,ETP,,True,False,missing_isin
+ATCL,NYSE ARCA,ETF,REX ETF Trust,US,ATCL,REX AUTOCALLABLE INCOME ETF,ETP,,True,False,missing_isin
+ATI,NYSE,Stock,ATI Inc.,US,ATI,ATI INC,Common Stock,,True,False,missing_isin
+ATTT,NASDAQ,Stock,Atlas Trinity Tech Limited - Ordinary Shares,US,ATTT,ATLAS TRINITY TECH LTD,Common Stock,,True,True,missing_isin
 AUC,NASDAQ,Stock,ATIF Holdings Limited,US,AUC,ATIF HOLDINGS LTD,Common Stock,,True,False,missing_isin
-AXTC,BATS,ETF,Corgi AXTI 2x Daily ETF,US,AXTC,CORGI AXTI 2X DAILY ETF,ETP,,True,True,missing_isin
-AYA,NASDAQ,Stock,Aya Gold & Silver Inc.,US,AYA,AYA GOLD & SILVER INC,Common Stock,,True,True,missing_isin
-AZIO,NASDAQ,Stock,"Azio AI Holdings, Inc. - Common stock",US,AZIO,AZIO AI HOLDINGS INC,Common Stock,,True,True,missing_isin
-BABC,BATS,ETF,Corgi BABA 2x Daily ETF,US,BABC,CORGI BABA 2X DAILY ETF,ETP,,True,True,missing_isin
-BAGX,BATS,ETF,EA Bridgeway Aggressive Investors ETF,US,BAGX,EA BRIDGEWAY AGGR INVEST ETF,ETP,,True,False,missing_isin
-BBUL,NASDAQ,ETF,GraniteShares 2x Long BB Daily ETF,US,BBUL,GRANITESHARES 2X LONG BB ETF,ETP,,True,True,missing_isin
-BCCQ,NASDAQ,Stock,Bleichroeder Acquisition Corp. III - Class A Ordinary Shares,US,BCCQ,BLEICHROEDER ACQUISITION C-A,Common Stock,,True,True,missing_isin
-BEMD,BATS,ETF,BNY Mellon Emerging Markets Debt ETF,US,BEMD,BNY MLN EMRGNG MKT DBT ETF,ETP,,True,False,missing_isin
-BGFI,BATS,ETF,BNY Mellon Global Fixed Income ETF,US,BGFI,BNY MELLON GLBL FXD INCM ETF,ETP,,True,False,missing_isin
-BGUS,NASDAQ,ETF,Baillie Gifford U.S. Equity Growth ETF,US,BGUS,BAILLIE GIFF US EQTY GRT ETF,ETP,,True,False,missing_isin
-BLSM,NASDAQ,Stock,"BlossomHill Therapeutics, Inc. - Common Stock",US,BLSM,BLOSSOMHILL THERAPEUTICS INC,Common Stock,,True,True,missing_isin
-BMSI,BATS,ETF,BNY Mellon Muti-Sector Income ETF,US,BMSI,BNY MELN MULTI-SCTR INCM ETF,ETP,,True,False,missing_isin
-BNAV,BATS,ETF,Amplify Fairlead Tactical Bitcoin ETF,US,BNAV,AMPLIFY FAIRLEAD TAC BITCOIN,ETP,,True,True,missing_isin
-BNMC,BATS,ETF,Corgi BMNR 2x Daily ETF,US,BNMC,CORGI BMNR 2X DAILY ETF,ETP,,True,True,missing_isin
-BREZ,NASDAQ,Stock,Breeze Acquisition Corp. II,US,BREZ,BREEZE ACQUISITION COR -ORD,Common Stock,,True,False,missing_isin
+AUXX,NYSE MKT,Stock,Gold X2 Mining Inc. Common Shares,US,AUXX,GOLD X2 MINING INC,Common Stock,,True,True,missing_isin
+AVNC,NYSE ARCA,ETF,Avantis All International Core Equity ETF,US,AVNC,AVANTIS ALL INTL CORE EQ ETF,ETP,,True,False,missing_isin
+AVX,TSXV,Stock,Altair Resources Inc.,CN,AVX,ALTAIR RESOURCES INC,Common Stock,,True,True,missing_isin
+AXTQ,BATS,ETF,Tradr 2X Short AXTI Daily ETF,US,AXTQ,TRADR 2X SHRT AXTI DAILY ETF,ETP,,True,True,missing_isin
+BA2,ASX,ETF,SERIES 2019-1 REDS TRUST,AT,,,,,False,False,no_openfigi_match
+BAFS,SET,Stock,Bangkok Aviation Fuel Services Public Company Limited,TB,BAFS,BANGKOK AVIATION FUEL SERVIC,Common Stock,,True,True,missing_isin
+BAL-H,TSXV,Stock,Balto Resources Ltd,CN,,,,,False,False,no_openfigi_match
+BALI,IDX,Stock,PT Bali Towerindo Sentra Tbk.,IJ,BALI,BALI TOWERINDO SENTRA TBK PT,Common Stock,,True,True,missing_isin
+BAQ.P,TSXV,Stock,Bluewater Acquisition Corp.,CN,,,,,False,False,no_openfigi_match
+BBAR,NYSE,Stock,Banco BBVA Argentina S.A. ADS,US,BBAR,BBVA ARGENTINA SA-ADR,ADR,,True,True,missing_isin
+BBD,TSX,Stock,Bombardier Inc.,CN,,,,,False,False,no_openfigi_match
+BBLS,NYSE ARCA,ETF,Munificent Seven ETF,US,BBLS,MUNIFICENT SEVEN ETF,ETP,,True,True,missing_isin
+BCPL,NYSE ARCA,ETF,BNY Mellon ETF Trust II,US,BCPL,BNY MELLON CORE PLUS ETF,ETP,,True,False,missing_isin
+BEAR,TSXV,Stock,Big Bear Gold Corp.,CN,BEAR,BIG BEAR GOLD CORP,Common Stock,,True,True,missing_isin
+BEBE,NYSE,Stock,TGE Value Creative Solutions Corp,US,BEBE,TGE VALUE CREATIVE SOLU-CL A,Common Stock,,True,True,missing_isin
+BEK,TSX,Stock,Becker Milk Company Ltd. (The),CN,,,,,False,False,no_openfigi_match
+BELL,IDX,Stock,PT Trisula Textile Industries Tbk,IJ,BELL,TRISULA TEXTILE INDUSTRIES T,Common Stock,,True,True,missing_isin
+BESS,IDX,Stock,PT Batulicin Nusantara Maritim Tbk.,IJ,BESS,BATULICIN NUSANTARA MARITIM,Common Stock,,True,True,missing_isin
+BEST,IDX,Stock,Bekasi Fajar Industrial Estate Tbk,IJ,BEST,BEKASI FAJAR INDUSTRIAL ESTA,Common Stock,,True,True,missing_isin
+BFOC,NYSE ARCA,ETF,FT Vest Bitcoin Strat Floor15 ETF - Oct,US,BFOC,FT VEST BITCOIN SF15 ETF-OCT,ETP,,True,True,missing_isin
+BGI,TSX,ETF,Brookfield Global Infrastructure Securities Income Fund,CN,,,,,False,False,no_openfigi_match
+BHAT,IDX,Stock,PT Bhakti Multi Artha Tbk.,IJ,BHAT,BHAKTI MULTI ARTHA TBK PT,Common Stock,,True,True,missing_isin
+BIO.B,NYSE,Stock,"Bio-Rad Laboratories, Inc. Class B  Common Stock",US,,,,,False,False,no_openfigi_match
+BIPI,IDX,Stock,PT Astrindo Nusantara Infrastruktur Tbk.,IJ,BIPI,ASTRINDO NUSANTARA INFRASTRU,Common Stock,,True,False,missing_isin
+BITI,NYSE ARCA,ETF,ProShares Short Bitcoin ETF,US,BITI,PROSHARES SHORT BITC ETF-USD,ETP,,True,False,missing_isin
+BKFI,NYSE ARCA,ETF,BNY Mellon ETF Trust II,US,BKFI,BNY MELLON ACTV CORE BND ETF,ETP,,True,False,missing_isin
+BLX,NYSE,Stock,"Bladex, Inc.",US,BLX,BLADEX INC,Common Stock,,True,True,missing_isin
+BNXA,TSXV,Stock,Banxa Holdings Inc.,CN,,,,,False,False,no_openfigi_match
+BOGO,TSXV,Stock,Borealis Mining Company Limited,CN,BOGO,BOREALIS MINING CO LTD,Common Stock,,True,True,missing_isin
+BP1,ASX,Stock,BP CAPITAL MARKETS P.L.C.,AT,,,,,False,False,no_openfigi_match
+BPF,TSX,ETF,Boston Pizza Royalties Income Fund,CN,,,,,False,False,no_openfigi_match
+BPO,TSX,Stock,Brookfield Office Properties Inc.,CN,,,,,False,False,no_openfigi_match
+BPRE,NYSE,ETF,Bluerock Private Real Estate Fund,US,BPRE,BLUEROCK PRIVATE REAL ESTATE,Closed-End Fund,,True,True,missing_isin
 BRHY,NASDAQ,ETF,BlackRock High Yield ETF,US,BRHY,ISHARES HIGH YILD ACTIVE ETF,ETP,,True,False,missing_isin
 BRKD,NASDAQ,ETF,Direxion Daily BRKB Bear 1X Shares,US,,,,,False,False,no_openfigi_match
-BRKH,NASDAQ,Stock,Burtech Acquisition Corp II - Class A Ordinary Shares,US,BRKH,BURTECH ACQUISITION CO- CL A,Common Stock,,True,False,missing_isin
-BRKL,BATS,ETF,Corgi BRKB 2x Daily ETF,US,BRKL,CORGI BRKB 2X DAILY ETF,ETP,,True,True,missing_isin
 BRKRP,NASDAQ,Stock,Bruker Corporation 6.375% Mandatory Convertible Preferred Stock Series A,US,,,,,False,False,no_openfigi_match
-BRNX,NASDAQ,Stock,BrenX Ltd. - Ordinary Shares,US,BRNX,BRENX LTD,Common Stock,,True,True,missing_isin
-BRSV,BATS,ETF,EA Bridgeway Select Small-Cap Value ETF,US,BRSV,EA BRDGWY SLCT SML-CP VL ETF,ETP,,True,False,missing_isin
-BRVE,NASDAQ,Stock,"Braveheart Bio, Inc. - Common Stock",US,BRVE,BRAVEHEART BIO INC,Common Stock,,True,True,missing_isin
-BTDL,NASDAQ,ETF,GraniteShares 2x Long BTDR Daily ETF,US,BTDL,GRANITESHRS 2X LG BTDR DAILY,ETP,,True,False,missing_isin
-BUSM,BATS,ETF,EA Bridgeway Ultra-Small Company Market ETF,US,BUSM,EA BGW ULTR-SML CO MKT ETF,ETP,,True,False,missing_isin
-BWQG,BATS,ETF,BWM Quality Growth ETF,US,BWQG,BWM QUALITY GROWTH ETF,ETP,,True,True,missing_isin
-BXBL,NASDAQ,Stock,"BOXABL, Inc.  - Common stock",US,BXBL,BOXABL INC,Common Stock,,True,True,missing_isin
-CAII,NASDAQ,Stock,Collective Acquisition Corp. II - Class A Ordinary Shares,US,CAII,COLLECTIVE ACQUIS CORP CL-A,Common Stock,,True,False,missing_isin
-CAQ,NASDAQ,Stock,Cambridge Acquisition Corp.,US,CAQ,CAMBRIDGE ACQUISITION CORP-A,Common Stock,,True,True,missing_isin
+BRNA,IDX,Stock,Berlina Tbk,IJ,BRNA,BERLINA TBK PT,Common Stock,,True,True,missing_isin
+BRTM,NASDAQ,Stock,B&R Technology Merger Corp. - Class A Ordinary Shares,US,BRTM,B&R TECHNOLOGY MERGER CORP,Common Stock,,True,True,missing_isin
+BRZD,BATS,ETF,MicroSectors -3x Short Brazil ETNs,US,BRZD,MICROSECTORS 3X SHR BRZ ETN,ETP,,True,False,missing_isin
+BRZL,BATS,ETF,MicroSectors 3x Long Brazil ETNs,US,BRZL,MICROSECTO 3X LG BRAZIL ETNS,ETP,,True,False,missing_isin
+BS1,ASX,ETF,BLUESTONE PRIME 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+BSMA,NASDAQ,ETF,Invesco BulletShares 2036 Municipal Bond ETF,US,BSMA,INVESC BS 2036 MNCPL BND ETF,ETP,,True,False,missing_isin
+BSOL,NYSE ARCA,ETF,Bitwise Solana Staking ETF,US,BSOL,BITWISE SOLANA STAKING ETF,ETP,,True,True,missing_isin
+BST,TSXV,Stock,Bessor Minerals Inc.,CN,BST,BESSOR MINERALS INC,Common Stock,,True,True,missing_isin
+BTA,NYSE ARCA,ETF,Beacon Tactical Alternatives Risk ETF,US,BTA,BECN TCTICAL ALRTIVS RSK ETF,ETP,,True,False,missing_isin
+BTB,TSX,ETF,BTB Real Estate Investment Trust,CN,,,,,False,False,no_openfigi_match
+BTFD,NYSE,ETF,Valkyrie Bitcoin Strategy ETF,US,,,,,False,False,no_openfigi_match
+BUIL,BATS,ETF,Rebuild America ETF,US,BUIL,REBUILD AMERICA ETF,ETP,,True,True,missing_isin
+BULL,IDX,Stock,PT Buana Lintas Lautan Tbk.,IJ,BULL,BUANA LINTAS LAUTAN TBK PT,Common Stock,,True,True,missing_isin
+BURU,NYSE MKT,Stock,"Nuburu, Inc. Common Stock",US,BURU,NUBURU INC,Common Stock,,True,True,missing_isin
+BW6,ASX,ETF,BLACKWATTLE SERIES RMBS TRUST NO.6,AT,,,,,False,False,no_openfigi_match
+BYLD-B,NEO,ETF,MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS,CN,,,,,False,False,no_openfigi_match
+C3RP3,B3,Stock,COTRASA PARTICIPACOES S.A.,BZ,,,,,False,False,no_openfigi_match
+CAG,TSXV,Stock,Composite Alliance Group Inc.,CN,CAG,COMPOSITE ALLIANCE GROUP INC,Common Stock,,True,True,missing_isin
+CAMP,IDX,Stock,PT Campina Ice Cream Industry Tbk.,IJ,CAMP,CAMPINA ICE CREAM INDUSTRY P,Common Stock,,True,True,missing_isin
+CAPA,BATS,ETF,Defiance AI Capacitors Leaders ETF,US,CAPA,DEFIANCE AI CAPACITORS & MLC,ETP,,True,True,missing_isin
+CAPQ,TSX,ETF,Capital Group Global Developed Equity Select ETF (Canada),CN,CAPQ,CAP GROUP GLB DEV EQ ETF,ETP,,True,False,missing_isin
+CARS,IDX,Stock,PT Industri dan Perdagangan Bintraco Dharma Tbk,IJ,CARS,INDUSTRI DAN PERDAGANGAN BIN,Common Stock,,True,False,missing_isin
+CASS,IDX,Stock,Cahaya Aero Services Tbk,IJ,CASS,PT CAHAYA AERO SERVICES TBK,Common Stock,,True,True,missing_isin
+CATL,NASDAQ,Stock,Catalyst Acquisition Corp. - Class A Ordinary Share,US,CATL,CATALYST ACQUISITION-CL A,Common Stock,,True,True,missing_isin
+CATR,TSX,Stock,Caterpillar CDR (CAD Hedged),CN,CATR,CATERPILLAR INC-CDR,Canadian DR,,True,True,missing_isin
 CBXJ,BATS,ETF,Calamos Bitcoin 90% Protection Strategy ETF - Month TBD 1,US,CBXJ,CALAMOS BITCOIN 90 P ETF JAN,ETP,,False,False,missing_isin
-CCCT,NASDAQ,Stock,Columbus Circle Capital Corp III - Class A Ordinary Shares,US,CCCT,COLUMBUS CIRCLE CAPITAL CO-A,Common Stock,,True,True,missing_isin
+CCGP,TSX,ETF,Counterpoint Global CIBC Global Permanence ETF,CN,CCGP,CNTPT GBL CIBC GBL PRMCE ETF,ETP,,True,False,missing_isin
+CCIP,TSX,ETF,Counterpoint Global CIBC International Permanence ETF,CN,CCIP,COUNTER G CIBC IP ETF,ETP,,True,False,missing_isin
+CCML,NASDAQ,ETF,Roundhill MLCC & Electronic Components ETF,US,CCML,ROUNDIL MLC & ELTRIC CMP ETF,ETP,,True,False,missing_isin
+CCOM.B,TSX,ETF,CI Auspice Broad Commodity ETF - Unhedged Common Units Acc,CN,,,,,False,False,no_openfigi_match
+CCUL,TSX,ETF,Counterpoint Global CIBC U.S. Large Cap Growth ETF,CN,CCUL,COUNTER GLOB CIBC LCG ETF,ETP,,True,False,missing_isin
+CCUS,TSX,ETF,Counterpoint Global CIBC U.S. Small Cap Growth ETF,CN,CCUS,COUNTERPOINT GLOB CIBC S ETF,ETP,,True,False,missing_isin
+CEGS,TSX,Stock,Constellation Energy CDR (CAD Hedged),CN,CEGS,CONSTELLATION ENERGY CORP,Canadian DR,,True,True,missing_isin
 CEPL,NASDAQ,Stock,"Capstone Energy Plus, Inc. - Common Stock",US,CEPL,CAPSTONE ENERGY+ INC,Common Stock,,True,True,missing_isin
-CGPT,NASDAQ,ETF,VegaShares AI Inference ETF,US,CGPT,VEGASHARES AI INFERENCE ETF,ETP,,True,True,missing_isin
-CHDG,BATS,ETF,Calamos Active Hedged Equity ETF,US,CHDG,CALAMOS ACTV HEDGED EQTY ETF,ETP,,True,False,missing_isin
+CESG-B,NEO,ETF,CI First Asset MSCI World ESG Impact ETF,CN,,,,,False,False,no_openfigi_match
+CFND,NYSE,ETF,C1 Fund Inc.,US,CFND,C1 FUND INC,Closed-End Fund,,True,True,missing_isin
+CGCF,NASDAQ,Stock,Cartesian Growth Corporation IV - Class A Ordinary Shares,US,CGCF,CARTESIAN GROWTH CORP IV-A,Common Stock,,True,True,missing_isin
+CGFS,BATS,ETF,CG Flagship Equity ETF,US,CGFS,CG FLAGSHIP EQUITY ETF,ETP,,True,True,missing_isin
+CHCL-B,NEO,ETF,CI Global Healthcare Leaders Index ETF,CN,,,,,False,False,no_openfigi_match
+CHCL.B,TSX,ETF,CI Global Healthcare Leaders Index ETF,CN,,,,,False,False,no_openfigi_match
 CHGA,NASDAQ,Stock,Change Agents Corporation  - Common Stock,US,CHGA,CHANGE AGENTS CORP,Common Stock,,True,True,missing_isin
-CIGL,NASDAQ,Stock,Concorde International Group Ltd - Class A Ordinary Shares,US,CIGL,CONCORDE INTERNATION-CLASS A,Common Stock,,True,False,missing_isin
-CMII,NASDAQ,Stock,Columbus Circle Capital Corp II,US,CMII,COLUMBUS CIRCLE CAPITAL CO-A,Common Stock,,True,True,missing_isin
+CHIP,NASDAQ,ETF,REX AI Chipmaking ETF,US,CHIP,REX AI CHIPMAKING ETF,ETP,,True,True,missing_isin
+CIEB,BMV,Stock,Corporación Interamericana de Entretenimiento S.A.B. de C.V,MM,CIEB,CORP INTERAMERICANA ENTRET-B,Common Stock,,True,False,missing_isin
+CIRC,NASDAQ,Stock,"Circle8 Group, Inc. - Common Stock",US,CIRC,CIRCLE8 GROUP INC,Common Stock,,True,True,missing_isin
+CIU,TSX,Stock,CU Inc.,CN,,,,,False,False,no_openfigi_match
+CLCV,NYSE ARCA,ETF,Crossmark ETF Trust,US,CLCV,CROSSMARK LARGECAPVALUE ETF,ETP,,True,False,missing_isin
+CLU,NEO,ETF,iShares US Fundamental Hedged Common Class,CN,CLU,ISHARES US FUNDAMENTAL INDEX,ETP,,True,True,missing_isin
+CLU-C,NEO,ETF,iSHARES US FUNDAMENTAL INDEX ETF,CN,,,,,False,False,no_openfigi_match
+CLUP,TSX,ETF,SavvyLong Geared Crude Oil ETF,CN,,,,,False,False,no_openfigi_match
+CMAX,TSX,ETF,Hamilton Canadian Equity YIELD MAXIMIZER TM ETF,CN,CMAX,HMLTN CN EQ YIELD MAXI ETF,ETP,,True,False,missing_isin
+CMCC,TSX,ETF,Global X All-In-One Commodity Producers Equity Covered Call ETF,CN,CMCC,GLOBAL X AIO COMM PRO EQ CC,ETP,,True,False,missing_isin
+CMGS,TSX,Stock,Chipotle CDR (CAD Hedged),CN,CMGS,CHIPOTLE MEXICAN GRILL INC,Canadian DR,,True,False,missing_isin
+CMU,TSXV,Stock,Comet Industries Ltd.,CN,CMU,COMET INDUSTRIES,Common Stock,,True,True,missing_isin
+CNCO,TSXV,Stock,Core Nickel Corp.,CN,,,,,False,False,no_openfigi_match
+CNEQ,NYSE ARCA,ETF,The Alger ETF Trust,US,CNEQ,ALGER CONCENTRATED EQTY ETF,ETP,,True,False,missing_isin
 CNSY,NASDAQ,Stock,"Cerenome, Inc. - Common Stock",US,CNSY,CERENOME INC,Common Stock,,True,True,missing_isin
-COHC,BATS,ETF,Corgi COHR 2x Daily ETF,US,COHC,CORGI COHR 2X DAILY ETF,ETP,,True,True,missing_isin
+CNYA,BATS,ETF,iShares MSCI China A ETF,US,CNYA,ISHARES MSCI CHINA A ETF,ETP,,True,True,missing_isin
+COHQ,BATS,ETF,Tradr 2X Short COHR Daily ETF,US,COHQ,TRADR 2X SHORT COHR DILY ETF,ETP,,True,True,missing_isin
+COII,BATS,ETF,REX COIN Growth & Income ETF,US,,,,,False,False,no_openfigi_match
 COIW,BATS,ETF,COIN WeeklyPay™ ETF,US,COIW,ROUNDHILL COIN WEEKLYPAY ETF,ETP,,True,False,missing_isin
-COOL,NASDAQ,ETF,"VegaShares AI Thermal, Cooling & Power Management ETF",US,COOL,VSHARES AI THERMAL CPM ETF,ETP,,True,False,missing_isin
-CPTL,NASDAQ,ETF,Global X Morningstar Capital Allocation Leaders ETF,US,CPTL,GBL X MRST CP ALC LDR ETF-UI,ETP,,True,False,missing_isin
-CRWC,BATS,ETF,Corgi CRWD 2x Daily ETF,US,CRWC,CORGI CRWD 2X DAILY ETF,ETP,,True,True,missing_isin
-CRWX,BATS,ETF,Corgi CRWV 2x Daily ETF,US,CRWX,CORGI CRWV 2X DAILY ETF,ETP,,True,True,missing_isin
-CTAU,BATS,ETF,Corgi U.S. Equities 30% Structured Buffer ETF - August Series,US,CTAU,CORGI US EQ 30% STR BUF-AUG,ETP,,True,False,missing_isin
+COP-U,TSX,Stock,Sprott Physical Copper Trust,CN,COP-U,SPROTT PHYSICAL COPPER TRUST,Closed-End Fund,,True,True,missing_isin
+COPA,BATS,ETF,Themes Copper Miners ETF,US,COPA,THEMES COPPER MINERS ETF,ETP,,True,True,missing_isin
+CORN,NYSE ARCA,ETF,Teucrium Corn Fund,US,CORN,TEUCRIUM CORN FUND,ETP,,True,True,missing_isin
+CPRO,IDX,Stock,Central Proteina Prima Tbk,IJ,CPRO,CENTRAL PROTEINAPRIMA TBK PT,Common Stock,,True,False,missing_isin
+CPTS11B,B3,ETF,Capitania Securities II Fundo Investimento Imobiliario FII,BZ,,,,,False,False,no_openfigi_match
+CPW,SET,Stock,Copperwired Public Company Limited,TB,CPW,COPPERWIRED PCL,Common Stock,,True,False,missing_isin
+CRAM,NASDAQ,ETF,Defiance China Memory ETF,US,CRAM,DEFIANCE CHINA MEMORY ETF,ETP,,True,True,missing_isin
+CRD,TSXV,Stock,Copper Road Resources Inc.,CN,CRD,COPPER ROAD RESOURCES INC,Common Stock,,True,True,missing_isin
+CRH,NYSE,Stock,CRH PLC Ordinary Shares,US,CRH,CRH PLC,Common Stock,,True,False,missing_isin
+CROB,NASDAQ,ETF,Defiance China Robotics ETF,US,CROB,DEFIANCE CHINA ROBOTICS ETF,ETP,,True,True,missing_isin
+CSEP,BATS,ETF,Corgi U.S. Equities 15% Structured Buffer ETF - September Series,US,CSEP,CORGI US EQ 15% STR BUFF-SEP,ETP,,True,False,missing_isin
+CSQR,NYSE,Stock,"Csquare, Inc. Common Stock",US,CSQR,CSQUARE INC,Common Stock,,True,True,missing_isin
+CTAXTELA,BMV,Stock,"Controladora Axtel, S.A.B. de C.V.",MM,CTAXTELA,CONTROLADORA AXTEL SAB DE CV,Common Stock,,True,True,missing_isin
+CTRA,IDX,Stock,Ciputra Development Tbk,IJ,CTRA,CIPUTRA DEVELOPMENT TBK PT,Common Stock,,True,True,missing_isin
+CTSE,BATS,ETF,Corgi U.S. Equities 30% Structured Buffer ETF - September Series,US,CTSE,CORGI US EQ 30% STR BUFF-SEP,ETP,,True,False,missing_isin
+CTTH,IDX,Stock,Citatah Tbk,IJ,CTTH,CITATAH TBK PT,Common Stock,,True,True,missing_isin
 CTW,NASDAQ,Stock,CTW - Class A Ordinary Shares,US,CTW,CTW,Common Stock,,True,False,missing_isin
-DDFG,BATS,ETF,Innovator Equity Dual Directional 15 Buffer ETF - August,US,DDFG,INVTR EQ DD 15 BFR ETF - AUG,ETP,,True,False,missing_isin
-DDTG,BATS,ETF,Innovator Equity Dual Directional 10 Buffer ETF - August,US,DDTG,INVTR EQ DD 10 BFR ETF - AUG,ETP,,True,False,missing_isin
-DGJL,BATS,ETF,FT Vest U.S. Equity Buffer & Digital Return ETF - July,US,DGJL,FT VST US EQT BFR DG ETF JUL,ETP,,True,False,missing_isin
-DLCU,NASDAQ,ETF,U.S. Large Company Portfolio: ETF Class Shares,US,DLCU,DIMENSIONAL US LARG CO ETF,ETP,,True,False,missing_isin
-DPU,NASDAQ,Stock,Top KingWin Ltd - Class A Ordinary Shares,US,DPU,TOP KINGWIN LTD-A,Common Stock,,True,True,missing_isin
-DRAM,BATS,ETF,Roundhill Memory ETF,US,DRAM,ROUNDHILL MEMORY ETF,ETP,,True,True,missing_isin
-ELOL,NASDAQ,ETF,Leverage Shares 100% TSLA AND 100% SPCX Daily ETF,US,ELOL,LVRG SHRS TSLA & SPCX D ETF,ETP,,False,False,missing_isin
+CUTE,TSX,ETF,Evolve Canadian Utilities Yield Fund,CN,CUTE,EVOLVE CNDN UTILIT YIELD FND,ETP,,True,False,missing_isin
+CYG,TSXV,Stock,Cygnus Metals Limited,CN,CYG,CYGNUS METALS LTD,Common Stock,,True,True,missing_isin
+D10,ASX,ETF,DRIVER AUSTRALIA TEN TRUST,AT,,,,,False,False,no_openfigi_match
+DA8,ASX,ETF,DRIVER AUSTRALIA EIGHT TRUST,AT,,,,,False,False,no_openfigi_match
+DA9,ASX,ETF,DRIVER AUSTRALIA NINE TRUST,AT,,,,,False,False,no_openfigi_match
+DACU,TSX,ETF,Desjardins Active Canadian Bond Universe ETF,CN,DACU,DSJRDN ACTV CND BD UNVRS ETF,ETP,,True,False,missing_isin
+DAGL,TSX,ETF,Desjardins Global Opportunities ETF,CN,DAGL,DESJARDINS GLOBAL OPPORT ETF,ETP,,True,False,missing_isin
+DAQ.P,TSXV,Stock,Dominus Acquisition Corp.,CN,,,,,False,False,no_openfigi_match
+DAVI,LSE,Stock,DAVION HEALTHCARE PLC,LN,,,,,False,False,no_openfigi_match
+DAY,TSX,Stock,"Dayforce, Inc.",CN,DAY,DAYFORCE INC,Common Stock,,True,True,missing_isin
+DBAR,NYSE ARCA,ETF,IMGP DBI Absolute Return ETF,US,DBAR,IMGP DBI ABSOLUTE RETURN ETF,ETP,,True,True,missing_isin
+DCAP,BATS,ETF,T-Strive Digital Credit Preferred Income ETF,US,DCAP,T-STRIVE DIGITAL CRD PFD ETF,ETP,,True,False,missing_isin
+DCPE,NYSE ARCA,ETF,DoubleLine Shiller CAPE US Equities ETF,US,,,,,False,False,no_openfigi_match
+DEAL,IDX,Stock,PT Dewata Freightinternational Tbk.,IJ,DEAL,DEWATA FREIGHTINTERNATIONAL,Common Stock,,True,True,missing_isin
+DGAC,NYSE,Stock,Disciplined Growth Acquisition Corporation Class A Ordinary Shares,US,DGAC,DISCIPLINED GROWTH CL-A,Common Stock,,True,False,missing_isin
+DGC,TSXV,Stock,Daura Gold Corp.,CN,DGC,DAURA GOLD CORP,Common Stock,,True,True,missing_isin
+DGGB,TSX,ETF,Desjardins Global Government Bond Index ETF,CN,DGGB,DESJARDINS GBL GOV BD ETF,ETP,,True,False,missing_isin
+DHLX,NYSE ARCA,ETF,Diamond Hill Funds,US,DHLX,DIAMOND HILL LC CONCEN ETF,ETP,,True,False,missing_isin
+DHPL,PSX,Stock,DH Partners Ltd.,PA,DHPL,DH PARTNERS LTD,Common Stock,,True,True,missing_isin
+DIABLOI10,BMV,ETF,ETF Diario Inverso de Bolsa (DIABLOI),MM,,,,,False,False,no_openfigi_match
+DICE,BATS,ETF,Tema Trading & Prediction Markets ETF,US,DICE,TEMA TRAD & PREDICT MRKT ETF,ETP,,True,False,missing_isin
+DIR,TSX,ETF,Dream Industrial Real Estate Investment Trust,CN,,,,,False,False,no_openfigi_match
+DIVH,NYSE ARCA,ETF,Integrity Dividend Harvest ETF,US,DIVH,INTEGRITY DIVIDEND HRVST ETF,ETP,,True,False,missing_isin
+DIVY.U,TSX,ETF,Global X Active U.S. Dividend ETF,CN,,,,,False,False,no_openfigi_match
+DLA,NYSE MKT,Stock,"Delta Apparel, Inc.",US,,,,,False,False,no_openfigi_match
+DLC,TSXV,Stock,DLC Holdings Corp.,CN,DLC,DLC HOLDINGS CORP,Common Stock,,True,False,missing_isin
+DLR,NYSE,Stock,Digital Realty Trust Inc,US,DLR,DIGITAL REALTY TRUST INC,REIT,,True,True,missing_isin
+DLTA,IDX,Stock,Delta Djakarta Tbk,IJ,DLTA,DELTA DJAKARTA TBK PT,Common Stock,,True,True,missing_isin
+DMN,ASX,Stock,DOMINION INVESTMENT GROUP LIMITED,AT,,,,,False,False,no_openfigi_match
+DMTX,PSX,Stock,D. M. Textile Mills Limited,PA,,,,,False,False,no_openfigi_match
+DMXU,NYSE ARCA,ETF,Xtrackers Bloomberg Developed Markets ex US Equity ETF,US,DMXU,XTRCKR BBG DEV MK EX USE ETF,ETP,,True,False,missing_isin
+DNTL,TSX,Stock,dentalcorp Holdings Ltd.,CN,,,,,False,False,no_openfigi_match
+DOCT,BATS,ETF,FT Vest U.S. Equity Deep Buffer ETF - October,US,DOCT,FT VEST U.S. EQUITY DEEP BUF,ETP,,True,True,missing_isin
+DOD,SET,Stock,DOD Biotech Public Company Limited,TB,DOD,DOD BIOTECH PCL,Common Stock,,True,False,missing_isin
+DPC,NYSE,Stock,DPC Holdings PLC Ordinary Shares,US,DPC,DPC HOLDINGS PLC,Common Stock,,True,False,missing_isin
+DPM,TSX,Stock,Dundee Precious Metals Inc,CN,DPM,DPM METALS INC,Common Stock,,True,False,missing_isin
+DQSE,BATS,ETF,FT Vest Nasdaq-100 Dual Directional Buffer ETF - September,US,DQSE,FT NSDQ-100 DUL DRCT ETF-SEP,ETP,,True,False,missing_isin
+DSPC,BATS,ETF,Leverage Shares 1X Short SPCX Daily ETF,US,DSPC,LEVERAGE SHARS 1X SHORT SPCX,ETP,,True,True,missing_isin
+DTEA,TSXV,Stock,DAVIDsTEA Inc.,CN,DTEA,DAVIDSTEA INC,Common Stock,,True,True,missing_isin
+DTG,NYSE,Stock,DTE Energy Company 2021 Series E,US,,,,,False,False,no_openfigi_match
+DUIG,TSX,ETF,Desjardins US Investment Grade Corporate Bond Index ETF,CN,DUIG,DESJARDINS US IG CORP ETF,ETP,,True,False,missing_isin
+DUSIT,SET,Stock,Dusit Thani Public Company Limited,TB,DUSIT,DUSIT THANI PUBLIC CO LTD,Common Stock,,True,True,missing_isin
+DXA,ASX,Stock,CAISSE FRANCAISE DE FINANCEMENT LOCAL,AT,,,,,False,False,no_openfigi_match
+EAFH,BATS,ETF,Xtrackers MSCI EAFE 50% Hedged Equity ETF,US,EAFH,XTRACKERS MSCI EAFE 50% HEDG,ETP,,True,True,missing_isin
+EDGE,IDX,Stock,PT Indointernet Tbk.,IJ,EDGE,INDOINTERNET TBK PT,Common Stock,,True,True,missing_isin
+EDUCA18,BMV,Stock,"Fideicomiso Irrevocable No. F/3277 en Banco Invex, S. A. Institución de Banca Múltiple, INVEX Grupo",MM,EDUCA18,FIBRA EDUCA,REIT,,False,False,missing_isin
+EIT,TSX,ETF,Canoe EIT Income Fund,CN,,,,,False,False,no_openfigi_match
+ELL,TSXV,Stock,Everybody Loves Languages Corp.,CN,ELL,EVERYBODY LOVES LANGUAGES CO,Common Stock,,True,True,missing_isin
+ELM,TSXV,Stock,Element Lifestyle Retirement Inc.,CN,ELM,ELEMENT LIFESTYLE RETIREMENT,Common Stock,,True,True,missing_isin
+ELY,TSXV,Stock,Electrum Discovery Corp.,CN,ELY,ELECTRUM DISCOVERY CORP,Common Stock,,True,True,missing_isin
+EMDE,IDX,Stock,Megapolitan Developments Tbk,IJ,EMDE,MEGAPOLITAN DEVELOPMENTS TBK,Common Stock,,True,True,missing_isin
+EMDV,BATS,ETF,ProShares MSCI Emerging Markets Dividend Growers ETF,US,EMDV,PROSHARES MSCI EMERGING MARK,ETP,,True,True,missing_isin
+EMSE,BATS,ETF,Corgi Emerging Markets Equities 15% Structured Buffer ETF - September Series,US,EMSE,CORGI EMR MRK EQ 15% STR-SEP,ETP,,True,False,missing_isin
 ENAV,BATS,ETF,Collaborative Investment Series Trust - Mohr Sector Navigator ETF,US,,,,,False,False,no_openfigi_match
-EU,NASDAQ,Stock,enCore Energy Corp.,US,EU,ENCORE ENERGY CORP,Common Stock,,True,True,missing_isin
-EWAV,NASDAQ,Stock,East West Ave Acquisition Corp. - Common Stock,US,EWAV,EAST WEST AVE ACQUISITION CO,Common Stock,,True,True,missing_isin
-FDMM,NASDAQ,Stock,Freedom Metals Acquisition Corp. - Class A Ordinary Shares,US,FDMM,FREEDOM METALS ACQUISITION-A,Common Stock,,True,True,missing_isin
+ENHE,NASDAQ,ETF,iShares Enhanced Emerging Markets Active ETF,US,ENHE,ISHARES EE MARKETS ACTIV ETF,ETP,,True,False,missing_isin
+ENRG,NYSE ARCA,ETF,Ninepoint North American Energy Independence ETF,US,ENRG,NINEPOINT NA ENERGY INDEPEN,ETP,,True,False,missing_isin
+EOCN,NASDAQ,Stock,Eocene Ltd. - Ordinary Shares,US,EOCN,EOCENE LTD,Common Stock,,True,True,missing_isin
+EON,TSXV,Stock,EON Lithium Corp.,CN,EON,EON LITHIUM CORP,Common Stock,,True,True,missing_isin
+EPAC,IDX,Stock,PT Megalestari Epack Sentosaraya Tbk.,IJ,EPAC,MEGALESTARI EPACK SENTOSARAY,Common Stock,,True,False,missing_isin
+ESEA,NASDAQ,Stock,Euroseas Ltd,US,ESEA,EUROSEAS LTD,Common Stock,,True,True,missing_isin
+ESENTIAII,BMV,Stock,Esentia Energy Development SA,MM,,,,,False,False,no_openfigi_match
+ESYN,NASDAQ,Stock,EnerSyn Global Inc. - Common Stock,US,ESYN,ENERSYN GLOBAL INC,Common Stock,,True,True,missing_isin
+ETHA,NASDAQ,ETF,iShares Ethereum Trust ETF,US,ETHA,ISHARES ETHEREUM TRUST ETF,ETP,,True,True,missing_isin
+ETHB,NASDAQ,ETF,iShares Staked Ethereum Trust ETF Shares of Fractional Undivided Beneficial Interest,US,ETHB,ISHR STAKED ETHER TRST ETF,ETP,,True,False,missing_isin
+ETHE,NYSE,ETF,Grayscale Ethereum Trust (ETH),US,ETHE,GRAYSCALE ETHEREUM STAKING E,ETP,,True,False,missing_isin
+ETHW,NYSE ARCA,ETF,Bitwise Ethereum ETF,US,ETHW,BITWISE ETHEREUM ETF,ETP,,True,True,missing_isin
+ETRA,NASDAQ,Stock,"Electra Therapeutics, Inc. - Common stock",US,ETRA,ELECTRA THERAPEUTICS INC,Common Stock,,True,True,missing_isin
+EUDV,BATS,ETF,ProShares MSCI Europe Dividend Growers ETF,US,EUDV,PROSHARES MSCI EUROPE DIVIDE,ETP,,True,True,missing_isin
+EWG,NYSE ARCA,ETF,iShares MSCI Germany ETF,US,EWG,ISHARES MSCI GERMANY ETF,ETP,,True,True,missing_isin
+FA,TSXV,Stock,Fountain Asset Corp.,CN,FA,FOUNTAIN ASSET CORP,Common Stock,,True,True,missing_isin
+FAP,TSX,ETF,abrdn Asia-Pacific Income Fund VCC,CN,FAP,ABRDN ASIA-PACIFIC INCOME FU,Closed-End Fund,,True,True,missing_isin
+FBDT,NASDAQ,Stock,First Breach Inc. - Common Stock,US,FBDT,FIRST BREACH INC,Common Stock,,True,True,missing_isin
+FBT.F,TSX,ETF,First Trust NYSE Arca Biotechnology ETF - Hedged Units,CN,,,,,False,False,no_openfigi_match
+FBTC,BATS,ETF,Fidelity Wise Origin Bitcoin Trust,US,FBTC,FIDELITY WISE ORIGIN BITCOIN,ETP,,True,True,missing_isin
+FCA-U,TSXV,Stock,Firm Capital Apartment Real Estate Investment Trust,CN,FCA-U,FIRM CAPITAL APARTMENT REAL,REIT,,True,True,missing_isin
+FCD,TSX,ETF,Firm Capital Property Trust,CN,,,,,False,False,no_openfigi_match
+FCMO,NEO,ETF,Fidelity US Momentum ETF,CN,FCMO,FIDELITY US MOMENTUM ETF,ETP,,True,True,missing_isin
+FCR,TSX,ETF,First Capital Real Estate Investment Trust,CN,,,,,False,False,no_openfigi_match
+FEMD,NYSE ARCA,ETF,First Eagle ETF Trust,US,FEMD,FIRST EAGLE MID C ETY ETF,ETP,,True,False,missing_isin
+FEMO,TSX,ETF,Fidelity Emerging Markets Opportunities Fund,CN,FEMO,FIDELITY EME MAR OPP ETF SER,ETP,,True,False,missing_isin
+FEMSAUB,BMV,Stock,Fomento Económico Mexicano S.A.B. de C.V,MM,FEMSAUB,FOMENTO ECONOMICO MEXICAN-UB,Unit,,True,False,missing_isin
+FFAB,TSX,ETF,Fidelity Alternative Bond Fund,CN,FFAB,FID ALT BOND ETF SR,ETP,,True,False,missing_isin
+FFI-UN,TSX,ETF,Flaherty & Crumrine Investment Grade Fixed Income Fund,CN,,,,,False,False,no_openfigi_match
+FFR,NASDAQ,Stock,FF EAI Robotics Ecosystem Inc. - Common Stock,US,FFR,FF EAI ROBOTICS ECOSYSTEM IN,Common Stock,,True,True,missing_isin
+FGC,NASDAQ,Stock,FG Communities Holdings Inc. - Common Stock,US,FGC,FG COMMUNITIES HOLDINGS INC,Common Stock,,True,True,missing_isin
+FGCC.P,TSXV,Stock,First and Goal Capital Corp.,CN,,,,,False,False,no_openfigi_match
+FGCV,TSX,ETF,Fidelity Global Concentrated Value Fund,CN,FGCV,FIDEL MULTI-ALT BAL ETF SER,ETP,,True,False,missing_isin
+FGX,NEO,ETF,Faircourt Gold Income Corp,CN,FGX,FAIRCOURT GOLD INCOME CORP,Closed-End Fund,,True,True,missing_isin
+FIBRAHD15,BMV,Stock,Fideicomiso Irrevocable No. F/1523,MM,,,,,False,False,no_openfigi_match
+FIBRAUP18,BMV,Stock,Upsite Mexico S.A.P.I. de C.V,MM,,,,,False,False,no_openfigi_match
+FIRE,IDX,Stock,PT Alfa Energi Investama Tbk.,IJ,FIRE,ALFA ENERGI INVESTAMA TBK PT,Common Stock,,True,True,missing_isin
+FIXX,BATS,ETF,Leverage Shares 2X Long FIX Daily ETF,US,FIXX,LEVERAGE SHARES 2X FIX,ETP,,True,True,missing_isin
+FJDI,NASDAQ,Stock,ARC Group Securities Acquisition I - Class A Ordinary Shares,US,FJDI,ARC GROUP SECURITIES AC-CL A,Common Stock,,True,False,missing_isin
 FLD,NASDAQ,Stock,"Fold Holdings, Inc. Class A Common Stock",US,FLD,FOLD HOLDINGS INC,Common Stock,,True,False,missing_isin
-FRNM,NASDAQ,Stock,"Freenome, Inc. - Common stock",US,FRNM,FREENOME INC,Common Stock,,True,True,missing_isin
-FTHA,NASDAQ,Stock,Forefront Tech Holdings Acquisition Corp - Class A Ordinary Shares,US,FTHA,FOREFRONT TECH HOL ACQU CL-A,Common Stock,,True,False,missing_isin
-FWAC,NASDAQ,Stock,Futurewave Acquisition Corporation - Ordinary Shares,US,FWAC,FUTUREWAVE ACQUISITION COR,Common Stock,,True,True,missing_isin
+FLEL,BATS,ETF,Leverage Shares 2X Long FLEX Daily ETF,US,FLEL,LEVERAGE SHARES 2X FLEX,ETP,,True,True,missing_isin
+FLOT.B,TSX,ETF,Purpose Floating Rate Income Fund - ETF Non-currency hedged CAD,CN,,,,,False,False,no_openfigi_match
+FM2,ASX,ETF,FIRSTMAC MORTGAGE FUNDING TRUST NO.4 SERIES 2-2019,AT,,,,,False,False,no_openfigi_match
+FM3,ASX,ETF,FIRSTMAC MORTGAGE FUNDING TRUST NO. 4 SERIES 1-2020,AT,,,,,False,False,no_openfigi_match
+FM5,ASX,ETF,FIRSTMAC MORTGAGE FUNDING TRUST NO.4 SERIES 2-2020,AT,,,,,False,False,no_openfigi_match
+FMAB,TSX,ETF,Fidelity Multi-Alt Balanced Fund,CN,FMAB,FIDELITY MUL-ALT BAL ETF SER,ETP,,True,False,missing_isin
+FNGB,NYSE ARCA,ETF,MicroSectors™ FANG+™ 3x Leveraged ETNs,US,,,,,False,False,no_openfigi_match
+FOIL,NYSE,Stock,"Londian Wason New Energy Tech Inc. American Depositary Shares, each representing five Ordinary Shares",US,FOIL,LONDIAN WASON NEW ENERGY-ADR,ADR,,True,False,missing_isin
+FPLUS16,BMV,Stock,Fibra Plus,MM,FPLUS16,NFD SA DE CV,REIT,,True,False,missing_isin
+FPWR,NYSE ARCA,ETF,First Trust EIP Power Solutions ETF,US,FPWR,FIRST TRUST EIP POWER SOLUTI,ETP,,True,True,missing_isin
+FRUT,NYSE ARCA,ETF,Yorkville America MANGOS Plus Index ETF,US,FRUT,YORKVILLE AMER MNGO PI ETF,ETP,,True,False,missing_isin
+FTRA,NYSE,Stock,FutureCorp Space Acquisition 1 Class A Ordinary Shares,US,FTRA,FUTURECORP SPACE ACQUISIT-A,Common Stock,,False,False,missing_isin
+GAID,NYSE ARCA,ETF,Guinness Atkinson Funds,US,,,,,False,False,no_openfigi_match
+GAUD,NYSE ARCA,ETF,Guinness Atkinson Funds,US,,,,,False,False,no_openfigi_match
 GAVA,NASDAQ,ETF,Grayscale Avalanche Trust ETF Common Units of Fractional Undivided Beneficial Interest,US,GAVA,GRAYSCALE AVALANCHE STAKING,ETP,,True,False,missing_isin
+GBFC,NEO,ETF,GuardBondsTM 2026 Investment Grade Bond Fund ETF Units,CN,GBFC,GUARDBONDS 2026 INV GRD BOND,ETP,,True,False,missing_isin
+GBFD,NEO,ETF,GuardBondsTM 2027 Investment Grade Bond Fund ETF Units,CN,GBFD,GUARDIAN CAPITAL LP,ETP,,False,False,missing_isin
+GBFE,NEO,ETF,GuardBonds 2028 Investment Grade Bd ETF,CN,GBFE,GUARDBONDS 2028 INVT GB FUND,ETP,,True,False,missing_isin
 GBXA,BATS,ETF,Goldman Sachs ETF Trust Goldman,US,,,,,False,False,no_openfigi_match
-GCGR,NASDAQ,Stock,General Catalyst Global Resilience Merger Corp. - Class A Ordinary Shares,US,GCGR,GENERAL CATALYST GL RES-CL A,Common Stock,,True,False,missing_isin
-GEVC,BATS,ETF,Corgi GEV 2x Daily ETF,US,GEVC,CORGI GEV 2X DAILY ETF,ETP,,True,True,missing_isin
-GFUZ,NASDAQ,Stock,General Fusion Group Ltd. - Common Shares,US,GFUZ,GENERAL FUSION GROUP LTD,Common Stock,,True,True,missing_isin
-GHXI,NASDAQ,Stock,"Gores Holdings XI, Inc. - Class A Ordinary Shares",US,GHXI,GORES HOLDINGS XI INC-A,Common Stock,,True,True,missing_isin
-GOIB,BATS,ETF,Direxion GOOGL Defined Income Boost ETF,US,GOIB,DIREXION GOOGL DEFIN INC BST,ETP,,True,False,missing_isin
-GOOL,BATS,ETF,Leverage Shares 2X Long GOOGL Daily ETF,US,GOOL,LEVERAGE SHARES 2X GOOGL ETF,ETP,,True,True,missing_isin
+GCG,TSX,Stock,Guardian Capital Group Limited,CN,,,,,False,False,no_openfigi_match
+GCLO,NYSE ARCA,ETF,Guggenheim Investment Grade CLO ETF,US,GCLO,GUGGENHEIM IG CLO ETF,ETP,,True,False,missing_isin
+GCPU,NYSE ARCA,ETF,Grayscale AI Compute ETF,US,GCPU,GRAYSCALE AI COMPUTE ETF,ETP,,True,True,missing_isin
+GDST,IDX,Stock,Gunawan Dianjaya Steel Tbk,IJ,GDST,GUNAWAN DIANJAYA STEEL TBK,Common Stock,,True,True,missing_isin
+GEEQ,NYSE ARCA,ETF,Guggenheim Enhanced Equity Income ETF,US,GEEQ,GUGGENHEIM ENHANCED EQ ETF,ETP,,True,False,missing_isin
+GEMQ,NASDAQ,ETF,Goldman Sachs Data Enhanced Emerging Markets Equity ETF,US,GEMQ,GOLDMN SAH DTA EE ME ETF CS,ETP,,True,False,missing_isin
+GEMSPNL,PSX,Stock,Supernet Ltd.,PA,,,,,False,False,no_openfigi_match
+GENIUS21,BMV,ETF,GENIUS,MM,GENIUS21,INGENIUS ETF,ETP,,True,False,missing_isin
+GFL,NYSE,Stock,Gfl Environmental Holdings Inc,US,GFL,GFL ENVIRONMENTAL INC-SUB VT,Common Stock,,True,True,missing_isin
+GGRP,IDX,Stock,PT Gunung Raja Paksi Tbk.,IJ,GGRP,GUNUNG RAJA PAKSI TBK PT,Common Stock,,True,True,missing_isin
+GGTL,NYSE ARCA,ETF,Gabelli Global Technology Leaders ETF,US,GGTL,GABELLI GLOBAL TECHNOLOGY LE,ETP,,True,True,missing_isin
+GIAI,TSX,ETF,Guardian i3 AI Technology and Innovation Fund,CN,GIAI,GCG I3 AI TECH AND INNOV,ETP,,True,False,missing_isin
+GICD,TSX,ETF,Guardian i3 Canadian Dividend Growth Fund,CN,GICD,GUARDIAN I3 CND DVD GRWT ETF,ETP,,True,False,missing_isin
+GIGD,TSX,ETF,Guardian i3 Global Dividend Growth Fund,CN,GIGD,GCG I3 GLB DIV GRW FD ETF,ETP,,True,False,missing_isin
+GIGF,TSX,ETF,Guardian i3 Global Core Equity Fund,CN,GIGF,GUARD I3 GLB COR EQ ETF,ETP,,True,False,missing_isin
+GIGF.F,TSX,ETF,Guardian i3 Global Core Equity Fund,CN,,,,,False,False,no_openfigi_match
+GIXI,NASDAQ,Stock,Gix Internet Ltd. - Ordinary Shares,US,GIXI,GIX INTERNET LTD,Common Stock,,True,True,missing_isin
+GLBL,BATS,ETF,Pacer Funds Trust Pacer MSCI Wo,US,GLBL,PACERMSCI WRLD IND ADV,ETP,,True,False,missing_isin
+GLIN.P,TSXV,Stock,Global Investments Capital Corp.,CN,,,,,False,False,no_openfigi_match
+GLIX,NYSE ARCA,ETF,Lazard Active ETF Trust,US,GLIX,LAZARD LISTED INFRASTRUCTURE,ETP,,True,False,missing_isin
+GMOC,NYSE ARCA,ETF,GMO ETF Trust (Name to be changed from The 2023 ETF Series Trust II),US,GMOC,GMO ULTRA-SHORT INCOME ETF,ETP,,False,False,missing_isin
+GNS,NYSE MKT,Stock,Genius Group Ltd,US,GNS,GENIUS GROUP LTD,Common Stock,,True,True,missing_isin
+GOLD,IDX,Stock,PT Visi Telekomunikasi Infrastruktur Tbk.,IJ,GOLD,VISI TELEKOMUNIKASI INFRASTR,Common Stock,,True,False,missing_isin
+GOOD,IDX,Stock,PT Garudafood Putra Putri Jaya Tbk.,IJ,GOOD,GARUDAFOOD PUTRA PUTRI JAYA,Common Stock,,True,True,missing_isin
 GOOW,BATS,ETF,Roundhill Etf Trust - Roundhill Google Weeklypay Etf,US,GOOW,ROUNDHILL GOOGL WEKLYPAY ETF,ETP,,True,False,missing_isin
-GPAC,NASDAQ,Stock,General Purpose Acquisition Corp.,US,GPAC,GENERAL PURPOSE ACQUISIT-A,Common Stock,,True,False,missing_isin
+GOW,NASDAQ,Stock,GOWell Energy Technology - Ordinary shares,US,GOW,GOWELL ENERGY TECHNOLOGY,Common Stock,,True,True,missing_isin
+GOWC.P,TSXV,Stock,Can-Gow Capital Inc.,CN,,,,,False,False,no_openfigi_match
+GPGI,NYSE,Stock,"GPGI, Inc.",US,GPGI,GPGI INC,Common Stock,,True,False,missing_isin
+GQ,TSXV,Stock,Great Quest Gold Ltd.,CN,,,,,False,False,no_openfigi_match
 GRSD,NASDAQ,Stock,Grandstand Limited - Ordinary Shares,US,GRSD,GRANDSTAND LTD,Common Stock,,True,True,missing_isin
-GUAC,NASDAQ,Stock,Berto Acquisition Corp. II - Ordinary Shares,US,GUAC,BERTO ACQUISITION CORP II,Common Stock,,True,True,missing_isin
-GYGY,NASDAQ,Stock,"Game Your Game, Inc. - Common Stock",US,GYGY,GAME YOUR GAME INC,Common Stock,,True,True,missing_isin
-HAUG,BATS,ETF,Corgi U.S. Equities 100% Structured Buffer ETF - August Series,US,HAUG,CORGI US EQ 100% STR BUF-AUG,ETP,,True,False,missing_isin
+GTM.P,TSXV,Stock,G2M Cap Corp.,CN,,,,,False,False,no_openfigi_match
+HBIT,NYSE ARCA,ETF,Hedgeye Hedged Bitcoin ETF,US,HBIT,HEDGEYE HEDGED BITCOIN ETF,ETP,,True,True,missing_isin
+HC1,ASX,ETF,HOUSEHOLD CAPITAL 2025-1 RMBS TRUST,AT,,,,,False,False,no_openfigi_match
+HEAL,IDX,Stock,PT Medikaloka Hermina Tbk.,IJ,HEAL,MEDIKALOKA HERMINA TBK PT,Common Stock,,True,True,missing_isin
 HERZ,NASDAQ,ETF,"Herzfeld Credit Income Fund, Inc",US,HERZ,HERZFELD CREDIT INCOME FUND,Closed-End Fund,,True,True,missing_isin
 HFSI,BATS,ETF,Hartford Strategic Income ETF,US,HFSI,HARTFOR STRATEG INCOME ETF-U,ETP,,True,False,missing_isin
-HIMC,BATS,ETF,Corgi HIMS 2x Daily ETF,US,HIMC,CORGI HIMS 2X DAILY ETF,ETP,,True,True,missing_isin
-HOOC,BATS,ETF,Corgi HOOD 2x Daily ETF,US,HOOC,CORGI HOOD 2X DAILY ETF,ETP,,True,True,missing_isin
-HQ,NASDAQ,Stock,Horizon Quantum Holdings Ltd.,US,HQ,HORIZON QUANTUM HOLDING-CL A,Common Stock,,True,True,missing_isin
-HWIV,NASDAQ,ETF,Hotchkis & Wiley International Value Fund,US,HWIV,HOTCK & WY INTRL VALU ETF CS,ETP,,True,False,missing_isin
-HYGD,BATS,ETF,MicroSectors -3x Short High Yield Corporate Bond (HYG) ETNs,US,HYGD,MICROSECT 3X SH YC BH ETNS,ETP,,True,False,missing_isin
-IDAC,NASDAQ,Stock,Iron Dome Acquisition I Corp. - Class A Ordinary Shares,US,IDAC,IRON DOME ACQUISITION I-CL A,Common Stock,,True,True,missing_isin
-IDAU,BATS,ETF,Corgi International Developed Equities 15% Structured Buffer ETF - August Series,US,IDAU,CORGI INTL DEV EQ 15%-AUG,ETP,,True,False,missing_isin
+HHII,TSX,ETF,Harvest International High Income Shares ETF,CN,HHII,HARVEST INT HIGH INC SHR ETF,ETP,,True,False,missing_isin
+HIAI,BATS,ETF,Ai Funds High Conviction US Equity AI-Managed ETF,US,HIAI,AI FUNDS HC US EQTY AIM ETF,ETP,,True,False,missing_isin
+HIG,NYSE,Stock,"The Hartford Insurance Group, Inc.",US,HIG,HARTFORD INSURANCE GROUP INC,Common Stock,,True,True,missing_isin
+HISU,TSX,ETF,US High Interest Savings Account Fund Unhedged ETF,CN,,,,,False,False,no_openfigi_match
+HNDA,NEO,Stock,HONDA MOTOR CO LTD CDR (CAD Hedged),CN,HNDA,HONDA MOTOR CO LTD,Canadian DR,,True,True,missing_isin
+HOS,NYSE,Stock,"Hornbeck Offshore Services, Inc. Common Stock",US,HOS,HORNBECK OFFSHORE SERVICES I,Common Stock,,True,True,missing_isin
+HOST,NYSE MKT,Stock,Host Digital Inc. Class A Common Stock,US,HOST,HOST DIGITAL INC,Common Stock,,True,True,missing_isin
+HPYG,TSX,ETF,Harvest Premium Yield Gold ETF,CN,HPYG,HARVEST PREMIUM YLD GOLD ETF,ETP,,True,True,missing_isin
+HQDG,NASDAQ,ETF,Raub Brock Dividend Growth ETF,US,HQDG,RAUB BROCK DVD GROWTH ETF,ETP,,True,True,missing_isin
+HSEP,BATS,ETF,Corgi U.S. Equities 100% Structured Buffer ETF - September Series,US,HSEP,CORGI US EQ 100% STR BUF-SEP,ETP,,True,False,missing_isin
+HTB,NYSE,Stock,"HomeTrust Bancshares, Inc.",US,HTB,HOMETRUST BANCSHARES INC,Common Stock,,True,True,missing_isin
+HTTD,TSX,ETF,BetaPro US 30-Year T-Bond -3x Daily Bear ETF,CN,,,,,False,False,no_openfigi_match
+HTTU,TSX,ETF,BetaPro US 30-Year T-Bond 3x Daily Bull ETF,CN,,,,,False,False,no_openfigi_match
+HUMM,NYSE ARCA,ETF,800VDC AI Datacenter Ecosystem ETF,US,HUMM,800VDC AI DATACNT ECOYTM ETF,ETP,,True,False,missing_isin
+HUS,TSX,ETF,Hamilton US Financials Dividend Index ETF - CDN$ Hedged Units,CN,,,,,False,False,no_openfigi_match
+HVAC,NYSE ARCA,ETF,AdvisorShares Trust,US,HVAC,ADVISORSHARES HVAC INDUS,ETP,,True,False,missing_isin
+HWGV,NASDAQ,ETF,Hotchkis & Wiley Global Value Fund,US,HWGV,HOTCHKIS & WILEY GLB VLU ETF,ETP,,True,False,missing_isin
+HWMV,NASDAQ,ETF,Hotchkis & Wiley Mid-Cap Value Fund,US,HWMV,H&W MID CAP VAL  FD ETF,ETP,,True,False,missing_isin
+HXA,NYSE ARCA,ETF,Mast HedgeIndex Corporate Arbitrage ETF,US,HXA,MAST HEDGEINDEX CORP ARBIT,ETP,,True,False,missing_isin
+HXC,NYSE ARCA,ETF,Mast HedgeIndex Strategic Commodities ETF,US,HXC,MAST HEDGEINDEX STRAT COMMOD,ETP,,True,False,missing_isin
+HXE,NYSE ARCA,ETF,Mast HedgeIndex Adaptive Equities ETF,US,HXE,MAST HEDGEINDEX ADAPTIVE EQ,ETP,,True,True,missing_isin
+HXF,NYSE ARCA,ETF,Mast HedgeIndex Managed Futures Strategy ETF,US,HXF,MAST HEDGEINDEX MGD FUT STR,ETP,,True,False,missing_isin
+IACL,BATS,ETF,GraniteShares US 100 Autocallable Income ETF,US,IACL,GRNTSHR US 100 ATCL INCM ETF,ETP,,True,False,missing_isin
+IBC-H,TSXV,Stock,International Bethlehem Mining Corp,CN,,,,,False,False,no_openfigi_match
+IBIT-U,NEO,ETF,iShares Bitcoin ETF USD,CN,,,,,False,False,no_openfigi_match
+IBQT,TSX,ETF,iShares Equity + Bitcoin ETF Portfolio,CN,IBQT,ISHARES EQUITY+BTC ETF PRTFO,ETP,,True,False,missing_isin
+IBST,IDX,Stock,Inti Bangun Sejahtera Tbk,IJ,IBST,INTI BANGUN SEJAHTERA TBK PT,Common Stock,,True,True,missing_isin
+ICBB,TSX,ETF,Invesco Global Bond ETF,CN,,,,,False,False,no_openfigi_match
+ICBR3,B3,Stock,INTERCEMENT BRASIL S.A.,BZ,,,,,False,False,no_openfigi_match
+ICGH,TSXV,Stock,IC Group Holdings Inc.,CN,ICGH,IC GROUP HOLDINGS INC,Common Stock,,True,False,missing_isin
+ICI.P,TSXV,Stock,Inceptus Capital Ltd.,CN,,,,,False,False,no_openfigi_match
+ICMO,NASDAQ,ETF,Symmetry Panoramic International Country Momentum ETF,US,ICMO,SYMETRY PANORAMI INTR CM ETF,ETP,,True,False,missing_isin
+IDSE,BATS,ETF,Corgi International Developed Equities 15% Structured Buffer ETF - September Series,US,IDSE,CORGI INTL DEV EQ 15%-SEP,ETP,,True,False,missing_isin
+IEI,TSXV,Stock,Imperial Equities Inc.,CN,IEI,IMPERIAL EQUITIES INC,Common Stock,,True,True,missing_isin
+IF1,ASX,Stock,"IBERDROLA FINANZAS, S.A.U.",AT,,,,,False,False,no_openfigi_match
+IGBT,TSX,ETF,2028 Investment Grade Bond Trust,CN,,,,,False,False,no_openfigi_match
+IIME,TSX,ETF,IA Clarington International Multifactor Equity Fund,CN,IIME,IA CLARINGT INT MULTI EQ ETF,ETP,,True,False,missing_isin
+IIP,TSX,ETF,InterRent Real Estate Investment Trust,CN,,,,,False,False,no_openfigi_match
+INAI,IDX,Stock,Indal Aluminium Industry Tbk,IJ,INAI,INDAL ALUMINIUM INDUSTRY PT,Common Stock,,True,True,missing_isin
+INDO,IDX,Stock,PT Royalindo Investa Wijaya Tbk,IJ,INDO,ROYALINDO INVESTA WIJAYA TBK,Common Stock,,True,True,missing_isin
+INDS,IDX,Stock,Indospring Tbk,IJ,INDS,INDOSPRING TBK PT,Common Stock,,True,True,missing_isin
+INFU,NYSE MKT,Stock,InfuSystems Holdings Inc,US,INFU,INFUSYSTEM HOLDINGS INC,Common Stock,,True,False,missing_isin
+INGS,TSX,Stock,ING CDR (CAD Hedged),CN,INGS,ING GROEP NV,Canadian DR,,True,False,missing_isin
+INIK,TSXV,Stock,Ionik Corporation,CN,INIK,IONIK CORP,Common Stock,,True,True,missing_isin
+INOV,IDX,Stock,PT Inocycle Technology Group Tbk.,IJ,INOV,INOCYCLE TECHNOLOGY GROUP TB,Common Stock,,True,False,missing_isin
 INRO,NASDAQ,ETF,BlackRock U.S. Industry Rotation ETF,US,INRO,ISHARES US IN RO ACT ETF-USD,ETP,,True,False,missing_isin
-INT,BATS,ETF,Corgi INTC 2x Daily ETF,US,INT,CORGI INTC 2X DAILY ETF,ETP,,True,True,missing_isin
-IOND,NASDAQ,Stock,Ionic Digital Inc. - Class A Common Stock,US,IOND,IONIC DIGITAL INC CL-A,Common Stock,,True,True,missing_isin
-IPVV,NASDAQ,Stock,"InterPrivate Investment Partners V, Inc. - Class A Ordinary Shares",US,IPVV,INTERPRIVATE INVESTMENT-CL A,Common Stock,,True,False,missing_isin
-IQQ,NASDAQ,ETF,iShares Nasdaq 100 ETF,US,IQQ,ISHRS NASDAQ 100 ETF,ETP,,True,False,missing_isin
-IREC,BATS,ETF,Corgi IREN 2x Daily ETF,US,IREC,CORGI IREN 2X DAILY ETF,ETP,,True,True,missing_isin
+INTA,IDX,Stock,Intraco Penta Tbk,IJ,INTA,INTRACO PENTA TBK PT,Common Stock,,True,True,missing_isin
+INTL,BATS,ETF,Main International ETF,US,INTL,MAIN INTERNATIONAL ETF,ETP,,True,True,missing_isin
+INVN,NYSE ARCA,ETF,The Alger ETF Trust,US,INVN,ALGER RUSSELL INNOVATION ETF,ETP,,True,False,missing_isin
+IOT,TSXV,Stock,Innovotech Inc.,CN,IOT,INNOVOTECH INC,Common Stock,,True,True,missing_isin
+IPOL,IDX,Stock,Indopoly Swakarsa Industry Tbk,IJ,IPOL,INDOPOLY SWAKARSA INDUSTRY,Common Stock,,True,True,missing_isin
+IQGR,NASDAQ,ETF,Astoria International Quality Growth Kings ETF,US,IQGR,ASTORIA INTNATINL QLT GK ETF,ETP,,True,False,missing_isin
+IRBO,NYSE ARCA,ETF,iShares Robotics and Artificial Intelligence Multisector ETF,US,,,,,False,False,no_openfigi_match
 IROC,BATS,ETF,Invesco Rochester High Yield Municipal ETF,US,IROC,INVESCO ROCHESTER HIGH YIELD,ETP,,True,True,missing_isin
-ISNR,NASDAQ,Stock,Snow Rothschild Acquisition Corp. - Class A Ordinary Shares,US,ISNR,SNOW ROTHSCHILD ACQ CL A,Common Stock,,True,False,missing_isin
 ITG,NASDAQ,Stock,"ITG, Inc. - Class A Common Stock",US,ITG,ITG INC CL A,Common Stock,,True,False,missing_isin
-JAB,NASDAQ,Stock,JAB Acquisition Corp I - Class A Ordinary Shares,US,JAB,JAB ACQUISITION CORP I CL-A,Common Stock,,True,True,missing_isin
-JBLG,BATS,ETF,Leverage Shares 2X Long JBL Daily ETF,US,JBLG,LEVERAGE SHARES 2X JBL ETF,ETP,,True,True,missing_isin
-JLVP,NASDAQ,ETF,JPMorgan U.S. Large Cap Value Plus ETF,US,JLVP,JPMORGAN US LG CP VL PLS ETF,ETP,,True,False,missing_isin
-JOBC,BATS,ETF,Corgi JOBY 2x Daily ETF,US,JOBC,CORGI JOBY 2X DAILY ETF,ETP,,True,True,missing_isin
-KEEL,NASDAQ,Stock,Keel Infrastructure Corp.,US,KEEL,KEEL INFRASTRUCTURE CORP,Common Stock,,True,True,missing_isin
-KEO,BATS,ETF,Kurv Equity Option Income ETF,US,KEO,KURV EQUITY OPTION INCOM ETF,ETP,,True,True,missing_isin
-KEYY,NASDAQ,Stock,Keystone Acquisition Corp. - Class A Ordinary Shares,US,KEYY,KEYSTONE ACQUISITION CO-CL A,Common Stock,,True,True,missing_isin
-KTWO,NASDAQ,Stock,K2 Capital Acquisition Corporation,US,KTWO,K2 CAPITAL ACQUISITION-CL A,Common Stock,,True,True,missing_isin
+IVAI,NYSE,Stock,Ives Ultra AI Opportunities Inc. Common Stock,US,IVAI,IVES ULTRA AI OPPORTUNITIES,Common Stock,,True,True,missing_isin
+IVX,TSXV,Stock,Inventronics Ltd,CN,IVX,INVENTRONICS LTD,Common Stock,,True,True,missing_isin
+IZ,TSXV,Stock,International Zeolite Corp.,CN,,,,,False,False,no_openfigi_match
+JABS,NYSE ARCA,ETF,Janus Detroit Street Trust,US,JABS,JANUS HDRSN ASS BKD SEC ETF,ETP,,True,False,missing_isin
+JEMB,NYSE ARCA,ETF,Janus Detroit Street Trust,US,JEMB,JH EM DEBT HARD CURRENCY ETF,ETP,,True,False,missing_isin
+JEPH,TSX,ETF,JPMorgan US Equity Premium Income Active ETF - CAD Hedged,CN,JEPH,JPM US E P I ETF-CAD HED,ETP,,True,False,missing_isin
+JFS,TSX,ETF,JFT Strategies Fund,CN,,,,,False,False,no_openfigi_match
+JHC,TSXV,Stock,Jinhua Capital Corporation,CN,JHC,JINHUA CAPITAL CORP,Common Stock,,True,True,missing_isin
+JHCR,NYSE ARCA,ETF,JHancock Core Bond ETF,US,JHCR,JOHN HANCOCK CORE BOND ETF,ETP,,True,False,missing_isin
+JHX,NYSE,Stock,James Hardie Industries plc. Ordinary Shares,US,JHX,JAMES HARDIE IND PLC,Common Stock,,True,False,missing_isin
+JINT,NASDAQ,ETF,Janus Henderson International Core Alpha ETF,US,JINT,JANUS HENDERSN INTNL C A ETF,ETP,,True,False,missing_isin
+JMKE,NYSE,Stock,Jersey Mike's Subs Inc. Class A Common Stock,US,JMKE,JERSEY MIKE'S SUBS INC-CL A,Common Stock,,True,True,missing_isin
+JONE,NASDAQ,Stock,Jones Ventures INTL Acquisition1 Corp - Class A Ordinary Shares,US,JONE,JONES VENTURES ACQU COR CL-A,Common Stock,,False,False,missing_isin
+JPND,BATS,ETF,MicroSectors -3x Short Japan ETNs,US,JPND,MICROSECT -3X SHRT JAPN ETNS,ETP,,True,False,missing_isin
+JPNU,BATS,ETF,MicroSectors 3x Long Japan ETNs,US,JPNU,MICROSECTORS 3X LNG JP ETN,ETP,,True,False,missing_isin
+JPQH,TSX,ETF,JPMorgan Nasdaq Equity Premium Income Active ETF - CAD Hedged,CN,JPQH,JPM NDQ EQ PREM INC ETF CADH,ETP,,True,False,missing_isin
+JQTY,NYSE ARCA,ETF,Jensen U.S. Quality Index ETF,US,JQTY,JENSEN US QUALITY INDEX ETF,ETP,,True,True,missing_isin
+JTC,TSXV,Stock,Jemtec Inc.,CN,JTC,JEMTEC INC,Common Stock,,True,True,missing_isin
+JTTT,NASDAQ,Stock,JATT III Acquisition Corp - Ordinary Shares,US,JTTT,JATT III ACQUISITION CORP,Common Stock,,True,True,missing_isin
+JULV,NYSE ARCA,ETF,VanEck U.S. Equity Buffer ETF - July,US,JULV,VANECK US EQUTY BUF ETF-JULY,ETP,,True,False,missing_isin
+KAC.P,TSXV,Stock,Kalon Acquisition Corp.,CN,,,,,False,False,no_openfigi_match
+KATT,BATS,ETF,T-REX 2X Long PURR Daily Target ETF,US,KATT,T-REX 2X LNG PUR DLY TRG ETF,ETP,,True,False,missing_isin
+KCHP,NYSE ARCA,ETF,KICK Korea Semiconductor Index ETF,US,KCHP,KICK KOREA SEMICOND INDX ETF,ETP,,True,False,missing_isin
+KI1,ASX,ETF,KINGFISHER TRUST 2019-1,AT,,,,,False,False,no_openfigi_match
+KIG,ASX,ETF,KINGFISHER TRUST 2016-1,AT,,,,,False,False,no_openfigi_match
+KPO,BATS,ETF,Kensington Premium Opportunities ETF,US,KPO,KNSNGTN PRM OPP ETF,ETP,,True,False,missing_isin
+KSMH,NASDAQ,ETF,xETFs Korea AI Semiconductor,US,KSMH,XETFS KOREA AI SMICONDCT ETF,ETP,,True,True,missing_isin
+LASITEB-1,BMV,Stock,Sitios Latinoamérica S.A.B. de C.V.,MM,,,,,False,False,no_openfigi_match
 LAYS,NASDAQ,ETF,STKd 100% NVDA & 100% AMD ETF,US,,,,,False,False,no_openfigi_match
-LCTO,BATS,ETF,Kurv U.S. Large Cap TaxOptimized ETF,US,LCTO,KURV US LARGE CAP TXOP ETF,ETP,,True,True,missing_isin
+LBOX,BATS,ETF,GraniteShares Short Term Box ETF,US,LBOX,GRANITESHARES SHORT TERM ETF,ETP,,True,True,missing_isin
+LCIV,NYSE,ETF,Logan Capital International ETF,US,LCIV,LOGAN CAPITL INTERNTIONL ETF,ETP,,True,False,missing_isin
 LDDR,BATS,ETF,Stone Ridge 2035 Term Income ETF,US,LDDR,LIFEX 2035 INCOME BUCKET ETF,ETP,,True,False,missing_isin
+LEAD,IDX,Stock,PT Logindo Samudramakmur Tbk.,IJ,LEAD,LOGINDO SAMUDRAMAKMUR TBK PT,Common Stock,,True,True,missing_isin
+LEGO,NYSE MKT,Stock,Legato Merger Corp. IV Ordinary Shares,US,LEGO,LEGATO MERGER CORP IV,Common Stock,,True,True,missing_isin
 LFDR,BATS,ETF,Stone Ridge Durable Income ETF,US,LFDR,LIFEX DURABLE INCOME ETF,ETP,,True,False,missing_isin
-LFS,NASDAQ,Stock,"LEIFRAS Co., Ltd.",US,LFS,LEIFRAS CO LTD-ADR,ADR,,True,True,missing_isin
-LGDS,NASDAQ,ETF,JPMorgan Fundamental Data Science Large Growth ETF,US,LGDS,JPMORGAN FNDM DATA SCI L GRW,ETP,,True,False,missing_isin
-LITC,BATS,ETF,Corgi LITE 2x Daily ETF,US,LITC,CORGI LITE 2X DAILY ETF,ETP,,True,True,missing_isin
-LQDD,BATS,ETF,MicroSectors -3x Short Investment Grade Corporate Bond (LQD) ETNs,US,LQDD,MS-3X SHRT INVST COR LQD ETN,ETP,,True,False,missing_isin
-LQDU,BATS,ETF,MicroSectors 3x Long Investment Grade Corporate Bond (LQD) ETNs,US,LQDU,MISE 3 LO INV GRA COP BO LET,ETP,,True,False,missing_isin
-LRCC,BATS,ETF,Corgi LRCX 2x Daily ETF,US,LRCC,CORGI LRCX 2X DAILY ETF,ETP,,True,True,missing_isin
-LTGO,NASDAQ,Stock,"Latigo Biotherapeutics, Inc. - Common Stock",US,LTGO,LATIGO BIOTHERAPEUTICS INC,Common Stock,,True,True,missing_isin
-LTGR,NASDAQ,Stock,Long Table Growth Corp. - Class A Ordinary Shares,US,LTGR,LONG TABLE GROWTH CORP-A,Common Stock,,True,True,missing_isin
-LYTE,BATS,ETF,Roundhill Photonics & Optics ETF,US,LYTE,ROUNDHILL PHOTONIS & OPT ETF,ETP,,True,False,missing_isin
-MCAH,NASDAQ,Stock,Mountain Crest Acquisition 6 Corp. - Ordinary Shares,US,MCAH,MOUNTAIN CREST ACQUISITION 6,Common Stock,,True,True,missing_isin
+LI8,ASX,ETF,LION SERIES 2020-1 TRUST,AT,,,,,False,False,no_openfigi_match
+LIRC,TSX,Stock,Lithium Royalty Corp.,CN,,,,,False,False,no_openfigi_match
+LLG,TSXV,Stock,Mason Resources Inc.,CN,,,,,False,False,no_openfigi_match
+LLMA,BATS,ETF,Global X LLM ETF,US,LLMA,GLOBAL X LLM ETF,ETP,,True,True,missing_isin
+LN,TSX,Stock,Loncor Gold Inc.,CN,LN,LONCOR GOLD INC,Common Stock,,True,True,missing_isin
+LN1,ASX,ETF,LION SERIES 2022-1 TRUST,AT,,,,,False,False,no_openfigi_match
+LN2,ASX,ETF,LION SERIES 2023-1 TRUST,AT,,,,,False,False,no_openfigi_match
+LN3,ASX,ETF,LION SERIES 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+LNGE,TSXV,Stock,LNG Energy Group Corp.,CN,LNGE,LNG ENERGY GROUP CORP,Common Stock,,True,True,missing_isin
+LO1,ASX,Stock,LLOYDS BANKING GROUP PLC,AT,,,,,False,False,no_openfigi_match
+LOMA,NYSE,Stock,Loma Negra Compania Industrial Argentina Sociedad Anonima ADS,US,LOMA,LOMA NEGRA CIA IND-SPON ADR,ADR,,True,False,missing_isin
+LONG,TSX,ETF,CI Global Longevity Economy Fund,CN,LONG,CI GLOBAL LONGEVITY ECON CAD,ETP,,True,False,missing_isin
+LP1,ASX,Stock,LIBERTY PRIME SERIES 2021-1,AT,,,,,False,False,no_openfigi_match
+LPSV,NYSE ARCA,ETF,Lone Peak SMID Value ETF,US,LPSV,LONE PEAK SMID VALUE ETF,ETP,,True,True,missing_isin
+LR1,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2023-1,AT,,,,,False,False,no_openfigi_match
+LR3,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2024-1,AT,,,,,False,False,no_openfigi_match
+LR4,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2023-2,AT,,,,,False,False,no_openfigi_match
+LR5,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2024-2,AT,,,,,False,False,no_openfigi_match
+LR6,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2024-3,AT,,,,,False,False,no_openfigi_match
+LRC-H,TSXV,Stock,Lovitt Resources Inc,CN,,,,,False,False,no_openfigi_match
+LSC.P,TSXV,Stock,Lombard Street Capital Corp.,CN,,,,,False,False,no_openfigi_match
+LT9,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2022-2,AT,,,,,False,False,no_openfigi_match
+LTAX,NYSE ARCA,ETF,Nomura ETF Trust,US,LTAX,NOMURA TAX-FREE USA ETF,ETP,,True,False,missing_isin
+LUNC,NYSE ARCA,ETF,Longnook Uncommon Compounders ETF,US,LUNC,LONGNOK UNCOMON COMPOUND ETF,ETP,,True,False,missing_isin
+LWLX,BATS,ETF,Tradr 2X Long LWLG Daily ETF,US,LWLX,TRADR 2X LONG LWLG DAILY ETF,ETP,,True,True,missing_isin
+LYNX,NYSE,Stock,Lyntris Inc. Common Stock,US,LYNX,LYNTRIS INC,Common Stock,,True,True,missing_isin
+M,SET,Stock,MK RESTAURANT GROUP PUBLIC COMPANY LIMITED,TB,M,MK RESTAURANTS GROUP PCL,Common Stock,,True,False,missing_isin
+MA1,ASX,ETF,MA CREDIT INCOME TRUST,AT,MA1,MA CREDIT INCOME TRUST,Closed-End Fund,,True,True,missing_isin
+MA2,ASX,Stock,MA CREDIT PORTFOLIO HOLDINGS LIMITED,AT,,,,,False,False,no_openfigi_match
+MAIN,IDX,Stock,Malindo Feedmill Tbk,IJ,MAIN,MALINDO FEEDMILL TBK PT,Common Stock,,True,True,missing_isin
+MAP,TSXV,Stock,Maple Peak Investments Inc.,CN,MAP,MAPLE PEAK INVESTMENTS INC,Common Stock,,True,True,missing_isin
+MARI,IDX,Stock,PT Mahaka Radio Integra Tbk.,IJ,MARI,MAHAKA RADIO INTEGRA TBK PT,Common Stock,,True,True,missing_isin
+MAST,LSE,Stock,MAST Energy Developments PLC,LN,,,,,False,False,no_openfigi_match
+MBL,ASX,Stock,MACQUARIE BANK LIMITED,AT,,,,,False,False,no_openfigi_match
+MBNK,TSX,ETF,Mulvihill Canadian Bank ETF,CN,MBNK,MULVIHILL CANADIAN BANK ETF,ETP,,True,True,missing_isin
+MBO,TSXV,Stock,Mobio Technologies Inc.,CN,MBO,MOBIO TECHNOLOGIES INC,Common Stock,,True,True,missing_isin
+MBRF11,B3,ETF,Fundo De Investimento Imobiliário Mercantil Do Brasil-fii -Inicio,BZ,,,,,False,False,no_openfigi_match
+MDA,NYSE,Stock,MDA Space Ltd. Common Shares,US,MDA,MDA SPACE LTD,Common Stock,,True,True,missing_isin
 MDPL,BATS,ETF,Northern Lights Fund Trust IV - Monarch Dividend Plus Index ETF,US,MDPL,MONARCH DIVIDEND PLUS INDEX,ETP,,True,False,missing_isin
-MEIB,BATS,ETF,Direxion META Defined Income Boost ETF,US,MEIB,DIREXION META DEFN BOOST ETF,ETP,,True,True,missing_isin
-MFP,NASDAQ,Stock,"Midera Food Processing, Inc.",US,MFP,MIDERA FOOD PROCESSI INC,Common Stock,,True,False,missing_isin
-MHX,BATS,ETF,Corgi MARA 2x Daily ETF,US,MHX,CORGI MARA 2X DAILY ETF,ETP,,True,True,missing_isin
+MDS,TSX,ETF,Healthcare Special Opportunities Fund,CN,,,,,False,False,no_openfigi_match
+MEDG,XETRA,Stock,MEDI Group Ltd,GY,,,,,False,False,no_openfigi_match
+MEDP,NASDAQ,Stock,Medpace Holdings Inc,US,MEDP,MEDPACE HOLDINGS INC,Common Stock,,True,True,missing_isin
+MEDS,NASDAQ,Stock,"DataMeds AI, Inc. - Common Stock",US,MEDS,DATAMEDS AI INC,Common Stock,,True,True,missing_isin
+MEGX,BATS,ETF,Corgi U.S. Mega-Cap Growth 2x Daily ETF,US,MEGX,CORGI US MEGA-CAP GRW 2X DLY,ETP,,True,False,missing_isin
+MEM,NYSE ARCA,ETF,MAYBANK EMERGING ETF,US,MEM,MATTHEWS EM MKT EQTY ACTIVE,ETP,,True,False,missing_isin
+METQ,BATS,ETF,Tradr 2X Short META Daily ETF,US,METQ,TRADR 2X SHRT META DAILY ETF,ETP,,True,True,missing_isin
+METR,LSE,ETF,ETC Group Global Metaverse UCITS ETF USD Accumulation,LN,,,,,False,False,no_openfigi_match
+MF,NASDAQ,Stock,MindForge Inc. - Class A Ordinary Shares,US,MF,MINDFORGE INC,Common Stock,,True,True,missing_isin
+MF3,ASX,ETF,METRO FINANCE 2023-1 TRUST,AT,,,,,False,False,no_openfigi_match
+MF4,ASX,ETF,METRO FINANCE 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+MF5,ASX,ETF,METRO FINANCE 2023-2 TRUST,AT,,,,,False,False,no_openfigi_match
+MF6,ASX,ETF,METRO FINANCE 2025-1 TRUST,AT,,,,,False,False,no_openfigi_match
+MFSD,NYSE ARCA,ETF,MFS Active Short Duration Income ETF,US,MFSD,MFS ACT SHRT DUR INC ETF,ETP,,True,False,missing_isin
+MFSX,NYSE ARCA,ETF,MFS Active Short Muni Bond ETF,US,MFSX,MFS ACT SHRT MUNI BND ETF,ETP,,True,False,missing_isin
+MGAP,TSX,ETF,Manulife Growth ETF Portfolio,CN,MGAP,MANULIFE GRWT ETF PRTF,ETP,,True,False,missing_isin
+MGIN,NYSE ARCA,ETF,Man Active Global Infrastructure ETF,US,MGIN,MAN ACTIVE GLOBAL INFRA ETF,ETP,,True,True,missing_isin
+MGRO,IDX,Stock,PT Mahkota Group Tbk.,IJ,MGRO,MAHKOTA GROUP TBK PT,Common Stock,,True,True,missing_isin
+MIAC,NASDAQ,Stock,Meridian3 Industrials Acquisition Corp - Class A Ordinary Shares,US,MIAC,MERIDIAN3 INDUSTRIALS ACQU-A,Common Stock,,True,False,missing_isin
+MIC,TSX,Stock,Sagen MI Canada Inc.,CN,,,,,False,False,no_openfigi_match
+MINE,NYSE MKT,Stock,Mayfair Gold Corp. Common Shares,US,MINE,MAYFAIR GOLD CORP,Common Stock,,True,True,missing_isin
+MIX,TSX,ETF,Hamilton Enhanced Mixed Asset Allocation ETF,CN,MIX,HAM ENH MIX ASS ALLOCATION-E,ETP,,True,False,missing_isin
+ML2,ASX,ETF,MA MONEY RESIDENTIAL SECURITISATION TRUST 2025-1,AT,,,,,False,False,no_openfigi_match
 MLAC,NASDAQ,Stock,Mountain Lake Acquisition Corp. Class A Ordinary Shares,US,,,,,False,False,no_openfigi_match
-MOB,NASDAQ,Stock,Mobilicom Limited,US,MOB,MOBILICOM LTD/AUSTRALIA,Common Stock,,True,False,missing_isin
-MPDB,BATS,ETF,m+ DynaBuffer ETF,US,MPDB,M+ DYNABUFFER ETF,ETP,,True,True,missing_isin
-MPIA,NASDAQ,ETF,m+ Nasdaq-100 Accelerator Autocall ETF,US,MPIA,M+ NASDAQ-100 ACCEL AUTO ETF,ETP,,True,False,missing_isin
-MPWC,BATS,ETF,Corgi MPWR 2x Daily ETF,US,MPWC,CORGI MPWR 2X DAILY ETF,ETP,,True,True,missing_isin
-MRAX,BATS,ETF,Tradr 2X Long MRAM Daily ETF,US,MRAX,TRADR 2X LONG MRAM DLY ETF,ETP,,True,True,missing_isin
-MRVX,BATS,ETF,Corgi MRVL 2x Daily ETF,US,MRVX,CORGI MRVL 2X DAILY ETF,ETP,,True,True,missing_isin
+MLCC,BATS,ETF,Global X MLCC & Electronic Components ETF,US,MLCC,GLOBAL X MLCC & ELEC COM ETF,ETP,,True,False,missing_isin
+MLO,TSXV,Stock,Metalero Mining Corp.,CN,MLO,METALERO MINING CORP,Common Stock,,True,True,missing_isin
+MLRG,TSX,ETF,Madison US Large Cap ETF,CN,MLRG,MADISON US LRG CAP ETF,ETP,,True,True,missing_isin
+MLY,TSXV,Stock,Multi-Metal Development Ltd.,CN,,,,,False,False,no_openfigi_match
+MM2,ASX,ETF,MME AUTOPAY ABS 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+MM4,ASX,ETF,MME PL 2025-1 TRUST,AT,,,,,False,False,no_openfigi_match
+MMHI,NYSE ARCA,ETF,NYLIM MacKay Muni High Income ETF,US,MMHI,NYLIM MACKAY MUNI HIGH INC,ETP,,True,True,missing_isin
+MMID,NYSE,ETF,MFS Active Exchange Traded Funds Trust,US,MMID,MFS ACTIVE MID CAP ETF,ETP,,True,False,missing_isin
+MMLP,IDX,Stock,PT Mega Manunggal Property Tbk.,IJ,MMLP,MEGA MANUNGGAL PROPERTY TBK,Common Stock,,True,True,missing_isin
+MMX,TSXV,Stock,Mustang Minerals Limited,CN,MMX,MUSTANG MINERALS LTD,Common Stock,,True,True,missing_isin
+MNGB,NYSE ARCA,ETF,Yorkville America 2X Inverse MANGOS Plus Daily Target ETF,US,MNGB,YORKVILLE AMER MNGO PI ETF,ETP,,False,False,missing_isin
+MNGU,NYSE ARCA,ETF,MicroSectors 3x Long MANGOS+ ex Private Companies ETNs,US,MNGU,MICROSECTO 3 MANGOS PVT ETNS,ETP,,True,False,missing_isin
+MNGZ,NYSE ARCA,ETF,Yorkville America 2X Long MANGOS Plus Daily Target ETF,US,MNGZ,YORKVILLE AMER MNGO PI ETF,ETP,,False,False,missing_isin
+MNS.U,TSX,ETF,Royal Canadian Mint - Canadian Silver Reserves Exchange-Traded Receipts,CN,,,,,False,False,no_openfigi_match
+MOGO,TSX,Stock,Mogo Inc.,CN,,,,,False,False,no_openfigi_match
+MOLI,IDX,Stock,Madusari Murni Indah Tbk PT,IJ,MOLI,MADUSARI MURNI INDAH TBK PT,Common Stock,,True,True,missing_isin
+MPCT,TSX,ETF,Dream Impact Trust,CN,,,,,False,False,no_openfigi_match
+MSFY,BATS,ETF,Kurv Yield Premium Strategy Microsoft ETF,US,MSFY,KURV YLD PREM STR MSFT ETF,ETP,,True,False,missing_isin
 MSSS,BATS,ETF,Northern Lights Fund Trust IV - Monarch Select Subsector Index ETF,US,MSSS,MONARCH SELECT SUBSEC IN ETF,ETP,,True,False,missing_isin
-MUIB,BATS,ETF,Direxion MU Defined Income Boost ETF,US,MUIB,DIREXION MU DEFINED INC ETF,ETP,,True,True,missing_isin
-MXLL,BATS,ETF,Leverage Shares 2X Long MXL Daily ETF,US,MXLL,LEVERAGE SHARES 2X MXL,ETP,,True,True,missing_isin
+MTAK,NASDAQ,Stock,Market Technology Acquisition Corp - Class A Ordinary Shares,US,MTAK,MARKET TECHNOLOGY ACQUISIT-A,Common Stock,,True,False,missing_isin
+MTB,NYSE,Stock,M&T Bank Corporation,US,MTB,M & T BANK CORP,Common Stock,,True,False,missing_isin
+MTSU,NEO,Stock,MITSUBISHI CORP CDR (CAD Hedged),CN,MTSU,MITSUBISHI CORP,Canadian DR,,True,False,missing_isin
+MUNF,NYSE ARCA,ETF,Northern Trust 2036 Tax-Exempt Distributing Ladder ETF,US,MUNF,NT 2036 TAX-EXM ETF,ETP,,True,False,missing_isin
+MUNG,NYSE ARCA,ETF,Northern Trust 2046 Tax-Exempt Distributing Ladder ETF,US,MUNG,NT 2046 TAX-EXM ETF,ETP,,True,False,missing_isin
+MUNH,NYSE ARCA,ETF,Northern Trust 2056 Tax-Exempt Distributing Ladder ETF,US,MUNH,NT 2056 TAX-EXM ETF,ETP,,True,False,missing_isin
+MUNJ,NYSE ARCA,ETF,Northern Trust 2031 Tax-Exempt Distributing Ladder ETF,US,MUNJ,NT 2031 TAX-EXM ETF,ETP,,True,False,missing_isin
+MUNX,NYSE ARCA,ETF,AMG ETF Trust,US,MUNX,AMG GW&K MUNI INCOME ETF,ETP,,True,False,missing_isin
+MUY,NASDAQ,ETF,YieldMax MU Option Income Strategy ETF,US,MUY,YIELDMAX MU OPT INC STRG ETF,ETP,,True,False,missing_isin
+MVPA,NYSE,ETF,Miller Value Partners Appreciation ETF,US,MVPA,MILLER VALUE PARTNERS APP,ETP,,True,True,missing_isin
 MYCO,NASDAQ,ETF,SPDR SSGA My2035 Corporate Bond ETF,US,MYCO,STATE STREET MY2035 CORPORAT,ETP,,True,False,missing_isin
+MYCP,NASDAQ,ETF,State Street My2036 Corporate Bond ETF,US,MYCP,STATE STREET MY2036 CB ETF,ETP,,True,True,missing_isin
+MYHF,NASDAQ,ETF,State Street My2032 High Yield Corporate Bond ETF,US,MYHF,STATE STREET MY2032 HIGH YLD,ETP,,True,True,missing_isin
 MYMK,NASDAQ,ETF,SPDR SSGA My2031 Municipal Bond ETF,US,MYMK,STATE STREET MY2031 MUNICIPA,ETP,,True,False,missing_isin
-MYX,NASDAQ,Stock,Maywood Acquisition Corp. 2,US,MYX,MAYWOOD ACQUISITION C2-CL-A,Common Stock,,True,True,missing_isin
-NBIC,BATS,ETF,Corgi NBIS 2x Daily ETF,US,NBIC,CORGI NBIS 2X DAILY ETF,ETP,,True,True,missing_isin
-NCEL,NASDAQ,Stock,NewcelX Ltd.,US,NCEL,NEWCELX LTD,Common Stock,,True,True,missing_isin
-NCLD,NASDAQ,ETF,Roundhill Neocloud ETF,US,NCLD,ROUNDHILL NEOCLOUD ETF,ETP,,True,True,missing_isin
-NCO,NASDAQ,Stock,Southern Cross Acquisition I Corp. - Ordinary Shares,US,NCO,SOUTHERN CROSS ACQUISITION I,Common Stock,,True,True,missing_isin
+MYML,NASDAQ,ETF,State Street My2032 Municipal Bond ETF,US,MYML,STATE STREET MY2032 MB ETF,ETP,,True,True,missing_isin
+MZ1,ASX,ETF,MEDALLION TRUST SERIES 2017-1,AT,,,,,False,False,no_openfigi_match
+MZ2,ASX,ETF,MEDALLION TRUST SERIES 2017-2,AT,,,,,False,False,no_openfigi_match
+MZF,ASX,ETF,MEDALLION TRUST SERIES 2016-1,AT,,,,,False,False,no_openfigi_match
+MZT,ASX,ETF,MEDALLION TRUST SERIES 2016-2,AT,,,,,False,False,no_openfigi_match
+NACO,NEO,ETF,Ninepoint Alt Credit Opportunities ETF,CN,NACO,NINEPOINT ALTERNATIVE CREDIT,ETP,,True,False,missing_isin
+NBBX,TSX,ETF,NBI Canadian Bond Index Fund,CN,NBBX,NBI CNDN BND INDX ETF SERIES,ETP,,True,False,missing_isin
+NBCG,TSX,ETF,NBI Canadian Equity Growth Fund,CN,NBCG,NBI CN EQ GWTH FD,ETP,,True,False,missing_isin
+NBCX,TSX,ETF,NBI Canadian Equity Index Fund,CN,NBCX,NBI CAN EQUITY INDEX FUN ETF,ETP,,True,False,missing_isin
+NBEM,TSX,ETF,NBI Diversified Emerging Markets Equity Fund,CN,NBEM,NBI DIVS EMER MRK EQ FUN ETF,ETP,,True,False,missing_isin
+NBIE.F,TSX,ETF,NBI International Equity Fund,CN,,,,,False,False,no_openfigi_match
+NBIV,TSX,ETF,NBI International Value Fund,CN,NBIV,NBI INTERNATIONAL VALUE FUND,ETP,,True,True,missing_isin
+NBLD,TSX,ETF,NBI Balanced ETF Portfolio,CN,NBLD,NBI BALANCED ETF PORTFOLIO,ETP,,True,True,missing_isin
+NBUE,TSX,ETF,NBI U.S. Equity Fund,CN,NBUE,NBI US EQUITY FUND,ETP,,True,True,missing_isin
+NBUE.F,TSX,ETF,NBI U.S. Equity Fund,CN,,,,,False,False,no_openfigi_match
+NBUX,TSX,ETF,NBI U.S. Equity Index Fund,CN,NBUX,NBI US EQUITY INDEX FD/ ETF,ETP,,True,True,missing_isin
+NCNS,TSX,ETF,NBI Conservative ETF Portfolio,CN,NCNS,NBI CONSERVATIVE ETF PORTFOL,ETP,,True,False,missing_isin
+NECK,NYSE ARCA,ETF,xETFs AI Bottlenecks ETF,US,NECK,XETFS AI BOTTLENECKS ETF,ETP,,True,True,missing_isin
+NEQT,TSX,ETF,NBI Equity ETF Portfolio,CN,NEQT,NBI EQUITY ETF PORTFOLIO,ETP,,True,True,missing_isin
+NEST,NEO,Stock,NESTLE SA CDR (CAD Hedged),CN,NEST,NESTLE SA-CDR,Canadian DR,,True,True,missing_isin
+NESTLE,PSX,Stock,Nestle Pakistan Ltd,PA,NESTLE,NESTLE PAKISTAN LTD,Common Stock,,True,True,missing_isin
 NETX,BATS,ETF,Tradr 2X Long NET Daily ETF,US,,,,,False,False,no_openfigi_match
 NFLP,BATS,ETF,Kurv Yield Prm Stgy Netflix (NFLX) ETF,US,NFLP,KURV YLD PREM STR NFLX ETF,ETP,,True,False,missing_isin
-NGEN,NASDAQ,Stock,NervGen Pharma Corp. - Common stock,US,NGEN,NERVGEN PHARMA CORP,Common Stock,,True,True,missing_isin
-NHIV,NASDAQ,Stock,NewHold Investment Corp IV,US,NHIV,NEWHOLD INVESTMENT CORP IV-A,Common Stock,,True,True,missing_isin
-NIKI,NASDAQ,Stock,"Niki BioSolutions, Inc. - Common Stock",US,NIKI,NIKI BIOSOLUTIONS INC,Common Stock,,True,True,missing_isin
+NGRW,TSX,ETF,NBI Growth ETF Portfolio,CN,NGRW,NBI GROWTH ETF PORTFOLIO,ETP,,True,True,missing_isin
+NIKL,IDX,Stock,Pelat Timah Nusantara Tbk,IJ,NIKL,PELAT TIMAH NUSANTARA TBK PT,Common Stock,,True,True,missing_isin
 NIPG,NASDAQ,Stock,NIP Group Inc.,US,NIPG,NIP GROUP INC,ADR,,True,False,missing_isin
-NMAD,NASDAQ,Stock,"Nomad Power Solutions, Inc. - Common Stock",US,NMAD,NOMAD POWER SOLUTIONS INC,Common Stock,,True,True,missing_isin
-NOWX,BATS,ETF,Corgi NOW 2x Daily ETF,US,NOWX,CORGI NOW 2X DAILY ETF,ETP,,True,True,missing_isin
-NTAL,NASDAQ,ETF,GraniteShares 2x Long NTAP Daily ETF,US,NTAL,GRANITE 2X LONG NTAL ETF,ETP,,True,False,missing_isin
-NVIB,BATS,ETF,Direxion NVDA Defined Income Boost ETF,US,NVIB,DIREXION NVDA DEFIND INC ETF,ETP,,True,False,missing_isin
-NVOC,BATS,ETF,Corgi NVO 2x Daily ETF,US,NVOC,CORGI NVO 2X DAILY ETF,ETP,,True,True,missing_isin
-NVTC,BATS,ETF,Corgi NVTS 2x Daily ETF,US,NVTC,CORGI NVTS 2X DAILY ETF,ETP,,True,True,missing_isin
-NWGL,NASDAQ,Stock,CL Workshop Group Limited,US,NWGL,CL WORKSHOP GROUP LTD,ADR,,True,True,missing_isin
-OBX,NASDAQ,Stock,"Obsidian Therapeutics, Inc. - Common Stock",US,OBX,OBSIDIAN THERAPEUTICS INC,Common Stock,,True,True,missing_isin
-OCNL,BATS,ETF,T-REX 2X Long DOCN Daily Target ETF,US,OCNL,T-REX 2X L DOCN DL TRG  ETF,ETP,,True,False,missing_isin
+NMEQ,TSX,ETF,Meritage Tactical ETF Equity Portfolio,CN,NMEQ,MRTG TTCL ETF EQ PF/ETF,ETP,,True,False,missing_isin
+NMG-H,TSXV,Stock,Noble Metal Group Incorporated,CN,,,,,False,False,no_openfigi_match
+NMGR,TSX,ETF,Meritage Tactical ETF Growth Portfolio,CN,NMGR,MRTG TCTL ETF GWT PRTF/ETF,ETP,,True,False,missing_isin
+NMMO,TSX,ETF,Meritage Tactical ETF Moderate Portfolio,CN,NMMO,MERITAGE TACTIC MOD PORT ETF,ETP,,True,False,missing_isin
+NOVO,TSX,Stock,Novo Nordisk CDR (CAD Hedged),CN,NOVO,NOVO NORDISK A/S,Canadian DR,,True,True,missing_isin
+NOWS,TSX,Stock,ServiceNow CDR (CAD Hedged),CN,NOWS,SERVICENOW-CDR,Canadian DR,,True,True,missing_isin
+NPTH,TSXV,Stock,NeuPath Health Inc.,CN,NPTH,NEUPATH HEALTH INC,Common Stock,,True,True,missing_isin
+NRAM,NYSE ARCA,ETF,Yorkville America Next Generation Memory Index ETF,US,NRAM,YORKVILLE AMERI NXT INDX ETF,ETP,,True,False,missing_isin
+NRL,PSX,Stock,National Refinery Ltd,PA,NRL,NATIONAL REFINERY LTD,Common Stock,,True,True,missing_isin
+NRR,NYSE ARCA,ETF,Common Shares of Beneficial Interest of Bitwise NEAR ETF,US,NRR,BITWISE NEAR ETF,ETP,,True,False,missing_isin
+NRZ-H,TSXV,Stock,Norzan Enterprises Ltd.,CN,,,,,False,False,no_openfigi_match
+NSAI,NASDAQ,Stock,NorthStrive Acquisition Corp I. - Class A Ordinary Shares,US,NSAI,NORTHSTRIVE ACQUISITION-CL A,Common Stock,,True,True,missing_isin
+NSDC,TSX,ETF,NBI SmartData Canadian Equity Fund,CN,NSDC,NBI SMARTDATA CANADIAN EQ FD,ETP,,True,False,missing_isin
+NSDG,TSX,ETF,NBI SmartData Global Equity Fund,CN,NSDG,NBI SMARTDATA GLOBAL EQU ETF,ETP,,True,True,missing_isin
+NSTL,TSX,Stock,Nestlé CDR (CAD Hedged),CN,NSTL,NESTLE SA,Canadian DR,,True,False,missing_isin
+NTDO,NEO,Stock,NINTENDO CO LTD CDR (CAD Hedged),CN,NTDO,NINTENDO CO LTD,Canadian DR,,True,False,missing_isin
+NTHM,TSX,ETF,NBI Thematic Rotation ETF,CN,NTHM,NBI THEMATIC ROTATION ETF,ETP,,True,True,missing_isin
+NUIB,NASDAQ,ETF,Nuveen Impact Bond ETF,US,NUIB,NUVEEN IMPACT BOND ETF,ETP,,True,True,missing_isin
+NUTRISAA,BMV,Stock,"Grupo Nutrisa, S.A.B. de C.V.",MM,NUTRISAA,GRUPO NUTRISA SAB DE CV,Common Stock,,True,True,missing_isin
+NVON,NEO,Stock,NOVO NORDISK A/S CDR (CAD Hedged),CN,NVON,NOVO NORDISK A/S,Canadian DR,,True,True,missing_isin
+NVS,TSX,Stock,Novartis CDR (CAD Hedged),CN,NVS,NOVARTIS AG,Canadian DR,,True,False,missing_isin
+NW1,ASX,ETF,NOW TRUST 2024-1,AT,,,,,False,False,no_openfigi_match
+NWCL,NASDAQ,Stock,newcleo plc - Ordinary Shares,US,NWCL,NEWCLEO PLC,Common Stock,,True,True,missing_isin
+NXG,TSXV,Stock,NexgenRX Inc.,CN,NXG,NEXGENRX INC,Common Stock,,True,True,missing_isin
+OCAC,NYSE,Stock,Ocean Capital Acquisition Corporation Ordinary Shares,US,OCAC,OCEAN CAPITAL ACQUISITION CO,Common Stock,,True,True,missing_isin
+OCLT,NASDAQ,Stock,OceanLight Acquisition Corporation - Ordinary Shares,US,OCLT,OCEANLIGHT ACQUISITION CORP,Common Stock,,True,True,missing_isin
+OCT,NYSE ARCA,ETF,VanEck U.S. Equity Buffer ETF - October,US,OCT,VANECK US EQ BUF ETF OCTOBER,ETP,,True,False,missing_isin
+OCTI,BATS,ETF,AllianzIM International Equity Buffer15 Uncapped Oct ETF,US,OCTI,ALLIANZIM INTL BF15 UNCP OCT,ETP,,True,False,missing_isin
 OFAL,NASDAQ,Stock,OFA Group,US,OFAL,OFA GROUP-A,Common Stock,,True,False,missing_isin
+OGC,NYSE,Stock,OceanaGold Corporation Common Shares,US,OGC,OCEANAGOLD CORP,Common Stock,,True,True,missing_isin
+OGG,NYSE,Stock,Osisko Gold Group Inc. Common Shares,US,OGG,OSISKO GOLD GROUP INC,Common Stock,,True,True,missing_isin
+OIG,NASDAQ,Stock,Orion180 Insurance Group Inc. - Class A Common Stock,US,OIG,ORION180 INSURANCE GROU-CL A,Common Stock,,True,True,missing_isin
 OIO,NASDAQ,Stock,OIO Group,US,OIO,OIO GROUP,Common Stock,,True,False,missing_isin
-OKLC,BATS,ETF,Corgi OKLO 2x Daily ETF,US,OKLC,CORGI OKLO 2X DAILY ETF,ETP,,True,True,missing_isin
-ONDC,BATS,ETF,Corgi ONDS 2x Daily ETF,US,ONDC,CORGI ONDS 2X DAILY ETF,ETP,,True,True,missing_isin
-ORCZ,BATS,ETF,Tradr 2X Short ORCL Daily ETF,US,ORCZ,TRADR 2X SHORT ORCL DALY ETF,ETP,,True,True,missing_isin
-OUSL,BATS,ETF,Defiance Daily Target 2X Long OUST ETF,US,OUSL,DEFN DT 2X LON OUST ETF,ETP,,True,False,missing_isin
-PARA,NASDAQ,Stock,"Banzai International, Inc. - Class A Common Stock",US,PARA,BANZAI INTERNATIONAL INC,Common Stock,,True,True,missing_isin
-PBK,NASDAQ,Stock,PowerBank Corporation,US,PBK,POWERBANK CORP,Common Stock,,True,True,missing_isin
-PDC,NASDAQ,Stock,Perpetuals.com Ltd,US,PDC,PERPETUALS.COM LTD,ADR,,True,True,missing_isin
-PENU,BATS,ETF,T-REX 2X Long PENG Daily Target ETF,US,PENU,T-REX 2X L PENG DL TRG  ETF,ETP,,True,False,missing_isin
-PFBC,NASDAQ,Stock,Preferred Bank,US,PFBC,PREFERRED BANK/LOS ANGELES,Common Stock,,True,True,missing_isin
-PLCI,NASDAQ,Stock,Pelican Acquisition II Corporation - Ordinary Shares,US,PLCI,PELICAN ACQUISITION II CORP,Common Stock,,True,True,missing_isin
-PLIB,BATS,ETF,Direxion PLTR Defined Income Boost ETF,US,PLIB,DIRXN PLTR DFND INCM BST ETF,ETP,,True,False,missing_isin
+OKAI,TSXV,Stock,EvokAI Creative Labs Inc.,CN,,,,,False,False,no_openfigi_match
+ONEN,NASDAQ,Stock,ONE Nuclear Energy Inc. - Common Stock,US,ONEN,ONE NUCLEAR ENERGY INC,Common Stock,,True,True,missing_isin
+OPEN.P,TSXV,Stock,OpenSesame Acquisition Corp.,CN,,,,,False,False,no_openfigi_match
+OPNW,NASDAQ,Stock,"OpenWorld, Inc. - Common Stock",US,OPNW,OPENWORLD INC,Common Stock,,True,True,missing_isin
+OR2,ASX,ETF,ORDE SERIES 2025-1 TRUST,AT,,,,,False,False,no_openfigi_match
+ORAC,TSX,Stock,Oracle CDR (CAD Hedged),CN,ORAC,ORACLE CORP,Canadian DR,,True,False,missing_isin
+ORBU,TSX,ETF,SavvyLong (2X) SpaceX ETF,CN,ORBU,SAVVYLONG 2X SPACEX ETF,ETP,,True,True,missing_isin
+OSG,NYSE,Stock,"Octave Specialty Group, Inc.",US,OSG,OCTAVE SPECIALTY GROUP INC,Common Stock,,True,True,missing_isin
+OSPR,NASDAQ,Stock,Osprey Acquisition Corp. III - Class A Ordinary Shares,US,OSPR,OSPREY ACQUISITION CORP-CL A,Common Stock,,True,False,missing_isin
+OTAX,NYSE,ETF,Optimal Tax Managed Equity ETF,US,OTAX,OPTIMAL TAX MANAGED EQTY ETF,ETP,,True,True,missing_isin
+OULG11B,B3,ETF,Pedra Dourada Fundo De Investimento Imobiliário - FII,BZ,,,,,False,False,no_openfigi_match
+OY1,ASX,ETF,OLYMPUS 2025-1 TRUST,AT,,,,,False,False,no_openfigi_match
+OYS,ASX,ETF,OLYMPUS 2024-2 TRUST,AT,,,,,False,False,no_openfigi_match
+P5RD3,B3,Stock,MATRIZ COMPANHIA METALURGICA PRADA,BZ,,,,,False,False,no_openfigi_match
+PA1,ASX,ETF,PANORAMA AUTO TRUST 2023-1,AT,,,,,False,False,no_openfigi_match
+PA2,ASX,ETF,PANORAMA AUTO TRUST 2024-1,AT,,,,,False,False,no_openfigi_match
+PA3,ASX,ETF,PANORAMA AUTO TRUST 2023-3,AT,,,,,False,False,no_openfigi_match
+PA4,ASX,ETF,PANORAMA AUTO TRUST 2024-3,AT,,,,,False,False,no_openfigi_match
+PA5,ASX,ETF,PANORAMA AUTO TRUST 2025-1,AT,,,,,False,False,no_openfigi_match
+PA6,ASX,ETF,PANORAMA AUTO TRUST 2025-3,AT,,,,,False,False,no_openfigi_match
+PAAI,NYSE MKT,Stock,"Paradium.AI, Inc. Common Stock",US,PAAI,PARADIUM AI INC,Common Stock,,True,True,missing_isin
+PAIN,TSXV,Stock,Vector Science and Therapeutics Corp.,CN,PAIN,VECTOR SCIENCE AND THERAPEUT,Common Stock,,True,True,missing_isin
+PANR,IDX,Stock,Panorama Sentrawisata Tbk,IJ,PANR,PANORAMA SENTRAWISATA TBK PT,Common Stock,,True,True,missing_isin
+PAVE,BATS,ETF,Global X U.S. Infrastructure Development ETF,US,PAVE,GLOBAL X US INFRASTRUCTURE,ETP,,True,False,missing_isin
+PAVE.U,TSX,ETF,Global X U.S. Infrastructure Development Index ETF,CN,,,,,False,False,no_openfigi_match
+PAYI,TSX,ETF,Brompton Utilities & Infrastructure HighPay ETF,CN,PAYI,BROMPTON UTLS & INFR HP ETF,ETP,,True,False,missing_isin
+PAYU,TSX,ETF,Brompton U.S. Equity HighPay ETF,CN,PAYU,BROMPTON US EQ HIGHPAY ETF,ETP,,True,False,missing_isin
+PBCS,NASDAQ,ETF,Portfolio Building Block World Consumer Staples ETF,US,PBCS,PRTFL BULDNG BLCK WLD CS ETF,ETP,,True,False,missing_isin
+PBUB,NASDAQ,ETF,Portfolio Building Block US Banks ETF,US,PBUB,PRTFLI BLD BLCK US BNK ETF,ETP,,True,False,missing_isin
+PBWN,NASDAQ,ETF,Portfolio Building Block World Ex US Industrials ETF,US,PBWN,PORTFOLIO BB WLD EX US ETF,ETP,,True,False,missing_isin
+PBY,TSX,ETF,Canso Credit Income Fund,CN,PBY,LYSANDER-CANSO CR INC ACT,ETP,,True,False,missing_isin
+PCAA.P,TSXV,Stock,PC 1 Corp.,CN,,,,,False,False,no_openfigi_match
+PCEM,NYSE ARCA,ETF,Litman Gregory Funds Trust,US,,,,,False,False,no_openfigi_match
+PCOV,BATS,ETF,Principal Equity Premium Income ETF,US,PCOV,PRINCIPAL EQTY PRM INCM ETF,ETP,,True,False,missing_isin
+PCPC,BATS,ETF,Porter & Company Property & Casualty Index ETF,US,PCPC,PORTER & COMP PRT & CSTY ETF,ETP,,True,False,missing_isin
+PFRD,TSX,ETF,Mulvihill Split Preferred Share ETF,CN,PFRD,MULVIHILL SPLT PREF SHR ETF,ETP,,True,False,missing_isin
+PFRX,NYSE ARCA,ETF,Putnam Focused U.S. Research ETF,US,PFRX,PUTNAM FOCUSED US RSRCH ETF,ETP,,True,False,missing_isin
+PGRX,TSX,ETF,Purpose Global Resource Fund,CN,PGRX,PURPOSE GLOBAL RES FD/ ETF,ETP,,True,False,missing_isin
+PHXE-P,NYSE,Stock,"Phoenix Energy One, LLC",US,,,,,False,False,no_openfigi_match
+PHYS-U,TSX,ETF,Sprott Physical Gold Trust,CN,,,,,False,False,no_openfigi_match
+PICO,IDX,Stock,Pelangi Indah Canindo Tbk,IJ,PICO,PELANGI INDAH CANINDO TBK PT,Common Stock,,True,True,missing_isin
+PJIN,NYSE ARCA,ETF,PGIM Jennison International Core Equity ETF,US,PJIN,PGIM JENNISON INTL COR EQTY,ETP,,True,False,missing_isin
+PJSM,NYSE ARCA,ETF,PGIM Jennison Small-Mid Cap Core Equity ETF,US,PJSM,PGIM JENNISON SM-MID COR EQ,ETP,,True,False,missing_isin
+PLAN,IDX,Stock,PT Planet Properindo Jaya Tbk,IJ,PLAN,PLANET PROPERINDO JAYA TBK P,Common Stock,,True,True,missing_isin
 PLTW,BATS,ETF,PLTR WeeklyPay™ ETF,US,PLTW,ROUNDHILL PLTR WEEKLYPAY ETF,ETP,,True,False,missing_isin
-PTAC,NASDAQ,Stock,Patriot Acquisition Corp. - Class A Ordinary Shares,US,PTAC,PATRIOT ACQUISITION-CL A,Common Stock,,True,True,missing_isin
-PWCM,NASDAQ,Stock,"PowerCompute, Inc. - Common Stock",US,PWCM,POWERCOMPUTE INC,Common Stock,,True,True,missing_isin
-QFF,NASDAQ,ETF,Qualivian Focus Fund ETF,US,QFF,QUALIVIAN FOCUS FUND ETF,ETP,,True,True,missing_isin
-QMLS,NASDAQ,Stock,"QumulusAI, Inc. - Common Stock",US,QMLS,QUMULUSAI INC,Common Stock,,True,True,missing_isin
+PMEI,TSX,ETF,PIMCO Monthly Enhanced Income Fund,CN,,,,,False,False,no_openfigi_match
+PMZ,TSX,ETF,Primaris Real Estate Investment Trust,CN,,,,,False,False,no_openfigi_match
+PNAQ,NYSE,Stock,Pinnacle Acquisition Corporation Class A Ordinary Shares,US,PNAQ,PINNACLE ACQUISITION CO-CL A,Common Stock,,True,True,missing_isin
+POB,ASX,ETF,PROGRESS 2021-1 TRUST,AT,,,,,False,False,no_openfigi_match
+POC,ASX,ETF,PROGRESS 2022-1 TRUST,AT,,,,,False,False,no_openfigi_match
+POC.P,TSXV,Stock,POCML 7 Inc.,CN,,,,,False,False,no_openfigi_match
+POE,ASX,ETF,PROGRESS 2023-1 TRUST,AT,,,,,False,False,no_openfigi_match
+POF,ASX,ETF,PROGRESS 2022-2 TRUST,AT,,,,,False,False,no_openfigi_match
+POG,ASX,ETF,PROGRESS 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+POH,ASX,ETF,PROGRESS 2023-2 TRUST,AT,,,,,False,False,no_openfigi_match
+POI,ASX,ETF,PROGRESS 2025-1 TRUST,AT,,,,,False,False,no_openfigi_match
+POLA,IDX,Stock,PT Pool Advista Finance Tbk.,IJ,POLA,POOL ADVISTA FINANCE TBK PT,Common Stock,,True,True,missing_isin
+POLL,IDX,Stock,Pollux Properti Indonesia Tbk PT,IJ,POLL,POLLUX PROPERTIES INDONESIA,Common Stock,,True,False,missing_isin
+PORT,SET,Stock,Sahathai Terminal Public Company Limited,TB,PORT,SAHATHAI TERMINAL PCL,Common Stock,,True,False,missing_isin
+PORT,IDX,Stock,PT Nusantara Pelabuhan Handal Tbk.,IJ,PORT,NUSANTARA PELABUHAN HANDAL T,Common Stock,,True,True,missing_isin
+PR4,ASX,ETF,PEPPER RESIDENTIAL SECURITIES TRUST NO. 40,AT,,,,,False,False,no_openfigi_match
+PRAM,BATS,ETF,Defiance Memory & Photonics ETF,US,PRAM,DEFIANCE MEMRY & PHTONIS ETF,ETP,,True,False,missing_isin
+PRB,TSX,Stock,Probe Gold Inc.,CN,PRB,PROBE GOLD INC,Common Stock,,True,True,missing_isin
+PRG,NYSE,Stock,PROG Holdings Inc,US,PRG,PROG HOLDINGS INC,Common Stock,,True,False,missing_isin
+PRH,TSXV,Stock,Pearl River Holdings Limited,CN,PRH,PEARL RIVER HOLDINGS LTD,Common Stock,,True,True,missing_isin
+PRINC,SET,Stock,Principal Capital Public Company Limited,TB,PRINC,PRINCIPAL CAPITAL PCL,Common Stock,,True,False,missing_isin
+PRVS,NYSE,ETF,Parnassus Income Funds,US,PRVS,PARNASSUS VALUE SELECT ETF,ETP,,True,False,missing_isin
+PS2,ASX,ETF,PUMA SERIES 2024-2 TRUST,AT,,,,,False,False,no_openfigi_match
+PSOX,BATS,ETF,Tema MLCC & PowerSemi ETF,US,PSOX,TEMA MLCC & POWERSEMI ETF-UI,ETP,,True,True,missing_isin
+PSQL,NASDAQ,Stock,Pasqal Holding SA - Ordinary Shares,US,PSQL,PASQAL HOLDING SA,Common Stock,,True,True,missing_isin
+PSU,TSX,ETF,Purpose US Cash Fund ETF,CN,,,,,False,False,no_openfigi_match
+PSY,TSX,ETF,Purpose Structured Equity Yield Fund,CN,PSY,PURPOSE STRUCTURD EQ YLD ETF,ETP,,True,False,missing_isin
+PTC,TSXV,Stock,Petrox Resources Corp.,CN,PTC,PETROX RESOURCES CORP,Common Stock,,True,True,missing_isin
+PTP-H,TSXV,Stock,Petrichor Energy Inc,CN,,,,,False,False,no_openfigi_match
+PU6,ASX,ETF,PEPPER SPARKZ TRUST NO.6,AT,,,,,False,False,no_openfigi_match
+PU8,ASX,ETF,PEPPER SPARKZ TRUST NO.8,AT,,,,,False,False,no_openfigi_match
+PU9,ASX,ETF,PEPPER SPARKZ TRUST NO.9,AT,,,,,False,False,no_openfigi_match
+PURE,IDX,Stock,PT Trinitan Metals and Minerals Tbk,IJ,PURE,TRINITAN METALS & MINERALS T,Common Stock,,True,True,missing_isin
+PUT,ASX,ETF,PUMA SERIES 2023-1 TRUST,AT,,,,,False,False,no_openfigi_match
+PUU,ASX,ETF,PUMA SERIES 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+PUV,ASX,ETF,PUMA SERIES 2025-1 TRUST,AT,,,,,False,False,no_openfigi_match
+PWF,TSX,Stock,Power Financial Corporation,CN,,,,,False,False,no_openfigi_match
+QBR,TSX,Stock,Quebecor Inc.,CN,,,,,False,False,no_openfigi_match
+QBTC,TSX,ETF,The Bitcoin Fund,CN,QBTC,BITCOIN FUND/THE,Closed-End Fund,,True,True,missing_isin
+QBTC-U,TSX,Stock,The Bitcoin Fund Class A,CN,,,,,False,False,no_openfigi_match
+QDAY,NEO,ETF,Hamilton EnhancedTechnology DayMAX™ ETF,CN,QDAY,HAMILTON ENH TECH DAYMAX ETF,ETP,,True,False,missing_isin
+QNB,ASX,Stock,QNB FINANCE LTD,AT,,,,,False,False,no_openfigi_match
 QNME,NASDAQ,Stock,"Quanome Technologies, Inc. - Common Stock",US,QNME,QUANOME TECHNOLOGIES INC,Common Stock,,True,True,missing_isin
-QQAU,BATS,ETF,Corgi Growth & Technology 15% Structured Buffer ETF - August Series,US,QQAU,CORGI GR & TECH 15% STR-AUG,ETP,,True,False,missing_isin
-QUA,BATS,ETF,Corgi QBTS 2x Daily ETF,US,QUA,CORGI QBTS 2X DAILY ETF,ETP,,True,True,missing_isin
+QQBF,BATS,ETF,FT Vest Nasdaq-100 Quarterly 15 Buffer ETF,US,QQBF,FTV NASD 100 QTR 15 BUFF ETF,ETP,,True,False,missing_isin
+QQI,NASDAQ,ETF,Invesco Nasdaq International Innovators 100 ETF,US,QQI,INVESCO NASDQ INT IN 100 ETF,ETP,,True,False,missing_isin
+QQQB,NASDAQ,ETF,VistaShares Shield Nasdaq 100 Enhanced Protection ETF,US,QQQB,VISTASHR SLD NSDQ 100 EP ETF,ETP,,True,False,missing_isin
+QQSE,BATS,ETF,Corgi Growth & Technology 15% Structured Buffer ETF - September Series,US,QQSE,CORGI GR & TECH 15% STR-SEP,ETP,,True,False,missing_isin
+QRED,NYSE,Stock,QuasarEdge Acquisition Corporation Ordinary Shares,US,QRED,QUASAREDGE ACQUISITION CORP,Common Stock,,True,True,missing_isin
+QSE,BATS,ETF,Corgi Growth & Technology 10% Structured Buffer ETF - September Series,US,QSE,CORGI GRW & TECH 10% STR-SEP,ETP,,True,False,missing_isin
 QVC,NASDAQ,Stock,"QVC Group, Inc. - Common Stock",US,,,,,False,False,no_openfigi_match
 QVCG,NASDAQ,Stock,"QVC Group, Inc. - Common Stock",US,QVCG,QVC GROUP INC,Common Stock,,True,False,missing_isin
-RACC,NASDAQ,Stock,Research Alliance Corporation III,US,RACC,RESEARCH ALLIANCE CORP CL A,Common Stock,,True,False,missing_isin
-RACD,NASDAQ,Stock,Research Alliance Corporation IV - Class A Ordinary Shares,US,RACD,RESEARCH ALLIANCE CORP IV-A,Common Stock,,True,True,missing_isin
-RAML,BATS,ETF,Leverage Shares 2X Long Memory Daily ETF,US,RAML,LEVERAGE SHARES 2X MEMORY,ETP,,True,True,missing_isin
-RAMZ,BATS,ETF,T-REX 2X Inverse DRAM Daily Target ETF,US,RAMZ,T-REX 2X INVRSE DD TRGET ETF,ETP,,True,False,missing_isin
+QVMT,NYSE ARCA,ETF,Invesco S&P S&P 500 Concentrated QVM ETF,US,QVMT,INVESCO S&P 500 CONCENTRATED,ETP,,True,True,missing_isin
+RA2,ASX,Stock,RESIMAC PREMIER SERIES 2020-1,AT,,,,,False,False,no_openfigi_match
+RA3,ASX,Stock,RESIMAC SERIES 2024-1NC,AT,,,,,False,False,no_openfigi_match
 RARE,NASDAQ,Stock,Ultragenyx,US,RARE,ULTRAGENYX PHARMACEUTICAL IN,Common Stock,,True,False,missing_isin
-RDDC,BATS,ETF,Corgi RDDT 2x Daily ETF,US,RDDC,CORGI RDDT 2X DAILY ETF,ETP,,True,True,missing_isin
+RAV,TSX,ETF,Ravensource Fund,CN,,,,,False,False,no_openfigi_match
+RBNU,TSX,ETF,SavvyLong (2X) HOOD ETF,CN,RBNU,SAVVYLONG 2X HOOD ETF,ETP,,True,True,missing_isin
+RBX,TSXV,Stock,Robex Resources Inc.,CN,RBX,ROBEX RESOURCES INC,Common Stock,,True,True,missing_isin
+RCHM,NEO,Stock,CIE FINANCIERE RICHEMONT AG CDR (CAD Hedged),CN,RCHM,CIE FINANCIERE RICHEMONT SA,Canadian DR,,True,True,missing_isin
+RDS,TSXV,Stock,Ressources Minieres Radisson Inc,CN,RDS,RADISSON MINING RESOURCES,Common Stock,,True,False,missing_isin
+RE,LSE,Stock,R.E.A. Holdings plc,LN,,,,,False,False,no_openfigi_match
+RE-B,LSE,Stock,R.E.A. Holdings plc,LN,,,,,False,False,no_openfigi_match
+REF,NYSE,Stock,Reformation Inc. Common Stock,US,REF,REFORMATION INC,Common Stock,,True,True,missing_isin
+REIX,NYSE ARCA,ETF,NYLIM CBRE Real Estate & Infrastructure ETF,US,REIX,NYLIM CBRE REAL ESTATE & INF,ETP,,True,True,missing_isin
 REMG,NASDAQ,ETF,Emerging Markets Active ETF,US,REMG,RU IN EM MARKE EQUITY ETF-US,ETP,,True,False,missing_isin
-REXC,NASDAQ,ETF,Sprott Rare Earths Ex-China ETF,US,REXC,SPROTT RARE EARTHS EX-CHINA,ETP,,True,True,missing_isin
+RENT.P,TSXV,Stock,Shine Box Capital Corp.,CN,,,,,False,False,no_openfigi_match
+REVV,TSXV,Stock,ReVolve Renewable Power Corp.,CN,REVV,REVOLVE RENEWABLE POWER CORP,Common Stock,,True,True,missing_isin
+REVX,TSXV,Stock,Rev Exploration Corp.,CN,REVX,REV EXPLORATION CORP,Common Stock,,True,True,missing_isin
+RGI,TSXV,Stock,Reco International Group Inc.,CN,RGI,RECO INTERNATIONAL GROUP INC,Common Stock,,True,True,missing_isin
+RGIP.U,TSX,ETF,Purpose Canadian Preferred Share P2L T,CN,,,,,False,False,no_openfigi_match
 RGLO,NASDAQ,ETF,Global Equity Active ETF,US,RGLO,RUSSELL INVEST GLB EQ-USD IN,ETP,,True,False,missing_isin
-RGTC,BATS,ETF,Corgi RGTI 2x Daily ETF,US,RGTC,CORGI RGTI 2X DAILY ETF,ETP,,True,True,missing_isin
+RGNT,NYSE MKT,Stock,Regentis Biomaterials Ltd. Ordinary Shares,US,RGNT,REGENTIS BIOMATERIALS LTD/IS,Common Stock,,True,True,missing_isin
 RIFR,NASDAQ,ETF,Global Infrastructure Active ETF,US,RIFR,RUSSELL INVESTMENTS GLOBAL I,ETP,,True,False,missing_isin
-RIVC,BATS,ETF,Corgi RIVN 2x Daily ETF,US,RIVC,CORGI RIVN 2X DAILY ETF,ETP,,True,True,missing_isin
-RNMN,BATS,ETF,RiverNorth Market Neutral ETF,US,RNMN,RIVERNORTH MRKT NEUTRAL ETF,ETP,,True,False,missing_isin
-SCAU,BATS,ETF,Corgi U.S. Small-Cap 15% Structured Buffer ETF - August Series,US,SCAU,CORGI US S/C 15% STR BUF-AUG,ETP,,True,False,missing_isin
-SCTX,NASDAQ,Stock,Scribe Therapeutics Inc. - Common Stock,US,SCTX,SCRIBE THERAPEUTICS INC,Common Stock,,True,True,missing_isin
-SEUS,NASDAQ,ETF,SEI QiM U.S. Equity Factor Allocation Active ETF,US,SEUS,SEI QIM US EQT ALL ETF,ETP,,True,False,missing_isin
-SITX,BATS,ETF,Tradr 2X Long SITM Daily ETF,US,SITX,TRADR 2X LONG SITM DLY ETF,ETP,,True,True,missing_isin
-SKDD,NASDAQ,ETF,GraniteShares 2x Short SK Hynix Daily ETF,US,SKDD,GRANTSHR 2X SHRT SK HYNX ETF,ETP,,True,False,missing_isin
-SKHA,BATS,ETF,Tradr 2X Long SK hynix Daily ETF,US,SKHA,TRADR 2X LONG SKH DAILY ETF,ETP,,True,True,missing_isin
-SKHN,BATS,ETF,Tradr 2X Short SK hynix Daily ETF,US,SKHN,TRADR 2X SHRT SK HYNIX ETF,ETP,,True,True,missing_isin
-SKHX,BATS,ETF,Leverage Shares 2X Long SK Hynix Daily ETF,US,SKHX,LEVERAGE SHARES 2X SK HY ETF,ETP,,True,True,missing_isin
-SKHZ,BATS,ETF,Leverage Shares 1X Short SK Hynix Daily ETF,US,SKHZ,LEVERAGE SHARES 1X SHRT SKHY,ETP,,True,False,missing_isin
+RLCO,IDX,Stock,Abadi Lestari Indonesia Tbk,IJ,RLCO,ABADI LESTARI INDONESIA TBK,Common Stock,,True,True,missing_isin
+RLHA,BMV,Stock,RLH Properties S.A.B. de C.V,MM,RLHA,RLH PROPERTIES SAB DE CV,Common Stock,,True,True,missing_isin
+RM,NYSE,Stock,Regional Management Corp,US,RM,REGIONAL MANAGEMENT CORP,Common Stock,,True,True,missing_isin
+RM1,ASX,ETF,NATIONAL RMBS TRUST 2024-1,AT,,,,,False,False,no_openfigi_match
+RME,TSXV,Stock,Roland Minerals Enterprises Corp.,CN,RME,ROLAND MINERAL ENTERPRISES C,Common Stock,,True,False,missing_isin
+RNAQ,NASDAQ,Stock,Rainier Acquisition Corporation - Class A Ordinary Shares,US,RNAQ,RAINIER ACQUISITION-CL A,Common Stock,,True,True,missing_isin
+ROBX,NYSE ARCA,ETF,Amplify Top 10 Robotics ETF,US,ROBX,AMPLIFY TOP 10 ROBOTICS ETF,ETP,,True,True,missing_isin
+ROCH,NEO,Stock,ROCHE HOLDING AG CDR (CAD Hedged),CN,ROCH,ROCHE HOLDING AG,Canadian DR,,True,False,missing_isin
+RSCC-U,NEO,ETF,GLOBAL X RUSSELL 2000 COVERED C,CN,,,,,False,False,no_openfigi_match
+RSSX-U,NEO,ETF,GLOBAL X RUSSELL 2000 INDEX ETF,CN,,,,,False,False,no_openfigi_match
+RUM,TSXV,Stock,Rocky Mountain Liquor Inc.,CN,RUM,ROCKY MOUNTAIN LIQUOR INC,Common Stock,,True,True,missing_isin
+RVC.P,TSXV,Stock,Ronin Ventures Corp.,CN,,,,,False,False,no_openfigi_match
+RVII,NYSE,Stock,Robinhood Ventures Fund II Common Shares of Beneficial Interest,US,RVII,ROBINHOOD VENTURES FUND II,Common Stock,,True,True,missing_isin
+RWEM,NYSE ARCA,ETF,The Advisors' Inner Circle Fund III - Rayliant Wilshire NxtGen Emerging Markets Equity ETF,US,RWEM,RAYLIANT NXTGN MLT EM EQ-USD,ETP,,True,False,missing_isin
+RWLC,NYSE ARCA,ETF,The Advisors' Inner Circle Fund III - Rayliant Wilshire NxtGen US Large Cap Equity ETF,US,RWLC,RAYLN NXTGN MU US EQ ETF-USD,ETP,,True,False,missing_isin
+RZAI,NASDAQ,Stock,Roze AI Inc. - Common Shares,US,RZAI,ROZE AI INC,Common Stock,,True,True,missing_isin
+SAC,NYSE,Stock,Safeguard Acquisition Corp. Class A Ordinary Shares,US,SAC,SAFEGUARD ACQUISITION C-CL A,Common Stock,,True,True,missing_isin
+SAFE,IDX,Stock,Steady Safe Tbk,IJ,SAFE,STEADY SAFE TBK PT,Common Stock,,True,True,missing_isin
+SALI,NYSE ARCA,ETF,Schroders US Autocallable Ladder Income ETF,US,SALI,SCHRODERS US AUTO LDDR INC,ETP,,True,False,missing_isin
+SAMO,NYSE,Stock,Samos Energy Acquisition Corporation Class A Ordinary Shares,US,SAMO,SAMOS ENERGY ACQUISITION C-A,Common Stock,,True,True,missing_isin
+SAPG,NEO,Stock,SAP SE CDR (CAD Hedged),CN,SAPG,SAP SE,Canadian DR,,True,False,missing_isin
+SAPS,TSX,Stock,SAP CDR (CAD Hedged),CN,SAPS,SAP SE,Canadian DR,,True,False,missing_isin
+SAPX,IDX,Stock,PT Satria Antaran Prima Tbk.,IJ,SAPX,SATRIA ANTARAN PRIMA PT,Common Stock,,True,True,missing_isin
+SBEL.P,TSXV,Stock,Sanibel Ventures Corp.,CN,,,,,False,False,no_openfigi_match
+SBMT,NYSE MKT,Stock,Silver Bow Mining Corp. Common Shares,US,SBMT,SILVER BOW MINING CORP,Common Stock,,True,True,missing_isin
+SC1,ASX,Stock,"SHINHAN CARD CO., LTD.",AT,SC1,SOURCE CERTAIN INTERNATIONAL,Common Stock,,True,False,missing_isin
+SCA,ASX,ETF,SCENTRE GROUP TRUST 1 AND SCENTRE GROUP TRUST 2,AT,,,,,False,False,no_openfigi_match
+SCAI,TSXV,Stock,SalesCloser AI Inc.,CN,SCAI,SALESCLOSER TECHNOLOGIES LTD,Common Stock,,True,False,missing_isin
+SCCO,IDX,Stock,PT Supreme Cable Manufacturing & Commerce Tbk,IJ,SCCO,SUPREME CABLE MFG CORP PT,Common Stock,,True,True,missing_isin
+SCD,TSXV,Stock,Scandium Canada Ltd.,CN,SCD,SCANDIUM CANADA LTD,Common Stock,,True,True,missing_isin
+SCSE,BATS,ETF,Corgi U.S. Small-Cap 15% Structured Buffer ETF - September Series,US,SCSE,CORGI US S/C 15% STR BUF-SEP,ETP,,True,False,missing_isin
+SDAY,NEO,ETF,Hamilton EnhancedU.S. Equity DayMAX™ ETF,CN,SDAY,HAMILTON ENH US EQTY DAYMAX,ETP,,True,False,missing_isin
+SDCI.P,TSXV,Stock,St. Davids Capital Inc.,CN,,,,,False,False,no_openfigi_match
+SECA,BATS,ETF,Main Active Rotation ETF,US,SECA,MAIN ACTIVE ROTATION ETF,ETP,,True,True,missing_isin
+SECZ,NYSE,Stock,Securitize Corp. Common Stock,US,SECZ,SECURITIZE CORP,Common Stock,,True,True,missing_isin
+SEPC,BATS,ETF,Corgi U.S. Equities 10% Structured Buffer ETF - September Series,US,SEPC,CORGI US EQ 10% STR BUF-SEP,ETP,,True,False,missing_isin
+SFTB,NEO,Stock,SOFTBANK GROUP CORP CDR (CAD Hedged),CN,SFTB,SOFTBANK GROUP CORP,Canadian DR,,True,False,missing_isin
+SFV,ASX,Stock,SANTOS FINANCE LIMITED,AT,,,,,False,False,no_openfigi_match
+SGE,TSXV,Stock,Strategem Capital Corporation,CN,SGE,STRATEGEM CAPITAL CORP-A,Common Stock,,True,True,missing_isin
+SGLD,NASDAQ,Stock,Scorpio Gold Corporation - Common Stock,US,SGLD,SCORPIO GOLD CORP,ADR,,True,True,missing_isin
+SGQ,TSXV,Stock,SouthGobi Resources Ltd.,CN,SGQ,SOUTHGOBI RESOURCES LTD,Common Stock,,True,True,missing_isin
+SHIP,IDX,Stock,PT Sillo Maritime Perdana Tbk,IJ,SHIP,SILLO MARITIME PERDANA TBK P,Common Stock,,True,True,missing_isin
+SHR,SET,Stock,S Hotels and Resorts Public Company Limited,TB,SHR,S HOTELS & RESORTS PCL,Common Stock,,True,False,missing_isin
+SHZ,ASX,Stock,SHINHAN BANK.,AT,,,,,False,False,no_openfigi_match
+SIH,TSX,ETF,Sustainable Innovation & Health Dividend Fund,CN,,,,,False,False,no_openfigi_match
+SIND,NYSE,Stock,Sinda Ltd. Common Stock,US,SIND,SINDA LTD,Common Stock,,True,True,missing_isin
+SITES1A-1,BMV,Stock,OPERADORA DE SITES MEXICANOS SAD,MM,,,,,False,False,no_openfigi_match
+SKHQ,BATS,ETF,Leverage Shares 2X Short Sk Hynix Daily ETF,US,SKHQ,LEVERAGE SHARS 2X SHORT SKHY,ETP,,True,False,missing_isin
 SKK,NASDAQ,Stock,SKK Holdings Limited,US,SKK,SKK HOLDINGS LTD-CLASS A,Common Stock,,True,False,missing_isin
-SKUU,NASDAQ,ETF,GraniteShares 2x Long SK Hynix Daily ETF,US,SKUU,GRANITE 2X LONG SKHY ETF,ETP,,True,False,missing_isin
-SLBT,NASDAQ,Stock,SL Science Holding Limited,US,SLBT,SL SCIENCE HOLDING LTD,Common Stock,,True,True,missing_isin
+SKM,NYSE,Stock,"SK Telecom Co., Ltd. Common Stock",US,SKM,SK TELECOM CO LTD-SPON ADR,ADR,,True,True,missing_isin
+SLB,NYSE,Stock,SLB Limited Common Shares,US,SLB,SLB LTD,Common Stock,,True,False,missing_isin
+SLGC,TSX,ETF,Sun Life MFS Global Core Plus Bond Fund,CN,SLGC,SUN LIFE FINANCIAL INC,ETP,,True,False,missing_isin
 SLM,NASDAQ,Stock,SLM Corp,US,SLM,SLM CORP,Common Stock,,True,False,missing_isin
-SMHD,BATS,ETF,MicroSectors -3x Short Semiconductor ETNs,US,SMHD,MCRSCTRS -3X SH SEMI CON ETN,ETP,,True,False,missing_isin
-SMHU,BATS,ETF,MicroSectors 3x Long Semiconductor ETNs,US,SMHU,MCRSCTRS 3X LG SEMI CON ETN,ETP,,True,False,missing_isin
-SMRX,BATS,ETF,Corgi SMR 2x Daily ETF,US,SMRX,CORGI SMR 2X DAILY ETF,ETP,,True,True,missing_isin
-SNTQ,BATS,ETF,MRP SynthEquity Nasdaq 100 ETF,US,SNTQ,MRP SYNTHEQUITY NSDQ 100 ETF,ETP,,True,False,missing_isin
-SOFC,BATS,ETF,Corgi SOFI 2x Daily ETF,US,SOFC,CORGI SOFI 2X DAILY ETF,ETP,,True,True,missing_isin
+SLSR,NYSE MKT,Stock,Solaris Resources Inc. Common Shares,US,SLSR,SOLARIS RESOURCES INC,Common Stock,,True,True,missing_isin
+SMNS,TSX,Stock,Siemens CDR (CAD Hedged),CN,SMNS,SIEMENS AG,Canadian DR,,True,False,missing_isin
+SNAV,BATS,ETF,Collaborative Investment Series Trust - Mohr Sector Nav ETF,US,SNAV,MOHR SECTOR NAV ETF,ETP,,True,False,missing_isin
+SNSC,NYSE MKT,Stock,SunScout Holding Limited Class A Ordinary Shares,US,SNSC,SUNSCOUT HOLDING LTD -CL A,Common Stock,,True,False,missing_isin
+SNY,TSX,Stock,Sanofi CDR (CAD Hedged),CN,SNY,SANOFI SA,Canadian DR,,True,False,missing_isin
+SOF,NYSE,ETF,Amplify Samsung SOFR ETF,US,,,,,False,False,no_openfigi_match
+SOLR,NYSE ARCA,ETF,Guinness Atkinson Funds,US,,,,,False,False,no_openfigi_match
+SP4,ASX,ETF,SAPPHIRE XXIX SERIES 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+SP6,ASX,ETF,SAPPHIRE XXXI SERIES 2024-3 TRUST,AT,,,,,False,False,no_openfigi_match
+SPAC,TSX,Stock,Mercer Park Opportunities Corp.,CN,,,,,False,False,no_openfigi_match
+SPMA,IDX,Stock,Suparma Tbk,IJ,SPMA,SUPARMA TBK PT,Common Stock,,True,True,missing_isin
+SPMD,NYSE ARCA,ETF,SPDR Russell Small Cap Completeness,US,SPMD,SS SPDR P S&P 400 MIDCAP ETF,ETP,,False,False,missing_isin
+SPRO.P,TSXV,Stock,Sprock-It Acquisitions Ltd.,CN,,,,,False,False,no_openfigi_match
+SPRQ,TSXV,Stock,SPARQ Systems Inc.,CN,SPRQ,SPARQ SYSTEMS INC,Common Stock,,True,True,missing_isin
+SPYA,BATS,ETF,Twin Oak Endure ETF,US,SPYA,TWIN OAK ENDURE ETF,ETP,,True,True,missing_isin
+SPYH,BATS,ETF,NEOS S&P 500 Hedged Equity Income ETF,US,SPYH,NEOS S&P 500 HDG EQ INC ETF,ETP,,True,False,missing_isin
+SPYI,BATS,ETF,SHP ETF Trust - NEOS S&P 500 High Income ETF,US,SPYI,NEOS S&P 500 HIGH INCOME ETF,ETP,,True,True,missing_isin
+SQBA,BATS,ETF,FT Vest U.S. Equity Quarterly 15 Buffer ETF,US,SQBA,FT VEST US EQ 15 BUFF ETF,ETP,,True,False,missing_isin
+SRIL,IDX,Stock,PT Sri Rejeki Isman Tbk,IJ,SRIL,SRI REJEKI ISMAN TBK PT,Common Stock,,True,True,missing_isin
+SRQ,TSXV,Stock,Sonoma Resources Inc.,CN,SRQ,SRQ RESOURCES INC,Common Stock,,True,False,missing_isin
+SRU,TSX,ETF,SmartCentres Real Estate Investment Trust,CN,,,,,False,False,no_openfigi_match
 SSM,NASDAQ,Stock,Sono Group N.V.,US,SSM,SONO GROUP NV,Common Stock,,True,False,missing_isin
-STLL,BATS,ETF,Leverage Shares 2X Long STRL Daily ETF,US,STLL,LEVERAGE SHARES 2X STRL,ETP,,True,True,missing_isin
-STLN,NASDAQ,Stock,"Starling Oncology Institute, Inc. - Common Stock",US,STLN,STARLING ONCOLOGY INC,Common Stock,,True,True,missing_isin
+SSS.P,TSXV,Stock,Samurai Capital Corp.,CN,,,,,False,False,no_openfigi_match
+STDN,NYSE,Stock,"Standard Nuclear, Inc. Class A Common Stock",US,STDN,STANDARD NUCLEAR INC-A,Common Stock,,True,True,missing_isin
+STE,TSXV,Stock,Starr Peak Mining Ltd.,CN,STE,STARR PEAK MINING LTD,Common Stock,,True,True,missing_isin
+STL,PSX,Stock,Supernet Technologie,PA,STL,SUPERNET TECHNOLOGIES LTD,Common Stock,,True,False,missing_isin
+STMX,BATS,ETF,Leverage Shares 2X Long STM Daily ETF,US,STMX,LEVERAGE SHARES 2X STM,ETP,,True,True,missing_isin
+STORAGE18,BMV,Stock,FIBRA Storage,MM,,,,,False,False,no_openfigi_match
 STRD,NASDAQ,Stock,Strategy Inc 10% Series A Perpetual Stride Preferred,US,,,,,False,False,no_openfigi_match
 STRF,NASDAQ,Stock,Strategy Inc 10% Series A Perpetual Strife Preferred,US,,,,,False,False,no_openfigi_match
-TCGX,NASDAQ,Stock,TCGX Acquisition Corp. - Class A Ordinary Shares,US,TCGX,TCGX ACQUISITION CORP-A,Common Stock,,True,True,missing_isin
-TDCL,NASDAQ,ETF,GraniteShares 2x Long TDC Daily ETF,US,TDCL,GRANITE 2X LONG TDC ETF,ETP,,True,True,missing_isin
+STRM,TSXV,Stock,Storm Exploration Inc.,CN,STRM,STORM EXPLORATION INC,Common Stock,,True,True,missing_isin
+SULR,NYSE ARCA,ETF,Guinness Atkinson Funds - SmartETFs Sustainable Energy II ETF,US,,,,,False,False,no_openfigi_match
+SURF,TSXV,ETF,Starlight U.S. Residential Fund (Multi-Family) Investment LP,CN,,,,,False,False,no_openfigi_match
+SVCL,TSX,ETF,Global X Enhanced Silver Miners Covered Call ETF,CN,SVCL,GLBL X ENHCD SLVR MNR CC ETF,ETP,,True,False,missing_isin
+SVM,NYSE MKT,Stock,Silvercorp Metals Inc,US,SVM,SILVERCORP METALS INC,Common Stock,,True,True,missing_isin
+SXHI,TSX,ETF,Ninepoint SpaceX HighShares ETF,CN,SXHI,NINEPOINT SPCX HIGHSHARE ETF,ETP,,True,False,missing_isin
+TA1,ASX,Stock,TRANSURBAN FINANCE COMPANY PTY LTD,AT,,,,,False,False,no_openfigi_match
+TAWN,BATS,ETF,MicroSectors 3x Long Taiwan ETNs,US,TAWN,MICROSECTORS 3X LNG TIWN ETN,ETP,,True,False,missing_isin
+TBCK,TSX,ETF,TD Target 2031 Investment Grade Bond Fund,CN,TBCK,TD TGT 2031 INVES GB FND ETF,ETP,,True,False,missing_isin
+TBLA,IDX,Stock,Tunas Baru Lampung Tbk,IJ,TBLA,TUNAS BARU LAMPUNG TBK PT,Common Stock,,True,True,missing_isin
+TBRD,TSXV,Stock,Thunderbird Entertainment Group Inc.,CN,TBRD,THUNDERBIRD ENTERTAINMENT GR,Common Stock,,True,True,missing_isin
+TBSP,SET,Stock,TBSP PUBLIC COMPANY LIMITED,TB,TBSP,TBSP PUBLIC PCL,Common Stock,,True,True,missing_isin
+TCCB,TSX,ETF,TD Canadian Corporate Bond Fund,CN,TCCB,TD CANADIN CRPRT BND FND ETF,ETP,,True,False,missing_isin
+TDEM,NASDAQ,ETF,T. Rowe Price Dynamic Emerging Markets Bond ETF,US,TDEM,T ROW PRICE DYMI EM  BND ETF,ETP,,True,False,missing_isin
+TDNA,NASDAQ,ETF,T. Rowe Price Biotech ETF,US,TDNA,T ROWE PRICE BIOTECH ETF,ETP,,True,True,missing_isin
 TDOG,NASDAQ,ETF,21Shares Dogecoin ETF Common Shares of Beneficial Interest,US,TDOG,21SHARES DOGECOIN ETF,ETP,,True,False,missing_isin
-TEMC,BATS,ETF,Corgi TEM 2x Daily ETF,US,TEMC,CORGI TEM 2X DAILY ETF,ETP,,True,True,missing_isin
-TERC,BATS,ETF,Corgi TER 2x Daily ETF,US,TERC,CORGI TER 2X DAILY ETF,ETP,,True,True,missing_isin
-THEO,NASDAQ,Stock,BOA Acquisition Corp. II - Class A Ordinary Shares,US,THEO,BOA ACQUISITION CORP II-CL A,Common Stock,,True,True,missing_isin
+TGEX,TSX,ETF,TD Active Global Enhanced Dividend CAD Hedged ETF,CN,,,,,False,False,no_openfigi_match
+TGRZ,NASDAQ,ETF,China AI Tigers LLM ETF,US,TGRZ,CHINA AI TIGERS ETF,ETP,,True,True,missing_isin
+TINS,IDX,Stock,PT TIMAH (Persero) Tbk,IJ,TINS,PT TIMAH (PERSERO) TBK,Common Stock,,True,True,missing_isin
+TIP-H,TSXV,Stock,Tyner Resources Ltd,CN,,,,,False,False,no_openfigi_match
+TIPE,NYSE ARCA,ETF,Northern Trust 2031 Inflation-Linked Distributing Ladder ETF,US,TIPE,NT 2031 INFL-LNK ETF,ETP,,True,False,missing_isin
+TIPF,NYSE ARCA,ETF,Northern Trust 2036 Inflation-Linked Distributing Ladder ETF,US,TIPF,NT 2036 INFL-LNK ETF,ETP,,True,False,missing_isin
+TIPG,NYSE ARCA,ETF,Northern Trust 2046 Inflation-Linked Distributing Ladder ETF,US,TIPG,NT 2046 INFL-LNK ETF,ETP,,True,False,missing_isin
+TIPH,NYSE ARCA,ETF,Northern Trust 2056 Inflation-Linked Distributing Ladder ETF,US,TIPH,NT 2056 INFL-LNK ETF,ETP,,True,False,missing_isin
+TIZE,NYSE ARCA,ETF,TCW Securitized Income ETF,US,TIZE,TCW SECURITIZED INCOME ETF,ETP,,True,True,missing_isin
 TJGC,NASDAQ,Stock,TJGC Group Limited,US,TJGC,TJGC GROUP LTD-A,Common Stock,,True,False,missing_isin
-TMCR,NASDAQ,Stock,The Metals Royalty Company Inc.,US,TMCR,METALS ROYALTY CO INC/THE,Common Stock,,True,True,missing_isin
-TMGN,BATS,ETF,TappAlpha Cboe Magnificent 10 Growth & Daily Income ETF,US,TMGN,TAPAPH CB MAG 10 G&D IC ETF,ETP,,True,False,missing_isin
+TKN,TSX,ETF,Ninepoint Crypto and AI Leaders ETF,CN,TKN,NINEPOINT CRYPTO AND AI LEAD,ETP,,True,True,missing_isin
+TLAC,NASDAQ,Stock,Three Lions Acquisition Corp. - Ordinary Shares,US,TLAC,THREE LIONS ACQUISITION CORP,Common Stock,,True,True,missing_isin
+TLCI,NYSE ARCA,ETF,Touchstone ETF Trust,US,TLCI,TOUCHSTONE INTL EQTY ETF,ETP,,True,False,missing_isin
+TLIE,NYSE ARCA,ETF,American Beacon The London Company Income Equity ETF,US,TLIE,AMER BCN TLC INC EQTY ETF,ETP,,True,False,missing_isin
+TLTU,TSX,ETF,MegaLong (3X) 20+ Year US Treasury Daily Leveraged Alternative ETF,CN,,,,,False,False,no_openfigi_match
+TMID,NASDAQ,ETF,T. Rowe Price Mid Cap Equity Research ETF,US,TMID,T ROWE PRICE MID-CAP EQ ETF,ETP,,True,True,missing_isin
+TMS,NASDAQ,Stock,Teamshares Inc. - Common Stock,US,TMS,TEAMSHARES INC,Common Stock,,True,True,missing_isin
+TMVE,NYSE ARCA,ETF,Thrivent ETF Trust,US,TMVE,THRIVENT MID CAP VALUE ETF,ETP,,True,False,missing_isin
+TOAK,NYSE ARCA,ETF,Manager Directed Portfolios,US,TOAK,TWIN OAK SHRT HRZ ABS RTRN,ETP,,True,False,missing_isin
+TONT,NYSE MKT,Stock,Graf Global Corp. Class A ordinary shares,US,TONT,GRAF GLOBAL CORP-CL A,Common Stock,,True,True,missing_isin
+TOPS,NYSE MKT,Stock,TOP Ships Inc.,US,TOPS,TOP SHIPS INC,Common Stock,,True,True,missing_isin
+TOPS,IDX,Stock,PT Totalindo Eka Persada Tbk.,IJ,TOPS,TOTALINDO EKA PERSADA TBK PT,Common Stock,,True,True,missing_isin
 TOPW,BATS,ETF,Roundhill WeeklyPay Universe ETF,US,TOPW,ROUNDHILL TOP WEEKLYPAY ETF,ETP,,True,False,missing_isin
+TORK,NASDAQ,ETF,KraneShares Actuator ETF,US,TORK,KRANESHARES ACTUATOR ETF,ETP,,True,True,missing_isin
+TP,NYSE MKT,Stock,Ticketplus Ltd. Ordinary Shares,US,TP,TICKETPLUS LTD,Common Stock,,True,True,missing_isin
+TPEI,BATS,ETF,MicroSectors -3x Short Taiwan ETNs,US,TPEI,MS -3X SHRT TAIWAN ETNS,ETP,,True,False,missing_isin
+TPLRF1,PSX,Stock,TPL Reit Fund 1,PA,TPLRF1,TPL REIT FUND I,REIT,,False,False,missing_isin
+TPTA,NYSE,Stock,"Terra Property Trust, Inc. 6.00%",US,,,,,False,False,no_openfigi_match
+TRAD,NYSE,Stock,APEX Tech Acquisition Inc. Ordinary Shares,US,TRAD,APEX TECH ACQUISITION INC,Common Stock,,True,True,missing_isin
+TRBG,NASDAQ,Stock,TurboGen Ltd. - Ordinary Shares,US,TRBG,TURBOGEN LTD,Common Stock,,True,True,missing_isin
+TRBR,TSXV,Stock,Trubar Inc.,CN,,,,,False,False,no_openfigi_match
+TREO,NASDAQ,Stock,Tactical Resources Corp. - Common Shares,US,TREO,TACTICAL RESOURCES CORP,Common Stock,,True,True,missing_isin
+TRIL,BATS,ETF,VegaShares Trillions ETF,US,TRIL,VEGASHARES TRILLIONS ETF,ETP,,True,True,missing_isin
 TRPA,BATS,ETF,HARTFORD AAA CLO ETF,US,TRPA,HARTFORD AAA CLO ETF,ETP,,True,True,missing_isin
-TRUM,NASDAQ,ETF,VanEck Materials TruSector ETF,US,TRUM,VANECK MATERIALS TRUSECT ETF,ETP,,True,False,missing_isin
-TRUN,NASDAQ,ETF,VanEck Energy TruSector ETF,US,TRUN,VANECK ENERGY TRUSECTOR ETF,ETP,,True,True,missing_isin
-TRUR,NASDAQ,ETF,VanEck Real Estate TruSector ETF,US,TRUR,VANECK RL ESTATE TRUSCTR ETF,ETP,,True,False,missing_isin
-TRUU,NASDAQ,ETF,VanEck Utilities TruSector ETF,US,TRUU,VANECK UTS TRUSECTOR ETF,ETP,,True,False,missing_isin
-TSIB,BATS,ETF,Direxion TSLA Defined Income Boost ETF,US,TSIB,DIRXON TSLA DFIN INC BST ETF,ETP,,True,False,missing_isin
-TSUI,NASDAQ,ETF,21shares Sui ETF Common Shares of Beneficial Interest Shares,US,TSUI,21SHARES SUI ETF,ETP,,True,False,missing_isin
-TVIV,NASDAQ,Stock,Texas Ventures Acquisition IV Corp - Class A Ordinary Shares,US,TVIV,TEXAS VENTURES ACQUISITION-A,Common Stock,,True,True,missing_isin
-UMCU,BATS,ETF,Tradr 2X Long UMC Daily ETF,US,UMCU,TRADR 2X LONG UMC DAILY ETF,ETP,,True,True,missing_isin
-UN,BATS,ETF,Corgi UNH 2x Daily ETF,US,UN,CORGI UNH 2X DAILY ETF,ETP,,True,True,missing_isin
-UPSC,BATS,ETF,Corgi UPST 2x Daily ETF,US,UPSC,CORGI UPST 2X DAILY ETF,ETP,,True,True,missing_isin
-UUUC,BATS,ETF,Corgi UUUU 2x Daily ETF,US,UUUC,CORGI UUUU 2X DAILY ETF,ETP,,True,True,missing_isin
+TRS,TSXV,Stock,Tres-Or Resources Ltd.,CN,TRS,TRES-OR RESOURCES LTD,Common Stock,,True,True,missing_isin
+TRXS,BATS,ETF,Canary Staked TRX ETF,US,TRXS,CANARY STAKED TRX ETF,ETP,,True,True,missing_isin
+TSCV,NYSE ARCA,ETF,Thrivent ETF Trust,US,TSCV,THRIVENT SMALL CAP VALUE ETF,ETP,,True,False,missing_isin
+TSCZ,NYSE ARCA,ETF,T. Rowe Price Securitized Income ETF,US,TSCZ,T ROWE PRICE SECRTZD INC ETF,ETP,,True,False,missing_isin
+TSEE,NASDAQ,ETF,T. Rowe Price Small Cap ETF,US,TSEE,T ROWE PRICE SMALL-CAP ETF,ETP,,True,True,missing_isin
+TSTB,TSX,ETF,TD Short Term Bond Fund,CN,TSTB,TD SH TRM BD FD - ETF,ETP,,True,False,missing_isin
+TSUI,NASDAQ,ETF,21shares Sui ETF Common Shares of Beneficial Interest Shares,US,TSUI,21SHARES SUI STAKING ETF,ETP,,True,False,missing_isin
+TT1,ASX,ETF,THINK TANK RESIDENTIAL SERIES 2024-1 TRUST,AT,,,,,False,False,no_openfigi_match
+TT2,ASX,ETF,THINK TANK RESIDENTIAL SERIES 2025-2 TRUST,AT,,,,,False,False,no_openfigi_match
+TT6,ASX,ETF,TRITON BOND TRUST 2021-1 IN RESPECT OF SERIES 1,AT,,,,,False,False,no_openfigi_match
+TTES,TSX,Stock,TotalEnergies CDR (CAD Hedged),CN,TTES,TOTALENERGIES SE,Canadian DR,,True,False,missing_isin
+TTNM,TSX,Stock,Titanium Transportation Group Inc.,CN,,,,,False,False,no_openfigi_match
+TTS,TSXV,Stock,Tintina Mines Ltd.,CN,TTS,TINTINA MINES LTD,Common Stock,,True,True,missing_isin
+TUP.P,TSXV,Stock,Tup Capital Inc.,CN,,,,,False,False,no_openfigi_match
+TUST,TSX,ETF,TD Ultra Short Term Bond Fund,CN,TUST,TD ULTR SHRT TRM BND FND ETF,ETP,,True,False,missing_isin
+TVC,NYSE,Stock,Tennessee Valley Authority Common Stock,US,,,,,False,False,no_openfigi_match
+TXCA,NASDAQ,ETF,Northern Trust California Intermediate Tax-Exempt Bond ETF,US,TXCA,NT CALIFORNIA ITE BND ETF,ETP,,True,False,missing_isin
+TXNY,NASDAQ,ETF,Northern Trust New York Intermediate Tax-Exempt Bond ETF,US,TXNY,NORTHERN TRUST NY TAX ETF,ETP,,True,False,missing_isin
+TXR,ASX,Stock,TALONX RESOURCES LIMITED,AT,TXR,TALONX RESOURCES LTD,Common Stock,,True,True,missing_isin
+UBSS,TSX,Stock,UBS CDR (CAD Hedged),CN,UBSS,UBS GROUP AG,Canadian DR,,True,False,missing_isin
+UCBG,NYSE ARCA,ETF,State Street SPDR UC Investments 90/10 Endowment Strategy Index ETF,US,UCBG,SS SPDR UC INVT 90/10 ETF,ETP,,True,False,missing_isin
+UNIC,IDX,Stock,Unggul Indah Cahaya Tbk,IJ,UNIC,UNGGUL INDAH CAHAYA TBK PT,Common Stock,,True,True,missing_isin
+UNIQ,SET,Stock,Unique Engineering and Construction Public Company Limited,TB,UNIQ,UNIQUE ENGINEERING & CON PCL,Common Stock,,True,False,missing_isin
+UNIQ,IDX,Stock,PT Ulima Nitra Tbk,IJ,UNIQ,ULIMA NITRA TBK PT,Common Stock,,True,True,missing_isin
+URCC,TSX,ETF,Global X Uranium Covered Call ETF,CN,URCC,GLOBAL X URANIUM CVRD CL ETF,ETP,,True,False,missing_isin
+USFE,NYSE ARCA,ETF,First Eagle ETF Trust,US,USFE,FIRST EAGLE US EQUITY ETF,ETP,,True,False,missing_isin
+USGX,BATS,ETF,Corgi U.S. Growth 2x Daily ETF,US,USGX,CORGI US GROWTH 2X DLY,ETP,,True,True,missing_isin
+USLX,BATS,ETF,Corgi U.S. Large-Cap 2x Daily ETF,US,USLX,CORGI US LARGE CAP 2X DLY,ETP,,True,True,missing_isin
+USMX,BATS,ETF,Corgi U.S. Mid-Cap 2x Daily ETF,US,USMX,CORGI US MID-CAP 2X DLY,ETP,,True,True,missing_isin
 VACH,NASDAQ,Stock,Voyager Acquisition Corp,US,,,,,False,False,no_openfigi_match
+VAI,NASDAQ,Stock,Valor Energy Incorporated - Common Stock,US,VAI,VALOR ENERGY INCORPORATED,Common Stock,,True,True,missing_isin
+VAIC,NYSE ARCA,ETF,VegaShares US Equity Autocallable Conservative Income ETF,US,VAIC,VEGASHRS US EQ AUTCL IN ETF,ETP,,True,False,missing_isin
 VAVX,NASDAQ,ETF,VanEck Avalanche ETF Common Shares of Beneficial Interest,US,VAVX,VANECK AVALANCHE ETF,ETP,,True,False,missing_isin
-VIAG,BATS,ETF,Leverage Shares 2X Long VIAV Daily ETF,US,VIAG,LEVERAGE SHARES 2X VIAV ETF,ETP,,True,True,missing_isin
-VIVO,NASDAQ,Stock,VivoPower PLC,US,VIVO,VIVOPOWER PLC-CLASS A,Common Stock,,True,True,missing_isin
+VCD,ASX,ETF,VICINITY CENTRES TRUST,AT,,,,,False,False,no_openfigi_match
+VECA,NYSE,Stock,Vernal Capital Acquisition Corp. Ordinary Shares,US,VECA,VERNAL CAPITAL ACQUI CORP,Common Stock,,True,False,missing_isin
+VEEM,NASDAQ,ETF,VanEck MSCI EM Analyst Sentiment ETF,US,VEEM,VANECK MSCI EM ALT SNT ETF,ETP,,True,False,missing_isin
+VEGX,BATS,ETF,International Vegan Climate ETF,US,VEGX,INTERNATIO VEGAN CLIMATE ETF,ETP,,True,False,missing_isin
+VGNT,NYSE,Stock,Versigent PLC Ordinary Shares,US,VGNT,VERSIGENT PLC,Common Stock,,True,True,missing_isin
+VIGG,TSX,ETF,Vanguard Developed ex-North America Dividend Appreciation Index ETF,CN,VIGG,VANGUARD DEV EXNA DIVAPP ETF,ETP,,True,False,missing_isin
+VII,NYSE,Stock,Viking Acquisition Corp. II Class A Ordinary Shares,US,VII,VIKING ACQUISITION CORP II-A,Common Stock,,True,True,missing_isin
+VIP,NASDAQ,Stock,Vulcan Infrastructure and Power Inc. - Class A Common Stock,US,VIP,VULCAN INFRASTRUCTURE AND PO,Common Stock,,True,True,missing_isin
+VISTAA,BMV,Stock,Vista Oil & Gas S.A.B. de C.V,MM,VISTAA,VISTA ENERGY SAB DE CV,Common Stock,,True,False,missing_isin
 VIXI,NASDAQ,ETF,Defiance Enhanced Long Vol ETF,US,,,,,False,False,no_openfigi_match
-VLOS,NASDAQ,Stock,Velos Acquisition I Corp. - Class A Ordinary shares,US,VLOS,VELOS ACQUISITION I CORP,Common Stock,,True,True,missing_isin
-VOGX,NASDAQ,Stock,Vogenx Inc - Common Stock,US,VOGX,VOGENX INC,Common Stock,,True,True,missing_isin
+VKG-H,TSXV,Stock,Norse Gold Corp,CN,,,,,False,False,no_openfigi_match
+VMHY,NASDAQ,ETF,VictoryShares Municipal High Yield ETF,US,VMHY,VICTORYSHARES MNCPL HY ETF,ETP,,True,False,missing_isin
+VMRK,NYSE,Stock,Vivmark Residential Common Shares of Beneficial Interest,US,VMRK,VIVMARK RESIDENTIAL,REIT,,True,False,missing_isin
+VMSD,NASDAQ,ETF,VictoryShares Short-Duration Municipal ETF,US,VMSD,VICTORYSHRS SHRT DUR MUN ETF,ETP,,True,False,missing_isin
+VMY-H,TSXV,Stock,Voice Mobility International Inc,CN,,,,,False,False,no_openfigi_match
+VOOB,NASDAQ,ETF,VistaShares Shield S&P 500 Enhanced Protection ETF,US,VOOB,VISTASHRS SHLD S&P 500 ETF,ETP,,True,False,missing_isin
+VOOY,NYSE ARCA,ETF,XFUNDS Large Cap Income ETF,US,VOOY,XFUNDS LARGE CAP INCOME ETF,ETP,,True,True,missing_isin
 VOXP,BATS,ETF,Vox Populi ETF,US,VOXP,VOX POPULI ETF,ETP,,True,True,missing_isin
-WDCC,BATS,ETF,Corgi WDC 2x Daily ETF,US,WDCC,CORGI WDC 2X DAILY ETF,ETP,,True,True,missing_isin
+VRGL3,B3,Stock,GOL LINHAS AEREAS S.A,BZ,,,,,False,False,no_openfigi_match
+VSOL,NASDAQ,ETF,VanEck Solana ETF Shares of Beneficial Interest,US,VSOL,VANECK SOLANA ETF,ETP,,True,False,missing_isin
+VTEN.P,TSXV,Stock,V Ten Capital Corp.,CN,,,,,False,False,no_openfigi_match
+VUDH,TSX,ETF,Vanguard U.S. High Dividend Yield Index ETF (CAD-hedged),CN,VUDH,VG US HI DIV YLD ETF CAD-H,ETP,,True,False,missing_isin
+VWA,NEO,Stock,VOLKSWAGEN CDR (CAD HEDGED),CN,VWA,VOLKSWAGEN AG,Canadian DR,,True,False,missing_isin
+VYLR,NYSE,Stock,Vylor Inc. Common Stock,US,VYLR,VYLOR INC,Common Stock,,True,True,missing_isin
+WB1,ASX,ETF,SERIES 2020-1 WST TRUST,AT,,,,,False,False,no_openfigi_match
+WDNA,BATS,ETF,WisdomTree BioRevolution Fund,US,WDNA,WISDOMTREE BIOREVOLUTION FND,ETP,,True,False,missing_isin
+WE1,ASX,ETF,SERIES 2019-1 WST TRUST,AT,,,,,False,False,no_openfigi_match
+WEAT,NYSE ARCA,ETF,Teucrium Wheat,US,WEAT,TEUCRIUM WHEAT FUND,ETP,,True,True,missing_isin
+WELL,TSX,Stock,WELL Health Technologies Corp.,CN,WELL,WELL HEALTH TECHNOLOGIES COR,Common Stock,,True,True,missing_isin
+WFCS,TSX,Stock,Wells Fargo CDR (CAD Hedged),CN,WFCS,WELLS FARGO & CO,Canadian DR,,True,True,missing_isin
 WFF,NASDAQ,Stock,WF Holding Limited Ordinary Shares,US,WFF,WF HOLDING LTD/MY,Common Stock,,True,False,missing_isin
-WLCO,NASDAQ,Stock,Wilco 63 Corporation - Class A Ordinary Shares,US,WLCO,WILCO 63 CORP-A,Common Stock,,True,True,missing_isin
+WINS,IDX,Stock,Wintermar Offshore Marine Tbk,IJ,WINS,WINTERMAR OFFSHORE MARINE,Common Stock,,True,True,missing_isin
+WMK,TSXV,Stock,Whitemud Resources Inc.,CN,WMK,WHITEMUD RESOURCES INC,Common Stock,,True,True,missing_isin
+WOI-H,TSXV,Stock,WORLD ORGANICS INC,CN,,,,,False,False,no_openfigi_match
+WP,TSXV,ETF,Western Pacific Trust Company,CN,WP,WESTERN PACIFIC TRUST CO,Common Stock,,True,True,missing_isin
+WS1,ASX,ETF,SERIES 2024-1 WST TRUST,AT,,,,,False,False,no_openfigi_match
+WS2,ASX,ETF,SERIES 2024-2 WST TRUST,AT,,,,,False,False,no_openfigi_match
 WSE,NASDAQ,Stock,Wise Group plc,US,WSE,WISE GROUP PLC-CL A,Common Stock,,True,False,missing_isin
-WSPC,NASDAQ,ETF,WisdomTree Space Economy Fund,US,WSPC,WISDOMTREE SPACE ECONOMY FND,ETP,,True,True,missing_isin
+WTAI,BATS,ETF,WisdomTree Trust - WisdomTree Artificial Intelligence and Innovation Fund,US,WTAI,WISDOMTREE AI AND INNOVATION,ETP,,True,False,missing_isin
+WTID,NYSE ARCA,ETF,UBS ETRACS - ProShares Daily 3x Inverse Crude ETN,US,WTID,M/S ENERGY-3X INV LEVERG ETN,ETP,,True,False,missing_isin
+XCSH,NASDAQ,ETF,XFUNDS 1-3 Month BOX ETF,US,XCSH,XFUNDS 1-3 MONTH BOX ETF,ETP,,True,True,missing_isin
+XCYT,TSXV,Stock,Xcyte Digital Corp.,CN,XCYT,XCYTE DIGITAL CORP,Common Stock,,True,True,missing_isin
+XEML,BATS,ETF,Xtrackers Europe Market Leaders ETF,US,XEML,XTRACKERS EUR MKT LEADER,ETP,,True,False,missing_isin
+XIII,NASDAQ,Stock,Churchill Capital Corp XIII - Class A Ordinary Shares,US,XIII,CHURCHILL CAPITAL CORP CL-A,Common Stock,,True,False,missing_isin
+XKFS,NYSE ARCA,ETF,SPDR Kensho Future Security ETF,US,,,,,False,False,no_openfigi_match
+XKII,NYSE ARCA,ETF,SPDR Kensho Intelligent Structures ETF,US,,,,,False,False,no_openfigi_match
+XKST,NYSE ARCA,ETF,SPDR S&P Kensho Smart Mobility ETF,US,,,,,False,False,no_openfigi_match
+XLAB,NASDAQ,Stock,Exascale Labs Holdings Inc. - Class A Common Stock,US,XLAB,EXASCALE LABS HOLDINGS INC,Common Stock,,True,True,missing_isin
+XLCD,BATS,ETF,MicroSectors -3x Short Communication Services (XLC) ETNs,US,XLCD,MICROSECTORS 3X SCS XLC ETN,ETP,,True,False,missing_isin
+XLCU,BATS,ETF,MicroSectors 3x Long Communication Services (XLC) ETNs,US,XLCU,MCRSCTRS 3X LG C SRV XLC ETN,ETP,,True,False,missing_isin
+XLPD,BATS,ETF,MicroSectors -3x Short Consumer Staples (XLP) ETNs,US,XLPD,MICROSECTRS 3X SHRT XLP ETNS,ETP,,True,False,missing_isin
+XLPU,BATS,ETF,MicroSectors 3x Long Consumer Staples (XLP) ETNs,US,XLPU,MICRSECTOR 3X LG  CS XLP ETN,ETP,,True,False,missing_isin
+XNC,ASX,Stock,NEW SOUTH WALES TREASURY CORPORATION,AT,,,,,False,False,no_openfigi_match
 XPM,NASDAQ,ETF,Defiance Daily Target 2X Long PM ETF,US,XPM,DEFIANC DLY TRGT 2X L PM ETF,ETP,,True,False,missing_isin
+XQBT,NYSE ARCA,ETF,Amplify Top 10 Quantum ETF,US,XQBT,AMPLIFY TOP 10 QUANTUM ETF,ETP,,True,True,missing_isin
+XQL,ASX,Stock,QUEENSLAND TREASURY CORPORATION,AT,,,,,False,False,no_openfigi_match
 XRPI,NASDAQ,ETF,XRP ETF,US,XRPI,XRP ETF,ETP,,True,False,missing_isin
-YARW,NASDAQ,Stock,"Yarrow Bioscience, Inc. - Common Stock",US,YARW,YARROW BIOSCIENCE INC,Common Stock,,True,True,missing_isin
-YICC,NASDAQ,Stock,Yorkville International Capital Corp. - Class A Ordinary Shares,US,YICC,YORKVILLE INTERNATIONAL CA-A,Common Stock,,True,False,missing_isin
-YLDY,BATS,ETF,Horizon High Income ETF,US,YLDY,HORIZON HIGH INCOME ETF,ETP,,True,True,missing_isin
-YSAG,NASDAQ,ETF,Y'all Street Physical Silver ETF,US,YSAG,Y ALL STREET PHYS SILVER ETF,ETP,,True,True,missing_isin
-YSAU,NASDAQ,ETF,Y'all Street Physical Gold ETF,US,YSAU,Y ALL STREET PHY GOLD ETF,ETP,,True,True,missing_isin
+XTAO,TSXV,Stock,xTAO Inc.,CN,,,,,False,False,no_openfigi_match
+XTER,NASDAQ,Stock,Karman Line Acquisition Corp. - Class A Ordinary Shares,US,XTER,KARMAN LINE ACQUISITION-CL A,Common Stock,,True,True,missing_isin
+XTND,NYSE,Stock,"Xtend AI Robotics, Inc. Common Stock",US,XTND,XTEND AI ROBOTICS INC,Common Stock,,True,True,missing_isin
+XUSM,NASDAQ,ETF,MarketDesk International Momentum ETF,US,XUSM,MARKETDESK INTL MOMENTUM ETF,ETP,,True,False,missing_isin
+XVAD,BATS,ETF,FT Vest AMD & Target Income ETF,US,XVAD,FT AMD & TARGET INCOME ETF,ETP,,True,True,missing_isin
+XVAP,BATS,ETF,FT Vest AAPL & Target Income ETF,US,XVAP,FT AAPL & TARGET INCOME ETF,ETP,,True,True,missing_isin
+XVAZ,BATS,ETF,FT Vest AMZN & Target Income ETF,US,XVAZ,FT VEST AMZN & TRGT IN ETF,ETP,,True,False,missing_isin
+XVG,ASX,Stock,TREASURY CORPORATION OF VICTORIA,AT,,,,,False,False,no_openfigi_match
+XVGL,BATS,ETF,FT Vest GOOG & Target Income ETF,US,XVGL,FT VEST GG & TRGT INCME ETF,ETP,,True,False,missing_isin
+XVMS,BATS,ETF,FT Vest MSFT & Target Income ETF,US,XVMS,FT MSFT & TARGET INCOME ETF,ETP,,True,True,missing_isin
+XVMT,BATS,ETF,FT Vest META & Target Income ETF,US,XVMT,FT META & TARGET INCOME ETF,ETP,,True,True,missing_isin
+XVNV,BATS,ETF,FT Vest NVDA & Target Income ETF,US,XVNV,FT NVDA & TARGET INCOME ETF,ETP,,True,True,missing_isin
+XVPT,BATS,ETF,FT Vest PLTR & Target Income ETF,US,XVPT,FT PLTR & TARGET INCOME ETF,ETP,,True,True,missing_isin
+XVSP,BATS,ETF,FT Vest SPCX & Target Income ETF,US,XVSP,FT VEST SPCX & TRGT INCM ETF,ETP,,True,False,missing_isin
+XVTS,BATS,ETF,FT Vest TSLA & Target Income ETF,US,XVTS,FT VEST TSLA & TRGT INC ETF,ETP,,True,True,missing_isin
+XWNG,NYSE ARCA,ETF,Amplify Top 10 Space ETF,US,XWNG,AMPLIFY TOP 10 SPACE ETF,ETP,,True,True,missing_isin
+XX,BATS,ETF,"Roundhill S&P 500 Target 10,000 2030 ETF",US,XX,RH SP 500 TGT 10000 2030 ETF,ETP,,False,False,missing_isin
+XXXX,NYSE ARCA,ETF,MAX S&P 500 4X Leveraged ETN,US,,,,,False,False,no_openfigi_match
+YRAM,NASDAQ,ETF,YieldMax Memory and Storage Portfolio Option Income ETF,US,YRAM,YLDMX MRY & STRGE OP I ETF,ETP,,True,False,missing_isin
+ZAAA-F,NEO,ETF,BMO AAA CLO ETF (HEDGED UNITS),CN,,,,,False,False,no_openfigi_match
+ZAAP,NEO,Stock,APPLE (aapl) BMO CDR (CAD HEDGED),CN,ZAAP,APPLE INC,Canadian DR,,True,False,missing_isin
+ZAPO,NEO,Stock,APOLLO (APO) BMO CDR (CAD HEDGED),CN,ZAPO,APOLLO GLOBAL MANAGEMENT INC,Canadian DR,,True,False,missing_isin
+ZBA,NEO,Stock,BOEING (BA) BMO CDR (CAD HEDGED),CN,ZBA,BOEING CO/THE,Canadian DR,,True,False,missing_isin
+ZBBZ-F,NEO,ETF,BMO BBB CLO ETF – Hedged Units,CN,,,,,False,False,no_openfigi_match
+ZCDX,TSX,ETF,BMO Credit Stress Opportunities ETF,CN,ZCDX,BMO CREDIT STRESS OPP ETF,ETP,,True,True,missing_isin
+ZCDX.U,TSX,ETF,BMO Credit Stress Opportunities ETF,CN,,,,,False,False,no_openfigi_match
+ZCOI,NEO,Stock,Coinbase (COIN) BMO CDR (CAD Hedged),CN,ZCOI,COINBASE GLOBAL INC,Canadian DR,,True,False,missing_isin
+ZCOS,NEO,Stock,COSTCO )COST) BMO CDR (CAD HEDGED),CN,ZCOS,COSTCO WHOLESALE CORP,Canadian DR,,True,False,missing_isin
+ZCSH,NYSE ARCA,ETF,The Zcash ETF Shares,US,ZCSH,THE ZCASH ETF,ETP,,True,True,missing_isin
+ZDIS,NYSE ARCA,ETF,Virtus Zevenbergen Discovery Growth ETF,US,ZDIS,VIRTUS ZCI DISC GROWTH,ETP,,True,False,missing_isin
+ZINC,IDX,Stock,PT Kapuas Prima Coal Tbk,IJ,ZINC,KAPUAS PRIMA COAL TBK PT,Common Stock,,True,True,missing_isin
+ZINN,NYSE ARCA,ETF,Virtus Zevenbergen Innovative Growth ETF,US,ZINN,VIRTUS ZN INNOVAT GRWTH ETF,ETP,,True,False,missing_isin
+ZINT,NEO,Stock,INTEL (INTC) BMO CDR (CAD HEDGED),CN,ZINT,INTEL CORP,Canadian DR,,True,False,missing_isin
 ZIVB,BATS,ETF,Volatility Shares Trust -1x Short VIX Mid-Term Futures Strategy ETF,US,,,,,False,False,no_openfigi_match
+ZLLY,NEO,Stock,ELI LILLY (LLY) BMO CDR (CAD HEDGED),CN,ZLLY,ELI LILLY & CO,Canadian DR,,True,True,missing_isin
+ZMAS,NEO,Stock,MASTERCARD (MA) BMO CDR (CAD HEDGED),CN,ZMAS,MASTERCARD INC,Canadian DR,,True,False,missing_isin
+ZMCD,NEO,Stock,McDonalds (MCD) BMO CDR (CAD Hedged),CN,ZMCD,MCDONALD'S CORP,Canadian DR,,True,False,missing_isin
+ZMIC,NEO,Stock,Micron Technology (MU) BMO CDR (CAD Hedged),CN,ZMIC,MICRON TECHNOLOGY INC,Canadian DR,,True,True,missing_isin
+ZMPU-F,NEO,ETF,BMO MARKET+ US EQUITY ETF - HEDGED UNITS,CN,,,,,False,False,no_openfigi_match
+ZMSF,NEO,Stock,MICROSOFT (MSFT) BMO CDR (CAD HEDGED),CN,ZMSF,MICROSOFT CORP,Canadian DR,,True,False,missing_isin
+ZSMC,NEO,Stock,SUPER MICRO COMPUTER (SMCI) BMO XDR (CAD HEDGED),CN,ZSMC,SUPER MICRO COMPUTER INC,Canadian DR,,True,True,missing_isin
+ZTL.F,TSX,ETF,BMO Long-Term US Treasury Bond Index (Hedged Units),CN,,,,,False,False,no_openfigi_match
+ZTM-U,NEO,ETF,BMO MID-TERM US TREASURY BOND INDEX ETF,CN,,,,,False,False,no_openfigi_match
+ZUS,TSX,ETF,BMO Ultra Short-Term US Bond ETF,CN,,,,,False,False,no_openfigi_match
+ZVST,NEO,Stock,VISTRA (VST) BMO CDR (CAD HEDGED),CN,ZVST,VISTRA CORP,Canadian DR,,True,False,missing_isin
+ZWMT,NEO,Stock,WALMART (WMT) BMO CDR (CAD HEDGED),CN,ZWMT,WALMART INC,Canadian DR,,True,False,missing_isin
+ZXOM,NEO,Stock,EXXON MOBIL (XOM) BMO CDR (CAD HEDGED),CN,ZXOM,EXXON MOBIL CORP,Canadian DR,,True,True,missing_isin
+ZYNS,TSX,Stock,Philip Morris CDR (CAD Hedged),CN,ZYNS,PHILIP MORRIS INTERNATIONAL,Canadian DR,,True,False,missing_isin

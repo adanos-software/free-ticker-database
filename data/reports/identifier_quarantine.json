@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-04T12:15:08Z",
+  "generated_at": "2026-10-07T13:12:51Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2039,
-  "decision_rows": 6558,
+  "conflict_count": 2006,
+  "decision_rows": 6454,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1416,
-    "proposed_clear_conflicting_identifier": 1073,
-    "quarantined_unresolved_identifier": 4069
+    "kept_listing_keyed_identifier": 1359,
+    "proposed_clear_conflicting_identifier": 1051,
+    "quarantined_unresolved_identifier": 4044
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1073,
-  "quarantined_rows": 4069,
-  "retained_rows": 1416,
+  "proposed_clear_rows": 1051,
+  "quarantined_rows": 4044,
+  "retained_rows": 1359,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -754,45 +754,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU000000CTO0"
-    },
-    {
-      "conflict_id": "c12c945112758e6b56d5",
-      "isin": "AU000000CYG6",
-      "listing_key": "ASX::CYG",
-      "ticker": "CYG",
-      "exchange": "ASX",
-      "name": "COVENTRY GROUP LIMITED",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000CYG6"
-    },
-    {
-      "conflict_id": "c12c945112758e6b56d5",
-      "isin": "AU000000CYG6",
-      "listing_key": "FSX::1DX",
-      "ticker": "1DX",
-      "exchange": "FSX",
-      "name": "Coventry Group Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000CYG6"
-    },
-    {
-      "conflict_id": "c12c945112758e6b56d5",
-      "isin": "AU000000CYG6",
-      "listing_key": "TSXV::CYG",
-      "ticker": "CYG",
-      "exchange": "TSXV",
-      "name": "Cygnus Metals Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000CYG6"
     },
     {
       "conflict_id": "d2c93920dda95208d600",
@@ -1679,58 +1640,6 @@
       "retained_isin": "AU000000YAL0"
     },
     {
-      "conflict_id": "e498a8fe4672404126ae",
-      "isin": "AU0000026171",
-      "listing_key": "ASX::VISM",
-      "ticker": "VISM",
-      "exchange": "ASX",
-      "name": "Vanguard MSCI International Small Companies INDEX ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000026171"
-    },
-    {
-      "conflict_id": "e498a8fe4672404126ae",
-      "isin": "AU0000026171",
-      "listing_key": "OTC::VISM",
-      "ticker": "VISM",
-      "exchange": "OTC",
-      "name": "Visium Technologies Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000026171"
-    },
-    {
-      "conflict_id": "9c42d4f60459f8278b36",
-      "isin": "AU00000BEAR2",
-      "listing_key": "ASX::BEAR",
-      "ticker": "BEAR",
-      "exchange": "ASX",
-      "name": "Betashares Australian Equities Bear Complex ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU00000BEAR2"
-    },
-    {
-      "conflict_id": "9c42d4f60459f8278b36",
-      "isin": "AU00000BEAR2",
-      "listing_key": "TSXV::BEAR",
-      "ticker": "BEAR",
-      "exchange": "TSXV",
-      "name": "Big Bear Gold Corp.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU00000BEAR2"
-    },
-    {
       "conflict_id": "96b8d021f572fff977e0",
       "isin": "AU0000143729",
       "listing_key": "ASX::SRL",
@@ -1768,84 +1677,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU0000143729"
-    },
-    {
-      "conflict_id": "4c335549832ebe9ef493",
-      "isin": "AU0000148496",
-      "listing_key": "ASX::ACL",
-      "ticker": "ACL",
-      "exchange": "ASX",
-      "name": "Australian Clinical Labs Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000148496"
-    },
-    {
-      "conflict_id": "4c335549832ebe9ef493",
-      "isin": "AU0000148496",
-      "listing_key": "TSXV::ACL",
-      "ticker": "ACL",
-      "exchange": "TSXV",
-      "name": "A.C.L. Construction Ltd.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000148496"
-    },
-    {
-      "conflict_id": "e3a2e05b596480100770",
-      "isin": "AU0000152803",
-      "listing_key": "ASX::RBX",
-      "ticker": "RBX",
-      "exchange": "ASX",
-      "name": "Resource Base Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000152803"
-    },
-    {
-      "conflict_id": "e3a2e05b596480100770",
-      "isin": "AU0000152803",
-      "listing_key": "TSXV::RBX",
-      "ticker": "RBX",
-      "exchange": "TSXV",
-      "name": "Robex Resources Inc.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000152803"
-    },
-    {
-      "conflict_id": "a4a69ae2950a1e5ef7b2",
-      "isin": "AU0000233397",
-      "listing_key": "ASX::ROYL",
-      "ticker": "ROYL",
-      "exchange": "ASX",
-      "name": "Betashares Global Royalties ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000233397"
-    },
-    {
-      "conflict_id": "a4a69ae2950a1e5ef7b2",
-      "isin": "AU0000233397",
-      "listing_key": "OTC::ROYL",
-      "ticker": "ROYL",
-      "exchange": "OTC",
-      "name": "Royale Energy Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000233397"
     },
     {
       "conflict_id": "5ce413a7bce73e1bb65a",
@@ -5384,45 +5215,6 @@
       "retained_isin": "CA23131M1059"
     },
     {
-      "conflict_id": "1ac00487e3771752d59e",
-      "isin": "CA24463V1013",
-      "listing_key": "FSX::DTC",
-      "ticker": "DTC",
-      "exchange": "FSX",
-      "name": "Defence Therapeutics Inc.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA24463V1013"
-    },
-    {
-      "conflict_id": "1ac00487e3771752d59e",
-      "isin": "CA24463V1013",
-      "listing_key": "OTC::DTCFF",
-      "ticker": "DTCFF",
-      "exchange": "OTC",
-      "name": "Defence Therapeutics Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA24463V1013"
-    },
-    {
-      "conflict_id": "1ac00487e3771752d59e",
-      "isin": "CA24463V1013",
-      "listing_key": "SET::DUSIT",
-      "ticker": "DUSIT",
-      "exchange": "SET",
-      "name": "Dusit Thani Public Company Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA24463V1013"
-    },
-    {
       "conflict_id": "1bcb81e79765da2ef965",
       "isin": "CA2482332079",
       "listing_key": "FSX::T7C0",
@@ -6359,72 +6151,7 @@
       "retained_isin": "CA77544C1041"
     },
     {
-      "conflict_id": "f9c5bbf62d7809e4a8c3",
-      "isin": "CA8119161054",
-      "listing_key": "FSX::SRM",
-      "ticker": "SRM",
-      "exchange": "FSX",
-      "name": "Seabridge Gold Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA8119161054"
-    },
-    {
-      "conflict_id": "f9c5bbf62d7809e4a8c3",
-      "isin": "CA8119161054",
-      "listing_key": "NYSE::SA",
-      "ticker": "SA",
-      "exchange": "NYSE",
-      "name": "Seabridge Gold Inc.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA8119161054"
-    },
-    {
-      "conflict_id": "f9c5bbf62d7809e4a8c3",
-      "isin": "CA8119161054",
-      "listing_key": "OTC::BCDRF",
-      "ticker": "BCDRF",
-      "exchange": "OTC",
-      "name": "Banco Santander S.A",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA8119161054"
-    },
-    {
-      "conflict_id": "f9c5bbf62d7809e4a8c3",
-      "isin": "CA8119161054",
-      "listing_key": "OTC::SARDF",
-      "ticker": "SARDF",
-      "exchange": "OTC",
-      "name": "Sanford Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA8119161054"
-    },
-    {
-      "conflict_id": "f9c5bbf62d7809e4a8c3",
-      "isin": "CA8119161054",
-      "listing_key": "XSTU::SRM",
-      "ticker": "SRM",
-      "exchange": "XSTU",
-      "name": "SEABRIDGE GOLD (SRM.SG)",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA8119161054"
-    },
-    {
-      "conflict_id": "2648a41a0f68ad786dd1",
+      "conflict_id": "f10b0f5d1cc6e82bf2b6",
       "isin": "CA82835P1036",
       "listing_key": "FSX::S9Y",
       "ticker": "S9Y",
@@ -6437,7 +6164,7 @@
       "retained_isin": "CA82835P1036"
     },
     {
-      "conflict_id": "2648a41a0f68ad786dd1",
+      "conflict_id": "f10b0f5d1cc6e82bf2b6",
       "isin": "CA82835P1036",
       "listing_key": "LSE::0QZ2",
       "ticker": "0QZ2",
@@ -6450,7 +6177,20 @@
       "retained_isin": "CA82835P1036"
     },
     {
-      "conflict_id": "2648a41a0f68ad786dd1",
+      "conflict_id": "f10b0f5d1cc6e82bf2b6",
+      "isin": "CA82835P1036",
+      "listing_key": "NYSE MKT::SVM",
+      "ticker": "SVM",
+      "exchange": "NYSE MKT",
+      "name": "Silvercorp Metals Inc",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "CA82835P1036"
+    },
+    {
+      "conflict_id": "f10b0f5d1cc6e82bf2b6",
       "isin": "CA82835P1036",
       "listing_key": "OTC::SVMLF",
       "ticker": "SVMLF",
@@ -6463,7 +6203,7 @@
       "retained_isin": "CA82835P1036"
     },
     {
-      "conflict_id": "2648a41a0f68ad786dd1",
+      "conflict_id": "f10b0f5d1cc6e82bf2b6",
       "isin": "CA82835P1036",
       "listing_key": "TSX::SVM",
       "ticker": "SVM",
@@ -7763,58 +7503,6 @@
       "retained_isin": "CH0019107025"
     },
     {
-      "conflict_id": "5b392a79ab923255a85e",
-      "isin": "CH0024638212",
-      "listing_key": "LSE::0QOT",
-      "ticker": "0QOT",
-      "exchange": "LSE",
-      "name": "Schindler Holding AG",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH0024638212"
-    },
-    {
-      "conflict_id": "5b392a79ab923255a85e",
-      "isin": "CH0024638212",
-      "listing_key": "OTC::SHLRF",
-      "ticker": "SHLRF",
-      "exchange": "OTC",
-      "name": "Schindler Holding AG",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH0024638212"
-    },
-    {
-      "conflict_id": "5b392a79ab923255a85e",
-      "isin": "CH0024638212",
-      "listing_key": "SET::SHR",
-      "ticker": "SHR",
-      "exchange": "SET",
-      "name": "S Hotels and Resorts Public Company Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH0024638212"
-    },
-    {
-      "conflict_id": "5b392a79ab923255a85e",
-      "isin": "CH0024638212",
-      "listing_key": "SIX::SCHN",
-      "ticker": "SCHN",
-      "exchange": "SIX",
-      "name": "Schindler Holding AG",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH0024638212"
-    },
-    {
       "conflict_id": "e0e770f0636309eeecf1",
       "isin": "CH0024666528",
       "listing_key": "LSE::0QQI",
@@ -8879,58 +8567,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "CH1327686056"
-    },
-    {
-      "conflict_id": "676266901788283b9bc1",
-      "isin": "CH1385084384",
-      "listing_key": "OTC::CSOL",
-      "ticker": "CSOL",
-      "exchange": "OTC",
-      "name": "China Solar & Cln En",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH1385084384"
-    },
-    {
-      "conflict_id": "676266901788283b9bc1",
-      "isin": "CH1385084384",
-      "listing_key": "SIX::CSOL",
-      "ticker": "CSOL",
-      "exchange": "SIX",
-      "name": "21Shares Solana Core Staking ETP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH1385084384"
-    },
-    {
-      "conflict_id": "676266901788283b9bc1",
-      "isin": "CH1385084384",
-      "listing_key": "SIX::CSOL-USD",
-      "ticker": "CSOL-USD",
-      "exchange": "SIX",
-      "name": "21Shares Solana Core Staking ETP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH1385084384"
-    },
-    {
-      "conflict_id": "676266901788283b9bc1",
-      "isin": "CH1385084384",
-      "listing_key": "XETRA::2SCS",
-      "ticker": "2SCS",
-      "exchange": "XETRA",
-      "name": "21Shares Solana Core Staking ETP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH1385084384"
     },
     {
       "conflict_id": "d17dc5fa8e454eb04315",
@@ -17890,32 +17526,6 @@
       "retained_isin": "EGS69182C011"
     },
     {
-      "conflict_id": "14e350c489e9d4ce69f8",
-      "isin": "EGS738I1C018",
-      "listing_key": "EGX::SRWA",
-      "ticker": "SRWA",
-      "exchange": "EGX",
-      "name": "Contact Financial Holding",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "EGS738I1C018"
-    },
-    {
-      "conflict_id": "14e350c489e9d4ce69f8",
-      "isin": "EGS738I1C018",
-      "listing_key": "OTC::CNFN",
-      "ticker": "CNFN",
-      "exchange": "OTC",
-      "name": "Cfn Enterprises Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "EGS738I1C018"
-    },
-    {
       "conflict_id": "5489be0eeea0b299fb98",
       "isin": "ES0105027009",
       "listing_key": "BME::LOG",
@@ -23608,32 +23218,6 @@
       "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "GB00B033F229"
-    },
-    {
-      "conflict_id": "a8a35512387c0abfce6a",
-      "isin": "GB00B0MDF233",
-      "listing_key": "LSE::POS",
-      "ticker": "POS",
-      "exchange": "LSE",
-      "name": "Plexus Holdings plc",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GB00B0MDF233"
-    },
-    {
-      "conflict_id": "a8a35512387c0abfce6a",
-      "isin": "GB00B0MDF233",
-      "listing_key": "SET::PRINC",
-      "ticker": "PRINC",
-      "exchange": "SET",
-      "name": "Principal Capital Public Company Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GB00B0MDF233"
     },
     {
       "conflict_id": "944d415ebec895da4629",
@@ -29395,58 +28979,6 @@
       "retained_isin": "IE000CBYU7J5"
     },
     {
-      "conflict_id": "4163e4318542d0301167",
-      "isin": "IE000EFHIFG3",
-      "listing_key": "Euronext::TELW",
-      "ticker": "TELW",
-      "exchange": "Euronext",
-      "name": "Amundi S&P Global Communication Services ESG UCITS ETF DR EUR Acc EUR",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000EFHIFG3"
-    },
-    {
-      "conflict_id": "4163e4318542d0301167",
-      "isin": "IE000EFHIFG3",
-      "listing_key": "OTC::WELX",
-      "ticker": "WELX",
-      "exchange": "OTC",
-      "name": "Winland Holdings Corporation",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000EFHIFG3"
-    },
-    {
-      "conflict_id": "4163e4318542d0301167",
-      "isin": "IE000EFHIFG3",
-      "listing_key": "XETRA::MWOX",
-      "ticker": "MWOX",
-      "exchange": "XETRA",
-      "name": "Amundi S&P World Communication Services Screened UCITS ETF Acc",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000EFHIFG3"
-    },
-    {
-      "conflict_id": "4163e4318542d0301167",
-      "isin": "IE000EFHIFG3",
-      "listing_key": "XETRA::WELX",
-      "ticker": "WELX",
-      "exchange": "XETRA",
-      "name": "Amundi S&P World Communication Services Screened UCITS ETF Acc",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000EFHIFG3"
-    },
-    {
       "conflict_id": "87e52b67ae5ff07806eb",
       "isin": "IE000ENYES77",
       "listing_key": "XETRA::WEL8",
@@ -29902,32 +29434,6 @@
       "retained_isin": "IE000KXCEXR3"
     },
     {
-      "conflict_id": "b323bb5c5c67a4babf0c",
-      "isin": "IE000MJIXFE0",
-      "listing_key": "OTC::WEBC",
-      "ticker": "WEBC",
-      "exchange": "OTC",
-      "name": "Webco Industries Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000MJIXFE0"
-    },
-    {
-      "conflict_id": "b323bb5c5c67a4babf0c",
-      "isin": "IE000MJIXFE0",
-      "listing_key": "XETRA::WEBC",
-      "ticker": "WEBC",
-      "exchange": "XETRA",
-      "name": "Amundi MSCI North America ESG Broad Transition UCITS ETF Dist",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000MJIXFE0"
-    },
-    {
       "conflict_id": "422b545d412d6e283393",
       "isin": "IE000N42HDP2",
       "listing_key": "LSE::LVLG",
@@ -30110,32 +29616,6 @@
       "retained_isin": "IE000RN58M26"
     },
     {
-      "conflict_id": "f0a50eac6e398f53c1bf",
-      "isin": "IE000SBHVL31",
-      "listing_key": "OTC::ABIT",
-      "ticker": "ABIT",
-      "exchange": "OTC",
-      "name": "Athena Bitcoin Global",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IE000SBHVL31"
-    },
-    {
-      "conflict_id": "f0a50eac6e398f53c1bf",
-      "isin": "IE000SBHVL31",
-      "listing_key": "XETRA::ABIU",
-      "ticker": "ABIU",
-      "exchange": "XETRA",
-      "name": "AXA IM ACT Biodiversity Equity UCITS ETF USD Acc",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IE000SBHVL31"
-    },
-    {
       "conflict_id": "b448aff755fe73c3ca0b",
       "isin": "IE000V0GDVU7",
       "listing_key": "LSE::XD11",
@@ -30201,32 +29681,6 @@
       "retained_isin": "IE000WP7CVZ7"
     },
     {
-      "conflict_id": "6406b8a130615a24f55f",
-      "isin": "IE000X5OD4M3",
-      "listing_key": "OTC::PTAM",
-      "ticker": "PTAM",
-      "exchange": "OTC",
-      "name": "Potash America Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000X5OD4M3"
-    },
-    {
-      "conflict_id": "6406b8a130615a24f55f",
-      "isin": "IE000X5OD4M3",
-      "listing_key": "XETRA::PTAM",
-      "ticker": "PTAM",
-      "exchange": "XETRA",
-      "name": "Performance Trust Total Return Bond UCITS ETF - Acc",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000X5OD4M3"
-    },
-    {
       "conflict_id": "644c2f20550f185ffe4e",
       "isin": "IE000X8M8M80",
       "listing_key": "LSE::FEBB",
@@ -30251,58 +29705,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IE000X8M8M80"
-    },
-    {
-      "conflict_id": "7a390984e387da465a75",
-      "isin": "IE000X9TLGN8",
-      "listing_key": "LSE::WNER",
-      "ticker": "WNER",
-      "exchange": "LSE",
-      "name": "WisdomTree New Economy Real Estate UCITS ETF - USD",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000X9TLGN8"
-    },
-    {
-      "conflict_id": "7a390984e387da465a75",
-      "isin": "IE000X9TLGN8",
-      "listing_key": "LSE::WNEW",
-      "ticker": "WNEW",
-      "exchange": "LSE",
-      "name": "WisdomTree New Economy Real Estate UCITS ETF - USD GBP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000X9TLGN8"
-    },
-    {
-      "conflict_id": "7a390984e387da465a75",
-      "isin": "IE000X9TLGN8",
-      "listing_key": "OTC::WTER",
-      "ticker": "WTER",
-      "exchange": "OTC",
-      "name": "Alkaline Water Company Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000X9TLGN8"
-    },
-    {
-      "conflict_id": "7a390984e387da465a75",
-      "isin": "IE000X9TLGN8",
-      "listing_key": "XETRA::WTER",
-      "ticker": "WTER",
-      "exchange": "XETRA",
-      "name": "WisdomTree New Economy Real Estate UCITS ETF - USD EUR",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000X9TLGN8"
     },
     {
       "conflict_id": "db4c0e98612332316693",
@@ -30953,71 +30355,6 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "IE00B2QWDR12"
-    },
-    {
-      "conflict_id": "340161ed6e4110aee5ee",
-      "isin": "IE00B3B8PX14",
-      "listing_key": "LSE::IGIL",
-      "ticker": "IGIL",
-      "exchange": "LSE",
-      "name": "iShares Global Inflation Linked Govt Bond UCITS ETF USD (Acc)",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00B3B8PX14"
-    },
-    {
-      "conflict_id": "340161ed6e4110aee5ee",
-      "isin": "IE00B3B8PX14",
-      "listing_key": "LSE::SGIL",
-      "ticker": "SGIL",
-      "exchange": "LSE",
-      "name": "iShares III Public Limited Company - iShares Global Inflation Linked Government Bond UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00B3B8PX14"
-    },
-    {
-      "conflict_id": "340161ed6e4110aee5ee",
-      "isin": "IE00B3B8PX14",
-      "listing_key": "OTC::EGIL",
-      "ticker": "EGIL",
-      "exchange": "OTC",
-      "name": "EdgeTech International Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00B3B8PX14"
-    },
-    {
-      "conflict_id": "340161ed6e4110aee5ee",
-      "isin": "IE00B3B8PX14",
-      "listing_key": "SIX::IGIL",
-      "ticker": "IGIL",
-      "exchange": "SIX",
-      "name": "iShares Global Inflation Linked Govt Bond UCITS ETF USD (Acc) USD",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00B3B8PX14"
-    },
-    {
-      "conflict_id": "340161ed6e4110aee5ee",
-      "isin": "IE00B3B8PX14",
-      "listing_key": "XETRA::IUS5",
-      "ticker": "IUS5",
-      "exchange": "XETRA",
-      "name": "iShares Global Inflation Linked Government Bond UCITS",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00B3B8PX14"
     },
     {
       "conflict_id": "34037e3312e4c229f842",
@@ -32957,45 +32294,6 @@
       "retained_isin": "IE00BDQYWQ65"
     },
     {
-      "conflict_id": "9ba7ab950c44bb9b7255",
-      "isin": "IE00BDQZ5152",
-      "listing_key": "LSE::ICBU",
-      "ticker": "ICBU",
-      "exchange": "LSE",
-      "name": "iShares $ Intermediate Credit Bond UCITS ETF USD (Dist)",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BDQZ5152"
-    },
-    {
-      "conflict_id": "9ba7ab950c44bb9b7255",
-      "isin": "IE00BDQZ5152",
-      "listing_key": "OTC::ICBU",
-      "ticker": "ICBU",
-      "exchange": "OTC",
-      "name": "Imd Companies",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BDQZ5152"
-    },
-    {
-      "conflict_id": "9ba7ab950c44bb9b7255",
-      "isin": "IE00BDQZ5152",
-      "listing_key": "XETRA::SXRF",
-      "ticker": "SXRF",
-      "exchange": "XETRA",
-      "name": "iShares USD Intermediate Credit Bond UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BDQZ5152"
-    },
-    {
       "conflict_id": "21105488109079818b6f",
       "isin": "IE00BF2FNH52",
       "listing_key": "LSE::TR3A",
@@ -33215,58 +32513,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IE00BFMXXD54"
-    },
-    {
-      "conflict_id": "1a3ccaf3bb366690b7fd",
-      "isin": "IE00BFWXDY69",
-      "listing_key": "LSE::FLES",
-      "ticker": "FLES",
-      "exchange": "LSE",
-      "name": "Franklin Libertyshares ICAV - Franklin Liberty Euro Short Maturity Ucits Etf",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BFWXDY69"
-    },
-    {
-      "conflict_id": "1a3ccaf3bb366690b7fd",
-      "isin": "IE00BFWXDY69",
-      "listing_key": "LSE::FRXE",
-      "ticker": "FRXE",
-      "exchange": "LSE",
-      "name": "Franklin Liberty Euro Short Maturity UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BFWXDY69"
-    },
-    {
-      "conflict_id": "1a3ccaf3bb366690b7fd",
-      "isin": "IE00BFWXDY69",
-      "listing_key": "OTC::FLES",
-      "ticker": "FLES",
-      "exchange": "OTC",
-      "name": "4 Less Group Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BFWXDY69"
-    },
-    {
-      "conflict_id": "1a3ccaf3bb366690b7fd",
-      "isin": "IE00BFWXDY69",
-      "listing_key": "XETRA::FVSH",
-      "ticker": "FVSH",
-      "exchange": "XETRA",
-      "name": "Franklin Libertyshares ICAV - Franklin Liberty Euro Short Maturity Ucits Etf",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BFWXDY69"
     },
     {
       "conflict_id": "055863a0304b1b004eb1",
@@ -33789,136 +33035,6 @@
       "retained_isin": "IE00BKVD2N49"
     },
     {
-      "conflict_id": "3e8f10e5188362ae3875",
-      "isin": "IE00BKWQ0C77",
-      "listing_key": "Euronext::STR",
-      "ticker": "STR",
-      "exchange": "Euronext",
-      "name": "SPDR MSCI Europe Consumer Discretionary UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0C77"
-    },
-    {
-      "conflict_id": "3e8f10e5188362ae3875",
-      "isin": "IE00BKWQ0C77",
-      "listing_key": "LSE::CDCE",
-      "ticker": "CDCE",
-      "exchange": "LSE",
-      "name": "SPDR® MSCI Europe Consumer Discretionary UCITS ETF GBP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0C77"
-    },
-    {
-      "conflict_id": "3e8f10e5188362ae3875",
-      "isin": "IE00BKWQ0C77",
-      "listing_key": "LSE::CDIS",
-      "ticker": "CDIS",
-      "exchange": "LSE",
-      "name": "SPDR® MSCI Europe Consumer Discretionary UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0C77"
-    },
-    {
-      "conflict_id": "3e8f10e5188362ae3875",
-      "isin": "IE00BKWQ0C77",
-      "listing_key": "OTC::SPYR",
-      "ticker": "SPYR",
-      "exchange": "OTC",
-      "name": "SPYR Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0C77"
-    },
-    {
-      "conflict_id": "3e8f10e5188362ae3875",
-      "isin": "IE00BKWQ0C77",
-      "listing_key": "SIX::STRX",
-      "ticker": "STRX",
-      "exchange": "SIX",
-      "name": "SPDR® MSCI Europe Consumer Discretionary UCITS ETF CHF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0C77"
-    },
-    {
-      "conflict_id": "3e8f10e5188362ae3875",
-      "isin": "IE00BKWQ0C77",
-      "listing_key": "XETRA::SPYR",
-      "ticker": "SPYR",
-      "exchange": "XETRA",
-      "name": "SPDR® MSCI Europe Consumer Discretionary UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0C77"
-    },
-    {
-      "conflict_id": "0892b36abbcbeab24953",
-      "isin": "IE00BKWQ0N82",
-      "listing_key": "LSE::TELE",
-      "ticker": "TELE",
-      "exchange": "LSE",
-      "name": "SSgA SPDR ETFs Europe II Public Limited Company - SPDR MSCI Europe Telecommunications UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0N82"
-    },
-    {
-      "conflict_id": "0892b36abbcbeab24953",
-      "isin": "IE00BKWQ0N82",
-      "listing_key": "OTC::STTX",
-      "ticker": "STTX",
-      "exchange": "OTC",
-      "name": "Stratex Oil & Gas",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0N82"
-    },
-    {
-      "conflict_id": "0892b36abbcbeab24953",
-      "isin": "IE00BKWQ0N82",
-      "listing_key": "SIX::STTX",
-      "ticker": "STTX",
-      "exchange": "SIX",
-      "name": "SPDR® MSCI Europe Communication Services UCITS ETF CHF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0N82"
-    },
-    {
-      "conflict_id": "0892b36abbcbeab24953",
-      "isin": "IE00BKWQ0N82",
-      "listing_key": "XETRA::SPYT",
-      "ticker": "SPYT",
-      "exchange": "XETRA",
-      "name": "SPDR® MSCI Europe Communication Services UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BKWQ0N82"
-    },
-    {
       "conflict_id": "70c161f8f082ffe57aca",
       "isin": "IE00BKX55T58",
       "listing_key": "AMS::VEVE",
@@ -34231,71 +33347,6 @@
       "retained_isin": "IE00BM67HJ62"
     },
     {
-      "conflict_id": "14763f4707a11624efd3",
-      "isin": "IE00BM8QS095",
-      "listing_key": "LSE::MCHT",
-      "ticker": "MCHT",
-      "exchange": "LSE",
-      "name": "Invesco MSCI China Technology All Shares Stock Connect UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BM8QS095"
-    },
-    {
-      "conflict_id": "14763f4707a11624efd3",
-      "isin": "IE00BM8QS095",
-      "listing_key": "LSE::MCTS",
-      "ticker": "MCTS",
-      "exchange": "LSE",
-      "name": "Invesco MSCI China Technology All Shares Stock Connect UCITS ETF GBP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BM8QS095"
-    },
-    {
-      "conflict_id": "14763f4707a11624efd3",
-      "isin": "IE00BM8QS095",
-      "listing_key": "OTC::MCHT",
-      "ticker": "MCHT",
-      "exchange": "OTC",
-      "name": "Mauch Chunk Trust Financial Corp",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BM8QS095"
-    },
-    {
-      "conflict_id": "14763f4707a11624efd3",
-      "isin": "IE00BM8QS095",
-      "listing_key": "SIX::MCHT",
-      "ticker": "MCHT",
-      "exchange": "SIX",
-      "name": "Invesco MSCI China Technology All Shares Stock Connect UCITS ETF USD",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BM8QS095"
-    },
-    {
-      "conflict_id": "14763f4707a11624efd3",
-      "isin": "IE00BM8QS095",
-      "listing_key": "XETRA::ICNT",
-      "ticker": "ICNT",
-      "exchange": "XETRA",
-      "name": "Invesco MSCI China Technology All Shares Stock Connect UCITS ETF EUR",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BM8QS095"
-    },
-    {
       "conflict_id": "a84f157c7dcb6630c1ba",
       "isin": "IE00BMDKNW35",
       "listing_key": "LSE::DAGB",
@@ -34320,71 +33371,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IE00BMDKNW35"
-    },
-    {
-      "conflict_id": "a3f08efc65180ba44718",
-      "isin": "IE00BMDPBY65",
-      "listing_key": "AMS::PARI",
-      "ticker": "PARI",
-      "exchange": "AMS",
-      "name": "Franklin STOXX Europe 600 Paris Aligned Climate UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BMDPBY65"
-    },
-    {
-      "conflict_id": "a3f08efc65180ba44718",
-      "isin": "IE00BMDPBY65",
-      "listing_key": "LSE::EUPA",
-      "ticker": "EUPA",
-      "exchange": "LSE",
-      "name": "Franklin STOXX Europe 600 Paris Aligned Climate UCITS ETF GBP",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BMDPBY65"
-    },
-    {
-      "conflict_id": "a3f08efc65180ba44718",
-      "isin": "IE00BMDPBY65",
-      "listing_key": "LSE::PARI",
-      "ticker": "PARI",
-      "exchange": "LSE",
-      "name": "Franklin STOXX Europe 600 Paris Aligned Climate UCITS ETF EUR",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BMDPBY65"
-    },
-    {
-      "conflict_id": "a3f08efc65180ba44718",
-      "isin": "IE00BMDPBY65",
-      "listing_key": "OTC::FLXP",
-      "ticker": "FLXP",
-      "exchange": "OTC",
-      "name": "FlexPower Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BMDPBY65"
-    },
-    {
-      "conflict_id": "a3f08efc65180ba44718",
-      "isin": "IE00BMDPBY65",
-      "listing_key": "XETRA::FLXP",
-      "ticker": "FLXP",
-      "exchange": "XETRA",
-      "name": "Franklin STOXX Europe 600 Paris Aligned Climate UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BMDPBY65"
     },
     {
       "conflict_id": "84b16d475c10e83975e1",
@@ -34751,97 +33737,6 @@
       "retained_isin": "IE00BYZ28V50"
     },
     {
-      "conflict_id": "2d03b372ac9565bcaf24",
-      "isin": "IE00BZ0G8977",
-      "listing_key": "LSE::UTIP",
-      "ticker": "UTIP",
-      "exchange": "LSE",
-      "name": "SPDR Barclays U.S. TIPS UCITS",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BZ0G8977"
-    },
-    {
-      "conflict_id": "2d03b372ac9565bcaf24",
-      "isin": "IE00BZ0G8977",
-      "listing_key": "OTC::TIPS",
-      "ticker": "TIPS",
-      "exchange": "OTC",
-      "name": "Tianrong Internet Products and Services Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BZ0G8977"
-    },
-    {
-      "conflict_id": "2d03b372ac9565bcaf24",
-      "isin": "IE00BZ0G8977",
-      "listing_key": "XETRA::SYBY",
-      "ticker": "SYBY",
-      "exchange": "XETRA",
-      "name": "SPDR Barclays U.S. TIPS UCITS",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE00BZ0G8977"
-    },
-    {
-      "conflict_id": "1ecfc87c21504b98e43c",
-      "isin": "IL0003660136",
-      "listing_key": "SET::ARIN",
-      "ticker": "ARIN",
-      "exchange": "SET",
-      "name": "Arinsiri Land Public Company Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0003660136"
-    },
-    {
-      "conflict_id": "1ecfc87c21504b98e43c",
-      "isin": "IL0003660136",
-      "listing_key": "TASE::ARIN",
-      "ticker": "ARIN",
-      "exchange": "TASE",
-      "name": "Ari Real Estate Arena Investment Ltd",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0003660136"
-    },
-    {
-      "conflict_id": "35d2f38ad522a2af24b8",
-      "isin": "IL0003930174",
-      "listing_key": "IDX::RLCO",
-      "ticker": "RLCO",
-      "exchange": "IDX",
-      "name": "Abadi Lestari Indonesia Tbk",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0003930174"
-    },
-    {
-      "conflict_id": "35d2f38ad522a2af24b8",
-      "isin": "IL0003930174",
-      "listing_key": "TASE::RLCO",
-      "ticker": "RLCO",
-      "exchange": "TASE",
-      "name": "Ralco Agencies Ltd",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0003930174"
-    },
-    {
       "conflict_id": "54e128e732312f9d4ffa",
       "isin": "IL0003940157",
       "listing_key": "TASE::RATI",
@@ -34866,84 +33761,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "IL0003940157"
-    },
-    {
-      "conflict_id": "713f5bd7f41522cbcde8",
-      "isin": "IL0007590198",
-      "listing_key": "OTC::BYSD",
-      "ticker": "BYSD",
-      "exchange": "OTC",
-      "name": "Bayside Corp",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0007590198"
-    },
-    {
-      "conflict_id": "713f5bd7f41522cbcde8",
-      "isin": "IL0007590198",
-      "listing_key": "TASE::GVYM",
-      "ticker": "GVYM",
-      "exchange": "TASE",
-      "name": "GavYam Lands Corp Ltd",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0007590198"
-    },
-    {
-      "conflict_id": "c607d13902efc42d7e58",
-      "isin": "IL0010824113",
-      "listing_key": "FSX::CPW",
-      "ticker": "CPW",
-      "exchange": "FSX",
-      "name": "Check Point Software Techs Ltd.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0010824113"
-    },
-    {
-      "conflict_id": "c607d13902efc42d7e58",
-      "isin": "IL0010824113",
-      "listing_key": "LSE::0Y9S",
-      "ticker": "0Y9S",
-      "exchange": "LSE",
-      "name": "Check Point Software Technologies Ltd.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0010824113"
-    },
-    {
-      "conflict_id": "c607d13902efc42d7e58",
-      "isin": "IL0010824113",
-      "listing_key": "NASDAQ::CHKP",
-      "ticker": "CHKP",
-      "exchange": "NASDAQ",
-      "name": "Check Point Software Technologies Ltd",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0010824113"
-    },
-    {
-      "conflict_id": "c607d13902efc42d7e58",
-      "isin": "IL0010824113",
-      "listing_key": "SET::CPW",
-      "ticker": "CPW",
-      "exchange": "SET",
-      "name": "Copperwired Public Company Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IL0010824113"
     },
     {
       "conflict_id": "648f08f814a1ce31169e",
@@ -43227,32 +42044,6 @@
       "retained_isin": "JP3952870008"
     },
     {
-      "conflict_id": "7c65f94d1337d9d38c3e",
-      "isin": "JP3965410008",
-      "listing_key": "OTC::ASEKF",
-      "ticker": "ASEKF",
-      "exchange": "OTC",
-      "name": "Aisin Corporation",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "JP3965410008"
-    },
-    {
-      "conflict_id": "7c65f94d1337d9d38c3e",
-      "isin": "JP3965410008",
-      "listing_key": "TSE::207A",
-      "ticker": "207A",
-      "exchange": "TSE",
-      "name": "Rising Corporation Inc.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "JP3965410008"
-    },
-    {
       "conflict_id": "00f085d9fcefe3d0d70d",
       "isin": "JP3966660007",
       "listing_key": "FSX::7XJ",
@@ -48063,45 +46854,6 @@
       "retained_isin": "LU0328474803"
     },
     {
-      "conflict_id": "5555ae2e60b705b476d2",
-      "isin": "LU0460391732",
-      "listing_key": "LSE::XBCU",
-      "ticker": "XBCU",
-      "exchange": "LSE",
-      "name": "Xtrackers Bloomberg Commodity ex-Agriculture & Livestock Swap UCITS ETF",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU0460391732"
-    },
-    {
-      "conflict_id": "5555ae2e60b705b476d2",
-      "isin": "LU0460391732",
-      "listing_key": "OTC::XSVT",
-      "ticker": "XSVT",
-      "exchange": "OTC",
-      "name": "Xsovt Brands Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU0460391732"
-    },
-    {
-      "conflict_id": "5555ae2e60b705b476d2",
-      "isin": "LU0460391732",
-      "listing_key": "XETRA::XSVT",
-      "ticker": "XSVT",
-      "exchange": "XETRA",
-      "name": "Xtrackers Bloomberg Commodity ex-Agriculture & Livestock Swap UCITS ETF 2C USD EUR",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU0460391732"
-    },
-    {
       "conflict_id": "dc846cb2f7dc01d1c901",
       "isin": "LU0476289623",
       "listing_key": "LSE::XIDD",
@@ -48271,7 +47023,7 @@
       "retained_isin": "LU0514695690"
     },
     {
-      "conflict_id": "6b0413b923a4417e7ff3",
+      "conflict_id": "9411150796629fa90bca",
       "isin": "LU0584671464",
       "listing_key": "FSX::ACD",
       "ticker": "ACD",
@@ -48284,7 +47036,7 @@
       "retained_isin": "LU0584671464"
     },
     {
-      "conflict_id": "6b0413b923a4417e7ff3",
+      "conflict_id": "9411150796629fa90bca",
       "isin": "LU0584671464",
       "listing_key": "LSE::0DWL",
       "ticker": "0DWL",
@@ -48297,7 +47049,20 @@
       "retained_isin": "LU0584671464"
     },
     {
-      "conflict_id": "6b0413b923a4417e7ff3",
+      "conflict_id": "9411150796629fa90bca",
+      "isin": "LU0584671464",
+      "listing_key": "NYSE::AGRO",
+      "ticker": "AGRO",
+      "exchange": "NYSE",
+      "name": "Adecoagro SA",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "LU0584671464"
+    },
+    {
+      "conflict_id": "9411150796629fa90bca",
       "isin": "LU0584671464",
       "listing_key": "XSTU::ACD",
       "ticker": "ACD",
@@ -48750,45 +47515,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "LU1829218749"
-    },
-    {
-      "conflict_id": "0dd5b7271eb01c0c282e",
-      "isin": "LU1834983634",
-      "listing_key": "Euronext::CHM",
-      "ticker": "CHM",
-      "exchange": "Euronext",
-      "name": "Amundi STOXX Europe 600 Basic Materials UCITS ETF Acc EUR",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU1834983634"
-    },
-    {
-      "conflict_id": "0dd5b7271eb01c0c282e",
-      "isin": "LU1834983634",
-      "listing_key": "OTC::CHMMF",
-      "ticker": "CHMMF",
-      "exchange": "OTC",
-      "name": "Chimeric Therapeutics Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU1834983634"
-    },
-    {
-      "conflict_id": "0dd5b7271eb01c0c282e",
-      "isin": "LU1834983634",
-      "listing_key": "XETRA::LCHM",
-      "ticker": "LCHM",
-      "exchange": "XETRA",
-      "name": "Amundi STOXX Europe 600 Basic Materials UCITS ETF Acc",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU1834983634"
     },
     {
       "conflict_id": "9a8b8c64a8c98b22f2f3",
@@ -50104,7 +48830,7 @@
       "retained_isin": "NL0000313286"
     },
     {
-      "conflict_id": "d3494ad3630acfc98e10",
+      "conflict_id": "0c754338071c49d0929d",
       "isin": "NL0000334118",
       "listing_key": "AMS::ASM",
       "ticker": "ASM",
@@ -50117,7 +48843,7 @@
       "retained_isin": "NL0000334118"
     },
     {
-      "conflict_id": "d3494ad3630acfc98e10",
+      "conflict_id": "0c754338071c49d0929d",
       "isin": "NL0000334118",
       "listing_key": "FSX::AVS",
       "ticker": "AVS",
@@ -50130,7 +48856,7 @@
       "retained_isin": "NL0000334118"
     },
     {
-      "conflict_id": "d3494ad3630acfc98e10",
+      "conflict_id": "0c754338071c49d0929d",
       "isin": "NL0000334118",
       "listing_key": "LSE::0NX3",
       "ticker": "0NX3",
@@ -50143,20 +48869,7 @@
       "retained_isin": "NL0000334118"
     },
     {
-      "conflict_id": "d3494ad3630acfc98e10",
-      "isin": "NL0000334118",
-      "listing_key": "OTC::ASMMF",
-      "ticker": "ASMMF",
-      "exchange": "OTC",
-      "name": "Australian Strategic Materials Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "NL0000334118"
-    },
-    {
-      "conflict_id": "d3494ad3630acfc98e10",
+      "conflict_id": "0c754338071c49d0929d",
       "isin": "NL0000334118",
       "listing_key": "OTC::ASMXF",
       "ticker": "ASMXF",
@@ -50169,7 +48882,7 @@
       "retained_isin": "NL0000334118"
     },
     {
-      "conflict_id": "d3494ad3630acfc98e10",
+      "conflict_id": "0c754338071c49d0929d",
       "isin": "NL0000334118",
       "listing_key": "XETRA::AVS",
       "ticker": "AVS",
@@ -50312,7 +49025,7 @@
       "retained_isin": "NL0000395903"
     },
     {
-      "conflict_id": "1fc046e9420a27aba756",
+      "conflict_id": "b5d3832aaa367084d465",
       "isin": "NL0000687663",
       "listing_key": "FSX::R1D",
       "ticker": "R1D",
@@ -50325,7 +49038,20 @@
       "retained_isin": "NL0000687663"
     },
     {
-      "conflict_id": "1fc046e9420a27aba756",
+      "conflict_id": "b5d3832aaa367084d465",
+      "isin": "NL0000687663",
+      "listing_key": "NYSE::AER",
+      "ticker": "AER",
+      "exchange": "NYSE",
+      "name": "AerCap Holdings NV",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "NL0000687663"
+    },
+    {
+      "conflict_id": "b5d3832aaa367084d465",
       "isin": "NL0000687663",
       "listing_key": "XETRA::R1D",
       "ticker": "R1D",
@@ -58424,32 +57150,6 @@
       "retained_isin": "TH0902010014"
     },
     {
-      "conflict_id": "d88724935226ddd10235",
-      "isin": "TH6927010004",
-      "listing_key": "SET::TKN",
-      "ticker": "TKN",
-      "exchange": "SET",
-      "name": "TAOKAENOI FOOD & MARKETING PUBLIC COMPANY LIMITED",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "TH6927010004"
-    },
-    {
-      "conflict_id": "d88724935226ddd10235",
-      "isin": "TH6927010004",
-      "listing_key": "TSX::TKN",
-      "ticker": "TKN",
-      "exchange": "TSX",
-      "name": "Ninepoint Crypto and AI Leaders ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "TH6927010004"
-    },
-    {
       "conflict_id": "c4d9bb39a17daf876a08",
       "isin": "US0003602069",
       "listing_key": "NASDAQ::AAON",
@@ -65691,84 +64391,6 @@
       "retained_isin": "US2566771059"
     },
     {
-      "conflict_id": "92df3dabb7b5f4c55291",
-      "isin": "US25746U1097",
-      "listing_key": "FSX::DOD",
-      "ticker": "DOD",
-      "exchange": "FSX",
-      "name": "Dominion Energy Inc",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US25746U1097"
-    },
-    {
-      "conflict_id": "92df3dabb7b5f4c55291",
-      "isin": "US25746U1097",
-      "listing_key": "LSE::0IC9",
-      "ticker": "0IC9",
-      "exchange": "LSE",
-      "name": "Dominion Energy Inc.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US25746U1097"
-    },
-    {
-      "conflict_id": "92df3dabb7b5f4c55291",
-      "isin": "US25746U1097",
-      "listing_key": "NYSE::D",
-      "ticker": "D",
-      "exchange": "NYSE",
-      "name": "Dominion Energy Inc",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US25746U1097"
-    },
-    {
-      "conflict_id": "92df3dabb7b5f4c55291",
-      "isin": "US25746U1097",
-      "listing_key": "SET::DOD",
-      "ticker": "DOD",
-      "exchange": "SET",
-      "name": "DOD Biotech Public Company Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US25746U1097"
-    },
-    {
-      "conflict_id": "92df3dabb7b5f4c55291",
-      "isin": "US25746U1097",
-      "listing_key": "XETRA::DOD",
-      "ticker": "DOD",
-      "exchange": "XETRA",
-      "name": "DOMINION ENERGY INC.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US25746U1097"
-    },
-    {
-      "conflict_id": "92df3dabb7b5f4c55291",
-      "isin": "US25746U1097",
-      "listing_key": "XSTU::DOD",
-      "ticker": "DOD",
-      "exchange": "XSTU",
-      "name": "Dominion Energy Inc",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "US25746U1097"
-    },
-    {
       "conflict_id": "dbf37ca28a8993d52e33",
       "isin": "US25754A2015",
       "listing_key": "FSX::EZV",
@@ -69420,6 +68042,45 @@
       "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US4131601027"
+    },
+    {
+      "conflict_id": "d04202beb002a11d63e5",
+      "isin": "US4165151048",
+      "listing_key": "LSE::0J3H",
+      "ticker": "0J3H",
+      "exchange": "LSE",
+      "name": "Hartford Financial Services Group Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "US4165151048"
+    },
+    {
+      "conflict_id": "d04202beb002a11d63e5",
+      "isin": "US4165151048",
+      "listing_key": "NYSE::HIG",
+      "ticker": "HIG",
+      "exchange": "NYSE",
+      "name": "The Hartford Insurance Group, Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "US4165151048"
+    },
+    {
+      "conflict_id": "d04202beb002a11d63e5",
+      "isin": "US4165151048",
+      "listing_key": "XETRA::HFF",
+      "ticker": "HFF",
+      "exchange": "XETRA",
+      "name": "HARTFORD INSURANCE GROUP",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "US4165151048"
     },
     {
       "conflict_id": "4c00e7f8d799f4ff45c2",
@@ -73426,7 +72087,7 @@
       "retained_isin": "US5719032022"
     },
     {
-      "conflict_id": "9f46502924fcd823bb9d",
+      "conflict_id": "e39973e78931905a2c60",
       "isin": "US5732841060",
       "listing_key": "FSX::MMX",
       "ticker": "MMX",
@@ -73439,7 +72100,7 @@
       "retained_isin": "US5732841060"
     },
     {
-      "conflict_id": "9f46502924fcd823bb9d",
+      "conflict_id": "e39973e78931905a2c60",
       "isin": "US5732841060",
       "listing_key": "LSE::0JZ0",
       "ticker": "0JZ0",
@@ -73452,7 +72113,7 @@
       "retained_isin": "US5732841060"
     },
     {
-      "conflict_id": "9f46502924fcd823bb9d",
+      "conflict_id": "e39973e78931905a2c60",
       "isin": "US5732841060",
       "listing_key": "NYSE::MLM",
       "ticker": "MLM",
@@ -73465,33 +72126,7 @@
       "retained_isin": "US5732841060"
     },
     {
-      "conflict_id": "9f46502924fcd823bb9d",
-      "isin": "US5732841060",
-      "listing_key": "OTC::MMXLF",
-      "ticker": "MMXLF",
-      "exchange": "OTC",
-      "name": "Mustang Minerals Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "US5732841060"
-    },
-    {
-      "conflict_id": "9f46502924fcd823bb9d",
-      "isin": "US5732841060",
-      "listing_key": "TSXV::MMX",
-      "ticker": "MMX",
-      "exchange": "TSXV",
-      "name": "Mustang Minerals Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "US5732841060"
-    },
-    {
-      "conflict_id": "9f46502924fcd823bb9d",
+      "conflict_id": "e39973e78931905a2c60",
       "isin": "US5732841060",
       "listing_key": "XETRA::MMX",
       "ticker": "MMX",
@@ -73504,7 +72139,7 @@
       "retained_isin": "US5732841060"
     },
     {
-      "conflict_id": "9f46502924fcd823bb9d",
+      "conflict_id": "e39973e78931905a2c60",
       "isin": "US5732841060",
       "listing_key": "XSTU::MMX",
       "ticker": "MMX",
@@ -73933,7 +72568,7 @@
       "retained_isin": "US58155Q1031"
     },
     {
-      "conflict_id": "4626fbc1da89ea0c2de5",
+      "conflict_id": "eecdc6d193828b8787e9",
       "isin": "US58506Q1094",
       "listing_key": "FSX::01P",
       "ticker": "01P",
@@ -73946,7 +72581,20 @@
       "retained_isin": "US58506Q1094"
     },
     {
-      "conflict_id": "4626fbc1da89ea0c2de5",
+      "conflict_id": "eecdc6d193828b8787e9",
+      "isin": "US58506Q1094",
+      "listing_key": "NASDAQ::MEDP",
+      "ticker": "MEDP",
+      "exchange": "NASDAQ",
+      "name": "Medpace Holdings Inc",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "US58506Q1094"
+    },
+    {
+      "conflict_id": "eecdc6d193828b8787e9",
       "isin": "US58506Q1094",
       "listing_key": "XETRA::01P",
       "ticker": "01P",
@@ -73959,7 +72607,7 @@
       "retained_isin": "US58506Q1094"
     },
     {
-      "conflict_id": "4626fbc1da89ea0c2de5",
+      "conflict_id": "eecdc6d193828b8787e9",
       "isin": "US58506Q1094",
       "listing_key": "XSTU::01P",
       "ticker": "01P",

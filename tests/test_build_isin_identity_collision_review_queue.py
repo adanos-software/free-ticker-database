@@ -1,11 +1,14 @@
 from scripts.build_isin_identity_collision_review_queue import (
+    apply_same_issuer_closure,
     build_queue_rows,
     cluster_listings_by_name,
     compact_name_key,
     is_full_name,
+    load_same_issuer_reviews,
     name_tokens,
     next_review_batches,
     shared_tickers_across_clusters,
+    split_listing_keys,
     summarize,
 )
 
@@ -173,3 +176,89 @@ def test_next_review_batches_sorted_by_group_count():
         "registered_country": "Canada",
         "collision_groups": 2,
     }
+
+
+def test_split_listing_keys_strips_and_drops_empties():
+    assert split_listing_keys("NYSE::GE|FSX::GCP|") == {"NYSE::GE", "FSX::GCP"}
+    assert split_listing_keys("") == set()
+    assert split_listing_keys("  |  ") == set()
+
+
+def test_load_same_issuer_reviews_missing_file_is_empty(tmp_path):
+    assert load_same_issuer_reviews(tmp_path / "missing.csv") == {}
+
+
+def test_load_same_issuer_reviews_rejects_duplicate_isin(tmp_path):
+    path = tmp_path / "same_issuer.csv"
+    path.write_text(
+        "isin,listing_keys,reviewed_at,reason\n"
+        "US3696043013,NYSE::GE|FSX::GCP,2026-10-06T00:00:00Z,same issuer\n"
+        "US3696043013,NYSE::GE,2026-10-06T00:00:00Z,duplicate\n",
+        encoding="utf-8",
+    )
+    try:
+        load_same_issuer_reviews(path)
+    except ValueError as exc:
+        assert "US3696043013" in str(exc)
+    else:
+        raise AssertionError("expected duplicate ISIN to raise")
+
+
+def test_apply_same_issuer_closure_closes_when_current_keys_are_subset():
+    row = {
+        "isin": "US3696043013",
+        "listing_keys": "FSX::GCP|NYSE::GE",
+        "closure_status": "open_needs_official_identifier_evidence",
+    }
+    closed = apply_same_issuer_closure(
+        row,
+        {"US3696043013": {"NYSE::GE", "FSX::GCP", "XETRA::GCP"}},
+    )
+    assert closed["closure_status"] == "closed_same_issuer_reviewed"
+
+
+def test_apply_same_issuer_closure_stays_open_when_new_listing_appears():
+    row = {
+        "isin": "US3696043013",
+        "listing_keys": "FSX::GCP|NYSE::GE|OTC::NEW",
+        "closure_status": "open_needs_official_identifier_evidence",
+    }
+    open_row = apply_same_issuer_closure(
+        row,
+        {"US3696043013": {"NYSE::GE", "FSX::GCP"}},
+    )
+    assert open_row["closure_status"] == "open_needs_official_identifier_evidence"
+
+
+def test_apply_same_issuer_closure_stays_open_when_current_keys_empty():
+    row = {
+        "isin": "US3696043013",
+        "listing_keys": "",
+        "closure_status": "open_needs_official_identifier_evidence",
+    }
+    open_row = apply_same_issuer_closure(
+        row,
+        {"US3696043013": {"NYSE::GE"}},
+    )
+    assert open_row["closure_status"] == "open_needs_official_identifier_evidence"
+
+
+def test_build_queue_rows_closes_reviewed_same_issuer_and_leaves_unreviewed_open():
+    rows = [
+        listing("NYSE::GE", "GE", "NYSE", "GE Aerospace", "US3696043013"),
+        listing("FSX::GCP", "GCP", "FSX", "General Electric Company", "US3696043013"),
+        listing("NYSE::AMP", "AMP", "NYSE", "Ameriprise Financial Inc", "AU000000AMP6"),
+        listing("OTC::AMLTF", "AMLTF", "OTC", "AMP Ltd", "AU000000AMP6"),
+    ]
+    queue = build_queue_rows(
+        rows,
+        isin_valid_fn=always_valid,
+        country_from_isin_fn=country_from_isin_stub,
+        same_issuer_reviews={"US3696043013": {"NYSE::GE", "FSX::GCP"}},
+    )
+    by_isin = {item["isin"]: item for item in queue}
+    assert by_isin["US3696043013"]["closure_status"] == "closed_same_issuer_reviewed"
+    assert by_isin["AU000000AMP6"]["closure_status"] == "open_needs_official_identifier_evidence"
+    summary = summarize(queue, generated_at="2026-10-06T00:00:00Z")
+    assert summary["open_groups"] == 1
+    assert summary["closed_groups"] == 1
