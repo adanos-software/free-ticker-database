@@ -452,6 +452,7 @@ def main() -> None:
                     "failures": report["failures"],
                     "unevidenced_removed_listing_keys": report["unevidenced_removed_listing_keys"],
                     "evidenced_removed_listing_keys": report["evidenced_removed_listing_keys"],
+                    "unevidenced_critical_field_changes": report["unevidenced_critical_field_changes"],
                 },
                 indent=2,
             )

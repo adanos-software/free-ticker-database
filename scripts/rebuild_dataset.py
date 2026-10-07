@@ -2771,9 +2771,12 @@ def cleaned_rows():
                 merged["isin"] = official_isin
                 inferred_country = country_from_isin(official_isin)
                 preserve_depositary_domicile = bool(
-                    row_key in official_depositary_listing_keys
-                    and merged.get("country")
+                    merged.get("country")
                     and merged.get("country") != "United States"
+                    and (
+                        row_key in official_depositary_listing_keys
+                        or inferred_country == "United States"
+                    )
                 )
                 if inferred_country and not preserve_depositary_domicile:
                     merged["country"] = inferred_country
@@ -2813,9 +2816,12 @@ def cleaned_rows():
         country = row["country"]
         inferred_country = country_from_isin(isin) if isin else None
         preserve_depositary_domicile = bool(
-            row_key in official_depositary_listing_keys
-            and country
+            country
             and country != "United States"
+            and (
+                row_key in official_depositary_listing_keys
+                or inferred_country == "United States"
+            )
         )
         if inferred_country and not preserve_depositary_domicile:
             country = inferred_country
