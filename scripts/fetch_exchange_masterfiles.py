@@ -15571,6 +15571,7 @@ JPX_33_INDUSTRY_TO_SECTOR_EN: dict[str, str] = {
     "Foods": "Consumer Staples",
     "Glass and Ceramics Products": "Materials",
     "Information & Communication": "Communication Services",
+    "Information and Communication": "Communication Services",
     "Insurance": "Financials",
     "Iron and Steel": "Materials",
     "Land Transportation": "Industrials",

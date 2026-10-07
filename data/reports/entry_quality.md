@@ -6,8 +6,8 @@ Generated at: `2026-10-06T08:47:10Z`
 
 | Status | Rows |
 |---|---:|
-| pass | 85,694 |
-| source_gap | 11,458 |
+| pass | 86,082 |
+| source_gap | 11,070 |
 | warn | 24 |
 
 ## Issue Counts
@@ -16,7 +16,7 @@ Generated at: `2026-10-06T08:47:10Z`
 |---|---:|
 | official_reference_gap | 6,458 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 1,325 |
+| missing_stock_sector | 937 |
 | expected_missing_primary_isin | 593 |
 | missing_etf_category | 67 |
 | official_name_mismatch | 19 |
@@ -28,7 +28,7 @@ Generated at: `2026-10-06T08:47:10Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 8,484 | 0 | 3,254 | 14 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
-| FSX | 7,339 | 0 | 804 | 0 | 0 |
+| FSX | 7,727 | 0 | 416 | 0 | 0 |
 | B3 | 1,243 | 0 | 346 | 0 | 0 |
 | NASDAQ | 4,513 | 0 | 292 | 0 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |

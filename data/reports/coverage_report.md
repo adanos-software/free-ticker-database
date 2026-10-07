@@ -10,8 +10,8 @@
 | stocks | 48666 |
 | etfs | 16725 |
 | isin_coverage | 64130 |
-| sector_coverage | 63743 |
-| stock_sector_coverage | 47079 |
+| sector_coverage | 64109 |
+| stock_sector_coverage | 47445 |
 | etf_category_coverage | 16664 |
 | cik_coverage | 7843 |
 | figi_coverage | 65158 |
@@ -416,7 +416,7 @@ Freshness is visibility evidence only. It does not authorize identifiers, sector
 | DSE_TZ | official_partial | 17 | 17 | 17 | 0 | 15 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | EGX | official_partial | 223 | 223 | 223 | 0 | 195 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | Euronext | official_full | 1477 | 1477 | 1459 | 7 | 1068 | 841 | 2015 | 1334 | 369 | 312 | 66.2 | 33.8 | 81.04 | 312 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=681;symbol_collisions=369 | 100.0 |
-| FSX | official_full | 8143 | 8142 | 6879 | 0 | 0 | 0 | 18226 | 7955 | 4278 | 5993 | 43.65 | 56.35 | 57.03 | 5993 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=10271;symbol_collisions=4278 |  |
+| FSX | official_full | 8143 | 8142 | 7386 | 0 | 0 | 0 | 18226 | 7955 | 4278 | 5993 | 43.65 | 56.35 | 57.03 | 5993 | still_actionable | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=10271;symbol_collisions=4278 |  |
 | GSE | official_partial | 19 | 18 | 19 | 0 | 18 | 0 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | HEL | official_partial | 199 | 199 | 199 | 1 | 193 | 5 | 0 | 0 | 0 | 0 |  |  |  | 0 | out_of_current_scope |  | 100.0 |
 | HKEX | official_full | 3198 | 3198 | 3093 | 0 | 2992 | 266 | 3230 | 3160 | 69 | 1 | 97.83 | 2.17 | 99.97 | 1 | mostly_collision_hidden | below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=70;symbol_collisions=69 | 100.0 |

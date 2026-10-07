@@ -128,6 +128,31 @@ def test_evaluate_row_maps_ampersand_securities_industry():
     assert result["sector_update"] == "Financials"
 
 
+def test_evaluate_row_maps_information_and_communication_ampersand_variant():
+    result = evaluate_row(
+        target(ticker="7NX", name="NEXON Co. Ltd", isin="JP3758190007"),
+        indexed(
+            issue(
+                local_code="3659",
+                name="NEXON Co.,Ltd.",
+                industry="Information & Communication",
+                issuer_key="nexon",
+            )
+        ),
+        {
+            "3659": detail(
+                isin="JP3758190007",
+                industry="Information & Communication",
+                local_code="3659",
+                name="NEXON CO., LTD.",
+            )
+        },
+    )
+
+    assert result["decision"] == "accept"
+    assert result["sector_update"] == "Communication Services"
+
+
 def test_evaluate_row_rejects_locked_name_expansions_and_rebrands():
     by_key = indexed(
         issue(
