@@ -2224,6 +2224,49 @@ def test_cleaned_rows_does_not_backfill_unreviewed_foreign_otc_us_isin(monkeypat
     assert cleaned[0]["country_code"] == "DE"
 
 
+def test_cleaned_rows_keeps_foreign_domicile_when_official_adr_row_vanishes(monkeypatch):
+    from scripts import rebuild_dataset
+    from scripts.check_safe_merge import evaluate
+
+    row = {
+        "ticker": "WKEY",
+        "name": "Wisekey International Holding AG",
+        "exchange": "NASDAQ",
+        "asset_type": "Stock",
+        "sector": "Information Technology",
+        "stock_sector": "Information Technology",
+        "etf_category": "",
+        "country": "Switzerland",
+        "country_code": "CH",
+        "isin": "US97727L4086",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_review_overrides",
+        lambda: (defaultdict(set), defaultdict(dict), set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_depositary_listing_keys", lambda: set())
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_sector_fallbacks", lambda: {})
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["country"] == "Switzerland"
+    assert cleaned[0]["country_code"] == "CH"
+    assert cleaned[0]["isin"] == "US97727L4086"
+    report = evaluate([row], cleaned, [], observed_at="2026-10-07T00:00:00Z")
+    assert report["status"] == "pass"
+    assert report["unevidenced_critical_field_changes"] == []
+
+
 def test_hkex_snapshot_isin_changes_require_review_and_pass_safe_merge(monkeypatch, tmp_path):
     from scripts import rebuild_dataset
     from scripts.check_safe_merge import evaluate
