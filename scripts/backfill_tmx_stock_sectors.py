@@ -231,6 +231,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
     parser.add_argument("--exchange", action="append", choices=["TSX", "TSXV"])
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        default=TICKERS_CSV,
+        help="Listing-keyed source CSV; use data/listings.csv to include dual TSX/TSXV rows.",
+    )
     parser.add_argument("--timeout-seconds", type=float, default=30.0)
     parser.add_argument("--apply", action="store_true")
     return parser.parse_args(argv)
@@ -245,7 +251,7 @@ def main(argv: list[str] | None = None) -> None:
         else download_tmx_issuers_xlsx(TMX_ISSUERS_XLSX_URL, args.timeout_seconds)
     )
     source_rows = load_tmx_sector_rows(workbook_bytes)
-    target_rows = load_target_rows(TICKERS_CSV, exchanges)
+    target_rows = load_target_rows(args.tickers_csv, exchanges)
     results = evaluate_rows(target_rows, source_rows)
     updates = build_metadata_updates(results)
 
