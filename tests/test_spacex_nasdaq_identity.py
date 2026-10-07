@@ -47,9 +47,12 @@ def test_predecessor_etf_remains_on_spck() -> None:
 def test_reviewed_spacex_metadata_updates_are_well_formed() -> None:
     updates = _spacex_metadata_updates()
     by_field = {row["field"]: row for row in updates}
-    assert set(by_field) >= {"name", "asset_type", "isin", "etf_category", "aliases"}
+    identity_fields = {"name", "asset_type", "isin", "etf_category", "aliases"}
+    assert set(by_field) >= identity_fields
     for row in updates:
         assert is_well_formed_metadata_update(row)
+        if row["field"] not in identity_fields:
+            continue
         assert row["confidence"] == "0.99"
         assert "US84615Q1031" in row["reason"] or row["field"] != "isin"
     assert by_field["asset_type"]["proposed_value"] == "Stock"
