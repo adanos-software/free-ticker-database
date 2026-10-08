@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-10-08T07:10:30Z",
-    "rows": 8433,
+    "generated_at": "2026-10-08T07:44:25Z",
+    "rows": 8431,
     "field_totals": {
       "missing_etf_category": 112,
       "missing_isin_primary": 645,
-      "missing_sector_stock": 1123,
+      "missing_sector_stock": 1121,
       "official_reference_gap": 6553
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 167,
       "official_identifier_reference_unmatched_gap": 13,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 448,
+      "official_industry_taxonomy_unavailable_gap": 446,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 43,
       "official_reference_symbol_collision_gap": 1120,
@@ -52,7 +52,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 7,
       "missing_sector_stock:exchange_industry_source_gap": 59,
       "missing_sector_stock:fundlike_stock_sector_gap": 18,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 448,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 446,
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 39,
       "official_reference_gap:official_reference_symbol_collision_gap": 1120,
@@ -31492,23 +31492,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "XETRA::ECX",
-      "ticker": "ECX",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "name": "EPIGENOMICS AG NA O.N.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=XETRA::ECX;exchange=XETRA;ticker=ECX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "XETRA::PEH",
       "ticker": "PEH",
       "exchange": "XETRA",
@@ -31520,23 +31503,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=XETRA::PEH;exchange=XETRA;ticker=PEH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XETRA::SMB",
-      "ticker": "SMB",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "name": "SCHWAELBCHEN MOLKEREI AG .O.N.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=XETRA::SMB;exchange=XETRA;ticker=SMB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
