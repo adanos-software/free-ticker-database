@@ -174,7 +174,7 @@ Operational rebuilds use:
 python scripts/rebuild_canonical.py
 ```
 
-Direct execution of `scripts/rebuild_dataset.py` remains available only for compatibility-export validation.
+`scripts/rebuild_dataset.py` delegates to the same canonical rebuild.
 <!-- canonical-v4-quality:end -->
 ## Quality
 

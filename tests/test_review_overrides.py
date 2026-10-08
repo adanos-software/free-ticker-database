@@ -167,6 +167,48 @@ def test_split_aliases_accepts_review_override_lists():
     ]
 
 
+def test_coverage_overrides_fill_empty_only_and_identity_still_overwrites():
+    filled = rebuild_dataset.apply_input_metadata_overrides(
+        {
+            "ticker": "AAA",
+            "exchange": "NASDAQ",
+            "stock_sector": "Financials",
+            "etf_category": "",
+            "country": "Canada",
+            "isin": "CA1234567890",
+        },
+        {
+            "stock_sector": {"decision": "update", "proposed_value": "Energy"},
+            "etf_category": {"decision": "update", "proposed_value": "Equity"},
+            "country": {"decision": "update", "proposed_value": "United States"},
+            "isin": {"decision": "update", "proposed_value": "US0378331005"},
+        },
+    )
+    assert filled["stock_sector"] == "Financials"
+    assert filled["etf_category"] == "Equity"
+    assert filled["country"] == "United States"
+    assert filled["isin"] == "US0378331005"
+
+    output = rebuild_dataset.apply_output_metadata_overrides(
+        {
+            "ticker": "AAA",
+            "exchange": "NASDAQ",
+            "stock_sector": "Financials",
+            "etf_category": "Equity",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "US0378331005",
+            "aliases": [],
+        },
+        {
+            "stock_sector": {"decision": "update", "proposed_value": "Energy"},
+            "etf_category": {"decision": "clear", "proposed_value": ""},
+        },
+    )
+    assert output["stock_sector"] == "Financials"
+    assert output["etf_category"] == ""
+
+
 def test_apply_output_metadata_overrides_reinfers_country_from_isin_after_clear():
     updated = rebuild_dataset.apply_output_metadata_overrides(
         {

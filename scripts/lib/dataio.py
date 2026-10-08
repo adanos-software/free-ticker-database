@@ -54,6 +54,18 @@ METADATA_UPDATE_ALLOWED_TARGET_FIELDS = {
     "stock_sector",
     "ticker",
 }
+COVERAGE_METADATA_FIELDS = frozenset({"etf_category", "sector", "stock_sector"})
+
+
+def should_apply_metadata_field_override(field: str, current_value: object, decision: str) -> bool:
+    if field not in COVERAGE_METADATA_FIELDS:
+        return True
+    if decision == "clear":
+        return True
+    if decision != "update":
+        return False
+    current = current_value if isinstance(current_value, str) else ""
+    return not current.strip()
 
 
 def is_well_formed_metadata_update(row: dict[Any, Any]) -> bool:

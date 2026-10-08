@@ -44,6 +44,8 @@ def test_pipeline_default_stages_are_safe_and_ordered():
     assert names[names.index("build_cfi_code_review") + 1] == "check_entry_quality_gate"
     assert "eodhd_reviewed_isin_backfill" not in names
     assert all("--apply" not in stage.command for stage in stages)
+    rebuild = next(stage for stage in stages if stage.name == "rebuild_dataset")
+    assert rebuild.command == ["python3", "scripts/rebuild_canonical.py"]
 
 
 def test_pipeline_can_include_secondary_network_and_apply_flag():

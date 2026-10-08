@@ -2,7 +2,13 @@ from __future__ import annotations
 
 import json
 
-from scripts.apply_review_batches import apply_operations, load_operations, resolve_batch_files
+from scripts.apply_review_batches import (
+    apply_operations,
+    load_operations,
+    persist_applied_operations,
+    resolve_batch_files,
+)
+from scripts.lib.dataio import load_csv
 
 
 def test_apply_operations_updates_source_rows():
@@ -138,3 +144,46 @@ def test_resolve_batch_files_and_load_operations(tmp_path):
     assert len(operations) == 2
     assert [operation["operation_type"] for operation in operations] == ["remove_alias", "drop_entry"]
     assert len(sources) == 2
+
+
+def test_persist_applied_operations_writes_overlays_not_tickers(tmp_path):
+    tickers = tmp_path / "tickers.csv"
+    tickers.write_text("ticker,exchange,country\nAAA,NASDAQ,United States\n", encoding="utf-8")
+    metadata = tmp_path / "metadata_updates.csv"
+    drops = tmp_path / "drop_entries.csv"
+    removals = tmp_path / "remove_aliases.csv"
+    applied = [
+        {
+            "operation_type": "remove_alias",
+            "ticker": "AAA",
+            "exchange": "NASDAQ",
+            "alias": "legacy",
+        },
+        {
+            "operation_type": "update_metadata",
+            "ticker": "AAA",
+            "exchange": "NASDAQ",
+            "field": "country",
+            "decision": "update",
+            "proposed_value": "Canada",
+        },
+        {
+            "operation_type": "drop_entry",
+            "ticker": "BBB",
+            "exchange": "NYSE",
+        },
+    ]
+
+    persist_applied_operations(
+        applied,
+        metadata_path=metadata,
+        drop_path=drops,
+        remove_aliases_path=removals,
+    )
+
+    assert tickers.read_text(encoding="utf-8") == "ticker,exchange,country\nAAA,NASDAQ,United States\n"
+    assert [(row["ticker"], row["field"], row["proposed_value"]) for row in load_csv(metadata)] == [
+        ("AAA", "country", "Canada")
+    ]
+    assert [(row["ticker"], row["exchange"]) for row in load_csv(drops)] == [("BBB", "NYSE")]
+    assert [(row["ticker"], row["alias"]) for row in load_csv(removals)] == [("AAA", "legacy")]

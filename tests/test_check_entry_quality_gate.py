@@ -2,7 +2,15 @@ from __future__ import annotations
 
 import json
 
-from scripts.check_entry_quality_gate import check_entry_quality_gate, main
+from scripts.check_entry_quality_gate import (
+    DEFAULT_JSON_OUT,
+    ENTRY_QUALITY_CSV,
+    WARN_ALLOWLIST_CSV,
+    allowed_warn_keys,
+    check_entry_quality_gate,
+    load_csv,
+    main,
+)
 
 
 def row(
@@ -63,6 +71,21 @@ def test_entry_quality_gate_preserves_all_structured_subjects_beyond_display_lim
         "listing_key": "LSE::T50",
         "issue_type": "country_isin_mismatch",
     }
+
+
+def test_committed_entry_quality_gate_matches_live_csvs():
+    live = check_entry_quality_gate(load_csv(ENTRY_QUALITY_CSV), allowed_warn_keys(WARN_ALLOWLIST_CSV))
+    committed = json.loads(DEFAULT_JSON_OUT.read_text(encoding="utf-8"))
+    for key in (
+        "passed",
+        "quarantine_count",
+        "warn_count",
+        "allowed_warn_count",
+        "unexpected_warn_count",
+        "stale_allowlist_count",
+    ):
+        assert committed[key] == live[key]
+    assert committed.get("unexpected_warns") == live.get("unexpected_warns")
 
 
 def test_entry_quality_gate_cli_writes_json_report(tmp_path):

@@ -697,6 +697,50 @@ def test_build_primary_ticker_rows_keeps_one_legacy_row_per_ticker():
     ]
 
 
+def test_core_ticker_and_cross_listings_share_primary_listing_key():
+    from scripts.rebuild_dataset import (
+        build_core_security_rows,
+        build_cross_listings,
+        build_primary_listing_key_by_isin,
+        build_primary_ticker_rows,
+    )
+
+    rows = [
+        {
+            "ticker": "AAPL",
+            "exchange": "FSX",
+            "name": "Apple Inc.",
+            "isin": "US0378331005",
+        },
+        {
+            "ticker": "AAPL",
+            "exchange": "NASDAQ",
+            "name": "Apple Inc.",
+            "isin": "US0378331005",
+        },
+        {
+            "ticker": "APC",
+            "exchange": "XETRA",
+            "name": "Apple Inc.",
+            "isin": "US0378331005",
+        },
+    ]
+
+    primary_by_isin = build_primary_listing_key_by_isin(rows)
+    core = build_core_security_rows(rows)
+    tickers = build_primary_ticker_rows(rows)
+    cross = build_cross_listings(rows)
+
+    assert primary_by_isin == {"US0378331005": "NASDAQ::AAPL"}
+    assert [f"{row['exchange']}::{row['ticker']}" for row in core] == ["NASDAQ::AAPL"]
+    assert [(row["ticker"], row["exchange"]) for row in tickers] == [("AAPL", "NASDAQ")]
+    assert {(row["listing_key"], row["is_primary"]) for row in cross} == {
+        ("FSX::AAPL", "0"),
+        ("NASDAQ::AAPL", "1"),
+        ("XETRA::APC", "0"),
+    }
+
+
 def test_namespace_collision_respects_manual_isin_corrections(monkeypatch):
     from scripts import rebuild_dataset
 
