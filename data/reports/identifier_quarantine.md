@@ -1,6 +1,6 @@
 # Identifier quarantine
 
-Generated: `2026-10-07T14:58:22Z`
+Generated: `2026-10-08T06:22:50Z`
 
 The canonical rebuild never guesses or transfers an ISIN by ticker alone. Unsupported assertions are quarantined without mutation. A conflicting assertion is cleared only in explicit apply mode when a different full-name family has decisive listing-keyed official or reviewed evidence.
 
