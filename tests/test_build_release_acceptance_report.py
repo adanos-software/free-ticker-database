@@ -1203,6 +1203,58 @@ def test_evaluate_isin_identity_collision_gate_accepts_advisory_queue() -> None:
     assert result["advisory_gaps"] == []
 
 
+def test_evaluate_isin_identity_collision_gate_accepts_closed_same_issuer_reviews() -> None:
+    result = evaluate_isin_identity_collision_gate(
+        {
+            "_meta": {
+                "policy": (
+                    "ISIN identity collisions are reported for review only. No ISIN, country, "
+                    "name, or scope change is authorized without official listing-keyed evidence."
+                )
+            },
+            "summary": {
+                "collision_groups": 2,
+                "open_groups": 1,
+                "closed_groups": 1,
+                "direct_identifier_apply_allowed_rows": 0,
+                "policy": (
+                    "This queue reports and gates the collisions and applies no ISIN, country, "
+                    "or name change without official listing-keyed evidence."
+                ),
+                "advisory_policy": {
+                    "direct_identifier_apply_allowed_rows": 0,
+                    "identity_change_authorized": False,
+                    "review_required_groups": 2,
+                    "source_gate": (
+                        "ISIN identity collision rows are advisory only; apply no ISIN, country, "
+                        "name, scope, merge, or dedupe change without listing-keyed official "
+                        "identifier evidence and reviewer approval."
+                    ),
+                },
+            },
+            "items": [
+                {
+                    "isin": "US3696043013",
+                    "review_queue": "manual_isin_identity_review",
+                    "closure_status": "closed_same_issuer_reviewed",
+                    "review_gate": "Require official listing-keyed identifier evidence before changes.",
+                },
+                {
+                    "isin": "AU000000TLG7",
+                    "review_queue": "manual_isin_identity_review",
+                    "closure_status": "open_needs_official_identifier_evidence",
+                    "review_gate": "Require official listing-keyed identifier evidence before changes.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["open_groups"] == 1
+    assert result["closed_groups"] == 1
+    assert result["row_policy_gap_count"] == 0
+
+
 def test_evaluate_isin_identity_collision_gate_rejects_direct_apply_or_missing_policy() -> None:
     result = evaluate_isin_identity_collision_gate(
         {
