@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-08T15:15:05Z",
+    "generated_at": "2026-10-08T14:02:56Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
     "ticker_rows": 65501,
-    "listing_rows": 97292,
+    "listing_rows": 97293,
     "adanos_reference_rows": 65501,
-    "entry_quality_rows": 97292,
+    "entry_quality_rows": 97293,
     "error_gates": 87,
-    "failed_error_gates": 0,
+    "failed_error_gates": 2,
     "info_gates": 5
   },
   "gates": [
@@ -308,9 +308,22 @@
     {
       "name": "country_isin_prefix_mismatch_without_review",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 3,
+      "limit": 0,
+      "details": [
+        "NASDAQ::WKEY",
+        "NASDAQ::WKEY",
+        "NASDAQ::WKEY"
+      ],
+      "review_policy": "entry_quality_warning",
+      "review_subjects": [
+        {
+          "listing_key": "NASDAQ::WKEY",
+          "issue_type": "country_isin_mismatch"
+        }
+      ],
+      "review_subjects_complete": true
     },
     {
       "name": "rows_with_mojibake_names",
@@ -511,9 +524,15 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 4,
+      "limit": 0,
+      "details": [
+        "NASDAQ::BNC",
+        "NASDAQ::HELP",
+        "NASDAQ::VRME",
+        "NASDAQ::WKEY"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -568,14 +587,14 @@
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11025,
+      "actual": 11026,
       "limit": null
     },
     {
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 31,
+      "actual": 27,
       "limit": null
     },
     {

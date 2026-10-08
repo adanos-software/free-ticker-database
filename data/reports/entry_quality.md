@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-10-08T15:12:31Z`
+Generated at: `2026-10-08T14:00:49Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | pass | 86,236 |
-| source_gap | 11,025 |
+| source_gap | 11,026 |
 | warn | 31 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,562 |
+| official_reference_gap | 6,563 |
 | venue_missing_official_source | 3,287 |
 | missing_stock_sector | 730 |
 | expected_missing_primary_isin | 665 |
@@ -31,7 +31,7 @@ Generated at: `2026-10-08T15:12:31Z`
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,727 | 0 | 416 | 0 | 0 |
 | B3 | 1,248 | 0 | 341 | 0 | 0 |
-| NASDAQ | 4,504 | 0 | 301 | 6 | 0 |
+| NASDAQ | 4,504 | 0 | 302 | 6 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
 | NYSE ARCA | 2,561 | 0 | 242 | 1 | 0 |
 | TSX | 2,196 | 0 | 225 | 0 | 0 |

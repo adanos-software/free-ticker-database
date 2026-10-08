@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-10-08T15:12:45Z",
-    "rows": 8470,
+    "generated_at": "2026-10-08T14:01:00Z",
+    "rows": 8471,
     "field_totals": {
       "missing_etf_category": 121,
       "missing_isin_primary": 665,
       "missing_sector_stock": 1122,
-      "official_reference_gap": 6562
+      "official_reference_gap": 6563
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 42,
@@ -28,7 +28,7 @@
       "official_industry_taxonomy_unavailable_gap": 445,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 50,
-      "official_reference_symbol_collision_gap": 1122,
+      "official_reference_symbol_collision_gap": 1123,
       "official_reference_unmatched_source_gap": 5440,
       "otc_sector_source_gap": 552,
       "shell_or_cpc_sector_gap": 41
@@ -55,7 +55,7 @@
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 445,
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 41,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1122,
+      "official_reference_gap:official_reference_symbol_collision_gap": 1123,
       "official_reference_gap:official_reference_unmatched_source_gap": 5440
     },
     "top_exchanges_by_field": {
@@ -200,7 +200,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 198
+          "rows": 199
         },
         {
           "exchange": "BVB",
@@ -70996,6 +70996,23 @@
       "source_gap_context": "listing_key=NASDAQ::TBRG;exchange=NASDAQ;ticker=TBRG;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::TCBI",
+      "ticker": "TCBI",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Texas Capital Bancshares Inc",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NASDAQ::TCBI;exchange=NASDAQ;ticker=TCBI;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",
