@@ -30,8 +30,6 @@ DEFAULT_CAPTURE_JSON = DEFAULT_OUTPUT_DIR / "listed_company_directory.json"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "listed_stock_sector_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "listed_stock_sector_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
-CORE_LISTINGS_CSV = ROOT / "data" / "core_listings.csv"
-TICKERS_CSV = ROOT / "data" / "tickers.csv"
 STORE_JSON_RE = re.compile(r'id="store-json"[^>]*value="([^"]+)"')
 PSE_SUBSECTOR_MAP = {
     "BANKS": "Financials",
@@ -49,14 +47,13 @@ PSE_SUBSECTOR_MAP = {
     "OTHER FINANCIAL INSTITUTIONS": "Financials",
     "OTHER INDUSTRIALS": "Industrials",
     "PROPERTY": "Real Estate",
-    "RETAIL": "Consumer Discretionary",
     "TELECOMMUNICATIONS": "Communication Services",
     "TRANSPORTATION SERVICES": "Industrials",
 }
 REASON = (
     "Copied stock_sector from the official PSE listed-company directory after an exact "
-    "ticker and ISIN match; Holding Firms, SME, Other Services, and Elec./Energy/Power "
-    "& Water left unmapped."
+    "ticker and ISIN match; Holding Firms, SME, Other Services, Retail, and "
+    "Elec./Energy/Power & Water left unmapped."
 )
 REPORT_FIELDNAMES = [
     "ticker",
@@ -253,38 +250,6 @@ def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
 
 
-def apply_listing_sector_updates(path: Path, updates: list[dict[str, str]]) -> int:
-    by_key = {
-        (row["ticker"].strip().upper(), row["exchange"].strip()): row["proposed_value"]
-        for row in updates
-        if row.get("field") == "stock_sector" and row.get("proposed_value", "").strip()
-    }
-    if not path.exists() or not by_key:
-        return 0
-    with path.open(newline="", encoding="utf-8") as handle:
-        reader = csv.DictReader(handle)
-        fieldnames = list(reader.fieldnames or [])
-        rows = list(reader)
-    changed = 0
-    for row in rows:
-        key = ((row.get("ticker") or "").strip().upper(), (row.get("exchange") or "").strip())
-        value = by_key.get(key)
-        if not value:
-            continue
-        if (row.get("stock_sector") or "").strip():
-            continue
-        row["stock_sector"] = value
-        if "sector" in row:
-            row["sector"] = value
-        changed += 1
-    if changed:
-        with path.open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
-            writer.writeheader()
-            writer.writerows(rows)
-    return changed
-
-
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Backfill missing PSE stock sectors from the official listed-company directory."
@@ -318,27 +283,18 @@ def main(argv: list[str] | None = None) -> None:
         encoding="utf-8",
     )
     write_report_csv(args.csv_out, results)
-    listing_updates = 0
-    core_updates = 0
-    ticker_updates = 0
     if args.apply and updates:
         merge_metadata_updates(args.metadata_updates_csv, updates)
-        listing_updates = apply_listing_sector_updates(args.listings_csv, updates)
-        core_updates = apply_listing_sector_updates(CORE_LISTINGS_CSV, updates)
-        ticker_updates = apply_listing_sector_updates(TICKERS_CSV, updates)
     print(
         json.dumps(
             {
                 "accepted_sector_updates": len(updates),
                 "applied": args.apply,
                 "candidates": len(results),
-                "core_listing_rows_updated": core_updates,
                 "csv_out": display_path(args.csv_out),
                 "decision_counts": dict(Counter(result["decision"] for result in results)),
                 "directory_rows": len(directory_rows),
                 "json_out": display_path(args.json_out),
-                "listing_rows_updated": listing_updates,
-                "ticker_rows_updated": ticker_updates,
             },
             indent=2,
             sort_keys=True,

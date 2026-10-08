@@ -1,5 +1,4 @@
 from scripts.backfill_pse_listed_stock_sectors import (
-    apply_listing_sector_updates,
     build_metadata_updates,
     evaluate_row,
     map_pse_subsector,
@@ -50,6 +49,7 @@ def test_map_pse_subsector_maps_unambiguous_buckets_only():
     assert map_pse_subsector("SME") == ""
     assert map_pse_subsector("OTHER SERVICES") == ""
     assert map_pse_subsector("ELEC., ENERGY, POWER & WATER") == ""
+    assert map_pse_subsector("RETAIL") == ""
     assert map_pse_subsector("") == ""
 
 
@@ -85,10 +85,21 @@ def test_evaluate_row_rejects_holding_firms_and_mixed_energy_water():
             )
         ),
     )
+    retail = evaluate_row(
+        target(ticker="SEVN", name="Philippine Seven Corp", isin="PHY6955M1063"),
+        indexed(
+            official(
+                SecuritySymbol="SEVN",
+                SecurityISIN="PHY6955M1063",
+                SubsectorName="RETAIL",
+            )
+        ),
+    )
 
     assert holding["decision"] == "unsupported_pse_subsector"
     assert energy["decision"] == "unsupported_pse_subsector"
-    assert holding["sector_update"] == energy["sector_update"] == ""
+    assert retail["decision"] == "unsupported_pse_subsector"
+    assert holding["sector_update"] == energy["sector_update"] == retail["sector_update"] == ""
 
 
 def test_evaluate_row_rejects_filled_row_and_inactive_official():
@@ -127,30 +138,4 @@ def test_parse_directory_html_keeps_active_common_share_subsector():
     ]
 
 
-def test_apply_listing_sector_updates_fills_empty_rows_only(tmp_path):
-    path = tmp_path / "listings.csv"
-    path.write_text(
-        "ticker,exchange,stock_sector\nALI,PSE,\nAC,PSE,Financials\n",
-        encoding="utf-8",
-    )
-    updates = [
-        {
-            "ticker": "ALI",
-            "exchange": "PSE",
-            "field": "stock_sector",
-            "proposed_value": "Real Estate",
-        },
-        {
-            "ticker": "AC",
-            "exchange": "PSE",
-            "field": "stock_sector",
-            "proposed_value": "Industrials",
-        },
-    ]
 
-    changed = apply_listing_sector_updates(path, updates)
-
-    assert changed == 1
-    assert path.read_text(encoding="utf-8") == (
-        "ticker,exchange,stock_sector\nALI,PSE,Real Estate\nAC,PSE,Financials\n"
-    )
