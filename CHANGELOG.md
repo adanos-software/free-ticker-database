@@ -2,24 +2,46 @@
 
 ## [Unreleased]
 
+## [3.42.0] - 2026-10-08
+
+### Summary
+
+**Official listing-keyed sector, identity-restore, and fail-closed automation release.** Publishes overlay-only official `stock_sector` fills, core-trust identity work without a 99% claim, TWSE directory ingest, LSE `RE`/`RE-B` identifier restore, ADR-domicile preservation, and reviewed Nasdaq/symbol-change/masterfile refreshes accumulated since v3.41.0. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, unresolved source gaps remain explicit, and automation cannot remove or critically recode a listing without exact evidence.
+
 ### Added
 
 - Restored `NYSE::HCWC` Healthy Choice Wellness Corp. (`US42227T1051`). `NYSE MKT::HOST` Host Digital Inc. Class A remains a distinct listing; the stockanalysis `HCWC→HOST` row is ticker reuse, not a successor.
 - Ingested 44 official TWSE mainboard/TIB stocks that were true-missing from `listings.csv`, with ISINs from the TWSE ISIN table. Cayman holdings use bilingual official directory + ISIN-table names so the numeric-namespace gate keeps `KYG` ISINs. The 35 collision-hidden TWSE tickers stay out.
+- Added a core-only trust report. It does not authorize inferred identifiers or a public 99% claim.
+- Filled leftover empty `stock_sector` from listing-keyed official sources only: FSX duals, HKEX, TSX/TSXV, PSE listed-company directory, Euronext/Oslo ICB industry, Deutsche Boerse listed-companies workbook (XETRA/FSX), B3 sector classification residuals, BMV issuer market-data profiles, and ASX listed GICS after exact ISIN match (`ASX::ARC` → Financials). Overlay last-write-wins on `metadata_updates.csv`, then `rebuild_canonical.py`.
+
+### Changed
+
+- `apply_symbol_changes` predecessor drops now require a same-exchange US successor, a matching successor ISIN when present, and `names_refer_to_same_identity`. Cross-venue US reuse returns `manual_cross_venue_ticker_reuse` instead of dropping the old listing.
+- Preserve an existing non-US country when a Nasdaq daily rebuild sees a US ISIN prefix after the official depositary row vanishes (WKEY ADR domicile).
+- Applied official Nasdaq trading-system deletes for `NASDAQ::COLA`, `NASDAQ::FSEA`, and `NASDAQ::NSTS` with listing-keyed drop evidence.
+- Closed reviewed same-issuer ISIN collisions without mutating identifiers, cleared stolen ISINs without replacements, and filled remaining core ISINs from official JPX stock-detail and ASX `ISIN.xls`. Restored Trekor Metals' current ISIN after the Taseko rename.
+- Refreshed official masterfile, Nasdaq US new listings, daily symbol-change, and weekly drift/freshness artifacts. No unevidenced listing removals.
 
 ### Fixed
 
-- `apply_symbol_changes` predecessor drops now require a same-exchange US successor, a matching successor ISIN when present, and `names_refer_to_same_identity`. Cross-venue US reuse returns `manual_cross_venue_ticker_reuse` instead of dropping the old listing.
 - Filled official LSE `RE.` / `RE.B` identifiers from live `lse_price_explorer`: `LSE::RE` R.E.A. Holdings ordinary `GB0002349065` and `LSE::RE-B` 9% cumulative preferred `GB0007185639`, with United Kingdom / `GB`. The 2026-09-29 clear of stolen RE Royalties `CA75527Q1081` stands; `TSXV::RE` / `OTC::RROYF` keep that ISIN. `Euronext::RE` Colas and `FSX::BY0` are unchanged. Names, sectors, and FIGIs were not recoded. Not EODHD or Twelve Data.
+- Evidenced taxonomy fills through rebuild so `taxonomy_changed` events carry `source_key=review_metadata_updates`. Surgical listing patches that would hide those events are not used.
+- Left mixed official buckets unmapped rather than inventing GICS: PSE `RETAIL`, CSE Life Sciences/CleanTech/Diversified, JPX Others, HOLDING/SME, Deutsche Boerse dash/empty sectors, ASX `Not Applic`/`Class Pend`.
 
 ### Safety
 
-- `TPEX::2938` keeps Bedding World / class ISIN `TW0002938B10`. Official name updates and identity clears were not applied. Collision-hidden tickers are not added as a second primary.
+- Missing or invalid ISINs, unevidenced removals, critical-field changes, ticker reuse, ambiguous identity transitions, and upstream fetch failures remain fail-closed.
+- Stolen-ISIN clears blank the identifier; they do not invent a replacement ISIN. `TPEX::2938` keeps Bedding World / class ISIN `TW0002938B10`. Collision-hidden tickers are not added as a second primary.
+- Official `stock_sector` fills do not copy OTC, same-ISIN peers, TradingView, EODHD, or FinanceDatabase. German regional secondaries without an official listing-keyed sector stay empty.
+- Open automation drafts `#411` (masterfile rotation) and `#416` (weekly delisting-candidate) were not merged: both are stale against current `main`.
 
 ### Verification
 
-- Rebuild without `--apply-identity-fixes` / `--apply-official-name-updates`. TWSE collision-adjusted official recall is 100% (35 remaining misses are collision-hidden). Entry-quality warn count unchanged; `NYSE::HCWC` stays on the name-mismatch allowlist.
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract for the identity, official-sector, Nasdaq-domicile, TWSE ingest, and LSE `RE` PRs.
+- Rebuild without `--apply-identity-fixes` / `--apply-official-name-updates`. TWSE collision-adjusted official recall is 100% (35 remaining misses are collision-hidden). `NYSE::HCWC` stays on the name-mismatch allowlist.
 - Live `lse_price_explorer` on 2026-10-04: `RE.` ORD 25P `GB0002349065`; `RE.B` 9% CUM PRF #1 `GB0007185639`.
+- Snapshot: 65,485 primary tickers, 97,273 listing rows, 64,174 primary ISINs (98.0%), 64,258 sector/category values, 27 entry-quality warnings, and 10,996 source-gap rows. Core empty `stock_sector` residuals remain explicit (`missing_stock_sector` 722). Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
 
 ## [3.41.0] - 2026-09-29
 
