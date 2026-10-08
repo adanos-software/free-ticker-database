@@ -1,18 +1,18 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-10-02T11:27:54Z`
+- Generated at: `2026-10-08T15:13:48Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `579`
-- Rotation vanished rows: `120`
-- Backlog rows: `459`
-- Still in database: `569`
+- Vanished reference rows: `619`
+- Rotation vanished rows: `52`
+- Backlog rows: `567`
+- Still in database: `606`
 - Applied drops: `0`
 
 ## Classifier counts
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 569 |
-| not_in_database | 10 |
+| manual_rename_vs_delisting_required | 606 |
+| not_in_database | 13 |
 
 ## Rows still in the database
 
@@ -42,7 +42,8 @@
 | BATS | XVNV | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | BATS | XVTS | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | BK | KPPC | boursa_kuwait_stocks | manual_rename_vs_delisting_required | backlog |
-| BME | ECR | bme_listed_companies | manual_rename_vs_delisting_required | rotation |
+| BME | ECR | bme_listed_companies | manual_rename_vs_delisting_required | backlog |
+| BME | YNUM | bme_security_prices_directory | manual_rename_vs_delisting_required | rotation |
 | BMV | CSPXN | bmv_etf_search | manual_rename_vs_delisting_required | backlog |
 | BMV | GENIUS21 | bmv_etf_search | manual_rename_vs_delisting_required | backlog |
 | BMV | IUHCN | bmv_etf_search | manual_rename_vs_delisting_required | backlog |
@@ -248,6 +249,7 @@
 | BVB | UZIN | bvb_shares_directory | manual_rename_vs_delisting_required | backlog |
 | BVB | VAC | bvb_shares_directory | manual_rename_vs_delisting_required | backlog |
 | BVB | VITK | bvb_shares_directory | manual_rename_vs_delisting_required | backlog |
+| Borsa Italiana | MNL | euronext_equities | manual_rename_vs_delisting_required | rotation |
 | Bursa | 1368 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 1503 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 7130 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
@@ -311,6 +313,12 @@
 | FSX | ZMK | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00007 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00195 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 02912 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
+| HKEX | 02913 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
+| HKEX | 02932 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
+| HKEX | 02933 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
+| HKEX | 03011 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
+| HKEX | 03038 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 09311 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 09366 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 09388 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
@@ -321,12 +329,14 @@
 | HKEX | 09777 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 09788 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 09799 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 83038 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 83168 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | ICE_IS | SIMINN | nasdaq_nordic_iceland_shares | manual_rename_vs_delisting_required | backlog |
 | JSE | RWESG | jse_etf_list | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 008290 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 046070 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 082660 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
+| KOSDAQ | 084180 | krx_listed_companies | manual_rename_vs_delisting_required | rotation |
 | KOSDAQ | 121850 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 269620 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 471050 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
@@ -339,14 +349,27 @@
 | LSE | 0A9B | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
 | LSE | 0E3C | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
 | LSE | 0JTT | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
+| LSE | 0KSJ | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
 | LSE | 0LER | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
+| LSE | 0RF1 | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
 | LSE | 0RIW | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
+| LSE | 0YY7 | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
+| LSE | BEZ | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
 | LSE | CYAN | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
 | LSE | DEVO | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
+| LSE | GV1A | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
+| LSE | GV1O | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
+| LSE | GV2A | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
+| LSE | GV2O | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
+| LSE | JARA | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
 | LSE | PCTN | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
+| LSE | PEYS | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
 | LSE | PH0T | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
+| LSE | SDR | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
+| LSE | SUH | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
 | LSE | TM1 | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
 | LSE | UKOG | lse_price_explorer | manual_rename_vs_delisting_required | backlog |
+| LSE | VUL | lse_price_explorer | manual_rename_vs_delisting_required | rotation |
 | NASDAQ | ATAI | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | ATAI | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | BRNS | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
@@ -367,26 +390,39 @@
 | NSE_IN | AARNAV | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | ALPHAGEO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | ARIES | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | BGLOBAL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | BLUECHIP | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | CALSOFT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | CEREBRAINT | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | CLCIND | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | CMICABLES | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | CTE | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | DTIL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | EDUCOMP | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | GVPTECH | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | HFCL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | IMPEXFERRO | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | INDIAGLYCO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | KALYANIFRG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | KAYA | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | KOTARISUG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | LASA | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | LASA | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | MANAKSTEEL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | MORARJEE | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | NAGAFERT | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | NATCAPSUQ | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | ORTEL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | PAR | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | SELMC | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | RAJVIR | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | SELMC | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | SHAHALLOYS | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SIGIND | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SIGMAADV | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SONAMLTD | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | SPELS | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | SWARAJ | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | UCAL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | UNIVAFOODS | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
 | NSE_IN | VCL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NYSE | LYNX | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE | SE | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
@@ -409,6 +445,7 @@
 | NYSE ARCA | USML | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | XQBT | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | XWNG | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
+| OSL | AKBM | euronext_equities | manual_rename_vs_delisting_required | rotation |
 | OSL | ELIMP | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | OSL | PRYME | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | OTC | AVCRF | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
@@ -445,18 +482,18 @@
 | STO | ANOT | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
 | STO | GUARD | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
 | TADAWUL | 9590 | tadawul_main_market_watch | manual_rename_vs_delisting_required | backlog |
-| TASE | GIX | tase_securities_marketdata | manual_rename_vs_delisting_required | rotation |
-| TASE | LPSN | tase_securities_marketdata | manual_rename_vs_delisting_required | rotation |
-| TASE | TRAN | tase_securities_marketdata | manual_rename_vs_delisting_required | rotation |
-| TPEX | 00793B | tpex_etf_filter | manual_rename_vs_delisting_required | rotation |
-| TPEX | 2938 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 3085 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | rotation |
-| TPEX | 3659 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 4150 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 4527 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | rotation |
-| TPEX | 6618 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 8183 | tpex_mainboard_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 8183 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | rotation |
+| TASE | GIX | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
+| TASE | LPSN | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
+| TASE | TRAN | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
+| TPEX | 00793B | tpex_etf_filter | manual_rename_vs_delisting_required | backlog |
+| TPEX | 2938 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 3085 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | backlog |
+| TPEX | 3659 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 4150 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 4527 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | backlog |
+| TPEX | 6618 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 8183 | tpex_mainboard_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 8183 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | backlog |
 | TSE | 2763 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 311A | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 4171 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
@@ -464,103 +501,103 @@
 | TSE | 6096 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 6197 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 8283 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
-| TSX | BGAU | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSX | CLCH | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSX | FBT.F | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | FLOT.B | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | FLOT.U | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | GIQG.B | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | MCYC | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | MDEF | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | MHDC | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | MHDU | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | OLA | tmx_interlisted_companies | manual_rename_vs_delisting_required | rotation |
-| TSX | RFA | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSX | RGQO | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | RQO | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | RUQO | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | RUQO.U | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
-| TSX | URC | tmx_interlisted_companies | manual_rename_vs_delisting_required | rotation |
-| TSXV | AB-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | ACL | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | AFCC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | AKH-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | AUR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | BAL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | BAV-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | BEAR | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | BER-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | BRL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | CEL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | CEO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | CLZ | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | CLZ-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | CMO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | CRG | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | DIG-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | EDW-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | EPO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | FBR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | GAR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | GOP-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | IBC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | JCI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | JSPX | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | KLE-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | KUR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | KYS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | LAF | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | LRC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | LX-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | MAZ-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | MBI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | MMX | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | MTN-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | MUST-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | MVI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | MXL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | NFG | tmx_interlisted_companies | manual_rename_vs_delisting_required | rotation |
-| TSXV | NKW-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | NMG-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | NOVA | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | NRZ-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | NVRO | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | NZP | tmx_interlisted_companies | manual_rename_vs_delisting_required | rotation |
-| TSXV | ODX-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | OGW | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | OTMC | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | OTS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | PAR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | PEZM-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | PLO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | PRS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | PTP-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | RGM-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | RUN-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | SA-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | SAI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | SC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | SEVA | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | SKEL | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | STR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | TIP-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | TMS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | TNO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | TOTC | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | TTO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | UNO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | VDO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | VENT | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | VKG-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | VMY-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | VTEN | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | VYC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | WOI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | WT-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | YAK-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | ZCC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | ZKL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
-| TSXV | ZZE-H | tmx_listed_issuers | manual_rename_vs_delisting_required | rotation |
+| TSX | BGAU | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSX | CLCH | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSX | FBT.F | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | FLOT.B | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | FLOT.U | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | GIQG.B | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | MCYC | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | MDEF | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | MHDC | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | MHDU | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | OLA | tmx_interlisted_companies | manual_rename_vs_delisting_required | backlog |
+| TSX | RFA | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSX | RGQO | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | RQO | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | RUQO | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | RUQO.U | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
+| TSX | URC | tmx_interlisted_companies | manual_rename_vs_delisting_required | backlog |
+| TSXV | AB-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | ACL | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | AFCC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | AKH-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | AUR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | BAL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | BAV-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | BEAR | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | BER-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | BRL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | CEL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | CEO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | CLZ | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | CLZ-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | CMO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | CRG | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | DIG-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | EDW-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | EPO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | FBR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | GAR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | GOP-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | IBC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | JCI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | JSPX | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | KLE-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | KUR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | KYS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | LAF | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | LRC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | LX-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | MAZ-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | MBI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | MMX | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | MTN-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | MUST-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | MVI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | MXL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | NFG | tmx_interlisted_companies | manual_rename_vs_delisting_required | backlog |
+| TSXV | NKW-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | NMG-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | NOVA | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | NRZ-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | NVRO | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | NZP | tmx_interlisted_companies | manual_rename_vs_delisting_required | backlog |
+| TSXV | ODX-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | OGW | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | OTMC | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | OTS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | PAR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | PEZM-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | PLO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | PRS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | PTP-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | RGM-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | RUN-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | SA-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | SAI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | SC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | SEVA | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | SKEL | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | STR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | TIP-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | TMS-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | TNO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | TOTC | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | TTO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | UNO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | VDO-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | VENT | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | VKG-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | VMY-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | VTEN | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | VYC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | WOI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | WT-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | YAK-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | ZCC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | ZKL-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
+| TSXV | ZZE-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
 | TWSE | 2867 | twse_listed_companies | manual_rename_vs_delisting_required | backlog |
 | WSE | HMP | newconnect_listed_companies | manual_rename_vs_delisting_required | backlog |
 | WSE | NWA | newconnect_listed_companies | manual_rename_vs_delisting_required | backlog |
@@ -591,6 +628,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 120; still-in-database backlog carried: 459.
-- Still in database: 569; not in database: 10.
+- Rotation vanished rows: 52; still-in-database backlog carried: 567.
+- Still in database: 606; not in database: 13.
 - Applied drops from this classifier: 0.
