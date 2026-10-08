@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 99835,
-    "matched": 70079,
-    "collisions": 11454,
-    "missing": 18302
+    "matched": 70078,
+    "collisions": 11453,
+    "missing": 18304
   },
   "exchanges": [
     {
@@ -2578,9 +2578,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5658,
-      "matched": 4615,
+      "matched": 4614,
       "collisions": 59,
-      "missing": 984,
+      "missing": 985,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -4990,8 +4990,8 @@
       "exchange": "TXSE",
       "official_symbols": 16,
       "matched": 0,
-      "collisions": 9,
-      "missing": 7,
+      "collisions": 8,
+      "missing": 8,
       "collision_examples": [
         {
           "ticker": "DDS",
@@ -5046,14 +5046,6 @@
           ]
         },
         {
-          "ticker": "TCBI",
-          "name": "Texas Capital Bancshares, Inc. Common Stock",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
           "ticker": "TXS",
           "name": "Texas Capital Texas Equity Index ETF",
           "target_exchange": "TXSE",
@@ -5089,6 +5081,11 @@
         {
           "ticker": "SUNC",
           "name": "SunocoCorp LLC Common Units, representing limited liability company interests",
+          "exchange": "TXSE"
+        },
+        {
+          "ticker": "TCBI",
+          "name": "Texas Capital Bancshares, Inc. Common Stock",
           "exchange": "TXSE"
         },
         {

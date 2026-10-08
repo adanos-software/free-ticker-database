@@ -6,9 +6,9 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97273,
-    "after_rows": 97293,
-    "overall_shrink_pct": 0.0,
+    "before_rows": 97293,
+    "after_rows": 97292,
+    "overall_shrink_pct": 0.001028,
     "removed_rows": 1,
     "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
@@ -16,38 +16,36 @@
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 1,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_official_change_evidence_rows": 0,
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [
-    "NYSE MKT::VTAK"
+    "NASDAQ::TCBI"
   ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
-  "generated_official_change_evidence": [
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "NYSE MKT::VTAK",
-      "ticker": "VTAK",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "f901499e53324c48bf13f8d6629e339c800868432cd2dcbc84dffcc4dda3b46c",
+      "listing_key": "NASDAQ::TCBI",
+      "ticker": "TCBI",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Texas Capital Bancshares Inc",
+      "new_value": "",
+      "before_row_sha256": "7920a800038315d6e08752ba6202ab00bf3ba67f113870c146001faab63bfbb7",
       "effective_at": "",
-      "observed_at": "2026-10-08T13:58:50Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "d43f659612631efd647a4966",
-      "evidence_status": "official"
+      "observed_at": "2026-10-08T15:10:06Z",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "source_report": "data/reports/delisting_transitions.csv",
+      "observation_id": "bfbb6c2a72badb8a23e86897",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -96,7 +94,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1415,
+      "before_rows": 1416,
       "after_rows": 1416,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -447,10 +445,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4806,
-      "after_rows": 4812,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "before_rows": 4812,
+      "after_rows": 4811,
+      "shrink_pct": 0.020781,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -501,7 +499,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2030,
+      "before_rows": 2032,
       "after_rows": 2032,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -510,7 +508,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2793,
+      "before_rows": 2804,
       "after_rows": 2804,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -522,7 +520,7 @@
       "before_rows": 234,
       "after_rows": 234,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },

@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-10-08T14:01:01Z",
-    "rows": 8471,
+    "generated_at": "2026-10-08T15:12:45Z",
+    "rows": 8470,
     "outcome_totals": {
-      "accepted_source_gap": 5536,
+      "accepted_source_gap": 5535,
       "core_exclusion_candidate": 540,
       "official_fill_required": 2395
     },
@@ -27,7 +27,7 @@
       "official_industry_taxonomy_unavailable_gap": 445,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 50,
-      "official_reference_symbol_collision_gap": 1123,
+      "official_reference_symbol_collision_gap": 1122,
       "official_reference_unmatched_source_gap": 5440,
       "otc_sector_source_gap": 552,
       "shell_or_cpc_sector_gap": 41
@@ -40,7 +40,7 @@
       "missing_sector_stock:accepted_source_gap": 997,
       "missing_sector_stock:core_exclusion_candidate": 66,
       "missing_sector_stock:official_fill_required": 59,
-      "official_reference_gap:accepted_source_gap": 4228,
+      "official_reference_gap:accepted_source_gap": 4227,
       "official_reference_gap:official_fill_required": 2335
     },
     "policy": {
@@ -33752,23 +33752,6 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Talkspace Inc",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NASDAQ::TCBI",
-      "ticker": "TCBI",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Texas Capital Bancshares Inc",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
