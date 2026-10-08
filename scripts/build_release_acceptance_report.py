@@ -4821,16 +4821,28 @@ def evaluate_isin_identity_collision_gate(review_queue: dict[str, Any]) -> dict[
         advisory_policy = {}
 
     collision_groups = int(summary.get("collision_groups") or 0)
+    open_groups = int(summary.get("open_groups") or 0)
+    closed_groups = int(summary.get("closed_groups") or 0)
     review_required_groups = int(advisory_policy.get("review_required_groups") or 0)
     source_gate = str(advisory_policy.get("source_gate", ""))
     meta_policy = str(meta.get("policy", ""))
     summary_policy = str(summary.get("policy", ""))
     combined_policy = f"{meta_policy} {summary_policy}".lower()
+    allowed_closure_statuses = {
+        "open_needs_official_identifier_evidence",
+        "closed_same_issuer_reviewed",
+    }
+    open_item_count = sum(
+        1 for row in items if row.get("closure_status") == "open_needs_official_identifier_evidence"
+    )
+    closed_same_issuer_count = sum(
+        1 for row in items if row.get("closure_status") == "closed_same_issuer_reviewed"
+    )
     row_policy_gaps = [
         row.get("isin", "")
         for row in items
         if row.get("review_queue") != "manual_isin_identity_review"
-        or row.get("closure_status") != "open_needs_official_identifier_evidence"
+        or row.get("closure_status") not in allowed_closure_statuses
         or "official listing-keyed identifier evidence" not in str(row.get("review_gate", ""))
     ]
     policy_missing_markers = [
@@ -4880,8 +4892,9 @@ def evaluate_isin_identity_collision_gate(review_queue: dict[str, Any]) -> dict[
         "passed": (
             collision_groups > 0
             and len(items) == collision_groups
-            and int(summary.get("open_groups") or 0) == collision_groups
-            and int(summary.get("closed_groups") or 0) == 0
+            and open_groups + closed_groups == collision_groups
+            and open_groups == open_item_count
+            and closed_groups == closed_same_issuer_count
             and not advisory_gaps
             and not policy_missing_markers
             and not source_gate_missing_markers
@@ -4889,8 +4902,8 @@ def evaluate_isin_identity_collision_gate(review_queue: dict[str, Any]) -> dict[
         ),
         "collision_groups": collision_groups,
         "items": len(items),
-        "open_groups": int(summary.get("open_groups") or 0),
-        "closed_groups": int(summary.get("closed_groups") or 0),
+        "open_groups": open_groups,
+        "closed_groups": closed_groups,
         "advisory_gaps": advisory_gaps,
         "policy_missing_markers": policy_missing_markers,
         "source_gate_missing_markers": source_gate_missing_markers,

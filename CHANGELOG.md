@@ -28,6 +28,8 @@
 - Filled official LSE `RE.` / `RE.B` identifiers from live `lse_price_explorer`: `LSE::RE` R.E.A. Holdings ordinary `GB0002349065` and `LSE::RE-B` 9% cumulative preferred `GB0007185639`, with United Kingdom / `GB`. The 2026-09-29 clear of stolen RE Royalties `CA75527Q1081` stands; `TSXV::RE` / `OTC::RROYF` keep that ISIN. `Euronext::RE` Colas and `FSX::BY0` are unchanged. Names, sectors, and FIGIs were not recoded. Not EODHD or Twelve Data.
 - Evidenced taxonomy fills through rebuild so `taxonomy_changed` events carry `source_key=review_metadata_updates`. Surgical listing patches that would hide those events are not used.
 - Left mixed official buckets unmapped rather than inventing GICS: PSE `RETAIL`, CSE Life Sciences/CleanTech/Diversified, JPX Others, HOLDING/SME, Deutsche Boerse dash/empty sectors, ASX `Not Applic`/`Class Pend`.
+- Release-acceptance treats reviewed same-issuer ISIN identity closures as closed without authorizing identifier changes, so the tag workflow can publish after those reviews.
+- Removed stale `entry_quality` warn-allowlist rows that no longer warn (`NASDAQ::AGNT`/`HVII`/`PN`/`RTB`/`RUM`, `NYSE ARCA::RAVI`, `NYSE::AIB`/`GORO`/`HCWC`/`SRXH`/`TGB`). `NYSE::HCWC` stays listed; the current issue is `official_reference_gap`, not name mismatch.
 
 ### Safety
 
@@ -39,7 +41,7 @@
 ### Verification
 
 - Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract for the identity, official-sector, Nasdaq-domicile, TWSE ingest, and LSE `RE` PRs.
-- Rebuild without `--apply-identity-fixes` / `--apply-official-name-updates`. TWSE collision-adjusted official recall is 100% (35 remaining misses are collision-hidden). `NYSE::HCWC` stays on the name-mismatch allowlist.
+- Rebuild without `--apply-identity-fixes` / `--apply-official-name-updates`. TWSE collision-adjusted official recall is 100% (35 remaining misses are collision-hidden). `NYSE::HCWC` remains listed; the name-mismatch warn-allowlist row was stale.
 - Live `lse_price_explorer` on 2026-10-04: `RE.` ORD 25P `GB0002349065`; `RE.B` 9% CUM PRF #1 `GB0007185639`.
 - Snapshot: 65,485 primary tickers, 97,273 listing rows, 64,174 primary ISINs (98.0%), 64,258 sector/category values, 27 entry-quality warnings, and 10,996 source-gap rows. Core empty `stock_sector` residuals remain explicit (`missing_stock_sector` 722). Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
 
