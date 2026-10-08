@@ -1,11 +1,11 @@
 {
   "version": "4.0.0",
   "generated_at": "2026-10-08T08:40:45Z",
-  "git_commit": "449bdcd731c8d32311c29497369410c51b7c07ad",
-  "source_dataset_sha256": "80d62833fcd99278b8c58750791b2e708d6523b7ef59ecb56c6997e4ddf10b1d",
+  "git_commit": "c303f3cfa717353a578f0e797724bae6881d1bc0",
+  "source_dataset_sha256": "c4c14385836453a76eb5d0d4e38cd85e0150ee359fbb0951bc6911ba33565c28",
   "schema_contract_sha256": "fb37be89eeb2468747b935424ddefbc0b0dec5229de25459bac27b8d380daf34",
   "schema_sql_sha256": "4502f51da85227c10d0a29b651ef804a37fa4c1ab0f46d45a73168aacd5495f4",
-  "aggregate_sha256": "98cba937bffe9f8ba71696d06bee2a8f830fac247a47e412abfe18da213a68db",
+  "aggregate_sha256": "ef56953e514e2b6f51c62aaca61e4f8de8b917cdaffb860b278a0642acbbcc9a",
   "files": [
     {
       "path": "sources.csv",
@@ -14,8 +14,8 @@
     },
     {
       "path": "source_observations.csv",
-      "sha256": "106f9379db77ebf8090b9d8ec243d2064e0bf5707fa75e85bf0ec119b1a9fe7c",
-      "rows": 183591
+      "sha256": "2edc591ab8c64b0647bfebf632b78dd40806861cac6880680154772175dd6dc8",
+      "rows": 183592
     },
     {
       "path": "venues.csv",
@@ -34,7 +34,7 @@
     },
     {
       "path": "listings.csv",
-      "sha256": "1f556e134465807480d15fe0b356a83d4b8d9a95a9f7556b1f2db7ea7e00f521",
+      "sha256": "7813429a6b45fb240e9c94f24ad1800251c028e56a0dcb34c5f2bba0cd6ae128",
       "rows": 97279
     },
     {
@@ -49,13 +49,13 @@
     },
     {
       "path": "provenance_gaps.csv",
-      "sha256": "dd3b872f9e140defc158af7eac7f0929930cde2b5070d28cfca884bbb8dd5a40",
-      "rows": 292978
+      "sha256": "cdb24885a79618caab8a7c5f613c112739abaae72fc5d7fb9010d9e29981e0d9",
+      "rows": 292979
     },
     {
       "path": "listing_events.csv",
-      "sha256": "986dcc03e39d9cd298ca3e9e4e70387bee04477bdacc99a0f27628a29beeafa4",
-      "rows": 88375
+      "sha256": "8b178de1b548cf33573071834877dacd3c5a4be824e31bf6b33f8b217345bc60",
+      "rows": 88376
     },
     {
       "path": "coverage_contracts.csv",
@@ -65,15 +65,15 @@
   ],
   "counts": {
     "sources": 147,
-    "source_observations": 183591,
+    "source_observations": 183592,
     "venues": 87,
     "issuers": 74747,
     "instruments": 74747,
     "listings": 97279,
     "identifier_assertions": 168481,
     "field_assertions": 220545,
-    "provenance_gaps": 292978,
-    "listing_events": 88375,
+    "provenance_gaps": 292979,
+    "listing_events": 88376,
     "coverage_contracts": 135
   },
   "identity_quarantine": {
