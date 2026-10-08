@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-10-07T13:17:35Z`
+Generated at: `2026-10-08T14:02:56Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 65,485 |
-| listing_rows | 97,273 |
-| adanos_reference_rows | 65,485 |
-| entry_quality_rows | 97,273 |
+| ticker_rows | 65,501 |
+| listing_rows | 97,293 |
+| adanos_reference_rows | 65,501 |
+| entry_quality_rows | 97,293 |
 | error_gates | 87 |
-| failed_error_gates | 0 |
+| failed_error_gates | 2 |
 | info_gates | 5 |
 
 ## Gates
@@ -59,7 +59,7 @@ Status: `PASS`
 | invalid_country_code_rows | error | PASS | 0 | 0 |
 | country_code_mismatch_rows | error | PASS | 0 | 0 |
 | rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
-| country_isin_prefix_mismatch_without_review | error | PASS | 0 | 0 |
+| country_isin_prefix_mismatch_without_review | error | FAIL | 3 | 0 |
 | rows_with_mojibake_names | error | PASS | 0 | 0 |
 | listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
@@ -88,16 +88,16 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 4 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 645 |  |
-| missing_stock_sector | info | PASS | 946 |  |
-| missing_etf_category | info | PASS | 119 |  |
-| source_gap_rows | info | PASS | 11212 |  |
-| allowed_warn_rows | info | PASS | 38 |  |
+| expected_missing_primary_isin | info | PASS | 665 |  |
+| missing_stock_sector | info | PASS | 730 |  |
+| missing_etf_category | info | PASS | 131 |  |
+| source_gap_rows | info | PASS | 11026 |  |
+| allowed_warn_rows | info | PASS | 27 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |
@@ -115,4 +115,18 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### country_isin_prefix_mismatch_without_review
+
+- Actual: `3`
+- `NASDAQ::WKEY`
+- `NASDAQ::WKEY`
+- `NASDAQ::WKEY`
+
+### entry_quality_unexpected_warn_count
+
+- Actual: `4`
+- `NASDAQ::BNC`
+- `NASDAQ::HELP`
+- `NASDAQ::VRME`
+- `NASDAQ::WKEY`
+
