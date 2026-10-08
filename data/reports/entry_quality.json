@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-08T15:22:20Z",
+    "generated_at": "2026-10-08T19:52:58Z",
     "rows": 97347,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86231,
-      "source_gap": 11082,
+      "pass": 86287,
+      "source_gap": 11026,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -27,12 +27,12 @@
     "severity_counts": {
       "high": 10,
       "medium": 26,
-      "source_gap": 11435
+      "source_gap": 11372
     },
     "issue_counts": {
       "official_reference_gap": 6588,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 764,
+      "missing_stock_sector": 701,
       "expected_missing_primary_isin": 665,
       "missing_etf_category": 131,
       "official_name_mismatch": 26,
@@ -61,15 +61,15 @@
         "pass": 1248
       },
       {
-        "exchange": "NASDAQ",
-        "source_gap": 302,
-        "pass": 4504,
-        "warn": 6
-      },
-      {
         "exchange": "BMV",
         "pass": 77,
         "source_gap": 267
+      },
+      {
+        "exchange": "NASDAQ",
+        "source_gap": 259,
+        "pass": 4547,
+        "warn": 6
       },
       {
         "exchange": "NYSE ARCA",
@@ -139,9 +139,9 @@
         "pass": 123
       },
       {
-        "exchange": "NYSE",
-        "pass": 1944,
-        "source_gap": 88
+        "exchange": "TASE",
+        "pass": 714,
+        "source_gap": 87
       }
     ]
   },
@@ -1872,24 +1872,6 @@
           "field": "exchange",
           "value": "HKEX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::088980",
-      "ticker": "088980",
-      "exchange": "KRX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -18402,6 +18384,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "Munich::83B",
+      "ticker": "83B",
+      "exchange": "Munich",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "Munich",
+          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }
