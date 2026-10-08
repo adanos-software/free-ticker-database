@@ -6,47 +6,56 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97273,
-    "after_rows": 97293,
+    "before_rows": 97293,
+    "after_rows": 97347,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 5,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 1,
+    "generated_official_change_evidence_rows": 0,
     "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NYSE MKT::VTAK"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [
+  "critical_field_changes": [
     {
-      "listing_key": "NYSE MKT::VTAK",
-      "ticker": "VTAK",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "f901499e53324c48bf13f8d6629e339c800868432cd2dcbc84dffcc4dda3b46c",
-      "effective_at": "",
-      "observed_at": "2026-10-08T13:58:50Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "d43f659612631efd647a4966",
-      "evidence_status": "official"
+      "listing_key": "HKEX::08133",
+      "field_name": "isin",
+      "old_value": "KYG511391719",
+      "new_value": "KYG511391974"
+    },
+    {
+      "listing_key": "HKEX::08143",
+      "field_name": "isin",
+      "old_value": "KYG4052M1116",
+      "new_value": "KYG4052M1520"
+    },
+    {
+      "listing_key": "LSE::CHRY",
+      "field_name": "isin",
+      "old_value": "GG00BGJYPP46",
+      "new_value": "GG00C0GC7Q38"
+    },
+    {
+      "listing_key": "NSE_IN::BLSE",
+      "field_name": "isin",
+      "old_value": "INE0NLT01010",
+      "new_value": "INE0NLT01028"
+    },
+    {
+      "listing_key": "NSE_IN::BUILDPRO",
+      "field_name": "isin",
+      "old_value": "INE24OJ01011",
+      "new_value": "INE24OJ01029"
     }
   ],
+  "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
@@ -96,7 +105,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1415,
+      "before_rows": 1416,
       "after_rows": 1416,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -241,7 +250,7 @@
     {
       "exchange": "CSE_LK",
       "before_rows": 316,
-      "after_rows": 316,
+      "after_rows": 317,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -322,7 +331,7 @@
     {
       "exchange": "HKEX",
       "before_rows": 3198,
-      "after_rows": 3198,
+      "after_rows": 3225,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -447,7 +456,7 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4806,
+      "before_rows": 4812,
       "after_rows": 4812,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -484,7 +493,7 @@
     {
       "exchange": "NSE_IN",
       "before_rows": 3460,
-      "after_rows": 3460,
+      "after_rows": 3483,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -501,7 +510,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2030,
+      "before_rows": 2032,
       "after_rows": 2032,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -510,7 +519,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2793,
+      "before_rows": 2804,
       "after_rows": 2804,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -522,7 +531,7 @@
       "before_rows": 234,
       "after_rows": 234,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -538,7 +547,7 @@
     {
       "exchange": "OSL",
       "before_rows": 313,
-      "after_rows": 313,
+      "after_rows": 314,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -619,7 +628,7 @@
     {
       "exchange": "SGX",
       "before_rows": 630,
-      "after_rows": 630,
+      "after_rows": 632,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

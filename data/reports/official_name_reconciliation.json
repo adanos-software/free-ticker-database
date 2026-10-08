@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-08T13:58:50Z",
+  "generated_at": "2026-10-08T15:15:48Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1890,
+  "reconciled_rows": 1891,
   "applied_rows": 0,
-  "proposed_rows": 1890,
+  "proposed_rows": 1891,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -14167,6 +14167,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "HKEX::00117",
+      "action": "proposed",
+      "ticker": "00117",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "isin": "KYG8884H1092",
+      "old_name": "TIANLI HOLDINGS",
+      "new_name": "EYANG HOLDINGS",
+      "source_key": "hkex_securities_list",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "observation_id": "e4cb505f6dcd0d276eb5f6fc",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "HKEX::00727",
       "action": "proposed",
       "ticker": "00727",
@@ -15814,21 +15829,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
       "observation_id": "b08519a26dcc53ebebcbf951",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "KOSDAQ::084180",
-      "action": "proposed",
-      "ticker": "084180",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
-      "isin": "KR7084180009",
-      "old_name": "Soosung Innovation Co. Ltd.",
-      "new_name": "Soosung Webtoon",
-      "source_key": "krx_listed_companies",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "observation_id": "2266380b325fe63aba32c6b8",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -20059,6 +20059,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
       "observation_id": "f793e0f5646059a75d77eb59",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "LSE::EDEN",
+      "action": "proposed",
+      "ticker": "EDEN",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "isin": "GB0001646941",
+      "old_name": "Eden Research plc",
+      "new_name": "EDEN BIOSOLUTIONS PLC",
+      "source_key": "lse_price_explorer",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "observation_id": "0810b80d02b893405d65d185",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

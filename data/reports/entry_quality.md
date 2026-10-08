@@ -1,26 +1,26 @@
 # Entry Quality Report
 
-Generated at: `2026-10-08T14:00:49Z`
+Generated at: `2026-10-08T15:22:20Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 86,236 |
-| source_gap | 11,026 |
-| warn | 31 |
+| pass | 86,231 |
+| source_gap | 11,082 |
+| warn | 34 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,563 |
+| official_reference_gap | 6,588 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 730 |
+| missing_stock_sector | 764 |
 | expected_missing_primary_isin | 665 |
 | missing_etf_category | 131 |
-| official_name_mismatch | 24 |
-| official_isin_mismatch | 7 |
+| official_name_mismatch | 26 |
+| official_isin_mismatch | 9 |
 | country_isin_mismatch | 1 |
 
 ## Top Flagged Exchanges

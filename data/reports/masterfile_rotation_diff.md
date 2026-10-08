@@ -1,41 +1,39 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-10-02T11:27:52Z`
-- New rows: `128`
-- Vanished rows: `120`
-- Changed rows: `9`
+- Generated at: `2026-10-08T15:13:45Z`
+- New rows: `92`
+- Vanished rows: `52`
+- Changed rows: `26`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| name_change | 9 |
+| isin_change | 7 |
+| name_change | 22 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| set_dr_search | 39 |
-| tase_securities_marketdata | 4 |
-| tmx_etf_screener | 59 |
-| tmx_interlisted_companies | 3 |
-| tpex_emerging_basic_info | 9 |
-| tpex_etf_filter | 2 |
-| tpex_mainboard_basic_info | 4 |
-| tpex_mainboard_daily_quotes | 5 |
-| twse_etf_list | 3 |
+| bme_security_prices_directory | 2 |
+| cse_lk_company_info_summary | 1 |
+| euronext_equities | 4 |
+| hkex_securities_list | 28 |
+| krx_etf_finder | 1 |
+| krx_listed_companies | 4 |
+| lse_price_explorer | 26 |
+| nse_india_securities_available | 24 |
+| pse_listed_company_directory | 2 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| bme_listed_companies | 1 |
-| tase_securities_marketdata | 3 |
-| tmx_etf_screener | 13 |
-| tmx_interlisted_companies | 6 |
-| tmx_listed_issuers | 81 |
-| tpex_emerging_basic_info | 8 |
-| tpex_etf_filter | 1 |
-| tpex_mainboard_basic_info | 2 |
-| tpex_mainboard_daily_quotes | 5 |
+| bme_security_prices_directory | 3 |
+| euronext_equities | 7 |
+| hkex_securities_list | 7 |
+| krx_listed_companies | 2 |
+| lse_price_explorer | 17 |
+| nse_india_securities_available | 16 |

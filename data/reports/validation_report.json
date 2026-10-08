@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-08T14:02:56Z",
+    "generated_at": "2026-10-08T15:24:57Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -23,12 +23,12 @@
   },
   "passed": false,
   "summary": {
-    "ticker_rows": 65501,
-    "listing_rows": 97293,
-    "adanos_reference_rows": 65501,
-    "entry_quality_rows": 97293,
+    "ticker_rows": 65543,
+    "listing_rows": 97347,
+    "adanos_reference_rows": 65543,
+    "entry_quality_rows": 97347,
     "error_gates": 87,
-    "failed_error_gates": 2,
+    "failed_error_gates": 1,
     "info_gates": 5
   },
   "gates": [
@@ -308,22 +308,9 @@
     {
       "name": "country_isin_prefix_mismatch_without_review",
       "severity": "error",
-      "passed": false,
-      "actual": 3,
-      "limit": 0,
-      "details": [
-        "NASDAQ::WKEY",
-        "NASDAQ::WKEY",
-        "NASDAQ::WKEY"
-      ],
-      "review_policy": "entry_quality_warning",
-      "review_subjects": [
-        {
-          "listing_key": "NASDAQ::WKEY",
-          "issue_type": "country_isin_mismatch"
-        }
-      ],
-      "review_subjects_complete": true
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "rows_with_mojibake_names",
@@ -525,13 +512,12 @@
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
       "passed": false,
-      "actual": 4,
+      "actual": 3,
       "limit": 0,
       "details": [
-        "NASDAQ::BNC",
-        "NASDAQ::HELP",
-        "NASDAQ::VRME",
-        "NASDAQ::WKEY"
+        "HKEX::00653",
+        "HKEX::02934",
+        "NEO::HELP"
       ]
     },
     {
@@ -573,7 +559,7 @@
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 730,
+      "actual": 764,
       "limit": null
     },
     {
@@ -587,14 +573,14 @@
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11026,
+      "actual": 11082,
       "limit": null
     },
     {
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 27,
+      "actual": 31,
       "limit": null
     },
     {
