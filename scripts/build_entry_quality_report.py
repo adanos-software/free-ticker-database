@@ -1537,6 +1537,19 @@ def main(argv: list[str] | None = None) -> None:
     write_csv(args.csv_out, rows)
     write_json(args.json_out, payload)
     write_markdown(args.md_out, payload)
+    from scripts.check_entry_quality_gate import (
+        WARN_ALLOWLIST_CSV,
+        allowed_warn_keys,
+        check_entry_quality_gate,
+        write_json_report,
+    )
+
+    write_json_report(
+        args.csv_out.with_name("entry_quality_gate.json"),
+        check_entry_quality_gate(load_csv(args.csv_out), allowed_warn_keys(WARN_ALLOWLIST_CSV)),
+        entry_quality_csv=args.csv_out,
+        warn_allowlist_csv=WARN_ALLOWLIST_CSV,
+    )
     print(
         json.dumps(
             {

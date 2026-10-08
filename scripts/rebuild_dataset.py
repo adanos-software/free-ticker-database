@@ -24,6 +24,7 @@ try:
         should_drop_from_ticker_alias_column,
     )
     from scripts.listing_keys import row_listing_key
+    from scripts.lib.dataio import should_apply_metadata_field_override
     from scripts.lib.non_equity_guard import is_blocked_non_common_stock
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from alias_policy import (
@@ -33,6 +34,7 @@ except ModuleNotFoundError:  # pragma: no cover - script execution path
         should_drop_from_ticker_alias_column,
     )
     from listing_keys import row_listing_key
+    from lib.dataio import should_apply_metadata_field_override
     from lib.non_equity_guard import is_blocked_non_common_stock
 
 
@@ -2652,6 +2654,8 @@ def apply_input_metadata_overrides(
             continue
         if field not in updated:
             continue
+        if not should_apply_metadata_field_override(field, updated.get(field, ""), override.get("decision", "")):
+            continue
         if override["decision"] == "clear":
             updated[field] = ""
         elif override["decision"] == "update":
@@ -2678,6 +2682,8 @@ def apply_output_metadata_overrides(
                 updated["aliases"] = split_aliases(override.get("proposed_value", ""))
             continue
         if field not in updated:
+            continue
+        if not should_apply_metadata_field_override(field, updated.get(field, ""), override.get("decision", "")):
             continue
         if override["decision"] == "clear":
             updated[field] = ""
@@ -3553,16 +3559,7 @@ def primary_ticker_collision_sort_key(row: dict[str, str]) -> tuple[int, int, in
 
 def build_core_security_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     """Return one core row per security, keyed by primary listing rather than global ticker."""
-    primary_listing_key_by_isin: dict[str, str] = {}
-    isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
-    for row in rows:
-        if row["isin"]:
-            isin_groups[row["isin"]].append(row)
-
-    for isin, group in isin_groups.items():
-        preferred = sorted(group, key=lambda candidate: cross_listing_sort_key(isin, candidate))[0]
-        primary_listing_key_by_isin[isin] = row_listing_key(preferred)
-
+    primary_listing_key_by_isin = build_primary_listing_key_by_isin(rows)
     core_rows: list[dict[str, str]] = []
     for row in rows:
         if row["exchange"] in OTC_EXCHANGES:
@@ -3579,16 +3576,7 @@ def build_core_security_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]
 
 def build_primary_ticker_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     """Build the legacy global-ticker export used by tickers.csv."""
-    primary_listing_key_by_isin: dict[str, str] = {}
-    isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
-    for row in rows:
-        if row["isin"]:
-            isin_groups[row["isin"]].append(row)
-
-    for isin, group in isin_groups.items():
-        preferred = sorted(group, key=lambda candidate: cross_listing_sort_key(isin, candidate))[0]
-        primary_listing_key_by_isin[isin] = row_listing_key(preferred)
-
+    primary_listing_key_by_isin = build_primary_listing_key_by_isin(rows)
     primary_rows: list[dict[str, str]] = []
     for row in rows:
         isin = row["isin"]
@@ -3621,6 +3609,7 @@ def build_primary_ticker_rows(rows: list[dict[str, str]]) -> list[dict[str, str]
 
 def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     """Build cross-listing groups for ISINs shared by multiple tickers."""
+    primary_listing_key_by_isin = build_primary_listing_key_by_isin(rows)
     isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in rows:
         if row["isin"]:
@@ -3632,7 +3621,7 @@ def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
             continue
 
         group_sorted = sorted(group, key=lambda candidate: cross_listing_sort_key(isin, candidate))
-        primary_listing_key = row_listing_key(group_sorted[0])
+        primary_listing_key = primary_listing_key_by_isin[isin]
         for row in group_sorted:
             result.append({
                 "isin": isin,
@@ -3799,4 +3788,8 @@ def rebuild():
 
 
 if __name__ == "__main__":
-    rebuild()
+    try:
+        from scripts.rebuild_canonical import rebuild as canonical_rebuild
+    except ModuleNotFoundError:  # pragma: no cover - script execution path
+        from rebuild_canonical import rebuild as canonical_rebuild
+    canonical_rebuild()

@@ -179,7 +179,7 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
         [
             StageCommand(
                 name="rebuild_dataset",
-                command=[py, "scripts/rebuild_dataset.py"],
+                command=[py, "scripts/rebuild_canonical.py"],
                 mutates_data=True,
                 notes="Rebuild canonical exports after accepted review overrides.",
             ),

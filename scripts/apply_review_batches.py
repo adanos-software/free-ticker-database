@@ -13,10 +13,24 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.build_pr_review_batches import DEFAULT_PR_BATCH_DIR
-from scripts.rebuild_dataset import ALIASES_CSV, IDENTIFIERS_CSV, TICKERS_CSV, TICKER_EXPORT_FIELDNAMES, rebuild, split_aliases
+from scripts.lib.dataio import load_csv as load_overlay_csv
+from scripts.lib.dataio import merge_metadata_updates, write_csv as write_overlay_csv
+from scripts.rebuild_dataset import (
+    ALIASES_CSV,
+    IDENTIFIERS_CSV,
+    REVIEW_DROP_ENTRIES_CSV,
+    REVIEW_METADATA_UPDATES_CSV,
+    REVIEW_REMOVE_ALIASES_CSV,
+    TICKER_EXPORT_FIELDNAMES,
+    TICKERS_CSV,
+    split_aliases,
+)
 
 
 DEFAULT_APPLY_SUMMARY = DEFAULT_PR_BATCH_DIR / "apply_summary.json"
+DROP_ENTRY_FIELDS = ["ticker", "exchange", "confidence", "reason"]
+REMOVE_ALIAS_FIELDS = ["ticker", "exchange", "alias", "reason", "confidence"]
+REVIEW_BATCH_REASON = "PR review batch apply"
 
 
 def load_json(path: Path) -> dict[str, object]:
@@ -33,13 +47,6 @@ def display_path(path: Path) -> str:
 def load_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
-
-
-def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
-    with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
 
 
 def operation_key(operation: dict[str, object]) -> tuple[object, ...]:
@@ -182,8 +189,95 @@ def apply_operations(
     return tickers, aliases, identifiers, summary
 
 
+def overlay_rows_from_applied(
+    applied: list[dict[str, object]],
+) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
+    metadata_updates: list[dict[str, str]] = []
+    drop_entries: list[dict[str, str]] = []
+    remove_aliases: list[dict[str, str]] = []
+    for operation in applied:
+        ticker = str(operation["ticker"])
+        exchange = str(operation.get("exchange", ""))
+        confidence = str(operation.get("confidence") or "1.00")
+        reason = str(operation.get("reason") or REVIEW_BATCH_REASON)
+        op_type = str(operation["operation_type"])
+        if op_type == "update_metadata":
+            metadata_updates.append(
+                {
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "field": str(operation["field"]),
+                    "decision": str(operation["decision"]),
+                    "proposed_value": "" if str(operation["decision"]) == "clear" else str(operation.get("proposed_value", "")),
+                    "confidence": confidence,
+                    "reason": reason,
+                }
+            )
+        elif op_type == "drop_entry":
+            drop_entries.append(
+                {
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "confidence": confidence,
+                    "reason": reason,
+                }
+            )
+        elif op_type == "remove_alias":
+            remove_aliases.append(
+                {
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "alias": str(operation["alias"]),
+                    "reason": reason,
+                    "confidence": confidence,
+                }
+            )
+    return metadata_updates, drop_entries, remove_aliases
+
+
+def merge_drop_entries(path: Path, rows: list[dict[str, str]]) -> None:
+    merged = {(row["ticker"], row["exchange"]): {field: row.get(field, "") for field in DROP_ENTRY_FIELDS} for row in load_overlay_csv(path)}
+    for row in rows:
+        merged[(row["ticker"], row["exchange"])] = {field: row.get(field, "") for field in DROP_ENTRY_FIELDS}
+    write_overlay_csv(
+        path,
+        DROP_ENTRY_FIELDS,
+        sorted(merged.values(), key=lambda row: (row["ticker"], row["exchange"])),
+    )
+
+
+def merge_remove_aliases(path: Path, rows: list[dict[str, str]]) -> None:
+    merged = {
+        (row["ticker"], row["exchange"], row["alias"]): {field: row.get(field, "") for field in REMOVE_ALIAS_FIELDS}
+        for row in load_overlay_csv(path)
+    }
+    for row in rows:
+        merged[(row["ticker"], row["exchange"], row["alias"])] = {field: row.get(field, "") for field in REMOVE_ALIAS_FIELDS}
+    write_overlay_csv(
+        path,
+        REMOVE_ALIAS_FIELDS,
+        sorted(merged.values(), key=lambda row: (row["ticker"], row["exchange"], row["alias"])),
+    )
+
+
+def persist_applied_operations(
+    applied: list[dict[str, object]],
+    *,
+    metadata_path: Path = REVIEW_METADATA_UPDATES_CSV,
+    drop_path: Path = REVIEW_DROP_ENTRIES_CSV,
+    remove_aliases_path: Path = REVIEW_REMOVE_ALIASES_CSV,
+) -> None:
+    metadata_updates, drop_entries, remove_aliases = overlay_rows_from_applied(applied)
+    if metadata_updates:
+        merge_metadata_updates(metadata_path, metadata_updates)
+    if drop_entries:
+        merge_drop_entries(drop_path, drop_entries)
+    if remove_aliases:
+        merge_remove_aliases(remove_aliases_path, remove_aliases)
+
+
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Apply PR review batches to the dataset source CSVs.")
+    parser = argparse.ArgumentParser(description="Apply PR review batches to listing-keyed review overlays.")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_PR_BATCH_DIR / "manifest.json")
     parser.add_argument("--batch-file", type=Path, default=None)
     parser.add_argument("--batch-dir", type=Path, default=DEFAULT_PR_BATCH_DIR)
@@ -191,7 +285,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--aliases-csv", type=Path, default=ALIASES_CSV)
     parser.add_argument("--identifiers-csv", type=Path, default=IDENTIFIERS_CSV)
     parser.add_argument("--summary-out", type=Path, default=DEFAULT_APPLY_SUMMARY)
-    parser.add_argument("--execute", action="store_true", help="Write changes back to CSVs.")
+    parser.add_argument("--execute", action="store_true", help="Persist applied operations to review overlays.")
     parser.add_argument("--skip-rebuild", action="store_true", help="When executing, do not regenerate derived artifacts.")
     return parser.parse_args()
 
@@ -208,7 +302,7 @@ def main() -> None:
     ticker_rows = load_csv(args.tickers_csv)
     alias_rows = load_csv(args.aliases_csv)
     identifier_rows = load_csv(args.identifiers_csv)
-    updated_tickers, updated_aliases, updated_identifiers, summary = apply_operations(
+    _, _, _, summary = apply_operations(
         ticker_rows,
         alias_rows,
         identifier_rows,
@@ -216,15 +310,11 @@ def main() -> None:
     )
 
     if args.execute:
-        write_csv(
-            args.tickers_csv,
-            TICKER_EXPORT_FIELDNAMES,
-            updated_tickers,
-        )
-        write_csv(args.aliases_csv, ["ticker", "alias", "alias_type"], updated_aliases)
-        write_csv(args.identifiers_csv, ["ticker", "isin", "wkn"], updated_identifiers)
+        persist_applied_operations(summary["applied"])
         if not args.skip_rebuild:
-            rebuild()
+            from scripts.rebuild_canonical import rebuild as canonical_rebuild
+
+            canonical_rebuild()
 
     args.summary_out.parent.mkdir(parents=True, exist_ok=True)
     payload = {
