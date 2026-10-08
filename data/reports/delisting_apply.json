@@ -1,68 +1,41 @@
 {
   "summary": {
-    "generated_at": "2026-10-02T10:39:22Z",
+    "generated_at": "2026-10-08T15:21:52Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "transitions_csv": "data/reports/delisting_transitions.csv",
-    "transition_rows": 3,
-    "applied_rows": 3,
+    "transition_rows": 0,
+    "applied_rows": 0,
     "already_applied_rows": 0,
     "drafted_rows": 0,
-    "blocked_rows": 0,
-    "manual_rows": 240,
+    "blocked_rows": 1,
+    "manual_rows": 275,
     "status_counts": {
-      "apply_drop_override": 3,
-      "manual_rename_vs_delisting_required": 240
+      "blocked_venue_transfer_keep_listing": 1,
+      "manual_rename_vs_delisting_required": 275
     }
   },
-  "applied": [
-    {
-      "exchange": "NASDAQ",
-      "ticker": "COLA",
-      "name": "Columbus Acquisition Corp Ordinary Shares",
-      "isin": "KYG2295P1072",
-      "classification": "delisted",
-      "status": "apply_drop_override",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-02T07:25:22Z",
-      "effective_at": "",
-      "observation_id": "obs_0a514f7054e7c7dd5b85270f"
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "FSEA",
-      "name": "First Seacoast Bancorp",
-      "isin": "US33631F1049",
-      "classification": "delisted",
-      "status": "apply_drop_override",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-02T07:25:22Z",
-      "effective_at": "",
-      "observation_id": "obs_104f4c0b19b3f9e0668a6821"
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "NSTS",
-      "name": "NSTS Bancorp Inc",
-      "isin": "US6293JP1094",
-      "classification": "delisted",
-      "status": "apply_drop_override",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-02T07:25:22Z",
-      "effective_at": "",
-      "observation_id": "obs_0aeaa240c02f803ec083f488"
-    }
-  ],
+  "applied": [],
   "already_applied": [],
   "drafted": [],
-  "blocked": [],
+  "blocked": [
+    {
+      "exchange": "NASDAQ",
+      "ticker": "TCBI",
+      "name": "Texas Capital Bancshares Inc",
+      "isin": "US88224Q1076",
+      "classification": "delisted",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-08T15:08:15Z",
+      "effective_at": "",
+      "observation_id": "obs_251b4af869eca9a23b5ea9e4",
+      "status": "blocked_venue_transfer_keep_listing",
+      "block_reason": "Nasdaq Delete is a primary-listing transfer to TXSE (Form 25 / 8-K; trading began on TXSE 2026-10-08 as TCBI, ticker change to TXCP expected 2026-11-09). TXSE is not yet a listing venue in this dataset. Dropping NASDAQ::TCBI would delete the only US listing and promote FSX::TCA as the global primary. Keep NASDAQ::TCBI."
+    }
+  ],
   "manual": [
     {
       "exchange": "ASX",
@@ -70,13 +43,27 @@
       "name": "5E ADVANCED MATERIALS INC.",
       "isin": "AU0000186207",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "ADG",
+      "name": "ADELONG GOLD LIMITED",
+      "isin": "AU0000248288",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -84,13 +71,13 @@
       "name": "AMPLITUDE ENERGY LIMITED",
       "isin": "AU0000361909",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -98,13 +85,13 @@
       "name": "ATOMIC EAGLE LTD",
       "isin": "AU0000433096",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -112,13 +99,13 @@
       "name": "ADHERIS HEALTH LIMITED",
       "isin": "AU0000437493",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -126,13 +113,13 @@
       "name": "Amara Minerals Limited",
       "isin": "AU0000469801",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -140,13 +127,13 @@
       "name": "ANTARES METALS LIMITED",
       "isin": "AU0000369829",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -154,13 +141,41 @@
       "name": "AMERICAN URANIUM LTD",
       "isin": "AU0000415879",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "AQI",
+      "name": "ALICANTO MINERALS LIMITED",
+      "isin": "AU000000AQI2",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "ASK",
+      "name": "ABACUS STORAGE KING",
+      "isin": "AU0000286213",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -168,13 +183,27 @@
       "name": "AMERICAN TUNGSTEN & ANTIMONY LTD",
       "isin": "AU0000445603",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "AUK",
+      "name": "Aumake Ltd",
+      "isin": "AU0000123432",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -182,13 +211,13 @@
       "name": "AURAVELLE METALS LIMITED",
       "isin": "AU0000418154",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -196,13 +225,13 @@
       "name": "BOWEN COKING COAL LIMITED",
       "isin": "AU000000BCB5",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -210,13 +239,41 @@
       "name": "BLACK BEAR MINERALS LIMITED",
       "isin": "AU0000433351",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "BMG",
+      "name": "BMG RESOURCES LIMITED",
+      "isin": "AU000000BMG3",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "BP8",
+      "name": "BPH GLOBAL LTD",
+      "isin": "AU000000SCU9",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -224,13 +281,13 @@
       "name": "BEETALOO ENERGY AUSTRALIA LIMITED",
       "isin": "AU0000401770",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -238,13 +295,41 @@
       "name": "Breakthrough Minerals Limited",
       "isin": "AU0000374274",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "BXN",
+      "name": "BIOXYNE LIMITED",
+      "isin": "AU000000BXN6",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "C1X",
+      "name": "COSMOS EXPLORATION LIMITED",
+      "isin": "AU0000178113",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -252,13 +337,13 @@
       "name": "CLEVER CULTURE SYSTEMS LIMITED",
       "isin": "AU0000367153",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -266,13 +351,13 @@
       "name": "CL8 HOLDINGS LIMITED",
       "isin": "AU000000CL86",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -280,13 +365,13 @@
       "name": "CANADIAN PHOSPHATE LIMITED",
       "isin": "AU0000384935",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -294,13 +379,13 @@
       "name": "CONNEQT HEALTH LIMITED",
       "isin": "AU0000420739",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -308,13 +393,27 @@
       "name": "CORE ENERGY MINERALS LTD",
       "isin": "AU0000373722",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "CR9",
+      "name": "CORELLA RESOURCES LTD",
+      "isin": "AU0000147811",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -322,13 +421,41 @@
       "name": "DECIDR AI INDUSTRIES LTD",
       "isin": "AU0000386310",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "DMG",
+      "name": "DRAGON MOUNTAIN GOLD LIMITED",
+      "isin": "AU000000DMG9",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "EEL",
+      "name": "Enrg Elements Ltd",
+      "isin": "AU0000234676",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -336,13 +463,13 @@
       "name": "EMC GOLD CORPORATION",
       "isin": "AU0000445173",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -350,13 +477,27 @@
       "name": "Eastern Metals Ltd",
       "isin": "AU0000173304",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "ENN",
+      "name": "ELANOR INVESTORS GROUP",
+      "isin": "AU000000ENN1",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -364,13 +505,13 @@
       "name": "EUROPEAN RESOURCES LIMITED",
       "isin": "AU0000448102",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -378,13 +519,13 @@
       "name": "EMMERSON RESOURCES LIMITED",
       "isin": "AU000000ERM4",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -392,13 +533,13 @@
       "name": "FORTE ENERGY LIMITED",
       "isin": "AU0000456097",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -406,13 +547,13 @@
       "name": "Fortifai Ltd",
       "isin": "AU0000408056",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -420,13 +561,13 @@
       "name": "GROUP ONE CAPITAL LIMITED",
       "isin": "AU0000423741",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -434,13 +575,13 @@
       "name": "GOLDARC RESOURCES LIMITED",
       "isin": "AU0000419624",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -448,13 +589,13 @@
       "name": "Great Bear Exploration Ltd",
       "isin": "AU0000474363",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -462,13 +603,13 @@
       "name": "GBM RESOURCES LIMITED.",
       "isin": "AU0000443905",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -476,13 +617,13 @@
       "name": "GORILLA GOLD MINES LTD",
       "isin": "AU0000382079",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -490,13 +631,13 @@
       "name": "GREEN360 TECHNOLOGIES LIMITED",
       "isin": "AU0000387516",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -504,13 +645,13 @@
       "name": "GUMTREE AUSTRALIA MARKETS LIMITED",
       "isin": "AU0000381691",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -518,13 +659,41 @@
       "name": "H3 ENERGY LIMITED",
       "isin": "AU0000447005",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HCD",
+      "name": "HYDROCARBON DYNAMICS LIMITED",
+      "isin": "AU0000074742",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HGO",
+      "name": "HILLGROVE RESOURCES LIMITED",
+      "isin": "AU000000HGO6",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -532,13 +701,41 @@
       "name": "HARTSHEAD RESOURCES NL",
       "isin": "AU0000154148",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HNG",
+      "name": "Hancock & Gore Ltd",
+      "isin": "AU000000HNG8",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HRZ",
+      "name": "HORIZON MINERALS LIMITED",
+      "isin": "AU0000053373",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -546,13 +743,13 @@
       "name": "IRON BEAR RESOURCES LTD",
       "isin": "AU0000453557",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -560,13 +757,13 @@
       "name": "INFOCUS GROUP HOLDINGS LIMITED",
       "isin": "AU0000362923",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -574,13 +771,27 @@
       "name": "ION VIDEO LTD",
       "isin": "AU0000440992",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "IR1",
+      "name": "IRIS METALS LIMITED",
+      "isin": "AU0000166134",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -588,13 +799,13 @@
       "name": "Inhalerx Ltd",
       "isin": "AU0000179475",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -602,13 +813,13 @@
       "name": "INFOTRUST LTD",
       "isin": "AU0000431462",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -616,13 +827,13 @@
       "name": "INVERT GRAPHITE LIMITED",
       "isin": "AU0000378903",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -630,13 +841,13 @@
       "name": "JAYRIDE GROUP LIMITED",
       "isin": "AU000000JAY4",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -644,13 +855,13 @@
       "name": "JANUS ELECTRIC HOLDINGS LIMITED",
       "isin": "AU0000395626",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -658,13 +869,13 @@
       "name": "L1 GROUP LIMITED",
       "isin": "AU0000423501",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -672,13 +883,13 @@
       "name": "LOYAL METALS LTD",
       "isin": "AU0000399131",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -686,13 +897,13 @@
       "name": "LION ROCK MINERALS LTD",
       "isin": "AU000000LRM9",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -700,13 +911,13 @@
       "name": "MAMMOTH MINERALS LIMITED",
       "isin": "AU0000411837",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -714,13 +925,13 @@
       "name": "Maverick Minerals Australia Ltd",
       "isin": "AU0000475568",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -728,13 +939,13 @@
       "name": "Magnetic Resources NL",
       "isin": "AU0000MAUCA0",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -742,13 +953,13 @@
       "name": "MATRIX COMPOSITES & ENGINEERING LIMITED",
       "isin": "AU000000MCE6",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -756,13 +967,13 @@
       "name": "Magellan Financial Group Ltd",
       "isin": "AU0000215808",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -770,13 +981,41 @@
       "name": "MCLAREN MINERALS LIMITED",
       "isin": "AU0000221418",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "MRI",
+      "name": "My Rewards International Ltd",
+      "isin": "AU0000187940",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "MRR",
+      "name": "MINREX RESOURCES LIMITED",
+      "isin": "AU000000MRR6",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -784,13 +1023,13 @@
       "name": "Nufarm Finance (NZ) Ltd",
       "isin": "NZFCND0004S9",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -798,13 +1037,13 @@
       "name": "NH3 CLEAN ENERGY LIMITED",
       "isin": "AU0000369753",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -812,13 +1051,13 @@
       "name": "Nodestream Ltd",
       "isin": "AU0000481509",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -826,13 +1065,13 @@
       "name": "NEURIZON THERAPEUTICS LIMITED",
       "isin": "AU0000357261",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -840,13 +1079,13 @@
       "name": "ORBMINCO LIMITED",
       "isin": "AU0000371049",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -854,13 +1093,13 @@
       "name": "OLDFIELDS HOLDINGS LIMITED",
       "isin": "AU000000OLH6",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -868,13 +1107,13 @@
       "name": "ORE RESOURCES LIMITED",
       "isin": "AU0000436933",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -882,13 +1121,27 @@
       "name": "PURE ONE CORPORATION LIMITED",
       "isin": "AU0000442865",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "PGO",
+      "name": "PACGOLD LIMITED",
+      "isin": "AU0000158636",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -896,13 +1149,13 @@
       "name": "PATHKEY.AI LTD",
       "isin": "AU0000415291",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -910,13 +1163,13 @@
       "name": "PRAIRIE LITHIUM LIMITED",
       "isin": "AU0000421893",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -924,13 +1177,13 @@
       "name": "PACIFIC LIME AND CEMENT LIMITED",
       "isin": "AU0000411175",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -938,13 +1191,13 @@
       "name": "PACIFIC NICKEL MINES LIMITED",
       "isin": "AU0000123010",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -952,13 +1205,13 @@
       "name": "PVW Resources Ltd",
       "isin": "AU0000135188",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -966,13 +1219,13 @@
       "name": "PACIFIC RESOURCES LIMITED",
       "isin": "AU0000435281",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -980,13 +1233,13 @@
       "name": "QORIA LIMITED",
       "isin": "AU0000278491",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -994,13 +1247,13 @@
       "name": "RESIMAC PREMIER SERIES 2020-1",
       "isin": "",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1008,13 +1261,13 @@
       "name": "RAPID CRITICAL METALS LIMITED",
       "isin": "AU0000398364",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1022,13 +1275,13 @@
       "name": "REGAL PARTNERS GLOBAL INVESTMENTS LIMITED",
       "isin": "AU0000434920",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1036,13 +1289,13 @@
       "name": "REDIVIUM LIMITED",
       "isin": "AU0000310211",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1050,13 +1303,13 @@
       "name": "SCHOOLBLAZER LIMITED",
       "isin": "AU0000458531",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1064,13 +1317,27 @@
       "name": "SGH LIMITED",
       "isin": "AU0000364754",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "SHP",
+      "name": "South HARZ Potash Ltd",
+      "isin": "AU0000151680",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1078,13 +1345,13 @@
       "name": "SKYLARK MINERALS LIMITED",
       "isin": "AU0000378226",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1092,13 +1359,13 @@
       "name": "SOLARA MINERALS LTD",
       "isin": "AU0000385841",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1106,13 +1373,27 @@
       "name": "SWIFT TV LTD",
       "isin": "AU0000440786",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "TI1",
+      "name": "Tombador Iron Ltd",
+      "isin": "AU0000107211",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1120,13 +1401,13 @@
       "name": "TORO ENERGY LIMITED",
       "isin": "AU000000TOE6",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1134,13 +1415,13 @@
       "name": "TARRINA RESOURCES LIMITED",
       "isin": "AU0000427221",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1148,27 +1429,27 @@
       "name": "TURNSTONE RESOURCES LTD",
       "isin": "AU0000460404",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
       "ticker": "TXR",
       "name": "TALONX RESOURCES LIMITED",
-      "isin": "",
+      "isin": "AU0000450611",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1176,13 +1457,13 @@
       "name": "US1 CRITICAL MINERALS LIMITED",
       "isin": "AU0000436891",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1190,13 +1471,13 @@
       "name": "UNDERWOOD CAPITAL LIMITED",
       "isin": "AU0000373201",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1204,13 +1485,13 @@
       "name": "VITASORA HEALTH LIMITED",
       "isin": "AU0000392748",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1218,13 +1499,13 @@
       "name": "WA KAOLIN LIMITED",
       "isin": "AU0000111247",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1232,13 +1513,13 @@
       "name": "Wa Gold Limited",
       "isin": "AU0000466021",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1246,13 +1527,13 @@
       "name": "WOLFE ENERGY LIMITED",
       "isin": "AU0000458358",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1260,13 +1541,13 @@
       "name": "XENORA MINERALS LTD",
       "isin": "AU0000421117",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "ASX",
@@ -1274,13 +1555,13 @@
       "name": "YUGO METALS LIMITED",
       "isin": "AU0000404998",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1288,13 +1569,13 @@
       "name": "Artius II Acquisition Inc. Class A Ordinary Shares",
       "isin": "KYG0509J1159",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1302,13 +1583,13 @@
       "name": "Above Food Ingredients Inc. Common Stock",
       "isin": "CA00373V1004",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1316,13 +1597,13 @@
       "name": "Aditxt Inc.",
       "isin": "US0070258696",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1330,13 +1611,13 @@
       "name": "Affinity Bancshares Inc",
       "isin": "US00832E1038",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1344,13 +1625,13 @@
       "name": "AIxCrypto Holdings, Inc.",
       "isin": "US74754R3012",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1358,13 +1639,13 @@
       "name": "Alchemy Investments Acquisition Corp 1 Class A Ordinary Shares",
       "isin": "KYG0232F1090",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1372,13 +1653,13 @@
       "name": "AstroNova Inc",
       "isin": "US04638F1084",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1386,13 +1667,13 @@
       "name": "Agriculture & Natural Solutions Acquisition Corporation Class A Ordinary Shares",
       "isin": "KYG0131Y1008",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1400,13 +1681,13 @@
       "name": "American Rebel Holdings Inc",
       "isin": "US02919L8853",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1414,13 +1695,13 @@
       "name": "Actelis Networks Inc.",
       "isin": "US00503R5081",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1428,13 +1709,13 @@
       "name": "AtaiBeckley Inc.",
       "isin": "NL0015000DX5",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1442,13 +1723,13 @@
       "name": "Bayview Acquisition Corp Class A Ordinary Shares",
       "isin": "KY07323B1007",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1456,13 +1737,13 @@
       "name": "D. Boral ARC Acquisition I Corp. Class A Ordinary Shares",
       "isin": "VGG2616F1018",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1470,13 +1751,27 @@
       "name": "1895 of Wisconsin Inc Bancorp",
       "isin": "US28253R1059",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "BLFS",
+      "name": "BioLife Solutions Inc",
+      "isin": "US09062W2044",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1484,13 +1779,13 @@
       "name": "BNB Plus Corp.",
       "isin": "US03815U6073",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1498,13 +1793,13 @@
       "name": "Blue Ocean Acquisition Corp",
       "isin": "KYG1330L1059",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1512,13 +1807,13 @@
       "name": "Barinthus Biotherapeutics plc",
       "isin": "US91864C1071",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1526,13 +1821,13 @@
       "name": "Churchill Capital Corp IX",
       "isin": "KYG213011094",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1540,13 +1835,13 @@
       "name": "Cross Country Healthcare Inc",
       "isin": "US2274831047",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1554,13 +1849,13 @@
       "name": "Cantor Equity Partners II, Inc.",
       "isin": "KYG1827K1076",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1568,13 +1863,13 @@
       "name": "CIMG Inc",
       "isin": "US67073S3076",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1582,13 +1877,13 @@
       "name": "Citizens Holding Company",
       "isin": "US1747151025",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1596,13 +1891,27 @@
       "name": "Centessa Pharmaceuticals plc",
       "isin": "US1523091007",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "COLA",
+      "name": "Columbus Acquisition Corp Ordinary Shares",
+      "isin": "KYG2295P1072",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1610,13 +1919,13 @@
       "name": "Catalyst Pharmaceuticals Inc",
       "isin": "US14888U1016",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1624,13 +1933,13 @@
       "name": "Smart Powerr Corp",
       "isin": "US1689133098",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1638,13 +1947,13 @@
       "name": "Crinetics Pharmaceuticals Inc",
       "isin": "US22663K1079",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1652,13 +1961,13 @@
       "name": "Cullman Bancorp Inc.",
       "isin": "US2301531081",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1666,13 +1975,27 @@
       "name": "DevvStream Corp. Common Stock",
       "isin": "CA25189R1001",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "DRCT",
+      "name": "Direct Digital Holdings Inc",
+      "isin": "US25461T3032",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1680,13 +2003,13 @@
       "name": "Electronic Arts Inc",
       "isin": "US2855121099",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1694,13 +2017,13 @@
       "name": "Electro-Sensors Inc",
       "isin": "US2852331022",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1708,13 +2031,13 @@
       "name": "Empro Group Inc. Ordinary shares",
       "isin": "KYG3041J1067",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1722,13 +2045,13 @@
       "name": "Esperion Therapeutics Inc",
       "isin": "US29664W1053",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1736,13 +2059,13 @@
       "name": "Envirotech Vehicles Inc",
       "isin": "US29414V2097",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1750,13 +2073,13 @@
       "name": "FAT Brands Inc",
       "isin": "US30258N6004",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1764,13 +2087,13 @@
       "name": "Forte Biosciences Inc",
       "isin": "US34962G2084",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1778,13 +2101,13 @@
       "name": "ENvue Medical Inc.",
       "isin": "US63008J8844",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1792,13 +2115,13 @@
       "name": "FG Merger II Corp. Common stock",
       "isin": "US30334J1025",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1806,13 +2129,13 @@
       "name": "FG Nexus Inc.",
       "isin": "US30329Y4035",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1820,13 +2143,27 @@
       "name": "Flash Sports & Media Holdings, Inc.",
       "isin": "US91704K3014",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "FSEA",
+      "name": "First Seacoast Bancorp",
+      "isin": "US33631F1049",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1834,13 +2171,13 @@
       "name": "FAST TRACK GROUP",
       "isin": "KYG333801093",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1848,13 +2185,13 @@
       "name": "Gambling.com Group Ltd",
       "isin": "JE00BL970N11",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1862,13 +2199,13 @@
       "name": "Generations Bancorp NY Inc",
       "isin": "US37149G1085",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1876,13 +2213,13 @@
       "name": "Glen Burnie Bancorp",
       "isin": "US3774071019",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1890,13 +2227,13 @@
       "name": "GoHealth Inc.",
       "isin": "US38046W2044",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1904,13 +2241,13 @@
       "name": "Visionary Education Technology Holdings Group Inc.",
       "isin": "CA92838F2008",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1918,27 +2255,13 @@
       "name": "Hepion Pharmaceuticals Inc",
       "isin": "US4268971045",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "HVII",
-      "name": "Hennessy Capital Investment Corp. VII Ordinary Shares",
-      "isin": "KYG4405D1079",
-      "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
-      "source_key": "",
-      "source_url": "",
-      "nasdaq_action": "",
-      "observed_at": "",
-      "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1946,13 +2269,13 @@
       "name": "HWH International Inc",
       "isin": "US44852G1013",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1960,13 +2283,13 @@
       "name": "Inflection Point Acquisition Corp. III Class A Ordinary Shares",
       "isin": "KYG478751020",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1974,13 +2297,13 @@
       "name": "Iterum Therapeutics PLC",
       "isin": "IE000TTOOBX0",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -1988,13 +2311,13 @@
       "name": "Keen Vision Acquisition Corporation Ordinary Shares",
       "isin": "VGG524431191",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2002,13 +2325,13 @@
       "name": "Liberty Broadband Srs A",
       "isin": "US5303071071",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2016,13 +2339,27 @@
       "name": "Liberty Broadband Srs C",
       "isin": "US5303073051",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LESL",
+      "name": "Leslies\u00a0Inc",
+      "isin": "US5270642086",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2030,27 +2367,27 @@
       "name": "Open Lending Corp",
       "isin": "US68373J1043",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
       "ticker": "LYRA",
-      "name": "Lyra Therapeutics Inc",
+      "name": "Lyra Therapeutics\u00a0Inc",
       "isin": "US55234L1052",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2058,13 +2395,13 @@
       "name": "WM Technology Inc",
       "isin": "US92971A1097",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2072,13 +2409,13 @@
       "name": "Maxeon Solar Technologies Ltd",
       "isin": "SGXZ57724486",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2086,13 +2423,13 @@
       "name": "Functional Brands, Inc. Common Stock",
       "isin": "US3609481037",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2100,13 +2437,13 @@
       "name": "Mountain Lake Acquisition Corp. Class A Ordinary Shares",
       "isin": "",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2114,13 +2451,13 @@
       "name": "Marpai Inc",
       "isin": "US5713542083",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2128,13 +2465,13 @@
       "name": "NCS Multistage Holdings Inc",
       "isin": "US6288772014",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2142,13 +2479,13 @@
       "name": "Northfield Bancorp Inc",
       "isin": "US66611T1088",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2156,13 +2493,27 @@
       "name": "NewHold Investment Corp III Class A Ordinary Shares",
       "isin": "KYG6486E1026",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "NSTS",
+      "name": "NSTS Bancorp Inc",
+      "isin": "US6293JP1094",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2170,13 +2521,13 @@
       "name": "Nusatrip Incorporated Common Stock",
       "isin": "US67119K1025",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2184,13 +2535,13 @@
       "name": "Nuvalent Inc",
       "isin": "US6707031075",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2198,13 +2549,13 @@
       "name": "Nuvve Holding Corp",
       "isin": "US67079Y4070",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2212,13 +2563,13 @@
       "name": "Olaplex Holdings Inc",
       "isin": "US6793691089",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2226,13 +2577,13 @@
       "name": "Origin Materials Inc",
       "isin": "US68622D1063",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2240,13 +2591,13 @@
       "name": "Oriental Rise Holdings Limited Ordinary Shares",
       "isin": "KYG6781A1105",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2254,13 +2605,13 @@
       "name": "OSR Holdings Inc",
       "isin": "US68840D1028",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2268,13 +2619,13 @@
       "name": "Aesthetic Medical International Holdings Group Limited",
       "isin": "US00809M1045",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2282,13 +2633,13 @@
       "name": "Piraeus Bank S.A.",
       "isin": "GRS831003009",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2296,13 +2647,27 @@
       "name": "Platinum Analytics Cayman Limited Class A Ordinary Shares",
       "isin": "KYG712641086",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "PSKY",
+      "name": "Paramount Skydance Corporation Class B Common Stock",
+      "isin": "US69932A2042",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2310,13 +2675,13 @@
       "name": "Pitanium Ltd",
       "isin": "VGG7111A1012",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2324,13 +2689,27 @@
       "name": "QMMM Holdings Limited Ordinary Shares",
       "isin": "KYG7309R1149",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "QRVO",
+      "name": "Qorvo Inc",
+      "isin": "US74736K1016",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2338,13 +2717,13 @@
       "name": "QVC Group, Inc. - Common Stock",
       "isin": "",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2352,13 +2731,13 @@
       "name": "QVC Group Inc",
       "isin": "US74915M6057",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2366,13 +2745,13 @@
       "name": "Ree Automotive Holding Inc",
       "isin": "IL0011786154",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2380,13 +2759,13 @@
       "name": "Reitar Logtech Holdings Limited Ordinary shares",
       "isin": "KYG7486B1068",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2394,13 +2773,13 @@
       "name": "Reviva Pharmaceuticals Holdings Inc.",
       "isin": "US76152G2093",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2408,13 +2787,13 @@
       "name": "Smart Digital Group Limited Ordinary Shares",
       "isin": "KYG5006S1049",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2422,13 +2801,13 @@
       "name": "Sangamo Therapeutics Inc",
       "isin": "US8006771062",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2436,13 +2815,13 @@
       "name": "SPAR Group Inc",
       "isin": "US7849331035",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2450,13 +2829,27 @@
       "name": "Skywater Technology Inc",
       "isin": "US83089J1088",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SLP",
+      "name": "Simulations Plus Inc",
+      "isin": "US8292141053",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2464,13 +2857,13 @@
       "name": "Sleep Number Corp",
       "isin": "US83125X1037",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2478,13 +2871,13 @@
       "name": "Synergy CHC Corp. Common Stock",
       "isin": "US87165D2080",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2492,13 +2885,27 @@
       "name": "Sobr Safe Inc",
       "isin": "US8335924051",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SPKL",
+      "name": "Spark I Acquisition Corp. Class A Ordinary Share",
+      "isin": "KYG8316B1005",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2506,13 +2913,13 @@
       "name": "Stratus Properties Inc",
       "isin": "US8631672016",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2520,13 +2927,13 @@
       "name": "Talkspace Inc",
       "isin": "US87427V1035",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2534,13 +2941,13 @@
       "name": "Theravance Biopharma Inc",
       "isin": "KYG8807B1068",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2548,13 +2955,13 @@
       "name": "TruBridge Inc.",
       "isin": "US2053061030",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2562,13 +2969,13 @@
       "name": "Tian Ruixiang Holdings Ltd",
       "isin": "KYG8884K1444",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2576,13 +2983,13 @@
       "name": "Twin Hospitality Group Inc.",
       "isin": "US9016431069",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2590,13 +2997,13 @@
       "name": "United Homes Group Inc.",
       "isin": "US91060H1086",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2604,13 +3011,13 @@
       "name": "MDJM Ltd",
       "isin": "KYG592901253",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2618,13 +3025,13 @@
       "name": "Voyager Acquisition Corp",
       "isin": "",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2632,13 +3039,13 @@
       "name": "VerifyMe Inc",
       "isin": "US92346X2062",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2646,13 +3053,13 @@
       "name": "VSee Health, Inc.",
       "isin": "US92919Y1029",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2660,13 +3067,13 @@
       "name": "Vestand Inc.",
       "isin": "US98740Y3027",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2674,27 +3081,55 @@
       "name": "Vaxart Inc",
       "isin": "US92243A2006",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
-      "ticker": "WORX",
-      "name": "Scworx Corp",
-      "isin": "US78396V3078",
+      "ticker": "WALD",
+      "name": "Waldencast Acquisition Corp",
+      "isin": "KYG9460C1006",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "WBD",
+      "name": "Warner Bros Discovery Inc",
+      "isin": "US9344231041",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "WKEY",
+      "name": "Wisekey International Holding AG",
+      "isin": "US97727L4086",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2702,13 +3137,13 @@
       "name": "XOMA Corp",
       "isin": "US98419J2069",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2716,13 +3151,13 @@
       "name": "Zenvia Inc",
       "isin": "KYG9889V1014",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2730,13 +3165,13 @@
       "name": "zSpace, Inc. Common stock",
       "isin": "US98980W1071",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NASDAQ",
@@ -2744,13 +3179,13 @@
       "name": "Zentek Ltd.",
       "isin": "CA98942X1024",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NSE_IN",
@@ -2758,13 +3193,13 @@
       "name": "Auri Grow India Limited",
       "isin": "INE925Y01036",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NSE_IN",
@@ -2772,13 +3207,13 @@
       "name": "JB Chemicals & Pharmaceuticals Limited",
       "isin": "INE572A01036",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NSE_IN",
@@ -2786,13 +3221,13 @@
       "name": "Sab Events & Governance Now Media Limited",
       "isin": "INE860T01019",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NSE_IN",
@@ -2800,13 +3235,13 @@
       "name": "Salasar Exteriors and Contour Limited",
       "isin": "INE00Y701026",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2814,13 +3249,13 @@
       "name": "Amaze Holdings Inc",
       "isin": "US35804X2009",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2828,13 +3263,13 @@
       "name": "AvalonBay Communities Inc",
       "isin": "US0534841012",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2842,13 +3277,13 @@
       "name": "Avanos Medical Inc",
       "isin": "US05350V1061",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2856,13 +3291,13 @@
       "name": "AXIA Energia",
       "isin": "US15234Q2075",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2870,13 +3305,13 @@
       "name": "Bed Bath & Beyond, Inc.",
       "isin": "US6903701018",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2884,13 +3319,13 @@
       "name": "Brookfield Business Partners LP",
       "isin": "BMG162341090",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2898,13 +3333,13 @@
       "name": "Topbuild Corp",
       "isin": "US89055F1030",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2912,13 +3347,13 @@
       "name": "Clearwater Analytics Holdings Inc",
       "isin": "US1851231068",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2926,13 +3361,13 @@
       "name": "Clearway Energy Inc",
       "isin": "US18539C1053",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2940,13 +3375,13 @@
       "name": "Digitalbridge Group Inc",
       "isin": "US25401T6038",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2954,13 +3389,13 @@
       "name": "Emerald Expositions Events Inc",
       "isin": "US29103W1045",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2968,13 +3403,13 @@
       "name": "Global Business Travel Group Inc",
       "isin": "US37890B1008",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2982,13 +3417,13 @@
       "name": "Getty Images Holdings Inc.",
       "isin": "US3742751056",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -2996,13 +3431,27 @@
       "name": "Chart Industries Inc",
       "isin": "US16115Q3083",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "GWH",
+      "name": "ESS Tech Inc",
+      "isin": "US26916J2050",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3010,13 +3459,13 @@
       "name": "Healthy Choice Wellness Corp.",
       "isin": "US42227T1051",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3024,13 +3473,13 @@
       "name": "Janus Henderson Group PLC",
       "isin": "JE00BYPZJM29",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3038,13 +3487,13 @@
       "name": "KORE Group Holdings Inc",
       "isin": "US50066V3050",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3052,13 +3501,13 @@
       "name": "Leggett & Platt Incorporated",
       "isin": "US5246601075",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3066,13 +3515,13 @@
       "name": "Legato Merger Corp. III",
       "isin": "KYG5451A1031",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3080,13 +3529,13 @@
       "name": "Modiv Inc",
       "isin": "US60784B1017",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3094,13 +3543,13 @@
       "name": "MV Oil Trust",
       "isin": "US5538591091",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3108,13 +3557,13 @@
       "name": "Northann Corp.",
       "isin": "US66373M4087",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3122,13 +3571,13 @@
       "name": "FiscalNote Holdings Inc.",
       "isin": "US3376551046",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3136,13 +3585,13 @@
       "name": "National Storage Affiliates Trust",
       "isin": "US6378701063",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3150,13 +3599,13 @@
       "name": "Natuzzi SpA",
       "isin": "US63905A2006",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3164,13 +3613,13 @@
       "name": "Phoenix Energy One, LLC",
       "isin": "",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3178,13 +3627,13 @@
       "name": "Perfect Moment Ltd.",
       "isin": "US7137151004",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3192,13 +3641,13 @@
       "name": "ProAssurance Corporation",
       "isin": "US74267C1062",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3206,13 +3655,13 @@
       "name": "Re Max Holding",
       "isin": "US75524W1080",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3220,13 +3669,13 @@
       "name": "Solo Brands, Inc. Class A",
       "isin": "US83425V2034",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3234,13 +3683,13 @@
       "name": "SilverBox Corp IV",
       "isin": "KYG813541052",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3248,13 +3697,13 @@
       "name": "Select Medical Holdings",
       "isin": "US81619Q1058",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3262,13 +3711,13 @@
       "name": "Sila Realty Trust, Inc.",
       "isin": "US1462805086",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3276,13 +3725,13 @@
       "name": "SOLAI Limited",
       "isin": "US0554742090",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3290,13 +3739,13 @@
       "name": "Stellar Bancorp, Inc.",
       "isin": "US8589271068",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3304,13 +3753,13 @@
       "name": "Taylor Morn Home",
       "isin": "US87724P1066",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3318,13 +3767,13 @@
       "name": "Terra Property Trust, Inc. 6.00%",
       "isin": "",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3332,13 +3781,13 @@
       "name": "Trinseo PLC",
       "isin": "IE0000QBK8U7",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3346,13 +3795,13 @@
       "name": "Two Harbors Investments Corp",
       "isin": "US90187B8046",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3360,13 +3809,27 @@
       "name": "Viking Acquisition Corp. I",
       "isin": "KYG9582G1047",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "VTAK",
+      "name": "Catheter Precision Inc.",
+      "isin": "US74933X6094",
+      "classification": "master_absent",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3374,13 +3837,13 @@
       "name": "Webster Financial Corporation",
       "isin": "US9478901096",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE",
@@ -3388,13 +3851,13 @@
       "name": "Whitestone REIT",
       "isin": "US9660842041",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE MKT",
@@ -3402,13 +3865,13 @@
       "name": "Delta Apparel, Inc.",
       "isin": "",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     },
     {
       "exchange": "NYSE MKT",
@@ -3416,13 +3879,13 @@
       "name": "Signing Day Sports, Inc.",
       "isin": "US82670R3057",
       "classification": "master_absent",
-      "status": "manual_rename_vs_delisting_required",
       "source_key": "",
       "source_url": "",
       "nasdaq_action": "",
       "observed_at": "",
       "effective_at": "",
-      "observation_id": ""
+      "observation_id": "",
+      "status": "manual_rename_vs_delisting_required"
     }
   ]
 }
