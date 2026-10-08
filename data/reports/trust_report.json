@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-08T09:00:58Z",
+    "generated_at": "2026-10-08T13:59:31Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,52 +27,52 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63395,
-    "joined_listings": 63395,
-    "scope_rows": 63395
+    "rows": 63415,
+    "joined_listings": 63415,
+    "scope_rows": 63415
   },
   "completeness": {
     "isin": {
-      "n": 63395,
+      "n": 63415,
       "filled": 62750,
-      "missing": 645,
-      "pct": 98.98,
-      "fills_needed_for_99": 12,
+      "missing": 665,
+      "pct": 98.95,
+      "fills_needed_for_99": 31,
       "pass": false
     },
     "country": {
-      "n": 63395,
-      "filled": 63328,
-      "missing": 67,
+      "n": 63415,
+      "filled": 63343,
+      "missing": 72,
       "pct": 99.89,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63395,
+      "n": 63415,
       "filled": 62554,
-      "missing": 841,
-      "pct": 98.67,
-      "fills_needed_for_99": 208,
+      "missing": 861,
+      "pct": 98.64,
+      "fills_needed_for_99": 227,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "TSX": 128,
       "ASX": 98,
       "TSXV": 73,
-      "NYSE ARCA": 53,
-      "NASDAQ": 52,
+      "NYSE ARCA": 64,
+      "NASDAQ": 58,
       "NEO": 44,
       "SSE": 34,
-      "BATS": 32,
+      "BATS": 33,
       "SSE_CL": 27,
-      "NYSE": 23,
+      "NYSE": 24,
       "BMV": 18,
       "SZSE": 12
     },
     "missing_sector_by_exchange": {
       "FSX": 258,
-      "NASDAQ": 53,
+      "NASDAQ": 59,
       "XSTU": 53,
       "HNX": 32,
       "BVB": 31,
@@ -80,7 +80,7 @@
       "BIST": 24,
       "BCBA": 23,
       "BSE_IN": 22,
-      "NYSE": 21,
+      "NYSE": 22,
       "NEO": 17,
       "LSE": 16
     },
@@ -88,8 +88,8 @@
       "TSX": 52,
       "AMS": 26,
       "TSE": 23,
-      "NYSE ARCA": 8,
-      "BATS": 3,
+      "NYSE ARCA": 19,
+      "BATS": 4,
       "NASDAQ": 2,
       "NYSE": 2,
       "Euronext": 1
@@ -97,16 +97,16 @@
   },
   "identity": {
     "official_isin_mismatch": 5,
-    "official_name_mismatch": 5,
+    "official_name_mismatch": 7,
     "open_collision_groups": 7,
     "quarantine_unresolved": 1156,
     "quarantine_proposed_clear": 249,
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 59554,
-    "source_gap": 3831,
-    "warn": 10
+    "pass": 59542,
+    "source_gap": 3860,
+    "warn": 13
   },
   "checks": [
     {
@@ -133,11 +133,11 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63395,
+        "n": 63415,
         "filled": 62750,
-        "missing": 645,
-        "pct": 98.98,
-        "fills_needed_for_99": 12,
+        "missing": 665,
+        "pct": 98.95,
+        "fills_needed_for_99": 31,
         "pass": false
       }
     },
@@ -145,11 +145,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63395,
+        "n": 63415,
         "filled": 62554,
-        "missing": 841,
-        "pct": 98.67,
-        "fills_needed_for_99": 208,
+        "missing": 861,
+        "pct": 98.64,
+        "fills_needed_for_99": 227,
         "pass": false
       }
     },
@@ -157,9 +157,9 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63395,
-        "filled": 63328,
-        "missing": 67,
+        "n": 63415,
+        "filled": 63343,
+        "missing": 72,
         "pct": 99.89,
         "fills_needed_for_99": 0,
         "pass": true
@@ -169,13 +169,15 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 5,
+        "official_name_mismatch": 7,
         "sample": [
           "NASDAQ::AIXC",
           "NASDAQ::ASBP",
           "TSXV::AXO",
+          "NASDAQ::BNC",
           "TSXV::MKA",
-          "TSXV::MKT"
+          "TSXV::MKT",
+          "NASDAQ::VRME"
         ]
       }
     },

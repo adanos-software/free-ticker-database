@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-08T09:00:57Z",
-    "rows": 97273,
+    "generated_at": "2026-10-08T14:00:49Z",
+    "rows": 97293,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,35 +14,36 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86250,
-      "source_gap": 10996,
-      "warn": 27
+      "pass": 86236,
+      "source_gap": 11026,
+      "warn": 31
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4542,
-      "official_reference": 87433,
+      "identifier_enriched": 4552,
+      "official_reference": 87443,
       "scoped_source_gap": 274,
       "valid_isin": 5024
     },
     "severity_counts": {
-      "high": 7,
-      "medium": 21,
-      "source_gap": 11326
+      "high": 8,
+      "medium": 24,
+      "source_gap": 11376
     },
     "issue_counts": {
-      "official_reference_gap": 6553,
+      "official_reference_gap": 6563,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 722,
-      "expected_missing_primary_isin": 645,
-      "missing_etf_category": 119,
-      "official_name_mismatch": 21,
-      "official_isin_mismatch": 7
+      "missing_stock_sector": 730,
+      "expected_missing_primary_isin": 665,
+      "missing_etf_category": 131,
+      "official_name_mismatch": 24,
+      "official_isin_mismatch": 7,
+      "country_isin_mismatch": 1
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8484,
-        "source_gap": 3254,
+        "pass": 8483,
+        "source_gap": 3255,
         "warn": 14
       },
       {
@@ -61,9 +62,9 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 293,
-        "pass": 4511,
-        "warn": 2
+        "source_gap": 302,
+        "pass": 4504,
+        "warn": 6
       },
       {
         "exchange": "BMV",
@@ -72,8 +73,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2565,
-        "source_gap": 227,
+        "pass": 2561,
+        "source_gap": 242,
         "warn": 1
       },
       {
@@ -124,7 +125,7 @@
       {
         "exchange": "BATS",
         "pass": 1285,
-        "source_gap": 130
+        "source_gap": 131
       },
       {
         "exchange": "Euronext",
@@ -138,9 +139,9 @@
         "pass": 123
       },
       {
-        "exchange": "TASE",
-        "pass": 714,
-        "source_gap": 87
+        "exchange": "NYSE",
+        "pass": 1944,
+        "source_gap": 88
       }
     ]
   },

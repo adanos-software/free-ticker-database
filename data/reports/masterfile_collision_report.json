@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99821,
-    "matched": 70067,
-    "collisions": 11450,
-    "missing": 18304
+    "official_symbols": 99835,
+    "matched": 70079,
+    "collisions": 11454,
+    "missing": 18302
   },
   "exchanges": [
     {
@@ -281,8 +281,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1655,
-      "matched": 1316,
+      "official_symbols": 1656,
+      "matched": 1317,
       "collisions": 58,
       "missing": 281,
       "collision_examples": [
@@ -2577,10 +2577,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5657,
-      "matched": 4611,
-      "collisions": 61,
-      "missing": 985,
+      "official_symbols": 5658,
+      "matched": 4615,
+      "collisions": 59,
+      "missing": 984,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3078,10 +3078,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3883,
+      "official_symbols": 3878,
       "matched": 1984,
       "collisions": 570,
-      "missing": 1329,
+      "missing": 1324,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3227,10 +3227,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2747,
-      "matched": 2626,
+      "official_symbols": 2753,
+      "matched": 2633,
       "collisions": 31,
-      "missing": 90,
+      "missing": 89,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -4988,11 +4988,36 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 5,
+      "official_symbols": 16,
       "matched": 0,
-      "collisions": 3,
-      "missing": 2,
+      "collisions": 9,
+      "missing": 7,
       "collision_examples": [
+        {
+          "ticker": "DDS",
+          "name": "Dillard's, Inc. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "DDT",
+          "name": "Dillard's Capital Trust I",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        },
+        {
+          "ticker": "ET",
+          "name": "Energy Transfer LP Common Units",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "Borsa Italiana",
+            "TSX"
+          ]
+        },
         {
           "ticker": "ILS",
           "name": "Brookmont Catastrophic Bond ETF",
@@ -5011,11 +5036,37 @@
           ]
         },
         {
+          "ticker": "SUN",
+          "name": "Sunoco LP Common Units representing limited partner interests",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "ASX",
+            "LSE",
+            "SIX"
+          ]
+        },
+        {
+          "ticker": "TCBI",
+          "name": "Texas Capital Bancshares, Inc. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
           "ticker": "TXS",
           "name": "Texas Capital Texas Equity Index ETF",
           "target_exchange": "TXSE",
           "existing_exchanges": [
             "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "USAC",
+          "name": "USA Compression Partners, LP Common Units Representing Limited Partner Interests",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "Euronext"
           ]
         }
       ],
@@ -5026,8 +5077,33 @@
           "exchange": "TXSE"
         },
         {
+          "ticker": "ET$I",
+          "name": "Energy Transfer L.P. Series I Fixed Rate Perpetual Preferred Units",
+          "exchange": "TXSE"
+        },
+        {
           "ticker": "PWRX",
           "name": "Westwood Salient Enhanced Power & Infrastructure ETF",
+          "exchange": "TXSE"
+        },
+        {
+          "ticker": "SUNC",
+          "name": "SunocoCorp LLC Common Units, representing limited liability company interests",
+          "exchange": "TXSE"
+        },
+        {
+          "ticker": "TCBI$B",
+          "name": "Texas Capital Bancshares, Inc. Depositary Shares 5.75% Fixed Rate Non-Cumulative Perpetual Preferred Stock Series B",
+          "exchange": "TXSE"
+        },
+        {
+          "ticker": "WSLS",
+          "name": "WisdomTree Efficient Long/Short U.S. SmallCap Equity Fund",
+          "exchange": "TXSE"
+        },
+        {
+          "ticker": "WTAL",
+          "name": "WisdomTree Global Alpha Fund",
           "exchange": "TXSE"
         }
       ]

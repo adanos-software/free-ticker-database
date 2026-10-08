@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-02T11:25:55Z",
-  "rows": 170080,
+  "generated_at": "2026-10-08T13:57:11Z",
+  "rows": 170069,
   "exchanges": [
     "ADX",
     "AMS",
@@ -98,7 +98,7 @@
     "b3_listed_etfs": 216,
     "b3_bdr_etfs": 321,
     "b3_instruments_equities": 1353,
-    "nasdaq_other_listed": 7661,
+    "nasdaq_other_listed": 7663,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
     "bist_kap_mkk_listed_securities": 663,
@@ -150,8 +150,8 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5634,
-    "sec_company_tickers_exchange": 10220,
+    "nasdaq_listed": 5630,
+    "sec_company_tickers_exchange": 10211,
     "nasdaq_trading_system_adds_deletes": 9,
     "cboe_canada_listing_directory": 443,
     "ngx_company_profile_directory": 130,
@@ -225,16 +225,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5634,
-      "generated_at": "2026-10-02T13:05:52Z"
+      "rows": 5630,
+      "generated_at": "2026-10-08T13:57:11Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7661,
-      "generated_at": "2026-10-02T13:05:52Z"
+      "rows": 7663,
+      "generated_at": "2026-10-08T13:57:11Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1332,8 +1332,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 10220,
-      "generated_at": "2026-10-02T13:05:52Z"
+      "rows": 10211,
+      "generated_at": "2026-10-08T13:57:11Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1495,18 +1495,6 @@
   },
   "errors": [
     {
-      "source_key": "psx_symbol_name_daily",
-      "error": "Empty refresh result; preserved 383 existing rows"
-    },
-    {
-      "source_key": "wse_etf_list",
-      "error": "Empty refresh result; preserved 38 existing rows"
-    },
-    {
-      "source_key": "wse_listed_companies",
-      "error": "Empty refresh result; preserved 403 existing rows"
-    },
-    {
       "source_key": "asx_listed_companies",
       "error": "Empty refresh result; preserved 1987 existing rows"
     },
@@ -1587,6 +1575,10 @@
       "error": "Empty refresh result; preserved 724 existing rows"
     },
     {
+      "source_key": "psx_symbol_name_daily",
+      "error": "Empty refresh result; preserved 383 existing rows"
+    },
+    {
       "source_key": "six_shares_explorer_full",
       "error": "Empty refresh result; preserved 1 existing rows"
     },
@@ -1605,53 +1597,27 @@
     {
       "source_key": "upcom_registered_securities",
       "error": "Empty refresh result; preserved 818 existing rows"
+    },
+    {
+      "source_key": "wse_etf_list",
+      "error": "Empty refresh result; preserved 38 existing rows"
+    },
+    {
+      "source_key": "wse_listed_companies",
+      "error": "Empty refresh result; preserved 403 existing rows"
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-10-02T11:25:55Z",
+    "generated_at": "2026-10-08T13:57:11Z",
     "selected_source_keys": [
-      "bme_etf_list",
-      "bme_listed_companies",
-      "psx_symbol_name_daily",
-      "rse_listed_companies",
-      "set_dr_search",
-      "tase_securities_marketdata",
-      "tmx_etf_screener",
-      "tmx_interlisted_companies",
-      "tmx_listed_issuers",
-      "tpex_emerging_basic_info",
-      "tpex_etf_filter",
-      "tpex_mainboard_basic_info",
-      "tpex_mainboard_daily_quotes",
-      "twse_etf_list",
-      "use_ug_listed_companies",
-      "vienna_listed_companies",
-      "wse_etf_list",
-      "wse_listed_companies",
-      "zagreb_securities_directory",
-      "zse_zw_listed_companies"
+      "nasdaq_listed",
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "bme_etf_list": "network",
-      "bme_listed_companies": "network",
-      "psx_symbol_name_daily": "unavailable",
-      "rse_listed_companies": "network",
-      "set_dr_search": "network",
-      "tase_securities_marketdata": "network",
-      "tmx_etf_screener": "network",
-      "tmx_interlisted_companies": "network",
-      "tmx_listed_issuers": "network",
-      "tpex_emerging_basic_info": "network",
-      "tpex_etf_filter": "network",
-      "tpex_mainboard_basic_info": "network",
-      "tpex_mainboard_daily_quotes": "network",
-      "twse_etf_list": "network",
-      "use_ug_listed_companies": "network",
-      "vienna_listed_companies": "network",
-      "wse_etf_list": "unavailable",
-      "wse_listed_companies": "unavailable",
-      "zagreb_securities_directory": "network",
-      "zse_zw_listed_companies": "network"
+      "nasdaq_listed": "network",
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }
