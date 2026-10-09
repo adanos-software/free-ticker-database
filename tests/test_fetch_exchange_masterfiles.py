@@ -1245,6 +1245,8 @@ def test_parse_twse_listed_companies_maps_twse_rows():
     payload = [
         {"公司代號": "1101", "公司名稱": "臺灣水泥股份有限公司"},
         {"公司代號": "0050", "公司名稱": "元大台灣50"},
+        {"公司代號": "7835", "公司名稱": "永悅健康股份有限公司", "產業別": "36"},
+        {"公司代號": "7855", "公司名稱": "和運租車股份有限公司", "產業別": "20"},
         {"公司代號": "", "公司名稱": "Ignored"},
     ]
 
@@ -1273,6 +1275,33 @@ def test_parse_twse_listed_companies_maps_twse_rows():
             "exchange": "TWSE",
             "asset_type": "ETF",
             "isin": "TW0000050004",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "7835",
+            "name": "永悅健康股份有限公司",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "isin": "TW0007835001",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Information Technology",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "7855",
+            "name": "和運租車股份有限公司",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "isin": "TW0007855009",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -15563,6 +15592,20 @@ def test_build_six_share_details_rows_maps_stock_and_etf_taxonomy() -> None:
             "isin": "CH1169360919",
         },
     )
+    machinery_rows = build_six_share_details_rows(
+        {
+            "colNames": ["ISIN", "IssuerNameFull", "ValorSymbol", "IndustrySectorDesc", "AssetClassDesc"],
+            "rowData": [["CH1129677105", "medmix AG", "MEDMIX N", "Machinery", ""]],
+        },
+        SOURCE,
+        {
+            "ticker": "MEDX",
+            "name": "medmix AG",
+            "exchange": "SIX",
+            "asset_type": "Stock",
+            "isin": "CH1129677105",
+        },
+    )
     etf_rows = build_six_share_details_rows(
         etf_payload,
         SOURCE,
@@ -15577,6 +15620,8 @@ def test_build_six_share_details_rows_maps_stock_and_etf_taxonomy() -> None:
 
     assert stock_rows[0]["ticker"] == "ACLN"
     assert stock_rows[0]["sector"] == "Industrials"
+    assert machinery_rows[0]["ticker"] == "MEDX"
+    assert machinery_rows[0]["sector"] == "Industrials"
     assert etf_rows[0]["ticker"] == "IE00B14X4S"
     assert etf_rows[0]["sector"] == "Fixed Income"
 
@@ -15600,9 +15645,24 @@ def test_build_six_share_details_rows_special_cases_misc_services() -> None:
         SOURCE,
         {"ticker": "SUNN", "name": "SUNRISE N", "exchange": "SIX", "asset_type": "Stock", "isin": "CH1386220409"},
     )
+    med_rows = build_six_share_details_rows(
+        {
+            "colNames": ["ISIN", "IssuerNameFull", "ValorSymbol", "IndustrySectorDesc"],
+            "rowData": [["CH0386200239", "Medartis Holding AG", "MEDARTIS N", "Misc. services"]],
+        },
+        SOURCE,
+        {
+            "ticker": "MED",
+            "name": "Medartis Holding AG",
+            "exchange": "SIX",
+            "asset_type": "Stock",
+            "isin": "CH0386200239",
+        },
+    )
 
     assert rsgn_rows[0]["sector"] == "Industrials"
     assert sunn_rows[0]["sector"] == "Communication Services"
+    assert med_rows == []
 
 
 def test_fetch_six_share_details_fqs_uses_current_missing_taxonomy_rows(tmp_path) -> None:

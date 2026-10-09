@@ -1197,6 +1197,7 @@ SIX_SHARE_INDUSTRY_STOCK_SECTOR_MAP = {
     "food, luxury goods": "Consumer Staples",
     "insurance companies": "Financials",
     "investment companies": "Financials",
+    "machinery": "Industrials",
     "real-estate companies": "Real Estate",
     "telecommunications": "Communication Services",
     "utilities": "Utilities",
@@ -16562,6 +16563,10 @@ def parse_twse_listed_companies(payload: list[dict[str, Any]], source: Masterfil
         )
         if isin:
             row["isin"] = isin
+        if row["asset_type"] == "Stock":
+            sector = normalize_taiwan_stock_sector(record.get("產業別"))
+            if sector:
+                row["sector"] = sector
         rows.append(row)
     return rows
 
