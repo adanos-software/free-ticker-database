@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-09T07:14:04Z",
+    "generated_at": "2026-10-09T08:07:33Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -50,10 +50,10 @@
     },
     "taxonomy": {
       "n": 63459,
-      "filled": 62651,
-      "missing": 808,
+      "filled": 62656,
+      "missing": 803,
       "pct": 98.73,
-      "fills_needed_for_99": 174,
+      "fills_needed_for_99": 169,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -79,7 +79,7 @@
       "BIST": 24,
       "BCBA": 23,
       "NSE_IN": 23,
-      "BSE_IN": 22,
+      "BSE_IN": 17,
       "NEO": 17,
       "LSE": 16,
       "Munich": 14
@@ -104,8 +104,8 @@
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 59621,
-    "source_gap": 3822,
+    "pass": 59626,
+    "source_gap": 3817,
     "warn": 16
   },
   "checks": [
@@ -146,10 +146,10 @@
       "status": "fail",
       "details": {
         "n": 63459,
-        "filled": 62651,
-        "missing": 808,
+        "filled": 62656,
+        "missing": 803,
         "pct": 98.73,
-        "fills_needed_for_99": 174,
+        "fills_needed_for_99": 169,
         "pass": false
       }
     },
