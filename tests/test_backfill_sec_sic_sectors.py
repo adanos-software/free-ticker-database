@@ -30,6 +30,7 @@ def test_map_sec_sic_to_sector_handles_exact_and_range_mappings():
     assert map_sec_sic_to_sector("8731") == "Health Care"
     assert map_sec_sic_to_sector("4412") == "Industrials"
     assert map_sec_sic_to_sector("9999") == ""
+    assert map_sec_sic_to_sector("7819") == ""
 
 
 def test_load_missing_sector_rows_filters_us_stock_rows(tmp_path):
@@ -56,6 +57,7 @@ def test_find_sec_candidates_uses_ticker_and_exchange_mapping():
         [
             SecTicker(cik=1, name="Apple Inc.", ticker="AAPL", exchange="NASDAQ"),
             SecTicker(cik=2, name="Apple Hospitality REIT", ticker="APLE", exchange="NYSE"),
+            SecTicker(cik=3, name="Host Digital Inc.", ticker="HOST", exchange="NYSE"),
         ]
     )
 
@@ -63,6 +65,10 @@ def test_find_sec_candidates_uses_ticker_and_exchange_mapping():
         SecTicker(cik=1, name="Apple Inc.", ticker="AAPL", exchange="NASDAQ")
     ]
     assert find_sec_candidates({"ticker": "AAPL", "exchange": "NYSE"}, indexed) == []
+    assert find_sec_candidates({"ticker": "HOST", "exchange": "NYSE MKT"}, indexed) == [
+        SecTicker(cik=3, name="Host Digital Inc.", ticker="HOST", exchange="NYSE")
+    ]
+    assert find_sec_candidates({"ticker": "HOST", "exchange": "NASDAQ"}, indexed) == []
 
 
 def test_evaluate_sec_sic_row_accepts_exact_name_and_sic_match():
@@ -74,6 +80,40 @@ def test_evaluate_sec_sic_row_accepts_exact_name_and_sic_match():
 
     assert result["decision"] == "accept"
     assert result["sector_update"] == "Information Technology"
+
+
+def test_evaluate_sec_sic_row_accepts_nyse_mkt_against_sec_nyse_label():
+    result = evaluate_sec_sic_row(
+        {
+            "ticker": "HOST",
+            "exchange": "NYSE MKT",
+            "asset_type": "Stock",
+            "name": "Host Digital Inc. Class A Common Stock",
+            "sector": "",
+        },
+        [SecTicker(cik=1948864, name="Host Digital Inc.", ticker="HOST", exchange="NYSE")],
+        {"sic": "7372", "sicDescription": "Services-Prepackaged Software"},
+    )
+
+    assert result["decision"] == "accept"
+    assert result["sector_update"] == "Information Technology"
+
+
+def test_evaluate_sec_sic_row_keeps_unmapped_sic_7819_empty():
+    result = evaluate_sec_sic_row(
+        {
+            "ticker": "NXAT",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "name": "Nexus Advanced Technologies Inc. - Ordinary Shares",
+            "sector": "",
+        },
+        [SecTicker(cik=2000756, name="Nexus Advanced Technologies Inc.", ticker="NXAT", exchange="NASDAQ")],
+        {"sic": "7819", "sicDescription": "Services-Allied To Motion Picture Production"},
+    )
+
+    assert result["decision"] == "unmapped_sic"
+    assert result["sector_update"] == ""
 
 
 def test_evaluate_sec_sic_row_rejects_bad_name_and_missing_sic():

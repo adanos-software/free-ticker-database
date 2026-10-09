@@ -34,6 +34,8 @@ DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_up
 SEC_EXCHANGE_CODES: dict[str, set[str]] = {
     "NASDAQ": {"NASDAQ", "NASDAQ GLOBAL MARKET", "NASDAQ CAPITAL MARKET"},
     "NYSE": {"NYSE"},
+    # SEC company_tickers_exchange currently labels NYSE American as NYSE.
+    "NYSE MKT": {"NYSE"},
     "OTC": {"OTC"},
 }
 REPORT_FIELDNAMES = [
@@ -445,6 +447,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE_DIR)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
     parser.add_argument("--exchange", action="append", help="Restrict to one or more internal exchanges.")
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        default=TICKERS_CSV,
+        help="Listing-keyed source CSV; use data/listings.csv to include dual-listed empty rows.",
+    )
     parser.add_argument("--user-agent", default=DEFAULT_USER_AGENT)
     parser.add_argument("--timeout-seconds", type=float, default=30.0)
     parser.add_argument("--rate-limit-seconds", type=float, default=0.12)
@@ -457,12 +465,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
-    exchanges = set(args.exchange or ["NASDAQ", "NYSE"])
+    exchanges = set(args.exchange or ["NASDAQ", "NYSE", "NYSE MKT"])
     unsupported = sorted(exchanges - set(SEC_EXCHANGE_CODES))
     if unsupported:
         raise SystemExit(f"Unsupported SEC exchange(s): {', '.join(unsupported)}")
 
-    rows = load_missing_sector_rows(exchanges=exchanges)
+    rows = load_missing_sector_rows(exchanges=exchanges, tickers_csv=args.tickers_csv)
     if args.offset:
         rows = rows[args.offset :]
     if args.limit is not None:

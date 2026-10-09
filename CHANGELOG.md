@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Filled 13 empty core `stock_sector` rows from listing-keyed official SEC SIC: NASDAQ/NYSE leftovers that live only on `listings.csv` duals, and NYSE MKT rows that SEC currently labels as NYSE. Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or TradingView. `NASDAQ::NXAT` SIC 7819 stays unmapped. `FSX::CU2` stolen-ISIN clear stays empty. VERSION remains 3.42.0.
 - Filled 8 empty core `stock_sector` rows from listing-keyed official sources: HKEX quote-page HSIC after ListOfSecurities ISIN match (`01256`, `02916`, `02936`, `06802`, `08582`, `08585`) and TWSE ISIN-table `&` industry spellings (`1623` Electrical & Cable, `5546` Building Material&Construction → Industrials). Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or TradingView. TWSE `Others`, HKEX rights without HSIC, PSE HOLDING/SME/RETAIL/mixed energy, and `FSX::CU2` stay empty. VERSION remains 3.42.0.
 - Filled 63 empty core `stock_sector` rows from listing-keyed official sources: SEC SIC for NASDAQ/NYSE stocks, and `KRX::088980` Financials from `krx_listed_companies`. Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or TradingView. The `FSX::CU2` stolen-ISIN clear stays empty. VERSION remains 3.42.0.
 
