@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-09T08:07:33Z",
+    "generated_at": "2026-10-09T08:33:11Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -50,10 +50,10 @@
     },
     "taxonomy": {
       "n": 63459,
-      "filled": 62656,
-      "missing": 803,
-      "pct": 98.73,
-      "fills_needed_for_99": 169,
+      "filled": 62664,
+      "missing": 795,
+      "pct": 98.75,
+      "fills_needed_for_99": 161,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -89,10 +89,10 @@
       "AMS": 26,
       "TSE": 23,
       "NYSE ARCA": 19,
-      "BATS": 4,
       "NASDAQ": 2,
       "NYSE": 2,
-      "Euronext": 1
+      "Euronext": 1,
+      "WSE": 1
     }
   },
   "identity": {
@@ -104,8 +104,8 @@
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 59626,
-    "source_gap": 3817,
+    "pass": 59631,
+    "source_gap": 3812,
     "warn": 16
   },
   "checks": [
@@ -146,10 +146,10 @@
       "status": "fail",
       "details": {
         "n": 63459,
-        "filled": 62656,
-        "missing": 803,
-        "pct": 98.73,
-        "fills_needed_for_99": 169,
+        "filled": 62664,
+        "missing": 795,
+        "pct": 98.75,
+        "fills_needed_for_99": 161,
         "pass": false
       }
     },

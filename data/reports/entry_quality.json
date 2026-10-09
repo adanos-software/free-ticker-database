@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-09T08:07:31Z",
+    "generated_at": "2026-10-09T08:33:10Z",
     "rows": 97347,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86314,
-      "source_gap": 10999,
+      "pass": 86319,
+      "source_gap": 10994,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -27,14 +27,14 @@
     "severity_counts": {
       "high": 10,
       "medium": 26,
-      "source_gap": 11343
+      "source_gap": 11335
     },
     "issue_counts": {
       "official_reference_gap": 6588,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 672,
+      "missing_stock_sector": 668,
       "expected_missing_primary_isin": 665,
-      "missing_etf_category": 131,
+      "missing_etf_category": 127,
       "official_name_mismatch": 26,
       "official_isin_mismatch": 9,
       "country_isin_mismatch": 1
@@ -124,8 +124,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1285,
-        "source_gap": 131
+        "pass": 1286,
+        "source_gap": 130
       },
       {
         "exchange": "Euronext",

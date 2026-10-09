@@ -26,7 +26,7 @@ DEFAULT_CAPTURE_JSON = DEFAULT_OUTPUT_DIR / "fsx_icb_capture.json"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "icb_stock_sector_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "icb_stock_sector_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
-EURONEXT_PREFIXES = frozenset({"BE", "FR", "IE", "IT", "LU", "NL", "NO", "PT"})
+EURONEXT_PREFIXES = frozenset({"BE", "CY", "FR", "IE", "IT", "LU", "MT", "NL", "NO", "PT", "SG"})
 ICB_INDUSTRY_MAP = {
     "Basic Materials": "Materials",
     "Technology": "Information Technology",

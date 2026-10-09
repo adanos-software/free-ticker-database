@@ -101,6 +101,53 @@ def test_evaluate_row_rejects_missing_search_and_mismatched_oslo_isin():
     assert build_metadata_updates([result]) == []
 
 
+def test_evaluate_row_accepts_leftover_osl_merk_icb():
+    leftovers = [
+        (
+            "ADS",
+            "ADS Maritime Holding Plc",
+            "CY0108052115",
+            "ADS MARITIME HOLD",
+            "Industrials",
+            "Industrials",
+        ),
+        (
+            "GOLDR",
+            "GOLD ROAD INTL",
+            "MT0003060101",
+            "GOLD ROAD INTL",
+            "Basic Materials",
+            "Materials",
+        ),
+        (
+            "PLCAN",
+            "PELICAN AQUA HLDNG",
+            "CY0201461213",
+            "PELICAN AQUA HLDNG",
+            "Industrials",
+            "Industrials",
+        ),
+        (
+            "VLCC",
+            "VOLARE SHIPPING",
+            "SGXZ33616145",
+            "VOLARE SHIPPING",
+            "Industrials",
+            "Industrials",
+        ),
+    ]
+    for ticker, name, isin, euronext_name, icb_industry, expected in leftovers:
+        result = evaluate_row(
+            target(ticker=ticker, exchange="OSL", name=name, isin=isin),
+            [hit(isin=isin, mic="MERK", name=euronext_name, symbol="")],
+            [icb_industry],
+        )
+        assert result["decision"] == "accept", ticker
+        assert result["sector_update"] == expected, ticker
+        assert result["euronext_mic"] == "MERK", ticker
+        assert build_metadata_updates([result])[0]["proposed_value"] == expected, ticker
+
+
 def test_parse_product_instrument_requires_isin_and_mic():
     html = (
         '<script type="application/json" data-drupal-selector="drupal-settings-json">'
