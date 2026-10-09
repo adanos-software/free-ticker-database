@@ -31,6 +31,11 @@ def test_normalize_twse_industry_sector_maps_official_industries():
     assert normalize_twse_industry_sector("Food") == "Consumer Staples"
     assert normalize_twse_industry_sector("Electric Machinery") == "Industrials"
     assert normalize_twse_industry_sector("Biotechnology and Medical Care") == "Health Care"
+    assert normalize_twse_industry_sector("Building Material and Construction") == "Industrials"
+    assert normalize_twse_industry_sector("Building Material&Construction") == "Industrials"
+    assert normalize_twse_industry_sector("Electrical and Cable") == "Industrials"
+    assert normalize_twse_industry_sector("Electrical & Cable") == "Industrials"
+    assert normalize_twse_industry_sector("Others") == ""
     assert normalize_twse_industry_sector("") == ""
 
 

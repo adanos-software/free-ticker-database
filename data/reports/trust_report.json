@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-08T19:53:00Z",
+    "generated_at": "2026-10-09T05:04:27Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -50,10 +50,10 @@
     },
     "taxonomy": {
       "n": 63459,
-      "filled": 62627,
-      "missing": 832,
-      "pct": 98.69,
-      "fills_needed_for_99": 198,
+      "filled": 62635,
+      "missing": 824,
+      "pct": 98.7,
+      "fills_needed_for_99": 190,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -80,9 +80,9 @@
       "BCBA": 23,
       "NSE_IN": 23,
       "BSE_IN": 22,
-      "HKEX": 17,
       "NEO": 17,
-      "LSE": 16
+      "LSE": 16,
+      "Munich": 14
     },
     "missing_category_by_exchange": {
       "TSX": 52,
@@ -104,8 +104,8 @@
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 59599,
-    "source_gap": 3844,
+    "pass": 59607,
+    "source_gap": 3836,
     "warn": 16
   },
   "checks": [
@@ -146,10 +146,10 @@
       "status": "fail",
       "details": {
         "n": 63459,
-        "filled": 62627,
-        "missing": 832,
-        "pct": 98.69,
-        "fills_needed_for_99": 198,
+        "filled": 62635,
+        "missing": 824,
+        "pct": 98.7,
+        "fills_needed_for_99": 190,
         "pass": false
       }
     },
