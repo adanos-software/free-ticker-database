@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-10-09T06:26:26Z",
-    "rows": 8453,
+    "generated_at": "2026-10-09T07:14:06Z",
+    "rows": 8452,
     "field_totals": {
       "missing_etf_category": 121,
       "missing_isin_primary": 665,
-      "missing_sector_stock": 1079,
+      "missing_sector_stock": 1078,
       "official_reference_gap": 6588
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 175,
       "official_identifier_reference_unmatched_gap": 13,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 439,
+      "official_industry_taxonomy_unavailable_gap": 438,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 50,
       "official_reference_symbol_collision_gap": 1142,
@@ -52,7 +52,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 59,
       "missing_sector_stock:fundlike_stock_sector_gap": 18,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 439,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 438,
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 6,
       "official_reference_gap:official_reference_symbol_collision_gap": 1142,
@@ -31061,23 +31061,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=TWSE::6957;exchange=TWSE;ticker=6957;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "TWSE::7835",
-      "ticker": "7835",
-      "exchange": "TWSE",
-      "asset_type": "Stock",
-      "name": "永悅健康股份有限公司",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=TWSE::7835;exchange=TWSE;ticker=7835;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },

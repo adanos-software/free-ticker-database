@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-09T06:26:22Z",
+    "generated_at": "2026-10-09T07:14:02Z",
     "rows": 97347,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86306,
-      "source_gap": 11007,
+      "pass": 86309,
+      "source_gap": 11004,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -27,12 +27,12 @@
     "severity_counts": {
       "high": 10,
       "medium": 26,
-      "source_gap": 11351
+      "source_gap": 11348
     },
     "issue_counts": {
       "official_reference_gap": 6588,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 680,
+      "missing_stock_sector": 677,
       "expected_missing_primary_isin": 665,
       "missing_etf_category": 131,
       "official_name_mismatch": 26,
@@ -17157,24 +17157,6 @@
       ]
     },
     {
-      "listing_key": "TWSE::7835",
-      "ticker": "7835",
-      "exchange": "TWSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "TWSE::7855",
       "ticker": "7855",
       "exchange": "TWSE",
@@ -18402,6 +18384,24 @@
           "field": "exchange",
           "value": "XHAN",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "TWSE::8488",
+      "ticker": "8488",
+      "exchange": "TWSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
         }
       ]
     }
