@@ -1,18 +1,18 @@
 {
   "summary": {
-    "generated_at": "2026-10-09T08:07:34Z",
-    "rows": 8447,
+    "generated_at": "2026-10-09T08:33:13Z",
+    "rows": 8443,
     "field_totals": {
-      "missing_etf_category": 121,
+      "missing_etf_category": 120,
       "missing_isin_primary": 665,
-      "missing_sector_stock": 1073,
+      "missing_sector_stock": 1070,
       "official_reference_gap": 6588
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 42,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 32,
-      "commodity_etf_category_gap": 9,
+      "commodity_etf_category_gap": 8,
       "debt_or_securitized_identifier_gap": 84,
       "digital_asset_etf_category_gap": 2,
       "equity_etf_category_gap": 41,
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 175,
       "official_identifier_reference_unmatched_gap": 13,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 433,
+      "official_industry_taxonomy_unavailable_gap": 430,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 50,
       "official_reference_symbol_collision_gap": 1142,
@@ -34,7 +34,7 @@
       "shell_or_cpc_sector_gap": 6
     },
     "class_by_field": {
-      "missing_etf_category:commodity_etf_category_gap": 9,
+      "missing_etf_category:commodity_etf_category_gap": 8,
       "missing_etf_category:digital_asset_etf_category_gap": 2,
       "missing_etf_category:equity_etf_category_gap": 41,
       "missing_etf_category:fixed_income_etf_category_gap": 18,
@@ -52,7 +52,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 59,
       "missing_sector_stock:fundlike_stock_sector_gap": 18,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 433,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 430,
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 6,
       "official_reference_gap:official_reference_symbol_collision_gap": 1142,
@@ -83,10 +83,6 @@
         {
           "exchange": "NYSE",
           "rows": 2
-        },
-        {
-          "exchange": "BATS",
-          "rows": 1
         },
         {
           "exchange": "Euronext",
@@ -837,23 +833,6 @@
       "source_gap_context": "listing_key=AMS::XSUE;exchange=AMS;ticker=XSUE;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "BATS::BCOM",
-      "ticker": "BCOM",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "name": "Rareview Bloomberg Commodity Index ETF",
-      "gap_class": "commodity_etf_category_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official fund asset class or deterministic product evidence; commodity tokens alone need review if ambiguous.",
-      "recommended_next_source": "Official fund asset class or reviewed product profile.",
-      "source_gate": "Exact ETF symbol/name and deterministic commodity exposure evidence.",
-      "source_gap_context": "listing_key=BATS::BCOM;exchange=BATS;ticker=BCOM;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=commodity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=commodity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -21133,57 +21112,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NYSE::VMRK;exchange=NYSE;ticker=VMRK;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OSL::GOLDR",
-      "ticker": "GOLDR",
-      "exchange": "OSL",
-      "asset_type": "Stock",
-      "name": "GOLD ROAD INTL",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=OSL::GOLDR;exchange=OSL;ticker=GOLDR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OSL::PLCAN",
-      "ticker": "PLCAN",
-      "exchange": "OSL",
-      "asset_type": "Stock",
-      "name": "PELICAN AQUA HLDNG",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=OSL::PLCAN;exchange=OSL;ticker=PLCAN;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OSL::VLCC",
-      "ticker": "VLCC",
-      "exchange": "OSL",
-      "asset_type": "Stock",
-      "name": "VOLARE SHIPPING",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=OSL::VLCC;exchange=OSL;ticker=VLCC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },

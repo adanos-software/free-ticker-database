@@ -200,6 +200,36 @@ def test_evaluate_rows_entry_quality_category_issue_allows_category_update():
     assert results[0]["category_update"] == "Equity"
 
 
+def test_evaluate_rows_accepts_leftover_bats_lmm_categories():
+    leftovers = [
+        ("MN", "Corgi MANGOS ETF", "US Equity", "Equity"),
+        ("SLVI", "NEOS Silver High Income ETF", "Other", "Other"),
+        ("TRXS", "Canary Staked TRX ETF", "Other", "Other"),
+        ("BCOM", "Rareview Bloomberg Commodity Index ETF", "Other", "Other"),
+    ]
+    targets = [
+        {
+            "ticker": ticker,
+            "exchange": "BATS",
+            "asset_type": "ETF",
+            "name": name,
+            "issue_types": "missing_etf_category",
+        }
+        for ticker, name, _, _ in leftovers
+    ]
+    lmm_rows = {
+        ticker: {"name": name, "asset_class": asset_class}
+        for ticker, name, asset_class, _ in leftovers
+    }
+    results = evaluate_rows(targets, lmm_rows, {})
+    by_ticker = {result["ticker"]: result for result in results}
+    for ticker, _, _, expected in leftovers:
+        result = by_ticker[ticker]
+        assert result["decision"] == "accept_etf_category", ticker
+        assert result["category_update"] == expected, ticker
+        assert result["isin_update"] == "", ticker
+
+
 def test_build_metadata_updates_emits_separate_field_updates():
     updates = build_metadata_updates(
         [
