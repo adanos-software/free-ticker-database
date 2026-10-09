@@ -2,14 +2,45 @@
 
 ## [Unreleased]
 
+## [3.43.0] - 2026-10-09
+
+### Summary
+
+**Official leftover-sector, automation-rotation, and empty-only overlay release.** Publishes listing-keyed official empty `stock_sector`/`etf_category` fills, Nasdaq US new listings, official masterfile rotation with name-stable ISIN replacements, the `NASDAQ::TCBI` TXSE venue-transfer keep, and the five-levers empty-only coverage overlay plus unified canonical rebuild accumulated since v3.42.0. This remains a `merge` claim, not `stable` or `complete`: official-full contracts stay license-blocked, unresolved source gaps remain explicit (`official_reference_gap` 6588), leftover empty sectors stay empty when official sources do not map, and automation cannot remove or critically recode a listing without exact evidence.
+
+### Added
+
+- Added 20 supported Nasdaq Trader/SEC Stock and ETF listings from 31 newly supported rows. Ten non-common securities remain excluded. Accepted rows include `NASDAQ::BBCI`/`IPHX`/`LUMN`/`SCAT`/`TBCV`/`WQEY`, `NYSE::SKYD`, `NYSE MKT::VJET`, `BATS::SLVI`, and NYSE ARCA `ACYB`/`CPU`/`GMAC`/`HFIX`/`MLRG`/`MSML`/`OAKL`/`RINK`/`SMTJ`/`SPXP`/`UBIQ`.
+- Filled leftover empty core `stock_sector` from listing-keyed official sources only: SEC SIC for NASDAQ/NYSE stocks and NYSE MKT duals that SEC labels as NYSE, `KRX::088980` Financials, HKEX quote-page HSIC after ListOfSecurities ISIN match, TWSE listed-companies industry including `&` spellings, SIX FQS Machinery, BSE ComHeader Sector/Industry, and Euronext ICB industry on Oslo MERK after exact ISIN match. Overlay last-write-wins on `metadata_updates.csv`, then `rebuild_canonical.py`.
+- Filled 4 leftover empty core `etf_category` rows from Cboe U.S. LMM asset class (`BATS::MN` Equity, `BATS::SLVI`/`TRXS`/`BCOM` Other). Did not invent ISINs for those rows.
+
 ### Changed
 
-- Filled 4 empty core `stock_sector` rows from listing-keyed official Euronext ICB industry on Oslo MERK (`OSL::ADS`/`PLCAN`/`VLCC` Industrials, `OSL::GOLDR` Materials) and 4 empty core `etf_category` rows from Cboe U.S. LMM asset class (`BATS::MN` Equity, `BATS::SLVI`/`TRXS`/`BCOM` Other). Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or invent ISINs. TWSE Others, SIX Misc. services, NXAT SIC 7819, and `FSX::CU2` stay empty. VERSION remains 3.42.0.
-- Filled 5 empty core `stock_sector` rows from listing-keyed official BSE ComHeader Sector/Industry: `ASHIKAG`/`FINANCE`/`LEXGLOBAL` Financials and `IMPERA`/`TYPHOON` Consumer Discretionary. Overlay empty-only, then `rebuild_canonical.py`. Skipped INF* hybrid funds, partly-paid `GSAILPP` (empty official Sector), and leftover ticker `HEG` whose official scrip id is now `HEGAM`. TWSE industry code 20 (Others), SIX `Misc. services` including `MED`, NSE Kenya mixed buckets, `NASDAQ::NXAT` SIC 7819, and `FSX::CU2` stay empty. VERSION remains 3.42.0.
-- Filled 3 empty core `stock_sector` rows from listing-keyed official sources: TWSE listed-companies open data industry code 36 for `7835`, and SIX FQS `IndustrySectorDesc` Machinery for `MEDX` and `STRN`. Overlay empty-only, then `rebuild_canonical.py`. TWSE industry code 20 (Others), SIX `Misc. services` including `MED`, NSE Kenya Commercial and Services / Manufacturing and Allied, and `FSX::CU2` stay empty. VERSION remains 3.42.0.
-- Filled 13 empty core `stock_sector` rows from listing-keyed official SEC SIC: NASDAQ/NYSE leftovers that live only on `listings.csv` duals, and NYSE MKT rows that SEC currently labels as NYSE. Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or TradingView. `NASDAQ::NXAT` SIC 7819 stays unmapped. `FSX::CU2` stolen-ISIN clear stays empty. VERSION remains 3.42.0.
-- Filled 8 empty core `stock_sector` rows from listing-keyed official sources: HKEX quote-page HSIC after ListOfSecurities ISIN match (`01256`, `02916`, `02936`, `06802`, `08582`, `08585`) and TWSE ISIN-table `&` industry spellings (`1623` Electrical & Cable, `5546` Building Material&Construction → Industrials). Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or TradingView. TWSE `Others`, HKEX rights without HSIC, PSE HOLDING/SME/RETAIL/mixed energy, and `FSX::CU2` stay empty. VERSION remains 3.42.0.
-- Filled 63 empty core `stock_sector` rows from listing-keyed official sources: SEC SIC for NASDAQ/NYSE stocks, and `KRX::088980` Financials from `krx_listed_companies`. Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or TradingView. The `FSX::CU2` stolen-ISIN clear stays empty. VERSION remains 3.42.0.
+- Coverage metadata updates fill empty listing fields only; explicit clears still apply. Review-batch execute writes overlays, then `rebuild_canonical.py`. `rebuild_dataset.py` delegates to the same canonical rebuild. Core, ticker, and cross listings share one primary-listing function. Entry-quality gate JSON is regenerated from live CSVs.
+- Rotated official masterfiles. Applied evidenced name-stable official ISIN replacements that keep listing identity: `HKEX::08133` `KYG511391719`→`KYG511391974`, `HKEX::08143` `KYG4052M1116`→`KYG4052M1520`, `NSE_IN::BLSE` `INE0NLT01010`→`INE0NLT01028`, `NSE_IN::BUILDPRO` `INE24OJ01011`→`INE24OJ01029`, and `LSE::CHRY` `GG00BGJYPP46`→`GG00C0GC7Q38`.
+- Euronext ICB leftover path accepts unique ICB after exact ISIN match for CY/MT/SG prefixes so Oslo MERK leftovers can fill.
+- Refreshed weekly delisting-candidate report. Applied 0 auto-drops; 275 `master_absent` rows remain manual.
+
+### Fixed
+
+- Kept `NASDAQ::TCBI`: Nasdaq Delete is a TXSE venue transfer, not a company delisting. Applying the drop deleted the only US listing and promoted `FSX::TCA` as the global primary. Restore the listing; TXSE is not a listing venue here.
+- Allowlisted reviewed Nasdaq entry-quality warnings from the 2026-10-08 refresh without dumping official directory names: `BNC` and `HELP` are same-ticker issuer renames; `VRME` and `WKEY` are predecessor lines after `OPNW`/`WQEY` were accepted as new listings.
+- Allowlisted reviewed HKEX parallel-trading and NEO Helus name warnings. Stored `HKEX::00653` remains BONJOUR HOLD, `HKEX::02934` remains SANDMARTIN-OLD (China Sandi temp counter, not a Sandmartin recode), and `NEO::HELP` keeps the Cybin name already reviewed on `NASDAQ::HELP`.
+- Left mixed official buckets unmapped rather than inventing GICS: TWSE industry code 20 Others, SIX `Misc. services`, NSE Kenya mixed buckets, PSE `RETAIL`/HOLDING/SME, CSE Life Sciences/CleanTech/Diversified, JPX Others, Deutsche Boerse dash/empty sectors, ASX `Not Applic`/`Class Pend`, and SIC 7819 (`NASDAQ::NXAT`). `FSX::CU2` stolen-ISIN clear stays empty.
+
+### Safety
+
+- Missing or invalid ISINs, unevidenced removals, critical-field changes, ticker reuse, ambiguous identity transitions, and upstream fetch failures remain fail-closed.
+- Official `stock_sector`/`etf_category` fills do not copy OTC, same-ISIN peers, TradingView, EODHD, or FinanceDatabase.
+- Stolen-ISIN clears blank the identifier; they do not invent a replacement ISIN. `FSX::CU2` stays empty.
+- `NASDAQ::TCBI` is not dropped for a venue this dataset does not list.
+- The 6588 `official_reference_gap` recall was not started. Remainder empty `missing_stock_sector` 668 and `missing_etf_category` 127 stay explicit.
+
+### Verification
+
+- Exact-commit pull-request and post-merge `main` CI passed the compatibility dataset, canonical CSV/PostgreSQL contracts, deterministic rebuild, full regression suite, and strict merge contract for the Nasdaq, delisting, masterfile, five-levers, and leftover official-sector PRs.
+- Rebuild without `--apply-identity-fixes` / `--apply-official-name-updates`. Overlay coverage fields stay empty-only except explicit clears.
+- Snapshot: 65,543 primary tickers, 97,347 listing rows, 64,216 primary ISINs (98.0%), 64,353 sector/category values, 34 entry-quality warnings, and 10,994 source-gap rows. Core empty residuals remain explicit (`missing_stock_sector` 668, `missing_etf_category` 127, `official_reference_gap` 6588). Source registry: 1 `verified_open`, 9 `verified_restricted`, 128 `review_required`.
 
 ## [3.42.0] - 2026-10-08
 
