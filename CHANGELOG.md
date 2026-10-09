@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Filled 63 empty core `stock_sector` rows from listing-keyed official sources: SEC SIC for NASDAQ/NYSE stocks, and `KRX::088980` Financials from `krx_listed_companies`. Overlay empty-only, then `rebuild_canonical.py`. Did not copy OTC, same-ISIN peers, or TradingView. The `FSX::CU2` stolen-ISIN clear stays empty. VERSION remains 3.42.0.
+
 ## [3.42.0] - 2026-10-08
 
 ### Summary

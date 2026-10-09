@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-08T15:20:52Z",
+    "generated_at": "2026-10-08T19:53:00Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -50,10 +50,10 @@
     },
     "taxonomy": {
       "n": 63459,
-      "filled": 62564,
-      "missing": 895,
-      "pct": 98.59,
-      "fills_needed_for_99": 261,
+      "filled": 62627,
+      "missing": 832,
+      "pct": 98.69,
+      "fills_needed_for_99": 198,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -72,7 +72,6 @@
     },
     "missing_sector_by_exchange": {
       "FSX": 258,
-      "NASDAQ": 59,
       "XSTU": 53,
       "HNX": 32,
       "BVB": 31,
@@ -81,8 +80,9 @@
       "BCBA": 23,
       "NSE_IN": 23,
       "BSE_IN": 22,
-      "NYSE": 22,
-      "HKEX": 17
+      "HKEX": 17,
+      "NEO": 17,
+      "LSE": 16
     },
     "missing_category_by_exchange": {
       "TSX": 52,
@@ -104,8 +104,8 @@
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 59543,
-    "source_gap": 3900,
+    "pass": 59599,
+    "source_gap": 3844,
     "warn": 16
   },
   "checks": [
@@ -114,13 +114,10 @@
       "status": "fail",
       "details": {
         "official_isin_mismatch": 7,
-        "official_isin_mismatch_unexpected": 2,
-        "official_isin_mismatch_reviewed_holds": 5,
+        "official_isin_mismatch_unexpected": 0,
+        "official_isin_mismatch_reviewed_holds": 7,
         "open_collision_groups": 7,
-        "sample_mismatch": [
-          "HKEX::00653",
-          "HKEX::02934"
-        ],
+        "sample_mismatch": [],
         "sample_collision_isins": [
           "AU000000TLG7",
           "CA3025862010",
@@ -149,10 +146,10 @@
       "status": "fail",
       "details": {
         "n": 63459,
-        "filled": 62564,
-        "missing": 895,
-        "pct": 98.59,
-        "fills_needed_for_99": 261,
+        "filled": 62627,
+        "missing": 832,
+        "pct": 98.69,
+        "fills_needed_for_99": 198,
         "pass": false
       }
     },
