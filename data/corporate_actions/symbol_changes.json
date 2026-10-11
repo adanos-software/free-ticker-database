@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-07T13:18:58Z",
+    "generated_at": "2026-10-11T12:45:24Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -10,14 +10,14 @@
     "policy": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence."
   },
   "summary": {
-    "fetched_rows": 233,
-    "merged_history_rows": 360,
-    "review_rows": 360,
+    "fetched_rows": 229,
+    "merged_history_rows": 361,
+    "review_rows": 361,
     "match_status_counts": {
       "new_symbol_present_old_symbol_missing": 297,
       "no_matching_listing": 14,
-      "old_and_new_symbols_present": 17,
-      "old_symbol_present_new_symbol_missing": 6,
+      "old_and_new_symbols_present": 19,
+      "old_symbol_present_new_symbol_missing": 5,
       "symbol_present_only_outside_source_scope": 26
     },
     "symbol_change_workflow_queue_counts": {
@@ -25,26 +25,26 @@
       "blocked_missing_source_scope_mapping": 10,
       "blocked_out_of_scope_symbol_collision": 27,
       "document_no_dataset_match": 12,
-      "review_duplicate_or_cross_listing": 13,
-      "review_verified_rename_or_delisting": 3
+      "review_duplicate_or_cross_listing": 15,
+      "review_verified_rename_or_delisting": 2
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 360,
-      "verified_rename_or_delisting_review_rows": 3,
-      "duplicate_or_cross_listing_review_rows": 13,
+      "rows": 361,
+      "verified_rename_or_delisting_review_rows": 2,
+      "duplicate_or_cross_listing_review_rows": 15,
       "already_reflected_audit_rows": 295,
       "out_of_scope_collision_blocked_rows": 27,
       "missing_source_scope_mapping_rows": 10,
       "no_dataset_match_documentation_rows": 12,
-      "time_sensitive_review_rows": 8,
+      "time_sensitive_review_rows": 9,
       "direct_symbol_change_apply_allowed_rows": 0,
       "secondary_feed_apply_authorized": false,
       "source_gate": "Symbol-change feed rows are review signals only; ticker, name, listing, or alias changes require listing-keyed official venue or issuer evidence for old/new symbols and issuer identity."
     },
     "review_bucket_counts": {
-      "action_required_duplicate_or_cross_listing": 13,
-      "action_required_possible_rename_or_delisting": 3,
+      "action_required_duplicate_or_cross_listing": 15,
+      "action_required_possible_rename_or_delisting": 2,
       "already_reflected_in_scope_with_global_symbol_collision": 70,
       "already_reflected_in_source_scope": 225,
       "hold_out_of_scope_symbol_collision": 26,
@@ -53,7 +53,7 @@
       "no_dataset_match_for_source_scope": 12
     },
     "review_priority_counts": {
-      "P1": 16,
+      "P1": 17,
       "P2": 37,
       "P3": 12,
       "P4": 295
@@ -71,13 +71,13 @@
     "recency_bucket_counts": {
       "older_than_90d": 223,
       "recent_30d": 38,
-      "recent_7d": 59,
+      "recent_7d": 60,
       "recent_90d": 40
     },
     "review_priority_recency_counts": {
       "P1:older_than_90d": 6,
       "P1:recent_30d": 2,
-      "P1:recent_7d": 6,
+      "P1:recent_7d": 7,
       "P1:recent_90d": 2,
       "P2:older_than_90d": 24,
       "P2:recent_30d": 4,
@@ -108,9 +108,9 @@
       "document_no_dataset_match:recent_90d": 2,
       "review_duplicate_or_cross_listing:older_than_90d": 6,
       "review_duplicate_or_cross_listing:recent_30d": 2,
-      "review_duplicate_or_cross_listing:recent_7d": 4,
+      "review_duplicate_or_cross_listing:recent_7d": 6,
       "review_duplicate_or_cross_listing:recent_90d": 1,
-      "review_verified_rename_or_delisting:recent_7d": 2,
+      "review_verified_rename_or_delisting:recent_7d": 1,
       "review_verified_rename_or_delisting:recent_90d": 1
     },
     "workflow_queue_priority_counts": {
@@ -118,8 +118,8 @@
       "blocked_missing_source_scope_mapping:P2": 10,
       "blocked_out_of_scope_symbol_collision:P2": 27,
       "document_no_dataset_match:P3": 12,
-      "review_duplicate_or_cross_listing:P1": 13,
-      "review_verified_rename_or_delisting:P1": 3
+      "review_duplicate_or_cross_listing:P1": 15,
+      "review_verified_rename_or_delisting:P1": 2
     },
     "workflow_queue_scope_counts": {
       "audit_already_reflected:global_symbol_collision_outside_source_scope": 70,
@@ -127,8 +127,8 @@
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 10,
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 27,
       "document_no_dataset_match:matches_within_source_scope": 12,
-      "review_duplicate_or_cross_listing:matches_within_source_scope": 13,
-      "review_verified_rename_or_delisting:matches_within_source_scope": 3
+      "review_duplicate_or_cross_listing:matches_within_source_scope": 15,
+      "review_verified_rename_or_delisting:matches_within_source_scope": 2
     },
     "workflow_queue_match_status_counts": {
       "audit_already_reflected:new_symbol_present_old_symbol_missing": 295,
@@ -139,8 +139,8 @@
       "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 1,
       "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 26,
       "document_no_dataset_match:no_matching_listing": 12,
-      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 13,
-      "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 3
+      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 15,
+      "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 2
     },
     "workflow_queue_source_hint_counts": {
       "audit_already_reflected": {
@@ -159,10 +159,10 @@
         "US_LISTED": 7
       },
       "review_duplicate_or_cross_listing": {
-        "US_LISTED": 13
+        "US_LISTED": 15
       },
       "review_verified_rename_or_delisting": {
-        "US_LISTED": 3
+        "US_LISTED": 2
       }
     },
     "workflow_queue_source_confidence_counts": {
@@ -179,17 +179,17 @@
         "secondary_review": 12
       },
       "review_duplicate_or_cross_listing": {
-        "secondary_review": 13
+        "secondary_review": 15
       },
       "review_verified_rename_or_delisting": {
-        "secondary_review": 3
+        "secondary_review": 2
       }
     },
     "workflow_queue_issuer_name_review_counts": {
       "audit_already_reflected": {
-        "feed_name_differs_from_scoped_listing_name": 27,
-        "feed_name_exactly_matches_scoped_listing_name": 165,
-        "feed_name_partially_overlaps_scoped_listing_name": 103
+        "feed_name_differs_from_scoped_listing_name": 25,
+        "feed_name_exactly_matches_scoped_listing_name": 166,
+        "feed_name_partially_overlaps_scoped_listing_name": 104
       },
       "blocked_missing_source_scope_mapping": {
         "feed_name_differs_from_scoped_listing_name": 4,
@@ -206,11 +206,11 @@
       },
       "review_duplicate_or_cross_listing": {
         "feed_name_exactly_matches_scoped_listing_name": 6,
-        "feed_name_partially_overlaps_scoped_listing_name": 7
+        "feed_name_partially_overlaps_scoped_listing_name": 9
       },
       "review_verified_rename_or_delisting": {
         "feed_name_differs_from_scoped_listing_name": 1,
-        "feed_name_partially_overlaps_scoped_listing_name": 2
+        "feed_name_partially_overlaps_scoped_listing_name": 1
       }
     },
     "workflow_queue_listing_key_review_counts": {
@@ -231,10 +231,10 @@
         "no_scoped_listing_key_match": 12
       },
       "review_duplicate_or_cross_listing": {
-        "old_and_new_scoped_listing_keys_present": 13
+        "old_and_new_scoped_listing_keys_present": 15
       },
       "review_verified_rename_or_delisting": {
-        "old_scoped_listing_key_only": 3
+        "old_scoped_listing_key_only": 2
       }
     },
     "workflow_queue_review_strategy_counts": {
@@ -251,10 +251,10 @@
         "document_no_dataset_match_without_canonical_action": 12
       },
       "review_duplicate_or_cross_listing": {
-        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 13
+        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 15
       },
       "review_verified_rename_or_delisting": {
-        "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 3
+        "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 2
       }
     },
     "top_symbol_change_workflow_batches": [
@@ -263,7 +263,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 4,
+        "rows": 6,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -274,7 +274,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 2,
+        "rows": 1,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -527,33 +527,33 @@
       "audit_only_no_apply": 295,
       "blocked_until_exchange_scope_resolved": 37,
       "no_dataset_action_without_scope_mapping": 12,
-      "requires_official_venue_confirmation": 16
+      "requires_official_venue_confirmation": 17
     },
     "symbol_change_apply_readiness_counts": {
       "audit_only_no_canonical_change": 295,
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 16,
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 17,
       "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 37,
       "document_or_ignore_until_scoped_official_dataset_match": 12
     },
     "verification_evidence_required_counts": {
       "audit_only_confirm_no_canonical_change_needed": 295,
-      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 13,
-      "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 3,
+      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 15,
+      "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 2,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 27,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 12,
       "source_exchange_mapping_before_any_symbol_change_review": 10
     },
-    "time_sensitive_review_rows": 8,
+    "time_sensitive_review_rows": 9,
     "time_sensitive_workflow_queue_counts": {
-      "review_duplicate_or_cross_listing": 6,
-      "review_verified_rename_or_delisting": 2
+      "review_duplicate_or_cross_listing": 8,
+      "review_verified_rename_or_delisting": 1
     },
     "time_sensitive_recency_counts": {
       "recent_30d": 2,
-      "recent_7d": 6
+      "recent_7d": 7
     },
     "time_sensitive_apply_readiness_counts": {
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 8
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 9
     },
     "top_time_sensitive_symbol_change_batches": [
       {
@@ -562,7 +562,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_and_new_symbols_present",
         "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
-        "rows": 4,
+        "rows": 6,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -574,7 +574,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_symbol_present_new_symbol_missing",
         "listing_key_review_status": "old_scoped_listing_key_only",
-        "rows": 2,
+        "rows": 1,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -597,16 +597,30 @@
       "already_reflected_or_new_symbol_added_in_source_scope": 297,
       "do_not_apply_from_symbol_match_review_exchange_scope_first": 26,
       "ignore_or_map_exchange_scope_before_applying": 14,
-      "review_duplicate_or_cross_listing_state_in_source_scope": 17,
-      "review_possible_rename_or_delisting_in_source_scope": 6
+      "review_duplicate_or_cross_listing_state_in_source_scope": 19,
+      "review_possible_rename_or_delisting_in_source_scope": 5
     },
     "exchange_scope_status_counts": {
       "global_symbol_collision_outside_source_scope": 97,
-      "matches_within_source_scope": 253,
+      "matches_within_source_scope": 254,
       "unscoped_source_hint": 10
     }
   },
   "symbol_changes": [
+    {
+      "change_id": "d6509d1a0f619a32",
+      "effective_date": "2026-10-09",
+      "old_symbol": "HKIT",
+      "new_symbol": "BDAI",
+      "new_company_name": "Biddance Ai Systems Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/bdai/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-10-11T12:45:24Z"
+    },
     {
       "change_id": "aa9d450097e8d5fd",
       "effective_date": "2026-10-06",
