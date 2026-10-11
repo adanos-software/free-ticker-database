@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Restored official LSE `RE` / `RE-B` ISINs (`GB0002349065` / `GB0007185639`, United Kingdom / `GB`) after overlay last-write-wins re-applied the 2026-09-29 stolen-ISIN clears. Stolen `CA75527Q1081` stays off the LSE rows; `TSXV::RE` / `OTC::RROYF` keep it. `FSX::CU2` stays empty.
+
 ## [3.43.0] - 2026-10-09
 
 ### Summary
