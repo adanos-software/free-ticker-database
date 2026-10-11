@@ -30,6 +30,6 @@ Publish `output/evidence_archive/m2-campaign-evidence.zip` as a one-time evidenc
 
 GitHub releases are tag-triggered by `.github/workflows/release.yml`. Kaggle and Hugging Face publishing steps are guarded by repository variables and secrets:
 
-- `PUBLISH_KAGGLE=true` plus `KAGGLE_USERNAME` / `KAGGLE_KEY`
+- `PUBLISH_KAGGLE=true` plus `KAGGLE_API_TOKEN`
 - `PUBLISH_HUGGINGFACE=true` plus `HF_TOKEN`
 
