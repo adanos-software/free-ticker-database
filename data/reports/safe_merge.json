@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97347,
-    "after_rows": 97374,
+    "before_rows": 97374,
+    "after_rows": 97381,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 6,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,40 +25,10 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "FSX::VRV",
-      "field_name": "country",
-      "old_value": "Sweden",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "FSX::VRV",
-      "field_name": "country_code",
-      "old_value": "SE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "FSX::VRV",
+      "listing_key": "AMS::3DIS",
       "field_name": "isin",
-      "old_value": "SE0018538068",
-      "new_value": "IE000ZVY0237"
-    },
-    {
-      "listing_key": "XETRA::VRV",
-      "field_name": "country",
-      "old_value": "Sweden",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "XETRA::VRV",
-      "field_name": "country_code",
-      "old_value": "SE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "XETRA::VRV",
-      "field_name": "isin",
-      "old_value": "SE0018538068",
-      "new_value": "IE000ZVY0237"
+      "old_value": "XS2335553801",
+      "new_value": "XS3467854462"
     }
   ],
   "generated_official_change_evidence": [],
@@ -76,7 +46,7 @@
     {
       "exchange": "AMS",
       "before_rows": 737,
-      "after_rows": 737,
+      "after_rows": 744,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -633,7 +603,7 @@
     },
     {
       "exchange": "SGX",
-      "before_rows": 632,
+      "before_rows": 638,
       "after_rows": 638,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -795,7 +765,7 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5187,
+      "before_rows": 5208,
       "after_rows": 5208,
       "shrink_pct": 0.0,
       "removed_rows": 0,
