@@ -88,7 +88,7 @@ For later versions:
 kaggle datasets version -p output/public_dataset/kaggle -m "Refresh ticker database"
 ```
 
-The release workflow can run this guarded publishing step automatically when `PUBLISH_KAGGLE=true` and `KAGGLE_USERNAME` / `KAGGLE_KEY` secrets are configured.
+The release workflow can run this guarded publishing step automatically when `PUBLISH_KAGGLE=true` and `KAGGLE_API_TOKEN` is configured.
 
 ## Hugging Face Upload
 

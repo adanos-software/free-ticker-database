@@ -92,6 +92,7 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     release_files = workflow.split("files: |", 1)[1].split("generate_release_notes:", 1)[0]
     assert "data/canonical_v4/manifest.json" not in release_files
     assert "PUBLISH_KAGGLE" in workflow
+    assert "KAGGLE_API_TOKEN" in workflow
     assert "PUBLISH_HUGGINGFACE" in workflow
     assert "git rev-parse HEAD^ >/dev/null 2>&1" in workflow
     assert "cp data/listings.csv /tmp/listings-before.csv" in workflow
