@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97293,
-    "after_rows": 97347,
+    "before_rows": 97347,
+    "after_rows": 97374,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 5,
+    "critical_field_changes": 6,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,34 +25,40 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "HKEX::08133",
-      "field_name": "isin",
-      "old_value": "KYG511391719",
-      "new_value": "KYG511391974"
+      "listing_key": "FSX::VRV",
+      "field_name": "country",
+      "old_value": "Sweden",
+      "new_value": "Ireland"
     },
     {
-      "listing_key": "HKEX::08143",
-      "field_name": "isin",
-      "old_value": "KYG4052M1116",
-      "new_value": "KYG4052M1520"
+      "listing_key": "FSX::VRV",
+      "field_name": "country_code",
+      "old_value": "SE",
+      "new_value": "IE"
     },
     {
-      "listing_key": "LSE::CHRY",
+      "listing_key": "FSX::VRV",
       "field_name": "isin",
-      "old_value": "GG00BGJYPP46",
-      "new_value": "GG00C0GC7Q38"
+      "old_value": "SE0018538068",
+      "new_value": "IE000ZVY0237"
     },
     {
-      "listing_key": "NSE_IN::BLSE",
-      "field_name": "isin",
-      "old_value": "INE0NLT01010",
-      "new_value": "INE0NLT01028"
+      "listing_key": "XETRA::VRV",
+      "field_name": "country",
+      "old_value": "Sweden",
+      "new_value": "Ireland"
     },
     {
-      "listing_key": "NSE_IN::BUILDPRO",
+      "listing_key": "XETRA::VRV",
+      "field_name": "country_code",
+      "old_value": "SE",
+      "new_value": "IE"
+    },
+    {
+      "listing_key": "XETRA::VRV",
       "field_name": "isin",
-      "old_value": "INE24OJ01011",
-      "new_value": "INE24OJ01029"
+      "old_value": "SE0018538068",
+      "new_value": "IE000ZVY0237"
     }
   ],
   "generated_official_change_evidence": [],
@@ -249,7 +255,7 @@
     },
     {
       "exchange": "CSE_LK",
-      "before_rows": 316,
+      "before_rows": 317,
       "after_rows": 317,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -330,7 +336,7 @@
     },
     {
       "exchange": "HKEX",
-      "before_rows": 3198,
+      "before_rows": 3225,
       "after_rows": 3225,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -492,7 +498,7 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3460,
+      "before_rows": 3483,
       "after_rows": 3483,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -546,7 +552,7 @@
     },
     {
       "exchange": "OSL",
-      "before_rows": 313,
+      "before_rows": 314,
       "after_rows": 314,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -627,8 +633,8 @@
     },
     {
       "exchange": "SGX",
-      "before_rows": 630,
-      "after_rows": 632,
+      "before_rows": 632,
+      "after_rows": 638,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -790,7 +796,7 @@
     {
       "exchange": "XETRA",
       "before_rows": 5187,
-      "after_rows": 5187,
+      "after_rows": 5208,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

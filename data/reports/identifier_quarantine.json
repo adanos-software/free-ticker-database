@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-09T08:32:52Z",
+  "generated_at": "2026-10-09T13:12:27Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2006,
-  "decision_rows": 6454,
+  "conflict_count": 2009,
+  "decision_rows": 6468,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1359,
-    "proposed_clear_conflicting_identifier": 1051,
-    "quarantined_unresolved_identifier": 4044
+    "kept_listing_keyed_identifier": 1358,
+    "proposed_clear_conflicting_identifier": 1049,
+    "quarantined_unresolved_identifier": 4061
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1051,
-  "quarantined_rows": 4044,
-  "retained_rows": 1359,
+  "proposed_clear_rows": 1049,
+  "quarantined_rows": 4061,
+  "retained_rows": 1358,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -29837,6 +29837,45 @@
       "retained_isin": "IE000XZSV718"
     },
     {
+      "conflict_id": "11940653c572f201b36c",
+      "isin": "IE000YDZG487",
+      "listing_key": "LSE::HNSC",
+      "ticker": "HNSC",
+      "exchange": "LSE",
+      "name": "HSBC NASDAQ Global Semiconductor UCITS ETF USD",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE000YDZG487"
+    },
+    {
+      "conflict_id": "11940653c572f201b36c",
+      "isin": "IE000YDZG487",
+      "listing_key": "LSE::HNSS",
+      "ticker": "HNSS",
+      "exchange": "LSE",
+      "name": "HSBC NASDAQ Global Semiconductor UCITS ETF USD GBP",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE000YDZG487"
+    },
+    {
+      "conflict_id": "11940653c572f201b36c",
+      "isin": "IE000YDZG487",
+      "listing_key": "XETRA::HNSC",
+      "ticker": "HNSC",
+      "exchange": "XETRA",
+      "name": "HSBC NASDAQ GL SEMIC.",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE000YDZG487"
+    },
+    {
       "conflict_id": "813bfc9f7f0f39e45577",
       "isin": "IE000Z9SJA06",
       "listing_key": "LSE::XDPP",
@@ -32710,6 +32749,71 @@
       "retained_isin": "IE00BHXMHK04"
     },
     {
+      "conflict_id": "efcbe0a52e01e1ca61c2",
+      "isin": "IE00BJ0KDQ92",
+      "listing_key": "FSX::XDWD",
+      "ticker": "XDWD",
+      "exchange": "FSX",
+      "name": "db x-trackers MSCI World Index UCITS DR 1C",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BJ0KDQ92"
+    },
+    {
+      "conflict_id": "efcbe0a52e01e1ca61c2",
+      "isin": "IE00BJ0KDQ92",
+      "listing_key": "LSE::XDWD",
+      "ticker": "XDWD",
+      "exchange": "LSE",
+      "name": "Xtrackers MSCI World UCITS ETF 1C",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BJ0KDQ92"
+    },
+    {
+      "conflict_id": "efcbe0a52e01e1ca61c2",
+      "isin": "IE00BJ0KDQ92",
+      "listing_key": "LSE::XWLD",
+      "ticker": "XWLD",
+      "exchange": "LSE",
+      "name": "db x-trackers MSCI World Index UCITS DR 1C",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BJ0KDQ92"
+    },
+    {
+      "conflict_id": "efcbe0a52e01e1ca61c2",
+      "isin": "IE00BJ0KDQ92",
+      "listing_key": "SGX::XWR",
+      "ticker": "XWR",
+      "exchange": "SGX",
+      "name": "XT MS World SGD",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BJ0KDQ92"
+    },
+    {
+      "conflict_id": "efcbe0a52e01e1ca61c2",
+      "isin": "IE00BJ0KDQ92",
+      "listing_key": "XETRA::XDWD",
+      "ticker": "XDWD",
+      "exchange": "XETRA",
+      "name": "db x-trackers MSCI World Index UCITS DR 1C",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BJ0KDQ92"
+    },
+    {
       "conflict_id": "862ac3c6e7bb8038f9bd",
       "isin": "IE00BJ5JMP33",
       "listing_key": "BMV::IB1MXXN",
@@ -33124,6 +33228,84 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "IE00BKX55T58"
+    },
+    {
+      "conflict_id": "a2fe7557b827a13a2493",
+      "isin": "IE00BLNMYC90",
+      "listing_key": "LSE::XDEW",
+      "ticker": "XDEW",
+      "exchange": "LSE",
+      "name": "Xtrackers S&P 500 Equal Weight UCITS ETF 1C",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BLNMYC90"
+    },
+    {
+      "conflict_id": "a2fe7557b827a13a2493",
+      "isin": "IE00BLNMYC90",
+      "listing_key": "LSE::XDWE",
+      "ticker": "XDWE",
+      "exchange": "LSE",
+      "name": "Xtrackers (IE) Public Limited Company - Xtrackers S&P 500 Equal Weight UCITS ETF",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BLNMYC90"
+    },
+    {
+      "conflict_id": "a2fe7557b827a13a2493",
+      "isin": "IE00BLNMYC90",
+      "listing_key": "OTC::CPTFF",
+      "ticker": "CPTFF",
+      "exchange": "OTC",
+      "name": "Xtrackers (IE) Public Limited Company - Xtrackers S&P 500 Equal Weight UCITS ETF",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BLNMYC90"
+    },
+    {
+      "conflict_id": "a2fe7557b827a13a2493",
+      "isin": "IE00BLNMYC90",
+      "listing_key": "SGX::EUS",
+      "ticker": "EUS",
+      "exchange": "SGX",
+      "name": "XT S&P 500 EW SGD",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BLNMYC90"
+    },
+    {
+      "conflict_id": "a2fe7557b827a13a2493",
+      "isin": "IE00BLNMYC90",
+      "listing_key": "SIX::XDEW",
+      "ticker": "XDEW",
+      "exchange": "SIX",
+      "name": "Xtrackers S&P 500 Equal Weight UCITS ETF 1C",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BLNMYC90"
+    },
+    {
+      "conflict_id": "a2fe7557b827a13a2493",
+      "isin": "IE00BLNMYC90",
+      "listing_key": "XETRA::XDEW",
+      "ticker": "XDEW",
+      "exchange": "XETRA",
+      "name": "Xtrackers S&P 500 Equal Weight UCITS ETF 1C EUR",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00BLNMYC90"
     },
     {
       "conflict_id": "59abe39d9caa43cb324d",
@@ -82390,9 +82572,9 @@
       "exchange": "FSX",
       "name": "Warner Bros. Discovery Inc.",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US9344231041"
     },
     {
@@ -82403,9 +82585,9 @@
       "exchange": "NASDAQ",
       "name": "Warner Bros Discovery Inc",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US9344231041"
     },
     {
@@ -82416,9 +82598,9 @@
       "exchange": "XETRA",
       "name": "WB DISCOVERY SER.A DL-,01",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US9344231041"
     },
     {

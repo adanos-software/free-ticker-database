@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99879,
-    "matched": 70095,
-    "collisions": 11465,
-    "missing": 18319
+    "official_symbols": 99719,
+    "matched": 70045,
+    "collisions": 11490,
+    "missing": 18184
   },
   "exchanges": [
     {
@@ -1547,10 +1547,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18226,
-      "matched": 7955,
-      "collisions": 4278,
-      "missing": 5993,
+      "official_symbols": 18034,
+      "matched": 7883,
+      "collisions": 4290,
+      "missing": 5861,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -2337,8 +2337,8 @@
       "exchange": "LSE",
       "official_symbols": 11184,
       "matched": 6813,
-      "collisions": 867,
-      "missing": 3504,
+      "collisions": 871,
+      "missing": 3500,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -4199,10 +4199,10 @@
     },
     {
       "exchange": "SET",
-      "official_symbols": 942,
+      "official_symbols": 943,
       "matched": 771,
       "collisions": 134,
-      "missing": 37,
+      "missing": 38,
       "collision_examples": [
         {
           "ticker": "AAI",
@@ -4345,9 +4345,9 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 748,
-      "matched": 626,
-      "collisions": 122,
+      "official_symbols": 759,
+      "matched": 632,
+      "collisions": 127,
       "missing": 0,
       "collision_examples": [
         {
@@ -4356,6 +4356,14 @@
           "target_exchange": "SGX",
           "existing_exchanges": [
             "Euronext"
+          ]
+        },
+        {
+          "ticker": "9DC",
+          "name": "Deluge",
+          "target_exchange": "SGX",
+          "existing_exchanges": [
+            "FSX"
           ]
         },
         {
@@ -4427,15 +4435,6 @@
           "name": "United Food",
           "target_exchange": "SGX",
           "existing_exchanges": [
-            "TSXV"
-          ]
-        },
-        {
-          "ticker": "AZT",
-          "name": "NutryFarm",
-          "target_exchange": "SGX",
-          "existing_exchanges": [
-            "OSL",
             "TSXV"
           ]
         }
@@ -5258,9 +5257,9 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5129,
-      "matched": 4954,
-      "collisions": 173,
+      "official_symbols": 5149,
+      "matched": 4970,
+      "collisions": 177,
       "missing": 2,
       "collision_examples": [
         {
