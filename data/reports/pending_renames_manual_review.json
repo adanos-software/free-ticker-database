@@ -1,6 +1,40 @@
 {
-  "generated_at": "2026-10-05T16:13:31Z",
+  "generated_at": "2026-10-12T16:51:42Z",
   "manual_review_items": [
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-10-09",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Biddance Ai Systems Inc",
+      "new_listing_keys": "",
+      "new_symbol": "BDAI",
+      "old_listing_keys": "NASDAQ::HKIT",
+      "old_symbol": "HKIT",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
+      "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::GWH",
+      "effective_date": "2026-10-06",
+      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
+      "match_status": "symbol_present_only_outside_source_scope",
+      "new_company_name": "Ess Tech Inc",
+      "new_listing_keys": "",
+      "new_symbol": "GWHT",
+      "old_listing_keys": "NYSE::GWH",
+      "old_symbol": "GWH",
+      "source_exchange_hint": "OTC",
+      "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
       "apply_status_source": "available",
@@ -258,5 +292,5 @@
     }
   ],
   "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
-  "rows": 15
+  "rows": 17
 }

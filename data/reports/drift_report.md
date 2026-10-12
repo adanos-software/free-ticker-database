@@ -1,13 +1,15 @@
 # Drift / freshness report
 
-Generated: 2026-10-05T16:13:31Z
-Dataset built_at: 2026-10-04T12:15:19Z (1.2 days ago; threshold 45.0)
+Generated: 2026-10-12T16:51:42Z
+Dataset built_at: 2026-10-11T11:19:20Z (1.2 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
-- Triage sources: {'symbol_changes_review': 15}
+- Triage sources: {'symbol_changes_review': 17}
 
-## Blocked/manual rename review rows: 15
+## Blocked/manual rename review rows: 17
+- HKIT -> BDAI (Biddance Ai Systems Inc, 2026-10-09): Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.
+- GWH -> GWHT (Ess Tech Inc, 2026-10-06): blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::GWH
 - BGI -> BGICF (Birks Group Inc, 2026-08-27): blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: TSX::BGI
 - EQR -> VRMK (Vivmark Residential, 2026-08-18): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 - NCL -> NCLX (Northann Corp, 2026-08-13): blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: FSX::NCL|NYSE::NCL|SET::NCL|WSE::NCL|XSTU::NCL
@@ -25,22 +27,30 @@ Dataset built_at: 2026-10-04T12:15:19Z (1.2 days ago; threshold 45.0)
 - WW -> WGHTQ (Ww International Inc, 2025-05-15): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 
 ## Quality indicators (release-gate info counts)
-- allowed_warn_rows: 39
-- expected_missing_primary_isin: 1154
-- missing_etf_category: 511
-- missing_stock_sector: 3950
-- source_gap_rows: 14675
+- allowed_warn_rows: 34
+- expected_missing_primary_isin: 665
+- missing_etf_category: 143
+- missing_stock_sector: 669
+- source_gap_rows: 11075
 
-## Quality regressions: 4
-- source_gap_rows: 14483 -> 14675 (+192)
-- expected_missing_primary_isin: 1076 -> 1154 (+78)
-- missing_stock_sector: 3933 -> 3950 (+17)
-- missing_etf_category: 435 -> 511 (+76)
+## Quality regressions: 0
 
-## Official recall regressions: 4
-- NASDAQ official_recall_missing: 1044 -> 1048 (+4)
-- NASDAQ collision_adjusted_recall_missing: 983 -> 986 (+3)
-- NYSE MKT official_recall_missing: 79 -> 80 (+1)
-- NYSE MKT collision_adjusted_recall_missing: 46 -> 47 (+1)
+## Official recall regressions: 16
+- Borsa Italiana official_recall_missing: 2656 -> 2658 (+2)
+- Borsa Italiana collision_adjusted_recall_missing: 759 -> 760 (+1)
+- KOSDAQ official_recall_missing: 230 -> 233 (+3)
+- KOSDAQ collision_adjusted_recall_missing: 227 -> 230 (+3)
+- KRX official_recall_missing: 160 -> 161 (+1)
+- KRX collision_adjusted_recall_missing: 146 -> 147 (+1)
+- LSE official_recall_missing: 4349 -> 4371 (+22)
+- LSE collision_adjusted_recall_missing: 3492 -> 3500 (+8)
+- PSE official_recall_missing: 212 -> 214 (+2)
+- PSE collision_adjusted_recall_missing: 92 -> 94 (+2)
+- SET official_recall_missing: 171 -> 172 (+1)
+- SET collision_adjusted_recall_missing: 37 -> 38 (+1)
+- SGX official_recall_missing: 124 -> 127 (+3)
+- TXSE official_recall_missing: 5 -> 16 (+11)
+- TXSE collision_adjusted_recall_missing: 2 -> 7 (+5)
+- XETRA official_recall_missing: 175 -> 179 (+4)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._
