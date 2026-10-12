@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-10-08T15:08:15Z
+Generated: 2026-10-12T17:00:51Z
 
 **delisting_detected: True**
 
 Markets checked: US, ASX, NSE_IN, US_NASDAQ_DELETES
 Markets skipped: TSE (fetch failed: XLRDError); BSE_IN (fetch failed: JSONDecodeError: Expecting value: line 1 column 1 (char 0))
 
-Candidates: 276 (delisted=1, suspended=0, master_absent=275)
+Candidates: 279 (delisted=1, suspended=0, master_absent=278)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -172,6 +172,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | GOCO | master_absent | GoHealth Inc. | US38046W2044 |
 | NASDAQ | GV | master_absent | Visionary Education Technology Holdings  | CA92838F2008 |
 | NASDAQ | HEPA | master_absent | Hepion Pharmaceuticals Inc | US4268971045 |
+| NASDAQ | HKIT | master_absent | Hitek Global Inc. Ordinary Share | KYG451391216 |
 | NASDAQ | HWH | master_absent | HWH International Inc | US44852G1013 |
 | NASDAQ | IPCX | master_absent | Inflection Point Acquisition Corp. III C | KYG478751020 |
 | NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
@@ -181,6 +182,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | LESL | master_absent | Leslies Inc | US5270642086 |
 | NASDAQ | LPRO | master_absent | Open Lending Corp | US68373J1043 |
 | NASDAQ | LYRA | master_absent | Lyra Therapeutics Inc | US55234L1052 |
+| NASDAQ | MAMK | master_absent | MaxsMaking Inc. Class A Ordinary Shares | VGG6053R1064 |
 | NASDAQ | MAPS | master_absent | WM Technology Inc | US92971A1097 |
 | NASDAQ | MAXN | master_absent | Maxeon Solar Technologies Ltd | SGXZ57724486 |
 | NASDAQ | MEHA | master_absent | Functional Brands, Inc. Common Stock | US3609481037 |
@@ -192,6 +194,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | NSTS | master_absent | NSTS Bancorp Inc | US6293JP1094 |
 | NASDAQ | NUTR | master_absent | Nusatrip Incorporated Common Stock | US67119K1025 |
 | NASDAQ | NUVL | master_absent | Nuvalent Inc | US6707031075 |
+| NASDAQ | NVNI | master_absent | Nvni Group Limited Ordinary Shares | KYG507161282 |
 | NASDAQ | NVVE | master_absent | Nuvve Holding Corp | US67079Y4070 |
 | NASDAQ | OLPX | master_absent | Olaplex Holdings Inc | US6793691089 |
 | NASDAQ | ORGN | master_absent | Origin Materials Inc | US68622D1063 |
@@ -203,14 +206,11 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | PSKY | master_absent | Paramount Skydance Corporation Class B C | US69932A2042 |
 | NASDAQ | PTNM | master_absent | Pitanium Ltd | VGG7111A1012 |
 | NASDAQ | QMMM | master_absent | QMMM Holdings Limited Ordinary Shares | KYG7309R1149 |
+| NASDAQ | QNCX | master_absent | Quince Therapeutics, Inc. | US22053A2069 |
 | NASDAQ | QRVO | master_absent | Qorvo Inc | US74736K1016 |
 | NASDAQ | QVC | master_absent | QVC Group, Inc. - Common Stock |  |
 | NASDAQ | QVCAQ | master_absent | QVC Group Inc | US74915M6057 |
 | NASDAQ | REE | master_absent | Ree Automotive Holding Inc | IL0011786154 |
 | NASDAQ | RITR | master_absent | Reitar Logtech Holdings Limited Ordinary | KYG7486B1068 |
 | NASDAQ | RVPH | master_absent | Reviva Pharmaceuticals Holdings Inc. | US76152G2093 |
-| NASDAQ | SDM | master_absent | Smart Digital Group Limited Ordinary Sha | KYG5006S1049 |
-| NASDAQ | SGMO | master_absent | Sangamo Therapeutics Inc | US8006771062 |
-| NASDAQ | SGRP | master_absent | SPAR Group Inc | US7849331035 |
-| NASDAQ | SKYT | master_absent | Skywater Technology Inc | US83089J1088 |
-| … | … | … | (+76 more) | |
+| … | … | … | (+79 more) | |

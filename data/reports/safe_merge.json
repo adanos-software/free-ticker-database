@@ -6,63 +6,46 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97347,
-    "after_rows": 97374,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "before_rows": 97374,
+    "after_rows": 97373,
+    "overall_shrink_pct": 0.001027,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 6,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::XRPN"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "FSX::VRV",
-      "field_name": "country",
-      "old_value": "Sweden",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "FSX::VRV",
-      "field_name": "country_code",
-      "old_value": "SE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "FSX::VRV",
-      "field_name": "isin",
-      "old_value": "SE0018538068",
-      "new_value": "IE000ZVY0237"
-    },
-    {
-      "listing_key": "XETRA::VRV",
-      "field_name": "country",
-      "old_value": "Sweden",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "XETRA::VRV",
-      "field_name": "country_code",
-      "old_value": "SE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "XETRA::VRV",
-      "field_name": "isin",
-      "old_value": "SE0018538068",
-      "new_value": "IE000ZVY0237"
+      "listing_key": "NASDAQ::XRPN",
+      "ticker": "XRPN",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Armada Acquisition Corp. II",
+      "new_value": "",
+      "before_row_sha256": "da35a892b5118390d4e28b6729ce6c7a5abc84b88c74f1f0de277e569f5381f3",
+      "effective_at": "",
+      "observed_at": "2026-10-12T17:02:49Z",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "source_report": "data/reports/delisting_transitions.csv",
+      "observation_id": "6789ec450466bf37cae0bfab",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -463,9 +446,9 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4812,
-      "after_rows": 4812,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 4811,
+      "shrink_pct": 0.020781,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -633,7 +616,7 @@
     },
     {
       "exchange": "SGX",
-      "before_rows": 632,
+      "before_rows": 638,
       "after_rows": 638,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -795,7 +778,7 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5187,
+      "before_rows": 5208,
       "after_rows": 5208,
       "shrink_pct": 0.0,
       "removed_rows": 0,
