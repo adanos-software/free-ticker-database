@@ -1,25 +1,34 @@
 {
   "summary": {
-    "generated_at": "2026-10-11T12:45:34Z",
+    "generated_at": "2026-10-13T14:07:47Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 361,
+    "blocked_rows": 364,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 6,
-      "blocked_new_symbol_not_active_in_official_master": 3,
+      "blocked_new_symbol_not_active_in_official_master": 4,
       "blocked_old_symbol_not_unique_in_us_scope": 292,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_non_us_or_unscoped_source": 48,
       "manual_successor_exists_missing_isin": 2,
-      "manual_transition_or_shell_name": 3
+      "manual_successor_isin_mismatch": 1,
+      "manual_transition_or_shell_name": 4
     }
   },
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "84c31360eba1c627",
+      "effective_date": "2026-10-12",
+      "old_symbol": "QNCX",
+      "new_symbol": "IRLA",
+      "new_company_name": "Irulya Therapeutics Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
     {
       "change_id": "d6509d1a0f619a32",
       "effective_date": "2026-10-09",
@@ -33,7 +42,7 @@
       "effective_date": "2026-10-06",
       "old_symbol": "PSKY",
       "new_symbol": "SKYD",
-      "new_company_name": "Paramount Skydance Corp",
+      "new_company_name": "Skydance Corp",
       "status": "manual_cross_venue_ticker_reuse"
     },
     {
@@ -43,6 +52,14 @@
       "new_symbol": "GWHT",
       "new_company_name": "Ess Tech Inc",
       "status": "manual_non_us_or_unscoped_source"
+    },
+    {
+      "change_id": "4b165a57583810d5",
+      "effective_date": "2026-10-05",
+      "old_symbol": "WKEY",
+      "new_symbol": "WQEY",
+      "new_company_name": "Wiseqey Corp",
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "1d84e63c94cdaa40",
@@ -73,8 +90,8 @@
       "effective_date": "2026-09-28",
       "old_symbol": "FGNX",
       "new_symbol": "FGC",
-      "new_company_name": "Fg Nexus Inc",
-      "status": "blocked_new_symbol_collision"
+      "new_company_name": "Fg Communities Holdings Inc",
+      "status": "manual_transition_or_shell_name"
     },
     {
       "change_id": "bcfe6c93c245a418",
@@ -187,6 +204,14 @@
       "new_symbol": "PAAI",
       "new_company_name": "Paradiumai Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "90140bbb83debedd",
+      "effective_date": "2026-08-28",
+      "old_symbol": "BCAR",
+      "new_symbol": "XLAB",
+      "new_company_name": "Exascale Labs Holdings Inc",
+      "status": "manual_successor_isin_mismatch"
     },
     {
       "change_id": "21a75e050a955da0",
@@ -441,7 +466,7 @@
       "effective_date": "2026-07-16",
       "old_symbol": "WAI",
       "new_symbol": "DPU",
-      "new_company_name": "Top Kingwin Ltd.",
+      "new_company_name": "Nexpu Ltd.",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -801,7 +826,7 @@
       "effective_date": "2026-05-18",
       "old_symbol": "AGH",
       "new_symbol": "PUSA",
-      "new_company_name": "Aureus Greenway Holdings Inc",
+      "new_company_name": "Powerus Corp",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -1489,7 +1514,7 @@
       "effective_date": "2026-01-05",
       "old_symbol": "CYBN",
       "new_symbol": "HELP",
-      "new_company_name": "Cybin Inc",
+      "new_company_name": "Helus Pharma Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
