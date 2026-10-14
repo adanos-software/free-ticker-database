@@ -1,9 +1,9 @@
 # Symbol Changes Apply
 
-- Generated at: `2026-10-13T14:07:47Z`
+- Generated at: `2026-10-14T11:48:03Z`
 - Dry run: `false`
 - Accepted rows: `0`
-- Blocked/manual rows: `364`
+- Blocked/manual rows: `366`
 
 ## Accepted
 
@@ -20,4 +20,4 @@ No rename rows satisfied the official-evidence apply gate.
 | manual_non_us_or_unscoped_source | 48 |
 | manual_successor_exists_missing_isin | 2 |
 | manual_successor_isin_mismatch | 1 |
-| manual_transition_or_shell_name | 4 |
+| manual_transition_or_shell_name | 6 |
