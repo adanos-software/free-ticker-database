@@ -1,17 +1,18 @@
 {
   "summary": {
-    "generated_at": "2026-10-14T11:48:03Z",
+    "generated_at": "2026-10-15T11:24:17Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 366,
+    "blocked_rows": 367,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 6,
       "blocked_new_symbol_not_active_in_official_master": 4,
       "blocked_old_symbol_not_unique_in_us_scope": 292,
       "manual_cross_venue_ticker_reuse": 7,
+      "manual_missing_isin": 1,
       "manual_non_us_or_unscoped_source": 48,
       "manual_successor_exists_missing_isin": 2,
       "manual_successor_isin_mismatch": 1,
@@ -21,6 +22,14 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "f7b8af16a0a268e7",
+      "effective_date": "2026-10-13",
+      "old_symbol": "SKK",
+      "new_symbol": "RNTZ",
+      "new_company_name": "Rantizo Inc",
+      "status": "manual_missing_isin"
+    },
     {
       "change_id": "84c31360eba1c627",
       "effective_date": "2026-10-12",
