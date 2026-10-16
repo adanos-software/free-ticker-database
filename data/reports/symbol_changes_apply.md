@@ -1,9 +1,9 @@
 # Symbol Changes Apply
 
-- Generated at: `2026-10-15T11:24:17Z`
+- Generated at: `2026-10-16T11:18:59Z`
 - Dry run: `false`
 - Accepted rows: `0`
-- Blocked/manual rows: `367`
+- Blocked/manual rows: `369`
 
 ## Accepted
 
@@ -14,11 +14,11 @@ No rename rows satisfied the official-evidence apply gate.
 | Status | Rows |
 |---|---:|
 | blocked_new_symbol_collision | 6 |
-| blocked_new_symbol_not_active_in_official_master | 4 |
+| blocked_new_symbol_not_active_in_official_master | 5 |
 | blocked_old_symbol_not_unique_in_us_scope | 292 |
 | manual_cross_venue_ticker_reuse | 7 |
 | manual_missing_isin | 1 |
 | manual_non_us_or_unscoped_source | 48 |
 | manual_successor_exists_missing_isin | 2 |
 | manual_successor_isin_mismatch | 1 |
-| manual_transition_or_shell_name | 6 |
+| manual_transition_or_shell_name | 7 |
