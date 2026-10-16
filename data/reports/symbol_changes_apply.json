@@ -1,22 +1,22 @@
 {
   "summary": {
-    "generated_at": "2026-10-15T11:24:17Z",
+    "generated_at": "2026-10-16T11:18:59Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 367,
+    "blocked_rows": 369,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 6,
-      "blocked_new_symbol_not_active_in_official_master": 4,
+      "blocked_new_symbol_not_active_in_official_master": 5,
       "blocked_old_symbol_not_unique_in_us_scope": 292,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_isin": 1,
       "manual_non_us_or_unscoped_source": 48,
       "manual_successor_exists_missing_isin": 2,
       "manual_successor_isin_mismatch": 1,
-      "manual_transition_or_shell_name": 6
+      "manual_transition_or_shell_name": 7
     }
   },
   "accepted": [],
@@ -29,6 +29,14 @@
       "new_symbol": "RNTZ",
       "new_company_name": "Rantizo Inc",
       "status": "manual_missing_isin"
+    },
+    {
+      "change_id": "8bf1f919279a1589",
+      "effective_date": "2026-10-13",
+      "old_symbol": "MIMI",
+      "new_symbol": "AXNX",
+      "new_company_name": "Axonex Ai Group Ltd.",
+      "status": "blocked_new_symbol_not_active_in_official_master"
     },
     {
       "change_id": "84c31360eba1c627",
@@ -84,6 +92,14 @@
       "old_symbol": "VACI",
       "new_symbol": "NSTR",
       "new_company_name": "Northstar Earth & Space Enterprises Inc",
+      "status": "manual_transition_or_shell_name"
+    },
+    {
+      "change_id": "b3462d548464af7b",
+      "effective_date": "2026-10-02",
+      "old_symbol": "COLA",
+      "new_symbol": "SAIQ",
+      "new_company_name": "Wisesatspace Holdings Corp",
       "status": "manual_transition_or_shell_name"
     },
     {
