@@ -1,21 +1,21 @@
 # Source Gap Classification
 
-Generated at: `2026-10-11T11:19:32Z`
+Generated at: `2026-10-11T12:47:06Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Official reference-gap rows classified: `6667`
+- Official reference-gap rows classified: `6671`
 - Missing primary ISIN rows classified: `663`
 - Missing stock-sector rows classified: `1070`
-- Missing ETF-category rows classified: `136`
+- Missing ETF-category rows classified: `139`
 
 ## Top Classes
 
 | Class | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 5517 |
+| official_reference_unmatched_source_gap | 5521 |
 | official_reference_symbol_collision_gap | 1150 |
 | otc_sector_source_gap | 552 |
 | official_industry_taxonomy_unavailable_gap | 430 |
@@ -24,11 +24,11 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | debt_or_securitized_identifier_gap | 84 |
 | official_product_taxonomy_unavailable_gap | 66 |
 | exchange_industry_source_gap | 59 |
+| equity_etf_category_gap | 43 |
 | adr_cdr_or_depositary_identifier_gap | 42 |
-| equity_etf_category_gap | 41 |
 | capital_pool_or_halted_identifier_gap | 32 |
 | inactive_or_legacy_identifier_gap | 20 |
-| fixed_income_etf_category_gap | 18 |
+| fixed_income_etf_category_gap | 19 |
 | fundlike_stock_sector_gap | 18 |
 | official_identifier_reference_unmatched_gap | 11 |
 | commodity_etf_category_gap | 8 |
@@ -42,10 +42,10 @@ This report classifies residual metadata gaps after official and reviewed free-s
 |---|---|---|---:|---|---|
 | official_reference_gap | official_reference_unmatched_source_gap | OTC | 3104 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | missing_sector_stock | otc_sector_source_gap | OTC | 552 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
-| official_reference_gap | official_reference_unmatched_source_gap | B3 | 338 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | B3 | 339 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | FSX | 234 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | official_reference_gap | official_reference_unmatched_source_gap | FSX | 231 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| official_reference_gap | official_reference_symbol_collision_gap | AMS | 169 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
+| official_reference_gap | official_reference_symbol_collision_gap | AMS | 170 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_symbol_collision_gap | BMV | 165 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_unmatched_source_gap | BVB | 165 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_symbol_collision_gap | OTC | 151 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
@@ -58,7 +58,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_gap | official_reference_unmatched_source_gap | TSXV | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | missing_isin_primary | fund_or_trust_identifier_gap | TSX | 83 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | official_reference_gap | official_reference_unmatched_source_gap | LSE | 83 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| official_reference_gap | official_reference_unmatched_source_gap | Euronext | 79 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | Euronext | 80 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | TASE | 75 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 
 ## Release Policy
