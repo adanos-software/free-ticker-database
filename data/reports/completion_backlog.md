@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-10-09T13:19:16Z`
+Generated at: `2026-10-12T17:05:33Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `665`
-- Missing stock sectors: `1071`
+- Missing primary ISIN rows: `663`
+- Missing stock sectors: `1070`
 - Missing ETF categories: `136`
 - Official symbol collisions tracked in exchange references: `11490`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4825`
@@ -17,7 +17,7 @@ Generated at: `2026-10-09T13:19:16Z`
 | 1 | OTC | missing_sector_stock | 552 | candidate_for_official_followup | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | yes |
 | 2 | TSX | missing_isin_primary | 128 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 3 | ASX | missing_isin_primary | 98 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
-| 4 | FSX | missing_sector_stock | 240 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
+| 4 | FSX | missing_sector_stock | 239 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
 | 5 | TSXV | missing_isin_primary | 73 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 6 | NYSE ARCA | missing_isin_primary | 64 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
 | 7 | NASDAQ | missing_isin_primary | 58 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
@@ -51,7 +51,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
 | 1 | OTC | Stock | 552 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
-| 2 | FSX | Stock | 240 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 2 | FSX | Stock | 239 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 3 | XSTU | Stock | 42 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 4 | HNX | Stock | 32 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 5 | BVB | Stock | 30 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -82,7 +82,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
 | 1 | OTC | 552 | 552 | 0 | official_full |
-| 2 | FSX | 240 | 240 | 0 | official_full |
+| 2 | FSX | 239 | 239 | 0 | official_full |
 | 3 | TSX | 51 | 0 | 51 | official_full |
 | 4 | XSTU | 42 | 42 | 0 | missing |
 | 5 | HNX | 32 | 32 | 0 | official_full |
