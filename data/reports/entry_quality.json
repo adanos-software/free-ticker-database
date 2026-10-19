@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-11T11:19:29Z",
-    "rows": 97374,
+    "generated_at": "2026-10-19T15:03:03Z",
+    "rows": 97370,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,15 +14,15 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86266,
+      "pass": 86262,
       "source_gap": 11074,
       "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4562,
-      "official_reference": 87420,
+      "identifier_enriched": 4563,
+      "official_reference": 87416,
       "scoped_source_gap": 272,
-      "valid_isin": 5120
+      "valid_isin": 5119
     },
     "severity_counts": {
       "high": 10,
@@ -68,7 +68,7 @@
       {
         "exchange": "NASDAQ",
         "source_gap": 255,
-        "pass": 4551,
+        "pass": 4549,
         "warn": 6
       },
       {
