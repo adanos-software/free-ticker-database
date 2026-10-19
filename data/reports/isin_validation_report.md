@@ -1,17 +1,17 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-09-28T16:24:30Z
+Generated: 2026-10-19T15:08:14Z
 
 **isin_issues_detected: True**
 
-ISINs validated: 63783 | match=61929 mismatch=123 no_data=1731
+ISINs validated: 64241 | match=62380 mismatch=125 no_data=1736
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `123` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1731` (provider coverage gap)
+- Mismatch residuals: `125` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1736` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
@@ -27,11 +27,12 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | TSX | 4 |
 | CSE_LK | 3 |
 | Euronext | 3 |
+| NYSE | 3 |
 | NYSE ARCA | 3 |
 | SGX | 3 |
 | TSXV | 3 |
 | B3 | 2 |
-| NYSE | 2 |
+| FSX | 2 |
 | SIX | 2 |
 | TADAWUL | 2 |
 | WSE | 2 |
@@ -41,7 +42,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | BATS | 1 |
 | BIST | 1 |
 | CSE_MA | 1 |
-| FSX | 1 |
 | JSE | 1 |
 | NSE_KE | 1 |
 | OSL | 1 |
@@ -61,17 +61,18 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | BATS | 69 |
 | ASX | 39 |
 | EGX | 28 |
-| BSE_IN | 25 |
+| BSE_IN | 26 |
 | FSX | 23 |
 | SET | 17 |
 | JSE | 15 |
-| NYSE | 14 |
+| NYSE | 15 |
+| HKEX | 9 |
 | NGX | 9 |
-| HKEX | 7 |
 | SZSE | 6 |
+| CSE_LK | 5 |
 | CSE_MA | 5 |
 | LSE | 5 |
-| CSE_LK | 4 |
+| SGX | 4 |
 | SSE_CL | 4 |
 | STO | 4 |
 | ATHEX | 3 |
@@ -80,7 +81,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | NEO | 3 |
 | NSE_KE | 3 |
 | NYSE MKT | 3 |
-| OSL | 3 |
 
 ## Mismatch review queue
 
@@ -102,6 +102,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | CA69002L1067 | OZBKF | Valkea Resources Corp. | OZCAD | OUTBACK GOLDFIELDS CORP | review_required_openfigi_resolves_different_security |
 | CA78460T1057 | SNCAF | AtkinsRéalis Group Inc | SNCCAD,SNCEUR,SNCGBP | SNC-LAVALIN GROUP INC | review_required_openfigi_resolves_different_security |
 | CA84841L4073 | DRK | DarkHorse Technologies Inc. -  | ANY1EUR,ANY1GBP,ANY1USD | SPHERE 3D CORP | review_required_openfigi_resolves_different_security |
+| CA8765111064 | UDM | Trekor Metals Ltd | TKOCAD,TKOEUR,TKOGBP | TASEKO MINES LTD | review_required_openfigi_resolves_different_security |
 | CH0024666528 | HT5 | HT5 N LTD | 0QQI,1Z3,CNTL | CENTIEL AG | review_required_openfigi_resolves_different_security |
 | CH0304280636 | HSRN | HelveticStar Holding Ag | HELHCHF,HELHEUR,HSR | HELVETIC STAR AG | review_required_openfigi_resolves_different_security |
 | FI0009013429 | CYJBY | Hiab Oyj | CGCBVGBP,CGCBVGBX,CGCBVUSD | CARGOTEC OYJ-B SHARE | review_required_openfigi_resolves_different_security |
@@ -118,7 +119,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | IE0007WMHDE3 | EUGD | HANetf ICAV - European Green D | 8GRT,ASWAD,ETFHGR8 | MAKING EUROPE GREAT AGAIN UC | review_required_openfigi_resolves_different_security |
 | INE030P01017 | ALSL | Alacrity Securities Ltd | ALSE | RNIT AI SOLUTIONS LTD | review_required_openfigi_resolves_different_security |
 | INE058F01019 | ALUFLUOR | Alufluoride Ltd | ALFD | ALUFLOURIDE LTD | review_required_openfigi_resolves_different_security |
-| INE0M3I01029 | AMBEY | Ambey Laboratories Limited | DHANSA | DHANSA LABS LTD | review_required_openfigi_resolves_different_security |
 | INE110Q01023 | STCORP | S & T Corporation Ltd | STCL | S&T CORP LTD | review_required_openfigi_resolves_different_security |
 | INE130N01010 | UNIJOLL | Unijolly Investments Company L | UJI | UNI JOLLY INVESTMENT CO LTD | review_required_openfigi_resolves_different_security |
 | INE188A01015 | FACT | Fertilizers and Chemicals Trav | FCT | FERTILISERS & CHEM TRAVANCR | review_required_openfigi_resolves_different_security |
@@ -145,6 +145,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INF666M01PG9 | SMALLGROWW | GROWWAMC - SMALLGROWW | GNSMQRG | GRW NFT SC 250 MQ 100 ETF RG | review_required_openfigi_resolves_different_security |
 | INF666M01PH7 | CEMNTGROWW | GROWWAMC - CEMNTGROWW | GRNCERG | GROWW NIFTY CEMENTS ETF-RG | review_required_openfigi_resolves_different_security |
 | INF740KA1ZI7 | GSEC10ADD | DSPAMC - GSEC10ADD | DGSEC10 | DSP NIFTY 10 YR BM G-SEC | review_required_openfigi_resolves_different_security |
+| INF740KA1ZR8 | INSURADD | DSPAMC - INSURADD | DINSURE | DSP BSE INSURANCE ETF RG | review_required_openfigi_resolves_different_security |
 | INF754K01TF1 | EMULTIMQ | Edelweiss Nifty500 Multicap Mo | EDENM50 | EDEL NF500 MLT MOM QLT50 ETF | review_required_openfigi_resolves_different_security |
 | INF754K01XG1 | EMETAL | EDELAMC - EMETAL | EDNMERG | EDELWEISS NIFTY METAL ETF RG | review_required_openfigi_resolves_different_security |
 | INF767K01SM1 | LICMFGOLD | LICMF LICGoldETF | LICMFGLD | LIC MF GOLD ETF | review_required_openfigi_resolves_different_security |
@@ -206,6 +207,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | US6494451031 | FLG | Flagstar Bank, N.A. | NYCBEUR,NYCBGBP,NYCBUSD | NEW YORK COMMUNITY BANCORP | review_required_openfigi_resolves_different_security |
 | US67073S3076 | CIMG | CIMG Inc | NUZEEUR,NUZEGBP | NUZEE INC | review_required_openfigi_resolves_different_security |
 | US69290X1019 | PDLB | Ponce Financial Group Inc | PDLBUSD | PDL COMMUNITY BANCORP | review_required_openfigi_resolves_different_security |
+| US74933X6094 | VTAK | Catheter Precision Inc. | VJETGBP | FLYTE AVIATION INC | review_required_openfigi_resolves_different_security |
 | US83548F2002 | SONM | DNA X, Inc. | SONMEUR,SONMGBP,SONMUSD | SONIM TECHNOLOGIES INC | review_required_openfigi_resolves_different_security |
 | US91822T2006 | VGLS | SB Technology Holdings Inc. | BIOM | BIOMOLECULAR LIFE HOLDINGS I | review_required_openfigi_resolves_different_security |
 | ZAE000261392 | UMMIEA | Absa re Momentum International | UBS 0 08/22/28 @ | UBS AG LONDON | review_required_openfigi_resolves_different_security |
