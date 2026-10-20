@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-10-16T11:18:59Z",
+    "generated_at": "2026-10-20T11:32:05Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 369,
+    "blocked_rows": 370,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 6,
-      "blocked_new_symbol_not_active_in_official_master": 5,
+      "blocked_new_symbol_not_active_in_official_master": 6,
       "blocked_old_symbol_not_unique_in_us_scope": 292,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_isin": 1,
@@ -22,6 +22,14 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "98ed8a5b57cabecd",
+      "effective_date": "2026-10-19",
+      "old_symbol": "UUU",
+      "new_symbol": "DCM",
+      "new_company_name": "Universal Safety Products Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
     {
       "change_id": "f7b8af16a0a268e7",
       "effective_date": "2026-10-13",
