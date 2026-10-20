@@ -1,6 +1,6 @@
 # B3 Masterfile Gap Review
 
-Generated at: `2026-08-03T12:39:08Z`
+Generated at: `2026-10-20T10:15:07Z`
 
 This report tracks B3 listings absent from the active B3 exchange-directory source. It does not fill or delete data.
 
@@ -12,17 +12,17 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Metric | Value |
 |---|---:|
-| dataset_rows | 1581 |
-| active_exchange_directory_rows | 1327 |
-| all_b3_masterfile_rows | 1854 |
-| active_directory_matched_dataset_rows | 1220 |
+| dataset_rows | 1589 |
+| active_exchange_directory_rows | 1353 |
+| all_b3_masterfile_rows | 1903 |
+| active_directory_matched_dataset_rows | 1228 |
 | active_directory_missing_dataset_rows | 361 |
-| active_directory_match_rate | 77.17 |
+| active_directory_match_rate | 77.28 |
 | official_any_source_matched_dataset_rows | 1250 |
-| official_any_source_missing_dataset_rows | 331 |
-| official_any_source_match_rate | 79.06 |
-| official_non_directory_gap_rows | 30 |
-| absent_from_all_b3_source_gap_rows | 331 |
+| official_any_source_missing_dataset_rows | 339 |
+| official_any_source_match_rate | 78.67 |
+| official_non_directory_gap_rows | 22 |
+| absent_from_all_b3_source_gap_rows | 339 |
 
 - Active directory sources: `b3_instruments_equities`
 - Official non-directory sources: `b3_bdr_etfs, b3_listed_etfs`
@@ -33,17 +33,17 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | Metric | Value |
 |---|---:|
 | status | active_directory_coverage_has_official_subset_parser_or_scope_gap |
-| dataset_rows | 1581 |
-| active_directory_match_rate | 77.17 |
+| dataset_rows | 1589 |
+| active_directory_match_rate | 77.28 |
 | active_directory_missing_dataset_rows | 361 |
-| open_review_rows | 331 |
-| closed_no_data_change_rows | 30 |
-| official_non_directory_gap_rows | 30 |
-| absent_from_all_b3_source_gap_rows | 331 |
+| open_review_rows | 339 |
+| closed_no_data_change_rows | 22 |
+| official_non_directory_gap_rows | 22 |
+| absent_from_all_b3_source_gap_rows | 339 |
 | official_subset_candidate_isin_rows | 0 |
-| official_subset_candidate_sector_rows | 16 |
+| official_subset_candidate_sector_rows | 15 |
 | rows_requiring_parser_or_scope_review | 0 |
-| rows_requiring_external_active_evidence | 331 |
+| rows_requiring_external_active_evidence | 339 |
 | data_change_authorized | False |
 
 - Root cause: Residual B3 coverage gaps split between official B3 subset rows outside the active exchange-directory parser scope and listings absent from all current B3 masterfile sources.
@@ -53,57 +53,57 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Source presence | Rows |
 |---|---:|
-| absent_from_all_b3_masterfile_sources | 331 |
-| present_only_in_non_exchange_directory_source | 30 |
+| absent_from_all_b3_masterfile_sources | 339 |
+| present_only_in_non_exchange_directory_source | 22 |
 
 ## B3 Resolution Queues
 
 | Queue | Rows |
 |---|---:|
-| absent_from_all_b3_sources_fund_or_receipt_source_gap | 66 |
-| absent_from_all_b3_sources_local_share_source_gap | 265 |
-| official_bdr_subset_without_category_source_gap_closed | 14 |
-| official_subset_category_already_reflected_scope_review | 16 |
+| absent_from_all_b3_sources_fund_or_receipt_source_gap | 71 |
+| absent_from_all_b3_sources_local_share_source_gap | 268 |
+| official_bdr_subset_without_category_source_gap_closed | 7 |
+| official_subset_category_already_reflected_scope_review | 15 |
 
 ## Open B3 Resolution Queues
 
 | Queue | Rows |
 |---|---:|
-| absent_from_all_b3_sources_fund_or_receipt_source_gap | 66 |
-| absent_from_all_b3_sources_local_share_source_gap | 265 |
+| absent_from_all_b3_sources_fund_or_receipt_source_gap | 71 |
+| absent_from_all_b3_sources_local_share_source_gap | 268 |
 
 ## Open B3 Next Sources
 
 | Recommended next source | Rows |
 |---|---:|
-| Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | 265 |
-| Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | 66 |
+| Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | 268 |
+| Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | 71 |
 
 ## Open B3 Evidence Paths
 
 | Evidence path | Rows |
 |---|---:|
-| current_b3_exchange_directory_or_cvm_issuer_listing_evidence | 265 |
-| current_b3_product_registry_or_issuer_sponsor_evidence | 66 |
+| current_b3_exchange_directory_or_cvm_issuer_listing_evidence | 268 |
+| current_b3_product_registry_or_issuer_sponsor_evidence | 71 |
 
 ## Source Gap Resolution Gates
 
 | Resolution gate | Rows |
 |---|---:|
-| close_directory_gap_only_after_scope_or_parser_review | 16 |
-| close_directory_gap_only_keep_identifier_and_category_unchanged | 14 |
-| do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed | 265 |
-| do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | 66 |
+| close_directory_gap_only_after_scope_or_parser_review | 15 |
+| close_directory_gap_only_keep_identifier_and_category_unchanged | 7 |
+| do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed | 268 |
+| do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | 71 |
 
 ## B3 Resolution Queue By Asset Type
 
 | Queue | Asset Type | Rows |
 |---|---|---:|
-| absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | 52 |
+| absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | 57 |
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | Stock | 14 |
-| absent_from_all_b3_sources_local_share_source_gap | Stock | 265 |
-| official_bdr_subset_without_category_source_gap_closed | ETF | 14 |
-| official_subset_category_already_reflected_scope_review | ETF | 16 |
+| absent_from_all_b3_sources_local_share_source_gap | Stock | 268 |
+| official_bdr_subset_without_category_source_gap_closed | ETF | 7 |
+| official_subset_category_already_reflected_scope_review | ETF | 15 |
 
 ## B3 Resolution Queue By Gap Category
 
@@ -111,32 +111,32 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 |---|---|---:|
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | bdr_or_foreign_receipt | 2 |
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | other | 14 |
-| absent_from_all_b3_sources_fund_or_receipt_source_gap | unit_or_fund_line | 50 |
-| absent_from_all_b3_sources_local_share_source_gap | local_share_line | 265 |
-| official_bdr_subset_without_category_source_gap_closed | bdr_or_foreign_receipt | 14 |
-| official_subset_category_already_reflected_scope_review | unit_or_fund_line | 16 |
+| absent_from_all_b3_sources_fund_or_receipt_source_gap | unit_or_fund_line | 55 |
+| absent_from_all_b3_sources_local_share_source_gap | local_share_line | 268 |
+| official_bdr_subset_without_category_source_gap_closed | bdr_or_foreign_receipt | 7 |
+| official_subset_category_already_reflected_scope_review | unit_or_fund_line | 15 |
 
 ## Review Buckets
 
 | Bucket | Rows |
 |---|---:|
-| missing_from_all_b3_masterfile_sources_source_gap | 331 |
-| official_b3_non_directory_source_review | 30 |
+| missing_from_all_b3_masterfile_sources_source_gap | 339 |
+| official_b3_non_directory_source_review | 22 |
 
 ## Review Strategies
 
 | Strategy | Rows |
 |---|---:|
-| close_bdr_subset_gap_without_data_change_keep_category_source_gap | 14 |
-| confirm_official_subset_scope_or_parser_gap_before_closing_directory_gap | 16 |
-| keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | 66 |
-| keep_local_share_gap_until_current_official_b3_or_issuer_evidence | 265 |
+| close_bdr_subset_gap_without_data_change_keep_category_source_gap | 7 |
+| confirm_official_subset_scope_or_parser_gap_before_closing_directory_gap | 15 |
+| keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | 71 |
+| keep_local_share_gap_until_current_official_b3_or_issuer_evidence | 268 |
 
 ## Candidate Evidence
 
 | Metric | Rows |
 |---|---:|
-| Candidate sector present | 16 |
+| Candidate sector present | 15 |
 | Candidate ISIN present | 0 |
 | Candidate category mismatch review rows | 0 |
 
@@ -144,49 +144,49 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Decision | Rows |
 |---|---:|
-| no_official_candidate_category | 345 |
-| official_candidate_category_already_reflected | 16 |
+| no_official_candidate_category | 346 |
+| official_candidate_category_already_reflected | 15 |
 
 ## Official Subset Review Decisions
 
 | Decision | Rows |
 |---|---:|
-| not_official_subset_source_gap | 331 |
-| official_subset_bdr_without_category_no_data_change | 14 |
-| official_subset_category_already_reflected_no_data_change | 16 |
+| not_official_subset_source_gap | 339 |
+| official_subset_bdr_without_category_no_data_change | 7 |
+| official_subset_category_already_reflected_no_data_change | 15 |
 
 ## Official Subset Closure Eligibility
 
 | Eligibility | Rows |
 |---|---:|
-| blocked_until_current_official_active_source_evidence | 331 |
-| closure_ready_official_subset_bdr_without_category_source_gap | 14 |
-| closure_ready_official_subset_category_already_reflected | 16 |
+| blocked_until_current_official_active_source_evidence | 339 |
+| closure_ready_official_subset_bdr_without_category_source_gap | 7 |
+| closure_ready_official_subset_category_already_reflected | 15 |
 
 ## Candidate Sources
 
 | Source | Rows |
 |---|---:|
-| b3_bdr_etfs | 14 |
-| b3_listed_etfs | 16 |
+| b3_bdr_etfs | 7 |
+| b3_listed_etfs | 15 |
 
 ## Top Review Batches
 
 | Priority | Queue | Asset type | Gap category | Source presence | Rows | Strategy | Evidence required | Recommended next source | Source gate |
 |---|---|---|---|---|---:|---|---|---|---|
-| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 265 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
-| P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | unit_or_fund_line | absent_from_all_b3_masterfile_sources | 50 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
-| P2 | official_subset_category_already_reflected_scope_review | ETF | unit_or_fund_line | present_only_in_non_exchange_directory_source | 16 | confirm_official_subset_scope_or_parser_gap_before_closing_directory_gap | official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap | Current active B3 exchange directory or reviewed parser/scope evidence for the listed ETF/fund subset. | Close the directory gap only after confirming the subset is intentionally outside the active directory or parser-scoped. |
-| P2 | official_bdr_subset_without_category_source_gap_closed | ETF | bdr_or_foreign_receipt | present_only_in_non_exchange_directory_source | 14 | close_bdr_subset_gap_without_data_change_keep_category_source_gap | official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap | Official B3 BDR/ETF subset confirms the listing; keep category/ISIN unchanged until stronger B3 or issuer evidence exposes them. | No B3 category, ISIN, name, symbol, or scope change is authorized; the official BDR subset evidence only closes the active-directory gap. |
+| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 268 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
+| P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | unit_or_fund_line | absent_from_all_b3_masterfile_sources | 55 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
+| P2 | official_subset_category_already_reflected_scope_review | ETF | unit_or_fund_line | present_only_in_non_exchange_directory_source | 15 | confirm_official_subset_scope_or_parser_gap_before_closing_directory_gap | official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap | Current active B3 exchange directory or reviewed parser/scope evidence for the listed ETF/fund subset. | Close the directory gap only after confirming the subset is intentionally outside the active directory or parser-scoped. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | Stock | other | absent_from_all_b3_masterfile_sources | 14 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
+| P2 | official_bdr_subset_without_category_source_gap_closed | ETF | bdr_or_foreign_receipt | present_only_in_non_exchange_directory_source | 7 | close_bdr_subset_gap_without_data_change_keep_category_source_gap | official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap | Official B3 BDR/ETF subset confirms the listing; keep category/ISIN unchanged until stronger B3 or issuer evidence exposes them. | No B3 category, ISIN, name, symbol, or scope change is authorized; the official BDR subset evidence only closes the active-directory gap. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | bdr_or_foreign_receipt | absent_from_all_b3_masterfile_sources | 2 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 
 ## Top Open Review Batches
 
 | Priority | Queue | Asset type | Gap category | Source presence | Rows | Strategy | Evidence required | Recommended next source | Source gate |
 |---|---|---|---|---|---:|---|---|---|---|
-| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 265 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
-| P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | unit_or_fund_line | absent_from_all_b3_masterfile_sources | 50 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
+| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 268 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
+| P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | unit_or_fund_line | absent_from_all_b3_masterfile_sources | 55 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | Stock | other | absent_from_all_b3_masterfile_sources | 14 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | bdr_or_foreign_receipt | absent_from_all_b3_masterfile_sources | 2 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 
@@ -215,29 +215,22 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | P3 | B3::AGPL11 | AGPL11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | MAGNETIS TEVA AÇÕES AGRONEGOCIO ETF FDO IND | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P3 | B3::AQLL11 | AQLL11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | ÁQUILLA FDO INV IMOB - FII | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P3 | B3::BIPD11 | BIPD11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | BRIO REAL ESTATE IV – FII RESP LIM | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
+| P3 | B3::BIPE11 | BIPE11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | BRIO REAL ESTATE V - FII | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
+| P3 | B3::BRIM11 | BRIM11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | BRIO REAL ESTATE II - FII RESP LIM | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P3 | B3::BTCE11 | BTCE11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | BITCOIN ETC KARDINAL FUNDO DE ÍNDICE – IE | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
-| P3 | B3::BTSI11 | BTSI11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | BTSP II FII RESP LIM | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
-| P3 | B3::CPTS11B | CPTS11B | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | Capitania Securities II Fundo Investimento Imobiliario FII | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
-| P3 | B3::DOVL11 | DOVL11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | DOVEL FDO INV IMOB - RESPONSABILIDADE LIMITADA | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
+| P3 | B3::BULZ11 | BULZ11 | ETF | unit_or_fund_line | absent_from_all_b3_sources_fund_or_receipt_source_gap | GENIAL TEVA AÇÕES HIGH BETA FUNDO DE ÍNDICE | current_b3_product_registry_or_issuer_sponsor_evidence | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 
 ## Rows
 
 | Listing key | Priority | Category | Current ETF category | Candidate sectors | Candidate category decision | Candidate sources | Name |
 |---|---|---|---|---|---|---|---|
-| B3::BAOA39 | P2 | bdr_or_foreign_receipt | Alternative |  | no_official_candidate_category | b3_bdr_etfs | ISHARES CORE 80/20 AGGRESSIVE ALLOCATION ETF |
-| B3::BBIL39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | JPMORGAN BETABUILDERS INTERNATIONAL EQUITY ETF |
+| B3::BAOK39 | P2 | bdr_or_foreign_receipt | Alternative |  | no_official_candidate_category | b3_bdr_etfs | ISHARES CORE 30/70 CONSERVATIVE ALLOCATION ETF |
 | B3::BFIW39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | FIRST TRUST WATER ETF |
-| B3::BGAR39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | ISHARES MSCI USA QUALITY GARP ETF |
-| B3::BIAG39 | P2 | bdr_or_foreign_receipt | Fixed Income |  | no_official_candidate_category | b3_bdr_etfs | ISHARES CORE INTERNATIONAL AGGREGATE BOND ETF |
 | B3::BIAU39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | Ishares Gold Trust |
-| B3::BIFR39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | ISHARES US INFRASTRUCTURE ETF |
 | B3::BIGE39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | ISHARES NORTH AMERICAN NATURAL RESOURCES ETF |
-| B3::BIYM39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | ISHARES U.S. BASIC MATERIALS ETF |
 | B3::BKXI39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | ISHARES GLOBAL CONSUMER STAPLES ETF |
 | B3::BREZ39 | P2 | bdr_or_foreign_receipt | Real Estate |  | no_official_candidate_category | b3_bdr_etfs | ISHARES RESIDENTIAL MULTISECTOR REAL ESTATE ETF |
 | B3::BSLV39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | Ishares Silver Trust |
-| B3::EPOL39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | ISHARES MSCI POLAND ETF |
-| B3::EWJV39 | P2 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category | b3_bdr_etfs | ISHARES MSCI JAPAN VALUE ETF |
 | B3::B5MB11 | P2 | unit_or_fund_line | Fixed Income | Fixed Income | official_candidate_category_already_reflected | b3_listed_etfs | ETF Bradesco Ima-B5 Plus Fundo De Indice |
 | B3::B5P211 | P2 | unit_or_fund_line | Fixed Income | Fixed Income | official_candidate_category_already_reflected | b3_listed_etfs | It Now Ima-B5 P2 Fundo De Indice |
 | B3::BDAP11 | P2 | unit_or_fund_line | Fixed Income | Fixed Income | official_candidate_category_already_reflected | b3_listed_etfs | Bb Etf Indice Dap5 B3 Fundo De Indice |
@@ -253,7 +246,6 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::NTNS11 | P2 | unit_or_fund_line | Commodity | Commodity | official_candidate_category_already_reflected | b3_listed_etfs | Investo Teva Tesouro Ipca+ 0 A 4 Anos Etf - Fundo De Investimento De Indice |
 | B3::PACC11 | P2 | unit_or_fund_line | Fixed Income | Fixed Income | official_candidate_category_already_reflected | b3_listed_etfs | Btg Pactual Ima-B 5 P2 Fundo De Indice |
 | B3::PACG11 | P2 | unit_or_fund_line | Fixed Income | Fixed Income | official_candidate_category_already_reflected | b3_listed_etfs | BTG Pactual Ima-B Fundo De Indice |
-| B3::TIRB11 | P2 | unit_or_fund_line | Equity | Equity | official_candidate_category_already_reflected | b3_listed_etfs | BTG PACTUAL TEVA DIVID ATIVOS REAIS LIST FDO IND |
 | B3::BBCN39 | P3 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category |  | JPMORGAN BETABUILDERS CANADA ETF |
 | B3::BJQU39 | P3 | bdr_or_foreign_receipt | Equity |  | no_official_candidate_category |  | JPMORGAN US QUALITY FACTOR ETF |
 | B3::2WAV3 | P3 | local_share_line |  |  | no_official_candidate_category |  | 2W ECOBANK S.A. |
@@ -336,7 +328,6 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::CSAM4 | P3 | local_share_line |  |  | no_official_candidate_category |  | COSAMA - CIA DE SANEAMENTO DA AMAZONIA |
 | B3::CTCA3 | P3 | local_share_line |  |  | no_official_candidate_category |  | CTC - CENTRO DE TECNOLOGIA CANAVIEIRA S.A. |
 | B3::DASS3 | P3 | local_share_line |  |  | no_official_candidate_category |  | DASS NORDESTE CALÇADOS E ARTIGOS ESPORTIVOS SA |
-| B3::DOHL3 | P3 | local_share_line |  |  | no_official_candidate_category |  | DOHLER S.A. |
 | B3::DTCY4 | P3 | local_share_line |  |  | no_official_candidate_category |  | DTCOM - DIRECT TO COMPANY S.A. |
 | B3::DTEN3 | P3 | local_share_line |  |  | no_official_candidate_category |  | DETEN QUIMICA S.A. |
 | B3::DTEN6 | P3 | local_share_line |  |  | no_official_candidate_category |  | DETEN QUIMICA S.A. |
@@ -353,8 +344,8 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::EMBP4 | P3 | local_share_line |  |  | no_official_candidate_category |  | EMBRAPAR PARTICIPACOES S.A. |
 | B3::ENAC3 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIA ARMAZENS GERAIS ENTREPOSTOS DO ACRE |
 | B3::EPTR4 | P3 | local_share_line |  |  | no_official_candidate_category |  | EMPR TURISMO DE PERNAMBUCO S.A. -EMPETUR |
-| B3::EQPA5 | P3 | local_share_line |  |  | no_official_candidate_category |  | EQUATORIAL PARA DISTRIBUIDORA DE ENERGIA S.A. |
 | B3::EQPA6 | P3 | local_share_line |  |  | no_official_candidate_category |  | EQUATORIAL PARA DISTRIBUIDORA DE ENERGIA S.A. |
+| B3::EQPA7 | P3 | local_share_line |  |  | no_official_candidate_category |  | EQUATORIAL PARA DISTRIBUIDORA DE ENERGIA S.A. |
 | B3::ESGS3 | P3 | local_share_line |  |  | no_official_candidate_category |  | COMPANHIA DE GAS DO ESPIRITO SANTO - ES GAS |
 | B3::ESGS4 | P3 | local_share_line |  |  | no_official_candidate_category |  | COMPANHIA DE GAS DO ESPIRITO SANTO - ES GAS |
 | B3::ESSD3 | P3 | local_share_line |  |  | no_official_candidate_category |  | ENERGISA SUL-SUDESTE DISTRIBUIDORA DE ENERGIA S.A. |
@@ -366,6 +357,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::FAEL6 | P3 | local_share_line |  |  | no_official_candidate_category |  | FAE -FERRAGENS E APARELHOS ELETRICOS S.A |
 | B3::FAEL7 | P3 | local_share_line |  |  | no_official_candidate_category |  | FAE -FERRAGENS E APARELHOS ELETRICOS S.A |
 | B3::FGRT5 | P3 | local_share_line |  |  | no_official_candidate_category |  | FRIGORIFICO REDENTOR S.A. |
+| B3::FICT3 | P3 | local_share_line |  |  | no_official_candidate_category |  | FICTOR ALIMENTOS S.A |
 | B3::FIGE3 | P3 | local_share_line |  |  | no_official_candidate_category |  | INVESTIMENTOS BEMGE S.A. |
 | B3::FIGE4 | P3 | local_share_line |  |  | no_official_candidate_category |  | INVESTIMENTOS BEMGE S.A. |
 | B3::FMNP3 | P3 | local_share_line |  |  | no_official_candidate_category |  | FIRMINOPOLIS TRANSMISSAO S.A. |
@@ -393,6 +385,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::KALU3 | P3 | local_share_line |  |  | no_official_candidate_category |  | KALUNGA S.A |
 | B3::KLAS3 | P3 | local_share_line |  |  | no_official_candidate_category |  | KALLAS INCORPORACOES E CONSTRUCOES S.A. |
 | B3::LAZT3 | P3 | local_share_line |  |  | no_official_candidate_category |  | LAGO AZUL TRANSMISSO S.A. |
+| B3::LLBI3 | P3 | local_share_line |  |  | no_official_candidate_category |  | CVLB BRASIL S.A. |
 | B3::LMED3 | P3 | local_share_line |  |  | no_official_candidate_category |  | LIFEMED INDUSTRIAL EQUIP. DE ART. MÉD. HOSP. S.A. |
 | B3::LOGS3 | P3 | local_share_line |  |  | no_official_candidate_category |  | LOGASA INDUSTRIA E COMERCIO S.A. |
 | B3::LOGS4 | P3 | local_share_line |  |  | no_official_candidate_category |  | LOGASA INDUSTRIA E COMERCIO S.A. |
@@ -489,6 +482,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::SALT6 | P3 | local_share_line |  |  | no_official_candidate_category |  | GRUPO SALTA EDUCAÇÃO S.A. |
 | B3::SDRM3 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIA SIDERURGICA DA AMAZONIA - SIDERAMA |
 | B3::SDRM6 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIA SIDERURGICA DA AMAZONIA - SIDERAMA |
+| B3::SHOW3 | P3 | local_share_line |  |  | no_official_candidate_category |  | T4F ENTRETENIMENTO S.A. |
 | B3::SHUL3 | P3 | local_share_line |  |  | no_official_candidate_category |  | SCHULZ S.A. |
 | B3::SILO3 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIA DE ARMAZENS E SILOS DO EST MG-CASEMG |
 | B3::SILO4 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIA DE ARMAZENS E SILOS DO EST MG-CASEMG |
@@ -518,6 +512,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::VSPT3 | P3 | local_share_line |  |  | no_official_candidate_category |  | FERROVIA CENTRO-ATLANTICA S.A. |
 | B3::VSPT4 | P3 | local_share_line |  |  | no_official_candidate_category |  | FERROVIA CENTRO-ATLANTICA S.A. |
 | B3::WIRE3 | P3 | local_share_line |  |  | no_official_candidate_category |  | WIREX CABLE S.A. |
+| B3::WLMM3 | P3 | local_share_line |  |  | no_official_candidate_category |  | WLM PART. E COMÉRCIO DE MÁQUINAS E VEÍCULOS S.A. |
 | B3::WNBR3 | P3 | local_share_line |  |  | no_official_candidate_category |  | W2W E-COMMERCE DE VINHOS S.A. |
 | B3::XPML13 | P3 | local_share_line |  |  | no_official_candidate_category |  | XP MALLS FDO INV IMOB FII RESP LIM |
 | B3::YOUC3 | P3 | local_share_line |  |  | no_official_candidate_category |  | YOU INC INCORPORADORA E PARTICIPAÇÕES S.A. |
@@ -540,24 +535,26 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::AGPL11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | MAGNETIS TEVA AÇÕES AGRONEGOCIO ETF FDO IND |
 | B3::AQLL11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | ÁQUILLA FDO INV IMOB - FII |
 | B3::BIPD11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | BRIO REAL ESTATE IV – FII RESP LIM |
+| B3::BIPE11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | BRIO REAL ESTATE V - FII |
+| B3::BRIM11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | BRIO REAL ESTATE II - FII RESP LIM |
 | B3::BTCE11 | P3 | unit_or_fund_line | Alternative |  | no_official_candidate_category |  | BITCOIN ETC KARDINAL FUNDO DE ÍNDICE – IE |
-| B3::BTSI11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | BTSP II FII RESP LIM |
+| B3::BULZ11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | GENIAL TEVA AÇÕES HIGH BETA FUNDO DE ÍNDICE |
+| B3::BVAR11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | BRASIL VAREJO - FII RESP LIM |
 | B3::CPTS11B | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | Capitania Securities II Fundo Investimento Imobiliario FII |
-| B3::DOVL11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | DOVEL FDO INV IMOB - RESPONSABILIDADE LIMITADA |
+| B3::DVLT11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | SPECIALE REAL ESTATE DEVELOPMENT II FII |
 | B3::EBRK11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | INVESTO BLUESTAR US LISTED E-BROKERS ETF FDO INV |
 | B3::ERCR11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | ESTOQUE RESIDENCIAL E COMERCIAL RJ FII RESP LIM |
 | B3::ESGG11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | INVESTO FTSE US ALL CAP CHOICE ETF FDO INV IND IE |
 | B3::ETHI11 | P3 | unit_or_fund_line | Alternative |  | no_official_candidate_category |  | IT NOW BLOOMBERG GALAXY ETHEREUM FUNDO DE ÍNDICE |
 | B3::FTCE11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | OPPORTUNITY FDO INV IMOB – RESPONS LIMITADA |
-| B3::GCOI11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | GALAPAGOS SPECIAL OPORTUNITIES FII RESP LIM |
 | B3::GLOG11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | GENIAL LOGÍSTICA FII RESP LIM |
 | B3::H2OO11 | P3 | unit_or_fund_line | Alternative |  | no_official_candidate_category |  | TREND ETF NASDAQ WATER RESOURCE FDO INV DE ÍNDICE |
-| B3::HCRA13 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | HEDGE CRÉDITO AGRO FIAGRO DE RESP LIMITADA |
+| B3::HCHG11 | P3 | unit_or_fund_line | Fixed Income |  | no_official_candidate_category |  | HECTARE RECEBÍVEIS HIGH GRADE FII RESP LIM |
 | B3::HCRA16 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | HEDGE CRÉDITO AGRO FIAGRO DE RESP LIMITADA |
-| B3::HCRA19 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | HEDGE CRÉDITO AGRO FIAGRO DE RESP LIMITADA |
 | B3::HGPO11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | PATRIA PRIME OFFICES - FII - RESPONSABILIDADE LTDA |
 | B3::HSRE11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | HSI RENDA IMOB FDO INV IMOB RESPONSABILIDADE LTDA |
 | B3::INDA11 | P3 | unit_or_fund_line | Alternative |  | no_official_candidate_category |  | TREND ETF MSCI INDIA FDO DE INV DE ÍNDICE |
+| B3::LPLP11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | LAGO DA PEDRA - FUNDO DE INVESTIMENTO IMOBILIÁRIO |
 | B3::MBRF11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | Fundo De Investimento Imobiliário Mercantil Do Brasil-fii -Inicio |
 | B3::MCEM11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | MÉRITO CEMITÉRIOS FII - FDO DE INV IMOB |
 | B3::MCEM15 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | MÉRITO CEMITÉRIOS FII - FDO DE INV IMOB |
@@ -566,24 +563,27 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::OULG11B | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | Pedra Dourada Fundo De Investimento Imobiliário - FII |
 | B3::OXRL11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | OXIGÊNIO 2 FUNDO DE INVESTIMENTO IMOBILIÁRIO |
 | B3::PATL11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | PÁTRIA LOGÍSTICA FII RESP LIM |
+| B3::PMFO11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | SPECIALE REAL ESTATE FUND OF FUNDS FII RESP LIM |
 | B3::QFOF11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | QR BLOOMBERG FUTURE OF FINANCE FUNDO DE ÍNDICE–IE |
 | B3::QWEB11 | P3 | unit_or_fund_line | Fixed Income |  | no_official_candidate_category |  | QR CF WEB 3.0 INFRA BLOCKCHAIN FDO DE ÍNDICE IE |
 | B3::RDIV11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | FDO DE INV IMOB – FII RBR DESENV IV RESP LIM |
+| B3::RELG11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | FDO INV. IMOB. REC LOGISTICA |
 | B3::SEMI11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | TREND ETF PHLX SEMICONDUCTOR FDO DE INV DE ÍNDICE |
 | B3::SHDP11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | FII SHOPPING PARQUE D. PEDRO RESP LIM |
 | B3::SHOP11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | MULTI SHOPPINGS FDO INV IMOB - FII |
 | B3::SPGM11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | SPGM FDO DE INV IMOB – RESP LIM |
+| B3::TIRB11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | BTG PACTUAL TEVA DIVID ATIVOS REAIS LIST FDO IND |
 | B3::USAG11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | TREND ETF CRSP U.S. LARGE CAP GROWTH FDO INV IND |
 | B3::USAL11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | TREND ETF CRSP U.S. LARGE CAP FDO INV IND |
 | B3::USAV11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | TREND ETF CRSP US LARGE CAP VALUE FDO INV IND |
 | B3::USBD11 | P3 | unit_or_fund_line | Fixed Income |  | no_official_candidate_category |  | INVESTO BLOOMBERG US BOND ETF FDO INV IND - IE |
 | B3::VALO11 | P3 | unit_or_fund_line | Fixed Income |  | no_official_candidate_category |  | VALORA DEB INC FIC FDO INC INV INFRA RF |
-| B3::VTPL11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | FDO INV. IMOB. PLUS RESP LIM |
 | B3::WESG11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | WISE DOW JONES U.S. SELECT ESG REIT FDO INV IE |
 | B3::WISE11 | P3 | unit_or_fund_line | Real Estate |  | no_official_candidate_category |  | WISE S&P GLOBAL REIT FUNDO DE ÍNDICE - IE |
 | B3::WRET11 | P3 | unit_or_fund_line | Alternative |  | no_official_candidate_category |  | TREND ETF FTSE GLOBAL REITS FDO INV DE ÍNDICE |
 | B3::XBIO11 | P3 | unit_or_fund_line | Alternative |  | no_official_candidate_category |  | TREND ETF BIOTECHNOLOGY NASDAQ FDO INV ÍNDICE |
 | B3::XGEN11 | P3 | unit_or_fund_line | Alternative |  | no_official_candidate_category |  | TREND ETF NASDAQ NEXT GENERATION 100 FDO INV IND |
+| B3::XPIN11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | XP INDUSTRIAL FDO INV IMOB - FII |
 | B3::XTEC11 | P3 | unit_or_fund_line | Equity |  | no_official_candidate_category |  | TREND ETF FTSE CHINA TECHNOLOGY FUNDO DE INVESTIME |
 
 ## Policy

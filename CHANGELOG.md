@@ -2,9 +2,28 @@
 
 ## [Unreleased]
 
+## [3.43.1] - 2026-10-20
+
+### Added
+
+- Added report-only SEC listed-current, GLEIF ISIN-to-LEI, official ESMA/FCA FIRDS, and OpenFIGI ISIN/MIC audits. Reports pin source and input hashes; they do not adopt source identities or ingest missing listings.
+- Recorded a reproducible 200-request OpenFIGI probe with explicit venue, composite, and share-class FIGI levels. The full 93,878-request remap remains unrun. GLEIF identified 50 LEI mismatches for review; no automatic identifier changes are allowed.
+- Added a manual Draft release path with the existing release validation and assets. Draft runs do not publish Kaggle or Hugging Face packages.
+
+### Changed
+
+- Refreshed official masterfiles, symbol-change reviews, and the OpenFIGI validation report since v3.43.0. The latest masterfile batch adds seven Amsterdam ETF listings and corrects the official `AMS::3DIS` ISIN.
+- Nasdaq Trader Delete events now require manual venue-transfer and corporate-action review. Authoritative BSE Delisted observations retain their existing automatic path.
+
 ### Fixed
 
+- Preserved `NASDAQ::CECO` and `NASDAQ::IBOC` through their TXSE transfers, and `NYSE::AMTD` through its ADS ratio change. Only `NYSE::ATKR` is removed after its reviewed acquisition delisting. TXSE venue mapping and the new AMTD identifier remain follow-ups.
+- Cleared the misassigned FP Newspapers ISIN `CA3025862010` from `LSE::FP`, supported by the issuer's London GDR prospectus. No replacement ISIN, name, or country is adopted. Eight of the original nine ISIN collision groups remain open with specific evidence blockers; direct automated identifier apply rows remain zero.
 - Restored official LSE `RE` / `RE-B` ISINs (`GB0002349065` / `GB0007185639`, United Kingdom / `GB`) after overlay last-write-wins re-applied the 2026-09-29 stolen-ISIN clears. Stolen `CA75527Q1081` stays off the LSE rows; `TSXV::RE` / `OTC::RROYF` keep it. `FSX::CU2` stays empty.
+
+### Scope
+
+- This remains a `merge` claim, not `stable` or `complete`. Source licensing, unresolved recall gaps, and missing identifiers remain explicit. FIRDS exports contain metrics only; the GLEIF bulk relationship file is not redistributed.
 
 ## [3.43.0] - 2026-10-09
 

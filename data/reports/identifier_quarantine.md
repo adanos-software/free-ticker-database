@@ -1,14 +1,14 @@
 # Identifier quarantine
 
-Generated: `2026-10-20T07:43:44Z`
+Generated: `2026-10-20T10:12:14Z`
 
 The canonical rebuild never guesses or transfers an ISIN by ticker alone. Unsupported assertions are quarantined without mutation. A conflicting assertion is cleared only in explicit apply mode when a different full-name family has decisive listing-keyed official or reviewed evidence.
 
-- Conflict groups adjudicated: **2,011**
-- Listing decisions: **6,473**
+- Conflict groups adjudicated: **2,010**
+- Listing decisions: **6,470**
 - Identifier assertions cleared in explicit apply mode: **0**
 - Proposed clears: **1,049**
-- Quarantined unresolved assertions: **4,065**
+- Quarantined unresolved assertions: **4,062**
 - Identifier assertions retained with decisive evidence: **1,359**
 
 ## Actions
@@ -17,6 +17,6 @@ The canonical rebuild never guesses or transfers an ISIN by ticker alone. Unsupp
 |---|---:|
 | `kept_listing_keyed_identifier` | 1,359 |
 | `proposed_clear_conflicting_identifier` | 1,049 |
-| `quarantined_unresolved_identifier` | 4,065 |
+| `quarantined_unresolved_identifier` | 4,062 |
 
 The complete row-level ledger is `data/reports/identifier_quarantine.csv`.

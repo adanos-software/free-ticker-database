@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-10-20T07:48:23Z",
-    "rows": 8543,
+    "generated_at": "2026-10-20T10:12:33Z",
+    "rows": 8544,
     "outcome_totals": {
-      "accepted_source_gap": 5563,
+      "accepted_source_gap": 5564,
       "core_exclusion_candidate": 503,
       "official_fill_required": 2477
     },
@@ -22,7 +22,7 @@
       "inactive_or_legacy_identifier_gap": 20,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 175,
-      "official_identifier_reference_unmatched_gap": 11,
+      "official_identifier_reference_unmatched_gap": 12,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 430,
       "official_product_reference_unmatched_category_gap": 1,
@@ -34,7 +34,7 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 139,
-      "missing_isin_primary:accepted_source_gap": 188,
+      "missing_isin_primary:accepted_source_gap": 189,
       "missing_isin_primary:core_exclusion_candidate": 474,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 982,
@@ -2965,6 +2965,23 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "DAVION HEALTHCARE PLC",
+      "gap_class": "official_identifier_reference_unmatched_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "LSE::FP",
+      "ticker": "FP",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "name": "Fondul Proprietatea S.A. GDR",
       "gap_class": "official_identifier_reference_unmatched_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",

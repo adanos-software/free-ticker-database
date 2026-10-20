@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-10-20T07:48:20Z`
+Generated: `2026-10-20T10:12:31Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,10 +8,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 127 |
-| Listings involved | 373 |
-| Ticker-collision groups | 36 |
-| Open groups | 9 |
+| Collision groups | 126 |
+| Listings involved | 370 |
+| Ticker-collision groups | 35 |
+| Open groups | 8 |
 | Closed same-issuer reviewed | 118 |
 | Direct identifier apply allowed rows | 0 |
 
@@ -20,7 +20,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | Decision candidate | Groups |
 | --- | ---: |
 | isin_shared_by_distinct_issuers | 91 |
-| ticker_collision_isin_misassignment_suspected | 36 |
+| ticker_collision_isin_misassignment_suspected | 35 |
 
 ## Next Review Batches
 
@@ -43,11 +43,11 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | Italy | 3 |
 | isin_shared_by_distinct_issuers | Mexico | 3 |
 | ticker_collision_isin_misassignment_suspected | Australia | 3 |
-| ticker_collision_isin_misassignment_suspected | Canada | 3 |
 | isin_shared_by_distinct_issuers | Belgium | 2 |
 | isin_shared_by_distinct_issuers | Bermuda | 2 |
 | isin_shared_by_distinct_issuers | Japan | 2 |
 | isin_shared_by_distinct_issuers | Norway | 2 |
+| ticker_collision_isin_misassignment_suspected | Canada | 2 |
 | isin_shared_by_distinct_issuers | Austria | 1 |
 | isin_shared_by_distinct_issuers | Denmark | 1 |
 | isin_shared_by_distinct_issuers | Hungary | 1 |
@@ -57,7 +57,6 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | ISIN | Registered country | Listings | Shared tickers | Names |
 | --- | --- | ---: | --- | --- |
 | AU000000TLG7 | Australia | 5 | TLG | TLG Immobilien AG \| Talga Group Ltd |
-| CA3025862010 | Canada | 3 | FP | FP Newspapers Inc \| Fondul Proprietatea S.A. GDR |
 | AU000000CRB1 | Australia | 2 | CRB | Carbine Resources Ltd \| Lyxor Commodities Refinitiv/CoreCommodity CRB TR UCITS ETF - Acc-EUR |
 | AU0000253502 | Australia | 2 | RGN | Region Group \| Rush Gold Corp |
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |

@@ -1,0 +1,98 @@
+{
+  "generated_at": "2026-10-20T08:32:01Z",
+  "summary": {
+    "official_unique_isins": 6343,
+    "matched_isin_mic": 4945,
+    "firds_only_review": 1398,
+    "local_unique_isins": 45410,
+    "local_not_observed_review": 40465,
+    "local_listing_rows": 47708,
+    "local_listing_rows_observed": 5709,
+    "multi_currency_unresolved": 0,
+    "snapshot_pair_recall_pct": 77.96,
+    "local_pair_observed_pct": 10.89
+  },
+  "sources": [
+    {
+      "url": "data/masterfiles/venue_mic_mapping.csv",
+      "sha256": "0be159507e12005e59d2a08b3e2372fe28bbfb994a299d1251b1a5ac479e5a85",
+      "bytes": 10692,
+      "last_modified": ""
+    },
+    {
+      "url": "https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv",
+      "last_modified": "Mon, 12 Oct 2026 08:20:53 GMT",
+      "fetched_at": "2026-10-20T08:15:22.937303+00:00",
+      "sha256": "09a0d07b7b8348147453a2d8b18bc6638e3c5b16f749462582c9b1edf0fd0e38",
+      "bytes": 590760
+    },
+    {
+      "url": "https://firds.esma.europa.eu/firds/FULINS_C_20261017_01of01.zip",
+      "last_modified": "Sat, 17 Oct 2026 06:58:11 GMT",
+      "fetched_at": "2026-10-20T08:13:41.138625+00:00",
+      "sha256": "71c159f263e936372256494b99515b9ec35b979caeb36b773ba6c3840dabfcc8",
+      "bytes": 3806043,
+      "publication_date": "2026-10-17T00:00:00Z"
+    },
+    {
+      "url": "https://firds.esma.europa.eu/firds/FULINS_E_20261017_01of02.zip",
+      "last_modified": "Sat, 17 Oct 2026 06:58:12 GMT",
+      "fetched_at": "2026-10-20T08:13:42.101433+00:00",
+      "sha256": "3bdd8d5e3bed51fabc42de89d40b3890e641dc328219e9b75392836a9ca9d5d5",
+      "bytes": 8250598,
+      "publication_date": "2026-10-17T00:00:00Z"
+    },
+    {
+      "url": "https://firds.esma.europa.eu/firds/FULINS_E_20261017_02of02.zip",
+      "last_modified": "Sat, 17 Oct 2026 06:58:12 GMT",
+      "fetched_at": "2026-10-20T08:13:42.767023+00:00",
+      "sha256": "5a725b2d35e6b04648d63436f89b2dc21492baf16b53e731246754c626eaed93",
+      "bytes": 3723396,
+      "publication_date": "2026-10-17T00:00:00Z"
+    },
+    {
+      "url": "https://data.fca.org.uk/artefacts/FIRDS/FULINS_C_20261017_01of01.zip",
+      "last_modified": "Sat, 17 Oct 2026 09:55:58 GMT",
+      "fetched_at": "2026-10-20T08:13:43.505920+00:00",
+      "sha256": "a215fd0879269db3c8d4f1a9138d00a30a3dc9769a218239cf28fd3453058978",
+      "bytes": 8120426,
+      "publication_date": "2026-10-17"
+    },
+    {
+      "url": "https://data.fca.org.uk/artefacts/FIRDS/FULINS_E_20261017_01of01.zip",
+      "last_modified": "Sat, 17 Oct 2026 09:56:01 GMT",
+      "fetched_at": "2026-10-20T08:13:46.232868+00:00",
+      "sha256": "426e5c46d016804c0a52b7c11b26c696bf957b801a193fcc18a60fe07001f8e5",
+      "bytes": 40871930,
+      "publication_date": "2026-10-17"
+    }
+  ],
+  "direct_identifier_apply_allowed_rows": 0,
+  "inputs": [
+    {
+      "file": "listings.csv",
+      "sha256": "9fbb54132ea5b2d7abd52a01086b5bb20df4602b6d4be548a9a03c6fe21bcc4f"
+    },
+    {
+      "file": "venue_mic_mapping.csv",
+      "sha256": "0be159507e12005e59d2a08b3e2372fe28bbfb994a299d1251b1a5ac479e5a85"
+    },
+    {
+      "file": "firds_listing_compare_sources.json",
+      "sha256": "8864b6bfaf66137e917a9e121e76973f2de8616285ca6d62346b120717cf5940"
+    },
+    {
+      "file": "ISO10383_MIC.csv",
+      "sha256": "09a0d07b7b8348147453a2d8b18bc6638e3c5b16f749462582c9b1edf0fd0e38"
+    }
+  ],
+  "limitations": [
+    "Metrics only. Official XML and ISIN/MIC rows are not redistributed into the MIT dataset or packages.",
+    "ES/ED common equity and depositary receipts plus CE ETFs only. Other CFI categories stay outside scope.",
+    "Operating and segment MICs remain separate. SI/MTF observations do not become missing-listing claims.",
+    "FIRDS has no reliable trading ticker. Same-listing-key ISIN mismatches cannot be scored from these files.",
+    "Local exports lack currency. Multiple FIRDS currencies remain unresolved; no currency-specific completeness claim.",
+    "Weekly full snapshots are not current-day truth. Missing pairs are review candidates, not proven false positives.",
+    "Snapshot ratios pool provider/MIC/instrument pairs; ESMA and FCA overlap. They are not global recall or identity accuracy."
+  ]
+}

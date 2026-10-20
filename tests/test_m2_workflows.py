@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import json
 import re
+import os
+import subprocess
+import textwrap
 from pathlib import Path
 
 
@@ -95,6 +98,9 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     assert "KAGGLE_API_TOKEN" in workflow
     assert "PUBLISH_HUGGINGFACE" in workflow
     assert "git rev-parse HEAD^ >/dev/null 2>&1" in workflow
+    assert "draft: ${{ github.event_name == 'workflow_dispatch' }}" in workflow
+    assert "github.event_name == 'push' && vars.PUBLISH_KAGGLE" in workflow
+    assert "github.event_name == 'push' && vars.PUBLISH_HUGGINGFACE" in workflow
     assert "cp data/listings.csv /tmp/listings-before.csv" in workflow
 
     validation = workflow.index("python scripts/validate_database.py")
@@ -109,6 +115,24 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     assert "--profile complete" in workflow
     assert re.search(r"--profile merge\s+\\\s+--strict", workflow)
     assert not re.search(r"--profile stable\s+\\\s+--strict", workflow)
+
+
+def test_release_changelog_step_rejects_wrong_tag_and_extracts_only_target_version(tmp_path) -> None:
+    workflow = (ROOT / ".github/workflows/release.yml").read_text()
+    step = workflow.split("- name: Require matching release version and extract changelog", 1)[1].split("\n      - name:", 1)[0]
+    script = textwrap.dedent(step.split("run: |\n", 1)[1])
+    output = tmp_path / "notes.md"
+    script = script.replace("/tmp/release-notes.md", str(output))
+    (tmp_path / "VERSION").write_text("3.43.1\n")
+    (tmp_path / "CHANGELOG.md").write_text("# Changelog\n\n## [Unreleased]\n\n## [3.43.1] - 2026-10-20\n\n### Fixed\n\n- Target change.\n\n## [3.43.0] - 2026-10-09\n\n- Old change.\n")
+    environment = {**os.environ, "RELEASE_TAG": "v3.43.0"}
+    result = subprocess.run(["bash", "-e", "-c", script], cwd=tmp_path, env=environment, capture_output=True)
+    assert result.returncode != 0
+    assert not output.exists()
+    environment["RELEASE_TAG"] = "v3.43.1"
+    result = subprocess.run(["bash", "-e", "-c", script], cwd=tmp_path, env=environment, capture_output=True)
+    assert result.returncode == 0, result.stderr
+    assert output.read_text() == "### Fixed\n\n- Target change.\n"
 
 
 def test_symbol_change_workflow_skips_timestamp_only_apply_report_churn() -> None:

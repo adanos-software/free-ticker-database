@@ -25,6 +25,10 @@ Unknown terms remain conservative:
 
 This is not a legal conclusion that use is prohibited. It means the repository may not claim a stable redistributable release from that source until source-specific terms have been reviewed and recorded. The merge profile checks the governance schema; the stable profile blocks unresolved rights for every source that contributes to an official-full claim.
 
+## Independent reference audits
+
+Independent [reference audits](INDEPENDENT_REFERENCE_AUDITS.md) do not upgrade any source's redistribution status. Official FIRDS inputs and the GLEIF ISIN-to-LEI bulk relationship file remain in ignored caches. FIRDS exports contain aggregate metrics only. GLEIF exports contain metrics and a limited conflict-review queue, never the bulk mapping. No regulator or GLEIF identities are ingested by these comparisons.
+
 ## Status meanings
 
 - `review_required`: terms have not been reviewed; permission is not inferred.
