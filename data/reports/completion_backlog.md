@@ -1,14 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-10-19T15:03:17Z`
+Generated at: `2026-10-11T12:47:07Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `663`
 - Missing stock sectors: `1070`
-- Missing ETF categories: `136`
-- Official symbol collisions tracked in exchange references: `11490`
-- Core rows hidden only by the legacy global-ticker compatibility export: `4827`
+- Missing ETF categories: `139`
+- Official symbol collisions tracked in exchange references: `11528`
+- Core rows hidden only by the legacy global-ticker compatibility export: `4825`
 
 ## Next Safe Batches
 
@@ -68,7 +68,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
 | 1 | TSX | ETF | 51 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 2 | AMS | ETF | 26 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 2 | AMS | ETF | 29 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 3 | TSE | ETF | 23 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 4 | XETRA | ETF | 17 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 5 | NYSE ARCA | ETF | 13 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
@@ -87,7 +87,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 4 | XSTU | 42 | 42 | 0 | missing |
 | 5 | HNX | 32 | 32 | 0 | official_full |
 | 6 | BVB | 30 | 30 | 0 | official_full |
-| 7 | AMS | 26 | 0 | 26 | official_full |
+| 7 | AMS | 29 | 0 | 29 | official_full |
 | 8 | BIST | 24 | 24 | 0 | official_full |
 | 9 | TSE | 23 | 0 | 23 | official_full |
 | 10 | NSE_IN | 22 | 22 | 0 | official_full |

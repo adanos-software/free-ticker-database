@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-20T07:09:14Z",
+  "generated_at": "2026-10-11T12:42:33Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2009,
-  "decision_rows": 6468,
+  "conflict_count": 2011,
+  "decision_rows": 6473,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1358,
+    "kept_listing_keyed_identifier": 1359,
     "proposed_clear_conflicting_identifier": 1049,
-    "quarantined_unresolved_identifier": 4061
+    "quarantined_unresolved_identifier": 4065
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1049,
-  "quarantined_rows": 4061,
-  "retained_rows": 1358,
+  "quarantined_rows": 4065,
+  "retained_rows": 1359,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -28810,6 +28810,32 @@
       "retained_isin": "IE0007WMHDE3"
     },
     {
+      "conflict_id": "4fba054dfd38f10709e0",
+      "isin": "IE0007XDORZ1",
+      "listing_key": "AMS::VUYD",
+      "ticker": "VUYD",
+      "exchange": "AMS",
+      "name": "Vanguard USD High Yield Corporate Bond UCITS ETF USD Dist",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE0007XDORZ1"
+    },
+    {
+      "conflict_id": "4fba054dfd38f10709e0",
+      "isin": "IE0007XDORZ1",
+      "listing_key": "XETRA::VUYD",
+      "ticker": "VUYD",
+      "exchange": "XETRA",
+      "name": "VANG-DL HY.COR DLD",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE0007XDORZ1"
+    },
+    {
       "conflict_id": "ea207ab4f9c4cb4ee31b",
       "isin": "IE0007Y8Y157",
       "listing_key": "LSE::QNTG",
@@ -29614,6 +29640,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IE000RN58M26"
+    },
+    {
+      "conflict_id": "302643a706a6f61cf8e7",
+      "isin": "IE000TF6B304",
+      "listing_key": "AMS::VUYA",
+      "ticker": "VUYA",
+      "exchange": "AMS",
+      "name": "Vanguard USD High Yield Corporate Bond UCITS ETF USD Acc",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE000TF6B304"
+    },
+    {
+      "conflict_id": "302643a706a6f61cf8e7",
+      "isin": "IE000TF6B304",
+      "listing_key": "XETRA::VUYA",
+      "ticker": "VUYA",
+      "exchange": "XETRA",
+      "name": "VANG-DL HY.COR DLA",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE000TF6B304"
     },
     {
       "conflict_id": "b448aff755fe73c3ca0b",
@@ -83826,7 +83878,20 @@
       "retained_isin": "XS3306517338"
     },
     {
-      "conflict_id": "2d7d4ed9b81043c722c0",
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
+      "isin": "XS3467854462",
+      "listing_key": "AMS::3DIS",
+      "ticker": "3DIS",
+      "exchange": "AMS",
+      "name": "Leverage Shares 3x Disney ETP Securities",
+      "asset_type": "ETF",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "XS3467854462"
+    },
+    {
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
       "isin": "XS3467854462",
       "listing_key": "LSE::3DIE",
       "ticker": "3DIE",
@@ -83839,7 +83904,7 @@
       "retained_isin": "XS3467854462"
     },
     {
-      "conflict_id": "2d7d4ed9b81043c722c0",
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
       "isin": "XS3467854462",
       "listing_key": "LSE::DIS3",
       "ticker": "DIS3",
@@ -83852,7 +83917,7 @@
       "retained_isin": "XS3467854462"
     },
     {
-      "conflict_id": "2d7d4ed9b81043c722c0",
+      "conflict_id": "3e4b1aa0a1c6eda80a26",
       "isin": "XS3467854462",
       "listing_key": "XETRA::3DIE",
       "ticker": "3DIE",

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-20T07:12:15Z",
-    "rows": 97373,
+    "generated_at": "2026-10-11T12:46:57Z",
+    "rows": 97381,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,27 +14,27 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86265,
-      "source_gap": 11074,
+      "pass": 86266,
+      "source_gap": 11081,
       "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4563,
-      "official_reference": 87419,
+      "identifier_enriched": 4565,
+      "official_reference": 87423,
       "scoped_source_gap": 272,
-      "valid_isin": 5119
+      "valid_isin": 5121
     },
     "severity_counts": {
       "high": 10,
       "medium": 26,
-      "source_gap": 11428
+      "source_gap": 11435
     },
     "issue_counts": {
-      "official_reference_gap": 6667,
+      "official_reference_gap": 6671,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 668,
       "expected_missing_primary_isin": 663,
-      "missing_etf_category": 143,
+      "missing_etf_category": 146,
       "official_name_mismatch": 26,
       "official_isin_mismatch": 9,
       "country_isin_mismatch": 1
@@ -57,8 +57,8 @@
       },
       {
         "exchange": "B3",
-        "source_gap": 341,
-        "pass": 1248
+        "source_gap": 342,
+        "pass": 1247
       },
       {
         "exchange": "BMV",
@@ -87,12 +87,12 @@
         "source_gap": 223
       },
       {
-        "exchange": "XDUS",
-        "source_gap": 199
+        "exchange": "AMS",
+        "pass": 541,
+        "source_gap": 203
       },
       {
-        "exchange": "AMS",
-        "pass": 538,
+        "exchange": "XDUS",
         "source_gap": 199
       },
       {
@@ -129,8 +129,8 @@
       },
       {
         "exchange": "Euronext",
-        "pass": 1357,
-        "source_gap": 119,
+        "pass": 1356,
+        "source_gap": 120,
         "warn": 1
       },
       {

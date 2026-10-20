@@ -1143,10 +1143,10 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 26,
+      "etf_missing_count": 29,
       "exchange": "AMS",
       "field": "missing_etf_category",
-      "missing_count": 26,
+      "missing_count": 29,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -1300,12 +1300,12 @@
       "missing_sector_stock": 34
     },
     "field_totals": {
-      "missing_etf_category": 136,
+      "missing_etf_category": 139,
       "missing_isin_primary": 663,
       "missing_sector_stock": 1070
     },
-    "generated_at": "2026-10-19T15:03:17Z",
-    "legacy_primary_ticker_collision_rows": 4827,
+    "generated_at": "2026-10-11T12:47:07Z",
+    "legacy_primary_ticker_collision_rows": 4825,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",
@@ -1596,7 +1596,7 @@
         "why_next": "OpenFIGI no-apply residual review-gated workflow"
       }
     ],
-    "official_masterfile_collisions": 11490,
+    "official_masterfile_collisions": 11528,
     "rows": 68
   }
 }
