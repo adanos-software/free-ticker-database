@@ -1,6 +1,6 @@
 # Symbol Changes Review
 
-Generated at: `2026-10-07T13:18:58Z`
+Generated at: `2026-10-16T11:18:49Z`
 
 Daily secondary-source symbol-change feed. Rows are review signals, not automatic canonical ticker updates.
 
@@ -8,22 +8,22 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Metric | Rows |
 |---|---:|
-| Fetched rows | 233 |
-| Merged history rows | 360 |
-| Review rows | 360 |
+| Fetched rows | 236 |
+| Merged history rows | 369 |
+| Review rows | 369 |
 | Direct symbol-change apply allowed rows | 0 |
 
 ## Symbol-Change Backlog
 
 - Status: `listing_keyed_symbol_change_review_queue_open`
-- Rows: `360`
-- Rename/delisting review rows: `3`
-- Duplicate/cross-listing review rows: `13`
-- Already reflected audit rows: `295`
+- Rows: `369`
+- Rename/delisting review rows: `5`
+- Duplicate/cross-listing review rows: `19`
+- Already reflected audit rows: `296`
 - Out-of-scope collision blocked rows: `27`
 - Missing source-scope mapping rows: `10`
 - No-dataset-match documentation rows: `12`
-- Time-sensitive review rows: `8`
+- Time-sensitive review rows: `15`
 - Secondary feed apply authorized: `false`
 - Source gate: Symbol-change feed rows are review signals only; ticker, name, listing, or alias changes require listing-keyed official venue or issuer evidence for old/new symbols and issuer identity.
 
@@ -31,31 +31,31 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Status | Rows |
 |---|---:|
-| new_symbol_present_old_symbol_missing | 297 |
+| new_symbol_present_old_symbol_missing | 298 |
 | no_matching_listing | 14 |
-| old_and_new_symbols_present | 17 |
-| old_symbol_present_new_symbol_missing | 6 |
+| old_and_new_symbols_present | 23 |
+| old_symbol_present_new_symbol_missing | 8 |
 | symbol_present_only_outside_source_scope | 26 |
 
 ## Workflow Queues
 
 | Queue | Rows |
 |---|---:|
-| audit_already_reflected | 295 |
+| audit_already_reflected | 296 |
 | blocked_missing_source_scope_mapping | 10 |
 | blocked_out_of_scope_symbol_collision | 27 |
 | document_no_dataset_match | 12 |
-| review_duplicate_or_cross_listing | 13 |
-| review_verified_rename_or_delisting | 3 |
+| review_duplicate_or_cross_listing | 19 |
+| review_verified_rename_or_delisting | 5 |
 
 ## Workflow Queue By Recency
 
 | Queue / Recency | Rows |
 |---|---:|
-| audit_already_reflected:older_than_90d | 185 |
-| audit_already_reflected:recent_30d | 32 |
-| audit_already_reflected:recent_7d | 46 |
-| audit_already_reflected:recent_90d | 32 |
+| audit_already_reflected:older_than_90d | 187 |
+| audit_already_reflected:recent_30d | 31 |
+| audit_already_reflected:recent_7d | 45 |
+| audit_already_reflected:recent_90d | 33 |
 | blocked_missing_source_scope_mapping:older_than_90d | 8 |
 | blocked_missing_source_scope_mapping:recent_30d | 1 |
 | blocked_missing_source_scope_mapping:recent_7d | 1 |
@@ -67,40 +67,40 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | document_no_dataset_match:recent_7d | 2 |
 | document_no_dataset_match:recent_90d | 2 |
 | review_duplicate_or_cross_listing:older_than_90d | 6 |
-| review_duplicate_or_cross_listing:recent_30d | 2 |
-| review_duplicate_or_cross_listing:recent_7d | 4 |
-| review_duplicate_or_cross_listing:recent_90d | 1 |
-| review_verified_rename_or_delisting:recent_7d | 2 |
+| review_duplicate_or_cross_listing:recent_30d | 6 |
+| review_duplicate_or_cross_listing:recent_7d | 5 |
+| review_duplicate_or_cross_listing:recent_90d | 2 |
+| review_verified_rename_or_delisting:recent_7d | 4 |
 | review_verified_rename_or_delisting:recent_90d | 1 |
 
 ## Workflow Queue By Priority
 
 | Queue / Priority | Rows |
 |---|---:|
-| audit_already_reflected:P4 | 295 |
+| audit_already_reflected:P4 | 296 |
 | blocked_missing_source_scope_mapping:P2 | 10 |
 | blocked_out_of_scope_symbol_collision:P2 | 27 |
 | document_no_dataset_match:P3 | 12 |
-| review_duplicate_or_cross_listing:P1 | 13 |
-| review_verified_rename_or_delisting:P1 | 3 |
+| review_duplicate_or_cross_listing:P1 | 19 |
+| review_verified_rename_or_delisting:P1 | 5 |
 
 ## Workflow Queue By Exchange Scope
 
 | Queue / Scope Status | Rows |
 |---|---:|
 | audit_already_reflected:global_symbol_collision_outside_source_scope | 70 |
-| audit_already_reflected:matches_within_source_scope | 225 |
+| audit_already_reflected:matches_within_source_scope | 226 |
 | blocked_missing_source_scope_mapping:unscoped_source_hint | 10 |
 | blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope | 27 |
 | document_no_dataset_match:matches_within_source_scope | 12 |
-| review_duplicate_or_cross_listing:matches_within_source_scope | 13 |
-| review_verified_rename_or_delisting:matches_within_source_scope | 3 |
+| review_duplicate_or_cross_listing:matches_within_source_scope | 19 |
+| review_verified_rename_or_delisting:matches_within_source_scope | 5 |
 
 ## Workflow Queue By Match Status
 
 | Queue / Match Status | Rows |
 |---|---:|
-| audit_already_reflected:new_symbol_present_old_symbol_missing | 295 |
+| audit_already_reflected:new_symbol_present_old_symbol_missing | 296 |
 | blocked_missing_source_scope_mapping:new_symbol_present_old_symbol_missing | 2 |
 | blocked_missing_source_scope_mapping:no_matching_listing | 2 |
 | blocked_missing_source_scope_mapping:old_and_new_symbols_present | 4 |
@@ -108,14 +108,14 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing | 1 |
 | blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope | 26 |
 | document_no_dataset_match:no_matching_listing | 12 |
-| review_duplicate_or_cross_listing:old_and_new_symbols_present | 13 |
-| review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing | 3 |
+| review_duplicate_or_cross_listing:old_and_new_symbols_present | 19 |
+| review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing | 5 |
 
 ## Workflow Queue By Listing-Key Review
 
 | Queue | Listing-Key Status | Rows |
 |---|---|---:|
-| audit_already_reflected | new_scoped_listing_key_only | 295 |
+| audit_already_reflected | new_scoped_listing_key_only | 296 |
 | blocked_missing_source_scope_mapping | new_scoped_listing_key_only | 2 |
 | blocked_missing_source_scope_mapping | no_scoped_listing_key_match | 2 |
 | blocked_missing_source_scope_mapping | old_and_new_scoped_listing_keys_present | 4 |
@@ -123,53 +123,53 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | blocked_out_of_scope_symbol_collision | no_scoped_listing_key_match | 26 |
 | blocked_out_of_scope_symbol_collision | old_scoped_listing_key_only | 1 |
 | document_no_dataset_match | no_scoped_listing_key_match | 12 |
-| review_duplicate_or_cross_listing | old_and_new_scoped_listing_keys_present | 13 |
-| review_verified_rename_or_delisting | old_scoped_listing_key_only | 3 |
+| review_duplicate_or_cross_listing | old_and_new_scoped_listing_keys_present | 19 |
+| review_verified_rename_or_delisting | old_scoped_listing_key_only | 5 |
 
 ## Workflow Queue By Source Hint
 
 | Queue | Source Hint | Rows |
 |---|---|---:|
 | audit_already_reflected | OTC | 13 |
-| audit_already_reflected | US_LISTED | 282 |
+| audit_already_reflected | US_LISTED | 283 |
 | blocked_missing_source_scope_mapping | missing | 10 |
 | blocked_out_of_scope_symbol_collision | OTC | 20 |
 | blocked_out_of_scope_symbol_collision | US_LISTED | 7 |
 | document_no_dataset_match | OTC | 5 |
 | document_no_dataset_match | US_LISTED | 7 |
-| review_duplicate_or_cross_listing | US_LISTED | 13 |
-| review_verified_rename_or_delisting | US_LISTED | 3 |
+| review_duplicate_or_cross_listing | US_LISTED | 19 |
+| review_verified_rename_or_delisting | US_LISTED | 5 |
 
 ## Workflow Queue By Source Confidence
 
 | Queue | Source Confidence | Rows |
 |---|---|---:|
-| audit_already_reflected | secondary_review | 295 |
+| audit_already_reflected | secondary_review | 296 |
 | blocked_missing_source_scope_mapping | secondary_review | 10 |
 | blocked_out_of_scope_symbol_collision | secondary_review | 27 |
 | document_no_dataset_match | secondary_review | 12 |
-| review_duplicate_or_cross_listing | secondary_review | 13 |
-| review_verified_rename_or_delisting | secondary_review | 3 |
+| review_duplicate_or_cross_listing | secondary_review | 19 |
+| review_verified_rename_or_delisting | secondary_review | 5 |
 
 ## Workflow Queue By Review Strategy
 
 | Queue | Strategy | Rows |
 |---|---|---:|
-| audit_already_reflected | audit_already_reflected_no_canonical_change | 295 |
+| audit_already_reflected | audit_already_reflected_no_canonical_change | 296 |
 | blocked_missing_source_scope_mapping | map_source_exchange_scope_before_symbol_review | 10 |
 | blocked_out_of_scope_symbol_collision | block_until_source_scope_and_non_symbol_identity_resolved | 27 |
 | document_no_dataset_match | document_no_dataset_match_without_canonical_action | 12 |
-| review_duplicate_or_cross_listing | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | 13 |
-| review_verified_rename_or_delisting | verify_rename_or_delisting_with_official_venue_or_issuer_evidence | 3 |
+| review_duplicate_or_cross_listing | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | 19 |
+| review_verified_rename_or_delisting | verify_rename_or_delisting_with_official_venue_or_issuer_evidence | 5 |
 
 ## Top Workflow Batches
 
 | Queue | Priority | Recency | Scope status | Strategy | Evidence required | Recommended next source | Source gate | Rows |
 |---|---|---|---|---|---|---|---|---:|
-| review_duplicate_or_cross_listing | P1 | recent_7d | matches_within_source_scope | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Official exchange directory records plus listing-key review for both symbols. | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 4 |
-| review_verified_rename_or_delisting | P1 | recent_7d | matches_within_source_scope | verify_rename_or_delisting_with_official_venue_or_issuer_evidence | official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer. | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. | 2 |
-| review_duplicate_or_cross_listing | P1 | recent_30d | matches_within_source_scope | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Official exchange directory records plus listing-key review for both symbols. | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 2 |
-| review_duplicate_or_cross_listing | P1 | recent_90d | matches_within_source_scope | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Official exchange directory records plus listing-key review for both symbols. | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 1 |
+| review_duplicate_or_cross_listing | P1 | recent_7d | matches_within_source_scope | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Official exchange directory records plus listing-key review for both symbols. | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 5 |
+| review_verified_rename_or_delisting | P1 | recent_7d | matches_within_source_scope | verify_rename_or_delisting_with_official_venue_or_issuer_evidence | official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer. | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. | 4 |
+| review_duplicate_or_cross_listing | P1 | recent_30d | matches_within_source_scope | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Official exchange directory records plus listing-key review for both symbols. | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 6 |
+| review_duplicate_or_cross_listing | P1 | recent_90d | matches_within_source_scope | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Official exchange directory records plus listing-key review for both symbols. | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 2 |
 | review_verified_rename_or_delisting | P1 | recent_90d | matches_within_source_scope | verify_rename_or_delisting_with_official_venue_or_issuer_evidence | official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer. | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. | 1 |
 | review_duplicate_or_cross_listing | P1 | older_than_90d | matches_within_source_scope | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Official exchange directory records plus listing-key review for both symbols. | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 6 |
 | blocked_out_of_scope_symbol_collision | P2 | recent_7d | global_symbol_collision_outside_source_scope | block_until_source_scope_and_non_symbol_identity_resolved | official_exchange_scope_and_non_symbol_identity_evidence_before_apply | Official source exchange scope mapping plus non-symbol identity evidence before any symbol action. | Block apply; global symbol collision outside source scope is not symbol-change evidence. | 4 |
@@ -182,23 +182,23 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | document_no_dataset_match | P3 | recent_7d | matches_within_source_scope | document_no_dataset_match_without_canonical_action | official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event | Official exchange scope mapping, or document the event as outside the dataset. | No dataset action without scoped official mapping to an existing or intended listing. | 2 |
 | document_no_dataset_match | P3 | recent_90d | matches_within_source_scope | document_no_dataset_match_without_canonical_action | official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event | Official exchange scope mapping, or document the event as outside the dataset. | No dataset action without scoped official mapping to an existing or intended listing. | 2 |
 | document_no_dataset_match | P3 | older_than_90d | matches_within_source_scope | document_no_dataset_match_without_canonical_action | official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event | Official exchange scope mapping, or document the event as outside the dataset. | No dataset action without scoped official mapping to an existing or intended listing. | 8 |
-| audit_already_reflected | P4 | recent_7d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 31 |
+| audit_already_reflected | P4 | recent_7d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 30 |
 | audit_already_reflected | P4 | recent_7d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 15 |
 | audit_already_reflected | P4 | recent_30d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 28 |
-| audit_already_reflected | P4 | recent_30d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 4 |
-| audit_already_reflected | P4 | recent_90d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 26 |
+| audit_already_reflected | P4 | recent_30d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 3 |
+| audit_already_reflected | P4 | recent_90d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 27 |
 | audit_already_reflected | P4 | recent_90d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 6 |
-| audit_already_reflected | P4 | older_than_90d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 140 |
-| audit_already_reflected | P4 | older_than_90d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 45 |
+| audit_already_reflected | P4 | older_than_90d | matches_within_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only confirmation from scoped listing records; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 141 |
+| audit_already_reflected | P4 | older_than_90d | global_symbol_collision_outside_source_scope | audit_already_reflected_no_canonical_change | audit_only_confirm_no_canonical_change_needed | Audit-only comparison against official scoped exchange evidence; no canonical change. | Audit only; no ticker, listing, or name change is authorized. | 46 |
 
 ## Review Buckets
 
 | Priority | Bucket | Rows |
 |---|---|---:|
-| P1 | action_required_duplicate_or_cross_listing | 13 |
-| P1 | action_required_possible_rename_or_delisting | 3 |
+| P1 | action_required_duplicate_or_cross_listing | 19 |
+| P1 | action_required_possible_rename_or_delisting | 5 |
 | P4 | already_reflected_in_scope_with_global_symbol_collision | 70 |
-| P4 | already_reflected_in_source_scope | 225 |
+| P4 | already_reflected_in_source_scope | 226 |
 | P2 | hold_out_of_scope_symbol_collision | 26 |
 | P2 | manual_review_due_to_out_of_scope_collision | 1 |
 | P2 | manual_scope_mapping_required | 10 |
@@ -208,48 +208,48 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Priority | Rows |
 |---|---:|
-| P1 | 16 |
+| P1 | 24 |
 | P2 | 37 |
 | P3 | 12 |
-| P4 | 295 |
+| P4 | 296 |
 
 ## Recency
 
 | Recency bucket | Rows |
 |---|---:|
-| older_than_90d | 223 |
-| recent_30d | 38 |
-| recent_7d | 59 |
-| recent_90d | 40 |
+| older_than_90d | 225 |
+| recent_30d | 41 |
+| recent_7d | 61 |
+| recent_90d | 42 |
 
 ## Time-Sensitive P1 Review
 
 | Workflow queue | Rows |
 |---|---:|
-| review_duplicate_or_cross_listing | 6 |
-| review_verified_rename_or_delisting | 2 |
+| review_duplicate_or_cross_listing | 11 |
+| review_verified_rename_or_delisting | 4 |
 
 | Recency bucket | Rows |
 |---|---:|
-| recent_30d | 2 |
-| recent_7d | 6 |
+| recent_30d | 6 |
+| recent_7d | 9 |
 
 ### Top Time-Sensitive Symbol-Change Batches
 
 | Queue | Recency | Scope status | Match status | Listing-key status | Strategy | Evidence required | Source gate | Rows |
 |---|---|---|---|---|---|---|---|---:|
-| review_duplicate_or_cross_listing | recent_7d | matches_within_source_scope | old_and_new_symbols_present | old_and_new_scoped_listing_keys_present | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 4 |
-| review_verified_rename_or_delisting | recent_7d | matches_within_source_scope | old_symbol_present_new_symbol_missing | old_scoped_listing_key_only | verify_rename_or_delisting_with_official_venue_or_issuer_evidence | official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. | 2 |
-| review_duplicate_or_cross_listing | recent_30d | matches_within_source_scope | old_and_new_symbols_present | old_and_new_scoped_listing_keys_present | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 2 |
+| review_duplicate_or_cross_listing | recent_7d | matches_within_source_scope | old_and_new_symbols_present | old_and_new_scoped_listing_keys_present | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 5 |
+| review_verified_rename_or_delisting | recent_7d | matches_within_source_scope | old_symbol_present_new_symbol_missing | old_scoped_listing_key_only | verify_rename_or_delisting_with_official_venue_or_issuer_evidence | official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. | 4 |
+| review_duplicate_or_cross_listing | recent_30d | matches_within_source_scope | old_and_new_symbols_present | old_and_new_scoped_listing_keys_present | resolve_duplicate_cross_listing_or_transition_before_any_symbol_change | official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key. | 6 |
 
 ## Priority By Recency
 
 | Priority / Recency | Rows |
 |---|---:|
 | P1:older_than_90d | 6 |
-| P1:recent_30d | 2 |
-| P1:recent_7d | 6 |
-| P1:recent_90d | 2 |
+| P1:recent_30d | 6 |
+| P1:recent_7d | 9 |
+| P1:recent_90d | 3 |
 | P2:older_than_90d | 24 |
 | P2:recent_30d | 4 |
 | P2:recent_7d | 5 |
@@ -257,26 +257,26 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 | P3:older_than_90d | 8 |
 | P3:recent_7d | 2 |
 | P3:recent_90d | 2 |
-| P4:older_than_90d | 185 |
-| P4:recent_30d | 32 |
-| P4:recent_7d | 46 |
-| P4:recent_90d | 32 |
+| P4:older_than_90d | 187 |
+| P4:recent_30d | 31 |
+| P4:recent_7d | 45 |
+| P4:recent_90d | 33 |
 
 ## Apply Eligibility
 
 | Eligibility | Rows |
 |---|---:|
-| audit_only_no_apply | 295 |
+| audit_only_no_apply | 296 |
 | blocked_until_exchange_scope_resolved | 37 |
 | no_dataset_action_without_scope_mapping | 12 |
-| requires_official_venue_confirmation | 16 |
+| requires_official_venue_confirmation | 24 |
 
 ## Apply Readiness
 
 | Readiness | Rows |
 |---|---:|
-| audit_only_no_canonical_change | 295 |
-| blocked_until_listing_keyed_official_symbol_change_evidence | 16 |
+| audit_only_no_canonical_change | 296 |
+| blocked_until_listing_keyed_official_symbol_change_evidence | 24 |
 | blocked_until_source_exchange_scope_and_non_symbol_identity_evidence | 37 |
 | document_or_ignore_until_scoped_official_dataset_match | 12 |
 
@@ -284,15 +284,15 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Readiness | Rows |
 |---|---:|
-| blocked_until_listing_keyed_official_symbol_change_evidence | 8 |
+| blocked_until_listing_keyed_official_symbol_change_evidence | 15 |
 
 ## Verification Evidence
 
 | Evidence Gate | Rows |
 |---|---:|
-| audit_only_confirm_no_canonical_change_needed | 295 |
-| official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | 13 |
-| official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | 3 |
+| audit_only_confirm_no_canonical_change_needed | 296 |
+| official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition | 19 |
+| official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer | 5 |
 | official_exchange_scope_and_non_symbol_identity_evidence_before_apply | 27 |
 | official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event | 12 |
 | source_exchange_mapping_before_any_symbol_change_review | 10 |
@@ -301,18 +301,18 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Action | Rows |
 |---|---:|
-| already_reflected_or_new_symbol_added_in_source_scope | 297 |
+| already_reflected_or_new_symbol_added_in_source_scope | 298 |
 | do_not_apply_from_symbol_match_review_exchange_scope_first | 26 |
 | ignore_or_map_exchange_scope_before_applying | 14 |
-| review_duplicate_or_cross_listing_state_in_source_scope | 17 |
-| review_possible_rename_or_delisting_in_source_scope | 6 |
+| review_duplicate_or_cross_listing_state_in_source_scope | 23 |
+| review_possible_rename_or_delisting_in_source_scope | 8 |
 
 ## Exchange Scope
 
 | Scope Status | Rows |
 |---|---:|
 | global_symbol_collision_outside_source_scope | 97 |
-| matches_within_source_scope | 253 |
+| matches_within_source_scope | 262 |
 | unscoped_source_hint | 10 |
 
 ## Policy
