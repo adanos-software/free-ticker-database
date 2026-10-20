@@ -9,7 +9,7 @@ Markets skipped: TSE (fetch failed: XLRDError); BSE_IN (fetch failed: JSONDecode
 
 Candidates: 224 (delisted=4, suspended=0, master_absent=220)
 
-Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. `delisted` (BSE ListofScripData or Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
+Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. BSE ListofScripData Delisted rows are drop-ready; Nasdaq Trader Delete rows require manual corporate-action review; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
 | Exchange | Ticker | Classification | Name | ISIN |
 |---|---|---|---|---|

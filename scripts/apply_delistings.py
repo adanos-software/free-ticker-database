@@ -52,12 +52,12 @@ def classify_candidate(candidate: dict[str, str]) -> str:
     if classification == "delisted" and (
         exchange == "BSE_IN" or exchange in NASDAQ_DELETE_EXCHANGES
     ):
-        return (
-            "apply_drop_override"
-            if valid_official_delisting_evidence(candidate)
-            and is_valid_isin(candidate.get("isin", ""))
-            else "blocked_missing_official_delisting_evidence"
-        )
+        if not valid_official_delisting_evidence(candidate) or not is_valid_isin(candidate.get("isin", "")):
+            return "blocked_missing_official_delisting_evidence"
+        # A trading-system Delete also covers venue transfers and ADS replacements.
+        if exchange in NASDAQ_DELETE_EXCHANGES:
+            return "manual_nasdaq_delete_review_required"
+        return "apply_drop_override"
     if classification == "master_absent":
         return "manual_rename_vs_delisting_required"
     if classification == "suspended":
@@ -214,7 +214,7 @@ def write_markdown(path: Path, report: dict[str, Any]) -> None:
         f"- Blocked rows: `{summary['blocked_rows']}`",
         f"- Manual rows: `{summary['manual_rows']}`",
         "",
-        "Only BSE ListofScripData Delisted rows and Nasdaq Trader trading-system Delete rows with matching observation evidence are eligible for automatic drop overrides. `master_absent` rows stay manual until rename-vs-delisting is classified.",
+        "Only BSE ListofScripData Delisted rows with matching observation evidence are eligible for automatic drop overrides. Nasdaq Trader Delete rows require manual review for venue transfers and corporate actions. `master_absent` rows stay manual until rename-vs-delisting is classified.",
         "",
         "## Status Counts",
         "",

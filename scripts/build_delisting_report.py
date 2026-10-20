@@ -310,8 +310,8 @@ def build_markdown(summary: dict) -> str:
         f"(delisted={cls.get('delisted', 0)}, suspended={cls.get('suspended', 0)}, "
         f"master_absent={cls.get('master_absent', 0)})", "",
         "Detection only — verify each (delisting vs rename vs SME/suspended) and "
-        "apply via the override/verify pipeline. `delisted` (BSE ListofScripData or "
-        "Nasdaq Trader trading-system Delete) are drop-ready; `master_absent` need "
+        "apply via the override/verify pipeline. BSE ListofScripData Delisted rows are "
+        "drop-ready; Nasdaq Trader Delete rows require manual corporate-action review; `master_absent` need "
         "rename-vs-delisting verification; `suspended` are kept by policy (can resume).", "",
         "| Exchange | Ticker | Classification | Name | ISIN |",
         "|---|---|---|---|---|",

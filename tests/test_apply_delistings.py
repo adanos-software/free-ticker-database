@@ -195,30 +195,26 @@ def test_tampered_observation_id_blocks_auto_drop(tmp_path: Path) -> None:
     assert report["blocked"][0]["status"] == "blocked_missing_official_delisting_evidence"
 
 
-def test_apply_delistings_writes_official_nasdaq_delete(tmp_path: Path) -> None:
+def test_official_nasdaq_deletes_require_review_without_mutating_drops(tmp_path: Path) -> None:
     source = tmp_path / "delisting_report.json"
     drops = tmp_path / "drop_entries.csv"
     write_drop_rows(drops, [])
-    source.write_text(
-        json.dumps({"candidates": [official_nasdaq_delete_candidate()]}),
-        encoding="utf-8",
-    )
-
+    original = drops.read_bytes()
+    candidates = [
+        official_nasdaq_delete_candidate(ticker="CECO"),
+        official_nasdaq_delete_candidate(ticker="IBOC"),
+        official_nasdaq_delete_candidate(ticker="AMTD", exchange="NYSE"),
+    ]
+    source.write_text(json.dumps({"candidates": candidates}), encoding="utf-8")
     report = apply_delistings(
-        delisting_report_json=source,
-        drop_entries_csv=drops,
-        report_json=tmp_path / "apply.json",
-        report_md=tmp_path / "apply.md",
-        apply=True,
+        delisting_report_json=source, drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json", report_md=tmp_path / "apply.md", apply=True,
     )
-
-    assert report["summary"]["applied_rows"] == 1
-    assert read_drop_rows(drops)[0]["ticker"] == "DEAD"
-    assert read_drop_rows(drops)[0]["exchange"] == "NASDAQ"
-    assert read_drop_rows(tmp_path / "delisting_transitions.csv")[0]["old_listing_key"] == "NASDAQ::DEAD"
-    applied = report["applied"][0]
-    assert applied["nasdaq_action"] == "Delete"
-    assert valid_official_delisting_evidence(applied)
+    assert report["summary"]["applied_rows"] == 0
+    assert report["summary"]["manual_rows"] == 3
+    assert {row["status"] for row in report["manual"]} == {"manual_nasdaq_delete_review_required"}
+    assert drops.read_bytes() == original
+    assert read_drop_rows(tmp_path / "delisting_transitions.csv") == []
 
 
 def test_nasdaq_delete_without_action_or_wrong_url_is_blocked(tmp_path: Path) -> None:
@@ -264,7 +260,7 @@ def test_apply_delistings_appends_without_rewriting_existing_order(tmp_path: Pat
     write_drop_rows(drops, existing)
     original = drops.read_bytes()
     source.write_text(
-        json.dumps({"candidates": [official_nasdaq_delete_candidate()]}),
+        json.dumps({"candidates": [official_delisting_candidate()]}),
         encoding="utf-8",
     )
 
@@ -281,5 +277,5 @@ def test_apply_delistings_appends_without_rewriting_existing_order(tmp_path: Pat
     assert [drop_key(row) for row in read_drop_rows(drops)] == [
         ("NYSE", "ZZZ"),
         ("NASDAQ", "AAA"),
-        ("NASDAQ", "DEAD"),
+        ("BSE_IN", "DEAD"),
     ]

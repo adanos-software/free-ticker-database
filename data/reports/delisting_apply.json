@@ -5,60 +5,19 @@
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "transitions_csv": "data/reports/delisting_transitions.csv",
-    "transition_rows": 4,
-    "applied_rows": 4,
+    "transition_rows": 1,
+    "applied_rows": 1,
     "already_applied_rows": 0,
     "drafted_rows": 0,
     "blocked_rows": 0,
-    "manual_rows": 220,
+    "manual_rows": 223,
     "status_counts": {
-      "apply_drop_override": 4,
+      "apply_drop_override": 1,
+      "manual_nasdaq_delete_review_required": 3,
       "manual_rename_vs_delisting_required": 220
     }
   },
   "applied": [
-    {
-      "exchange": "NASDAQ",
-      "ticker": "CECO",
-      "name": "CECO Environmental Corp.",
-      "isin": "US1251411013",
-      "classification": "delisted",
-      "status": "apply_drop_override",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-19T14:58:37Z",
-      "effective_at": "",
-      "observation_id": "obs_c442362761e0639aee942ef9"
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "IBOC",
-      "name": "International Bancshares Corporation",
-      "isin": "US4590441030",
-      "classification": "delisted",
-      "status": "apply_drop_override",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-19T14:58:37Z",
-      "effective_at": "",
-      "observation_id": "obs_dc777dd915e7615f50d80df6"
-    },
-    {
-      "exchange": "NYSE",
-      "ticker": "AMTD",
-      "name": "AMTD IDEA Group",
-      "isin": "US00180G2057",
-      "classification": "delisted",
-      "status": "apply_drop_override",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-19T14:58:37Z",
-      "effective_at": "",
-      "observation_id": "obs_5cb2743c731afa029383f492"
-    },
     {
       "exchange": "NYSE",
       "ticker": "ATKR",
@@ -1495,7 +1454,7 @@
     {
       "exchange": "NASDAQ",
       "ticker": "LESL",
-      "name": "Leslies Inc",
+      "name": "Leslies\u00a0Inc",
       "isin": "US5270642086",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
@@ -1537,7 +1496,7 @@
     {
       "exchange": "NASDAQ",
       "ticker": "LYRA",
-      "name": "Lyra Therapeutics Inc",
+      "name": "Lyra Therapeutics\u00a0Inc",
       "isin": "US55234L1052",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
@@ -3157,6 +3116,54 @@
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CECO",
+      "name": "CECO Environmental Corp.",
+      "isin": "US1251411013",
+      "classification": "delisted",
+      "status": "manual_nasdaq_delete_review_required",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-19T14:58:37Z",
+      "effective_at": "",
+      "observation_id": "obs_c442362761e0639aee942ef9"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "IBOC",
+      "name": "International Bancshares Corporation",
+      "isin": "US4590441030",
+      "classification": "delisted",
+      "status": "manual_nasdaq_delete_review_required",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-19T14:58:37Z",
+      "effective_at": "",
+      "observation_id": "obs_dc777dd915e7615f50d80df6"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "AMTD",
+      "name": "AMTD IDEA Group",
+      "isin": "US00180G2057",
+      "classification": "delisted",
+      "status": "manual_nasdaq_delete_review_required",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-19T14:58:37Z",
+      "effective_at": "",
+      "observation_id": "obs_5cb2743c731afa029383f492"
     }
-  ]
+  ],
+  "review_notes": {
+    "CECO": "Venue transfer to TXSE. https://www.nasdaq.com/press-release/ceco-environmental-transfer-us-stock-exchange-listing-texas-stock-exchange-2026-10-02",
+    "IBOC": "Venue transfer to TXSE. https://www.sec.gov/Archives/edgar/data/315709/000110465926113899/tm2627039d1_8k.htm",
+    "AMTD": "ADS ratio change; same NYSE ticker continues. https://www.sec.gov/Archives/edgar/data/1769731/000121390026107254/ea030787901ex99-1.htm",
+    "ATKR": "Acquisition completed and delisting requested. https://www.sec.gov/Archives/edgar/data/1666138/000166613826000041/atkr-20261019.htm"
+  }
 }
