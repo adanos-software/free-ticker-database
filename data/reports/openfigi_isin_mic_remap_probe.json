@@ -1,0 +1,5847 @@
+{
+  "endpoint": "https://api.openfigi.com/v3/mapping",
+  "requests": [
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KYG6561R1011",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00009b6cdd792e79d5da80576cde8333854ae712a9b81a9a23586bf6a0e79458",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00QYYVW78",
+            "name": "BYTE METAVERSE HOLDINGS LTD",
+            "ticker": "8645",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG00QYYVW69",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00QYYVW87",
+            "securityType2": "Common Stock",
+            "securityDescription": "8645"
+          }
+        ]
+      },
+      "response_sha256": "e150e0a5d9ce868b33dbf6d02869439f1776e2f2585d33519b3425392ab14c98"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US4055521003",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00015d8a88dcaa4112b2f02eb2c03a85713cac1cbd239dd4b2905f44e8499b04",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG018V2GVJ6",
+            "name": "HALEON PLC-ADR",
+            "ticker": "H6D",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG018V2GVC3",
+            "securityType": "ADR",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG018GZNDB0",
+            "securityType2": "Depositary Receipt",
+            "securityDescription": "H6D"
+          }
+        ]
+      },
+      "response_sha256": "bdef2a11d629f732441945adca437601e1ecef1fdfb026b9cebfdfda0a832c87"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE788D01016",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0001e62740672a2e860297f6d58272e3d4bdccd5c6ab0002b83ec3582839620f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BHRVH3",
+            "name": "BCC FUBA (INDIA) LTD",
+            "ticker": "BCC",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG000BHRTR7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S82W51",
+            "securityType2": "Common Stock",
+            "securityDescription": "BCC"
+          }
+        ]
+      },
+      "response_sha256": "f7044553f89a793e390803c190b4f62eb591bb6ca9e91c3bd30ba5932aa64304"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE00FF01025",
+        "micCode": "XNSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00032eec04e49d507470b8a1112d45458390567f9b33f1fcc4c38614f0fa60aa",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG012C42N36",
+            "name": "ACUTAAS CHEMICALS LTD",
+            "ticker": "ACUTAAS",
+            "exchCode": "IS",
+            "compositeFIGI": "BBG006K7LT92",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG006K7LTB9",
+            "securityType2": "Common Stock",
+            "securityDescription": "ACUTAAS"
+          }
+        ]
+      },
+      "response_sha256": "e18ee020605799d15c833b962962e1b597a3d7f6c878bfd2c01cb131881cbac6"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US46143U5184",
+        "micCode": "BATS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00037be40444e760409bd3d3f4dbe97edea4401f058b520bcca5128a98cb0006",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01VWP0838",
+            "name": "TRADR 2X LONG GEV DAILY ETF",
+            "ticker": "GEVX",
+            "exchCode": "UF",
+            "compositeFIGI": "BBG01VWP07J3",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01VWP08D7",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "GEVX"
+          }
+        ]
+      },
+      "response_sha256": "07302ca83b2f41b57f43f5943062ef444c3ba95122fb36ffbdfa39519331ef40"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "LU1215454460",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00039ec43226560e3e5549285f41cfd26d3bb0f482afed2834d58407b3a30630",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG009YYHN36",
+            "name": "UBS ETF FACTOR EMU LOW VOLTL",
+            "ticker": "UIMY",
+            "exchCode": "GT",
+            "compositeFIGI": "BBG009YYHMP4",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG009WN8BB9",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "UIMY"
+          }
+        ]
+      },
+      "response_sha256": "0e571b3b9aa166931fca578c348e43e657b76c9678e0571b2f799515650b1c2a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US94845U1051",
+        "micCode": "XNAS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "000439031bd10396f7c9a0415938f67d54f06185a585e6b6b4211c3f5eff4e0a",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA8308166096",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0004509cd5a1247e4eeb37d283155226c5297c99d751c1a9a4a14df6cde0ca77",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000FNBZ02",
+            "name": "SKYHARBOUR RESOURCES LTD",
+            "ticker": "SC1P",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG000FNBVT0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RJG7",
+            "securityType2": "Common Stock",
+            "securityDescription": "SC1P"
+          },
+          {
+            "figi": "BBG0066KFDH2",
+            "name": "SKYHARBOUR RESOURCES LTD",
+            "ticker": "SYHEUR",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG0066KFD00",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RJG7",
+            "securityType2": "Common Stock",
+            "securityDescription": "SYHEUR"
+          }
+        ]
+      },
+      "response_sha256": "45bce3890f28cabdc373128f4eb8b45a291ae900efd67fd681811296cd1afc66"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100002870",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0004900b2332af6e51828be0d10e8b7e9f4dd687952f16439241f72170ea83d5",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG006Q97FV3",
+            "name": "WUXI NEW HONGTAI ELECTRICA-A",
+            "ticker": "603016",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG006Q978T2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG006Q978V9",
+            "securityType2": "Common Stock",
+            "securityDescription": "603016"
+          }
+        ]
+      },
+      "response_sha256": "1ababce25a2738f3f6db4d67626ab39a928ea7bf6e9ca544c9e2180c2c94f856"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US9229085389",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0004eb41afec437cb7354980793e7edb88347dc88583d3e876a9997ded29841d",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000Q1ZDF5",
+            "name": "VNGRD MRNGSTR MC GRW ETF-USD",
+            "ticker": "VOT",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG000Q1ZB87",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SRN7S6",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "VOT"
+          }
+        ]
+      },
+      "response_sha256": "3d8b368e193619155059573f9dfe450532f19569ca274a2ce457d18ffe7ccd5f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA2553311002",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0007a8398e39d5780c075ee853de25d76625b9fe4ce310db937fa542197ef50d",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "DE000A2QP4C4",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0007a8b97aa190f8ed04e44fa5cd75e66e1383d35d1e3bacfa2d09751a6a2504",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01TT29287",
+            "name": "ISHRS DJ GLOB TITANS EUR ACC",
+            "ticker": "EXIF",
+            "exchCode": "GT",
+            "compositeFIGI": "BBG01TT291V3",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01TT292G8",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "EXIF"
+          }
+        ]
+      },
+      "response_sha256": "f9d91afdb8b418cd1f15342994d8d88b40496e67d19ab266360d7d26e3ccb89e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "TREASCE00033",
+        "micCode": "XIST",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0007f4f1144fe199686cb615eafb5843f050c03bd5968dfb03849364c6170cc1",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01HQ400K1",
+            "name": "ASCE GAYRIMENKUL YATIRIM ORT",
+            "ticker": "ASGYO",
+            "exchCode": "TI",
+            "compositeFIGI": "BBG01HQ400J3",
+            "securityType": "REIT",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01HQ400N8",
+            "securityType2": "REIT",
+            "securityDescription": "ASGYO"
+          }
+        ]
+      },
+      "response_sha256": "98f6fb2f1ecc4905f1565856f9673235b006216d98d2462d0bf244e77f7ad67f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US1271903049",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0008713d523bd5b9f7b6036611ad98b2ca0b554ae2c56e8d12011f77bff60c3e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000HNM577",
+            "name": "CACI INTERNATIONAL INC -CL A",
+            "ticker": "CA8A",
+            "exchCode": "GY",
+            "compositeFIGI": "BBG000HNM2Q3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SF9NK1",
+            "securityType2": "Common Stock",
+            "securityDescription": "CA8A"
+          }
+        ]
+      },
+      "response_sha256": "e85ac8c876d48d1038a1b7f05e6c799a9e2fe5be00c2a45a2ec2ec1e0776bdbc"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE00B3CNHJ55",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0008accb9dfa7d64c2ac9e0f6d42c8a6ee388a55be24f5e6d8a5a0bd72c0c03b",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00T6VLYM9",
+            "name": "L&G RUSSELL 2000 SM CAP QUAL",
+            "ticker": "ETLZ",
+            "exchCode": "GT",
+            "compositeFIGI": "BBG00T6VLY67",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SYBRJ0",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "ETLZ"
+          }
+        ]
+      },
+      "response_sha256": "47610efb608f00f143b5f8dceeb4839cd7f6ff15baadb89d4edbba342edb8932"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US18539C2044",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00096c994ae1fe89bc326f31cd5cffc8ce5fdfa23c53123677f01e359539164b",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG008P19Y53",
+            "name": "CLEARWAY ENERGY INC-C",
+            "ticker": "NY41",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG008P19Y17",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG008LJ4TG2",
+            "securityType2": "Common Stock",
+            "securityDescription": "NY41"
+          },
+          {
+            "figi": "BBG008P90X39",
+            "name": "CLEARWAY ENERGY INC-C",
+            "ticker": "NYLDEUR",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG008P90WM0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG008LJ4TG2",
+            "securityType2": "Common Stock",
+            "securityDescription": "NYLDEUR"
+          }
+        ]
+      },
+      "response_sha256": "ad23729ac2c33b5af24222d18f20df08c8e80cf216bdc4b12616055992bcada2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US7010941042",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0009d2cd428128a20225392fa93f85144c022c2e5f314bc13ff19cb017346b3c",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0072578Z7",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHEUR",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG0072578P8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHEUR"
+          },
+          {
+            "figi": "BBG007257976",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHEUR",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG0072578P8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHEUR"
+          },
+          {
+            "figi": "BBG0072579G6",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHEUR",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG0072579F7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHEUR"
+          },
+          {
+            "figi": "BBG00JPW3M26",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHUSD",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00JPW3LS0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHUSD"
+          },
+          {
+            "figi": "BBG00JPW3MB6",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHUSD",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00JPW3LS0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHUSD"
+          },
+          {
+            "figi": "BBG00JPW3MP1",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHUSD",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00JPW3MN3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHUSD"
+          },
+          {
+            "figi": "BBG00JQ54CG0",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHGBP",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00JQ54C52",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHGBP"
+          },
+          {
+            "figi": "BBG00JQ54CQ9",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHGBP",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00JQ54C52",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHGBP"
+          },
+          {
+            "figi": "BBG00JQ54D23",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHGBP",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00JQ54D14",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHGBP"
+          },
+          {
+            "figi": "BBG00JRQS8Z5",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "0KFZ",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG00JRQS8Y6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "0KFZ"
+          },
+          {
+            "figi": "BBG023DNCD59",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHCHF",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG023DNCCW1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHCHF"
+          },
+          {
+            "figi": "BBG023DNCDD0",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHCHF",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG023DNCCW1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHCHF"
+          },
+          {
+            "figi": "BBG023DNCDY7",
+            "name": "PARKER HANNIFIN CORP",
+            "ticker": "PHCHF",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG023DNCDX8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5V554",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHCHF"
+          }
+        ]
+      },
+      "response_sha256": "2f2c83750dffe1632121782200b64d16690d704b3b52df55cfed70876935b07b"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CH1216478797",
+        "micCode": "XAMS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "000a07b27f5e84e5fc978acecdc812246a92646e2f9b466f4c61655cc640f0c1",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01F6K3S63",
+            "name": "DSM-FIRMENICH AG",
+            "ticker": "DSFIR",
+            "exchCode": "NA",
+            "compositeFIGI": "BBG01DD71PM9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01DD71PN8",
+            "securityType2": "Common Stock",
+            "securityDescription": "DSFIR"
+          }
+        ]
+      },
+      "response_sha256": "68574b0e87e33307ba9fe55a7274c613c02b7afa6ac17546b44666594839cd7a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US45167R1041",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "000bdc87e638f7edd0dbb6a3f9dccb6d7f7b6159f1fb722d6837fd9db2edda88",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000J7V339",
+            "name": "IDEX CORP",
+            "ticker": "ID7",
+            "exchCode": "GY",
+            "compositeFIGI": "BBG000J7SZF9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S67N14",
+            "securityType2": "Common Stock",
+            "securityDescription": "ID7"
+          }
+        ]
+      },
+      "response_sha256": "20437ae27df55882f2d4c52335d85fcee0da891d0090c8592140769717f3fba7"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "BMG4491W1001",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "000c5562cd5beaa9ec947bbbdcfc738a81d748d0a30e617ab8d4f75093d6279a",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000LW5063",
+            "name": "MIDLAND HOLDINGS LTD",
+            "ticker": "MTK",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000LW4ZM9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S7MSG8",
+            "securityType2": "Common Stock",
+            "securityDescription": "MTK"
+          }
+        ]
+      },
+      "response_sha256": "e2a08d0b3d2473c272ffbacb0d0b6dddc05094e7ca80a1e3d01c5580a2b15c95"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US89854M1018",
+        "micCode": "XNAS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "000ccf4fb7dfce9355765f6843a988dadd11fb6ab1195c59400cafa9cc931c74",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "AU0000031304",
+        "micCode": "XASX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "000f12bd41e7d408fafa713a5353ba5eb01354c2e2c1d5ce7e71d55026eb4562",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000QQVZ38",
+            "name": "RAGNAR METALS LTD",
+            "ticker": "RAG",
+            "exchCode": "AT",
+            "compositeFIGI": "BBG000QQVYJ4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SGDKQ4",
+            "securityType2": "Common Stock",
+            "securityDescription": "RAG"
+          }
+        ]
+      },
+      "response_sha256": "fe1af82e68137d58c66034d867bd86a273d329f5efa87e3c9fc75157dd540fa8"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "NL0011872650",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "000f3cae3b3d48ed999c005fe1ae0b760a2c98d7ebcdccf25055d23053584b43",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00D0MW3S0",
+            "name": "BASIC-FIT NV",
+            "ticker": "BFITEUR",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00D0MW373",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00D0MRK62",
+            "securityType2": "Common Stock",
+            "securityDescription": "BFITEUR"
+          },
+          {
+            "figi": "BBG00D2WPC40",
+            "name": "BASIC-FIT NV",
+            "ticker": "B4F",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG00D2WPC04",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00D0MRK62",
+            "securityType2": "Common Stock",
+            "securityDescription": "B4F"
+          }
+        ]
+      },
+      "response_sha256": "7f4c04be42268039a441192e1833329df5c3581daf7b3f900a280821b8c0a16d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE000AP27VA7",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00104fbdd10c79a17e276e6afdfa5ead00f7a84cdefd0904b97e9a8a7237009a",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01XMNML64",
+            "name": "JPM GB EQ PR IN ACT UT E-U D",
+            "ticker": "JGPD",
+            "exchCode": "GT",
+            "compositeFIGI": "BBG01XMNMKN7",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01XMNJCB2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "JGPD"
+          }
+        ]
+      },
+      "response_sha256": "5a1da41620001b8c7c89ea5496e2146bcebd1511a16cd8844ebda2d726ea80d5"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US19247A1007",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001059951ec0cc5bf7c09b26a7485fd83cc70dc2ea22cf227271587904059960",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000QV6W32",
+            "name": "COHEN & STEERS INC",
+            "ticker": "FG9",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000QV6VW2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5PZN5",
+            "securityType2": "Common Stock",
+            "securityDescription": "FG9"
+          }
+        ]
+      },
+      "response_sha256": "b316dadea4d3719d62efcacb1d888a08519e0d144f130d040fd9e34911dbb4db"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "BMG5361W1047",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0010e9e9dfc20095e01c0e6ebc4bd6b56b209925443860804dd4360cfcea4ccf",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100002VM2",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00114e82cbdd9005055901557035d7bb589954433cfb76e623062e69b76e7492",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00BM2LLV2",
+            "name": "ZHEJIANG TAIHUA NEW MATERI-A",
+            "ticker": "603055",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG00BM2LLT5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00BM2LLY9",
+            "securityType2": "Common Stock",
+            "securityDescription": "603055"
+          }
+        ]
+      },
+      "response_sha256": "819b9071f8204db2fd1259a66d7622de7ed746d05158e13bdab731969406d72c"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US86722A1034",
+        "micCode": "XNYS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001154d4894fe85d76e93ac2c11bd489ff651e6684188056ab67a8080d1e6519",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG001LMHLF4",
+            "name": "SUNCOKE ENERGY INC",
+            "ticker": "SXC",
+            "exchCode": "UN",
+            "compositeFIGI": "BBG000R1YXQ9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T90D25",
+            "securityType2": "Common Stock",
+            "securityDescription": "SXC"
+          }
+        ]
+      },
+      "response_sha256": "d185227895c9385f2c8eebfc65ffa454f4996de72d0c1283b8486c3a18fa041a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SE0012570448",
+        "micCode": "XSTO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00115570f57940367dc698cef8c8c8a1c7b66c69162aec09a0ae4950cdf52d8a",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "GB00B5ZN1N88",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0011cb04698a7ee3305173c2376f615518fcb89e7f9eb7f85ed8429e18680497",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100006ZK8",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001251b309a840969aa50e30b7d5bbda2771c5e11057a5c531d521edeb682baa",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG018M7GRH6",
+            "name": "XI'AN HIGH VOLTAGE APPARAT-A",
+            "ticker": "688334",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG001CDR5B2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TWV5L6",
+            "securityType2": "Common Stock",
+            "securityDescription": "688334"
+          }
+        ]
+      },
+      "response_sha256": "6ae4b6a1cd4aaeab9dc32ec93aaa2b2d1eda7cdd435512ccaf49386d5190b943"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SE0000119299",
+        "micCode": "XSTO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00133e9f2a37afb0bdffaeb6e2e2b9509fb95f54810368a23a4d855a937270b3",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BDXXY2",
+            "name": "ELANDERS AB-B SHS",
+            "ticker": "ELANB",
+            "exchCode": "SS",
+            "compositeFIGI": "BBG000BDXXH1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6KFF1",
+            "securityType2": "Common Stock",
+            "securityDescription": "ELANB"
+          }
+        ]
+      },
+      "response_sha256": "32f4afb4fd599fa0efa4300104eb07f6c0809d532e8f26ad11dc3141099bf282"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "GB00B6VTTK07",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00144064e91f26daab32286ef37a1141abde129529c55ae7966e65fbb345462c",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BFWGW7",
+            "name": "MID WYND INTERNATIONAL IT",
+            "ticker": "MWY",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG000BFWFP7",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S62S72",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "MWY"
+          },
+          {
+            "figi": "BBG000QS81P1",
+            "name": "MID WYND INTERNATIONAL IT",
+            "ticker": "MWY",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG000QS7ZQ6",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S62S72",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "MWY"
+          },
+          {
+            "figi": "BBG000QS85B7",
+            "name": "MID WYND INTERNATIONAL IT",
+            "ticker": "MWY",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000QS7ZQ6",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S62S72",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "MWY"
+          },
+          {
+            "figi": "BBG000QS87P8",
+            "name": "MID WYND INTERNATIONAL IT",
+            "ticker": "MWY",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000QS87C2",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S62S72",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "MWY"
+          },
+          {
+            "figi": "BBG000R3B2F0",
+            "name": "MID WYND INTERNATIONAL IT",
+            "ticker": "MWYGBP",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000R39TN5",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S62S72",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "MWYGBP"
+          }
+        ]
+      },
+      "response_sha256": "836c5e39bc31ca8b175af6e92a8b683074cf530a251cc6ce6924bfa615bb7118"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100005675",
+        "micCode": "XSHE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00153bcabf039c0e2e87bd3e3e018d8eef38d1c155f19ff2e79bbad761dfe8e3",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG012R8PB23",
+            "name": "CHINAAMC CSI HK 50 ETF",
+            "ticker": "159711",
+            "exchCode": "CS",
+            "compositeFIGI": "BBG012R8PB05",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG012R8PB32",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "159711"
+          }
+        ]
+      },
+      "response_sha256": "158ec60333863d3a059e10420b9ec1fa8de3cb19639840c7d79812f5a3b61e3c"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE000FW16TX1",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0015d07c3af64b4007387f8a4432143d2451e61328540c62dd19ab6dc88dbc3d",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US5616531068",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001645fc08b7668a89e7927a1bd45c95c1062de1735e668f233093681048daa5",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SE0010546622",
+        "micCode": "XSTO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001755754feeb38acbeba02a327e940535c30643b9608e777f3766ef8ff41006",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE000000YN9",
+        "micCode": "XSHE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00175d7d8a33954d29a8e952937f01850ba73010684aaabae04ce2e0c52cd6e9",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000DYQY89",
+            "name": "SOYEA TECHNOLOGY CO LTD-A",
+            "ticker": "000909",
+            "exchCode": "CS",
+            "compositeFIGI": "BBG000DYQWM7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SJWPX8",
+            "securityType2": "Common Stock",
+            "securityDescription": "000909"
+          }
+        ]
+      },
+      "response_sha256": "203393074a9d11c9a0143121a397ad2253b8c88490cb565fcd39bff6ddcc1abf"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE587J01027",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00179a68b639c8c9f29be4c27d6ee9d3fbf9e5e7a2a1151338729fa1af0feb2f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000H6SL19",
+            "name": "CROISSANCE LTD",
+            "ticker": "CROISSAN",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG000H6SJS5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S966B5",
+            "securityType2": "Common Stock",
+            "securityDescription": "CROISSAN"
+          }
+        ]
+      },
+      "response_sha256": "a02b00ad76f69c84f3dc6ba1fb5573dbcd3c3ac56163f8678a54bdfc474372b2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SA16J034MRH7",
+        "micCode": "XSAU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00191f4ade1677bee35110e444a28c76d53ee273d718d71e7c9da5e3fba956fe",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG023DCKLX5",
+            "name": "MSGA INVESTMENT CO",
+            "ticker": "MSGA",
+            "exchCode": "AB",
+            "compositeFIGI": "BBG022JBMYC6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG022JBMYV5",
+            "securityType2": "Common Stock",
+            "securityDescription": "MSGA"
+          }
+        ]
+      },
+      "response_sha256": "43f99afc28e492001effbacc9a871dd7118aff0f81e36d6e86bf3a9977fb8942"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "PK0070001018",
+        "micCode": "XKAR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001a19cbf176638aeda17852eec3012b012b46b1775bf1ad5db16c896d3c7431",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000GMV8K9",
+            "name": "DIAMOND INDUSTRIES LTD",
+            "ticker": "DIIL",
+            "exchCode": "PK",
+            "compositeFIGI": "BBG000GMV7H5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S8XHP8",
+            "securityType2": "Common Stock",
+            "securityDescription": "DIIL"
+          }
+        ]
+      },
+      "response_sha256": "7b4a34103c2236868aac62b15cfbad4eb926cf204b487491c21a1ac64f97874b"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "GG00BVPBWF31",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001a200ed279810b1aa05f70031a4f59889477d0c8e869e92d7edddbf728ff76",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000H8MZ83",
+            "name": "JPEL PRIVATE EQUITY LTD",
+            "ticker": "JPEL",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG000H8MYY7",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SP4LZ2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "JPEL"
+          },
+          {
+            "figi": "BBG000TP8DZ7",
+            "name": "JPEL PRIVATE EQUITY LTD",
+            "ticker": "JPEL",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG000TP88T5",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SP4LZ2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "JPEL"
+          },
+          {
+            "figi": "BBG000TP8J02",
+            "name": "JPEL PRIVATE EQUITY LTD",
+            "ticker": "JPEL",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000TP8HR7",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SP4LZ2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "JPEL"
+          },
+          {
+            "figi": "BBG000TTQBV7",
+            "name": "JPEL PRIVATE EQUITY LTD",
+            "ticker": "JPELGBX",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000TTQBL8",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SP4LZ2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "JPELGBX"
+          },
+          {
+            "figi": "BBG000VDJ078",
+            "name": "JPEL PRIVATE EQUITY LTD",
+            "ticker": "JPELEUR",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000VDHZH2",
+            "securityType": "Closed-End Fund",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SP4LZ2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "JPELEUR"
+          }
+        ]
+      },
+      "response_sha256": "c94fd50a47e59e6c3aa48ad745549b138a3c0bbf9d9eded5d216a5551f348815"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US45784N4869",
+        "micCode": "BATS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001a3539274823833ea121e75b1736decd0fb0de417aed9f8822e20bbc0b9ffa",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01WYNQ733",
+            "name": "INNOVATO EQU DU DI 15 BU ETF",
+            "ticker": "DDFS",
+            "exchCode": "UF",
+            "compositeFIGI": "BBG01WYNQ6J8",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01WYNQ7D2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "DDFS"
+          }
+        ]
+      },
+      "response_sha256": "342cc3e964ab9a04b85074fb46a20648d17df121a5dc7c68f2cf207493fc2df3"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "GB00B4Y7R145",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001a5fdb7351bc9de67b8f386f746abfd50ca9b9e70fa20ff48d9787c55c39e8",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000Q950P8",
+            "name": "CURRYS PLC",
+            "ticker": "CURY",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG000Q94ZV5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6QPM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "CURY"
+          },
+          {
+            "figi": "BBG000QL6KS3",
+            "name": "CURRYS PLC",
+            "ticker": "DC/",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000QL6C10",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6QPM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "DC/"
+          },
+          {
+            "figi": "BBG000QL6MC6",
+            "name": "CURRYS PLC",
+            "ticker": "DC/N",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000QL6LS1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6QPM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "DC/N"
+          },
+          {
+            "figi": "BBG000QLF819",
+            "name": "CURRYS PLC",
+            "ticker": "DC/NUSD",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000QLF276",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6QPM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "DC/NUSD"
+          },
+          {
+            "figi": "BBG000QLF9S8",
+            "name": "CURRYS PLC",
+            "ticker": "DC/NUSD",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000QLF935",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6QPM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "DC/NUSD"
+          },
+          {
+            "figi": "BBG000QM4RV4",
+            "name": "CURRYS PLC",
+            "ticker": "DC/NEUR",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000QM4HH2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6QPM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "DC/NEUR"
+          },
+          {
+            "figi": "BBG000QM4T59",
+            "name": "CURRYS PLC",
+            "ticker": "DC/EUR",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000QM4SZ8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6QPM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "DC/EUR"
+          }
+        ]
+      },
+      "response_sha256": "476cbeac871a1d64593c702b34f1774777b5f3beaaaa6cc290ec2409fb71667e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA53681G1090",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001a89e24134f4301d7cf6e6abddbe50615a5fefd0f1ca7e50ae51e2b8132fbf",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA92540L1076",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001b0544e25f6fdb3996c04e4f1e71745a4a4a627a9339e090a68489262bf6c9",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "FR0000035750",
+        "micCode": "XPAR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001b699e75985d63c9068d2df9a3e30348530ed455d2d2525c7bf77e2f95be66",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "AU0000013559",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001b80d335a400f471fe3553a053700a13be6302973b01b873871f2568257431",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "FR0004040608",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001bbf607846ae8f38c3df0b75a8d2e1a2779119e75058f5a9ae5b3056537593",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KR7104530001",
+        "micCode": "XKRX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001bff1ff0a4d4ceee314b355506ab55ac31abd63df0727cfd6ad334157926df",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BMX092",
+            "name": "KIWOOM KIWOOM KOREA HIGH DVD",
+            "ticker": "104530",
+            "exchCode": "KP",
+            "compositeFIGI": "BBG000BMWZV1",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SPTWW4",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "104530"
+          }
+        ]
+      },
+      "response_sha256": "e1a19b2d35491cd38877e543ad81b44112c61f2deff8950270dbd74f912ea09e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "FR0000053381",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001c44472366f59519ac8d62dc77603348ae44ab4b6174290454dcb9cac5a086",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000M8HVB8",
+            "name": "DERICHEBOURG",
+            "ticker": "PNU",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG000M8HR63",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S8CV61",
+            "securityType2": "Common Stock",
+            "securityDescription": "PNU"
+          },
+          {
+            "figi": "BBG000QQ6HH1",
+            "name": "DERICHEBOURG",
+            "ticker": "DBG",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG000QQ69M3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S8CV61",
+            "securityType2": "Common Stock",
+            "securityDescription": "DBG"
+          },
+          {
+            "figi": "BBG00B41FYL4",
+            "name": "DERICHEBOURG",
+            "ticker": "DBGUSD",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00B41FY34",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S8CV61",
+            "securityType2": "Common Stock",
+            "securityDescription": "DBGUSD"
+          }
+        ]
+      },
+      "response_sha256": "faea0b103f2b3461374eaeaed34d9f86e97eda0455754cd7953d7099af76bdac"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE00BN4Q0L55",
+        "micCode": "XSWX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001dd75b4b810e1c0bd0d8a330a05b2e8dc05f39612d4a29520699277e0d4de9",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00ZR7JHD5",
+            "name": "UBS ETF EMU PAB EUR ACC",
+            "ticker": "EMUPA",
+            "exchCode": "SE",
+            "compositeFIGI": "BBG00ZR7JHB7",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00ZR7HDX4",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "EMUPA"
+          }
+        ]
+      },
+      "response_sha256": "7cf3859a3860bf1cbcd2acba84907a150dd52d723e597811d86fb9e61319bc16"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3552170007",
+        "micCode": "XTKS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001e2704b165ac32f5a09245510f3c6548a7d43c91f4115ce2b5679d39eb3190",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000MF6941",
+            "name": "TOABO CORP",
+            "ticker": "3204",
+            "exchCode": "JT",
+            "compositeFIGI": "BBG000MF67Z1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SKCNF2",
+            "securityType2": "Common Stock",
+            "securityDescription": "3204"
+          }
+        ]
+      },
+      "response_sha256": "63b146187168d48517150f1c570b7828a87c4191f27671a52ac05210803d27ec"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA8710031094",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001e47c9d80988dd20a2b0011ca6b7a9428114b247e04ee8663766f7d94d7d69",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "DE0005874846",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001f559687381e5026cc407151af6119be98453dda3fee21787720a8659c5373",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000RT98F3",
+            "name": "INTICA SYSTEMS SE",
+            "ticker": "IS7",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG000RT9435",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SMKVP0",
+            "securityType2": "Common Stock",
+            "securityDescription": "IS7"
+          },
+          {
+            "figi": "BBG000RT9CM6",
+            "name": "INTICA SYSTEMS AG",
+            "ticker": "IS7",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000RT9435",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SMKVP0",
+            "securityType2": "Common Stock",
+            "securityDescription": "IS7"
+          },
+          {
+            "figi": "BBG000RT9DF2",
+            "name": "INTICA SYSTEMS SE",
+            "ticker": "IS7",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000RT9D71",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SMKVP0",
+            "securityType2": "Common Stock",
+            "securityDescription": "IS7"
+          },
+          {
+            "figi": "BBG012GNNMV8",
+            "name": "INTICA SYSTEMS SE",
+            "ticker": "0J9S",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG012GNNMT1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SMKVP0",
+            "securityType2": "Common Stock",
+            "securityDescription": "0J9S"
+          }
+        ]
+      },
+      "response_sha256": "2795b7e0cade0a59471589fb508739fcae7d51fdc382110cb2a99eaf8223d819"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "TRETKHO00012",
+        "micCode": "XIST",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001fa43cfb9f8f5e1642497cb56b69c06846387fd8aac43b0cf6d98e55b0ea85",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000TFZRY9",
+            "name": "TEKFEN HOLDING AS",
+            "ticker": "TKFEN",
+            "exchCode": "TI",
+            "compositeFIGI": "BBG000TFZRN1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T02CB4",
+            "securityType2": "Common Stock",
+            "securityDescription": "TKFEN"
+          }
+        ]
+      },
+      "response_sha256": "ad5fe74c850c93077cac8dac43e83fedcdb881b6fb99c014aa804024a36601a6"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA74642D1006",
+        "micCode": "NEOE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "001fc1a8630659a7873ca830d610198c3ca64d7f07072f8c7aad0e40e553b3f0",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00FRM6SN5",
+            "name": "PURPOSE CANADIAN PREFERRED",
+            "ticker": "RPS",
+            "exchCode": "QF",
+            "compositeFIGI": "BBG00FRM6RX6",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00FRM6SS0",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "RPS"
+          },
+          {
+            "figi": "BBG00FRM6SP3",
+            "name": "PURPOSE CANADIAN PREFERRED",
+            "ticker": "RPS",
+            "exchCode": "QH",
+            "compositeFIGI": "BBG00FRM6RX6",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00FRM6SS0",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "RPS"
+          },
+          {
+            "figi": "BBG00LN9N182",
+            "name": "PURPOSE CANADIAN PREFERRED",
+            "ticker": "RPS",
+            "exchCode": "QG",
+            "compositeFIGI": "BBG00FRM6RX6",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00FRM6SS0",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "RPS"
+          }
+        ]
+      },
+      "response_sha256": "5d2491b9c0fb6d1c3f9cdd1ce72915cddef6cd6c60c0c44b4442b1a245a7c989"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE0PX301025",
+        "micCode": "XNSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002209736ca31c3d22840fbddfa13454f7272f0dc0cbb2b3fc6b3203a165c5b3",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG024GSDN32",
+            "name": "SKYWAYS AIR SERVICES LTD",
+            "ticker": "SKYWAYS",
+            "exchCode": "IS",
+            "compositeFIGI": "BBG005HHCBH6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG005HHCBJ4",
+            "securityType2": "Common Stock",
+            "securityDescription": "SKYWAYS"
+          }
+        ]
+      },
+      "response_sha256": "98225fe99be52d991849f7d39c00a86d6e9916cd88e8ab840b6c7dbc9aa64640"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "LU0959211243",
+        "micCode": "XPAR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0023dcd6eddeb5123246273680fa78e0ac0a6a3a74b025ba537fad3740073c73",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0058WNTJ0",
+            "name": "AM CR SP500 SP ETF EUR H DIS",
+            "ticker": "SP5H",
+            "exchCode": "FP",
+            "compositeFIGI": "BBG0058WNTH2",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0058WNTG3",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "SP5H"
+          }
+        ]
+      },
+      "response_sha256": "d01f2f5da2a59c8142b2e8ffdcacbafed5584754d003adeddbe97cbc73b5e7e5"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US16946P1075",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0024591bc9a522f3c5574b65bc955ba376e71b2e97328a6306eb1521a4f9a5c6",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "GB00B3FLWH99",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0024edc82328803b769a0e0c1f231e86b02bf4f51e4d7e922af5d011b1edd425",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00JRVBZP3",
+            "name": "BODYCOTE PLC",
+            "ticker": "21T",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG00JRVBZN5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S61CM1",
+            "securityType2": "Common Stock",
+            "securityDescription": "21T"
+          }
+        ]
+      },
+      "response_sha256": "4eeacb147ef87f4fa281949dfb958201cf5749c025cbca9acd59b78ce4eff861"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE000GOJO2A3",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00272ed142135f301c664a257bc2b10a5b108bcd2188bbc45c7da13f6978f833",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG019KKHYL6",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PA",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG019KKHYK7",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PA"
+          },
+          {
+            "figi": "BBG019M4R3F4",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PB",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG019M4R3D6",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PB"
+          },
+          {
+            "figi": "BBG019M9T441",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAEUR",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG019M9T3V3",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAEUR"
+          },
+          {
+            "figi": "BBG019M9T4C2",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAEUR",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG019M9T3V3",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAEUR"
+          },
+          {
+            "figi": "BBG019M9T502",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAEUR",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG019M9T4Z7",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAEUR"
+          },
+          {
+            "figi": "BBG01B09K2V3",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PACHF",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG01B09K2K5",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PACHF"
+          },
+          {
+            "figi": "BBG01B09K323",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PACHF",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG01B09K2K5",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PACHF"
+          },
+          {
+            "figi": "BBG01B09K3H7",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PACHF",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG01B09K3G8",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PACHF"
+          },
+          {
+            "figi": "BBG01B0M9JW9",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAUSD",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG01B0M9JL1",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAUSD"
+          },
+          {
+            "figi": "BBG01B0M9K38",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAUSD",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG01B0M9JL1",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAUSD"
+          },
+          {
+            "figi": "BBG01B0M9KJ1",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAUSD",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG01B0M9KH3",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAUSD"
+          },
+          {
+            "figi": "BBG01B0M9LT8",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAGBP",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG01B0M9LJ9",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAGBP"
+          },
+          {
+            "figi": "BBG01B0M9M16",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAGBP",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG01B0M9LJ9",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAGBP"
+          },
+          {
+            "figi": "BBG01B0M9MG0",
+            "name": "VANG ESG FTSE APAC ACC",
+            "ticker": "V3PAGBP",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG01B0M9MF1",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG019KKHYQ1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "V3PAGBP"
+          }
+        ]
+      },
+      "response_sha256": "5af97cfc1d45d8e99a8829f89d0deb9778e0778e7cfb05c42b5a466fbfbf2541"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US20451N1019",
+        "micCode": "XNYS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002736ddaf4625305bc91d3c3f5789184036e6a8cbeeb79377a6e81601027aab",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000C42YN5",
+            "name": "COMPASS MINERALS INTERNATION",
+            "ticker": "CMP",
+            "exchCode": "UN",
+            "compositeFIGI": "BBG000C42WS4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SDY0X4",
+            "securityType2": "Common Stock",
+            "securityDescription": "CMP"
+          }
+        ]
+      },
+      "response_sha256": "0e37b0abb6ec83be601f11a5462ff444314d16cf807fdf5a42a467afac62aa2e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "NL0015002AG2",
+        "micCode": "XAMS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00273b1560f9a8e356bae8d3f92f3408212b731d16ddc3320aba06f8c45fc9e1",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0132LZR87",
+            "name": "EBUSCO HOLDING NV",
+            "ticker": "EBUS",
+            "exchCode": "NA",
+            "compositeFIGI": "BBG0132LZR69",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0132LZRJ5",
+            "securityType2": "Common Stock",
+            "securityDescription": "EBUS"
+          }
+        ]
+      },
+      "response_sha256": "8868481be4a7c9ee96ae8b2f94ceec1ad16cb802059de11484d300e54695adf0"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SE0000667925",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0029411728ac46bcdb598ba823590a028baf6988aab513a57ad696c20ee9850c",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA8672241079",
+        "micCode": "XNYS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002963a2e8ccc035f989a9bd668a75622b2114939a31f53d58dd34f2c23f07ad",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BRK9W0",
+            "name": "SUNCOR ENERGY INC",
+            "ticker": "SU",
+            "exchCode": "UN",
+            "compositeFIGI": "BBG000BRK7L6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5YSF0",
+            "securityType2": "Common Stock",
+            "securityDescription": "SU"
+          }
+        ]
+      },
+      "response_sha256": "c09cb5cd079223f5978a0c8b8d86251d8bd3d5650c3926a0962a5dae0fbffbbb"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE000A9G9R73",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00298d2da949dc86f0ae1252b8d5a5e461d3e41f8ef1420017c37ebbcef2e0f4",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG022VGYKC8",
+            "name": "ISHR SPACE TECH UCITS ETF",
+            "ticker": "ST4R",
+            "exchCode": "GT",
+            "compositeFIGI": "BBG022VGYJY7",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG022RDY276",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "ST4R"
+          }
+        ]
+      },
+      "response_sha256": "be7d4b9c18e1c3f33541df9d36e1233279ea32a75a352627e35016edd3feba6a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE637H01024",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0029a07a994d7021bf7871527ed60d1fa6626ca846adc870d65f955d422c426f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000NT1570",
+            "name": "SHIVAM AUTOTECH LTD",
+            "ticker": "SVAT",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG000NT14D6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SQQMT1",
+            "securityType2": "Common Stock",
+            "securityDescription": "SVAT"
+          }
+        ]
+      },
+      "response_sha256": "0ee7efefc3d18763ab48bd029d7ede047019fae3574e18f29ca9ca7b80d5a781"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US87283Q7354",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0029eb9b1032950c62e92ecdd18a5f4b28f79ca00910a7befa09389840862120",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01VPVKNR2",
+            "name": "T ROWE PRICE INTER ER ETF",
+            "ticker": "TIER",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG01VPVKNL8",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01VPVKPG9",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "TIER"
+          }
+        ]
+      },
+      "response_sha256": "8206121ff05efcf403026c6be2218b1de1dc9de637f501b706fbe24ea118501c"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "DE000A4AKZB4",
+        "micCode": "XAMS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002bbac78977492ae1cac2d426f987628050adf234f5259a3ab675be3a411063",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01T22N1T9",
+            "name": "VANECK CELESTIA ETN",
+            "ticker": "VTIA",
+            "exchCode": "NA",
+            "compositeFIGI": "BBG01T22N1S0",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01T22N1Y3",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "VTIA"
+          }
+        ]
+      },
+      "response_sha256": "8c83acc57beb0e1cdf544e38069096d358d566919a9c06546f73a4e75cb039f2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA1482391069",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002d33492efaaedbee52f874778a283a0f2731fe0bf30c90c9ea0c3cc421a462",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00JWTKZP2",
+            "name": "CASSIAR GOLD CORP",
+            "ticker": "756",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG00JWTKZN4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TCSGK1",
+            "securityType2": "Common Stock",
+            "securityDescription": "756"
+          }
+        ]
+      },
+      "response_sha256": "7f4914af6913279d3e9433539832cbefcef088d91f12fe732ef95ba6e2910660"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SE0000108649",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002e99b582452436d9b497d8b05b97bccc07c8aa4aa6f4734279e74c768e16c1",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000J5JFB1",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICA",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG000J5H6S5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICA"
+          },
+          {
+            "figi": "BBG000J5JM53",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICA",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000J5H6S5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICA"
+          },
+          {
+            "figi": "BBG000J5JP01",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICA",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000J5JN97",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICA"
+          },
+          {
+            "figi": "BBG000KJX4W5",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICAEUR",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000KJX464",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICAEUR"
+          },
+          {
+            "figi": "BBG000KJXFD1",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICAEUR",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG000KJX5G0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICAEUR"
+          },
+          {
+            "figi": "BBG000KJYLF5",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICAEUR",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000KJX5G0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICAEUR"
+          },
+          {
+            "figi": "BBG00JHW0VP3",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "0O86",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG00JHW0VM6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "0O86"
+          },
+          {
+            "figi": "BBG00W1P5PJ1",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICAGBX",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00W1P5P74",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICAGBX"
+          },
+          {
+            "figi": "BBG00W1P5PS1",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICAGBX",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00W1P5P74",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICAGBX"
+          },
+          {
+            "figi": "BBG00W1P5Q81",
+            "name": "ERICSSON LM-A SHS",
+            "ticker": "ERICAGBX",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00W1P5Q72",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SCFF19",
+            "securityType2": "Common Stock",
+            "securityDescription": "ERICAGBX"
+          }
+        ]
+      },
+      "response_sha256": "26a07b672538242ca96843631663f40e5377ed9dab36072812dbd1db943ab463"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE0007LAQ4A1",
+        "micCode": "XAMS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002ea049b29c0ac716f068a40a489a50df5d5ab88b3f9dcfef9435ef0e02d0eb",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0216N9K31",
+            "name": "ISHARES USD TREASURY 3-7YR",
+            "ticker": "CUEB",
+            "exchCode": "NA",
+            "compositeFIGI": "BBG0216N9K22",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0216N9K68",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "CUEB"
+          }
+        ]
+      },
+      "response_sha256": "3e7263d472bc37dc8c5e892869aa22ada3b1b0fecb9c23c5d99e3e47a148c0c3"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE0JPD01013",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "002fa4807c018d8009a4de5f872ac099e4e96e6d83c8911ac764e172f476491d",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01RGX5XD7",
+            "name": "SANATHAN TEXTILES LTD",
+            "ticker": "SANATHAN",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG005MWD384",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG005MWD393",
+            "securityType2": "Common Stock",
+            "securityDescription": "SANATHAN"
+          }
+        ]
+      },
+      "response_sha256": "0a1100525b1d6f8cf8a43f486918bef26dc4f3042d6d6f8da931293b766fcc55"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "VN000000CDN7",
+        "micCode": "HSTC",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0030474c838340628f8c9d1b59e69a3a3867d7ad5f4564b63360093ae562b4eb",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00CL7V4V7",
+            "name": "DANANG PORT JSC",
+            "ticker": "CDN",
+            "exchCode": "VH",
+            "compositeFIGI": "BBG0080HNQL8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0080HNQM7",
+            "securityType2": "Common Stock",
+            "securityDescription": "CDN"
+          }
+        ]
+      },
+      "response_sha256": "7cb1611566c287f43aebdbacde8533cb30e0c186bbf0fc053b384a62a100b651"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100000YH0",
+        "micCode": "XSHE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0030735dbe411fa229f0878c7c58ed561754dafb854749e8f7433bb87feb5bb8",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0018YQ0W0",
+            "name": "TITAN WIND ENERGY SUZHOU-A",
+            "ticker": "002531",
+            "exchCode": "CS",
+            "compositeFIGI": "BBG0018R2PQ3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFLLQ4",
+            "securityType2": "Common Stock",
+            "securityDescription": "002531"
+          }
+        ]
+      },
+      "response_sha256": "8db4394440f32df5987a13951f951a0a0bb638bf5a2c92d857251aab91e064fe"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "TW0006703002",
+        "micCode": "ROCO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0030adb17b2231fd7f7a0f8e7617b172a6ce6f837eb6b02181e5930d58bf2099",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00M63D0H5",
+            "name": "SHINY BRANDS GROUP CO LTD",
+            "ticker": "6703",
+            "exchCode": "TT (Taipei Stock Exchange)",
+            "compositeFIGI": "BBG00M63D0F7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00M63D0J3",
+            "securityType2": "Common Stock",
+            "securityDescription": "6703"
+          }
+        ]
+      },
+      "response_sha256": "8d208c42cca692f6f439dc06a40c6d3f2e993117e56a702eea85df60ec11f730"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA29286X1015",
+        "micCode": "XNAS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0030f617b3b5d052de7935172b32e8dfed1759d1f1c53caef4d137bd5e3865c5",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "ES0139140174",
+        "micCode": "XMAD",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0031c7205081a3df1c61e3310ae4bc8b6aae812c7d7a706a5589f09ee5921fad",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BR87D9",
+            "name": "COLONIAL SFL SOCIMI SA",
+            "ticker": "COL",
+            "exchCode": "SQ",
+            "compositeFIGI": "BBG000BR8552",
+            "securityType": "REIT",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SBWVT7",
+            "securityType2": "REIT",
+            "securityDescription": "COL"
+          }
+        ]
+      },
+      "response_sha256": "b827852cb8990d2d817b547ae05788b01baf1d11215fd8d5835cd01d3bed4b53"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "NO0003079709",
+        "micCode": "XOSL",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0032a4466ad6061ef774019516f46fcf399d3f177731797cf7e284a0ce835ad6",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000CHPTC4",
+            "name": "KITRON ASA",
+            "ticker": "KIT",
+            "exchCode": "NO",
+            "compositeFIGI": "BBG000CHPT43",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SFW6K2",
+            "securityType2": "Common Stock",
+            "securityDescription": "KIT"
+          }
+        ]
+      },
+      "response_sha256": "993def8302fcaadf6f149aad8c64e2f63ab990ede799c71e516f41cd63f834b3"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SE0011725506",
+        "micCode": "XSTO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0033c66990f126e34478f4547aff5cf14dcfb95db781dab66976d232102a8264",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US98980G1022",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0034612b7921259063b245a6d6f9cdffcd02d676f19a059679f62b72ca537630",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00KBGG9Z2",
+            "name": "ZSCALER INC",
+            "ticker": "0ZC",
+            "exchCode": "GY",
+            "compositeFIGI": "BBG00KBGG9W5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG003338H61",
+            "securityType2": "Common Stock",
+            "securityDescription": "0ZC"
+          }
+        ]
+      },
+      "response_sha256": "75a5f4ab87f163cc8d35af7cb05e129e7335050073301725fa52446e2845f9cf"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "ID1000095003",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0034b092eb218e9bb62b190ace5c73d2cc2d75d1e28e66330825b4d6fe8c8cca",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000H0B9Q0",
+            "name": "BANK MANDIRI PERSERO TBK PT",
+            "ticker": "PQ9",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000H0B9B6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SC6F91",
+            "securityType2": "Common Stock",
+            "securityDescription": "PQ9"
+          }
+        ]
+      },
+      "response_sha256": "c4cb87262133a6954b3fa655105f3554595ce13f629a6675a8834a22ac4efe3f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "MYQ0173OO003",
+        "micCode": "XKLS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0035ec5a951a788f0e198f8f949378f740c2660c373f8136defbece51929927c",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG001V9YB38",
+            "name": "CATCHA DIGITAL BHD",
+            "ticker": "CATCHA",
+            "exchCode": "MK",
+            "compositeFIGI": "BBG001V9YB29",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001V9YB47",
+            "securityType2": "Common Stock",
+            "securityDescription": "CATCHA"
+          }
+        ]
+      },
+      "response_sha256": "012932edea6b0d90b7f6a0bf062d55b1d7c14c772e4af626fe1cb5ecab7dd293"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA8485101031",
+        "micCode": "XTSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0035fb89713e66f9bf5561a6c251a4f8812713d00a34808fc5179585a1cdb297",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG009DT66H4",
+            "name": "SPIN MASTER CORP-SUB VTG SHR",
+            "ticker": "TOY",
+            "exchCode": "CT",
+            "compositeFIGI": "BBG009DT66D8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG009DT66F6",
+            "securityType2": "Common Stock",
+            "securityDescription": "TOY"
+          }
+        ]
+      },
+      "response_sha256": "cb58a1c6fcb57a85efce9d7078108a1cf2071f5cfb3da07087b5c3970f2c63eb"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "TW0002536000",
+        "micCode": "XTAI",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0036ac74fb6015cb983afc2c81c7937b91c1eff3e5e8d618f4d495e302c7e4ff",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000G9HRG7",
+            "name": "HONG PU REAL ESTATE DEVELOP",
+            "ticker": "2536",
+            "exchCode": "TT (Taiwan Stock Exchange)",
+            "compositeFIGI": "BBG000G9HQL3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S8SJW2",
+            "securityType2": "Common Stock",
+            "securityDescription": "2536"
+          }
+        ]
+      },
+      "response_sha256": "f3e3480a62c0b64111603e97f181c048ccd0067f13a84af89ae740cd631400e2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3409800004",
+        "micCode": "XTKS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00371b74d2ef31bc812883b707ce71505c7cee43a83cca1644970c3e46d3e6b7",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BGFXJ2",
+            "name": "SUMITOMO FORESTRY CO LTD",
+            "ticker": "1911",
+            "exchCode": "JT",
+            "compositeFIGI": "BBG000BGFWZ6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6BD48",
+            "securityType2": "Common Stock",
+            "securityDescription": "1911"
+          }
+        ]
+      },
+      "response_sha256": "59cacba11e267c2868f74a918db500f0295d399ebdcffd6ab47c39fb87ae37e5"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US74347R1721",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00374868971bb590c4b5c72e0d599ebe7998c6a46b01e1ec0717833423b91b96",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000Q6X5V5",
+            "name": "PROSHARES ULTRA 20+ YEAR TSY",
+            "ticker": "UBT",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG000Q6X402",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T6MKQ5",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "UBT"
+          }
+        ]
+      },
+      "response_sha256": "65b85513ffaaa8ada07696fe9fa8f09f35e2e21712979579cf651b3d8bf9b337"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KR7057050007",
+        "micCode": "XKRX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0038cbbbbf44bed9d21c74e8663edc7801c445eda8b0449452302b2a2d63e783",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE589D01018",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0039c9da6c267baed57923185f70b0a177e88425d1aace2b7d02aa68bc88a7dd",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BMX911",
+            "name": "D&H INDIA LTD",
+            "ticker": "DHIL",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG000BMX8V0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6PJ13",
+            "securityType2": "Common Stock",
+            "securityDescription": "DHIL"
+          }
+        ]
+      },
+      "response_sha256": "7721ec1ee31c233cf6cb63b4d4970c61914492a572bf015e55877d7f153e43a6"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US92204A4058",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "003a45f2a4a9c95ea295d3c3acc1295c5ce5a64ae42de4f185c70f90bca1b50a",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000HST105",
+            "name": "VANGUARD FINANCIALS ETF",
+            "ticker": "VFH",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG000HSSXW1",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SHTTM0",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "VFH"
+          }
+        ]
+      },
+      "response_sha256": "7d3405abea186765b983fd2362d89efa8d76fb2085df3d551363b1643c8c2d8d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US60039Q1013",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "003a7b5645f763e391229d48ec4cf4ef391289f13e157e019cfc819b4ada87b0",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KYG8570S1049",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "003b4174adda148cf31abb5edf6bb7b16e1d784d18018986aabe4c74da9c7942",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00YQ80KW9",
+            "name": "SUNDY SERVICE GROUP CO LTD",
+            "ticker": "9608",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG00YQ80KV0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00YQ80KX8",
+            "securityType2": "Common Stock",
+            "securityDescription": "9608"
+          }
+        ]
+      },
+      "response_sha256": "d315ab75effa8ac5a00c21915aebdf78ea65b1867fdafafc002749bcc3346f18"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "MYQ0313OO005",
+        "micCode": "XKLS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "003c1cf4c857377c33e3b2fa5a507c7bd9c4b64a36f0df2bfa8d0af31e2890b7",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01NC9BXB8",
+            "name": "BWYS GROUP BHD",
+            "ticker": "BWYS",
+            "exchCode": "MK",
+            "compositeFIGI": "BBG01NC9BX91",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01NC9BXC7",
+            "securityType2": "Common Stock",
+            "securityDescription": "BWYS"
+          }
+        ]
+      },
+      "response_sha256": "7dbbef13f88d58a40dfd7ea4e655f627edc0fda4a9fceeb88402eeec9b21d56a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CH0386200239",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "003e83950f32cd1d13014d41e6febd2d25e1f963f3afa357611d7fd5a4f73622",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US4461501045",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "003f2e9d9ca43406d5a5e5d803e3e6bc0442f49765027ea1e7a09401f606bdcf",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00JPVV739",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANUSD",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00JPVV6K2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANUSD"
+          },
+          {
+            "figi": "BBG00JPVV7C9",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANUSD",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00JPVV6K2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANUSD"
+          },
+          {
+            "figi": "BBG00JPVV7Q4",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANUSD",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00JPVV7P5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANUSD"
+          },
+          {
+            "figi": "BBG00JRFLG60",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANGBP",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00JRFLFP1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANGBP"
+          },
+          {
+            "figi": "BBG00JRFLGM2",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANGBP",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00JRFLFP1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANGBP"
+          },
+          {
+            "figi": "BBG00JRFLHB2",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANGBP",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00JRFLH95",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANGBP"
+          },
+          {
+            "figi": "BBG00JRQR3S5",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANEUR",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00JRQR3H7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANEUR"
+          },
+          {
+            "figi": "BBG00JRQR412",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANEUR",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00JRQR3H7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANEUR"
+          },
+          {
+            "figi": "BBG00JRQR4D9",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "HBANEUR",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00JRQR4C0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "HBANEUR"
+          },
+          {
+            "figi": "BBG00JRY8M89",
+            "name": "HUNTINGTON BANCSHARES INC",
+            "ticker": "0J72",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG00JRY8M70",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "0J72"
+          }
+        ]
+      },
+      "response_sha256": "d20adde8141a9abcd2991733ec2160e1c0508914bc39e72744cd072bb6d402d4"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US88634T3453",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "003f70445c9faf5943b1bf4b246f8402a8b37a016ea574c84aabfdf4451a0c05",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG02029KQN0",
+            "name": "NICHOLAS GOLD INCOME ETF",
+            "ticker": "GLDN",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG02029KQD1",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG02029KRJ3",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "GLDN"
+          }
+        ]
+      },
+      "response_sha256": "e343ce175da15ac30480e1d886b00585d5204f52b3f0022910f9a9e634e7dc36"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100004GT4",
+        "micCode": "XSHE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00402c0ceb0cb166326ed4664cb9be943c35cfec0993b250b787955b90cba149",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00Z1KNYC3",
+            "name": "ICBC UBS CSI SHS",
+            "ticker": "159856",
+            "exchCode": "CS",
+            "compositeFIGI": "BBG00Z1KNY97",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00Z1KNYD2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "159856"
+          }
+        ]
+      },
+      "response_sha256": "f1b8b86a8a10fd6e5e7fa499c8284795f344cb4ca3255d12185d3280a1ffe7d6"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3910800006",
+        "micCode": "XTKS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004110652f61bdddcad5f7d8c4e49b4299a5396e9ee984c0a13b6d45cff08ba6",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BR7J99",
+            "name": "MIROKU CORP",
+            "ticker": "7983",
+            "exchCode": "JT",
+            "compositeFIGI": "BBG000BR7J17",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6LGQ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "7983"
+          }
+        ]
+      },
+      "response_sha256": "c80f948b436d69b72ae90d5dac6d8edefa761edccca5023beb10454c3d9ce507"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA74447P1009",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00439503505a00a4933a996d9e347a5f11106835f18a5a48fb1f55e601fffed9",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00Y2HQLX4",
+            "name": "PSYCHED WELLNESS LTD",
+            "ticker": "5U9",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG00Y2HQLW5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00XYJP7Z7",
+            "securityType2": "Common Stock",
+            "securityDescription": "5U9"
+          }
+        ]
+      },
+      "response_sha256": "9cf41ccef4bc41ef8a8a4a1225621f27442c1943e8b958067dbfebcd493a652f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US1709241046",
+        "micCode": "XNAS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00439730a098b17b633cf640c248d9d3135fa46c25402f331bc2206d99fa1b1a",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "DE000A0DJ6J9",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00456f94cd1d210a902f8ec4a76345f67b3fd75e828a474b086e577e145a3999",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000GTH928",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG000GTH2V1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92"
+          },
+          {
+            "figi": "BBG000GTHGB2",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000GTH2V1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92"
+          },
+          {
+            "figi": "BBG000GTHJL5",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000GTHHV8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92"
+          },
+          {
+            "figi": "BBG000K0KT37",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92USD",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG000K0HB12",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92USD"
+          },
+          {
+            "figi": "BBG000K0KXW6",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92USD",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG000K0KWX7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92USD"
+          },
+          {
+            "figi": "BBG007F5R596",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92CHF",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG007F5R505",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92CHF"
+          },
+          {
+            "figi": "BBG007F5R5K3",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92CHF",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG007F5R505",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92CHF"
+          },
+          {
+            "figi": "BBG007F5R5W0",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92CHF",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG007F5R5V1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92CHF"
+          },
+          {
+            "figi": "BBG009PJQR12",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "0NIF",
+            "exchCode": "LO",
+            "compositeFIGI": "BBG009PJQQZ7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "0NIF"
+          },
+          {
+            "figi": "BBG00KP8CZG2",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92GBX",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00KP8CZ54",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92GBX"
+          },
+          {
+            "figi": "BBG00KP8CZP2",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92GBX",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00KP8CZ54",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92GBX"
+          },
+          {
+            "figi": "BBG00KP8D014",
+            "name": "SMA SOLAR TECHNOLOGY AG",
+            "ticker": "S92GBX",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00KP8D005",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2ZV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "S92GBX"
+          }
+        ]
+      },
+      "response_sha256": "ee9cfd40802469c8596cec216dc16c3d2ef1d9da714bfd015acc0418c324f8f5"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "FR0013419876",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0045c2835b6c65aa286e4f333d5523f2403444c0e085de3c99b8c07d6c75f7e5",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01190FP22",
+            "name": "KUMULUS VAPE",
+            "ticker": "8E9",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG01190FP13",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00P8R88F4",
+            "securityType2": "Common Stock",
+            "securityDescription": "8E9"
+          }
+        ]
+      },
+      "response_sha256": "74275b09cbc5246d1dcb6d5062b6317afe07e940cd8e8788345308cb226cd161"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100005352",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0046099702429a4eee217a4dd9e12ee4cb276fe9b1d64d6fb94557d8872dfb69",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00VFXNSC2",
+            "name": "SUZHOU GYZ ELECTRONIC TECH-A",
+            "ticker": "688260",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG00VFXNSB3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00VFXNSF9",
+            "securityType2": "Common Stock",
+            "securityDescription": "688260"
+          }
+        ]
+      },
+      "response_sha256": "ab2565d9fca281142f01c89397ef7d76b77f93d8cfef8429956feeb2e248dd6f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "DK0010181676",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0046f4c6e289fbb23ec90d96964963a25e698271b7c5a264c4ff56c74135389c",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BRNYK5",
+            "name": "CARLSBERG-A",
+            "ticker": "CBGA",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000BRNYC4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S97624",
+            "securityType2": "Common Stock",
+            "securityDescription": "CBGA"
+          }
+        ]
+      },
+      "response_sha256": "9ded2cbaab896e563e522ace6695e7babfb2224f20109327e68046d5d9707372"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3358200008",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0049eccd9bab948bf3c126144d118a1df0b27ec11ce34d9b628e8530d748afe8",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IT0001077780",
+        "micCode": "XMIL",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004a49cae5c846b97cdefc628040b5bd9e7ca1e2c3f64db961a8c741093aeade",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "FR0000064958",
+        "micCode": "XPAR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004b9022b675f4bb6a6ce69fbbad21807cc089fb6d250cfa097d83128f6b448e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BZ5LR8",
+            "name": "INTEXA",
+            "ticker": "ITXT",
+            "exchCode": "FP",
+            "compositeFIGI": "BBG000BZ5K45",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SBLDQ2",
+            "securityType2": "Common Stock",
+            "securityDescription": "ITXT"
+          }
+        ]
+      },
+      "response_sha256": "a24e44a1c1d6c8f909f8382454846fcd2cc8bc364318a3e1445229a436d02133"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "LK0234N00001",
+        "micCode": "XCOL",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004c440d7cd96b55210a07895fe4861535cd3420e0354f63d34590ac67a281cd",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BXK8N9",
+            "name": "SEYLAN DEVELOPMENTS PLC",
+            "ticker": "CSD",
+            "exchCode": "SL",
+            "compositeFIGI": "BBG000BXK840",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S7C1P8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CSD"
+          }
+        ]
+      },
+      "response_sha256": "ac8e4dcf2af288b1789cb9720c39291930ba828dbfc023abe93ce2db38526ee2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA26779X1015",
+        "micCode": "XTSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004c4ea4897765be77d3044285923fdad711fac476f17d40374e78f66d4a0cba",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA27887W1005",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004e0af3ad0d4c09a70fd91b464e1cd9024aea6caf34305e31136ec6a25c3b9d",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00J2K6Y00",
+            "name": "ECO ATLANTIC OIL & GAS LTD",
+            "ticker": "EOI",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG00J2K6XZ4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T0GKK1",
+            "securityType2": "Common Stock",
+            "securityDescription": "EOI"
+          }
+        ]
+      },
+      "response_sha256": "e81c05e149a9186dd0b23f69a95a15c5cab3416b787e6c75523a283cc93d0b21"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100002391",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004e27af7c0800d908cd24e444705c10313df085e20644d444d806a2b8bdbd67",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00BH6JJ38",
+            "name": "BANK OF QINGDAO CO LTD-H",
+            "ticker": "3866",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG000RN9H66",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001STYSV0",
+            "securityType2": "Common Stock",
+            "securityDescription": "3866"
+          }
+        ]
+      },
+      "response_sha256": "546955744c900c0d2591d8d5bdf9fe2ee01a14420b56d095005ef1d80f65832a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IT0005246191",
+        "micCode": "XMIL",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004e6c6575f0b6c28460d034436bd1aa86ff9b9f60254536949cdd40a07530b1",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3811000003",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004ed4095e12d65a9587b8b3db7d020a1dec28c628bc0600767742419170365a",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000C1RG26",
+            "name": "FUJIKURA LTD",
+            "ticker": "FJK",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG000C1RDC2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSN9",
+            "securityType2": "Common Stock",
+            "securityDescription": "FJK"
+          },
+          {
+            "figi": "BBG00GFSX6G9",
+            "name": "FUJIKURA LTD",
+            "ticker": "5803EUR",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00GFSX5Z0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSN9",
+            "securityType2": "Common Stock",
+            "securityDescription": "5803EUR"
+          },
+          {
+            "figi": "BBG00JQ7FP02",
+            "name": "FUJIKURA LTD",
+            "ticker": "5803JPY",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00JQ7FNJ7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSN9",
+            "securityType2": "Common Stock",
+            "securityDescription": "5803JPY"
+          },
+          {
+            "figi": "BBG00JYJX1R1",
+            "name": "FUJIKURA LTD",
+            "ticker": "5803USD",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00JYJX182",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5RSN9",
+            "securityType2": "Common Stock",
+            "securityDescription": "5803USD"
+          }
+        ]
+      },
+      "response_sha256": "c5c87f8e903a387ea1e7bbc46b8e6f2c0291ab307a7bc158d45ef4e26fbf56c4"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA7800871021",
+        "micCode": "XNYS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "004f80f057d7054cf9432f672761df22b5e5941460545218d83f29deb655f70e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BSSDF0",
+            "name": "ROYAL BANK OF CANADA",
+            "ticker": "RY",
+            "exchCode": "UN",
+            "compositeFIGI": "BBG000BSSC44",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S60869",
+            "securityType2": "Common Stock",
+            "securityDescription": "RY"
+          }
+        ]
+      },
+      "response_sha256": "c886fed716a63c1770806f613dd3b2345de7c9cfd3c8e6aa102b851c1e713a27"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3400900001",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005019abf42859b54baa47eea9e9b9ae0d9c4b65a6799f0039a09bdcbdb60515",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000C2CBV9",
+            "name": "SUMITOMO OSAKA CEMENT CO LTD",
+            "ticker": "SU2",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000C2CBM9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6FD08",
+            "securityType2": "Common Stock",
+            "securityDescription": "SU2"
+          }
+        ]
+      },
+      "response_sha256": "2616cd83b05fdca3ea0fd29da0f21b7f32bf9af191ab65d49e76193239d249ec"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US82889N3769",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0050609e0a146dec04437df0061dad3c21fd38a4769689f891072fc28ad1884f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01R34DP25",
+            "name": "SIMPLIFY BOND BULL ETF",
+            "ticker": "RFIX",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG01R34DNW7",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01R34DQV1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "RFIX"
+          }
+        ]
+      },
+      "response_sha256": "d1ea97eb88cd1221d2fd5f95794b887ccebfcc68f6aa8fae9de4067589737181"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE00BKX55Q28",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0050877d2b7cf467f80ccf88c73fffa873a0db4c6296ac69089c528139981a23",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG008F26S67",
+            "name": "VANG FTSE250 GBPD",
+            "ticker": "VMID",
+            "exchCode": "GT",
+            "compositeFIGI": "BBG008F26RS5",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0077NPPW8",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "VMID"
+          }
+        ]
+      },
+      "response_sha256": "500f0c5f0cc9ca1e0025ba76c318ebd8f383d709cafe65f1efb7e973c70cbc5a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US92204A5048",
+        "micCode": "XMEX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0052b8796b49790786c0cb46be789c8837425b63ff6debd1f07f5bde02349c7e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000RLYHR9",
+            "name": "VANGUARD HEALTH CARE ETF",
+            "ticker": "VHT*",
+            "exchCode": "MM",
+            "compositeFIGI": "BBG000RLYHR9",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SHVR32",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "VHT*"
+          },
+          {
+            "figi": "BBG000RLYJP7",
+            "name": "VANGUARD HEALTH CARE ETF",
+            "ticker": "VHT*",
+            "exchCode": "MF",
+            "compositeFIGI": "BBG000RLYHR9",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SHVR32",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "VHT*"
+          }
+        ]
+      },
+      "response_sha256": "2652fcbc660dc088934af5a7fd1bb248f3dc3730af8c86661f5a4a8878568519"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US00855Q1085",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0052ca9c0efacd11171d300476f2d0cd00c24d0a6047c1b164a87b29b63bd42b",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100006HY7",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0052ce5c5d087022e6ed4911ac11a29f773feca7965a0dc55de8327bbcf3fc13",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01NH226T8",
+            "name": "XI'AN KINGFAR PROPERTY SER-H",
+            "ticker": "1354",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG01NH226S9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01NH226Y2",
+            "securityType2": "Common Stock",
+            "securityDescription": "1354"
+          }
+        ]
+      },
+      "response_sha256": "e4e833a24ab0b553d566124958aabd2575136e0e9867e8c3c0547ef2c2ba128a"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3879320004",
+        "micCode": "XTKS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00530377b7d16ee7ab42007def4e282234303ae7868554b7cfdc61ddd414f16e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BZ3VR8",
+            "name": "MANSEI CORP",
+            "ticker": "7565",
+            "exchCode": "JT",
+            "compositeFIGI": "BBG000BZ3V98",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB7BM6",
+            "securityType2": "Common Stock",
+            "securityDescription": "7565"
+          }
+        ]
+      },
+      "response_sha256": "8fabd4dc9706e5623c9dae849a7ed496c9a210d48140f1942a3c2878db01009f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA87252A1093",
+        "micCode": "XTSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0053655663f41bf62e81b6a921c286439a81903f72a8499cffc7d52f03ff3cd6",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01LXSGC73",
+            "name": "TD TGT 2027 US INV GR BD",
+            "ticker": "TBUG/U",
+            "exchCode": "CT",
+            "compositeFIGI": "BBG01LXSG7Y4",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01LXSGHJ9",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "TBUG/U"
+          }
+        ]
+      },
+      "response_sha256": "da34d000464287bad40aaeb8f53532e4c94e4c4ab4cb7de6215c2a7093bf38f1"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "GB0005630420",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0053bbb2e9baaedf140df7a4668cb63011fb621f595f47de0ad7fdde9479bf3f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000PYSS96",
+            "name": "MEARS GROUP PLC",
+            "ticker": "MM7",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000PYSRS7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S98NL5",
+            "securityType2": "Common Stock",
+            "securityDescription": "MM7"
+          }
+        ]
+      },
+      "response_sha256": "c480528c9a2659c85b744bb3f4f68153fdc3df13ee46c6bbd0e591567e259cb9"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE680A01011",
+        "micCode": "XNSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0053dbf71c8ea4e54c62e7afd9bc12d05474599b1ccc70a916cf901819e017e2",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BXGCZ2",
+            "name": "DHANLAXMI BANK LTD",
+            "ticker": "DHLBK",
+            "exchCode": "IS",
+            "compositeFIGI": "BBG000BXGBY5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB81R2",
+            "securityType2": "Common Stock",
+            "securityDescription": "DHLBK"
+          }
+        ]
+      },
+      "response_sha256": "da32790fe58ca735d1fba720fdde84cf561437a059685084d5e5a60e794d02d9"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3567410000",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005454d85e888dcf68bbd0e466eacf44a3d15d03eb2284d654731078fee5318e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000C0H3N5",
+            "name": "TOKYU CONSTRUCTION CO LTD",
+            "ticker": "TCW",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000C0H391",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SDCPS9",
+            "securityType2": "Common Stock",
+            "securityDescription": "TCW"
+          }
+        ]
+      },
+      "response_sha256": "950423063804ae7245eb0cb2f59ae73a4fff13e9cacbb6ca0e62c0f354d04016"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SG1W55939399",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00546dc863e548d40deae57cce8b94bddc98689e4bc1bcfcfd202a4e1980b666",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000V98DV4",
+            "name": "WEE HUR HOLDINGS LTD",
+            "ticker": "3YM",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000V98DS8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T0ZDZ0",
+            "securityType2": "Common Stock",
+            "securityDescription": "3YM"
+          }
+        ]
+      },
+      "response_sha256": "e87f6bc61b1a9a204c350a5a520bcd0f24adbf5c4e191ea4b0f9f9e74bb2a275"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE00BF51K132",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005596e42e74e1f0912eb4f69dc053c8adef5b5d72510eed7307ea345b1672a1",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00K4QP201",
+            "name": "INVESCO EM USD BOND",
+            "ticker": "EMSB",
+            "exchCode": "GT",
+            "compositeFIGI": "BBG00K4QP1L0",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00J7BH463",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "EMSB"
+          }
+        ]
+      },
+      "response_sha256": "ccfc6c78a9e4644d39f38ef3fd23ba0d892fefe6b2145a6573aadebe76ad8238"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE1BZN01016",
+        "micCode": "XNSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0056299328b0d4ac1e93ab9f61b638444aaa895eaaeae98acf93ee7a36335327",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01YC6K451",
+            "name": "CURIS LIFESCIENCES LTD",
+            "ticker": "CURIS",
+            "exchCode": "IS",
+            "compositeFIGI": "BBG01YC6K424",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01YC6K479",
+            "securityType2": "Common Stock",
+            "securityDescription": "CURIS"
+          }
+        ]
+      },
+      "response_sha256": "9177187ce1607ba06a1e20aca05afdfc8bf767be7cd5360c090d1294352199e7"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "TRYZIPO00188",
+        "micCode": "XIST",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0056dc469b9973a0cc828a42a6dfbddf2b05493c0ea373dd2629f623a9e5aabe",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00WDSNQ28",
+            "name": "ZP EQ. RISK 20 EX BANKS ETF",
+            "ticker": "ZRE20",
+            "exchCode": "TI",
+            "compositeFIGI": "BBG00WDSNQ19",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00WDSNQ55",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "ZRE20"
+          }
+        ]
+      },
+      "response_sha256": "e16080abf55dbcc92f662456daab9f1a0441bad5024d90eae3393b1d260af81e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA4405671054",
+        "micCode": "XTSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0056f308599ffc982798fa0354258a157e5dce545294214b7211fb59eac28e2c",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "ROPRDIACNOR7",
+        "micCode": "XBSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00589005a6c6dad8bdec7b68efa4401044d0431663fbc0852eecf74709f00624",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000RBS9G8",
+            "name": "PRODHART SA IASI",
+            "ticker": "PRDI",
+            "exchCode": "RE",
+            "compositeFIGI": "BBG000RBS978",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001STDN53",
+            "securityType2": "Common Stock",
+            "securityDescription": "PRDI"
+          }
+        ]
+      },
+      "response_sha256": "df6ac71f13debd6075bae70926bb68e151c370cbfc0800c4a7387c9bc1b9593e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US8170701051",
+        "micCode": "XNAS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0058ab9749c6891a5b1a2ad592024b8e978fef0541f4c5ff6564141fe6949efa",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA40531F1009",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00591d0e1033664ce8442e1b9c15747578750028a2ee1cf3fb8b477e62cd5eaf",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG018PWHJ30",
+            "name": "HAIVISION SYSTEMS INC",
+            "ticker": "H8A",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG018PWHJ21",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SPK286",
+            "securityType2": "Common Stock",
+            "securityDescription": "H8A"
+          }
+        ]
+      },
+      "response_sha256": "2eaa1c6a08d63e76d323d67c42c16108eaf02d5dffe9ef354ea6502ba5359900"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KR7365340009",
+        "micCode": "XKOS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005b82ce71026737f6c4915f941f66058f3bc4ef7d626a67365fa53922ae7714",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01893X1M2",
+            "name": "SUNGEEL HITECH CO LTD",
+            "ticker": "365340",
+            "exchCode": "KQ",
+            "compositeFIGI": "BBG001BP2444",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TR9XL1",
+            "securityType2": "Common Stock",
+            "securityDescription": "365340"
+          }
+        ]
+      },
+      "response_sha256": "77a952905764603786c5bce0cfe62f9dbd22c39fc27a431fd18c09827a8e1206"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "BMG989231086",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005ce7c4ee2e5fa403f6bf08e6cb577fca45d451e66be4a25c771071505ff901",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG001KKYB17",
+            "name": "ZHENGYE INTL HOLDINGS CO LTD",
+            "ticker": "3363",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG001KKYB08",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001V0Q799",
+            "securityType2": "Common Stock",
+            "securityDescription": "3363"
+          }
+        ]
+      },
+      "response_sha256": "3dbf59dc6ca9b2d48673733d560b0fb01e475cfd544a3fa5d4ddd86126e8b13c"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE0QIS01011",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005d700665e05c0fbf6022d38d47fe4a02fbfba7e3047da2bb971e3438b527be",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01L2NJL84",
+            "name": "SHREE MARUTINANDAN TUBES LTD",
+            "ticker": "SHREE",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG01L2NJL75",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01L2NJSV3",
+            "securityType2": "Common Stock",
+            "securityDescription": "SHREE"
+          }
+        ]
+      },
+      "response_sha256": "5b609e49406ebd79cdd10aa54e2ec1334a1729428e3e3541adb0c24343cd5397"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE0000009G0",
+        "micCode": "XSHE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005e5ff62830b025aff6534cc441cd633e8077ae2e2bc64aafd18291a19079ea",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000P6F699",
+            "name": "NORTHEAST PHARMACEUTICAL-A",
+            "ticker": "000597",
+            "exchCode": "CS",
+            "compositeFIGI": "BBG000P6F528",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SJWJL5",
+            "securityType2": "Common Stock",
+            "securityDescription": "000597"
+          }
+        ]
+      },
+      "response_sha256": "01e0c7ffc9b570276c6c900ce7f60fc869905004702124c2de3e71fa97fc753d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE877I01016",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "005f99afec27b99822620f4c35849bfbf18c1d4f7a68d5b4d2b879c88544c4ae",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000TX1K54",
+            "name": "ARCHIDPLY INDUSTRIES LTD",
+            "ticker": "APLY",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG000TX1JP5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T0P3P4",
+            "securityType2": "Common Stock",
+            "securityDescription": "APLY"
+          }
+        ]
+      },
+      "response_sha256": "d4854e6f6227fcb9e33289f31fd46ebc5bd008a48518844efa8c19afcfdc80b2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE949C01016",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0062626d0653b70b783650ba0b4fb33df989f7a32fd7f2662fc0f7a310294df1",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00GM3XCG3",
+            "name": "CLASSIC LEASING & FIN LTD",
+            "ticker": "CLFIN",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG00GM3XCF4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00GM3XCL7",
+            "securityType2": "Common Stock",
+            "securityDescription": "CLFIN"
+          }
+        ]
+      },
+      "response_sha256": "80ca18499a139228dc4797a0a360c251eba42b44ad7406df8ffbf014eab9f063"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US92107P7649",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006276d8303165c21aee8f533b12fa21c1e55e8075ca5184bb540a289188b04c",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0206S8ZD9",
+            "name": "VANECK INDIA SELECT ETF",
+            "ticker": "INDZ",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG0206S8Z76",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0206S92C2",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "INDZ"
+          }
+        ]
+      },
+      "response_sha256": "a955219b3fdc182776f1c6d84bed32949c82ea0d1807a6807f1d8a93ee780eca"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KYG3947G1560",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00628de9ccb16d24ad52de26cdd9323151a7cbae040d9dc7cba54f966eaf2c71",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000CJGR43",
+            "name": "GLOBAL STRATEGIC GROUP LTD",
+            "ticker": "8007",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG000CJGQ54",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SF4NM4",
+            "securityType2": "Common Stock",
+            "securityDescription": "8007"
+          }
+        ]
+      },
+      "response_sha256": "593f79871b213f0230ac8c7cd0f9cb0fe29d13f5ecf6b12919e2bee9d9ac3656"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA09658Q1081",
+        "micCode": "XTSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00632b13d3c0344416972a3dbd8988e533ec65b252aa4e6c4df640755904e2eb",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG007HXFT85",
+            "name": "BMO INTERNATIONAL DIVID EQ",
+            "ticker": "ZDI",
+            "exchCode": "CT",
+            "compositeFIGI": "BBG007HXFT58",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG007HXFT67",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "ZDI"
+          }
+        ]
+      },
+      "response_sha256": "0738826b21197d3d89ddf25194bf806999ab2885dbdce6640ad11fc7b46fb35e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE1000055B2",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0063a602c3a100351b18cb383e92de1815df4718a46ada1fe11bc4594249ce1d",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00NZ7PCM7",
+            "name": "JIANGSU BIOPERFECTUS TECHN-A",
+            "ticker": "688399",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG00NZ7PCL8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00NZ7PCP4",
+            "securityType2": "Common Stock",
+            "securityDescription": "688399"
+          }
+        ]
+      },
+      "response_sha256": "c205ecb38bea77d8f9c941413b666f74f1c5801b37a69929bd9db5d5340a0377"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "BMG507361001",
+        "micCode": "XSES",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0063c8347c3a96df12e56a55c666c709a3a8033a2116921d21b875a4786b4140",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BKGRX9",
+            "name": "JARDINE MATHESON HOLDINGS",
+            "ticker": "JM",
+            "exchCode": "SP",
+            "compositeFIGI": "BBG000BKGQP0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5SGJ9",
+            "securityType2": "Common Stock",
+            "securityDescription": "JM"
+          }
+        ]
+      },
+      "response_sha256": "f5a4dd4fd7047b0593e30a1923262ed59a1d97a890e3bb7ecdb4544424cbe29f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3974900007",
+        "micCode": "XTKS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00647598877de698122ea72e6dc435c1299fd421e85f080cd65ef60580279d96",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000Q89ZT5",
+            "name": "REMIXPOINT INC",
+            "ticker": "3825",
+            "exchCode": "JT",
+            "compositeFIGI": "BBG000Q89ZK4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SRX6W2",
+            "securityType2": "Common Stock",
+            "securityDescription": "3825"
+          }
+        ]
+      },
+      "response_sha256": "8c06859a808b3a01e94e1857a367a5d40ac7a50abaaaf5c6eeb6a024490f623f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3049630001",
+        "micCode": "XTKS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0065505c0497cbcc828bb74f52fe1d35e17f059819c6069f4e2a8db3d8a4954f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG018PRV8C9",
+            "name": "ISHARES 3-7YRS US TR CRY HDG",
+            "ticker": "2856",
+            "exchCode": "JT",
+            "compositeFIGI": "BBG018PRV8B0",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG018PRV8W7",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "2856"
+          }
+        ]
+      },
+      "response_sha256": "b5d4a445d9fb45fd4ba04096dc2aea16eeb95b302135a0842cf8d670626e81d2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "SE0009994445",
+        "micCode": "XSTO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0065b2b8ae7b5e0f4b0918952933b9a51f46e2e46659ed9ec38f296f8c263717",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100003F76",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0065d0eebaf0dfe20d9a68cc7542ee8455f98a17661c68957169b011a4062d41",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00H2QXJ22",
+            "name": "JIANGSU FENGSHAN GROUP CO -A",
+            "ticker": "603810",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG001CQ8X50",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TZG2K4",
+            "securityType2": "Common Stock",
+            "securityDescription": "603810"
+          }
+        ]
+      },
+      "response_sha256": "edc75f7ae167c2d6b928f39d2d80c765ca5ccf3d2f6fb4ab54dee2cc9397f60f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100005QK9",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00664d7af8e809222b5bd14b19a73883254afdc44debd10d91a308fc0c989bc9",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG011MS36F7",
+            "name": "ALTENERGY POWER SYSTEM INC-A",
+            "ticker": "688348",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG0067MZC96",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0067MZCB3",
+            "securityType2": "Common Stock",
+            "securityDescription": "688348"
+          }
+        ]
+      },
+      "response_sha256": "0c0fb3b1286654b2766b5606e510ddb766fc89f1a23f72e3557fae4e2aa21db8"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "USG0135E1004",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006703443309d7717fb759cb75c3a332945ddb71ba8344fb3eaefbcb28e126d9",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA44877L1013",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0067d04eedff3ae043bd48cf613237adcf903c38aa19613983500c8a35bb9d9c",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01F3KSLF4",
+            "name": "HYDREIGHT TECHNOLOGIES INC",
+            "ticker": "SO6",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG01F3KSLC7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00LMZBCS2",
+            "securityType2": "Common Stock",
+            "securityDescription": "SO6"
+          }
+        ]
+      },
+      "response_sha256": "65ade0c15259a47de3d97fdea8528fd78e9be1266fb7915dcb02a37199dceff0"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA05455R2081",
+        "micCode": "XTSX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00682e14025b57754c778554d9f1b298f2771dd691c4deaf01bc93a28c191b71",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00BNKJX02",
+            "name": "AWALE RESOURCES LTD",
+            "ticker": "ARIC",
+            "exchCode": "CV",
+            "compositeFIGI": "BBG00BNKJWW9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00BNKJWV0",
+            "securityType2": "Common Stock",
+            "securityDescription": "ARIC"
+          }
+        ]
+      },
+      "response_sha256": "4bfbf22425cfaab24b2e82893da9e2018362639519e05e6c3490f5d2d5eebc04"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE160F01013",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00685132e868344bf299e2da0c57803fefdea20774920fb066d430874e121657",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BP9M85",
+            "name": "PH CAPITAL LTD",
+            "ticker": "PHC",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG000BP9LH7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6VDZ2",
+            "securityType2": "Common Stock",
+            "securityDescription": "PHC"
+          }
+        ]
+      },
+      "response_sha256": "c5c026f5c5d83153f253ff1cb60e26adde9170203e33c1e244d896df6e7a4ab6"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE1000002Q2",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0068fd2adc89da8252261e8d8d4914db07a64dfb0ce38c6deb1cf8e47773afc5",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000MQF8G6",
+            "name": "CHINA PETROLEUM & CHEMICAL-H",
+            "ticker": "386",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG000MQF7T4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SG0JW4",
+            "securityType2": "Common Stock",
+            "securityDescription": "386"
+          }
+        ]
+      },
+      "response_sha256": "3d01088611a576a174462d009667b45d15c5055ff0180f11ff5091457fb9adbc"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3142500002",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006aca03362496c6a08664e1609fde2317a8c8a38cf8c56fb01c862149d33b22",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000HFFYD2",
+            "name": "IDEMITSU KOSAN CO LTD",
+            "ticker": "I7B",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG000HFFVH4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6JR21",
+            "securityType2": "Common Stock",
+            "securityDescription": "I7B"
+          },
+          {
+            "figi": "BBG00JQ30NG5",
+            "name": "IDEMITSU KOSAN CO LTD",
+            "ticker": "5019JPY",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00JQ30MZ6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6JR21",
+            "securityType2": "Common Stock",
+            "securityDescription": "5019JPY"
+          },
+          {
+            "figi": "BBG00K9ZQBW0",
+            "name": "IDEMITSU KOSAN CO LTD",
+            "ticker": "5019USD",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00K9ZQBD1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6JR21",
+            "securityType2": "Common Stock",
+            "securityDescription": "5019USD"
+          },
+          {
+            "figi": "BBG00KDZGN78",
+            "name": "IDEMITSU KOSAN CO LTD",
+            "ticker": "5019EUR",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00KDZGMR8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6JR21",
+            "securityType2": "Common Stock",
+            "securityDescription": "5019EUR"
+          }
+        ]
+      },
+      "response_sha256": "8d1d058ce8955a3acee84263929077040904ffcdfe0e7d7eb64063a5f87d822e"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INE0XNF01022",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006b1c89c78502d5c309989524198921cf8dc4b8f7458f3858bbd0625e9c8c9e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0241BT742",
+            "name": "ARDEE INDUSTRIES LTD",
+            "ticker": "ARDEE",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG0241BT733",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0241BT7V2",
+            "securityType2": "Common Stock",
+            "securityDescription": "ARDEE"
+          }
+        ]
+      },
+      "response_sha256": "1fe14770bbf1833bf97c3dab3519d14288af4464b8352c6abc8217217012da00"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE1000065N6",
+        "micCode": "XSHE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006b2bb184cd5ea7832256cf2a2108c9ac20c9251917296275ae102f0f475fac",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG011DLPMH1",
+            "name": "DONGNAN ELECTRONICS CO LTD-A",
+            "ticker": "301359",
+            "exchCode": "CS",
+            "compositeFIGI": "BBG011DLPM81",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG011DLPM90",
+            "securityType2": "Common Stock",
+            "securityDescription": "301359"
+          }
+        ]
+      },
+      "response_sha256": "7a1604fbf1c52d3e3793137563cd18fc19f0535eecba243994b2feeb293c660f"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US8829278741",
+        "micCode": "XNAS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006c0ca776c0d65400b353374db2749d9cc773885671b8e49854b6e019bca4d3",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE000000S76",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006c25855b7e0c895e89eaa90c85373d01e68025740244195456be064053b25e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000JDV6D8",
+            "name": "GREATTOWN HOLDINGS LTD -A",
+            "ticker": "600094",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG000JDT3T1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB2TY9",
+            "securityType2": "Common Stock",
+            "securityDescription": "600094"
+          }
+        ]
+      },
+      "response_sha256": "79c35ea76e9f54e29aa91b064131535b7e60691354f7448086ddf7e9b3d1a703"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3486800000",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006e3d5c63683ad57d006676f17ef0bc1668d79ac39d1207039c3dc2dd03a643",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000GM7KL8",
+            "name": "DAITO TRUST CONSTRUCT CO LTD",
+            "ticker": "4D7",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000GM7K38",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6GCF3",
+            "securityType2": "Common Stock",
+            "securityDescription": "4D7"
+          }
+        ]
+      },
+      "response_sha256": "1b3e17821871f45e55217926220032f547f00eee522b979abfb5cdd4ef4bf58d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US00509L8028",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006e8a7b79af5469149081324126daec01b8a605da629b2796e2f97e45b1a613",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA05560D1024",
+        "micCode": "XTSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "006fc4540a82db629bb0311d0f37757d305c85508ac0c1b7b9114ab3ce809401",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000JNZ839",
+            "name": "BMO DJ IND AVERAGE HDG CAD",
+            "ticker": "ZDJ",
+            "exchCode": "CT",
+            "compositeFIGI": "BBG000JNZ768",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T3Q9W6",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "ZDJ"
+          }
+        ]
+      },
+      "response_sha256": "d1993801e0b423d3a23468d35be2eb2cd53a128593fa975b1439a12ff5111266"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "JP3363600002",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0070a487189989bde7ea8d9e8eb64f2dfd9cb114bfed6b912a30064c0fe67003",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01QDH9214",
+            "name": "SHOFU INC",
+            "ticker": "69W",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG01QDH9205",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S6LGP7",
+            "securityType2": "Common Stock",
+            "securityDescription": "69W"
+          }
+        ]
+      },
+      "response_sha256": "ed15f1c5ca37888abe9f5780960eb9b390bed231d1c295e0dae1d84c19b4e272"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "LU1681038599",
+        "micCode": "XPAR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00725e0015b7627de137fb63c05172a66f1093275e6be03ffbdbe09f8bda123b",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00KK8GBY6",
+            "name": "AM NSDQ-100 SP ETF EUR H ACC",
+            "ticker": "NDXH",
+            "exchCode": "FP",
+            "compositeFIGI": "BBG00KK8GBX7",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00KK8GC01",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "NDXH"
+          }
+        ]
+      },
+      "response_sha256": "61c3ad80a3c06ad240cbdf57a2f7a7ddabd0849df98ce10f8121c3c837e74d70"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US2330514322",
+        "micCode": "ARCX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0072fc80853534b04b2ac6ed5727acf0721e762ec0275c374f9f4601163e7c1f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00FGWY3W9",
+            "name": "XTRACKERS USD HIGH YIELD COR",
+            "ticker": "HYLB",
+            "exchCode": "UP",
+            "compositeFIGI": "BBG00FGWY3Q6",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00FGWY4G5",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "HYLB"
+          }
+        ]
+      },
+      "response_sha256": "a18a2ea35fc32dbc6e0706cd0e3b35a9b5302b1dc68a0379e1e334feb1c7efb2"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100007507",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0073a310c183509f3fab9ab8a70a934a68e84a191b85103ab6580f191a5fbf64",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01Y1L35Q3",
+            "name": "BAMA TEA CO LTD-H",
+            "ticker": "6980",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG01Y1L35P4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01Y1L35R2",
+            "securityType2": "Common Stock",
+            "securityDescription": "6980"
+          }
+        ]
+      },
+      "response_sha256": "94de2a26dd67e05755d99000b6e646e41beb7a57df5309d89220af0b6b7e8fcf"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "DE000A3E5CP0",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0073a4ac7fb052695549ccd99af6767d422265f863e2c184ddba25e932142afe",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100006145",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0073d52886809d0e6d9f9cd5235de226a3d7c2808de9804ae55988bcd73a3ed0",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01G6ZXCJ6",
+            "name": "BOSERA NASDAQ-100 ETF QDII",
+            "ticker": "513390",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG01G6ZXCH8",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01G6ZXCN1",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "513390"
+          }
+        ]
+      },
+      "response_sha256": "07cfcce08ec909f71c68bd5ebbf92960706f77d092464f245ccb457fbe148d8b"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US4642887529",
+        "micCode": "BATS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0073e928e4f77a1798a75d3004d0830986684d5ae6f856b4cbab9553ad89503c",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000PB57M2",
+            "name": "ISHARES U.S. HOME CONSTRUCTI",
+            "ticker": "ITB",
+            "exchCode": "UF",
+            "compositeFIGI": "BBG000PB3SM8",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SQZTR8",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "ITB"
+          }
+        ]
+      },
+      "response_sha256": "65aedc4e3b3a65396d7704944a1c0b1556be11a676c368a68efef93a897bd519"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "FR0000066722",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00746526ad2275084f36ce207c47e7f3ec7fb7d0bdb972fdc9fd67fc726f2c93",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000G7HST5",
+            "name": "GUILLEMOT CORPORATION",
+            "ticker": "GUL",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000G7HRG1",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SGPX47",
+            "securityType2": "Common Stock",
+            "securityDescription": "GUL"
+          }
+        ]
+      },
+      "response_sha256": "1e3f08200eb4fae0541d2ef6a60fdd7cd73bcb0558e869547ef1f8bd6480dbc9"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KR7026910000",
+        "micCode": "XKOS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0074d4b8b4cdf122c9d39688600aeb255420e1af5cb39883c1f87b1d1c89e777",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000C1ND72",
+            "name": "KWANGJIN INDUSTRIAL CO LTD",
+            "ticker": "026910",
+            "exchCode": "KQ",
+            "compositeFIGI": "BBG000C1NCF5",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SD60Z3",
+            "securityType2": "Common Stock",
+            "securityDescription": "026910"
+          }
+        ]
+      },
+      "response_sha256": "45490eb47d4af1f7a1da17ee497c7c6fe25df8ca4afac6983003fc2f04fa12c5"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US4525211078",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0074f1164f8d8f7528ae8719d7cf5e8df88e1b7044a1f1d807d648740b0016d7",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000C3WWC0",
+            "name": "IMMERSION CORPORATION",
+            "ticker": "IMV",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG000C3WV78",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SD4N12",
+            "securityType2": "Common Stock",
+            "securityDescription": "IMV"
+          },
+          {
+            "figi": "BBG00JQ23MJ3",
+            "name": "IMMERSION CORPORATION",
+            "ticker": "IMMRUSD",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00JQ23M12",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SD4N12",
+            "securityType2": "Common Stock",
+            "securityDescription": "IMMRUSD"
+          },
+          {
+            "figi": "BBG00JRNTZD5",
+            "name": "IMMERSION CORPORATION",
+            "ticker": "IMMREUR",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00JRNTYX6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SD4N12",
+            "securityType2": "Common Stock",
+            "securityDescription": "IMMREUR"
+          },
+          {
+            "figi": "BBG00JX9T5M5",
+            "name": "IMMERSION CORPORATION",
+            "ticker": "IMMRGBP",
+            "exchCode": "XS",
+            "compositeFIGI": "BBG00JX9T545",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SD4N12",
+            "securityType2": "Common Stock",
+            "securityDescription": "IMMRGBP"
+          }
+        ]
+      },
+      "response_sha256": "f462cb88ab6f50323fe9cf42eca7504091c20fc3595ffac4e204dcc9e9ebe37d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100005VM5",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0075060fd508de563784b22c938a0f7619d57753d2808133bffc701ebb82cf80",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0141QP7K6",
+            "name": "HANGZHOU EZVIZ NETWORK CO -A",
+            "ticker": "688475",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG0141QP6Z2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0141QP717",
+            "securityType2": "Common Stock",
+            "securityDescription": "688475"
+          }
+        ]
+      },
+      "response_sha256": "fc1c5e995e9377e3ff53b8a87d53e18fe4611a09cbe2d292c074f141a5aece9d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "MYQ0242OO006",
+        "micCode": "XKLS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00756baf07447f702b7481bfaac61e39f7651bdb1e4f23b4d68b15055056998b",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG015ZL01P2",
+            "name": "PAPPAJACK BHD",
+            "ticker": "PPJACK",
+            "exchCode": "MK",
+            "compositeFIGI": "BBG015ZKZSY7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG015ZKZSZ6",
+            "securityType2": "Common Stock",
+            "securityDescription": "PPJACK"
+          }
+        ]
+      },
+      "response_sha256": "fa8a8f2462e823dd6fdcbf2bc5eaf0bd708656bf4810723aff45c3410242ad61"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE1000004J3",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00766f58e22653435f4a3be078b92768cc024e30824c68932f0b69b1d9363cb7",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE00B14X4S71",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0077e953888b00df0ae1f220fae265aef83cd079154f9b4d7f3b063e636d6b34",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BJNYN0",
+            "name": "ISHARES USD TRSRY 1-3Y USD D",
+            "ticker": "IUSU",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG000BJNY69",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SMQJ99",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "IUSU"
+          }
+        ]
+      },
+      "response_sha256": "f00587412c1fbe40d2a673f8c3d2e54b3db6481243117cbbf4d1658be42f291d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "TW0000056001",
+        "micCode": "XTAI",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00785e037446e03206c3b79092d7dedb97292c3ca351ab837a08e81f36fff8a6",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000Q5QH03",
+            "name": "YUANTA/P-SHRS TW DVD PLUS ET",
+            "ticker": "0056",
+            "exchCode": "TT (Taiwan Stock Exchange)",
+            "compositeFIGI": "BBG000Q5QGS5",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SRSJ87",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "0056"
+          }
+        ]
+      },
+      "response_sha256": "dd81534563e41dfe5a573f8f4f3ca90a786600ffc95916c4bf30edb2da0e95bd"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA6293521051",
+        "micCode": "XTSX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0078dd7e60b829e4689f65f20ef6e58682da8b8cd627c2f3611a7a9785ff36f2",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00JHVZ0Y5",
+            "name": "NOA LITHIUM BRINES INC",
+            "ticker": "NOAL",
+            "exchCode": "CV",
+            "compositeFIGI": "BBG00JHVZ0V8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00JHVZ1R1",
+            "securityType2": "Common Stock",
+            "securityDescription": "NOAL"
+          }
+        ]
+      },
+      "response_sha256": "c16030e95f4f3ac08b710cf3ffe52ad9dabf730200830e639cfc9ac2959aaf01"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100000JJ7",
+        "micCode": "XSHE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0078e8e09f663b954a1b2713571b31344dde6be40d7393911f86973dde1103ae",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000NWC134",
+            "name": "HUNAN ZHONGKE ELECTRIC CO -A",
+            "ticker": "300035",
+            "exchCode": "CS",
+            "compositeFIGI": "BBG000NWC0P2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T5C7R6",
+            "securityType2": "Common Stock",
+            "securityDescription": "300035"
+          }
+        ]
+      },
+      "response_sha256": "9cc0a9e0befca329f81607dc0b6fa7747e226985c1ac87237bb2003f55cec575"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US6245801062",
+        "micCode": "XNYS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00794381846abefbadbb6af0afe3261d42c5fb83621e34535b18658c43796f86",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000BL34H0",
+            "name": "MOVADO GROUP INC",
+            "ticker": "MOV",
+            "exchCode": "UN",
+            "compositeFIGI": "BBG000BL30Y9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S8FWS2",
+            "securityType2": "Common Stock",
+            "securityDescription": "MOV"
+          }
+        ]
+      },
+      "response_sha256": "39b76e23625928424e2cabdcb1eea2a4864d48f066c0c5e5967f6d1c8595965d"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US16119P1084",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0079994ef693fe6b18eeb4a4309849e2f471fd4edf185d9b863c6e8d1f149116",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00B57ZK01",
+            "name": "CHARTER COMMUNICATIONS INC-A",
+            "ticker": "CQD",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG00B57ZJW9",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T3TDG2",
+            "securityType2": "Common Stock",
+            "securityDescription": "CQD"
+          }
+        ]
+      },
+      "response_sha256": "dfe5d23111b11c1bb3f699543a5bd8ef7de6e0847814da9c0a7e4e5aaf374eac"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US34354P1057",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007a5518d3d9815acfce73b5054c6a3757b7c12344ac8911100e76ca97a834a3",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000J9LM98",
+            "name": "FLOWSERVE CORP",
+            "ticker": "FWV",
+            "exchCode": "GY",
+            "compositeFIGI": "BBG000J9LK65",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001SB3F87",
+            "securityType2": "Common Stock",
+            "securityDescription": "FWV"
+          }
+        ]
+      },
+      "response_sha256": "caf29f91d21c37b55fdac58c8b7fc0a233947d54ee8ad8374eb58c53f8136c4c"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA40443L1040",
+        "micCode": "XFRA",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007a809ba499067096e45c0a4b0bcf84be976d2449b8406b062fc65646cfb80e",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG016PFRD60",
+            "name": "HYTN INNOVATIONS INC",
+            "ticker": "85W0",
+            "exchCode": "GF",
+            "compositeFIGI": "BBG016PFRD51",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S5ZLZ2",
+            "securityType2": "Common Stock",
+            "securityDescription": "85W0"
+          }
+        ]
+      },
+      "response_sha256": "bfd7d33c27f6bc4cf79bd4d04079adc7c06778cc2089b690c8ca3332595e4787"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US38747R1656",
+        "micCode": "XNAS",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007c0bab7a4c667e82267bd1224db8a8abc325e9177d11c2ad2521b43da0003c",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "AU0000368748",
+        "micCode": "XLON",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007ca24eefb7b9bd6b00dc7a2c6629255f0a89dd14e18e41cb2552f78bcf8f6f",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00JKT7KP3",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZEUR",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00JKT7KD6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZEUR"
+          },
+          {
+            "figi": "BBG00JKT7KY3",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZEUR",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00JKT7KD6",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZEUR"
+          },
+          {
+            "figi": "BBG00JKT7L62",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZEUR",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00JKT7L53",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZEUR"
+          },
+          {
+            "figi": "BBG00WC05DR2",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "NFM",
+            "exchCode": "LN",
+            "compositeFIGI": "BBG00WC05DQ3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "NFM"
+          },
+          {
+            "figi": "BBG00WGXJWT7",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZGBX",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG00WGXJWH0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZGBX"
+          },
+          {
+            "figi": "BBG00WGXJX15",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZGBX",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG00WGXJWH0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZGBX"
+          },
+          {
+            "figi": "BBG00WGXJXJ6",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZGBX",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG00WGXJXH8",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZGBX"
+          },
+          {
+            "figi": "BBG011BBLGR1",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZAUD",
+            "exchCode": "XL",
+            "compositeFIGI": "BBG011BBLGG3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZAUD"
+          },
+          {
+            "figi": "BBG011BBLH17",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZAUD",
+            "exchCode": "E1",
+            "compositeFIGI": "BBG011BBLGG3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZAUD"
+          },
+          {
+            "figi": "BBG011BBLHG1",
+            "name": "NEW FRONTIER MINERALS LTD",
+            "ticker": "CCZAUD",
+            "exchCode": "EU",
+            "compositeFIGI": "BBG011BBLHF2",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001TFZJV8",
+            "securityType2": "Common Stock",
+            "securityDescription": "CCZAUD"
+          }
+        ]
+      },
+      "response_sha256": "7a952e424a367a85ca5014abdfd3b0a210e49643fba1b9283b227e6991bc4d53"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "INF767K01OS7",
+        "micCode": "XBOM",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007dae1ccfe0ce814873a631b24de537ff10c50a8cf96ed8d9214916dfc0bbbd",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG00BCJPKP1",
+            "name": "LIC MF NIFTY 50 ETF",
+            "ticker": "LICNIFT",
+            "exchCode": "IB",
+            "compositeFIGI": "BBG00BCJPKN3",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG00BCJPKM4",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "LICNIFT"
+          }
+        ]
+      },
+      "response_sha256": "91382e1b55d521b90b1971738088b0ffae0be10c514d30efd8b431a169e69eb5"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IL0006625771",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007df2e1271f1c61c277a89d3f0445ab10db3a2a9b072be761e98f4cd8ab2279",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "US53634X1000",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007e7987043080ce69c55cebcd0779e847691a57ea439bed9fd4f178d031cb07",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA7409103024",
+        "micCode": "XTSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007e9a49cae73d4aa4d1739b7b68964b2ab94716aecf886771657d45158b8e2f",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "ZAE000151817",
+        "micCode": "XJSE",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007ea93620ed6f5c4a2b12ac133b3e3f8a86a5bedb7d5cec8b112397caba20e8",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG001FB2RT3",
+            "name": "SASOL LTD - BEE",
+            "ticker": "SOLBE1",
+            "exchCode": "SJ",
+            "compositeFIGI": "BBG001FB2RS4",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001V08ZP9",
+            "securityType2": "Common Stock",
+            "securityDescription": "SOLBE1"
+          }
+        ]
+      },
+      "response_sha256": "1ab811a9460cfbfe42c7190d9ecb00c9da7c9ae561bb529ede5c41a22b4c9c42"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE00BWT6H894",
+        "micCode": "XSTU",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "007ebf31ecd0b502a2e1df6e286fbec10fdd0f5488b43cb896efe7d2dd746c71",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000HXMGF2",
+            "name": "FLUTTER ENTERTAINMENT PLC-DI",
+            "ticker": "PPB",
+            "exchCode": "GS",
+            "compositeFIGI": "BBG000HXMCV3",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S87K70",
+            "securityType2": "Common Stock",
+            "securityDescription": "PPB"
+          }
+        ]
+      },
+      "response_sha256": "bbbb499c3decb8dac36b7ea9cebc3114b159825154c3c55f87047b652bbb1544"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CNE100005PZ9",
+        "micCode": "XSHG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0082249596fe7bdf77325f7d914eacfe0de7ee7eb4f9e212e8a44f7f73042cb7",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG0135XBF99",
+            "name": "HANGZHOU SDIC MICROELECTRO-A",
+            "ticker": "688130",
+            "exchCode": "CG",
+            "compositeFIGI": "BBG0135XBDL0",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG0135XBDM9",
+            "securityType2": "Common Stock",
+            "securityDescription": "688130"
+          }
+        ]
+      },
+      "response_sha256": "f5a3ca0d8d28bf85268802ea185f4db6bb70cdc9c77a1733f23e6199637ac7cc"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "XS3022291473",
+        "micCode": "XETR",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "008267b742d134ac563a430898367f98bd5782c83b7e9b446590f2317e5cff30",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01TQMBPY3",
+            "name": "WT ENHANCED COMMODITY CARRY",
+            "ticker": "CRRY",
+            "exchCode": "GY",
+            "compositeFIGI": "BBG01TQMBPT9",
+            "securityType": "ETP",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01TQMBNT4",
+            "securityType2": "Mutual Fund",
+            "securityDescription": "CRRY"
+          }
+        ]
+      },
+      "response_sha256": "9814bb43e42c0ec601593dedf7e09ce55966923c16cadd054d5a2192acd6d610"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "AT0000922554",
+        "micCode": "XWBO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0082b040f636c5ee0d841c14521080a6e52afd6e4712b7ed02f33143ef9bef13",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000C0N7B2",
+            "name": "ROSENBAUER INTERNATIONAL AG",
+            "ticker": "ROS",
+            "exchCode": "AV",
+            "compositeFIGI": "BBG000C0N5T7",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S7N1S3",
+            "securityType2": "Common Stock",
+            "securityDescription": "ROS"
+          },
+          {
+            "figi": "BBG000QXFYZ9",
+            "name": "ROSENBAUER INTERNATIONAL AG",
+            "ticker": "ROS",
+            "exchCode": "XA",
+            "compositeFIGI": "BBG000QXFT71",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S7N1S3",
+            "securityType2": "Common Stock",
+            "securityDescription": "ROS"
+          },
+          {
+            "figi": "BBG007F5MQP7",
+            "name": "ROSENBAUER INTERNATIONAL AG",
+            "ticker": "ROSCHF",
+            "exchCode": "XA",
+            "compositeFIGI": "BBG007F5MQ59",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001S7N1S3",
+            "securityType2": "Common Stock",
+            "securityDescription": "ROSCHF"
+          }
+        ]
+      },
+      "response_sha256": "e975aea7ce6806383491f0c0b2b7093144cc70747164870078643471624c3d92"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "TW0003646006",
+        "micCode": "ROCO",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0083237ac5560ba14fd95bfddca1b1c88a8319a99d39136f5e15b7d750f44161",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG000QJT6D0",
+            "name": "ANT PRECISION INDUSTRY CO LT",
+            "ticker": "3646",
+            "exchCode": "TT (Taipei Stock Exchange)",
+            "compositeFIGI": "BBG000QJT668",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG001T7DK10",
+            "securityType2": "Common Stock",
+            "securityDescription": "3646"
+          }
+        ]
+      },
+      "response_sha256": "3646141c9bcb4e66b4c5161d73668849b4314e0054b8785970ee20a324feefcf"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "CA73731R1038",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "008334ea76b849a71fda6d20a109a9c3a40776872a2639698bc0e46b90df1858",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "KYG6300A1040",
+        "micCode": "XHKG",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "008370be6bcacadbffb8c2194306c2edf9025db7ead2726c3f136658fe920fe6",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG01MFSHX10",
+            "name": "MOBVOI INC",
+            "ticker": "2438",
+            "exchCode": "HK",
+            "compositeFIGI": "BBG01MFSHX01",
+            "securityType": "Common Stock",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG01MFSHX29",
+            "securityType2": "Common Stock",
+            "securityDescription": "2438"
+          }
+        ]
+      },
+      "response_sha256": "73910913850e2009bb61646012465620d49becf6e7f02a9baf79347aba30a4be"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "IE000I1D7D10",
+        "micCode": "PINX",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "0083744e007a74146be91ed75792fdf9837d74a4f1f53a268040f3878a206861",
+      "response": {
+        "warning": "No identifier found."
+      },
+      "response_sha256": "3722bb848e9a6c4149f9da2081bdb77dc9d5b4d37b80c36ece4de766aed27732"
+    },
+    {
+      "request": {
+        "idType": "ID_ISIN",
+        "idValue": "BRVCRICTF007",
+        "micCode": "BVMF",
+        "includeUnlistedEquities": false
+      },
+      "request_key": "00838c2e7a3cd2b2ac7b30b7ab950f2bb809573bbc927a5691e573297fe03016",
+      "response": {
+        "data": [
+          {
+            "figi": "BBG017G9RZ90",
+            "name": "VINCI CREDIT SECURITIES FII",
+            "ticker": "VCRI11",
+            "exchCode": "BS",
+            "compositeFIGI": "BBG017G9RZ81",
+            "securityType": "REIT",
+            "marketSector": "Equity",
+            "shareClassFIGI": "BBG017G9RZH1",
+            "securityType2": "REIT",
+            "securityDescription": "VCRI11"
+          }
+        ]
+      },
+      "response_sha256": "3f905f44cdcf842c90fb9db4dfbc988ba386116290cd19d5c87ed75fce427d7e"
+    }
+  ]
+}

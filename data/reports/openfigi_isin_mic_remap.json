@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-10-20T08:32:07.451231+00:00",
+  "summary": {
+    "ambiguous_mapping": 4,
+    "mapped": 128,
+    "not_probed": 95829,
+    "ticker_not_resolved": 27,
+    "unmapped": 43,
+    "eligible_listings": 96031,
+    "unique_isin_mic_requests": 93878,
+    "cached_requests": 200,
+    "stolen_isin_review_candidates": 42
+  },
+  "sources": [
+    {
+      "url": "https://api.openfigi.com/v3/mapping",
+      "sha256": "46d760751a73fde088452684a12017afd3a42803953f5e2b0cee0eda4e0298f8",
+      "last_modified": ""
+    }
+  ],
+  "direct_identifier_apply_allowed_rows": 0,
+  "inputs": [
+    {
+      "file": "listings.csv",
+      "sha256": "9fbb54132ea5b2d7abd52a01086b5bb20df4602b6d4be548a9a03c6fe21bcc4f"
+    },
+    {
+      "file": "identifiers_extended.csv",
+      "sha256": "cf1cbfa3a388487afcec5d577138b4fd2a3299c48ebfac723d84716335aad5d0"
+    },
+    {
+      "file": "venue_mic_mapping.csv",
+      "sha256": "0be159507e12005e59d2a08b3e2372fe28bbfb994a299d1251b1a5ac479e5a85"
+    }
+  ],
+  "limitations": [
+    "Probe order is the SHA-256 of the exact request. --limit bounds new requests; zero fetches the complete eligible universe.",
+    "Only valid ISIN plus mapped MIC is sent. Unlisted equities are excluded. Cached jobs can be resumed.",
+    "FIGI prefixes do not establish a level. Composite and share-class IDs are classified separately from venue FIGIs.",
+    "Unknown local levels remain unresolved. Name-family differences are review candidates, never proven stolen ISINs.",
+    "Unprobed listings are explicit and excluded from accuracy or API-failure claims. OpenFIGI descriptions are not adopted."
+  ]
+}
