@@ -16,6 +16,7 @@ COVERAGE = ROOT / "data/coverage_expansion_listings.csv"
 STOLEN_ISIN_CLEARS = {
     ("CU2", "FSX"): "LU1681042864",
     ("MAST", "LSE"): "US57636Q1040",
+    ("FP", "LSE"): "CA3025862010",
 
     ("ARDDF", "OTC"): "DE0005103006",
     ("CRRNF", "OTC"): "CH0012142631",
@@ -214,6 +215,18 @@ def test_stolen_isin_clears_are_explicit_and_empty() -> None:
         assert row["proposed_value"] == ""
         assert stolen in row["reason"]
         assert row["confidence"] == "0.99"
+
+
+def test_fondul_gdr_clear_survives_input_and_output_overlays() -> None:
+    from scripts.rebuild_dataset import (
+        apply_input_metadata_overrides, apply_output_metadata_overrides, load_review_overrides,
+    )
+
+    _, overrides, _ = load_review_overrides()
+    fields = overrides[("FP", "LSE")]
+    stolen = {"ticker": "FP", "exchange": "LSE", "isin": "CA3025862010"}
+    assert apply_input_metadata_overrides(stolen, fields)["isin"] == ""
+    assert apply_output_metadata_overrides(stolen, fields)["isin"] == ""
 
 
 def test_stolen_country_clears_do_not_invent_a_replacement() -> None:

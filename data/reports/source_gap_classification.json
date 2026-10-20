@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-10-20T07:48:23Z",
-    "rows": 8543,
+    "generated_at": "2026-10-20T08:27:43Z",
+    "rows": 8544,
     "field_totals": {
       "missing_etf_category": 139,
-      "missing_isin_primary": 663,
+      "missing_isin_primary": 664,
       "missing_sector_stock": 1070,
       "official_reference_gap": 6671
     },
@@ -23,7 +23,7 @@
       "inactive_or_legacy_identifier_gap": 20,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 175,
-      "official_identifier_reference_unmatched_gap": 11,
+      "official_identifier_reference_unmatched_gap": 12,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 430,
       "official_product_reference_unmatched_category_gap": 1,
@@ -47,7 +47,7 @@
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 20,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 175,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 11,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 12,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 59,
@@ -5659,6 +5659,23 @@
       "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
       "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
       "source_gap_context": "listing_key=LSE::DAVI;exchange=LSE;ticker=DAVI;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "LSE::FP",
+      "ticker": "FP",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "name": "Fondul Proprietatea S.A. GDR",
+      "gap_class": "official_identifier_reference_unmatched_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
+      "source_gap_context": "listing_key=LSE::FP;exchange=LSE;ticker=FP;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },

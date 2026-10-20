@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-20T07:43:44Z",
+  "generated_at": "2026-10-20T08:26:30Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2011,
-  "decision_rows": 6473,
+  "conflict_count": 2010,
+  "decision_rows": 6470,
   "action_counts": {
     "kept_listing_keyed_identifier": 1359,
     "proposed_clear_conflicting_identifier": 1049,
-    "quarantined_unresolved_identifier": 4065
+    "quarantined_unresolved_identifier": 4062
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1049,
-  "quarantined_rows": 4065,
+  "quarantined_rows": 4062,
   "retained_rows": 1359,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -5304,45 +5304,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA29408C1005"
-    },
-    {
-      "conflict_id": "fb1ae4b6052cb8220252",
-      "isin": "CA3025862010",
-      "listing_key": "LSE::FP",
-      "ticker": "FP",
-      "exchange": "LSE",
-      "name": "Fondul Proprietatea S.A. GDR",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA3025862010"
-    },
-    {
-      "conflict_id": "fb1ae4b6052cb8220252",
-      "isin": "CA3025862010",
-      "listing_key": "OTC::FPNUF",
-      "ticker": "FPNUF",
-      "exchange": "OTC",
-      "name": "FP Newspapers Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA3025862010"
-    },
-    {
-      "conflict_id": "fb1ae4b6052cb8220252",
-      "isin": "CA3025862010",
-      "listing_key": "TSXV::FP",
-      "ticker": "FP",
-      "exchange": "TSXV",
-      "name": "FP Newspapers Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA3025862010"
     },
     {
       "conflict_id": "344a40c7e6df2fea2538",
