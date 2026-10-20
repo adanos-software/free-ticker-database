@@ -10,7 +10,7 @@ Rows: `23`
 | 1 | FSX | 57.36 | 5861 | 4290 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.06 | 3500 | 871 | not_in_supplement_allowlist |
-| 4 | NYSE | 59.98 | 1324 | 570 | not_in_supplement_allowlist |
+| 4 | NYSE | 59.95 | 1325 | 570 | not_in_supplement_allowlist |
 | 5 | NASDAQ | 82.43 | 984 | 59 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.7 | 795 | 1928 | not_in_supplement_allowlist |
 | 7 | Euronext | 80.16 | 330 | 377 | not_in_supplement_allowlist |

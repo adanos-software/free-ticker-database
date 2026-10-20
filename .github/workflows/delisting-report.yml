@@ -95,9 +95,10 @@ jobs:
             with authoritative status). A failed master fetch skips that market
             (never emits false candidates).
 
-            Triage each candidate. Only exact, field-bound official delisting
+            Triage each candidate. Only exact, field-bound official BSE delisting
             observations from this workflow are converted into drop overrides:
-            - `delisted` (BSE ListofScripData or Nasdaq Trader Delete) → gated drop override
+            - BSE ListofScripData `delisted` → gated drop override
+            - Nasdaq Trader Delete → manual venue-transfer/corporate-action review
             - `master_absent` → verify rename vs delisting before acting (renames
               re-key/dedup; genuine delistings drop)
             - `suspended` (BSE) → kept by policy (can resume)
