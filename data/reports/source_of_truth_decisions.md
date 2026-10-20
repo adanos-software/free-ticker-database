@@ -1,6 +1,6 @@
 # Source-of-Truth Decisions
 
-Generated at: `2026-10-11T12:47:07Z`
+Generated at: `2026-10-20T07:48:23Z`
 
 This report converts residual source-gap classes into release-trackable outcomes. It does not fill fields and does not drop rows automatically.
 

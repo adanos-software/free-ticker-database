@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97374,
-    "after_rows": 97381,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "before_rows": 97381,
+    "after_rows": 97380,
+    "overall_shrink_pct": 0.001027,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 1,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -21,16 +21,11 @@
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
-  "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
-    {
-      "listing_key": "AMS::3DIS",
-      "field_name": "isin",
-      "old_value": "XS2335553801",
-      "new_value": "XS3467854462"
-    }
+  "evidenced_removed_listing_keys": [
+    "NYSE::ATKR"
   ],
+  "unevidenced_critical_field_changes": [],
+  "critical_field_changes": [],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -45,7 +40,7 @@
     },
     {
       "exchange": "AMS",
-      "before_rows": 737,
+      "before_rows": 744,
       "after_rows": 744,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -487,9 +482,9 @@
     {
       "exchange": "NYSE",
       "before_rows": 2032,
-      "after_rows": 2032,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 2031,
+      "shrink_pct": 0.049213,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
