@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-08-08T20:20:23Z",
-    "rows": 26,
+    "generated_at": "2026-10-20T10:15:44Z",
+    "rows": 29,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,18 +13,37 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 26,
-    "candidate_rows": 26,
+    "rows": 29,
+    "candidate_rows": 29,
     "applied_rows": 0,
-    "blocked_rows": 6,
+    "blocked_rows": 9,
     "manual_review_rows": 20,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
-      "blocked_non_common_stock": 6,
+      "blocked_non_common_stock": 9,
       "manual_review_ambiguous_stock_classification": 20
     }
   },
   "rows": [
+    {
+      "campaign": "C5_non_equity_leakage_guard",
+      "listing_key": "FSX::46T",
+      "ticker": "46T",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "GPT Group",
+      "isin": "AU000000GPT8",
+      "guard_decision": "blocked_non_common_stock",
+      "leakage_class": "unit_name_pattern",
+      "confidence": "deterministic",
+      "evidence_source": "name",
+      "evidence_value": "GPT GROUP UNITS",
+      "review_strategy": "exclude_or_reclassify_only_after_listing_keyed_official_evidence",
+      "verification_evidence_required": "official_security_type_cfi_openfigi_or_exchange_listing_evidence",
+      "recommended_next_source": "OpenFIGI securityType, official CFI code, exchange listing directory, or issuer security description for the exact listing.",
+      "source_gate": "Block Stock ingestion until official security-type, CFI, exchange, issuer, or OpenFIGI evidence proves the row is common stock or an allowed depositary receipt.",
+      "recommended_action": "do_not_ingest_as_stock"
+    },
     {
       "campaign": "C5_non_equity_leakage_guard",
       "listing_key": "NASDAQ::ARCC",
@@ -236,6 +255,25 @@
     },
     {
       "campaign": "C5_non_equity_leakage_guard",
+      "listing_key": "FSX::ICP",
+      "ticker": "ICP",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Panamax AG",
+      "isin": "DE000A1R1C81",
+      "guard_decision": "blocked_non_common_stock",
+      "leakage_class": "unit_name_pattern",
+      "confidence": "deterministic",
+      "evidence_source": "name",
+      "evidence_value": "UNIT. ECO SOLUTIONS AG ON",
+      "review_strategy": "exclude_or_reclassify_only_after_listing_keyed_official_evidence",
+      "verification_evidence_required": "official_security_type_cfi_openfigi_or_exchange_listing_evidence",
+      "recommended_next_source": "OpenFIGI securityType, official CFI code, exchange listing directory, or issuer security description for the exact listing.",
+      "source_gate": "Block Stock ingestion until official security-type, CFI, exchange, issuer, or OpenFIGI evidence proves the row is common stock or an allowed depositary receipt.",
+      "recommended_action": "do_not_ingest_as_stock"
+    },
+    {
+      "campaign": "C5_non_equity_leakage_guard",
       "listing_key": "NASDAQ::MFIC",
       "ticker": "MFIC",
       "exchange": "NASDAQ",
@@ -252,6 +290,25 @@
       "recommended_next_source": "Official exchange product segment, issuer security page, CFI code, or OpenFIGI securityType.",
       "source_gate": "Queue for manual classification; name shape alone does not authorize a Stock or ETF change.",
       "recommended_action": "queue_for_classification_review"
+    },
+    {
+      "campaign": "C5_non_equity_leakage_guard",
+      "listing_key": "FSX::MY4",
+      "ticker": "MY4",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "name": "Goodman Group",
+      "isin": "AU000000GMG2",
+      "guard_decision": "blocked_non_common_stock",
+      "leakage_class": "unit_name_pattern",
+      "confidence": "deterministic",
+      "evidence_source": "name",
+      "evidence_value": "GOODMAN GROUP UNITS",
+      "review_strategy": "exclude_or_reclassify_only_after_listing_keyed_official_evidence",
+      "verification_evidence_required": "official_security_type_cfi_openfigi_or_exchange_listing_evidence",
+      "recommended_next_source": "OpenFIGI securityType, official CFI code, exchange listing directory, or issuer security description for the exact listing.",
+      "source_gate": "Block Stock ingestion until official security-type, CFI, exchange, issuer, or OpenFIGI evidence proves the row is common stock or an allowed depositary receipt.",
+      "recommended_action": "do_not_ingest_as_stock"
     },
     {
       "campaign": "C5_non_equity_leakage_guard",

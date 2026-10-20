@@ -1,19 +1,19 @@
 # M3 Identity Residual Campaign
 
-Generated at: `2026-08-08T20:20:23Z`
+Generated at: `2026-10-20T10:15:44Z`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `rows` | `2819` |
-| `candidate_rows` | `2819` |
+| `rows` | `2600` |
+| `candidate_rows` | `2600` |
 | `applied_rows` | `0` |
 | `blocked_rows` | `0` |
-| `manual_review_rows` | `2819` |
+| `manual_review_rows` | `2600` |
 | `metadata_override_pending_rows` | `0` |
-| `decision_totals` | `{"manual_review_requires_official_identifier_evidence": 2819}` |
+| `decision_totals` | `{"manual_review_requires_official_identifier_evidence": 2600}` |
 
 ## Rows
 
-Rows: `2819`
+Rows: `2600`
