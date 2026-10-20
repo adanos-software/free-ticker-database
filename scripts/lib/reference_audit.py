@@ -38,7 +38,7 @@ def fetch_snapshot(url: str, path: Path) -> dict[str, Any]:
                 for chunk in response.iter_content(1024 * 1024):
                     handle.write(chunk)
             metadata = {"url": url, "last_modified": response.headers.get("Last-Modified", ""),
-                        "fetched_at": datetime.now(timezone.utc).isoformat(), "sha256": sha256(temporary)}
+                        "fetched_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"), "sha256": sha256(temporary)}
         temporary.replace(path)
         write_json(path.with_suffix(path.suffix + ".meta.json"), metadata)
     finally:
@@ -49,7 +49,7 @@ def fetch_snapshot(url: str, path: Path) -> dict[str, Any]:
 def write_report(prefix: Path, title: str, summary: dict[str, Any],
                  rows: list[dict[str, Any]], fields: list[str], sources: list[dict[str, Any]],
                  limitations: list[str], *, inputs: tuple[Path, ...] = ()) -> dict[str, Any]:
-    payload = {"generated_at": datetime.now(timezone.utc).isoformat(), "summary": summary,
+    payload = {"generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"), "summary": summary,
                "sources": sources, "direct_identifier_apply_allowed_rows": 0,
                "inputs": [{"file": path.name, "sha256": sha256(path)} for path in inputs],
                "limitations": limitations}

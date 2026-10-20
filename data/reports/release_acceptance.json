@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-20T10:15:46Z",
+    "generated_at": "2026-10-20T10:16:39Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -73,14 +73,14 @@
       "cfi_code_review": "data/reports/cfi_code_review.json"
     }
   },
-  "passed": false,
+  "passed": true,
   "summary": {
     "criteria": 67,
-    "passed_criteria": 66,
-    "failed_criteria": 1,
+    "passed_criteria": 67,
+    "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=false;criteria=67;passed_criteria=66;failed_criteria=1;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=67;passed_criteria=67;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -261,8 +261,8 @@
       "changelog_section_pattern": "^##\\s+\\[3\\.43\\.1\\]\\s+-\\s+\\d{4}-\\d{2}-\\d{2}\\s*$"
     },
     "release_source_report_integrity": {
-      "passed": false,
-      "release_generated_at": "2026-10-20T10:15:46Z",
+      "passed": true,
+      "release_generated_at": "2026-10-20T10:16:39Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
@@ -438,27 +438,27 @@
         "isin_identity_issue449_review": {
           "path": "data/reports/isin_identity_issue449_review.json",
           "exists": true,
-          "generated_at": "2026-10-20T10:15:44.542530+00:00"
+          "generated_at": "2026-10-20T10:15:44Z"
         },
         "sec_listed_current_compare": {
           "path": "data/reports/sec_listed_current_compare.json",
           "exists": true,
-          "generated_at": "2026-10-20T08:30:42.315228+00:00"
+          "generated_at": "2026-10-20T08:30:42Z"
         },
         "gleif_isin_lei_compare": {
           "path": "data/reports/gleif_isin_lei_compare.json",
           "exists": true,
-          "generated_at": "2026-10-20T08:30:57.514503+00:00"
+          "generated_at": "2026-10-20T08:30:57Z"
         },
         "firds_listing_compare": {
           "path": "data/reports/firds_listing_compare.json",
           "exists": true,
-          "generated_at": "2026-10-20T08:32:01.785388+00:00"
+          "generated_at": "2026-10-20T08:32:01Z"
         },
         "openfigi_isin_mic_remap": {
           "path": "data/reports/openfigi_isin_mic_remap.json",
           "exists": true,
-          "generated_at": "2026-10-20T08:32:07.451231+00:00"
+          "generated_at": "2026-10-20T08:32:07Z"
         },
         "financialdata_isin_supplements_review": {
           "path": "data/reports/financialdata_isin_supplements_review.json",
@@ -563,32 +563,32 @@
         "m3_correctness_campaigns": {
           "path": "data/reports/m3_correctness_campaigns.json",
           "exists": true,
-          "generated_at": "2026-10-20T10:15:44Z"
+          "generated_at": "2026-10-20T10:16:37Z"
         },
         "m3_sector_category_campaign": {
           "path": "data/reports/m3_sector_category_campaign.json",
           "exists": true,
-          "generated_at": "2026-10-20T10:15:44Z"
+          "generated_at": "2026-10-20T10:16:37Z"
         },
         "m3_name_freshness_campaign": {
           "path": "data/reports/m3_name_freshness_campaign.json",
           "exists": true,
-          "generated_at": "2026-10-20T10:15:44Z"
+          "generated_at": "2026-10-20T10:16:37Z"
         },
         "m3_identity_residual_campaign": {
           "path": "data/reports/m3_identity_residual_campaign.json",
           "exists": true,
-          "generated_at": "2026-10-20T10:15:44Z"
+          "generated_at": "2026-10-20T10:16:37Z"
         },
         "m3_non_equity_leakage_guard": {
           "path": "data/reports/m3_non_equity_leakage_guard.json",
           "exists": true,
-          "generated_at": "2026-10-20T10:15:44Z"
+          "generated_at": "2026-10-20T10:16:37Z"
         },
         "m3_correctness_audit": {
           "path": "data/reports/m3_correctness_audit.json",
           "exists": true,
-          "generated_at": "2026-10-20T10:15:44Z"
+          "generated_at": "2026-10-20T10:16:37Z"
         },
         "primary_isin_completeness": {
           "path": "data/reports/primary_isin_completeness.json",
@@ -608,13 +608,7 @@
       },
       "missing_files": [],
       "missing_generated_at": [],
-      "invalid_generated_at": {
-        "isin_identity_issue449_review": "2026-10-20T10:15:44.542530+00:00",
-        "sec_listed_current_compare": "2026-10-20T08:30:42.315228+00:00",
-        "gleif_isin_lei_compare": "2026-10-20T08:30:57.514503+00:00",
-        "firds_listing_compare": "2026-10-20T08:32:01.785388+00:00",
-        "openfigi_isin_mic_remap": "2026-10-20T08:32:07.451231+00:00"
-      },
+      "invalid_generated_at": {},
       "generated_after_release": {},
       "unlisted_review_reports": [],
       "review_source_report_name_markers": [
