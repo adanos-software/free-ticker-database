@@ -329,7 +329,7 @@
       "etf_missing_count": 1,
       "exchange": "LSE",
       "field": "missing_isin_primary",
-      "missing_count": 5,
+      "missing_count": 3,
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -338,7 +338,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_eodhd_metadata.py",
-      "stock_missing_count": 4,
+      "stock_missing_count": 2,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -500,7 +500,7 @@
       "etf_missing_count": 0,
       "exchange": "FSX",
       "field": "missing_sector_stock",
-      "missing_count": 240,
+      "missing_count": 239,
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
@@ -509,7 +509,7 @@
       "reference_scopes": "exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 240,
+      "stock_missing_count": 239,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -1143,10 +1143,10 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 26,
+      "etf_missing_count": 29,
       "exchange": "AMS",
       "field": "missing_etf_category",
-      "missing_count": 26,
+      "missing_count": 29,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -1300,11 +1300,11 @@
       "missing_sector_stock": 34
     },
     "field_totals": {
-      "missing_etf_category": 136,
-      "missing_isin_primary": 665,
-      "missing_sector_stock": 1071
+      "missing_etf_category": 139,
+      "missing_isin_primary": 663,
+      "missing_sector_stock": 1070
     },
-    "generated_at": "2026-10-09T13:19:16Z",
+    "generated_at": "2026-10-11T12:47:07Z",
     "legacy_primary_ticker_collision_rows": 4825,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1406,7 +1406,7 @@
         "etf_missing_count": 0,
         "exchange": "FSX",
         "field": "missing_sector_stock",
-        "missing_count": 240,
+        "missing_count": 239,
         "official_source_count": 1,
         "recommended_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "residual_gate": "source_gap_classification_blocks_direct_apply",
@@ -1414,8 +1414,8 @@
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
         "source_gap_class": "official_industry_taxonomy_unavailable_gap",
-        "source_gap_rows": 235,
-        "stock_missing_count": 240,
+        "source_gap_rows": 234,
+        "stock_missing_count": 239,
         "target_field": "stock_sector",
         "venue_status": "official_full",
         "why_next": "source-gap classification review-gated workflow"
@@ -1596,7 +1596,7 @@
         "why_next": "OpenFIGI no-apply residual review-gated workflow"
       }
     ],
-    "official_masterfile_collisions": 11490,
+    "official_masterfile_collisions": 11528,
     "rows": 68
   }
 }

@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-10-11T11:19:32Z",
-    "rows": 8536,
+    "generated_at": "2026-10-11T12:47:06Z",
+    "rows": 8543,
     "field_totals": {
-      "missing_etf_category": 136,
+      "missing_etf_category": 139,
       "missing_isin_primary": 663,
       "missing_sector_stock": 1070,
-      "official_reference_gap": 6667
+      "official_reference_gap": 6671
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 42,
@@ -15,9 +15,9 @@
       "commodity_etf_category_gap": 8,
       "debt_or_securitized_identifier_gap": 84,
       "digital_asset_etf_category_gap": 2,
-      "equity_etf_category_gap": 41,
+      "equity_etf_category_gap": 43,
       "exchange_industry_source_gap": 59,
-      "fixed_income_etf_category_gap": 18,
+      "fixed_income_etf_category_gap": 19,
       "fund_or_trust_identifier_gap": 296,
       "fundlike_stock_sector_gap": 18,
       "inactive_or_legacy_identifier_gap": 20,
@@ -29,15 +29,15 @@
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 66,
       "official_reference_symbol_collision_gap": 1150,
-      "official_reference_unmatched_source_gap": 5517,
+      "official_reference_unmatched_source_gap": 5521,
       "otc_sector_source_gap": 552,
       "shell_or_cpc_sector_gap": 6
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 8,
       "missing_etf_category:digital_asset_etf_category_gap": 2,
-      "missing_etf_category:equity_etf_category_gap": 41,
-      "missing_etf_category:fixed_income_etf_category_gap": 18,
+      "missing_etf_category:equity_etf_category_gap": 43,
+      "missing_etf_category:fixed_income_etf_category_gap": 19,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 66,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 42,
@@ -56,7 +56,7 @@
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 6,
       "official_reference_gap:official_reference_symbol_collision_gap": 1150,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5517
+      "official_reference_gap:official_reference_unmatched_source_gap": 5521
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -66,7 +66,7 @@
         },
         {
           "exchange": "AMS",
-          "rows": 26
+          "rows": 29
         },
         {
           "exchange": "TSE",
@@ -188,7 +188,7 @@
         },
         {
           "exchange": "B3",
-          "rows": 338
+          "rows": 339
         },
         {
           "exchange": "FSX",
@@ -212,7 +212,7 @@
         },
         {
           "exchange": "AMS",
-          "rows": 173
+          "rows": 174
         },
         {
           "exchange": "XETRA",
@@ -245,7 +245,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "B3",
-        "rows": 338,
+        "rows": 339,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -269,7 +269,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_symbol_collision_gap",
         "exchange": "AMS",
-        "rows": 169,
+        "rows": 170,
         "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
         "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
       },
@@ -373,7 +373,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "Euronext",
-        "rows": 79,
+        "rows": 80,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -497,6 +497,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "AMS::DUEE",
+      "ticker": "DUEE",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "name": "iShares Europe Equity Enhanced Active UCITS ETF EUR (Dist)",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=AMS::DUEE;exchange=AMS;ticker=DUEE;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "AMS::ECLU",
       "ticker": "ECLU",
       "exchange": "AMS",
@@ -531,6 +548,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "AMS::HSOV",
+      "ticker": "HSOV",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "name": "iShares $ EM Bond Active UCITS ETF EUR Hedged (Acc)",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=AMS::HSOV;exchange=AMS;ticker=HSOV;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "AMS::ISVO",
       "ticker": "ISVO",
       "exchange": "AMS",
@@ -559,6 +593,23 @@
       "recommended_next_source": "Official fund asset class or reviewed product profile.",
       "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
       "source_gap_context": "listing_key=AMS::JOB3;exchange=AMS;ticker=JOB3;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "AMS::LATM",
+      "ticker": "LATM",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "name": "iShares MSCI EM Latin America UCITS ETF USD (Acc)",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=AMS::LATM;exchange=AMS;ticker=LATM;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
@@ -33511,6 +33562,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "AMS::ONSW",
+      "ticker": "ONSW",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "name": "iShares € Overnight Rate Swap UCITS ETF",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=AMS::ONSW;exchange=AMS;ticker=ONSW;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "AMS::PHAG",
       "ticker": "PHAG",
       "exchange": "AMS",
@@ -36752,6 +36820,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=B3::BTCE11;exchange=B3;ticker=BTCE11;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "B3::BULZ11",
+      "ticker": "BULZ11",
+      "exchange": "B3",
+      "asset_type": "ETF",
+      "name": "GENIAL TEVA AÇÕES HIGH BETA FUNDO DE ÍNDICE",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=B3::BULZ11;exchange=B3;ticker=BULZ11;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -54387,6 +54472,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "CPH::SHAPE",
+      "ticker": "SHAPE",
+      "exchange": "CPH",
+      "asset_type": "Stock",
+      "name": "Shape Robotics AS",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=CPH::SHAPE;exchange=CPH;ticker=SHAPE;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "CPH::SKAKO",
       "ticker": "SKAKO",
       "exchange": "CPH",
@@ -56304,6 +56406,23 @@
       "source_gap_context": "listing_key=Euronext::GOVS;exchange=Euronext;ticker=GOVS;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "Euronext::HAMO",
+      "ticker": "HAMO",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "name": "Hashdex Crypto Momentum Factor ETP",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=Euronext::HAMO;exchange=Euronext;ticker=HAMO;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -134207,14 +134326,14 @@
       "exchange": "SIX",
       "asset_type": "ETF",
       "name": "Hashdex Crypto Momentum Factor ETP",
-      "gap_class": "official_reference_symbol_collision_gap",
+      "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=SIX::HAMO;exchange=SIX;ticker=HAMO;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
