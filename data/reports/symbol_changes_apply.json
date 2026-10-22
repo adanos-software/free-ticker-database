@@ -1,19 +1,19 @@
 {
   "summary": {
-    "generated_at": "2026-10-20T11:32:05Z",
+    "generated_at": "2026-10-22T11:47:30Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 370,
+    "blocked_rows": 371,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 6,
       "blocked_new_symbol_not_active_in_official_master": 6,
       "blocked_old_symbol_not_unique_in_us_scope": 292,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_isin": 1,
-      "manual_non_us_or_unscoped_source": 48,
+      "manual_non_us_or_unscoped_source": 49,
       "manual_successor_exists_missing_isin": 2,
       "manual_successor_isin_mismatch": 1,
       "manual_transition_or_shell_name": 7
@@ -22,6 +22,14 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "bb105fb5ed3031f6",
+      "effective_date": "2026-10-20",
+      "old_symbol": "STVEP",
+      "new_symbol": "SATS",
+      "new_company_name": "Strive Inc",
+      "status": "manual_non_us_or_unscoped_source"
+    },
     {
       "change_id": "98ed8a5b57cabecd",
       "effective_date": "2026-10-19",
