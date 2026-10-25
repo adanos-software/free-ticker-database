@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-10-24T10:54:52Z",
+    "generated_at": "2026-10-25T11:21:40Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 372,
+    "blocked_rows": 373,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 6,
       "blocked_new_symbol_not_active_in_official_master": 7,
-      "blocked_old_symbol_not_unique_in_us_scope": 293,
+      "blocked_old_symbol_not_unique_in_us_scope": 294,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_isin": 1,
       "manual_non_us_or_unscoped_source": 48,
@@ -149,6 +149,14 @@
       "new_symbol": "FGC",
       "new_company_name": "Fg Communities Holdings Inc",
       "status": "manual_transition_or_shell_name"
+    },
+    {
+      "change_id": "ac54ccbbeabcaefc",
+      "effective_date": "2026-09-24",
+      "old_symbol": "HVII",
+      "new_symbol": "ONEN",
+      "new_company_name": "One Nuclear Energy Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "bcfe6c93c245a418",
