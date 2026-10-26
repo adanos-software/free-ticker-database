@@ -1,38 +1,22 @@
 {
   "summary": {
-    "generated_at": "2026-10-19T14:58:38Z",
+    "generated_at": "2026-10-26T14:34:11Z",
     "apply": true,
     "delisting_report_json": "data/reports/delisting_report.json",
     "drop_entries_csv": "data/review_overrides/drop_entries.csv",
     "transitions_csv": "data/reports/delisting_transitions.csv",
-    "transition_rows": 1,
-    "applied_rows": 1,
+    "transition_rows": 0,
+    "applied_rows": 0,
     "already_applied_rows": 0,
     "drafted_rows": 0,
     "blocked_rows": 0,
-    "manual_rows": 223,
+    "manual_rows": 229,
     "status_counts": {
-      "apply_drop_override": 1,
-      "manual_nasdaq_delete_review_required": 3,
-      "manual_rename_vs_delisting_required": 220
+      "manual_nasdaq_delete_review_required": 1,
+      "manual_rename_vs_delisting_required": 228
     }
   },
-  "applied": [
-    {
-      "exchange": "NYSE",
-      "ticker": "ATKR",
-      "name": "Atkore International Group Inc",
-      "isin": "US0476491081",
-      "classification": "delisted",
-      "status": "apply_drop_override",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-19T14:58:37Z",
-      "effective_at": "",
-      "observation_id": "obs_970b082a96ee95f0149df95c"
-    }
-  ],
+  "applied": [],
   "already_applied": [],
   "drafted": [],
   "blocked": [],
@@ -809,6 +793,20 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "ATII",
+      "name": "Archimedes Tech SPAC Partners II Co. Ordinary Shares",
+      "isin": "KYG045371096",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "BAYA",
       "name": "Bayview Acquisition Corp Class A Ordinary Shares",
       "isin": "KY07323B1007",
@@ -1454,7 +1452,7 @@
     {
       "exchange": "NASDAQ",
       "ticker": "LESL",
-      "name": "Leslies\u00a0Inc",
+      "name": "Leslies Inc",
       "isin": "US5270642086",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
@@ -1496,7 +1494,7 @@
     {
       "exchange": "NASDAQ",
       "ticker": "LYRA",
-      "name": "Lyra Therapeutics\u00a0Inc",
+      "name": "Lyra Therapeutics Inc",
       "isin": "US55234L1052",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
@@ -1985,6 +1983,20 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "SDST",
+      "name": "Stardust Power Inc.",
+      "isin": "US8549362007",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "SGMO",
       "name": "Sangamo Therapeutics Inc",
       "isin": "US8006771062",
@@ -2265,6 +2277,20 @@
     },
     {
       "exchange": "NASDAQ",
+      "ticker": "VSME",
+      "name": "VS Media Holdings Limited Class A Ordinary Shares",
+      "isin": "VGG9517U1113",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NASDAQ",
       "ticker": "VSTD",
       "name": "Vestand Inc.",
       "isin": "US98740Y3027",
@@ -2433,6 +2459,20 @@
     },
     {
       "exchange": "NYSE",
+      "ticker": "ACA",
+      "name": "Arcosa Inc",
+      "isin": "US0396531008",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
       "ticker": "ACVA",
       "name": "ACV Auctions Inc.",
       "isin": "US00091G1040",
@@ -2545,6 +2585,20 @@
     },
     {
       "exchange": "NYSE",
+      "ticker": "BZH",
+      "name": "Beazer Homes USA Inc",
+      "isin": "US07556Q8814",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
       "ticker": "CCO",
       "name": "Clear Channel Outdoor Holdings Inc",
       "isin": "US18453H1068",
@@ -2604,6 +2658,20 @@
       "ticker": "EEX",
       "name": "Emerald Expositions Events Inc",
       "isin": "US29103W1045",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "ELME",
+      "name": "Elme Communities",
+      "isin": "US9396531017",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -2814,6 +2882,20 @@
       "ticker": "NTZ",
       "name": "Natuzzi SpA",
       "isin": "US63905A2006",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "PERF",
+      "name": "Perfect Corp.",
+      "isin": "KYG7006A1094",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -3063,6 +3145,20 @@
     },
     {
       "exchange": "NYSE",
+      "ticker": "WEAV",
+      "name": "Weave Communications Inc",
+      "isin": "US94724R1086",
+      "classification": "delisted",
+      "status": "manual_nasdaq_delete_review_required",
+      "source_key": "nasdaq_trading_system_adds_deletes",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+      "nasdaq_action": "Delete",
+      "observed_at": "2026-10-26T14:34:10Z",
+      "effective_at": "",
+      "observation_id": "obs_4437d188f4533b4962f8c43b"
+    },
+    {
+      "exchange": "NYSE",
       "ticker": "WSR",
       "name": "Whitestone REIT",
       "isin": "US9660842041",
@@ -3080,6 +3176,20 @@
       "ticker": "DLA",
       "name": "Delta Apparel, Inc.",
       "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required",
+      "source_key": "",
+      "source_url": "",
+      "nasdaq_action": "",
+      "observed_at": "",
+      "effective_at": "",
+      "observation_id": ""
+    },
+    {
+      "exchange": "NYSE MKT",
+      "ticker": "PAPL",
+      "name": "Pineapple Financial Inc.",
+      "isin": "CA72303K4054",
       "classification": "master_absent",
       "status": "manual_rename_vs_delisting_required",
       "source_key": "",
@@ -3116,54 +3226,6 @@
       "observed_at": "",
       "effective_at": "",
       "observation_id": ""
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "CECO",
-      "name": "CECO Environmental Corp.",
-      "isin": "US1251411013",
-      "classification": "delisted",
-      "status": "manual_nasdaq_delete_review_required",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-19T14:58:37Z",
-      "effective_at": "",
-      "observation_id": "obs_c442362761e0639aee942ef9"
-    },
-    {
-      "exchange": "NASDAQ",
-      "ticker": "IBOC",
-      "name": "International Bancshares Corporation",
-      "isin": "US4590441030",
-      "classification": "delisted",
-      "status": "manual_nasdaq_delete_review_required",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-19T14:58:37Z",
-      "effective_at": "",
-      "observation_id": "obs_dc777dd915e7615f50d80df6"
-    },
-    {
-      "exchange": "NYSE",
-      "ticker": "AMTD",
-      "name": "AMTD IDEA Group",
-      "isin": "US00180G2057",
-      "classification": "delisted",
-      "status": "manual_nasdaq_delete_review_required",
-      "source_key": "nasdaq_trading_system_adds_deletes",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
-      "nasdaq_action": "Delete",
-      "observed_at": "2026-10-19T14:58:37Z",
-      "effective_at": "",
-      "observation_id": "obs_5cb2743c731afa029383f492"
     }
-  ],
-  "review_notes": {
-    "CECO": "Venue transfer to TXSE. https://www.nasdaq.com/press-release/ceco-environmental-transfer-us-stock-exchange-listing-texas-stock-exchange-2026-10-02",
-    "IBOC": "Venue transfer to TXSE. https://www.sec.gov/Archives/edgar/data/315709/000110465926113899/tm2627039d1_8k.htm",
-    "AMTD": "ADS ratio change; same NYSE ticker continues. https://www.sec.gov/Archives/edgar/data/1769731/000121390026107254/ea030787901ex99-1.htm",
-    "ATKR": "Acquisition completed and delisting requested. https://www.sec.gov/Archives/edgar/data/1666138/000166613826000041/atkr-20261019.htm"
-  }
+  ]
 }
