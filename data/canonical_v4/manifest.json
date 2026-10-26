@@ -1,11 +1,11 @@
 {
   "version": "4.0.0",
-  "generated_at": "2026-10-20T10:12:14Z",
-  "git_commit": "d7d4b0bd5dd9a619469fce8e0ba01b98e9f5da87",
+  "generated_at": "2026-10-26T17:06:43Z",
+  "git_commit": "f32fed6193e8646273930ca9657bbfca879c7d96",
   "source_dataset_sha256": "9fbb54132ea5b2d7abd52a01086b5bb20df4602b6d4be548a9a03c6fe21bcc4f",
   "schema_contract_sha256": "fb37be89eeb2468747b935424ddefbc0b0dec5229de25459bac27b8d380daf34",
   "schema_sql_sha256": "4502f51da85227c10d0a29b651ef804a37fa4c1ab0f46d45a73168aacd5495f4",
-  "aggregate_sha256": "8ebcb7a9b6e9ae407010b5f2fe835b99afd7feb59fe6deca6dcf45b7917edc1c",
+  "aggregate_sha256": "baf4da8b24857823e747c9dd0cc5ecaf63b368c0c477d26600ab85e4654616cd",
   "files": [
     {
       "path": "sources.csv",
@@ -14,7 +14,7 @@
     },
     {
       "path": "source_observations.csv",
-      "sha256": "c5cf7b8edb0b7979f1875aa5a5329929adb427d445dc7818a68e40660e70fbd4",
+      "sha256": "ded68af3198cd324bd934f0d1fb949a33f86e6a261b82821371b08de45a38c63",
       "rows": 183835
     },
     {
@@ -44,13 +44,13 @@
     },
     {
       "path": "field_assertions.csv",
-      "sha256": "d67dcf0d0e5fd264ee9ff2759d0bff39c032a5db32cb371d3c1adb9cc881d20b",
-      "rows": 221186
+      "sha256": "52331a90f6ec7f31a8d9aa4b9c181b5c76126c8abddd8baed561e2f0c6c3db8e",
+      "rows": 221121
     },
     {
       "path": "provenance_gaps.csv",
-      "sha256": "cbe2bfd928e30952652c8c78893068435c5127236f4a3dc750e9c4e41c9d8e97",
-      "rows": 292828
+      "sha256": "4f57e0ce972c56240519dca52650c775075c81f64203beb3dc850e9281b067cf",
+      "rows": 292929
     },
     {
       "path": "listing_events.csv",
@@ -59,7 +59,7 @@
     },
     {
       "path": "coverage_contracts.csv",
-      "sha256": "ea790ed2807bb6246c03de1ca88e00511d18d774c8e710a7bbfd11fb39c2dc90",
+      "sha256": "f94a90808373e79d991e2cec3a847d35ccc3f1f0598483187d97e67431148d25",
       "rows": 136
     }
   ],
@@ -71,8 +71,8 @@
     "instruments": 74850,
     "listings": 97387,
     "identifier_assertions": 168576,
-    "field_assertions": 221186,
-    "provenance_gaps": 292828,
+    "field_assertions": 221121,
+    "provenance_gaps": 292929,
     "listing_events": 88607,
     "coverage_contracts": 136
   },

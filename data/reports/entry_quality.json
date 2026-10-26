@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-20T10:13:02Z",
+    "generated_at": "2026-10-26T17:11:52Z",
     "rows": 97380,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,28 +14,28 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86265,
-      "source_gap": 11081,
-      "warn": 34
+      "pass": 86228,
+      "source_gap": 11116,
+      "warn": 36
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4565,
-      "official_reference": 87422,
-      "scoped_source_gap": 273,
-      "valid_isin": 5120
+      "identifier_enriched": 4581,
+      "official_reference": 87384,
+      "scoped_source_gap": 276,
+      "valid_isin": 5139
     },
     "severity_counts": {
       "high": 10,
-      "medium": 26,
-      "source_gap": 11436
+      "medium": 28,
+      "source_gap": 11474
     },
     "issue_counts": {
-      "official_reference_gap": 6671,
+      "official_reference_gap": 6709,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 668,
       "expected_missing_primary_isin": 664,
       "missing_etf_category": 146,
-      "official_name_mismatch": 26,
+      "official_name_mismatch": 28,
       "official_isin_mismatch": 9,
       "country_isin_mismatch": 1
     },
@@ -101,6 +101,12 @@
         "pass": 55
       },
       {
+        "exchange": "ASX",
+        "pass": 2076,
+        "source_gap": 181,
+        "warn": 2
+      },
+      {
         "exchange": "XETRA",
         "pass": 5040,
         "source_gap": 168
@@ -116,11 +122,6 @@
         "pass": 6875,
         "source_gap": 149,
         "warn": 2
-      },
-      {
-        "exchange": "ASX",
-        "pass": 2113,
-        "source_gap": 146
       },
       {
         "exchange": "BATS",

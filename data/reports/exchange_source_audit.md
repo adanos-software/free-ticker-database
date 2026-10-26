@@ -1,16 +1,16 @@
 # Exchange Source Audit
 
-Generated at: `2026-10-20T10:13:05Z`
+Generated at: `2026-10-26T17:11:58Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 23, "official_source_required": 5, "refresh_required": 40, "refresh_unavailable": 20}`
+- Audit outcomes: `{"denominator_missing": 25, "official_source_required": 5, "refresh_required": 40, "refresh_unavailable": 18}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
 | ADX | official_full | adx_market_watch |  | 122 | 75.41 | adx_market_watch | refresh_required | not_applicable |
 | AMS | official_full | euronext_equities|euronext_etfs |  | 615 | 92.85 | euronext_equities|euronext_etfs | refresh_required | not_applicable |
-| ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_investment_products|asx_listed_companies | refresh_unavailable | blocked_source_unavailable |
+| ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_investment_products | denominator_missing | blocked_nonfresh_source |
 | ATHEX | official_partial | athex_sector_classification | ETF | 0 |  | athex_sector_classification | denominator_missing | blocked_nonfresh_source |
 | B3 | official_full | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs |  | 1353 | 90.76 | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs | refresh_unavailable | not_applicable |
 | BATS | official_full | nasdaq_other_listed |  | 1656 | 79.53 | nasdaq_other_listed | refresh_required | not_applicable |
@@ -49,7 +49,7 @@ Generated at: `2026-10-20T10:13:05Z`
 | KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2110 | 92.37 | krx_etf_finder|krx_listed_companies | refresh_required | not_applicable |
 | LSE | official_full | lse_company_reports|lse_instrument_directory|lse_price_explorer |  | 11184 | 60.92 | lse_company_reports|lse_instrument_directory|lse_price_explorer | refresh_unavailable | not_applicable |
 | LUSE | official_partial | luse_listed_companies |  | 0 |  | luse_listed_companies | denominator_missing | blocked_nonfresh_source |
-| MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
+| MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | MSX | official_full | muscat_securities_companies |  | 108 | 86.11 | muscat_securities_companies | refresh_required | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5658 | 81.57 | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange | refresh_required | not_applicable |

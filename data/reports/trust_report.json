@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-20T10:12:31Z",
+    "generated_at": "2026-10-26T17:10:40Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -97,16 +97,16 @@
   },
   "identity": {
     "official_isin_mismatch": 7,
-    "official_name_mismatch": 9,
+    "official_name_mismatch": 11,
     "open_collision_groups": 6,
     "quarantine_unresolved": 1161,
     "quarantine_proposed_clear": 248,
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 59618,
-    "source_gap": 3851,
-    "warn": 16
+    "pass": 59581,
+    "source_gap": 3886,
+    "warn": 18
   },
   "checks": [
     {
@@ -168,7 +168,7 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 9,
+        "official_name_mismatch": 11,
         "sample": [
           "HKEX::02934",
           "NASDAQ::AIXC",
@@ -178,6 +178,7 @@
           "NEO::HELP",
           "TSXV::MKA",
           "TSXV::MKT",
+          "ASX::PDI",
           "NASDAQ::VRME"
         ]
       }

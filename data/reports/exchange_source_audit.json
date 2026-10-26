@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T10:13:05Z",
+  "generated_at": "2026-10-26T17:11:58Z",
   "summary": {
     "venues": 88,
     "venue_status_counts": {
@@ -8,13 +8,13 @@
       "official_partial": 33
     },
     "audit_outcome_counts": {
-      "denominator_missing": 23,
+      "denominator_missing": 25,
       "official_source_required": 5,
       "refresh_required": 40,
-      "refresh_unavailable": 20
+      "refresh_unavailable": 18
     },
-    "unavailable_venues": 20,
-    "nonfresh_venues": 83,
+    "unavailable_venues": 18,
+    "nonfresh_venues": 82,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -71,13 +71,13 @@
       "reference_scopes": "listed_companies_subset",
       "current_stock_rows": 1727,
       "current_etf_rows": 532,
-      "official_active_stock_rows": 1843,
-      "official_active_etf_rows": 612,
+      "official_active_stock_rows": 1866,
+      "official_active_etf_rows": 656,
       "missing_product_classes": "",
       "official_source_keys": "asx_investment_products|asx_listed_companies",
-      "unavailable_source_keys": "asx_listed_companies",
-      "nonfresh_source_keys": "asx_investment_products|asx_listed_companies",
-      "source_blocker_classes": "empty_refresh|stale_artifact",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "asx_investment_products",
+      "source_blocker_classes": "stale_artifact",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -85,8 +85,8 @@
       "official_recall_pct": null,
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
-      "audit_outcome": "refresh_unavailable",
-      "promotion_readiness": "blocked_source_unavailable"
+      "audit_outcome": "denominator_missing",
+      "promotion_readiness": "blocked_nonfresh_source"
     },
     {
       "exchange": "ATHEX",
@@ -123,7 +123,7 @@
       "official_source_keys": "b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs",
       "unavailable_source_keys": "b3_instruments_equities",
       "nonfresh_source_keys": "b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs",
-      "source_blocker_classes": "empty_refresh|stale_artifact",
+      "source_blocker_classes": "stale_artifact|unavailable",
       "official_denominator": 1353,
       "official_matches": 1228,
       "official_collisions": 0,
@@ -972,9 +972,9 @@
       "official_active_etf_rows": 0,
       "missing_product_classes": "",
       "official_source_keys": "mse_mw_listed_companies",
-      "unavailable_source_keys": "mse_mw_listed_companies",
-      "nonfresh_source_keys": "mse_mw_listed_companies",
-      "source_blocker_classes": "empty_refresh",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 0,
       "official_matches": 0,
       "official_collisions": 0,
@@ -982,8 +982,8 @@
       "official_recall_pct": null,
       "collision_adjusted_recall_pct": null,
       "denominator_status": "denominator_missing",
-      "audit_outcome": "refresh_unavailable",
-      "promotion_readiness": "blocked_source_unavailable"
+      "audit_outcome": "denominator_missing",
+      "promotion_readiness": "blocked_denominator_missing"
     },
     {
       "exchange": "MSX",

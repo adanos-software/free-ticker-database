@@ -1,18 +1,18 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-10-11T12:41:19Z`
+- Generated at: `2026-10-26T17:05:10Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `699`
-- Rotation vanished rows: `7`
-- Backlog rows: `692`
-- Still in database: `696`
+- Vanished reference rows: `741`
+- Rotation vanished rows: `45`
+- Backlog rows: `696`
+- Still in database: `736`
 - Applied drops: `0`
 
 ## Classifier counts
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 696 |
-| not_in_database | 3 |
+| manual_rename_vs_delisting_required | 736 |
+| not_in_database | 5 |
 
 ## Rows still in the database
 
@@ -20,11 +20,51 @@
 |---|---|---|---|---|
 | ADX | BILDCO | adx_market_watch | manual_rename_vs_delisting_required | backlog |
 | AMS | FER | euronext_equities | manual_rename_vs_delisting_required | backlog |
-| AMS | ONSW | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| AMS | ONSW | euronext_etfs | manual_rename_vs_delisting_required | backlog |
+| ASX | ASM | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | BP8 | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | C1X | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | CDT | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | CL8 | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | CLU | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | CLZ | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | CVW | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | DMG | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | ECL | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | ENN | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | EVR | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | GLL | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | GRL | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | GTG | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | HGO | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | HTG | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | IR1 | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | JAY | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | KBC | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | KIG | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | KOR | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | LIB | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | LLM | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | MCE | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | MRR | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | MTC | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | OLH | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | PGO | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | PNM | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | POB | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | QOR | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | QUB | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | RIL | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | STG | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | TEG | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | UBI | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | VAR | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | WAK | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
+| ASX | WB1 | asx_listed_companies | manual_rename_vs_delisting_required | rotation |
 | B3 | BIPD11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | BIPE11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | BULZ11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
-| B3 | BULZ11 | b3_listed_etfs | manual_rename_vs_delisting_required | rotation |
+| B3 | BULZ11 | b3_listed_etfs | manual_rename_vs_delisting_required | backlog |
 | B3 | EQPA7 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | ERCR11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | FICT3 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
@@ -255,10 +295,10 @@
 | Bursa | 1368 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 1503 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 7130 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
-| CPH | SHAPE | nasdaq_nordic_copenhagen_shares | manual_rename_vs_delisting_required | rotation |
+| CPH | SHAPE | nasdaq_nordic_copenhagen_shares | manual_rename_vs_delisting_required | backlog |
 | CSE_LK | AMF.N0000 | cse_lk_all_security_code | manual_rename_vs_delisting_required | backlog |
 | CSE_LK | AMF.N0000 | cse_lk_company_info_summary | manual_rename_vs_delisting_required | backlog |
-| Euronext | HAMO | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | HAMO | euronext_etfs | manual_rename_vs_delisting_required | backlog |
 | Euronext | LHYFE | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | MLAIG | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | MLOKP | euronext_equities | manual_rename_vs_delisting_required | backlog |
@@ -718,6 +758,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 7; still-in-database backlog carried: 692.
-- Still in database: 696; not in database: 3.
+- Rotation vanished rows: 45; still-in-database backlog carried: 696.
+- Still in database: 736; not in database: 5.
 - Applied drops from this classifier: 0.
