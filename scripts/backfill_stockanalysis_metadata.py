@@ -38,7 +38,8 @@ EXCHANGE_SLUGS = {
     "TPEX": "tpex",
 }
 
-USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
+# Match fetch_symbol_changes.py — plain requests + this User-Agent works on GitHub Actions.
+USER_AGENT = "free-ticker-database/symbol-change-sync"
 
 
 @dataclass(frozen=True)

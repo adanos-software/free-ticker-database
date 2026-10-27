@@ -15,6 +15,7 @@ ALLOWED_CONTENTS_WRITE_WORKFLOWS = {
     "masterfile-rotation.yml",
     "nasdaq-us-new-listings.yml",
     "release.yml",
+    "stockanalysis-backfill.yml",
     "symbol-changes.yml",
 }
 FORBIDDEN_PAYLOAD_SUFFIXES = (".patch.xz.b64", ".tar.xz.b64")

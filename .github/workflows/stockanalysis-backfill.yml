@@ -1,0 +1,155 @@
+name: Weekly StockAnalysis Metadata Backfill
+
+on:
+  schedule:
+    # Mondays 08:15 UTC — after Weekly Drift & Freshness (07:23) and ISIN validation (07:53).
+    - cron: "15 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  stockanalysis-backfill:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Backfill metadata from StockAnalysis exchange list screeners
+        run: |
+          python scripts/backfill_stockanalysis_list_sectors.py \
+            --apply \
+            --delay-seconds 0.25 \
+            --timeout-seconds 30
+
+      - name: Backfill metadata from StockAnalysis company profiles
+        run: |
+          python scripts/backfill_stockanalysis_metadata.py \
+            --apply \
+            --timeout-seconds 30
+
+      - name: Validate StockAnalysis backfill parsers
+        run: |
+          python -m pytest \
+            tests/test_backfill_stockanalysis_list_sectors.py \
+            tests/test_backfill_stockanalysis_metadata.py \
+            -q
+
+      - name: Detect reviewed metadata updates
+        id: backfill
+        run: |
+          if git diff --quiet -- data/review_overrides/metadata_updates.csv; then
+            echo "metadata_updates_applied=false" >> "$GITHUB_OUTPUT"
+            echo "No new rows in metadata_updates.csv; skipping rebuild and PR."
+          else
+            echo "metadata_updates_applied=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Rebuild derived exports and reports
+        if: steps.backfill.outputs.metadata_updates_applied == 'true'
+        run: |
+          cp data/listings.csv /tmp/listings-before.csv
+          python scripts/rebuild_canonical.py
+          python scripts/check_safe_merge.py \
+            --before /tmp/listings-before.csv \
+            --after data/listings.csv \
+            --events data/history/listing_events.csv \
+            --strict
+          python scripts/enrich_global_identifiers.py
+          python scripts/build_entry_quality_report.py
+          python scripts/build_coverage_report.py
+          python scripts/build_source_inventory.py
+          python scripts/build_exchange_source_audit.py
+          python scripts/build_source_gap_classification.py
+          python scripts/build_source_of_truth_decisions.py
+          python scripts/build_completion_backlog.py
+          python scripts/build_alias_quality_report.py
+          python scripts/build_adanos_ticker_reference.py
+          python scripts/update_readme_snapshot.py
+
+      - name: Validate applied metadata updates
+        if: steps.backfill.outputs.metadata_updates_applied == 'true'
+        run: |
+          python -m pytest tests/ -q
+          python scripts/check_entry_quality_gate.py
+          python scripts/check_readme_snapshot.py
+          python scripts/check_commercial_source_options.py
+          python scripts/check_exchange_scope_decisions.py
+          python scripts/validate_database.py
+
+      - name: Detect substantive changes
+        id: changes
+        run: |
+          if [ "${{ steps.backfill.outputs.metadata_updates_applied }}" != "true" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No reviewed StockAnalysis metadata updates; skipping PR."
+          elif git diff --quiet -- \
+            data/review_overrides/metadata_updates.csv \
+            data/stockanalysis_verification/ \
+            data/listings.csv \
+            data/listing_index.csv \
+            data/identifiers_extended.csv \
+            data/ README.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Metadata updates reported no substantive data diff; skipping PR."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open update pull request
+        if: steps.changes.outputs.changed == 'true'
+        id: cpr
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          token: ${{ github.token }}
+          branch: automation/stockanalysis-backfill
+          delete-branch: true
+          commit-message: Apply reviewed StockAnalysis metadata backfill
+          title: Apply reviewed StockAnalysis metadata backfill
+          body: |
+            Automated weekly StockAnalysis secondary-source metadata backfill.
+
+            Cadence: Mondays 08:15 UTC (after drift/freshness and ISIN validation).
+
+            Scripts:
+            - `scripts/backfill_stockanalysis_list_sectors.py --apply` (exchange list screener API + Referer)
+            - `scripts/backfill_stockanalysis_metadata.py --apply` (company profile HTML, same User-Agent pattern as `fetch_symbol_changes.py`)
+
+            Review gating:
+            - StockAnalysis is a **secondary** source; accepted rows are appended only to
+              `data/review_overrides/metadata_updates.csv` with issuer-name and field gates.
+            - Canonical exports change only after `rebuild_canonical.py` applies those reviewed overrides
+              (empty-field fills for ISIN / `stock_sector` / `etf_category` only).
+            - No official masterfile or symbol-change auto-apply paths are touched.
+
+            Verification artifacts:
+            - `data/stockanalysis_verification/stockanalysis_list_sector_backfill.csv` / `.json`
+            - `data/stockanalysis_verification/stockanalysis_metadata_backfill.csv` / `.json`
+
+      - name: Dispatch CI for automation pull request
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ci.yml --ref automation/stockanalysis-backfill
+
+      - name: Enable automerge
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash
