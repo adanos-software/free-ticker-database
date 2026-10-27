@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-from scripts.check_safe_merge import evaluate
+from pathlib import Path
+from unittest.mock import patch
+
+from scripts.check_safe_merge import _load_sec_exchange_payload, evaluate
 from scripts.lib.merge_evidence import row_fingerprint
 
 
@@ -783,4 +786,39 @@ def test_reviewed_transition_rejects_non_finite_confidence() -> None:
     )
 
     assert report["status"] == "fail"
+    assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 0
+
+
+def test_load_sec_exchange_payload_returns_none_when_unreachable() -> None:
+    missing = Path("/tmp/definitely-missing-sec-cache-for-test.json")
+    with patch("scripts.check_safe_merge.load_sec_exchange_payload", side_effect=OSError("network down")):
+        assert _load_sec_exchange_payload(missing) is None
+
+
+def test_same_cik_removal_fails_closed_without_sec_payload() -> None:
+    transitions = [
+        {
+            "old_listing_key": "NASDAQ::SKK",
+            "new_listing_key": "NASDAQ::RNTZ",
+            "event_type": "symbol_changed",
+            "identity_type": "same_cik",
+            "identity_value": "0001991261",
+            "confidence": "0.99",
+            "source_key": "nasdaq_listed",
+            "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+        }
+    ]
+    before = [row("NASDAQ", "SKK", name="SKK Holdings")]
+    after = [row("NASDAQ", "RNTZ", name="Rantizo")]
+    report = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=transitions,
+        sec_exchange_payload=None,
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-10-27T00:00:00Z",
+    )
+    assert report["status"] == "fail"
+    assert "NASDAQ::SKK" in report["unevidenced_removed_listing_keys"]
     assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 0

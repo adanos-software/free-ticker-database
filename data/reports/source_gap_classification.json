@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-10-27T09:36:29Z",
-    "rows": 8543,
+    "generated_at": "2026-10-27T10:21:39Z",
+    "rows": 8548,
     "field_totals": {
       "missing_etf_category": 139,
       "missing_isin_primary": 663,
       "missing_sector_stock": 1070,
-      "official_reference_gap": 6671
+      "official_reference_gap": 6676
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 42,
@@ -22,14 +22,14 @@
       "fundlike_stock_sector_gap": 18,
       "inactive_or_legacy_identifier_gap": 20,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 174,
-      "official_identifier_reference_unmatched_gap": 12,
+      "official_identifier_not_exposed_source_gap": 173,
+      "official_identifier_reference_unmatched_gap": 13,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 430,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 66,
-      "official_reference_symbol_collision_gap": 1150,
-      "official_reference_unmatched_source_gap": 5521,
+      "official_reference_symbol_collision_gap": 1151,
+      "official_reference_unmatched_source_gap": 5525,
       "otc_sector_source_gap": 552,
       "shell_or_cpc_sector_gap": 6
     },
@@ -46,8 +46,8 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 296,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 20,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 174,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 12,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 173,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 13,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 59,
@@ -55,8 +55,8 @@
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 430,
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 6,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1150,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5521
+      "official_reference_gap:official_reference_symbol_collision_gap": 1151,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5525
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -200,7 +200,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 199
+          "rows": 203
         },
         {
           "exchange": "BVB",
@@ -301,7 +301,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NASDAQ",
-        "rows": 139,
+        "rows": 143,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -6464,6 +6464,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::RNTZ",
+      "ticker": "RNTZ",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Rantizo - Class A Ordinary Shares",
+      "gap_class": "official_identifier_reference_unmatched_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
+      "source_gap_context": "listing_key=NASDAQ::RNTZ;exchange=NASDAQ;ticker=RNTZ;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::SAIQ",
       "ticker": "SAIQ",
       "exchange": "NASDAQ",
@@ -6492,23 +6509,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::SCAT;exchange=NASDAQ;ticker=SCAT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::SKK",
-      "ticker": "SKK",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "SKK Holdings Limited",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::SKK;exchange=NASDAQ;ticker=SKK;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -70265,6 +70265,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NASDAQ::AXNX",
+      "ticker": "AXNX",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Axonex AI Group Limited - Class A Ordinary Shares",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::AXNX;exchange=NASDAQ;ticker=AXNX;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NASDAQ::BAYA",
       "ticker": "BAYA",
       "exchange": "NASDAQ",
@@ -70312,6 +70329,23 @@
       "source_gap_context": "listing_key=NASDAQ::BCOW;exchange=NASDAQ;ticker=BCOW;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::BDAI",
+      "ticker": "BDAI",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Biddance AI Systems, Inc. - Class A Ordinary Share",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::BDAI;exchange=NASDAQ;ticker=BDAI;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -70945,17 +70979,17 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "NASDAQ::IPCX",
-      "ticker": "IPCX",
+      "listing_key": "NASDAQ::IRLA",
+      "ticker": "IRLA",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "name": "Inflection Point Acquisition Corp. III Class A Ordinary Shares",
+      "name": "IRulya Therapeutics Inc. - Common Stock",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=NASDAQ::IPCX;exchange=NASDAQ;ticker=IPCX;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "source_gap_context": "listing_key=NASDAQ::IRLA;exchange=NASDAQ;ticker=IRLA;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -71591,6 +71625,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NASDAQ::RNTZ",
+      "ticker": "RNTZ",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Rantizo - Class A Ordinary Shares",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::RNTZ;exchange=NASDAQ;ticker=RNTZ;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NASDAQ::RSVRW",
       "ticker": "RSVRW",
       "exchange": "NASDAQ",
@@ -71740,6 +71791,23 @@
       "source_gap_context": "listing_key=NASDAQ::SOBR;exchange=NASDAQ;ticker=SOBR;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::SRTM",
+      "ticker": "SRTM",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Stratum Holdings Corp. - Common Stock",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::SRTM;exchange=NASDAQ;ticker=SRTM;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",
@@ -78011,6 +78079,23 @@
       "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
       "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
       "source_gap_context": "listing_key=NYSE MKT::CNL;exchange=NYSE MKT;ticker=CNL;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE MKT::DCM",
+      "ticker": "DCM",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "name": "DeFi Capital Markets, Inc. Common Stock",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE MKT::DCM;exchange=NYSE MKT;ticker=DCM;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },

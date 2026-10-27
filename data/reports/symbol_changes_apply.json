@@ -1,22 +1,22 @@
 {
   "summary": {
-    "generated_at": "2026-10-26T12:57:01Z",
-    "dry_run": false,
+    "generated_at": "2026-10-27T09:59:20Z",
+    "dry_run": true,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
     "blocked_rows": 375,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 6,
-      "blocked_new_symbol_not_active_in_official_master": 8,
-      "blocked_old_symbol_not_unique_in_us_scope": 294,
+      "blocked_new_symbol_collision": 3,
+      "blocked_new_symbol_not_active_in_official_master": 2,
+      "blocked_old_symbol_not_unique_in_us_scope": 301,
+      "blocked_sec_cik_mismatch": 2,
       "manual_cross_venue_ticker_reuse": 7,
-      "manual_isin_not_proven_unchanged": 1,
-      "manual_missing_isin": 1,
+      "manual_missing_identity_evidence": 2,
       "manual_non_us_or_unscoped_source": 48,
-      "manual_successor_exists_missing_isin": 2,
-      "manual_successor_isin_mismatch": 1,
+      "manual_successor_isin_mismatch": 2,
+      "manual_ticker_reuse_name_mismatch": 1,
       "manual_transition_or_shell_name": 7
     }
   },
@@ -29,7 +29,7 @@
       "old_symbol": "ATII",
       "new_symbol": "NANO",
       "new_company_name": "Forge Nano Holdings Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_sec_cik_mismatch"
     },
     {
       "change_id": "bb105fb5ed3031f6",
@@ -45,7 +45,7 @@
       "old_symbol": "UUU",
       "new_symbol": "DCM",
       "new_company_name": "Universal Safety Products Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "18a32c285876fe20",
@@ -53,7 +53,7 @@
       "old_symbol": "LRHC",
       "new_symbol": "SRTM",
       "new_company_name": "Stratum Holdings Corp",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "f7b8af16a0a268e7",
@@ -61,7 +61,7 @@
       "old_symbol": "SKK",
       "new_symbol": "RNTZ",
       "new_company_name": "Rantizo Inc",
-      "status": "manual_missing_isin"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "8bf1f919279a1589",
@@ -69,7 +69,7 @@
       "old_symbol": "MIMI",
       "new_symbol": "AXNX",
       "new_company_name": "Axonex Ai Group Ltd.",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "84c31360eba1c627",
@@ -77,7 +77,7 @@
       "old_symbol": "QNCX",
       "new_symbol": "IRLA",
       "new_company_name": "Irulya Therapeutics Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "d6509d1a0f619a32",
@@ -85,7 +85,7 @@
       "old_symbol": "HKIT",
       "new_symbol": "BDAI",
       "new_company_name": "Biddance Ai Systems Inc",
-      "status": "blocked_new_symbol_not_active_in_official_master"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "aa9d450097e8d5fd",
@@ -109,7 +109,7 @@
       "old_symbol": "WKEY",
       "new_symbol": "WQEY",
       "new_company_name": "Wiseqey Corp",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_sec_cik_mismatch"
     },
     {
       "change_id": "1d84e63c94cdaa40",
@@ -141,7 +141,7 @@
       "old_symbol": "VRME",
       "new_symbol": "OPNW",
       "new_company_name": "Openworld Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_successor_isin_mismatch"
     },
     {
       "change_id": "87bb3f3e9ef4a8dd",
@@ -149,7 +149,7 @@
       "old_symbol": "AIXC",
       "new_symbol": "FFR",
       "new_company_name": "Ff Eai Robotics Ecosystem Inc",
-      "status": "blocked_new_symbol_collision"
+      "status": "manual_ticker_reuse_name_mismatch"
     },
     {
       "change_id": "1f9261e775710bc0",
@@ -357,7 +357,7 @@
       "old_symbol": "IPCX",
       "new_symbol": "WATR",
       "new_company_name": "Air Water Ventures Ltd.",
-      "status": "manual_isin_not_proven_unchanged"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "8df32d20baed0d8e",
@@ -725,7 +725,7 @@
       "old_symbol": "VACH",
       "new_symbol": "VRXA",
       "new_company_name": "Veraxa Biotech Ag",
-      "status": "manual_successor_exists_missing_isin"
+      "status": "manual_missing_identity_evidence"
     },
     {
       "change_id": "15b3f53c350bc012",
@@ -733,7 +733,7 @@
       "old_symbol": "MLAC",
       "new_symbol": "AVAT",
       "new_company_name": "Avalanche Treasury Corp",
-      "status": "manual_successor_exists_missing_isin"
+      "status": "manual_missing_identity_evidence"
     },
     {
       "change_id": "92c91c9ecf8fbe9d",
