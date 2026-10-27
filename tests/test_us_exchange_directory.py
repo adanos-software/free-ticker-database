@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from scripts.lib.us_exchange_directory import (
     active_directory_keys,
+    build_sec_exchange_payload_from_committed_sources,
     parse_nasdaq_listed_rows,
     parse_other_listed_rows,
     sec_cik_mismatch,
@@ -30,6 +31,29 @@ def test_parse_other_listed_rows_maps_exchange_codes() -> None:
     rows = parse_other_listed_rows(text)
     assert rows[0]["exchange"] == "NYSE MKT"
     assert rows[0]["ticker"] == "DCM"
+
+
+def test_build_sec_payload_from_committed_sources_covers_same_cik_rename() -> None:
+    identifiers = [
+        {
+            "ticker": "RNTZ",
+            "exchange": "NASDAQ",
+            "cik": "0001991261",
+            "cik_source": "SEC company_tickers_exchange.json",
+            "name": "Rantizo",
+        }
+    ]
+    transitions = [
+        {
+            "old_listing_key": "NASDAQ::SKK",
+            "new_listing_key": "NASDAQ::RNTZ",
+            "identity_type": "same_cik",
+            "identity_value": "0001991261",
+        }
+    ]
+    payload = build_sec_exchange_payload_from_committed_sources(identifiers, transitions)
+    assert payload is not None
+    assert shared_sec_cik("SKK", "RNTZ", payload) == "0001991261"
 
 
 def test_shared_sec_cik_and_mismatch() -> None:

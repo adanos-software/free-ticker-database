@@ -50,6 +50,10 @@ SEC_EXCHANGE_MAP = {
     "OTC": "OTC",
 }
 
+CANONICAL_EXCHANGE_TO_SEC = {canonical: sec for sec, canonical in SEC_EXCHANGE_MAP.items()}
+
+SEC_PAYLOAD_FIELDS = ["cik", "name", "ticker", "exchange"]
+
 
 def sec_request_headers() -> dict[str, str]:
     return {"User-Agent": "free-ticker-database/1.0 (symbol-change-apply)"}
@@ -263,6 +267,83 @@ def sec_ciks_by_ticker(payload: dict[str, Any] | None) -> dict[str, set[str]]:
         if ticker and cik.isdigit():
             indexed.setdefault(ticker, set()).add(cik.zfill(10))
     return indexed
+
+
+def _sec_payload_row(
+    *,
+    ticker: str,
+    cik: str,
+    name: str = "",
+    exchange: str = "NASDAQ",
+) -> list[Any] | None:
+    ticker = normalize_symbol(ticker)
+    cik_digits = cik.strip().lstrip("0") or "0"
+    if not ticker or not cik_digits.isdigit():
+        return None
+    sec_exchange = CANONICAL_EXCHANGE_TO_SEC.get(exchange, exchange)
+    return [int(cik_digits), name, ticker, sec_exchange]
+
+
+def build_sec_exchange_payload_from_committed_sources(
+    identifier_rows: list[dict[str, str]],
+    transition_rows: list[dict[str, str]] | None = None,
+) -> dict[str, Any] | None:
+    """Rebuild a minimal SEC JSON shape from committed identifier and transition rows.
+
+    Used when live SEC fetches fail (for example in CI) so same_cik reviewed transitions
+    can still be verified against SEC-sourced CIKs already present in the dataset.
+    """
+
+    seen: set[tuple[str, int]] = set()
+    data: list[list[Any]] = []
+
+    def append_row(row_values: list[Any] | None) -> None:
+        if not row_values:
+            return
+        ticker = str(row_values[2])
+        cik_int = int(row_values[0])
+        key = (ticker, cik_int)
+        if key in seen:
+            return
+        seen.add(key)
+        data.append(row_values)
+
+    for row in identifier_rows:
+        cik = str(row.get("cik", "") or "").strip()
+        if not cik.isdigit():
+            continue
+        if "sec" not in str(row.get("cik_source", "") or "").casefold():
+            continue
+        append_row(
+            _sec_payload_row(
+                ticker=row.get("ticker", ""),
+                cik=cik,
+                name=str(row.get("name", "") or ""),
+                exchange=row.get("exchange", ""),
+            )
+        )
+
+    for transition in transition_rows or []:
+        if transition.get("identity_type", "").strip() != "same_cik":
+            continue
+        identity_value = transition.get("identity_value", "").strip()
+        if not identity_value.isdigit():
+            continue
+        old_key = transition.get("old_listing_key", "").strip()
+        exchange, separator, ticker = old_key.partition("::")
+        if not separator:
+            continue
+        append_row(
+            _sec_payload_row(
+                ticker=ticker,
+                cik=identity_value,
+                exchange=exchange,
+            )
+        )
+
+    if not data:
+        return None
+    return {"fields": SEC_PAYLOAD_FIELDS, "data": data}
 
 
 def load_sec_exchange_payload(*, allow_network: bool = True) -> dict[str, Any] | None:

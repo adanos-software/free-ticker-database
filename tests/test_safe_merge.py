@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts.check_safe_merge import _load_sec_exchange_payload, evaluate
+from scripts.check_safe_merge import _load_sec_exchange_payload, _resolve_sec_exchange_payload, evaluate
 from scripts.lib.merge_evidence import row_fingerprint
 
 
@@ -793,3 +793,46 @@ def test_load_sec_exchange_payload_returns_none_when_unreachable() -> None:
     missing = Path("/tmp/definitely-missing-sec-cache-for-test.json")
     with patch("scripts.check_safe_merge.load_sec_exchange_payload", side_effect=OSError("network down")):
         assert _load_sec_exchange_payload(missing) is None
+
+
+def test_resolve_sec_payload_uses_committed_sources_when_live_sec_missing() -> None:
+    identifiers = [
+        {
+            "ticker": "RNTZ",
+            "exchange": "NASDAQ",
+            "cik": "0001991261",
+            "cik_source": "SEC company_tickers_exchange.json",
+            "name": "Rantizo",
+        }
+    ]
+    transitions = [
+        {
+            "old_listing_key": "NASDAQ::SKK",
+            "new_listing_key": "NASDAQ::RNTZ",
+            "event_type": "symbol_changed",
+            "identity_type": "same_cik",
+            "identity_value": "0001991261",
+            "confidence": "0.99",
+            "source_key": "nasdaq_listed",
+            "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+        }
+    ]
+    payload = _resolve_sec_exchange_payload(
+        None,
+        identifier_rows=identifiers,
+        transition_rows=transitions,
+    )
+    assert payload is not None
+    before = [row("NASDAQ", "SKK", name="SKK Holdings")]
+    after = [row("NASDAQ", "RNTZ", name="Rantizo")]
+    report = evaluate(
+        before,
+        after,
+        [],
+        reviewed_transition_rows=transitions,
+        sec_exchange_payload=payload,
+        reviewed_transition_source_report="data/review_overrides/listing_transitions.csv",
+        observed_at="2026-10-27T00:00:00Z",
+    )
+    assert report["status"] == "pass"
+    assert "NASDAQ::SKK" in report["evidenced_removed_listing_keys"]
