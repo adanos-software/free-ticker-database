@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T12:58:44Z",
+    "generated_at": "2026-10-27T13:25:34Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,30 +27,30 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63540,
-    "joined_listings": 63540,
-    "scope_rows": 63540
+    "rows": 63539,
+    "joined_listings": 63539,
+    "scope_rows": 63539
   },
   "completeness": {
     "isin": {
-      "n": 63540,
-      "filled": 62859,
-      "missing": 681,
+      "n": 63539,
+      "filled": 62860,
+      "missing": 679,
       "pct": 98.93,
-      "fills_needed_for_99": 46,
+      "fills_needed_for_99": 44,
       "pass": false
     },
     "country": {
-      "n": 63540,
-      "filled": 63471,
-      "missing": 69,
+      "n": 63539,
+      "filled": 63472,
+      "missing": 67,
       "pct": 99.89,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63540,
-      "filled": 62683,
+      "n": 63539,
+      "filled": 62682,
       "missing": 857,
       "pct": 98.65,
       "fills_needed_for_99": 222,
@@ -66,8 +66,8 @@
       "BATS": 39,
       "SSE": 34,
       "SSE_CL": 26,
-      "NYSE": 25,
-      "BMV": 18,
+      "NYSE": 24,
+      "BMV": 17,
       "SZSE": 12
     },
     "missing_sector_by_exchange": {
@@ -105,7 +105,7 @@
   },
   "entry_quality_status": {
     "pass": 59556,
-    "source_gap": 3958,
+    "source_gap": 3957,
     "warn": 17,
     "notice": 9
   },
@@ -134,11 +134,11 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63540,
-        "filled": 62859,
-        "missing": 681,
+        "n": 63539,
+        "filled": 62860,
+        "missing": 679,
         "pct": 98.93,
-        "fills_needed_for_99": 46,
+        "fills_needed_for_99": 44,
         "pass": false
       }
     },
@@ -146,8 +146,8 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63540,
-        "filled": 62683,
+        "n": 63539,
+        "filled": 62682,
         "missing": 857,
         "pct": 98.65,
         "fills_needed_for_99": 222,
@@ -158,9 +158,9 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63540,
-        "filled": 63471,
-        "missing": 69,
+        "n": 63539,
+        "filled": 63472,
+        "missing": 67,
         "pct": 99.89,
         "fills_needed_for_99": 0,
         "pass": true

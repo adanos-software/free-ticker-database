@@ -6,141 +6,69 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97381,
-    "after_rows": 97440,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 3,
-    "evidenced_removed_rows": 3,
+    "before_rows": 97440,
+    "after_rows": 97439,
+    "overall_shrink_pct": 0.001026,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 8,
+    "critical_field_changes": 3,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 3,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_official_change_evidence_rows": 0,
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [
-    "NYSE ARCA::BWOW",
-    "NYSE MKT::PAPL",
-    "NYSE MKT::SOAR"
+    "NYSE::ETHE"
   ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "Euronext::ALPRG",
-      "field_name": "isin",
-      "old_value": "FR0010380626",
-      "new_value": "FR001401AOZ5"
+      "listing_key": "BMV::CIEB",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Mexico"
     },
     {
-      "listing_key": "HKEX::01657",
-      "field_name": "isin",
-      "old_value": "KYG8061B1077",
-      "new_value": "KYG8061B1150"
+      "listing_key": "BMV::CIEB",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "MX"
     },
     {
-      "listing_key": "HKEX::08059",
+      "listing_key": "BMV::CIEB",
       "field_name": "isin",
-      "old_value": "KYG394011079",
-      "new_value": "KYG394011152"
-    },
-    {
-      "listing_key": "HKEX::08239",
-      "field_name": "isin",
-      "old_value": "BMG1941S1504",
-      "new_value": "BMG1941S1686"
-    },
-    {
-      "listing_key": "NSE_IN::AZADIND",
-      "field_name": "isin",
-      "old_value": "INE566M01017",
-      "new_value": "INE566M01025"
-    },
-    {
-      "listing_key": "NSE_IN::BANSALWIRE",
-      "field_name": "isin",
-      "old_value": "INE0B9K01025",
-      "new_value": "INE0B9K01033"
-    },
-    {
-      "listing_key": "NSE_IN::CCAVENUE",
-      "field_name": "isin",
-      "old_value": "INE483S01020",
-      "new_value": "INE483S01038"
-    },
-    {
-      "listing_key": "NSE_IN::JSWDULUX",
-      "field_name": "isin",
-      "old_value": "INE133A01011",
-      "new_value": "INE133A01029"
+      "old_value": "",
+      "new_value": "MXP201161017"
     }
   ],
-  "generated_official_change_evidence": [
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "NYSE ARCA::BWOW",
-      "ticker": "BWOW",
-      "exchange": "NYSE ARCA",
-      "event_type": "venue_reconciled",
+      "listing_key": "NYSE::ETHE",
+      "ticker": "ETHE",
+      "exchange": "NYSE",
+      "event_type": "venue_changed",
       "field_name": "exchange",
-      "old_value": "NYSE ARCA",
-      "new_value": "NYSE",
-      "before_row_sha256": "d6ae02144832e177ba6e3d266a2d17f6e28322c446b8393656c6b81116c5c7bf",
+      "old_value": "NYSE",
+      "new_value": "NYSE ARCA",
+      "before_row_sha256": "8306afa22183cdbd4c3a4e23b219c21450b356b5fc7e56fa7f3164ac80166a68",
       "effective_at": "",
-      "observed_at": "2026-10-27T12:42:57Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "af518b55b229be4221155385",
-      "evidence_status": "official"
-    },
-    {
-      "listing_key": "NYSE MKT::PAPL",
-      "ticker": "PAPL",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "2332ce421fb7098d59ef309958d2e6f9e9fbbcef19f55fdfc97060761d12951b",
-      "effective_at": "",
-      "observed_at": "2026-10-27T12:42:57Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "24b67623bfec549a6e72f604",
-      "evidence_status": "official"
-    },
-    {
-      "listing_key": "NYSE MKT::SOAR",
-      "ticker": "SOAR",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "11ace28a6728f650d4b68a59a40a991f9b597f0b0d646c8b12e514ecca1017e0",
-      "effective_at": "",
-      "observed_at": "2026-10-27T12:42:57Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "52819cf2ecbc933a775845c4",
-      "evidence_status": "official"
+      "observed_at": "2026-10-27T13:25:04Z",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "cb46bc08701803f42ce510e5",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
-      "before_rows": 93,
+      "before_rows": 94,
       "after_rows": 94,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -185,7 +113,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1416,
+      "before_rows": 1425,
       "after_rows": 1425,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -329,7 +257,7 @@
     },
     {
       "exchange": "CSE_LK",
-      "before_rows": 317,
+      "before_rows": 319,
       "after_rows": 319,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -410,7 +338,7 @@
     },
     {
       "exchange": "HKEX",
-      "before_rows": 3225,
+      "before_rows": 3236,
       "after_rows": 3236,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -536,7 +464,7 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4812,
+      "before_rows": 4822,
       "after_rows": 4822,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -572,7 +500,7 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3483,
+      "before_rows": 3504,
       "after_rows": 3504,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -590,28 +518,28 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2030,
-      "after_rows": 2034,
+      "before_rows": 2034,
+      "after_rows": 2033,
+      "shrink_pct": 0.049164,
+      "removed_rows": 1,
+      "unevidenced_removed_rows": 0,
+      "status": "pass"
+    },
+    {
+      "exchange": "NYSE ARCA",
+      "before_rows": 2805,
+      "after_rows": 2805,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
     {
-      "exchange": "NYSE ARCA",
-      "before_rows": 2803,
-      "after_rows": 2805,
-      "shrink_pct": 0.0,
-      "removed_rows": 1,
-      "unevidenced_removed_rows": 0,
-      "status": "pass"
-    },
-    {
       "exchange": "NYSE MKT",
-      "before_rows": 234,
+      "before_rows": 232,
       "after_rows": 232,
-      "shrink_pct": 0.854701,
-      "removed_rows": 2,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -626,7 +554,7 @@
     },
     {
       "exchange": "OSL",
-      "before_rows": 314,
+      "before_rows": 315,
       "after_rows": 315,
       "shrink_pct": 0.0,
       "removed_rows": 0,
