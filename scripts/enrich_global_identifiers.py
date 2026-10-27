@@ -23,7 +23,13 @@ LISTINGS_CSV = DATA_DIR / "listings.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 LISTING_INDEX_CSV = DATA_DIR / "listing_index.csv"
+LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
 IDENTIFIER_SUMMARY_JSON = DATA_DIR / "identifier_summary.json"
+EXTENDED_IDENTIFIER_SOURCE_FIELDS = {
+    "figi": "figi_source",
+    "cik": "cik_source",
+    "lei": "lei_source",
+}
 MASTERFILES_DIR = DATA_DIR / "masterfiles"
 SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "cache" / "sec_company_tickers_exchange.json"
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
@@ -171,6 +177,68 @@ def post_json(
     return response.json()
 
 
+def load_reviewed_venue_transition_successors() -> dict[str, dict[str, str]]:
+    if not LISTING_TRANSITIONS_CSV.exists():
+        return {}
+    successors: dict[str, dict[str, str]] = {}
+    for row in load_csv(LISTING_TRANSITIONS_CSV):
+        if row.get("event_type") != "venue_changed":
+            continue
+        if row.get("identity_type") != "same_isin":
+            continue
+        new_listing_key = row.get("new_listing_key", "").strip()
+        if new_listing_key:
+            successors[new_listing_key] = row
+    return successors
+
+
+def predecessor_extended_row_for_transition(
+    transition: dict[str, str],
+    existing_extended: dict[str, dict[str, str]],
+) -> dict[str, str]:
+    identity_value = transition.get("identity_value", "").strip().upper()
+    old_listing_key = transition.get("old_listing_key", "").strip()
+    if not identity_value or not old_listing_key:
+        return {}
+    predecessor = existing_extended.get(old_listing_key, {})
+    if predecessor.get("isin", "").strip().upper() != identity_value:
+        return {}
+    return predecessor
+
+
+def apply_reviewed_transition_extended_identifiers(
+    existing_row: dict[str, str],
+    *,
+    listing_key: str,
+    isin: str,
+    transition_successors: dict[str, dict[str, str]],
+    existing_extended: dict[str, dict[str, str]],
+) -> dict[str, str]:
+    if not isin:
+        return existing_row
+    transition = transition_successors.get(listing_key)
+    if not transition:
+        return existing_row
+    if transition.get("identity_value", "").strip().upper() != isin.strip().upper():
+        return existing_row
+    predecessor = predecessor_extended_row_for_transition(transition, existing_extended)
+    if not predecessor:
+        return existing_row
+
+    merged = dict(existing_row)
+    for field in ("wkn", "figi", "cik", "lei"):
+        if merged.get(field):
+            continue
+        value = predecessor.get(field, "")
+        if not value:
+            continue
+        merged[field] = value
+        source_field = EXTENDED_IDENTIFIER_SOURCE_FIELDS.get(field)
+        if source_field and predecessor.get(source_field):
+            merged[source_field] = predecessor[source_field]
+    return merged
+
+
 def build_base_identifier_rows() -> list[dict[str, str]]:
     listings = load_csv(LISTINGS_CSV)
     existing_extended: dict[str, dict[str, str]] = {}
@@ -179,6 +247,7 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
             listing_identity(row): row
             for row in load_csv(IDENTIFIERS_EXTENDED_CSV)
         }
+    transition_successors = load_reviewed_venue_transition_successors()
     rows: list[dict[str, str]] = []
     for listing_row in sorted(listings, key=lambda row: (row["ticker"], row["exchange"])):
         listing_key = listing_identity(listing_row)
@@ -192,6 +261,13 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         # ISIN and must be dropped, not carried onto the new security.
         if isin and existing_isin and existing_isin != isin:
             existing_row = {}
+        existing_row = apply_reviewed_transition_extended_identifiers(
+            existing_row,
+            listing_key=listing_key,
+            isin=isin,
+            transition_successors=transition_successors,
+            existing_extended=existing_extended,
+        )
         figi = existing_row.get("figi", "") if isin else ""
         lei = existing_row.get("lei", "") if isin else ""
         rows.append(
