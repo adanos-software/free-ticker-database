@@ -6,14 +6,14 @@
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12550,
-      "exact_match": 99911,
-      "missing_from_database": 44169,
+      "exact_match": 99910,
+      "missing_from_database": 44170,
       "normalization_candidate": 1859,
       "out_of_scope": 8126
     },
-    "coverage_credited_keys": 99911,
+    "coverage_credited_keys": 99910,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44169,
+    "in_scope_missing_rows": 44170,
     "identity_conflict_rows": 12550,
     "mapping_candidate_rows": 1859
   },
@@ -31337,7 +31337,7 @@
       "exchange": "ASX",
       "ticker": "PDI",
       "asset_types": "Stock",
-      "names": "PREDICTIVE DISCOVERY LIMITED",
+      "names": "PDI GOLD LIMITED",
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
@@ -39961,7 +39961,7 @@
       "exchange": "ASX",
       "ticker": "WEB",
       "asset_types": "Stock",
-      "names": "WEB TRAVEL GROUP LIMITED",
+      "names": "WEBBEDS GROUP LIMITED",
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
@@ -1992589,10 +1992589,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "OTC::WEJTY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::WELNF",
@@ -2133709,10 +2133709,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::LUMN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::LUV",
@@ -2196941,10 +2196941,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::WEJTY",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::WELPM",

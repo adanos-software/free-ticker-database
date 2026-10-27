@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-20T10:12:31Z",
+    "generated_at": "2026-10-27T08:16:10Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -4231,6 +4231,44 @@
           "country": "Australia",
           "country_code": "AU",
           "exchange": "ASX",
+          "listing_key": "ASX::PDI",
+          "name": "PDI Gold Limited",
+          "ticker": "PDI"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Australia",
+          "country_code": "AU",
+          "exchange": "OTC",
+          "listing_key": "OTC::PDIYF",
+          "name": "Predictive Discovery Limited",
+          "ticker": "PDIYF"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "AU000000PDI8",
+      "isin_valid": "true",
+      "listing_count": "2",
+      "listing_keys": "ASX::PDI|OTC::PDIYF",
+      "member_exchanges": "ASX | OTC",
+      "member_names": "PDI Gold Limited | Predictive Discovery Limited",
+      "member_tickers": "PDI | PDIYF",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Australia",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "Australia",
+          "country_code": "AU",
+          "exchange": "ASX",
           "listing_key": "ASX::AZ9",
           "name": "Azzuro Resources PLC",
           "ticker": "AZ9"
@@ -5863,18 +5901,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 126,
+      "review_required_groups": 127,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
     "closed_groups": 118,
-    "collision_groups": 126,
+    "collision_groups": 127,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 91,
+      "isin_shared_by_distinct_issuers": 92,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-10-20T10:12:31Z",
-    "listings_involved": 370,
+    "generated_at": "2026-10-27T08:16:10Z",
+    "listings_involved": 372,
     "next_review_batches": [
       {
         "collision_groups": 23,
@@ -5919,12 +5957,12 @@
       {
         "collision_groups": 4,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Switzerland"
+        "registered_country": "Australia"
       },
       {
-        "collision_groups": 3,
+        "collision_groups": 4,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Australia"
+        "registered_country": "Switzerland"
       },
       {
         "collision_groups": 3,
@@ -6047,10 +6085,10 @@
         "registered_country": "United Kingdom"
       }
     ],
-    "open_groups": 8,
+    "open_groups": 9,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
-      "Australia": 6,
+      "Australia": 7,
       "Austria": 1,
       "Belgium": 2,
       "Bermuda": 2,

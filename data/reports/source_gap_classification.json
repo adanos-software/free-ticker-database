@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-10-20T10:12:33Z",
-    "rows": 8544,
+    "generated_at": "2026-10-27T08:16:14Z",
+    "rows": 8543,
     "field_totals": {
       "missing_etf_category": 139,
-      "missing_isin_primary": 664,
+      "missing_isin_primary": 663,
       "missing_sector_stock": 1070,
       "official_reference_gap": 6671
     },
@@ -22,7 +22,7 @@
       "fundlike_stock_sector_gap": 18,
       "inactive_or_legacy_identifier_gap": 20,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 175,
+      "official_identifier_not_exposed_source_gap": 174,
       "official_identifier_reference_unmatched_gap": 12,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 430,
@@ -46,7 +46,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 296,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 20,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 175,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 174,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 12,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -116,7 +116,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 58
+          "rows": 57
         },
         {
           "exchange": "NEO",
@@ -6339,23 +6339,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::ITG;exchange=NASDAQ;ticker=ITG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::LUMN",
-      "ticker": "LUMN",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Lumen Technologies, Inc. - Common Stock",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::LUMN;exchange=NASDAQ;ticker=LUMN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
