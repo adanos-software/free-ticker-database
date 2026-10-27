@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99815,
-    "matched": 70046,
-    "collisions": 11527,
-    "missing": 18242
+    "official_symbols": 99779,
+    "matched": 70053,
+    "collisions": 11529,
+    "missing": 18197
   },
   "exchanges": [
     {
@@ -281,10 +281,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1656,
-      "matched": 1317,
+      "official_symbols": 1677,
+      "matched": 1342,
       "collisions": 58,
-      "missing": 281,
+      "missing": 277,
       "collision_examples": [
         {
           "ticker": "ALA",
@@ -2577,10 +2577,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5658,
-      "matched": 4611,
-      "collisions": 59,
-      "missing": 988,
+      "official_symbols": 5628,
+      "matched": 4601,
+      "collisions": 61,
+      "missing": 966,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3078,10 +3078,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3878,
-      "matched": 1982,
-      "collisions": 571,
-      "missing": 1325,
+      "official_symbols": 3851,
+      "matched": 1978,
+      "collisions": 567,
+      "missing": 1306,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3227,10 +3227,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2753,
-      "matched": 2633,
+      "official_symbols": 2746,
+      "matched": 2627,
       "collisions": 31,
-      "missing": 89,
+      "missing": 88,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -3347,11 +3347,6 @@
           "exchange": "NYSE ARCA"
         },
         {
-          "ticker": "ADDS",
-          "name": "Hedgeye Index Adds ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
           "ticker": "AFGR",
           "name": "First Trust Multi-Manager Large Growth ETF",
           "exchange": "NYSE ARCA"
@@ -3370,14 +3365,19 @@
           "ticker": "BD",
           "name": "Russell Investments Core Plus Bond ETF",
           "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "BITW",
+          "name": "Common Shares of Beneficial Interest",
+          "exchange": "NYSE ARCA"
         }
       ]
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 309,
-      "matched": 228,
-      "collisions": 34,
+      "official_symbols": 310,
+      "matched": 230,
+      "collisions": 33,
       "missing": 47,
       "collision_examples": [
         {
@@ -4977,11 +4977,19 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 16,
+      "official_symbols": 22,
       "matched": 0,
-      "collisions": 9,
-      "missing": 7,
+      "collisions": 14,
+      "missing": 8,
       "collision_examples": [
+        {
+          "ticker": "CECO",
+          "name": "CECO Environmental Corp. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
         {
           "ticker": "DDS",
           "name": "Dillard's, Inc. Common Stock",
@@ -5008,12 +5016,39 @@
           ]
         },
         {
+          "ticker": "IBOC",
+          "name": "International Bancshares Corporation Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ICOM",
+          "name": "Tema Commodity Income ETF",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
           "ticker": "ILS",
           "name": "Brookmont Catastrophic Bond ETF",
           "target_exchange": "TXSE",
           "existing_exchanges": [
             "LSE",
             "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "OBK",
+          "name": "Origin Bancorp, Inc. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "FSX",
+            "Munich",
+            "NYSE",
+            "XSTU"
           ]
         },
         {
@@ -5033,30 +5068,6 @@
             "LSE",
             "SIX"
           ]
-        },
-        {
-          "ticker": "TCBI",
-          "name": "Texas Capital Bancshares, Inc. Common Stock",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "TXS",
-          "name": "Texas Capital Texas Equity Index ETF",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "USAC",
-          "name": "USA Compression Partners, LP Common Units Representing Limited Partner Interests",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "Euronext"
-          ]
         }
       ],
       "missing_examples": [
@@ -5068,6 +5079,11 @@
         {
           "ticker": "ET$I",
           "name": "Energy Transfer L.P. Series I Fixed Rate Perpetual Preferred Units",
+          "exchange": "TXSE"
+        },
+        {
+          "ticker": "FIFT",
+          "name": "HCM Select 50 ETF",
           "exchange": "TXSE"
         },
         {

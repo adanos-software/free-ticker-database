@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-27T11:55:41Z",
+  "generated_at": "2026-10-27T12:40:21Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2012,
-  "decision_rows": 6478,
+  "conflict_count": 2013,
+  "decision_rows": 6481,
   "action_counts": {
     "kept_listing_keyed_identifier": 1360,
     "proposed_clear_conflicting_identifier": 1052,
-    "quarantined_unresolved_identifier": 4066
+    "quarantined_unresolved_identifier": 4069
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1052,
-  "quarantined_rows": 4066,
+  "quarantined_rows": 4069,
   "retained_rows": 1360,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -6799,6 +6799,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA9289451044"
+    },
+    {
+      "conflict_id": "0a4848c9c7cc5f13e199",
+      "isin": "CA9609085076",
+      "listing_key": "FSX::WPI",
+      "ticker": "WPI",
+      "exchange": "FSX",
+      "name": "Westport Fuel Systems Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA9609085076"
+    },
+    {
+      "conflict_id": "0a4848c9c7cc5f13e199",
+      "isin": "CA9609085076",
+      "listing_key": "NASDAQ::AETR",
+      "ticker": "AETR",
+      "exchange": "NASDAQ",
+      "name": "Aetherion Technologies Inc. - Common Shares",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA9609085076"
+    },
+    {
+      "conflict_id": "0a4848c9c7cc5f13e199",
+      "isin": "CA9609085076",
+      "listing_key": "TSX::WPRT",
+      "ticker": "WPRT",
+      "exchange": "TSX",
+      "name": "Westport Fuel Systems Inc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA9609085076"
     },
     {
       "conflict_id": "e8cfb2ca12b61f26d15a",

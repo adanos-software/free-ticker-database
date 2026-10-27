@@ -6,182 +6,120 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97379,
-    "after_rows": 97381,
+    "before_rows": 97381,
+    "after_rows": 97460,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "removed_rows": 5,
+    "evidenced_removed_rows": 5,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 23,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_official_change_evidence_rows": 2,
+    "generated_reviewed_transition_evidence_rows": 3
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [
-    "NYSE ARCA::SGOV"
+    "NASDAQ::VSME",
+    "NASDAQ::WPRT",
+    "NYSE ARCA::BWOW",
+    "NYSE MKT::PAPL",
+    "NYSE::NXDR"
   ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [
     {
-      "listing_key": "BATS::ARKG",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "United States"
-    },
-    {
-      "listing_key": "BATS::ARKG",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "US"
-    },
-    {
-      "listing_key": "BATS::ARKG",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "US00214Q3020"
-    },
-    {
-      "listing_key": "BATS::ARKK",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "United States"
-    },
-    {
-      "listing_key": "BATS::ARKK",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "US"
-    },
-    {
-      "listing_key": "BATS::ARKK",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "US00214Q1040"
-    },
-    {
-      "listing_key": "BATS::FBTC",
-      "field_name": "name",
-      "old_value": "Fidelity Wise Origin Bitcoin Trust",
-      "new_value": "Fidelity Wise Origin Bitcoin Fund"
-    },
-    {
-      "listing_key": "BATS::FBTC",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "United States"
-    },
-    {
-      "listing_key": "BATS::FBTC",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "US"
-    },
-    {
-      "listing_key": "BATS::FBTC",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "US3159481098"
-    },
-    {
-      "listing_key": "FSX::P500",
-      "field_name": "country",
-      "old_value": "Germany",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "FSX::P500",
-      "field_name": "country_code",
-      "old_value": "DE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "FSX::P500",
-      "field_name": "isin",
-      "old_value": "DE000A1JM6F5",
-      "new_value": "IE00B3YCGJ38"
-    },
-    {
-      "listing_key": "LSE::FWRA",
-      "field_name": "name",
-      "old_value": "Invesco FTSE All-World UCITS ETF USD Accumalation",
-      "new_value": "Invesco FTSE All-World UCITS ETF USD Accumulation"
-    },
-    {
-      "listing_key": "LSE::FWRG",
-      "field_name": "name",
-      "old_value": "Invesco FTSE All-World UCITS ETF USD Accumalation",
-      "new_value": "Invesco FTSE All-World UCITS ETF USD Accumulation"
-    },
-    {
-      "listing_key": "NASDAQ::ETHA",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "United States"
-    },
-    {
-      "listing_key": "NASDAQ::ETHA",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "US"
-    },
-    {
-      "listing_key": "NASDAQ::ETHA",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "US46438R2040"
-    },
-    {
-      "listing_key": "NASDAQ::NVDL",
-      "field_name": "name",
-      "old_value": "GraniteShares 1.5x Long NVDA Daily ETF",
-      "new_value": "GraniteShares 2x Long NVDA Daily ETF"
-    },
-    {
-      "listing_key": "SIX::FWRA",
-      "field_name": "name",
-      "old_value": "Invesco FTSE All-World UCITS ETF USD Accumalation CHF",
-      "new_value": "Invesco FTSE All-World UCITS ETF USD Accumulation CHF"
-    },
-    {
-      "listing_key": "XETRA::AK8A",
-      "field_name": "name",
-      "old_value": "Amundi Global Agg SRI 1-5 UCITS ETF DR - HEDGED CHF Accumalation",
-      "new_value": "Amundi Global Agg SRI 1-5 UCITS ETF DR - HEDGED CHF Accumulation"
-    },
-    {
-      "listing_key": "XETRA::FWEA",
-      "field_name": "name",
-      "old_value": "Invesco FTSE All-World UCITS ETF EUR PfHdg Accumalation",
-      "new_value": "Invesco FTSE All-World UCITS ETF EUR PfHdg Accumulation"
-    },
-    {
-      "listing_key": "XETRA::FWIA",
-      "field_name": "name",
-      "old_value": "Invesco FTSE All-World UCITS ETF USD Accumalation EUR",
-      "new_value": "Invesco FTSE All-World UCITS ETF USD Accumulation EUR"
-    }
-  ],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NYSE ARCA::SGOV",
-      "ticker": "SGOV",
+      "listing_key": "NYSE ARCA::BWOW",
+      "ticker": "BWOW",
       "exchange": "NYSE ARCA",
-      "event_type": "venue_changed",
+      "event_type": "venue_reconciled",
       "field_name": "exchange",
       "old_value": "NYSE ARCA",
       "new_value": "NYSE",
-      "before_row_sha256": "eff5ea0bf7c213a72b563406b6ffdfced7401fe3292a053d419c15e07b963234",
+      "before_row_sha256": "d6ae02144832e177ba6e3d266a2d17f6e28322c446b8393656c6b81116c5c7bf",
       "effective_at": "",
-      "observed_at": "2026-10-27T11:55:41Z",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observed_at": "2026-10-27T12:40:21Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "af518b55b229be4221155385",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "NYSE MKT::PAPL",
+      "ticker": "PAPL",
+      "exchange": "NYSE MKT",
+      "event_type": "venue_reconciled",
+      "field_name": "exchange",
+      "old_value": "NYSE MKT",
+      "new_value": "NYSE",
+      "before_row_sha256": "2332ce421fb7098d59ef309958d2e6f9e9fbbcef19f55fdfc97060761d12951b",
+      "effective_at": "",
+      "observed_at": "2026-10-27T12:40:21Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "24b67623bfec549a6e72f604",
+      "evidence_status": "official"
+    }
+  ],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NASDAQ::VSME",
+      "ticker": "VSME",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "VSME",
+      "new_value": "FCDH",
+      "before_row_sha256": "fa82b538d3d6221063d421f3dcf1b644362c43509433232cc562741698fdb6f4",
+      "effective_at": "",
+      "observed_at": "2026-10-27T12:40:21Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "9ea355d8e90da7bc42233af9",
+      "observation_id": "084b8a7a17d6b79f1163fa75",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::WPRT",
+      "ticker": "WPRT",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "WPRT",
+      "new_value": "AETR",
+      "before_row_sha256": "355475190fbacd1863088e359b8dba8aee34967fc6d39d87844e3e55c12547b3",
+      "effective_at": "",
+      "observed_at": "2026-10-27T12:40:21Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "d75126dd2366fbb076ed947a",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NYSE::NXDR",
+      "ticker": "NXDR",
+      "exchange": "NYSE",
+      "event_type": "venue_changed",
+      "field_name": "exchange",
+      "old_value": "NYSE",
+      "new_value": "NASDAQ",
+      "before_row_sha256": "0c965ae4b8b97490bb62debd22dab4bee9112d4786901fa4ae3a45b04c0c7775",
+      "effective_at": "",
+      "observed_at": "2026-10-27T12:40:21Z",
+      "source_key": "sec_8k_listing_transfer",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1846069/000184606926000162/nxdr-20261001.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "72d203a980e2dcd1edb203a6",
       "evidence_status": "reviewed"
     }
   ],
@@ -234,7 +172,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1416,
-      "after_rows": 1416,
+      "after_rows": 1443,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -585,9 +523,9 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4812,
-      "after_rows": 4812,
+      "after_rows": 4843,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 2,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -639,17 +577,17 @@
     {
       "exchange": "NYSE",
       "before_rows": 2030,
-      "after_rows": 2030,
+      "after_rows": 2033,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2804,
-      "after_rows": 2803,
-      "shrink_pct": 0.035663,
+      "before_rows": 2803,
+      "after_rows": 2820,
+      "shrink_pct": 0.0,
       "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
@@ -657,9 +595,9 @@
     {
       "exchange": "NYSE MKT",
       "before_rows": 234,
-      "after_rows": 234,
+      "after_rows": 235,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -836,7 +774,7 @@
     },
     {
       "exchange": "TSE",
-      "before_rows": 4136,
+      "before_rows": 4137,
       "after_rows": 4137,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -917,7 +855,7 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5208,
+      "before_rows": 5210,
       "after_rows": 5210,
       "shrink_pct": 0.0,
       "removed_rows": 0,

@@ -1310,6 +1310,7 @@ VRM,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqGM rather than the cur
 VRTVX,NMFQS,0.95,db-wide audit 2026-06-21: mutual fund (not exchange-listed common/ETF)
 VRWODAR,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::VRWODAR to BSE_IN::MEGAMONT; exact evidence is recorded in listing_transitions.csv.
 VSA,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: VisionSys AI Inc. - American Depositary Shares"
+VSME,NASDAQ,0.99,Detected official Nasdaq directory ticker change NASDAQ::VSME to NASDAQ::FCDH; exact evidence is recorded in listing_transitions.csv.
 VSNTV,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 VTN,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 VTYX,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
@@ -1332,6 +1333,7 @@ WONDR,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do n
 WOW,NYSE,0.96,"Yahoo Finance resolves this symbol to another exchange rather than the current exchange, indicating the current listing is stale."
 WPAC-R,NYSE,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 WPAC-UN,NYSE,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent from current NASDAQ Trader master, web+adversarial verified)"
+WPRT,NASDAQ,0.99,Detected official Nasdaq directory ticker change NASDAQ::WPRT to NASDAQ::AETR; exact evidence is recorded in listing_transitions.csv.
 WR1,ASX,0.95,"JP/AU delisting-staleness 2026-06-19: acquired_taken_private (absent from current JPX/ASX master, web+adversarial verified)"
 WSBCO,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqGS rather than the current exchange, indicating the current listing is stale."
 WSE,ASX,0.95,"Correctness re-audit 2026-06-16: 'SERIES 2021-1 WST TRUST' is an RMBS securitisation trust, not an ETF or stock; out of scope for a stock/ETF dataset. Verified via issuer/ASX."

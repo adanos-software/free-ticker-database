@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T11:58:32Z",
+    "generated_at": "2026-10-27T12:45:51Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
-    "ticker_rows": 65567,
-    "listing_rows": 97381,
-    "adanos_reference_rows": 65567,
-    "entry_quality_rows": 97381,
+    "ticker_rows": 65625,
+    "listing_rows": 97460,
+    "adanos_reference_rows": 65625,
+    "entry_quality_rows": 97460,
     "error_gates": 87,
-    "failed_error_gates": 0,
+    "failed_error_gates": 1,
     "info_gates": 5
   },
   "gates": [
@@ -511,9 +511,16 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 5,
+      "limit": 0,
+      "details": [
+        "NASDAQ::PUSA",
+        "NASDAQ::SVRN",
+        "NASDAQ::XRPN",
+        "NYSE MKT::SOAR",
+        "OTC::DGCOF"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -547,28 +554,28 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 658,
+      "actual": 737,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 667,
+      "actual": 685,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 146,
+      "actual": 207,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11076,
+      "actual": 11225,
       "limit": null
     },
     {

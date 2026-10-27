@@ -1,51 +1,52 @@
 # Entry Quality Report
 
-Generated at: `2026-10-27T11:56:08Z`
+Generated at: `2026-10-27T12:42:50Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| notice | 9 |
-| pass | 86,261 |
-| source_gap | 11,076 |
-| warn | 35 |
+| notice | 11 |
+| pass | 86,186 |
+| source_gap | 11,225 |
+| warn | 38 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,675 |
+| official_reference_gap | 6,747 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 667 |
-| expected_missing_primary_isin | 658 |
-| missing_etf_category | 146 |
-| official_name_mismatch | 26 |
+| expected_missing_primary_isin | 737 |
+| missing_stock_sector | 685 |
+| missing_etf_category | 207 |
+| official_name_mismatch | 29 |
 | official_isin_mismatch | 10 |
 | low_company_name_overlap | 9 |
+| shared_name_alias | 2 |
 | country_isin_mismatch | 1 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 8,481 | 2 | 3,255 | 14 | 0 |
+| OTC | 8,479 | 2 | 3,256 | 15 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,671 | 0 | 472 | 0 | 0 |
 | B3 | 1,247 | 0 | 342 | 0 | 0 |
+| NASDAQ | 4,508 | 4 | 324 | 7 | 0 |
+| NYSE ARCA | 2,537 | 0 | 282 | 1 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
-| NASDAQ | 4,548 | 3 | 255 | 6 | 0 |
-| NYSE ARCA | 2,561 | 0 | 241 | 1 | 0 |
-| TSX | 2,196 | 0 | 225 | 0 | 0 |
+| TSX | 2,196 | 1 | 224 | 0 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | AMS | 541 | 0 | 203 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | BVB | 55 | 0 | 192 | 0 | 0 |
 | XETRA | 5,042 | 0 | 168 | 0 | 0 |
 | TSXV | 1,260 | 0 | 159 | 3 | 0 |
+| BATS | 1,287 | 0 | 156 | 0 | 0 |
 | LSE | 6,875 | 0 | 149 | 2 | 0 |
 | ASX | 2,111 | 2 | 146 | 0 | 0 |
-| BATS | 1,289 | 0 | 127 | 0 | 0 |
 | Euronext | 1,356 | 0 | 120 | 1 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 | TASE | 714 | 0 | 87 | 0 | 0 |
