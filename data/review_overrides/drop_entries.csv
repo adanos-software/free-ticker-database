@@ -1074,6 +1074,7 @@ SFRT,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather
 SFUNY,NYSE,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 SGBX,NASDAQ,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
 SGCSF,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
+ETHE,NYSE,0.95,Reviewed ETF venue transition NYSE::ETHE to NYSE ARCA::ETHE; exact evidence is recorded in listing_transitions.csv.
 SGOV,NYSE ARCA,0.95,Reviewed ETF venue transition NYSE ARCA::SGOV to NYSE::SGOV; exact evidence is recorded in listing_transitions.csv.
 SGR,WSE,0.99,Official current GPW and NewConnect listed-companies directories do not list SGR as an active WSE listing; the remaining Sadovaya Group row carries a wrong Australian ISIN and is stale.
 SGTB,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."

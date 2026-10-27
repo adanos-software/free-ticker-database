@@ -6,14 +6,14 @@
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12547,
-      "exact_match": 99909,
-      "missing_from_database": 44174,
+      "exact_match": 99908,
+      "missing_from_database": 44175,
       "normalization_candidate": 1859,
       "out_of_scope": 8126
     },
-    "coverage_credited_keys": 99909,
+    "coverage_credited_keys": 99908,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44174,
+    "in_scope_missing_rows": 44175,
     "identity_conflict_rows": 12547,
     "mapping_candidate_rows": 1859
   },
@@ -2122141,10 +2122141,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::ETHE",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::ETHW",

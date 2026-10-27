@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-10-27T11:55:58Z`
+Generated at: `2026-10-27T13:04:24Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -58,7 +58,7 @@ Generated at: `2026-10-27T11:55:58Z`
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
 | NSE_IN | official_full | nse_india_securities_available |  | 3530 | 97.96 | nse_india_securities_available | refresh_required | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 68 | 64.71 | nse_ke_listed_companies | refresh_required | not_applicable |
-| NYSE | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 3878 | 51.11 | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange | refresh_required | not_applicable |
+| NYSE | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 3878 | 51.08 | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange | refresh_required | not_applicable |
 | NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2753 | 95.64 | nasdaq_other_listed|nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NYSE MKT | official_full | nasdaq_other_listed | ETF | 309 | 73.79 | nasdaq_other_listed | refresh_required | not_applicable |
 | NZX | official_full | nzx_instruments |  | 172 | 48.84 | nzx_instruments | refresh_required | not_applicable |

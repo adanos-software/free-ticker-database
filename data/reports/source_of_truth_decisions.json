@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-10-27T11:56:13Z",
-    "rows": 8541,
+    "generated_at": "2026-10-27T13:04:42Z",
+    "rows": 8539,
     "outcome_totals": {
-      "accepted_source_gap": 5561,
-      "core_exclusion_candidate": 499,
+      "accepted_source_gap": 5560,
+      "core_exclusion_candidate": 498,
       "official_fill_required": 2481
     },
     "class_totals": {
@@ -17,12 +17,12 @@
       "equity_etf_category_gap": 43,
       "exchange_industry_source_gap": 59,
       "fixed_income_etf_category_gap": 19,
-      "fund_or_trust_identifier_gap": 292,
+      "fund_or_trust_identifier_gap": 291,
       "fundlike_stock_sector_gap": 18,
       "inactive_or_legacy_identifier_gap": 20,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 172,
-      "official_identifier_reference_unmatched_gap": 13,
+      "official_identifier_reference_unmatched_gap": 12,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 429,
       "official_product_reference_unmatched_category_gap": 1,
@@ -34,8 +34,8 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 139,
-      "missing_isin_primary:accepted_source_gap": 187,
-      "missing_isin_primary:core_exclusion_candidate": 470,
+      "missing_isin_primary:accepted_source_gap": 186,
+      "missing_isin_primary:core_exclusion_candidate": 469,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 981,
       "missing_sector_stock:core_exclusion_candidate": 29,
@@ -2599,23 +2599,6 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "BMV::CIEB",
-      "ticker": "CIEB",
-      "exchange": "BMV",
-      "asset_type": "Stock",
-      "name": "Corporación Interamericana de Entretenimiento S.A.B. de C.V",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -98071,23 +98054,6 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::ETHE",
-      "ticker": "ETHE",
-      "exchange": "NYSE",
-      "asset_type": "ETF",
-      "name": "Grayscale Ethereum Trust (ETH)",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
     },
     {
       "field": "missing_isin_primary",

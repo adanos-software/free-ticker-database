@@ -38,6 +38,7 @@ def test_reviewed_etf_name_fixes() -> None:
 def test_reviewed_etf_venue_duplicates() -> None:
     listings = _listings()
     assert "NYSE ARCA::SGOV" not in listings
+    assert "NYSE::ETHE" not in listings
     assert listings["NYSE ARCA::ETHE"]["isin"] == "US3896381072"
     assert listings["NYSE::SGOV"]["isin"] == "US46436E7186"
 
