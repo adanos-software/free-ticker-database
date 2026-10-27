@@ -1,6 +1,74 @@
 {
-  "generated_at": "2026-10-12T16:51:42Z",
+  "generated_at": "2026-10-26T14:26:02Z",
   "manual_review_items": [
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-10-19",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Stratum Holdings Corp",
+      "new_listing_keys": "",
+      "new_symbol": "SRTM",
+      "old_listing_keys": "NASDAQ::LRHC",
+      "old_symbol": "LRHC",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "manual_missing_isin",
+      "apply_status_source": "available",
+      "blocker_reason": "manual: current dataset row has no ISIN, so unchanged identity cannot be proven",
+      "effective_date": "2026-10-13",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Rantizo Inc",
+      "new_listing_keys": "",
+      "new_symbol": "RNTZ",
+      "old_listing_keys": "NASDAQ::SKK|TSXV::SKK",
+      "old_symbol": "SKK",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-10-13",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Axonex Ai Group Ltd.",
+      "new_listing_keys": "",
+      "new_symbol": "AXNX",
+      "old_listing_keys": "NASDAQ::MIMI",
+      "old_symbol": "MIMI",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-10-12",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Irulya Therapeutics Inc",
+      "new_listing_keys": "",
+      "new_symbol": "IRLA",
+      "old_listing_keys": "NASDAQ::QNCX",
+      "old_symbol": "QNCX",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
     {
       "apply_status": "blocked_new_symbol_not_active_in_official_master",
       "apply_status_source": "available",
@@ -292,5 +360,5 @@
     }
   ],
   "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
-  "rows": 17
+  "rows": 21
 }

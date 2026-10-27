@@ -1,10 +1,78 @@
 {
-  "built_at": "2026-10-11T11:19:20Z",
+  "built_at": "2026-10-20T10:13:03Z",
   "drift_detected": true,
-  "generated_at": "2026-10-12T16:51:42Z",
-  "manual_review_count": 17,
+  "generated_at": "2026-10-26T14:26:02Z",
+  "manual_review_count": 21,
   "manual_review_report": "data/reports/pending_renames_manual_review.md",
   "manual_review_sample": [
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-10-19",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Stratum Holdings Corp",
+      "new_listing_keys": "",
+      "new_symbol": "SRTM",
+      "old_listing_keys": "NASDAQ::LRHC",
+      "old_symbol": "LRHC",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "manual_missing_isin",
+      "apply_status_source": "available",
+      "blocker_reason": "manual: current dataset row has no ISIN, so unchanged identity cannot be proven",
+      "effective_date": "2026-10-13",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Rantizo Inc",
+      "new_listing_keys": "",
+      "new_symbol": "RNTZ",
+      "old_listing_keys": "NASDAQ::SKK|TSXV::SKK",
+      "old_symbol": "SKK",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-10-13",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Axonex Ai Group Ltd.",
+      "new_listing_keys": "",
+      "new_symbol": "AXNX",
+      "old_listing_keys": "NASDAQ::MIMI",
+      "old_symbol": "MIMI",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "blocked_new_symbol_not_active_in_official_master",
+      "apply_status_source": "available",
+      "blocker_reason": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer.",
+      "effective_date": "2026-10-12",
+      "exchange_scope_status": "matches_within_source_scope",
+      "match_status": "old_symbol_present_new_symbol_missing",
+      "new_company_name": "Irulya Therapeutics Inc",
+      "new_listing_keys": "",
+      "new_symbol": "IRLA",
+      "old_listing_keys": "NASDAQ::QNCX",
+      "old_symbol": "QNCX",
+      "source_exchange_hint": "US_LISTED",
+      "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
     {
       "apply_status": "blocked_new_symbol_not_active_in_official_master",
       "apply_status_source": "available",
@@ -313,7 +381,7 @@
       "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=44;symbol_collisions=40",
       "official_recall_missing": 44,
       "official_recall_pass": false,
-      "official_recall_pct": 92.78,
+      "official_recall_pct": 92.85,
       "official_recall_target": true
     },
     "ASX": {
@@ -477,13 +545,13 @@
       "official_recall_target": false
     },
     "Borsa Italiana": {
-      "collision_adjusted_recall_missing": 760,
+      "collision_adjusted_recall_missing": 795,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 24.53,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2658;symbol_collisions=1898",
-      "official_recall_missing": 2658,
+      "collision_adjusted_recall_pct": 23.7,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2723;symbol_collisions=1928",
+      "official_recall_missing": 2723,
       "official_recall_pass": false,
-      "official_recall_pct": 8.5,
+      "official_recall_pct": 8.32,
       "official_recall_target": true
     },
     "Bursa": {
@@ -557,13 +625,13 @@
       "official_recall_target": false
     },
     "Euronext": {
-      "collision_adjusted_recall_missing": 312,
+      "collision_adjusted_recall_missing": 330,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 81.04,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=681;symbol_collisions=369",
-      "official_recall_missing": 681,
+      "collision_adjusted_recall_pct": 80.16,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=707;symbol_collisions=377",
+      "official_recall_missing": 707,
       "official_recall_pass": false,
-      "official_recall_pct": 66.2,
+      "official_recall_pct": 65.34,
       "official_recall_target": true
     },
     "FSX": {
@@ -797,13 +865,13 @@
       "official_recall_target": true
     },
     "NYSE": {
-      "collision_adjusted_recall_missing": 1324,
+      "collision_adjusted_recall_missing": 1325,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 59.98,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1894;symbol_collisions=570",
-      "official_recall_missing": 1894,
+      "collision_adjusted_recall_pct": 59.95,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1895;symbol_collisions=570",
+      "official_recall_missing": 1895,
       "official_recall_pass": false,
-      "official_recall_pct": 51.16,
+      "official_recall_pct": 51.13,
       "official_recall_target": true
     },
     "NYSE ARCA": {
@@ -1179,136 +1247,79 @@
   },
   "official_recall_regressions": [
     {
-      "current": 2658,
-      "delta": 2,
+      "current": 2723,
+      "delta": 65,
       "exchange": "Borsa Italiana",
       "metric": "official_recall_missing",
-      "previous": 2656
+      "previous": 2658
     },
     {
-      "current": 760,
-      "delta": 1,
+      "current": 795,
+      "delta": 35,
       "exchange": "Borsa Italiana",
       "metric": "collision_adjusted_recall_missing",
-      "previous": 759
+      "previous": 760
     },
     {
-      "current": 233,
-      "delta": 3,
-      "exchange": "KOSDAQ",
+      "current": 707,
+      "delta": 26,
+      "exchange": "Euronext",
       "metric": "official_recall_missing",
-      "previous": 230
+      "previous": 681
     },
     {
-      "current": 230,
-      "delta": 3,
-      "exchange": "KOSDAQ",
+      "current": 330,
+      "delta": 18,
+      "exchange": "Euronext",
       "metric": "collision_adjusted_recall_missing",
-      "previous": 227
+      "previous": 312
     },
     {
-      "current": 161,
+      "current": 1895,
       "delta": 1,
-      "exchange": "KRX",
+      "exchange": "NYSE",
       "metric": "official_recall_missing",
-      "previous": 160
+      "previous": 1894
     },
     {
-      "current": 147,
+      "current": 1325,
       "delta": 1,
-      "exchange": "KRX",
+      "exchange": "NYSE",
       "metric": "collision_adjusted_recall_missing",
-      "previous": 146
-    },
-    {
-      "current": 4371,
-      "delta": 22,
-      "exchange": "LSE",
-      "metric": "official_recall_missing",
-      "previous": 4349
-    },
-    {
-      "current": 3500,
-      "delta": 8,
-      "exchange": "LSE",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 3492
-    },
-    {
-      "current": 214,
-      "delta": 2,
-      "exchange": "PSE",
-      "metric": "official_recall_missing",
-      "previous": 212
-    },
-    {
-      "current": 94,
-      "delta": 2,
-      "exchange": "PSE",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 92
-    },
-    {
-      "current": 172,
-      "delta": 1,
-      "exchange": "SET",
-      "metric": "official_recall_missing",
-      "previous": 171
-    },
-    {
-      "current": 38,
-      "delta": 1,
-      "exchange": "SET",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 37
-    },
-    {
-      "current": 127,
-      "delta": 3,
-      "exchange": "SGX",
-      "metric": "official_recall_missing",
-      "previous": 124
-    },
-    {
-      "current": 16,
-      "delta": 11,
-      "exchange": "TXSE",
-      "metric": "official_recall_missing",
-      "previous": 5
-    },
-    {
-      "current": 7,
-      "delta": 5,
-      "exchange": "TXSE",
-      "metric": "collision_adjusted_recall_missing",
-      "previous": 2
-    },
-    {
-      "current": 179,
-      "delta": 4,
-      "exchange": "XETRA",
-      "metric": "official_recall_missing",
-      "previous": 175
+      "previous": 1324
     }
   ],
   "pending_renames_count": 0,
   "pending_renames_sample": [],
   "quality_indicators": {
     "allowed_warn_rows": 34,
-    "expected_missing_primary_isin": 665,
-    "missing_etf_category": 143,
-    "missing_stock_sector": 669,
-    "source_gap_rows": 11075
+    "expected_missing_primary_isin": 664,
+    "missing_etf_category": 146,
+    "missing_stock_sector": 668,
+    "source_gap_rows": 11081
   },
-  "quality_regressions": [],
+  "quality_regressions": [
+    {
+      "current": 11081,
+      "delta": 6,
+      "metric": "source_gap_rows",
+      "previous": 11075
+    },
+    {
+      "current": 146,
+      "delta": 3,
+      "metric": "missing_etf_category",
+      "previous": 143
+    }
+  ],
   "rename_triage_apply_status_source_totals": {
-    "available": 17
+    "available": 21
   },
-  "rename_triage_count": 17,
+  "rename_triage_count": 21,
   "rename_triage_fallback": false,
   "rename_triage_source_totals": {
-    "symbol_changes_review": 17
+    "symbol_changes_review": 21
   },
   "stale_threshold_days": 45.0,
-  "staleness_days": 1.2
+  "staleness_days": 6.2
 }
