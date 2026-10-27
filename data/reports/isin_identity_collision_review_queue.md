@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-10-27T10:21:35Z`
+Generated: `2026-10-27T12:21:39Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,10 +8,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 126 |
-| Listings involved | 370 |
+| Collision groups | 127 |
+| Listings involved | 373 |
 | Ticker-collision groups | 35 |
-| Open groups | 8 |
+| Open groups | 9 |
 | Closed same-issuer reviewed | 118 |
 | Direct identifier apply allowed rows | 0 |
 
@@ -19,7 +19,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 91 |
+| isin_shared_by_distinct_issuers | 92 |
 | ticker_collision_isin_misassignment_suspected | 35 |
 
 ## Next Review Batches
@@ -62,6 +62,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
 | US0896951003 | United States | 2 | BIGG | BIGG Digital Assets Inc. \| Big Tree Group Inc |
+| INE534A01028 | India | 3 | - | Grand Foundry Ltd \| Tikona Communication Limited |
 | NO0010861990 | Norway | 2 | - | Prism Resources Inc. \| Prosafe SE |
 | SE0000722365 | Sweden | 2 | - | Vivesto AB \| Viveve Medical Inc |
 

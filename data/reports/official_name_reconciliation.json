@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-27T10:21:02Z",
+  "generated_at": "2026-10-27T12:17:33Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1892,
+  "reconciled_rows": 1895,
   "applied_rows": 0,
-  "proposed_rows": 1892,
+  "proposed_rows": 1895,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -10222,6 +10222,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "FSX::NGI",
+      "action": "proposed",
+      "ticker": "NGI",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "isin": "JP3695200000",
+      "old_name": "NGK Insulators Ltd",
+      "new_name": "NGK CORP.",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "observation_id": "b04400240112d131330c61ae",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "FSX::NGJ",
       "action": "proposed",
       "ticker": "NGJ",
@@ -14182,6 +14197,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "HKEX::01657",
+      "action": "proposed",
+      "ticker": "01657",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "isin": "KYG8061B1150",
+      "old_name": "SG GROUP HLDGS",
+      "new_name": "SG GROUP H-NEW",
+      "source_key": "hkex_securities_list",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "observation_id": "4355834f2959c519f6548f81",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "HKEX::02490",
       "action": "proposed",
       "ticker": "02490",
@@ -14194,6 +14224,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
       "observation_id": "96d8e9b170df7ea0d6fdaccc",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "HKEX::02936",
+      "action": "proposed",
+      "ticker": "02936",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "isin": "KYG8061B1234",
+      "old_name": "SG GROUP HLDGS",
+      "new_name": "SG GROUP H-OLD",
+      "source_key": "hkex_securities_list",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "observation_id": "05afeea0fb9c929657e7f416",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
