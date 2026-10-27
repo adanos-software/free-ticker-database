@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-27T08:15:39Z",
+  "generated_at": "2026-10-27T10:42:09Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1892,
+  "reconciled_rows": 1893,
   "applied_rows": 0,
-  "proposed_rows": 1892,
+  "proposed_rows": 1893,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -1369,6 +1369,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
       "observation_id": "6e71434afeab1dfa97a346cd",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "Euronext::ACWE",
+      "action": "proposed",
+      "ticker": "ACWE",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "isin": "IE00B44Z5B48",
+      "old_name": "SSgA SPDR MSCI ACWI",
+      "new_name": "State Street SPDR MSCI All Country World UCITS ETF (Acc)",
+      "source_key": "euronext_etfs",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+      "observation_id": "0695bffc3a9da82f8f6ef419",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

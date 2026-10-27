@@ -1,8 +1,8 @@
 {
   "global": {
     "official_symbols": 99815,
-    "matched": 70048,
-    "collisions": 11529,
+    "matched": 70051,
+    "collisions": 11526,
     "missing": 18238
   },
   "exchanges": [
@@ -4519,6 +4519,7 @@
           "name": "EAST PIPES",
           "target_exchange": "TADAWUL",
           "existing_exchanges": [
+            "TSE",
             "TWSE"
           ]
         },
@@ -4544,8 +4545,8 @@
     {
       "exchange": "TSE",
       "official_symbols": 4444,
-      "matched": 4102,
-      "collisions": 341,
+      "matched": 4103,
+      "collisions": 340,
       "missing": 1,
       "collision_examples": [
         {
@@ -4575,14 +4576,6 @@
         {
           "ticker": "1319",
           "name": "NEXT FUNDS Nikkei 300 Index Exchange Traded Fund",
-          "target_exchange": "TSE",
-          "existing_exchanges": [
-            "TWSE"
-          ]
-        },
-        {
-          "ticker": "1321",
-          "name": "NEXT FUNDS Nikkei 225 Exchange Traded Fund",
           "target_exchange": "TSE",
           "existing_exchanges": [
             "TWSE"
@@ -4623,6 +4616,14 @@
         {
           "ticker": "1414",
           "name": "SHO-BOND Holdings Co.,Ltd.",
+          "target_exchange": "TSE",
+          "existing_exchanges": [
+            "TWSE"
+          ]
+        },
+        {
+          "ticker": "1417",
+          "name": "MIRAIT ONE Corporation",
           "target_exchange": "TSE",
           "existing_exchanges": [
             "TWSE"
@@ -5258,8 +5259,8 @@
     {
       "exchange": "XETRA",
       "official_symbols": 5149,
-      "matched": 4970,
-      "collisions": 177,
+      "matched": 4972,
+      "collisions": 175,
       "missing": 2,
       "collision_examples": [
         {

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T08:16:11Z",
+    "generated_at": "2026-10-27T10:42:45Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,17 +34,17 @@
   "completeness": {
     "isin": {
       "n": 63484,
-      "filled": 62821,
-      "missing": 663,
+      "filled": 62825,
+      "missing": 659,
       "pct": 98.96,
-      "fills_needed_for_99": 29,
+      "fills_needed_for_99": 25,
       "pass": false
     },
     "country": {
       "n": 63484,
-      "filled": 63414,
-      "missing": 70,
-      "pct": 99.89,
+      "filled": 63418,
+      "missing": 66,
+      "pct": 99.9,
       "fills_needed_for_99": 0,
       "pass": true
     },
@@ -61,10 +61,10 @@
       "ASX": 98,
       "TSXV": 73,
       "NYSE ARCA": 64,
-      "NASDAQ": 57,
+      "NASDAQ": 56,
       "NEO": 44,
       "SSE": 34,
-      "BATS": 33,
+      "BATS": 30,
       "SSE_CL": 27,
       "NYSE": 24,
       "BMV": 18,
@@ -99,13 +99,13 @@
     "official_isin_mismatch": 7,
     "official_name_mismatch": 9,
     "open_collision_groups": 7,
-    "quarantine_unresolved": 1162,
+    "quarantine_unresolved": 1163,
     "quarantine_proposed_clear": 248,
     "quarantine_kept": 575
   },
   "entry_quality_status": {
-    "pass": 59618,
-    "source_gap": 3850,
+    "pass": 59622,
+    "source_gap": 3846,
     "warn": 16
   },
   "checks": [
@@ -134,10 +134,10 @@
       "status": "fail",
       "details": {
         "n": 63484,
-        "filled": 62821,
-        "missing": 663,
+        "filled": 62825,
+        "missing": 659,
         "pct": 98.96,
-        "fills_needed_for_99": 29,
+        "fills_needed_for_99": 25,
         "pass": false
       }
     },
@@ -158,9 +158,9 @@
       "status": "pass",
       "details": {
         "n": 63484,
-        "filled": 63414,
-        "missing": 70,
-        "pct": 99.89,
+        "filled": 63418,
+        "missing": 66,
+        "pct": 99.9,
         "fills_needed_for_99": 0,
         "pass": true
       }

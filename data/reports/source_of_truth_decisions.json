@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-10-27T08:16:14Z",
-    "rows": 8543,
+    "generated_at": "2026-10-27T10:42:49Z",
+    "rows": 8538,
     "outcome_totals": {
-      "accepted_source_gap": 5563,
-      "core_exclusion_candidate": 503,
+      "accepted_source_gap": 5562,
+      "core_exclusion_candidate": 499,
       "official_fill_required": 2477
     },
     "class_totals": {
@@ -17,7 +17,7 @@
       "equity_etf_category_gap": 43,
       "exchange_industry_source_gap": 59,
       "fixed_income_etf_category_gap": 19,
-      "fund_or_trust_identifier_gap": 296,
+      "fund_or_trust_identifier_gap": 292,
       "fundlike_stock_sector_gap": 18,
       "inactive_or_legacy_identifier_gap": 20,
       "official_current_directory_absent_identifier_gap": 2,
@@ -27,7 +27,7 @@
       "official_industry_taxonomy_unavailable_gap": 430,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 66,
-      "official_reference_symbol_collision_gap": 1150,
+      "official_reference_symbol_collision_gap": 1149,
       "official_reference_unmatched_source_gap": 5521,
       "otc_sector_source_gap": 552,
       "shell_or_cpc_sector_gap": 6
@@ -35,12 +35,12 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 139,
       "missing_isin_primary:accepted_source_gap": 188,
-      "missing_isin_primary:core_exclusion_candidate": 474,
+      "missing_isin_primary:core_exclusion_candidate": 470,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 982,
       "missing_sector_stock:core_exclusion_candidate": 29,
       "missing_sector_stock:official_fill_required": 59,
-      "official_reference_gap:accepted_source_gap": 4254,
+      "official_reference_gap:accepted_source_gap": 4253,
       "official_reference_gap:official_fill_required": 2417
     },
     "policy": {
@@ -36200,23 +36200,6 @@
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "name": "ETRACS 2x Leveraged US Dividend Factor TR ETN",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NYSE ARCA::SGOV",
-      "ticker": "SGOV",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "name": "iShares 0-3 Month Treasury Bond ETF",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -96324,40 +96307,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "BATS::ARKG",
-      "ticker": "ARKG",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "name": "ARK Genomic Revolution ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "BATS::ARKK",
-      "ticker": "ARKK",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "name": "ARK Innovation ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "BATS::ARKT",
       "ticker": "ARKT",
       "exchange": "BATS",
@@ -96507,23 +96456,6 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "BATS::FBTC",
-      "ticker": "FBTC",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "name": "Fidelity Wise Origin Bitcoin Trust",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
     },
     {
       "field": "missing_isin_primary",
@@ -97034,23 +96966,6 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::ETHA",
-      "ticker": "ETHA",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "name": "iShares Ethereum Trust ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
     },
     {
       "field": "missing_isin_primary",

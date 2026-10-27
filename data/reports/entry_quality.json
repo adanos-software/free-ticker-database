@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T08:16:08Z",
-    "rows": 97379,
+    "generated_at": "2026-10-27T10:43:50Z",
+    "rows": 97381,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86265,
-      "source_gap": 11080,
+      "pass": 86272,
+      "source_gap": 11075,
       "warn": 34
     },
     "evidence_level_counts": {
       "identifier_enriched": 4565,
-      "official_reference": 87421,
+      "official_reference": 87424,
       "scoped_source_gap": 273,
-      "valid_isin": 5120
+      "valid_isin": 5119
     },
     "severity_counts": {
       "high": 10,
       "medium": 26,
-      "source_gap": 11435
+      "source_gap": 11430
     },
     "issue_counts": {
-      "official_reference_gap": 6671,
+      "official_reference_gap": 6670,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 668,
-      "expected_missing_primary_isin": 663,
+      "expected_missing_primary_isin": 659,
       "missing_etf_category": 146,
       "official_name_mismatch": 26,
       "official_isin_mismatch": 9,
@@ -67,14 +67,14 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 254,
-        "pass": 4552,
+        "source_gap": 253,
+        "pass": 4553,
         "warn": 6
       },
       {
         "exchange": "NYSE ARCA",
         "pass": 2561,
-        "source_gap": 242,
+        "source_gap": 241,
         "warn": 1
       },
       {
@@ -102,7 +102,7 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 5040,
+        "pass": 5042,
         "source_gap": 168
       },
       {
@@ -124,8 +124,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1286,
-        "source_gap": 130
+        "pass": 1289,
+        "source_gap": 127
       },
       {
         "exchange": "Euronext",

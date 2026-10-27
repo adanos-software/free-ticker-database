@@ -28,15 +28,11 @@ STOLEN_ISIN_CLEARS = {
     ("EMDV", "BATS"): "IE00B6YX5B26",
     ("COII", "BATS"): "XS2901886445",
     ("ETHE", "NYSE"): "GB00BLD4ZM24",
-    ("ARKG", "BATS"): "IE000O5M6XO1",
-    ("ARKK", "BATS"): "IE000GA3D489",
     ("CNYA", "BATS"): "IE00BQT3WG13",
-    ("ETHA", "NASDAQ"): "BRETHABDR006",
     ("BSOL", "NYSE ARCA"): "DE000A4A59D2",
     ("BOD-EQO", "BSE_BW"): "GB00B5TFC825",
     ("PAVE", "BATS"): "IE00BLCHJ534",
     ("WTAI", "BATS"): "IE00BDVPNG13",
-    ("FBTC", "BATS"): "CA31580V1040",
     ("VSOL", "NASDAQ"): "DE000A3GSUD3",
     ("EWG", "NYSE ARCA"): "BRBEWGBDR000",
     ("CORN", "NYSE ARCA"): "JE00BN7KB441",
@@ -113,15 +109,11 @@ COUNTRY_CLEARS = {
     ("EXCH", "OTC"),
     ("EMDV", "BATS"),
     ("ETHE", "NYSE"),
-    ("ARKG", "BATS"),
-    ("ARKK", "BATS"),
     ("CNYA", "BATS"),
-    ("ETHA", "NASDAQ"),
     ("BSOL", "NYSE ARCA"),
     ("BOD-EQO", "BSE_BW"),
     ("PAVE", "BATS"),
     ("WTAI", "BATS"),
-    ("FBTC", "BATS"),
     ("VSOL", "NASDAQ"),
     ("EWG", "NYSE ARCA"),
     ("CORN", "NYSE ARCA"),
@@ -177,6 +169,16 @@ COUNTRY_CLEARS = {
     ("SARDF", "OTC"),
     ("ABIT", "OTC"),
     ("GORO", "NYSE"),
+}
+
+# Stolen ISINs that were cleared first and later re-filled with the reviewed,
+# source-backed US ISIN (ETF curation 2026-10-27). The clear row stays in
+# metadata_updates.csv as audit trail; the later update row wins.
+REVIEWED_ISIN_REFILLS = {
+    ("ARKG", "BATS"): ("IE000O5M6XO1", "US00214Q3020"),
+    ("ARKK", "BATS"): ("IE000GA3D489", "US00214Q1040"),
+    ("ETHA", "NASDAQ"): ("BRETHABDR006", "US46438R2040"),
+    ("FBTC", "BATS"): ("CA31580V1040", "US3159481098"),
 }
 
 ISIN_ONLY_COUNTRY_KEEPS = {
@@ -530,3 +532,25 @@ def test_collision_hidden_nasdaq_successors_are_coverage_expansion() -> None:
         assert name_fragment.lower() in rows[key]["name"].lower()
         assert rows[key]["exchange"] == "NASDAQ"
         assert rows[key]["asset_type"] == "Stock"
+
+
+def _metadata_rows(ticker: str, exchange: str, field: str) -> list[dict[str, str]]:
+    return [
+        row
+        for row in load_csv(METADATA)
+        if row.get("ticker") == ticker and row.get("exchange") == exchange and row.get("field") == field
+    ]
+
+
+def test_reviewed_isin_refills_follow_the_stolen_clear() -> None:
+    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
+    for (ticker, exchange), (stolen, reviewed) in REVIEWED_ISIN_REFILLS.items():
+        rows = _metadata_rows(ticker, exchange, "isin")
+        assert [row["decision"] for row in rows] == ["clear", "update"], (ticker, exchange)
+        assert stolen in rows[0]["reason"]
+        assert rows[1]["proposed_value"] == reviewed
+        assert "OpenFIGI" in rows[1]["reason"]
+        row = listings[f"{exchange}::{ticker}"]
+        assert row["isin"] == reviewed
+        assert row["country_code"] == "US"
+

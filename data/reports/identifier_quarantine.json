@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-27T08:15:39Z",
+  "generated_at": "2026-10-27T10:42:09Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2011,
-  "decision_rows": 6472,
+  "conflict_count": 2012,
+  "decision_rows": 6476,
   "action_counts": {
     "kept_listing_keyed_identifier": 1359,
     "proposed_clear_conflicting_identifier": 1049,
-    "quarantined_unresolved_identifier": 4064
+    "quarantined_unresolved_identifier": 4068
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1049,
-  "quarantined_rows": 4064,
+  "quarantined_rows": 4068,
   "retained_rows": 1359,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -28607,7 +28607,7 @@
       "listing_key": "LSE::FWRA",
       "ticker": "FWRA",
       "exchange": "LSE",
-      "name": "Invesco FTSE All-World UCITS ETF USD Accumalation",
+      "name": "Invesco FTSE All-World UCITS ETF USD Accumulation",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -28620,7 +28620,7 @@
       "listing_key": "LSE::FWRG",
       "ticker": "FWRG",
       "exchange": "LSE",
-      "name": "Invesco FTSE All-World UCITS ETF USD Accumalation",
+      "name": "Invesco FTSE All-World UCITS ETF USD Accumulation",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -28633,7 +28633,7 @@
       "listing_key": "SIX::FWRA",
       "ticker": "FWRA",
       "exchange": "SIX",
-      "name": "Invesco FTSE All-World UCITS ETF USD Accumalation CHF",
+      "name": "Invesco FTSE All-World UCITS ETF USD Accumulation CHF",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -28659,7 +28659,7 @@
       "listing_key": "XETRA::FWIA",
       "ticker": "FWIA",
       "exchange": "XETRA",
-      "name": "Invesco FTSE All-World UCITS ETF USD Accumalation EUR",
+      "name": "Invesco FTSE All-World UCITS ETF USD Accumulation EUR",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -30630,7 +30630,7 @@
       "retained_isin": "IE00B3WJKG14"
     },
     {
-      "conflict_id": "2fed03721cb7a67949ea",
+      "conflict_id": "0657d2b60a20c8db9cea",
       "isin": "IE00B3YCGJ38",
       "listing_key": "AMS::SPXS",
       "ticker": "SPXS",
@@ -30643,7 +30643,20 @@
       "retained_isin": "IE00B3YCGJ38"
     },
     {
-      "conflict_id": "2fed03721cb7a67949ea",
+      "conflict_id": "0657d2b60a20c8db9cea",
+      "isin": "IE00B3YCGJ38",
+      "listing_key": "FSX::P500",
+      "ticker": "P500",
+      "exchange": "FSX",
+      "name": "Invesco S&P 500 UCITS ETF",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00B3YCGJ38"
+    },
+    {
+      "conflict_id": "0657d2b60a20c8db9cea",
       "isin": "IE00B3YCGJ38",
       "listing_key": "LSE::SPXP",
       "ticker": "SPXP",
@@ -30656,7 +30669,7 @@
       "retained_isin": "IE00B3YCGJ38"
     },
     {
-      "conflict_id": "2fed03721cb7a67949ea",
+      "conflict_id": "0657d2b60a20c8db9cea",
       "isin": "IE00B3YCGJ38",
       "listing_key": "LSE::SPXS",
       "ticker": "SPXS",
@@ -30669,7 +30682,7 @@
       "retained_isin": "IE00B3YCGJ38"
     },
     {
-      "conflict_id": "2fed03721cb7a67949ea",
+      "conflict_id": "0657d2b60a20c8db9cea",
       "isin": "IE00B3YCGJ38",
       "listing_key": "OTC::INVMF",
       "ticker": "INVMF",
@@ -30682,7 +30695,7 @@
       "retained_isin": "IE00B3YCGJ38"
     },
     {
-      "conflict_id": "2fed03721cb7a67949ea",
+      "conflict_id": "0657d2b60a20c8db9cea",
       "isin": "IE00B3YCGJ38",
       "listing_key": "SIX::SPXS",
       "ticker": "SPXS",
@@ -30695,7 +30708,7 @@
       "retained_isin": "IE00B3YCGJ38"
     },
     {
-      "conflict_id": "2fed03721cb7a67949ea",
+      "conflict_id": "0657d2b60a20c8db9cea",
       "isin": "IE00B3YCGJ38",
       "listing_key": "TASE::IN-FF1",
       "ticker": "IN-FF1",
@@ -30708,7 +30721,7 @@
       "retained_isin": "IE00B3YCGJ38"
     },
     {
-      "conflict_id": "2fed03721cb7a67949ea",
+      "conflict_id": "0657d2b60a20c8db9cea",
       "isin": "IE00B3YCGJ38",
       "listing_key": "XETRA::P500",
       "ticker": "P500",
@@ -30771,6 +30784,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IE00B3YLTY66"
+    },
+    {
+      "conflict_id": "d2680f27497ca0325db7",
+      "isin": "IE00B44Z5B48",
+      "listing_key": "Euronext::ACWE",
+      "ticker": "ACWE",
+      "exchange": "Euronext",
+      "name": "SSgA SPDR MSCI ACWI",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00B44Z5B48"
+    },
+    {
+      "conflict_id": "d2680f27497ca0325db7",
+      "isin": "IE00B44Z5B48",
+      "listing_key": "LSE::ACWD",
+      "ticker": "ACWD",
+      "exchange": "LSE",
+      "name": "SPDR® MSCI ACWI UCITS ETF",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00B44Z5B48"
+    },
+    {
+      "conflict_id": "d2680f27497ca0325db7",
+      "isin": "IE00B44Z5B48",
+      "listing_key": "XETRA::SPYY",
+      "ticker": "SPYY",
+      "exchange": "XETRA",
+      "name": "State Street SPDR MSCI All Country World UCITS ETF (Acc)",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "IE00B44Z5B48"
     },
     {
       "conflict_id": "c4bb015db45cb77af969",

@@ -3908,6 +3908,7 @@ ASX::QSML,QSML,ASX,AU0000137804,isin
 ASX::QSML,QSML,ASX,vaneck msci intl small companies quality,name
 ASX::QSML,QSML,ASX,vaneck msci international small companies quality,name
 ASX::QUAL,QUAL,ASX,AU00000QUAL9,isin
+ASX::QUAL,QUAL,ASX,vaneck msci international quality,name
 ASX::QUB,QUB,ASX,AU000000QUB5,isin
 ASX::QUB,QUB,ASX,qube holdings,name
 ASX::QUE,QUE,ASX,AU000000QUE9,isin
@@ -4733,6 +4734,7 @@ ASX::VGRO,VGRO,ASX,AU0000465189,isin
 ASX::VGRO,VGRO,ASX,vaneck diversified growth active,name
 ASX::VGRO,VGRO,ASX,vaneck core+ diversified growth active,name
 ASX::VGS,VGS,ASX,AU000000VGS8,isin
+ASX::VGS,VGS,ASX,vanguard msci international,name
 ASX::VHGR,VHGR,ASX,AU0000465197,isin
 ASX::VHGR,VHGR,ASX,vaneck diversified high growth active,name
 ASX::VHGR,VHGR,ASX,vaneck core+ diversified high growth active,name
@@ -5525,7 +5527,6 @@ B3::B5P211,B5P211,B3,it now ima-b5 p2 fundo indice,name
 B3::BAAX39,BAAX39,B3,BRBAAXBDR009,isin
 B3::BACW39,BACW39,B3,BRBACWBDR007,isin
 B3::BAER39,BAER39,B3,BRBAERBDR003,isin
-B3::BAER39,BAER39,B3,us aerospace & defense,name
 B3::BAGG39,BAGG39,B3,BRBAGGBDR001,isin
 B3::BAIQ39,BAIQ39,B3,BRBAIQBDR006,isin
 B3::BALM3,BALM3,B3,BRBALMACNOR5,isin
@@ -5747,7 +5748,6 @@ B3::BITH11,BITH11,B3,hashdex nasdaq bitcoin ref rate fdo. ind. resp lim,name
 B3::BITI11,BITI11,B3,BRBITICTF010,isin
 B3::BITI11,BITI11,B3,it now bloomberg galaxy bitcoin fundo indice,name
 B3::BITO39,BITO39,B3,BRBITOBDR001,isin
-B3::BITO39,BITO39,B3,core s&p total us stock market,name
 B3::BIUS39,BIUS39,B3,BRBIUSBDR000,isin
 B3::BIUS39,BIUS39,B3,core universal bond,name
 B3::BIVB39,BIVB39,B3,BRBIVBBDR004,isin
@@ -8079,7 +8079,10 @@ BATS::ARKD,ARKD,BATS,US00214Q8649,isin
 BATS::ARKD,ARKD,BATS,ark diet q1 buffer,name
 BATS::ARKF,ARKF,BATS,US00214Q7088,isin
 BATS::ARKF,ARKF,BATS,ark fintech innovation,name
+BATS::ARKG,ARKG,BATS,US00214Q3020,isin
 BATS::ARKG,ARKG,BATS,ark genomic,name
+BATS::ARKK,ARKK,BATS,US00214Q1040,isin
+BATS::ARKK,ARKK,BATS,ark innovation,name
 BATS::ARKQ,ARKQ,BATS,US00214Q2030,isin
 BATS::ARKQ,ARKQ,BATS,ark autonomous technology & robotics,name
 BATS::ARKT,ARKT,BATS,ark q4 defined innovation,name
@@ -8404,6 +8407,7 @@ BATS::CORD,CORD,BATS,t-rex 2x inverse crwv target,name
 BATS::COSW,COSW,BATS,US77926X5288,isin
 BATS::COSW,COSW,BATS,roundhill cost weeklypay,name
 BATS::COWZ,COWZ,BATS,US69374H8815,isin
+BATS::COWZ,COWZ,BATS,pacer us cash cows 100,name
 BATS::COZX,COZX,BATS,US46092D3926,isin
 BATS::COZX,COZX,BATS,tradr 2x long corz,name
 BATS::CPSL,CPSL,BATS,US12811T7384,isin
@@ -8663,8 +8667,8 @@ BATS::FBCG,FBCG,BATS,US3160923526,isin
 BATS::FBCG,FBCG,BATS,fidelity blue chip growth,name
 BATS::FBCV,FBCV,BATS,US3160923450,isin
 BATS::FBCV,FBCV,BATS,fidelity blue chip value,name
+BATS::FBTC,FBTC,BATS,US3159481098,isin
 BATS::FBTC,FBTC,BATS,fidelity wise origin bitcoin,name
-BATS::FBTC,FBTC,BATS,fidelity physical bitcoin etp,name
 BATS::FBUF,FBUF,BATS,US31624J7375,isin
 BATS::FBUF,FBUF,BATS,fidelity dynamic buffered equity,name
 BATS::FCLD,FCLD,BATS,US3160922460,isin
@@ -8993,6 +8997,7 @@ BATS::IDVZ,IDVZ,BATS,opal international dividend income,name
 BATS::IEDI,IEDI,BATS,US46431W6637,isin
 BATS::IEDI,IEDI,BATS,evolved u.s. discretionary spending,name
 BATS::IEFA,IEFA,BATS,US46432F8427,isin
+BATS::IEFA,IEFA,BATS,core msci eafe,name
 BATS::IEO,IEO,BATS,US4642888519,isin
 BATS::IEO,IEO,BATS,u.s. oil & gas exploration & production,name
 BATS::IETC,IETC,BATS,US46431W6488,isin
@@ -9009,6 +9014,8 @@ BATS::IGLD,IGLD,BATS,ft cboe vest gold target income,name
 BATS::IGRO,IGRO,BATS,US46435G5247,isin
 BATS::IGRO,IGRO,BATS,international dividend growth,name
 BATS::IGV,IGV,BATS,US4642875151,isin
+BATS::IGV,IGV,BATS,expanded tech-software,name
+BATS::IGV,IGV,BATS,expanded tech-software sector,name
 BATS::IMF,IMF,BATS,US46127B1061,isin
 BATS::IMF,IMF,BATS,invesco managed futures strategy,name
 BATS::IMFL,IMFL,BATS,US46138J4379,isin
@@ -9048,6 +9055,8 @@ BATS::ISSB,ISSB,BATS,incomestkd 1x us stocks & 1x bitcoin premium,name
 BATS::ISVL,ISVL,BATS,US46436E5107,isin
 BATS::ISVL,ISVL,BATS,international developed small cap value factor,name
 BATS::ITA,ITA,BATS,US4642887602,isin
+BATS::ITA,ITA,BATS,us aerospace & defense,name
+BATS::ITA,ITA,BATS,u.s. aerospace & defense,name
 BATS::ITB,ITB,BATS,US4642887529,isin
 BATS::ITB,ITB,BATS,903000,wkn
 BATS::ITM,ITM,BATS,US92189H2013,isin
@@ -9411,6 +9420,7 @@ BATS::MSTZ,MSTZ,BATS,savvyshort -2x mstr,name
 BATS::MTRA,MTRA,BATS,US46127B3042,isin
 BATS::MTRA,MTRA,BATS,invesco international growth focus,name
 BATS::MTUM,MTUM,BATS,US46432F3964,isin
+BATS::MTUM,MTUM,BATS,msci usa momentum factor,name
 BATS::MUIB,MUIB,BATS,US25461H3747,isin
 BATS::MUIB,MUIB,BATS,direxion mu defined income boost,name
 BATS::MUNY,MUNY,BATS,US92204H4002,isin
@@ -9793,6 +9803,7 @@ BATS::QTOC,QTOC,BATS,US45782C1282,isin
 BATS::QUA,QUA,BATS,US21874J3133,isin
 BATS::QUA,QUA,BATS,corgi qbts 2x,name
 BATS::QUAL,QUAL,BATS,US46432F3394,isin
+BATS::QUAL,QUAL,BATS,msci usa quality factor,name
 BATS::QUBX,QUBX,BATS,US46152A7349,isin
 BATS::QUBX,QUBX,BATS,tradr 2x long qbts tradr 2x long qubt,name
 BATS::QUVU,QUVU,BATS,US41653L8596,isin
@@ -10242,6 +10253,7 @@ BATS::USLX,USLX,BATS,corgi u.s. large-cap 2x,name
 BATS::USMF,USMF,BATS,US97717Y8571,isin
 BATS::USMF,USMF,BATS,u.s. multifactor,name
 BATS::USMV,USMV,BATS,US46429B6974,isin
+BATS::USMV,USMV,BATS,msci usa min vol factor,name
 BATS::USMX,USMX,BATS,US21874W5040,isin
 BATS::USMX,USMX,BATS,corgi u.s. mid-cap 2x,name
 BATS::UUUC,UUUC,BATS,US21874J3398,isin
@@ -30761,7 +30773,6 @@ FSX::P2I,P2I,FSX,ID1000090202,isin
 FSX::P2I,P2I,FSX,polychem indonesia tbk,name
 FSX::P3G,P3G,FSX,SG1Q52922370,isin
 FSX::P3G,P3G,FSX,suntec real estate investment trust,name
-FSX::P500,P500,FSX,DE000A1JM6F5,isin
 FSX::P7J,P7J,FSX,CA64157G2009,isin
 FSX::P8T,P8T,FSX,CA7807641062,isin
 FSX::P8T,P8T,FSX,royalties,name
@@ -49642,7 +49653,6 @@ LSE::COST,COST,LSE,costain group,name
 LSE::COTN,COTN,LSE,GB00B15KXT11,isin
 LSE::COTN,COTN,LSE,cotton,name
 LSE::COWZ,COWZ,LSE,IE000IL7PZ05,isin
-LSE::COWZ,COWZ,LSE,pacer us cash cows 100,name
 LSE::CP9G,CP9G,LSE,LU1602145036,isin
 LSE::CP9G,CP9G,LSE,amundi msci pacific ex japan,name
 LSE::CPAI,CPAI,LSE,GB00BV2FG348,isin
@@ -50025,8 +50035,8 @@ LSE::EGT,EGT,LSE,european green transition,name
 LSE::EHYB,EHYB,LSE,IE00BKWD3966,isin
 LSE::EHYG,EHYG,LSE,IE000YZVB4R7,isin
 LSE::EIMI,EIMI,LSE,IE00BKM4GZ66,isin
+LSE::EIMI,EIMI,LSE,core msci emerging markets imi,name
 LSE::EIMU,EIMU,LSE,IE00BD45KH83,isin
-LSE::EIMU,EIMU,LSE,core msci em imi,name
 LSE::EJFI,EJFI,LSE,JE00BF0D1M25,isin
 LSE::EJFZ,EJFZ,LSE,JE00BRZSNL95,isin
 LSE::EKF,EKF,LSE,GB0031509804,isin
@@ -50158,6 +50168,7 @@ LSE::EQJS,EQJS,LSE,IE00BMD8KP97,isin
 LSE::EQJS,EQJS,LSE,invesco nasdaq next generation 100,name
 LSE::EQQD,EQQD,LSE,IE000RUF4QN8,isin
 LSE::EQQQ,EQQQ,LSE,IE0032077012,isin
+LSE::EQQQ,EQQQ,LSE,invesco eqqq nasdaq-100,name
 LSE::EQQS,EQQS,LSE,IE00BNRQM384,isin
 LSE::EQT,EQT,LSE,IE00BH3XCL94,isin
 LSE::EQT,EQT,LSE,eqtec,name
@@ -50539,7 +50550,7 @@ LSE::FVEN,FVEN,LSE,foresight ventures vct,name
 LSE::FVV,FVV,LSE,GB00BP2RHT10,isin
 LSE::FVV,FVV,LSE,fuel ventures vct,name
 LSE::FWRA,FWRA,LSE,IE000716YHJ7,isin
-LSE::FWRA,FWRA,LSE,invesco ftse all-world accumalation,name
+LSE::FWRA,FWRA,LSE,invesco ftse all-world accumulation,name
 LSE::FWSD,FWSD,LSE,IE000UJC4MR1,isin
 LSE::FWSD,FWSD,LSE,invesco markets ii ivz ftse wld pfhdg,name
 LSE::FWT,FWT,LSE,GB00BKF2JH04,isin
@@ -51424,6 +51435,7 @@ LSE::ISDU,ISDU,LSE,msci usa islamic,name
 LSE::ISDW,ISDW,LSE,IE00B27YCN58,isin
 LSE::ISDW,ISDW,LSE,msci world islamic,name
 LSE::ISF,ISF,LSE,IE0005042456,isin
+LSE::ISF,ISF,LSE,core ftse 100,name
 LSE::ISFD,ISFD,LSE,IE00BYZ28W67,isin
 LSE::ISFE,ISFE,LSE,IE00B2QWDR12,isin
 LSE::ISFE,ISFE,LSE,msci ac far east ex-japan small cap,name
@@ -51484,6 +51496,7 @@ LSE::IUSU,IUSU,LSE,v public - ishares s&p 500 utilities sector,name
 LSE::IUVD,IUVD,LSE,IE00BFF5RX68,isin
 LSE::IUVF,IUVF,LSE,IE00BD1F4M44,isin
 LSE::IWDA,IWDA,LSE,IE00B4L5Y983,isin
+LSE::IWDA,IWDA,LSE,core msci world,name
 LSE::IWDE,IWDE,LSE,IE00B441G979,isin
 LSE::IWDG,IWDG,LSE,IE00BD45YS76,isin
 LSE::IWFM,IWFM,LSE,IE00BP3QZ825,isin
@@ -53300,6 +53313,7 @@ LSE::SPX5,SPX5,LSE,IE00B6YX5C33,isin
 LSE::SPXD,SPXD,LSE,IE00BYML9W36,isin
 LSE::SPXL,SPXL,LSE,IE000XZSV718,isin
 LSE::SPXP,SPXP,LSE,IE00B3YCGJ38,isin
+LSE::SPXP,SPXP,LSE,invesco s&p 500,name
 LSE::SPYE,SPYE,LSE,XS2297550308,isin
 LSE::SPYO,SPYO,LSE,XS2875106242,isin
 LSE::SPYO,SPYO,LSE,incomeshares s&p500 options 0dte etp,name
@@ -54107,11 +54121,13 @@ LSE::VTY,VTY,LSE,vistry group,name
 LSE::VUAA,VUAA,LSE,IE00BFMXXD54,isin
 LSE::VUAA,VUAA,LSE,vanguard s&p 500 accumulation,name
 LSE::VUKE,VUKE,LSE,IE00B810Q511,isin
+LSE::VUKE,VUKE,LSE,vanguard ftse 100,name
 LSE::VUKG,VUKG,LSE,IE00BFMXYP42,isin
 LSE::VUL,VUL,LSE,GB00BTQLZH16,isin
 LSE::VUL,VUL,LSE,vulcan two group,name
 LSE::VUL,VUL,LSE,vulcan two,name
 LSE::VUSA,VUSA,LSE,IE00B3XXRP09,isin
+LSE::VUSA,VUSA,LSE,vanguard s&p 500 distributing,name
 LSE::VWRA,VWRA,LSE,IE00BK5BQT80,isin
 LSE::VWRA,VWRA,LSE,vanguard ftse all-world accumulation,name
 LSE::VWRD,VWRD,LSE,IE00B3RBWM25,isin
@@ -58450,6 +58466,7 @@ NASDAQ::ESYN,ESYN,NASDAQ,US44852G3092,isin
 NASDAQ::ESYN,ESYN,NASDAQ,enersyn global,name
 NASDAQ::ETEC,ETEC,NASDAQ,US2924681057,isin
 NASDAQ::ETEC,ETEC,NASDAQ,breakthrough environmental solutions,name
+NASDAQ::ETHA,ETHA,NASDAQ,US46438R2040,isin
 NASDAQ::ETHA,ETHA,NASDAQ,ethereum,name
 NASDAQ::ETHB,ETHB,NASDAQ,staked ethereum of fractional undivided beneficial interest,name
 NASDAQ::ETON,ETON,NASDAQ,US29772L1089,isin
@@ -62317,7 +62334,7 @@ NASDAQ::NVDD,NVDD,NASDAQ,direxion nvda bear 1x,name
 NASDAQ::NVDG,NVDG,NASDAQ,US8829276760,isin
 NASDAQ::NVDG,NVDG,NASDAQ,2x long nvda,name
 NASDAQ::NVDL,NVDL,NASDAQ,US38747R8271,isin
-NASDAQ::NVDL,NVDL,NASDAQ,graniteshares 1.5x long nvda,name
+NASDAQ::NVDL,NVDL,NASDAQ,graniteshares 2x long nvda,name
 NASDAQ::NVDS,NVDS,NASDAQ,US46144X8424,isin
 NASDAQ::NVDS,NVDS,NASDAQ,axs 1.25x nvda bear,name
 NASDAQ::NVDU,NVDU,NASDAQ,US25461A8339,isin
@@ -63512,6 +63529,7 @@ NASDAQ::QQQI,QQQI,NASDAQ,US78433H6751,isin
 NASDAQ::QQQI,QQQI,NASDAQ,neos nasdaq 100 high income,name
 NASDAQ::QQQJ,QQQJ,NASDAQ,US46138G6310,isin
 NASDAQ::QQQM,QQQM,NASDAQ,US46138G6492,isin
+NASDAQ::QQQM,QQQM,NASDAQ,invesco nasdaq 100,name
 NASDAQ::QQQP,QQQP,NASDAQ,US46144X1494,isin
 NASDAQ::QQQP,QQQP,NASDAQ,tradr 2x long triple q quarterly,name
 NASDAQ::QQQS,QQQS,NASDAQ,US46138G4828,isin
@@ -69125,6 +69143,8 @@ NYSE ARCA::AFSM,AFSM,NYSE ARCA,US33740F7978,isin
 NYSE ARCA::AFSM,AFSM,NYSE ARCA,active factor small cap,name
 NYSE ARCA::AFSM,AFSM,NYSE ARCA,first active factor small cap,name
 NYSE ARCA::AGG,AGG,NYSE ARCA,US4642872265,isin
+NYSE ARCA::AGG,AGG,NYSE ARCA,core us aggregate bond,name
+NYSE ARCA::AGG,AGG,NYSE ARCA,core u.s. aggregate bond,name
 NYSE ARCA::AGGH,AGGH,NYSE ARCA,US82889N7232,isin
 NYSE ARCA::AGGH,AGGH,NYSE ARCA,simplify aggregate bond,name
 NYSE ARCA::AGGM,AGGM,NYSE ARCA,1-10 year u.s. aggregate bond,name
@@ -69432,6 +69452,7 @@ NYSE ARCA::BIDD,BIDD,NYSE ARCA,international dividend active,name
 NYSE ARCA::BIGY,BIGY,NYSE ARCA,US88636R7504,isin
 NYSE ARCA::BIGY,BIGY,NYSE ARCA,yieldmax target 12 big 50 option income,name
 NYSE ARCA::BIL,BIL,NYSE ARCA,US78468R6633,isin
+NYSE ARCA::BIL,BIL,NYSE ARCA,bloomberg 1-3 month t-bill,name
 NYSE ARCA::BILD,BILD,NYSE ARCA,US5559271029,isin
 NYSE ARCA::BILD,BILD,NYSE ARCA,nomura global listed infrastructure,name
 NYSE ARCA::BILS,BILS,NYSE ARCA,US78468R5239,isin
@@ -70422,6 +70443,7 @@ NYSE ARCA::ETHD,ETHD,NYSE ARCA,US74349Y7958,isin
 NYSE ARCA::ETHD,ETHD,NYSE ARCA,ultrashort ether,name
 NYSE ARCA::ETHE,ETHE,NYSE ARCA,US3896381072,isin
 NYSE ARCA::ETHE,ETHE,NYSE ARCA,grayscale ethereum staking,name
+NYSE ARCA::ETHE,ETHE,NYSE ARCA,grayscale ethereum,name
 NYSE ARCA::ETHO,ETHO,NYSE ARCA,US26924G8886,isin
 NYSE ARCA::ETHT,ETHT,NYSE ARCA,US74349Y5713,isin
 NYSE ARCA::ETHT,ETHT,NYSE ARCA,ultra ether,name
@@ -70956,6 +70978,7 @@ NYSE ARCA::GDOC,GDOC,NYSE ARCA,goldman sachs future health care equity,name
 NYSE ARCA::GDOG,GDOG,NYSE ARCA,US3899231035,isin
 NYSE ARCA::GDOG,GDOG,NYSE ARCA,grayscale dogecoin,name
 NYSE ARCA::GDX,GDX,NYSE ARCA,US92189F1066,isin
+NYSE ARCA::GDX,GDX,NYSE ARCA,vaneck gold miners,name
 NYSE ARCA::GDXD,GDXD,NYSE ARCA,US0636796411,isin
 NYSE ARCA::GDXD,GDXD,NYSE ARCA,gold miners -3x inverse leveraged etns,name
 NYSE ARCA::GDXD,GDXD,NYSE ARCA,gold miners 3x bear,name
@@ -71276,6 +71299,7 @@ NYSE ARCA::HYEM,HYEM,NYSE ARCA,US92189F3534,isin
 NYSE ARCA::HYFI,HYFI,NYSE ARCA,US00039J6082,isin
 NYSE ARCA::HYFI,HYFI,NYSE ARCA,high yield,name
 NYSE ARCA::HYG,HYG,NYSE ARCA,US4642885135,isin
+NYSE ARCA::HYG,HYG,NYSE ARCA,iboxx high yield corporate bond,name
 NYSE ARCA::HYGH,HYGH,NYSE ARCA,US46431W6066,isin
 NYSE ARCA::HYGV,HYGV,NYSE ARCA,US33939L6627,isin
 NYSE ARCA::HYGV,HYGV,NYSE ARCA,high yield value-scored bond,name
@@ -71398,6 +71422,7 @@ NYSE ARCA::IDX,IDX,NYSE ARCA,vaneck indonesia,name
 NYSE ARCA::IDYN,IDYN,NYSE ARCA,US09290C6811,isin
 NYSE ARCA::IDYN,IDYN,NYSE ARCA,international equity factor rotation active,name
 NYSE ARCA::IEMG,IEMG,NYSE ARCA,US46434G1031,isin
+NYSE ARCA::IEMG,IEMG,NYSE ARCA,core msci emerging markets,name
 NYSE ARCA::IETH,IETH,NYSE ARCA,US0917488712,isin
 NYSE ARCA::IETH,IETH,NYSE ARCA,bitwise ethereum option income strategy,name
 NYSE ARCA::IEUR,IEUR,NYSE ARCA,US46434V7385,isin
@@ -71440,11 +71465,13 @@ NYSE ARCA::IIGD,IIGD,NYSE ARCA,US46139W5022,isin
 NYSE ARCA::IIGD,IIGD,NYSE ARCA,invesco investment grade defensive,name
 NYSE ARCA::IJAN,IJAN,NYSE ARCA,US45782C5242,isin
 NYSE ARCA::IJH,IJH,NYSE ARCA,US4642875078,isin
+NYSE ARCA::IJH,IJH,NYSE ARCA,core s&p mid-cap,name
 NYSE ARCA::IJJ,IJJ,NYSE ARCA,US4642877058,isin
 NYSE ARCA::IJJ,IJJ,NYSE ARCA,s&p mid-cap 400 value,name
 NYSE ARCA::IJK,IJK,NYSE ARCA,US4642876068,isin
 NYSE ARCA::IJK,IJK,NYSE ARCA,s&p mid-cap 400 growth,name
 NYSE ARCA::IJR,IJR,NYSE ARCA,US4642878049,isin
+NYSE ARCA::IJR,IJR,NYSE ARCA,core s&p small-cap,name
 NYSE ARCA::IJS,IJS,NYSE ARCA,US4642878791,isin
 NYSE ARCA::IJUL,IJUL,NYSE ARCA,US45782C7222,isin
 NYSE ARCA::IJUN,IJUN,NYSE ARCA,US45783Y2853,isin
@@ -71588,6 +71615,8 @@ NYSE ARCA::ITE,ITE,NYSE ARCA,bloomberg barclays intermediate term treasury,name
 NYSE ARCA::ITEQ,ITEQ,NYSE ARCA,US26924G8704,isin
 NYSE ARCA::ITEQ,ITEQ,NYSE ARCA,amplify bluestar israel technology,name
 NYSE ARCA::ITOT,ITOT,NYSE ARCA,US4642871507,isin
+NYSE ARCA::ITOT,ITOT,NYSE ARCA,core s&p total us stock market,name
+NYSE ARCA::ITOT,ITOT,NYSE ARCA,core s&p total u.s. stock market,name
 NYSE ARCA::IVE,IVE,NYSE ARCA,US4642874089,isin
 NYSE ARCA::IVES,IVES,NYSE ARCA,US9479131099,isin
 NYSE ARCA::IVES,IVES,NYSE ARCA,dan ives wedbush ai revolution,name
@@ -71604,6 +71633,7 @@ NYSE ARCA::IVOV,IVOV,NYSE ARCA,vanguard s&p mid-cap 400 value,name
 NYSE ARCA::IVRS,IVRS,NYSE ARCA,US46436E2476,isin
 NYSE ARCA::IVRS,IVRS,NYSE ARCA,future metaverse tech and communications,name
 NYSE ARCA::IVV,IVV,NYSE ARCA,US4642872000,isin
+NYSE ARCA::IVV,IVV,NYSE ARCA,core s&p 500,name
 NYSE ARCA::IVW,IVW,NYSE ARCA,US4642873099,isin
 NYSE ARCA::IWB,IWB,NYSE ARCA,US4642876225,isin
 NYSE ARCA::IWB,IWB,NYSE ARCA,russell 1000,name
@@ -71689,6 +71719,7 @@ NYSE ARCA::JEDI,JEDI,NYSE ARCA,US26922B3942,isin
 NYSE ARCA::JEDI,JEDI,NYSE ARCA,defiance drone and modern warfare,name
 NYSE ARCA::JEDI,JEDI,NYSE ARCA,modern warfare,name
 NYSE ARCA::JEPI,JEPI,NYSE ARCA,US46641Q3323,isin
+NYSE ARCA::JEPI,JEPI,NYSE ARCA,jpmorgan equity premium income,name
 NYSE ARCA::JEPY,JEPY,NYSE ARCA,US88636J1473,isin
 NYSE ARCA::JEPY,JEPY,NYSE ARCA,defiance s&p 500 enhanced options 0dte income,name
 NYSE ARCA::JETD,JETD,NYSE ARCA,US0636794846,isin
@@ -71927,6 +71958,7 @@ NYSE ARCA::KURE,KURE,NYSE ARCA,kraneshares msci all china health care,name
 NYSE ARCA::KVLE,KVLE,NYSE ARCA,US5007676456,isin
 NYSE ARCA::KVLE,KVLE,NYSE ARCA,kfa value line dynamic core equity,name
 NYSE ARCA::KWEB,KWEB,NYSE ARCA,US5007673065,isin
+NYSE ARCA::KWEB,KWEB,NYSE ARCA,kraneshares csi china internet,name
 NYSE ARCA::KWH,KWH,NYSE ARCA,US36275C1053,isin
 NYSE ARCA::KWH,KWH,NYSE ARCA,gmo power infrastructure,name
 NYSE ARCA::KXI,KXI,NYSE ARCA,US4642887370,isin
@@ -72007,6 +72039,7 @@ NYSE ARCA::LPSV,LPSV,NYSE ARCA,lone peak smid value,name
 NYSE ARCA::LQAI,LQAI,NYSE ARCA,US30151E5666,isin
 NYSE ARCA::LQAI,LQAI,NYSE ARCA,lg qraft ai-powered u.s. large cap core,name
 NYSE ARCA::LQD,LQD,NYSE ARCA,US4642872422,isin
+NYSE ARCA::LQD,LQD,NYSE ARCA,iboxx investment grade corporate bond,name
 NYSE ARCA::LQDB,LQDB,NYSE ARCA,US46436E4944,isin
 NYSE ARCA::LQDB,LQDB,NYSE ARCA,bbb rated corporate bond,name
 NYSE ARCA::LQDH,LQDH,NYSE ARCA,US46431W7056,isin
@@ -72982,6 +73015,7 @@ NYSE ARCA::RSMR,RSMR,NYSE ARCA,US33740U3986,isin
 NYSE ARCA::RSMV,RSMV,NYSE ARCA,US53656G3323,isin
 NYSE ARCA::RSMV,RSMV,NYSE ARCA,relative strength managed volatility strategy,name
 NYSE ARCA::RSP,RSP,NYSE ARCA,US46137V3574,isin
+NYSE ARCA::RSP,RSP,NYSE ARCA,invesco s&p 500 equal weight,name
 NYSE ARCA::RSPC,RSPC,NYSE ARCA,US46137Y6095,isin
 NYSE ARCA::RSPC,RSPC,NYSE ARCA,invesco s&p 500 equal weight communication services,name
 NYSE ARCA::RSPD,RSPD,NYSE ARCA,US46137V3814,isin
@@ -73929,6 +73963,7 @@ NYSE ARCA::VEXC,VEXC,NYSE ARCA,vanguard emerging markets ex-china,name
 NYSE ARCA::VFH,VFH,NYSE ARCA,US92204A4058,isin
 NYSE ARCA::VFH,VFH,NYSE ARCA,vanguard financials,name
 NYSE ARCA::VGK,VGK,NYSE ARCA,US9220428745,isin
+NYSE ARCA::VGK,VGK,NYSE ARCA,vanguard ftse europe,name
 NYSE ARCA::VGRO,VGRO,NYSE ARCA,US92790A7853,isin
 NYSE ARCA::VGRO,VGRO,NYSE ARCA,virtus silvant growth opportunities,name
 NYSE ARCA::VGT,VGT,NYSE ARCA,US92204A7028,isin
@@ -73972,6 +74007,7 @@ NYSE ARCA::VO,VO,NYSE ARCA,vanguard mid-cap,name
 NYSE ARCA::VOE,VOE,NYSE ARCA,US9229085124,isin
 NYSE ARCA::VOE,VOE,NYSE ARCA,vanguard mid-cap value,name
 NYSE ARCA::VOO,VOO,NYSE ARCA,US9229083632,isin
+NYSE ARCA::VOO,VOO,NYSE ARCA,vanguard s&p 500,name
 NYSE ARCA::VOOG,VOOG,NYSE ARCA,US9219325050,isin
 NYSE ARCA::VOOG,VOOG,NYSE ARCA,vanguard s&p 500 growth,name
 NYSE ARCA::VOOV,VOOV,NYSE ARCA,US9219327031,isin
@@ -74026,6 +74062,7 @@ NYSE ARCA::VUSI,VUSI,NYSE ARCA,voya ultra short income,name
 NYSE ARCA::VV,VV,NYSE ARCA,US9229086379,isin
 NYSE ARCA::VV,VV,NYSE ARCA,vanguard large-cap,name
 NYSE ARCA::VWO,VWO,NYSE ARCA,US9220428588,isin
+NYSE ARCA::VWO,VWO,NYSE ARCA,vanguard ftse emerging markets,name
 NYSE ARCA::VXF,VXF,NYSE ARCA,US9229086528,isin
 NYSE ARCA::VXF,VXF,NYSE ARCA,vanguard extended market,name
 NYSE ARCA::VYLD,VYLD,NYSE ARCA,US48135NTM82,isin
@@ -76527,7 +76564,6 @@ NYSE::ETD,ETD,NYSE,US2976021046,isin
 NYSE::ETD,ETD,NYSE,ethan allen interiors,name
 NYSE::ETD,ETD,NYSE,ethan allen,name
 NYSE::ETHE,ETHE,NYSE,grayscale ethereum eth,name
-NYSE::ETHE,ETHE,NYSE,grayscale ethereum,name
 NYSE::ETHE,ETHE,NYSE,grayscale eth,name
 NYSE::ETN,ETN,NYSE,IE00B8KQN827,isin
 NYSE::ETN,ETN,NYSE,A1J88N,wkn
@@ -103525,6 +103561,8 @@ TSE::131A,131A,TSE,JP3346940004,isin
 TSE::131A,131A,TSE,ccn group,name
 TSE::1320,1320,TSE,JP3027640006,isin
 TSE::1320,1320,TSE,ifreeetf nikkei225 yearly dividend type,name
+TSE::1321,1321,TSE,JP3027650005,isin
+TSE::1321,1321,TSE,next funds nikkei 225,name
 TSE::1322,1322,TSE,JP3046760009,isin
 TSE::1322,1322,TSE,listed china a panda e csi300,name
 TSE::1328,1328,TSE,JP3046490003,isin
@@ -114687,6 +114725,7 @@ TSX::VIGG,VIGG,TSX,CA92214A1066,isin
 TSX::VIGG,VIGG,TSX,vanguard developed ex-north america dividend appreciation,name
 TSX::VISA,VISA,TSX,CA92790D1024,isin
 TSX::VIU,VIU,TSX,CA92204G1054,isin
+TSX::VIU,VIU,TSX,vanguard ftse developed all cap ex north america,name
 TSX::VLB,VLB,TSX,CA92211H1047,isin
 TSX::VLB,VLB,TSX,vanguard canadian long-term bond,name
 TSX::VLE,VLE,TSX,CA9191444020,isin
@@ -114785,7 +114824,6 @@ TSX::X,X,TSX,CA87262K1057,isin
 TSX::X,X,TSX,A1J4GR,wkn
 TSX::X,X,TSX,tmx group,name
 TSX::XAD,XAD,TSX,CA46390A1084,isin
-TSX::XAD,XAD,TSX,u.s. aerospace & defense,name
 TSX::XAGG,XAGG,TSX,CA46437M1077,isin
 TSX::XAGG.U,XAGG.U,TSX,CA46437M2067,isin
 TSX::XAGH,XAGH,TSX,CA46437J1049,isin
@@ -114835,6 +114873,7 @@ TSX::XDV,XDV,TSX,canadian select dividend,name
 TSX::XEB,XEB,TSX,CA46432A1084,isin
 TSX::XEC,XEC,TSX,CA46434U1021,isin
 TSX::XEF,XEF,TSX,CA46434T1057,isin
+TSX::XEF,XEF,TSX,core msci eafe imi,name
 TSX::XEG,XEG,TSX,CA46428C1005,isin
 TSX::XEG,XEG,TSX,s&p/tsx capped energy,name
 TSX::XEH,XEH,TSX,CA46434X1069,isin
@@ -114913,7 +114952,6 @@ TSX::XMM,XMM,TSX,CA46433Y1051,isin
 TSX::XMM,XMM,TSX,msci min vol emerging markets,name
 TSX::XMS,XMS,TSX,CA46436R1073,isin
 TSX::XMTM,XMTM,TSX,CA46436L1004,isin
-TSX::XMTM,XMTM,TSX,msci usa momentum factor,name
 TSX::XMU,XMU,TSX,CA46433S1083,isin
 TSX::XMV,XMV,TSX,CA46433N1096,isin
 TSX::XMV,XMV,TSX,msci min vol canada,name
@@ -114925,7 +114963,6 @@ TSX::XPF,XPF,TSX,s&p/tsx north american preferred stock,name
 TSX::XQB,XQB,TSX,CA46432H1038,isin
 TSX::XQB,XQB,TSX,high quality canadian bond,name
 TSX::XQLT,XQLT,TSX,CA46436J1057,isin
-TSX::XQLT,XQLT,TSX,msci usa quality factor,name
 TSX::XQQ,XQQ,TSX,CA46431V1031,isin
 TSX::XQQU,XQQU,TSX,CA46438E2033,isin
 TSX::XRB,XRB,TSX,CA46431C1059,isin
@@ -115002,6 +115039,8 @@ TSX::XUSR,XUSR,TSX,CA46437Q1081,isin
 TSX::XUT,XUT,TSX,CA46431M1032,isin
 TSX::XUT,XUT,TSX,s&p/tsx capped utilities,name
 TSX::XUU,XUU,TSX,CA46435C1014,isin
+TSX::XUU,XUU,TSX,core s&p us total market,name
+TSX::XUU,XUU,TSX,core s&p u.s. total market,name
 TSX::XVLU,XVLU,TSX,CA46437L1094,isin
 TSX::XVLU,XVLU,TSX,msci usa value factor,name
 TSX::XWD,XWD,TSX,CA46430Y1088,isin
@@ -121230,7 +121269,7 @@ XETRA::AIXA,AIXA,XETRA,aixtron,name
 XETRA::AJ91,AJ91,XETRA,DE000A1A6WE6,isin
 XETRA::AJ91,AJ91,XETRA,doccheck,name
 XETRA::AK8A,AK8A,XETRA,LU2606055775,isin
-XETRA::AK8A,AK8A,XETRA,amundi global agg sri 1-5 - accumalation,name
+XETRA::AK8A,AK8A,XETRA,amundi global agg sri 1-5 - accumulation,name
 XETRA::AK8B,AK8B,XETRA,LU2611732806,isin
 XETRA::AK8B,AK8B,XETRA,amundi global government tilted green bond,name
 XETRA::AK8E,AK8E,XETRA,LU2780871401,isin
@@ -122638,6 +122677,7 @@ XETRA::EXJ0,EXJ0,XETRA,readcrest capital,name
 XETRA::EXL,EXL,XETRA,DE000A0LR9G9,isin
 XETRA::EXL,EXL,XETRA,exasol,name
 XETRA::EXS1,EXS1,XETRA,DE0005933931,isin
+XETRA::EXS1,EXS1,XETRA,core dax,name
 XETRA::EXS2,EXS2,XETRA,DE0005933972,isin
 XETRA::EXS3,EXS3,XETRA,DE0005933923,isin
 XETRA::EXSA,EXSA,XETRA,DE0002635307,isin
@@ -122848,7 +122888,7 @@ XETRA::FWD,FWD,XETRA,LU3322522163,isin
 XETRA::FWD,FWD,XETRA,global disruptors,name
 XETRA::FWD,FWD,XETRA,sicav i global disruptors,name
 XETRA::FWEA,FWEA,XETRA,IE0006VDD4K1,isin
-XETRA::FWEA,FWEA,XETRA,invesco ftse all-world pfhdg accumalation,name
+XETRA::FWEA,FWEA,XETRA,invesco ftse all-world pfhdg accumulation,name
 XETRA::FXEU,FXEU,XETRA,IE00BD5HBS12,isin
 XETRA::FXEU,FXEU,XETRA,first factor fx,name
 XETRA::FXT,FXT,XETRA,DE000A40ET88,isin
@@ -124321,7 +124361,6 @@ XETRA::SVE,SVE,XETRA,shareholder value,name
 XETRA::SWA,SWA,XETRA,DE0007229007,isin
 XETRA::SWA,SWA,XETRA,schloss wachenheim,name
 XETRA::SWWD,SWWD,XETRA,IE000P60WPS6,isin
-XETRA::SWWD,SWWD,XETRA,state street spdr msci world,name
 XETRA::SXR0,SXR0,XETRA,IE00BYXPXL17,isin
 XETRA::SXRR,SXRR,XETRA,IE00BF11F458,isin
 XETRA::SY1,SY1,XETRA,DE000SYM9999,isin
