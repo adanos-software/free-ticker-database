@@ -19,6 +19,7 @@ try:
     )
     from scripts.lib.official_change_evidence import build_official_change_evidence
     from scripts.lib.official_change_evidence import is_valid_isin
+    from scripts.lib.us_exchange_directory import load_sec_exchange_payload
 except ModuleNotFoundError:  # pragma: no cover
     from lib.merge_evidence import (
         CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
@@ -27,6 +28,7 @@ except ModuleNotFoundError:  # pragma: no cover
     )
     from lib.official_change_evidence import build_official_change_evidence
     from lib.official_change_evidence import is_valid_isin
+    from lib.us_exchange_directory import load_sec_exchange_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -396,6 +398,18 @@ def evaluate(
     }
 
 
+def _load_sec_exchange_payload(cache_path: Path) -> dict[str, Any] | None:
+    if cache_path.exists():
+        try:
+            return json.loads(cache_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            pass
+    try:
+        return load_sec_exchange_payload()
+    except Exception:
+        return None
+
+
 def write_report(report: dict[str, Any]) -> None:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     (REPORTS_DIR / "safe_merge.json").write_text(
@@ -419,6 +433,11 @@ def main() -> None:
     parser.add_argument("--observed-at", default="")
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
+    reviewed_transition_rows = (
+        load_csv(args.reviewed_listing_transitions)
+        if args.reviewed_listing_transitions.exists()
+        else []
+    )
     report = evaluate(
         load_csv(args.before), load_csv(args.after),
         load_csv(args.events) if args.events.exists() else [],
@@ -431,16 +450,8 @@ def main() -> None:
             if args.previous_official_reference and args.previous_official_reference.exists()
             else []
         ),
-        reviewed_transition_rows=(
-            load_csv(args.reviewed_listing_transitions)
-            if args.reviewed_listing_transitions.exists()
-            else []
-        ),
-        sec_exchange_payload=(
-            json.loads(args.sec_exchange_cache.read_text(encoding="utf-8"))
-            if args.sec_exchange_cache.exists()
-            else None
-        ),
+        reviewed_transition_rows=reviewed_transition_rows,
+        sec_exchange_payload=_load_sec_exchange_payload(args.sec_exchange_cache),
         reviewed_transition_source_report=_display_path(args.reviewed_listing_transitions),
     )
     write_report(report)
