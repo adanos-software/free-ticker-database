@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-10-19T14:58:37Z
+Generated: 2026-10-26T14:34:10Z
 
 **delisting_detected: True**
 
 Markets checked: US, ASX, NSE_IN, US_NASDAQ_DELETES
 Markets skipped: TSE (fetch failed: XLRDError); BSE_IN (fetch failed: JSONDecodeError: Expecting value: line 1 column 1 (char 0))
 
-Candidates: 224 (delisted=4, suspended=0, master_absent=220)
+Candidates: 229 (delisted=1, suspended=0, master_absent=228)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. BSE ListofScripData Delisted rows are drop-ready; Nasdaq Trader Delete rows require manual corporate-action review; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -68,6 +68,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | AREB | master_absent | American Rebel Holdings Inc | US02919L8853 |
 | NASDAQ | ASNS | master_absent | Actelis Networks Inc. | US00503R5081 |
 | NASDAQ | ATAI | master_absent | AtaiBeckley Inc. | NL0015000DX5 |
+| NASDAQ | ATII | master_absent | Archimedes Tech SPAC Partners II Co. Ord | KYG045371096 |
 | NASDAQ | BAYA | master_absent | Bayview Acquisition Corp Class A Ordinar | KY07323B1007 |
 | NASDAQ | BCAR | master_absent | D. Boral ARC Acquisition I Corp. Class A | VGG2616F1018 |
 | NASDAQ | BCOW | master_absent | 1895 of Wisconsin Inc Bancorp | US28253R1059 |
@@ -77,7 +78,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | BRNS | master_absent | Barinthus Biotherapeutics plc | US91864C1071 |
 | NASDAQ | CCIX | master_absent | Churchill Capital Corp IX | KYG213011094 |
 | NASDAQ | CCRN | master_absent | Cross Country Healthcare Inc | US2274831047 |
-| NASDAQ | CECO | delisted | CECO Environmental Corp. | US1251411013 |
 | NASDAQ | CEPT | master_absent | Cantor Equity Partners II, Inc. | KYG1827K1076 |
 | NASDAQ | CIMG | master_absent | CIMG Inc | US67073S3076 |
 | NASDAQ | CIZN | master_absent | Citizens Holding Company | US1747151025 |
@@ -110,7 +110,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | HEPA | master_absent | Hepion Pharmaceuticals Inc | US4268971045 |
 | NASDAQ | HKIT | master_absent | Hitek Global Inc. Ordinary Share | KYG451391216 |
 | NASDAQ | HWH | master_absent | HWH International Inc | US44852G1013 |
-| NASDAQ | IBOC | delisted | International Bancshares Corporation | US4590441030 |
 | NASDAQ | IPCX | master_absent | Inflection Point Acquisition Corp. III C | KYG478751020 |
 | NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
 | NASDAQ | KVAC | master_absent | Keen Vision Acquisition Corporation Ordi | VGG524431191 |
@@ -154,6 +153,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | RITR | master_absent | Reitar Logtech Holdings Limited Ordinary | KYG7486B1068 |
 | NASDAQ | RVPH | master_absent | Reviva Pharmaceuticals Holdings Inc. | US76152G2093 |
 | NASDAQ | SDM | master_absent | Smart Digital Group Limited Ordinary Sha | KYG5006S1049 |
+| NASDAQ | SDST | master_absent | Stardust Power Inc. | US8549362007 |
 | NASDAQ | SGMO | master_absent | Sangamo Therapeutics Inc | US8006771062 |
 | NASDAQ | SGRP | master_absent | SPAR Group Inc | US7849331035 |
 | NASDAQ | SKK | master_absent | SKK Holdings Limited |  |
@@ -174,6 +174,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | VACH | master_absent | Voyager Acquisition Corp |  |
 | NASDAQ | VRME | master_absent | VerifyMe Inc | US92346X2062 |
 | NASDAQ | VSEE | master_absent | VSee Health, Inc. | US92919Y1029 |
+| NASDAQ | VSME | master_absent | VS Media Holdings Limited Class A Ordina | VGG9517U1113 |
 | NASDAQ | VSTD | master_absent | Vestand Inc. | US98740Y3027 |
 | NASDAQ | VXRT | master_absent | Vaxart Inc | US92243A2006 |
 | NASDAQ | WALD | master_absent | Waldencast Acquisition Corp | KYG9460C1006 |
@@ -186,21 +187,22 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NSE_IN | AURIGROW | master_absent | Auri Grow India Limited | INE925Y01036 |
 | NSE_IN | JBCHEPHARM | master_absent | JB Chemicals & Pharmaceuticals Limited | INE572A01036 |
 | NSE_IN | SABEVENTS | master_absent | Sab Events & Governance Now Media Limite | INE860T01019 |
+| NYSE | ACA | master_absent | Arcosa Inc | US0396531008 |
 | NYSE | ACVA | master_absent | ACV Auctions Inc. | US00091G1040 |
-| NYSE | AMTD | delisted | AMTD IDEA Group | US00180G2057 |
 | NYSE | AMZE | master_absent | Amaze Holdings Inc | US35804X2009 |
-| NYSE | ATKR | delisted | Atkore International Group Inc | US0476491081 |
 | NYSE | AVB | master_absent | AvalonBay Communities Inc | US0534841012 |
 | NYSE | AVNS | master_absent | Avanos Medical Inc | US05350V1061 |
 | NYSE | AXIA | master_absent | AXIA Energia | US15234Q2075 |
 | NYSE | BBBY | master_absent | Bed Bath & Beyond, Inc. | US6903701018 |
 | NYSE | BBU | master_absent | Brookfield Business Partners LP | BMG162341090 |
 | NYSE | BLD | master_absent | Topbuild Corp | US89055F1030 |
+| NYSE | BZH | master_absent | Beazer Homes USA Inc | US07556Q8814 |
 | NYSE | CCO | master_absent | Clear Channel Outdoor Holdings Inc | US18453H1068 |
 | NYSE | CWAN | master_absent | Clearwater Analytics Holdings Inc | US1851231068 |
 | NYSE | CWEN-A | master_absent | Clearway Energy Inc | US18539C1053 |
 | NYSE | DBRG | master_absent | Digitalbridge Group Inc | US25401T6038 |
 | NYSE | EEX | master_absent | Emerald Expositions Events Inc | US29103W1045 |
+| NYSE | ELME | master_absent | Elme Communities | US9396531017 |
 | NYSE | GBTG | master_absent | Global Business Travel Group Inc | US37890B1008 |
 | NYSE | GETY | master_absent | Getty Images Holdings Inc. | US3742751056 |
 | NYSE | GTLS | master_absent | Chart Industries Inc | US16115Q3083 |
@@ -211,6 +213,4 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NYSE | LEG | master_absent | Leggett & Platt Incorporated | US5246601075 |
 | NYSE | LEGT | master_absent | Legato Merger Corp. III | KYG5451A1031 |
 | NYSE | MDV | master_absent | Modiv Inc | US60784B1017 |
-| NYSE | MVO | master_absent | MV Oil Trust | US5538591091 |
-| NYSE | NCL | master_absent | Northann Corp. | US66373M4087 |
-| … | … | … | (+24 more) | |
+| … | … | … | (+29 more) | |
