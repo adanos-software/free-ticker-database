@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-10-27T13:25:21Z`
+Generated at: `2026-10-27T16:09:10Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -52,18 +52,18 @@ Generated at: `2026-10-27T13:25:21Z`
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSX | official_full | muscat_securities_companies |  | 108 | 86.11 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5675 | 81.09 | nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange | refresh_required | not_applicable |
+| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5628 | 81.41 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NEO | official_full | cboe_canada_listing_directory |  | 447 | 46.76 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_company_profile_directory|ngx_equities_price_list | refresh_unavailable | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
 | NSE_IN | official_full | nse_india_securities_available |  | 3552 | 97.94 |  | maintain | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 68 | 64.71 |  | maintain | not_applicable |
-| NYSE | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 3877 | 51.2 | nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange | refresh_required | not_applicable |
+| NYSE | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 3851 | 51.34 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2746 | 95.12 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NYSE MKT | official_full | nasdaq_other_listed | ETF | 310 | 73.23 |  | maintain | not_applicable |
 | NZX | official_full | nzx_instruments |  | 172 | 48.84 |  | maintain | not_applicable |
 | OSL | official_full | euronext_equities|euronext_etfs |  | 294 | 97.62 | euronext_etfs | refresh_required | not_applicable |
-| OTC | official_full | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange |  | 11925 | 69.32 | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange | refresh_unavailable | not_applicable |
+| OTC | official_full | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange |  | 11925 | 69.32 | otc_markets_security_profile|otc_markets_stock_screener | refresh_unavailable | not_applicable |
 | PSE | official_full | pse_listed_company_directory |  | 384 | 44.27 | pse_listed_company_directory | refresh_required | not_applicable |
 | PSE_CZ | official_partial | pse_cz_shares_directory |  | 0 |  | pse_cz_shares_directory | denominator_missing | blocked_nonfresh_source |
 | PSX | official_full | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily |  | 724 | 53.87 | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily | refresh_unavailable | not_applicable |

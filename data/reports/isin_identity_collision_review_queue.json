@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T13:25:32Z",
+    "generated_at": "2026-10-27T16:09:21Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -3288,6 +3288,53 @@
       "_members": [
         {
           "asset_type": "Stock",
+          "country": "Canada",
+          "country_code": "CA",
+          "exchange": "FSX",
+          "listing_key": "FSX::WPI",
+          "name": "Westport Fuel Systems Inc.",
+          "ticker": "WPI"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Canada",
+          "country_code": "CA",
+          "exchange": "NASDAQ",
+          "listing_key": "NASDAQ::AETR",
+          "name": "Aetherion Technologies Inc.",
+          "ticker": "AETR"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Canada",
+          "country_code": "CA",
+          "exchange": "TSX",
+          "listing_key": "TSX::WPRT",
+          "name": "Westport Fuel Systems Inc",
+          "ticker": "WPRT"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "CA9609085076",
+      "isin_valid": "true",
+      "listing_count": "3",
+      "listing_keys": "FSX::WPI|NASDAQ::AETR|TSX::WPRT",
+      "member_exchanges": "FSX | NASDAQ | TSX",
+      "member_names": "Aetherion Technologies Inc. | Westport Fuel Systems Inc.",
+      "member_tickers": "AETR | WPI | WPRT",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Canada",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
           "country": "Switzerland",
           "country_code": "CH",
           "exchange": "LSE",
@@ -5910,18 +5957,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 127,
+      "review_required_groups": 128,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
     "closed_groups": 118,
-    "collision_groups": 127,
+    "collision_groups": 128,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 92,
+      "isin_shared_by_distinct_issuers": 93,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-10-27T13:25:32Z",
-    "listings_involved": 373,
+    "generated_at": "2026-10-27T16:09:21Z",
+    "listings_involved": 376,
     "next_review_batches": [
       {
         "collision_groups": 23,
@@ -5966,17 +6013,17 @@
       {
         "collision_groups": 4,
         "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Canada"
+      },
+      {
+        "collision_groups": 4,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Switzerland"
       },
       {
         "collision_groups": 3,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Australia"
-      },
-      {
-        "collision_groups": 3,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Canada"
       },
       {
         "collision_groups": 3,
@@ -6099,14 +6146,14 @@
         "registered_country": "United Kingdom"
       }
     ],
-    "open_groups": 9,
+    "open_groups": 10,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 6,
       "Austria": 1,
       "Belgium": 2,
       "Bermuda": 2,
-      "Canada": 5,
+      "Canada": 6,
       "Cayman Islands": 5,
       "China": 3,
       "Denmark": 1,
