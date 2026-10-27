@@ -41341,10 +41341,10 @@
       "isins": "GRS015003007",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ATHEX::ALPHA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=GRS015003007, current=GRS830003000"
     },
     {
       "reconciliation_key": "athex_sector_classification::ATHEX::ANDRO",
@@ -943613,10 +943613,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::5333",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::5334",

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T11:05:02Z",
+    "generated_at": "2026-10-27T11:23:48Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,33 +27,33 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63484,
-    "joined_listings": 63484,
-    "scope_rows": 63484
+    "rows": 63485,
+    "joined_listings": 63485,
+    "scope_rows": 63485
   },
   "completeness": {
     "isin": {
-      "n": 63484,
-      "filled": 62825,
-      "missing": 659,
+      "n": 63485,
+      "filled": 62827,
+      "missing": 658,
       "pct": 98.96,
-      "fills_needed_for_99": 25,
+      "fills_needed_for_99": 24,
       "pass": false
     },
     "country": {
-      "n": 63484,
-      "filled": 63418,
+      "n": 63485,
+      "filled": 63419,
       "missing": 66,
       "pct": 99.9,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63484,
-      "filled": 62670,
-      "missing": 814,
+      "n": 63485,
+      "filled": 62672,
+      "missing": 813,
       "pct": 98.72,
-      "fills_needed_for_99": 180,
+      "fills_needed_for_99": 179,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -65,7 +65,7 @@
       "NEO": 44,
       "SSE": 34,
       "BATS": 30,
-      "SSE_CL": 27,
+      "SSE_CL": 26,
       "NYSE": 24,
       "BMV": 18,
       "SZSE": 12
@@ -80,8 +80,8 @@
       "BCBA": 23,
       "NSE_IN": 23,
       "BSE_IN": 17,
-      "NEO": 17,
       "LSE": 16,
+      "NEO": 16,
       "Munich": 14
     },
     "missing_category_by_exchange": {
@@ -96,17 +96,17 @@
     }
   },
   "identity": {
-    "official_isin_mismatch": 7,
+    "official_isin_mismatch": 8,
     "official_name_mismatch": 9,
     "open_collision_groups": 6,
     "quarantine_unresolved": 1162,
     "quarantine_proposed_clear": 248,
-    "quarantine_kept": 575
+    "quarantine_kept": 576
   },
   "entry_quality_status": {
-    "pass": 59616,
-    "source_gap": 3845,
-    "warn": 16,
+    "pass": 59618,
+    "source_gap": 3843,
+    "warn": 17,
     "notice": 7
   },
   "checks": [
@@ -114,9 +114,9 @@
       "name": "core_identity_known_bugs_zero",
       "status": "fail",
       "details": {
-        "official_isin_mismatch": 7,
+        "official_isin_mismatch": 8,
         "official_isin_mismatch_unexpected": 0,
-        "official_isin_mismatch_reviewed_holds": 7,
+        "official_isin_mismatch_reviewed_holds": 8,
         "open_collision_groups": 6,
         "sample_mismatch": [],
         "sample_collision_isins": [
@@ -133,11 +133,11 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63484,
-        "filled": 62825,
-        "missing": 659,
+        "n": 63485,
+        "filled": 62827,
+        "missing": 658,
         "pct": 98.96,
-        "fills_needed_for_99": 25,
+        "fills_needed_for_99": 24,
         "pass": false
       }
     },
@@ -145,11 +145,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63484,
-        "filled": 62670,
-        "missing": 814,
+        "n": 63485,
+        "filled": 62672,
+        "missing": 813,
         "pct": 98.72,
-        "fills_needed_for_99": 180,
+        "fills_needed_for_99": 179,
         "pass": false
       }
     },
@@ -157,8 +157,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63484,
-        "filled": 63418,
+        "n": 63485,
+        "filled": 63419,
         "missing": 66,
         "pct": 99.9,
         "fills_needed_for_99": 0,

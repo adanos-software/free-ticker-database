@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-27T11:04:29Z",
+  "generated_at": "2026-10-27T11:23:14Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2011,
-  "decision_rows": 6474,
+  "conflict_count": 2012,
+  "decision_rows": 6478,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1359,
-    "proposed_clear_conflicting_identifier": 1049,
+    "kept_listing_keyed_identifier": 1360,
+    "proposed_clear_conflicting_identifier": 1052,
     "quarantined_unresolved_identifier": 4066
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1049,
+  "proposed_clear_rows": 1052,
   "quarantined_rows": 4066,
-  "retained_rows": 1359,
+  "retained_rows": 1360,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -41795,6 +41795,58 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "JP3680800004"
+    },
+    {
+      "conflict_id": "204778bacbb6e83a4b70",
+      "isin": "JP3695200000",
+      "listing_key": "FSX::NGI",
+      "ticker": "NGI",
+      "exchange": "FSX",
+      "name": "NGK Insulators Ltd",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3695200000"
+    },
+    {
+      "conflict_id": "204778bacbb6e83a4b70",
+      "isin": "JP3695200000",
+      "listing_key": "OTC::NGKIF",
+      "ticker": "NGKIF",
+      "exchange": "OTC",
+      "name": "NGK Insulators Ltd",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3695200000"
+    },
+    {
+      "conflict_id": "204778bacbb6e83a4b70",
+      "isin": "JP3695200000",
+      "listing_key": "TSE::5333",
+      "ticker": "5333",
+      "exchange": "TSE",
+      "name": "NGK Corporation",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3695200000"
+    },
+    {
+      "conflict_id": "204778bacbb6e83a4b70",
+      "isin": "JP3695200000",
+      "listing_key": "XSTU::NGI",
+      "ticker": "NGI",
+      "exchange": "XSTU",
+      "name": "NGK INSULATORS (NGI.SG)",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "JP3695200000"
     },
     {
       "conflict_id": "0d36a1cb14239522cc4b",
