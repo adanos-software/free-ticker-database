@@ -35,6 +35,14 @@ def test_allows_reviewed_existing_maintenance_workflow(tmp_path: Path) -> None:
     assert check_repository(tmp_path) == []
 
 
+def test_allows_reviewed_stockanalysis_backfill_workflow(tmp_path: Path) -> None:
+    write(
+        tmp_path / ".github/workflows/stockanalysis-backfill.yml",
+        "permissions:\n  contents: write\n",
+    )
+    assert check_repository(tmp_path) == []
+
+
 def test_historical_safe_merge_workflows_preserve_matching_reference_baseline() -> None:
     for workflow_name in ("ci.yml", "release.yml"):
         workflow = (ROOT / ".github" / "workflows" / workflow_name).read_text(

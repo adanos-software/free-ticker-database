@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T10:56:57Z",
+    "generated_at": "2026-10-27T11:04:59Z",
     "rows": 97381,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 86272,
-      "source_gap": 11075,
+      "notice": 9,
+      "pass": 86264,
+      "source_gap": 11074,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -26,6 +27,7 @@
     },
     "severity_counts": {
       "high": 10,
+      "low": 9,
       "medium": 26,
       "source_gap": 11430
     },
@@ -37,14 +39,16 @@
       "missing_etf_category": 146,
       "official_name_mismatch": 26,
       "official_isin_mismatch": 9,
+      "low_company_name_overlap": 9,
       "country_isin_mismatch": 1
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8483,
+        "pass": 8481,
         "source_gap": 3255,
-        "warn": 14
+        "warn": 14,
+        "notice": 2
       },
       {
         "exchange": "XSTU",
@@ -67,9 +71,10 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 253,
-        "pass": 4553,
-        "warn": 6
+        "source_gap": 252,
+        "pass": 4551,
+        "warn": 6,
+        "notice": 3
       },
       {
         "exchange": "NYSE ARCA",
@@ -119,8 +124,9 @@
       },
       {
         "exchange": "ASX",
-        "pass": 2113,
-        "source_gap": 146
+        "pass": 2111,
+        "source_gap": 146,
+        "notice": 2
       },
       {
         "exchange": "BATS",

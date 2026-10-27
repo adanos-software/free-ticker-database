@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-27T10:55:22Z",
+  "generated_at": "2026-10-27T11:04:29Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2012,
-  "decision_rows": 6476,
+  "conflict_count": 2011,
+  "decision_rows": 6474,
   "action_counts": {
     "kept_listing_keyed_identifier": 1359,
     "proposed_clear_conflicting_identifier": 1049,
-    "quarantined_unresolved_identifier": 4068
+    "quarantined_unresolved_identifier": 4066
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1049,
-  "quarantined_rows": 4068,
+  "quarantined_rows": 4066,
   "retained_rows": 1359,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -1118,32 +1118,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU000000ORI1"
-    },
-    {
-      "conflict_id": "6291852759d4efa4e959",
-      "isin": "AU000000PDI8",
-      "listing_key": "ASX::PDI",
-      "ticker": "PDI",
-      "exchange": "ASX",
-      "name": "PDI Gold Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000PDI8"
-    },
-    {
-      "conflict_id": "6291852759d4efa4e959",
-      "isin": "AU000000PDI8",
-      "listing_key": "OTC::PDIYF",
-      "ticker": "PDIYF",
-      "exchange": "OTC",
-      "name": "Predictive Discovery Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000PDI8"
     },
     {
       "conflict_id": "4a38b280dbc3b5a5527c",
