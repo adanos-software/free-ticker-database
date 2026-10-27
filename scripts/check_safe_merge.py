@@ -404,7 +404,10 @@ def _load_sec_exchange_payload(cache_path: Path) -> dict[str, Any] | None:
             return json.loads(cache_path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
             pass
-    return load_sec_exchange_payload()
+    try:
+        return load_sec_exchange_payload()
+    except Exception:
+        return None
 
 
 def write_report(report: dict[str, Any]) -> None:

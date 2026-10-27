@@ -1,6 +1,6 @@
 # Symbol Changes Review
 
-Generated at: `2026-10-27T09:55:25Z`
+Generated at: `2026-10-27T10:22:28Z`
 
 Daily secondary-source symbol-change feed. Rows are review signals, not automatic canonical ticker updates.
 

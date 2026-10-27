@@ -269,7 +269,7 @@ def load_sec_exchange_payload(*, allow_network: bool = True) -> dict[str, Any] |
     if allow_network:
         try:
             return _fetch_sec_payload()
-        except (requests.RequestException, json.JSONDecodeError, OSError):
+        except (requests.RequestException, json.JSONDecodeError, OSError, ValueError, TypeError):
             pass
     if SEC_COMPANY_TICKERS_CACHE.exists():
         try:
