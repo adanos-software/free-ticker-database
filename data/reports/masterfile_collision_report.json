@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99815,
-    "matched": 70045,
-    "collisions": 11528,
-    "missing": 18242
+    "official_symbols": 99873,
+    "matched": 70028,
+    "collisions": 11533,
+    "missing": 18312
   },
   "exchanges": [
     {
@@ -107,8 +107,8 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 615,
-      "matched": 571,
+      "official_symbols": 614,
+      "matched": 570,
       "collisions": 40,
       "missing": 4,
       "collision_examples": [
@@ -281,10 +281,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1656,
-      "matched": 1317,
+      "official_symbols": 1677,
+      "matched": 1324,
       "collisions": 58,
-      "missing": 281,
+      "missing": 295,
       "collision_examples": [
         {
           "ticker": "ALA",
@@ -380,6 +380,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "AAAB",
+          "name": "Corgi FTSE Aaa-A Intermediate Corporate Bond ETF",
+          "exchange": "BATS"
+        },
+        {
           "ticker": "AAOG",
           "name": "Leverage Shares 2X Long AAOI Daily ETF",
           "exchange": "BATS"
@@ -405,28 +410,23 @@
           "exchange": "BATS"
         },
         {
+          "ticker": "ACIN",
+          "name": "Hartford Alpha Capture International Equity ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "ACIV",
+          "name": "Hartford Alpha Capture International Value ETF",
+          "exchange": "BATS"
+        },
+        {
           "ticker": "ACLZ",
           "name": "Corgi ACLS 2x Daily ETF",
           "exchange": "BATS"
         },
         {
-          "ticker": "ACMM",
-          "name": "Corgi ACMR 2x Daily ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "ACVU",
-          "name": "Hartford Alpha Capture Value ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "ADIU",
-          "name": "Leverage Shares 2X Long ADI Daily ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "AEHG",
-          "name": "Leverage Shares 2X Long AEHR Daily ETF",
+          "ticker": "ACMG",
+          "name": "American Century Mid Cap Growth Insights ETF",
           "exchange": "BATS"
         }
       ]
@@ -614,8 +614,8 @@
     },
     {
       "exchange": "BK",
-      "official_symbols": 140,
-      "matched": 112,
+      "official_symbols": 139,
+      "matched": 111,
       "collisions": 28,
       "missing": 0,
       "collision_examples": [
@@ -716,8 +716,8 @@
     },
     {
       "exchange": "BME",
-      "official_symbols": 269,
-      "matched": 244,
+      "official_symbols": 268,
+      "matched": 243,
       "collisions": 0,
       "missing": 25,
       "collision_examples": [],
@@ -1036,10 +1036,10 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2970,
+      "official_symbols": 2968,
       "matched": 247,
       "collisions": 1928,
-      "missing": 795,
+      "missing": 793,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1180,8 +1180,8 @@
     },
     {
       "exchange": "CSE_LK",
-      "official_symbols": 319,
-      "matched": 316,
+      "official_symbols": 320,
+      "matched": 317,
       "collisions": 0,
       "missing": 3,
       "collision_examples": [],
@@ -1405,10 +1405,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2040,
-      "matched": 1333,
-      "collisions": 377,
-      "missing": 330,
+      "official_symbols": 2039,
+      "matched": 1331,
+      "collisions": 376,
+      "missing": 332,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1688,8 +1688,8 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3251,
-      "matched": 3181,
+      "official_symbols": 3240,
+      "matched": 3170,
       "collisions": 69,
       "missing": 1,
       "collision_examples": [
@@ -2194,10 +2194,10 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2110,
+      "official_symbols": 2124,
       "matched": 1949,
       "collisions": 14,
-      "missing": 147,
+      "missing": 161,
       "collision_examples": [
         {
           "ticker": "000850",
@@ -2577,10 +2577,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5658,
-      "matched": 4611,
-      "collisions": 59,
-      "missing": 988,
+      "official_symbols": 5675,
+      "matched": 4602,
+      "collisions": 61,
+      "missing": 1012,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -2720,10 +2720,10 @@
     },
     {
       "exchange": "NEO",
-      "official_symbols": 443,
+      "official_symbols": 447,
       "matched": 209,
       "collisions": 68,
-      "missing": 166,
+      "missing": 170,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -2883,9 +2883,9 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 3530,
-      "matched": 3458,
-      "collisions": 72,
+      "official_symbols": 3552,
+      "matched": 3479,
+      "collisions": 73,
       "missing": 0,
       "collision_examples": [
         {
@@ -3078,10 +3078,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3878,
-      "matched": 1981,
-      "collisions": 572,
-      "missing": 1325,
+      "official_symbols": 3877,
+      "matched": 1985,
+      "collisions": 570,
+      "missing": 1322,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3227,10 +3227,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2753,
-      "matched": 2633,
+      "official_symbols": 2746,
+      "matched": 2612,
       "collisions": 31,
-      "missing": 89,
+      "missing": 103,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -3347,13 +3347,18 @@
           "exchange": "NYSE ARCA"
         },
         {
-          "ticker": "ADDS",
-          "name": "Hedgeye Index Adds ETF",
+          "ticker": "AFGR",
+          "name": "First Trust Multi-Manager Large Growth ETF",
           "exchange": "NYSE ARCA"
         },
         {
-          "ticker": "AFGR",
-          "name": "First Trust Multi-Manager Large Growth ETF",
+          "ticker": "AIBN",
+          "name": "Defiance AI Infrastructure Bond ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "AIED",
+          "name": "Defiance LLM Catalyst Momentum ETF",
           "exchange": "NYSE ARCA"
         },
         {
@@ -3365,20 +3370,15 @@
           "ticker": "AMHI",
           "name": "American Beacon Aberdeen Municipal High Income ETF",
           "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "BD",
-          "name": "Russell Investments Core Plus Bond ETF",
-          "exchange": "NYSE ARCA"
         }
       ]
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 309,
-      "matched": 228,
+      "official_symbols": 310,
+      "matched": 227,
       "collisions": 34,
-      "missing": 47,
+      "missing": 49,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3646,8 +3646,8 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 297,
-      "matched": 290,
+      "official_symbols": 294,
+      "matched": 287,
       "collisions": 6,
       "missing": 1,
       "collision_examples": [
@@ -4977,11 +4977,19 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 16,
+      "official_symbols": 22,
       "matched": 0,
-      "collisions": 9,
-      "missing": 7,
+      "collisions": 14,
+      "missing": 8,
       "collision_examples": [
+        {
+          "ticker": "CECO",
+          "name": "CECO Environmental Corp. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
         {
           "ticker": "DDS",
           "name": "Dillard's, Inc. Common Stock",
@@ -5008,12 +5016,39 @@
           ]
         },
         {
+          "ticker": "IBOC",
+          "name": "International Bancshares Corporation Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ICOM",
+          "name": "Tema Commodity Income ETF",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
           "ticker": "ILS",
           "name": "Brookmont Catastrophic Bond ETF",
           "target_exchange": "TXSE",
           "existing_exchanges": [
             "LSE",
             "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "OBK",
+          "name": "Origin Bancorp, Inc. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "FSX",
+            "Munich",
+            "NYSE",
+            "XSTU"
           ]
         },
         {
@@ -5033,30 +5068,6 @@
             "LSE",
             "SIX"
           ]
-        },
-        {
-          "ticker": "TCBI",
-          "name": "Texas Capital Bancshares, Inc. Common Stock",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "TXS",
-          "name": "Texas Capital Texas Equity Index ETF",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "USAC",
-          "name": "USA Compression Partners, LP Common Units Representing Limited Partner Interests",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "Euronext"
-          ]
         }
       ],
       "missing_examples": [
@@ -5068,6 +5079,11 @@
         {
           "ticker": "ET$I",
           "name": "Energy Transfer L.P. Series I Fixed Rate Perpetual Preferred Units",
+          "exchange": "TXSE"
+        },
+        {
+          "ticker": "FIFT",
+          "name": "HCM Select 50 ETF",
           "exchange": "TXSE"
         },
         {

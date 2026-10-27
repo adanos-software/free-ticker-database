@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T13:04:24Z",
+  "generated_at": "2026-10-27T13:25:21Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -33,28 +33,28 @@
     },
     {
       "exchange": "NYSE",
-      "collision_adjusted_recall_pct": 59.92,
-      "true_missing_excluding_collisions": 1325,
-      "collision_hidden_missing": 572,
-      "official_recall_pct": 51.08,
+      "collision_adjusted_recall_pct": 60.02,
+      "true_missing_excluding_collisions": 1322,
+      "collision_hidden_missing": 570,
+      "official_recall_pct": 51.2,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 4
     },
     {
       "exchange": "NASDAQ",
-      "collision_adjusted_recall_pct": 82.35,
-      "true_missing_excluding_collisions": 988,
-      "collision_hidden_missing": 59,
-      "official_recall_pct": 81.5,
+      "collision_adjusted_recall_pct": 81.97,
+      "true_missing_excluding_collisions": 1012,
+      "collision_hidden_missing": 61,
+      "official_recall_pct": 81.09,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 5
     },
     {
       "exchange": "Borsa Italiana",
-      "collision_adjusted_recall_pct": 23.7,
-      "true_missing_excluding_collisions": 795,
+      "collision_adjusted_recall_pct": 23.75,
+      "true_missing_excluding_collisions": 793,
       "collision_hidden_missing": 1928,
       "official_recall_pct": 8.32,
       "supplement_lane": "not_in_supplement_allowlist",
@@ -63,13 +63,23 @@
     },
     {
       "exchange": "Euronext",
-      "collision_adjusted_recall_pct": 80.16,
-      "true_missing_excluding_collisions": 330,
-      "collision_hidden_missing": 377,
-      "official_recall_pct": 65.34,
+      "collision_adjusted_recall_pct": 80.04,
+      "true_missing_excluding_collisions": 332,
+      "collision_hidden_missing": 376,
+      "official_recall_pct": 65.28,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 7
+    },
+    {
+      "exchange": "BATS",
+      "collision_adjusted_recall_pct": 81.78,
+      "true_missing_excluding_collisions": 295,
+      "collision_hidden_missing": 58,
+      "official_recall_pct": 78.95,
+      "supplement_lane": "not_in_supplement_allowlist",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 8
     },
     {
       "exchange": "UPCOM",
@@ -77,16 +87,6 @@
       "true_missing_excluding_collisions": 293,
       "collision_hidden_missing": 523,
       "official_recall_pct": 0.24,
-      "supplement_lane": "not_in_supplement_allowlist",
-      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 8
-    },
-    {
-      "exchange": "BATS",
-      "collision_adjusted_recall_pct": 82.42,
-      "true_missing_excluding_collisions": 281,
-      "collision_hidden_missing": 58,
-      "official_recall_pct": 79.53,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 9
@@ -113,20 +113,20 @@
     },
     {
       "exchange": "NEO",
-      "collision_adjusted_recall_pct": 55.73,
-      "true_missing_excluding_collisions": 166,
+      "collision_adjusted_recall_pct": 55.15,
+      "true_missing_excluding_collisions": 170,
       "collision_hidden_missing": 68,
-      "official_recall_pct": 47.18,
+      "official_recall_pct": 46.76,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 12
     },
     {
       "exchange": "KRX",
-      "collision_adjusted_recall_pct": 92.99,
-      "true_missing_excluding_collisions": 147,
+      "collision_adjusted_recall_pct": 92.37,
+      "true_missing_excluding_collisions": 161,
       "collision_hidden_missing": 14,
-      "official_recall_pct": 92.37,
+      "official_recall_pct": 91.76,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 13
@@ -142,6 +142,16 @@
       "rank": 14
     },
     {
+      "exchange": "NYSE ARCA",
+      "collision_adjusted_recall_pct": 96.21,
+      "true_missing_excluding_collisions": 103,
+      "collision_hidden_missing": 31,
+      "official_recall_pct": 95.12,
+      "supplement_lane": "not_in_supplement_allowlist",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 15
+    },
+    {
       "exchange": "PSE",
       "collision_adjusted_recall_pct": 64.39,
       "true_missing_excluding_collisions": 94,
@@ -149,24 +159,14 @@
       "official_recall_pct": 44.27,
       "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 15
-    },
-    {
-      "exchange": "NYSE ARCA",
-      "collision_adjusted_recall_pct": 96.73,
-      "true_missing_excluding_collisions": 89,
-      "collision_hidden_missing": 31,
-      "official_recall_pct": 95.64,
-      "supplement_lane": "not_in_supplement_allowlist",
-      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 16
     },
     {
       "exchange": "NYSE MKT",
-      "collision_adjusted_recall_pct": 82.91,
-      "true_missing_excluding_collisions": 47,
+      "collision_adjusted_recall_pct": 82.25,
+      "true_missing_excluding_collisions": 49,
       "collision_hidden_missing": 34,
-      "official_recall_pct": 73.79,
+      "official_recall_pct": 73.23,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 17
@@ -193,10 +193,10 @@
     },
     {
       "exchange": "BME",
-      "collision_adjusted_recall_pct": 90.71,
+      "collision_adjusted_recall_pct": 90.67,
       "true_missing_excluding_collisions": 25,
       "collision_hidden_missing": 0,
-      "official_recall_pct": 90.71,
+      "official_recall_pct": 90.67,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 20
@@ -214,8 +214,8 @@
     {
       "exchange": "TXSE",
       "collision_adjusted_recall_pct": 0.0,
-      "true_missing_excluding_collisions": 7,
-      "collision_hidden_missing": 9,
+      "true_missing_excluding_collisions": 8,
+      "collision_hidden_missing": 14,
       "official_recall_pct": 0.0,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
