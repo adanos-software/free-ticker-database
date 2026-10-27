@@ -96,7 +96,7 @@ def change(old: str = "OLD", new: str = "NEW") -> dict[str, str]:
     }
 
 
-def listing(ticker: str = "OLD", isin: str = "US0000000001") -> dict[str, str]:
+def listing(ticker: str = "OLD", isin: str = "US2575541055") -> dict[str, str]:
     return {
         "listing_key": f"NASDAQ::{ticker}",
         "ticker": ticker,
@@ -112,11 +112,11 @@ def listing(ticker: str = "OLD", isin: str = "US0000000001") -> dict[str, str]:
     }
 
 
-def reference(ticker: str = "NEW", isin: str = "US0000000001", status: str = "active") -> dict[str, str]:
+def reference(ticker: str = "NEW", isin: str = "US2575541055", status: str = "active") -> dict[str, str]:
     return {
-        "source_key": "test_official",
-        "provider": "Official",
-        "source_url": "https://exchange.example/master",
+        "source_key": "nasdaq_listed",
+        "provider": "Nasdaq Trader",
+        "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
         "ticker": ticker,
         "name": "Renamed Inc",
         "exchange": "NASDAQ",
@@ -140,10 +140,11 @@ def test_apply_symbol_changes_rekeys_required_csvs(tmp_path: Path) -> None:
     write_rows(changes, CHANGE_FIELDS, [change()])
     write_rows(listings, LISTING_FIELDS, [listing()])
     write_rows(listing_index, INDEX_FIELDS, [{**listing(), "wkn": "", "figi": "", "cik": "", "lei": ""}])
-    write_rows(identifiers, IDENTIFIER_FIELDS, [{"listing_key": "NASDAQ::OLD", "ticker": "OLD", "exchange": "NASDAQ", "isin": "US0000000001"}])
+    write_rows(identifiers, IDENTIFIER_FIELDS, [{"listing_key": "NASDAQ::OLD", "ticker": "OLD", "exchange": "NASDAQ", "isin": "US2575541055"}])
     write_rows(supplemental, SUPPLEMENT_FIELDS, [{**listing(), "sector": "Technology", "source_key": "test", "source_url": "https://example.com", "reference_scope": "exchange_directory"}])
     write_rows(reference_csv, REFERENCE_FIELDS, [reference()])
 
+    live_reference = read_rows(reference_csv)
     report = apply_symbol_changes(
         changes_csv=changes,
         listings_csv=listings,
@@ -153,6 +154,9 @@ def test_apply_symbol_changes_rekeys_required_csvs(tmp_path: Path) -> None:
         reference_csv=reference_csv,
         report_json=tmp_path / "report.json",
         report_md=tmp_path / "report.md",
+        live_reference_rows=live_reference,
+        sec_exchange_payload={},
+        fetch_live_us_directory=False,
     )
 
     assert report["summary"]["accepted_rows"] == 1
@@ -162,7 +166,7 @@ def test_apply_symbol_changes_rekeys_required_csvs(tmp_path: Path) -> None:
     assert read_rows(identifiers)[0]["listing_key"] == "NASDAQ::NEW"
     assert read_rows(supplemental)[0]["ticker"] == "NEW"
     assert read_rows(supplemental)[0]["aliases"] == "Renamed|OLD"
-    assert json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))["accepted"][0]["isin"] == "US0000000001"
+    assert json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))["accepted"][0]["isin"] == "US2575541055"
 
 
 def test_apply_symbol_changes_blocks_missing_isin_and_collisions(tmp_path: Path) -> None:
@@ -189,10 +193,13 @@ def test_apply_symbol_changes_blocks_missing_isin_and_collisions(tmp_path: Path)
         reference_csv=reference_csv,
         report_json=tmp_path / "report.json",
         report_md=tmp_path / "report.md",
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload={},
+        fetch_live_us_directory=False,
     )
 
     assert report["accepted"] == []
-    assert report["summary"]["blocked_by_status"] == {"manual_successor_exists_missing_isin": 1}
+    assert report["summary"]["blocked_by_status"] == {"manual_missing_identity_evidence": 1}
 
 
 def test_apply_symbol_changes_drops_predecessor_when_successor_already_listed(tmp_path: Path) -> None:
@@ -225,6 +232,9 @@ def test_apply_symbol_changes_drops_predecessor_when_successor_already_listed(tm
         drop_entries_csv=drops,
         report_json=tmp_path / "report.json",
         report_md=tmp_path / "report.md",
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload={},
+        fetch_live_us_directory=False,
     )
 
     assert report["summary"]["dropped_predecessor_rows"] == 1
@@ -302,6 +312,9 @@ def test_apply_symbol_changes_blocks_cross_venue_ticker_reuse(tmp_path: Path) ->
         changes_csv=changes,
         listings_csv=listings,
         reference_csv=reference_csv,
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload={},
+        fetch_live_us_directory=False,
         **paths,
     )
 
@@ -311,6 +324,107 @@ def test_apply_symbol_changes_blocks_cross_venue_ticker_reuse(tmp_path: Path) ->
     assert read_rows(listings)[0]["listing_key"] == "NYSE::HCWC"
     assert read_rows(paths["drop_entries_csv"]) == []
     assert read_rows(paths["listing_transitions_csv"]) == []
+
+
+def test_apply_symbol_changes_uses_same_cik_when_isin_missing(tmp_path: Path) -> None:
+    changes = tmp_path / "symbol_changes.csv"
+    listings = tmp_path / "listings.csv"
+    reference_csv = tmp_path / "reference.csv"
+    paths = _empty_symbol_change_paths(tmp_path)
+    write_rows(
+        paths["listing_transitions_csv"],
+        [
+            "old_listing_key",
+            "new_listing_key",
+            "event_type",
+            "identity_type",
+            "identity_value",
+            "confidence",
+            "source_key",
+            "source_url",
+            "reason",
+        ],
+        [],
+    )
+
+    write_rows(changes, CHANGE_FIELDS, [change(old="SKK", new="RNTZ")])
+    write_rows(
+        listings,
+        LISTING_FIELDS,
+        [{**listing("SKK", isin=""), "name": "SKK Holdings Limited"}],
+    )
+    write_rows(
+        reference_csv,
+        REFERENCE_FIELDS,
+        [
+            {
+                **reference(ticker="RNTZ", isin=""),
+                "name": "Rantizo - Class A Ordinary Shares",
+            }
+        ],
+    )
+    sec_payload = {
+        "fields": ["cik", "name", "ticker", "exchange"],
+        "data": [
+            [1991261, "Rantizo", "SKK", "Nasdaq"],
+            [1991261, "Rantizo", "RNTZ", "Nasdaq"],
+        ],
+    }
+
+    report = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        reference_csv=reference_csv,
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload=sec_payload,
+        fetch_live_us_directory=False,
+        **paths,
+    )
+
+    assert report["summary"]["accepted_rows"] == 1
+    assert read_rows(listings)[0]["ticker"] == "RNTZ"
+    transition = read_rows(paths["listing_transitions_csv"])[0]
+    assert transition["identity_type"] == "same_cik"
+    assert transition["identity_value"] == "0001991261"
+
+
+def test_apply_symbol_changes_blocks_sec_cik_mismatch(tmp_path: Path) -> None:
+    changes = tmp_path / "symbol_changes.csv"
+    listings = tmp_path / "listings.csv"
+    reference_csv = tmp_path / "reference.csv"
+    paths = _empty_symbol_change_paths(tmp_path)
+
+    write_rows(changes, CHANGE_FIELDS, [change(old="ATII", new="NANO")])
+    write_rows(
+        listings,
+        LISTING_FIELDS,
+        [{**listing("ATII", isin="KYG045371096"), "name": "Archimedes Tech SPAC"}],
+    )
+    write_rows(
+        reference_csv,
+        REFERENCE_FIELDS,
+        [{**reference(ticker="NANO", isin=""), "name": "Forge Nano Holdings Inc."}],
+    )
+    sec_payload = {
+        "fields": ["cik", "name", "ticker", "exchange"],
+        "data": [
+            [2028516, "Archimedes Tech SPAC Partners II Co.", "ATII", "Nasdaq"],
+            [2101833, "Forge Nano Holdings, Inc.", "NANO", "Nasdaq"],
+        ],
+    }
+
+    report = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        reference_csv=reference_csv,
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload=sec_payload,
+        fetch_live_us_directory=False,
+        **paths,
+    )
+
+    assert report["accepted"] == []
+    assert report["summary"]["blocked_by_status"] == {"blocked_sec_cik_mismatch": 1}
 
 
 def test_apply_symbol_changes_blocks_same_exchange_name_mismatch_reuse(tmp_path: Path) -> None:
@@ -353,6 +467,9 @@ def test_apply_symbol_changes_blocks_same_exchange_name_mismatch_reuse(tmp_path:
         changes_csv=changes,
         listings_csv=listings,
         reference_csv=reference_csv,
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload={},
+        fetch_live_us_directory=False,
         **paths,
     )
 

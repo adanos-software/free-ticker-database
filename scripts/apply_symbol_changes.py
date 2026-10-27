@@ -12,11 +12,31 @@ try:
     from scripts.lib.identity_integrity import names_refer_to_same_identity
     from scripts.lib.keys import listing_key, row_listing_key
     from scripts.lib.normalize import normalize_bool, normalize_symbol
+    from scripts.lib.official_change_evidence import is_valid_isin
+    from scripts.lib.us_exchange_directory import (
+        active_directory_keys,
+        load_live_us_directory_reference_rows,
+        load_sec_exchange_payload,
+        merge_us_directory_reference_rows,
+        official_directory_row,
+        sec_cik_mismatch,
+        shared_sec_cik,
+    )
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from lib.dataio import display_path, load_csv, write_csv, write_json
     from lib.identity_integrity import names_refer_to_same_identity
     from lib.keys import listing_key, row_listing_key
     from lib.normalize import normalize_bool, normalize_symbol
+    from lib.official_change_evidence import is_valid_isin
+    from lib.us_exchange_directory import (
+        active_directory_keys,
+        load_live_us_directory_reference_rows,
+        load_sec_exchange_payload,
+        merge_us_directory_reference_rows,
+        official_directory_row,
+        sec_cik_mismatch,
+        shared_sec_cik,
+    )
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -76,11 +96,70 @@ def has_shell_or_transition_name(value: str) -> bool:
     return any(marker in tokens for marker in ("SPAC", "ACQUISITION", "MERGER", "UNIT", "RIGHT", "WARRANT"))
 
 
+def resolve_rename_identity(
+    *,
+    old_symbol: str,
+    new_symbol: str,
+    old_isin: str,
+    sec_payload: dict[str, Any] | None,
+) -> tuple[str, str, str]:
+    """Return (identity_type, identity_value, block_reason). block_reason empty when ok."""
+
+    old_isin = old_isin.strip().upper()
+    if sec_cik_mismatch(old_symbol, new_symbol, sec_payload):
+        return "", "", "blocked_sec_cik_mismatch"
+    if is_valid_isin(old_isin):
+        return "same_isin", old_isin, ""
+    cik = shared_sec_cik(old_symbol, new_symbol, sec_payload)
+    if cik:
+        return "same_cik", cik, ""
+    return "", "", "manual_missing_identity_evidence"
+
+
+def build_verified_rename_evidence(
+    *,
+    exchange: str,
+    old_symbol: str,
+    new_symbol: str,
+    old_listing_key: str,
+    new_listing_key: str,
+    old_isin: str,
+    identity_type: str,
+    identity_value: str,
+    reference_rows: list[dict[str, str]],
+    change: dict[str, str],
+) -> dict[str, str]:
+    directory_row = official_directory_row(reference_rows, exchange, new_symbol)
+    source_key = directory_row.get("source_key", "") if directory_row else "nasdaq_listed"
+    source_url = directory_row.get("source_url", "") if directory_row else ""
+    new_official_name = (directory_row or {}).get("name", "").strip()
+    return {
+        "exchange": exchange,
+        "old_symbol": old_symbol,
+        "new_symbol": new_symbol,
+        "old_listing_key": old_listing_key,
+        "new_listing_key": new_listing_key,
+        "isin": old_isin.strip().upper(),
+        "identity_type": identity_type,
+        "identity_value": identity_value,
+        "transition_event_type": "symbol_changed",
+        "source_key": source_key,
+        "source_url": source_url,
+        "new_official_name": new_official_name,
+        "evidence": "live_official_directory_old_inactive_new_active_same_issuer",
+        "feed_source_key": change.get("source", "stockanalysis_symbol_changes"),
+        "feed_source_url": change.get("source_url", ""),
+    }
+
+
 def classify_rename_candidate(
     change: dict[str, str],
     *,
     listings: list[dict[str, str]],
+    reference_rows: list[dict[str, str]],
     reference_lookup: dict[tuple[str, str], list[dict[str, str]]],
+    directory_keys: set[tuple[str, str]],
+    sec_payload: dict[str, Any] | None,
 ) -> tuple[str, dict[str, str]]:
     old_symbol = normalize_symbol(change.get("old_symbol", ""))
     new_symbol = normalize_symbol(change.get("new_symbol", ""))
@@ -113,12 +192,18 @@ def classify_rename_candidate(
         if len(same_exchange_successors) != 1:
             return "blocked_new_symbol_collision", {}
         successor = same_exchange_successors[0]
-        if reference_lookup.get((exchange, old_symbol)):
+        if (exchange, old_symbol) in directory_keys:
             return "blocked_new_symbol_collision", {}
-        if not reference_lookup.get((exchange, new_symbol)):
+        if (exchange, new_symbol) not in directory_keys:
             return "blocked_new_symbol_collision", {}
-        if not old_isin:
-            return "manual_successor_exists_missing_isin", {}
+        identity_type, identity_value, block = resolve_rename_identity(
+            old_symbol=old_symbol,
+            new_symbol=new_symbol,
+            old_isin=old_isin,
+            sec_payload=sec_payload,
+        )
+        if block:
+            return block, {}
         successor_isin = successor.get("isin", "").strip()
         if successor_isin and successor_isin != old_isin:
             return "manual_successor_isin_mismatch", {}
@@ -135,6 +220,7 @@ def classify_rename_candidate(
             for row in official_new_rows
         ):
             return "manual_ticker_reuse_name_mismatch", {}
+        directory_row = official_directory_row(reference_rows, exchange, new_symbol)
         return "apply_drop_predecessor", {
             "exchange": exchange,
             "old_symbol": old_symbol,
@@ -142,8 +228,10 @@ def classify_rename_candidate(
             "old_listing_key": old_key,
             "new_listing_key": listing_key(exchange, new_symbol),
             "isin": old_isin,
-            "source_key": change.get("source", "stockanalysis_symbol_changes"),
-            "source_url": change.get("source_url", ""),
+            "identity_type": identity_type,
+            "identity_value": identity_value,
+            "source_key": (directory_row or {}).get("source_key", "nasdaq_listed"),
+            "source_url": (directory_row or {}).get("source_url", ""),
             "evidence": "official_master_old_absent_new_active_successor_already_listed",
         }
 
@@ -173,31 +261,32 @@ def classify_rename_candidate(
         return "blocked_listing_key_collision", {}
 
     old_isin = old_listing.get("isin", "").strip()
-    if not old_isin:
-        return "manual_missing_isin", {}
-
-    new_reference_rows = reference_lookup.get((exchange, new_symbol), [])
-    if not new_reference_rows:
+    if (exchange, new_symbol) not in directory_keys:
         return "blocked_new_symbol_not_active_in_official_master", {}
-    same_isin_rows = [row for row in new_reference_rows if row.get("isin", "").strip() == old_isin]
-    if not same_isin_rows:
-        return "manual_isin_not_proven_unchanged", {}
-
-    if reference_lookup.get((exchange, old_symbol)):
+    if (exchange, old_symbol) in directory_keys:
         return "blocked_old_symbol_still_active_in_official_master", {}
 
-    evidence = same_isin_rows[0]
-    return "apply", {
-        "exchange": exchange,
-        "old_symbol": old_symbol,
-        "new_symbol": new_symbol,
-        "old_listing_key": old_key,
-        "new_listing_key": new_key,
-        "isin": old_isin,
-        "source_key": evidence.get("source_key", ""),
-        "source_url": evidence.get("source_url", ""),
-        "evidence": "official_master_new_active_old_absent_same_exchange_same_isin",
-    }
+    identity_type, identity_value, block = resolve_rename_identity(
+        old_symbol=old_symbol,
+        new_symbol=new_symbol,
+        old_isin=old_isin,
+        sec_payload=sec_payload,
+    )
+    if block:
+        return block, {}
+
+    return "apply", build_verified_rename_evidence(
+        exchange=exchange,
+        old_symbol=old_symbol,
+        new_symbol=new_symbol,
+        old_listing_key=old_key,
+        new_listing_key=new_key,
+        old_isin=old_isin,
+        identity_type=identity_type,
+        identity_value=identity_value,
+        reference_rows=reference_rows,
+        change=change,
+    )
 
 
 def rekey_rows(rows: list[dict[str, str]], accepted: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -222,8 +311,55 @@ def rekey_rows(rows: list[dict[str, str]], accepted: list[dict[str, str]]) -> li
             next_row["listing_key"] = rename["new_listing_key"]
         if "aliases" in next_row:
             next_row["aliases"] = add_alias(next_row.get("aliases", ""), rename["old_symbol"])
+        official_name = rename.get("new_official_name", "").strip()
+        if official_name and "name" in next_row:
+            next_row["name"] = official_name
         updated.append(next_row)
     return updated
+
+
+def persist_applied_symbol_renames(
+    accepted: list[dict[str, str]],
+    *,
+    listing_transitions_csv: Path,
+) -> None:
+    if not accepted:
+        return
+    existing = load_csv(listing_transitions_csv)
+    keys = {
+        (row.get("old_listing_key", ""), row.get("new_listing_key", ""))
+        for row in existing
+    }
+    for row in accepted:
+        old_key = row["old_listing_key"]
+        new_key = row["new_listing_key"]
+        if (old_key, new_key) in keys:
+            continue
+        identity_type = row.get("identity_type", "same_isin")
+        identity_value = row.get("identity_value", row.get("isin", ""))
+        source_url = row.get("source_url", "")
+        if not str(source_url).startswith("https://"):
+            continue
+        existing.append(
+            {
+                "old_listing_key": old_key,
+                "new_listing_key": new_key,
+                "event_type": row.get("transition_event_type", "symbol_changed"),
+                "identity_type": identity_type,
+                "identity_value": identity_value,
+                "confidence": "0.99",
+                "source_key": row.get("source_key", "nasdaq_listed"),
+                "source_url": source_url,
+                "reason": (
+                    f"Official US exchange directory lists {new_key} active and no longer lists "
+                    f"{old_key}; {identity_type} {identity_value} links the predecessor to the "
+                    "successor. Applied automatically from the symbol-change feed after venue "
+                    f"confirmation ({row.get('feed_source_key', '')})."
+                ),
+            }
+        )
+        keys.add((old_key, new_key))
+    write_csv(listing_transitions_csv, TRANSITION_FIELDS, existing)
 
 
 def persist_dropped_predecessors(
@@ -304,11 +440,23 @@ def apply_symbol_changes(
     report_json: Path = REPORT_JSON,
     report_md: Path = REPORT_MD,
     dry_run: bool = False,
+    live_reference_rows: list[dict[str, str]] | None = None,
+    sec_exchange_payload: dict[str, Any] | None = None,
+    fetch_live_us_directory: bool = True,
 ) -> dict[str, Any]:
     changes = load_csv(changes_csv)
     listings = load_csv(listings_csv)
-    active_reference = active_official_reference_rows(load_csv(reference_csv))
+    static_reference = active_official_reference_rows(load_csv(reference_csv))
+    if live_reference_rows is None and fetch_live_us_directory:
+        live_reference_rows = load_live_us_directory_reference_rows()
+    active_reference = merge_us_directory_reference_rows(static_reference, live_reference_rows or [])
     reference_lookup = lookup_by_exchange_symbol(active_reference)
+    directory_keys = active_directory_keys(active_reference)
+    sec_payload = (
+        load_sec_exchange_payload()
+        if sec_exchange_payload is None and fetch_live_us_directory
+        else sec_exchange_payload
+    )
 
     accepted: list[dict[str, str]] = []
     dropped_predecessors: list[dict[str, str]] = []
@@ -318,7 +466,10 @@ def apply_symbol_changes(
         status, evidence = classify_rename_candidate(
             change,
             listings=listings,
+            reference_rows=active_reference,
             reference_lookup=reference_lookup,
+            directory_keys=directory_keys,
+            sec_payload=sec_payload,
         )
         row = {
             "change_id": change.get("change_id", ""),
@@ -343,6 +494,11 @@ def apply_symbol_changes(
         else:
             blocked.append(row)
 
+    if accepted and not dry_run:
+        persist_applied_symbol_renames(
+            accepted,
+            listing_transitions_csv=listing_transitions_csv,
+        )
     if accepted and not dry_run:
         for path in [listings_csv, listing_index_csv, identifiers_extended_csv, supplemental_csv]:
             rows = load_csv(path)
