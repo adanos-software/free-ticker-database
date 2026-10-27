@@ -1,6 +1,6 @@
 # Official name reconciliation
 
-Generated: `2026-10-27T10:42:09Z`
+Generated: `2026-10-27T10:55:22Z`
 
 Names are changed only when active official evidence matches the exact listing key, asset type and current valid ISIN, and all official names form one coherent identity.
 

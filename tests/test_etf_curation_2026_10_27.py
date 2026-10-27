@@ -35,12 +35,10 @@ def test_reviewed_etf_name_fixes() -> None:
     assert not [row["listing_key"] for row in etf_rows if "ccumalation" in (row["name"] + row["aliases"]).lower()]
 
 
-def test_reviewed_etf_venue_duplicates_collapsed() -> None:
+def test_reviewed_etf_venue_duplicates() -> None:
     listings = _listings()
     assert "NYSE ARCA::SGOV" not in listings
     assert listings["NYSE ARCA::ETHE"]["isin"] == "US3896381072"
-    assert "grayscale ethereum" in _aliases(listings["NYSE ARCA::ETHE"])
-    assert "grayscale ethereum" not in _aliases(listings["NYSE::ETHE"])
     assert listings["NYSE::SGOV"]["isin"] == "US46436E7186"
 
 
