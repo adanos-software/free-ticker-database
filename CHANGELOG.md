@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Allowlisted `NYSE::PAPL` (Pineapple Financial Inc., Canadian issuer CIK 1938109) in `foreign_isin_reviewed.csv` after the daily Nasdaq apply ingested SEC `company_tickers_exchange` `PAPL`/NYSE; corrected the existing `NYSE MKT::PAPL` reviewed ISIN to `CA72303K4054`.
+
 ## [3.43.1] - 2026-10-20
 
 ### Added
