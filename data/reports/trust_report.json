@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T12:21:41Z",
+    "generated_at": "2026-10-27T12:58:44Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,16 +34,16 @@
   "completeness": {
     "isin": {
       "n": 63540,
-      "filled": 62855,
-      "missing": 685,
-      "pct": 98.92,
-      "fills_needed_for_99": 50,
+      "filled": 62859,
+      "missing": 681,
+      "pct": 98.93,
+      "fills_needed_for_99": 46,
       "pass": false
     },
     "country": {
       "n": 63540,
-      "filled": 63467,
-      "missing": 73,
+      "filled": 63471,
+      "missing": 69,
       "pct": 99.89,
       "fills_needed_for_99": 0,
       "pass": true
@@ -60,10 +60,10 @@
       "TSX": 128,
       "ASX": 98,
       "TSXV": 73,
-      "NASDAQ": 67,
       "NYSE ARCA": 67,
+      "NASDAQ": 66,
       "NEO": 44,
-      "BATS": 42,
+      "BATS": 39,
       "SSE": 34,
       "SSE_CL": 26,
       "NYSE": 25,
@@ -99,13 +99,13 @@
     "official_isin_mismatch": 8,
     "official_name_mismatch": 8,
     "open_collision_groups": 7,
-    "quarantine_unresolved": 1162,
+    "quarantine_unresolved": 1163,
     "quarantine_proposed_clear": 249,
     "quarantine_kept": 576
   },
   "entry_quality_status": {
-    "pass": 59552,
-    "source_gap": 3962,
+    "pass": 59556,
+    "source_gap": 3958,
     "warn": 17,
     "notice": 9
   },
@@ -135,10 +135,10 @@
       "status": "fail",
       "details": {
         "n": 63540,
-        "filled": 62855,
-        "missing": 685,
-        "pct": 98.92,
-        "fills_needed_for_99": 50,
+        "filled": 62859,
+        "missing": 681,
+        "pct": 98.93,
+        "fills_needed_for_99": 46,
         "pass": false
       }
     },
@@ -159,8 +159,8 @@
       "status": "pass",
       "details": {
         "n": 63540,
-        "filled": 63467,
-        "missing": 73,
+        "filled": 63471,
+        "missing": 69,
         "pct": 99.89,
         "fills_needed_for_99": 0,
         "pass": true

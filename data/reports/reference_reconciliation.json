@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12556,
-      "exact_match": 99853,
-      "missing_from_database": 44227,
+      "exact_identity_conflict": 12555,
+      "exact_match": 99859,
+      "missing_from_database": 44222,
       "normalization_candidate": 1864,
       "out_of_scope": 8131
     },
-    "coverage_credited_keys": 99853,
+    "coverage_credited_keys": 99859,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44227,
-    "identity_conflict_rows": 12556,
+    "in_scope_missing_rows": 44222,
+    "identity_conflict_rows": 12555,
     "mapping_candidate_rows": 1864
   },
   "rows": [
@@ -256077,10 +256077,10 @@
       "isins": "IE000YYE6WK5",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::DFEN",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_etfs_etps::XETRA::DFNC",
@@ -284413,10 +284413,10 @@
       "isins": "IE00B44Z5B48",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::SPYY",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_etfs_etps::XETRA::SPYZ",
@@ -513805,10 +513805,10 @@
       "isins": "IE00B3YCGJ38",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "FSX::P500",
-      "evidence": "ISIN conflict: official=IE00B3YCGJ38, current=DE000A1JM6F5"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::P52",
@@ -619229,10 +619229,10 @@
       "isins": "IE000YYE6WK5",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::DFEN",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::DFNC",
@@ -658909,10 +658909,10 @@
       "isins": "IE00B44Z5B48",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::SPYY",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::SPYZ",
@@ -906397,10 +906397,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "TSE::1321",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::1322",
