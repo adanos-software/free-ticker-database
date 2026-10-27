@@ -3432,6 +3432,16 @@ def fetch_text(url: str, session: requests.Session | None = None) -> str:
     return response.text
 
 
+def read_html_tables(html: str | io.StringIO) -> list[Any]:
+    """Parse HTML tables with pandas, treating a missing-table page as unavailable."""
+    try:
+        return pd.read_html(html)
+    except ValueError as exc:
+        if "No tables found" in str(exc):
+            raise requests.RequestException("HTML page contained no parseable tables") from exc
+        raise
+
+
 def fetch_bytes(url: str, session: requests.Session | None = None) -> bytes:
     session = session or requests.Session()
     response = session.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
@@ -4851,7 +4861,7 @@ def parse_dse_tz_listed_companies_html(
     }
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
-    for table in pd.read_html(io.StringIO(text)):
+    for table in read_html_tables(io.StringIO(text)):
         if "Company Code" not in table.columns:
             continue
         for record in table.to_dict("records"):
@@ -5015,7 +5025,7 @@ def parse_use_ug_market_snapshot_html(
     }
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
-    for table in pd.read_html(io.StringIO(text)):
+    for table in read_html_tables(io.StringIO(text)):
         if "Stock Code" not in table.columns or "Name" not in table.columns:
             continue
         for record in table.to_dict("records"):
@@ -8965,7 +8975,7 @@ def parse_vienna_listed_companies_html(
     listings_by_isin = listing_rows_by_exchange_isin("VSE", listings_path=listings_path)
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
-    for table in pd.read_html(io.StringIO(text)):
+    for table in read_html_tables(io.StringIO(text)):
         columns = {str(column) for column in table.columns}
         if not {"ISIN", "Issuer", "Type of Security"} <= columns:
             continue
@@ -18505,7 +18515,7 @@ def fetch_krx_listed_companies(source: MasterfileSource, session: requests.Sessi
     session = session or requests.Session()
     session.headers.update(krx_request_headers())
     page_html = session.get(source.source_url, timeout=REQUEST_TIMEOUT).text
-    page_soup = pd.read_html(io.StringIO(page_html))
+    page_soup = read_html_tables(io.StringIO(page_html))
     if not page_soup:
         raise requests.RequestException("KRX listed companies page unavailable")
 
