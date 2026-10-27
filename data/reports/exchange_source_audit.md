@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-10-27T10:21:23Z`
+Generated at: `2026-10-27T11:55:58Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -80,7 +80,7 @@ Generated at: `2026-10-27T10:21:23Z`
 | TADAWUL | official_full | tadawul_main_market_watch |  | 413 | 49.15 | tadawul_main_market_watch | refresh_required | not_applicable |
 | TASE | official_partial | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata |  | 0 |  | tase_etf_marketdata|tase_foreign_etf_search|tase_participating_unit_search|tase_securities_marketdata | refresh_unavailable | blocked_source_unavailable |
 | TPEX | official_partial | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes |  | 0 |  | tpex_emerging_basic_info|tpex_etf_filter|tpex_mainboard_basic_info|tpex_mainboard_daily_quotes | denominator_missing | blocked_nonfresh_source |
-| TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 92.3 | jpx_listed_issues|jpx_tse_stock_detail | refresh_unavailable | not_applicable |
+| TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 92.33 | jpx_listed_issues|jpx_tse_stock_detail | refresh_unavailable | not_applicable |
 | TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 785 | 75.16 | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
 | TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1518 | 87.09 | tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
 | TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1095 | 96.8 | twse_etf_list|twse_listed_companies | refresh_required | not_applicable |
@@ -90,7 +90,7 @@ Generated at: `2026-10-27T10:21:23Z`
 | VSE | official_partial | vienna_listed_companies | ETF | 0 |  | vienna_listed_companies | denominator_missing | blocked_nonfresh_source |
 | WSE | official_partial | newconnect_listed_companies|wse_etf_list|wse_listed_companies |  | 0 |  | newconnect_listed_companies|wse_etf_list|wse_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | XDUS | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| XETRA | official_full | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities |  | 5149 | 96.52 | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities | refresh_required | not_applicable |
+| XETRA | official_full | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities |  | 5149 | 96.56 | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities | refresh_required | not_applicable |
 | XHAM | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XHAN | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XSTU | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
