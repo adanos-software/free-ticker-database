@@ -6,26 +6,151 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97440,
+    "before_rows": 97439,
     "after_rows": 97440,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "removed_rows": 3,
+    "evidenced_removed_rows": 3,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 8,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_official_change_evidence_rows": 1,
+    "generated_reviewed_transition_evidence_rows": 3
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::VSME",
+    "NASDAQ::WPRT",
+    "NYSE::NXDR"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "NASDAQ::PUSA",
+      "field_name": "name",
+      "old_value": "Aureus Greenway Holdings Inc",
+      "new_value": "Powerus Corporation"
+    },
+    {
+      "listing_key": "NASDAQ::SVRN",
+      "field_name": "name",
+      "old_value": "OceanPal Inc.",
+      "new_value": "SVRN, Inc."
+    },
+    {
+      "listing_key": "NASDAQ::XRPN",
+      "field_name": "name",
+      "old_value": "Armada Acquisition Corp. II",
+      "new_value": "Evernorth Holdings Inc."
+    },
+    {
+      "listing_key": "NASDAQ::XRPN",
+      "field_name": "country",
+      "old_value": "Cayman Islands",
+      "new_value": "United States"
+    },
+    {
+      "listing_key": "NASDAQ::XRPN",
+      "field_name": "country_code",
+      "old_value": "KY",
+      "new_value": "US"
+    },
+    {
+      "listing_key": "NASDAQ::XRPN",
+      "field_name": "isin",
+      "old_value": "KYG0R38G1040",
+      "new_value": "US2999461039"
+    },
+    {
+      "listing_key": "NYSE::SOAR",
+      "field_name": "name",
+      "old_value": "Volato Group Inc.",
+      "new_value": "SOAR AI, Inc."
+    },
+    {
+      "listing_key": "OTC::DGCOF",
+      "field_name": "name",
+      "old_value": "Daura Capital Corp.",
+      "new_value": "Daura Gold Corp."
+    }
+  ],
+  "generated_official_change_evidence": [
+    {
+      "listing_key": "NYSE::NXDR",
+      "ticker": "NXDR",
+      "exchange": "NYSE",
+      "event_type": "venue_changed",
+      "field_name": "exchange",
+      "old_value": "NYSE",
+      "new_value": "NASDAQ",
+      "before_row_sha256": "0c965ae4b8b97490bb62debd22dab4bee9112d4786901fa4ae3a45b04c0c7775",
+      "effective_at": "",
+      "observed_at": "2026-10-27T16:05:45Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "sec_company_tickers_exchange",
+      "previous_source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "observation_id": "51b9633cd56bd4422c62ebef",
+      "evidence_status": "official"
+    }
+  ],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NASDAQ::VSME",
+      "ticker": "VSME",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "VSME",
+      "new_value": "FCDH",
+      "before_row_sha256": "fa82b538d3d6221063d421f3dcf1b644362c43509433232cc562741698fdb6f4",
+      "effective_at": "",
+      "observed_at": "2026-10-27T16:05:45Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "084b8a7a17d6b79f1163fa75",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::WPRT",
+      "ticker": "WPRT",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "WPRT",
+      "new_value": "AETR",
+      "before_row_sha256": "355475190fbacd1863088e359b8dba8aee34967fc6d39d87844e3e55c12547b3",
+      "effective_at": "",
+      "observed_at": "2026-10-27T16:05:45Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "d75126dd2366fbb076ed947a",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NYSE::NXDR",
+      "ticker": "NXDR",
+      "exchange": "NYSE",
+      "event_type": "venue_changed",
+      "field_name": "exchange",
+      "old_value": "NYSE",
+      "new_value": "NASDAQ",
+      "before_row_sha256": "0c965ae4b8b97490bb62debd22dab4bee9112d4786901fa4ae3a45b04c0c7775",
+      "effective_at": "",
+      "observed_at": "2026-10-27T16:05:45Z",
+      "source_key": "sec_8k_listing_transfer",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1846069/000184606926000162/nxdr-20261001.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "72d203a980e2dcd1edb203a6",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -425,10 +550,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4824,
+      "before_rows": 4822,
       "after_rows": 4824,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 2,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -479,10 +604,10 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2032,
+      "before_rows": 2033,
       "after_rows": 2032,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "shrink_pct": 0.049188,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
