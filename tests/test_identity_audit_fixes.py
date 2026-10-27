@@ -27,7 +27,6 @@ STOLEN_ISIN_CLEARS = {
     ("EXCH", "OTC"): "IE00BMG6Z448",
     ("EMDV", "BATS"): "IE00B6YX5B26",
     ("COII", "BATS"): "XS2901886445",
-    ("ETHE", "NYSE"): "GB00BLD4ZM24",
     ("CNYA", "BATS"): "IE00BQT3WG13",
     ("BSOL", "NYSE ARCA"): "DE000A4A59D2",
     ("BOD-EQO", "BSE_BW"): "GB00B5TFC825",
@@ -50,7 +49,6 @@ STOLEN_ISIN_CLEARS = {
     ("POLL", "IDX"): "ARP7905G1652",
     ("NESTLE", "PSX"): "NGNESTLE0006",
     ("NRL", "PSX"): "MU0049N00000",
-    ("CIEB", "BMV"): "EGS60041C018",
     ("CLU", "NEO"): "AU0000113490",
     ("FGX", "NEO"): "AU000000FGX1",
     ("DPM", "TSX"): "AU0000413890",
@@ -108,7 +106,6 @@ COUNTRY_CLEARS = {
     ("VDTA", "OTC"),
     ("EXCH", "OTC"),
     ("EMDV", "BATS"),
-    ("ETHE", "NYSE"),
     ("CNYA", "BATS"),
     ("BSOL", "NYSE ARCA"),
     ("BOD-EQO", "BSE_BW"),
@@ -125,7 +122,6 @@ COUNTRY_CLEARS = {
     ("UNIQ", "SET"),
     ("NESTLE", "PSX"),
     ("NRL", "PSX"),
-    ("CIEB", "BMV"),
     ("CLU", "NEO"),
     ("FGX", "NEO"),
     ("DPM", "TSX"),
@@ -264,6 +260,24 @@ def test_identiv_and_isem_are_not_recode_targets() -> None:
     isem = _metadata("ISEM", "LSE", "isin")
     assert isem["decision"] == "update"
     assert isem["proposed_value"] == "IE00B27YCP72"
+
+
+def test_cieb_bmv_mexican_isin_after_egyptian_homonym_clear() -> None:
+    isin_rows = _metadata_rows("CIEB", "BMV", "isin")
+    assert [row["decision"] for row in isin_rows] == ["clear", "update"]
+    assert "EGS60041C018" in isin_rows[0]["reason"]
+    assert isin_rows[1]["proposed_value"] == "MXP201161017"
+    country_rows = _metadata_rows("CIEB", "BMV", "country")
+    assert [row["decision"] for row in country_rows] == ["clear", "update"]
+    assert country_rows[1]["proposed_value"] == "Mexico"
+    code_rows = _metadata_rows("CIEB", "BMV", "country_code")
+    assert [row["decision"] for row in code_rows] == ["clear", "update"]
+    assert code_rows[1]["proposed_value"] == "MX"
+    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
+    row = listings["BMV::CIEB"]
+    assert row["isin"] == "MXP201161017"
+    assert row["country"] == "Mexico"
+    assert row["country_code"] == "MX"
 
 
 def test_lse_rea_official_directory_isin_fill() -> None:

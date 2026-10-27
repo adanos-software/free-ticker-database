@@ -1,9 +1,9 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-10-27T12:38:22Z`
-- New supported rows: `96`
-- Accepted rows: `82`
-- Skipped rows: `14`
+- Generated at: `2026-10-27T12:16:03Z`
+- New supported rows: `94`
+- Accepted rows: `81`
+- Skipped rows: `13`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
@@ -69,7 +69,6 @@
 | TLCE | NASDAQ | Thrivent Large Cap Stock ETF | ETF | supplement | nasdaq_listed |
 | TRXB | NASDAQ | TRex Bio, Inc. - Common stock | Stock | supplement | nasdaq_listed |
 | TSIE | NASDAQ | Thrivent Securitized Income ETF | ETF | supplement | nasdaq_listed |
-| YSKH | NASDAQ | YieldMax SKHY Option Income Strategy ETF | ETF | supplement | nasdaq_listed |
 | MSGK | NYSE | MSG Knickerbockers Corp. Class A Common Stock | Stock | supplement | nasdaq_other_listed |
 | MSGR | NYSE | MSG Rangers Corp. Class A Common Stock | Stock | coverage_expansion | nasdaq_other_listed |
 | AIBN | NYSE ARCA | Defiance AI Infrastructure Bond ETF | ETF | supplement | nasdaq_other_listed |
@@ -98,5 +97,5 @@
 | Reason | Rows |
 |---|---:|
 | already_in_listings | 6 |
-| excluded_non_common_stock | 7 |
+| excluded_non_common_stock | 6 |
 | not_stock_like_name | 1 |

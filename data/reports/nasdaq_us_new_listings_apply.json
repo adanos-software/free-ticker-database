@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-10-27T12:38:22Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-10-27T12:16:03Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,24 +11,24 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 96,
-    "accepted_rows": 82,
-    "skipped_rows": 14,
-    "detected_symbol_changes": 2,
+    "new_supported_rows": 94,
+    "accepted_rows": 81,
+    "skipped_rows": 13,
+    "detected_symbol_changes": 0,
     "accepted_by_exchange": {
       "BATS": 27,
-      "NASDAQ": 33,
+      "NASDAQ": 32,
       "NYSE": 2,
       "NYSE ARCA": 18,
       "NYSE MKT": 2
     },
     "accepted_by_target": {
       "coverage_expansion": 23,
-      "supplement": 59
+      "supplement": 58
     },
     "skipped_by_reason": {
       "already_in_listings": 6,
-      "excluded_non_common_stock": 7,
+      "excluded_non_common_stock": 6,
       "not_stock_like_name": 1
     }
   },
@@ -468,11 +468,11 @@
       "name": "Aetherion Technologies Inc. - Common Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "sector": "Industrials",
-      "country": "Canada",
-      "country_code": "CA",
-      "isin": "CA9609085076",
-      "aliases": "westport fuel systems",
+      "sector": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "reference_scope": "exchange_directory",
@@ -637,11 +637,11 @@
       "name": "Forcendra Holding Limited - Class A Ordinary Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "sector": "Communication Services",
-      "country": "British Virgin Islands",
-      "country_code": "VG",
-      "isin": "VGG9517U1113",
-      "aliases": "vs media holdings",
+      "sector": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "reference_scope": "exchange_directory",
@@ -925,21 +925,6 @@
     {
       "ticker": "TSIE",
       "name": "Thrivent Securitized Income ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "YSKH",
-      "name": "YieldMax SKHY Option Income Strategy ETF",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "sector": "",
@@ -1348,14 +1333,6 @@
       "ticker": "SATS",
       "exchange": "NASDAQ",
       "name": "Strive, Inc. - 15.00% Series A Perpetual SATS Preferred Stock",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "SCQCU",
-      "exchange": "NASDAQ",
-      "name": "SPACCircle Acquisition Corp. - Units",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"

@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-10-27T12:41:09Z`
+Generated: `2026-10-27T13:25:32Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -34,9 +34,9 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | France | 6 |
 | isin_shared_by_distinct_issuers | Cayman Islands | 5 |
 | ticker_collision_isin_misassignment_suspected | India | 5 |
-| isin_shared_by_distinct_issuers | Canada | 4 |
 | isin_shared_by_distinct_issuers | Switzerland | 4 |
 | isin_shared_by_distinct_issuers | Australia | 3 |
+| isin_shared_by_distinct_issuers | Canada | 3 |
 | isin_shared_by_distinct_issuers | China | 3 |
 | isin_shared_by_distinct_issuers | Finland | 3 |
 | isin_shared_by_distinct_issuers | Germany | 3 |
@@ -62,7 +62,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
 | US0896951003 | United States | 2 | BIGG | BIGG Digital Assets Inc. \| Big Tree Group Inc |
-| CA9609085076 | Canada | 3 | - | Aetherion Technologies Inc. - Common Shares \| Westport Fuel Systems Inc. |
+| INE534A01028 | India | 3 | - | Grand Foundry Ltd \| Tikona Communication Limited |
 | NO0010861990 | Norway | 2 | - | Prism Resources Inc. \| Prosafe SE |
 | SE0000722365 | Sweden | 2 | - | Vivesto AB \| Viveve Medical Inc |
 

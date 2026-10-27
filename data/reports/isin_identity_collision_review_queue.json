@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T12:41:09Z",
+    "generated_at": "2026-10-27T13:25:32Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -3288,53 +3288,6 @@
       "_members": [
         {
           "asset_type": "Stock",
-          "country": "Canada",
-          "country_code": "CA",
-          "exchange": "FSX",
-          "listing_key": "FSX::WPI",
-          "name": "Westport Fuel Systems Inc.",
-          "ticker": "WPI"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Canada",
-          "country_code": "CA",
-          "exchange": "NASDAQ",
-          "listing_key": "NASDAQ::AETR",
-          "name": "Aetherion Technologies Inc. - Common Shares",
-          "ticker": "AETR"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Canada",
-          "country_code": "CA",
-          "exchange": "TSX",
-          "listing_key": "TSX::WPRT",
-          "name": "Westport Fuel Systems Inc",
-          "ticker": "WPRT"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "CA9609085076",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "FSX::WPI|NASDAQ::AETR|TSX::WPRT",
-      "member_exchanges": "FSX | NASDAQ | TSX",
-      "member_names": "Aetherion Technologies Inc. - Common Shares | Westport Fuel Systems Inc.",
-      "member_tickers": "AETR | WPI | WPRT",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Canada",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
           "country": "Switzerland",
           "country_code": "CH",
           "exchange": "LSE",
@@ -3750,6 +3703,53 @@
       "member_tickers": "7CC | MBAI",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Israel",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "BSE_IN",
+          "listing_key": "BSE_IN::GFSTEELS",
+          "name": "Grand Foundry Ltd",
+          "ticker": "GFSTEELS"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "NSE_IN",
+          "listing_key": "NSE_IN::GFSTEELS",
+          "name": "Grand Foundry Limited",
+          "ticker": "GFSTEELS"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "NSE_IN",
+          "listing_key": "NSE_IN::TIKONA",
+          "name": "Tikona Communication Limited",
+          "ticker": "TIKONA"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "INE534A01028",
+      "isin_valid": "true",
+      "listing_count": "3",
+      "listing_keys": "BSE_IN::GFSTEELS|NSE_IN::GFSTEELS|NSE_IN::TIKONA",
+      "member_exchanges": "BSE_IN | NSE_IN",
+      "member_names": "Grand Foundry Ltd | Tikona Communication Limited",
+      "member_tickers": "GFSTEELS | TIKONA",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "India",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5920,7 +5920,7 @@
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-10-27T12:41:09Z",
+    "generated_at": "2026-10-27T13:25:32Z",
     "listings_involved": 373,
     "next_review_batches": [
       {
@@ -5966,17 +5966,17 @@
       {
         "collision_groups": 4,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Canada"
-      },
-      {
-        "collision_groups": 4,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Switzerland"
       },
       {
         "collision_groups": 3,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Australia"
+      },
+      {
+        "collision_groups": 3,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Canada"
       },
       {
         "collision_groups": 3,
@@ -6051,6 +6051,11 @@
       {
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "India"
+      },
+      {
+        "collision_groups": 1,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Ireland"
       },
       {
@@ -6101,7 +6106,7 @@
       "Austria": 1,
       "Belgium": 2,
       "Bermuda": 2,
-      "Canada": 6,
+      "Canada": 5,
       "Cayman Islands": 5,
       "China": 3,
       "Denmark": 1,
@@ -6109,7 +6114,7 @@
       "France": 6,
       "Germany": 12,
       "Hungary": 1,
-      "India": 5,
+      "India": 6,
       "Ireland": 1,
       "Israel": 1,
       "Italy": 4,

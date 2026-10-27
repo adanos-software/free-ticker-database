@@ -520,9 +520,15 @@ TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "tiger brokers": {"up fintech", "up fintech holding ltd", "up fintech holding"},
     "tiger royalties and investments": {"potentially ai"},
     "tir": {"potentially ai"},
+    "splg": {
+        "state street",
+        "spdr portfolio s&p 500",
+        "spdr portfolio",
+        "state street spdr portfolio s&p 500",
+    },
     "banque cantonale du valais": {"walliser kantonalbank"},
 }
-REVIEWED_HISTORICAL_SYMBOL_ALIASES = {"alba", "tir"}
+REVIEWED_HISTORICAL_SYMBOL_ALIASES = {"alba", "splg", "tir"}
 ISIN_PREFIX_COUNTRIES = {
     "AI": "Anguilla",
     "AT": "Austria",
@@ -2913,7 +2919,18 @@ def duplicate_alias_owner_score(row: dict[str, str], alias: str) -> int:
         score += 40
     if strip_legal_alias_suffixes(normalize_alias_text(row.get("name", "")).lower()) == alias:
         score += 30
-    if row.get("exchange") in {"XETRA", "LSE", "Euronext", "SIX", "NYSE", "NASDAQ", "TSX", "TSE"}:
+    if row.get("exchange") in {
+        "XETRA",
+        "LSE",
+        "Euronext",
+        "SIX",
+        "NYSE",
+        "NASDAQ",
+        "NYSE ARCA",
+        "BATS",
+        "TSX",
+        "TSE",
+    }:
         score += 3
     return score
 

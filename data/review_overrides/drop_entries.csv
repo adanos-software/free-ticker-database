@@ -1074,6 +1074,7 @@ SFRT,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather
 SFUNY,NYSE,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 SGBX,NASDAQ,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
 SGCSF,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
+ETHE,NYSE,0.95,Reviewed ETF venue transition NYSE::ETHE to NYSE ARCA::ETHE; exact evidence is recorded in listing_transitions.csv.
 SGOV,NYSE ARCA,0.95,Reviewed ETF venue transition NYSE ARCA::SGOV to NYSE::SGOV; exact evidence is recorded in listing_transitions.csv.
 SGR,WSE,0.99,Official current GPW and NewConnect listed-companies directories do not list SGR as an active WSE listing; the remaining Sadovaya Group row carries a wrong Australian ISIN and is stale.
 SGTB,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
@@ -1310,7 +1311,6 @@ VRM,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqGM rather than the cur
 VRTVX,NMFQS,0.95,db-wide audit 2026-06-21: mutual fund (not exchange-listed common/ETF)
 VRWODAR,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::VRWODAR to BSE_IN::MEGAMONT; exact evidence is recorded in listing_transitions.csv.
 VSA,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: VisionSys AI Inc. - American Depositary Shares"
-VSME,NASDAQ,0.99,Detected official Nasdaq directory ticker change NASDAQ::VSME to NASDAQ::FCDH; exact evidence is recorded in listing_transitions.csv.
 VSNTV,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 VTN,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 VTYX,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
@@ -1333,7 +1333,6 @@ WONDR,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do n
 WOW,NYSE,0.96,"Yahoo Finance resolves this symbol to another exchange rather than the current exchange, indicating the current listing is stale."
 WPAC-R,NYSE,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 WPAC-UN,NYSE,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent from current NASDAQ Trader master, web+adversarial verified)"
-WPRT,NASDAQ,0.99,Detected official Nasdaq directory ticker change NASDAQ::WPRT to NASDAQ::AETR; exact evidence is recorded in listing_transitions.csv.
 WR1,ASX,0.95,"JP/AU delisting-staleness 2026-06-19: acquired_taken_private (absent from current JPX/ASX master, web+adversarial verified)"
 WSBCO,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqGS rather than the current exchange, indicating the current listing is stale."
 WSE,ASX,0.95,"Correctness re-audit 2026-06-16: 'SERIES 2021-1 WST TRUST' is an RMBS securitisation trust, not an ETF or stock; out of scope for a stock/ETF dataset. Verified via issuer/ASX."
