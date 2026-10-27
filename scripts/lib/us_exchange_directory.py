@@ -5,6 +5,8 @@ from __future__ import annotations
 import csv
 import io
 import json
+import os
+import time
 from pathlib import Path
 from typing import Any
 
@@ -50,13 +52,36 @@ SEC_EXCHANGE_MAP = {
     "OTC": "OTC",
 }
 
-CANONICAL_EXCHANGE_TO_SEC = {canonical: sec for sec, canonical in SEC_EXCHANGE_MAP.items()}
+SEC_FETCH_ATTEMPTS = 4
+SEC_FETCH_BASE_DELAY_SECONDS = 4.0
+SEC_RATE_LIMIT_RETRY_SECONDS = 60.0
 
-SEC_PAYLOAD_FIELDS = ["cik", "name", "ticker", "exchange"]
+
+def sec_contact_email() -> str:
+    return os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 
 
 def sec_request_headers() -> dict[str, str]:
-    return {"User-Agent": "free-ticker-database/1.0 (symbol-change-apply)"}
+    return {
+        "User-Agent": f"free-ticker-database/2.0 ({sec_contact_email()})",
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": "https://www.sec.gov/",
+    }
+
+
+def _sec_fetch_retry_delay(error: requests.RequestException, attempt: int) -> float:
+    response = getattr(error, "response", None)
+    if response is not None:
+        retry_after = response.headers.get("Retry-After")
+        if retry_after:
+            try:
+                return float(retry_after)
+            except ValueError:
+                pass
+        if response.status_code == 429:
+            return max(SEC_FETCH_BASE_DELAY_SECONDS * attempt, SEC_RATE_LIMIT_RETRY_SECONDS)
+    return SEC_FETCH_BASE_DELAY_SECONDS * attempt
 
 
 def _fetch_text(url: str, *, cache_path: Path) -> str:
@@ -73,18 +98,57 @@ def _fetch_text(url: str, *, cache_path: Path) -> str:
         raise
 
 
-def _fetch_sec_payload(*, cache_path: Path = SEC_COMPANY_TICKERS_CACHE) -> dict[str, Any]:
+def _download_sec_company_tickers_exchange_json() -> dict[str, Any]:
+    last_error: requests.RequestException | json.JSONDecodeError | None = None
+    for attempt in range(1, SEC_FETCH_ATTEMPTS + 1):
+        try:
+            response = requests.get(
+                SEC_COMPANY_TICKERS_URL,
+                headers=sec_request_headers(),
+                timeout=60,
+            )
+            response.raise_for_status()
+            return response.json()
+        except (requests.RequestException, json.JSONDecodeError) as exc:
+            last_error = exc
+            if attempt == SEC_FETCH_ATTEMPTS:
+                break
+            if isinstance(exc, requests.RequestException):
+                time.sleep(_sec_fetch_retry_delay(exc, attempt))
+            else:
+                time.sleep(SEC_FETCH_BASE_DELAY_SECONDS * attempt)
+    assert last_error is not None
+    raise last_error
+
+
+def _fetch_sec_payload(
+    *,
+    cache_path: Path = SEC_COMPANY_TICKERS_CACHE,
+    prefer_cache: bool = False,
+) -> dict[str, Any]:
     cache_path.parent.mkdir(parents=True, exist_ok=True)
+    if prefer_cache and cache_path.exists():
+        return json.loads(cache_path.read_text(encoding="utf-8"))
     try:
-        response = requests.get(SEC_COMPANY_TICKERS_URL, headers=sec_request_headers(), timeout=60)
-        response.raise_for_status()
-        payload = response.json()
-        cache_path.write_text(json.dumps(payload), encoding="utf-8")
-        return payload
-    except (requests.RequestException, json.JSONDecodeError):
+        payload = _download_sec_company_tickers_exchange_json()
+    except (requests.RequestException, json.JSONDecodeError, OSError, ValueError, TypeError):
         if cache_path.exists():
             return json.loads(cache_path.read_text(encoding="utf-8"))
         raise
+    cache_path.write_text(json.dumps(payload), encoding="utf-8")
+    return payload
+
+
+def refresh_sec_exchange_cache(*, cache_path: Path = SEC_COMPANY_TICKERS_CACHE) -> dict[str, Any] | None:
+    """Download SEC company_tickers_exchange.json with retries and write the cache file."""
+
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        payload = _download_sec_company_tickers_exchange_json()
+    except (requests.RequestException, json.JSONDecodeError, OSError, ValueError, TypeError):
+        return None
+    cache_path.write_text(json.dumps(payload), encoding="utf-8")
+    return payload
 
 
 def _parse_pipe_table(text: str) -> list[dict[str, str]]:
@@ -269,87 +333,10 @@ def sec_ciks_by_ticker(payload: dict[str, Any] | None) -> dict[str, set[str]]:
     return indexed
 
 
-def _sec_payload_row(
-    *,
-    ticker: str,
-    cik: str,
-    name: str = "",
-    exchange: str = "NASDAQ",
-) -> list[Any] | None:
-    ticker = normalize_symbol(ticker)
-    cik_digits = cik.strip().lstrip("0") or "0"
-    if not ticker or not cik_digits.isdigit():
-        return None
-    sec_exchange = CANONICAL_EXCHANGE_TO_SEC.get(exchange, exchange)
-    return [int(cik_digits), name, ticker, sec_exchange]
-
-
-def build_sec_exchange_payload_from_committed_sources(
-    identifier_rows: list[dict[str, str]],
-    transition_rows: list[dict[str, str]] | None = None,
-) -> dict[str, Any] | None:
-    """Rebuild a minimal SEC JSON shape from committed identifier and transition rows.
-
-    Used when live SEC fetches fail (for example in CI) so same_cik reviewed transitions
-    can still be verified against SEC-sourced CIKs already present in the dataset.
-    """
-
-    seen: set[tuple[str, int]] = set()
-    data: list[list[Any]] = []
-
-    def append_row(row_values: list[Any] | None) -> None:
-        if not row_values:
-            return
-        ticker = str(row_values[2])
-        cik_int = int(row_values[0])
-        key = (ticker, cik_int)
-        if key in seen:
-            return
-        seen.add(key)
-        data.append(row_values)
-
-    for row in identifier_rows:
-        cik = str(row.get("cik", "") or "").strip()
-        if not cik.isdigit():
-            continue
-        if "sec" not in str(row.get("cik_source", "") or "").casefold():
-            continue
-        append_row(
-            _sec_payload_row(
-                ticker=row.get("ticker", ""),
-                cik=cik,
-                name=str(row.get("name", "") or ""),
-                exchange=row.get("exchange", ""),
-            )
-        )
-
-    for transition in transition_rows or []:
-        if transition.get("identity_type", "").strip() != "same_cik":
-            continue
-        identity_value = transition.get("identity_value", "").strip()
-        if not identity_value.isdigit():
-            continue
-        old_key = transition.get("old_listing_key", "").strip()
-        exchange, separator, ticker = old_key.partition("::")
-        if not separator:
-            continue
-        append_row(
-            _sec_payload_row(
-                ticker=ticker,
-                cik=identity_value,
-                exchange=exchange,
-            )
-        )
-
-    if not data:
-        return None
-    return {"fields": SEC_PAYLOAD_FIELDS, "data": data}
-
-
 def load_sec_exchange_payload(*, allow_network: bool = True) -> dict[str, Any] | None:
     if allow_network:
         try:
-            return _fetch_sec_payload()
+            return _fetch_sec_payload(prefer_cache=False)
         except (requests.RequestException, json.JSONDecodeError, OSError, ValueError, TypeError):
             pass
     if SEC_COMPANY_TICKERS_CACHE.exists():

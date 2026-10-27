@@ -19,10 +19,7 @@ try:
     )
     from scripts.lib.official_change_evidence import build_official_change_evidence
     from scripts.lib.official_change_evidence import is_valid_isin
-    from scripts.lib.us_exchange_directory import (
-        build_sec_exchange_payload_from_committed_sources,
-        load_sec_exchange_payload,
-    )
+    from scripts.lib.us_exchange_directory import load_sec_exchange_payload
 except ModuleNotFoundError:  # pragma: no cover
     from lib.merge_evidence import (
         CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
@@ -31,10 +28,7 @@ except ModuleNotFoundError:  # pragma: no cover
     )
     from lib.official_change_evidence import build_official_change_evidence
     from lib.official_change_evidence import is_valid_isin
-    from lib.us_exchange_directory import (
-        build_sec_exchange_payload_from_committed_sources,
-        load_sec_exchange_payload,
-    )
+    from lib.us_exchange_directory import load_sec_exchange_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -43,7 +37,6 @@ DEFAULT_OFFICIAL_REFERENCE = DATA_DIR / "masterfiles/reference.csv"
 DEFAULT_TICKERS_JSON = DATA_DIR / "tickers.json"
 DEFAULT_LISTING_TRANSITIONS = DATA_DIR / "review_overrides/listing_transitions.csv"
 DEFAULT_SEC_EXCHANGE_CACHE = DATA_DIR / "masterfiles/cache/sec_company_tickers_exchange.json"
-DEFAULT_IDENTIFIERS_EXTENDED = DATA_DIR / "identifiers_extended.csv"
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -417,17 +410,6 @@ def _load_sec_exchange_payload(cache_path: Path) -> dict[str, Any] | None:
         return None
 
 
-def _resolve_sec_exchange_payload(
-    payload: dict[str, Any] | None,
-    *,
-    identifier_rows: list[dict[str, str]],
-    transition_rows: list[dict[str, str]],
-) -> dict[str, Any] | None:
-    if payload:
-        return payload
-    return build_sec_exchange_payload_from_committed_sources(identifier_rows, transition_rows)
-
-
 def write_report(report: dict[str, Any]) -> None:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     (REPORTS_DIR / "safe_merge.json").write_text(
@@ -456,9 +438,6 @@ def main() -> None:
         if args.reviewed_listing_transitions.exists()
         else []
     )
-    identifier_rows = (
-        load_csv(DEFAULT_IDENTIFIERS_EXTENDED) if DEFAULT_IDENTIFIERS_EXTENDED.exists() else []
-    )
     report = evaluate(
         load_csv(args.before), load_csv(args.after),
         load_csv(args.events) if args.events.exists() else [],
@@ -472,11 +451,7 @@ def main() -> None:
             else []
         ),
         reviewed_transition_rows=reviewed_transition_rows,
-        sec_exchange_payload=_resolve_sec_exchange_payload(
-            _load_sec_exchange_payload(args.sec_exchange_cache),
-            identifier_rows=identifier_rows,
-            transition_rows=reviewed_transition_rows,
-        ),
+        sec_exchange_payload=_load_sec_exchange_payload(args.sec_exchange_cache),
         reviewed_transition_source_report=_display_path(args.reviewed_listing_transitions),
     )
     write_report(report)
