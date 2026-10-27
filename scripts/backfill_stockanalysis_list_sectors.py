@@ -69,7 +69,7 @@ STOCKANALYSIS_LISTS = {
     },
 }
 
-USER_AGENT = "free-ticker-database/3.0 (+https://github.com/adanos-software/free-ticker-database)"
+USER_AGENT = "free-ticker-database/symbol-change-sync"
 SCREENER_ENDPOINT = "https://stockanalysis.com/_api/endpoints/screener/table"
 REPORT_FIELDNAMES = [
     "ticker",
