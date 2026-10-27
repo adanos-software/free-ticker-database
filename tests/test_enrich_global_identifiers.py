@@ -305,6 +305,42 @@ def test_build_base_identifier_rows_drops_extended_values_when_core_isin_changes
     assert rows[0]["cik_source"] == ""
 
 
+def test_build_base_identifier_rows_carries_reviewed_venue_transition_identifiers(
+    tmp_path,
+    monkeypatch,
+):
+    listings = tmp_path / "listings.csv"
+    listings.write_text(
+        "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases\n"
+        "NASDAQ::LUMN,LUMN,NASDAQ,Lumen Technologies Inc,Stock,,,United States,US,US5502411037,\n",
+        encoding="utf-8",
+    )
+    identifiers_extended = tmp_path / "identifiers_extended.csv"
+    identifiers_extended.write_text(
+        "listing_key,ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source\n"
+        "NYSE::LUMN,LUMN,NYSE,US5502411037,550241,BBG000BGLRN3,0000018926,8M3THTGWLTYZVE6BBY25,OpenFIGI,SEC company_tickers_exchange.json,GLEIF\n"
+        "NASDAQ::LUMN,LUMN,NASDAQ,US5502411037,,,0000018926,,,,\n",
+        encoding="utf-8",
+    )
+    transitions = tmp_path / "listing_transitions.csv"
+    transitions.write_text(
+        "old_listing_key,new_listing_key,event_type,identity_type,identity_value,confidence,source_key,source_url,reason\n"
+        "NYSE::LUMN,NASDAQ::LUMN,venue_changed,same_isin,US5502411037,0.99,sec_8k_listing_transfer,https://www.sec.gov/example,test\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.enrich_global_identifiers.LISTINGS_CSV", listings)
+    monkeypatch.setattr("scripts.enrich_global_identifiers.IDENTIFIERS_EXTENDED_CSV", identifiers_extended)
+    monkeypatch.setattr("scripts.enrich_global_identifiers.LISTING_TRANSITIONS_CSV", transitions)
+
+    rows = build_base_identifier_rows()
+
+    assert rows[0]["wkn"] == "550241"
+    assert rows[0]["figi"] == "BBG000BGLRN3"
+    assert rows[0]["lei"] == "8M3THTGWLTYZVE6BBY25"
+    assert rows[0]["figi_source"] == "OpenFIGI"
+    assert rows[0]["lei_source"] == "GLEIF"
+
+
 def test_clear_cross_isin_figi_collisions_removes_ambiguous_figis():
     rows = [
         {"isin": "AT0000652011", "figi": "BBG000BMTW42", "figi_source": "OpenFIGI"},

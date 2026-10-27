@@ -167,6 +167,17 @@ def test_split_aliases_accepts_review_override_lists():
     ]
 
 
+def test_merge_reviewed_metadata_aliases_preserves_former_name_aliases():
+    overrides = {
+        "aliases": {
+            "decision": "update",
+            "proposed_value": "predictive discovery|pdi gold",
+        }
+    }
+    merged = rebuild_dataset.merge_reviewed_metadata_aliases(["pdi gold"], overrides)
+    assert merged == ["pdi gold", "predictive discovery"]
+
+
 def test_coverage_overrides_fill_empty_only_and_identity_still_overwrites():
     filled = rebuild_dataset.apply_input_metadata_overrides(
         {

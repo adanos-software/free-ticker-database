@@ -2705,6 +2705,26 @@ def apply_review_alias_removals(aliases: list[str], removals: set[str]) -> list[
     return [alias for alias in aliases if alias not in removals]
 
 
+def reviewed_metadata_alias_overrides(
+    field_overrides: dict[str, dict[str, str]],
+) -> list[str]:
+    override = field_overrides.get("aliases", {})
+    if override.get("decision") != "update":
+        return []
+    return split_aliases(override.get("proposed_value", ""))
+
+
+def merge_reviewed_metadata_aliases(
+    aliases: list[str],
+    field_overrides: dict[str, dict[str, str]],
+) -> list[str]:
+    protected = reviewed_metadata_alias_overrides(field_overrides)
+    if not protected:
+        return aliases
+    merged = dedupe_keep_order([*aliases, *protected])
+    return merged
+
+
 def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
@@ -2846,11 +2866,13 @@ def cleaned_rows():
             "aliases": aliases,
             "wkn": identifier.get("wkn", ""),
         }
+        metadata_overrides = review_metadata_updates.get((row["ticker"], row["exchange"]), {})
         output_row = apply_output_metadata_overrides(
             output_row,
-            review_metadata_updates.get((row["ticker"], row["exchange"]), {}),
+            metadata_overrides,
         )
         _, output_aliases = clean_aliases(output_row, output_row.get("aliases", []), wkns, alias_context)
+        output_aliases = merge_reviewed_metadata_aliases(output_aliases, metadata_overrides)
         output_aliases = apply_review_alias_removals(output_aliases, review_alias_removals.get(row_key, set()))
         output_row["aliases"] = output_aliases
         output_rows.append(
