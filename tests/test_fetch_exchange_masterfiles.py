@@ -3895,6 +3895,91 @@ def test_parse_krx_product_finder_records_maps_rows():
     ]
 
 
+def test_read_html_tables_maps_no_tables_found_to_request_exception(monkeypatch) -> None:
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles.pd,
+        "read_html",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(ValueError("No tables found")),
+    )
+
+    with pytest.raises(requests.RequestException, match="no parseable tables"):
+        fetch_exchange_masterfiles.read_html_tables("<html></html>")
+
+
+def test_fetch_krx_listed_companies_raises_request_exception_when_page_has_no_tables(monkeypatch) -> None:
+    source = MasterfileSource(
+        key="krx_listed_companies",
+        provider="KRX",
+        description="KRX listed companies",
+        source_url="https://example.com/krx",
+        format="krx_listed_companies_json",
+    )
+
+    class FakeResponse:
+        text = "<html><body>maintenance</body></html>"
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.headers = {}
+
+        def get(self, url, **kwargs):
+            return FakeResponse()
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles.pd,
+        "read_html",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(ValueError("No tables found")),
+    )
+
+    with pytest.raises(requests.RequestException, match="no parseable tables"):
+        fetch_krx_listed_companies(source, session=FakeSession())
+
+
+def test_fetch_all_sources_continues_when_krx_page_has_no_html_tables(monkeypatch) -> None:
+    krx_source = next(item for item in OFFICIAL_SOURCES if item.key == "krx_listed_companies")
+    nasdaq_source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_listed")
+
+    def fake_fetch_source_rows(source, session=None):
+        if source.key == "krx_listed_companies":
+            raise requests.RequestException("HTML page contained no parseable tables")
+        if source.key == "nasdaq_listed":
+            return [
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": "AAPL",
+                    "name": "Apple Inc.",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            ]
+        raise AssertionError(f"unexpected source {source.key}")
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_source_rows", fake_fetch_source_rows)
+
+    rows, summary = fetch_all_sources(
+        include_manual=False,
+        sources=[krx_source, nasdaq_source],
+    )
+
+    assert [row["ticker"] for row in rows] == ["AAPL"]
+    assert summary["source_modes"]["nasdaq_listed"] == "network"
+    assert summary["source_modes"]["krx_listed_companies"] == "unavailable"
+    assert summary["errors"] == [
+        {
+            "source_key": "krx_listed_companies",
+            "error": "HTML page contained no parseable tables",
+        }
+    ]
+
+
 def test_fetch_krx_listed_companies_fetches_kospi_kosdaq_and_konex(monkeypatch):
     source = MasterfileSource(
         key="krx",
