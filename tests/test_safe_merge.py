@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-from scripts.check_safe_merge import evaluate
+from pathlib import Path
+from unittest.mock import patch
+
+from scripts.check_safe_merge import _load_sec_exchange_payload, evaluate
 from scripts.lib.merge_evidence import row_fingerprint
 
 
@@ -784,3 +787,9 @@ def test_reviewed_transition_rejects_non_finite_confidence() -> None:
 
     assert report["status"] == "fail"
     assert report["summary"]["generated_reviewed_transition_evidence_rows"] == 0
+
+
+def test_load_sec_exchange_payload_returns_none_when_unreachable() -> None:
+    missing = Path("/tmp/definitely-missing-sec-cache-for-test.json")
+    with patch("scripts.check_safe_merge.load_sec_exchange_payload", side_effect=OSError("network down")):
+        assert _load_sec_exchange_payload(missing) is None

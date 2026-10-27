@@ -173,6 +173,7 @@ jobs:
         run: |
           git diff --check
           python scripts/rebuild_canonical.py
+          python scripts/warm_sec_exchange_cache.py
           python scripts/check_safe_merge.py \
             --before /tmp/listings-before.csv \
             --after data/listings.csv \
