@@ -7,64 +7,25 @@
   },
   "summary": {
     "before_rows": 97440,
-    "after_rows": 97439,
-    "overall_shrink_pct": 0.001026,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "after_rows": 97440,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 3,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NYSE::ETHE"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
-    {
-      "listing_key": "BMV::CIEB",
-      "field_name": "country",
-      "old_value": "",
-      "new_value": "Mexico"
-    },
-    {
-      "listing_key": "BMV::CIEB",
-      "field_name": "country_code",
-      "old_value": "",
-      "new_value": "MX"
-    },
-    {
-      "listing_key": "BMV::CIEB",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "MXP201161017"
-    }
-  ],
+  "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NYSE::ETHE",
-      "ticker": "ETHE",
-      "exchange": "NYSE",
-      "event_type": "venue_changed",
-      "field_name": "exchange",
-      "old_value": "NYSE",
-      "new_value": "NYSE ARCA",
-      "before_row_sha256": "8306afa22183cdbd4c3a4e23b219c21450b356b5fc7e56fa7f3164ac80166a68",
-      "effective_at": "",
-      "observed_at": "2026-10-27T13:25:04Z",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "cb46bc08701803f42ce510e5",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -464,8 +425,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4822,
-      "after_rows": 4822,
+      "before_rows": 4824,
+      "after_rows": 4824,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -518,10 +479,10 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2034,
-      "after_rows": 2033,
-      "shrink_pct": 0.049164,
-      "removed_rows": 1,
+      "before_rows": 2032,
+      "after_rows": 2032,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
