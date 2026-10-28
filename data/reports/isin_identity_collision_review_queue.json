@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T16:09:21Z",
+    "generated_at": "2026-10-28T06:46:47Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -2306,62 +2306,6 @@
       "member_exchanges": "LSE | SGX | SIX",
       "member_names": "Amundi EM Mkt Sw US$ | Lyxor MSCI Emerging Markets UCITS",
       "member_tickers": "H1N | LEMD | LEML | LYLEM",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "France",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "France",
-          "country_code": "FR",
-          "exchange": "Euronext",
-          "listing_key": "Euronext::FDJU",
-          "name": "FDJ United",
-          "ticker": "FDJU"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "France",
-          "country_code": "FR",
-          "exchange": "LSE",
-          "listing_key": "LSE::0A8B",
-          "name": "FDJ United",
-          "ticker": "0A8B"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "France",
-          "country_code": "FR",
-          "exchange": "OTC",
-          "listing_key": "OTC::LFDJF",
-          "name": "FDJ United",
-          "ticker": "LFDJF"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "France",
-          "country_code": "FR",
-          "exchange": "VSE",
-          "listing_key": "VSE::FDJ",
-          "name": "La Fran\u00e7aise des Jeux Soci\u00e9t\u00e9 anonyme",
-          "ticker": "FDJ"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "FR0013451333",
-      "isin_valid": "true",
-      "listing_count": "4",
-      "listing_keys": "Euronext::FDJU|LSE::0A8B|OTC::LFDJF|VSE::FDJ",
-      "member_exchanges": "Euronext | LSE | OTC | VSE",
-      "member_names": "FDJ United | La Fran\u00e7aise des Jeux Soci\u00e9t\u00e9 anonyme",
-      "member_tickers": "0A8B | FDJ | FDJU | LFDJF",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "France",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
@@ -5957,18 +5901,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 128,
+      "review_required_groups": 127,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 118,
-    "collision_groups": 128,
+    "closed_groups": 117,
+    "collision_groups": 127,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 93,
+      "isin_shared_by_distinct_issuers": 92,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-10-27T16:09:21Z",
-    "listings_involved": 376,
+    "generated_at": "2026-10-28T06:46:47Z",
+    "listings_involved": 372,
     "next_review_batches": [
       {
         "collision_groups": 23,
@@ -5996,14 +5940,14 @@
         "registered_country": "Sweden"
       },
       {
-        "collision_groups": 6,
+        "collision_groups": 5,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "France"
+        "registered_country": "Cayman Islands"
       },
       {
         "collision_groups": 5,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Cayman Islands"
+        "registered_country": "France"
       },
       {
         "collision_groups": 5,
@@ -6158,7 +6102,7 @@
       "China": 3,
       "Denmark": 1,
       "Finland": 3,
-      "France": 6,
+      "France": 5,
       "Germany": 12,
       "Hungary": 1,
       "India": 6,
