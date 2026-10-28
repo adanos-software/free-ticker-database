@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-28T08:24:47Z",
+    "generated_at": "2026-10-28T12:46:44Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -405,6 +405,62 @@
           "country": "United States",
           "country_code": "US",
           "exchange": "FSX",
+          "listing_key": "FSX::AINN",
+          "name": "American International Group Inc",
+          "ticker": "AINN"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "LSE",
+          "listing_key": "LSE::0OAL",
+          "name": "American International Group Inc.",
+          "ticker": "0OAL"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "NYSE",
+          "listing_key": "NYSE::AIG",
+          "name": "American International Group Inc",
+          "ticker": "AIG"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::AINN",
+          "name": "AMER.INTL GRP NEW DL 2,50",
+          "ticker": "AINN"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
+      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
+      "isin": "US0268747849",
+      "isin_valid": "true",
+      "listing_count": "4",
+      "listing_keys": "FSX::AINN|LSE::0OAL|NYSE::AIG|XETRA::AINN",
+      "member_exchanges": "FSX | LSE | NYSE | XETRA",
+      "member_names": "AMER.INTL GRP NEW DL 2,50 | American International Group Inc.",
+      "member_tickers": "0OAL | AIG | AINN",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "United States",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": "AINN"
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "FSX",
           "listing_key": "FSX::CM9",
           "name": "CommScope Holding Company Inc",
           "ticker": "CM9"
@@ -565,6 +621,62 @@
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": "LP3"
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "FSX",
+          "listing_key": "FSX::DUT",
+          "name": "Moody's Corporation",
+          "ticker": "DUT"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "LSE",
+          "listing_key": "LSE::0K36",
+          "name": "Moody's Corporation",
+          "ticker": "0K36"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "NYSE",
+          "listing_key": "NYSE::MCO",
+          "name": "Moodys Corporation",
+          "ticker": "MCO"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::DUT",
+          "name": "MOODYS CORP       DL-,01",
+          "ticker": "DUT"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
+      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
+      "isin": "US6153691059",
+      "isin_valid": "true",
+      "listing_count": "4",
+      "listing_keys": "FSX::DUT|LSE::0K36|NYSE::MCO|XETRA::DUT",
+      "member_exchanges": "FSX | LSE | NYSE | XETRA",
+      "member_names": "MOODYS CORP       DL-,01 | Moody's Corporation",
+      "member_tickers": "0K36 | DUT | MCO",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "United States",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": "DUT"
     },
     {
       "_members": [
@@ -1089,6 +1201,53 @@
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": "SDF"
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "United Kingdom",
+          "country_code": "GB",
+          "exchange": "FSX",
+          "listing_key": "FSX::27M",
+          "name": "Melrose Industries PLC",
+          "ticker": "27M"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United Kingdom",
+          "country_code": "GB",
+          "exchange": "LSE",
+          "listing_key": "LSE::MRO",
+          "name": "Melrose Industries PLC",
+          "ticker": "MRO"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United Kingdom",
+          "country_code": "GB",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::27M",
+          "name": "MELR IN PLC LS-,001",
+          "ticker": "27M"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
+      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
+      "isin": "GB00BNGDN821",
+      "isin_valid": "true",
+      "listing_count": "3",
+      "listing_keys": "FSX::27M|LSE::MRO|XETRA::27M",
+      "member_exchanges": "FSX | LSE | XETRA",
+      "member_names": "MELR IN PLC LS-,001 | Melrose Industries PLC",
+      "member_tickers": "27M | MRO",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "United Kingdom",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": "27M"
     },
     {
       "_members": [
@@ -4914,6 +5073,44 @@
           "asset_type": "Stock",
           "country": "Netherlands",
           "country_code": "NL",
+          "exchange": "LSE",
+          "listing_key": "LSE::0DLI",
+          "name": "Amsterdam Commodities NV",
+          "ticker": "0DLI"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Netherlands",
+          "country_code": "NL",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::8AC",
+          "name": "ACOMO NV           EO-,45",
+          "ticker": "8AC"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "NL0000313286",
+      "isin_valid": "true",
+      "listing_count": "2",
+      "listing_keys": "LSE::0DLI|XETRA::8AC",
+      "member_exchanges": "LSE | XETRA",
+      "member_names": "ACOMO NV           EO-,45 | Amsterdam Commodities NV",
+      "member_tickers": "0DLI | 8AC",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Netherlands",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "Netherlands",
+          "country_code": "NL",
           "exchange": "AMS",
           "listing_key": "AMS::EARTH",
           "name": "GREEN EARTH GROUP",
@@ -5558,6 +5755,44 @@
       "_members": [
         {
           "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "NYSE",
+          "listing_key": "NYSE::FPS",
+          "name": "Forgent Power Solutions, Inc.",
+          "ticker": "FPS"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::9FS",
+          "name": "FOR.PWR.SOL.INC. O.N.",
+          "ticker": "9FS"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "US34631F1021",
+      "isin_valid": "true",
+      "listing_count": "2",
+      "listing_keys": "NYSE::FPS|XETRA::9FS",
+      "member_exchanges": "NYSE | XETRA",
+      "member_names": "FOR.PWR.SOL.INC. O.N. | Forgent Power Solutions, Inc.",
+      "member_tickers": "9FS | FPS",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "United States",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
           "country": "United Kingdom",
           "country_code": "GB",
           "exchange": "BMV",
@@ -5788,6 +6023,44 @@
           "asset_type": "Stock",
           "country": "United States",
           "country_code": "US",
+          "exchange": "NASDAQ",
+          "listing_key": "NASDAQ::SHAZ",
+          "name": "SharonAI Holdings, Inc. Class A Common Stock",
+          "ticker": "SHAZ"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::87P",
+          "name": "SHA.HO.INC. O.N.",
+          "ticker": "87P"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "US7789203061",
+      "isin_valid": "true",
+      "listing_count": "2",
+      "listing_keys": "NASDAQ::SHAZ|XETRA::87P",
+      "member_exchanges": "NASDAQ | XETRA",
+      "member_names": "SHA.HO.INC. O.N. | SharonAI Holdings, Inc. Class A Common Stock",
+      "member_tickers": "87P | SHAZ",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "United States",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
           "exchange": "FSX",
           "listing_key": "FSX::6RR",
           "name": "The RealReal Inc",
@@ -5901,26 +6174,26 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 127,
+      "review_required_groups": 133,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
     "closed_groups": 117,
-    "collision_groups": 127,
+    "collision_groups": 133,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 92,
-      "ticker_collision_isin_misassignment_suspected": 35
+      "isin_shared_by_distinct_issuers": 95,
+      "ticker_collision_isin_misassignment_suspected": 38
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-10-28T08:24:47Z",
-    "listings_involved": 372,
+    "generated_at": "2026-10-28T12:46:44Z",
+    "listings_involved": 389,
     "next_review_batches": [
       {
-        "collision_groups": 23,
+        "collision_groups": 25,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "United States"
       },
       {
-        "collision_groups": 13,
+        "collision_groups": 15,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "United States"
       },
@@ -6017,12 +6290,22 @@
       {
         "collision_groups": 2,
         "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Netherlands"
+      },
+      {
+        "collision_groups": 2,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Norway"
       },
       {
         "collision_groups": 2,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "Canada"
+      },
+      {
+        "collision_groups": 2,
+        "decision_candidate": "ticker_collision_isin_misassignment_suspected",
+        "registered_country": "United Kingdom"
       },
       {
         "collision_groups": 1,
@@ -6062,11 +6345,6 @@
       {
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Netherlands"
-      },
-      {
-        "collision_groups": 1,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "South Africa"
       },
       {
@@ -6083,14 +6361,9 @@
         "collision_groups": 1,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "Switzerland"
-      },
-      {
-        "collision_groups": 1,
-        "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-        "registered_country": "United Kingdom"
       }
     ],
-    "open_groups": 10,
+    "open_groups": 16,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 6,
@@ -6112,15 +6385,15 @@
       "Japan": 2,
       "Luxembourg": 1,
       "Mexico": 3,
-      "Netherlands": 1,
+      "Netherlands": 2,
       "Norway": 2,
       "Singapore": 8,
       "South Africa": 1,
       "Sweden": 7,
       "Switzerland": 5,
-      "United Kingdom": 2,
-      "United States": 36
+      "United Kingdom": 3,
+      "United States": 40
     },
-    "ticker_collision_groups": 35
+    "ticker_collision_groups": 38
   }
 }

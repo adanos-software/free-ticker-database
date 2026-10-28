@@ -7,472 +7,25 @@
   },
   "summary": {
     "before_rows": 97440,
-    "after_rows": 97440,
+    "after_rows": 97770,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 2,
-    "evidenced_removed_rows": 2,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 68,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 2
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "BATS::MAGA",
-    "NYSE::BWET"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
-    {
-      "listing_key": "FSX::BATE",
-      "field_name": "country",
-      "old_value": "Germany",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "FSX::BATE",
-      "field_name": "country_code",
-      "old_value": "DE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "FSX::BATE",
-      "field_name": "isin",
-      "old_value": "DE000A2H9VG9",
-      "new_value": "IE00BF0M2Z96"
-    },
-    {
-      "listing_key": "FSX::ETLI",
-      "field_name": "country",
-      "old_value": "Germany",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "FSX::ETLI",
-      "field_name": "country_code",
-      "old_value": "DE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "FSX::ETLI",
-      "field_name": "isin",
-      "old_value": "DE000A2H9VJ3",
-      "new_value": "IE00BF0H7608"
-    },
-    {
-      "listing_key": "FSX::IROB",
-      "field_name": "country",
-      "old_value": "Germany",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "FSX::IROB",
-      "field_name": "country_code",
-      "old_value": "DE",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "FSX::IROB",
-      "field_name": "isin",
-      "old_value": "DE000A12GJD2",
-      "new_value": "IE00BMW3QX54"
-    },
-    {
-      "listing_key": "NASDAQ::AMZU",
-      "field_name": "name",
-      "old_value": "Direxion Daily AMZN Bull 1.5X Shares",
-      "new_value": "Direxion Daily AMZN Bull 2X ETF"
-    },
-    {
-      "listing_key": "NASDAQ::BABX",
-      "field_name": "name",
-      "old_value": "GraniteShares 1.75x Long BABA Daily ETF",
-      "new_value": "GraniteShares 2x Long BABA Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::CONI",
-      "field_name": "name",
-      "old_value": "GraniteShares 1x Short COIN Daily ETF",
-      "new_value": "GraniteShares 2x Short COIN Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::CONL",
-      "field_name": "name",
-      "old_value": "GraniteShares ETF Trust - GraniteShares 1.5x Long COIN Daily ETF",
-      "new_value": "GraniteShares 2x Long COIN Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::FBL",
-      "field_name": "name",
-      "old_value": "GraniteShares 1.5x Long Meta Daily ETF",
-      "new_value": "GraniteShares 2x Long META Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::GGLL",
-      "field_name": "name",
-      "old_value": "Direxion Daily GOOGL Bull 1.5X Shares",
-      "new_value": "Direxion Daily GOOGL Bull 2X ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MSFU",
-      "field_name": "name",
-      "old_value": "Direxion Daily MSFT Bull 1.5X Shares",
-      "new_value": "Direxion Daily MSFT Bull 2X ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MSTX",
-      "field_name": "name",
-      "old_value": "Defiance Daily Target 1.75x Long MSTR ETF",
-      "new_value": "Defiance Daily Target 2x Long MSTR ETF"
-    },
-    {
-      "listing_key": "NASDAQ::NVD",
-      "field_name": "name",
-      "old_value": "GraniteShares 1.5x Short NVDA Daily ETF",
-      "new_value": "GraniteShares 2x Short NVDA Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::NVDS",
-      "field_name": "name",
-      "old_value": "AXS 1.25X NVDA Bear Daily ETF",
-      "new_value": "Tradr 1.5X Short NVDA Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::NVDU",
-      "field_name": "name",
-      "old_value": "Direxion Daily NVDA Bull 1.5X Shares",
-      "new_value": "Direxion Daily NVDA Bull 2X ETF"
-    },
-    {
-      "listing_key": "NASDAQ::SMST",
-      "field_name": "name",
-      "old_value": "Defiance Daily Target 1.5x Short MSTR ETF",
-      "new_value": "Defiance Daily Target 2x Short MSTR ETF"
-    },
-    {
-      "listing_key": "NASDAQ::TSDD",
-      "field_name": "name",
-      "old_value": "GraniteShares 1.5x Short TSLA Daily ETF",
-      "new_value": "GraniteShares 2x Short TSLA Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::TSLR",
-      "field_name": "name",
-      "old_value": "GraniteShares 1.75x Long TSLA Daily ETF",
-      "new_value": "GraniteShares 2x Long TSLA Daily ETF"
-    },
-    {
-      "listing_key": "NASDAQ::VTC",
-      "field_name": "name",
-      "old_value": "Vanguard Total Corporate Bond ETF ETF Shares",
-      "new_value": "Vanguard Total Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::ALAI",
-      "field_name": "name",
-      "old_value": "The Alger ETF Trust",
-      "new_value": "Alger AI Enablers & Adopters ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::ATCL",
-      "field_name": "name",
-      "old_value": "REX ETF Trust",
-      "new_value": "REX Autocallable Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::BCPL",
-      "field_name": "name",
-      "old_value": "BNY Mellon ETF Trust II",
-      "new_value": "BNY Mellon Core Plus ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::BKCG",
-      "field_name": "name",
-      "old_value": "BNY Mellon ETF Trust II",
-      "new_value": "BNY Mellon Concentrated Growth ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::BKDV",
-      "field_name": "name",
-      "old_value": "BNY Mellon ETF Trust II",
-      "new_value": "BNY Mellon Dynamic Value ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::BKFI",
-      "field_name": "name",
-      "old_value": "BNY Mellon ETF Trust II",
-      "new_value": "BNY Mellon Active Core Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::CLCV",
-      "field_name": "name",
-      "old_value": "Crossmark ETF Trust",
-      "new_value": "Crossmark Large Cap Value ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::CNEQ",
-      "field_name": "name",
-      "old_value": "The Alger ETF Trust",
-      "new_value": "Alger Concentrated Equity ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::DABS",
-      "field_name": "name",
-      "old_value": "DoubleLine ETF Trust",
-      "new_value": "DoubleLine Asset-Backed Securities ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::DABS",
-      "field_name": "isin",
-      "old_value": "US25861R5019",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::DCMT",
-      "field_name": "name",
-      "old_value": "DoubleLine ETF Trust",
-      "new_value": "DoubleLine Commodity Strategy ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::DFVE",
-      "field_name": "name",
-      "old_value": "DoubleLine ETF Trust",
-      "new_value": "DoubleLine Fortune 500 Equal Weight ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::DFVE",
-      "field_name": "isin",
-      "old_value": "US25861R5019",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::DMX",
-      "field_name": "name",
-      "old_value": "DoubleLine ETF Trust",
-      "new_value": "DoubleLine Multi-Sector Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::DMX",
-      "field_name": "isin",
-      "old_value": "US25861R5019",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::EMKT",
-      "field_name": "name",
-      "old_value": "Lazard Active ETF Trust",
-      "new_value": "Lazard Emerging Markets Opportunities ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::FEMD",
-      "field_name": "name",
-      "old_value": "First Eagle ETF Trust",
-      "new_value": "First Eagle Mid Cap Equity ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GARA",
-      "field_name": "name",
-      "old_value": "Guinness Atkinson Funds",
-      "new_value": "Guinness Atkinson Real Assets Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GLIX",
-      "field_name": "name",
-      "old_value": "Lazard Active ETF Trust",
-      "new_value": "Lazard Listed Infrastructure ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GQI",
-      "field_name": "name",
-      "old_value": "Natixis ETF Trust",
-      "new_value": "Natixis Gateway Quality Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::INVN",
-      "field_name": "name",
-      "old_value": "The Alger ETF Trust",
-      "new_value": "Alger Russell Innovation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::JABS",
-      "field_name": "name",
-      "old_value": "Janus Detroit Street Trust",
-      "new_value": "Janus Henderson Asset-Backed Securities ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::JEMB",
-      "field_name": "name",
-      "old_value": "Janus Detroit Street Trust",
-      "new_value": "Janus Henderson Emerging Markets Debt Hard Currency ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::JIII",
-      "field_name": "name",
-      "old_value": "Janus Detroit Street Trust",
-      "new_value": "Janus Henderson Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::JSI",
-      "field_name": "name",
-      "old_value": "Janus Detroit Street Trust",
-      "new_value": "Janus Henderson Securitized Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::LSGR",
-      "field_name": "name",
-      "old_value": "Natixis ETF Trust II",
-      "new_value": "Natixis Loomis Sayles Focused Growth ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::LTAX",
-      "field_name": "name",
-      "old_value": "Nomura ETF Trust",
-      "new_value": "Nomura Tax-Free USA ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::MUNX",
-      "field_name": "name",
-      "old_value": "AMG ETF Trust",
-      "new_value": "AMG GW&K Muni Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::OAKG",
-      "field_name": "name",
-      "old_value": "Harris Oakmark ETF Trust",
-      "new_value": "Oakmark Global Large Cap ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::OAKG",
-      "field_name": "isin",
-      "old_value": "US41456U1060",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::OAKI",
-      "field_name": "name",
-      "old_value": "Harris Oakmark ETF Trust",
-      "new_value": "Oakmark International Large Cap ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::OAKI",
-      "field_name": "isin",
-      "old_value": "US41456U1060",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::OAKM",
-      "field_name": "name",
-      "old_value": "Harris Oakmark ETF Trust",
-      "new_value": "Oakmark U.S. Large Cap ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TCPB",
-      "field_name": "name",
-      "old_value": "Thrivent ETF Trust",
-      "new_value": "Thrivent Core Plus Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TLCI",
-      "field_name": "name",
-      "old_value": "Touchstone ETF Trust",
-      "new_value": "Touchstone International Equity ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TMVE",
-      "field_name": "name",
-      "old_value": "Thrivent ETF Trust",
-      "new_value": "Thrivent Mid Cap Value ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TSCV",
-      "field_name": "name",
-      "old_value": "Thrivent ETF Trust",
-      "new_value": "Thrivent Small Cap Value ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TSEC",
-      "field_name": "name",
-      "old_value": "Touchstone ETF Trust",
-      "new_value": "Touchstone Securitized Income ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TUSB",
-      "field_name": "name",
-      "old_value": "Thrivent ETF Trust",
-      "new_value": "Thrivent Ultra Short Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TUSB",
-      "field_name": "isin",
-      "old_value": "US88588G2084",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::USFE",
-      "field_name": "name",
-      "old_value": "First Eagle ETF Trust",
-      "new_value": "First Eagle US Equity ETF"
-    },
-    {
-      "listing_key": "NYSE::GYLD",
-      "field_name": "name",
-      "old_value": "Arrow ETF Trust",
-      "new_value": "Arrow Dow Jones Global Yield ETF"
-    },
-    {
-      "listing_key": "NYSE::MMID",
-      "field_name": "name",
-      "old_value": "MFS Active Exchange Traded Funds Trust",
-      "new_value": "MFS Active Mid Cap ETF"
-    },
-    {
-      "listing_key": "XETRA::H41R",
-      "field_name": "name",
-      "old_value": "HSBC Global Corporate Bond UCITS ETF ETF C H EUR",
-      "new_value": "HSBC Global Corporate Bond UCITS ETF C H EUR"
-    }
-  ],
+  "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NYSE::BWET",
-      "ticker": "BWET",
-      "exchange": "NYSE",
-      "event_type": "venue_changed",
-      "field_name": "exchange",
-      "old_value": "NYSE",
-      "new_value": "NYSE ARCA",
-      "before_row_sha256": "4a864c4bdad4a3f89ec28d7663b172ba9724b932e4c33bf441d564c05de8442b",
-      "effective_at": "",
-      "observed_at": "2026-10-28T08:24:11Z",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "af997788502499f240ff95e9",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "BATS::MAGA",
-      "ticker": "MAGA",
-      "exchange": "BATS",
-      "event_type": "venue_changed",
-      "field_name": "exchange",
-      "old_value": "BATS",
-      "new_value": "NYSE ARCA",
-      "before_row_sha256": "cad422ceca98fe30534f762bf666c1804e955fdeb2f86a6b3ca5cb1893ad2569",
-      "effective_at": "",
-      "observed_at": "2026-10-28T08:24:11Z",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "ffca78aa77e892e4a453d630",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -521,10 +74,10 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1425,
+      "before_rows": 1424,
       "after_rows": 1424,
-      "shrink_pct": 0.070175,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -926,16 +479,16 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2032,
+      "before_rows": 2031,
       "after_rows": 2031,
-      "shrink_pct": 0.049213,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2805,
+      "before_rows": 2807,
       "after_rows": 2807,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -981,7 +534,7 @@
     {
       "exchange": "PSE",
       "before_rows": 172,
-      "after_rows": 172,
+      "after_rows": 173,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -1044,7 +597,7 @@
     {
       "exchange": "SGX",
       "before_rows": 638,
-      "after_rows": 638,
+      "after_rows": 644,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -1152,7 +705,7 @@
     {
       "exchange": "TWSE",
       "before_rows": 1285,
-      "after_rows": 1285,
+      "after_rows": 1286,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -1206,7 +759,7 @@
     {
       "exchange": "XETRA",
       "before_rows": 5210,
-      "after_rows": 5210,
+      "after_rows": 5532,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

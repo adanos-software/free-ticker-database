@@ -1,43 +1,39 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-10-27T12:15:16Z`
-- New rows: `166`
-- Vanished rows: `150`
-- Changed rows: `52`
+- Generated at: `2026-10-28T12:42:06Z`
+- New rows: `566`
+- Vanished rows: `76`
+- Changed rows: `37`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| isin_change | 12 |
-| name_change | 45 |
+| field_change | 1 |
+| isin_change | 4 |
+| name_change | 34 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| adx_market_watch | 1 |
-| bme_security_prices_directory | 2 |
-| cboe_canada_listing_directory | 4 |
-| cse_lk_company_info_summary | 2 |
-| euronext_equities | 6 |
-| hkex_securities_list | 13 |
-| krx_etf_finder | 14 |
-| nasdaq_listed | 41 |
-| nasdaq_other_listed | 59 |
-| nse_india_securities_available | 24 |
+| deutsche_boerse_frankfurt_all_tradable_equities | 155 |
+| deutsche_boerse_xetra_all_tradable_equities | 387 |
+| nasdaq_nordic_helsinki_shares | 2 |
+| nasdaq_nordic_stockholm_shares | 7 |
+| pse_listed_company_directory | 2 |
+| set_stock_search | 1 |
+| sgx_securities_prices | 9 |
+| twse_listed_companies | 3 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| adx_market_watch | 1 |
-| bme_security_prices_directory | 3 |
-| boursa_kuwait_stocks | 1 |
-| cse_lk_company_info_summary | 1 |
-| euronext_equities | 14 |
-| hkex_securities_list | 24 |
-| nasdaq_listed | 52 |
-| nasdaq_other_listed | 52 |
-| nse_india_securities_available | 2 |
+| deutsche_boerse_frankfurt_all_tradable_equities | 58 |
+| deutsche_boerse_xetra_all_tradable_equities | 3 |
+| nasdaq_nordic_stockholm_shares | 10 |
+| pse_listed_company_directory | 2 |
+| set_stock_search | 1 |
+| sgx_securities_prices | 2 |

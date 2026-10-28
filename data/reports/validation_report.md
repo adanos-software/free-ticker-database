@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-10-28T08:28:45Z`
+Generated at: `2026-10-28T12:50:43Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 65,599 |
-| listing_rows | 97,440 |
-| adanos_reference_rows | 65,599 |
-| entry_quality_rows | 97,440 |
+| ticker_rows | 65,648 |
+| listing_rows | 97,770 |
+| adanos_reference_rows | 65,648 |
+| entry_quality_rows | 97,770 |
 | error_gates | 87 |
-| failed_error_gates | 0 |
+| failed_error_gates | 2 |
 | info_gates | 5 |
 
 ## Gates
@@ -59,7 +59,7 @@ Status: `PASS`
 | invalid_country_code_rows | error | PASS | 0 | 0 |
 | country_code_mismatch_rows | error | PASS | 0 | 0 |
 | rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
-| country_isin_prefix_mismatch_without_review | error | PASS | 0 | 0 |
+| country_isin_prefix_mismatch_without_review | error | FAIL | 112 | 0 |
 | rows_with_mojibake_names | error | PASS | 0 | 0 |
 | listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
@@ -88,15 +88,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 110 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
 | expected_missing_primary_isin | info | PASS | 685 |  |
-| missing_stock_sector | info | PASS | 692 |  |
-| missing_etf_category | info | PASS | 162 |  |
-| source_gap_rows | info | PASS | 11222 |  |
+| missing_stock_sector | info | PASS | 708 |  |
+| missing_etf_category | info | PASS | 187 |  |
+| source_gap_rows | info | PASS | 11299 |  |
 | allowed_warn_rows | info | PASS | 33 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -115,4 +115,61 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### country_isin_prefix_mismatch_without_review
+
+- Actual: `112`
+- `XETRA::A9L1`
+- `XETRA::HK6`
+- `XETRA::02M`
+- `XETRA::04X`
+- `XETRA::0ME`
+- `XETRA::0SE0`
+- `XETRA::1KJ`
+- `XETRA::1MA`
+- `XETRA::1OQ0`
+- `XETRA::2H51`
+- `XETRA::2LB`
+- `XETRA::2S3`
+- `XETRA::2U9`
+- `XETRA::30G`
+- `XETRA::3E7`
+- `XETRA::3HD`
+- `XETRA::3HS`
+- `XETRA::3RCA`
+- `XETRA::3U6`
+- `XETRA::49J`
+- `XETRA::4LN2`
+- `XETRA::5G5`
+- `XETRA::5GH`
+- `XETRA::68V`
+- `XETRA::6D8`
+
+### entry_quality_unexpected_warn_count
+
+- Actual: `110`
+- `STO::LXB`
+- `STO::VER`
+- `XETRA::02M`
+- `XETRA::04X`
+- `XETRA::0ME`
+- `XETRA::0SE0`
+- `XETRA::1KJ`
+- `XETRA::1MA`
+- `XETRA::1OQ0`
+- `XETRA::2H51`
+- `XETRA::2LB`
+- `XETRA::2S3`
+- `XETRA::2U9`
+- `XETRA::30G`
+- `XETRA::3E7`
+- `XETRA::3HD`
+- `XETRA::3HS`
+- `XETRA::3RCA`
+- `XETRA::3U6`
+- `XETRA::49J`
+- `XETRA::4LN2`
+- `XETRA::5G5`
+- `XETRA::5GH`
+- `XETRA::68V`
+- `XETRA::6D8`
+

@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 99800,
-    "matched": 70001,
-    "collisions": 11529,
-    "missing": 18270
+    "official_symbols": 100291,
+    "matched": 70300,
+    "collisions": 11728,
+    "missing": 18263
   },
   "exchanges": [
     {
@@ -1547,10 +1547,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18034,
-      "matched": 7883,
-      "collisions": 4290,
-      "missing": 5861,
+      "official_symbols": 18131,
+      "matched": 7857,
+      "collisions": 4420,
+      "missing": 5854,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -1680,8 +1680,8 @@
           "exchange": "FSX"
         },
         {
-          "ticker": "04X",
-          "name": "PERSONALIS INC. DL-,001",
+          "ticker": "05B0",
+          "name": "HOPIUM S.A.   EO-,001",
           "exchange": "FSX"
         }
       ]
@@ -3854,8 +3854,8 @@
     {
       "exchange": "PSE",
       "official_symbols": 384,
-      "matched": 170,
-      "collisions": 120,
+      "matched": 169,
+      "collisions": 121,
       "missing": 94,
       "collision_examples": [
         {
@@ -3896,6 +3896,14 @@
           "target_exchange": "PSE",
           "existing_exchanges": [
             "SIX"
+          ]
+        },
+        {
+          "ticker": "AETF",
+          "name": "ATR FAMI Philippine Equity Exchange Traded Fund, Inc.",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "ATHEX"
           ]
         },
         {
@@ -3944,15 +3952,6 @@
           "target_exchange": "PSE",
           "existing_exchanges": [
             "NYSE"
-          ]
-        },
-        {
-          "ticker": "ARA",
-          "name": "Araneta Properties, Inc.",
-          "target_exchange": "PSE",
-          "existing_exchanges": [
-            "ASX",
-            "LSE"
           ]
         }
       ],
@@ -4200,8 +4199,8 @@
     {
       "exchange": "SET",
       "official_symbols": 943,
-      "matched": 771,
-      "collisions": 134,
+      "matched": 770,
+      "collisions": 135,
       "missing": 38,
       "collision_examples": [
         {
@@ -4345,9 +4344,9 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 759,
-      "matched": 632,
-      "collisions": 127,
+      "official_symbols": 766,
+      "matched": 636,
+      "collisions": 130,
       "missing": 0,
       "collision_examples": [
         {
@@ -4887,9 +4886,9 @@
     },
     {
       "exchange": "TWSE",
-      "official_symbols": 1095,
-      "matched": 1060,
-      "collisions": 35,
+      "official_symbols": 1098,
+      "matched": 1061,
+      "collisions": 37,
       "missing": 0,
       "collision_examples": [
         {
@@ -5274,9 +5273,9 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5149,
-      "matched": 4972,
-      "collisions": 175,
+      "official_symbols": 5533,
+      "matched": 5294,
+      "collisions": 237,
       "missing": 2,
       "collision_examples": [
         {
@@ -5296,11 +5295,39 @@
           ]
         },
         {
+          "ticker": "1CG",
+          "name": "CRISPR THERAPEUT. SF -,03",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "ASX",
+            "FSX",
+            "XSTU"
+          ]
+        },
+        {
+          "ticker": "3920",
+          "name": "SPYRE THERAPEUTICS INC.",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "FSX",
+            "TSE"
+          ]
+        },
+        {
           "ticker": "3QQQ",
           "name": "WITR MU.AS.I.NA100 3X 62",
           "target_exchange": "XETRA",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "41O",
+          "name": "OUTLOOK THERAP. DL-,01",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "FSX",
+            "SGX"
           ]
         },
         {
@@ -5320,46 +5347,21 @@
           ]
         },
         {
-          "ticker": "ADG",
-          "name": "AMG CRITICAL MATER. EO-02",
+          "ticker": "5GD",
+          "name": "INGERSOLL-RAND    DL -,01",
           "target_exchange": "XETRA",
           "existing_exchanges": [
-            "ASX"
+            "FSX",
+            "SGX"
           ]
         },
         {
-          "ticker": "ADTC",
-          "name": "AEI-GL.D.C.E DLA",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "OTC"
-          ]
-        },
-        {
-          "ticker": "AMX",
-          "name": "A.S.E.B.AC.ETF EUR-U.-ETF",
+          "ticker": "88E",
+          "name": "PENGUIN SOLUTIONS INC.DEL",
           "target_exchange": "XETRA",
           "existing_exchanges": [
             "ASX",
-            "TASE"
-          ]
-        },
-        {
-          "ticker": "ARMY",
-          "name": "LEVERAGE SHARES ARM ETP",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "Euronext",
-            "LSE",
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "ASCI",
-          "name": "ABRDN3FUSUCHETF ETFDLA",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NASDAQ"
+            "LSE"
           ]
         }
       ],

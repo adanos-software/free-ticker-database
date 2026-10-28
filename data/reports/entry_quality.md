@@ -1,30 +1,30 @@
 # Entry Quality Report
 
-Generated at: `2026-10-28T08:26:00Z`
+Generated at: `2026-10-28T12:47:46Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 11 |
-| pass | 86,174 |
-| source_gap | 11,222 |
-| warn | 33 |
+| pass | 86,317 |
+| source_gap | 11,299 |
+| warn | 143 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,779 |
+| official_reference_gap | 6,819 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 692 |
+| missing_stock_sector | 708 |
 | expected_missing_primary_isin | 685 |
-| missing_etf_category | 162 |
+| missing_etf_category | 187 |
+| country_isin_mismatch | 109 |
 | official_name_mismatch | 23 |
-| official_isin_mismatch | 10 |
+| official_isin_mismatch | 12 |
 | low_company_name_overlap | 9 |
 | shared_name_alias | 2 |
-| country_isin_mismatch | 1 |
 
 ## Top Flagged Exchanges
 
@@ -32,8 +32,9 @@ Generated at: `2026-10-28T08:26:00Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 8,480 | 2 | 3,256 | 14 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
-| FSX | 7,672 | 0 | 471 | 0 | 0 |
+| FSX | 7,647 | 0 | 496 | 0 | 0 |
 | B3 | 1,247 | 0 | 342 | 0 | 0 |
+| XETRA | 5,223 | 0 | 201 | 108 | 0 |
 | NASDAQ | 4,511 | 4 | 305 | 4 | 0 |
 | NYSE ARCA | 2,533 | 0 | 273 | 1 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
@@ -42,7 +43,6 @@ Generated at: `2026-10-28T08:26:00Z`
 | AMS | 540 | 0 | 204 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | BVB | 55 | 0 | 192 | 0 | 0 |
-| XETRA | 5,042 | 0 | 168 | 0 | 0 |
 | TSXV | 1,260 | 0 | 159 | 3 | 0 |
 | LSE | 6,875 | 0 | 149 | 2 | 0 |
 | ASX | 2,111 | 2 | 146 | 0 | 0 |
