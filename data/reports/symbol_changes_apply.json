@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-10-27T09:59:20Z",
-    "dry_run": true,
+    "generated_at": "2026-10-28T12:48:14Z",
+    "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 375,
+    "blocked_rows": 378,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 3,
-      "blocked_new_symbol_not_active_in_official_master": 2,
-      "blocked_old_symbol_not_unique_in_us_scope": 301,
+      "blocked_new_symbol_not_active_in_official_master": 3,
+      "blocked_old_symbol_not_unique_in_us_scope": 303,
       "blocked_sec_cik_mismatch": 2,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
@@ -23,6 +23,30 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "4b450240fab816ca",
+      "effective_date": "2026-10-26",
+      "old_symbol": "WPRT",
+      "new_symbol": "AETR",
+      "new_company_name": "Aetherion Technologies Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "28e9540f57c8825f",
+      "effective_date": "2026-10-26",
+      "old_symbol": "VSME",
+      "new_symbol": "FCDH",
+      "new_company_name": "Forcendra Holding Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "69e16f588a55687a",
+      "effective_date": "2026-10-26",
+      "old_symbol": "PAPL",
+      "new_symbol": "PTIV",
+      "new_company_name": "Pineapple Financial Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
     {
       "change_id": "139e47b0b2193ef0",
       "effective_date": "2026-10-21",
