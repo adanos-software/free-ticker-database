@@ -11,7 +11,7 @@ Rows: `23`
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.06 | 3500 | 871 | not_in_supplement_allowlist |
 | 4 | NYSE | 60.19 | 1307 | 568 | not_in_supplement_allowlist |
-| 5 | NASDAQ | 82.31 | 985 | 61 | not_in_supplement_allowlist |
+| 5 | NASDAQ | 82.3 | 985 | 61 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.75 | 793 | 1928 | not_in_supplement_allowlist |
 | 7 | Euronext | 80.04 | 332 | 376 | not_in_supplement_allowlist |
 | 8 | BATS | 81.78 | 295 | 58 | not_in_supplement_allowlist |
