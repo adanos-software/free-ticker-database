@@ -1,8 +1,8 @@
 {
   "global": {
     "official_symbols": 99800,
-    "matched": 70000,
-    "collisions": 11530,
+    "matched": 70001,
+    "collisions": 11529,
     "missing": 18270
   },
   "exchanges": [
@@ -3079,8 +3079,8 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3851,
-      "matched": 1977,
-      "collisions": 567,
+      "matched": 1976,
+      "collisions": 568,
       "missing": 1307,
       "collision_examples": [
         {
@@ -3228,8 +3228,8 @@
     {
       "exchange": "NYSE ARCA",
       "official_symbols": 2746,
-      "matched": 2612,
-      "collisions": 31,
+      "matched": 2614,
+      "collisions": 29,
       "missing": 103,
       "collision_examples": [
         {
@@ -3247,14 +3247,6 @@
           "existing_exchanges": [
             "LSE",
             "SIX"
-          ]
-        },
-        {
-          "ticker": "BWET",
-          "name": "Breakwave Tanker Shipping ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "NYSE"
           ]
         },
         {
@@ -3317,6 +3309,14 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "PSX"
+          ]
+        },
+        {
+          "ticker": "GGM",
+          "name": "GGM Macro Alignment ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "TSXV"
           ]
         }
       ],
