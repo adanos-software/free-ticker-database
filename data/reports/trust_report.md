@@ -1,6 +1,6 @@
 # Core trust report
 
-Generated at: `2026-10-28T08:24:49Z`
+Generated at: `2026-10-28T13:31:42Z`
 
 Trust is measured on instrument_scope=core only. accepted_source_gap does not count as filled. Known identity bugs must be zero; 99% completeness is a fill rate, not a correctness claim. This report does not authorize inferred identifiers, sectors, categories, names, or symbol changes. A failing trust report is not a merge blocker.
 

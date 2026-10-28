@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-10-28T08:24:52Z",
-    "rows": 8693,
+    "generated_at": "2026-10-28T13:33:33Z",
+    "rows": 8696,
     "outcome_totals": {
-      "accepted_source_gap": 5610,
+      "accepted_source_gap": 5611,
       "core_exclusion_candidate": 520,
-      "official_fill_required": 2563
+      "official_fill_required": 2565
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 42,
@@ -27,8 +27,8 @@
       "official_industry_taxonomy_unavailable_gap": 448,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 68,
-      "official_reference_symbol_collision_gap": 1170,
-      "official_reference_unmatched_source_gap": 5609,
+      "official_reference_symbol_collision_gap": 1171,
+      "official_reference_unmatched_source_gap": 5611,
       "otc_sector_source_gap": 552,
       "shell_or_cpc_sector_gap": 6
     },
@@ -40,8 +40,8 @@
       "missing_sector_stock:accepted_source_gap": 1000,
       "missing_sector_stock:core_exclusion_candidate": 29,
       "missing_sector_stock:official_fill_required": 58,
-      "official_reference_gap:accepted_source_gap": 4275,
-      "official_reference_gap:official_fill_required": 2504
+      "official_reference_gap:accepted_source_gap": 4276,
+      "official_reference_gap:official_fill_required": 2506
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -34262,6 +34262,23 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Marpai Inc",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::MULT",
+      "ticker": "MULT",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "Franklin Multisector Income ETF",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -132058,6 +132075,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NASDAQ::DVAL",
+      "ticker": "DVAL",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "BrandywineGLOBAL - Dynamic US Large Cap Value ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NASDAQ::DVIN",
       "ticker": "DVIN",
       "exchange": "NASDAQ",
@@ -134052,6 +134086,23 @@
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "name": "Themes US Cash Flow Champions ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::USFI",
+      "ticker": "USFI",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "BrandywineGLOBAL - U.S. Fixed Income ETF",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",

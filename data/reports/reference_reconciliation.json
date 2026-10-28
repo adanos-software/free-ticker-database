@@ -1,17 +1,17 @@
 {
   "summary": {
-    "active_official_reference_rows": 170220,
-    "source_specific_reference_keys": 170219,
+    "active_official_reference_rows": 170216,
+    "source_specific_reference_keys": 170215,
     "classification_counts": {
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12520,
-      "exact_match": 99887,
+      "exact_match": 99883,
       "missing_from_database": 44239,
       "normalization_candidate": 1853,
       "out_of_scope": 8132
     },
-    "coverage_credited_keys": 99887,
+    "coverage_credited_keys": 99883,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44239,
     "identity_conflict_rows": 12520,
@@ -1518291,22 +1518291,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::DVAL",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::DVAL",
-      "exchange": "NASDAQ",
-      "ticker": "DVAL",
-      "asset_types": "ETF",
-      "names": "BrandywineGLOBAL-Dynamic US Large Cap Value ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::DVAL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::DVGR",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::DVGR",
@@ -1519937,22 +1519921,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::EMEM",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::EMEM",
-      "exchange": "NASDAQ",
-      "ticker": "EMEM",
-      "asset_types": "ETF",
-      "names": "Sophus Capital Emerging Market ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::EMEQ",
@@ -1523296,6 +1523264,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::FFR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::FFTT",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::FFTT",
+      "exchange": "NASDAQ",
+      "ticker": "FFTT",
+      "asset_types": "Stock",
+      "names": "Masonglory Limited - Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::FFTT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1546627,22 +1546611,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::MSGY",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::MSGY",
-      "exchange": "NASDAQ",
-      "ticker": "MSGY",
-      "asset_types": "Stock",
-      "names": "Masonglory Limited - Class A Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::MSGY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::MSLE",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::MSLE",
@@ -1547040,22 +1547008,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::MULL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::MULT",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::MULT",
-      "exchange": "NASDAQ",
-      "ticker": "MULT",
-      "asset_types": "ETF",
-      "names": "Franklin Multisector Income ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::MULT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1576976,22 +1576928,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::USEA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::USFI",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::USFI",
-      "exchange": "NASDAQ",
-      "ticker": "USFI",
-      "asset_types": "ETF",
-      "names": "BrandywineGLOBAL - U.S. Fixed Income ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::USFI",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2076829,10 +2076765,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::MSGY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::MSLE",
