@@ -343,6 +343,42 @@ def test_depositary_country_reconciliation_uses_unique_foreign_issuer_peer():
     assert reconciled[2]["country_code"] == "BR"
 
 
+def test_xetra_foreign_isin_uses_issuer_country_not_venue_default():
+    from scripts.rebuild_dataset import should_preserve_depositary_domicile
+
+    row_key = ("HC1", "XETRA")
+    assert (
+        should_preserve_depositary_domicile(
+            row_key,
+            country="Germany",
+            inferred_country="United States",
+            exchange="XETRA",
+            official_depositary_listing_keys=set(),
+        )
+        is False
+    )
+    assert (
+        should_preserve_depositary_domicile(
+            ("ABEVY", "OTC"),
+            country="Brazil",
+            inferred_country="United States",
+            exchange="OTC",
+            official_depositary_listing_keys=set(),
+        )
+        is True
+    )
+    assert (
+        should_preserve_depositary_domicile(
+            ("B1C", "FSX"),
+            country="Cayman Islands",
+            inferred_country="United States",
+            exchange="FSX",
+            official_depositary_listing_keys=set(),
+        )
+        is True
+    )
+
+
 def test_depositary_country_reconciliation_preserves_common_stock_and_review_overrides():
     from scripts.rebuild_dataset import reconcile_depositary_issuer_countries
 
@@ -2845,11 +2881,14 @@ def test_sto_review_overrides_drop_m8g_and_int_and_enrich_ver():
     assert ("M8G", "STO") not in by_key
     assert ("INT", "STO") not in by_key
 
-    ver = by_key[("VER", "STO")]
+    listings_csv = load_csv("listings.csv")
+    listings_by_key = {(row["ticker"], row["exchange"]): row for row in listings_csv}
+    ver = listings_by_key[("VER", "STO")]
     assert ver["name"] == "Verve Group"
-    assert ver["country"] == "Sweden"
-    assert ver["country_code"] == "SE"
-    assert ver["isin"] == "SE0018538068"
+    assert ver["country"] == "Ireland"
+    assert ver["country_code"] == "IE"
+    assert ver["isin"] == "IE000ZVY0237"
+    assert ("VER", "STO") not in by_key
 
 
 def test_cph_review_overrides_drop_delisted_rows_and_move_cessa_to_sto():

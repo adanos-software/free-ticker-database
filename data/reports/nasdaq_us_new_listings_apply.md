@@ -1,16 +1,14 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-10-28T13:28:57Z`
-- New supported rows: `1`
-- Accepted rows: `1`
+- Generated at: `2026-10-28T12:42:10Z`
+- New supported rows: `0`
+- Accepted rows: `0`
 - Skipped rows: `0`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-| Ticker | Exchange | Name | Asset type | Target | Source |
-|---|---|---|---|---|---|
-| FFTT | NASDAQ | Masonglory Limited - Class A Ordinary Shares | Stock | supplement | nasdaq_listed |
+No new listings were accepted.
 
 ## Skipped
 

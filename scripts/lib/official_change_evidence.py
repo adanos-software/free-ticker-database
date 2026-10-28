@@ -35,9 +35,19 @@ from typing import Iterable, Mapping
 try:
     from scripts.lib.merge_evidence import listing_key, row_fingerprint
     from scripts.lib.normalize import names_match
+    from scripts.rebuild_dataset import (
+        COUNTRY_TO_ISO,
+        GERMAN_LISTING_VENUE_EXCHANGES,
+        country_from_isin,
+    )
 except ModuleNotFoundError:  # pragma: no cover - direct script execution
     from lib.merge_evidence import listing_key, row_fingerprint
     from lib.normalize import names_match
+    from rebuild_dataset import (
+        COUNTRY_TO_ISO,
+        GERMAN_LISTING_VENUE_EXCHANGES,
+        country_from_isin,
+    )
 
 ISIN_FORMAT_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{9}[0-9]$")
 DIRECT_IDENTIFIER_SCOPES = {
@@ -378,6 +388,83 @@ def build_official_change_evidence(
                     event_type="country_changed",
                     evidence_status="verified",
                 )
+
+    for key in sorted(set(before) & set(after)):
+        old_row = before[key]
+        new_row = after[key]
+        old_isin = str(old_row.get("isin", "") or "").strip().upper()
+        new_isin = str(new_row.get("isin", "") or "").strip().upper()
+        if not is_valid_isin(new_isin) or old_isin != new_isin:
+            continue
+        old_country = str(old_row.get("country", "") or "").strip()
+        new_country = str(new_row.get("country", "") or "").strip()
+        if old_country == new_country:
+            continue
+        inferred_country = country_from_isin(new_isin)
+        exchange = str(new_row.get("exchange", "") or "").strip()
+        if (
+            not inferred_country
+            or new_country != inferred_country
+            or old_country != "Germany"
+            or exchange not in GERMAN_LISTING_VENUE_EXCHANGES
+        ):
+            continue
+        identity_references = [
+            reference
+            for reference in references_by_key.get(key, [])
+            if str(reference.get("isin", "") or "").strip().upper() == new_isin
+            and str(reference.get("asset_type", "") or "").strip()
+            == str(new_row.get("asset_type", "") or "").strip()
+            and (
+                _reference_matches_canonical(reference, new_row)
+                or _text(str(reference.get("name", "") or ""))
+                == _text(str(new_row.get("name", "") or ""))
+            )
+        ]
+        if not identity_references:
+            continue
+        reference = sorted(
+            identity_references,
+            key=lambda row: (str(row.get("source_key", "")), str(row.get("source_url", ""))),
+        )[0]
+        source_key = str(reference.get("source_key", "") or "").strip()
+        source_url = str(reference.get("source_url", "") or "").strip()
+        before_hash = row_fingerprint(old_row)
+        new_code = str(new_row.get("country_code", "") or "").strip().upper()
+        old_code = str(old_row.get("country_code", "") or "").strip().upper()
+        expected_code = COUNTRY_TO_ISO.get(new_country, new_code)
+        for field, old_value, new_value in (
+            ("country", old_country, new_country),
+            ("country_code", old_code, expected_code or new_code),
+        ):
+            if old_value == new_value:
+                continue
+            evidence.append(
+                {
+                    "listing_key": key,
+                    "ticker": str(new_row.get("ticker", "") or ""),
+                    "exchange": exchange,
+                    "event_type": "country_changed",
+                    "field_name": field,
+                    "old_value": old_value,
+                    "new_value": new_value,
+                    "before_row_sha256": before_hash,
+                    "effective_at": "",
+                    "observed_at": observed_at,
+                    "source_key": source_key,
+                    "source_url": source_url,
+                    "source_report": source_report,
+                    "observation_id": _observation_id(
+                        source_key=source_key,
+                        source_url=source_url,
+                        key=key,
+                        field=field,
+                        old=old_value,
+                        new=new_value,
+                    ),
+                    "evidence_status": "official",
+                }
+            )
 
     previous_references = [
         dict(row) for row in (previous_reference_rows or []) if _active_official_reference(row)
