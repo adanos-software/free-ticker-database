@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-27T16:05:45Z",
+  "generated_at": "2026-10-28T06:46:19Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2015,
-  "decision_rows": 6486,
+  "conflict_count": 2014,
+  "decision_rows": 6482,
   "action_counts": {
     "kept_listing_keyed_identifier": 1361,
     "proposed_clear_conflicting_identifier": 1053,
-    "quarantined_unresolved_identifier": 4072
+    "quarantined_unresolved_identifier": 4068
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1053,
-  "quarantined_rows": 4072,
+  "quarantined_rows": 4068,
   "retained_rows": 1361,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -21957,58 +21957,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "FR0013447729"
-    },
-    {
-      "conflict_id": "28c00ede9e48dcdc2653",
-      "isin": "FR0013451333",
-      "listing_key": "Euronext::FDJU",
-      "ticker": "FDJU",
-      "exchange": "Euronext",
-      "name": "FDJ United",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013451333"
-    },
-    {
-      "conflict_id": "28c00ede9e48dcdc2653",
-      "isin": "FR0013451333",
-      "listing_key": "LSE::0A8B",
-      "ticker": "0A8B",
-      "exchange": "LSE",
-      "name": "FDJ United",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013451333"
-    },
-    {
-      "conflict_id": "28c00ede9e48dcdc2653",
-      "isin": "FR0013451333",
-      "listing_key": "OTC::LFDJF",
-      "ticker": "LFDJF",
-      "exchange": "OTC",
-      "name": "FDJ United",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013451333"
-    },
-    {
-      "conflict_id": "28c00ede9e48dcdc2653",
-      "isin": "FR0013451333",
-      "listing_key": "VSE::FDJ",
-      "ticker": "FDJ",
-      "exchange": "VSE",
-      "name": "La Française des Jeux Société anonyme",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013451333"
     },
     {
       "conflict_id": "16fcdfe8fed283164cb0",

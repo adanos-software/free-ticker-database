@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T16:09:20Z",
+    "generated_at": "2026-10-28T06:46:46Z",
     "rows": 97440,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86176,
-      "source_gap": 11220,
+      "pass": 86179,
+      "source_gap": 11217,
       "warn": 33
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 11,
       "low": 11,
       "medium": 23,
-      "source_gap": 11605
+      "source_gap": 11600
     },
     "issue_counts": {
       "official_reference_gap": 6780,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 696,
-      "expected_missing_primary_isin": 680,
+      "missing_stock_sector": 692,
+      "expected_missing_primary_isin": 679,
       "missing_etf_category": 162,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 10,
@@ -57,8 +57,8 @@
       },
       {
         "exchange": "FSX",
-        "source_gap": 472,
-        "pass": 7671
+        "source_gap": 471,
+        "pass": 7672
       },
       {
         "exchange": "B3",
@@ -8457,24 +8457,6 @@
     {
       "listing_key": "FSX::2F40",
       "ticker": "2F40",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::2FA",
-      "ticker": "2FA",
       "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -18459,6 +18441,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7LI",
+      "ticker": "7LI",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T16:09:22Z",
+    "generated_at": "2026-10-28T06:46:49Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,26 +34,26 @@
   "completeness": {
     "isin": {
       "n": 63540,
-      "filled": 62860,
-      "missing": 680,
+      "filled": 62861,
+      "missing": 679,
       "pct": 98.93,
-      "fills_needed_for_99": 45,
+      "fills_needed_for_99": 44,
       "pass": false
     },
     "country": {
       "n": 63540,
-      "filled": 63473,
-      "missing": 67,
-      "pct": 99.89,
+      "filled": 63474,
+      "missing": 66,
+      "pct": 99.9,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
       "n": 63540,
-      "filled": 62682,
-      "missing": 858,
-      "pct": 98.65,
-      "fills_needed_for_99": 223,
+      "filled": 62686,
+      "missing": 854,
+      "pct": 98.66,
+      "fills_needed_for_99": 219,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -71,12 +71,12 @@
       "SZSE": 12
     },
     "missing_sector_by_exchange": {
-      "FSX": 257,
-      "XSTU": 53,
+      "FSX": 256,
+      "XSTU": 52,
       "NSE_IN": 34,
       "HNX": 32,
-      "BVB": 31,
-      "PSE": 26,
+      "BVB": 30,
+      "PSE": 25,
       "BIST": 24,
       "BCBA": 23,
       "HKEX": 19,
@@ -99,13 +99,13 @@
     "official_isin_mismatch": 8,
     "official_name_mismatch": 6,
     "open_collision_groups": 8,
-    "quarantine_unresolved": 1164,
+    "quarantine_unresolved": 1163,
     "quarantine_proposed_clear": 249,
     "quarantine_kept": 576
   },
   "entry_quality_status": {
-    "pass": 59532,
-    "source_gap": 3984,
+    "pass": 59535,
+    "source_gap": 3981,
     "warn": 15,
     "notice": 9
   },
@@ -136,10 +136,10 @@
       "status": "fail",
       "details": {
         "n": 63540,
-        "filled": 62860,
-        "missing": 680,
+        "filled": 62861,
+        "missing": 679,
         "pct": 98.93,
-        "fills_needed_for_99": 45,
+        "fills_needed_for_99": 44,
         "pass": false
       }
     },
@@ -148,10 +148,10 @@
       "status": "fail",
       "details": {
         "n": 63540,
-        "filled": 62682,
-        "missing": 858,
-        "pct": 98.65,
-        "fills_needed_for_99": 223,
+        "filled": 62686,
+        "missing": 854,
+        "pct": 98.66,
+        "fills_needed_for_99": 219,
         "pass": false
       }
     },
@@ -160,9 +160,9 @@
       "status": "pass",
       "details": {
         "n": 63540,
-        "filled": 63473,
-        "missing": 67,
-        "pct": 99.89,
+        "filled": 63474,
+        "missing": 66,
+        "pct": 99.9,
         "fills_needed_for_99": 0,
         "pass": true
       }

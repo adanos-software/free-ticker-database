@@ -6,151 +6,183 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97439,
+    "before_rows": 97440,
     "after_rows": 97440,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 3,
-    "evidenced_removed_rows": 3,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 8,
+    "critical_field_changes": 26,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 1,
-    "generated_reviewed_transition_evidence_rows": 3
+    "generated_official_change_evidence_rows": 0,
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::VSME",
-    "NASDAQ::WPRT",
-    "NYSE::NXDR"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "NASDAQ::PUSA",
+      "listing_key": "BHB::BEYON",
       "field_name": "name",
-      "old_value": "Aureus Greenway Holdings Inc",
-      "new_value": "Powerus Corporation"
+      "old_value": "Bahrain Telecommunications Company B.S.C.",
+      "new_value": "Beyon B.S.C."
     },
     {
-      "listing_key": "NASDAQ::SVRN",
-      "field_name": "name",
-      "old_value": "OceanPal Inc.",
-      "new_value": "SVRN, Inc."
+      "listing_key": "BIST::LRSHO",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
     },
     {
-      "listing_key": "NASDAQ::XRPN",
-      "field_name": "name",
-      "old_value": "Armada Acquisition Corp. II",
-      "new_value": "Evernorth Holdings Inc."
+      "listing_key": "BME::DOM",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "NASDAQ::XRPN",
+      "listing_key": "BVB::CRPC",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "Borsa Italiana::CIR",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "DSE_TZ::JHL",
       "field_name": "country",
-      "old_value": "Cayman Islands",
-      "new_value": "United States"
+      "old_value": "Tanzania",
+      "new_value": "Kenya"
     },
     {
-      "listing_key": "NASDAQ::XRPN",
+      "listing_key": "DSE_TZ::JHL",
       "field_name": "country_code",
-      "old_value": "KY",
-      "new_value": "US"
+      "old_value": "TZ",
+      "new_value": "KE"
     },
     {
-      "listing_key": "NASDAQ::XRPN",
+      "listing_key": "Euronext::RAM",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "FSX::2FA",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "HEL::LAMOR",
+      "field_name": "stock_sector",
+      "old_value": "Utilities",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "HNX::KDM",
+      "field_name": "name",
+      "old_value": "New Residential Urban Development Holdings Corp",
+      "new_value": "GCL Group JSC"
+    },
+    {
+      "listing_key": "IDX::DEAL",
+      "field_name": "country",
+      "old_value": "",
+      "new_value": "Indonesia"
+    },
+    {
+      "listing_key": "IDX::DEAL",
+      "field_name": "country_code",
+      "old_value": "",
+      "new_value": "ID"
+    },
+    {
+      "listing_key": "IDX::DEAL",
       "field_name": "isin",
-      "old_value": "KYG0R38G1040",
-      "new_value": "US2999461039"
+      "old_value": "",
+      "new_value": "ID1000146806"
     },
     {
-      "listing_key": "NYSE::SOAR",
+      "listing_key": "MSE_MW::SUNBIRD",
       "field_name": "name",
-      "old_value": "Volato Group Inc.",
-      "new_value": "SOAR AI, Inc."
+      "old_value": "SUNBIRD HOTELS TOURISM",
+      "new_value": "Sunbird Tourism Plc"
     },
     {
-      "listing_key": "OTC::DGCOF",
+      "listing_key": "NASDAQ::PXS",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Energy"
+    },
+    {
+      "listing_key": "NEO::JET",
       "field_name": "name",
-      "old_value": "Daura Capital Corp.",
-      "new_value": "Daura Gold Corp."
-    }
-  ],
-  "generated_official_change_evidence": [
-    {
-      "listing_key": "NYSE::NXDR",
-      "ticker": "NXDR",
-      "exchange": "NYSE",
-      "event_type": "venue_changed",
-      "field_name": "exchange",
-      "old_value": "NYSE",
-      "new_value": "NASDAQ",
-      "before_row_sha256": "0c965ae4b8b97490bb62debd22dab4bee9112d4786901fa4ae3a45b04c0c7775",
-      "effective_at": "",
-      "observed_at": "2026-10-27T16:05:45Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "sec_company_tickers_exchange",
-      "previous_source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "observation_id": "51b9633cd56bd4422c62ebef",
-      "evidence_status": "official"
-    }
-  ],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NASDAQ::VSME",
-      "ticker": "VSME",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "VSME",
-      "new_value": "FCDH",
-      "before_row_sha256": "fa82b538d3d6221063d421f3dcf1b644362c43509433232cc562741698fdb6f4",
-      "effective_at": "",
-      "observed_at": "2026-10-27T16:05:45Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "084b8a7a17d6b79f1163fa75",
-      "evidence_status": "reviewed"
+      "old_value": "Global Crossing Airlines Inc",
+      "new_value": "Global Crossing Airlines Group Inc."
     },
     {
-      "listing_key": "NASDAQ::WPRT",
-      "ticker": "WPRT",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "WPRT",
-      "new_value": "AETR",
-      "before_row_sha256": "355475190fbacd1863088e359b8dba8aee34967fc6d39d87844e3e55c12547b3",
-      "effective_at": "",
-      "observed_at": "2026-10-27T16:05:45Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "d75126dd2366fbb076ed947a",
-      "evidence_status": "reviewed"
+      "listing_key": "NSE_IN::TVSHLTD",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Consumer Discretionary"
     },
     {
-      "listing_key": "NYSE::NXDR",
-      "ticker": "NXDR",
-      "exchange": "NYSE",
-      "event_type": "venue_changed",
-      "field_name": "exchange",
-      "old_value": "NYSE",
-      "new_value": "NASDAQ",
-      "before_row_sha256": "0c965ae4b8b97490bb62debd22dab4bee9112d4786901fa4ae3a45b04c0c7775",
-      "effective_at": "",
-      "observed_at": "2026-10-27T16:05:45Z",
-      "source_key": "sec_8k_listing_transfer",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1846069/000184606926000162/nxdr-20261001.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "72d203a980e2dcd1edb203a6",
-      "evidence_status": "reviewed"
+      "listing_key": "OSL::VVL",
+      "field_name": "name",
+      "old_value": "VOSS VEKSEL OGLAND",
+      "new_value": "Voss Veksel- og Landmandsbank ASA"
+    },
+    {
+      "listing_key": "PSE::SCC",
+      "field_name": "name",
+      "old_value": "Semirara Mining Corp",
+      "new_value": "Semirara Mining and Power Corporation"
+    },
+    {
+      "listing_key": "PSE::SCC",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Energy"
+    },
+    {
+      "listing_key": "SSE_CL::PARAUCO",
+      "field_name": "name",
+      "old_value": "Parq Arauco",
+      "new_value": "Parque Arauco S.A."
+    },
+    {
+      "listing_key": "VSE::FDJ",
+      "field_name": "name",
+      "old_value": "La Française des Jeux Société anonyme",
+      "new_value": "FDJ United"
+    },
+    {
+      "listing_key": "WSE::ATS",
+      "field_name": "name",
+      "old_value": "Atlantis S.A.",
+      "new_value": "Atlantis SE"
+    },
+    {
+      "listing_key": "XSTU::WM8",
+      "field_name": "name",
+      "old_value": "Grigeo AB",
+      "new_value": "Grigeo Group AB"
+    },
+    {
+      "listing_key": "XSTU::WM8",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
     }
   ],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -550,10 +582,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4822,
+      "before_rows": 4824,
       "after_rows": 4824,
       "shrink_pct": 0.0,
-      "removed_rows": 2,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -604,10 +636,10 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2033,
+      "before_rows": 2032,
       "after_rows": 2032,
-      "shrink_pct": 0.049188,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
