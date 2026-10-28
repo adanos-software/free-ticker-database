@@ -228,6 +228,7 @@ BUDDY-B,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do
 BUI,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 BUSCD,OTC,0.96,"Blue Star Global OTC disclosure filed under BUSCD states the issuer is listed on OTC Pink under trading symbol BUSC, and the exact BUSCD market page lists OTC Link US BUSC after the 2026 reverse-split suffix period; dataset already carries OTC::BUSC with reviewed sector, so drop stale temporary BUSCD duplicate."
 BUSEP,NASDAQ,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+BWET,NYSE,0.95,Reviewed ETF venue transition NYSE::BWET to NYSE ARCA::BWET; exact evidence is recorded in listing_transitions.csv.
 BWIV-UN,NASDAQ,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the current exchange, indicating the current listing is stale."
 BWQ,XETRA,0.99,Official Xetra stock directory lists Advanced Blockchain AG under the active ticker ABX; the remaining BWQ row is a stale local duplicate carrying the old ticker.
 BZFDW,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
@@ -417,6 +418,7 @@ ESGA,NYSE ARCA,0.99,Official TMX listed-issuers workbook shows ESGA as a TSX ETF
 ESGB,NYSE ARCA,0.99,Official TMX listed-issuers workbook shows ESGB as a TSX ETF while the current NYSE ARCA core row carries a Canadian ISIN and is a wrong-venue contamination.
 ESGL,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 ESHA,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: delisted (absent from current NASDAQ Trader master, web+adversarial verified)"
+ETHE,NYSE,0.95,Reviewed ETF venue transition NYSE::ETHE to NYSE ARCA::ETHE; exact evidence is recorded in listing_transitions.csv.
 ETHM,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::ETHM to NASDAQ::DYNC; exact evidence is recorded in listing_transitions.csv.
 ETHMU,NASDAQ,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 ETI-P,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
@@ -736,6 +738,7 @@ LYPSAGEMS,NSE_IN,0.99,Reviewed issuer ticker transition NSE_IN::LYPSAGEMS to NSE
 M5S,XETRA,0.99,Official Xetra stock directory now lists ticker M5S as H2 CORE AG; the remaining Marna Beteiligungen row is a stale misassigned issuer.
 M8G,STO,0.99,"Official Nasdaq Nordic search no longer returns M8G as an active Stockholm share and the company is now tracked under VER, so the remaining M8G core row is a stale pre-rename listing."
 MADHUSE,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::MADHUSE to BSE_IN::MSLGLOBAL; exact evidence is recorded in listing_transitions.csv.
+MAGA,BATS,0.95,Reviewed ETF venue transition BATS::MAGA to NYSE ARCA::MAGA; exact evidence is recorded in listing_transitions.csv.
 MAHAVEER,BSE_IN,0.96,"Delisted from BSE (official BSE status=Delisted, ListofScripData 2026-06-19): Mahaveer Infoway Ltd"
 MAHVIE,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do not return an active exact Stockholm share while the current NGM company directory exposes the Mahvie Minerals company profile without an active primary symbol for this ticker; the remaining STO core row is stale.
 MAJDKA,CPH,0.99,Official Nasdaq Nordic Copenhagen shares directory does not list this symbol as an active Copenhagen share and the remaining core row is a fund or investment-product line rather than a common equity.
@@ -820,6 +823,7 @@ MRRYF,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-b
 MSAI,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
 MSAIW,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: MultiSensor AI Holdings, Inc. - Warrants"
 MSBI,NASDAQ,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+MSGY,NASDAQ,0.99,Detected official Nasdaq directory ticker change NASDAQ::MSGY to NASDAQ::FFTT; exact evidence is recorded in listing_transitions.csv.
 MSPR,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
 MSPRW,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent from current NASDAQ Trader master, web+adversarial verified)"
 MSPRZ,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent from current NASDAQ Trader master, web+adversarial verified)"
@@ -1074,7 +1078,6 @@ SFRT,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather
 SFUNY,NYSE,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 SGBX,NASDAQ,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
 SGCSF,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
-ETHE,NYSE,0.95,Reviewed ETF venue transition NYSE::ETHE to NYSE ARCA::ETHE; exact evidence is recorded in listing_transitions.csv.
 SGOV,NYSE ARCA,0.95,Reviewed ETF venue transition NYSE ARCA::SGOV to NYSE::SGOV; exact evidence is recorded in listing_transitions.csv.
 SGR,WSE,0.99,Official current GPW and NewConnect listed-companies directories do not list SGR as an active WSE listing; the remaining Sadovaya Group row carries a wrong Australian ISIN and is stale.
 SGTB,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
@@ -1311,6 +1314,7 @@ VRM,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqGM rather than the cur
 VRTVX,NMFQS,0.95,db-wide audit 2026-06-21: mutual fund (not exchange-listed common/ETF)
 VRWODAR,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::VRWODAR to BSE_IN::MEGAMONT; exact evidence is recorded in listing_transitions.csv.
 VSA,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: VisionSys AI Inc. - American Depositary Shares"
+VSME,NASDAQ,0.99,Official Nasdaq Trader directory replaced VSME with FCDH; reviewed listing_transitions.csv maps NASDAQ::VSME to NASDAQ::FCDH on unchanged ISIN VGG9517U1113 and successor row is now listed.
 VSNTV,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 VTN,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 VTYX,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
@@ -1379,6 +1383,3 @@ ZVSA,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather
 ZVZZT,NASDAQ,0.99,Official exchange directory marks this symbol as test.
 ZWZZT,NASDAQ,0.99,Official exchange directory marks this symbol as test.
 ZXZZT,NASDAQ,0.99,Official exchange directory marks this symbol as test.
-VSME,NASDAQ,0.99,"Official Nasdaq Trader directory replaced VSME with FCDH; reviewed listing_transitions.csv maps NASDAQ::VSME to NASDAQ::FCDH on unchanged ISIN VGG9517U1113 and successor row is now listed."
-BWET,NYSE,0.95,Reviewed ETF venue transition NYSE::BWET to NYSE ARCA::BWET; exact evidence is recorded in listing_transitions.csv.
-MAGA,BATS,0.95,Reviewed ETF venue transition BATS::MAGA to NYSE ARCA::MAGA; exact evidence is recorded in listing_transitions.csv.
