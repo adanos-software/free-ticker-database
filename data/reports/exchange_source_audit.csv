@@ -4,7 +4,7 @@ AMS,official_full,exchange_directory,125,619,113,501,,euronext_equities|euronext
 ASX,official_partial,listed_companies_subset,1727,532,1843,612,,asx_investment_products|asx_listed_companies,asx_listed_companies,asx_investment_products|asx_listed_companies,empty_refresh|stale_artifact,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 ATHEX,official_partial,listed_companies_subset,161,1,126,0,ETF,athex_sector_classification,,athex_sector_classification,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 B3,official_full,exchange_directory|listed_companies_subset,695,894,425,1478,,b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs,b3_instruments_equities,b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs,empty_refresh|stale_artifact,1353,1228,0,125,90.76,90.76,available,refresh_unavailable,not_applicable
-BATS,official_full,exchange_directory,1,1424,4,1673,,nasdaq_other_listed,,,,1677,1324,58,295,78.95,81.78,available,maintain,not_applicable
+BATS,official_full,exchange_directory,1,1423,4,1673,,nasdaq_other_listed,,,,1677,1324,58,295,78.95,81.78,available,maintain,not_applicable
 BCBA,official_partial,security_lookup_subset,92,0,92,0,,byma_equity_details,,byma_equity_details,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 BHB,official_full,exchange_directory,31,0,41,0,,bahrain_bourse_listed_companies,,,,41,31,9,1,75.61,96.88,available,maintain,not_applicable
 BIST,official_full,exchange_directory,607,36,627,36,,bist_kap_mkk_listed_securities,,bist_kap_mkk_listed_securities,stale_artifact,663,641,22,0,96.68,100.0,available,refresh_required,not_applicable
@@ -49,8 +49,8 @@ NGX,official_full,exchange_directory|listed_companies_subset,133,12,259,0,ETF,ng
 NMFQS,official_partial,security_lookup_subset,0,6,0,6,,nasdaq_mutual_fund_quotes,,nasdaq_mutual_fund_quotes,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 NSE_IN,official_full,exchange_directory,3147,357,3195,357,,nse_india_securities_available,,,,3552,3479,73,0,97.94,100.0,available,maintain,not_applicable
 NSE_KE,official_full,exchange_directory,76,3,66,2,,nse_ke_listed_companies,,,,68,44,24,0,64.71,100.0,available,maintain,not_applicable
-NYSE,official_full,corporate_action_daily_list|exchange_directory,1939,93,5510,652,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange,,nasdaq_trading_system_adds_deletes,stale_artifact,3851,1977,567,1307,51.34,60.2,available,refresh_required,not_applicable
-NYSE ARCA,official_full,corporate_action_daily_list|exchange_directory,0,2805,17,2731,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,,nasdaq_trading_system_adds_deletes,stale_artifact,2746,2612,31,103,95.12,96.21,available,refresh_required,not_applicable
+NYSE,official_full,corporate_action_daily_list|exchange_directory,1939,92,5510,652,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange,,nasdaq_trading_system_adds_deletes,stale_artifact,3851,1976,568,1307,51.31,60.19,available,refresh_required,not_applicable
+NYSE ARCA,official_full,corporate_action_daily_list|exchange_directory,0,2807,17,2731,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,,nasdaq_trading_system_adds_deletes,stale_artifact,2746,2614,29,103,95.19,96.21,available,refresh_required,not_applicable
 NYSE MKT,official_full,exchange_directory,230,2,310,0,ETF,nasdaq_other_listed,,,,310,227,34,49,73.23,82.25,available,maintain,not_applicable
 NZX,official_full,exchange_directory,61,23,128,44,,nzx_instruments,,,,172,84,87,1,48.84,98.82,available,maintain,not_applicable
 OSL,official_full,exchange_directory,313,2,292,2,,euronext_equities|euronext_etfs,,euronext_etfs,stale_artifact,294,287,6,1,97.62,99.65,available,refresh_required,not_applicable
