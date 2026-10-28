@@ -163,6 +163,46 @@ def test_skips_when_listing_isin_does_not_match_official_before() -> None:
     assert updates == []
 
 
+def test_applies_official_isin_replacement_for_listed_companies_subset() -> None:
+    updates = build_official_isin_updates(
+        {
+            "changed": [
+                {
+                    "source_key": "nasdaq_nordic_stockholm_shares",
+                    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+                    "exchange": "STO",
+                    "ticker": "LXB",
+                    "changes": {"isin": {"before": "SE0015192075", "after": "SE0030690368"}},
+                }
+            ]
+        },
+        [
+            {
+                "listing_key": "STO::LXB",
+                "ticker": "LXB",
+                "exchange": "STO",
+                "name": "Luxbright AB",
+                "isin": "SE0015192075",
+            }
+        ],
+        [
+            {
+                "exchange": "STO",
+                "ticker": "LXB",
+                "name": "Luxbright",
+                "listing_status": "active",
+                "official": "true",
+                "reference_scope": "listed_companies_subset",
+                "source_key": "nasdaq_nordic_stockholm_shares",
+                "isin": "SE0030690368",
+            }
+        ],
+    )
+
+    assert len(updates) == 1
+    assert updates[0]["proposed_value"] == "SE0030690368"
+
+
 def test_execute_merges_metadata_updates(tmp_path) -> None:
     from scripts.apply_official_identity_updates import apply_official_identity_updates
 

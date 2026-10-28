@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-28T12:47:46Z",
+    "generated_at": "2026-10-28T14:20:37Z",
     "rows": 97770,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,33 +15,33 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86317,
-      "source_gap": 11299,
-      "warn": 143
+      "pass": 86422,
+      "source_gap": 11304,
+      "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4663,
-      "official_reference": 87664,
+      "identifier_enriched": 4666,
+      "official_reference": 87661,
       "scoped_source_gap": 272,
       "valid_isin": 5171
     },
     "severity_counts": {
-      "high": 121,
+      "high": 11,
       "low": 11,
       "medium": 23,
-      "source_gap": 11686
+      "source_gap": 11689
     },
     "issue_counts": {
-      "official_reference_gap": 6819,
+      "official_reference_gap": 6822,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 708,
       "expected_missing_primary_isin": 685,
       "missing_etf_category": 187,
-      "country_isin_mismatch": 109,
       "official_name_mismatch": 23,
-      "official_isin_mismatch": 12,
+      "official_isin_mismatch": 10,
       "low_company_name_overlap": 9,
-      "shared_name_alias": 2
+      "shared_name_alias": 2,
+      "country_isin_mismatch": 1
     },
     "top_flagged_exchanges": [
       {
@@ -66,15 +66,9 @@
         "pass": 1247
       },
       {
-        "exchange": "XETRA",
-        "pass": 5223,
-        "warn": 108,
-        "source_gap": 201
-      },
-      {
         "exchange": "NASDAQ",
-        "source_gap": 305,
-        "pass": 4511,
+        "source_gap": 308,
+        "pass": 4508,
         "notice": 4,
         "warn": 4
       },
@@ -103,6 +97,11 @@
         "exchange": "AMS",
         "pass": 540,
         "source_gap": 204
+      },
+      {
+        "exchange": "XETRA",
+        "pass": 5329,
+        "source_gap": 203
       },
       {
         "exchange": "XDUS",
@@ -1572,24 +1571,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::02M",
-      "ticker": "02M",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "FSX::02M1",
       "ticker": "02M1",
       "exchange": "FSX",
@@ -1820,24 +1801,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::04X",
-      "ticker": "04X",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -3206,24 +3169,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::0ME",
-      "ticker": "0ME",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::0MO",
       "ticker": "0MO",
       "exchange": "XSTU",
@@ -3749,24 +3694,6 @@
           "field": "exchange",
           "value": "LSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::0SE0",
-      "ticker": "0SE0",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -6189,24 +6116,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::1KJ",
-      "ticker": "1KJ",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::1KT",
       "ticker": "1KT",
       "exchange": "XSTU",
@@ -6275,24 +6184,6 @@
           "field": "exchange",
           "value": "FSX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::1MA",
-      "ticker": "1MA",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -6534,24 +6425,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::1OQ0",
-      "ticker": "1OQ0",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -8762,24 +8635,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::2H51",
-      "ticker": "2H51",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::2H8",
       "ticker": "2H8",
       "exchange": "XSTU",
@@ -9212,24 +9067,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::2LB",
-      "ticker": "2LB",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "Munich::2M6",
       "ticker": "2M6",
       "exchange": "Munich",
@@ -9658,24 +9495,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::2S3",
-      "ticker": "2S3",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "CSE_MA::2SAHA",
       "ticker": "2SAHA",
       "exchange": "CSE_MA",
@@ -9805,24 +9624,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::2U9",
-      "ticker": "2U9",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -10154,24 +9955,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::30G",
-      "ticker": "30G",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -11101,24 +10884,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::3E7",
-      "ticker": "3E7",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::3EAG",
       "ticker": "3EAG",
       "exchange": "XSTU",
@@ -11263,24 +11028,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::3HD",
-      "ticker": "3HD",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::3HM",
       "ticker": "3HM",
       "exchange": "XSTU",
@@ -11295,24 +11042,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::3HS",
-      "ticker": "3HS",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -11677,24 +11406,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::3RCA",
-      "ticker": "3RCA",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::3RK",
       "ticker": "3RK",
       "exchange": "XSTU",
@@ -11871,24 +11582,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::3U6",
-      "ticker": "3U6",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -13210,24 +12903,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::49J",
-      "ticker": "49J",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::4A8",
       "ticker": "4A8",
       "exchange": "XSTU",
@@ -13940,24 +13615,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::4LN2",
-      "ticker": "4LN2",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -15657,42 +15314,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::5G5",
-      "ticker": "5G5",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::5GH",
-      "ticker": "5GH",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::5H6",
       "ticker": "5H6",
       "exchange": "XSTU",
@@ -17212,24 +16833,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::68V",
-      "ticker": "68V",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::690D",
       "ticker": "690D",
       "exchange": "XSTU",
@@ -17442,24 +17045,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::6D8",
-      "ticker": "6D8",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -17831,24 +17416,6 @@
       ]
     },
     {
-      "listing_key": "XETRA::6L8",
-      "ticker": "6L8",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::6LA",
       "ticker": "6LA",
       "exchange": "XSTU",
@@ -18097,24 +17664,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::6Q81",
-      "ticker": "6Q81",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "country_isin_mismatch",
-          "severity": "high",
-          "field": "country",
-          "value": "Germany",
-          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -18446,6 +17995,470 @@
           "field": "exchange",
           "value": "TSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::73GN",
+      "ticker": "73GN",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "TPEX::7575",
+      "ticker": "7575",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TPEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XETRA::75S",
+      "ticker": "75S",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::76O",
+      "ticker": "76O",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::76V",
+      "ticker": "76V",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "TPEX::7768",
+      "ticker": "7768",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TPEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::77I",
+      "ticker": "77I",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TWSE::7855",
+      "ticker": "7855",
+      "exchange": "TWSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7922",
+      "ticker": "7922",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7925",
+      "ticker": "7925",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7940",
+      "ticker": "7940",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7999",
+      "ticker": "7999",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "Munich::7A2",
+      "ticker": "7A2",
+      "exchange": "Munich",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "Munich",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7A2",
+      "ticker": "7A2",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7A6",
+      "ticker": "7A6",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::7BC0",
+      "ticker": "7BC0",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7BP1",
+      "ticker": "7BP1",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7BR",
+      "ticker": "7BR",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7C3",
+      "ticker": "7C3",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7CC",
+      "ticker": "7CC",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7CD",
+      "ticker": "7CD",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7CH",
+      "ticker": "7CH",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7DB",
+      "ticker": "7DB",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7EL",
+      "ticker": "7EL",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7ES1",
+      "ticker": "7ES1",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }

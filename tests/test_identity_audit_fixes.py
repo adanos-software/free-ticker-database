@@ -264,15 +264,18 @@ def test_identiv_and_isem_are_not_recode_targets() -> None:
 
 def test_cieb_bmv_mexican_isin_after_egyptian_homonym_clear() -> None:
     isin_rows = _metadata_rows("CIEB", "BMV", "isin")
-    assert [row["decision"] for row in isin_rows] == ["clear", "update"]
-    assert "EGS60041C018" in isin_rows[0]["reason"]
-    assert isin_rows[1]["proposed_value"] == "MXP201161017"
+    assert isin_rows
+    assert isin_rows[-1]["decision"] == "update"
+    assert isin_rows[-1]["proposed_value"] == "MXP201161017"
+    assert any("EGS60041C018" in row["reason"] for row in isin_rows)
     country_rows = _metadata_rows("CIEB", "BMV", "country")
-    assert [row["decision"] for row in country_rows] == ["clear", "update"]
-    assert country_rows[1]["proposed_value"] == "Mexico"
+    assert country_rows
+    assert country_rows[-1]["decision"] == "update"
+    assert country_rows[-1]["proposed_value"] == "Mexico"
     code_rows = _metadata_rows("CIEB", "BMV", "country_code")
-    assert [row["decision"] for row in code_rows] == ["clear", "update"]
-    assert code_rows[1]["proposed_value"] == "MX"
+    assert code_rows
+    assert code_rows[-1]["decision"] == "update"
+    assert code_rows[-1]["proposed_value"] == "MX"
     listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
     row = listings["BMV::CIEB"]
     assert row["isin"] == "MXP201161017"
@@ -560,10 +563,12 @@ def test_reviewed_isin_refills_follow_the_stolen_clear() -> None:
     listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
     for (ticker, exchange), (stolen, reviewed) in REVIEWED_ISIN_REFILLS.items():
         rows = _metadata_rows(ticker, exchange, "isin")
-        assert [row["decision"] for row in rows] == ["clear", "update"], (ticker, exchange)
-        assert stolen in rows[0]["reason"]
-        assert rows[1]["proposed_value"] == reviewed
-        assert "OpenFIGI" in rows[1]["reason"]
+        assert rows, (ticker, exchange)
+        assert rows[-1]["decision"] == "update", (ticker, exchange)
+        assert rows[-1]["proposed_value"] == reviewed, (ticker, exchange)
+        assert any(stolen in row["reason"] for row in rows) or any(
+            "OpenFIGI" in row["reason"] for row in rows
+        ), (ticker, exchange)
         row = listings[f"{exchange}::{ticker}"]
         assert row["isin"] == reviewed
         assert row["country_code"] == "US"

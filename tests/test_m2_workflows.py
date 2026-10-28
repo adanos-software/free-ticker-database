@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 import os
+import sys
 import subprocess
 import textwrap
 from pathlib import Path
@@ -123,6 +124,7 @@ def test_release_changelog_step_rejects_wrong_tag_and_extracts_only_target_versi
     script = textwrap.dedent(step.split("run: |\n", 1)[1])
     output = tmp_path / "notes.md"
     script = script.replace("/tmp/release-notes.md", str(output))
+    script = script.replace("\npython ", f"\n{sys.executable} ")
     (tmp_path / "VERSION").write_text("3.43.1\n")
     (tmp_path / "CHANGELOG.md").write_text("# Changelog\n\n## [Unreleased]\n\n## [3.43.1] - 2026-10-20\n\n### Fixed\n\n- Target change.\n\n## [3.43.0] - 2026-10-09\n\n- Old change.\n")
     environment = {**os.environ, "RELEASE_TAG": "v3.43.0"}

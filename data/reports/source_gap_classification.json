@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-10-28T12:47:56Z",
-    "rows": 8774,
+    "generated_at": "2026-10-28T14:19:46Z",
+    "rows": 8778,
     "field_totals": {
       "missing_etf_category": 167,
       "missing_isin_primary": 685,
-      "missing_sector_stock": 1103,
-      "official_reference_gap": 6819
+      "missing_sector_stock": 1104,
+      "official_reference_gap": 6822
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 42,
@@ -25,11 +25,11 @@
       "official_identifier_not_exposed_source_gap": 180,
       "official_identifier_reference_unmatched_gap": 11,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 464,
+      "official_industry_taxonomy_unavailable_gap": 465,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 92,
-      "official_reference_symbol_collision_gap": 1177,
-      "official_reference_unmatched_source_gap": 5642,
+      "official_reference_symbol_collision_gap": 1178,
+      "official_reference_unmatched_source_gap": 5644,
       "otc_sector_source_gap": 552,
       "shell_or_cpc_sector_gap": 6
     },
@@ -52,11 +52,11 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 58,
       "missing_sector_stock:fundlike_stock_sector_gap": 18,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 464,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 465,
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 6,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1177,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5642
+      "official_reference_gap:official_reference_symbol_collision_gap": 1178,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5644
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -204,7 +204,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 243
+          "rows": 246
         },
         {
           "exchange": "NYSE ARCA",
@@ -273,7 +273,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NASDAQ",
-        "rows": 172,
+        "rows": 174,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -32540,6 +32540,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=VSE::STR;exchange=VSE;ticker=STR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "VSE::VER",
+      "ticker": "VER",
+      "exchange": "VSE",
+      "asset_type": "Stock",
+      "name": "VERBUND AG",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=VSE::VER;exchange=VSE;ticker=VER;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -71476,6 +71493,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NASDAQ::DVAL",
+      "ticker": "DVAL",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "BrandywineGLOBAL - Dynamic US Large Cap Value ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::DVAL;exchange=NASDAQ;ticker=DVAL;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NASDAQ::DVIN",
       "ticker": "DVIN",
       "exchange": "NASDAQ",
@@ -72190,6 +72224,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NASDAQ::MULT",
+      "ticker": "MULT",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "Franklin Multisector Income ETF",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NASDAQ::MULT;exchange=NASDAQ;ticker=MULT;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NASDAQ::NEMG",
       "ticker": "NEMG",
       "exchange": "NASDAQ",
@@ -72694,6 +72745,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=NASDAQ::USCF;exchange=NASDAQ;ticker=USCF;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NASDAQ::USFI",
+      "ticker": "USFI",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "BrandywineGLOBAL - U.S. Fixed Income ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NASDAQ::USFI;exchange=NASDAQ;ticker=USFI;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

@@ -19,10 +19,12 @@ from typing import Any
 try:
     from scripts.build_entry_quality_report import names_match
     from scripts.lib.dataio import load_csv, merge_metadata_updates
+    from scripts.lib.official_change_evidence import DIRECT_IDENTIFIER_SCOPES
     from scripts.rebuild_dataset import is_valid_isin
 except ModuleNotFoundError:  # pragma: no cover
     from build_entry_quality_report import names_match
     from lib.dataio import load_csv, merge_metadata_updates
+    from lib.official_change_evidence import DIRECT_IDENTIFIER_SCOPES
     from rebuild_dataset import is_valid_isin
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,7 +62,7 @@ def _official_reference_row(
             continue
         if str(row.get("official") or "").strip().lower() != "true":
             continue
-        if str(row.get("reference_scope") or "").strip() != "exchange_directory":
+        if str(row.get("reference_scope") or "").strip() not in DIRECT_IDENTIFIER_SCOPES:
             continue
         if source_key and str(row.get("source_key") or "").strip() != source_key:
             continue

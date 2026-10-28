@@ -2363,6 +2363,35 @@ def reviewed_depositary_country_isin_listing_keys(
     return reviewed_keys
 
 
+GERMAN_LISTING_VENUE_EXCHANGES = frozenset(
+    {"FSX", "Munich", "XETRA", "XHAN", "XSTU", "XDUS"}
+)
+
+
+def should_preserve_depositary_domicile(
+    row_key: tuple[str, str],
+    *,
+    country: str,
+    inferred_country: str | None,
+    exchange: str,
+    official_depositary_listing_keys: set[tuple[str, str]],
+) -> bool:
+    """Keep a foreign issuer country on depositary lines, not venue-default domicile."""
+    if not country or country == "United States" or not inferred_country:
+        return False
+    if row_key in official_depositary_listing_keys:
+        return True
+    if exchange in OTC_EXCHANGES and inferred_country == "United States":
+        return True
+    if inferred_country != "United States":
+        return False
+    # German segment listings often inherit venue country=Germany even when the
+    # official ISIN is foreign; do not treat that default as issuer evidence.
+    if country == "Germany" and exchange in GERMAN_LISTING_VENUE_EXCHANGES:
+        return False
+    return True
+
+
 def reviewed_country_isin_override_listing_keys(
     rows: Iterable[dict[str, str]],
     metadata_updates: Iterable[dict[str, str]],
@@ -2802,13 +2831,12 @@ def cleaned_rows():
             if official_isin and not merged.get("isin"):
                 merged["isin"] = official_isin
                 inferred_country = country_from_isin(official_isin)
-                preserve_depositary_domicile = bool(
-                    merged.get("country")
-                    and merged.get("country") != "United States"
-                    and (
-                        row_key in official_depositary_listing_keys
-                        or inferred_country == "United States"
-                    )
+                preserve_depositary_domicile = should_preserve_depositary_domicile(
+                    row_key,
+                    country=merged.get("country", ""),
+                    inferred_country=inferred_country,
+                    exchange=row.get("exchange", ""),
+                    official_depositary_listing_keys=official_depositary_listing_keys,
                 )
                 if inferred_country and not preserve_depositary_domicile:
                     merged["country"] = inferred_country
@@ -2847,13 +2875,12 @@ def cleaned_rows():
         isin, aliases = clean_aliases(row, aliases, wkns, alias_context)
         country = row["country"]
         inferred_country = country_from_isin(isin) if isin else None
-        preserve_depositary_domicile = bool(
-            country
-            and country != "United States"
-            and (
-                row_key in official_depositary_listing_keys
-                or inferred_country == "United States"
-            )
+        preserve_depositary_domicile = should_preserve_depositary_domicile(
+            row_key,
+            country=country,
+            inferred_country=inferred_country,
+            exchange=row.get("exchange", ""),
+            official_depositary_listing_keys=official_depositary_listing_keys,
         )
         if inferred_country and not preserve_depositary_domicile:
             country = inferred_country
