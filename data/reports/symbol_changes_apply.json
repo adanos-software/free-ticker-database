@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-10-28T12:48:14Z",
+    "generated_at": "2026-10-29T12:56:47Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
-    "accepted_rows": 0,
+    "accepted_rows": 1,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 378,
+    "blocked_rows": 379,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 3,
       "blocked_new_symbol_not_active_in_official_master": 3,
-      "blocked_old_symbol_not_unique_in_us_scope": 303,
+      "blocked_old_symbol_not_unique_in_us_scope": 304,
       "blocked_sec_cik_mismatch": 2,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
@@ -20,9 +20,39 @@
       "manual_transition_or_shell_name": 7
     }
   },
-  "accepted": [],
+  "accepted": [
+    {
+      "change_id": "5c3df086ecde75be",
+      "effective_date": "2026-10-27",
+      "old_symbol": "MSGS",
+      "new_symbol": "MSGK",
+      "new_company_name": "Msg Knickerbockers Corp",
+      "status": "apply",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::MSGS",
+      "new_listing_key": "NYSE::MSGK",
+      "isin": "US55825T1034",
+      "identity_type": "same_isin",
+      "identity_value": "US55825T1034",
+      "transition_event_type": "symbol_changed",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "new_official_name": "MSG Knickerbockers Corp. Class A Common Stock",
+      "evidence": "live_official_directory_old_inactive_new_active_same_issuer",
+      "feed_source_key": "stockanalysis_symbol_changes",
+      "feed_source_url": "https://stockanalysis.com/actions/changes/"
+    }
+  ],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "601dc5566bf1d3b1",
+      "effective_date": "2026-10-28",
+      "old_symbol": "MSGY",
+      "new_symbol": "FFTT",
+      "new_company_name": "Masonglory Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
     {
       "change_id": "4b450240fab816ca",
       "effective_date": "2026-10-26",

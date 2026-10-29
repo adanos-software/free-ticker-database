@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-10-29T08:15:38Z`
+Generated: `2026-10-29T12:59:34Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,10 +8,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 133 |
-| Listings involved | 389 |
+| Collision groups | 134 |
+| Listings involved | 391 |
 | Ticker-collision groups | 38 |
-| Open groups | 16 |
+| Open groups | 17 |
 | Closed same-issuer reviewed | 117 |
 | Direct identifier apply allowed rows | 0 |
 
@@ -19,14 +19,14 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 95 |
+| isin_shared_by_distinct_issuers | 96 |
 | ticker_collision_isin_misassignment_suspected | 38 |
 
 ## Next Review Batches
 
 | Decision candidate | Registered country | Groups |
 | --- | --- | ---: |
-| isin_shared_by_distinct_issuers | United States | 25 |
+| isin_shared_by_distinct_issuers | United States | 26 |
 | ticker_collision_isin_misassignment_suspected | United States | 15 |
 | ticker_collision_isin_misassignment_suspected | Germany | 9 |
 | isin_shared_by_distinct_issuers | Singapore | 8 |
@@ -71,6 +71,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | NO0010861990 | Norway | 2 | - | Prism Resources Inc. \| Prosafe SE |
 | SE0000722365 | Sweden | 2 | - | Vivesto AB \| Viveve Medical Inc |
 | US34631F1021 | United States | 2 | - | FOR.PWR.SOL.INC. O.N. \| Forgent Power Solutions, Inc. |
+| US55825T1034 | United States | 2 | - | MSG Knickerbockers Corp. Class A Common Stock \| Madison Square Garden Sports Corp |
 | US7789203061 | United States | 2 | - | SHA.HO.INC. O.N. \| SharonAI Holdings, Inc. Class A Common Stock |
 
 ## Gate
