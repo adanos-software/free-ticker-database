@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-10-29T13:41:45Z`
+Generated: `2026-10-29T16:14:53Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,10 +8,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 134 |
-| Listings involved | 391 |
+| Collision groups | 135 |
+| Listings involved | 393 |
 | Ticker-collision groups | 38 |
-| Open groups | 17 |
+| Open groups | 18 |
 | Closed same-issuer reviewed | 117 |
 | Direct identifier apply allowed rows | 0 |
 
@@ -19,7 +19,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 96 |
+| isin_shared_by_distinct_issuers | 97 |
 | ticker_collision_isin_misassignment_suspected | 38 |
 
 ## Next Review Batches
@@ -35,11 +35,11 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | France | 5 |
 | ticker_collision_isin_misassignment_suspected | India | 5 |
 | isin_shared_by_distinct_issuers | Canada | 4 |
+| isin_shared_by_distinct_issuers | Germany | 4 |
 | isin_shared_by_distinct_issuers | Switzerland | 4 |
 | isin_shared_by_distinct_issuers | Australia | 3 |
 | isin_shared_by_distinct_issuers | China | 3 |
 | isin_shared_by_distinct_issuers | Finland | 3 |
-| isin_shared_by_distinct_issuers | Germany | 3 |
 | isin_shared_by_distinct_issuers | Italy | 3 |
 | isin_shared_by_distinct_issuers | Mexico | 3 |
 | ticker_collision_isin_misassignment_suspected | Australia | 3 |
@@ -67,6 +67,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | US0896951003 | United States | 2 | BIGG | BIGG Digital Assets Inc. \| Big Tree Group Inc |
 | CA9609085076 | Canada | 3 | - | Aetherion Technologies Inc. \| Westport Fuel Systems Inc. |
 | INE534A01028 | India | 3 | - | Grand Foundry Ltd \| Tikona Communication Limited |
+| DE000A41YEG8 | Germany | 2 | - | Nexum Group AG \| creditshelf AG |
 | NL0000313286 | Netherlands | 2 | - | ACOMO NV           EO-,45 \| Amsterdam Commodities NV |
 | NO0010861990 | Norway | 2 | - | Prism Resources Inc. \| Prosafe SE |
 | SE0000722365 | Sweden | 2 | - | Vivesto AB \| Viveve Medical Inc |

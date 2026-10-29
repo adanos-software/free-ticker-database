@@ -1,9 +1,9 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-10-28T12:42:06Z`
-- New rows: `566`
-- Vanished rows: `76`
-- Changed rows: `37`
+- Generated at: `2026-10-29T12:59:51Z`
+- New rows: `136`
+- Vanished rows: `24`
+- Changed rows: `33`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
@@ -11,29 +11,27 @@
 | Type | Rows |
 |---|---:|
 | field_change | 1 |
-| isin_change | 4 |
-| name_change | 34 |
+| isin_change | 2 |
+| name_change | 30 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| deutsche_boerse_frankfurt_all_tradable_equities | 155 |
-| deutsche_boerse_xetra_all_tradable_equities | 387 |
-| nasdaq_nordic_helsinki_shares | 2 |
-| nasdaq_nordic_stockholm_shares | 7 |
-| pse_listed_company_directory | 2 |
-| set_stock_search | 1 |
-| sgx_securities_prices | 9 |
-| twse_listed_companies | 3 |
+| asx_investment_products | 3 |
+| bvb_fund_units_directory | 1 |
+| deutsche_boerse_etfs_etps | 91 |
+| deutsche_boerse_listed_companies | 3 |
+| nasdaq_trading_system_adds_deletes | 6 |
+| newconnect_listed_companies | 1 |
+| otc_markets_security_profile | 31 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| deutsche_boerse_frankfurt_all_tradable_equities | 58 |
-| deutsche_boerse_xetra_all_tradable_equities | 3 |
-| nasdaq_nordic_stockholm_shares | 10 |
-| pse_listed_company_directory | 2 |
-| set_stock_search | 1 |
-| sgx_securities_prices | 2 |
+| deutsche_boerse_etfs_etps | 10 |
+| deutsche_boerse_listed_companies | 3 |
+| nasdaq_trading_system_adds_deletes | 9 |
+| newconnect_listed_companies | 1 |
+| ngx_equities_price_list | 1 |

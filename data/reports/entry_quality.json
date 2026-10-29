@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-29T13:43:28Z",
-    "rows": 97732,
+    "generated_at": "2026-10-29T16:14:52Z",
+    "rows": 97738,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,28 +15,28 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86426,
-      "source_gap": 11262,
+      "pass": 86427,
+      "source_gap": 11267,
       "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4635,
-      "official_reference": 87664,
-      "scoped_source_gap": 272,
+      "identifier_enriched": 4638,
+      "official_reference": 87669,
+      "scoped_source_gap": 270,
       "valid_isin": 5161
     },
     "severity_counts": {
       "high": 11,
       "low": 11,
       "medium": 23,
-      "source_gap": 11652
+      "source_gap": 11657
     },
     "issue_counts": {
-      "official_reference_gap": 6781,
+      "official_reference_gap": 6782,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 708,
+      "missing_stock_sector": 710,
       "expected_missing_primary_isin": 685,
-      "missing_etf_category": 191,
+      "missing_etf_category": 193,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 10,
       "low_company_name_overlap": 9,
@@ -46,8 +46,8 @@
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8480,
-        "source_gap": 3256,
+        "pass": 8482,
+        "source_gap": 3254,
         "warn": 14,
         "notice": 2
       },
@@ -67,8 +67,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 307,
-        "pass": 4507,
+        "source_gap": 306,
+        "pass": 4508,
         "notice": 4,
         "warn": 4
       },
@@ -79,29 +79,29 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2538,
-        "source_gap": 243,
+        "pass": 2539,
+        "source_gap": 242,
         "warn": 1
       },
       {
         "exchange": "TSX",
         "pass": 2196,
         "notice": 1,
-        "source_gap": 224
+        "source_gap": 225
       },
       {
         "exchange": "Munich",
         "source_gap": 223
       },
       {
-        "exchange": "AMS",
-        "pass": 540,
-        "source_gap": 204
+        "exchange": "XETRA",
+        "pass": 5323,
+        "source_gap": 213
       },
       {
-        "exchange": "XETRA",
-        "pass": 5329,
-        "source_gap": 203
+        "exchange": "AMS",
+        "pass": 541,
+        "source_gap": 204
       },
       {
         "exchange": "XDUS",
@@ -16268,6 +16268,24 @@
       ]
     },
     {
+      "listing_key": "XETRA::619A",
+      "ticker": "619A",
+      "exchange": "XETRA",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "XSTU::639",
       "ticker": "639",
       "exchange": "XSTU",
@@ -18429,24 +18447,6 @@
     {
       "listing_key": "XSTU::7ES1",
       "ticker": "7ES1",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::7EX",
-      "ticker": "7EX",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-29T13:41:47Z",
+    "generated_at": "2026-10-29T16:14:55Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,33 +27,33 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63599,
-    "joined_listings": 63599,
-    "scope_rows": 63599
+    "rows": 63602,
+    "joined_listings": 63602,
+    "scope_rows": 63602
   },
   "completeness": {
     "isin": {
-      "n": 63599,
-      "filled": 62914,
+      "n": 63602,
+      "filled": 62917,
       "missing": 685,
       "pct": 98.92,
-      "fills_needed_for_99": 50,
+      "fills_needed_for_99": 49,
       "pass": false
     },
     "country": {
-      "n": 63599,
-      "filled": 63533,
+      "n": 63602,
+      "filled": 63536,
       "missing": 66,
       "pct": 99.9,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63599,
-      "filled": 62700,
-      "missing": 899,
-      "pct": 98.59,
-      "fills_needed_for_99": 264,
+      "n": 63602,
+      "filled": 62699,
+      "missing": 903,
+      "pct": 98.58,
+      "fills_needed_for_99": 267,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -80,13 +80,13 @@
       "BIST": 24,
       "BCBA": 23,
       "HKEX": 19,
+      "XETRA": 18,
       "BSE_IN": 17,
-      "SGX": 17,
-      "LSE": 16
+      "SGX": 17
     },
     "missing_category_by_exchange": {
-      "TSX": 52,
-      "XETRA": 42,
+      "TSX": 53,
+      "XETRA": 43,
       "AMS": 29,
       "NYSE ARCA": 24,
       "TSE": 23,
@@ -98,14 +98,14 @@
   "identity": {
     "official_isin_mismatch": 8,
     "official_name_mismatch": 6,
-    "open_collision_groups": 14,
-    "quarantine_unresolved": 1259,
+    "open_collision_groups": 15,
+    "quarantine_unresolved": 1260,
     "quarantine_proposed_clear": 288,
     "quarantine_kept": 565
   },
   "entry_quality_status": {
-    "pass": 59545,
-    "source_gap": 4030,
+    "pass": 59542,
+    "source_gap": 4036,
     "warn": 15,
     "notice": 9
   },
@@ -117,7 +117,7 @@
         "official_isin_mismatch": 8,
         "official_isin_mismatch_unexpected": 0,
         "official_isin_mismatch_reviewed_holds": 8,
-        "open_collision_groups": 14,
+        "open_collision_groups": 15,
         "sample_mismatch": [],
         "sample_collision_isins": [
           "AU000000TLG7",
@@ -137,11 +137,11 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63599,
-        "filled": 62914,
+        "n": 63602,
+        "filled": 62917,
         "missing": 685,
         "pct": 98.92,
-        "fills_needed_for_99": 50,
+        "fills_needed_for_99": 49,
         "pass": false
       }
     },
@@ -149,11 +149,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63599,
-        "filled": 62700,
-        "missing": 899,
-        "pct": 98.59,
-        "fills_needed_for_99": 264,
+        "n": 63602,
+        "filled": 62699,
+        "missing": 903,
+        "pct": 98.58,
+        "fills_needed_for_99": 267,
         "pass": false
       }
     },
@@ -161,8 +161,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63599,
-        "filled": 63533,
+        "n": 63602,
+        "filled": 63536,
         "missing": 66,
         "pct": 99.9,
         "fills_needed_for_99": 0,

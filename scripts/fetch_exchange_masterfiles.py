@@ -2993,6 +2993,68 @@ def select_refresh_sources(
     return selected
 
 
+DEUTSCHE_BOERSE_LISTED_COMPANIES_SOURCE_KEY = "deutsche_boerse_listed_companies"
+DEUTSCHE_BOERSE_T7_ISIN_TICKER_SOURCE_KEYS = {
+    "deutsche_boerse_frankfurt_all_tradable_equities",
+    "deutsche_boerse_xetra_all_tradable_equities",
+}
+
+
+def reconcile_deutsche_boerse_listed_companies_isin_rows(
+    existing_rows: Iterable[dict[str, str]],
+    refreshed_rows: Iterable[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Reject Listed-companies.xlsx ISINs that belong to a different T7 mnemonic.
+
+    The quarterly Listed-companies workbook can lag ticker reassignments that the
+    T7 all-tradable feeds already encode (for example CSQ vs NXM on Nexum).
+    """
+    existing_rows = list(existing_rows)
+    isin_to_t7_ticker: dict[str, str] = {}
+    for row in existing_rows:
+        source_key = str(row.get("source_key") or "")
+        if source_key not in DEUTSCHE_BOERSE_T7_ISIN_TICKER_SOURCE_KEYS:
+            continue
+        isin = str(row.get("isin") or "").strip().upper()
+        ticker = str(row.get("ticker") or "").strip().upper()
+        if isin and ticker:
+            isin_to_t7_ticker[isin] = ticker
+
+    existing_listed_isins: dict[tuple[str, str, str], str] = {}
+    for row in existing_rows:
+        if str(row.get("source_key") or "") != DEUTSCHE_BOERSE_LISTED_COMPANIES_SOURCE_KEY:
+            continue
+        source_key = str(row.get("source_key") or "")
+        exchange = str(row.get("exchange") or "")
+        ticker = str(row.get("ticker") or "")
+        isin = str(row.get("isin") or "").strip()
+        if source_key and exchange and ticker and isin:
+            existing_listed_isins[(source_key, exchange, ticker)] = isin
+
+    reconciled: list[dict[str, str]] = []
+    for refreshed in refreshed_rows:
+        row = dict(refreshed)
+        if str(row.get("source_key") or "") != DEUTSCHE_BOERSE_LISTED_COMPANIES_SOURCE_KEY:
+            reconciled.append(row)
+            continue
+        ticker = str(row.get("ticker") or "").strip().upper()
+        isin = str(row.get("isin") or "").strip().upper()
+        t7_ticker = isin_to_t7_ticker.get(isin)
+        if t7_ticker and t7_ticker != ticker:
+            key = (
+                str(row.get("source_key") or ""),
+                str(row.get("exchange") or ""),
+                str(row.get("ticker") or ""),
+            )
+            prior_isin = existing_listed_isins.get(key, "").strip()
+            if prior_isin:
+                row["isin"] = prior_isin
+            else:
+                row["isin"] = ""
+        reconciled.append(row)
+    return reconciled
+
+
 def merge_reference_rows(
     existing_rows: Iterable[dict[str, str]],
     refreshed_rows: Iterable[dict[str, str]],
@@ -3001,6 +3063,7 @@ def merge_reference_rows(
     preserve_source_keys: Iterable[str] | None = None,
 ) -> list[dict[str, str]]:
     existing_rows = list(existing_rows)
+    refreshed_rows = reconcile_deutsche_boerse_listed_companies_isin_rows(existing_rows, refreshed_rows)
     refreshed_rows = preserve_existing_isins(existing_rows, refreshed_rows)
     refreshed_rows = preserve_descriptive_names(existing_rows, refreshed_rows)
     selected_source_keys = set(source_keys)

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-29T13:41:45Z",
+    "generated_at": "2026-10-29T16:14:53Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -4691,6 +4691,44 @@
       "_members": [
         {
           "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::CSQ",
+          "name": "Nexum Group AG",
+          "ticker": "CSQ"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::CSQ0",
+          "name": "creditshelf AG",
+          "ticker": "CSQ0"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "DE000A41YEG8",
+      "isin_valid": "true",
+      "listing_count": "2",
+      "listing_keys": "XETRA::CSQ|XETRA::CSQ0",
+      "member_exchanges": "XETRA",
+      "member_names": "Nexum Group AG | creditshelf AG",
+      "member_tickers": "CSQ | CSQ0",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Germany",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
           "country": "Denmark",
           "country_code": "DK",
           "exchange": "CPH",
@@ -6212,18 +6250,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 134,
+      "review_required_groups": 135,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
     "closed_groups": 117,
-    "collision_groups": 134,
+    "collision_groups": 135,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 96,
+      "isin_shared_by_distinct_issuers": 97,
       "ticker_collision_isin_misassignment_suspected": 38
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-10-29T13:41:45Z",
-    "listings_involved": 391,
+    "generated_at": "2026-10-29T16:14:53Z",
+    "listings_involved": 393,
     "next_review_batches": [
       {
         "collision_groups": 26,
@@ -6273,6 +6311,11 @@
       {
         "collision_groups": 4,
         "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Germany"
+      },
+      {
+        "collision_groups": 4,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Switzerland"
       },
       {
@@ -6289,11 +6332,6 @@
         "collision_groups": 3,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Finland"
-      },
-      {
-        "collision_groups": 3,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Germany"
       },
       {
         "collision_groups": 3,
@@ -6401,7 +6439,7 @@
         "registered_country": "Switzerland"
       }
     ],
-    "open_groups": 17,
+    "open_groups": 18,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 6,
@@ -6414,7 +6452,7 @@
       "Denmark": 1,
       "Finland": 3,
       "France": 5,
-      "Germany": 12,
+      "Germany": 13,
       "Hungary": 1,
       "India": 6,
       "Ireland": 1,
