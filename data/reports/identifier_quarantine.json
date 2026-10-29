@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-29T08:15:04Z",
+  "generated_at": "2026-10-29T13:01:59Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2137,
   "decision_rows": 7040,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1377,
-    "proposed_clear_conflicting_identifier": 1103,
-    "quarantined_unresolved_identifier": 4560
+    "kept_listing_keyed_identifier": 1374,
+    "proposed_clear_conflicting_identifier": 1102,
+    "quarantined_unresolved_identifier": 4564
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1103,
-  "quarantined_rows": 4560,
-  "retained_rows": 1377,
+  "proposed_clear_rows": 1102,
+  "quarantined_rows": 4564,
+  "retained_rows": 1374,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -91256,9 +91256,9 @@
       "exchange": "AMS",
       "name": "Leverage Shares 3x Disney ETP Securities",
       "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "XS3467854462"
     },
     {
@@ -91269,9 +91269,9 @@
       "exchange": "LSE",
       "name": "Leverage Shares 3x Disney ETC EUR",
       "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "XS3467854462"
     },
     {
@@ -91282,9 +91282,9 @@
       "exchange": "LSE",
       "name": "Leverage Shares 3x Disney ETP Securities",
       "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "XS3467854462"
     },
     {
@@ -91295,9 +91295,9 @@
       "exchange": "XETRA",
       "name": "LEVERAGE SHARES 3XDIS ETP",
       "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "XS3467854462"
     },
     {
