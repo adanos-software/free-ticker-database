@@ -2,8 +2,8 @@
   "global": {
     "official_symbols": 100288,
     "matched": 70297,
-    "collisions": 11728,
-    "missing": 18263
+    "collisions": 11722,
+    "missing": 18269
   },
   "exchanges": [
     {
@@ -109,8 +109,8 @@
       "exchange": "AMS",
       "official_symbols": 614,
       "matched": 570,
-      "collisions": 40,
-      "missing": 4,
+      "collisions": 39,
+      "missing": 5,
       "collision_examples": [
         {
           "ticker": "ADPT",
@@ -172,14 +172,6 @@
           ]
         },
         {
-          "ticker": "CETH",
-          "name": "CoinShares Ethereum Staking ETP",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "BATS"
-          ]
-        },
-        {
           "ticker": "CRWY",
           "name": "IncomeShares CoreWeave (CRWV) Options ETP",
           "target_exchange": "AMS",
@@ -194,12 +186,25 @@
           "existing_exchanges": [
             "NYSE ARCA"
           ]
+        },
+        {
+          "ticker": "EUPB",
+          "name": "iShares MSCI Europe Paris-Aligned Climate UCITS ETF EUR (Acc)",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "XETRA"
+          ]
         }
       ],
       "missing_examples": [
         {
           "ticker": "AZRNW",
           "name": "AZERION WARRANTS",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "CETH",
+          "name": "CoinShares Ethereum Staking ETP",
           "exchange": "AMS"
         },
         {
@@ -1038,8 +1043,8 @@
       "exchange": "Borsa Italiana",
       "official_symbols": 2968,
       "matched": 247,
-      "collisions": 1928,
-      "missing": 793,
+      "collisions": 1927,
+      "missing": 794,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1407,8 +1412,8 @@
       "exchange": "Euronext",
       "official_symbols": 2039,
       "matched": 1331,
-      "collisions": 376,
-      "missing": 332,
+      "collisions": 375,
+      "missing": 333,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1549,8 +1554,8 @@
       "exchange": "FSX",
       "official_symbols": 18131,
       "matched": 7857,
-      "collisions": 4420,
-      "missing": 5854,
+      "collisions": 4419,
+      "missing": 5855,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -2337,8 +2342,8 @@
       "exchange": "LSE",
       "official_symbols": 11184,
       "matched": 6813,
-      "collisions": 871,
-      "missing": 3500,
+      "collisions": 870,
+      "missing": 3501,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -5275,8 +5280,8 @@
       "exchange": "XETRA",
       "official_symbols": 5533,
       "matched": 5294,
-      "collisions": 237,
-      "missing": 2,
+      "collisions": 236,
+      "missing": 3,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5366,6 +5371,11 @@
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "CETH",
+          "name": "COINSHARES DIG.SEC.OEND",
+          "exchange": "XETRA"
+        },
         {
           "ticker": "M5S",
           "name": "H2 CORE AG INH O.N.",

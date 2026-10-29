@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12519,
-      "exact_match": 100173,
+      "exact_identity_conflict": 12518,
+      "exact_match": 100174,
       "missing_from_database": 44434,
       "normalization_candidate": 1858,
       "out_of_scope": 8132
     },
-    "coverage_credited_keys": 100173,
+    "coverage_credited_keys": 100174,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44434,
-    "identity_conflict_rows": 12519,
+    "identity_conflict_rows": 12518,
     "mapping_candidate_rows": 1858
   },
   "rows": [
@@ -1933181,10 +1933181,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::NGKIF",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::NGKKF",

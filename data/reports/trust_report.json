@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-28T14:19:43Z",
+    "generated_at": "2026-10-29T08:15:39Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,10 +34,10 @@
   "completeness": {
     "isin": {
       "n": 63592,
-      "filled": 62907,
-      "missing": 685,
-      "pct": 98.92,
-      "fills_needed_for_99": 50,
+      "filled": 62914,
+      "missing": 678,
+      "pct": 98.93,
+      "fills_needed_for_99": 43,
       "pass": false
     },
     "country": {
@@ -50,22 +50,22 @@
     },
     "taxonomy": {
       "n": 63592,
-      "filled": 62697,
-      "missing": 895,
-      "pct": 98.59,
-      "fills_needed_for_99": 260,
+      "filled": 62699,
+      "missing": 893,
+      "pct": 98.6,
+      "fills_needed_for_99": 258,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "TSX": 128,
       "ASX": 98,
-      "NYSE ARCA": 73,
       "TSXV": 73,
       "NASDAQ": 67,
+      "NYSE ARCA": 67,
       "NEO": 44,
       "BATS": 39,
       "SSE": 34,
-      "SSE_CL": 26,
+      "SSE_CL": 25,
       "NYSE": 24,
       "BMV": 17,
       "SZSE": 12
@@ -99,13 +99,13 @@
     "official_isin_mismatch": 8,
     "official_name_mismatch": 6,
     "open_collision_groups": 13,
-    "quarantine_unresolved": 1275,
+    "quarantine_unresolved": 1259,
     "quarantine_proposed_clear": 287,
-    "quarantine_kept": 566
+    "quarantine_kept": 565
   },
   "entry_quality_status": {
-    "pass": 59521,
-    "source_gap": 4047,
+    "pass": 59549,
+    "source_gap": 4019,
     "warn": 15,
     "notice": 9
   },
@@ -138,10 +138,10 @@
       "status": "fail",
       "details": {
         "n": 63592,
-        "filled": 62907,
-        "missing": 685,
-        "pct": 98.92,
-        "fills_needed_for_99": 50,
+        "filled": 62914,
+        "missing": 678,
+        "pct": 98.93,
+        "fills_needed_for_99": 43,
         "pass": false
       }
     },
@@ -150,10 +150,10 @@
       "status": "fail",
       "details": {
         "n": 63592,
-        "filled": 62697,
-        "missing": 895,
-        "pct": 98.59,
-        "fills_needed_for_99": 260,
+        "filled": 62699,
+        "missing": 893,
+        "pct": 98.6,
+        "fills_needed_for_99": 258,
         "pass": false
       }
     },
@@ -189,7 +189,7 @@
       "status": "fail",
       "details": {
         "status": "blocked_wrong_denominator",
-        "collision_adjusted_recall_pct": 79.38,
+        "collision_adjusted_recall_pct": 79.37,
         "reason": "Official recall still uses all-tradable directories, not common-stock+ETF."
       }
     },
