@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100288,
-    "matched": 70297,
-    "collisions": 11722,
-    "missing": 18269
+    "official_symbols": 100284,
+    "matched": 70300,
+    "collisions": 11720,
+    "missing": 18264
   },
   "exchanges": [
     {
@@ -286,8 +286,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1677,
-      "matched": 1324,
+      "official_symbols": 1678,
+      "matched": 1325,
       "collisions": 58,
       "missing": 295,
       "collision_examples": [
@@ -2582,10 +2582,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5625,
-      "matched": 4579,
-      "collisions": 61,
-      "missing": 985,
+      "official_symbols": 5626,
+      "matched": 4582,
+      "collisions": 60,
+      "missing": 984,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3083,10 +3083,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3851,
-      "matched": 1976,
-      "collisions": 568,
-      "missing": 1307,
+      "official_symbols": 3844,
+      "matched": 1974,
+      "collisions": 567,
+      "missing": 1303,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3232,8 +3232,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2746,
-      "matched": 2614,
+      "official_symbols": 2747,
+      "matched": 2615,
       "collisions": 29,
       "missing": 103,
       "collision_examples": [
@@ -4439,6 +4439,7 @@
           "name": "United Food",
           "target_exchange": "SGX",
           "existing_exchanges": [
+            "NASDAQ",
             "TSXV"
           ]
         }
