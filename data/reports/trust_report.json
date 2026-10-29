@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-29T13:07:22Z",
+    "generated_at": "2026-10-29T14:19:52Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -96,17 +96,17 @@
     }
   },
   "identity": {
-    "official_isin_mismatch": 9,
-    "official_name_mismatch": 7,
-    "open_collision_groups": 13,
+    "official_isin_mismatch": 8,
+    "official_name_mismatch": 6,
+    "open_collision_groups": 15,
     "quarantine_unresolved": 1260,
-    "quarantine_proposed_clear": 287,
-    "quarantine_kept": 564
+    "quarantine_proposed_clear": 288,
+    "quarantine_kept": 565
   },
   "entry_quality_status": {
-    "pass": 59541,
+    "pass": 59542,
     "source_gap": 4029,
-    "warn": 16,
+    "warn": 15,
     "notice": 9
   },
   "checks": [
@@ -114,13 +114,11 @@
       "name": "core_identity_known_bugs_zero",
       "status": "fail",
       "details": {
-        "official_isin_mismatch": 9,
-        "official_isin_mismatch_unexpected": 1,
+        "official_isin_mismatch": 8,
+        "official_isin_mismatch_unexpected": 0,
         "official_isin_mismatch_reviewed_holds": 8,
-        "open_collision_groups": 13,
-        "sample_mismatch": [
-          "XETRA::CSQ"
-        ],
+        "open_collision_groups": 15,
+        "sample_mismatch": [],
         "sample_collision_isins": [
           "AU000000TLG7",
           "US0268747849",
@@ -175,12 +173,11 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 7,
+        "official_name_mismatch": 6,
         "sample": [
           "NASDAQ::ASBP",
           "TSXV::AXO",
           "NASDAQ::BNC",
-          "XETRA::CSQ",
           "NEO::HELP",
           "TSXV::MKA",
           "TSXV::MKT"

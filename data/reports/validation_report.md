@@ -1,8 +1,8 @@
 # Database Validation Report
 
-Generated at: `2026-10-29T13:13:27Z`
+Generated at: `2026-10-29T14:21:08Z`
 
-Status: `FAIL`
+Status: `PASS`
 
 ## Summary
 
@@ -13,7 +13,7 @@ Status: `FAIL`
 | adanos_reference_rows | 65,652 |
 | entry_quality_rows | 97,731 |
 | error_gates | 87 |
-| failed_error_gates | 1 |
+| failed_error_gates | 0 |
 | info_gates | 5 |
 
 ## Gates
@@ -88,7 +88,7 @@ Status: `FAIL`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | FAIL | 1 | 0 |
+| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
@@ -115,8 +115,4 @@ Status: `FAIL`
 
 ## Failed Gate Details
 
-### entry_quality_unexpected_warn_count
-
-- Actual: `1`
-- `XETRA::CSQ`
-
+_No failed error gates._

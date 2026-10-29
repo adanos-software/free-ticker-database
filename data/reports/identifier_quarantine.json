@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-29T13:01:59Z",
+  "generated_at": "2026-10-29T14:16:47Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2137,
-  "decision_rows": 7040,
+  "conflict_count": 2139,
+  "decision_rows": 7045,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1374,
-    "proposed_clear_conflicting_identifier": 1102,
+    "kept_listing_keyed_identifier": 1377,
+    "proposed_clear_conflicting_identifier": 1104,
     "quarantined_unresolved_identifier": 4564
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1102,
+  "proposed_clear_rows": 1104,
   "quarantined_rows": 4564,
-  "retained_rows": 1374,
+  "retained_rows": 1377,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -17030,6 +17030,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "DE000A41YDL0"
+    },
+    {
+      "conflict_id": "49c87e2a6c9951fb5f5b",
+      "isin": "DE000A41YEG8",
+      "listing_key": "XETRA::CSQ",
+      "ticker": "CSQ",
+      "exchange": "XETRA",
+      "name": "Nexum Group AG",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "DE000A41YEG8"
+    },
+    {
+      "conflict_id": "49c87e2a6c9951fb5f5b",
+      "isin": "DE000A41YEG8",
+      "listing_key": "XETRA::CSQ0",
+      "ticker": "CSQ0",
+      "exchange": "XETRA",
+      "name": "creditshelf AG",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "DE000A41YEG8"
     },
     {
       "conflict_id": "b6e3033a7de0bda27a90",
@@ -78221,6 +78247,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US55405Y1001"
+    },
+    {
+      "conflict_id": "4d1e157e689a82a6067a",
+      "isin": "US55825T1034",
+      "listing_key": "FSX::MS8",
+      "ticker": "MS8",
+      "exchange": "FSX",
+      "name": "Madison Square Garden Sports Corp",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "US55825T1034"
+    },
+    {
+      "conflict_id": "4d1e157e689a82a6067a",
+      "isin": "US55825T1034",
+      "listing_key": "NYSE::MSGK",
+      "ticker": "MSGK",
+      "exchange": "NYSE",
+      "name": "MSG Knickerbockers Corp. Class A Common Stock",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "US55825T1034"
+    },
+    {
+      "conflict_id": "4d1e157e689a82a6067a",
+      "isin": "US55825T1034",
+      "listing_key": "XETRA::MS8",
+      "ticker": "MS8",
+      "exchange": "XETRA",
+      "name": "MADISON SQUARE GAR.SP. A",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "US55825T1034"
     },
     {
       "conflict_id": "ecaa88cc34a96698d0c8",

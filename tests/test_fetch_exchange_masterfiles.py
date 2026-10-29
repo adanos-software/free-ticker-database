@@ -16290,6 +16290,48 @@ def test_merge_reference_rows_preserves_committed_isin_when_refresh_omits_it() -
     ]
 
 
+def test_merge_reference_rows_rejects_deutsche_boerse_listed_companies_isin_ticker_drift() -> None:
+    merged = merge_reference_rows(
+        [
+            {
+                "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+                "ticker": "NXM",
+                "name": "NEXUM GROUP AG",
+                "exchange": "FSX",
+                "isin": "DE000A41YGA6",
+            },
+            {
+                "source_key": "deutsche_boerse_listed_companies",
+                "ticker": "CSQ",
+                "name": "Nexum Group AG",
+                "exchange": "XETRA",
+                "isin": "DE000A41YEG8",
+            },
+        ],
+        [
+            {
+                "source_key": "deutsche_boerse_listed_companies",
+                "ticker": "CSQ",
+                "name": "Nexum Group AG",
+                "exchange": "XETRA",
+                "isin": "DE000A41YGA6",
+            }
+        ],
+        source_keys={"deutsche_boerse_listed_companies"},
+    )
+
+    listed_rows = [row for row in merged if row["source_key"] == "deutsche_boerse_listed_companies"]
+    assert listed_rows == [
+        {
+            "source_key": "deutsche_boerse_listed_companies",
+            "ticker": "CSQ",
+            "name": "Nexum Group AG",
+            "exchange": "XETRA",
+            "isin": "DE000A41YEG8",
+        }
+    ]
+
+
 def test_merge_reference_rows_keeps_explicit_isin_replacement() -> None:
     merged = merge_reference_rows(
         [

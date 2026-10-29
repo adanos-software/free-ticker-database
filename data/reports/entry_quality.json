@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-29T13:08:56Z",
+    "generated_at": "2026-10-29T14:20:48Z",
     "rows": 97731,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,9 +15,9 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86426,
+      "pass": 86427,
       "source_gap": 11260,
-      "warn": 34
+      "warn": 33
     },
     "evidence_level_counts": {
       "identifier_enriched": 4638,
@@ -26,9 +26,9 @@
       "valid_isin": 5161
     },
     "severity_counts": {
-      "high": 12,
+      "high": 11,
       "low": 11,
-      "medium": 24,
+      "medium": 23,
       "source_gap": 11644
     },
     "issue_counts": {
@@ -37,8 +37,8 @@
       "missing_stock_sector": 708,
       "expected_missing_primary_isin": 678,
       "missing_etf_category": 189,
-      "official_name_mismatch": 24,
-      "official_isin_mismatch": 11,
+      "official_name_mismatch": 23,
+      "official_isin_mismatch": 10,
       "low_company_name_overlap": 9,
       "shared_name_alias": 2,
       "country_isin_mismatch": 1
@@ -95,9 +95,8 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 5322,
-        "source_gap": 213,
-        "warn": 1
+        "pass": 5323,
+        "source_gap": 213
       },
       {
         "exchange": "AMS",

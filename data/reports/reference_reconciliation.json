@@ -5,17 +5,17 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12521,
-      "exact_match": 100243,
-      "missing_from_database": 44454,
-      "normalization_candidate": 1856,
+      "exact_identity_conflict": 12520,
+      "exact_match": 100244,
+      "missing_from_database": 44455,
+      "normalization_candidate": 1855,
       "out_of_scope": 8143
     },
-    "coverage_credited_keys": 100243,
+    "coverage_credited_keys": 100244,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44454,
-    "identity_conflict_rows": 12521,
-    "mapping_candidate_rows": 1856
+    "in_scope_missing_rows": 44455,
+    "identity_conflict_rows": 12520,
+    "mapping_candidate_rows": 1855
   },
   "rows": [
     {
@@ -593498,13 +593498,13 @@
       "ticker": "CSQ",
       "asset_types": "Stock",
       "names": "Nexum Group AG",
-      "isins": "DE000A41YGA6",
+      "isins": "DE000A41YEG8",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "XETRA::CSQ",
-      "evidence": "ISIN conflict: official=DE000A41YGA6, current=DE000A41YEG8"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_listed_companies::XETRA::CTNK",
@@ -1714813,10 +1714813,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::MSGK",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::MSGR",
@@ -2145389,10 +2145389,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::MSGS",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::MSGR-WI",
@@ -2145421,10 +2145421,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::MSGS",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::MSI",
