@@ -1,20 +1,20 @@
 # Core trust report
 
-Generated at: `2026-10-29T12:59:36Z`
+Generated at: `2026-10-29T13:41:47Z`
 
 Trust is measured on instrument_scope=core only. accepted_source_gap does not count as filled. Known identity bugs must be zero; 99% completeness is a fill rate, not a correctness claim. This report does not authorize inferred identifiers, sectors, categories, names, or symbol changes. A failing trust report is not a merge blocker.
 
 Status: **FAIL**. Public 99% claim allowed: **no**.
 
-Universe: `instrument_scope=core` — 63,592 rows.
+Universe: `instrument_scope=core` — 63,599 rows.
 
 ## Completeness
 
 | Field | Filled | n | Pct | Missing | Fills to 99% | Pass |
 |---|---:|---:|---:|---:|---:|---|
-| isin | 62,914 | 63,592 | 98.93% | 678 | 43 | false |
-| country | 63,526 | 63,592 | 99.90% | 66 | 0 | true |
-| taxonomy | 62,699 | 63,592 | 98.60% | 893 | 258 | false |
+| isin | 62,914 | 63,599 | 98.92% | 685 | 50 | false |
+| country | 63,533 | 63,599 | 99.90% | 66 | 0 | true |
+| taxonomy | 62,700 | 63,599 | 98.59% | 899 | 264 | false |
 
 ## Identity
 
