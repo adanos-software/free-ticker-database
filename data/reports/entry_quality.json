@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-28T14:20:37Z",
-    "rows": 97770,
+    "generated_at": "2026-10-29T08:16:50Z",
+    "rows": 97725,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,27 +15,27 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86422,
-      "source_gap": 11304,
+      "pass": 86430,
+      "source_gap": 11251,
       "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4666,
+      "identifier_enriched": 4631,
       "official_reference": 87661,
       "scoped_source_gap": 272,
-      "valid_isin": 5171
+      "valid_isin": 5161
     },
     "severity_counts": {
       "high": 11,
       "low": 11,
       "medium": 23,
-      "source_gap": 11689
+      "source_gap": 11635
     },
     "issue_counts": {
-      "official_reference_gap": 6822,
+      "official_reference_gap": 6777,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 708,
-      "expected_missing_primary_isin": 685,
+      "missing_stock_sector": 706,
+      "expected_missing_primary_isin": 678,
       "missing_etf_category": 187,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 10,
@@ -67,21 +67,21 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 308,
+        "source_gap": 302,
         "pass": 4508,
         "notice": 4,
         "warn": 4
       },
       {
-        "exchange": "NYSE ARCA",
-        "pass": 2533,
-        "source_gap": 273,
-        "warn": 1
-      },
-      {
         "exchange": "BMV",
         "pass": 77,
         "source_gap": 267
+      },
+      {
+        "exchange": "NYSE ARCA",
+        "pass": 2539,
+        "source_gap": 240,
+        "warn": 1
       },
       {
         "exchange": "TSX",
@@ -133,7 +133,7 @@
       {
         "exchange": "BATS",
         "pass": 1287,
-        "source_gap": 137
+        "source_gap": 125
       },
       {
         "exchange": "Euronext",
@@ -14364,24 +14364,6 @@
       ]
     },
     {
-      "listing_key": "Bursa::5212",
-      "ticker": "5212",
-      "exchange": "Bursa",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "Bursa::5227",
       "ticker": "5227",
       "exchange": "Bursa",
@@ -18447,6 +18429,24 @@
     {
       "listing_key": "XSTU::7ES1",
       "ticker": "7ES1",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7EX",
+      "ticker": "7EX",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",

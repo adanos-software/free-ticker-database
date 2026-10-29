@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-28T14:19:14Z",
+  "generated_at": "2026-10-29T08:15:04Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2154,
-  "decision_rows": 7076,
+  "conflict_count": 2137,
+  "decision_rows": 7040,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1378,
-    "proposed_clear_conflicting_identifier": 1106,
-    "quarantined_unresolved_identifier": 4592
+    "kept_listing_keyed_identifier": 1377,
+    "proposed_clear_conflicting_identifier": 1103,
+    "quarantined_unresolved_identifier": 4560
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1106,
-  "quarantined_rows": 4592,
-  "retained_rows": 1378,
+  "proposed_clear_rows": 1103,
+  "quarantined_rows": 4560,
+  "retained_rows": 1377,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -45554,58 +45554,6 @@
       "retained_isin": "JP3680800004"
     },
     {
-      "conflict_id": "204778bacbb6e83a4b70",
-      "isin": "JP3695200000",
-      "listing_key": "FSX::NGI",
-      "ticker": "NGI",
-      "exchange": "FSX",
-      "name": "NGK Insulators Ltd",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "JP3695200000"
-    },
-    {
-      "conflict_id": "204778bacbb6e83a4b70",
-      "isin": "JP3695200000",
-      "listing_key": "OTC::NGKIF",
-      "ticker": "NGKIF",
-      "exchange": "OTC",
-      "name": "NGK Insulators Ltd",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "JP3695200000"
-    },
-    {
-      "conflict_id": "204778bacbb6e83a4b70",
-      "isin": "JP3695200000",
-      "listing_key": "TSE::5333",
-      "ticker": "5333",
-      "exchange": "TSE",
-      "name": "NGK Corporation",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "JP3695200000"
-    },
-    {
-      "conflict_id": "204778bacbb6e83a4b70",
-      "isin": "JP3695200000",
-      "listing_key": "XSTU::NGI",
-      "ticker": "NGI",
-      "exchange": "XSTU",
-      "name": "NGK INSULATORS (NGI.SG)",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "JP3695200000"
-    },
-    {
       "conflict_id": "0d36a1cb14239522cc4b",
       "isin": "JP3735400008",
       "listing_key": "FSX::NTT",
@@ -70696,32 +70644,6 @@
       "retained_isin": "US26922A2895"
     },
     {
-      "conflict_id": "6ad141cda024fd30178a",
-      "isin": "US26922B7091",
-      "listing_key": "BATS::IDME",
-      "ticker": "IDME",
-      "exchange": "BATS",
-      "name": "International Drawdown Managed Equity ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US26922B7091"
-    },
-    {
-      "conflict_id": "6ad141cda024fd30178a",
-      "isin": "US26922B7091",
-      "listing_key": "BATS::IDUB",
-      "ticker": "IDUB",
-      "exchange": "BATS",
-      "name": "Aptus International Enhanced Yield ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US26922B7091"
-    },
-    {
       "conflict_id": "2c341010e8e3ee27b90f",
       "isin": "US26969P1084",
       "listing_key": "FSX::E5M",
@@ -72347,32 +72269,6 @@
       "retained_isin": "US3156161024"
     },
     {
-      "conflict_id": "bb6c7b051185b8490dd0",
-      "isin": "US3160923609",
-      "listing_key": "BATS::FFLC",
-      "ticker": "FFLC",
-      "exchange": "BATS",
-      "name": "Fidelity Fundamental Large Cap Core ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US3160923609"
-    },
-    {
-      "conflict_id": "bb6c7b051185b8490dd0",
-      "isin": "US3160923609",
-      "listing_key": "BATS::FMIL",
-      "ticker": "FMIL",
-      "exchange": "BATS",
-      "name": "Fidelity® New Millennium ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US3160923609"
-    },
-    {
       "conflict_id": "938bdedb333f2cefeeec",
       "isin": "US31620M1062",
       "listing_key": "FSX::ZGY",
@@ -73140,32 +73036,6 @@
       "retained_isin": "US35137L2043"
     },
     {
-      "conflict_id": "26ca38b69146f62e496c",
-      "isin": "US35473P5044",
-      "listing_key": "NYSE ARCA::FLLV",
-      "ticker": "FLLV",
-      "exchange": "NYSE ARCA",
-      "name": "Franklin Liberty U.S. Low Volatility ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US35473P5044"
-    },
-    {
-      "conflict_id": "26ca38b69146f62e496c",
-      "isin": "US35473P5044",
-      "listing_key": "NYSE ARCA::INCE",
-      "ticker": "INCE",
-      "exchange": "NYSE ARCA",
-      "name": "Franklin Income Equity Focus ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US35473P5044"
-    },
-    {
       "conflict_id": "c703bc55c316151724b4",
       "isin": "US3580391056",
       "listing_key": "FSX::7FP",
@@ -73777,58 +73647,6 @@
       "retained_isin": "US37733W2044"
     },
     {
-      "conflict_id": "c81cce9f05f8de2a680a",
-      "isin": "US37954Y4180",
-      "listing_key": "NASDAQ::GXDW",
-      "ticker": "GXDW",
-      "exchange": "NASDAQ",
-      "name": "Global X Dorsey Wright Thematic ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US37954Y4180"
-    },
-    {
-      "conflict_id": "c81cce9f05f8de2a680a",
-      "isin": "US37954Y4180",
-      "listing_key": "NASDAQ::GXTG",
-      "ticker": "GXTG",
-      "exchange": "NASDAQ",
-      "name": "Global X Thematic Growth ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US37954Y4180"
-    },
-    {
-      "conflict_id": "715882100a1f9c5a2cab",
-      "isin": "US37954Y7316",
-      "listing_key": "NASDAQ::CPTL",
-      "ticker": "CPTL",
-      "exchange": "NASDAQ",
-      "name": "Global X Morningstar Capital Allocation Leaders ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US37954Y7316"
-    },
-    {
-      "conflict_id": "715882100a1f9c5a2cab",
-      "isin": "US37954Y7316",
-      "listing_key": "NASDAQ::KRMA",
-      "ticker": "KRMA",
-      "exchange": "NASDAQ",
-      "name": "Global X Conscious Companies ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US37954Y7316"
-    },
-    {
       "conflict_id": "c7416012f78212145ba7",
       "isin": "US3795772082",
       "listing_key": "FSX::GM0N",
@@ -73866,32 +73684,6 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US3795772082"
-    },
-    {
-      "conflict_id": "baca5e62c79195246c00",
-      "isin": "US37960A8678",
-      "listing_key": "NASDAQ::DMAT",
-      "ticker": "DMAT",
-      "exchange": "NASDAQ",
-      "name": "Global X Disruptive Materials ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US37960A8678"
-    },
-    {
-      "conflict_id": "baca5e62c79195246c00",
-      "isin": "US37960A8678",
-      "listing_key": "NASDAQ::EART",
-      "ticker": "EART",
-      "exchange": "NASDAQ",
-      "name": "Global X Rare Earth & Critical Materials ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US37960A8678"
     },
     {
       "conflict_id": "90ecde8e6fe288e9dfc3",
@@ -76260,32 +76052,6 @@
       "retained_isin": "US46125A1007"
     },
     {
-      "conflict_id": "d73ac13b71d21bdda965",
-      "isin": "US46138E7195",
-      "listing_key": "NYSE ARCA::IFLN",
-      "ticker": "IFLN",
-      "exchange": "NYSE ARCA",
-      "name": "Invesco Bloomberg Enhanced Fallen Angels ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46138E7195"
-    },
-    {
-      "conflict_id": "d73ac13b71d21bdda965",
-      "isin": "US46138E7195",
-      "listing_key": "NYSE ARCA::PHB",
-      "ticker": "PHB",
-      "exchange": "NYSE ARCA",
-      "name": "Invesco Fundamental High Yield® Corporate Bond ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46138E7195"
-    },
-    {
       "conflict_id": "da26b960341b06b4f2fb",
       "isin": "US4622221004",
       "listing_key": "FSX::ISI",
@@ -76559,32 +76325,6 @@
       "retained_isin": "US46269C1027"
     },
     {
-      "conflict_id": "b6cd3cbb1290d17cd063",
-      "isin": "US4642863439",
-      "listing_key": "NYSE ARCA::FILL",
-      "ticker": "FILL",
-      "exchange": "NYSE ARCA",
-      "name": "iShares MSCI Global Energy Producers ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US4642863439"
-    },
-    {
-      "conflict_id": "b6cd3cbb1290d17cd063",
-      "isin": "US4642863439",
-      "listing_key": "NYSE ARCA::POWR",
-      "ticker": "POWR",
-      "exchange": "NYSE ARCA",
-      "name": "iShares US Power Infrastructure Fund",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US4642863439"
-    },
-    {
       "conflict_id": "a4cebfb19a2fb0b9c797",
       "isin": "US4642872000",
       "listing_key": "BMV::IVV",
@@ -76739,32 +76479,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US46431W5159"
-    },
-    {
-      "conflict_id": "d5ad78e3b9066f595b42",
-      "isin": "US46435U7963",
-      "listing_key": "BATS::FIBR",
-      "ticker": "FIBR",
-      "exchange": "BATS",
-      "name": "iShares U.S. Fixed Income Balanced Risk Factor ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46435U7963"
-    },
-    {
-      "conflict_id": "d5ad78e3b9066f595b42",
-      "isin": "US46435U7963",
-      "listing_key": "BATS::SYSB",
-      "ticker": "SYSB",
-      "exchange": "BATS",
-      "name": "iShares Systematic Bond ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46435U7963"
     },
     {
       "conflict_id": "d19aa790ec729d21b2b7",
@@ -85282,32 +84996,6 @@
       "retained_isin": "US78463V1070"
     },
     {
-      "conflict_id": "9402e899950d046c539b",
-      "isin": "US78463X1037",
-      "listing_key": "NYSE ARCA::FEU",
-      "ticker": "FEU",
-      "exchange": "NYSE ARCA",
-      "name": "SPDR STOXX Europe 50 ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78463X1037"
-    },
-    {
-      "conflict_id": "9402e899950d046c539b",
-      "isin": "US78463X1037",
-      "listing_key": "NYSE ARCA::SPEU",
-      "ticker": "SPEU",
-      "exchange": "NYSE ARCA",
-      "name": "SPDR Portfolio Europe",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78463X1037"
-    },
-    {
       "conflict_id": "1aaf065a1c91bb44e091",
       "isin": "US78464A8053",
       "listing_key": "NYSE ARCA::KCE",
@@ -88350,58 +88038,6 @@
       "retained_isin": "US89531P1057"
     },
     {
-      "conflict_id": "67c2504ffb2170f92b16",
-      "isin": "US89628W5004",
-      "listing_key": "BATS::ABOT",
-      "ticker": "ABOT",
-      "exchange": "BATS",
-      "name": "Abacus FCF Innovation Leaders ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US89628W5004"
-    },
-    {
-      "conflict_id": "67c2504ffb2170f92b16",
-      "isin": "US89628W5004",
-      "listing_key": "BATS::DFNV",
-      "ticker": "DFNV",
-      "exchange": "BATS",
-      "name": "TrimTabs Donoghue Forlines Risk Managed Innovation ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US89628W5004"
-    },
-    {
-      "conflict_id": "f2aacb0fcfe7f6c4ac72",
-      "isin": "US89628W7083",
-      "listing_key": "BATS::ABLD",
-      "ticker": "ABLD",
-      "exchange": "BATS",
-      "name": "Abacus FCF Real Assets Leaders ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US89628W7083"
-    },
-    {
-      "conflict_id": "f2aacb0fcfe7f6c4ac72",
-      "isin": "US89628W7083",
-      "listing_key": "BATS::DFRA",
-      "ticker": "DFRA",
-      "exchange": "BATS",
-      "name": "TrimTabs ETF Trust - Donoghue Forlines Yield Enhanced Real Asset ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US89628W7083"
-    },
-    {
       "conflict_id": "1951cf7360661cfe44b3",
       "isin": "US89832Q1094",
       "listing_key": "FSX::BBK",
@@ -89427,32 +89063,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US91913Y1001"
-    },
-    {
-      "conflict_id": "75d56b25d5ccac3cbacb",
-      "isin": "US92189F8822",
-      "listing_key": "NASDAQ::BJK",
-      "ticker": "BJK",
-      "exchange": "NASDAQ",
-      "name": "VanEck Gaming ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US92189F8822"
-    },
-    {
-      "conflict_id": "75d56b25d5ccac3cbacb",
-      "isin": "US92189F8822",
-      "listing_key": "NASDAQ::GENZ",
-      "ticker": "GENZ",
-      "exchange": "NASDAQ",
-      "name": "VanEck Digital Native Economy ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US92189F8822"
     },
     {
       "conflict_id": "7e213e92253ab129384a",
@@ -90896,84 +90506,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US97717P1049"
-    },
-    {
-      "conflict_id": "dc3c4e995dabe6c65f09",
-      "isin": "US97717W5215",
-      "listing_key": "NASDAQ::DXJS",
-      "ticker": "DXJS",
-      "exchange": "NASDAQ",
-      "name": "WisdomTree Japan Hedged SmallCap Equity Fund",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US97717W5215"
-    },
-    {
-      "conflict_id": "dc3c4e995dabe6c65f09",
-      "isin": "US97717W5215",
-      "listing_key": "NASDAQ::OPPJ",
-      "ticker": "OPPJ",
-      "exchange": "NASDAQ",
-      "name": "WisdomTree Japan Opportunities Fund",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US97717W5215"
-    },
-    {
-      "conflict_id": "a2a48fd1d6134edb95a1",
-      "isin": "US97717X5529",
-      "listing_key": "NYSE ARCA::EUSC",
-      "ticker": "EUSC",
-      "exchange": "NYSE ARCA",
-      "name": "WisdomTree Europe Hedged SmallCap Equity Fund",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US97717X5529"
-    },
-    {
-      "conflict_id": "a2a48fd1d6134edb95a1",
-      "isin": "US97717X5529",
-      "listing_key": "NYSE ARCA::OPPE",
-      "ticker": "OPPE",
-      "exchange": "NYSE ARCA",
-      "name": "WisdomTree European Opportunities Fund",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US97717X5529"
-    },
-    {
-      "conflict_id": "669f82b25bc422aac5a6",
-      "isin": "US97717X5602",
-      "listing_key": "NYSE ARCA::PUTW",
-      "ticker": "PUTW",
-      "exchange": "NYSE ARCA",
-      "name": "WisdomTree CBOE S&P 500 PutWrite Strategy Fund",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US97717X5602"
-    },
-    {
-      "conflict_id": "669f82b25bc422aac5a6",
-      "isin": "US97717X5602",
-      "listing_key": "NYSE ARCA::WTPI",
-      "ticker": "WTPI",
-      "exchange": "NYSE ARCA",
-      "name": "WisdomTree Equity Premium Income Fund",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US97717X5602"
     },
     {
       "conflict_id": "9ed5a665caa2a47d2803",
