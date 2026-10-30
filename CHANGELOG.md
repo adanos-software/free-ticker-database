@@ -2,10 +2,33 @@
 
 ## [Unreleased]
 
+## [3.43.2] - 2026-10-30
+
+### Added
+
+- Added a weekly StockAnalysis metadata backfill workflow (Mondays 08:15 UTC, after drift and ISIN validation) that runs `backfill_stockanalysis_list_sectors.py` and `backfill_stockanalysis_metadata.py` through the existing review-gated `metadata_updates.csv` pipeline.
+- Ingested collision-free US Stock/ETF rows from daily Nasdaq Trader refreshes (#473, #485, #491, #498), including recent accepts such as `NASDAQ::ASPE`, `NASDAQ::BBTX`, and coverage-expansion rows where ticker collisions block the global primary.
+- Landed four official masterfile rotation batches (#479, #484, #490, #497): +566 new reference rows and 76 vanished (report-only) in #484 alone; reviewed STO::LXB/STO::VER ISIN updates, XETRA depositary country realignment for 108 `country_isin_mismatch` warnings, and preserved committed rows when Bursa/LUSE/JPX/OTC/UPCOM fetches failed.
+- ETF curation (#478, #482, #488, #493): 50 popular-ETF text aliases, 3 new listings (`XETRA::SPYY`, `XETRA::DFEN`, `TSE::1321`), trust-wrapper official fund names for 38 US ETFs, leverage-factor corrections, DE000 pseudo-ISIN fixes on FSX, and reviewed `splg` legacy alias on `NYSE ARCA::SPYM` plus NYSE::ETHE drop in favor of `NYSE ARCA::ETHE` (#480).
+- Daily validation batches (#477, #481, #486, #487, #492, #494, #495, #499, #500) applied dual-source stock metadata fixes (sectors, names, ISINs, countries) across ATHEX::ALPHA, BMV::CIEB, TSE/FSX/XSTU/OTC NGK lines, TSXV::PRS-H, NYSE MKT::NSTR, and related rows; recorded external delisting evidence for NGX::STACO, Borsa Italiana::EVA, and BHB::BANADER without deleting rows (#487).
+
+### Changed
+
+- Symbol-change apply (#476) overlays live `nasdaqlisted.txt`, `otherlisted.txt`, and SEC `company_tickers_exchange.json` over stale masterfile rows, verifies renames with same-ISIN or shared-SEC-CIK evidence, writes `listing_transitions.csv` for strict safe-merge, and sets names from the official directory row. Applied seven high-confidence US renames (e.g. `NASDAQ::LRHC`→`SRTM`, `NASDAQ::MIMI`→`AXNX`); `ATII`→`NANO` stays blocked on SEC CIK mismatch.
+- Refreshed daily symbol-change review/apply artifacts (#461–#466, #483, #489) and weekly drift (#467) and delisting-candidate (#468) reports since v3.43.1.
+- Recorded NYSE→Nasdaq venue transitions for `LUMN` and `NXDR` with SEC 8-K evidence (#471); ASX renames `PDI`→PDI Gold and `WEB`→WebBeds in official reference and metadata (#471). Follow-up (#474) carries WKN/FIGI/LEI from dropped NYSE::LUMN to `NASDAQ::LUMN`, preserves reviewed former-name aliases, and closes `AU000000PDI8` same-issuer review for `ASX::PDI`/`OTC::PDIYF`.
+- Resolved four open identity decisions (#480): BMV::CIEB Mexican ISIN `MXP201161017`, SPYM `splg` historical alias, stale `NYSE::ETHE` drop, and NYSE ARCA/BATS parity in duplicate-alias scoring (0 alias resolutions changed on current data).
+- Masterfile rotation parser hardening: KRX/Vienna/DSE HTML `read_html` no-table failures mark the source unavailable instead of aborting the batch (#470); PSX listed-companies accepts empty `#XID` and omits the token on sector requests (#496).
+
 ### Fixed
 
-- Symbol-change apply now overlays live Nasdaq Trader and SEC directory snapshots instead of trusting stale `reference.csv` rows, verifies renames with same-ISIN or shared-SEC-CIK evidence, records `listing_transitions.csv` for `check_safe_merge --strict`, and refreshes listing names from the official directory row.
-- Allowlisted `NYSE::PAPL` (Pineapple Financial Inc., Canadian issuer CIK 1938109) in `foreign_isin_reviewed.csv` after the daily Nasdaq apply ingested SEC `company_tickers_exchange` `PAPL`/NYSE; corrected the existing `NYSE MKT::PAPL` reviewed ISIN to `CA72303K4054`.
+- Allowlisted `NYSE::PAPL` (Pineapple Financial Inc., Canadian issuer CIK 1938109) in `foreign_isin_reviewed.csv` after SEC ingest listed `PAPL`/NYSE; corrected `NYSE MKT::PAPL` reviewed ISIN to `CA72303K4054` (#472).
+- Dropped 64 stale US ETF predecessor rows after same-ISIN renames (#488: 45 rows; #493: 19 rows including `NYSE ARCA::JAGG`→`BATS::BBAG` venue moves) and retired duplicate `NYSE ARCA::SGOV` vs `NYSE::SGOV` (#478).
+- Fixed German venue-default vs depositary domicile logic so new XETRA foreign-ISIN lines no longer inherit incorrect `Germany` country (#484); aligned OTC::MGIMF name to MGI Media & Games Invest screener.
+
+### Scope
+
+- This remains a `merge` claim, not `stable` or `complete`. Source licensing, `official_reference_gap` recall, and missing identifiers stay explicit. Confirmed external delistings in validation notes (STACO, EVA, BANADER, and others) are documented but not auto-dropped. StockAnalysis backfill remains secondary and empty-field-only. Snapshot after rebuild: 65,662 primary tickers, 97,729 listing rows, 64,340 primary ISINs (98.0%), 64,375 sector/category values, 33 entry-quality warnings, and 11,255 source-gap rows.
 
 ## [3.43.1] - 2026-10-20
 

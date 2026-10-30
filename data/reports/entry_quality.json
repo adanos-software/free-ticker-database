@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-30T16:23:52Z",
+    "generated_at": "2026-10-30T21:20:51Z",
     "rows": 97729,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86430,
-      "source_gap": 11255,
+      "pass": 86435,
+      "source_gap": 11250,
       "warn": 33
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 11,
       "low": 11,
       "medium": 23,
-      "source_gap": 11641
+      "source_gap": 11635
     },
     "issue_counts": {
       "official_reference_gap": 6772,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 709,
-      "expected_missing_primary_isin": 680,
+      "missing_stock_sector": 705,
+      "expected_missing_primary_isin": 678,
       "missing_etf_category": 193,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 10,
@@ -57,8 +57,8 @@
       },
       {
         "exchange": "FSX",
-        "source_gap": 496,
-        "pass": 7647
+        "source_gap": 495,
+        "pass": 7648
       },
       {
         "exchange": "B3",
@@ -85,9 +85,9 @@
       },
       {
         "exchange": "TSX",
-        "pass": 2196,
+        "pass": 2197,
         "notice": 1,
-        "source_gap": 225
+        "source_gap": 224
       },
       {
         "exchange": "Munich",

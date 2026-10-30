@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-10-30T16:23:52Z`
+Generated at: `2026-10-30T21:20:51Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 11 |
-| pass | 86,430 |
-| source_gap | 11,255 |
+| pass | 86,435 |
+| source_gap | 11,250 |
 | warn | 33 |
 
 ## Issue Counts
@@ -17,8 +17,8 @@ Generated at: `2026-10-30T16:23:52Z`
 |---|---:|
 | official_reference_gap | 6,772 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 709 |
-| expected_missing_primary_isin | 680 |
+| missing_stock_sector | 705 |
+| expected_missing_primary_isin | 678 |
 | missing_etf_category | 193 |
 | official_name_mismatch | 23 |
 | official_isin_mismatch | 10 |
@@ -32,12 +32,12 @@ Generated at: `2026-10-30T16:23:52Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 8,482 | 2 | 3,254 | 14 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
-| FSX | 7,647 | 0 | 496 | 0 | 0 |
+| FSX | 7,648 | 0 | 495 | 0 | 0 |
 | B3 | 1,247 | 0 | 342 | 0 | 0 |
 | NASDAQ | 4,508 | 4 | 303 | 4 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
 | NYSE ARCA | 2,538 | 0 | 235 | 1 | 0 |
-| TSX | 2,196 | 1 | 225 | 0 | 0 |
+| TSX | 2,197 | 1 | 224 | 0 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | XETRA | 5,323 | 0 | 213 | 0 | 0 |
 | AMS | 541 | 0 | 205 | 0 | 0 |
