@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-10-30T13:19:20Z`
+Generated at: `2026-10-30T21:18:18Z`
 
 ## Summary
 
@@ -17,11 +17,11 @@ Generated at: `2026-10-30T13:19:20Z`
 
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
-| 1 | XSTU | missing | 2773 | 0 | 274 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
+| 1 | XSTU | missing | 2773 | 0 | 273 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
 | 2 | Munich | missing | 223 | 0 | 33 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 3 | XDUS | missing | 199 | 0 | 25 | duesseldorf_stock_exchange_directory | Boerse Duesseldorf |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 4 | XHAN | missing | 80 | 0 | 9 | hanover_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
-| 5 | XHAM | missing | 12 | 0 | 6 | hamburg_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
+| 5 | XHAM | missing | 12 | 0 | 5 | hamburg_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 
 ## Partial Current-Scope Sources
 
@@ -42,7 +42,7 @@ Generated at: `2026-10-30T13:19:20Z`
 | 18 | BSE_HU | official_partial | 50 | 0 | 0 | bse_hu_listed_companies | Budapest Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
 | 19 | VSE | official_partial | 88 | 0 | 6 | vienna_listed_companies | Wiener Boerse | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented as ISIN join against current VSE listings |
 | 20 | BSE_BW | official_partial | 39 | 1 | 3 | bse_bw_listed_companies | BSE Botswana | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official companies page with conservative local listing-name matching |
-| 21 | WSE | official_partial | 582 | 0 | 8 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
+| 21 | WSE | official_partial | 582 | 0 | 7 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 22 | TASE | official_partial | 801 | 0 | 4 | tase_company_profiles | TASE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
 | 23 | HEL | official_partial | 199 | 0 | 0 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 24 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 3 existing rows | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
@@ -81,7 +81,7 @@ _No rows._
 | 18 | BSE_HU | official_partial | 50 | 0 | 0 | bse_hu_listed_companies | Budapest Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
 | 19 | VSE | official_partial | 88 | 0 | 6 | vienna_listed_companies | Wiener Boerse | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented as ISIN join against current VSE listings |
 | 20 | BSE_BW | official_partial | 39 | 1 | 3 | bse_bw_listed_companies | BSE Botswana | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official companies page with conservative local listing-name matching |
-| 21 | WSE | official_partial | 582 | 0 | 8 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
+| 21 | WSE | official_partial | 582 | 0 | 7 | gpw_instrument_cards | GPW |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 22 | TASE | official_partial | 801 | 0 | 4 | tase_company_profiles | TASE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
 | 23 | HEL | official_partial | 199 | 0 | 0 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 24 | BVC | official_partial | 3 | 0 | 0 | bvc_colombia_issuers | BVC | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 3 existing rows | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
