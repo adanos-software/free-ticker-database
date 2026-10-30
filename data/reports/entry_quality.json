@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-29T16:14:52Z",
-    "rows": 97738,
+    "generated_at": "2026-10-30T08:12:14Z",
+    "rows": 97719,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,27 +15,27 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86427,
-      "source_gap": 11267,
+      "pass": 86429,
+      "source_gap": 11246,
       "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4638,
+      "identifier_enriched": 4622,
       "official_reference": 87669,
       "scoped_source_gap": 270,
-      "valid_isin": 5161
+      "valid_isin": 5158
     },
     "severity_counts": {
       "high": 11,
       "low": 11,
       "medium": 23,
-      "source_gap": 11657
+      "source_gap": 11635
     },
     "issue_counts": {
-      "official_reference_gap": 6782,
+      "official_reference_gap": 6763,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 710,
-      "expected_missing_primary_isin": 685,
+      "missing_stock_sector": 709,
+      "expected_missing_primary_isin": 683,
       "missing_etf_category": 193,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 10,
@@ -67,7 +67,7 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 306,
+        "source_gap": 300,
         "pass": 4508,
         "notice": 4,
         "warn": 4
@@ -80,7 +80,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2539,
-        "source_gap": 242,
+        "source_gap": 234,
         "warn": 1
       },
       {
@@ -131,15 +131,15 @@
         "notice": 2
       },
       {
-        "exchange": "BATS",
-        "pass": 1287,
-        "source_gap": 126
-      },
-      {
         "exchange": "Euronext",
         "pass": 1354,
         "source_gap": 122,
         "warn": 1
+      },
+      {
+        "exchange": "BATS",
+        "pass": 1287,
+        "source_gap": 122
       },
       {
         "exchange": "JSE",

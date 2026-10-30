@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-29T16:14:27Z",
+  "generated_at": "2026-10-30T08:10:27Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2139,
-  "decision_rows": 7045,
+  "conflict_count": 2133,
+  "decision_rows": 7032,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1377,
-    "proposed_clear_conflicting_identifier": 1104,
-    "quarantined_unresolved_identifier": 4564
+    "kept_listing_keyed_identifier": 1375,
+    "proposed_clear_conflicting_identifier": 1103,
+    "quarantined_unresolved_identifier": 4554
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1104,
-  "quarantined_rows": 4564,
-  "retained_rows": 1377,
+  "proposed_clear_rows": 1103,
+  "quarantined_rows": 4554,
+  "retained_rows": 1375,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -55746,45 +55746,6 @@
       "retained_isin": "NO0010833262"
     },
     {
-      "conflict_id": "c226a1c8dee77ead8eca",
-      "isin": "NO0010861990",
-      "listing_key": "FSX::1Q6",
-      "ticker": "1Q6",
-      "exchange": "FSX",
-      "name": "Prosafe SE",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "NO0010861990"
-    },
-    {
-      "conflict_id": "c226a1c8dee77ead8eca",
-      "isin": "NO0010861990",
-      "listing_key": "OSL::PRS",
-      "ticker": "PRS",
-      "exchange": "OSL",
-      "name": "PROSAFE",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "NO0010861990"
-    },
-    {
-      "conflict_id": "c226a1c8dee77ead8eca",
-      "isin": "NO0010861990",
-      "listing_key": "TSXV::PRS-H",
-      "ticker": "PRS-H",
-      "exchange": "TSXV",
-      "name": "Prism Resources Inc.",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "NO0010861990"
-    },
-    {
       "conflict_id": "0e46b20db706d4b55cc0",
       "isin": "NO0010884794",
       "listing_key": "OSL::IFISH",
@@ -69539,32 +69500,6 @@
       "retained_isin": "US23282W6057"
     },
     {
-      "conflict_id": "7f57c3630d3320b1d9c8",
-      "isin": "US23306X4079",
-      "listing_key": "BATS::SNPV",
-      "ticker": "SNPV",
-      "exchange": "BATS",
-      "name": "DBX ETF Trust - Xtrackers S&P 500 Value ESG ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US23306X4079"
-    },
-    {
-      "conflict_id": "7f57c3630d3320b1d9c8",
-      "isin": "US23306X4079",
-      "listing_key": "BATS::XOEX",
-      "ticker": "XOEX",
-      "exchange": "BATS",
-      "name": "DBX ETF Trust - Xtrackers S&P 100 Ex Top 20 ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US23306X4079"
-    },
-    {
       "conflict_id": "1abe285fb34d03dc84c3",
       "isin": "US23331A1097",
       "listing_key": "FSX::HO2",
@@ -72449,58 +72384,6 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US31946M1036"
-    },
-    {
-      "conflict_id": "30d600ae39bbc2e09cb3",
-      "isin": "US33738R7465",
-      "listing_key": "NASDAQ::FSGS",
-      "ticker": "FSGS",
-      "exchange": "NASDAQ",
-      "name": "First Trust SMID Growth Strength ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US33738R7465"
-    },
-    {
-      "conflict_id": "30d600ae39bbc2e09cb3",
-      "isin": "US33738R7465",
-      "listing_key": "NASDAQ::RNSC",
-      "ticker": "RNSC",
-      "exchange": "NASDAQ",
-      "name": "First Trust Small Cap US Equity Select ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US33738R7465"
-    },
-    {
-      "conflict_id": "f12423b5e64c0977db1d",
-      "isin": "US33738R7531",
-      "listing_key": "NASDAQ::FSCS",
-      "ticker": "FSCS",
-      "exchange": "NASDAQ",
-      "name": "First Trust SMID Capital Strength ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US33738R7531"
-    },
-    {
-      "conflict_id": "f12423b5e64c0977db1d",
-      "isin": "US33738R7531",
-      "listing_key": "NASDAQ::RNMC",
-      "ticker": "RNMC",
-      "exchange": "NASDAQ",
-      "name": "First Trust Mid Cap US Equity Select ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US33738R7531"
     },
     {
       "conflict_id": "59ed1d9359b864d33830",
@@ -76479,58 +76362,6 @@
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US4642877967"
-    },
-    {
-      "conflict_id": "57119ff30c664bb84996",
-      "isin": "US46431W5159",
-      "listing_key": "NASDAQ::ISTM",
-      "ticker": "ISTM",
-      "exchange": "NASDAQ",
-      "name": "iShares Strategic Metals ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46431W5159"
-    },
-    {
-      "conflict_id": "57119ff30c664bb84996",
-      "isin": "US46431W5159",
-      "listing_key": "NASDAQ::TMET",
-      "ticker": "TMET",
-      "exchange": "NASDAQ",
-      "name": "iShares Transition-Enabling Metals ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46431W5159"
-    },
-    {
-      "conflict_id": "d19aa790ec729d21b2b7",
-      "isin": "US46436E4035",
-      "listing_key": "BATS::GARP",
-      "ticker": "GARP",
-      "exchange": "BATS",
-      "name": "iShares MSCI USA Quality GARP ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46436E4035"
-    },
-    {
-      "conflict_id": "d19aa790ec729d21b2b7",
-      "isin": "US46436E4035",
-      "listing_key": "BATS::STLG",
-      "ticker": "STLG",
-      "exchange": "BATS",
-      "name": "iShares Factors US Growth Style ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46436E4035"
     },
     {
       "conflict_id": "a5277ccb1e59139baa21",

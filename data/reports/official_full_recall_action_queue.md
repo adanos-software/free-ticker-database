@@ -7,7 +7,7 @@ Rows: `23`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
-| 1 | FSX | 57.31 | 5852 | 4422 | refresh_only |
+| 1 | FSX | 57.31 | 5853 | 4421 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.06 | 3501 | 870 | not_in_supplement_allowlist |
 | 4 | NYSE | 60.19 | 1307 | 568 | not_in_supplement_allowlist |
