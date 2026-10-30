@@ -7,12 +7,12 @@
   },
   "summary": {
     "before_rows": 97719,
-    "after_rows": 97722,
+    "after_rows": 97729,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 4,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,14 +23,39 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "HKEX::01560",
+      "field_name": "isin",
+      "old_value": "KYG8508A1004",
+      "new_value": "KYG8508A1186"
+    },
+    {
+      "listing_key": "HKEX::02299",
+      "field_name": "isin",
+      "old_value": "KYG110431098",
+      "new_value": "KYG110431171"
+    },
+    {
+      "listing_key": "HKEX::08159",
+      "field_name": "isin",
+      "old_value": "BMG394081100",
+      "new_value": "BMG394081365"
+    },
+    {
+      "listing_key": "HKEX::08206",
+      "field_name": "isin",
+      "old_value": "KYG8117F1028",
+      "new_value": "KYG8117F1283"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
       "before_rows": 94,
-      "after_rows": 94,
+      "after_rows": 96,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -39,7 +64,7 @@
     {
       "exchange": "AMS",
       "before_rows": 745,
-      "after_rows": 745,
+      "after_rows": 746,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -219,7 +244,7 @@
     {
       "exchange": "CSE_LK",
       "before_rows": 319,
-      "after_rows": 319,
+      "after_rows": 320,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -300,7 +325,7 @@
     {
       "exchange": "HKEX",
       "before_rows": 3236,
-      "after_rows": 3236,
+      "after_rows": 3239,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

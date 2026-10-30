@@ -70,7 +70,9 @@ adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,INDI,Luna
 adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,INVICTUS,Invictus Investment Company PLC,ADX,Stock,active,exchange_directory,true,AEE01078I227,,Consumer Staples
 adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,JPANI,Lunate S&P Japan UCITS ETF,ADX,ETF,active,exchange_directory,true,IE000M10VZK6,,Equity
 adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,JULPHAR,Gulf Pharmaceutical Industries,ADX,Stock,active,exchange_directory,true,AEG000201018,,Health Care
+adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,KDEF,PLUS Korea Defense Industry Index ETF,ADX,ETF,active,exchange_directory,true,US30151E4917,,Equity
 adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,KICO,AL KHALEEJ INVESTMENT,ADX,Stock,active,exchange_directory,true,AEG000701017,,Real Estate
+adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,KMCA,PLUS Korea Manufacturing Core Alliance Index ETF,ADX,ETF,active,exchange_directory,true,US30151E4420,,Equity
 adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,KRBN,KraneShares Global Carbon Strategy ETF,ADX,ETF,active,exchange_directory,true,US5007676787,,Commodity
 adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,KWEB,KraneShares CSI China Internet ETF,ADX,ETF,active,exchange_directory,true,US5007673065,,Equity
 adx_market_watch,ADX,https://www.adx.ae/english/pages/marketwatch.aspx,KWIN,KraneShares Wahed Alternative Income Index ETF,ADX,ETF,active,exchange_directory,true,US5007672232,,Equity
@@ -199,6 +201,7 @@ euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,ASRNL,ASR NEDERLAND,AMS,Stock,active,exchange_directory,true,NL0011872643,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",AUCO,L&G Gold Mining UCITS ETF,AMS,ETF,active,exchange_directory,true,IE00B3CNHG25,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",AVGY,IncomeShares Broadcom (AVGO) Options ETP,AMS,ETF,active,exchange_directory,true,XS3068776312,,
+euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,AVTRI,AVANTIUM(SUB),AMS,Stock,active,exchange_directory,true,NL0015074EO7,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",AWSR,UBS MSCI ACWI Socially Responsible UCITS ETF hEUR acc,AMS,ETF,active,exchange_directory,true,IE00BDR55927,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,AXS,ACCSYS,AMS,Stock,active,exchange_directory,true,GB00BQQFX454,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,AZRN,AZERION,AMS,Stock,active,exchange_directory,true,NL00150006Z9,,
@@ -8107,17 +8110,16 @@ bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0083,ALAR 2.000,BME,Stock,active,exchange_directory,true,ES0107601033,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0084,ALAVA INVERSIONES,BME,Stock,active,exchange_directory,true,ES0107631030,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0127,ALLOCATION,BME,Stock,active,exchange_directory,true,ES0108381031,,Financials
-bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0129,ALMABENI FINANCIERA,BME,Stock,active,exchange_directory,true,ES0108397037,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0203,1948 INVERSIONS,BME,Stock,active,exchange_directory,true,ES0109642035,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0245,ADAIA INVERSIONES,BME,Stock,active,exchange_directory,true,ES0110192038,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0568,AF CRECIMIENTO I,BME,Stock,active,exchange_directory,true,ES0116414030,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S0800,AF DOBRA,BME,Stock,active,exchange_directory,true,ES0126842030,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S1893,ABRIL 28 INVESTMENT,BME,Stock,active,exchange_directory,true,ES0157932031,,Financials
-bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S3122,ALCESTIS INVESTMEN,BME,Stock,active,exchange_directory,true,ES0108002033,,Financials
+bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S2099,ALMARO,BME,Stock,active,exchange_directory,true,ES0163021035,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S3185,ABPURA INVERSIONS,BME,Stock,active,exchange_directory,true,ES0105261038,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S3404,ACIFIEL,BME,Stock,active,exchange_directory,true,ES0182123036,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S3782,AF RENTA ALFA INDICES,BME,Stock,active,exchange_directory,true,ES0106071006,,Financials
-bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S4147,ALORAM INVERSIONES,BME,Stock,active,exchange_directory,true,ES0108636004,,Financials
+bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S4024,ALCLANO DE LA LUZ,BME,Stock,active,exchange_directory,true,ES0108003007,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,S4190,A GLOBAL FLEXIBLE P,BME,Stock,active,exchange_directory,true,ES0165940000,,Financials
 bme_listed_companies,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SAB,BANCO DE SABADELL,BME,Stock,active,listed_companies_subset,true,ES0113860A34,,
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SAB,BANCO DE SABADELL,BME,Stock,active,exchange_directory,true,ES0113860A34,,Financials
@@ -8125,8 +8127,8 @@ bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ
 bme_listed_companies,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SAN,BANCO SANTANDER,BME,Stock,active,listed_companies_subset,true,ES0113900J37,,
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SAN,BANCO SANTANDER,BME,Stock,active,exchange_directory,true,ES0113900J37,,Financials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCAFS,AHORRO FAMILIAR,BME,Stock,active,exchange_directory,true,ES0107511018,,Real Estate
+bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCALD,ALDICER,BME,Stock,active,exchange_directory,true,ES0105976007,,Real Estate
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCALF,ALFIL PATRIMONIAL,BME,Stock,active,exchange_directory,true,ES0105757019,,Real Estate
-bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCASM,ASAM,BME,Stock,active,exchange_directory,true,ES0105765004,,Real Estate
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCBTT,BETTER CONSULTANTS,BME,Stock,active,exchange_directory,true,ES0105877007,,Information Technology
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCBYT,BYTETRAVEL,BME,Stock,active,exchange_directory,true,ES0105817003,,Information Technology
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCGRM,GREYMILE SOCIMI,BME,Stock,active,exchange_directory,true,ES0105968004,,Real Estate
@@ -8137,6 +8139,7 @@ bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ
 bme_listed_companies,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCYR,SACYR,BME,Stock,active,listed_companies_subset,true,ES0182870214,,
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SCYR,SACYR,BME,Stock,active,exchange_directory,true,ES0182870214,,Industrials
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SEC,SECUOYA GRUPO DE COMUNICACION,BME,Stock,active,exchange_directory,true,ES0131703003,,Communication Services
+bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SL028,ALL YOU NEED,BME,Stock,active,exchange_directory,true,ES0108162001,,Financials
 bme_listed_companies,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SLR,SOLARIA ENERGIA Y MEDIO AMBIENTE,BME,Stock,active,listed_companies_subset,true,ES0165386014,,
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SLR,SOLARIA ENERGIA Y MEDIO AMBIENTE,BME,Stock,active,exchange_directory,true,ES0165386014,,Utilities
 bme_security_prices_directory,BME,https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies,SNG,SNGULAR PEOPLE,BME,Stock,active,exchange_directory,true,ES0105611000,,Information Technology
@@ -16185,7 +16188,6 @@ euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WABC29,W ABC COMP 22-29,Borsa Italiana,Stock,active,exchange_directory,true,IT0005515363,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WABTG,W ALFIO BARD 17-27,Borsa Italiana,Stock,active,exchange_directory,true,IT0005245607,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WAGI,WisdomTree AI Infrastructure UCITS ETF - USD Acc,Borsa Italiana,ETF,active,exchange_directory,true,IE000XHZP7D3,,
-euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WAMB26,W AMBROMOBIL 20-26,Borsa Italiana,Stock,active,exchange_directory,true,IT0005425092,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WAMI28,WARR FRIENDS 26-28,Borsa Italiana,Stock,active,exchange_directory,true,IT0005707846,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WART28,W DEOD GALLE 23-28,Borsa Italiana,Stock,active,exchange_directory,true,IT0005528929,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WAT,Amundi MSCI Water UCITS ETF Dist,Borsa Italiana,ETF,active,exchange_directory,true,FR0010527275,,
@@ -16240,19 +16242,15 @@ euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WFIN,State Street SPDR MSCI World Financials UCITS ETF,Borsa Italiana,ETF,active,exchange_directory,true,IE00BYTRR970,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WFTC26,W FIN TECH 21-26,Borsa Italiana,Stock,active,exchange_directory,true,IT0005475147,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WGAIN,WARR GAIN360 25-28,Borsa Italiana,Stock,active,exchange_directory,true,IT0005672602,,
-euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WGIS26,W GISMONDI 19-26,Borsa Italiana,Stock,active,exchange_directory,true,IT0005391104,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WGLD,WISDOMTREE CORE PHYSICAL GOLD,Borsa Italiana,ETF,active,exchange_directory,true,JE00BN2CJ301,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WGML27,W G.M. LEATH 22-27,Borsa Italiana,Stock,active,exchange_directory,true,IT0005498602,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WGRO,WisdomTree Global Quality Growth UCITS ETF USD Acc,Borsa Italiana,ETF,active,exchange_directory,true,IE000Y83YZ44,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WGT27,W GT TALENT 24-27,Borsa Italiana,Stock,active,exchange_directory,true,IT0005607541,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WHCS,iShares MSCI World Health Care Sector Advanced UCITS ETF,Borsa Italiana,ETF,active,exchange_directory,true,IE00BJ5JNZ06,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WHEA,State Street SPDR MSCI World Health Care UCITS ETF,Borsa Italiana,ETF,active,exchange_directory,true,IE00BYTRRB94,,
-euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WHIK26,W HAIKI+ 25-26,Borsa Italiana,Stock,active,exchange_directory,true,IT0005628760,,
-euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WHLX26,W HELYX 21-26,Borsa Italiana,Stock,active,exchange_directory,true,IT0005453789,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WIIT,WIIT,Borsa Italiana,Stock,active,exchange_directory,true,IT0005440893,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WIMI,Xtrackers MSCI World IMI UCITS ETF,Borsa Italiana,ETF,active,exchange_directory,true,IE000X1GW0A7,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WINA,iShares Wld Equity High Income UCITS ETF,Borsa Italiana,ETF,active,exchange_directory,true,IE0000P0RPE6,,
-euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,WINC26,W INNOVATEC 23-26,Borsa Italiana,Stock,active,exchange_directory,true,IT0005568305,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WIND,State Street SPDR MSCI World Industrials UCITS ETF,Borsa Italiana,ETF,active,exchange_directory,true,IE00BYTRRC02,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WING,ISHARES FALL ANG YLD COR UCITS ETF DIST,Borsa Italiana,ETF,active,exchange_directory,true,IE00BYM31M36,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",WIRE,Xtrackers Electrification Technologies & Smart Grid UCITS ETF,Borsa Italiana,ETF,active,exchange_directory,true,IE000O7Q2E56,,
@@ -19748,6 +19746,7 @@ cse_lk_all_security_code,CSE Sri Lanka,https://www.cse.lk/api/allSecurityCode,SF
 cse_lk_company_info_summary,CSE Sri Lanka,https://www.cse.lk/api/companyInfoSummery,SFCL.N0000,SENKADAGALA FINANCE COMPANY PLC,CSE_LK,Stock,active,exchange_directory,true,LK0350N00005,,
 cse_lk_all_security_code,CSE Sri Lanka,https://www.cse.lk/api/allSecurityCode,SFIN.N0000,SINGER FINANCE (LANKA) PLC,CSE_LK,Stock,active,exchange_directory,true,LK0373N00007,,
 cse_lk_company_info_summary,CSE Sri Lanka,https://www.cse.lk/api/companyInfoSummery,SFIN.N0000,SINGER FINANCE LANKA PLC,CSE_LK,Stock,active,exchange_directory,true,LK0373N00007,,
+cse_lk_company_info_summary,CSE Sri Lanka,https://www.cse.lk/api/companyInfoSummery,SFIN.R0000,SINGER FINANCE (LANKA) PLC,CSE_LK,Stock,active,exchange_directory,true,LK0373R00008,,
 cse_lk_all_security_code,CSE Sri Lanka,https://www.cse.lk/api/allSecurityCode,SHAW.N0000,LEE HEDGES PLC,CSE_LK,Stock,active,exchange_directory,true,LK0152N00005,,
 cse_lk_company_info_summary,CSE Sri Lanka,https://www.cse.lk/api/companyInfoSummery,SHAW.N0000,LEE HEDGES PLC,CSE_LK,Stock,active,exchange_directory,true,LK0152N00005,,
 cse_lk_all_security_code,CSE Sri Lanka,https://www.cse.lk/api/allSecurityCode,SHL.N0000,SOFTLOGIC HOLDINGS PLC,CSE_LK,Stock,active,exchange_directory,true,LK0386N00009,,
@@ -20210,7 +20209,7 @@ egx_listed_stocks,EGX,https://www.egx.com.eg/en/ListedStocks.aspx,VLMRA,Valmore 
 egx_listed_stocks,EGX,https://www.egx.com.eg/en/ListedStocks.aspx,WCDF,Middle & West Delta Flour Mills,EGX,Stock,active,listed_companies_subset,true,EGS30421C019,,Consumer Staples
 egx_listed_stocks,EGX,https://www.egx.com.eg/en/ListedStocks.aspx,WKOL,Wadi Kom Ombo Land Reclamation,EGX,Stock,active,listed_companies_subset,true,EGS01071C017,,Industrials
 egx_listed_stocks,EGX,https://www.egx.com.eg/en/ListedStocks.aspx,ZEOT,Extracted Oils,EGX,Stock,active,listed_companies_subset,true,EGS38251C012,,Consumer Staples
-euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,-,WEYVELD NOSSEGEM,Euronext,Stock,active,exchange_directory,true,BE0107958945,,
+euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,-,VOORUITZICHT,Euronext,Stock,active,exchange_directory,true,BE0020918638,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",0CAC,OSSIAM CAC 40 NR - UCITS ETF 1C (EUR),Euronext,ETF,active,exchange_directory,true,LU3046617802,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",0EMU,Ossiam MSCI EMU - UCITS ETF 1C (EUR),Euronext,ETF,active,exchange_directory,true,LU3078637314,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",0SWE,OSSIAM MSCI WORLD - UCITS ETF 1C (EUR),Euronext,ETF,active,exchange_directory,true,LU3078637660,,
@@ -23538,6 +23537,7 @@ euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",MGT,Amundi DJ Global Titans 50 UCITS ETF Dist,Euronext,ETF,active,exchange_directory,true,FR0007075494,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,MHM,MHM CORPORATE,Euronext,Stock,active,exchange_directory,true,FR001400IE67,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",MIB,Amundi FTSE MIB UCITS ETF Dist,Euronext,ETF,active,exchange_directory,true,FR0010010827,,
+euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,MIBBS,AMOEBA BSA,Euronext,Stock,active,exchange_directory,true,FR001401BD07,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,MIKO,MIKO,Euronext,Stock,active,exchange_directory,true,BE0003731453,,
 euronext_etfs,Euronext,"https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",MILL,Amundi MSCI Millennials UCITS ETF Acc,Euronext,ETF,active,exchange_directory,true,LU2023678449,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,MIO,MINCON GROUP PLC,Euronext,Stock,active,exchange_directory,true,IE00BD64C665,,
@@ -43028,7 +43028,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00413,SC HOLDINGS,HKEX,Stock,active,exchange_directory,true,KYG8279G1120,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00417,TSE SUI LUEN,HKEX,Stock,active,exchange_directory,true,BMG911231519,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00418,FOUNDER HOLD,HKEX,Stock,active,exchange_directory,true,BMG3654D1074,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00419,HONY MEDIA,HKEX,Stock,active,exchange_directory,true,KYG4642G1111,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00419,AIROBO PLATFORM,HKEX,Stock,active,exchange_directory,true,KYG4642G1111,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00420,FOUNTAIN SET,HKEX,Stock,active,exchange_directory,true,HK0420001817,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00422,VMEP HOLDINGS,HKEX,Stock,active,exchange_directory,true,KYG936171019,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,00423,HKET HOLDINGS,HKEX,Stock,active,exchange_directory,true,KYG4587A1031,,
@@ -43836,7 +43836,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01556,CHINNEY KW,HKEX,Stock,active,exchange_directory,true,BMG2118K1036,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01557,K.H. GP HLDGS,HKEX,Stock,active,exchange_directory,true,KYG5225A1168,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01559,KWAN ON HLDGS,HKEX,Stock,active,exchange_directory,true,KYG5322M1042,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01560,STAR GROUP ASIA,HKEX,Stock,active,exchange_directory,true,KYG8508A1004,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01560,STAR GROUP-NEW,HKEX,Stock,active,exchange_directory,true,KYG8508A1186,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01561,PAN ASIA DATA H,HKEX,Stock,active,exchange_directory,true,KYG6883H1048,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01563,ALLI INTL ED LE,HKEX,Stock,active,exchange_directory,true,KYG4815A1076,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,01565,VIRSCEND EDU,HKEX,Stock,active,exchange_directory,true,KYG936691024,,
@@ -44267,7 +44267,6 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02170,BASECARE-B,HKEX,Stock,active,exchange_directory,true,CNE100004BC1,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02171,CARSGEN-B,HKEX,Stock,active,exchange_directory,true,KYG1996C1006,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02172,MICROPORT NEURO,HKEX,Stock,active,exchange_directory,true,KYG6083E1098,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02175,CH GENERAL EDU,HKEX,Stock,active,exchange_directory,true,KYG2124H1020,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02176,CCID CONSULTING,HKEX,Stock,active,exchange_directory,true,CNE1000000Y0,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02177,UNQ HOLDINGS,HKEX,Stock,active,exchange_directory,true,KYG9412Z1081,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02178,PETRO-KING,HKEX,Stock,active,exchange_directory,true,VGG7042T1049,,
@@ -44355,7 +44354,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02295,MAXICITY,HKEX,Stock,active,exchange_directory,true,KYG5897S1066,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02297,RAINMED-B,HKEX,Stock,active,exchange_directory,true,KYG7360A1094,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02298,COSMO LADY,HKEX,Stock,active,exchange_directory,true,KYG244421080,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02299,BILLION IND,HKEX,Stock,active,exchange_directory,true,KYG110431098,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02299,BILLION IND-NEW,HKEX,Stock,active,exchange_directory,true,KYG110431171,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02302,CNNC INT'L,HKEX,Stock,active,exchange_directory,true,KYG2352X1262,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02306,YH ENT,HKEX,Stock,active,exchange_directory,true,KYG9844S1021,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02307,KAM HING INT'L,HKEX,Stock,active,exchange_directory,true,KYG5213T1013,,
@@ -44415,6 +44414,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02381,SMC ELECTRIC,HKEX,Stock,active,exchange_directory,true,KYG823071025,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02382,SUNNY OPTICAL,HKEX,Stock,active,exchange_directory,true,KYG8586D1097,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02383,TOM GROUP,HKEX,Stock,active,exchange_directory,true,KYG891101035,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02384,DSBJ,HKEX,Stock,active,exchange_directory,true,CNE1000081B8,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02385,READBOY,HKEX,Stock,active,exchange_directory,true,KYG7398S1066,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02386,SINOPEC SEG,HKEX,Stock,active,exchange_directory,true,CNE100001NV2,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02388,BOC HONG KONG,HKEX,Stock,active,exchange_directory,true,HK2388011192,,
@@ -44450,7 +44450,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02436,LX TECHNOLOGY,HKEX,Stock,active,exchange_directory,true,KYG570311095,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02438,MOBVOI,HKEX,Stock,active,exchange_directory,true,KYG6300A1040,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02439,CH TREASURES NM,HKEX,Stock,active,exchange_directory,true,KYG2164B1068,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02442,EASY SMART-100,HKEX,Stock,active,exchange_directory,true,KYG3R31M1020,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02442,EASY SMART GP,HKEX,Stock,active,exchange_directory,true,KYG3R31M1020,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02443,AUTOSTREETS,HKEX,Stock,active,exchange_directory,true,KYG0670R1020,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02450,HUAIBEI GD CO,HKEX,Stock,active,exchange_directory,true,CNE100005RT8,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02451,LUYUAN GP HLDG,HKEX,Stock,active,exchange_directory,true,KYG5727M1050,,
@@ -44605,7 +44605,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02667,TONGRENTANGCARE,HKEX,Stock,active,exchange_directory,true,CNE1000078Q2,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02668,PAK TAK INT'L,HKEX,Stock,active,exchange_directory,true,BMG687481215,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02669,CHINA OVS PPT,HKEX,Stock,active,exchange_directory,true,KYG2118M1096,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02670,YUNJI-NEW,HKEX,Stock,active,exchange_directory,true,CNE100007523,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02670,YUNJI,HKEX,Stock,active,exchange_directory,true,CNE100007523,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02671,USAS BUILDING,HKEX,Stock,active,exchange_directory,true,CNE100007DT4,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02672,BAIGE DIGITAL,HKEX,Stock,active,exchange_directory,true,CNE100007DB2,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02675,EDGE MEDICAL-B,HKEX,Stock,active,exchange_directory,true,CNE1000062R4,,
@@ -44715,10 +44715,12 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02934,CHINA SANDI-OLD,HKEX,Stock,active,exchange_directory,true,BMG2118U1273,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02936,SG GROUP H-OLD,HKEX,Stock,active,exchange_directory,true,KYG8061B1234,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02938,KING INTL-OLD,HKEX,Stock,active,exchange_directory,true,KYG5924H1728,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02942,STAR GROUP ASIA,HKEX,Stock,active,exchange_directory,true,KYG8508A1269,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02943,BILLION IND,HKEX,Stock,active,exchange_directory,true,KYG110431254,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02942,STAR GROUP-OLD,HKEX,Stock,active,exchange_directory,true,KYG8508A1269,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02943,BILLION IND-OLD,HKEX,Stock,active,exchange_directory,true,KYG110431254,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02945,GENSCRIPT B-2K,HKEX,Stock,active,exchange_directory,true,KYG3825B1133,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02948,TR INTERIORS,HKEX,Stock,active,exchange_directory,true,KYG844001290,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02950,ALPHA PRO H RTS,HKEX,Stock,active,exchange_directory,true,BMG6847W1304,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,02952,GROWN UP GROUP,HKEX,Stock,active,exchange_directory,true,KYG4147A1224,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03001,PP CNUSDPROP,HKEX,ETF,active,exchange_directory,true,HK0000723178,,Equity
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03002,A MBC BTCGOLD,HKEX,ETF,active,exchange_directory,true,HK0001353652,,Commodity
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03003,CSOP MSCI A 50,HKEX,ETF,active,exchange_directory,true,HK0000805785,,Equity
@@ -44989,7 +44991,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03626,EAST NOVA HLDGS,HKEX,Stock,active,exchange_directory,true,KYG4288S1066,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03628,RENHENG ENT,HKEX,Stock,active,exchange_directory,true,KYG750051198,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03633,ZHONGYU ENERGY,HKEX,Stock,active,exchange_directory,true,KYG9891U1334,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03636,JINXUN RESOURCE,HKEX,Stock,active,exchange_directory,true,CNE100007DK3,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03636,JINXUN RES-500,HKEX,Stock,active,exchange_directory,true,CNE100007DK3,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03638,HUNLICAR GROUP,HKEX,Stock,active,exchange_directory,true,KYG4644E1301,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03639,YIDA CHINA,HKEX,Stock,active,exchange_directory,true,KYG9843H1074,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,03650,KEEP,HKEX,Stock,active,exchange_directory,true,KYG5244R1083,,
@@ -45395,7 +45397,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08137,HONBRIDGE,HKEX,Stock,active,exchange_directory,true,KYG4587J1123,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08139,CHANGAN RH,HKEX,Stock,active,exchange_directory,true,CNE100003DZ0,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08140,BOSATECH,HKEX,Stock,active,exchange_directory,true,KYG1263R1039,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08143,GF HEALTH-NEW,HKEX,Stock,active,exchange_directory,true,KYG4052M1520,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08143,GF HEALTHCARE,HKEX,Stock,active,exchange_directory,true,KYG4052M1520,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08146,GRACEWINE,HKEX,Stock,active,exchange_directory,true,KYG4036R1039,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08147,YUNJING DIGITEC,HKEX,Stock,active,exchange_directory,true,KYG6169E1715,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08148,WUXI LIFE,HKEX,Stock,active,exchange_directory,true,KYG063701786,,
@@ -45403,7 +45405,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08152,M&L HOLDINGS,HKEX,Stock,active,exchange_directory,true,KYG6125R1002,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08153,JIADING INTL GP,HKEX,Stock,active,exchange_directory,true,BMG3394P4020,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08158,CRMI,HKEX,Stock,active,exchange_directory,true,KYG2129W1380,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08159,CU VENTURE INV,HKEX,Stock,active,exchange_directory,true,BMG394081100,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08159,CU VENTURE-NEW,HKEX,Stock,active,exchange_directory,true,BMG394081365,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08160,GOLDWAY EDU,HKEX,Stock,active,exchange_directory,true,KYG3981U1379,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08161,MEDINET GROUP,HKEX,Stock,active,exchange_directory,true,KYG5955D1088,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08162,LOCO HK,HKEX,Stock,active,exchange_directory,true,HK0000207610,,
@@ -45429,7 +45431,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08201,PPS INT'L,HKEX,Stock,active,exchange_directory,true,KYG7222V1840,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08203,KAISUN HOLDINGS,HKEX,Stock,active,exchange_directory,true,KYG8310R1276,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08205,JIAODA WITHUB,HKEX,Stock,active,exchange_directory,true,CNE100000189,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08206,S ROBOT EDU,HKEX,Stock,active,exchange_directory,true,KYG8117F1028,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08206,S ROBOT EDU-NEW,HKEX,Stock,active,exchange_directory,true,KYG8117F1283,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08210,DLC ASIA,HKEX,Stock,active,exchange_directory,true,KYG3166C1006,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08213,STARGLORY HLDGS,HKEX,Stock,active,exchange_directory,true,KYG844271141,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08217,JU FU TANG BIOT,HKEX,Stock,active,exchange_directory,true,KYG5700C1244,,
@@ -45595,9 +45597,8 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08545,AMUSE GROUP,HKEX,Stock,active,exchange_directory,true,KYG042491012,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08547,PACIFIC LEGEND,HKEX,Stock,active,exchange_directory,true,KYG685511118,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08549,GOLDEN LEAF INT,HKEX,Stock,active,exchange_directory,true,KYG3961S1021,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08552,CU VENTURE INV,HKEX,Stock,active,exchange_directory,true,BMG394081282,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08556,S ROBOT EDU,HKEX,Stock,active,exchange_directory,true,KYG8117F1101,,
-hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08567,GF HEALTH-OLD,HKEX,Stock,active,exchange_directory,true,KYG4052M1454,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08552,CU VENTURE-OLD,HKEX,Stock,active,exchange_directory,true,BMG394081282,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08556,S ROBOT EDU-OLD,HKEX,Stock,active,exchange_directory,true,KYG8117F1101,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08585,CAPITAL FIN-OLD,HKEX,Stock,active,exchange_directory,true,BMG1941S1769,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08601,BOLTEK,HKEX,Stock,active,exchange_directory,true,KYG1219A1058,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,08606,KINETIX SYSTEMS,HKEX,Stock,active,exchange_directory,true,KYG5259G1047,,
@@ -45786,6 +45787,7 @@ hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securitie
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,09926,AKESO,HKEX,Stock,active,exchange_directory,true,KYG0146B1032,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,09927,SERES,HKEX,Stock,active,exchange_directory,true,CNE1000076H5,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,09928,TIMES NEIGHBOR,HKEX,Stock,active,exchange_directory,true,KYG8903A1013,,
+hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,09929,YAOPOP,HKEX,Stock,active,exchange_directory,true,KYG802021074,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,09930,HORIZON CD,HKEX,Stock,active,exchange_directory,true,KYG4R39T1073,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,09933,GHW INTL,HKEX,Stock,active,exchange_directory,true,KYG3854D1051,,
 hkex_securities_list,HKEX,https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx,09936,XIMEI RESOURCES,HKEX,Stock,active,exchange_directory,true,KYG9831K1040,,
@@ -52026,7 +52028,6 @@ krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,26124
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,261250,KODEX 미국달러선물레버리지,KRX,ETF,active,exchange_directory,true,KR7261250005,,Leveraged/Inverse
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,261260,KODEX 미국달러선물인버스2X,KRX,ETF,active,exchange_directory,true,KR7261260004,,Leveraged/Inverse
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,261270,KODEX 미국달러선물인버스,KRX,ETF,active,exchange_directory,true,KR7261270003,,Leveraged/Inverse
-krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,261920,ACE MSCI필리핀(합성),KRX,ETF,active,exchange_directory,true,KR7261920003,,Equity
 krx_listed_companies,KRX,https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp,264900,CROWN,KRX,Stock,active,exchange_directory,true,KR7264900002,,Industrials
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,265690,ACE 러시아MSCI(합성),KRX,ETF,active,exchange_directory,true,KR7265690008,,Equity
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,266160,RISE 고배당,KRX,ETF,active,exchange_directory,true,KR7266160001,,Equity
@@ -52094,7 +52095,6 @@ krx_listed_companies,KRX,https://global.krx.co.kr/contents/GLB/03/0308/030801000
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,279530,KODEX 고배당주,KRX,ETF,active,exchange_directory,true,KR7279530000,,Equity
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,279540,KODEX 최소변동성,KRX,ETF,active,exchange_directory,true,KR7279540009,,Equity
 krx_listed_companies,KRX,https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp,279570,Kbank,KRX,Stock,active,exchange_directory,true,KR7279570006,,Financials
-krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,280320,ACE 미국IT인터넷(합성 H),KRX,ETF,active,exchange_directory,true,KR7280320003,,Equity
 krx_listed_companies,KRX,https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp,280360,LOTTE WELLFOOD,KRX,Stock,active,exchange_directory,true,KR7280360009,,Consumer Staples
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,280920,PLUS 주도업종,KRX,ETF,active,exchange_directory,true,KR7280920000,,Equity
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,280930,KODEX 미국러셀2000(H),KRX,ETF,active,exchange_directory,true,KR7280930009,,Equity
@@ -52612,7 +52612,6 @@ krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,46533
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,465350,RISE 2차전지TOP10인버스(합성),KRX,ETF,active,exchange_directory,true,KR7465350007,,Leveraged/Inverse
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,465580,ACE 미국빅테크TOP7 Plus,KRX,ETF,active,exchange_directory,true,KR7465580009,,Equity
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,465610,ACE 미국빅테크TOP7 Plus레버리지(합성),KRX,ETF,active,exchange_directory,true,KR7465610004,,Leveraged/Inverse
-krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,465620,ACE 미국빅테크TOP7 Plus인버스(합성),KRX,ETF,active,exchange_directory,true,KR7465620003,,Leveraged/Inverse
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,465660,TIGER 일본반도체FACTSET,KRX,ETF,active,exchange_directory,true,KR7465660009,,Equity
 krx_etf_finder,KRX,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd,465670,TIGER 미국캐시카우100,KRX,ETF,active,exchange_directory,true,KR7465670008,,Equity
 krx_listed_companies,KRX,https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp,465770,STX Green Logis,KRX,Stock,active,exchange_directory,true,KR7465770006,,Industrials
@@ -87110,11 +87109,13 @@ cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/l
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,NETZ,CARBON STREAMING CORPORATION,NEO,Stock,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,NOVN,NOVARTIS CDR (CAD HEDGED),NEO,Stock,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,NTDO,NINTENDO CDR (CAD HEDGED),NEO,Stock,active,exchange_directory,true,,,
+cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,NVIA,BMO AUTOCALLABLE INCOME NVIDIA (NVDA) ETF - SERIES 1,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,NVON,NOVO NORDISK CDR (CAD HEDGED),NEO,Stock,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,ONCO,ONCO-INNOVATIONS LIMITED,NEO,Stock,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,OPPS,MANULIFE ALTERNATIVE OPPORTUNITIES FUND,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,PBK,POWERBANK CORPORATION,NEO,Stock,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,PGL,CI LONG TERM GOVERNMENT BOND INDEX ETF,NEO,ETF,active,exchange_directory,true,,,
+cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,PLTA,BMO AUTOCALLABLE INCOME PALANTIR (PLTR) ETF - SERIES 1,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,PLUS,MANULIFE STRATEGIC INCOME PLUS FUND,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,QCB,MACKENZIE CANADIAN ALL CORPORATE BOND INDEX ETF,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,QCH,MACKENZIE CHINA A-SHARES CSI 300 INDEX ETF,NEO,ETF,active,exchange_directory,true,,,
@@ -87199,6 +87200,7 @@ cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/l
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,STLT,BETAPRO -3X US TREASURY 20+ YEAR DAILY LEVERAGED BEAR ALTERNATIVE ETF,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,STRT,MANULIFE STRATEGIC INCOME FUND,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,TDY,PURPOSE TD (TD) YIELD SHARES ETF,NEO,ETF,active,exchange_directory,true,,,
+cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,TESA,BMO AUTOCALLABLE INCOME TESLA (TSLA) ETF - SERIES 1,NEO,ETF,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,TOYM,TOYOTA CDR (CAD HEDGED),NEO,Stock,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,TTE,TOTALENERGIES CDR (CAD HEDGED),NEO,Stock,active,exchange_directory,true,,,
 cboe_canada_listing_directory,Cboe Canada,https://www-api.cboe.com/ca/equities/listing-directory-data/,TTLT,BETAPRO 3X US TREASURY 20+ YEAR DAILY LEVERAGED BULL ALTERNATIVE ETF,NEO,ETF,active,exchange_directory,true,,,
@@ -100738,7 +100740,6 @@ euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,HSPG,HØLAND OG SETSKOG,OSL,Stock,active,exchange_directory,true,NO0010012636,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,HUDL,HUDDLESTOCK FINTEC,OSL,Stock,active,exchange_directory,true,NO0010859648,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,HUNT,HUNTER GROUP,OSL,Stock,active,exchange_directory,true,NO0012953720,,
-euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,HYN,HYNION,OSL,Stock,active,exchange_directory,true,NO0010920945,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,HYPRO,HYDROGENPRO,OSL,Stock,active,exchange_directory,true,NO0010892359,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,IDEX,IDEX BIOMETRICS,OSL,Stock,active,exchange_directory,true,NO0013536078,,
 euronext_equities,Euronext,https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock,INDCT,INDUCT,OSL,Stock,active,exchange_directory,true,NO0010536048,,
@@ -116723,6 +116724,7 @@ pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/AT000
 pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/NL0015073TS8,CSG,CSG,PSE_CZ,Stock,active,listed_companies_subset,true,NL0015073TS8,,
 pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/NL00150006R6,CTPNV,CTP,PSE_CZ,Stock,active,listed_companies_subset,true,NL00150006R6,,
 pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/DE0005140008,DBK,DEUTSCHE BANK,PSE_CZ,Stock,active,listed_companies_subset,true,DE0005140008,,
+pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/CZ1008003421,DOOR,DOORNITE,PSE_CZ,Stock,active,listed_companies_subset,true,CZ1008003421,,
 pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/CZ1008000310,DSPW,Doosan Skoda Power as,PSE_CZ,Stock,active,listed_companies_subset,true,CZ1008000310,,
 pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/DE0005557508,DTE,DEUTSCHE TELEKOM,PSE_CZ,Stock,active,listed_companies_subset,true,DE0005557508,,
 pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/CZ0005123620,EFORU,E4U a.s.,PSE_CZ,Stock,active,listed_companies_subset,true,CZ0005123620,,
@@ -116778,7 +116780,6 @@ pse_cz_shares_directory,Prague Stock Exchange,https://www.pse.cz/en/detail/GB00B
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,786,786 Investments Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,786,786 Invest Ltd,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,786,786 Investments Limited,PSX,Stock,active,listed_companies_subset,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,786R,786 Invest(R),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AABS,Al-Abbas Sugar Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AABS,Al-Abbas Sugar,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,AABS,Al-Abbas Sugar Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -116817,9 +116818,8 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AGIC,Askari General Insurance Company Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AGIC,Ask.Gen.Insurance,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,AGIC,Askari General Insurance Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AGICR2,Ask.Gen.Ins.(R),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AGIL,Agriauto Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AGIL,Agriautos Ind.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AGIL,Agriautos Ind.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AGL,Agritech Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AGL,Agritech Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AGLNCPS,Agritech Non-Voting (Pref) Class A,PSX,Stock,active,exchange_directory,true,,,Materials
@@ -116834,13 +116834,13 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AGTL,Al-Ghazi Tractors Limite
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AGTL,AL-Ghazi Tractors,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,AGTL,Al-Ghazi Tractors Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AHCL,Arif Habib Corporation Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AHCL,Arif Habib Corp,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AHCL,Arif Habib CorpXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,AHCL,Arif Habib Corporation Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AHL,Arif Habib Limited,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AHL,Arif Habib LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AHL,Arif Habib Ltd,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,AHL,Arif Habib Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AHTM,Ahmad Hassan Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AHTM,Ahmed Hassan,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AHTM,Ahmed HassanXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,AHTM,Ahmad Hassan Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,AICL,Adamjee Insurance Company Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,AICL,Adamjee Ins.,PSX,Stock,active,listed_companies_subset,true,,,
@@ -116922,9 +116922,9 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ASIC,Asia Insurance Company L
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ASIC,Asia Insurance,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ASL,Aisha Steel Mills Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ASL,Aisha Steel Mill,PSX,Stock,active,listed_companies_subset,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ASLCPS,Aisha Steel (PR),PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ASLCPS,Aisha Steel (PR)XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ASLPS,Aisha Steel Convertible (Pref),PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ASLPS,Aisha Steel (PR),PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ASLPS,Aisha Steel (PR)XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ASRL,Associated Services Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ASTL,Amreli Steels Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ASTL,Amreli Steels,PSX,Stock,active,listed_companies_subset,true,,,
@@ -116958,11 +116958,12 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BAFS,Baba Farid Sugar Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BAFS,Baba Farid,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BAHL,Bank AL Habib Limited,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BAHL,Bank AL-Habib,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BAHL,Bank AL-HabibXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BAHL,Bank AL Habib Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BAPL,Bawany Air Products Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BAPL,Bawany Air Prod,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BAPL,Bawany Air Products Limited,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BAPLR1,Bawany Air(R),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BATA,Bata Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BATA,Bata (Pak) Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BATA,Bata Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -116980,7 +116981,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BEEM,Beema-Pakistan Company L
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BELA,Bela Automotives Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BELA,Bela Automotive,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BERG,Berger Paints Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BERG,Berger Paints,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BERG,Berger PaintsXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BERG,Berger Paints Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BFAGRO,Barkat Frisian Agro Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BFAGRO,Barkat Frisian Agro,PSX,Stock,active,listed_companies_subset,true,,,
@@ -116989,14 +116990,14 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BFBIO,BF Biosciences Limited,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BFBIO,BF Biosciences,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BFBIO,BF Biosciences Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BFMOD,B.F. Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BFMOD,B.F.Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BFMOD,B.F.ModarabaXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BFMOD,B.F. Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BGL,Baluchistan Glass Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BGL,Bal.Glass,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BHAT,Bhanero Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BHAT,Bhanero Tex.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BIFO,Biafo Industries Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BIFO,Biafo Industries,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BIFO,Biafo IndustriesXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BIFO,Biafo Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BIIC,Business & Industrial Insurance Company,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BIIC,Business Insurance,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117023,7 +117024,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BOP,The Bank of Punjab,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BPBL,Balochistan Particle Board Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BPL,Burshane LPG (Pakistan) Limited,PSX,Stock,active,exchange_directory,true,,,Energy
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BPL,Burshane LPGXB,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BPL,Burshane LPGXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BPL,Burshane LPG (Pakistan) Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BROT,Brothers Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BRR,B.R.R. Guardian Modaraba,PSX,Stock,active,exchange_directory,true,,,
@@ -117039,7 +117040,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BWCL,Bestway Cement Limited,P
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BWCL,Bestway Cement,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BWCL,Bestway Cement Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BWHL,Baluchistan Wheels Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BWHL,Bal.WheelsXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,BWHL,Bal.Wheels,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,BWHL,Baluchistan Wheels Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,BYCO,Byco Petroleum Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Energy
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CASH,Calcorp Limited,PSX,Stock,active,exchange_directory,true,,,Financials
@@ -117049,6 +117050,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CECL,Climax Engineering Compa
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CENI,Century Insurance Company Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CENI,Century Ins.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,CENI,Century Insurance Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CENIR,Century Insurance(R),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CEPB,Century Paper & Board Mills Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CEPB,Century Paper,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,CEPB,Century Paper & Board Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117062,7 +117064,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CHBL,Chenab Limited,PSX,Stock
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CHBL,Chenab Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,CHBL,Chenab Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CHCC,Cherat Cement Company Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CHCC,Cherat Cement,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CHCC,Cherat CementXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,CHCC,Cherat Cement Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CJPL,Crescent Jute Products Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CJPL,Crescent Jute,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117078,7 +117080,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CNERGY,Cnergyico PK  Limited,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CNERGY,Cnergyico PK,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,CNERGY,Cnergyico PK  Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,COLG,Colgate-Palmolive (Pakistan) Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,COLG,Colgate PalmXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,COLG,Colgate Palm,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,COLG,Colgate-Palmolive (Pakistan) Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,COST,(Colony) Sarhad Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CPAL,Capital Assets Leasing Corporation,PSX,Stock,active,exchange_directory,true,,,Financials
@@ -117091,13 +117093,14 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CRTM,The Crescent Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CRTM,Crescent Tex.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CSAP,Crescent Steel & Allied Products Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CSAP,Crescent Steel,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CSAP,Crescent SteelXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CSIL,Crescent Star Insurance Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CSIL,Cres.Star Ins.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,CSIL,Crescent Star Insurance Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CSM,Cresent Standard Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CTM,Colony Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CTM,Colony Tex.Mills Ltd,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,CWHC,Crestwell Healthcare,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CWSM,Chakwal Spinning Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,CYAN,Cyan Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DAAG,Data Agro Limited,PSX,Stock,active,exchange_directory,true,,,Materials
@@ -117117,7 +117120,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DCL,Dewan Cement Limited,PSX,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DCL,Dewan Cement,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DCM,Dawood Capital Management Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DCR,Dolmen City REIT,PSX,Stock,active,exchange_directory,true,,,Real Estate
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DCR,Dolmen City,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DCR,Dolmen CityXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DCTL,Dadabhoy Construction Technology Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DCTL,Dadabhoy Const.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DEL,Dawood Equities Limited,PSX,Stock,active,exchange_directory,true,,,Financials
@@ -117130,11 +117133,11 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DFSM,Dewan Farooque Spinning 
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DFSM,Dewan Farooque Sp.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,DFSM,Dewan Farooque Spinning Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DGKC,D.G. Khan Cement Company Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DGKC,D.G.K.Cement,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DGKC,D.G.K.CementXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,DGKC,D.G. Khan Cement Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DHPL,DH Partners Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DIIL,Diamond Industries Limited,PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DIIL,Diamond Ind.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DIIL,Diamond Ind.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,DIIL,Diamond Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DINT,Din Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DINT,Din Textile,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117154,7 +117157,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DNCC,Dandot Cement Company Li
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DNCC,Dandot Cement,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,DNCC,Dandot Cement Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DOL,Descon Oxychem Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DOL,Descon Oxychem,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DOL,Descon OxychemXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,DOL,Descon Oxychem Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DOLCPS,Descon Oxychem Limited (12%Non-Voting Pref),PSX,Stock,active,exchange_directory,true,,,Materials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DOMF,Dominion Stock Fund Limited,PSX,Stock,active,exchange_directory,true,,,
@@ -117177,13 +117180,13 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DWTM,Dewan Textile Mills Limi
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DWTM,Dewan Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,DWTM,Dewan Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,DYNO,Dynea Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DYNO,Dynea Pakistan,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,DYNO,Dynea PakistanXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,DYNO,Dynea Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ECOP,Ecopack Limited,PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ECOP,ECOPACK Ltd,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ECOP,ECOPACK LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ECOP,Ecopack Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,EFERT,Engro Fertilizers Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,EFERT,Engro Fertert,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,EFERT,Engro FertertXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,EFERT,Engro Fertilizers Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,EFGH,EFG Hermes Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,EFOODS,Engro Foods Limited,PSX,Stock,active,exchange_directory,true,,,
@@ -117197,7 +117200,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ELCM,Elahi Cotton Mills Limit
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ELCM,Elahi Cotton,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ELCM,Elahi Cotton Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ELSM,Ellcot Spinning Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ELSM,Ellcot Spinning,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ELSM,Ellcot SpinningXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ELSM,Ellcot Spinning Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,EMCO,Emco Industries Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,EMCO,EMCO Industries,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117214,7 +117217,7 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,EPCLPS,Engro Poly(Pref),PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,EPCLPS,Engro Poly (PR),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,EPQL,Engro Powergen Qadirpur Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,EPQL,Engro Powergen,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,EPQL,Engro PowergenXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,EPQL,Engro Powergen Qadirpur Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ESBL,Escorts Investment Bank Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ESBL,Escorts Bank,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117241,7 +117244,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FATIMA,Fatima Fertilizer Comp
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FATIMA,Fatima Fert,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,FATIMA,Fatima Fertilizer Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FCCL,Fauji Cement Company Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FCCL,Fauji CementXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FCCL,Fauji Cement,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FCEL,First Capital Equities Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FCEL,First Cap.Equit,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FCEPL,Frieslandcampina Engro Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
@@ -117251,7 +117254,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FCIBL,First Credit and Invest
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FCIBL,F.Credit & Inv,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,FCIBL,First Credit and Investment Bank Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FCL,Fast Cables Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FCL,Fast Cables Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FCL,Fast Cables Ltd.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FCONM,First Constellation Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FCONM,Constellation M,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FCSC,First Capital Securities Corporation,PSX,Stock,active,exchange_directory,true,,,Financials
@@ -117265,12 +117268,12 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FECM,First Elite Capital Moda
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FECM,Elite Cap.Mod,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,FECM,First Elite Capital Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FECTC,Fecto Cement Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FECTC,Fecto Cement,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FECTC,Fecto CementXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,FECTC,Fecto Cement Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FEM,First Equity Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FEM,Equity Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FEROZ,Ferozsons Laboratories Limited,PSX,Stock,active,exchange_directory,true,,,Health Care
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FEROZ,Ferozsons (Lab),PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FEROZ,Ferozsons (Lab)XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,FEROZ,Ferozsons Laboratories Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FFBL,Fauji Fertilizer Bin Qasim Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FFC,Fauji Fertilizer Company Limited,PSX,Stock,active,exchange_directory,true,,,Materials
@@ -117294,7 +117297,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FIM,First Investec Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FIM,First Inv. Mod,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FIMM,First Imrooz Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FIMM,Imrooz Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FIMM,Imrooz ModarabaXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,FIMM,First Imrooz Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FLYNG,Flying Cement Company Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FLYNG,Flying Cement,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117331,14 +117334,14 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FTSM,First Tri-Star Modaraba,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FTSM,Tri-Star 1st Mod.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FUDLM,First UDL Modaraba,PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,FZCM,Fazal Cloth Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FZCM,Fazal Cloth,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,FZCM,Fazal ClothXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,FZCM,Fazal Cloth Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GADT,Gadoon Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GADT,Gadoon TextileXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GADT,Gadoon Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,GADT,Gadoon Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GAIL,Ghani Automobile Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GAL,Ghandhara Automobiles Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GAL,Ghandhara Automobile,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GAL,Ghandhara Auto,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GAMON,Gammon Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GAMON,Gammon Pak,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,GAMON,Gammon Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117360,7 +117363,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GDL,Ghani Dairies Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GDL,Ghani Dairies Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GEMBCEM,Burj Clean Energy Modaraba(GEM),PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GEMBCEM,Burj Clean Energy,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GEMBCEM,Burj Clean EnergyXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,GEMBCEM,Burj Clean Energy Modaraba(GEM),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GEMBLUEX,Blue-Ex Limited (GEM),PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GEMMEL,Mughal Energy Limited(GEM),PSX,Stock,active,exchange_directory,true,,,Utilities
@@ -117389,14 +117392,14 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GGL,Ghani Global Holdings Lim
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GGL,Ghani Glo Hol,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GGLR1,Ghani Global(R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GHGL,Ghani Glass Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GHGL,Ghani Glass Ltd,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GHGL,Ghani Glass LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,GHGL,Ghani Glass Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GHNI,Ghandhara Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GHNI,Ghandhara Ind.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,GHNI,Ghandhara Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GHNL,Ghandhara Nissan Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GIL,Good Luck Industries Ltd.,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GIL,Goodluck Ind.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GIL,Goodluck Ind.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GLAT,Glamour Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GLAXO,GlaxoSmithKline Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Health Care
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GLAXO,GlaxoSmithKline,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117428,7 +117431,7 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GUTM,Gulistan Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GUTM,Gulistan Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GVGL,Ghani Value Glass Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GVGL,Ghani Value Glass,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GVGL,Ghani Value GlassXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,GVGL,Ghani Value Glass Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,GWLC,Gharibwal Cement Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,GWLC,Gharibwal Cement,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117443,7 +117446,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HAEL,Hala Enterprises Limited
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HAEL,Hala Enterprise,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,HAEL,Hala Enterprises Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HAFL,Hafiz Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HAFL,Hafiz Limited,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HAFL,Hafiz LimitedXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,HAFL,Hafiz Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HAJT,Hajra Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HAJT,Hajra Textile,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117500,11 +117503,11 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HSMPSR,Husein Sugar(R),PSX,St
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HSPI,Huffaz Seamless Pipe Industries Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HSPI,Huffaz Seamless,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HTL,Hi-Tech Lubricants Limited,PSX,Stock,active,exchange_directory,true,,,Energy
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HTL,HI-Tech Lub.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HTL,HI-Tech Lub.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HUBC,The Hub Power Company Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HUBC,Hub Power Co.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HUBC,Hub Power Co.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HUMNL,Hum Network Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HUMNL,Hum Network,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HUMNL,Hum NetworkXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,HUMNL,Hum Network Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,HUSI,Husein Industries Limited,PSX,Stock,active,exchange_directory,true,,,Real Estate
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,HUSI,Hussain Industries,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117527,7 +117530,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ICIBL,Invest Capital Investme
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ICIBL,Invest Bank,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ICIBL,Invest Capital Investment Bank Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ICL,Ittehad Chemicals Limted,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ICL,Ittehad Chemicals,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ICL,Ittehad ChemicalsXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IDEAL,Ideal Dynamics Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IDEAL,Ideal Dynamics Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IDRT,Idrees Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
@@ -117551,7 +117554,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ILP,Interloop Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ILTM,Island Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IMAGE,Image Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IMAGE,Image Pakistan,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IMAGE,Image PakistanXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,IMAGE,Image Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IMAGER1,Image Pak Ltd(R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IML,Imperial  Limited,PSX,Stock,active,exchange_directory,true,,,Financials
@@ -117561,26 +117564,26 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IMS,Intermarket Securities Li
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IMS,Intermarket Sec.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IMSL,Imperial Sugar Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,INDU,Indus Motor Company Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,INDU,Indus Motor Co.XD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,INDU,Indus Motor Co.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,INIL,International Industries Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,INIL,Int. Ind.Ltd.XD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,INIL,Int. Ind.Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,INIL,International Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,INKL,International Knitwear Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,INKL,Int.Knitwear,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,INKL,International Knitwear Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,INMF,Inv. Mutual Fund,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IPAK,International Packaging Films Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IPAK,Int. Packaging,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IPAK,Int. PackagingXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,IPAK,International Packaging Films Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,IREIT,Image REIT,PSX,Stock,active,exchange_directory,true,,,Real Estate
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IREIT,Image REITXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,IREIT,Image REIT,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,IREIT,Image Reit,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ISHT,Ishtiaq Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ISIL,Ismail Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ISIL,Ismail Ind.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ISIL,Ismail Ind.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ISIL,Ismail Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ISL,International Steels Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ISL,Inter.Steel LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ISL,Inter.Steel Ltd,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ISL,International Steels Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ISTM,Ishaq Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ITANZ,Itanz Technologies Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
@@ -117603,7 +117606,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,JGICL,Jubilee General Insuran
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JGICL,Jubilee Gen.Ins,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,JGICL,Jubilee General Insurance Company Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,JKSM,J.K. Spinning Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JKSM,J.K.SpinningXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JKSM,J.K.Spinning,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,JLICL,Jubilee Life Insurance Company Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JLICL,Jubile Life Ins,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,JLICL,Jubilee Life Insurance Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117638,15 +117641,15 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,JUBS,Jubilee Spinning & Weavi
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JUBS,Jubilee Spinning,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,JUBS,Jubilee Spinning & Weaving Mills Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,JVDC,Javedan Corporation Limited,PSX,Stock,active,exchange_directory,true,,,Real Estate
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JVDC,Javedan Corp.XD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JVDC,Javedan Corp.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,JVDC,Javedan Corporation Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,JVDCPS,Javedan Corporation (Pref),PSX,Stock,active,exchange_directory,true,,,Real Estate
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JVDCPS,JavedanCorp(PR)XD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,JVDCPS,JavedanCorp(PR),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KACM,Karim Cotton Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KAKL,Kaiser Arts & Krafts Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KAKL,Kaiser Art,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KAPCO,Kot Addu Power Company Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KAPCO,Kot Addu Power,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KAPCO,Kot Addu PowerXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,KAPCO,Kot Addu Power Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KASBM,KASB Modaraba,PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KCL,Karam Ceramics Limited,PSX,Stock,active,exchange_directory,true,,,Materials
@@ -117674,7 +117677,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KOHP,Kohinoor Power Company L
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KOHP,Kohinoor Power,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,KOHP,Kohinoor Power Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KOHTM,Kohat Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KOHTM,Kohat Textile,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KOHTM,Kohat TextileXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,KOHTM,Kohat Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KOIL,Kohinoor Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KOIL,Kohinoor Ind.,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117695,7 +117698,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,KTML,Kohinoor Textile Mills L
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,KTML,Kohinoor Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,KTML,Kohinoor Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,LCI,Lucky Core Industries Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,LCI,Lucky Core Ind.XD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,LCI,Lucky Core Ind.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,LCI,Lucky Core Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,LEUL,Leather Up Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,LEUL,Leather Up Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117725,10 +117728,10 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,LSEFSL,LSE Financial Services Limited.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,LSEPL,LSE Proptech Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,LSEVL,LSE Ventures Limited,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,LSEVL,LSE Ventures Ltd,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,LSEVL,LSE Ventures LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,LSEVL,LSE Ventures Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,LUCK,Lucky Cement Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,LUCK,Lucky CementXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,LUCK,Lucky Cement,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,LUCK,Lucky Cement Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MACFL,MACPAC Films Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MACFL,MACPAC Films,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117743,7 +117746,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,MCB,MCB Bank Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MCBAH,MCB-Arif Habib Savings and Invest,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MCBIM,MCB Investment Management Limited.,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MCBIM,MCB Inv MGT,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MCBIM,MCB Inv MGTXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,MCBIM,MCB Investment Management Limited.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MDTL,Media Times Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MDTL,Media Times Ltd,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117792,25 +117795,25 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MSCL,Metropolitan Steel Corporation Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MSCL,Metro Steel,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MSOT,Masood Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MSOT,Masood Textile,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MSOT,Masood TextileXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,MSOT,Masood Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MSOTPS,Masood Textile (Pref),PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MSOTPS,Masood (PR),PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MSOTPS,Masood (PR)XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MTIL,Mian Textile Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MTL,Millat Tractors Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MTL,Millat Tractors,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MTL,Millat TractorsXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MUBT,Mubarak Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MUBT,Mubarak Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MUGHAL,Mughal Iron & Steel Industries Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MUGHAL,Mughal Iron,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MUGHAL,Mughal IronXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,MUGHAL,Mughal Iron & Steel Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MUGHALC,Mughal Iron & Steel Industries Ltd(C),PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MUGHALC,Mughal Iron(C),PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MUGHALC,Mughal Iron(C)XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,MUGHALC,Mughal Iron & Steel Industries Ltd(C),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MUGHALR1,Mughal Iron (R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MUKT,Mukhtar Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MUREB,Murree Brewery Company Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MUREB,Murree Brewery,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MUREB,Murree BreweryXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,MUREB,Murree Brewery Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MWMP,Mandviwala Mauser Plastic Industries,PSX,Stock,active,exchange_directory,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,MWMP,Mandviwala,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117822,10 +117825,10 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,MZSM,Mirza Sugar Mills Limite
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NAFL,National Fibres Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NAFL,National Fiber,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NAGC,Nagina Cotton Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NAGC,Nagina Cotton,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NAGC,Nagina CottonXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NAGC,Nagina Cotton Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NATF,National Foods Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NATF,National Foods,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NATF,National FoodsXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NATF,National Foods Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NATM,Nadeem Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NATM,Nadeem Textile,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117835,22 +117838,23 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NBPGETF,NBP Pakistan  Growth 
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NBPGETF,NBP Pakistan G ETF,PSX,ETF,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NBPGETF,NBP Pakistan  Growth ETF,PSX,ETF,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NCL,Nishat Chunian Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NCL,Nishat (Chun.),PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NCL,Nishat (Chun.)XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NCML,Nazir Cotton Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NCML,Nazir Cotton Mills,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NCML,Nazir Cotton Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NCPL,Nishat Chunian Power Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NCPL,Nishat ChunPower,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NCPL,Nishat ChunPowerXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NCPL,Nishat Chunian Power Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NESTLE,Nestle Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NESTLE,Nestle Pakistan,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NESTLE,Nestle PakistanXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NESTLE,Nestle Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NETSOL,NetSol Technologies Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NETSOL,Netsol Tech.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NETSOL,Netsol Tech.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NETSOL,NetSol Technologies Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NEXT,Next Capital Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NEXT,Next Capital,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NEXT,Next Capital Limited,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NGLEL,Ningbo Green Light,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NIB,NIB Bank Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NICL,Nimir Industrial Chemicals Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NICL,Nimir Ind.Chem,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117862,7 +117866,7 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NMFL,Nirala MSR Foods Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NMFL,Nirala MSR Food,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NML,Nishat Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NML,Nishat Mills Ltd,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NML,Nishat Mills LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NML,Nishat Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NNAR,Naya Nazimabad Apartment REIT,PSX,Stock,active,exchange_directory,true,,,Real Estate
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NNAR,Naya Nazimabad,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117871,7 +117875,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NONS,Noon Sugar Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NORS,Noor Silk Mills Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NPL,Nishat Power Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NPL,Nishat Power,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,NPL,Nishat PowerXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,NPL,Nishat Power Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NPSM,N. P. Spinning Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,NRL,National Refinery Limited,PSX,Stock,active,exchange_directory,true,,,Energy
@@ -117894,17 +117898,17 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,OGDC,Oil & Gas Development Co
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,OGDC,Oil & Gas Dev,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,OGDC,Oil & Gas Development Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,OLPL,OLP Financial Services Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,OLPL,OLP Financial,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,OLPL,OLP FinancialXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,OLPL,OLP Financial Services Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,OLPM,OLP Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,OLPM,OLP Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,OLPM,OLP ModarabaXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,OLPM,OLP Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,OLSM,Olympia Spinning and Weaving Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,OML,Olympia Mills Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,OML,Olympia Mills,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ORIXM,Orix Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ORM,Orient Rental Mod,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ORM,Orient Rental,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ORM,Orient RentalXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,OTSU,Otsuka Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Health Care
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,OTSU,Otsuka Pak,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,OTSU,Otsuka Pakistan Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -117981,6 +117985,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PINL,Premier Insurance Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PINL,Premier Ins.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PINL,Premier Insurance Limited,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PINLR,Premier Insurance(R),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PIOC,Pioneer Cement Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PIOC,Pioneer Cement,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PIOC,Pioneer Cement Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118000,7 +118005,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PMRS,The Premier Sugar Mills,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PNGRS,Pangrio Sugar Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PNSC,Pakistan National Shipping Corporation,PSX,Stock,active,exchange_directory,true,,,Industrials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PNSC,P.N.S.C,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PNSC,P.N.S.CXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PNSC,Pakistan National Shipping Corporation,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,POL,Pakistan Oilfields Limited,PSX,Stock,active,exchange_directory,true,,,Energy
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,POL,Pak Oilfields,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118014,10 +118019,10 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,POWERPS,Power Cement (Pref),P
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,POWERPS,Power Cem (PR),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,POWERR1,Power Cement (R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PPL,Pakistan Petroleum Limited,PSX,Stock,active,exchange_directory,true,,,Energy
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PPL,Pak Petroleum,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PPL,Pak PetroleumXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PPL,Pakistan Petroleum Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PPP,Pakistan Paper Products Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PPP,Pak Paper Prod,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PPP,Pak Paper ProdXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PPVC,Pakistan PVC Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PPVC,Pak.P.V.C.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PPVC,Pakistan PVC Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118028,7 +118033,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PREMA,At-Tahur Limited,PSX,St
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PREMA,At-Tahur Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PREMA,At-Tahur Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PRET,Premium Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PRET,Premium Tex.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PRET,Premium Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PRET,Premium Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PRIB,Prudential Investment Bank Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PRIB,Prud.Inv.Bank,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118038,24 +118043,24 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PRL,Pakistan Refinery Limited
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PRL,Pak Refinery,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PRLR1,Pak Refinery (R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PRWM,Prosperity Weaving Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PRWM,Prosperity Weaving,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PRWM,Prosperity WeavingXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PRWM,Prosperity Weaving Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PSEL,Pakistan Services Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PSEL,Pak Services,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PSEL,Pakistan Services Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PSMC,Pak Suzuki Motor Company Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PSO,Pakistan State Oil Company Limited,PSX,Stock,active,exchange_directory,true,,,Energy
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PSO,P.S.O.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PSO,P.S.O.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PSO,Pakistan State Oil Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PSX,Pakistan Stock Exchange Limited,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PSX,Pak Stock ExchangeXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PSX,Pak Stock Exchange,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PSYL,Pakistan Synthetics Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PSYL,Pak Synthetics,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,PSYL,Pakistan Synthetics Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PTC,Pakistan Telecommunication Company Ltd,PSX,Stock,active,exchange_directory,true,,,Communication Services
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PTC,P.T.C.L.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,PTL,Panther Tyres Ltd.,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PTL,Panther Tyres Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,PTL,Panther Tyres Ltd.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,QTECH,Quantum Data Technologies Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,QTECH,Quantum Data,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,QTECH,Quantum Data Technologies Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118083,7 +118088,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,RMPL,Rafhan Maize Products Co
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,RMPL,Rafhan Maize,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,RMPL,Rafhan Maize Products Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,RPL,Roshan Packages Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,RPL,Roshan Packages,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,RPL,Roshan PackagesXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,RUBY,Ruby Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,RUBY,Ruby Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,RUBY,Ruby Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118101,16 +118106,16 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SANSM,Sanghar Sugar Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SAPL,Sanofi-Aventis Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Health Care
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SAPT,Sapphire Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SAPT,Sapphire Tex.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SAPT,Sapphire Tex.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SAPT,Sapphire Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SARC,Sardar Chemical Industries Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SARC,Sardar Chemical,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SARC,Sardar ChemicalXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SARC,Sardar Chemical Industries Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SASML,Sindh Abadgars Sugar Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SASML,Sindh Abadgar,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SASML,Sindh Abadgars Sugar Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SAZEW,Sazgar Engineering Works Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SAZEW,Sazgar EngineeringXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SAZEW,Sazgar Engineering,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SAZEW,Sazgar Engineering Works Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SBL,Samba Bank Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SBL,Samba Bank,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118125,23 +118130,23 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SDIL,Saleem Denim Industries 
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SDOT,Sadoon Textile Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SDOT,Sadoon Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SEARL,The Searle Company Limited,PSX,Stock,active,exchange_directory,true,,,Health Care
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SEARL,The Searle Company,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SEARL,The Searle CompanyXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SEARL,The Searle Company Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SEARLR1,Searl Company(R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SEL,Sitara Energy Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SEL,Sitara Energy,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SELECT,Select Technologies Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SELECT,Select Technologies,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SELECT,Select TechnoXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SEPCO,Southern Electric Power Company Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SEPL,Security Papers Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SEPL,Security PaperXD,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SEPL,Security Paper,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SERF,Service Fabrics Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SERT,Service Industries Textiles Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SERT,Service Ind Tex,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SFAT,Safa Textiles Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SFAT,Safa Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SFL,Sapphire Fibres Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SFL,Sapphire Fiber,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SFL,Sapphire FiberXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SFLL,SFL Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SGABL,SG.Allied Businesses Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SGABL,SG.Allied Businesses,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118149,7 +118154,6 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SGF,Service GlobalFootwear Li
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SGF,Service Global,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SGFL,S.G.Fiber Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SGPL,S.G. Power Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SGPL,S.G.Power,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SGPL,S.G. Power Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SHCI,Shaffi Chemical Industries Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHCI,Shaffi Chemical,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118157,14 +118161,14 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SHCM,Shadman Cotton Mills Lim
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHCM,Shadman Cotton,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SHCM,Shadman Cotton Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SHDT,Shadab Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHDT,Shadab Textile,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHDT,Shadab TextileXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SHDT,Shadab Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SHEL,Shell Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,Energy
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SHEZ,Shezan International Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHEZ,Shezan Inter.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHEZ,Shezan Inter.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SHEZ,Shezan International Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SHFA,Shifa International Hospitals Limited,PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHFA,Shifa Int.Hospital,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHFA,Shifa Int.HospitalXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SHFA,Shifa International Hospitals Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SHJS,Shahtaj Sugar Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SHJS,Shahtaj Sugar,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118184,11 +118188,11 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SIEM,Siemens (Pakistan) Engineering,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SILK,Silkbank Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SINDM,Sindh Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SINDM,Sindh Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SINDM,Sindh ModarabaXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SINDM,Sindh Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SING,Singer Pakistan,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SITC,Sitara Chemical Industries Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SITC,Sitara Chemical,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SITC,Sitara ChemicalXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SJTM,Sajjad Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SKRS,Sakrand Sugar Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SKRS,Sakrand Sugar,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118210,7 +118214,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SMBL,Summit Bank Limited,PSX,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SMBLCPSA,Summit Bank,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SMBLCPSB,Summit Bank B,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SMCPL,Safe Mix Concrete Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SMCPL,Safe Mix Con.Ltd,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SMCPL,Safe Mix Con.LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SMCPL,Safe Mix Concrete Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SML,Shakarganj Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SML,Shakarganj Limited,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118225,9 +118229,8 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SNGP,Sui Northern Gas Pipelin
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SNGP,Sui North Gas,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SNGP,Sui Northern Gas Pipelines Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SOYASUP,Agro Processors & Atmospheric Gases Ltd,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SOYASUP,Agro Processors,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SOYASUP,Agro ProcessorsXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SPAC1,LSE SPAC-I Limited,PSX,Stock,active,exchange_directory,true,,,Financials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SPAC1,LSE SPAC-I Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SPAC2,LSE SPAC-II Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SPAC2,LSE SPAC-II,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SPCL,Saudi Pak Consultancy Company Limited,PSX,Stock,active,exchange_directory,true,,,Financials
@@ -118238,12 +118241,12 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SPL,Sitara Peroxide Limited,P
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SPL,Sitara Peroxide,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SPLC,Saudi Pak Leasing Company Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SPSL,Sitara Petroleum Service Limited,PSX,Stock,active,exchange_directory,true,,,Energy
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SPSL,Sitara Petroleum,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SPSL,Sitara PetroleumXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SPWL,Saif Power Limited,PSX,Stock,active,exchange_directory,true,,,Utilities
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SPWL,Saif Power Ltd,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SPWL,Saif Power Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SRR,Signature Residency REIT,PSX,Stock,active,exchange_directory,true,,,Real Estate
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SRR,Signature Residency,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SRR,Signature ResidXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SRSM,Sargodha Spinning Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SRVI,Service Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SRVI,Service Ind.Ltd,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118256,16 +118259,16 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SSML,Saritow Spinning Mills L
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SSML,Saritow Spinning,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SSML,Saritow Spinning Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SSOM,S.S.Oil Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SSOM,S.S.Oil,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SSOM,S.S.OilXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SSOM,S.S.Oil Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,STCL,Shabbir Tiles & Ceramics Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STCL,Shabbir Tiles,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,STCL,Shabbir Tiles & Ceramics Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,STJT,Shahtaj Textile Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STJT,Shahtaj Textile,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STJT,Shahtaj TextileXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,STJT,Shahtaj Textile Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,STL,Supernet Technologies Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STL,Supernet Techno,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STL,Supernet TechnoXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,STL,Supernet Technologies Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STLR,Supernet Tech(R),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,STML,Shams Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
@@ -118275,7 +118278,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,STPL,Siddiqsons Tin Plate Lim
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STPL,Siddiqsons Tin,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,STPL,Siddiqsons Tin Plate Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,STYLERS,Stylers International Limited,PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STYLERS,Stylers Int.Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,STYLERS,Stylers Int.Ltd.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,STYLERS,Stylers International Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SUCM,Sunshine Cotton Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SUHJ,Suhail Jute Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
@@ -118283,7 +118286,7 @@ psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SURAJ,Suraj Ghee Industries Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SURAJ,Suraj Ghee,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SURC,Suraj Cotton Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SURC,Suraj Cotton Mills,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SURC,Suraj Cotton MillsXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,SURC,Suraj Cotton Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SUTM,Sunrays Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SUTM,Sunrays Textile,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118291,7 +118294,7 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SWL,Standard Worldwide Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SWL,Standard Worldwide,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SYM,Symmetry Group Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SYM,Symmetry Group Ltd,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SYM,Symmetry Group LtdXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SYS,Systems Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,SYS,Systems Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,SZTM,Shahzad Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
@@ -118300,7 +118303,7 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TAJT,Taj Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,TAJT,Taj Textile,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TATM,Tata Textile Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,TATM,Tata Textile,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,TATM,Tata TextileXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,TATM,Tata Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TBL,Treet Battery Limited.,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,TBL,Treet Battery Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118309,7 +118312,6 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TCORP,Tariq Corporation Limit
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,TCORP,Tariq Corp Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,TCORP,Tariq Corporation Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TCORPCPS,Tariq Corporation Limited(Pref),PSX,Stock,active,exchange_directory,true,,,Consumer Staples
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,TCORPCPS,Tariq Corp (PR),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TCORPR1,Tariq Corporation (Pvt) Ltd (R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TDIL,TPL Direct Insurance Limited,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,TELE,Telecard Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
@@ -118389,7 +118391,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,UCAPM,Unicap Modaraba,PSX,Sto
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,UCAPM,Unicap Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,UCAPM,Unicap Modaraba,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,UDLI,UDL International Limited,PSX,Stock,active,exchange_directory,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,UDLI,UDL Int.Ltd.,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,UDLI,UDL Int.Ltd.XD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,UDLI,UDL International Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,UDPL,United Distributors Pakistan Limited,PSX,Stock,active,exchange_directory,true,,,
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,UDPL,United Distributor,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118414,7 +118416,7 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,WAHDAT,Wahdat Poultry Farm Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Staples
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,WAHDAT,Wahdat Poultry Farm,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,WAHN,Wah Noble Chemicals Limited,PSX,Stock,active,exchange_directory,true,,,Materials
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,WAHN,Wah-Noble,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,WAHN,Wah-NobleXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,WAHN,Wah Noble Chemicals Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,WASL,Wasl Mobility Modaraba,PSX,Stock,active,exchange_directory,true,,,Financials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,WASL,Wasl Mobility Mod,PSX,Stock,active,listed_companies_subset,true,,,
@@ -118425,7 +118427,6 @@ psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,WAVESAPP,Waves Home Appliances Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,WAVESAPP,Waves Home App,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,WAVESAPP,Waves Home Appliances Limited,PSX,Stock,active,listed_companies_subset,true,,,
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,WAVESAPPR,Waves Home (R),PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,WAVESR1,Waves Singer Pakistan Limited (R),PSX,Stock,active,exchange_directory,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,WHALE,Waves Home Appliances Limited,PSX,Stock,active,exchange_directory,true,,,Industrials
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,WTL,Worldcall Telecom Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
@@ -118438,7 +118439,7 @@ psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ZAHID,Zahidjee Textile Mills 
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ZAHID,ZahidJee Tex.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_symbol_name_daily,PSX,https://dps.psx.com.pk/download/symbol_name/2026-08-19.zip,ZAHID,Zahidjee Textile Mills Limited,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ZAL,Zarea Limited,PSX,Stock,active,exchange_directory,true,,,Communication Services
-psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ZAL,Zarea Limited,PSX,Stock,active,listed_companies_subset,true,,,
+psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ZAL,Zarea LimitedXD,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ZELP,Zeal Pak Cement Factory Limited,PSX,Stock,active,exchange_directory,true,,,Materials
 psx_listed_companies,PSX,https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies,ZELP,Zeal Pak.,PSX,Stock,active,listed_companies_subset,true,,,
 psx_dps_symbols,PSX,https://dps.psx.com.pk/symbols,ZHCM,Zahur Cotton Mills Limited,PSX,Stock,active,exchange_directory,true,,,Consumer Discretionary
