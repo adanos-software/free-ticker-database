@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-30T08:36:39Z",
+  "generated_at": "2026-10-30T13:29:06Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2133,
   "decision_rows": 7032,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1375,
+    "kept_listing_keyed_identifier": 1374,
     "proposed_clear_conflicting_identifier": 1103,
-    "quarantined_unresolved_identifier": 4554
+    "quarantined_unresolved_identifier": 4555
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1103,
-  "quarantined_rows": 4554,
-  "retained_rows": 1375,
+  "quarantined_rows": 4555,
+  "retained_rows": 1374,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -1913,32 +1913,6 @@
       "retained_isin": "AU0000250250"
     },
     {
-      "conflict_id": "a933a7f6f10cd1c2821a",
-      "isin": "AU0000253502",
-      "listing_key": "ASX::RGN",
-      "ticker": "RGN",
-      "exchange": "ASX",
-      "name": "Region Group",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000253502"
-    },
-    {
-      "conflict_id": "a933a7f6f10cd1c2821a",
-      "isin": "AU0000253502",
-      "listing_key": "NEO::RGN",
-      "ticker": "RGN",
-      "exchange": "NEO",
-      "name": "Rush Gold Corp",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU0000253502"
-    },
-    {
       "conflict_id": "654055f9a9eb29f5c9dd",
       "isin": "AU0000340143",
       "listing_key": "ASX::AZ9",
@@ -3311,9 +3285,9 @@
       "exchange": "HKEX",
       "name": "KANGDA FOOD",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "BMG2110F1023"
     },
     {
@@ -3322,11 +3296,11 @@
       "listing_key": "SGX::P74",
       "ticker": "P74",
       "exchange": "SGX",
-      "name": "ChinaKangdaFood",
+      "name": "Shengrong Holding Ltd",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
-      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "official_exact_listing_match",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "BMG2110F1023"
     },
     {
@@ -62259,6 +62233,58 @@
       "retained_isin": "SGXE96528042"
     },
     {
+      "conflict_id": "d4990d017579015025c7",
+      "isin": "SGXZ81555062",
+      "listing_key": "NYSE MKT::GNS",
+      "ticker": "GNS",
+      "exchange": "NYSE MKT",
+      "name": "Genius Group Ltd",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "SGXZ81555062"
+    },
+    {
+      "conflict_id": "d4990d017579015025c7",
+      "isin": "SGXZ81555062",
+      "listing_key": "OTC::NASO",
+      "ticker": "NASO",
+      "exchange": "OTC",
+      "name": "Naples Soap Company, Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "SGXZ81555062"
+    },
+    {
+      "conflict_id": "c176c6b27df673567c87",
+      "isin": "TH0476010Y03",
+      "listing_key": "SET::PTECH",
+      "ticker": "PTECH",
+      "exchange": "SET",
+      "name": "Plus Tech Innovation PCL",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "TH0476010Y03"
+    },
+    {
+      "conflict_id": "c176c6b27df673567c87",
+      "isin": "TH0476010Y03",
+      "listing_key": "SET::TBSP",
+      "ticker": "TBSP",
+      "exchange": "SET",
+      "name": "TBSP PUBLIC COMPANY LIMITED",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "TH0476010Y03"
+    },
+    {
       "conflict_id": "e1703a6a8f9bf0262f4b",
       "isin": "TH0902010014",
       "listing_key": "FSX::T6W",
@@ -91403,32 +91429,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "ZAE000191417"
-    },
-    {
-      "conflict_id": "39dfefabe0817f0a0c34",
-      "isin": "ZAE000304796",
-      "listing_key": "FSX::2T20",
-      "ticker": "2T20",
-      "exchange": "FSX",
-      "name": "FAIRVEST LTD.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000304796"
-    },
-    {
-      "conflict_id": "39dfefabe0817f0a0c34",
-      "isin": "ZAE000304796",
-      "listing_key": "JSE::FTB",
-      "ticker": "FTB",
-      "exchange": "JSE",
-      "name": "Arrowhead Properties Ltd B",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000304796"
     }
   ]
 }
