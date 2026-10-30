@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-29T16:18:33Z",
-  "rows": 170960,
+  "generated_at": "2026-10-30T13:27:29Z",
+  "rows": 170921,
   "exchanges": [
     "ADX",
     "AMS",
@@ -90,7 +90,7 @@
   ],
   "source_counts": {
     "adx_market_watch": 122,
-    "euronext_etfs": 4192,
+    "euronext_etfs": 4191,
     "euronext_equities": 3832,
     "asx_listed_companies": 1987,
     "asx_investment_products": 471,
@@ -150,8 +150,8 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
-    "nasdaq_listed": 5617,
-    "sec_company_tickers_exchange": 10209,
+    "nasdaq_listed": 5616,
+    "sec_company_tickers_exchange": 10203,
     "nasdaq_trading_system_adds_deletes": 6,
     "cboe_canada_listing_directory": 447,
     "ngx_company_profile_directory": 130,
@@ -225,8 +225,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5617,
-      "generated_at": "2026-10-27T14:21:49Z"
+      "rows": 5616,
+      "generated_at": "2026-10-30T13:27:29Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
@@ -234,7 +234,7 @@
       "official": true,
       "mode": "network",
       "rows": 7670,
-      "generated_at": "2026-10-27T14:21:49Z"
+      "generated_at": "2026-10-30T13:27:29Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -373,7 +373,7 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 4192,
+      "rows": 4191,
       "generated_at": "2026-10-11T12:38:35Z"
     },
     "jpx_listed_issues": {
@@ -1340,8 +1340,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 10209,
-      "generated_at": "2026-10-27T14:21:49Z"
+      "rows": 10203,
+      "generated_at": "2026-10-30T13:27:29Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1648,50 +1648,16 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-10-29T12:50:15Z",
+    "generated_at": "2026-10-30T13:27:29Z",
     "selected_source_keys": [
-      "asx_investment_products",
-      "athex_sector_classification",
-      "bme_growth_prices",
-      "bmv_etf_search",
-      "bse_bw_listed_companies",
-      "bse_hu_listed_companies",
-      "bursa_closing_prices",
-      "bursa_equity_isin",
-      "bvb_fund_units_directory",
-      "bvl_issuers_directory",
-      "byma_equity_details",
-      "deutsche_boerse_etfs_etps",
-      "deutsche_boerse_listed_companies",
-      "luse_listed_companies",
-      "nasdaq_nordic_stockholm_trackers",
-      "nasdaq_trading_system_adds_deletes",
-      "newconnect_listed_companies",
-      "ngm_companies_page",
-      "ngx_equities_price_list",
-      "otc_markets_security_profile"
+      "nasdaq_listed",
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "asx_investment_products": "network",
-      "athex_sector_classification": "network",
-      "bme_growth_prices": "network",
-      "bmv_etf_search": "network",
-      "bse_bw_listed_companies": "network",
-      "bse_hu_listed_companies": "network",
-      "bursa_closing_prices": "unavailable",
-      "bursa_equity_isin": "unavailable",
-      "bvb_fund_units_directory": "network",
-      "bvl_issuers_directory": "network",
-      "byma_equity_details": "network",
-      "deutsche_boerse_etfs_etps": "network",
-      "deutsche_boerse_listed_companies": "network",
-      "luse_listed_companies": "unavailable",
-      "nasdaq_nordic_stockholm_trackers": "network",
-      "nasdaq_trading_system_adds_deletes": "network",
-      "newconnect_listed_companies": "network",
-      "ngm_companies_page": "network",
-      "ngx_equities_price_list": "network",
-      "otc_markets_security_profile": "network"
+      "nasdaq_listed": "network",
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }
