@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-30T13:29:06Z",
+  "generated_at": "2026-10-30T16:04:58Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1981,
+  "reconciled_rows": 1983,
   "applied_rows": 0,
-  "proposed_rows": 1981,
+  "proposed_rows": 1983,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -14572,6 +14572,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "HKEX::01560",
+      "action": "proposed",
+      "ticker": "01560",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "isin": "KYG8508A1186",
+      "old_name": "STAR GROUP ASIA",
+      "new_name": "STAR GROUP-NEW",
+      "source_key": "hkex_securities_list",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "observation_id": "2e2128748ae2c3c069c50ec6",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "HKEX::01657",
       "action": "proposed",
       "ticker": "01657",
@@ -14614,6 +14629,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
       "observation_id": "05afeea0fb9c929657e7f416",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "HKEX::02942",
+      "action": "proposed",
+      "ticker": "02942",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "isin": "KYG8508A1269",
+      "old_name": "STAR GROUP ASIA",
+      "new_name": "STAR GROUP-OLD",
+      "source_key": "hkex_securities_list",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "observation_id": "928a74b367910e1d6a0a57e2",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

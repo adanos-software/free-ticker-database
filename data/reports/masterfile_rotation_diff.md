@@ -1,37 +1,39 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-10-29T12:59:51Z`
-- New rows: `136`
-- Vanished rows: `24`
-- Changed rows: `33`
+- Generated at: `2026-10-30T13:10:05Z`
+- New rows: `26`
+- Vanished rows: `31`
+- Changed rows: `123`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 1 |
-| isin_change | 2 |
-| name_change | 30 |
+| isin_change | 5 |
+| name_change | 123 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| asx_investment_products | 3 |
-| bvb_fund_units_directory | 1 |
-| deutsche_boerse_etfs_etps | 91 |
-| deutsche_boerse_listed_companies | 3 |
-| nasdaq_trading_system_adds_deletes | 6 |
-| newconnect_listed_companies | 1 |
-| otc_markets_security_profile | 31 |
+| adx_market_watch | 2 |
+| bme_security_prices_directory | 4 |
+| cboe_canada_listing_directory | 3 |
+| cse_lk_company_info_summary | 1 |
+| euronext_equities | 2 |
+| hkex_securities_list | 4 |
+| nasdaq_listed | 4 |
+| pse_cz_shares_directory | 1 |
+| psx_listed_companies | 5 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| deutsche_boerse_etfs_etps | 10 |
-| deutsche_boerse_listed_companies | 3 |
-| nasdaq_trading_system_adds_deletes | 9 |
-| newconnect_listed_companies | 1 |
-| ngx_equities_price_list | 1 |
+| bme_security_prices_directory | 4 |
+| euronext_equities | 6 |
+| hkex_securities_list | 2 |
+| krx_etf_finder | 3 |
+| nasdaq_listed | 10 |
+| psx_listed_companies | 6 |
