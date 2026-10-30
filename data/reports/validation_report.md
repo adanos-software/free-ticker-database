@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-10-30T08:44:50Z`
+Generated at: `2026-10-30T13:23:40Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 65,659 |
-| listing_rows | 97,719 |
-| adanos_reference_rows | 65,659 |
-| entry_quality_rows | 97,719 |
+| ticker_rows | 65,661 |
+| listing_rows | 97,727 |
+| adanos_reference_rows | 65,661 |
+| entry_quality_rows | 97,727 |
 | error_gates | 87 |
-| failed_error_gates | 0 |
+| failed_error_gates | 2 |
 | info_gates | 5 |
 
 ## Gates
@@ -59,7 +59,7 @@ Status: `PASS`
 | invalid_country_code_rows | error | PASS | 0 | 0 |
 | country_code_mismatch_rows | error | PASS | 0 | 0 |
 | rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
-| country_isin_prefix_mismatch_without_review | error | PASS | 0 | 0 |
+| country_isin_prefix_mismatch_without_review | error | FAIL | 4 | 0 |
 | rows_with_mojibake_names | error | PASS | 0 | 0 |
 | listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
@@ -88,15 +88,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 2 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 683 |  |
-| missing_stock_sector | info | PASS | 709 |  |
+| expected_missing_primary_isin | info | PASS | 680 |  |
+| missing_stock_sector | info | PASS | 711 |  |
 | missing_etf_category | info | PASS | 193 |  |
-| source_gap_rows | info | PASS | 11246 |  |
+| source_gap_rows | info | PASS | 11251 |  |
 | allowed_warn_rows | info | PASS | 33 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -115,4 +115,17 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### country_isin_prefix_mismatch_without_review
+
+- Actual: `4`
+- `ADX::KMCA`
+- `ADX::KDEF`
+- `ADX::KMCA`
+- `ADX::KMCA`
+
+### entry_quality_unexpected_warn_count
+
+- Actual: `2`
+- `ADX::KDEF`
+- `ADX::KMCA`
+

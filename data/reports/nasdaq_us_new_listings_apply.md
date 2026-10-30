@@ -1,15 +1,21 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-10-29T12:59:57Z`
-- New supported rows: `0`
-- Accepted rows: `0`
-- Skipped rows: `0`
+- Generated at: `2026-10-30T13:10:14Z`
+- New supported rows: `4`
+- Accepted rows: `3`
+- Skipped rows: `1`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-No new listings were accepted.
+| Ticker | Exchange | Name | Asset type | Target | Source |
+|---|---|---|---|---|---|
+| ASPE | NASDAQ | Aspen Neuroscience, Inc. - Common Stock | Stock | supplement | nasdaq_listed |
+| BBTX | NASDAQ | Bambusa Therapeutics, Inc. - Common stock | Stock | supplement | nasdaq_listed |
+| NORD | NASDAQ | Nordicus Partners Corporation - Common Stock | Stock | coverage_expansion | nasdaq_listed |
 
 ## Skipped
 
-No supported new rows were skipped.
+| Reason | Rows |
+|---|---:|
+| excluded_non_common_stock | 1 |
