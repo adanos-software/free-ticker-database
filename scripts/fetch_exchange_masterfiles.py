@@ -1315,7 +1315,7 @@ JSE_ETN_LIST_HREF_RE = re.compile(
     re.I,
 )
 LSE_PAGE_NUMBER_RE = re.compile(r'title="Page (\d+)" class="page-number(?: active)?"')
-PSX_XID_RE = re.compile(r'<input[^>]*\bid=["\']XID["\'][^>]*\bvalue=["\']([^"\']+)["\']', re.I)
+PSX_XID_RE = re.compile(r'<input[^>]*\bid=["\']XID["\'][^>]*\bvalue=["\']([^"\']*)["\']', re.I)
 PSX_SECTOR_SELECT_RE = re.compile(
     r'<select[^>]*\bname=["\']sector["\'][^>]*>(?P<body>.*?)</select>',
     re.I | re.S,
@@ -17809,7 +17809,16 @@ def extract_psx_xid(text: str) -> str:
     match = PSX_XID_RE.search(text)
     if not match:
         raise ValueError("Unable to locate PSX XID token")
+    # PSX once issued a per-session XID in this hidden field; the sector lookup now
+    # works with an empty or omitted token, but the input is still present on the page.
     return unescape(match.group(1)).strip()
+
+
+def psx_sector_lookup_params(sector_value: str, xid: str) -> dict[str, str]:
+    params: dict[str, str] = {"sector": sector_value}
+    if xid:
+        params["XID"] = xid
+    return params
 
 
 def extract_psx_sector_options(text: str) -> list[tuple[str, str]]:
@@ -18742,7 +18751,7 @@ def fetch_psx_listed_companies(source: MasterfileSource, session: requests.Sessi
         try:
             response = session.get(
                 PSX_COMPANIES_BY_SECTOR_URL,
-                params={"sector": sector_value, "XID": xid},
+                params=psx_sector_lookup_params(sector_value, xid),
                 headers=psx_request_headers(ajax=True),
                 timeout=REQUEST_TIMEOUT,
             )
@@ -18752,7 +18761,7 @@ def fetch_psx_listed_companies(source: MasterfileSource, session: requests.Sessi
                 raise
             response = requests.get(
                 PSX_COMPANIES_BY_SECTOR_URL,
-                params={"sector": sector_value, "XID": xid},
+                params=psx_sector_lookup_params(sector_value, xid),
                 headers=psx_request_headers(ajax=True),
                 timeout=REQUEST_TIMEOUT,
             )
@@ -19746,7 +19755,7 @@ def fetch_all_sources(
                 source_rows, mode = fetch_source_rows_with_mode(source, session=session)
             rows.extend(source_rows)
             source_modes[source.key] = mode
-        except requests.RequestException as exc:
+        except (requests.RequestException, ValueError) as exc:
             source_modes[source.key] = "unavailable"
             errors.append({"source_key": source.key, "error": str(exc)})
     if include_manual:
