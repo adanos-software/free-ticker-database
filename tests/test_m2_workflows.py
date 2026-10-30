@@ -102,6 +102,9 @@ def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> N
     assert "draft: ${{ github.event_name == 'workflow_dispatch' }}" in workflow
     assert "github.event_name == 'push' && vars.PUBLISH_KAGGLE" in workflow
     assert "github.event_name == 'push' && vars.PUBLISH_HUGGINGFACE" in workflow
+    assert 'python -m pip install "huggingface_hub>=2.0,<3"' in workflow
+    assert "hf upload adanosorg/free-global-stock-ticker-database output/public_dataset/huggingface . --repo-type dataset --token" in workflow
+    assert "huggingface-cli" not in workflow
     assert "cp data/listings.csv /tmp/listings-before.csv" in workflow
 
     validation = workflow.index("python scripts/validate_database.py")
