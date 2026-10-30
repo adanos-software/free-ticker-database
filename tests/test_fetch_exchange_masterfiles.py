@@ -4327,6 +4327,11 @@ def test_extract_psx_xid_and_sector_options() -> None:
     ]
 
 
+def test_extract_psx_xid_accepts_empty_hidden_value() -> None:
+    html = '<input type="hidden" name="XID" id="XID" value="" />'
+    assert extract_psx_xid(html) == ""
+
+
 def test_parse_psx_listed_companies_maps_stock_and_etf_rows() -> None:
     stock_rows = parse_psx_listed_companies(
         [{"symbol_code": "AGTL", "company_name": "AL-Ghazi Tractors"}],
@@ -4430,6 +4435,95 @@ def test_fetch_psx_listed_companies_uses_ajax_sector_lookup() -> None:
             },
             30.0,
         ),
+    ]
+
+
+def test_fetch_psx_listed_companies_omits_xid_when_page_token_is_empty() -> None:
+    source = MasterfileSource(
+        key="psx_listed_companies",
+        provider="PSX",
+        description="PSX listed companies",
+        source_url="https://example.com/psx",
+        format="psx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params, headers, timeout))
+            if url == "https://example.com/psx":
+                return FakeResponse(
+                    """
+                    <input type="hidden" name="XID" id="XID" value="" />
+                    <select name="sector">
+                      <option value="0801">Automobile Assembler</option>
+                    </select>
+                    """
+                )
+            if params == {"sector": "0801"}:
+                return FakeResponse('[{"symbol_code":"AGTL","company_name":"AL-Ghazi Tractors"}]')
+            raise AssertionError(f"Unexpected request: {url} {params}")
+
+    session = FakeSession()
+    rows = fetch_psx_listed_companies(source, session=session)
+
+    assert rows[0]["ticker"] == "AGTL"
+    assert session.calls[1][1] == {"sector": "0801"}
+
+
+def test_fetch_all_sources_continues_when_source_parse_raises_value_error(monkeypatch) -> None:
+    psx_source = next(item for item in OFFICIAL_SOURCES if item.key == "psx_listed_companies")
+    nasdaq_source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_listed")
+
+    def fake_fetch_source_rows_with_mode(source, session=None):
+        if source.key == "psx_listed_companies":
+            raise ValueError("Unable to locate PSX XID token")
+        if source.key == "nasdaq_listed":
+            return [
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": "AAPL",
+                    "name": "Apple Inc.",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            ], "network"
+        raise AssertionError(f"unexpected source {source.key}")
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_source_rows_with_mode",
+        fake_fetch_source_rows_with_mode,
+    )
+
+    rows, summary = fetch_all_sources(
+        include_manual=False,
+        sources=[psx_source, nasdaq_source],
+    )
+
+    assert [row["ticker"] for row in rows] == ["AAPL"]
+    assert summary["source_modes"]["nasdaq_listed"] == "network"
+    assert summary["source_modes"]["psx_listed_companies"] == "unavailable"
+    assert summary["errors"] == [
+        {
+            "source_key": "psx_listed_companies",
+            "error": "Unable to locate PSX XID token",
+        }
     ]
 
 
