@@ -175,5 +175,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          python -m pip install "huggingface_hub[cli]"
-          huggingface-cli upload adanosorg/free-global-stock-ticker-database output/public_dataset/huggingface . --repo-type dataset --token "$HF_TOKEN"
+          python -m pip install "huggingface_hub>=2.0,<3"
+          hf upload adanosorg/free-global-stock-ticker-database output/public_dataset/huggingface . --repo-type dataset --token "$HF_TOKEN"
