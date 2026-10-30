@@ -668,6 +668,7 @@ IVP,NASDAQ,0.98,Official US exchange directory does not list this stale non-comm
 IXAQF,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 JAB,NASDAQ,0.99,Reviewed issuer ticker transition NASDAQ::JAB to NASDAQ::ATLQ; exact evidence is recorded in listing_transitions.csv.
 JACS-U,NYSE,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
+JAGG,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to BBAG (same ISIN US46641Q2416, same_isin transition); JAGG is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 JAIHINDS,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::JAIHINDS to BSE_IN::JAIHIND; exact evidence is recorded in listing_transitions.csv.
 JAX,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
 JBK,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
@@ -680,6 +681,7 @@ JFB,NASDAQ,0.99,Official delisting evidence passed the gated apply path; generat
 JFBRW,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
 JHI,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 JHS,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+JIGB,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to BBCB (same ISIN US46641Q4495, same_isin transition); JIGB is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 JKE,NYSE ARCA,0.99,"ETF curation 2026-10-29: renamed to ILCG (same ISIN US4642871192, symbol_changed transition); JKE is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 JKF,NYSE ARCA,0.99,"ETF curation 2026-10-29: renamed to ILCV (same ISIN US4642881092, symbol_changed transition); JKF is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 JKG,NYSE ARCA,0.99,"ETF curation 2026-10-29: renamed to IMCB (same ISIN US4642882082, symbol_changed transition); JKG is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
@@ -1052,7 +1054,9 @@ REDC,LSE,high,"OpenFIGI ISIN-validation symbol-reconciliation 2026-06-22: Red Ca
 REED,OTC,0.96,"Yahoo Finance resolves this symbol to NYSE American rather than the current exchange, indicating the current listing is stale."
 RELI,NASDAQ,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
 RGFC,NYSE,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
+RGI,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to RSPN (same ISIN US46137V3244, same_isin transition); RGI is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 RGS,NYSE,0.96,"Yahoo Finance resolves this symbol to NasdaqGM rather than the current exchange, indicating the current listing is stale."
+RHS,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to RSPS (same ISIN US46137V3731, same_isin transition); RHS is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 RHT,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
 RILYL,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: BRC Group Holdings, Inc. - Depositary Shares, each representing a 1/1000th fractional interest in a share of Series B Cumulative Perpetual Preferred Stock"
 RILYN,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: BRC Group Holdings, Inc. - 6.50% Senior Notes Due 2026"
@@ -1068,10 +1072,13 @@ RMM,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/righ
 RMMZ,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 RMT,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 RNAM,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: delisted (absent from current NASDAQ Trader master, web+adversarial verified)"
+RNMC,NASDAQ,0.99,"ETF curation 2026-10-30: renamed to FSCS (same ISIN US33738R7531, same_isin transition); RNMC is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
+RNSC,NASDAQ,0.99,"ETF curation 2026-10-30: renamed to FSGS (same ISIN US33738R7465, same_isin transition); RNSC is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 RSHGY,NYSE,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
 RSX,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF or TRACS product.
 RTACU,NASDAQ,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 RTGC,OTC,high,"OpenFIGI ISIN-validation symbol-reconciliation 2026-06-22: Reverse-merger rename+reticker to Bo Qi Yi Hao Holding Group Corp (OTC:BQHG, 2026-02); old symbol RTGC defunct. Business/domicile changed -> needs vetted re-add."
+RTM,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to RSPM (same ISIN US46137V3160, same_isin transition); RTM is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 RTU-UN,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX unit line as active.
 RVLPQ,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 RVT,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
@@ -1082,6 +1089,7 @@ RWTN,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit
 RWTO,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 RXR,ASX,0.95,"JP/AU delisting-staleness 2026-06-19: acquired_taken_private (absent from current JPX/ASX master, web+adversarial verified)"
 RYI,NYSE,0.95,"Rename RYI->RYZ (Ryerson Holding Corporation): new ticker already present with same ISIN US7837541041; this stale old-ticker row is a duplicate. Source: stockanalysis symbol-changes feed, verified."
+RYJ,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to UPGD (same ISIN US46137V5223, same_isin transition); RYJ is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 RZB,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 SABSW,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
 SAC-UN,NYSE,0.95,"US delisting-staleness audit 2026-06-19: noncommon (absent from current NASDAQ Trader master, web+adversarial verified)"
@@ -1105,6 +1113,7 @@ SCE-PN,OTC,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the curr
 SCOIN,OSL,0.96,"StandardCoin AS — liquidated/dissolved, delisted from Euronext Growth Oslo late 2025 (web-verified)"
 SCOUT,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do not return an active exact Stockholm share while the current NGM company directory exposes no active primary symbol for this ticker; the remaining STO core row is stale.
 SCPX,NYSE MKT,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
+SCRD,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to JLQD (same ISIN US47103U7798, same_isin transition); SCRD is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 SCVL,NASDAQ,0.95,"SEC company_tickers_exchange maps SCVL and SHOE to the same CIK 895447, and Nasdaq Trader lists SHOE active while SCVL is absent; drop stale pre-change symbol."
 SDHI,NASDAQ,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 SDIGBA,CPH,0.99,Official Nasdaq Nordic Copenhagen shares directory does not list this symbol as an active Copenhagen share and the remaining core row is a fund or investment-product line rather than a common equity.
@@ -1152,6 +1161,7 @@ SLSR,OTC,0.96,"Yahoo Finance resolves this symbol to NYSE American rather than t
 SMFL,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 SMTK,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqCM rather than the current exchange, indicating the current listing is stale."
 SNCY,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
+SNPV,BATS,0.99,"ETF curation 2026-10-30: renamed to XOEX (same ISIN US23306X4079, same_isin transition); SNPV is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 SNSE,NASDAQ,0.95,"SEC company_tickers_exchange maps SNSE and FTH to the same CIK 1829802, and Nasdaq Trader lists FTH active while SNSE is absent; drop stale pre-change symbol."
 SNWV,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqGM rather than the current exchange, indicating the current listing is stale."
 SOFTBPO,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SOFTBPO to BSE_IN::IDREAM; exact evidence is recorded in listing_transitions.csv.
@@ -1183,8 +1193,10 @@ SSSS,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::SSSS after successor NASDAQ::
 STATE,STO,0.97,Official NGM companies directory lists SafeState under the active Stockholm ticker EOID; the remaining STATE row is a stale ticker.
 STEW,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 STIIAM,CPH,0.99,Official Nasdaq Nordic Copenhagen shares directory does not list this symbol as an active Copenhagen share and the remaining core row is a fund or investment-product line rather than a common equity.
+STLG,BATS,0.99,"ETF curation 2026-10-30: renamed to GARP (same ISIN US46436E4035, same_isin transition); STLG is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 STRM,NASDAQ,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
 STRRP,NASDAQ,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+STRV,NYSE,0.99,"ETF curation 2026-10-30: renamed to STXF (same ISIN US02072L6801, same_isin transition); STRV is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 STSS,NASDAQ,0.96,"Renamed/re-tickered to SKYA (same-issuer, web+CIK verified 2026-06-19); stale old symbol"
 STXPF,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
 SUMUKA,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::SUMUKA to BSE_IN::GUJJUBHAI; exact evidence is recorded in listing_transitions.csv.
@@ -1274,6 +1286,7 @@ THR,NYSE,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from cu
 TIVC,NASDAQ,0.96,"Renamed/re-tickered to VBIO (same-issuer, web+CIK verified 2026-06-19); stale old symbol"
 TLIK,XETRA,0.99,"Official Deutsche Boerse live instrument page for DE000A289B07 embeds only the Frankfurt MIC XFRA for the current Arzneiwerk AG VIDA listing and current Xetra directories do not list TLIK as active, so the remaining XETRA row is stale."
 TLN,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqGS rather than the current exchange, indicating the current listing is stale."
+TMET,NASDAQ,0.99,"ETF curation 2026-10-30: renamed to ISTM (same ISIN US46431W5159, same_isin transition); TMET is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 TOCA,TSX,0.99,Official TD ETF references resolve this old TSX ETF symbol to a current ticker that collides with a distinct active OTC ticker in the current core universe; the stale TSX line should be removed from core.
 TOI,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::TOI after successor NASDAQ::STLN was already listed; exact evidence is recorded in listing_transitions.csv.
 TOIIW,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
@@ -1331,6 +1344,7 @@ VANLEER,NGX,0.98,Current official NGX company profile directory and daily equiti
 VARE,LSE,0.99,"Official LSE/current dataset evidence shows Various Eateries renamed/retickered to Coppa Collective PLC (COPC) with ISIN GB00BM9BZK23, and COPC is already an active primary listing; drop stale pre-change VARE row."
 VBAMF,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
 VBIX,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::VBIX after successor NASDAQ::QXL was already listed; exact evidence is recorded in listing_transitions.csv.
+VCAR,NYSE ARCA,0.99,"ETF curation 2026-10-30: renamed to TESL (same ISIN US82889N8891, same_isin transition); VCAR is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 VCIC,NASDAQ,0.98,"Official Nasdaq Trader corporate action ECA2026-205 states Vine Hill Capital Investment Corp. (VCIC/VCICU/VCICW) completed its business combination with CoinShares on March 31 2026, the Vine Hill Class A shares/warrants/units were suspended effective April 1 2026, and the combined company lists as CoinShares PLC under CSHR; drop stale predecessor SPAC symbol from current stock/ETF scope."
 VCV,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 VERB,NASDAQ,0.95,Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.
@@ -1349,9 +1363,11 @@ VLRS,NYSE,0.98,"Official listing name indicates this symbol is an excluded secur
 VLT,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 VMEX19,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF or TRACS product.
 VMO,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+VMOT,NASDAQ,0.99,"ETF curation 2026-10-30: renamed to AAVM (same ISIN US02072L5084, same_isin transition); VMOT is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 VNO-PO,NASDAQ,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the current exchange, indicating the current listing is stale."
 VNUED,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 VOC,NYSE,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+VPN,NASDAQ,0.99,"ETF curation 2026-10-30: renamed to DTCR (same ISIN US37954Y2366, same_isin transition); VPN is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 VPV,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 VRAR,NASDAQ,0.96,"Nasdaq Trader no longer lists VRAR, lists GGRP active on Nasdaq, and both stale/current dataset rows carry ISIN US37892C1062 for The Glimpse Group; drop stale pre-change symbol."
 VRE,NYSE,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
@@ -1374,6 +1390,8 @@ WDI,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/righ
 WENN,NASDAQ,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 WENNU,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: Wen Acquisition Corp - Unit"
 WETH,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqCM rather than the current exchange, indicating the current listing is stale."
+WFHY,BATS,0.99,"ETF curation 2026-10-30: renamed to QHY (same ISIN US97717X1726, same_isin transition); WFHY is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
+WFIG,BATS,0.99,"ETF curation 2026-10-30: renamed to QIG (same ISIN US97717X1981, same_isin transition); WFIG is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 WGRX,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::WGRX after successor NASDAQ::MEDS was already listed; exact evidence is recorded in listing_transitions.csv.
 WGSWW,NASDAQ,0.97,OpenFIGI securityType=Warrant (US W-suffix); warrants out of Stock scope
 WHLRD,NASDAQ,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
@@ -1396,6 +1414,7 @@ XCID,IDX,0.99,Official IDX active stock directory does not list XCID as an activ
 XCIS,IDX,0.99,Official IDX active stock directory does not list XCIS as an active stock listing; the remaining core row is a non-core DIRE or REIT line outside the current stock universe.
 XCL,ASX,0.99,"Current official ASX listed-companies CSV fetched 2026-07-07 does not list XCL, and market references identify Australian Commonwealth Government Loans as bond/government-loan instruments rather than a stock/ETF listing; drop stale non-core row."
 XEU,Euronext,0.99,Official TMX listed-issuers workbook shows XEU as a TSX ETF while the current Euronext core row carries a Canadian ISIN and is a wrong-venue contamination.
+XFIX,NASDAQ,0.99,"ETF curation 2026-10-30: renamed to ZHOG (same ISIN US74933W4454, same_isin transition); XFIX is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 XFLH-R,NYSE,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 XFOA,BVB,0.99,"Official BVB detail page marks this symbol as active Unitati de fond / Units-SMT rather than a stock or ETF, so it is outside the current core Stock/ETF export scope."
 XOMAP,NASDAQ,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
