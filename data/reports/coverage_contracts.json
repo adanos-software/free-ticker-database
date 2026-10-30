@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-10-30T08:10:27Z",
+    "generated_at": "2026-10-30T08:36:39Z",
     "contracts": 136,
     "official_full_contracts": 88,
     "official_full_pass": 0,
@@ -2235,7 +2235,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "partial_scope_observed",
-      "freshness_failures": "pse_cz_shares_directory: snapshot age 30.81d exceeds 30d SLA",
+      "freshness_failures": "pse_cz_shares_directory: snapshot age 30.83d exceeds 30d SLA",
       "license_failures": "pse_cz_shares_directory: license_status is not verified_open",
       "required_next_action": "do not promote partial scope to a full completeness claim"
     },
@@ -2260,7 +2260,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_identity_conflict",
-      "freshness_failures": "psx_dps_symbols: latest refresh is unavailable | psx_listed_companies: snapshot age 30.81d exceeds 30d SLA | psx_symbol_name_daily: latest refresh is unavailable",
+      "freshness_failures": "psx_dps_symbols: latest refresh is unavailable | psx_listed_companies: snapshot age 30.83d exceeds 30d SLA | psx_symbol_name_daily: latest refresh is unavailable",
       "license_failures": "psx_dps_symbols: license_status is not verified_open | psx_listed_companies: license_status is not verified_open | psx_symbol_name_daily: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },
@@ -2285,7 +2285,7 @@
       "freshness_status": "fail",
       "license_status": "fail",
       "contract_status": "fail_identity_conflict",
-      "freshness_failures": "psx_dps_symbols: latest refresh is unavailable | psx_listed_companies: snapshot age 30.81d exceeds 30d SLA | psx_symbol_name_daily: latest refresh is unavailable",
+      "freshness_failures": "psx_dps_symbols: latest refresh is unavailable | psx_listed_companies: snapshot age 30.83d exceeds 30d SLA | psx_symbol_name_daily: latest refresh is unavailable",
       "license_failures": "psx_dps_symbols: license_status is not verified_open | psx_listed_companies: license_status is not verified_open | psx_symbol_name_daily: license_status is not verified_open",
       "required_next_action": "resolve the failing contract evidence before stable release"
     },

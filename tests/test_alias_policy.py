@@ -193,6 +193,33 @@ def test_duplicate_aliases_keep_best_non_otc_legal_name_owner():
     ]
 
 
+def test_transition_drops_remove_predecessors_before_duplicate_alias_dedup():
+    shared_alias = "data center reits & digital infrastructure"
+    predecessor = {
+        "ticker": "VPN",
+        "name": "Global X Data Center REITs & Digital Infrastructure ETF",
+        "exchange": "NASDAQ",
+        "asset_type": "ETF",
+        "isin": "US37954Y2366",
+        "aliases": [shared_alias],
+    }
+    survivor = {
+        "ticker": "VPN",
+        "name": "Global X Data Center REITS & Digital Infrastructure UCITS ETF USD Acc",
+        "exchange": "LSE",
+        "asset_type": "ETF",
+        "isin": "IE00BMH5Y327",
+        "aliases": [shared_alias, "data center reits & digital infrastructure accumulating"],
+    }
+    transition_drops = {("VPN", "NASDAQ")}
+
+    rows = [predecessor, survivor]
+    rows = [row for row in rows if (row["ticker"], row["exchange"]) not in transition_drops]
+    rows = drop_duplicate_ticker_aliases(rows)
+
+    assert rows == [survivor]
+
+
 def test_stock_aliases_strip_security_suffixes_and_add_safe_brand_alias():
     row = {
         "ticker": "ARTV",

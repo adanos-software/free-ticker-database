@@ -2924,13 +2924,15 @@ def cleaned_rows():
         load_active_official_depositary_listing_keys(),
         protected_country_listing_keys,
     )
-    output_rows = drop_duplicate_ticker_aliases(output_rows)
     active_transition_drops = active_review_transition_drops(review_drop_entries, output_rows)
     output_rows = [
         row
         for row in output_rows
         if (row.get("ticker", ""), row.get("exchange", "")) not in active_transition_drops
     ]
+    # Drop reviewed transition predecessors before alias dedup so tied cross-entity
+    # collisions (e.g. US vs UCITS VPN) do not strip name aliases from survivors.
+    output_rows = drop_duplicate_ticker_aliases(output_rows)
     return sorted(output_rows, key=lambda row: row["ticker"]), alias_type_lookup
 
 
