@@ -6,14 +6,44 @@ Report only. No listing or identifier changes.
 | --- | ---: |
 | official_unique_isins | 6343 |
 | matched_isin_mic | 4945 |
-| firds_only_review | 1398 |
-| local_unique_isins | 45410 |
-| local_not_observed_review | 40465 |
-| local_listing_rows | 47708 |
+| local_unique_isins | 10553 |
+| local_not_observed_review | 5608 |
+| local_listing_rows | 11466 |
 | local_listing_rows_observed | 5709 |
 | multi_currency_unresolved | 0 |
+| firds_only_review | 1398 |
 | snapshot_pair_recall_pct | 77.96 |
-| local_pair_observed_pct | 10.89 |
+| local_pair_observed_pct | 46.86 |
+| mics_not_in_snapshot | ['XETR', 'XFRA', 'XLON', 'XSWX'] |
+
+
+## Pooled metrics (scorable MICs only)
+
+Target MICs with zero rows in a provider snapshot are marked `mic_not_in_snapshot` and excluded from pooled ratios.
+
+### By provider
+
+| Provider | Recall % | Local observed % | Not in snapshot |
+| --- | ---: | ---: | --- |
+| ESMA | 82.49 | 55.79 | XETR, XFRA, XLON, XSWX |
+| FCA | 76.56 | 44.49 | XETR, XFRA, XSWX |
+
+### By MIC (exact MIC, per provider)
+
+| Provider | MIC | Recall % | Local observed % | Status |
+| --- | --- | ---: | ---: | --- |
+| ESMA | XAMS | 92.58 | 60.76 | scorable |
+| ESMA | XETR | None | None | mic_not_in_snapshot |
+| ESMA | XFRA | None | None | mic_not_in_snapshot |
+| ESMA | XLON | None | None | mic_not_in_snapshot |
+| ESMA | XPAR | 77.65 | 53.29 | scorable |
+| ESMA | XSWX | None | None | mic_not_in_snapshot |
+| FCA | XAMS | 92.58 | 60.76 | scorable |
+| FCA | XETR | None | None | mic_not_in_snapshot |
+| FCA | XFRA | None | None | mic_not_in_snapshot |
+| FCA | XLON | 73.9 | 40.43 | scorable |
+| FCA | XPAR | 77.7 | 53.22 | scorable |
+| FCA | XSWX | None | None | mic_not_in_snapshot |
 
 ## Sources
 
@@ -33,4 +63,6 @@ Report only. No listing or identifier changes.
 - FIRDS has no reliable trading ticker. Same-listing-key ISIN mismatches cannot be scored from these files.
 - Local exports lack currency. Multiple FIRDS currencies remain unresolved; no currency-specific completeness claim.
 - Weekly full snapshots are not current-day truth. Missing pairs are review candidates, not proven false positives.
-- Snapshot ratios pool provider/MIC/instrument pairs; ESMA and FCA overlap. They are not global recall or identity accuracy.
+- Snapshot ratios pool scorable provider/MIC/instrument pairs only; ESMA and FCA overlap. They are not global recall or identity accuracy.
+- German operating MICs XETR and XFRA and Swiss XSWX often have zero rows in ESMA FULINS; those MICs are mic_not_in_snapshot for ESMA and excluded from ESMA pooled ratios. Frankfurt segment MICs such as FRAB, STUB, HAND, and MUND may appear under SI/MTF and are never merged into XETR.
+- UK XLON is absent from ESMA FULINS but present in FCA FIRDS; score LSE via FCA, not ESMA.
