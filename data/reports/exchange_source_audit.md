@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-10-31T08:27:14Z`
+Generated at: `2026-10-31T12:21:50Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 21, "maintain": 9, "official_source_required": 5, "refresh_required": 28, "refresh_unavailable": 25}`
+- Audit outcomes: `{"denominator_missing": 21, "maintain": 25, "official_source_required": 5, "refresh_required": 12, "refresh_unavailable": 25}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -13,10 +13,10 @@ Generated at: `2026-10-31T08:27:14Z`
 | ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | ATHEX | official_partial | athex_sector_classification | ETF | 0 |  |  | denominator_missing | blocked_product_class_gap |
 | B3 | official_full | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs |  | 1353 | 90.76 | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs | refresh_unavailable | not_applicable |
-| BATS | official_full | nasdaq_other_listed |  | 1678 | 78.96 | nasdaq_other_listed | refresh_required | not_applicable |
+| BATS | official_full | nasdaq_other_listed |  | 1678 | 78.96 |  | maintain | not_applicable |
 | BCBA | official_partial | byma_equity_details |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | BHB | official_full | bahrain_bourse_listed_companies |  | 41 | 75.61 |  | maintain | not_applicable |
-| BIST | official_full | bist_kap_mkk_listed_securities |  | 663 | 96.68 | bist_kap_mkk_listed_securities | refresh_required | not_applicable |
+| BIST | official_full | bist_kap_mkk_listed_securities |  | 663 | 96.68 |  | maintain | not_applicable |
 | BK | official_full | boursa_kuwait_stocks |  | 139 | 79.86 |  | maintain | not_applicable |
 | BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 268 | 90.67 | bme_etf_list|bme_listed_companies | refresh_required | not_applicable |
 | BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search | refresh_unavailable | blocked_source_unavailable |
@@ -31,18 +31,18 @@ Generated at: `2026-10-31T08:27:14Z`
 | CPH | official_partial | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares |  | 0 |  | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares | denominator_missing | blocked_nonfresh_source |
 | CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 321 | 99.07 | cse_lk_all_security_code | refresh_unavailable | not_applicable |
 | CSE_MA | official_full | cse_ma_listed_companies |  | 82 | 21.95 | cse_ma_listed_companies | refresh_unavailable | not_applicable |
-| DFM | official_full | dfm_listed_securities |  | 71 | 76.06 | dfm_listed_securities | refresh_required | not_applicable |
+| DFM | official_full | dfm_listed_securities |  | 71 | 76.06 |  | maintain | not_applicable |
 | DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  | dse_tz_listed_companies | denominator_missing | blocked_nonfresh_source |
 | EGX | official_partial | egx_listed_stocks |  | 0 |  | egx_listed_stocks | denominator_missing | blocked_nonfresh_source |
 | Euronext | official_full | euronext_equities|euronext_etfs |  | 2039 | 65.28 | euronext_etfs | refresh_required | not_applicable |
-| FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18131 | 43.33 | deutsche_boerse_frankfurt_all_tradable_equities | refresh_required | not_applicable |
+| FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18166 | 43.19 |  | maintain | not_applicable |
 | GSE | official_partial | gse_listed_companies |  | 0 |  | gse_listed_companies | denominator_missing | blocked_nonfresh_source |
 | HEL | official_partial | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares |  | 0 |  | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares | denominator_missing | blocked_nonfresh_source |
 | HKEX | official_full | hkex_securities_list |  | 3242 | 97.84 |  | maintain | not_applicable |
 | HNX | official_full | hnx_listed_securities |  | 299 | 45.48 |  | maintain | not_applicable |
 | HOSE | official_partial | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks |  | 0 |  | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks | denominator_missing | blocked_nonfresh_source |
 | ICE_IS | official_partial | nasdaq_nordic_iceland_shares |  | 0 |  | nasdaq_nordic_iceland_shares | denominator_missing | blocked_nonfresh_source |
-| IDX | official_full | idx_company_profiles|idx_listed_companies |  | 962 | 78.59 | idx_company_profiles|idx_listed_companies | refresh_required | not_applicable |
+| IDX | official_full | idx_company_profiles|idx_listed_companies |  | 962 | 78.59 | idx_listed_companies | refresh_required | not_applicable |
 | ISE | official_full | euronext_equities |  | 16 | 56.25 |  | maintain | not_applicable |
 | JSE | official_partial | jse_etf_list|jse_etn_list | Stock | 0 |  | jse_etf_list|jse_etn_list | refresh_unavailable | blocked_source_unavailable |
 | KOSDAQ | official_full | krx_listed_companies |  | 1820 | 87.2 | krx_listed_companies | refresh_unavailable | not_applicable |
@@ -52,25 +52,25 @@ Generated at: `2026-10-31T08:27:14Z`
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSX | official_full | muscat_securities_companies |  | 108 | 86.11 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5630 | 81.44 | sec_company_tickers_exchange | refresh_required | not_applicable |
+| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5630 | 81.44 |  | maintain | not_applicable |
 | NEO | official_full | cboe_canada_listing_directory |  | 450 | 46.44 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_company_profile_directory | refresh_unavailable | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
-| NSE_IN | official_full | nse_india_securities_available |  | 3552 | 97.94 | nse_india_securities_available | refresh_required | not_applicable |
-| NSE_KE | official_full | nse_ke_listed_companies |  | 68 | 64.71 | nse_ke_listed_companies | refresh_required | not_applicable |
-| NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3843 | 51.37 | nasdaq_other_listed|sec_company_tickers_exchange | refresh_required | not_applicable |
-| NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2747 | 95.19 | nasdaq_other_listed | refresh_required | not_applicable |
-| NYSE MKT | official_full | nasdaq_other_listed | ETF | 310 | 73.23 | nasdaq_other_listed | refresh_required | not_applicable |
-| NZX | official_full | nzx_instruments |  | 172 | 48.84 | nzx_instruments | refresh_required | not_applicable |
+| NSE_IN | official_full | nse_india_securities_available |  | 3557 | 97.95 |  | maintain | not_applicable |
+| NSE_KE | official_full | nse_ke_listed_companies |  | 68 | 64.71 |  | maintain | not_applicable |
+| NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3843 | 51.37 |  | maintain | not_applicable |
+| NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2747 | 95.19 |  | maintain | not_applicable |
+| NYSE MKT | official_full | nasdaq_other_listed | ETF | 310 | 73.23 |  | maintain | not_applicable |
+| NZX | official_full | nzx_instruments |  | 172 | 48.84 |  | maintain | not_applicable |
 | OSL | official_full | euronext_equities|euronext_etfs |  | 293 | 97.61 | euronext_etfs | refresh_required | not_applicable |
-| OTC | official_full | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange |  | 11925 | 69.32 | otc_markets_stock_screener|sec_company_tickers_exchange | refresh_unavailable | not_applicable |
-| PSE | official_full | pse_listed_company_directory |  | 384 | 44.01 | pse_listed_company_directory | refresh_required | not_applicable |
+| OTC | official_full | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange |  | 11925 | 69.32 | otc_markets_stock_screener | refresh_unavailable | not_applicable |
+| PSE | official_full | pse_listed_company_directory |  | 384 | 44.01 |  | maintain | not_applicable |
 | PSE_CZ | official_partial | pse_cz_shares_directory |  | 0 |  |  | denominator_missing | blocked_denominator_missing |
 | PSX | official_full | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily |  | 724 | 53.87 | psx_dps_symbols|psx_symbol_name_daily | refresh_unavailable | not_applicable |
-| QSE | official_full | qse_market_watch |  | 57 | 96.49 | qse_market_watch | refresh_required | not_applicable |
+| QSE | official_full | qse_market_watch |  | 57 | 96.49 |  | maintain | not_applicable |
 | RSE | official_partial | rse_listed_companies |  | 0 |  | rse_listed_companies | denominator_missing | blocked_nonfresh_source |
-| SEM | official_full | sem_isin |  | 46 | 100.0 | sem_isin | refresh_required | not_applicable |
-| SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 943 | 81.65 | set_dr_search|set_etf_search|set_listed_companies|set_stock_search | refresh_required | not_applicable |
+| SEM | official_full | sem_isin |  | 46 | 100.0 |  | maintain | not_applicable |
+| SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 943 | 81.65 | set_dr_search|set_etf_search|set_listed_companies | refresh_required | not_applicable |
 | SGX | official_full | sgx_securities_prices |  | 766 | 83.03 | sgx_securities_prices | refresh_required | not_applicable |
 | SIX | official_partial | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full |  | 0 |  | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full | refresh_unavailable | blocked_source_unavailable |
 | SSE | official_partial | sse_a_share_list|sse_etf_list |  | 0 |  | sse_a_share_list|sse_etf_list | denominator_missing | blocked_nonfresh_source |
@@ -83,14 +83,14 @@ Generated at: `2026-10-31T08:27:14Z`
 | TSE | official_full | jpx_listed_issues|jpx_tse_stock_detail |  | 4444 | 92.33 | jpx_listed_issues|jpx_tse_stock_detail | refresh_unavailable | not_applicable |
 | TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 785 | 75.16 | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
 | TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1518 | 87.09 | tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
-| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1098 | 96.63 | twse_etf_list|twse_listed_companies | refresh_required | not_applicable |
-| TXSE | official_full | nasdaq_other_listed |  | 22 | 0.0 | nasdaq_other_listed | refresh_required | not_applicable |
+| TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1099 | 96.54 | twse_etf_list | refresh_required | not_applicable |
+| TXSE | official_full | nasdaq_other_listed |  | 22 | 0.0 |  | maintain | not_applicable |
 | UPCOM | official_full | upcom_registered_securities |  | 818 | 0.24 | upcom_registered_securities | refresh_unavailable | not_applicable |
 | USE_UG | official_partial | use_ug_listed_companies |  | 0 |  | use_ug_listed_companies | denominator_missing | blocked_nonfresh_source |
 | VSE | official_partial | vienna_listed_companies | ETF | 0 |  | vienna_listed_companies | denominator_missing | blocked_nonfresh_source |
 | WSE | official_partial | newconnect_listed_companies|wse_etf_list|wse_listed_companies |  | 0 |  | wse_etf_list|wse_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | XDUS | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| XETRA | official_full | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities |  | 5533 | 95.7 | deutsche_boerse_xetra_all_tradable_equities | refresh_required | not_applicable |
+| XETRA | official_full | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities |  | 5542 | 95.71 |  | maintain | not_applicable |
 | XHAM | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XHAN | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XSTU | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
