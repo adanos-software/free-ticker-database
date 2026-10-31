@@ -8574,7 +8574,7 @@ BSE_IN::GEOJITFSL,GEOJITFSL,BSE_IN,Geojit Financial Services Ltd,Stock,Financial
 BSE_IN::GESHIP,GESHIP,BSE_IN,Great Eastern Shipping Company Ltd,Stock,Industrials,,India,IN,INE017A01032,great eastern shipping,INE017A01032,primary_listing
 BSE_IN::GETALONG,GETALONG,BSE_IN,Getalong Enterprise Ltd,Stock,Industrials,,India,IN,INE0H1201020,getalong enterprise,INE0H1201020,primary_listing
 BSE_IN::GFLLIMITED,GFLLIMITED,BSE_IN,GFL Ltd,Stock,Materials,,India,IN,INE538A01037,,INE538A01037,primary_listing
-BSE_IN::GFSTEELS,GFSTEELS,BSE_IN,Grand Foundry Ltd,Stock,Materials,,India,IN,INE534A01028,grand foundry,INE534A01028,primary_listing
+BSE_IN::GFSTEELS,GFSTEELS,BSE_IN,Grand Foundry Ltd,Stock,Materials,,India,IN,INE534A01028,,INE534A01028,primary_listing
 BSE_IN::GGAUTO,GGAUTO,BSE_IN,GG Automotive Gears Ltd,Stock,Industrials,,India,IN,INE493B01017,gg automotive gears,INE493B01017,primary_listing
 BSE_IN::GGDPROP,GGDPROP,BSE_IN,G. G. Dandekar Properties Ltd,Stock,Industrials,,India,IN,INE631D01026,g. g. dandekar properties,INE631D01026,primary_listing
 BSE_IN::GGENG,GGENG,BSE_IN,G G Engineering Ltd,Stock,Industrials,,India,IN,INE694X01030,g g engineering,INE694X01030,primary_listing
@@ -16208,7 +16208,7 @@ FSX::OJ8,OJ8,FSX,NINGBO SHANSHAN GDR/A,Stock,Materials,,United States,US,US65447
 FSX::OLU,OLU,FSX,MCOT Public Company Limited,Stock,Communication Services,,Thailand,TH,TH0803010014,,TH0803010014,primary_listing
 FSX::OLU1,OLU1,FSX,MCOT Public Company Limited,Stock,Communication Services,,Thailand,TH,TH0803010R15,,TH0803010R15,primary_listing
 FSX::OLY,OLY,FSX,Olympus Corporation,Stock,Health Care,,United States,US,US68163W2089,,US68163W2089,primary_listing
-FSX::OMAX,OMAX,FSX,Vivesto AB,Stock,Health Care,,Sweden,SE,SE0000722365,,SE0000722365,primary_listing
+FSX::OMAX,OMAX,FSX,Vivesto AB,Stock,Health Care,,Sweden,SE,,,FSX::OMAX,primary_listing_missing_isin
 FSX::ON4,ON4,FSX,ONO PHARMACEUT.,Stock,,,Japan,JP,JP3197600004,ono pharmaceut|ono pharmaceutical,JP3197600004,primary_listing
 FSX::OSG,OSG,FSX,OSG Corporation,Stock,,,Japan,JP,JP3170800001,,JP3170800001,primary_listing
 FSX::OTK,OTK,FSX,Otsuka Corporation,Stock,Communication Services,,Japan,JP,JP3188200004,otsuka,JP3188200004,primary_listing
@@ -33924,6 +33924,7 @@ NSE_IN::GCHOTELS,GCHOTELS,NSE_IN,Grand Continent Hotels Limited,Stock,Consumer D
 NSE_IN::GEEKAYWIRE,GEEKAYWIRE,NSE_IN,Geekay Wires Limited,Stock,Industrials,,India,IN,INE669X01032,geekay wires,INE669X01032,primary_listing
 NSE_IN::GENXAI,GENXAI,NSE_IN,GenXAI Analytics Limited,Stock,Information Technology,,India,IN,INE1W0N01014,genxai analytics,INE1W0N01014,primary_listing
 NSE_IN::GERMAN,GERMAN,NSE_IN,German Green Steel and Power Limited,Stock,,,India,IN,INE0D4501011,german green steel and power,INE0D4501011,primary_listing
+NSE_IN::GFSTEELS,GFSTEELS,NSE_IN,Grand Foundry Limited,Stock,Materials,,India,IN,,,NSE_IN::GFSTEELS,primary_listing_missing_isin
 NSE_IN::GICL,GICL,NSE_IN,Globe International Carriers Limited,Stock,Industrials,,India,IN,INE947T01022,globe international carriers,INE947T01022,primary_listing
 NSE_IN::GILT10BETA,GILT10BETA,NSE_IN,UTI Nifty 10 yr Benchmark G-Sec ETF,ETF,,Equity,India,IN,INF789F1AZF3,uti nifty 10 yr benchmark g-sec,INF789F1AZF3,primary_listing
 NSE_IN::GILT5BETA,GILT5BETA,NSE_IN,UTI Nifty 5 yr Benchmark G-Sec ETF,ETF,,Equity,India,IN,INF789F1AZE6,uti nifty 5 yr benchmark g-sec,INF789F1AZE6,primary_listing
@@ -40937,7 +40938,7 @@ SET::PSH,PSH,SET,Pruksa Holding Public Company Limited,Stock,Real Estate,,Thaila
 SET::PSL,PSL,SET,PRECIOUS SHIPPING PUBLIC COMPANY LIMITED,Stock,Industrials,,Thailand,TH,TH0363010R10,precious shipping public,TH0363010R10,primary_listing
 SET::PSTC,PSTC,SET,Power Solution Technologies Public Company Limited,Stock,Utilities,,Thailand,TH,TH6075010004,power solution technologies public,TH6075010004,primary_listing
 SET::PT,PT,SET,PREMIER TECHNOLOGY PUBLIC COMPANY LIMITED,Stock,Communication Services,,Thailand,TH,TH0229010Z05,premier technology public,TH0229010Z05,primary_listing
-SET::PTECH,PTECH,SET,Plus Tech Innovation PCL,Stock,Industrials,,Thailand,TH,TH0476010Y03,plus tech innovation pcl|plus tech innovation,TH0476010Y03,primary_listing
+SET::PTECH,PTECH,SET,Plus Tech Innovation PCL,Stock,Industrials,,Thailand,TH,,plus tech innovation pcl|plus tech innovation,SET::PTECH,primary_listing_missing_isin
 SET::PTG,PTG,SET,PTG ENERGY PUBLIC COMPANY LIMITED,Stock,Consumer Discretionary,,Thailand,TH,TH4547010009,ptg energy public,TH4547010009,primary_listing
 SET::PTL,PTL,SET,Polyplex (Thailand) Public Company Limited,Stock,Materials,,Thailand,TH,TH0815010002,polyplex public,TH0815010002,primary_listing
 SET::PTT,PTT,SET,PTT Public Company Limited,Stock,Energy,,Thailand,TH,TH0646010Z00,,TH0646010Z00,primary_listing
@@ -41082,6 +41083,7 @@ SET::TAE,TAE,SET,Thai Agro Energy Public Company Limited,Stock,Materials,,Thaila
 SET::TAKUNI,TAKUNI,SET,Takuni Group Public Company Limited,Stock,Industrials,,Thailand,TH,TH5762010004,takuni group public,TH5762010004,primary_listing
 SET::TASCO,TASCO,SET,Tipco Asphalt Public Company Limited,Stock,Materials,,Thailand,TH,TH0219010Z06,,TH0219010Z06,primary_listing
 SET::TATG,TATG,SET,Thai Auto Tools and Die Public Company Limited,Stock,Industrials,,Thailand,TH,THC423010006,thai auto tools and die public,THC423010006,primary_listing
+SET::TBSP,TBSP,SET,TBSP PUBLIC COMPANY LIMITED,Stock,Industrials,,Thailand,TH,TH0476010Y03,tbsp public,TH0476010Y03,primary_listing
 SET::TC,TC,SET,TROPICAL CANNING (THAILAND) PUBLIC COMPANY LIMITED,Stock,Consumer Staples,,Thailand,TH,TH0178A10Z09,tropical canning thailand public,TH0178A10Z09,primary_listing
 SET::TCAP,TCAP,SET,Thanachart Capital Public Company Limited,Stock,Financials,,Thailand,TH,TH0083B10Z02,,TH0083B10Z02,primary_listing
 SET::TCC,TCC,SET,Thai Capital Corporation Public Company Limited,Stock,Energy,,Thailand,TH,TH0226A10Z01,thai capital public,TH0226A10Z01,primary_listing
@@ -57673,6 +57675,7 @@ TSXV::BGA,BGA,TSXV,BioNeutra Global Corporation,Stock,Financials,,Canada,CA,CA09
 TSXV::BGF,BGF,TSXV,Beauce Gold Fields Inc.,Stock,Materials,,Canada,CA,CA0743041067,beauce gold fields,CA0743041067,primary_listing
 TSXV::BHS,BHS,TSXV,Bayhorse Silver Inc.,Stock,Materials,,Canada,CA,CA07278W1095,bayhorse silver,CA07278W1095,primary_listing
 TSXV::BIG,BIG,TSXV,Hercules Metals Corp.,Stock,Materials,,Canada,CA,CA0576971042,hercules metals,CA0576971042,primary_listing
+TSXV::BIGG,BIGG,TSXV,BIGG Digital Assets Inc.,Stock,Consumer Discretionary,,United States,US,,,TSXV::BIGG,primary_listing_missing_isin
 TSXV::BILD,BILD,TSXV,Builddirect.com Tehcnologies Inc,Stock,Consumer Discretionary,,Canada,CA,CA12009C1095,builddirect.com tehcnologies|builddirect.com technologies,CA12009C1095,primary_listing
 TSXV::BITK,BITK,TSXV,Blockchaink2 Corp,Stock,Information Technology,,Canada,CA,CA09369M1077,,CA09369M1077,primary_listing
 TSXV::BKM,BKM,TSXV,Pacific Booker Minerals Inc.,Stock,Materials,,Canada,CA,CA69403R1082,pacific booker minerals,CA69403R1082,primary_listing
@@ -60276,6 +60279,7 @@ VSE::STM,STM,VSE,Stadlauer Malzfabrik Ag,Stock,Consumer Staples,,Austria,AT,AT00
 VSE::STR,STR,VSE,Strabag SE,Stock,,,Austria,AT,AT000000STR1,,AT000000STR1,primary_listing
 VSE::SWUT,SWUT,VSE,Sw Umwelttechnik Stoiser & Wolschner Ag,Stock,Materials,,Austria,AT,AT0000808209,sw umwelttechnik stoiser & wolschner,AT0000808209,primary_listing
 VSE::TKA,TKA,VSE,Telekom Austria AG,Stock,Industrials,,Austria,AT,AT0000720008,telekom austria,AT0000720008,primary_listing
+VSE::TLG,TLG,VSE,TLG Immobilien AG,Stock,Materials,,Australia,AU,,,VSE::TLG,primary_listing_missing_isin
 VSE::UBS,UBS,VSE,UBM Development AG,Stock,Real Estate,,Austria,AT,AT0000815402,,AT0000815402,primary_listing
 VSE::UIV,UIV,VSE,Unternehmens Invest Ag,Stock,Financials,,Austria,AT,AT0000816301,unternehmens invest,AT0000816301,primary_listing
 VSE::UKO,UKO,VSE,Uko Microshops Ag,Stock,Industrials,,Austria,AT,AT1UKOSHOPS1,uko microshops,AT1UKOSHOPS1,primary_listing
