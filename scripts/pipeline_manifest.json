@@ -102,6 +102,7 @@
     "data/reports/gleif_lei_conflict_review_queue.csv",
     "data/reports/firds_listing_compare*",
     "data/reports/openfigi_isin_mic_remap*",
+    "data/reports/openfigi_stolen_isin_review_queue*",
     "data/reports/isin_identity_issue449_review.*"
   ],
   "policy": "Operational canonical rebuilds enter through scripts/rebuild_canonical.py. All proposed source must be visible in the pull-request diff; compressed source payloads, workflow-time patching, and self-pushing workflows are rejected. The merge profile protects the code/data transition, the stable profile protects redistributable releases, and the complete profile measures the zero-gap target."

@@ -70,7 +70,7 @@ The weekly snapshot is not current-day truth. Missing pairs need review. FIRDS h
 
 ## OpenFIGI level audit (#446)
 
-Replay the committed probe without network access:
+Replay the committed 200-request probe without network access:
 
 ```sh
 python scripts/build_openfigi_isin_mic_remap.py \
@@ -83,11 +83,18 @@ Fetch a bounded, deterministic probe:
 python scripts/build_openfigi_isin_mic_remap.py --fetch --limit 200
 ```
 
-`--limit 0` fetches the full eligible universe. Probe order is the SHA-256 of the exact request, not a selection of favorable matches. Each request contains a valid `ID_ISIN`, a mapped MIC, and `includeUnlistedEquities=false`. Local cache files are ignored; the small committed probe preserves requests, responses, and response hashes. Unprobed listings remain explicit in the CSV.
+`--limit 0` fetches the full eligible universe into `data/openfigi_verification/isin_mic_remap_cache/` (gitignored). Probe order is the SHA-256 of the exact request, not a selection of favorable matches. Each request contains a valid `ID_ISIN`, a mapped MIC, and `includeUnlistedEquities=false`. The committed probe preserves 200 requests, responses, and response hashes for CI replay. Full-universe runs write `openfigi_isin_mic_remap_probe.manifest.json` (cache tarball SHA-256 and request counts) instead of replacing the large probe JSON. Unprobed listings remain explicit in the CSV.
+
+Offline rebuild from an extracted cache tarball (no network, no API key):
+
+```sh
+python scripts/build_openfigi_isin_mic_remap.py \
+  --cache-tarball-sha256 <sha256-of-isin_mic_remap_cache.tar.gz>
+```
 
 `OPENFIGI_API_KEY` is optional and is read only from the environment. It is never written to reports. Requests respect the documented batch and rate limits. HTTP errors stop the fetch; already cached batches remain available for resume.
 
-Venue, composite, and share-class FIGIs are compared by explicit returned fields. Prefixes do not establish a FIGI level. An unknown local level does not become an ISIN error. Exact ticker/MIC name-family differences are review candidates, not proof of a stolen identifier. OpenFIGI names are not adopted as official listing names. See the [API documentation](https://www.openfigi.com/api/documentation) and [terms](https://www.openfigi.com/docs/terms-of-service).
+Venue, composite, and share-class FIGIs are compared by explicit returned fields. Prefixes do not establish a FIGI level. An unknown local level does not become an ISIN error. Name-family differences use normalized token overlap (case, punctuation, corporate suffixes, share-class noise, and common OpenFIGI abbreviations/truncations). Residual disagreements land in `openfigi_stolen_isin_review_queue.*` with `apply_allowed=0` on every row; they are review candidates, not proof of a stolen identifier. OpenFIGI names are not adopted as official listing names. See the [API documentation](https://www.openfigi.com/api/documentation) and [terms](https://www.openfigi.com/docs/terms-of-service).
 
 ## Manual identity review (#449)
 

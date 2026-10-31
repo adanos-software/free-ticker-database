@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added
+
+- Completed the full OpenFIGI `ID_ISIN`+`micCode` remap audit (#446) from a pinned 94,275-response cache (tarball SHA-256 `a374409bdd317d455560fe59c792dfe089a4c944d96524156f04c58a27b0e012`, fetched 2026-10-31 UTC on main `55c95a41`). Committed `openfigi_isin_mic_remap.{json,md,csv}` with FIGI-level agreement counts, per-exchange and per-MIC status breakdowns, and cache provenance; added `openfigi_isin_mic_remap_probe.manifest.json` for the full universe while keeping the 200-request probe for offline CI replay.
+- Added report-only `openfigi_stolen_isin_review_queue.{csv,json,md}` sorted by name-mismatch confidence with `apply_allowed=0` on every row.
+
+### Changed
+
+- Tightened shared `names_match` normalization (corporate suffixes, share-class noise, OpenFIGI abbreviations/truncations, meaningful token overlap) so stolen-ISIN review candidates drop from 21,961 to 20,625 on the full cache replay without adopting OpenFIGI names or writing identifiers.
+
 ## [3.43.2] - 2026-10-30
 
 ### Added

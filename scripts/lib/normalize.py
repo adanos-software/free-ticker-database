@@ -33,11 +33,15 @@ LEGAL_NAME_STOPWORDS = {
     "cv",
     "de",
     "etf",
+    "etp",
+    "fund",
     "group",
     "holding",
     "holdings",
     "inc",
     "incorporated",
+    "index",
+    "indexed",
     "limited",
     "llc",
     "lp",
@@ -48,12 +52,30 @@ LEGAL_NAME_STOPWORDS = {
     "sa",
     "sab",
     "se",
+    "series",
     "share",
     "shares",
+    "shr",
     "spa",
     "stock",
+    "sub",
     "the",
+    "trust",
+    "usd",
+    "vtg",
+    "voting",
 }
+NAME_TOKEN_ALIASES = {
+    "constructi": "construction",
+    "grw": "growth",
+    "intl": "international",
+    "internation": "international",
+    "mc": "midcap",
+    "mid": "midcap",
+    "cap": "midcap",
+    "vngrd": "vanguard",
+}
+OPENFIGI_NAME_NOISE_TOKENS = {"mrngstr"}
 GENERIC_SINGLE_TOKEN_NAMES = {
     "capital",
     "energy",
@@ -72,15 +94,41 @@ def ascii_fold(value: str) -> str:
     return unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
 
 
+def _canonical_name_token(token: str) -> str:
+    if token in OPENFIGI_NAME_NOISE_TOKENS:
+        return ""
+    return NAME_TOKEN_ALIASES.get(token, token)
+
+
+def _name_tokens_equivalent(left: str, right: str) -> bool:
+    if not left or not right:
+        return False
+    if left == right:
+        return True
+    shorter, longer = (left, right) if len(left) <= len(right) else (right, left)
+    return len(shorter) >= 5 and longer.startswith(shorter) and len(shorter) / len(longer) >= 0.75
+
+
 def significant_name_tokens(value: str) -> set[str]:
     value = re.sub(r"\([^)]*\)", " ", value)
     value = re.sub(r"\bclass\s+[a-z0-9]+\b", " ", value, flags=re.IGNORECASE)
-    tokens = re.findall(r"[a-z0-9]+", ascii_fold(value).lower())
-    return {
-        token
-        for token in tokens
-        if len(token) > 1 and not token.isdigit() and token not in LEGAL_NAME_STOPWORDS
-    }
+    value = re.sub(r"[^a-z0-9]+", " ", ascii_fold(value).lower())
+    tokens: set[str] = set()
+    for token in value.split():
+        if len(token) <= 1 or token.isdigit() or token in LEGAL_NAME_STOPWORDS:
+            continue
+        canonical = _canonical_name_token(token)
+        if canonical:
+            tokens.add(canonical)
+    return tokens
+
+
+def _matched_name_token_count(source_tokens: set[str], target_tokens: set[str]) -> int:
+    matched = 0
+    for source in source_tokens:
+        if any(_name_tokens_equivalent(source, target) for target in target_tokens):
+            matched += 1
+    return matched
 
 
 def names_match(source_name: str, target_name: str) -> bool:
@@ -95,10 +143,10 @@ def names_match(source_name: str, target_name: str) -> bool:
             return len(token) >= 5 and token not in GENERIC_SINGLE_TOKEN_NAMES
         return True
 
-    shared = source_tokens & target_tokens
-    if not shared:
+    matched = _matched_name_token_count(source_tokens, target_tokens)
+    if matched == 0:
         return False
 
-    shared_min_ratio = len(shared) / min(len(source_tokens), len(target_tokens))
-    shared_max_ratio = len(shared) / max(len(source_tokens), len(target_tokens))
-    return len(shared) >= 2 and shared_min_ratio >= 0.67 and shared_max_ratio >= 0.5
+    shared_min_ratio = matched / min(len(source_tokens), len(target_tokens))
+    shared_max_ratio = matched / max(len(source_tokens), len(target_tokens))
+    return matched >= 2 and shared_min_ratio >= 0.67 and shared_max_ratio >= 0.5

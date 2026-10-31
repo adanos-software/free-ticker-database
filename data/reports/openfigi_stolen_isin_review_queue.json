@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-10-31T06:37:55Z",
+  "summary": {
+    "queue_rows": 20625,
+    "apply_allowed_rows": 0,
+    "direct_identifier_apply_allowed_rows": 0,
+    "stolen_isin_review_candidates_before_names_match_tightening": 21961,
+    "stolen_isin_review_candidates_after_names_match_tightening": 20625
+  },
+  "limitations": [
+    "Review only. OpenFIGI name-family differences are not proof of a stolen ISIN.",
+    "apply_allowed is 0 on every row; do not auto-apply ISIN or identity changes from this queue."
+  ]
+}

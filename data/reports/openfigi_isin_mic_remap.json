@@ -1,20 +1,844 @@
 {
-  "generated_at": "2026-10-20T08:32:07Z",
+  "generated_at": "2026-10-31T06:37:55Z",
   "summary": {
-    "ambiguous_mapping": 4,
-    "mapped": 128,
-    "not_probed": 95829,
-    "ticker_not_resolved": 27,
-    "unmapped": 43,
-    "eligible_listings": 96031,
-    "unique_isin_mic_requests": 93878,
-    "cached_requests": 200,
-    "stolen_isin_review_candidates": 42
+    "ambiguous_mapping": 2482,
+    "mapped": 60891,
+    "ticker_not_resolved": 12732,
+    "unmapped": 20261,
+    "eligible_listings": 96366,
+    "unique_isin_mic_requests": 94275,
+    "cached_requests": 94275,
+    "response_with_data": 74382,
+    "response_with_warning": 19893,
+    "stolen_isin_review_candidates": 20625,
+    "stolen_isin_review_candidates_before_names_match_tightening": 21961,
+    "figi_level_agreement": {
+      "local_composite_level": 26450,
+      "local_figi_missing": 21731,
+      "local_level_unknown_or_disagreement": 1091,
+      "venue_match": 11619
+    },
+    "breakdown_by_exchange": {
+      "ADX": {
+        "mapped": 83,
+        "ticker_not_resolved": 12,
+        "unmapped": 1
+      },
+      "AMS": {
+        "mapped": 722,
+        "ticker_not_resolved": 3,
+        "unmapped": 20
+      },
+      "ASX": {
+        "ambiguous_mapping": 38,
+        "mapped": 1998,
+        "ticker_not_resolved": 7,
+        "unmapped": 118
+      },
+      "ATHEX": {
+        "mapped": 116,
+        "ticker_not_resolved": 4,
+        "unmapped": 42
+      },
+      "B3": {
+        "ambiguous_mapping": 976,
+        "mapped": 344,
+        "ticker_not_resolved": 4,
+        "unmapped": 255
+      },
+      "BATS": {
+        "mapped": 1237,
+        "ticker_not_resolved": 11,
+        "unmapped": 121
+      },
+      "BCBA": {
+        "mapped": 87,
+        "unmapped": 5
+      },
+      "BHB": {
+        "mapped": 29,
+        "unmapped": 2
+      },
+      "BIST": {
+        "mapped": 641,
+        "ticker_not_resolved": 1,
+        "unmapped": 1
+      },
+      "BK": {
+        "mapped": 102,
+        "ticker_not_resolved": 12,
+        "unmapped": 1
+      },
+      "BME": {
+        "ambiguous_mapping": 4,
+        "mapped": 224,
+        "ticker_not_resolved": 14,
+        "unmapped": 34
+      },
+      "BMV": {
+        "ambiguous_mapping": 85,
+        "mapped": 37,
+        "ticker_not_resolved": 188,
+        "unmapped": 17
+      },
+      "BSE_BW": {
+        "ticker_not_resolved": 35,
+        "unmapped": 3
+      },
+      "BSE_HU": {
+        "ambiguous_mapping": 6,
+        "mapped": 21,
+        "ticker_not_resolved": 22,
+        "unmapped": 1
+      },
+      "BSE_IN": {
+        "ambiguous_mapping": 31,
+        "mapped": 1531,
+        "ticker_not_resolved": 3373,
+        "unmapped": 115
+      },
+      "BVB": {
+        "ambiguous_mapping": 3,
+        "mapped": 243,
+        "unmapped": 1
+      },
+      "BVC": {
+        "mapped": 3
+      },
+      "BVL": {
+        "mapped": 33
+      },
+      "Borsa Italiana": {
+        "unmapped": 278
+      },
+      "Bursa": {
+        "ticker_not_resolved": 1031,
+        "unmapped": 8
+      },
+      "CPH": {
+        "mapped": 79,
+        "ticker_not_resolved": 40,
+        "unmapped": 34
+      },
+      "CSE_LK": {
+        "ticker_not_resolved": 312,
+        "unmapped": 8
+      },
+      "CSE_MA": {
+        "mapped": 17,
+        "ticker_not_resolved": 59,
+        "unmapped": 7
+      },
+      "DFM": {
+        "mapped": 40,
+        "ticker_not_resolved": 14
+      },
+      "DSE_TZ": {
+        "mapped": 13,
+        "ticker_not_resolved": 4
+      },
+      "EGX": {
+        "mapped": 182,
+        "ticker_not_resolved": 10,
+        "unmapped": 31
+      },
+      "Euronext": {
+        "mapped": 1227,
+        "ticker_not_resolved": 23,
+        "unmapped": 227
+      },
+      "FSX": {
+        "ambiguous_mapping": 4,
+        "mapped": 7772,
+        "ticker_not_resolved": 40,
+        "unmapped": 326
+      },
+      "GSE": {
+        "mapped": 17,
+        "ticker_not_resolved": 2
+      },
+      "HEL": {
+        "mapped": 145,
+        "ticker_not_resolved": 3,
+        "unmapped": 51
+      },
+      "HKEX": {
+        "mapped": 108,
+        "ticker_not_resolved": 3091,
+        "unmapped": 40
+      },
+      "HNX": {
+        "ambiguous_mapping": 2,
+        "mapped": 134,
+        "unmapped": 1
+      },
+      "HOSE": {
+        "ambiguous_mapping": 1,
+        "mapped": 151,
+        "unmapped": 1
+      },
+      "ICE_IS": {
+        "mapped": 15,
+        "ticker_not_resolved": 2,
+        "unmapped": 1
+      },
+      "IDX": {
+        "mapped": 750,
+        "unmapped": 2
+      },
+      "ISE": {
+        "mapped": 8,
+        "ticker_not_resolved": 5,
+        "unmapped": 1
+      },
+      "JSE": {
+        "mapped": 189,
+        "ticker_not_resolved": 7,
+        "unmapped": 16
+      },
+      "KOSDAQ": {
+        "ambiguous_mapping": 37,
+        "mapped": 1550,
+        "unmapped": 18
+      },
+      "KRX": {
+        "ambiguous_mapping": 8,
+        "mapped": 1874,
+        "unmapped": 108
+      },
+      "LSE": {
+        "ambiguous_mapping": 763,
+        "mapped": 6039,
+        "ticker_not_resolved": 104,
+        "unmapped": 116
+      },
+      "LUSE": {
+        "mapped": 12,
+        "ticker_not_resolved": 9,
+        "unmapped": 1
+      },
+      "MSE_MW": {
+        "mapped": 7,
+        "unmapped": 1
+      },
+      "MSX": {
+        "mapped": 90,
+        "unmapped": 1
+      },
+      "Munich": {
+        "ambiguous_mapping": 2,
+        "mapped": 213,
+        "unmapped": 8
+      },
+      "NASDAQ": {
+        "unmapped": 4747
+      },
+      "NEO": {
+        "ambiguous_mapping": 187,
+        "ticker_not_resolved": 6,
+        "unmapped": 11
+      },
+      "NGX": {
+        "mapped": 83,
+        "ticker_not_resolved": 53,
+        "unmapped": 9
+      },
+      "NMFQS": {
+        "unmapped": 6
+      },
+      "NSE_IN": {
+        "ambiguous_mapping": 17,
+        "mapped": 1290,
+        "ticker_not_resolved": 2078,
+        "unmapped": 119
+      },
+      "NSE_KE": {
+        "mapped": 22,
+        "ticker_not_resolved": 53,
+        "unmapped": 4
+      },
+      "NYSE": {
+        "mapped": 1882,
+        "ticker_not_resolved": 6,
+        "unmapped": 118
+      },
+      "NYSE ARCA": {
+        "mapped": 2417,
+        "ticker_not_resolved": 31,
+        "unmapped": 257
+      },
+      "NYSE MKT": {
+        "mapped": 197,
+        "unmapped": 31
+      },
+      "NZX": {
+        "mapped": 83,
+        "unmapped": 1
+      },
+      "OSL": {
+        "mapped": 287,
+        "ticker_not_resolved": 5,
+        "unmapped": 23
+      },
+      "OTC": {
+        "unmapped": 11067
+      },
+      "PSE": {
+        "mapped": 169,
+        "ticker_not_resolved": 1,
+        "unmapped": 3
+      },
+      "PSE_CZ": {
+        "ambiguous_mapping": 5,
+        "mapped": 13,
+        "ticker_not_resolved": 7,
+        "unmapped": 2
+      },
+      "PSX": {
+        "mapped": 371,
+        "ticker_not_resolved": 5,
+        "unmapped": 7
+      },
+      "QSE": {
+        "mapped": 55
+      },
+      "RSE": {
+        "unmapped": 2
+      },
+      "SEM": {
+        "mapped": 32,
+        "ticker_not_resolved": 14,
+        "unmapped": 6
+      },
+      "SET": {
+        "mapped": 724,
+        "ticker_not_resolved": 16,
+        "unmapped": 29
+      },
+      "SGX": {
+        "mapped": 47,
+        "ticker_not_resolved": 587,
+        "unmapped": 10
+      },
+      "SIX": {
+        "ambiguous_mapping": 3,
+        "mapped": 1179,
+        "ticker_not_resolved": 59,
+        "unmapped": 22
+      },
+      "SSE": {
+        "mapped": 2745,
+        "unmapped": 16
+      },
+      "SSE_CL": {
+        "mapped": 67,
+        "ticker_not_resolved": 30,
+        "unmapped": 9
+      },
+      "STO": {
+        "ambiguous_mapping": 1,
+        "mapped": 205,
+        "ticker_not_resolved": 196,
+        "unmapped": 474
+      },
+      "SZSE": {
+        "mapped": 3126,
+        "unmapped": 12
+      },
+      "TADAWUL": {
+        "ticker_not_resolved": 204,
+        "unmapped": 1
+      },
+      "TASE": {
+        "mapped": 413,
+        "ticker_not_resolved": 381,
+        "unmapped": 7
+      },
+      "TPEX": {
+        "mapped": 920,
+        "unmapped": 199
+      },
+      "TSE": {
+        "ambiguous_mapping": 79,
+        "mapped": 3997,
+        "unmapped": 61
+      },
+      "TSX": {
+        "ambiguous_mapping": 6,
+        "mapped": 1816,
+        "ticker_not_resolved": 238,
+        "unmapped": 235
+      },
+      "TSXV": {
+        "mapped": 1019,
+        "ticker_not_resolved": 23,
+        "unmapped": 307
+      },
+      "TWSE": {
+        "mapped": 1283,
+        "unmapped": 3
+      },
+      "UPCOM": {
+        "unmapped": 2
+      },
+      "USE_UG": {
+        "mapped": 6,
+        "ticker_not_resolved": 1
+      },
+      "VSE": {
+        "ambiguous_mapping": 32,
+        "mapped": 46,
+        "ticker_not_resolved": 10
+      },
+      "WSE": {
+        "mapped": 534,
+        "ticker_not_resolved": 32,
+        "unmapped": 16
+      },
+      "XDUS": {
+        "mapped": 191,
+        "ticker_not_resolved": 1,
+        "unmapped": 7
+      },
+      "XETRA": {
+        "ambiguous_mapping": 46,
+        "mapped": 4903,
+        "ticker_not_resolved": 236,
+        "unmapped": 350
+      },
+      "XHAM": {
+        "ambiguous_mapping": 4,
+        "mapped": 7,
+        "ticker_not_resolved": 1
+      },
+      "XHAN": {
+        "mapped": 76,
+        "unmapped": 4
+      },
+      "XSTU": {
+        "ambiguous_mapping": 142,
+        "mapped": 2558,
+        "ticker_not_resolved": 15,
+        "unmapped": 58
+      },
+      "ZSE": {
+        "mapped": 23
+      },
+      "ZSE_ZW": {
+        "mapped": 22,
+        "ticker_not_resolved": 1,
+        "unmapped": 4
+      }
+    },
+    "breakdown_by_operating_mic": {
+      "ARCX": {
+        "mapped": 2417,
+        "ticker_not_resolved": 31,
+        "unmapped": 257
+      },
+      "ASEX": {
+        "mapped": 116,
+        "ticker_not_resolved": 4,
+        "unmapped": 42
+      },
+      "BATS": {
+        "mapped": 1237,
+        "ticker_not_resolved": 11,
+        "unmapped": 121
+      },
+      "BVMF": {
+        "ambiguous_mapping": 976,
+        "mapped": 344,
+        "ticker_not_resolved": 4,
+        "unmapped": 255
+      },
+      "DSMD": {
+        "mapped": 55
+      },
+      "HSTC": {
+        "ambiguous_mapping": 2,
+        "mapped": 134,
+        "unmapped": 3
+      },
+      "NEOE": {
+        "ambiguous_mapping": 187,
+        "ticker_not_resolved": 6,
+        "unmapped": 11
+      },
+      "OTCM": {
+        "unmapped": 11067
+      },
+      "ROCO": {
+        "mapped": 920,
+        "unmapped": 199
+      },
+      "RSEX": {
+        "unmapped": 2
+      },
+      "XADS": {
+        "mapped": 83,
+        "ticker_not_resolved": 12,
+        "unmapped": 1
+      },
+      "XAMS": {
+        "mapped": 722,
+        "ticker_not_resolved": 3,
+        "unmapped": 20
+      },
+      "XASE": {
+        "mapped": 197,
+        "unmapped": 31
+      },
+      "XASX": {
+        "ambiguous_mapping": 38,
+        "mapped": 1998,
+        "ticker_not_resolved": 7,
+        "unmapped": 118
+      },
+      "XBAH": {
+        "mapped": 29,
+        "unmapped": 2
+      },
+      "XBKK": {
+        "mapped": 724,
+        "ticker_not_resolved": 16,
+        "unmapped": 29
+      },
+      "XBOG": {
+        "mapped": 3
+      },
+      "XBOM": {
+        "ambiguous_mapping": 31,
+        "mapped": 1531,
+        "ticker_not_resolved": 3373,
+        "unmapped": 115
+      },
+      "XBOT": {
+        "ticker_not_resolved": 35,
+        "unmapped": 3
+      },
+      "XBSE": {
+        "ambiguous_mapping": 3,
+        "mapped": 243,
+        "unmapped": 1
+      },
+      "XBUD": {
+        "ambiguous_mapping": 6,
+        "mapped": 21,
+        "ticker_not_resolved": 22,
+        "unmapped": 1
+      },
+      "XBUE": {
+        "mapped": 87,
+        "unmapped": 5
+      },
+      "XCAI": {
+        "mapped": 182,
+        "ticker_not_resolved": 10,
+        "unmapped": 31
+      },
+      "XCAS": {
+        "mapped": 17,
+        "ticker_not_resolved": 59,
+        "unmapped": 7
+      },
+      "XCOL": {
+        "ticker_not_resolved": 312,
+        "unmapped": 8
+      },
+      "XCSE": {
+        "mapped": 79,
+        "ticker_not_resolved": 40,
+        "unmapped": 34
+      },
+      "XDAR": {
+        "mapped": 13,
+        "ticker_not_resolved": 4
+      },
+      "XDFM": {
+        "mapped": 40,
+        "ticker_not_resolved": 14
+      },
+      "XDUB": {
+        "mapped": 8,
+        "ticker_not_resolved": 5,
+        "unmapped": 1
+      },
+      "XDUS": {
+        "mapped": 191,
+        "ticker_not_resolved": 1,
+        "unmapped": 7
+      },
+      "XETR": {
+        "ambiguous_mapping": 46,
+        "mapped": 4903,
+        "ticker_not_resolved": 236,
+        "unmapped": 350
+      },
+      "XFRA": {
+        "ambiguous_mapping": 4,
+        "mapped": 7772,
+        "ticker_not_resolved": 40,
+        "unmapped": 326
+      },
+      "XGHA": {
+        "mapped": 17,
+        "ticker_not_resolved": 2
+      },
+      "XHAM": {
+        "ambiguous_mapping": 4,
+        "mapped": 7,
+        "ticker_not_resolved": 1
+      },
+      "XHAN": {
+        "mapped": 76,
+        "unmapped": 4
+      },
+      "XHEL": {
+        "mapped": 145,
+        "ticker_not_resolved": 3,
+        "unmapped": 51
+      },
+      "XHKG": {
+        "mapped": 108,
+        "ticker_not_resolved": 3091,
+        "unmapped": 40
+      },
+      "XICE": {
+        "mapped": 15,
+        "ticker_not_resolved": 2,
+        "unmapped": 1
+      },
+      "XIDX": {
+        "mapped": 750,
+        "unmapped": 2
+      },
+      "XIST": {
+        "mapped": 641,
+        "ticker_not_resolved": 1,
+        "unmapped": 1
+      },
+      "XJPX": {
+        "ambiguous_mapping": 79,
+        "mapped": 3997,
+        "unmapped": 61
+      },
+      "XJSE": {
+        "mapped": 189,
+        "ticker_not_resolved": 7,
+        "unmapped": 16
+      },
+      "XKAR": {
+        "mapped": 371,
+        "ticker_not_resolved": 5,
+        "unmapped": 7
+      },
+      "XKLS": {
+        "ticker_not_resolved": 1031,
+        "unmapped": 8
+      },
+      "XKRX": {
+        "ambiguous_mapping": 45,
+        "mapped": 3424,
+        "unmapped": 126
+      },
+      "XKUW": {
+        "mapped": 102,
+        "ticker_not_resolved": 12,
+        "unmapped": 1
+      },
+      "XLIM": {
+        "mapped": 33
+      },
+      "XLON": {
+        "ambiguous_mapping": 763,
+        "mapped": 6039,
+        "ticker_not_resolved": 104,
+        "unmapped": 116
+      },
+      "XLUS": {
+        "mapped": 12,
+        "ticker_not_resolved": 9,
+        "unmapped": 1
+      },
+      "XMAD": {
+        "ambiguous_mapping": 4,
+        "mapped": 224,
+        "ticker_not_resolved": 14,
+        "unmapped": 34
+      },
+      "XMAU": {
+        "mapped": 32,
+        "ticker_not_resolved": 14,
+        "unmapped": 6
+      },
+      "XMEX": {
+        "ambiguous_mapping": 85,
+        "mapped": 37,
+        "ticker_not_resolved": 188,
+        "unmapped": 17
+      },
+      "XMIL": {
+        "unmapped": 278
+      },
+      "XMSW": {
+        "mapped": 7,
+        "unmapped": 1
+      },
+      "XMUN": {
+        "ambiguous_mapping": 2,
+        "mapped": 213,
+        "unmapped": 8
+      },
+      "XMUS": {
+        "mapped": 90,
+        "unmapped": 1
+      },
+      "XNAI": {
+        "mapped": 22,
+        "ticker_not_resolved": 53,
+        "unmapped": 4
+      },
+      "XNAS": {
+        "unmapped": 4753
+      },
+      "XNSA": {
+        "mapped": 83,
+        "ticker_not_resolved": 53,
+        "unmapped": 9
+      },
+      "XNSE": {
+        "ambiguous_mapping": 17,
+        "mapped": 1290,
+        "ticker_not_resolved": 2078,
+        "unmapped": 119
+      },
+      "XNYS": {
+        "mapped": 1882,
+        "ticker_not_resolved": 6,
+        "unmapped": 118
+      },
+      "XNZE": {
+        "mapped": 83,
+        "unmapped": 1
+      },
+      "XOSL": {
+        "mapped": 287,
+        "ticker_not_resolved": 5,
+        "unmapped": 23
+      },
+      "XPAR": {
+        "mapped": 1227,
+        "ticker_not_resolved": 23,
+        "unmapped": 227
+      },
+      "XPHS": {
+        "mapped": 169,
+        "ticker_not_resolved": 1,
+        "unmapped": 3
+      },
+      "XPRA": {
+        "ambiguous_mapping": 5,
+        "mapped": 13,
+        "ticker_not_resolved": 7,
+        "unmapped": 2
+      },
+      "XSAU": {
+        "ticker_not_resolved": 204,
+        "unmapped": 1
+      },
+      "XSES": {
+        "mapped": 47,
+        "ticker_not_resolved": 587,
+        "unmapped": 10
+      },
+      "XSGO": {
+        "mapped": 67,
+        "ticker_not_resolved": 30,
+        "unmapped": 9
+      },
+      "XSHE": {
+        "mapped": 3126,
+        "unmapped": 12
+      },
+      "XSHG": {
+        "mapped": 2745,
+        "unmapped": 16
+      },
+      "XSTC": {
+        "ambiguous_mapping": 1,
+        "mapped": 151,
+        "unmapped": 1
+      },
+      "XSTO": {
+        "ambiguous_mapping": 1,
+        "mapped": 205,
+        "ticker_not_resolved": 196,
+        "unmapped": 474
+      },
+      "XSTU": {
+        "ambiguous_mapping": 142,
+        "mapped": 2558,
+        "ticker_not_resolved": 15,
+        "unmapped": 58
+      },
+      "XSWX": {
+        "ambiguous_mapping": 3,
+        "mapped": 1179,
+        "ticker_not_resolved": 59,
+        "unmapped": 22
+      },
+      "XTAE": {
+        "mapped": 413,
+        "ticker_not_resolved": 381,
+        "unmapped": 7
+      },
+      "XTAI": {
+        "mapped": 1283,
+        "unmapped": 3
+      },
+      "XTSE": {
+        "ambiguous_mapping": 6,
+        "mapped": 1816,
+        "ticker_not_resolved": 238,
+        "unmapped": 235
+      },
+      "XTSX": {
+        "mapped": 1019,
+        "ticker_not_resolved": 23,
+        "unmapped": 307
+      },
+      "XUGA": {
+        "mapped": 6,
+        "ticker_not_resolved": 1
+      },
+      "XWAR": {
+        "mapped": 534,
+        "ticker_not_resolved": 32,
+        "unmapped": 16
+      },
+      "XWBO": {
+        "ambiguous_mapping": 32,
+        "mapped": 46,
+        "ticker_not_resolved": 10
+      },
+      "XZAG": {
+        "mapped": 23
+      },
+      "XZIM": {
+        "mapped": 22,
+        "ticker_not_resolved": 1,
+        "unmapped": 4
+      }
+    },
+    "cache_tarball_sha256": "a374409bdd317d455560fe59c792dfe089a4c944d96524156f04c58a27b0e012",
+    "repo_main_sha_at_fetch": "55c95a410485b557c72a55e40983ff6ff8f18d75",
+    "openfigi_fetch_window_utc": "2026-10-31T06:19:58Z/2026-10-31T06:32:00Z"
   },
   "sources": [
     {
       "url": "https://api.openfigi.com/v3/mapping",
-      "sha256": "46d760751a73fde088452684a12017afd3a42803953f5e2b0cee0eda4e0298f8",
+      "sha256": "e4a99843aff8c87fee3dd76f394a3c17ecabb0d00a66f9de4d802d1f9ae26b4c",
       "last_modified": ""
     }
   ],
@@ -22,11 +846,11 @@
   "inputs": [
     {
       "file": "listings.csv",
-      "sha256": "9fbb54132ea5b2d7abd52a01086b5bb20df4602b6d4be548a9a03c6fe21bcc4f"
+      "sha256": "4682b173f39b4d82a65b8f069ae63a9a6536bda3a833c821e5516212d2840bf8"
     },
     {
       "file": "identifiers_extended.csv",
-      "sha256": "cf1cbfa3a388487afcec5d577138b4fd2a3299c48ebfac723d84716335aad5d0"
+      "sha256": "efddbc610f3e5533af8d7bc95911efc3d354db1458bb855e80705eeb6dbc8f7f"
     },
     {
       "file": "venue_mic_mapping.csv",
