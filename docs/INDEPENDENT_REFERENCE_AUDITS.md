@@ -62,11 +62,15 @@ python scripts/build_firds_listing_compare.py \
   --iso-csv data/masterfiles/cache/firds/ISO10383_MIC.csv
 ```
 
-The local join uses `venue_mic_mapping.csv`. The official ISO registry identifies related segment MICs and market categories; it does not replace the local mapping. Exact MIC matches, segment differences, and SI/MTF observations remain separate. The conservative CFI scope is ES/ED common equity and depositary receipts, plus CE ETFs.
+The local join uses `venue_mic_mapping.csv`. The official ISO registry identifies related segment MICs and market categories; it does not replace the local mapping. Exact MIC matches, segment differences, and SI/MTF observations remain separate. The conservative CFI scope is ES/ED common equity and depositary receipts, plus CE ETFs. `firds_only_review` counts are split by CFI class (ES, ED, CE, and so on) with SI/MTF kept on separate resolution rows.
+
+Target MICs with **zero RefData rows** in a pinned provider snapshot get status `mic_not_in_snapshot` and are **excluded from pooled recall ratios** for that provider. Pooled metrics are reported globally, per provider (ESMA vs FCA), and per MIC in the JSON, Markdown, and CSV (`resolution=pooled` rows).
+
+**Unscorable venues from these files:** German operating MICs **XETR** and **XFRA** (and other FRA* operating segments) and Swiss **XSWX** typically have no rows in **ESMA** FULINS. Do not treat ESMA `local_not_observed_review` on those MICs as a completeness score. Some Frankfurt **segment** MICs do appear under ESMA, often as SI/MTF (for example **FRAB**, **STUB**, **HAND**, **MUND**); they are reported separately and are **never merged into XETR**. **XLON** is absent from ESMA but present in **FCA** FIRDS; score LSE listing grain from FCA, not ESMA.
 
 Only aggregate metrics are exported. Raw FIRDS XML, names, and ISIN/MIC rows stay in the ignored cache. Current public package builders use explicit export lists; these raw inputs are not added to those lists. File-level MIT reuse has not been approved. See the [ESMA legal notice](https://www.esma.europa.eu/legal-notice).
 
-The weekly snapshot is not current-day truth. Missing pairs need review. FIRDS has no reliable trading ticker, so the report does not claim same-ticker ISIN mismatches. Local exports also lack trading currency. Ratios describe observed provider/MIC/instrument pairs and are not global recall, identity accuracy, or a license to ingest missing rows.
+The weekly snapshot is not current-day truth. Missing pairs need review. FIRDS has no reliable trading ticker, so the report does not claim same-listing-key or same-ticker ISIN mismatches. Local exports also lack trading currency. Ratios describe observed **scorable** provider/MIC/instrument pairs and are not global recall, identity accuracy, or a license to ingest missing rows.
 
 ## OpenFIGI level audit (#446)
 
