@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-30T21:20:52Z",
+    "generated_at": "2026-10-31T08:28:19Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -99,71 +99,6 @@
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": "GE"
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Australia",
-          "country_code": "AU",
-          "exchange": "ASX",
-          "listing_key": "ASX::TLG",
-          "name": "Talga Group Ltd",
-          "ticker": "TLG"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Australia",
-          "country_code": "AU",
-          "exchange": "FSX",
-          "listing_key": "FSX::TGX",
-          "name": "Talga Group Ltd",
-          "ticker": "TGX"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Australia",
-          "country_code": "AU",
-          "exchange": "OTC",
-          "listing_key": "OTC::TLGRF",
-          "name": "Talga Group Ltd",
-          "ticker": "TLGRF"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Australia",
-          "country_code": "AU",
-          "exchange": "VSE",
-          "listing_key": "VSE::TLG",
-          "name": "TLG Immobilien AG",
-          "ticker": "TLG"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Australia",
-          "country_code": "AU",
-          "exchange": "XSTU",
-          "listing_key": "XSTU::TGX",
-          "name": "Talga Group Ltd",
-          "ticker": "TGX"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
-      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-      "isin": "AU000000TLG7",
-      "isin_valid": "true",
-      "listing_count": "5",
-      "listing_keys": "ASX::TLG|FSX::TGX|OTC::TLGRF|VSE::TLG|XSTU::TGX",
-      "member_exchanges": "ASX | FSX | OTC | VSE | XSTU",
-      "member_names": "TLG Immobilien AG | Talga Group Ltd",
-      "member_tickers": "TGX | TLG | TLGRF",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Australia",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": "TLG"
     },
     {
       "_members": [
@@ -437,7 +372,7 @@
           "ticker": "AINN"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
       "decision_candidate": "ticker_collision_isin_misassignment_suspected",
@@ -661,7 +596,7 @@
           "ticker": "DUT"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
       "decision_candidate": "ticker_collision_isin_misassignment_suspected",
@@ -1232,7 +1167,7 @@
           "ticker": "27M"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
       "decision_candidate": "ticker_collision_isin_misassignment_suspected",
@@ -1798,44 +1733,6 @@
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": "HIRECT"
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "OTC",
-          "listing_key": "OTC::BIGG",
-          "name": "Big Tree Group Inc",
-          "ticker": "BIGG"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "TSXV",
-          "listing_key": "TSXV::BIGG",
-          "name": "BIGG Digital Assets Inc.",
-          "ticker": "BIGG"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
-      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-      "isin": "US0896951003",
-      "isin_valid": "true",
-      "listing_count": "2",
-      "listing_keys": "OTC::BIGG|TSXV::BIGG",
-      "member_exchanges": "OTC | TSXV",
-      "member_names": "BIGG Digital Assets Inc. | Big Tree Group Inc",
-      "member_tickers": "BIGG",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "United States",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": "BIGG"
     },
     {
       "_members": [
@@ -3379,7 +3276,7 @@
           "ticker": "WPRT"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;registered_country_known",
       "decision_candidate": "isin_shared_by_distinct_issuers",
@@ -3815,53 +3712,6 @@
       "member_tickers": "7CC | MBAI",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Israel",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "India",
-          "country_code": "IN",
-          "exchange": "BSE_IN",
-          "listing_key": "BSE_IN::GFSTEELS",
-          "name": "Grand Foundry Ltd",
-          "ticker": "GFSTEELS"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "India",
-          "country_code": "IN",
-          "exchange": "NSE_IN",
-          "listing_key": "NSE_IN::GFSTEELS",
-          "name": "Grand Foundry Limited",
-          "ticker": "GFSTEELS"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "India",
-          "country_code": "IN",
-          "exchange": "NSE_IN",
-          "listing_key": "NSE_IN::TIKONA",
-          "name": "Tikona Communication Limited",
-          "ticker": "TIKONA"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "INE534A01028",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "BSE_IN::GFSTEELS|NSE_IN::GFSTEELS|NSE_IN::TIKONA",
-      "member_exchanges": "BSE_IN | NSE_IN",
-      "member_names": "Grand Foundry Ltd | Tikona Communication Limited",
-      "member_tickers": "GFSTEELS | TIKONA",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "India",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -4670,7 +4520,7 @@
           "ticker": "CSQ0"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;registered_country_known",
       "decision_candidate": "isin_shared_by_distinct_issuers",
@@ -4835,6 +4685,44 @@
       "member_tickers": "0NEX | EMEIS",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "France",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "BSE_IN",
+          "listing_key": "BSE_IN::GFSTEELS",
+          "name": "Grand Foundry Ltd",
+          "ticker": "GFSTEELS"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "NSE_IN",
+          "listing_key": "NSE_IN::TIKONA",
+          "name": "Tikona Communication Limited",
+          "ticker": "TIKONA"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "INE534A01028",
+      "isin_valid": "true",
+      "listing_count": "2",
+      "listing_keys": "BSE_IN::GFSTEELS|NSE_IN::TIKONA",
+      "member_exchanges": "BSE_IN | NSE_IN",
+      "member_names": "Grand Foundry Ltd | Tikona Communication Limited",
+      "member_tickers": "GFSTEELS | TIKONA",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "India",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5088,7 +4976,7 @@
           "ticker": "8AC"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;registered_country_known",
       "decision_candidate": "isin_shared_by_distinct_issuers",
@@ -5177,44 +5065,6 @@
       "member_tickers": "ABL | AQUA",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Norway",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Sweden",
-          "country_code": "SE",
-          "exchange": "FSX",
-          "listing_key": "FSX::OMAX",
-          "name": "Vivesto AB",
-          "ticker": "OMAX"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Sweden",
-          "country_code": "SE",
-          "exchange": "OTC",
-          "listing_key": "OTC::VIVE",
-          "name": "Viveve Medical Inc",
-          "ticker": "VIVE"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "SE0000722365",
-      "isin_valid": "true",
-      "listing_count": "2",
-      "listing_keys": "FSX::OMAX|OTC::VIVE",
-      "member_exchanges": "FSX | OTC",
-      "member_names": "Vivesto AB | Viveve Medical Inc",
-      "member_tickers": "OMAX | VIVE",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Sweden",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5527,82 +5377,6 @@
       "_members": [
         {
           "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "NYSE MKT",
-          "listing_key": "NYSE MKT::GNS",
-          "name": "Genius Group Ltd",
-          "ticker": "GNS"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "OTC",
-          "listing_key": "OTC::NASO",
-          "name": "Naples Soap Company, Inc.",
-          "ticker": "NASO"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "SGXZ81555062",
-      "isin_valid": "true",
-      "listing_count": "2",
-      "listing_keys": "NYSE MKT::GNS|OTC::NASO",
-      "member_exchanges": "NYSE MKT | OTC",
-      "member_names": "Genius Group Ltd | Naples Soap Company, Inc.",
-      "member_tickers": "GNS | NASO",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Singapore",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Thailand",
-          "country_code": "TH",
-          "exchange": "SET",
-          "listing_key": "SET::PTECH",
-          "name": "Plus Tech Innovation PCL",
-          "ticker": "PTECH"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Thailand",
-          "country_code": "TH",
-          "exchange": "SET",
-          "listing_key": "SET::TBSP",
-          "name": "TBSP PUBLIC COMPANY LIMITED",
-          "ticker": "TBSP"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "TH0476010Y03",
-      "isin_valid": "true",
-      "listing_count": "2",
-      "listing_keys": "SET::PTECH|SET::TBSP",
-      "member_exchanges": "SET",
-      "member_names": "Plus Tech Innovation PCL | TBSP PUBLIC COMPANY LIMITED",
-      "member_tickers": "PTECH | TBSP",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Thailand",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
           "country": "United States",
           "country_code": "US",
           "exchange": "FSX",
@@ -5810,7 +5584,7 @@
           "ticker": "9FS"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;registered_country_known",
       "decision_candidate": "isin_shared_by_distinct_issuers",
@@ -5924,7 +5698,7 @@
           "ticker": "MSGK"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;registered_country_known",
       "decision_candidate": "isin_shared_by_distinct_issuers",
@@ -6114,7 +5888,7 @@
           "ticker": "87P"
         }
       ],
-      "closure_status": "open_needs_official_identifier_evidence",
+      "closure_status": "closed_same_issuer_reviewed",
       "cluster_count": "2",
       "collision_signals": "name_clusters_disjoint;registered_country_known",
       "decision_candidate": "isin_shared_by_distinct_issuers",
@@ -6212,18 +5986,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 134,
+      "review_required_groups": 129,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 116,
-    "collision_groups": 134,
+    "closed_groups": 125,
+    "collision_groups": 129,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 97,
-      "ticker_collision_isin_misassignment_suspected": 37
+      "isin_shared_by_distinct_issuers": 94,
+      "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-10-30T21:20:52Z",
-    "listings_involved": 391,
+    "generated_at": "2026-10-31T08:28:19Z",
+    "listings_involved": 377,
     "next_review_batches": [
       {
         "collision_groups": 26,
@@ -6231,14 +6005,9 @@
         "registered_country": "United States"
       },
       {
-        "collision_groups": 15,
+        "collision_groups": 14,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "United States"
-      },
-      {
-        "collision_groups": 9,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Singapore"
       },
       {
         "collision_groups": 9,
@@ -6246,7 +6015,12 @@
         "registered_country": "Germany"
       },
       {
-        "collision_groups": 7,
+        "collision_groups": 8,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Singapore"
+      },
+      {
+        "collision_groups": 6,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Sweden"
       },
@@ -6328,11 +6102,6 @@
       {
         "collision_groups": 2,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-        "registered_country": "Australia"
-      },
-      {
-        "collision_groups": 2,
-        "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "Canada"
       },
       {
@@ -6383,12 +6152,12 @@
       {
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Thailand"
+        "registered_country": "United Kingdom"
       },
       {
         "collision_groups": 1,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "United Kingdom"
+        "decision_candidate": "ticker_collision_isin_misassignment_suspected",
+        "registered_country": "Australia"
       },
       {
         "collision_groups": 1,
@@ -6401,10 +6170,10 @@
         "registered_country": "Switzerland"
       }
     ],
-    "open_groups": 18,
+    "open_groups": 4,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
-      "Australia": 5,
+      "Australia": 4,
       "Austria": 1,
       "Belgium": 2,
       "Bermuda": 2,
@@ -6425,13 +6194,12 @@
       "Mexico": 3,
       "Netherlands": 2,
       "Norway": 1,
-      "Singapore": 9,
-      "Sweden": 7,
+      "Singapore": 8,
+      "Sweden": 6,
       "Switzerland": 5,
-      "Thailand": 1,
       "United Kingdom": 3,
-      "United States": 41
+      "United States": 40
     },
-    "ticker_collision_groups": 37
+    "ticker_collision_groups": 35
   }
 }

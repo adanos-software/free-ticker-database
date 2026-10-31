@@ -13,6 +13,17 @@ ALLOWLIST = ROOT / "data/reports/entry_quality_warn_allowlist.csv"
 LISTINGS = ROOT / "data/listings.csv"
 COVERAGE = ROOT / "data/coverage_expansion_listings.csv"
 
+ISSUE449_ISIN_CLEARS = {
+    ("TLG", "VSE"): "AU000000TLG7",
+    ("OMAX", "FSX"): "SE0000722365",
+    ("VIVE", "OTC"): "SE0000722365",
+    ("NASO", "OTC"): "SGXZ81555062",
+    ("GFSTEELS", "NSE_IN"): "INE534A01028",
+    ("PTECH", "SET"): "TH0476010Y03",
+    ("BIGG", "OTC"): "US0896951003",
+    ("BIGG", "TSXV"): "US0896951003",
+}
+
 STOLEN_ISIN_CLEARS = {
     ("CU2", "FSX"): "LU1681042864",
     ("MAST", "LSE"): "US57636Q1040",
@@ -213,6 +224,23 @@ def test_stolen_isin_clears_are_explicit_and_empty() -> None:
         assert row["proposed_value"] == ""
         assert stolen in row["reason"]
         assert row["confidence"] == "0.99"
+
+
+def test_issue449_cleared_isins_stay_empty_after_rebuild() -> None:
+    listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
+    for (ticker, exchange), stolen in ISSUE449_ISIN_CLEARS.items():
+        rows = _metadata_rows(ticker, exchange, "isin")
+        assert rows, (ticker, exchange)
+        row = rows[-1]
+        assert row["decision"] == "clear", (ticker, exchange, row["decision"])
+        assert row["proposed_value"] == ""
+        assert stolen in row["reason"]
+        listing = listings[f"{exchange}::{ticker}"]
+        assert listing["isin"] == "", (exchange, ticker, listing["isin"])
+    assert listings["FSX::CU2"]["isin"] == ""
+    assert listings["LSE::RE"]["isin"] == "GB0002349065"
+    assert listings["ASX::TLG"]["isin"] == "AU000000TLG7"
+    assert listings["NYSE MKT::GNS"]["isin"] == "SGXZ81555062"
 
 
 def test_fondul_gdr_clear_survives_input_and_output_overlays() -> None:

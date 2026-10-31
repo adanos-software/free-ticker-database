@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-10-30T21:20:52Z`
+Generated: `2026-10-31T08:28:19Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,29 +8,29 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 134 |
-| Listings involved | 391 |
-| Ticker-collision groups | 37 |
-| Open groups | 18 |
-| Closed same-issuer reviewed | 116 |
+| Collision groups | 129 |
+| Listings involved | 377 |
+| Ticker-collision groups | 35 |
+| Open groups | 4 |
+| Closed same-issuer reviewed | 125 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 97 |
-| ticker_collision_isin_misassignment_suspected | 37 |
+| isin_shared_by_distinct_issuers | 94 |
+| ticker_collision_isin_misassignment_suspected | 35 |
 
 ## Next Review Batches
 
 | Decision candidate | Registered country | Groups |
 | --- | --- | ---: |
 | isin_shared_by_distinct_issuers | United States | 26 |
-| ticker_collision_isin_misassignment_suspected | United States | 15 |
-| isin_shared_by_distinct_issuers | Singapore | 9 |
+| ticker_collision_isin_misassignment_suspected | United States | 14 |
 | ticker_collision_isin_misassignment_suspected | Germany | 9 |
-| isin_shared_by_distinct_issuers | Sweden | 7 |
+| isin_shared_by_distinct_issuers | Singapore | 8 |
+| isin_shared_by_distinct_issuers | Sweden | 6 |
 | isin_shared_by_distinct_issuers | Cayman Islands | 5 |
 | isin_shared_by_distinct_issuers | France | 5 |
 | ticker_collision_isin_misassignment_suspected | India | 5 |
@@ -46,34 +46,20 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | Bermuda | 2 |
 | isin_shared_by_distinct_issuers | Japan | 2 |
 | isin_shared_by_distinct_issuers | Netherlands | 2 |
-| ticker_collision_isin_misassignment_suspected | Australia | 2 |
 | ticker_collision_isin_misassignment_suspected | Canada | 2 |
 | ticker_collision_isin_misassignment_suspected | United Kingdom | 2 |
 | isin_shared_by_distinct_issuers | Austria | 1 |
 | isin_shared_by_distinct_issuers | Denmark | 1 |
+| isin_shared_by_distinct_issuers | Hungary | 1 |
 
 ## Highest-Risk Groups
 
 | ISIN | Registered country | Listings | Shared tickers | Names |
 | --- | --- | ---: | --- | --- |
-| AU000000TLG7 | Australia | 5 | TLG | TLG Immobilien AG \| Talga Group Ltd |
-| US0268747849 | United States | 4 | AINN | AMER.INTL GRP NEW DL 2,50 \| American International Group Inc. |
-| US6153691059 | United States | 4 | DUT | MOODYS CORP       DL-,01 \| Moody's Corporation |
-| GB00BNGDN821 | United Kingdom | 3 | 27M | MELR IN PLC LS-,001 \| Melrose Industries PLC |
 | AU000000CRB1 | Australia | 2 | CRB | Carbine Resources Ltd \| Lyxor Commodities Refinitiv/CoreCommodity CRB TR UCITS ETF - Acc-EUR |
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
-| US0896951003 | United States | 2 | BIGG | BIGG Digital Assets Inc. \| Big Tree Group Inc |
-| CA9609085076 | Canada | 3 | - | Aetherion Technologies Inc. \| Westport Fuel Systems Inc. |
-| INE534A01028 | India | 3 | - | Grand Foundry Ltd \| Tikona Communication Limited |
-| DE000A41YEG8 | Germany | 2 | - | Nexum Group AG \| creditshelf AG |
-| NL0000313286 | Netherlands | 2 | - | ACOMO NV           EO-,45 \| Amsterdam Commodities NV |
-| SE0000722365 | Sweden | 2 | - | Vivesto AB \| Viveve Medical Inc |
-| SGXZ81555062 | Singapore | 2 | - | Genius Group Ltd \| Naples Soap Company, Inc. |
-| TH0476010Y03 | Thailand | 2 | - | Plus Tech Innovation PCL \| TBSP PUBLIC COMPANY LIMITED |
-| US34631F1021 | United States | 2 | - | FOR.PWR.SOL.INC. O.N. \| Forgent Power Solutions, Inc. |
-| US55825T1034 | United States | 2 | - | MSG Knickerbockers Corp. Class A Common Stock \| Madison Square Garden Sports Corp |
-| US7789203061 | United States | 2 | - | SHA.HO.INC. O.N. \| SharonAI Holdings, Inc. Class A Common Stock |
+| INE534A01028 | India | 2 | - | Grand Foundry Ltd \| Tikona Communication Limited |
 
 ## Gate
 

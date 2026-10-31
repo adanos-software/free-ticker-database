@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-30T21:10:54Z",
+  "generated_at": "2026-10-31T08:23:23Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2133,
-  "decision_rows": 7032,
+  "conflict_count": 2128,
+  "decision_rows": 7019,
   "action_counts": {
     "kept_listing_keyed_identifier": 1374,
     "proposed_clear_conflicting_identifier": 1103,
-    "quarantined_unresolved_identifier": 4555
+    "quarantined_unresolved_identifier": 4542
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1103,
-  "quarantined_rows": 4555,
+  "quarantined_rows": 4542,
   "retained_rows": 1374,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -1586,71 +1586,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "AU000000TBR5"
-    },
-    {
-      "conflict_id": "d6116c475d8f6a648c74",
-      "isin": "AU000000TLG7",
-      "listing_key": "ASX::TLG",
-      "ticker": "TLG",
-      "exchange": "ASX",
-      "name": "Talga Group Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000TLG7"
-    },
-    {
-      "conflict_id": "d6116c475d8f6a648c74",
-      "isin": "AU000000TLG7",
-      "listing_key": "FSX::TGX",
-      "ticker": "TGX",
-      "exchange": "FSX",
-      "name": "Talga Group Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000TLG7"
-    },
-    {
-      "conflict_id": "d6116c475d8f6a648c74",
-      "isin": "AU000000TLG7",
-      "listing_key": "OTC::TLGRF",
-      "ticker": "TLGRF",
-      "exchange": "OTC",
-      "name": "Talga Group Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000TLG7"
-    },
-    {
-      "conflict_id": "d6116c475d8f6a648c74",
-      "isin": "AU000000TLG7",
-      "listing_key": "VSE::TLG",
-      "ticker": "TLG",
-      "exchange": "VSE",
-      "name": "TLG Immobilien AG",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000TLG7"
-    },
-    {
-      "conflict_id": "d6116c475d8f6a648c74",
-      "isin": "AU000000TLG7",
-      "listing_key": "XSTU::TGX",
-      "ticker": "TGX",
-      "exchange": "XSTU",
-      "name": "Talga Group Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "AU000000TLG7"
     },
     {
       "conflict_id": "1c3bb6b25c693860bac0",
@@ -38105,7 +38040,7 @@
       "retained_isin": "INE526E01018"
     },
     {
-      "conflict_id": "6b6d1b85ddd09bca949a",
+      "conflict_id": "51285c0143dce5cf707b",
       "isin": "INE534A01028",
       "listing_key": "BSE_IN::GFSTEELS",
       "ticker": "GFSTEELS",
@@ -38118,20 +38053,7 @@
       "retained_isin": "INE534A01028"
     },
     {
-      "conflict_id": "6b6d1b85ddd09bca949a",
-      "isin": "INE534A01028",
-      "listing_key": "NSE_IN::GFSTEELS",
-      "ticker": "GFSTEELS",
-      "exchange": "NSE_IN",
-      "name": "Grand Foundry Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "INE534A01028"
-    },
-    {
-      "conflict_id": "6b6d1b85ddd09bca949a",
+      "conflict_id": "51285c0143dce5cf707b",
       "isin": "INE534A01028",
       "listing_key": "NSE_IN::TIKONA",
       "ticker": "TIKONA",
@@ -54953,7 +54875,7 @@
       "retained_isin": "NL0015002J37"
     },
     {
-      "conflict_id": "f2ab1252cf88acb323dc",
+      "conflict_id": "0f4df015d8d28fd4e4a2",
       "isin": "NL0015002SN0",
       "listing_key": "LSE::0RLT",
       "ticker": "0RLT",
@@ -54966,7 +54888,20 @@
       "retained_isin": "NL0015002SN0"
     },
     {
-      "conflict_id": "f2ab1252cf88acb323dc",
+      "conflict_id": "0f4df015d8d28fd4e4a2",
+      "isin": "NL0015002SN0",
+      "listing_key": "XDUS::QIA",
+      "ticker": "QIA",
+      "exchange": "XDUS",
+      "name": "QIAGEN NV",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "NL0015002SN0"
+    },
+    {
+      "conflict_id": "0f4df015d8d28fd4e4a2",
       "isin": "NL0015002SN0",
       "listing_key": "XETRA::QIA",
       "ticker": "QIA",
@@ -57629,32 +57564,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "SE0000667925"
-    },
-    {
-      "conflict_id": "b83d1f4e11fc721d014f",
-      "isin": "SE0000722365",
-      "listing_key": "FSX::OMAX",
-      "ticker": "OMAX",
-      "exchange": "FSX",
-      "name": "Vivesto AB",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "SE0000722365"
-    },
-    {
-      "conflict_id": "b83d1f4e11fc721d014f",
-      "isin": "SE0000722365",
-      "listing_key": "OTC::VIVE",
-      "ticker": "VIVE",
-      "exchange": "OTC",
-      "name": "Viveve Medical Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "SE0000722365"
     },
     {
       "conflict_id": "4cd92ded275999ebaa69",
@@ -62233,58 +62142,6 @@
       "retained_isin": "SGXE96528042"
     },
     {
-      "conflict_id": "d4990d017579015025c7",
-      "isin": "SGXZ81555062",
-      "listing_key": "NYSE MKT::GNS",
-      "ticker": "GNS",
-      "exchange": "NYSE MKT",
-      "name": "Genius Group Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "SGXZ81555062"
-    },
-    {
-      "conflict_id": "d4990d017579015025c7",
-      "isin": "SGXZ81555062",
-      "listing_key": "OTC::NASO",
-      "ticker": "NASO",
-      "exchange": "OTC",
-      "name": "Naples Soap Company, Inc.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "SGXZ81555062"
-    },
-    {
-      "conflict_id": "c176c6b27df673567c87",
-      "isin": "TH0476010Y03",
-      "listing_key": "SET::PTECH",
-      "ticker": "PTECH",
-      "exchange": "SET",
-      "name": "Plus Tech Innovation PCL",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "TH0476010Y03"
-    },
-    {
-      "conflict_id": "c176c6b27df673567c87",
-      "isin": "TH0476010Y03",
-      "listing_key": "SET::TBSP",
-      "ticker": "TBSP",
-      "exchange": "SET",
-      "name": "TBSP PUBLIC COMPANY LIMITED",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "TH0476010Y03"
-    },
-    {
       "conflict_id": "e1703a6a8f9bf0262f4b",
       "isin": "TH0902010014",
       "listing_key": "FSX::T6W",
@@ -65689,32 +65546,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US0893021032"
-    },
-    {
-      "conflict_id": "313a380b64c7634ba71c",
-      "isin": "US0896951003",
-      "listing_key": "OTC::BIGG",
-      "ticker": "BIGG",
-      "exchange": "OTC",
-      "name": "Big Tree Group Inc",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US0896951003"
-    },
-    {
-      "conflict_id": "313a380b64c7634ba71c",
-      "isin": "US0896951003",
-      "listing_key": "TSXV::BIGG",
-      "ticker": "BIGG",
-      "exchange": "TSXV",
-      "name": "BIGG Digital Assets Inc.",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US0896951003"
     },
     {
       "conflict_id": "2f8e70c8d46e0a200a6e",
