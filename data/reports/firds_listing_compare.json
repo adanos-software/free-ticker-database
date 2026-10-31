@@ -1,16 +1,271 @@
 {
-  "generated_at": "2026-10-20T08:32:01Z",
+  "generated_at": "2026-10-31T06:22:56Z",
   "summary": {
     "official_unique_isins": 6343,
     "matched_isin_mic": 4945,
-    "firds_only_review": 1398,
-    "local_unique_isins": 45410,
-    "local_not_observed_review": 40465,
-    "local_listing_rows": 47708,
+    "local_unique_isins": 10553,
+    "local_not_observed_review": 5608,
+    "local_listing_rows": 11466,
     "local_listing_rows_observed": 5709,
     "multi_currency_unresolved": 0,
+    "firds_only_review": 1398,
     "snapshot_pair_recall_pct": 77.96,
-    "local_pair_observed_pct": 10.89
+    "local_pair_observed_pct": 46.86,
+    "mics_not_in_snapshot": [
+      "XETR",
+      "XFRA",
+      "XLON",
+      "XSWX"
+    ],
+    "by_provider": {
+      "esma": {
+        "official_unique_isins": 1496,
+        "matched_isin_mic": 1234,
+        "local_unique_isins": 2212,
+        "local_not_observed_review": 978,
+        "local_listing_rows": 2222,
+        "local_listing_rows_observed": 1241,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 262,
+        "snapshot_pair_recall_pct": 82.49,
+        "local_pair_observed_pct": 55.79,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XLON",
+          "XSWX"
+        ]
+      },
+      "fca": {
+        "official_unique_isins": 4847,
+        "matched_isin_mic": 3711,
+        "local_unique_isins": 8341,
+        "local_not_observed_review": 4630,
+        "local_listing_rows": 9244,
+        "local_listing_rows_observed": 4468,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 1136,
+        "snapshot_pair_recall_pct": 76.56,
+        "local_pair_observed_pct": 44.49,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XSWX"
+        ]
+      }
+    },
+    "by_mic": {
+      "esma:XAMS": {
+        "official_unique_isins": 485,
+        "matched_isin_mic": 449,
+        "local_unique_isins": 739,
+        "local_not_observed_review": 290,
+        "local_listing_rows": 745,
+        "local_listing_rows_observed": 455,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 36,
+        "snapshot_pair_recall_pct": 92.58,
+        "local_pair_observed_pct": 60.76,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XLON",
+          "XSWX"
+        ]
+      },
+      "esma:XETR": {
+        "official_unique_isins": 0,
+        "matched_isin_mic": 0,
+        "local_unique_isins": 0,
+        "local_not_observed_review": 0,
+        "local_listing_rows": 0,
+        "local_listing_rows_observed": 0,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 0,
+        "snapshot_pair_recall_pct": null,
+        "local_pair_observed_pct": null,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XLON",
+          "XSWX"
+        ]
+      },
+      "esma:XFRA": {
+        "official_unique_isins": 0,
+        "matched_isin_mic": 0,
+        "local_unique_isins": 0,
+        "local_not_observed_review": 0,
+        "local_listing_rows": 0,
+        "local_listing_rows_observed": 0,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 0,
+        "snapshot_pair_recall_pct": null,
+        "local_pair_observed_pct": null,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XLON",
+          "XSWX"
+        ]
+      },
+      "esma:XLON": {
+        "official_unique_isins": 0,
+        "matched_isin_mic": 0,
+        "local_unique_isins": 0,
+        "local_not_observed_review": 0,
+        "local_listing_rows": 0,
+        "local_listing_rows_observed": 0,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 0,
+        "snapshot_pair_recall_pct": null,
+        "local_pair_observed_pct": null,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XLON",
+          "XSWX"
+        ]
+      },
+      "esma:XPAR": {
+        "official_unique_isins": 1011,
+        "matched_isin_mic": 785,
+        "local_unique_isins": 1473,
+        "local_not_observed_review": 688,
+        "local_listing_rows": 1477,
+        "local_listing_rows_observed": 786,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 226,
+        "snapshot_pair_recall_pct": 77.65,
+        "local_pair_observed_pct": 53.29,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XLON",
+          "XSWX"
+        ]
+      },
+      "esma:XSWX": {
+        "official_unique_isins": 0,
+        "matched_isin_mic": 0,
+        "local_unique_isins": 0,
+        "local_not_observed_review": 0,
+        "local_listing_rows": 0,
+        "local_listing_rows_observed": 0,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 0,
+        "snapshot_pair_recall_pct": null,
+        "local_pair_observed_pct": null,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XLON",
+          "XSWX"
+        ]
+      },
+      "fca:XAMS": {
+        "official_unique_isins": 485,
+        "matched_isin_mic": 449,
+        "local_unique_isins": 739,
+        "local_not_observed_review": 290,
+        "local_listing_rows": 745,
+        "local_listing_rows_observed": 455,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 36,
+        "snapshot_pair_recall_pct": 92.58,
+        "local_pair_observed_pct": 60.76,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XSWX"
+        ]
+      },
+      "fca:XETR": {
+        "official_unique_isins": 0,
+        "matched_isin_mic": 0,
+        "local_unique_isins": 0,
+        "local_not_observed_review": 0,
+        "local_listing_rows": 0,
+        "local_listing_rows_observed": 0,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 0,
+        "snapshot_pair_recall_pct": null,
+        "local_pair_observed_pct": null,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XSWX"
+        ]
+      },
+      "fca:XFRA": {
+        "official_unique_isins": 0,
+        "matched_isin_mic": 0,
+        "local_unique_isins": 0,
+        "local_not_observed_review": 0,
+        "local_listing_rows": 0,
+        "local_listing_rows_observed": 0,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 0,
+        "snapshot_pair_recall_pct": null,
+        "local_pair_observed_pct": null,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XSWX"
+        ]
+      },
+      "fca:XLON": {
+        "official_unique_isins": 3353,
+        "matched_isin_mic": 2478,
+        "local_unique_isins": 6129,
+        "local_not_observed_review": 3651,
+        "local_listing_rows": 7022,
+        "local_listing_rows_observed": 3228,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 875,
+        "snapshot_pair_recall_pct": 73.9,
+        "local_pair_observed_pct": 40.43,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XSWX"
+        ]
+      },
+      "fca:XPAR": {
+        "official_unique_isins": 1009,
+        "matched_isin_mic": 784,
+        "local_unique_isins": 1473,
+        "local_not_observed_review": 689,
+        "local_listing_rows": 1477,
+        "local_listing_rows_observed": 785,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 225,
+        "snapshot_pair_recall_pct": 77.7,
+        "local_pair_observed_pct": 53.22,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XSWX"
+        ]
+      },
+      "fca:XSWX": {
+        "official_unique_isins": 0,
+        "matched_isin_mic": 0,
+        "local_unique_isins": 0,
+        "local_not_observed_review": 0,
+        "local_listing_rows": 0,
+        "local_listing_rows_observed": 0,
+        "multi_currency_unresolved": 0,
+        "firds_only_review": 0,
+        "snapshot_pair_recall_pct": null,
+        "local_pair_observed_pct": null,
+        "mics_not_in_snapshot": [
+          "XETR",
+          "XFRA",
+          "XSWX"
+        ]
+      }
+    }
   },
   "sources": [
     {
@@ -22,14 +277,14 @@
     {
       "url": "https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv",
       "last_modified": "Mon, 12 Oct 2026 08:20:53 GMT",
-      "fetched_at": "2026-10-20T08:15:22.937303+00:00",
+      "fetched_at": "2026-10-31T06:10:50Z",
       "sha256": "09a0d07b7b8348147453a2d8b18bc6638e3c5b16f749462582c9b1edf0fd0e38",
       "bytes": 590760
     },
     {
       "url": "https://firds.esma.europa.eu/firds/FULINS_C_20261017_01of01.zip",
       "last_modified": "Sat, 17 Oct 2026 06:58:11 GMT",
-      "fetched_at": "2026-10-20T08:13:41.138625+00:00",
+      "fetched_at": "2026-10-31T06:10:41Z",
       "sha256": "71c159f263e936372256494b99515b9ec35b979caeb36b773ba6c3840dabfcc8",
       "bytes": 3806043,
       "publication_date": "2026-10-17T00:00:00Z"
@@ -37,7 +292,7 @@
     {
       "url": "https://firds.esma.europa.eu/firds/FULINS_E_20261017_01of02.zip",
       "last_modified": "Sat, 17 Oct 2026 06:58:12 GMT",
-      "fetched_at": "2026-10-20T08:13:42.101433+00:00",
+      "fetched_at": "2026-10-31T06:10:43Z",
       "sha256": "3bdd8d5e3bed51fabc42de89d40b3890e641dc328219e9b75392836a9ca9d5d5",
       "bytes": 8250598,
       "publication_date": "2026-10-17T00:00:00Z"
@@ -45,7 +300,7 @@
     {
       "url": "https://firds.esma.europa.eu/firds/FULINS_E_20261017_02of02.zip",
       "last_modified": "Sat, 17 Oct 2026 06:58:12 GMT",
-      "fetched_at": "2026-10-20T08:13:42.767023+00:00",
+      "fetched_at": "2026-10-31T06:10:45Z",
       "sha256": "5a725b2d35e6b04648d63436f89b2dc21492baf16b53e731246754c626eaed93",
       "bytes": 3723396,
       "publication_date": "2026-10-17T00:00:00Z"
@@ -53,7 +308,7 @@
     {
       "url": "https://data.fca.org.uk/artefacts/FIRDS/FULINS_C_20261017_01of01.zip",
       "last_modified": "Sat, 17 Oct 2026 09:55:58 GMT",
-      "fetched_at": "2026-10-20T08:13:43.505920+00:00",
+      "fetched_at": "2026-10-31T06:10:45Z",
       "sha256": "a215fd0879269db3c8d4f1a9138d00a30a3dc9769a218239cf28fd3453058978",
       "bytes": 8120426,
       "publication_date": "2026-10-17"
@@ -61,7 +316,7 @@
     {
       "url": "https://data.fca.org.uk/artefacts/FIRDS/FULINS_E_20261017_01of01.zip",
       "last_modified": "Sat, 17 Oct 2026 09:56:01 GMT",
-      "fetched_at": "2026-10-20T08:13:46.232868+00:00",
+      "fetched_at": "2026-10-31T06:10:46Z",
       "sha256": "426e5c46d016804c0a52b7c11b26c696bf957b801a193fcc18a60fe07001f8e5",
       "bytes": 40871930,
       "publication_date": "2026-10-17"
@@ -71,7 +326,7 @@
   "inputs": [
     {
       "file": "listings.csv",
-      "sha256": "9fbb54132ea5b2d7abd52a01086b5bb20df4602b6d4be548a9a03c6fe21bcc4f"
+      "sha256": "4682b173f39b4d82a65b8f069ae63a9a6536bda3a833c821e5516212d2840bf8"
     },
     {
       "file": "venue_mic_mapping.csv",
@@ -93,6 +348,8 @@
     "FIRDS has no reliable trading ticker. Same-listing-key ISIN mismatches cannot be scored from these files.",
     "Local exports lack currency. Multiple FIRDS currencies remain unresolved; no currency-specific completeness claim.",
     "Weekly full snapshots are not current-day truth. Missing pairs are review candidates, not proven false positives.",
-    "Snapshot ratios pool provider/MIC/instrument pairs; ESMA and FCA overlap. They are not global recall or identity accuracy."
+    "Snapshot ratios pool scorable provider/MIC/instrument pairs only; ESMA and FCA overlap. They are not global recall or identity accuracy.",
+    "German operating MICs XETR and XFRA and Swiss XSWX often have zero rows in ESMA FULINS; those MICs are mic_not_in_snapshot for ESMA and excluded from ESMA pooled ratios. Frankfurt segment MICs such as FRAB, STUB, HAND, and MUND may appear under SI/MTF and are never merged into XETR.",
+    "UK XLON is absent from ESMA FULINS but present in FCA FIRDS; score LSE via FCA, not ESMA."
   ]
 }
