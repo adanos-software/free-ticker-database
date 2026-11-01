@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-31T12:14:56Z",
+  "generated_at": "2026-11-01T20:18:02Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2134,
-  "decision_rows": 7035,
+  "conflict_count": 2133,
+  "decision_rows": 7038,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1382,
+    "kept_listing_keyed_identifier": 1381,
     "proposed_clear_conflicting_identifier": 1109,
-    "quarantined_unresolved_identifier": 4544
+    "quarantined_unresolved_identifier": 4548
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1109,
-  "quarantined_rows": 4544,
-  "retained_rows": 1382,
+  "quarantined_rows": 4548,
+  "retained_rows": 1381,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -52275,32 +52275,6 @@
       "retained_isin": "MA0000010415"
     },
     {
-      "conflict_id": "76532cb0ea373a5518f3",
-      "isin": "MA0000011009",
-      "listing_key": "CSE_MA::AUTO-NEJIM",
-      "ticker": "AUTO-NEJIM",
-      "exchange": "CSE_MA",
-      "name": "AUTO NEJIMA",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "MA0000011009"
-    },
-    {
-      "conflict_id": "76532cb0ea373a5518f3",
-      "isin": "MA0000011009",
-      "listing_key": "CSE_MA::NEJ",
-      "ticker": "NEJ",
-      "exchange": "CSE_MA",
-      "name": "AUTO NEJMA",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "MA0000011009"
-    },
-    {
       "conflict_id": "698b6639123e6dd33338",
       "isin": "MU0607S00004",
       "listing_key": "BSE_BW::ADBF-ETF",
@@ -55083,7 +55057,20 @@
       "retained_isin": "NL0015002J37"
     },
     {
-      "conflict_id": "0f4df015d8d28fd4e4a2",
+      "conflict_id": "0a17bb17dc79b258b00c",
+      "isin": "NL0015002SN0",
+      "listing_key": "FSX::QIA",
+      "ticker": "QIA",
+      "exchange": "FSX",
+      "name": "QIAGEN NV",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "NL0015002SN0"
+    },
+    {
+      "conflict_id": "0a17bb17dc79b258b00c",
       "isin": "NL0015002SN0",
       "listing_key": "LSE::0RLT",
       "ticker": "0RLT",
@@ -55096,7 +55083,33 @@
       "retained_isin": "NL0015002SN0"
     },
     {
-      "conflict_id": "0f4df015d8d28fd4e4a2",
+      "conflict_id": "0a17bb17dc79b258b00c",
+      "isin": "NL0015002SN0",
+      "listing_key": "Munich::QIA",
+      "ticker": "QIA",
+      "exchange": "Munich",
+      "name": "QIAGEN NV",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "NL0015002SN0"
+    },
+    {
+      "conflict_id": "0a17bb17dc79b258b00c",
+      "isin": "NL0015002SN0",
+      "listing_key": "NYSE::QGEN",
+      "ticker": "QGEN",
+      "exchange": "NYSE",
+      "name": "Qiagen NV",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "NL0015002SN0"
+    },
+    {
+      "conflict_id": "0a17bb17dc79b258b00c",
       "isin": "NL0015002SN0",
       "listing_key": "XDUS::QIA",
       "ticker": "QIA",
@@ -55109,12 +55122,38 @@
       "retained_isin": "NL0015002SN0"
     },
     {
-      "conflict_id": "0f4df015d8d28fd4e4a2",
+      "conflict_id": "0a17bb17dc79b258b00c",
       "isin": "NL0015002SN0",
       "listing_key": "XETRA::QIA",
       "ticker": "QIA",
       "exchange": "XETRA",
       "name": "QIAGEN NV         EO -,01",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "NL0015002SN0"
+    },
+    {
+      "conflict_id": "0a17bb17dc79b258b00c",
+      "isin": "NL0015002SN0",
+      "listing_key": "XHAN::QIA",
+      "ticker": "QIA",
+      "exchange": "XHAN",
+      "name": "QIAGEN NV",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "NL0015002SN0"
+    },
+    {
+      "conflict_id": "0a17bb17dc79b258b00c",
+      "isin": "NL0015002SN0",
+      "listing_key": "XSTU::QIA",
+      "ticker": "QIA",
+      "exchange": "XSTU",
+      "name": "QIAGEN NV",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
