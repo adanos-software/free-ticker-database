@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-31T12:20:09Z",
+    "generated_at": "2026-11-01T13:19:26Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,37 +27,37 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63625,
-    "joined_listings": 63625,
-    "scope_rows": 63625
+    "rows": 63644,
+    "joined_listings": 63644,
+    "scope_rows": 63644
   },
   "completeness": {
     "isin": {
-      "n": 63625,
-      "filled": 62943,
-      "missing": 682,
-      "pct": 98.93,
-      "fills_needed_for_99": 46,
+      "n": 63644,
+      "filled": 62942,
+      "missing": 702,
+      "pct": 98.9,
+      "fills_needed_for_99": 66,
       "pass": false
     },
     "country": {
-      "n": 63625,
-      "filled": 63569,
-      "missing": 56,
-      "pct": 99.91,
+      "n": 63644,
+      "filled": 63591,
+      "missing": 53,
+      "pct": 99.92,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63625,
-      "filled": 62728,
-      "missing": 897,
-      "pct": 98.59,
-      "fills_needed_for_99": 261,
+      "n": 63644,
+      "filled": 62732,
+      "missing": 912,
+      "pct": 98.57,
+      "fills_needed_for_99": 276,
       "pass": false
     },
     "missing_isin_by_exchange": {
-      "TSX": 127,
+      "TSX": 147,
       "ASX": 98,
       "TSXV": 74,
       "NASDAQ": 71,
@@ -72,20 +72,20 @@
     },
     "missing_sector_by_exchange": {
       "FSX": 254,
-      "XSTU": 50,
+      "XSTU": 48,
       "NSE_IN": 36,
       "HNX": 32,
-      "BVB": 30,
+      "BVB": 29,
       "PSE": 25,
       "BIST": 23,
-      "BCBA": 22,
       "HKEX": 22,
+      "BCBA": 21,
       "XETRA": 19,
       "BSE_IN": 17,
       "NASDAQ": 17
     },
     "missing_category_by_exchange": {
-      "TSX": 53,
+      "TSX": 73,
       "XETRA": 47,
       "AMS": 29,
       "NYSE ARCA": 24,
@@ -96,17 +96,17 @@
     }
   },
   "identity": {
-    "official_isin_mismatch": 8,
-    "official_name_mismatch": 6,
+    "official_isin_mismatch": 12,
+    "official_name_mismatch": 5,
     "open_collision_groups": 4,
-    "quarantine_unresolved": 1252,
+    "quarantine_unresolved": 1251,
     "quarantine_proposed_clear": 289,
     "quarantine_kept": 568
   },
   "entry_quality_status": {
-    "pass": 59560,
-    "source_gap": 4041,
-    "warn": 15,
+    "pass": 59554,
+    "source_gap": 4063,
+    "warn": 18,
     "notice": 9
   },
   "checks": [
@@ -114,11 +114,16 @@
       "name": "core_identity_known_bugs_zero",
       "status": "fail",
       "details": {
-        "official_isin_mismatch": 8,
-        "official_isin_mismatch_unexpected": 0,
+        "official_isin_mismatch": 12,
+        "official_isin_mismatch_unexpected": 4,
         "official_isin_mismatch_reviewed_holds": 8,
         "open_collision_groups": 4,
-        "sample_mismatch": [],
+        "sample_mismatch": [
+          "TPEX::2249",
+          "TPEX::6825",
+          "TPEX::6898",
+          "TPEX::6938"
+        ],
         "sample_collision_isins": [
           "AU000000CRB1",
           "CA41752L1076",
@@ -131,11 +136,11 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63625,
-        "filled": 62943,
-        "missing": 682,
-        "pct": 98.93,
-        "fills_needed_for_99": 46,
+        "n": 63644,
+        "filled": 62942,
+        "missing": 702,
+        "pct": 98.9,
+        "fills_needed_for_99": 66,
         "pass": false
       }
     },
@@ -143,11 +148,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63625,
-        "filled": 62728,
-        "missing": 897,
-        "pct": 98.59,
-        "fills_needed_for_99": 261,
+        "n": 63644,
+        "filled": 62732,
+        "missing": 912,
+        "pct": 98.57,
+        "fills_needed_for_99": 276,
         "pass": false
       }
     },
@@ -155,10 +160,10 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63625,
-        "filled": 63569,
-        "missing": 56,
-        "pct": 99.91,
+        "n": 63644,
+        "filled": 63591,
+        "missing": 53,
+        "pct": 99.92,
         "fills_needed_for_99": 0,
         "pass": true
       }
@@ -167,13 +172,12 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 6,
+        "official_name_mismatch": 5,
         "sample": [
           "NASDAQ::ASBP",
           "TSXV::AXO",
           "NASDAQ::BNC",
           "NEO::HELP",
-          "TSXV::MKA",
           "TSXV::MKT"
         ]
       }
