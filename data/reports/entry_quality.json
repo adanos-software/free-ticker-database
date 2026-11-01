@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-01T13:20:55Z",
+    "generated_at": "2026-11-01T20:18:28Z",
     "rows": 97776,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,9 +15,9 @@
   "summary": {
     "status_counts": {
       "notice": 11,
-      "pass": 86429,
+      "pass": 86433,
       "source_gap": 11300,
-      "warn": 36
+      "warn": 32
     },
     "evidence_level_counts": {
       "identifier_enriched": 4637,
@@ -26,7 +26,7 @@
       "valid_isin": 5176
     },
     "severity_counts": {
-      "high": 15,
+      "high": 11,
       "low": 11,
       "medium": 22,
       "source_gap": 11704
@@ -38,7 +38,7 @@
       "missing_stock_sector": 695,
       "missing_etf_category": 217,
       "official_name_mismatch": 22,
-      "official_isin_mismatch": 14,
+      "official_isin_mismatch": 10,
       "low_company_name_overlap": 9,
       "shared_name_alias": 2,
       "country_isin_mismatch": 1
@@ -7731,24 +7731,6 @@
           "field": "exchange",
           "value": "TSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TPEX::2249",
-      "ticker": "2249",
-      "exchange": "TPEX",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "TW0002249B14",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0002249000."
         }
       ]
     },
@@ -16779,24 +16761,6 @@
       ]
     },
     {
-      "listing_key": "TPEX::6825",
-      "ticker": "6825",
-      "exchange": "TPEX",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "TW0006825B17",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0006825003."
-        }
-      ]
-    },
-    {
       "listing_key": "SSE::688221",
       "ticker": "688221",
       "exchange": "SSE",
@@ -17067,24 +17031,6 @@
       ]
     },
     {
-      "listing_key": "TPEX::6898",
-      "ticker": "6898",
-      "exchange": "TPEX",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "TW0006898B19",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0006898000."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::68V",
       "ticker": "68V",
       "exchange": "XSTU",
@@ -17117,24 +17063,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "TPEX::6938",
-      "ticker": "6938",
-      "exchange": "TPEX",
-      "asset_type": "Stock",
-      "quality_status": "warn",
-      "quality_score": 40,
-      "recommended_action": "review_or_backfill",
-      "issues": [
-        {
-          "issue_type": "official_isin_mismatch",
-          "severity": "high",
-          "field": "isin",
-          "value": "TW0006938B11",
-          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0006938004."
         }
       ]
     },
@@ -18452,6 +18380,78 @@
           "field": "exchange",
           "value": "TSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7925",
+      "ticker": "7925",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7940",
+      "ticker": "7940",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7999",
+      "ticker": "7999",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "Munich::7A2",
+      "ticker": "7A2",
+      "exchange": "Munich",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "Munich",
+          "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
     }

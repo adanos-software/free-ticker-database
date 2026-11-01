@@ -1,8 +1,8 @@
 # Database Validation Report
 
-Generated at: `2026-11-01T13:25:26Z`
+Generated at: `2026-11-01T20:19:30Z`
 
-Status: `FAIL`
+Status: `PASS`
 
 ## Summary
 
@@ -13,7 +13,7 @@ Status: `FAIL`
 | adanos_reference_rows | 65,695 |
 | entry_quality_rows | 97,776 |
 | error_gates | 87 |
-| failed_error_gates | 1 |
+| failed_error_gates | 0 |
 | info_gates | 5 |
 
 ## Gates
@@ -88,7 +88,7 @@ Status: `FAIL`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | FAIL | 4 | 0 |
+| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
@@ -97,7 +97,7 @@ Status: `FAIL`
 | missing_stock_sector | info | PASS | 695 |  |
 | missing_etf_category | info | PASS | 217 |  |
 | source_gap_rows | info | PASS | 11300 |  |
-| allowed_warn_rows | info | PASS | 33 |  |
+| allowed_warn_rows | info | PASS | 32 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |
@@ -115,11 +115,4 @@ Status: `FAIL`
 
 ## Failed Gate Details
 
-### entry_quality_unexpected_warn_count
-
-- Actual: `4`
-- `TPEX::2249`
-- `TPEX::6825`
-- `TPEX::6898`
-- `TPEX::6938`
-
+_No failed error gates._

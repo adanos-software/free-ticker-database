@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-01T13:19:26Z",
+    "generated_at": "2026-11-01T20:18:31Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -96,7 +96,7 @@
     }
   },
   "identity": {
-    "official_isin_mismatch": 12,
+    "official_isin_mismatch": 8,
     "official_name_mismatch": 5,
     "open_collision_groups": 4,
     "quarantine_unresolved": 1251,
@@ -104,9 +104,9 @@
     "quarantine_kept": 568
   },
   "entry_quality_status": {
-    "pass": 59554,
+    "pass": 59558,
     "source_gap": 4063,
-    "warn": 18,
+    "warn": 14,
     "notice": 9
   },
   "checks": [
@@ -114,16 +114,11 @@
       "name": "core_identity_known_bugs_zero",
       "status": "fail",
       "details": {
-        "official_isin_mismatch": 12,
-        "official_isin_mismatch_unexpected": 4,
+        "official_isin_mismatch": 8,
+        "official_isin_mismatch_unexpected": 0,
         "official_isin_mismatch_reviewed_holds": 8,
         "open_collision_groups": 4,
-        "sample_mismatch": [
-          "TPEX::2249",
-          "TPEX::6825",
-          "TPEX::6898",
-          "TPEX::6938"
-        ],
+        "sample_mismatch": [],
         "sample_collision_isins": [
           "AU000000CRB1",
           "CA41752L1076",
