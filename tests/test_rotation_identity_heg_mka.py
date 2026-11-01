@@ -79,14 +79,20 @@ def test_jintai_02728_official_isin_after_consolidation() -> None:
     assert name["proposed_value"] == "JINTAI ENGY-NEW"
 
 
-def test_tsxv_mka_stale_tmx_name_is_allowlisted() -> None:
-    rows = [
+def test_tsxv_mka_no_longer_needs_name_mismatch_allowlist() -> None:
+    allowlist_rows = [
         row
         for row in load_csv(ROOT / "data/reports/entry_quality_warn_allowlist.csv")
         if row.get("listing_key") == "TSXV::MKA"
     ]
-    assert len(rows) == 1
-    assert "official_name_mismatch" in rows[0]["issue_types"]
+    assert allowlist_rows == []
+    entry_quality_rows = [
+        row
+        for row in load_csv(ROOT / "data/reports/entry_quality.csv")
+        if row.get("listing_key") == "TSXV::MKA"
+    ]
+    assert len(entry_quality_rows) == 1
+    assert entry_quality_rows[0]["quality_status"] == "pass"
 
 
 def test_ray_and_glmd_stay_dropped() -> None:
