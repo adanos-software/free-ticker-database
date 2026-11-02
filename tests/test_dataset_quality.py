@@ -2655,6 +2655,101 @@ def test_unique_name_isin_skips_same_ticker_dual_listing():
     assert otc == ""
 
 
+def test_unique_name_isin_skips_same_exchange_share_class_sibling():
+    from scripts.rebuild_dataset import (
+        build_unique_name_isin_fallbacks,
+        same_ticker_name_isins,
+        unique_name_isin_for_row,
+    )
+
+    rows = [
+        {
+            "ticker": "ROSY",
+            "name": "Corton Rosenberg Global Macro Fund",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "isin": "CA2207981028",
+        },
+        {
+            "ticker": "ROSY.U",
+            "name": "Corton Rosenberg Global Macro Fund",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "isin": "",
+        },
+    ]
+    fallbacks = build_unique_name_isin_fallbacks(rows)
+    ticker_isins = same_ticker_name_isins(rows)
+    usd_unit = unique_name_isin_for_row(
+        rows[1],
+        fallbacks,
+        ticker_isins,
+        unique_name_source_rows=rows,
+    )
+    assert fallbacks[("cortonrosenbergglobalmacrofund", "ETF")] == "CA2207981028"
+    assert usd_unit == ""
+
+
+def test_cleaned_rows_tsx_share_class_sibling_isin_stable_under_second_rebuild(monkeypatch, tmp_path):
+    """Reviewed ISIN on ROSY must not propagate to ROSY.U on a later rebuild pass."""
+    from scripts import rebuild_dataset
+
+    rosie = {
+        "ticker": "ROSY",
+        "name": "Corton Rosenberg Global Macro Fund",
+        "exchange": "TSX",
+        "asset_type": "ETF",
+        "sector": "",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "CA2207981028",
+        "aliases": "",
+    }
+    rosie_u = {
+        "ticker": "ROSY.U",
+        "name": "Corton Rosenberg Global Macro Fund",
+        "exchange": "TSX",
+        "asset_type": "ETF",
+        "sector": "",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "",
+        "aliases": "",
+    }
+    metadata_updates = {
+        ("ROSY", "TSX"): {
+            "isin": {
+                "decision": "update",
+                "proposed_value": "CA2207981028",
+                "reason": "StockAnalysis profile",
+            }
+        }
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([rosie, rosie_u], {}, defaultdict(list), {}, {(rosie["ticker"], rosie["exchange"])}),
+    )
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_review_overrides",
+        lambda: (defaultdict(set), metadata_updates, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+
+    first_pass, _ = rebuild_dataset.cleaned_rows()
+    second_pass, _ = rebuild_dataset.cleaned_rows()
+    by_ticker = {row["ticker"]: row for row in second_pass}
+
+    assert by_ticker["ROSY"]["isin"] == "CA2207981028"
+    assert by_ticker["ROSY.U"]["isin"] == ""
+    assert {row["ticker"]: row["isin"] for row in first_pass} == {
+        row["ticker"]: row["isin"] for row in second_pass
+    }
+
+
 def test_cleaned_rows_backfills_unique_name_isin_for_otc_and_updates_country(monkeypatch):
     from scripts import rebuild_dataset
 
