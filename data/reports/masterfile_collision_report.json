@@ -1,17 +1,17 @@
 {
   "global": {
-    "official_symbols": 100337,
-    "matched": 70309,
+    "official_symbols": 100333,
+    "matched": 70305,
     "collisions": 11737,
     "missing": 18291
   },
   "exchanges": [
     {
       "exchange": "ADX",
-      "official_symbols": 124,
+      "official_symbols": 125,
       "matched": 94,
       "collisions": 30,
-      "missing": 0,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -103,7 +103,13 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "ADIBRI26",
+          "name": "ADIB Rights Issue 2026",
+          "exchange": "ADX"
+        }
+      ]
     },
     {
       "exchange": "AMS",
@@ -763,13 +769,13 @@
           "exchange": "BME"
         },
         {
-          "ticker": "S0084",
-          "name": "ALAVA INVERSIONES",
+          "ticker": "S0127",
+          "name": "ALLOCATION",
           "exchange": "BME"
         },
         {
-          "ticker": "S0127",
-          "name": "ALLOCATION",
+          "ticker": "S0203",
+          "name": "1948 INVERSIONS",
           "exchange": "BME"
         }
       ]
@@ -1405,10 +1411,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2039,
+      "official_symbols": 2038,
       "matched": 1331,
       "collisions": 375,
-      "missing": 333,
+      "missing": 332,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1688,8 +1694,8 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3242,
-      "matched": 3172,
+      "official_symbols": 3239,
+      "matched": 3169,
       "collisions": 69,
       "missing": 1,
       "collision_examples": [
@@ -4344,8 +4350,8 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 766,
-      "matched": 636,
+      "official_symbols": 765,
+      "matched": 635,
       "collisions": 130,
       "missing": 0,
       "collision_examples": [

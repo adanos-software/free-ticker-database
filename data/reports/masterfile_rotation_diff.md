@@ -1,37 +1,33 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-11-01T13:12:13Z`
-- New rows: `57`
-- Vanished rows: `20`
-- Changed rows: `11`
+- Generated at: `2026-11-02T15:40:23Z`
+- New rows: `7`
+- Vanished rows: `13`
+- Changed rows: `6`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| name_change | 11 |
+| isin_change | 1 |
+| name_change | 5 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| tase_securities_marketdata | 3 |
-| tmx_etf_screener | 26 |
-| tmx_interlisted_companies | 1 |
-| tpex_emerging_basic_info | 16 |
-| tpex_etf_filter | 1 |
-| tpex_mainboard_basic_info | 6 |
-| twse_etf_list | 4 |
+| adx_market_watch | 1 |
+| bme_security_prices_directory | 3 |
+| hkex_securities_list | 1 |
+| nasdaq_listed | 2 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| tase_securities_marketdata | 5 |
-| tmx_etf_screener | 1 |
-| tmx_interlisted_companies | 1 |
-| tpex_emerging_basic_info | 10 |
-| tpex_etf_filter | 1 |
-| tpex_mainboard_basic_info | 1 |
-| zagreb_securities_directory | 1 |
+| bme_security_prices_directory | 3 |
+| euronext_equities | 1 |
+| hkex_securities_list | 4 |
+| nasdaq_listed | 4 |
+| sgx_securities_prices | 1 |

@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-11-01T13:12:19Z",
+    "generated_at": "2026-11-02T15:40:29Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -11,14 +11,49 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
+    "new_supported_rows": 2,
+    "accepted_rows": 2,
     "skipped_rows": 0,
     "detected_symbol_changes": 0,
-    "accepted_by_exchange": {},
-    "accepted_by_target": {},
+    "accepted_by_exchange": {
+      "NASDAQ": 2
+    },
+    "accepted_by_target": {
+      "supplement": 2
+    },
     "skipped_by_reason": {}
   },
-  "accepted": [],
+  "accepted": [
+    {
+      "ticker": "CASK",
+      "name": "Sempreon, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "NARA",
+      "name": "Narragansett Bancorp, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    }
+  ],
   "skipped": []
 }

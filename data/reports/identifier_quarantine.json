@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-02T08:14:39Z",
+  "generated_at": "2026-11-02T15:42:21Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2133,
-  "decision_rows": 7038,
+  "conflict_count": 2132,
+  "decision_rows": 7034,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1381,
-    "proposed_clear_conflicting_identifier": 1109,
-    "quarantined_unresolved_identifier": 4548
+    "kept_listing_keyed_identifier": 1380,
+    "proposed_clear_conflicting_identifier": 1108,
+    "quarantined_unresolved_identifier": 4546
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1109,
-  "quarantined_rows": 4548,
-  "retained_rows": 1381,
+  "proposed_clear_rows": 1108,
+  "quarantined_rows": 4546,
+  "retained_rows": 1380,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -27315,58 +27315,6 @@
       "retained_isin": "GB00BV9FP302"
     },
     {
-      "conflict_id": "b54fce644d233f1d08a6",
-      "isin": "GB00BVG7F061",
-      "listing_key": "FSX::7IG",
-      "ticker": "7IG",
-      "exchange": "FSX",
-      "name": "International Game Technology PLC",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "GB00BVG7F061"
-    },
-    {
-      "conflict_id": "b54fce644d233f1d08a6",
-      "isin": "GB00BVG7F061",
-      "listing_key": "NYSE::BRSL",
-      "ticker": "BRSL",
-      "exchange": "NYSE",
-      "name": "Brightstar Lottery PLC",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "GB00BVG7F061"
-    },
-    {
-      "conflict_id": "b54fce644d233f1d08a6",
-      "isin": "GB00BVG7F061",
-      "listing_key": "XDUS::7IG",
-      "ticker": "7IG",
-      "exchange": "XDUS",
-      "name": "International Game Technology PLC",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "GB00BVG7F061"
-    },
-    {
-      "conflict_id": "b54fce644d233f1d08a6",
-      "isin": "GB00BVG7F061",
-      "listing_key": "XSTU::7IG",
-      "ticker": "7IG",
-      "exchange": "XSTU",
-      "name": "International Game Technology PLC",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "GB00BVG7F061"
-    },
-    {
       "conflict_id": "b06dcb69d2f4ede9dab9",
       "isin": "GB00BVGBY890",
       "listing_key": "FSX::1ZG",
@@ -48109,9 +48057,9 @@
       "exchange": "FSX",
       "name": "Glorious Property Holdings Limited",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "KYG3940K1058"
     },
     {
@@ -48122,9 +48070,9 @@
       "exchange": "HKEX",
       "name": "GLORIOUS PPT H",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "KYG3940K1058"
     },
     {
