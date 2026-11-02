@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-02T08:15:11Z",
+    "generated_at": "2026-11-02T16:51:41Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -2334,62 +2334,6 @@
       "_members": [
         {
           "asset_type": "Stock",
-          "country": "United Kingdom",
-          "country_code": "GB",
-          "exchange": "FSX",
-          "listing_key": "FSX::7IG",
-          "name": "International Game Technology PLC",
-          "ticker": "7IG"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United Kingdom",
-          "country_code": "GB",
-          "exchange": "NYSE",
-          "listing_key": "NYSE::BRSL",
-          "name": "Brightstar Lottery PLC",
-          "ticker": "BRSL"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United Kingdom",
-          "country_code": "GB",
-          "exchange": "XDUS",
-          "listing_key": "XDUS::7IG",
-          "name": "International Game Technology PLC",
-          "ticker": "7IG"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United Kingdom",
-          "country_code": "GB",
-          "exchange": "XSTU",
-          "listing_key": "XSTU::7IG",
-          "name": "International Game Technology PLC",
-          "ticker": "7IG"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "GB00BVG7F061",
-      "isin_valid": "true",
-      "listing_count": "4",
-      "listing_keys": "FSX::7IG|NYSE::BRSL|XDUS::7IG|XSTU::7IG",
-      "member_exchanges": "FSX | NYSE | XDUS | XSTU",
-      "member_names": "Brightstar Lottery PLC | International Game Technology PLC",
-      "member_tickers": "7IG | BRSL",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "United Kingdom",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
           "country": "Italy",
           "country_code": "IT",
           "exchange": "FSX",
@@ -3618,53 +3562,6 @@
       "member_tickers": "0NW1 | OPM | PASTF",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "France",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Hungary",
-          "country_code": "HU",
-          "exchange": "BSE_HU",
-          "listing_key": "BSE_HU::MBHJ",
-          "name": "Takar\u00e9k Jelz\u00e1logbank Nyrt.",
-          "ticker": "MBHJ"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Hungary",
-          "country_code": "HU",
-          "exchange": "BSE_HU",
-          "listing_key": "BSE_HU::MBHJB",
-          "name": "Mbh Jelz\u00e1logbank Nyrt.",
-          "ticker": "MBHJB"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Hungary",
-          "country_code": "HU",
-          "exchange": "XSTU",
-          "listing_key": "XSTU::FH21",
-          "name": "MBH Mortgage Bank Co Plc",
-          "ticker": "FH21"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "HU0000078175",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "BSE_HU::MBHJ|BSE_HU::MBHJB|XSTU::FH21",
-      "member_exchanges": "BSE_HU | XSTU",
-      "member_names": "MBH Mortgage Bank Co Plc | Takar\u00e9k Jelz\u00e1logbank Nyrt.",
-      "member_tickers": "FH21 | MBHJ | MBHJB",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Hungary",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5986,18 +5883,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 129,
+      "review_required_groups": 127,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 125,
-    "collision_groups": 129,
+    "closed_groups": 123,
+    "collision_groups": 127,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 94,
+      "isin_shared_by_distinct_issuers": 92,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-02T08:15:11Z",
-    "listings_involved": 377,
+    "generated_at": "2026-11-02T16:51:41Z",
+    "listings_involved": 370,
     "next_review_batches": [
       {
         "collision_groups": 26,
@@ -6122,11 +6019,6 @@
       {
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Hungary"
-      },
-      {
-        "collision_groups": 1,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "India"
       },
       {
@@ -6148,11 +6040,6 @@
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Norway"
-      },
-      {
-        "collision_groups": 1,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "United Kingdom"
       },
       {
         "collision_groups": 1,
@@ -6184,7 +6071,6 @@
       "Finland": 3,
       "France": 5,
       "Germany": 13,
-      "Hungary": 1,
       "India": 6,
       "Ireland": 1,
       "Israel": 1,
@@ -6197,7 +6083,7 @@
       "Singapore": 8,
       "Sweden": 6,
       "Switzerland": 5,
-      "United Kingdom": 3,
+      "United Kingdom": 2,
       "United States": 40
     },
     "ticker_collision_groups": 35
