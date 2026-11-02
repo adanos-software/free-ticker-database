@@ -1,16 +1,12 @@
 # Pending Renames Manual Review
 
-Generated: 2026-10-26T14:26:02Z
+Generated: 2026-11-02T16:50:06Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 
 | Old | New | Effective | Queue | Apply status | Blocker |
 |---|---|---|---|---|---|
-| LRHC | SRTM | 2026-10-19 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
-| SKK | RNTZ | 2026-10-13 | review_verified_rename_or_delisting | manual_missing_isin | manual: current dataset row has no ISIN, so unchanged identity cannot be proven |
-| MIMI | AXNX | 2026-10-13 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
-| QNCX | IRLA | 2026-10-12 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
-| HKIT | BDAI | 2026-10-09 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
+| PAPL | PTIV | 2026-10-26 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
 | GWH | GWHT | 2026-10-06 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::GWH |
 | BGI | BGICF | 2026-08-27 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: TSX::BGI |
 | EQR | VRMK | 2026-08-18 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
