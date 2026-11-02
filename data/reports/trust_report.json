@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-01T20:18:31Z",
+    "generated_at": "2026-11-02T08:15:13Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,26 +34,26 @@
   "completeness": {
     "isin": {
       "n": 63644,
-      "filled": 62942,
-      "missing": 702,
+      "filled": 62943,
+      "missing": 701,
       "pct": 98.9,
-      "fills_needed_for_99": 66,
+      "fills_needed_for_99": 65,
       "pass": false
     },
     "country": {
       "n": 63644,
-      "filled": 63591,
-      "missing": 53,
+      "filled": 63592,
+      "missing": 52,
       "pct": 99.92,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
       "n": 63644,
-      "filled": 62732,
-      "missing": 912,
-      "pct": 98.57,
-      "fills_needed_for_99": 276,
+      "filled": 62832,
+      "missing": 812,
+      "pct": 98.72,
+      "fills_needed_for_99": 176,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -66,33 +66,33 @@
       "BATS": 40,
       "SSE": 34,
       "NYSE": 24,
-      "SSE_CL": 23,
+      "SSE_CL": 22,
       "BMV": 17,
       "SZSE": 12
     },
     "missing_sector_by_exchange": {
       "FSX": 254,
-      "XSTU": 48,
+      "XSTU": 47,
       "NSE_IN": 36,
       "HNX": 32,
       "BVB": 29,
       "PSE": 25,
       "BIST": 23,
       "HKEX": 22,
-      "BCBA": 21,
+      "BCBA": 20,
       "XETRA": 19,
       "BSE_IN": 17,
       "NASDAQ": 17
     },
     "missing_category_by_exchange": {
-      "TSX": 73,
-      "XETRA": 47,
-      "AMS": 29,
-      "NYSE ARCA": 24,
-      "TSE": 23,
-      "BATS": 9,
-      "NASDAQ": 8,
-      "NYSE": 2
+      "XETRA": 41,
+      "TSX": 33,
+      "AMS": 18,
+      "NYSE ARCA": 15,
+      "TSE": 7,
+      "NASDAQ": 4,
+      "BATS": 1,
+      "Euronext": 1
     }
   },
   "identity": {
@@ -104,8 +104,8 @@
     "quarantine_kept": 568
   },
   "entry_quality_status": {
-    "pass": 59558,
-    "source_gap": 4063,
+    "pass": 59598,
+    "source_gap": 4023,
     "warn": 14,
     "notice": 9
   },
@@ -132,10 +132,10 @@
       "status": "fail",
       "details": {
         "n": 63644,
-        "filled": 62942,
-        "missing": 702,
+        "filled": 62943,
+        "missing": 701,
         "pct": 98.9,
-        "fills_needed_for_99": 66,
+        "fills_needed_for_99": 65,
         "pass": false
       }
     },
@@ -144,10 +144,10 @@
       "status": "fail",
       "details": {
         "n": 63644,
-        "filled": 62732,
-        "missing": 912,
-        "pct": 98.57,
-        "fills_needed_for_99": 276,
+        "filled": 62832,
+        "missing": 812,
+        "pct": 98.72,
+        "fills_needed_for_99": 176,
         "pass": false
       }
     },
@@ -156,8 +156,8 @@
       "status": "pass",
       "details": {
         "n": 63644,
-        "filled": 63591,
-        "missing": 53,
+        "filled": 63592,
+        "missing": 52,
         "pct": 99.92,
         "fills_needed_for_99": 0,
         "pass": true

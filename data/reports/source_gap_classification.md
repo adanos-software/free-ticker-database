@@ -1,15 +1,15 @@
 # Source Gap Classification
 
-Generated at: `2026-11-01T20:18:33Z`
+Generated at: `2026-11-02T08:15:16Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
 - Official reference-gap rows classified: `6803`
-- Missing primary ISIN rows classified: `702`
-- Missing stock-sector rows classified: `1105`
-- Missing ETF-category rows classified: `197`
+- Missing primary ISIN rows classified: `701`
+- Missing stock-sector rows classified: `1103`
+- Missing ETF-category rows classified: `112`
 
 ## Top Classes
 
@@ -18,23 +18,23 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_unmatched_source_gap | 5625 |
 | official_reference_symbol_collision_gap | 1178 |
 | otc_sector_source_gap | 552 |
-| official_industry_taxonomy_unavailable_gap | 470 |
+| official_industry_taxonomy_unavailable_gap | 469 |
 | fund_or_trust_identifier_gap | 319 |
-| official_identifier_not_exposed_source_gap | 175 |
-| official_product_taxonomy_unavailable_gap | 109 |
+| official_identifier_not_exposed_source_gap | 174 |
 | debt_or_securitized_identifier_gap | 97 |
-| exchange_industry_source_gap | 53 |
-| equity_etf_category_gap | 52 |
+| official_product_taxonomy_unavailable_gap | 81 |
+| exchange_industry_source_gap | 52 |
 | adr_cdr_or_depositary_identifier_gap | 41 |
 | capital_pool_or_halted_identifier_gap | 32 |
-| fixed_income_etf_category_gap | 23 |
 | inactive_or_legacy_identifier_gap | 20 |
+| equity_etf_category_gap | 18 |
 | fundlike_stock_sector_gap | 18 |
 | official_identifier_reference_unmatched_gap | 15 |
-| commodity_etf_category_gap | 8 |
 | shell_or_cpc_sector_gap | 7 |
+| commodity_etf_category_gap | 6 |
 | adr_cdr_or_depositary_sector_gap | 5 |
-| digital_asset_etf_category_gap | 4 |
+| fixed_income_etf_category_gap | 4 |
+| digital_asset_etf_category_gap | 2 |
 
 ## Top Review Batches
 
