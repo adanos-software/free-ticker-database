@@ -1773,10 +1773,47 @@ def same_ticker_name_isins(rows: list[dict[str, str]]) -> dict[tuple[str, str, s
     return grouped
 
 
+def is_same_exchange_share_class_listing(
+    row: dict[str, str],
+    *,
+    name_key: str,
+    asset_type: str,
+    fallback_isin: str,
+    source_rows: Iterable[dict[str, str]],
+) -> bool:
+    """Return True when row is a distinct share-class line on the same venue as the ISIN donor.
+
+    TMX and other venues expose separate listings for currency/unit suffixes (.U, .V, ...).
+    Those lines need listing-keyed identifier evidence; unique-name ISIN copies must not
+    bridge them from a sibling ticker on the same exchange.
+    """
+
+    exchange = row.get("exchange", "")
+    ticker = row.get("ticker", "").strip().upper()
+    if not exchange or not name_key or not ticker:
+        return False
+    for source in source_rows:
+        if source.get("exchange") != exchange or source.get("asset_type") != asset_type:
+            continue
+        if normalized_compact(source.get("name", "")) != name_key:
+            continue
+        source_isin = source.get("isin", "").strip().upper()
+        if source_isin != fallback_isin or not is_valid_isin(source_isin):
+            continue
+        source_ticker = source.get("ticker", "").strip().upper()
+        if not source_ticker or source_ticker == ticker:
+            continue
+        if ticker.startswith(f"{source_ticker}.") or source_ticker.startswith(f"{ticker}."):
+            return True
+    return False
+
+
 def unique_name_isin_for_row(
     row: dict[str, str],
     unique_name_fallbacks: dict[tuple[str, str], str],
     ticker_name_isins: dict[tuple[str, str, str], set[str]],
+    *,
+    unique_name_source_rows: Iterable[dict[str, str]] = (),
 ) -> str:
     """Copy a unique issuer ISIN, but not a same-ticker dual listing."""
 
@@ -1787,6 +1824,14 @@ def unique_name_isin_for_row(
         return ""
     ticker = row.get("ticker", "").strip().upper()
     if fallback in ticker_name_isins.get((name_key, asset_type, ticker), set()):
+        return ""
+    if is_same_exchange_share_class_listing(
+        row,
+        name_key=name_key,
+        asset_type=asset_type,
+        fallback_isin=fallback,
+        source_rows=unique_name_source_rows,
+    ):
         return ""
     return fallback
 
@@ -2804,8 +2849,9 @@ def cleaned_rows():
     prepared_rows = drop_stale_tmx_etf_duplicates(prepared_rows)
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
     stock_name_lookup = build_stock_name_lookup(prepared_rows)
-    # Name-keyed ISIN copies may not inherit fills applied in this rebuild.
-    unique_name_source_rows = [normalize_input_row(dict(row)) for row in ticker_rows]
+    # Include reviewed metadata and official corrections so unique-name ISIN copies are
+    # stable across consecutive rebuilds (fixed point for automation backfill PRs).
+    unique_name_source_rows = [normalize_input_row(dict(row)) for row in prepared_rows]
     unique_name_isin_fallbacks = build_unique_name_isin_fallbacks(unique_name_source_rows)
     ticker_name_isins = same_ticker_name_isins(unique_name_source_rows)
 
@@ -2854,7 +2900,10 @@ def cleaned_rows():
                     merged["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
         if not merged.get("isin") and "isin" not in review_metadata_updates.get(row_key, {}):
             merged["isin"] = unique_name_isin_for_row(
-                row, unique_name_isin_fallbacks, ticker_name_isins
+                row,
+                unique_name_isin_fallbacks,
+                ticker_name_isins,
+                unique_name_source_rows=unique_name_source_rows,
             )
         sector_overridden = any(
             field in review_metadata_updates.get(row_key, {})
