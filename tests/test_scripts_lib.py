@@ -58,6 +58,61 @@ def test_merge_metadata_updates_and_socket_timeout(tmp_path: Path) -> None:
     assert socket.getdefaulttimeout() == previous
 
 
+def test_merge_metadata_updates_preserves_reviewed_clear(tmp_path: Path) -> None:
+    path = tmp_path / "metadata_updates.csv"
+    write_csv(
+        path,
+        ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"],
+        [
+            {
+                "ticker": "VIVE",
+                "exchange": "OTC",
+                "field": "isin",
+                "decision": "clear",
+                "proposed_value": "",
+                "confidence": "0.99",
+                "reason": "Reviewed clear",
+            }
+        ],
+    )
+    merge_metadata_updates(
+        path,
+        [
+            {
+                "ticker": "VIVE",
+                "exchange": "OTC",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "SE0000722365",
+                "confidence": "0.78",
+                "reason": "StockAnalysis backfill",
+            }
+        ],
+    )
+    row = load_csv(path)[0]
+    assert row["decision"] == "clear"
+    assert row["proposed_value"] == ""
+
+    merge_metadata_updates(
+        path,
+        [
+            {
+                "ticker": "VIVE",
+                "exchange": "OTC",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US1234567890",
+                "confidence": "0.97",
+                "reason": "Reviewed refill",
+            }
+        ],
+        replace_clears=True,
+    )
+    row = load_csv(path)[0]
+    assert row["decision"] == "update"
+    assert row["proposed_value"] == "US1234567890"
+
+
 def test_merge_metadata_updates_drops_malformed_existing_rows(tmp_path: Path) -> None:
     path = tmp_path / "metadata_updates.csv"
     path.write_text(

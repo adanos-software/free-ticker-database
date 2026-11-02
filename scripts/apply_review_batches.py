@@ -269,7 +269,7 @@ def persist_applied_operations(
 ) -> None:
     metadata_updates, drop_entries, remove_aliases = overlay_rows_from_applied(applied)
     if metadata_updates:
-        merge_metadata_updates(metadata_path, metadata_updates)
+        merge_metadata_updates(metadata_path, metadata_updates, replace_clears=True)
     if drop_entries:
         merge_drop_entries(drop_path, drop_entries)
     if remove_aliases:

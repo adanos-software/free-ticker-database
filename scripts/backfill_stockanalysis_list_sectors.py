@@ -17,7 +17,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.lib.dataio import merge_metadata_updates
+from scripts.lib.dataio import (
+    blocked_metadata_backfill_fields,
+    load_metadata_field_overrides,
+    merge_metadata_updates,
+)
 from scripts.lib.normalize import names_match
 from scripts.rebuild_dataset import LISTINGS_CSV, is_valid_isin, normalize_sector
 
@@ -265,7 +269,13 @@ def index_source_rows(rows: list[StockAnalysisListRow]) -> dict[tuple[str, str, 
     return {(row.exchange, row.asset_type, row.symbol): row for row in rows}
 
 
-def evaluate_row(row: dict[str, str], source_row: StockAnalysisListRow | None) -> dict[str, Any]:
+def evaluate_row(
+    row: dict[str, str],
+    source_row: StockAnalysisListRow | None,
+    *,
+    blocked_fields: frozenset[str] | None = None,
+) -> dict[str, Any]:
+    blocked = blocked_fields or frozenset()
     base = {
         "ticker": row.get("ticker", ""),
         "exchange": row.get("exchange", ""),
@@ -291,17 +301,27 @@ def evaluate_row(row: dict[str, str], source_row: StockAnalysisListRow | None) -
     if not name_match:
         return {**base, "decision": "name_mismatch"}
 
-    isin_update = source_row.isin if not row.get("isin", "").strip() and is_valid_isin(source_row.isin) else ""
+    isin_update = (
+        source_row.isin
+        if "isin" not in blocked
+        and not row.get("isin", "").strip()
+        and is_valid_isin(source_row.isin)
+        else ""
+    )
     sector_update = ""
     category_update = ""
     if row.get("asset_type") == "Stock":
         sector = normalize_stockanalysis_sector(source_row.sector)
         if not sector:
             sector = normalize_stockanalysis_industry_sector(source_row.industry)
-        sector_update = sector if not row.get("stock_sector", "").strip() and sector else ""
+        sector_update = (
+            sector if "stock_sector" not in blocked and not row.get("stock_sector", "").strip() and sector else ""
+        )
     elif row.get("asset_type") == "ETF":
         category = normalize_stockanalysis_etf_category(source_row.category)
-        category_update = category if not row.get("etf_category", "").strip() and category else ""
+        category_update = (
+            category if "etf_category" not in blocked and not row.get("etf_category", "").strip() and category else ""
+        )
     if not isin_update and not sector_update and not category_update:
         return {**base, "decision": "no_update"}
 
@@ -317,8 +337,11 @@ def evaluate_row(row: dict[str, str], source_row: StockAnalysisListRow | None) -
 def evaluate_rows(
     target_rows: list[dict[str, str]],
     source_rows: list[StockAnalysisListRow],
+    *,
+    metadata_overrides: dict[tuple[str, str, str], dict[str, str]] | None = None,
 ) -> list[dict[str, Any]]:
     indexed = index_source_rows(source_rows)
+    overrides = metadata_overrides or {}
     return [
         evaluate_row(
             row,
@@ -328,6 +351,11 @@ def evaluate_rows(
                     row.get("asset_type", ""),
                     row.get("ticker", "").strip().upper(),
                 )
+            ),
+            blocked_fields=blocked_metadata_backfill_fields(
+                overrides,
+                ticker=row.get("ticker", ""),
+                exchange=row.get("exchange", ""),
             ),
         )
         for row in target_rows
@@ -438,8 +466,9 @@ def main(argv: list[str] | None = None) -> None:
         except requests.RequestException as exc:
             errors.append({"exchange": exchange, "error": str(exc)})
 
+    metadata_overrides = load_metadata_field_overrides(args.metadata_updates_csv)
     target_rows = load_target_rows(args.listings_csv, exchanges)
-    results = evaluate_rows(target_rows, source_rows)
+    results = evaluate_rows(target_rows, source_rows, metadata_overrides=metadata_overrides)
     updates = build_metadata_updates(results)
     if args.apply and updates:
         merge_metadata_updates(args.metadata_updates_csv, updates)

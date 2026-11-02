@@ -57,6 +57,40 @@ METADATA_UPDATE_ALLOWED_TARGET_FIELDS = {
 COVERAGE_METADATA_FIELDS = frozenset({"etf_category", "sector", "stock_sector"})
 
 
+def load_metadata_field_overrides(path: Path) -> dict[tuple[str, str, str], dict[str, str]]:
+    return {
+        (row["ticker"], row["exchange"], row["field"]): row
+        for row in load_csv(path)
+        if is_well_formed_metadata_update(row)
+    }
+
+
+def reviewed_metadata_backfill_blocked(
+    overrides: dict[tuple[str, str, str], dict[str, str]],
+    *,
+    ticker: str,
+    exchange: str,
+    field: str,
+) -> bool:
+    """Automated backfills must not overwrite an explicit reviewed clear."""
+    row = overrides.get((ticker, exchange, field))
+    return bool(row and row.get("decision") == "clear")
+
+
+def blocked_metadata_backfill_fields(
+    overrides: dict[tuple[str, str, str], dict[str, str]],
+    *,
+    ticker: str,
+    exchange: str,
+) -> frozenset[str]:
+    fields = ("isin", "stock_sector", "etf_category", "country", "country_code")
+    return frozenset(
+        field
+        for field in fields
+        if reviewed_metadata_backfill_blocked(overrides, ticker=ticker, exchange=exchange, field=field)
+    )
+
+
 def should_apply_metadata_field_override(field: str, current_value: object, decision: str) -> bool:
     if field not in COVERAGE_METADATA_FIELDS:
         return True
@@ -76,7 +110,12 @@ def is_well_formed_metadata_update(row: dict[Any, Any]) -> bool:
     return row.get("field") in METADATA_UPDATE_ALLOWED_TARGET_FIELDS
 
 
-def merge_metadata_updates(path: Path, updates: list[dict[str, str]]) -> None:
+def merge_metadata_updates(
+    path: Path,
+    updates: list[dict[str, str]],
+    *,
+    replace_clears: bool = False,
+) -> None:
     rows = [
         {field: row.get(field, "") for field in METADATA_UPDATE_FIELDS}
         for row in load_csv(path)
@@ -87,6 +126,15 @@ def merge_metadata_updates(path: Path, updates: list[dict[str, str]]) -> None:
         for row in rows
     }
     for update in updates:
-        by_key[(update["ticker"], update["exchange"], update["field"])] = update
+        key = (update["ticker"], update["exchange"], update["field"])
+        existing = by_key.get(key)
+        if (
+            not replace_clears
+            and existing
+            and existing.get("decision") == "clear"
+            and update.get("decision") == "update"
+        ):
+            continue
+        by_key[key] = {field: update.get(field, "") for field in METADATA_UPDATE_FIELDS}
     merged_rows = sorted(by_key.values(), key=lambda row: (row["ticker"], row["exchange"], row["field"]))
     write_csv(path, METADATA_UPDATE_FIELDS, merged_rows)

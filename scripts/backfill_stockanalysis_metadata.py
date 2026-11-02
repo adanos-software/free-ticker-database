@@ -17,7 +17,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.lib.dataio import merge_metadata_updates
+from scripts.lib.dataio import (
+    blocked_metadata_backfill_fields,
+    load_metadata_field_overrides,
+    merge_metadata_updates,
+)
 from scripts.lib.normalize import names_match
 from scripts.rebuild_dataset import LISTINGS_CSV, is_valid_isin, normalize_sector
 
@@ -142,11 +146,31 @@ def load_targets(path: Path, exchanges: set[str]) -> list[dict[str, str]]:
     ]
 
 
-def evaluate_target(row: dict[str, str], profile: StockAnalysisProfile) -> dict[str, Any]:
+def evaluate_target(
+    row: dict[str, str],
+    profile: StockAnalysisProfile,
+    *,
+    blocked_fields: frozenset[str] | None = None,
+) -> dict[str, Any]:
+    blocked = blocked_fields or frozenset()
     name_match = names_match(row.get("name", ""), profile.name) or names_match(profile.name, row.get("name", ""))
-    accepted_isin = profile.isin if not row.get("isin", "").strip() and is_valid_isin(profile.isin) and name_match else ""
+    accepted_isin = (
+        profile.isin
+        if "isin" not in blocked
+        and not row.get("isin", "").strip()
+        and is_valid_isin(profile.isin)
+        and name_match
+        else ""
+    )
     sector = stockanalysis_sector_to_canonical(profile)
-    accepted_sector = sector if not row.get("stock_sector", "").strip() and sector and name_match else ""
+    accepted_sector = (
+        sector
+        if "stock_sector" not in blocked
+        and not row.get("stock_sector", "").strip()
+        and sector
+        and name_match
+        else ""
+    )
     if not profile.name:
         decision = "no_profile_name"
     elif not name_match:
@@ -265,6 +289,7 @@ def main(argv: list[str] | None = None) -> None:
     if args.limit is not None:
         targets = targets[: args.limit]
 
+    metadata_overrides = load_metadata_field_overrides(args.metadata_updates_csv)
     session = requests.Session()
     results: list[dict[str, Any]] = []
     errors: list[dict[str, str]] = []
@@ -276,7 +301,12 @@ def main(argv: list[str] | None = None) -> None:
                 session,
                 timeout_seconds=args.timeout_seconds,
             )
-            results.append(evaluate_target(row, profile))
+            blocked = blocked_metadata_backfill_fields(
+                metadata_overrides,
+                ticker=row["ticker"],
+                exchange=row["exchange"],
+            )
+            results.append(evaluate_target(row, profile, blocked_fields=blocked))
         except requests.RequestException as exc:
             errors.append({"ticker": row["ticker"], "exchange": row["exchange"], "error": str(exc)})
 

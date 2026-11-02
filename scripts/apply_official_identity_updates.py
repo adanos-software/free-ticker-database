@@ -161,7 +161,7 @@ def apply_official_identity_updates(
 ) -> dict[str, Any]:
     updates = build_official_isin_updates(rotation_diff, listings, reference_rows)
     if execute and updates:
-        merge_metadata_updates(metadata_updates_path, updates)
+        merge_metadata_updates(metadata_updates_path, updates, replace_clears=True)
     return {
         "candidate_count": len(updates),
         "executed": bool(execute and updates),
