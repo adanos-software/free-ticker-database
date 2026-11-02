@@ -3,11 +3,17 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from scripts.lib.dataio import load_csv, write_csv
+try:
+    from scripts.lib.dataio import load_csv, write_csv
+except ModuleNotFoundError:  # pragma: no cover - direct script execution
+    from lib.dataio import load_csv, write_csv
 
 
 def _normalize_etf_category(value: str) -> str:
-    from scripts.rebuild_dataset import normalize_sector
+    try:
+        from scripts.rebuild_dataset import normalize_sector
+    except ModuleNotFoundError:  # pragma: no cover - direct script execution
+        from rebuild_dataset import normalize_sector
 
     return normalize_sector(value, "ETF")
 
