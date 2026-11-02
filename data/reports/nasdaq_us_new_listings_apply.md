@@ -1,14 +1,17 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-01T13:12:19Z`
-- New supported rows: `0`
-- Accepted rows: `0`
+- Generated at: `2026-11-02T16:04:06Z`
+- New supported rows: `2`
+- Accepted rows: `2`
 - Skipped rows: `0`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-No new listings were accepted.
+| Ticker | Exchange | Name | Asset type | Target | Source |
+|---|---|---|---|---|---|
+| CASK | NASDAQ | Sempreon, Inc. - Common Stock | Stock | supplement | nasdaq_listed |
+| NARA | NASDAQ | Narragansett Bancorp, Inc. - Common Stock | Stock | supplement | nasdaq_listed |
 
 ## Skipped
 
