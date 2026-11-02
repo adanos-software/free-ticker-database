@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-11-01T13:21:04Z`
+Generated at: `2026-11-02T16:35:16Z`
 
 ## Summary
 
@@ -17,9 +17,9 @@ Generated at: `2026-11-01T13:21:04Z`
 
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
-| 1 | XSTU | missing | 2773 | 0 | 268 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
-| 2 | Munich | missing | 223 | 0 | 31 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
-| 3 | XDUS | missing | 199 | 0 | 24 | duesseldorf_stock_exchange_directory | Boerse Duesseldorf |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
+| 1 | XSTU | missing | 2773 | 0 | 264 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
+| 2 | Munich | missing | 223 | 0 | 30 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
+| 3 | XDUS | missing | 199 | 0 | 23 | duesseldorf_stock_exchange_directory | Boerse Duesseldorf |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 4 | XHAN | missing | 80 | 0 | 9 | hanover_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 5 | XHAM | missing | 12 | 0 | 5 | hamburg_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 
@@ -51,7 +51,7 @@ Generated at: `2026-11-01T13:21:04Z`
 | 27 | BVL | official_partial | 33 | 0 | 0 | bvl_issuers_directory | CAVALI | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 28 | PSE_CZ | official_partial | 27 | 0 | 0 | pse_cz_shares_directory | Prague Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |
 | 29 | SIX | official_partial | 1263 | 0 | 1 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
-| 30 | BCBA | official_partial | 92 | 0 | 21 | byma_equity_details | BYMA | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
+| 30 | BCBA | official_partial | 92 | 0 | 20 | byma_equity_details | BYMA | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
 | 31 | ZSE_ZW | official_partial | 27 | 0 | 0 | zse_zw_listed_companies | ZSE Zimbabwe | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official ZSE front-end API and price-sheet API |
 | 32 | DSE_TZ | official_partial | 17 | 0 | 0 | dse_tz_listed_companies | DSE Tanzania | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official listed-company table; profile pages still need a richer ISIN/sector endpoint |
 | 33 | MSE_MW | official_partial | 8 | 0 | 0 | mse_mw_listed_companies | MSE Malawi | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 8 existing rows | implemented via official mainboard listed-company table |
@@ -90,7 +90,7 @@ _No rows._
 | 27 | BVL | official_partial | 33 | 0 | 0 | bvl_issuers_directory | CAVALI | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 28 | PSE_CZ | official_partial | 27 | 0 | 0 | pse_cz_shares_directory | Prague Stock Exchange | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official market pages plus detail-page ticker extraction |
 | 29 | SIX | official_partial | 1263 | 0 | 1 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
-| 30 | BCBA | official_partial | 92 | 0 | 21 | byma_equity_details | BYMA | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
+| 30 | BCBA | official_partial | 92 | 0 | 20 | byma_equity_details | BYMA | network | add_or_replace_with_active_exchange_directory_before_recall_claim |  | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
 | 31 | ZSE_ZW | official_partial | 27 | 0 | 0 | zse_zw_listed_companies | ZSE Zimbabwe | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official ZSE front-end API and price-sheet API |
 | 32 | DSE_TZ | official_partial | 17 | 0 | 0 | dse_tz_listed_companies | DSE Tanzania | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via official listed-company table; profile pages still need a richer ISIN/sector endpoint |
 | 33 | MSE_MW | official_partial | 8 | 0 | 0 | mse_mw_listed_companies | MSE Malawi | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 8 existing rows | implemented via official mainboard listed-company table |

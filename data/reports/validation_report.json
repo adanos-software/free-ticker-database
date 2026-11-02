@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-02T08:18:53Z",
+    "generated_at": "2026-11-02T16:39:43Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
-    "ticker_rows": 65695,
-    "listing_rows": 97776,
-    "adanos_reference_rows": 65695,
-    "entry_quality_rows": 97776,
+    "ticker_rows": 65700,
+    "listing_rows": 97781,
+    "adanos_reference_rows": 65700,
+    "entry_quality_rows": 97781,
     "error_gates": 87,
-    "failed_error_gates": 0,
+    "failed_error_gates": 1,
     "info_gates": 5
   },
   "gates": [
@@ -511,9 +511,12 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": true,
-      "actual": 0,
-      "limit": 0
+      "passed": false,
+      "actual": 1,
+      "limit": 0,
+      "details": [
+        "NASDAQ::SLMT"
+      ]
     },
     {
       "name": "adanos_alias_findings",
@@ -547,28 +550,28 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 701,
+      "actual": 706,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 691,
+      "actual": 689,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 121,
+      "actual": 123,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11260,
+      "actual": 11269,
       "limit": null
     },
     {
