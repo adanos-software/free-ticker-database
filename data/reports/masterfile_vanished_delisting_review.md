@@ -1,10 +1,10 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-11-01T13:12:16Z`
+- Generated at: `2026-11-02T16:44:15Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `915`
-- Rotation vanished rows: `20`
-- Backlog rows: `895`
-- Still in database: `906`
+- Vanished reference rows: `916`
+- Rotation vanished rows: `10`
+- Backlog rows: `906`
+- Still in database: `912`
 - Applied drops: `0`
 
 ## Classifier counts
@@ -12,8 +12,8 @@
 | Action | Rows |
 |---|---:|
 | manual_nasdaq_delete_review_required | 1 |
-| manual_rename_vs_delisting_required | 905 |
-| not_in_database | 9 |
+| manual_rename_vs_delisting_required | 911 |
+| not_in_database | 4 |
 
 ## Rows still in the database
 
@@ -436,13 +436,17 @@
 | FSX | ZA0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | ZMK | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00007 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 00176 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 00195 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00232 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00286 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00362 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 00845 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 00924 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 01101 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 01598 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 01849 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 02088 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 02175 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02912 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02913 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
@@ -551,6 +555,7 @@
 | NASDAQ | KSMH | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | LNAI | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | MAMK | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
+| NASDAQ | MGPI | nasdaq_listed | manual_rename_vs_delisting_required | rotation |
 | NASDAQ | MUY | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | NATH | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | NCSM | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
@@ -729,6 +734,7 @@
 | SGX | BQF | sgx_securities_prices | manual_rename_vs_delisting_required | backlog |
 | SGX | LIW | sgx_securities_prices | manual_rename_vs_delisting_required | backlog |
 | SGX | SJJR | sgx_securities_prices | manual_rename_vs_delisting_required | backlog |
+| SGX | X5N | sgx_securities_prices | manual_rename_vs_delisting_required | rotation |
 | SGX | ZNIR | sgx_securities_prices | manual_rename_vs_delisting_required | backlog |
 | SIX | HAMO | six_etp_products | manual_rename_vs_delisting_required | backlog |
 | SIX | PEDU | six_equity_issuers | manual_rename_vs_delisting_required | backlog |
@@ -749,27 +755,27 @@
 | STO | VIVA | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
 | STO | ZAPLOX | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
 | TADAWUL | 9590 | tadawul_main_market_watch | manual_rename_vs_delisting_required | backlog |
-| TASE | GIBUI | tase_securities_marketdata | manual_rename_vs_delisting_required | rotation |
+| TASE | GIBUI | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
 | TASE | GIX | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
 | TASE | LPSN | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
-| TASE | NFTA | tase_securities_marketdata | manual_rename_vs_delisting_required | rotation |
+| TASE | NFTA | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
 | TASE | TRAN | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
 | TPEX | 00793B | tpex_etf_filter | manual_rename_vs_delisting_required | backlog |
-| TPEX | 00847B | tpex_etf_filter | manual_rename_vs_delisting_required | rotation |
-| TPEX | 2249 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 2733 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
+| TPEX | 00847B | tpex_etf_filter | manual_rename_vs_delisting_required | backlog |
+| TPEX | 2249 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 2733 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
 | TPEX | 2938 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
 | TPEX | 3085 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | backlog |
 | TPEX | 3659 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
 | TPEX | 4150 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
 | TPEX | 4527 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | backlog |
 | TPEX | 6618 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
-| TPEX | 6825 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 6898 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
-| TPEX | 6938 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | rotation |
+| TPEX | 6825 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 6898 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
+| TPEX | 6938 | tpex_emerging_basic_info | manual_rename_vs_delisting_required | backlog |
 | TPEX | 8183 | tpex_mainboard_basic_info | manual_rename_vs_delisting_required | backlog |
 | TPEX | 8183 | tpex_mainboard_daily_quotes | manual_rename_vs_delisting_required | backlog |
-| TPEX | 8908 | tpex_mainboard_basic_info | manual_rename_vs_delisting_required | rotation |
+| TPEX | 8908 | tpex_mainboard_basic_info | manual_rename_vs_delisting_required | backlog |
 | TSE | 2763 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 311A | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 4171 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
@@ -778,7 +784,7 @@
 | TSE | 6197 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSE | 8283 | jpx_tse_stock_detail | manual_rename_vs_delisting_required | backlog |
 | TSX | BGAU | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
-| TSX | CCOM.B | tmx_etf_screener | manual_rename_vs_delisting_required | rotation |
+| TSX | CCOM.B | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
 | TSX | CLCH | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
 | TSX | FBT.F | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
 | TSX | FLOT.B | tmx_etf_screener | manual_rename_vs_delisting_required | backlog |
@@ -854,7 +860,7 @@
 | TSXV | SA-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
 | TSXV | SAI-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
 | TSXV | SC-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
-| TSXV | SCZ | tmx_interlisted_companies | manual_rename_vs_delisting_required | rotation |
+| TSXV | SCZ | tmx_interlisted_companies | manual_rename_vs_delisting_required | backlog |
 | TSXV | SEVA | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
 | TSXV | SKEL | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
 | TSXV | STR-H | tmx_listed_issuers | manual_rename_vs_delisting_required | backlog |
@@ -929,6 +935,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 20; still-in-database backlog carried: 895.
-- Still in database: 906; not in database: 9.
+- Rotation vanished rows: 10; still-in-database backlog carried: 906.
+- Still in database: 912; not in database: 4.
 - Applied drops from this classifier: 0.

@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-01T13:12:16Z",
+  "generated_at": "2026-11-02T16:44:15Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 915,
-  "rotation_vanished_rows": 20,
-  "backlog_rows": 895,
-  "still_in_database": 906,
+  "vanished_reference_rows": 916,
+  "rotation_vanished_rows": 10,
+  "backlog_rows": 906,
+  "still_in_database": 912,
   "classifier_counts": {
     "manual_nasdaq_delete_review_required": 1,
-    "manual_rename_vs_delisting_required": 905,
-    "not_in_database": 9
+    "manual_rename_vs_delisting_required": 911,
+    "not_in_database": 4
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 20; still-in-database backlog carried: 895.",
-    "Still in database: 906; not in database: 9.",
+    "Rotation vanished rows: 10; still-in-database backlog carried: 906.",
+    "Still in database: 912; not in database: 4.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -4980,6 +4980,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "BLUDS",
+      "exchange": "Euronext",
+      "name": "BLUELINEA DS",
+      "isin": "FR001401BN47",
+      "classification": "master_absent",
+      "source_key": "euronext_equities",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "BLUELINEA DS",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "HAMO",
       "exchange": "Euronext",
       "name": "Hashdex Crypto Momentum Factor ETP",
@@ -7772,8 +7792,8 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "CYBIN INC.  O.N.",
-      "listing_name": "Cybin Inc.",
-      "listing_isin": "CA23256X4075",
+      "listing_name": "Helus Pharma Inc.",
+      "listing_isin": "CA4234921076",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
@@ -8360,6 +8380,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "00176",
+      "exchange": "HKEX",
+      "name": "SUPERACTIVE GP",
+      "isin": "BMG8587Y1021",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "SUPERACTIVE GP",
+      "listing_name": "SUPERACTIVE GP",
+      "listing_isin": "BMG8587Y1021",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "00195",
       "exchange": "HKEX",
       "name": "GREENTECH INTL",
@@ -8440,6 +8480,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "00845",
+      "exchange": "HKEX",
+      "name": "GLORIOUS PPT H",
+      "isin": "KYG3940K1058",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "GLORIOUS PPT H",
+      "listing_name": "GLORIOUS PPT H",
+      "listing_isin": "KYG3940K1058",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "00924",
       "exchange": "HKEX",
       "name": "KHOON GROUP",
@@ -8458,6 +8518,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "01101",
+      "exchange": "HKEX",
+      "name": "HUARONG ENERGY",
+      "isin": "KYG2116D1198",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "HUARONG ENERGY",
+      "listing_name": "HUARONG ENERGY",
+      "listing_isin": "KYG2116D1198",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "01598",
@@ -8498,6 +8578,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "02088",
+      "exchange": "HKEX",
+      "name": "XIWANG PROPERTY",
+      "isin": "BMG9829U1062",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "XIWANG PROPERTY",
+      "listing_name": "XIWANG PROPERTY",
+      "listing_isin": "BMG9829U1062",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "02175",
@@ -10160,6 +10260,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "BFRIW",
+      "exchange": "NASDAQ",
+      "name": "Biofrontera Inc. - Warrants",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Biofrontera Inc. - Warrants",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "BLSG",
       "exchange": "NASDAQ",
       "name": "Leverage Shares 2X Long BLSH Daily ETF",
@@ -10298,6 +10418,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "DINE",
+      "exchange": "NASDAQ",
+      "name": "Simplify Tax Aware Diversified Income Strategy ETF",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Simplify Tax Aware Diversified Income Strategy ETF",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "DYNC",
@@ -10640,6 +10780,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "LQ",
+      "exchange": "NASDAQ",
+      "name": "Simplify Tax Aware Alternatives ETF",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Simplify Tax Aware Alternatives ETF",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "MAMK",
       "exchange": "NASDAQ",
       "name": "MaxsMaking Inc. - Class A Ordinary Shares",
@@ -10658,6 +10818,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "MGPI",
+      "exchange": "NASDAQ",
+      "name": "MGP Ingredients, Inc. - Common Stock",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "MGP Ingredients, Inc. - Common Stock",
+      "listing_name": "MGP Ingredients Inc",
+      "listing_isin": "US55303J1060",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "MUY",
@@ -14220,6 +14400,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "X5N",
+      "exchange": "SGX",
+      "name": "Avarga Ltd",
+      "isin": "SGXE98222768",
+      "classification": "master_absent",
+      "source_key": "sgx_securities_prices",
+      "source_url": "https://api.sgx.com/securities/v1.1",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Avarga Ltd",
+      "listing_name": "Avarga Ltd",
+      "listing_isin": "SGXE98222768",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "ZNIR",
       "exchange": "SGX",
       "name": "First Sponsor Gp R",
@@ -14620,26 +14820,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "BRND",
-      "exchange": "TASE",
-      "name": "BRAND",
-      "isin": "IL0005360115",
-      "classification": "master_absent",
-      "source_key": "tase_securities_marketdata",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "BRAND",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "GIBUI",
       "exchange": "TASE",
       "name": "GIBUI HOLDING",
@@ -14657,7 +14837,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "GIX",
@@ -14700,26 +14880,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "MLTH",
-      "exchange": "TASE",
-      "name": "MALAM-TEAM HOLD",
-      "isin": "IL0007310183",
-      "classification": "master_absent",
-      "source_key": "tase_securities_marketdata",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "MALAM-TEAM HOLD",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "NFTA",
       "exchange": "TASE",
       "name": "NAPHTHA",
@@ -14737,7 +14897,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TRAN",
@@ -14758,26 +14918,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "WATR",
-      "exchange": "TASE",
-      "name": "WATER IO",
-      "isin": "IL0011803066",
-      "classification": "master_absent",
-      "source_key": "tase_securities_marketdata",
-      "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "WATER IO",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "00793B",
@@ -14817,7 +14957,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2249",
@@ -14833,11 +14973,11 @@
       "evidence_observed_at": "",
       "official_name": "湧盛電機股份有限公司",
       "listing_name": "Young Shine Electric Co., Ltd.",
-      "listing_isin": "TW0002249B14",
+      "listing_isin": "TW0002249000",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2733",
@@ -14857,7 +14997,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2938",
@@ -14960,46 +15100,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "6467",
-      "exchange": "TPEX",
-      "name": "泰合生技藥品股份有限公司",
-      "isin": "TW0006467B10",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "泰合生技藥品股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "6604",
-      "exchange": "TPEX",
-      "name": "儒億科技股份有限公司",
-      "isin": "TW0006604B14",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "儒億科技股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "6618",
       "exchange": "TPEX",
       "name": "永虹先進材料股份有限公司",
@@ -15033,11 +15133,11 @@
       "evidence_observed_at": "",
       "official_name": "和暢科技股份有限公司",
       "listing_name": "Qbic Technology Co., Ltd.",
-      "listing_isin": "TW0006825B17",
+      "listing_isin": "TW0006825003",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "6898",
@@ -15053,11 +15153,11 @@
       "evidence_observed_at": "",
       "official_name": "程曦資訊整合股份有限公司",
       "listing_name": "ChainSea Information Integration Co.,Ltd.",
-      "listing_isin": "TW0006898B19",
+      "listing_isin": "TW0006898000",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "6938",
@@ -15073,71 +15173,11 @@
       "evidence_observed_at": "",
       "official_name": "藍新資訊股份有限公司",
       "listing_name": "藍新資訊股份有限公司",
-      "listing_isin": "TW0006938B11",
+      "listing_isin": "TW0006938004",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7710",
-      "exchange": "TPEX",
-      "name": "東擎科技股份有限公司",
-      "isin": "TW0007710B13",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "東擎科技股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7806",
-      "exchange": "TPEX",
-      "name": "精華生醫股份有限公司",
-      "isin": "TW0007806B18",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "精華生醫股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "7867",
-      "exchange": "TPEX",
-      "name": "特力屋股份有限公司",
-      "isin": "TW0007867B14",
-      "classification": "master_absent",
-      "source_key": "tpex_emerging_basic_info",
-      "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "特力屋股份有限公司",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "8183",
@@ -15197,7 +15237,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2763",
@@ -15377,7 +15417,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CLCH",
@@ -16897,7 +16937,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SEVA",
@@ -18298,26 +18338,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "ZPKL",
-      "exchange": "ZSE",
-      "name": "ZAGREBAČKE PEKARNE KLARA d.d.",
-      "isin": "HRZPKLRA0008",
-      "classification": "master_absent",
-      "source_key": "zagreb_securities_directory",
-      "source_url": "https://zse.hr/en/shares/68",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ZAGREBAČKE PEKARNE KLARA d.d.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     }
   ]
 }

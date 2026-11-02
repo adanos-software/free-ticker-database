@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T08:15:00Z",
+  "generated_at": "2026-11-02T16:50:17Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -63,10 +63,10 @@
     },
     {
       "exchange": "Euronext",
-      "collision_adjusted_recall_pct": 79.99,
-      "true_missing_excluding_collisions": 333,
+      "collision_adjusted_recall_pct": 80.04,
+      "true_missing_excluding_collisions": 332,
       "collision_hidden_missing": 375,
-      "official_recall_pct": 65.28,
+      "official_recall_pct": 65.31,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 7
@@ -172,6 +172,16 @@
       "rank": 17
     },
     {
+      "exchange": "BME",
+      "collision_adjusted_recall_pct": 83.79,
+      "true_missing_excluding_collisions": 47,
+      "collision_hidden_missing": 0,
+      "official_recall_pct": 83.79,
+      "supplement_lane": "not_in_supplement_allowlist",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 18
+    },
+    {
       "exchange": "SET",
       "collision_adjusted_recall_pct": 95.3,
       "true_missing_excluding_collisions": 38,
@@ -179,7 +189,7 @@
       "official_recall_pct": 81.65,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 18
+      "rank": 19
     },
     {
       "exchange": "BSE_IN",
@@ -188,16 +198,6 @@
       "collision_hidden_missing": 121,
       "official_recall_pct": 97.02,
       "supplement_lane": "collision_free_supplement",
-      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 19
-    },
-    {
-      "exchange": "BME",
-      "collision_adjusted_recall_pct": 90.67,
-      "true_missing_excluding_collisions": 25,
-      "collision_hidden_missing": 0,
-      "official_recall_pct": 90.67,
-      "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 20
     },
