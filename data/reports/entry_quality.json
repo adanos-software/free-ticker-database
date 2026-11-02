@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-02T17:44:10Z",
-    "rows": 97781,
+    "generated_at": "2026-11-02T18:21:33Z",
+    "rows": 97782,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,27 +15,27 @@
   "summary": {
     "status_counts": {
       "notice": 12,
-      "pass": 86474,
-      "source_gap": 11265,
+      "pass": 86469,
+      "source_gap": 11271,
       "warn": 30
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4642,
-      "official_reference": 87684,
+      "identifier_enriched": 4646,
+      "official_reference": 87680,
       "scoped_source_gap": 277,
-      "valid_isin": 5178
+      "valid_isin": 5179
     },
     "severity_counts": {
       "high": 11,
       "low": 12,
       "medium": 20,
-      "source_gap": 11610
+      "source_gap": 11616
     },
     "issue_counts": {
-      "official_reference_gap": 6810,
+      "official_reference_gap": 6815,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 705,
-      "missing_stock_sector": 685,
+      "missing_stock_sector": 686,
       "missing_etf_category": 123,
       "official_name_mismatch": 20,
       "official_isin_mismatch": 10,
@@ -248,6 +248,24 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::00176",
+      "ticker": "00176",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -540,6 +558,24 @@
       ]
     },
     {
+      "listing_key": "HKEX::00845",
+      "ticker": "00845",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "TPEX::00847B",
       "ticker": "00847B",
       "exchange": "TPEX",
@@ -715,6 +751,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "TWSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::01101",
+      "ticker": "01101",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -957,6 +1011,24 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::02088",
+      "ticker": "02088",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -1555,6 +1627,24 @@
     {
       "listing_key": "HKEX::02952",
       "ticker": "02952",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::02956",
+      "ticker": "02956",
       "exchange": "HKEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -18350,96 +18440,6 @@
     {
       "listing_key": "XSTU::7EL",
       "ticker": "7EL",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::7ES1",
-      "ticker": "7ES1",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::7EX",
-      "ticker": "7EX",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::7FP",
-      "ticker": "7FP",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::7GA",
-      "ticker": "7GA",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::7HL",
-      "ticker": "7HL",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",
