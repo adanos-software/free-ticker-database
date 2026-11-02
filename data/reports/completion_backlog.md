@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-11-02T17:44:24Z`
+Generated at: `2026-11-02T18:21:48Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `705`
-- Missing stock sectors: `1099`
+- Missing stock sectors: `1100`
 - Missing ETF categories: `114`
 - Official symbol collisions tracked in exchange references: `11736`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4858`
@@ -56,7 +56,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 4 | NSE_IN | Stock | 34 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 5 | HNX | Stock | 30 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 6 | BVB | Stock | 28 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 7 | HKEX | Stock | 22 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 7 | HKEX | Stock | 23 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 8 | BIST | Stock | 21 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 9 | XETRA | Stock | 18 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 10 | BSE_IN | Stock | 17 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -88,7 +88,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 6 | TSX | 32 | 0 | 32 | official_full |
 | 7 | HNX | 30 | 30 | 0 | official_full |
 | 8 | BVB | 28 | 28 | 0 | official_full |
-| 9 | HKEX | 22 | 22 | 0 | official_full |
+| 9 | HKEX | 23 | 23 | 0 | official_full |
 | 10 | BIST | 21 | 21 | 0 | official_full |
 | 11 | AMS | 19 | 1 | 18 | official_full |
 | 12 | BSE_IN | 17 | 17 | 0 | official_full |

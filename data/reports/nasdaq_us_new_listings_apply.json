@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-11-02T17:39:45Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-11-02T18:12:51Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,107 +11,14 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 6,
-    "accepted_rows": 5,
-    "skipped_rows": 1,
+    "new_supported_rows": 0,
+    "accepted_rows": 0,
+    "skipped_rows": 0,
     "detected_symbol_changes": 0,
-    "accepted_by_exchange": {
-      "NASDAQ": 2,
-      "NYSE": 1,
-      "NYSE ARCA": 2
-    },
-    "accepted_by_target": {
-      "supplement": 5
-    },
-    "skipped_by_reason": {
-      "temporary_when_issued_line": 1
-    }
+    "accepted_by_exchange": {},
+    "accepted_by_target": {},
+    "skipped_by_reason": {}
   },
-  "accepted": [
-    {
-      "ticker": "CASK",
-      "name": "Sempreon, Inc. - Common Stock",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "NARA",
-      "name": "Narragansett Bancorp, Inc. - Common Stock",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "OPAY",
-      "name": "OPay Limited American Depositary Shares, each representing ten Ordinary Shares",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "",
-      "country_code": "",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "ACJL",
-      "name": "Buffered Bulldog ETF by C.J. Lawrence, a division of Apollon",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "AIBE",
-      "name": "FINQ CORE U.S. Large Cap AI-Managed Equity ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    }
-  ],
-  "skipped": [
-    {
-      "ticker": "NMZ.V",
-      "exchange": "NYSE",
-      "name": "Nuveen Municipal High Income Opportunity Fund Rights (expiring December 2, 2026) Rights when issued",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "temporary_when_issued_line"
-    }
-  ]
+  "accepted": [],
+  "skipped": []
 }
