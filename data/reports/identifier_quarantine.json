@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-02T18:14:50Z",
+  "generated_at": "2026-11-02T20:40:15Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2132,
-  "decision_rows": 7034,
+  "conflict_count": 2137,
+  "decision_rows": 7046,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1380,
+    "kept_listing_keyed_identifier": 1381,
     "proposed_clear_conflicting_identifier": 1108,
-    "quarantined_unresolved_identifier": 4546
+    "quarantined_unresolved_identifier": 4557
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1108,
-  "quarantined_rows": 4546,
-  "retained_rows": 1380,
+  "quarantined_rows": 4557,
+  "retained_rows": 1381,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -5072,6 +5072,32 @@
       "retained_isin": "CA0977516065"
     },
     {
+      "conflict_id": "e92c8af0ac3456d04585",
+      "isin": "CA09972D1069",
+      "listing_key": "OTC::BORMF",
+      "ticker": "BORMF",
+      "exchange": "OTC",
+      "name": "BOREALIS MNG CO LTD",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA09972D1069"
+    },
+    {
+      "conflict_id": "e92c8af0ac3456d04585",
+      "isin": "CA09972D1069",
+      "listing_key": "TSXV::BOGO",
+      "ticker": "BOGO",
+      "exchange": "TSXV",
+      "name": "Borealis Mining Company Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA09972D1069"
+    },
+    {
       "conflict_id": "ae80769b8b53c07e3b89",
       "isin": "CA11223H1001",
       "listing_key": "TSX::BGIE",
@@ -5382,6 +5408,32 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "CA20676A1084"
+    },
+    {
+      "conflict_id": "c4e61c0f4e27fc5d12fa",
+      "isin": "CA2175731041",
+      "listing_key": "OTC::STGDF",
+      "ticker": "STGDF",
+      "exchange": "OTC",
+      "name": "COPPER RD RES INC.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA2175731041"
+    },
+    {
+      "conflict_id": "c4e61c0f4e27fc5d12fa",
+      "isin": "CA2175731041",
+      "listing_key": "TSXV::CRD",
+      "ticker": "CRD",
+      "exchange": "TSXV",
+      "name": "Copper Road Resources Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA2175731041"
     },
     {
       "conflict_id": "20c0aeedc482dd468a6b",
@@ -6279,6 +6331,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA7594041062"
+    },
+    {
+      "conflict_id": "f686db9d7b6e5586b276",
+      "isin": "CA7613251098",
+      "listing_key": "OTC::REVFF",
+      "ticker": "REVFF",
+      "exchange": "OTC",
+      "name": "Gitennes Exploration Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA7613251098"
+    },
+    {
+      "conflict_id": "f686db9d7b6e5586b276",
+      "isin": "CA7613251098",
+      "listing_key": "TSXV::REVX",
+      "ticker": "REVX",
+      "exchange": "TSXV",
+      "name": "Rev Exploration Corp.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA7613251098"
     },
     {
       "conflict_id": "29cdea3eaf2083362990",
@@ -13195,6 +13273,32 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "CNE100006NF4"
+    },
+    {
+      "conflict_id": "b5039b587ea21cef8610",
+      "isin": "CNE100006WS8",
+      "listing_key": "HKEX::03750",
+      "ticker": "03750",
+      "exchange": "HKEX",
+      "name": "CATL",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CNE100006WS8"
+    },
+    {
+      "conflict_id": "b5039b587ea21cef8610",
+      "isin": "CNE100006WS8",
+      "listing_key": "OTC::CTATF",
+      "ticker": "CTATF",
+      "exchange": "OTC",
+      "name": "Contemporary Amperex Technology Co., Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CNE100006WS8"
     },
     {
       "conflict_id": "6f7c9b259b7c7d85b9d5",
@@ -30836,6 +30940,32 @@
       "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "HK0656038673"
+    },
+    {
+      "conflict_id": "1c10d3caec019aa8d479",
+      "isin": "HK0716002271",
+      "listing_key": "HKEX::00716",
+      "ticker": "00716",
+      "exchange": "HKEX",
+      "name": "SINGAMAS CONT",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "HK0716002271"
+    },
+    {
+      "conflict_id": "1c10d3caec019aa8d479",
+      "isin": "HK0716002271",
+      "listing_key": "OTC::SNGSF",
+      "ticker": "SNGSF",
+      "exchange": "OTC",
+      "name": "SINGAMAS CONTAINER",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "HK0716002271"
     },
     {
       "conflict_id": "699166b28731774e402f",
@@ -55668,7 +55798,7 @@
       "retained_isin": "NO0010597883"
     },
     {
-      "conflict_id": "00102944aa7282feb39f",
+      "conflict_id": "59db6a6bdcb8b2b6052a",
       "isin": "NO0010631567",
       "listing_key": "FSX::B4M1",
       "ticker": "B4M1",
@@ -55681,7 +55811,7 @@
       "retained_isin": "NO0010631567"
     },
     {
-      "conflict_id": "00102944aa7282feb39f",
+      "conflict_id": "59db6a6bdcb8b2b6052a",
       "isin": "NO0010631567",
       "listing_key": "LSE::0Q57",
       "ticker": "0Q57",
@@ -55694,7 +55824,7 @@
       "retained_isin": "NO0010631567"
     },
     {
-      "conflict_id": "00102944aa7282feb39f",
+      "conflict_id": "59db6a6bdcb8b2b6052a",
       "isin": "NO0010631567",
       "listing_key": "OSL::SB1NO",
       "ticker": "SB1NO",
@@ -55707,7 +55837,20 @@
       "retained_isin": "NO0010631567"
     },
     {
-      "conflict_id": "00102944aa7282feb39f",
+      "conflict_id": "59db6a6bdcb8b2b6052a",
+      "isin": "NO0010631567",
+      "listing_key": "OTC::SBRKF",
+      "ticker": "SBRKF",
+      "exchange": "OTC",
+      "name": "SpareBank 1 Sør-Norge ASA",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "NO0010631567"
+    },
+    {
+      "conflict_id": "59db6a6bdcb8b2b6052a",
       "isin": "NO0010631567",
       "listing_key": "XSTU::B4M1",
       "ticker": "B4M1",
@@ -91314,7 +91457,7 @@
       "retained_isin": "ZAE000060067"
     },
     {
-      "conflict_id": "fe5e8f66121d684ae89f",
+      "conflict_id": "3e5fafff688d6de25af5",
       "isin": "ZAE000066304",
       "listing_key": "FSX::FSRA",
       "ticker": "FSRA",
@@ -91327,7 +91470,20 @@
       "retained_isin": "ZAE000066304"
     },
     {
-      "conflict_id": "fe5e8f66121d684ae89f",
+      "conflict_id": "3e5fafff688d6de25af5",
+      "isin": "ZAE000066304",
+      "listing_key": "OTC::FANDF",
+      "ticker": "FANDF",
+      "exchange": "OTC",
+      "name": "FIRSTRAND LTD",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "ZAE000066304"
+    },
+    {
+      "conflict_id": "3e5fafff688d6de25af5",
       "isin": "ZAE000066304",
       "listing_key": "XSTU::FSRA",
       "ticker": "FSRA",
