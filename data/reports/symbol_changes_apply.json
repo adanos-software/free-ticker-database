@@ -1,22 +1,22 @@
 {
   "summary": {
-    "generated_at": "2026-10-31T12:20:58Z",
+    "generated_at": "2026-11-02T15:44:10Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 381,
+    "blocked_rows": 385,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 3,
       "blocked_new_symbol_not_active_in_official_master": 3,
-      "blocked_old_symbol_not_unique_in_us_scope": 305,
-      "blocked_sec_cik_mismatch": 2,
+      "blocked_old_symbol_not_unique_in_us_scope": 307,
+      "blocked_sec_cik_mismatch": 1,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
       "manual_non_us_or_unscoped_source": 48,
-      "manual_successor_isin_mismatch": 2,
-      "manual_ticker_reuse_name_mismatch": 2,
+      "manual_successor_isin_mismatch": 4,
+      "manual_ticker_reuse_name_mismatch": 3,
       "manual_transition_or_shell_name": 7
     }
   },
@@ -157,7 +157,7 @@
       "old_symbol": "WKEY",
       "new_symbol": "WQEY",
       "new_company_name": "Wiseqey Corp",
-      "status": "blocked_sec_cik_mismatch"
+      "status": "manual_ticker_reuse_name_mismatch"
     },
     {
       "change_id": "1d84e63c94cdaa40",
@@ -208,6 +208,14 @@
       "status": "manual_transition_or_shell_name"
     },
     {
+      "change_id": "0c9314057ae5e8f7",
+      "effective_date": "2026-09-24",
+      "old_symbol": "IPEX",
+      "new_symbol": "GOW",
+      "new_company_name": "Gowell Energy Technology",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
       "change_id": "ac54ccbbeabcaefc",
       "effective_date": "2026-09-24",
       "old_symbol": "HVII",
@@ -222,6 +230,14 @@
       "new_symbol": "HUCK",
       "new_company_name": "Huckleberryai Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "b7bb4440fe2d3402",
+      "effective_date": "2026-09-22",
+      "old_symbol": "NHIC",
+      "new_symbol": "NWCL",
+      "new_company_name": "Newcleo PLC",
+      "status": "manual_successor_isin_mismatch"
     },
     {
       "change_id": "8e8b32078e4003a6",
@@ -582,6 +598,14 @@
       "new_symbol": "OGG",
       "new_company_name": "Osisko Gold Group Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "472cf149c89077bf",
+      "effective_date": "2026-07-20",
+      "old_symbol": "FGMC",
+      "new_symbol": "BXBL",
+      "new_company_name": "Boxabl Inc",
+      "status": "manual_successor_isin_mismatch"
     },
     {
       "change_id": "0a0ee783f171fb74",
@@ -1813,6 +1837,14 @@
       "old_symbol": "MESA",
       "new_symbol": "RJET",
       "new_company_name": "Republic Airways Holdings Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "b1f479b22df57fd9",
+      "effective_date": "2025-11-25",
+      "old_symbol": "MAYA",
+      "new_symbol": "GOW",
+      "new_company_name": "Gowell Energy Technology",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
