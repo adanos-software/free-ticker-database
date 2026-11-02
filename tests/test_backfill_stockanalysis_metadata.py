@@ -74,6 +74,31 @@ def test_evaluate_target_accepts_valid_isin_and_sector_with_name_gate() -> None:
     assert result["accepted_stock_sector"] == "Consumer Discretionary"
 
 
+def test_evaluate_target_skips_isin_when_reviewed_clear_blocks_backfill() -> None:
+    profile = parse_stockanalysis_company_profile(
+        """
+        <meta property="og:title" content="Viveve Medical Inc (OTC:VIVE) Company Profile &amp; Description"/>
+        <tr><td>ISIN Number</td><td>SE0000722365</td></tr>
+        """,
+        "https://stockanalysis.com/quote/otc/VIVE/company/",
+    )
+
+    result = evaluate_target(
+        {
+            "ticker": "VIVE",
+            "exchange": "OTC",
+            "name": "Viveve Medical Inc.",
+            "isin": "",
+            "stock_sector": "",
+        },
+        profile,
+        blocked_fields=frozenset({"isin"}),
+    )
+
+    assert result["accepted_isin"] == ""
+    assert result["decision"] == "no_update"
+
+
 def test_evaluate_target_rejects_generic_legal_suffix_overlap() -> None:
     profile = parse_stockanalysis_company_profile(
         """

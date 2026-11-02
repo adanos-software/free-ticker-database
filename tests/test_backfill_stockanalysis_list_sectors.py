@@ -75,6 +75,34 @@ def test_evaluate_row_maps_stockanalysis_industry_when_sector_missing() -> None:
     assert result["sector_update"] == "Materials"
 
 
+def test_evaluate_row_skips_isin_when_reviewed_clear_blocks_backfill() -> None:
+    result = evaluate_row(
+        {
+            "ticker": "HLTFF",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "name": "Hilton Food Group plc",
+            "isin": "",
+            "stock_sector": "Consumer Staples",
+        },
+        StockAnalysisListRow(
+            exchange="OTC",
+            asset_type="Stock",
+            symbol="HLTFF",
+            name="Hilton Food Group plc",
+            isin="DE000A161408",
+            sector="Consumer Staples",
+            industry="Food Products",
+            category="",
+            source_url="https://stockanalysis.com/quote/otc/HLTFF/",
+        ),
+        blocked_fields=frozenset({"isin"}),
+    )
+
+    assert result["isin_update"] == ""
+    assert result["decision"] == "no_update"
+
+
 def test_evaluate_row_rejects_name_mismatch() -> None:
     result = evaluate_row(
         {
