@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T18:19:42Z",
+  "generated_at": "2026-11-02T20:27:40Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -62,6 +62,16 @@
       "rank": 6
     },
     {
+      "exchange": "B3",
+      "collision_adjusted_recall_pct": 72.85,
+      "true_missing_excluding_collisions": 353,
+      "collision_hidden_missing": 0,
+      "official_recall_pct": 72.85,
+      "supplement_lane": "collision_free_supplement",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 7
+    },
+    {
       "exchange": "Euronext",
       "collision_adjusted_recall_pct": 80.04,
       "true_missing_excluding_collisions": 332,
@@ -69,7 +79,7 @@
       "official_recall_pct": 65.31,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 7
+      "rank": 8
     },
     {
       "exchange": "BATS",
@@ -79,7 +89,7 @@
       "official_recall_pct": 78.94,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 8
+      "rank": 9
     },
     {
       "exchange": "UPCOM",
@@ -89,7 +99,7 @@
       "official_recall_pct": 0.24,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 9
+      "rank": 10
     },
     {
       "exchange": "KOSDAQ",
@@ -99,7 +109,7 @@
       "official_recall_pct": 87.2,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 10
+      "rank": 11
     },
     {
       "exchange": "PSX",
@@ -109,7 +119,7 @@
       "official_recall_pct": 53.87,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 11
+      "rank": 12
     },
     {
       "exchange": "NEO",
@@ -119,7 +129,7 @@
       "official_recall_pct": 46.44,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 12
+      "rank": 13
     },
     {
       "exchange": "KRX",
@@ -128,16 +138,6 @@
       "collision_hidden_missing": 14,
       "official_recall_pct": 91.75,
       "supplement_lane": "not_in_supplement_allowlist",
-      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 13
-    },
-    {
-      "exchange": "B3",
-      "collision_adjusted_recall_pct": 90.76,
-      "true_missing_excluding_collisions": 125,
-      "collision_hidden_missing": 0,
-      "official_recall_pct": 90.76,
-      "supplement_lane": "collision_free_supplement",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 14
     },

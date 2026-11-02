@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-02T18:14:50Z",
+  "generated_at": "2026-11-02T20:24:33Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2132,
   "decision_rows": 7034,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1380,
-    "proposed_clear_conflicting_identifier": 1108,
-    "quarantined_unresolved_identifier": 4546
+    "kept_listing_keyed_identifier": 1379,
+    "proposed_clear_conflicting_identifier": 1107,
+    "quarantined_unresolved_identifier": 4548
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1108,
-  "quarantined_rows": 4546,
-  "retained_rows": 1380,
+  "proposed_clear_rows": 1107,
+  "quarantined_rows": 4548,
+  "retained_rows": 1379,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -4767,9 +4767,9 @@
       "exchange": "B3",
       "name": "BCO BRADESCO S.A.",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "BRBBDCACNPR8"
     },
     {
@@ -4780,9 +4780,9 @@
       "exchange": "FSX",
       "name": "Banco Bradesco S.A.",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "BRBBDCACNPR8"
     },
     {

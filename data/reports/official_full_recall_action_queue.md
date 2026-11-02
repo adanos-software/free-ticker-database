@@ -13,14 +13,14 @@ Rows: `23`
 | 4 | NYSE | 60.26 | 1301 | 566 | not_in_supplement_allowlist |
 | 5 | NASDAQ | 82.41 | 979 | 60 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.84 | 789 | 1927 | not_in_supplement_allowlist |
-| 7 | Euronext | 80.04 | 332 | 375 | not_in_supplement_allowlist |
-| 8 | BATS | 81.77 | 295 | 58 | not_in_supplement_allowlist |
-| 9 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |
-| 10 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
-| 11 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
-| 12 | NEO | 54.86 | 172 | 69 | not_in_supplement_allowlist |
-| 13 | KRX | 92.36 | 161 | 14 | not_in_supplement_allowlist |
-| 14 | B3 | 90.76 | 125 | 0 | collision_free_supplement |
+| 7 | B3 | 72.85 | 353 | 0 | collision_free_supplement |
+| 8 | Euronext | 80.04 | 332 | 375 | not_in_supplement_allowlist |
+| 9 | BATS | 81.77 | 295 | 58 | not_in_supplement_allowlist |
+| 10 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |
+| 11 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
+| 12 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
+| 13 | NEO | 54.86 | 172 | 69 | not_in_supplement_allowlist |
+| 14 | KRX | 92.36 | 161 | 14 | not_in_supplement_allowlist |
 | 15 | NYSE ARCA | 96.25 | 102 | 30 | not_in_supplement_allowlist |
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
 | 17 | NYSE MKT | 82.25 | 49 | 34 | not_in_supplement_allowlist |
