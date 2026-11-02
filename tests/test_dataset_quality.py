@@ -534,6 +534,14 @@ def test_yahoo_corrected_etf_outliers_are_cleaned():
     assert tek["etf_category"] == "Equity"
 
 
+def test_isin_matches_listing_country_requires_prefix_agreement_when_country_set():
+    from scripts.rebuild_dataset import isin_matches_listing_country
+
+    assert isin_matches_listing_country("US9286626000", "Germany") is False
+    assert isin_matches_listing_country("DE0007664039", "Germany") is True
+    assert isin_matches_listing_country("US00212G1085", "") is True
+
+
 def test_non_otc_country_isin_mismatches_are_cleared_or_verified():
     assert ticker_exchange_row("T", "NYSE")["isin"] == "US00206R1023"
     assert ticker_exchange_row("PKO", "WSE")["isin"] == "PLPKO0000016"
