@@ -1,25 +1,25 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-10-19T15:08:14Z
+Generated: 2026-11-02T16:51:35Z
 
 **isin_issues_detected: True**
 
-ISINs validated: 64241 | match=62380 mismatch=125 no_data=1736
+ISINs validated: 64349 | match=62480 mismatch=132 no_data=1737
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `125` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1736` (provider coverage gap)
+- Mismatch residuals: `132` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1737` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 28 |
-| NSE_IN | 21 |
+| NSE_IN | 30 |
+| OTC | 27 |
 | BSE_IN | 14 |
 | NASDAQ | 9 |
 | Bursa | 6 |
@@ -27,23 +27,22 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | TSX | 4 |
 | CSE_LK | 3 |
 | Euronext | 3 |
-| NYSE | 3 |
 | NYSE ARCA | 3 |
 | SGX | 3 |
 | TSXV | 3 |
 | B3 | 2 |
 | FSX | 2 |
+| NSE_KE | 2 |
+| NYSE | 2 |
 | SIX | 2 |
 | TADAWUL | 2 |
 | WSE | 2 |
 | AMS | 1 |
 | ASX | 1 |
 | ATHEX | 1 |
-| BATS | 1 |
 | BIST | 1 |
 | CSE_MA | 1 |
 | JSE | 1 |
-| NSE_KE | 1 |
 | OSL | 1 |
 | SET | 1 |
 
@@ -51,25 +50,25 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 594 |
+| OTC | 595 |
 | B3 | 222 |
-| TPEX | 196 |
-| NYSE ARCA | 121 |
-| NASDAQ | 95 |
-| TSX | 94 |
-| TSXV | 71 |
+| TPEX | 192 |
+| NYSE ARCA | 122 |
+| NASDAQ | 99 |
+| TSX | 93 |
+| TSXV | 70 |
 | BATS | 69 |
 | ASX | 39 |
 | EGX | 28 |
 | BSE_IN | 26 |
-| FSX | 23 |
+| FSX | 22 |
 | SET | 17 |
+| NYSE | 16 |
 | JSE | 15 |
-| NYSE | 15 |
 | HKEX | 9 |
 | NGX | 9 |
+| CSE_LK | 7 |
 | SZSE | 6 |
-| CSE_LK | 5 |
 | CSE_MA | 5 |
 | LSE | 5 |
 | SGX | 4 |
@@ -126,12 +125,21 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INE626H01019 | ZBINTXPP | Binayak Tex Processors Ltd | BYT | BINAYAKA TEXTILE PROC LTD | review_required_openfigi_resolves_different_security |
 | INE644K01016 | BMBMUMG | BMB Music & Magnetics Ltd | BOKA | BOKADIA FILMS LTD | review_required_openfigi_resolves_different_security |
 | INE902G01016 | KGPETRO | KG Petrochem Ltd | KGP | KG PETROLEUM CHEM LTD | review_required_openfigi_resolves_different_security |
+| INF0R8F01257 | NXT100CASE | ZERODHAAMC - NXT100CASE | ZERDNDG | ZERODHA NIFTY NXT 100 ETF DG | review_required_openfigi_resolves_different_security |
 | INF109K1A153 | EVIETF | ICICI Prudential Nifty EV & Ne | ICPNERG | ICIC PRU NI EV NE AG ETF-RG | review_required_openfigi_resolves_different_security |
 | INF109K1A344 | TOP15IETF | ICICI Prudential Nifty Top 15  | ICPNTRG | ICIC PRU NI TP 15 EQ ETF-RG | review_required_openfigi_resolves_different_security |
+| INF109K1A716 | PHARMAIETF | ICICIPRAMC - PHARMAIETF | ICPNPRG | ICICI PRUD NIFTY PHAR ETF RG | review_required_openfigi_resolves_different_security |
 | INF109KC17C7 | MOM30IETF | ICICI Prudential Nifty 200 Mom | MOM30IET | IPRU NIFTY200 MOMENTUM30 ETF | review_required_openfigi_resolves_different_security |
 | INF174KA1A94 | PVTBANK | KOTAKMAMC - PVTBANK | KTNPBRG | KOTAK NIFTY PVT BANK ETF RG | review_required_openfigi_resolves_different_security |
+| INF179KC1LA2 | HFTSEINDIA | HDFCAMC - HFTSEINDIA | HDFCFTSE | HDFC FTSE INDIA ETY ETF RG | review_required_openfigi_resolves_different_security |
+| INF200KA1JT1 | SBI10YGILT | SBIAMC-SBI10YGILT | SBI10YGI | SBI NF 10 YR BM G-SEC ETF-RG | review_required_openfigi_resolves_different_security |
+| INF200KB1282 | SBIEQLWT50 | SBIAMC-SBIEQLWT50 | SBIEQLWT | SBI NIFTY50 EQUAL WEIGHT ETF | review_required_openfigi_resolves_different_security |
+| INF200KB1AK8 | SBIMID150 | SBIAMC-SBIMID150 | SBIMID | SBI NIFTY MIDCAP 150 ETF-RG | review_required_openfigi_resolves_different_security |
+| INF200KB1CJ6 | SBIDEFETF | SBIAMC - SBIDEFETF | SBIBSRG | SBI BSE INDIA DEFENCE ETF RG | review_required_openfigi_resolves_different_security |
+| INF204KC1HS1 | FARBEES | NIPPONAMC - FARBEES | NICRFRG | NPN IN CRSL IBX FAR ETF RG | review_required_openfigi_resolves_different_security |
 | INF205KA1CB9 | IVZBANKNF | RELIGARAMC - IVZBANKNF | INIFBRG | INV IND NIF BK ETF RG | review_required_openfigi_resolves_different_security |
 | INF209KC1134 | ABGSEC | Aditya Birla Sun Life CRISIL B | ACBRGLT | AB CRSL BRD GLT ETF | review_required_openfigi_resolves_different_security |
+| INF209KC1746 | BIRLATOTAL | BIRLASLAMC - BIRLATOTAL | ABSLTRG | ADITYA BIRLA SUN BSE ETF RG | review_required_openfigi_resolves_different_security |
 | INF247L01EV3 | MOCAPITAL | Motilal Oswal Nifty Capital Ma | MONCARG | MOTI OSW NIF CAP MAR ETF-RG | review_required_openfigi_resolves_different_security |
 | INF247L01FC0 | MON50EQUAL | Motilal Oswal Nifty 50 Equal W | MONEWRG | MOT OSW NI 50 EQ WE ETF-RG | review_required_openfigi_resolves_different_security |
 | INF247L01FK3 | MOMGF | Motilal Oswal Nifty India Manu | MONIMRG | MOT OSW NIF IND MAN ETF-RG | review_required_openfigi_resolves_different_security |
@@ -152,6 +160,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INF769K01LJ8 | MIDSMALL | Mirae Asset Nifty Midsmallcap4 | MS400MQ | MA MS400 MOM QUAL | review_required_openfigi_resolves_different_security |
 | INF769K01RJ5 | HYBRIDETF | MIRAEAMC - HYBRIDETF | MANMPRG | MIRAE AST N200 PLS 8-13 G 50 | review_required_openfigi_resolves_different_security |
 | INF789F1AG68 | LIQUIDBETA | UTIAMC - LIQUIDBETA | UTINLRG | UTI NIFTY 1D RATE LQD ETF-RG | review_required_openfigi_resolves_different_security |
+| KE0000000240 | HFCK | HFCB Group Plc | HFCL | HF GROUP PLC | review_required_openfigi_resolves_different_security |
 | KE0000000547 | KEGN | KenGen Ltd Ord. 2.50 | KEGC | KENYA ELECTRICITY GENERATING | review_required_openfigi_resolves_different_security |
 | KYG2296A1094 | SVIA | Silvia, Inc. - Common Stock | CCCMEUR,CCCMUSD | COLUMBUS CIRCLE CAPITAL CO-A | review_required_openfigi_resolves_different_security |
 | KYG8232Y1017 | PENG | Penguin Solutions, Inc. | SGH2EUR,SGH2GBP,SGH2USD | SMART GLOBAL HOLDINGS INC | review_required_openfigi_resolves_different_security |
@@ -175,7 +184,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | SG1B56010922 | F13 | Fu Yu Corporation Ltd | FUYU,FUYVF | FU YU CORP LTD | review_required_openfigi_resolves_different_security |
 | SG2B91959363 | 5RC | ES Group (Holdings) Limited | ESG | ES GROUP HOLDINGS LTD | review_required_openfigi_resolves_different_security |
 | SGXE45420721 | 1Y1 | 9R Limited | 9R | 9R LTD | review_required_openfigi_resolves_different_security |
-| SGXZ81555062 | NASO | Naples Soap Company, Inc. | GNS,GNSEUR,GNSGBP | GENIUS GROUP LTD | review_required_openfigi_resolves_different_security |
 | TH0052B10Z09 | DV8 | DV8 Public Company Limited | ASTR,DVPCF | ASTRA ENTERPRISE PCL | review_required_openfigi_resolves_different_security |
 | TREMEPT00012 | MEPET | MEPET METRO PETROL VE TESİSLER | MEPETTRY,MOLA,MOLAY | BREAK MOLA TURIZM YATIRIMLAR | review_required_openfigi_resolves_different_security |
 | US00775Y7287 | RAYD | Rayliant Quantitative Develope | RWLC | RAYLN NXTGN MU US EQ ETF-USD | review_required_openfigi_resolves_different_security |
@@ -192,8 +200,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | US2075978245 | CNLHO | The Connecticut Light and Powe | ES 4.5 PERP 1956 | CONN LT & PWR | review_required_openfigi_resolves_different_security |
 | US25460G8078 | JDST | Direxion Daily Junior Gold Min | JDSTGBP,JDSTUSD | DIR DLY JUN GM IB 2X ETF-USD | review_required_openfigi_resolves_different_security |
 | US2668881061 | DUERF | Dürr Aktiengesellschaft | DUEB,DURYY,DURYYEUR | DUERR AG -UNSP ADR | review_required_openfigi_resolves_different_security |
-| US26922B7091 | IDME | International Drawdown Managed | IDUB | APTUS INTL ENHAN YLD ETF | review_required_openfigi_resolves_different_security |
-| US26923H3093 | BWET | ETF Managers Group Commodity T | BWETUSD | BREAKWAVE TANKER SHIP ETF | review_required_openfigi_resolves_different_security |
 | US3134006408 | FMCKI | Federal Hme 6.55 Pf | FMCC 6.55 PERP Y | FREDDIE MAC | review_required_openfigi_resolves_different_security |
 | US3134006739 | FMCKM | Federal Home Ln Mtg | FMCC 5.57 PERP V | FREDDIE MAC | review_required_openfigi_resolves_different_security |
 | US3134008222 | FREJP | Federal Home 5.30% | FMCC 5.3 PERP | FREDDIE MAC | review_required_openfigi_resolves_different_security |
