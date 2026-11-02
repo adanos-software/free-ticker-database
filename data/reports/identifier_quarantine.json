@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-02T20:40:15Z",
+  "generated_at": "2026-11-02T21:08:23Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2137,
-  "decision_rows": 7046,
+  "conflict_count": 2138,
+  "decision_rows": 7049,
   "action_counts": {
     "kept_listing_keyed_identifier": 1381,
     "proposed_clear_conflicting_identifier": 1108,
-    "quarantined_unresolved_identifier": 4557
+    "quarantined_unresolved_identifier": 4560
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1108,
-  "quarantined_rows": 4557,
+  "quarantined_rows": 4560,
   "retained_rows": 1381,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -37791,6 +37791,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IN9623B01058"
+    },
+    {
+      "conflict_id": "64b4fd62da2c02a9faef",
+      "isin": "INE08PH01015",
+      "listing_key": "BSE_IN::ABCOTS",
+      "ticker": "ABCOTS",
+      "exchange": "BSE_IN",
+      "name": "A B Cotspin India Ltd",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE08PH01015"
+    },
+    {
+      "conflict_id": "64b4fd62da2c02a9faef",
+      "isin": "INE08PH01015",
+      "listing_key": "NSE_IN::ABCIND",
+      "ticker": "ABCIND",
+      "exchange": "NSE_IN",
+      "name": "ABC Industries India Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE08PH01015"
+    },
+    {
+      "conflict_id": "64b4fd62da2c02a9faef",
+      "isin": "INE08PH01015",
+      "listing_key": "NSE_IN::ABCOTS",
+      "ticker": "ABCOTS",
+      "exchange": "NSE_IN",
+      "name": "A B Cotspin India Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE08PH01015"
     },
     {
       "conflict_id": "53def1df9ee7d259d534",
