@@ -23,7 +23,12 @@ from scripts.lib.dataio import (
     merge_metadata_updates,
 )
 from scripts.lib.normalize import names_match
-from scripts.rebuild_dataset import LISTINGS_CSV, is_valid_isin, normalize_sector
+from scripts.rebuild_dataset import (
+    LISTINGS_CSV,
+    is_valid_isin,
+    isin_matches_listing_country,
+    normalize_sector,
+)
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "stockanalysis_verification"
 DEFAULT_CSV_OUT = DEFAULT_OUTPUT_DIR / "stockanalysis_list_sector_backfill.csv"
@@ -301,6 +306,7 @@ def evaluate_row(
     if not name_match:
         return {**base, "decision": "name_mismatch"}
 
+    isin_country_mismatch = False
     isin_update = (
         source_row.isin
         if "isin" not in blocked
@@ -308,6 +314,9 @@ def evaluate_row(
         and is_valid_isin(source_row.isin)
         else ""
     )
+    if isin_update and not isin_matches_listing_country(isin_update, row.get("country", "")):
+        isin_country_mismatch = True
+        isin_update = ""
     sector_update = ""
     category_update = ""
     if row.get("asset_type") == "Stock":
@@ -323,6 +332,8 @@ def evaluate_row(
             category if "etf_category" not in blocked and not row.get("etf_category", "").strip() and category else ""
         )
     if not isin_update and not sector_update and not category_update:
+        if isin_country_mismatch:
+            return {**base, "decision": "isin_country_mismatch"}
         return {**base, "decision": "no_update"}
 
     return {

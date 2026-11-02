@@ -2272,6 +2272,17 @@ def country_from_isin(isin: str) -> str | None:
     return ISIN_PREFIX_COUNTRIES.get(prefix)
 
 
+def isin_matches_listing_country(isin: str, country: str) -> bool:
+    """True when listing country is blank or matches the ISIN prefix country."""
+    listing_country = country.strip()
+    if not listing_country:
+        return True
+    inferred_country = country_from_isin(isin)
+    if not inferred_country:
+        return False
+    return inferred_country == listing_country
+
+
 def is_probable_foreign_depositary_listing(
     row: dict[str, str],
     official_depositary_listing_keys: set[tuple[str, str]],

@@ -23,7 +23,12 @@ from scripts.lib.dataio import (
     merge_metadata_updates,
 )
 from scripts.lib.normalize import names_match
-from scripts.rebuild_dataset import LISTINGS_CSV, is_valid_isin, normalize_sector
+from scripts.rebuild_dataset import (
+    LISTINGS_CSV,
+    is_valid_isin,
+    isin_matches_listing_country,
+    normalize_sector,
+)
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "stockanalysis_verification"
 DEFAULT_CSV_OUT = DEFAULT_OUTPUT_DIR / "stockanalysis_metadata_backfill.csv"
@@ -154,6 +159,7 @@ def evaluate_target(
 ) -> dict[str, Any]:
     blocked = blocked_fields or frozenset()
     name_match = names_match(row.get("name", ""), profile.name) or names_match(profile.name, row.get("name", ""))
+    isin_country_mismatch = False
     accepted_isin = (
         profile.isin
         if "isin" not in blocked
@@ -162,6 +168,9 @@ def evaluate_target(
         and name_match
         else ""
     )
+    if accepted_isin and not isin_matches_listing_country(accepted_isin, row.get("country", "")):
+        isin_country_mismatch = True
+        accepted_isin = ""
     sector = stockanalysis_sector_to_canonical(profile)
     accepted_sector = (
         sector
@@ -177,6 +186,8 @@ def evaluate_target(
         decision = "name_mismatch"
     elif accepted_isin or accepted_sector:
         decision = "accept"
+    elif isin_country_mismatch:
+        decision = "isin_country_mismatch"
     else:
         decision = "no_update"
     return {

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from scripts.backfill_stockanalysis_list_sectors import (
     StockAnalysisListRow,
     build_metadata_updates,
@@ -155,6 +157,109 @@ def test_evaluate_row_rejects_generic_legal_suffix_overlap() -> None:
     assert result["decision"] == "name_mismatch"
     assert result["isin_update"] == ""
     assert result["sector_update"] == ""
+
+
+def test_evaluate_row_rejects_adr_isin_when_listing_country_disagrees() -> None:
+    result = evaluate_row(
+        {
+            "ticker": "VWAGY",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "name": "Volkswagen AG ADR",
+            "country": "Germany",
+            "isin": "",
+            "stock_sector": "Consumer Discretionary",
+        },
+        StockAnalysisListRow(
+            exchange="OTC",
+            asset_type="Stock",
+            symbol="VWAGY",
+            name="Volkswagen AG ADR",
+            isin="US9286626000",
+            sector="Consumer Discretionary",
+            industry="Auto Manufacturers",
+            category="",
+            source_url="https://stockanalysis.com/quote/otc/VWAGY/",
+        ),
+    )
+
+    assert result["decision"] == "isin_country_mismatch"
+    assert result["isin_update"] == ""
+
+
+def test_evaluate_row_accepts_isin_when_prefix_matches_listing_country() -> None:
+    result = evaluate_row(
+        {
+            "ticker": "VWAGY",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "name": "Volkswagen AG ADR",
+            "country": "Germany",
+            "isin": "",
+            "stock_sector": "",
+        },
+        StockAnalysisListRow(
+            exchange="OTC",
+            asset_type="Stock",
+            symbol="VWAGY",
+            name="Volkswagen AG ADR",
+            isin="DE0007664039",
+            sector="Consumer Discretionary",
+            industry="Auto Manufacturers",
+            category="",
+            source_url="https://stockanalysis.com/quote/otc/VWAGY/",
+        ),
+    )
+
+    assert result["decision"] == "accept"
+    assert result["isin_update"] == "DE0007664039"
+
+
+@pytest.mark.parametrize(
+    ("ticker", "name", "country", "isin"),
+    [
+        ("ASMVY", "ASMPT Limited", "Hong Kong", "US00212G1085"),
+        ("BJGPY", "Beijing Geekplus Technology Co., Ltd./ADR", "China", "US07725A1060"),
+        ("CKHUY", "CK Hutchison Holdings Limited ADR", "Hong Kong", "US12562Y1001"),
+        ("FXCNY", "FIH Mobile Ltd", "China", "US30255D2099"),
+        ("HNHPF", "Hon Hai Precision Industry Co., Ltd.", "Taiwan", "US40415F1012"),
+        ("MRUWY", "Maruwa Co., Ltd./ADR", "Japan", "US57381Q1013"),
+        ("RAASY", "Cloopen Group Holding Ltd", "Cayman Islands", "US18900M2035"),
+        ("VWAGY", "Volkswagen AG ADR", "Germany", "US9286626000"),
+    ],
+)
+def test_evaluate_row_rejects_weekly_backfill_adr_us_isin_mismatches(
+    ticker: str,
+    name: str,
+    country: str,
+    isin: str,
+) -> None:
+    result = evaluate_row(
+        {
+            "ticker": ticker,
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "name": name,
+            "country": country,
+            "isin": "",
+            "stock_sector": "Information Technology",
+        },
+        StockAnalysisListRow(
+            exchange="OTC",
+            asset_type="Stock",
+            symbol=ticker,
+            name=name,
+            isin=isin,
+            sector="Information Technology",
+            industry="",
+            category="",
+            source_url=f"https://stockanalysis.com/quote/otc/{ticker}/",
+        ),
+    )
+
+    assert result["decision"] == "isin_country_mismatch"
+    assert result["isin_update"] == ""
+    assert build_metadata_updates([result]) == []
 
 
 def test_build_metadata_updates_labels_stockanalysis_list_as_secondary() -> None:
