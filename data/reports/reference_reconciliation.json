@@ -3,18 +3,18 @@
     "active_official_reference_rows": 170887,
     "source_specific_reference_keys": 170887,
     "classification_counts": {
-      "alternate_listing_line": 3395,
+      "alternate_listing_line": 3396,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12547,
-      "exact_match": 100231,
-      "missing_from_database": 44516,
+      "exact_identity_conflict": 12545,
+      "exact_match": 100233,
+      "missing_from_database": 44515,
       "normalization_candidate": 1860,
       "out_of_scope": 8144
     },
-    "coverage_credited_keys": 100231,
+    "coverage_credited_keys": 100233,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44516,
-    "identity_conflict_rows": 12547,
+    "in_scope_missing_rows": 44515,
+    "identity_conflict_rows": 12545,
     "mapping_candidate_rows": 1860
   },
   "rows": [
@@ -200109,10 +200109,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "Bursa::9008",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "bursa_closing_prices::Bursa::9008PB",
@@ -225965,10 +225965,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NEO::HELP",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "cboe_canada_listing_directory::NEO::HERM",
@@ -528573,10 +528573,10 @@
       "isins": "CA4234921076",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "alternate_listing_line",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "FSX::R7E",
+      "evidence": "Same venue and ISIN identify one compatible alternate line, but a different venue symbol cannot satisfy this reference without an explicit reviewed mapping."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::R7G",
@@ -1540813,10 +1540813,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::HELP",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::HEPS",
@@ -1577277,10 +1577277,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::SLMT",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::SLN",
@@ -2074285,10 +2074285,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::HELP",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::HEPS",
@@ -2103053,10 +2103053,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "NASDAQ::SLMT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::SLN",
