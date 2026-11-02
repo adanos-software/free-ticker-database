@@ -19,8 +19,8 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Aliases | 129,014 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 64,350 (98.0%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 65,072 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 64,480 (98.2%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 47,698 | Primary ticker rows with a non-empty `stock_sector`. |
+| Sector/category coverage | 64,482 (98.2%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 47,700 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,782 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 63,644 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 62,943 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
