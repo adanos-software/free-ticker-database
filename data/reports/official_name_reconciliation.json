@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-01T20:18:02Z",
+  "generated_at": "2026-11-02T08:14:39Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1982,
+  "reconciled_rows": 1981,
   "applied_rows": 0,
-  "proposed_rows": 1982,
+  "proposed_rows": 1981,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -24199,21 +24199,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.nse.co.ke/listed-companies/",
       "observation_id": "98d92cba6d7e76a0cc7c2d1c",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "NSE_KE::HFCK",
-      "action": "proposed",
-      "ticker": "HFCK",
-      "exchange": "NSE_KE",
-      "asset_type": "Stock",
-      "isin": "KE0000000240",
-      "old_name": "HF GROUP PLC",
-      "new_name": "HF Group Ltd Ord 5.00",
-      "source_key": "nse_ke_listed_companies",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.nse.co.ke/listed-companies/",
-      "observation_id": "d4e926d4c039762287efa024",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
