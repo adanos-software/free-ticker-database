@@ -1951,7 +1951,7 @@ def main(argv: list[str] | None = None) -> None:
     args.json_out.write_text(json.dumps(results, indent=2, sort_keys=True), encoding="utf-8")
 
     if args.apply and metadata_updates:
-        merge_metadata_updates(args.metadata_updates_csv, metadata_updates)
+        merge_metadata_updates(args.metadata_updates_csv, metadata_updates, replace_clears=True)
 
     print(
         json.dumps(
