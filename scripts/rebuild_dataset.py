@@ -25,6 +25,7 @@ try:
     )
     from scripts.listing_keys import row_listing_key
     from scripts.lib.dataio import should_apply_metadata_field_override
+    from scripts.lib.etf_category_overrides import apply_reviewed_etf_category_override, load_etf_category_overrides
     from scripts.lib.non_equity_guard import is_blocked_non_common_stock
 except ModuleNotFoundError:  # pragma: no cover - script execution path
     from alias_policy import (
@@ -35,6 +36,7 @@ except ModuleNotFoundError:  # pragma: no cover - script execution path
     )
     from listing_keys import row_listing_key
     from lib.dataio import should_apply_metadata_field_override
+    from lib.etf_category_overrides import apply_reviewed_etf_category_override, load_etf_category_overrides
     from lib.non_equity_guard import is_blocked_non_common_stock
 
 
@@ -66,6 +68,7 @@ MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
 REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
+REVIEW_ETF_CATEGORY_OVERRIDES_CSV = REVIEW_OVERRIDES_DIR / "etf_category_overrides.csv"
 REVIEW_DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
 REVIEW_LISTING_TRANSITIONS_CSV = REVIEW_OVERRIDES_DIR / "listing_transitions.csv"
 PRIMARY_LISTING_OVERRIDES_CSV = REVIEW_OVERRIDES_DIR / "primary_listing_overrides.csv"
@@ -2763,6 +2766,7 @@ def merge_reviewed_metadata_aliases(
 def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
+    etf_category_overrides = load_etf_category_overrides(REVIEW_ETF_CATEGORY_OVERRIDES_CSV)
     transition_predecessors = set(load_reviewed_transition_replacements())
     unconditional_review_drops = review_drop_entries - transition_predecessors
     official_isin_fallbacks = load_active_official_isin_fallbacks()
@@ -2904,6 +2908,11 @@ def cleaned_rows():
             output_row,
             metadata_overrides,
         )
+        output_row, _etf_override_skip = apply_reviewed_etf_category_override(
+            output_row,
+            etf_category_overrides.get(row_key),
+        )
+        output_row = with_sector_model_fields(output_row)
         _, output_aliases = clean_aliases(output_row, output_row.get("aliases", []), wkns, alias_context)
         output_aliases = merge_reviewed_metadata_aliases(output_aliases, metadata_overrides)
         output_aliases = apply_review_alias_removals(output_aliases, review_alias_removals.get(row_key, set()))

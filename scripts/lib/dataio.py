@@ -58,6 +58,12 @@ COVERAGE_METADATA_FIELDS = frozenset({"etf_category", "sector", "stock_sector"})
 
 
 def should_apply_metadata_field_override(field: str, current_value: object, decision: str) -> bool:
+    """Return whether metadata_updates.csv may change a field on rebuild.
+
+    Coverage fields (stock_sector, etf_category, legacy sector) only fill blanks.
+    Non-blank etf_category corrections use data/review_overrides/etf_category_overrides.csv
+    with an old_value guard instead of metadata_updates.
+    """
     if field not in COVERAGE_METADATA_FIELDS:
         return True
     if decision == "clear":

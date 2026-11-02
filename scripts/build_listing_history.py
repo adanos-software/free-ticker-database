@@ -30,6 +30,7 @@ DELISTING_APPLY_JSON = DATA_DIR / "reports/delisting_apply.json"
 IDENTIFIER_QUARANTINE_CSV = DATA_DIR / "reports/identifier_quarantine.csv"
 OFFICIAL_NAME_RECONCILIATION_CSV = DATA_DIR / "reports/official_name_reconciliation.csv"
 METADATA_UPDATES_CSV = DATA_DIR / "review_overrides/metadata_updates.csv"
+ETF_CATEGORY_OVERRIDES_CSV = DATA_DIR / "review_overrides/etf_category_overrides.csv"
 TRUSTED_EVIDENCE = {"official", "reviewed", "verified"}
 VALID_LISTING_STATUSES = {"active", "suspended", "delisted"}
 STATUS_HISTORY_FIELDS = [
@@ -223,6 +224,20 @@ def load_change_evidence() -> dict[tuple[str, str, str, str], dict[str, str]]:
             "source_url": "",
             "source_report": str(METADATA_UPDATES_CSV.relative_to(ROOT)),
             "observation_id": f"{exchange}::{ticker}:{field}",
+            "evidence_status": "reviewed",
+        }
+    for row in load_csv(ETF_CATEGORY_OVERRIDES_CSV):
+        ticker = str(row.get("ticker", "") or "").strip().upper()
+        exchange = str(row.get("exchange", "") or "").strip()
+        new = str(row.get("new_value", "") or "").strip()
+        if not ticker or not exchange or not new:
+            continue
+        source_url = str(row.get("source_1", "") or "").strip()
+        evidence[(f"{exchange}::{ticker}", "etf_category", "*", new)] = {
+            "source_key": "review_etf_category_overrides",
+            "source_url": source_url,
+            "source_report": str(ETF_CATEGORY_OVERRIDES_CSV.relative_to(ROOT)),
+            "observation_id": f"{exchange}::{ticker}:etf_category",
             "evidence_status": "reviewed",
         }
     return evidence

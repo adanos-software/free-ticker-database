@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-11-02T08:18:53Z`
+Generated at: `2026-11-02T09:12:42Z`
 
 Status: `PASS`
 
@@ -12,7 +12,7 @@ Status: `PASS`
 | listing_rows | 97,776 |
 | adanos_reference_rows | 65,695 |
 | entry_quality_rows | 97,776 |
-| error_gates | 87 |
+| error_gates | 90 |
 | failed_error_gates | 0 |
 | info_gates | 5 |
 
@@ -31,6 +31,7 @@ Status: `PASS`
 | required_columns:data/adanos/ticker_reference.csv | error | PASS | 0 | 0 |
 | required_columns:data/reports/entry_quality.csv | error | PASS | 0 | 0 |
 | required_columns:data/review_overrides/metadata_updates.csv | error | PASS | 0 | 0 |
+| required_columns:data/review_overrides/etf_category_overrides.csv | error | PASS | 0 | 0 |
 | required_columns:data/reports/source_gap_classification.csv | error | PASS | 0 | 0 |
 | required_columns:data/reports/source_of_truth_decisions.csv | error | PASS | 0 | 0 |
 | duplicate_primary_ticker_count | error | PASS | 0 | 0 |
@@ -80,6 +81,8 @@ Status: `PASS`
 | metadata_updates_malformed_rows | error | PASS | 0 | 0 |
 | metadata_updates_noncanonical_typed_values | error | PASS | 0 | 0 |
 | metadata_updates_typed_leakage | error | PASS | 0 | 0 |
+| etf_category_overrides_malformed_rows | error | PASS | 0 | 0 |
+| etf_category_overrides_stale_old_value | error | PASS | 0 | 0 |
 | source_gap_classification_invalid_rows | error | PASS | 0 | 0 |
 | source_gap_classification_current_gap_mismatch | error | PASS | 0 | 0 |
 | source_of_truth_decision_invalid_rows | error | PASS | 0 | 0 |

@@ -19,6 +19,10 @@ from scripts.alias_policy import is_common_single_word_alias, normalize_alias_te
 from scripts.build_entry_quality_report import build_confirmed_depositary_listing_tuples
 from scripts.check_entry_quality_gate import check_entry_quality_gate
 from scripts.lib.dataio import is_well_formed_metadata_update
+from scripts.lib.etf_category_overrides import (
+    malformed_etf_category_override_rows,
+    stale_etf_category_override_keys,
+)
 from scripts.rebuild_dataset import (
     COUNTRY_TO_ISO,
     MASTERFILE_REFERENCE_CSV,
@@ -45,6 +49,7 @@ DEFAULT_WARN_ALLOWLIST_CSV = REPORTS_DIR / "entry_quality_warn_allowlist.csv"
 DEFAULT_ADANOS_ALIAS_AUDIT_CSV = REPORTS_DIR / "adanos_alias_audit.csv"
 DEFAULT_REVIEW_REMOVE_ALIASES_CSV = DATA_DIR / "review_overrides" / "remove_aliases.csv"
 DEFAULT_REVIEW_METADATA_UPDATES_CSV = DATA_DIR / "review_overrides" / "metadata_updates.csv"
+DEFAULT_REVIEW_ETF_CATEGORY_OVERRIDES_CSV = DATA_DIR / "review_overrides" / "etf_category_overrides.csv"
 DEFAULT_FOREIGN_ISIN_REVIEWED_CSV = DATA_DIR / "review_overrides" / "foreign_isin_reviewed.csv"
 DEFAULT_MASTERFILE_REFERENCE_CSV = MASTERFILE_REFERENCE_CSV
 DEFAULT_COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
@@ -132,6 +137,15 @@ METADATA_UPDATE_COLUMNS = {
     "proposed_value",
     "confidence",
     "reason",
+}
+ETF_CATEGORY_OVERRIDE_COLUMNS = {
+    "ticker",
+    "exchange",
+    "old_value",
+    "new_value",
+    "reason",
+    "source_1",
+    "source_2",
 }
 SOURCE_GAP_CLASSIFICATION_COLUMNS = {
     "field",
@@ -852,6 +866,7 @@ def build_validation_report(
     cross_listings: list[dict[str, str]] | None = None,
     review_remove_aliases: list[dict[str, str]] | None = None,
     review_metadata_updates: list[dict[str, str]] | None = None,
+    review_etf_category_overrides: list[dict[str, str]] | None = None,
     masterfiles: list[dict[str, str]] | None = None,
     source_gap_classifications: list[dict[str, str]] | None = None,
     source_of_truth_decisions: list[dict[str, str]] | None = None,
@@ -864,6 +879,7 @@ def build_validation_report(
     path_to_columns = path_to_columns or {}
     review_remove_aliases = review_remove_aliases or []
     review_metadata_updates = review_metadata_updates or []
+    review_etf_category_overrides = review_etf_category_overrides or []
     masterfiles = masterfiles or []
     source_gap_classifications = source_gap_classifications or []
     source_of_truth_decisions = source_of_truth_decisions or []
@@ -946,6 +962,8 @@ def build_validation_report(
     noncanonical_metadata_updates = metadata_updates_with_noncanonical_typed_values(review_metadata_updates)
     malformed_metadata_updates = malformed_metadata_update_rows(review_metadata_updates)
     metadata_typed_leakage = metadata_updates_with_typed_leakage(review_metadata_updates, typed_rows)
+    malformed_etf_category_overrides = malformed_etf_category_override_rows(review_etf_category_overrides)
+    stale_etf_category_overrides = stale_etf_category_override_keys(review_etf_category_overrides, tickers)
     source_gap_invalid_rows = (
         invalid_source_gap_classification_rows(source_gap_classifications) if source_gap_classifications else []
     )
@@ -1231,6 +1249,16 @@ def build_validation_report(
                 metadata_typed_leakage,
             ),
             fail_gate(
+                "etf_category_overrides_malformed_rows",
+                len(malformed_etf_category_overrides),
+                malformed_etf_category_overrides,
+            ),
+            fail_gate(
+                "etf_category_overrides_stale_old_value",
+                len(stale_etf_category_overrides),
+                stale_etf_category_overrides,
+            ),
+            fail_gate(
                 "source_gap_classification_invalid_rows",
                 len(source_gap_invalid_rows),
                 source_gap_invalid_rows,
@@ -1410,6 +1438,7 @@ def build_validation_report(
                 "adanos_alias_audit_csv": display_path(DEFAULT_ADANOS_ALIAS_AUDIT_CSV),
                 "review_remove_aliases_csv": display_path(DEFAULT_REVIEW_REMOVE_ALIASES_CSV),
                 "review_metadata_updates_csv": display_path(DEFAULT_REVIEW_METADATA_UPDATES_CSV),
+                "review_etf_category_overrides_csv": display_path(DEFAULT_REVIEW_ETF_CATEGORY_OVERRIDES_CSV),
                 "coverage_report_json": display_path(DEFAULT_COVERAGE_REPORT_JSON),
                 "source_gap_classification_csv": display_path(DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV),
                 "source_of_truth_decisions_csv": display_path(DEFAULT_SOURCE_OF_TRUTH_DECISIONS_CSV),
@@ -1488,6 +1517,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--adanos-alias-audit-csv", type=Path, default=DEFAULT_ADANOS_ALIAS_AUDIT_CSV)
     parser.add_argument("--review-remove-aliases-csv", type=Path, default=DEFAULT_REVIEW_REMOVE_ALIASES_CSV)
     parser.add_argument("--review-metadata-updates-csv", type=Path, default=DEFAULT_REVIEW_METADATA_UPDATES_CSV)
+    parser.add_argument(
+        "--review-etf-category-overrides-csv",
+        type=Path,
+        default=DEFAULT_REVIEW_ETF_CATEGORY_OVERRIDES_CSV,
+    )
     parser.add_argument("--masterfile-reference-csv", type=Path, default=DEFAULT_MASTERFILE_REFERENCE_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=DEFAULT_COVERAGE_REPORT_JSON)
     parser.add_argument("--source-gap-classification-csv", type=Path, default=DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV)
@@ -1512,6 +1546,7 @@ def main(argv: list[str] | None = None) -> int:
         args.adanos_reference_csv,
         args.entry_quality_csv,
         args.review_metadata_updates_csv,
+        args.review_etf_category_overrides_csv,
         args.source_gap_classification_csv,
         args.source_of_truth_decisions_csv,
     ]
@@ -1528,6 +1563,7 @@ def main(argv: list[str] | None = None) -> int:
         args.adanos_reference_csv: ADANOS_COLUMNS,
         args.entry_quality_csv: ENTRY_QUALITY_COLUMNS,
         args.review_metadata_updates_csv: METADATA_UPDATE_COLUMNS,
+        args.review_etf_category_overrides_csv: ETF_CATEGORY_OVERRIDE_COLUMNS,
         args.source_gap_classification_csv: SOURCE_GAP_CLASSIFICATION_COLUMNS,
         args.source_of_truth_decisions_csv: SOURCE_OF_TRUTH_DECISION_COLUMNS,
     }
@@ -1558,6 +1594,11 @@ def main(argv: list[str] | None = None) -> int:
         ),
         review_metadata_updates=(
             load_csv(args.review_metadata_updates_csv) if args.review_metadata_updates_csv.exists() else []
+        ),
+        review_etf_category_overrides=(
+            load_csv(args.review_etf_category_overrides_csv)
+            if args.review_etf_category_overrides_csv.exists()
+            else []
         ),
         masterfiles=(load_csv(args.masterfile_reference_csv) if args.masterfile_reference_csv.exists() else []),
         source_gap_classifications=(

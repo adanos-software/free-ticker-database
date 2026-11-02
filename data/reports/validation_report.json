@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-02T08:18:53Z",
+    "generated_at": "2026-11-02T09:12:42Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -16,6 +16,7 @@
       "adanos_alias_audit_csv": "data/reports/adanos_alias_audit.csv",
       "review_remove_aliases_csv": "data/review_overrides/remove_aliases.csv",
       "review_metadata_updates_csv": "data/review_overrides/metadata_updates.csv",
+      "review_etf_category_overrides_csv": "data/review_overrides/etf_category_overrides.csv",
       "coverage_report_json": "data/reports/coverage_report.json",
       "source_gap_classification_csv": "data/reports/source_gap_classification.csv",
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
@@ -27,7 +28,7 @@
     "listing_rows": 97776,
     "adanos_reference_rows": 65695,
     "entry_quality_rows": 97776,
-    "error_gates": 87,
+    "error_gates": 90,
     "failed_error_gates": 0,
     "info_gates": 5
   },
@@ -104,6 +105,13 @@
     },
     {
       "name": "required_columns:data/review_overrides/metadata_updates.csv",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "required_columns:data/review_overrides/etf_category_overrides.csv",
       "severity": "error",
       "passed": true,
       "actual": 0,
@@ -447,6 +455,20 @@
     },
     {
       "name": "metadata_updates_typed_leakage",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "etf_category_overrides_malformed_rows",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "etf_category_overrides_stale_old_value",
       "severity": "error",
       "passed": true,
       "actual": 0,
