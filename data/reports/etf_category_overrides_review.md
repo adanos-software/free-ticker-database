@@ -1,0 +1,127 @@
+# ETF category overrides review
+
+Verified corrections: **86**. Skipped (insufficient evidence): **32**.
+
+| ticker | exchange | old | new | source_1 | source_2 |
+| --- | --- | --- | --- | --- | --- |
+| ETPMAG | ASX | Equity | Commodity | https://www.globalxetfs.com.au/funds/etpmag/ | https://www.asx.com.au/markets/company/ETPMAG |
+| ETPMPD | ASX | Equity | Commodity | https://www.globalxetfs.com.au/funds/etpmpd/ | https://www.asx.com.au/markets/company/ETPMPD |
+| ETPMPT | ASX | Equity | Commodity | https://www.globalxetfs.com.au/funds/etpmpt/ | https://www.asx.com.au/markets/company/ETPMPT |
+| GHLD | ASX | Equity | Commodity | https://www.globalxetfs.com.au/funds/ghld/ | https://www.asx.com.au/markets/company/GHLD |
+| CNB | Euronext | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/LU1829218822 | https://live.euronext.com/en/product/etfs/LU1829218822-CNB |
+| AGGG | LSE | Equity | Fixed Income | https://www.ishares.com/uk/individual/en/products/251882/ishares-global-aggregate-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/AGGG/ishares-iii-plc |
+| CRPX | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/LU1829219127 | https://www.londonstockexchange.com/en/quote/etps/CRPX/multi-units-luxembourg |
+| FEMP | LSE | Equity | Fixed Income | https://www.fidelity.co.uk/factsheet-data/factsheet/IE00BM9GRQ71-fidelity-sustainable-usd-em-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/FEMP/fidelity-ucits-ii-icav |
+| FSED | LSE | Equity | Fixed Income | https://www.fidelity.co.uk/factsheet-data/factsheet/IE00BM9GRP64-fidelity-sustainable-usd-em-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/FSED/fidelity-ucits-ii-icav |
+| FUIS | LSE | Equity | Fixed Income | https://www.fidelity.co.uk/factsheet-data/factsheet/IE000JJQ6248-fidelity-sustainable-usd-em-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/FUIS/fidelity-ucits-ii-icav |
+| USTY | LSE | Equity | Fixed Income | https://www.ssga.com/uk/en_gb/institutional/etfs/funds/spdr-barclays-cap-us-treasury-bond-usty | https://www.londonstockexchange.com/en/quote/etps/USTY/ssga-spdr-etfs-europe-i-plc |
+| YIEL | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/LU1812090543 | https://www.londonstockexchange.com/en/quote/etps/YIEL/amundi-index-solutions |
+| FEMB | NASDAQ | Equity | Fixed Income | https://www.ftportfolios.com/Retail/Etf/EtfSummary.aspx?Ticker=FEMB | https://www.nasdaq.com/market-activity/etf/femb |
+| TLT | NASDAQ | Equity | Fixed Income | https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf | https://www.nasdaq.com/market-activity/etf/tlt |
+| SHV | NYSE | Equity | Fixed Income | https://www.ishares.com/us/products/239466/ishares-0-1-year-treasury-bond-etf | https://www.nyse.com/quote/XNYS:SHV |
+| EDV | NYSE ARCA | Equity | Fixed Income | https://investor.vanguard.com/investment-products/etfs/profile/edv | https://www.nyse.com/quote/ARCX:EDV |
+| GBF | NYSE ARCA | Equity | Fixed Income | https://www.ishares.com/us/products/239772/ishares-government-credit-bond-etf | https://www.nyse.com/quote/ARCX:GBF |
+| GLD | NYSE ARCA | Equity | Commodity | https://www.ssga.com/us/en/institutional/etfs/funds/spdr-gold-shares-gld | https://www.nyse.com/quote/ARCX:GLD |
+| IAU | NYSE ARCA | Equity | Commodity | https://www.ishares.com/us/products/239561/ishares-gold-trust-fund | https://www.nyse.com/quote/ARCX:IAU |
+| LEMB | NYSE ARCA | Equity | Fixed Income | https://www.ishares.com/us/products/239572/ishares-j-p-morgan-em-local-currency-bond-etf | https://www.nyse.com/quote/ARCX:LEMB |
+| SHM | NYSE ARCA | Equity | Fixed Income | https://www.ssga.com/us/en/institutional/etfs/funds/spdr-nuveen-bloomberg-short-term-municipal-bond-etf-shm | https://www.nyse.com/quote/ARCX:SHM |
+| SLV | NYSE ARCA | Equity | Commodity | https://www.ishares.com/us/products/239855/ishares-silver-trust-fund | https://www.nyse.com/quote/ARCX:SLV |
+| TIP | NYSE ARCA | Equity | Fixed Income | https://www.ishares.com/us/products/239458/ishares-tips-bond-etf | https://www.nyse.com/quote/ARCX:TIP |
+| ABBA | SIX | Equity | Alternative | https://21shares.com/product/abba | https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.html?isin=CH0496484640 |
+| CBH | TSX | Equity | Fixed Income | https://www.blackrock.com/ca/investors/en/products/239837/ishares-1-10-year-laddered-corporate-bond-index-etf | https://money.tmx.com/en/quote/CBH |
+| XEB | TSX | Equity | Fixed Income | https://www.blackrock.com/ca/investors/en/products/239838/ishares-j-p-morgan-usd-emerging-markets-bond-index-etf-cad-hedged | https://money.tmx.com/en/quote/XEB |
+| PRAS | XETRA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/LU2089239193 | https://www.xetra.com/xetra-en/instruments/LU2089239193 |
+| CYBA | AMS | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/290255/ishares-china-cny-bond-ucits-etf-usd-acc | https://live.euronext.com/en/product/etfs/IE00BKPSFD61-CYBA |
+| CYBE | AMS | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/290256/ishares-china-cny-bond-ucits-etf | https://live.euronext.com/en/product/etfs/IE00BKT6VQ12-CYBE |
+| UEDD | AMS | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/297780/ishares-ultrashort-bond-esg-ucits-etf | https://live.euronext.com/en/product/etfs/IE00BJP26C72-UEDD |
+| EBTC | ASX | Equity | Alternative | https://www.globalxetfs.com.au/funds/ebtc/ | https://www.globalxetfs.com.au/fund-categories/crypto/ |
+| USDB11 | B3 | Equity | Fixed Income | https://www.investoetf.com/etf/usdb11/ | https://borainvestir.b3.com.br/cotacoes/etfs/USDB11/ |
+| FLOT | BATS | Equity | Fixed Income | https://www.ishares.com/us/products/239534/ishares-floating-rate-bond-etf | https://www.nasdaq.com/market-activity/etf/flot |
+| HYD | BATS | Equity | Fixed Income | https://www.vaneck.com/us/en/investments/high-yield-muni-etf-hyd/ | https://www.nasdaq.com/market-activity/etf/hyd |
+| MIG | BATS | Equity | Fixed Income | https://www.vaneck.com/us/en/investments/moodys-analytics-ig-corporate-bond-etf-mig/ | https://www.nasdaq.com/market-activity/etf/mig |
+| OVT | BATS | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US53656F5733 | https://www.nasdaq.com/market-activity/etf/ovt |
+| STXGBD | JSE | Equity | Fixed Income | https://satrix.co.za/products/product-details?id=61 | https://www.sharenet.co.za/v3/sens_display.php?scode=&seq=19&tdate=20200806082100 |
+| AEGG | LSE | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/319829/ishares-global-aggregate-bond-esg-ucits-etf-gbp-hedged-acc | https://www.londonstockexchange.com/en/quote/etps/AEGG/ishares-iii-plc |
+| FLO5 | LSE | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/290257/ishares-usd-floating-rate-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/FLO5/ishares-ii-plc |
+| IEMB | LSE | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/251883/ishares-j-p-morgan-em-bond-ucits-etf-usd-dist | https://www.londonstockexchange.com/en/quote/etps/IEMB/ishares-ii-plc |
+| IEML | LSE | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/251884/ishares-emerging-market-local-government-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/IEML/ishares-iii-plc |
+| IGIL | LSE | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/251885/ishares-global-inflation-linked-govt-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/IGIL/ishares-iii-plc |
+| JMAB | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BJ06C937 | https://www.londonstockexchange.com/en/quote/etps/JMAB/jpmorgan-etfs-ireland-icav |
+| JMBP | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BJLTWS02 | https://www.londonstockexchange.com/en/quote/etps/JMBP/jpmorgan-etfs-ireland-icav |
+| JPBM | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BDFC6G93 | https://www.londonstockexchange.com/en/quote/etps/JPBM/jpmorgan-etfs-ireland-icav |
+| JPEA | LSE | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/251887/ishares-j-p-morgan-em-bond-ucits-etf-usd-acc | https://www.londonstockexchange.com/en/quote/etps/JPEA/ishares-ii-plc |
+| LQDE | LSE | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/251886/ishares-corp-bond-ucits-etf | https://www.londonstockexchange.com/en/quote/etps/LQDE/ishares-plc |
+| MEXP | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE000RI14ZD9 | https://www.londonstockexchange.com/en/quote/etps/MEXP/hanetf-icav |
+| PEMD | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BF51K132 | https://www.londonstockexchange.com/en/quote/etps/PEMD/invesco-markets-ii-plc |
+| TIGG | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BL6K6H97 | https://www.londonstockexchange.com/en/quote/etps/TIGG/legal-general-ucits-etf-public-limited-company |
+| USDC | LSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BLRPRD67 | https://www.londonstockexchange.com/en/quote/etps/USDC/legal-general-ucits-etf-public-limited-company |
+| VDEA | LSE | Equity | Fixed Income | https://www.vanguard.co.uk/professional/product/etf/equity/9495/vanguard-usd-emerging-markets-government-bond-ucits-etf-usd-distributing | https://www.londonstockexchange.com/en/quote/etps/VDEA/vanguard-funds-plc |
+| VDET | LSE | Equity | Fixed Income | https://www.vanguard.co.uk/professional/product/etf/equity/9495/vanguard-usd-emerging-markets-government-bond-ucits-etf-usd-distributing | https://www.londonstockexchange.com/en/quote/etps/VDET/vanguard-funds-plc |
+| ANGL | NASDAQ | Equity | Fixed Income | https://www.vaneck.com/us/en/investments/fallen-angel-high-yield-bond-etf-angl/ | https://www.nasdaq.com/market-activity/etf/angl |
+| EYEG | NASDAQ | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US49721T1016 | https://www.nasdaq.com/market-activity/etf/eyeg |
+| SUSC | NASDAQ | Equity | Fixed Income | https://www.ishares.com/us/products/288488/ishares-esg-aware-usd-corporate-bond-etf | https://www.nasdaq.com/market-activity/etf/susc |
+| BMN | NYSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US09262G1085 | https://www.nyse.com/quote/XNYS:BMN |
+| RFMZ | NYSE | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US76883Y1073 | https://www.nyse.com/quote/XNYS:RFMZ |
+| BAB | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US46138G8050 | https://www.nyse.com/quote/ARCX:BAB |
+| CBON | NYSE ARCA | Equity | Fixed Income | https://www.vaneck.com/us/en/investments/china-bond-etf-cbon/ | https://www.nyse.com/quote/ARCX:CBON |
+| FTPA | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US7467297484 | https://www.nyse.com/quote/ARCX:FTPA |
+| GENM | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US84858T7809 | https://www.nyse.com/quote/ARCX:GENM |
+| HYG | NYSE ARCA | Equity | Fixed Income | https://www.ishares.com/us/products/239563/ishares-iboxx-high-yield-corporate-bond-etf | https://www.nyse.com/quote/ARCX:HYG |
+| JHMU | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US47804J8678 | https://www.nyse.com/quote/ARCX:JHMU |
+| JPMB | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US46641Q7464 | https://www.nyse.com/quote/ARCX:JPMB |
+| MAGG | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US5574413002 | https://www.nyse.com/quote/ARCX:MAGG |
+| MMIT | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US45409F8279 | https://www.nyse.com/quote/ARCX:MMIT |
+| NUAG | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US67092P1021 | https://www.nyse.com/quote/ARCX:NUAG |
+| NUMI | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US67092P7143 | https://www.nyse.com/quote/ARCX:NUMI |
+| TBLL | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US46138G8886 | https://www.nyse.com/quote/ARCX:TBLL |
+| TUA | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US82889N6572 | https://www.nyse.com/quote/ARCX:TUA |
+| XONE | NYSE ARCA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/US09789C8617 | https://www.nyse.com/quote/ARCX:XONE |
+| CMES | SIX | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/319830/ishares-j-p-morgan-esg-em-bond-ucits-etf-chf-hedged-acc | https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.html?isin=IE00BKP5L623 |
+| CORC | SIX | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/319831/ishares-global-corp-bond-ucits-etf-chf-hedged-acc | https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.html?isin=IE00BK0TB144 |
+| ESGEMC | SIX | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/LU1974696095 | https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.html?isin=LU1974696095 |
+| GLAC | SIX | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/319832/spdr-bloomberg-global-aggregate-bond-ucits-etf-chf-hedged | https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.html?isin=IE00BF1QPK61 |
+| JMBC | SIX | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BL2F2474 | https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.html?isin=IE00BL2F2474 |
+| CALB | TSX | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/CA17164M1077 | https://money.tmx.com/en/quote/CALB |
+| TERM | TSX | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/CA56502Q1072 | https://money.tmx.com/en/quote/TERM |
+| ZEF | TSX | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/CA05560F1071 | https://money.tmx.com/en/quote/ZEF |
+| DRGE | XETRA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE000F472DU7 | https://www.xetra.com/xetra-en/instruments/IE000F472DU7 |
+| EMIE | XETRA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/LU1974696418 | https://www.xetra.com/xetra-en/instruments/LU1974696418 |
+| GLBD | XETRA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE000FVQW7E7 | https://www.xetra.com/xetra-en/instruments/IE000FVQW7E7 |
+| JMBE | XETRA | Equity | Fixed Income | https://www.amundi.com/globaldistributor/product/view/IE00BDDRDY39 | https://www.xetra.com/xetra-en/instruments/IE00BDDRDY39 |
+| SPFE | XETRA | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/319833/spdr-bloomberg-global-aggregate-bond-ucits-etf-eur-hedged | https://www.xetra.com/xetra-en/instruments/IE00BF1QPL78 |
+| ZPR6 | XETRA | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/319834/spdr-ice-bofa-0-5-year-em-usd-government-bond-eur-hdg-ucits-etf | https://www.xetra.com/xetra-en/instruments/IE00BJL36X53 |
+
+## Skipped
+
+- `LSE::SSLV` — source_1_http_406
+- `TSX::HFR` — source_1_http_403
+- `XETRA::8PSA` — source_1_http_406
+- `ASX::IAF` — source_1_http_404
+- `BATS::GEMD` — source_1_http_404
+- `BATS::PCI` — source_1_http_404
+- `BATS::PCL` — source_1_http_404
+- `BATS::TRSY` — source_1_http_404
+- `LSE::EGLN` — source_1_http_500
+- `LSE::PHAU` — source_1_http_403
+- `LSE::PHPD` — source_1_http_403
+- `LSE::PHPT` — source_1_http_403
+- `LSE::SGLS` — source_1_http_406
+- `LSE::XUEB` — source_1_http_404
+- `LSE::XUEM` — source_1_http_404
+- `NASDAQ::CA` — source_1_http_404
+- `NASDAQ::PEY` — misclassified_equity_dividend_etf
+- `NYSE ARCA::DEFI` — source_1_http_404
+- `NYSE ARCA::GCOR` — source_1_http_404
+- `NYSE ARCA::GIGL` — source_1_http_404
+- `NYSE ARCA::PAB` — source_1_http_404
+- `NYSE ARCA::PHYS` — source_1_http_404
+- `NYSE ARCA::SCCR` — source_1_http_403
+- `NYSE ARCA::SCHO` — source_1_http_403
+- `NYSE ARCA::SCHP` — source_1_http_403
+- `TSX::PHYS-U` — source_1_http_404
+- `XETRA::8PSE` — source_1_http_406
+- `XETRA::DXSU` — source_1_http_404
+- `XETRA::GIGA` — source_1_http_404
+- `XETRA::GIGE` — source_1_http_404
+- `XETRA::GIGU` — source_1_http_404
+- `XETRA::WGLD` — source_1_http_403
