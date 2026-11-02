@@ -34,7 +34,7 @@ Verified corrections: **86**. Skipped (insufficient evidence): **32**.
 | CYBA | AMS | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/290255/ishares-china-cny-bond-ucits-etf-usd-acc | https://live.euronext.com/en/product/etfs/IE00BKPSFD61-CYBA |
 | CYBE | AMS | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/290256/ishares-china-cny-bond-ucits-etf | https://live.euronext.com/en/product/etfs/IE00BKT6VQ12-CYBE |
 | UEDD | AMS | Equity | Fixed Income | https://www.blackrock.com/sg/en/products/297780/ishares-ultrashort-bond-esg-ucits-etf | https://live.euronext.com/en/product/etfs/IE00BJP26C72-UEDD |
-| EBTC | ASX | Equity | Alternative | https://www.globalxetfs.com.au/funds/ebtc/ | https://www.globalxetfs.com.au/fund-categories/crypto/ |
+| EBTC | ASX | Equity | Alternative | https://www.globalxetfs.com.au/funds/ebtc/ | https://www.asx.com.au/content/dam/asx/issuers/ISIN.xls |
 | USDB11 | B3 | Equity | Fixed Income | https://www.investoetf.com/etf/usdb11/ | https://borainvestir.b3.com.br/cotacoes/etfs/USDB11/ |
 | FLOT | BATS | Equity | Fixed Income | https://www.ishares.com/us/products/239534/ishares-floating-rate-bond-etf | https://www.nasdaq.com/market-activity/etf/flot |
 | HYD | BATS | Equity | Fixed Income | https://www.vaneck.com/us/en/investments/high-yield-muni-etf-hyd/ | https://www.nasdaq.com/market-activity/etf/hyd |

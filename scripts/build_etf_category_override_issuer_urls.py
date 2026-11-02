@@ -105,7 +105,7 @@ ISSUER_URL: dict[tuple[str, str], str] = {
 }
 
 SOURCE2_URL: dict[tuple[str, str], str] = {
-    ("ASX", "EBTC"): "https://www.globalxetfs.com.au/fund-categories/crypto/",
+    ("ASX", "EBTC"): "https://www.asx.com.au/content/dam/asx/issuers/ISIN.xls",
     ("ASX", "IAF"): "https://www.asx.com.au/markets/company/IAF",
     ("B3", "USDB11"): "https://borainvestir.b3.com.br/cotacoes/etfs/USDB11/",
     ("JSE", "STXGBD"): "https://www.sharenet.co.za/v3/sens_display.php?scode=&seq=19&tdate=20200806082100",

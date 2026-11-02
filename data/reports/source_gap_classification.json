@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-02T10:10:37Z",
-    "rows": 8719,
+    "generated_at": "2026-11-02T10:28:34Z",
+    "rows": 8717,
     "field_totals": {
       "missing_etf_category": 112,
       "missing_isin_primary": 701,
-      "missing_sector_stock": 1103,
+      "missing_sector_stock": 1101,
       "official_reference_gap": 6803
     },
     "class_totals": {
@@ -16,7 +16,7 @@
       "debt_or_securitized_identifier_gap": 97,
       "digital_asset_etf_category_gap": 2,
       "equity_etf_category_gap": 18,
-      "exchange_industry_source_gap": 52,
+      "exchange_industry_source_gap": 51,
       "fixed_income_etf_category_gap": 4,
       "fund_or_trust_identifier_gap": 319,
       "fundlike_stock_sector_gap": 18,
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 174,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 469,
+      "official_industry_taxonomy_unavailable_gap": 468,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 81,
       "official_reference_symbol_collision_gap": 1178,
@@ -50,9 +50,9 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
-      "missing_sector_stock:exchange_industry_source_gap": 52,
+      "missing_sector_stock:exchange_industry_source_gap": 51,
       "missing_sector_stock:fundlike_stock_sector_gap": 18,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 469,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 468,
       "missing_sector_stock:otc_sector_source_gap": 552,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1178,
@@ -142,11 +142,11 @@
         },
         {
           "exchange": "FSX",
-          "rows": 236
+          "rows": 235
         },
         {
           "exchange": "XSTU",
-          "rows": 36
+          "rows": 35
         },
         {
           "exchange": "NSE_IN",
@@ -257,7 +257,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 231,
+        "rows": 230,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -19448,23 +19448,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::SAOA",
-      "ticker": "SAOA",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Sasol Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::SAOA;exchange=FSX;ticker=SAOA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::SNVA",
       "ticker": "SNVA",
       "exchange": "FSX",
@@ -32464,23 +32447,6 @@
       "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
       "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
       "source_gap_context": "listing_key=XSTU::4KH;exchange=XSTU;ticker=4KH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XSTU::59Q",
-      "ticker": "59Q",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "name": "Indus Gas Ltd",
-      "gap_class": "exchange_industry_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
-      "source_gap_context": "listing_key=XSTU::59Q;exchange=XSTU;ticker=59Q;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
     },
@@ -139846,7 +139812,7 @@
       "ticker": "GLTC",
       "exchange": "TASE",
       "asset_type": "Stock",
-      "name": "Galileo Tech Ltd",
+      "name": "Global Pay (P.C.S) Ltd",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
