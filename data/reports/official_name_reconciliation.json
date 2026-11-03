@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T18:14:50Z",
+  "generated_at": "2026-11-03T08:08:20Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
   "reconciled_rows": 1980,
   "applied_rows": 0,
@@ -7729,21 +7729,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
       "observation_id": "d6f9a3c9fef857b16b508e3f",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "FSX::FSRA",
-      "action": "proposed",
-      "ticker": "FSRA",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "isin": "ZAE000066304",
-      "old_name": "FirstRand Limited",
-      "new_name": "FIRSTRAND LTD      RC-,01",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "observation_id": "ed34eb0bf52687e3344753b3",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -18979,6 +18964,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
       "observation_id": "838134ccdad10a81c0eafabd",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "LSE::0Q57",
+      "action": "proposed",
+      "ticker": "0Q57",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "isin": "NO0010631567",
+      "old_name": "Sparebank 1 SR Bank ASA",
+      "new_name": "SPAREBANK 1 SOR-NORGE ASA",
+      "source_key": "lse_price_explorer",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+      "observation_id": "e14545c426b37414620acd30",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

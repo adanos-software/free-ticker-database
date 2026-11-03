@@ -55,6 +55,10 @@ METADATA_UPDATE_ALLOWED_TARGET_FIELDS = {
     "ticker",
 }
 COVERAGE_METADATA_FIELDS = frozenset({"etf_category", "sector", "stock_sector"})
+# A reviewed `overwrite` replaces a non-blank value. It is limited to the ETF
+# category of ETF rows; every other coverage update only fills blanks.
+METADATA_OVERWRITE_FIELDS = frozenset({"etf_category"})
+METADATA_OVERWRITE_ASSET_TYPES = frozenset({"ETF"})
 
 
 def load_metadata_field_overrides(path: Path) -> dict[tuple[str, str, str], dict[str, str]]:
@@ -91,7 +95,15 @@ def blocked_metadata_backfill_fields(
     )
 
 
-def should_apply_metadata_field_override(field: str, current_value: object, decision: str) -> bool:
+def should_apply_metadata_field_override(
+    field: str,
+    current_value: object,
+    decision: str,
+    *,
+    asset_type: str = "",
+) -> bool:
+    if decision == "overwrite":
+        return field in METADATA_OVERWRITE_FIELDS and asset_type in METADATA_OVERWRITE_ASSET_TYPES
     if field not in COVERAGE_METADATA_FIELDS:
         return True
     if decision == "clear":
@@ -106,6 +118,10 @@ def is_well_formed_metadata_update(row: dict[Any, Any]) -> bool:
     if row.get(None):
         return False
     if not all(row.get(field) for field in METADATA_UPDATE_REQUIRED_FIELDS):
+        return False
+    if row.get("decision") == "overwrite" and (
+        row.get("field") not in METADATA_OVERWRITE_FIELDS or not row.get("proposed_value")
+    ):
         return False
     return row.get("field") in METADATA_UPDATE_ALLOWED_TARGET_FIELDS
 
@@ -131,7 +147,7 @@ def merge_metadata_updates(
         if (
             not replace_clears
             and existing
-            and existing.get("decision") == "clear"
+            and existing.get("decision") in {"clear", "overwrite"}
             and update.get("decision") == "update"
         ):
             continue

@@ -74,6 +74,32 @@ def test_evaluate_target_accepts_valid_isin_and_sector_with_name_gate() -> None:
     assert result["accepted_stock_sector"] == "Consumer Discretionary"
 
 
+def test_evaluate_target_rejects_us_adr_isin_for_foreign_listing_country() -> None:
+    profile = parse_stockanalysis_company_profile(
+        """
+        <meta property="og:title" content="Volkswagen AG (OTC:VWAGY) Company Profile &amp; Description"/>
+        <tr><td>ISIN Number</td><td>US9286626000</td></tr>
+        """,
+        "https://stockanalysis.com/quote/otc/VWAGY/company/",
+    )
+
+    result = evaluate_target(
+        {
+            "ticker": "VWAGY",
+            "exchange": "OTC",
+            "name": "Volkswagen AG ADR",
+            "country": "Germany",
+            "isin": "",
+            "stock_sector": "",
+        },
+        profile,
+    )
+
+    assert result["decision"] == "isin_country_mismatch"
+    assert result["accepted_isin"] == ""
+    assert build_metadata_updates([result]) == []
+
+
 def test_evaluate_target_skips_isin_when_reviewed_clear_blocks_backfill() -> None:
     profile = parse_stockanalysis_company_profile(
         """
