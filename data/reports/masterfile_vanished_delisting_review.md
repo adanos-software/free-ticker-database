@@ -1,17 +1,18 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-11-02T21:07:11Z`
+- Generated at: `2026-11-03T14:44:46Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `899`
-- Rotation vanished rows: `1`
-- Backlog rows: `898`
-- Still in database: `899`
+- Vanished reference rows: `908`
+- Rotation vanished rows: `9`
+- Backlog rows: `899`
+- Still in database: `904`
 - Applied drops: `0`
 
 ## Classifier counts
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 899 |
+| manual_rename_vs_delisting_required | 904 |
+| not_in_database | 4 |
 
 ## Rows still in the database
 
@@ -275,6 +276,7 @@
 | FSX | 0PD0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 0TB | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 0VU0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | 10D | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | 1AJ2 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 1JD | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 1JU | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -412,6 +414,7 @@
 | FSX | RU6 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | RUOC | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | S35A | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | S49 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | SCP | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | SS5 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | SZ9 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -442,6 +445,7 @@
 | HKEX | 00845 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 00924 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 01101 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 01570 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 01598 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 01849 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02088 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
@@ -458,6 +462,7 @@
 | HKEX | 02933 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02937 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02944 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 02950 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 03011 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 03038 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 03427 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
@@ -577,11 +582,12 @@
 | NASDAQ | VALG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | ZTEK | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NEO | LML | cboe_canada_listing_directory | manual_rename_vs_delisting_required | backlog |
+| NEO | MAXQ | cboe_canada_listing_directory | manual_rename_vs_delisting_required | rotation |
 | NEO | VERS | cboe_canada_listing_directory | manual_rename_vs_delisting_required | backlog |
 | NGX | STACO | ngx_equities_price_list | manual_rename_vs_delisting_required | backlog |
 | NGX | UHOMREIT | ngx_equities_price_list | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | AARNAV | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | ABCOTS | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | ABCOTS | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | ALPHAGEO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | ARIES | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | CALSOFT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
@@ -920,6 +926,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 1; still-in-database backlog carried: 898.
-- Still in database: 899; not in database: 0.
+- Rotation vanished rows: 9; still-in-database backlog carried: 899.
+- Still in database: 904; not in database: 4.
 - Applied drops from this classifier: 0.

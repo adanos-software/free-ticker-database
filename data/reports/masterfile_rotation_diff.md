@@ -1,25 +1,32 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-11-02T21:07:09Z`
-- New rows: `17`
-- Vanished rows: `1`
-- Changed rows: `0`
+- Generated at: `2026-11-03T14:44:44Z`
+- New rows: `30`
+- Vanished rows: `9`
+- Changed rows: `7`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
+| name_change | 7 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| nse_india_securities_available | 16 |
-| sem_isin | 1 |
+| bme_security_prices_directory | 17 |
+| cse_lk_company_info_summary | 1 |
+| deutsche_boerse_frankfurt_all_tradable_equities | 8 |
+| deutsche_boerse_xetra_all_tradable_equities | 2 |
+| krx_etf_finder | 2 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| nse_india_securities_available | 1 |
+| cboe_canada_listing_directory | 1 |
+| deutsche_boerse_frankfurt_all_tradable_equities | 4 |
+| euronext_equities | 1 |
+| hkex_securities_list | 3 |
