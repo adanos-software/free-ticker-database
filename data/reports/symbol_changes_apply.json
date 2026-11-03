@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-11-02T15:44:10Z",
+    "generated_at": "2026-11-03T14:07:15Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
@@ -8,9 +8,9 @@
     "dropped_predecessor_rows": 0,
     "blocked_rows": 385,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 3,
+      "blocked_new_symbol_collision": 4,
       "blocked_new_symbol_not_active_in_official_master": 3,
-      "blocked_old_symbol_not_unique_in_us_scope": 307,
+      "blocked_old_symbol_not_unique_in_us_scope": 306,
       "blocked_sec_cik_mismatch": 1,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
@@ -92,7 +92,7 @@
       "effective_date": "2026-10-19",
       "old_symbol": "UUU",
       "new_symbol": "DCM",
-      "new_company_name": "Universal Safety Products Inc",
+      "new_company_name": "Defi Capital Markets Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -108,7 +108,7 @@
       "effective_date": "2026-10-13",
       "old_symbol": "SKK",
       "new_symbol": "RNTZ",
-      "new_company_name": "Rantizo Inc",
+      "new_company_name": "Rantizo",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -276,7 +276,7 @@
       "effective_date": "2026-09-10",
       "old_symbol": "RAY",
       "new_symbol": "ATTT",
-      "new_company_name": "Atlas Trinity Tech Limited",
+      "new_company_name": "Atlas Trinity Tech Co Ltd.",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -468,7 +468,7 @@
       "effective_date": "2026-08-07",
       "old_symbol": "BNZI",
       "new_symbol": "PARA",
-      "new_company_name": "Banzai International Inc",
+      "new_company_name": "Parabolic Technologies Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
@@ -2221,7 +2221,7 @@
       "old_symbol": "CASK",
       "new_symbol": "IPST",
       "new_company_name": "Ip Strategy Holdings Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "blocked_new_symbol_collision"
     },
     {
       "change_id": "beb8f29613ddc9e1",
