@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 170910,
-    "source_specific_reference_keys": 170910,
+    "active_official_reference_rows": 170907,
+    "source_specific_reference_keys": 170907,
     "classification_counts": {
-      "alternate_listing_line": 3396,
+      "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12547,
-      "exact_match": 100233,
-      "missing_from_database": 44537,
+      "exact_match": 100232,
+      "missing_from_database": 44536,
       "normalization_candidate": 1858,
-      "out_of_scope": 8145
+      "out_of_scope": 8143
     },
-    "coverage_credited_keys": 100233,
+    "coverage_credited_keys": 100232,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44537,
+    "in_scope_missing_rows": 44536,
     "identity_conflict_rows": 12547,
     "mapping_candidate_rows": 1858
   },
@@ -1512339,22 +1512339,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::AUROW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::AUROW",
-      "exchange": "NASDAQ",
-      "ticker": "AUROW",
-      "asset_types": "Stock",
-      "names": "Aurora Innovation, Inc.  - Warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrant"
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::AUTL",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::AUTL",
@@ -1541731,22 +1541715,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::HODO",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::HODO",
-      "exchange": "NASDAQ",
-      "ticker": "HODO",
-      "asset_types": "Stock",
-      "names": "House of Doge Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::HODO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::HODU",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::HODU",
@@ -1545328,22 +1545296,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::INDQ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::INDV",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::INDV",
-      "exchange": "NASDAQ",
-      "ticker": "INDV",
-      "asset_types": "Stock",
-      "names": "Indivior Pharmaceuticals, Inc.  - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::INDV",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1555361,38 +1555313,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::MLCO",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::MLEC",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::MLEC",
-      "exchange": "NASDAQ",
-      "ticker": "MLEC",
-      "asset_types": "Stock",
-      "names": "Moolec Science SA - Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::MLEC",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::MLECW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::MLECW",
-      "exchange": "NASDAQ",
-      "ticker": "MLECW",
-      "asset_types": "Stock",
-      "names": "Moolec Science SA - Warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrant"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::MLGO",
@@ -1580505,7 +1580425,7 @@
       "exchange": "NASDAQ",
       "ticker": "SUPN",
       "asset_types": "Stock",
-      "names": "Supernus Pharmaceuticals, Inc. - Common Stock",
+      "names": "Supernus, Inc. - Common Stock",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1580961,22 +1580881,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::SWIM",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::SWKHL",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::SWKHL",
-      "exchange": "NASDAQ",
-      "ticker": "SWKHL",
-      "asset_types": "Stock",
-      "names": "SWK Holdings Corporation - 9.00% Senior Notes due 2027",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: notes"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::SWKS",
@@ -1650163,6 +1650067,22 @@
       "evidence": "name indicates non-target instrument: bond"
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::EMIL",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::EMIL",
+      "exchange": "NYSE ARCA",
+      "ticker": "EMIL",
+      "asset_types": "ETF",
+      "names": "VanEck EM Focus Inflation Bond ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: bond"
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::EMKT",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::EMKT",
@@ -1680656,6 +1680576,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::VTV",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::VTVX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::VTVX",
+      "exchange": "NYSE ARCA",
+      "ticker": "VTVX",
+      "asset_types": "ETF",
+      "names": "XFUNDS Value Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::VTVX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1729008,6 +1728944,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::THC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::THCR",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::THCR",
+      "exchange": "NYSE",
+      "ticker": "THCR",
+      "asset_types": "ETF",
+      "names": "THOR Conservative Risk Dynamic ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::THCR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2011453,10 +2011405,10 @@
       "isins": "IT0005572778",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "alternate_listing_line",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "PSE_CZ::JUVE",
+      "evidence": "Same venue and ISIN identify one compatible alternate line, but a different venue symbol cannot satisfy this reference without an explicit reviewed mapping."
     },
     {
       "reconciliation_key": "pse_cz_shares_directory::PSE_CZ::KARIN",

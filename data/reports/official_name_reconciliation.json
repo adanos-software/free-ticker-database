@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-03T14:46:21Z",
+  "generated_at": "2026-11-03T17:30:55Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1982,
+  "reconciled_rows": 1981,
   "applied_rows": 0,
-  "proposed_rows": 1982,
+  "proposed_rows": 1981,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -18049,21 +18049,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
       "observation_id": "91c3cb9698cc36ab110eb93a",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "LSE::0H65",
-      "action": "proposed",
-      "ticker": "0H65",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "isin": "IT0005572778",
-      "old_name": "Juventus Football Club",
-      "new_name": "JUVENTUS FC SPA",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "ca96d77989c2d40e8e84d46e",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

@@ -1,6 +1,6 @@
 # Source-of-Truth Decisions
 
-Generated at: `2026-11-03T14:52:04Z`
+Generated at: `2026-11-03T17:33:24Z`
 
 This report converts residual source-gap classes into release-trackable outcomes. It does not fill fields and does not drop rows automatically.
 
@@ -8,9 +8,9 @@ This report converts residual source-gap classes into release-trackable outcomes
 
 | Value | Rows |
 |---|---:|
-| accepted_source_gap | 5095 |
+| accepted_source_gap | 5093 |
 | official_fill_required | 2590 |
-| core_exclusion_candidate | 479 |
+| core_exclusion_candidate | 481 |
 
 ## Top Classes
 
@@ -18,14 +18,14 @@ This report converts residual source-gap classes into release-trackable outcomes
 |---|---:|
 | official_reference_unmatched_source_gap | 5641 |
 | official_reference_symbol_collision_gap | 1166 |
-| official_industry_taxonomy_unavailable_gap | 457 |
-| fund_or_trust_identifier_gap | 273 |
-| official_identifier_not_exposed_source_gap | 166 |
+| official_industry_taxonomy_unavailable_gap | 455 |
+| fund_or_trust_identifier_gap | 275 |
+| official_identifier_not_exposed_source_gap | 164 |
 | otc_sector_source_gap | 92 |
-| debt_or_securitized_identifier_gap | 90 |
-| official_product_taxonomy_unavailable_gap | 71 |
+| debt_or_securitized_identifier_gap | 91 |
+| official_product_taxonomy_unavailable_gap | 73 |
 | exchange_industry_source_gap | 51 |
-| adr_cdr_or_depositary_identifier_gap | 38 |
+| adr_cdr_or_depositary_identifier_gap | 37 |
 | capital_pool_or_halted_identifier_gap | 31 |
 | fundlike_stock_sector_gap | 18 |
 | inactive_or_legacy_identifier_gap | 17 |
