@@ -487,7 +487,7 @@ def metadata_updates_with_noncanonical_typed_values(metadata_updates: list[dict[
     invalid: list[str] = []
     for row in metadata_updates:
         field = row.get("field", "")
-        if row.get("decision") != "update" or field not in {"stock_sector", "etf_category"}:
+        if row.get("decision") not in {"update", "overwrite"} or field not in {"stock_sector", "etf_category"}:
             continue
         asset_type = "Stock" if field == "stock_sector" else "ETF"
         value = row.get("proposed_value", "")
