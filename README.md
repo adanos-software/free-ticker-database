@@ -16,11 +16,11 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | ETFs | 16,891 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 93 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 129,096 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 64,435 (98.1%) | Primary ticker rows with a non-empty `isin`. |
+| Aliases | 129,097 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 64,436 (98.1%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 65,072 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 64,957 (98.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 48,159 | Primary ticker rows with a non-empty `stock_sector`. |
+| Sector/category coverage | 64,958 (98.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 48,160 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,798 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 63,643 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 63,009 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
