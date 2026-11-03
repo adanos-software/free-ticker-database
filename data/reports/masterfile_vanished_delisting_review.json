@@ -1,19 +1,20 @@
 {
-  "generated_at": "2026-11-02T21:07:11Z",
+  "generated_at": "2026-11-03T14:44:46Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 899,
-  "rotation_vanished_rows": 1,
-  "backlog_rows": 898,
-  "still_in_database": 899,
+  "vanished_reference_rows": 908,
+  "rotation_vanished_rows": 9,
+  "backlog_rows": 899,
+  "still_in_database": 904,
   "classifier_counts": {
-    "manual_rename_vs_delisting_required": 899
+    "manual_rename_vs_delisting_required": 904,
+    "not_in_database": 4
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 1; still-in-database backlog carried: 898.",
-    "Still in database: 899; not in database: 0.",
+    "Rotation vanished rows: 9; still-in-database backlog carried: 899.",
+    "Still in database: 904; not in database: 4.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -4958,6 +4959,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "1KVUE",
+      "exchange": "Euronext",
+      "name": "Kenvue Inc",
+      "isin": "US49177J1025",
+      "classification": "master_absent",
+      "source_key": "euronext_equities",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Kenvue Inc",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "ALARF",
       "exchange": "Euronext",
       "name": "ADEUNIS",
@@ -5176,6 +5197,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "10D",
+      "exchange": "FSX",
+      "name": "NAVIENT CORP.      DL-,01",
+      "isin": "US63938C1080",
+      "classification": "master_absent",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "NAVIENT CORP.      DL-,01",
+      "listing_name": "Navient Corp",
+      "listing_isin": "US63938C1080",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "1AJ2",
@@ -7118,6 +7159,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "H0T1",
+      "exchange": "FSX",
+      "name": "VCI GLOBAL LTD NEW",
+      "isin": "VGG982181296",
+      "classification": "master_absent",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "VCI GLOBAL LTD NEW",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "HQE1",
       "exchange": "FSX",
       "name": "CYTOSORBENTS CORP. DL-,01",
@@ -7718,6 +7779,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "QP2",
+      "exchange": "FSX",
+      "name": "SILVER47 EXPL. CORP. O.N.",
+      "isin": "CA8277191059",
+      "classification": "master_absent",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "SILVER47 EXPL. CORP. O.N.",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "QR20",
       "exchange": "FSX",
       "name": "LION COPPER AND GOLD CORP",
@@ -7916,6 +7997,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "S49",
+      "exchange": "FSX",
+      "name": "SUPERNUS PHARMAC.DL -,001",
+      "isin": "US8684591089",
+      "classification": "master_absent",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "SUPERNUS PHARMAC.DL -,001",
+      "listing_name": "Supernus Pharmaceuticals Inc",
+      "listing_isin": "US8684591089",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "SCP",
@@ -8498,6 +8599,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "00936",
+      "exchange": "HKEX",
+      "name": "KAISA CAPITAL",
+      "isin": "KYG5213K1004",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "KAISA CAPITAL",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "01101",
       "exchange": "HKEX",
       "name": "HUARONG ENERGY",
@@ -8516,6 +8637,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "01570",
+      "exchange": "HKEX",
+      "name": "WEIYE HOLDINGS",
+      "isin": "SG1CD6000000",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "WEIYE HOLDINGS",
+      "listing_name": "WEIYE HOLDINGS",
+      "listing_isin": "SG1CD6000000",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "01598",
@@ -8836,6 +8977,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "02950",
+      "exchange": "HKEX",
+      "name": "ALPHA PRO H RTS",
+      "isin": "BMG6847W1304",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ALPHA PRO H RTS",
+      "listing_name": "ALPHA PRO H RTS",
+      "listing_isin": "BMG6847W1304",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "03011",
@@ -11218,6 +11379,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "MAXQ",
+      "exchange": "NEO",
+      "name": "MARITIME LAUNCH SERVICES INC.",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "cboe_canada_listing_directory",
+      "source_url": "https://www-api.cboe.com/ca/equities/listing-directory-data/",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "MARITIME LAUNCH SERVICES INC.",
+      "listing_name": "Maritime Launch Services Inc.",
+      "listing_isin": "CA57033N1006",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "VERS",
       "exchange": "NEO",
       "name": "VERSES AI INC. SUBORDINATE VOTING SHARES",
@@ -11315,7 +11496,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ALPHAGEO",
