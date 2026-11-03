@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-11-03T14:51:51Z`
+Generated at: `2026-11-03T17:33:12Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,566 |
-| source_gap | 11,181 |
+| pass | 86,573 |
+| source_gap | 11,177 |
 | warn | 30 |
 
 ## Issue Counts
@@ -17,9 +17,9 @@ Generated at: `2026-11-03T14:51:51Z`
 |---|---:|
 | official_reference_gap | 6,807 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 669 |
+| missing_stock_sector | 664 |
 | expected_missing_primary_isin | 633 |
-| missing_etf_category | 102 |
+| missing_etf_category | 105 |
 | official_name_mismatch | 20 |
 | official_isin_mismatch | 10 |
 | low_company_name_overlap | 10 |
@@ -33,9 +33,9 @@ Generated at: `2026-11-03T14:51:51Z`
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,639 | 0 | 504 | 0 | 0 |
 | B3 | 1,249 | 0 | 340 | 0 | 0 |
-| NASDAQ | 4,509 | 4 | 305 | 3 | 0 |
+| NASDAQ | 4,510 | 4 | 304 | 3 | 0 |
 | BMV | 77 | 0 | 267 | 0 | 0 |
-| NYSE ARCA | 2,537 | 0 | 238 | 1 | 0 |
+| NYSE ARCA | 2,537 | 0 | 240 | 1 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | XETRA | 5,333 | 0 | 215 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |

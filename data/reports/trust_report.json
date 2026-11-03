@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-03T14:50:36Z",
+    "generated_at": "2026-11-03T17:31:41Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -41,33 +41,33 @@
     },
     "country": {
       "n": 63646,
-      "filled": 63594,
-      "missing": 52,
+      "filled": 63596,
+      "missing": 50,
       "pct": 99.92,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
       "n": 63646,
-      "filled": 62875,
-      "missing": 771,
+      "filled": 62877,
+      "missing": 769,
       "pct": 98.79,
-      "fills_needed_for_99": 135,
+      "fills_needed_for_99": 133,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "ASX": 98,
       "TSX": 89,
-      "NASDAQ": 73,
-      "NYSE ARCA": 71,
+      "NYSE ARCA": 73,
+      "NASDAQ": 72,
       "TSXV": 61,
-      "NEO": 42,
+      "NEO": 41,
       "BATS": 40,
       "SSE": 34,
-      "NYSE": 25,
+      "NYSE": 26,
       "SSE_CL": 22,
       "BMV": 17,
-      "SET": 11
+      "SZSE": 11
     },
     "missing_sector_by_exchange": {
       "FSX": 251,
@@ -80,13 +80,13 @@
       "BIST": 19,
       "NASDAQ": 19,
       "XETRA": 19,
-      "BCBA": 18,
+      "BCBA": 17,
       "BSE_IN": 17
     },
     "missing_category_by_exchange": {
       "XETRA": 42,
+      "NYSE ARCA": 19,
       "AMS": 18,
-      "NYSE ARCA": 17,
       "TSX": 11,
       "TSE": 7,
       "NASDAQ": 4,
@@ -103,8 +103,8 @@
     "quarantine_kept": 568
   },
   "entry_quality_status": {
-    "pass": 59671,
-    "source_gap": 3954,
+    "pass": 59676,
+    "source_gap": 3949,
     "warn": 13,
     "notice": 8
   },
@@ -143,10 +143,10 @@
       "status": "fail",
       "details": {
         "n": 63646,
-        "filled": 62875,
-        "missing": 771,
+        "filled": 62877,
+        "missing": 769,
         "pct": 98.79,
-        "fills_needed_for_99": 135,
+        "fills_needed_for_99": 133,
         "pass": false
       }
     },
@@ -155,8 +155,8 @@
       "status": "pass",
       "details": {
         "n": 63646,
-        "filled": 63594,
-        "missing": 52,
+        "filled": 63596,
+        "missing": 50,
         "pct": 99.92,
         "fills_needed_for_99": 0,
         "pass": true
