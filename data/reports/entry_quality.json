@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-03T14:51:51Z",
-    "rows": 97787,
+    "generated_at": "2026-11-03T16:54:08Z",
+    "rows": 97790,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,28 +15,28 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86566,
+      "pass": 86569,
       "source_gap": 11181,
       "warn": 30
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4646,
-      "official_reference": 87693,
+      "identifier_enriched": 4645,
+      "official_reference": 87696,
       "scoped_source_gap": 271,
-      "valid_isin": 5177
+      "valid_isin": 5178
     },
     "severity_counts": {
       "high": 11,
       "low": 10,
       "medium": 20,
-      "source_gap": 11498
+      "source_gap": 11500
     },
     "issue_counts": {
       "official_reference_gap": 6807,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 669,
-      "expected_missing_primary_isin": 633,
-      "missing_etf_category": 102,
+      "missing_stock_sector": 666,
+      "expected_missing_primary_isin": 635,
+      "missing_etf_category": 105,
       "official_name_mismatch": 20,
       "official_isin_mismatch": 10,
       "low_company_name_overlap": 10,
@@ -66,8 +66,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 305,
-        "pass": 4509,
+        "source_gap": 304,
+        "pass": 4510,
         "warn": 3,
         "notice": 4
       },
@@ -79,7 +79,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2537,
-        "source_gap": 238,
+        "source_gap": 240,
         "warn": 1
       },
       {
@@ -17961,24 +17961,6 @@
       ]
     },
     {
-      "listing_key": "TADAWUL::7205",
-      "ticker": "7205",
-      "exchange": "TADAWUL",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "XETRA::724",
       "ticker": "724",
       "exchange": "XETRA",
@@ -18445,6 +18427,24 @@
     {
       "listing_key": "XSTU::7EL",
       "ticker": "7EL",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7ES1",
+      "ticker": "7ES1",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",
