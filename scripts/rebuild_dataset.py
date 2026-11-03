@@ -2745,11 +2745,16 @@ def apply_input_metadata_overrides(
             continue
         if field not in updated:
             continue
-        if not should_apply_metadata_field_override(field, updated.get(field, ""), override.get("decision", "")):
+        if not should_apply_metadata_field_override(
+            field,
+            updated.get(field, ""),
+            override.get("decision", ""),
+            asset_type=updated.get("asset_type", ""),
+        ):
             continue
         if override["decision"] == "clear":
             updated[field] = ""
-        elif override["decision"] == "update":
+        elif override["decision"] in {"update", "overwrite"}:
             updated[field] = override.get("proposed_value", "")
     return updated
 
@@ -2774,11 +2779,16 @@ def apply_output_metadata_overrides(
             continue
         if field not in updated:
             continue
-        if not should_apply_metadata_field_override(field, updated.get(field, ""), override.get("decision", "")):
+        if not should_apply_metadata_field_override(
+            field,
+            updated.get(field, ""),
+            override.get("decision", ""),
+            asset_type=updated.get("asset_type", ""),
+        ):
             continue
         if override["decision"] == "clear":
             updated[field] = ""
-        elif override["decision"] == "update":
+        elif override["decision"] in {"update", "overwrite"}:
             updated[field] = override.get("proposed_value", "")
 
     inferred_country = country_from_isin(updated.get("isin", ""))

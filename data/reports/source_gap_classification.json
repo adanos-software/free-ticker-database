@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-11-02T21:12:47Z",
-    "rows": 8161,
+    "generated_at": "2026-11-03T08:09:01Z",
+    "rows": 8159,
     "field_totals": {
       "missing_etf_category": 93,
-      "missing_isin_primary": 634,
-      "missing_sector_stock": 632,
+      "missing_isin_primary": 633,
+      "missing_sector_stock": 631,
       "official_reference_gap": 6802
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 39,
+      "adr_cdr_or_depositary_identifier_gap": 38,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 31,
       "commodity_etf_category_gap": 6,
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 166,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 459,
+      "official_industry_taxonomy_unavailable_gap": 458,
       "official_product_reference_unmatched_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 70,
       "official_reference_symbol_collision_gap": 1166,
@@ -40,7 +40,7 @@
       "missing_etf_category:fixed_income_etf_category_gap": 2,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 70,
-      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 39,
+      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 38,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 90,
       "missing_isin_primary:fund_or_trust_identifier_gap": 273,
@@ -52,7 +52,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 51,
       "missing_sector_stock:fundlike_stock_sector_gap": 18,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 459,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 458,
       "missing_sector_stock:otc_sector_source_gap": 92,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1166,
@@ -116,7 +116,7 @@
         },
         {
           "exchange": "NEO",
-          "rows": 43
+          "rows": 42
         },
         {
           "exchange": "BATS",
@@ -154,7 +154,7 @@
         },
         {
           "exchange": "HNX",
-          "rows": 30
+          "rows": 29
         },
         {
           "exchange": "BVB",
@@ -6692,23 +6692,6 @@
       "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
       "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
       "source_gap_context": "listing_key=NEO::RCHM;exchange=NEO;ticker=RCHM;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NEO::ROCH",
-      "ticker": "ROCH",
-      "exchange": "NEO",
-      "asset_type": "Stock",
-      "name": "ROCHE HOLDING AG CDR (CAD Hedged)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Do not infer ISIN from the underlying issuer; require the depositary/CDR program ISIN from an official listing, prospectus, depository, or reviewed identifier feed.",
-      "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
-      "source_gap_context": "listing_key=NEO::ROCH;exchange=NEO;ticker=ROCH;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
     },
@@ -18881,23 +18864,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HNX::LCD;exchange=HNX;ticker=LCD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HNX::NAP",
-      "ticker": "NAP",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "Công ty Cổ phần Cảng Nghệ Tĩnh",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::NAP;exchange=HNX;ticker=NAP;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -127861,7 +127827,7 @@
       "ticker": "YTME",
       "exchange": "SIX",
       "asset_type": "Stock",
-      "name": "Youngtimers AG",
+      "name": "C Capital Holdings AG",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",

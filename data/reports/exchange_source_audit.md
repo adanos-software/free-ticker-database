@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-02T21:12:44Z`
+Generated at: `2026-11-03T08:10:00Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
