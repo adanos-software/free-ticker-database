@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-04T08:11:45Z",
+    "generated_at": "2026-11-04T14:55:40Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -3617,6 +3617,53 @@
       "_members": [
         {
           "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "BSE_IN",
+          "listing_key": "BSE_IN::NOVARTIND",
+          "name": "Novartis India Ltd",
+          "ticker": "NOVARTIND"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "NSE_IN",
+          "listing_key": "NSE_IN::EVONILE",
+          "name": "Evonile Pharma Limited",
+          "ticker": "EVONILE"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "India",
+          "country_code": "IN",
+          "exchange": "NSE_IN",
+          "listing_key": "NSE_IN::NOVARTIND",
+          "name": "Novartis India Limited",
+          "ticker": "NOVARTIND"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "INE234A01025",
+      "isin_valid": "true",
+      "listing_count": "3",
+      "listing_keys": "BSE_IN::NOVARTIND|NSE_IN::EVONILE|NSE_IN::NOVARTIND",
+      "member_exchanges": "BSE_IN | NSE_IN",
+      "member_names": "Evonile Pharma Limited | Novartis India Ltd",
+      "member_tickers": "EVONILE | NOVARTIND",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "India",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
           "country": "Japan",
           "country_code": "JP",
           "exchange": "FSX",
@@ -4582,6 +4629,44 @@
       "member_tickers": "0NEX | EMEIS",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "France",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "Israel",
+          "country_code": "IL",
+          "exchange": "FSX",
+          "listing_key": "FSX::GPH",
+          "name": "Galmed Pharmaceuticals Ltd",
+          "ticker": "GPH"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Israel",
+          "country_code": "IL",
+          "exchange": "NASDAQ",
+          "listing_key": "NASDAQ::EOCN",
+          "name": "Eocene Ltd. - Ordinary Shares",
+          "ticker": "EOCN"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "IL0011313900",
+      "isin_valid": "true",
+      "listing_count": "2",
+      "listing_keys": "FSX::GPH|NASDAQ::EOCN",
+      "member_exchanges": "FSX | NASDAQ",
+      "member_names": "Eocene Ltd. - Ordinary Shares | Galmed Pharmaceuticals Ltd",
+      "member_tickers": "EOCN | GPH",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Israel",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5883,18 +5968,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 127,
+      "review_required_groups": 129,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
     "closed_groups": 123,
-    "collision_groups": 127,
+    "collision_groups": 129,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 92,
+      "isin_shared_by_distinct_issuers": 94,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-04T08:11:45Z",
-    "listings_involved": 370,
+    "generated_at": "2026-11-04T14:55:40Z",
+    "listings_involved": 375,
     "next_review_batches": [
       {
         "collision_groups": 26,
@@ -5989,6 +6074,16 @@
       {
         "collision_groups": 2,
         "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "India"
+      },
+      {
+        "collision_groups": 2,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Israel"
+      },
+      {
+        "collision_groups": 2,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Japan"
       },
       {
@@ -6019,17 +6114,7 @@
       {
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "India"
-      },
-      {
-        "collision_groups": 1,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Ireland"
-      },
-      {
-        "collision_groups": 1,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Israel"
       },
       {
         "collision_groups": 1,
@@ -6057,7 +6142,7 @@
         "registered_country": "Switzerland"
       }
     ],
-    "open_groups": 4,
+    "open_groups": 6,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 4,
@@ -6071,9 +6156,9 @@
       "Finland": 3,
       "France": 5,
       "Germany": 13,
-      "India": 6,
+      "India": 7,
       "Ireland": 1,
-      "Israel": 1,
+      "Israel": 2,
       "Italy": 4,
       "Japan": 2,
       "Luxembourg": 1,
