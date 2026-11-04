@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "generated_at": "2026-11-04T14:56:39Z",
+    "generated_at": "2026-11-04T15:42:49Z",
     "rows": 97801,
-    "csv_out": "data/reports/entry_quality.csv",
+    "csv_out": "/tmp/entry-quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "core_listings_csv": "data/core_listings.csv",
@@ -16,29 +16,29 @@
     "status_counts": {
       "notice": 10,
       "pass": 86572,
-      "source_gap": 11188,
-      "warn": 31
+      "source_gap": 11186,
+      "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4645,
+      "identifier_enriched": 4644,
       "official_reference": 87693,
       "scoped_source_gap": 271,
-      "valid_isin": 5192
+      "valid_isin": 5193
     },
     "severity_counts": {
-      "high": 11,
+      "high": 12,
       "low": 10,
-      "medium": 21,
-      "source_gap": 11504
+      "medium": 22,
+      "source_gap": 11502
     },
     "issue_counts": {
       "official_reference_gap": 6821,
       "venue_missing_official_source": 3287,
       "missing_stock_sector": 665,
-      "expected_missing_primary_isin": 625,
+      "expected_missing_primary_isin": 623,
       "missing_etf_category": 106,
-      "official_name_mismatch": 21,
-      "official_isin_mismatch": 10,
+      "official_name_mismatch": 22,
+      "official_isin_mismatch": 11,
       "low_company_name_overlap": 10,
       "country_isin_mismatch": 1
     },
@@ -66,8 +66,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 301,
-        "pass": 4514,
+        "source_gap": 300,
+        "pass": 4515,
         "warn": 3,
         "notice": 4
       },
@@ -15035,6 +15035,24 @@
       ]
     },
     {
+      "listing_key": "TPEX::5859",
+      "ticker": "5859",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "official_isin_mismatch",
+          "severity": "high",
+          "field": "isin",
+          "value": "TW0005859003",
+          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0005859B18."
+        }
+      ]
+    },
+    {
       "listing_key": "TSE::5903",
       "ticker": "5903",
       "exchange": "TSE",
@@ -18420,24 +18438,6 @@
     {
       "listing_key": "XSTU::7EL",
       "ticker": "7EL",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::7ES1",
-      "ticker": "7ES1",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",
