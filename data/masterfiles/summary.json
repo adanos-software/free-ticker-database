@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-03T17:29:03Z",
-  "rows": 171029,
+  "generated_at": "2026-11-04T14:19:37Z",
+  "rows": 171024,
   "exchanges": [
     "ADX",
     "AMS",
@@ -149,15 +149,15 @@
     "lse_instrument_directory": 64,
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
-    "muscat_securities_companies": 108,
-    "nasdaq_listed": 5608,
+    "muscat_securities_companies": 109,
+    "nasdaq_listed": 5609,
     "sec_company_tickers_exchange": 10200,
     "nasdaq_trading_system_adds_deletes": 6,
     "cboe_canada_listing_directory": 449,
     "ngx_company_profile_directory": 130,
     "ngx_equities_price_list": 128,
     "nasdaq_mutual_fund_quotes": 6,
-    "nse_india_securities_available": 3572,
+    "nse_india_securities_available": 3565,
     "nse_ke_listed_companies": 68,
     "nzx_instruments": 172,
     "otc_markets_stock_screener": 11925,
@@ -225,8 +225,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5608,
-      "generated_at": "2026-11-03T17:29:03Z"
+      "rows": 5609,
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
@@ -316,9 +316,10 @@
       "provider": "SET",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "network",
+      "mode": "unavailable",
       "rows": 943,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "generated_at": "2026-11-02T21:05:34Z",
+      "last_error": "Empty refresh result; preserved 943 existing rows"
     },
     "set_etf_search": {
       "provider": "SET",
@@ -675,15 +676,15 @@
       "official": true,
       "mode": "network",
       "rows": 68,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "nse_india_securities_available": {
       "provider": "NSE India",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 3572,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "rows": 3565,
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "bse_india_scrips": {
       "provider": "BSE India",
@@ -708,7 +709,7 @@
       "official": true,
       "mode": "network",
       "rows": 765,
-      "generated_at": "2026-11-02T18:07:53Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "dfm_listed_securities": {
       "provider": "DFM",
@@ -732,7 +733,7 @@
       "official": true,
       "mode": "network",
       "rows": 41,
-      "generated_at": "2026-11-03T14:39:37Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "bist_kap_mkk_listed_securities": {
       "provider": "KAP/MKK",
@@ -740,7 +741,7 @@
       "official": true,
       "mode": "network",
       "rows": 663,
-      "generated_at": "2026-11-03T14:39:37Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "tadawul_main_market_watch": {
       "provider": "Saudi Exchange",
@@ -748,7 +749,7 @@
       "official": true,
       "mode": "network",
       "rows": 413,
-      "generated_at": "2026-11-02T18:07:53Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "adx_market_watch": {
       "provider": "ADX",
@@ -756,7 +757,7 @@
       "official": true,
       "mode": "network",
       "rows": 125,
-      "generated_at": "2026-11-03T14:39:37Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "qse_market_watch": {
       "provider": "QSE",
@@ -764,15 +765,15 @@
       "official": true,
       "mode": "network",
       "rows": 57,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "muscat_securities_companies": {
       "provider": "MSX",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 108,
-      "generated_at": "2026-11-02T18:07:53Z"
+      "rows": 109,
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "rse_listed_companies": {
       "provider": "RSE",
@@ -812,9 +813,10 @@
       "provider": "SEM",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "network",
+      "mode": "unavailable",
       "rows": 47,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "generated_at": "2026-11-02T21:05:34Z",
+      "last_error": "Empty refresh result; preserved 47 existing rows"
     },
     "use_ug_listed_companies": {
       "provider": "USE Uganda",
@@ -830,7 +832,7 @@
       "official": true,
       "mode": "network",
       "rows": 172,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "nasdaq_mutual_fund_quotes": {
       "provider": "Nasdaq",
@@ -1060,7 +1062,7 @@
       "official": true,
       "mode": "network",
       "rows": 1099,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "twse_etf_list": {
       "provider": "TWSE",
@@ -1193,7 +1195,7 @@
       "official": true,
       "mode": "network",
       "rows": 384,
-      "generated_at": "2026-11-02T21:05:34Z"
+      "generated_at": "2026-11-04T14:19:37Z"
     },
     "pse_cz_shares_directory": {
       "provider": "Prague Stock Exchange",
@@ -1374,7 +1376,7 @@
     "cboe_canada_listing_directory": "network",
     "asx_investment_products": "network",
     "set_listed_companies": "network",
-    "set_stock_search": "network",
+    "set_stock_search": "unavailable",
     "set_etf_search": "network",
     "set_dr_search": "network",
     "tmx_listed_issuers": "network",
@@ -1433,7 +1435,7 @@
     "gse_listed_companies": "network",
     "luse_listed_companies": "unavailable",
     "bolsa_santiago_instruments": "unavailable",
-    "sem_isin": "network",
+    "sem_isin": "unavailable",
     "use_ug_listed_companies": "network",
     "nzx_instruments": "network",
     "nasdaq_mutual_fund_quotes": "network",
@@ -1625,6 +1627,14 @@
       "error": "Empty refresh result; preserved 383 existing rows"
     },
     {
+      "source_key": "sem_isin",
+      "error": "Empty refresh result; preserved 47 existing rows"
+    },
+    {
+      "source_key": "set_stock_search",
+      "error": "Empty refresh result; preserved 943 existing rows"
+    },
+    {
       "source_key": "six_shares_explorer_full",
       "error": "Empty refresh result; preserved 1 existing rows"
     },
@@ -1658,16 +1668,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-11-03T17:29:03Z",
+    "generated_at": "2026-11-04T14:19:37Z",
     "selected_source_keys": [
+      "adx_market_watch",
+      "bahrain_bourse_listed_companies",
+      "bist_kap_mkk_listed_securities",
+      "bolsa_santiago_instruments",
+      "cse_ma_listed_companies",
+      "jpx_listed_issues",
+      "muscat_securities_companies",
       "nasdaq_listed",
-      "nasdaq_other_listed",
-      "sec_company_tickers_exchange"
+      "nse_india_securities_available",
+      "nse_ke_listed_companies",
+      "nzx_instruments",
+      "otc_markets_stock_screener",
+      "pse_listed_company_directory",
+      "qse_market_watch",
+      "sem_isin",
+      "set_stock_search",
+      "sgx_securities_prices",
+      "tadawul_main_market_watch",
+      "twse_listed_companies",
+      "upcom_registered_securities"
     ],
     "source_modes": {
+      "adx_market_watch": "network",
+      "bahrain_bourse_listed_companies": "network",
+      "bist_kap_mkk_listed_securities": "network",
+      "bolsa_santiago_instruments": "unavailable",
+      "cse_ma_listed_companies": "unavailable",
+      "jpx_listed_issues": "unavailable",
+      "muscat_securities_companies": "network",
       "nasdaq_listed": "network",
-      "nasdaq_other_listed": "network",
-      "sec_company_tickers_exchange": "network"
+      "nse_india_securities_available": "network",
+      "nse_ke_listed_companies": "network",
+      "nzx_instruments": "network",
+      "otc_markets_stock_screener": "unavailable",
+      "pse_listed_company_directory": "network",
+      "qse_market_watch": "network",
+      "sem_isin": "unavailable",
+      "set_stock_search": "unavailable",
+      "sgx_securities_prices": "network",
+      "tadawul_main_market_watch": "network",
+      "twse_listed_companies": "network",
+      "upcom_registered_securities": "unavailable"
     }
   }
 }

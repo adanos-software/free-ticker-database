@@ -1,18 +1,18 @@
 # Official reference reconciliation
 
-- Active official source rows: **170,907**
-- Source-specific venue/symbol keys: **170,907**
-- Coverage-credited keys: **100,232**
+- Active official source rows: **170,902**
+- Source-specific venue/symbol keys: **170,902**
+- Coverage-credited keys: **100,228**
 - Exact identity conflicts: **12,547**
-- In-scope missing listings: **44,536**
+- In-scope missing listings: **44,534**
 
 | Classification | Keys |
 |---|---:|
-| `alternate_listing_line` | 3,397 |
+| `alternate_listing_line` | 3,398 |
 | `ambiguous_same_venue_identifier` | 194 |
 | `exact_identity_conflict` | 12,547 |
-| `exact_match` | 100,232 |
-| `missing_from_database` | 44,536 |
+| `exact_match` | 100,228 |
+| `missing_from_database` | 44,534 |
 | `normalization_candidate` | 1,858 |
 | `out_of_scope` | 8,143 |
 
