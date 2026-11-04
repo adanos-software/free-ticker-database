@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-03T17:33:12Z",
+    "generated_at": "2026-11-04T08:12:47Z",
     "rows": 97790,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86573,
-      "source_gap": 11177,
+      "pass": 86580,
+      "source_gap": 11170,
       "warn": 30
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 11,
       "low": 10,
       "medium": 20,
-      "source_gap": 11496
+      "source_gap": 11486
     },
     "issue_counts": {
       "official_reference_gap": 6807,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 664,
-      "expected_missing_primary_isin": 633,
+      "missing_stock_sector": 660,
+      "expected_missing_primary_isin": 627,
       "missing_etf_category": 105,
       "official_name_mismatch": 20,
       "official_isin_mismatch": 10,
@@ -66,15 +66,15 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 304,
-        "pass": 4510,
+        "source_gap": 302,
+        "pass": 4512,
         "warn": 3,
         "notice": 4
       },
       {
         "exchange": "BMV",
-        "pass": 77,
-        "source_gap": 267
+        "pass": 78,
+        "source_gap": 266
       },
       {
         "exchange": "NYSE ARCA",
@@ -14097,16 +14097,9 @@
       "exchange": "BVB",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 80,
+      "quality_score": 90,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        },
         {
           "issue_type": "official_reference_gap",
           "severity": "source_gap",
