@@ -12,7 +12,7 @@
     "removed_rows": 1,
     "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,7 +25,14 @@
     "NYSE MKT::GCDT"
   ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "OTC::BTDPY",
+      "field_name": "name",
+      "old_value": "Barratt Developments PLC",
+      "new_value": "Barratt Redrow PLC"
+    }
+  ],
   "generated_official_change_evidence": [
     {
       "listing_key": "NYSE MKT::GCDT",
@@ -37,7 +44,7 @@
       "new_value": "NYSE",
       "before_row_sha256": "b63d597c0b0db18ebeba1d40dfb8fbabf52156eb0a78e600e1452b14f55a65c4",
       "effective_at": "",
-      "observed_at": "2026-11-04T16:53:03Z",
+      "observed_at": "2026-11-04T17:58:42Z",
       "source_key": "sec_company_tickers_exchange",
       "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
       "source_report": "data/masterfiles/reference.csv",
