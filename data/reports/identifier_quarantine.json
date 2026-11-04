@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-04T08:11:15Z",
+  "generated_at": "2026-11-04T14:52:21Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2137,
-  "decision_rows": 7046,
+  "conflict_count": 2139,
+  "decision_rows": 7050,
   "action_counts": {
     "kept_listing_keyed_identifier": 1381,
     "proposed_clear_conflicting_identifier": 1108,
-    "quarantined_unresolved_identifier": 4557
+    "quarantined_unresolved_identifier": 4561
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1108,
-  "quarantined_rows": 4557,
+  "quarantined_rows": 4561,
   "retained_rows": 1381,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -37624,6 +37624,32 @@
       "retained_isin": "IL0011199242"
     },
     {
+      "conflict_id": "2ea5dc026f5fc15d2f4c",
+      "isin": "IL0011313900",
+      "listing_key": "FSX::GPH",
+      "ticker": "GPH",
+      "exchange": "FSX",
+      "name": "Galmed Pharmaceuticals Ltd",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "IL0011313900"
+    },
+    {
+      "conflict_id": "2ea5dc026f5fc15d2f4c",
+      "isin": "IL0011313900",
+      "listing_key": "NASDAQ::EOCN",
+      "ticker": "EOCN",
+      "exchange": "NASDAQ",
+      "name": "Eocene Ltd. - Ordinary Shares",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "IL0011313900"
+    },
+    {
       "conflict_id": "4372711952d3d1de1499",
       "isin": "IL0011336851",
       "listing_key": "FSX::7CC",
@@ -37843,6 +37869,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "INE123C01018"
+    },
+    {
+      "conflict_id": "081b898aeeec77a7b7df",
+      "isin": "INE234A01025",
+      "listing_key": "BSE_IN::NOVARTIND",
+      "ticker": "NOVARTIND",
+      "exchange": "BSE_IN",
+      "name": "Novartis India Ltd",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE234A01025"
+    },
+    {
+      "conflict_id": "081b898aeeec77a7b7df",
+      "isin": "INE234A01025",
+      "listing_key": "NSE_IN::EVONILE",
+      "ticker": "EVONILE",
+      "exchange": "NSE_IN",
+      "name": "Evonile Pharma Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE234A01025"
+    },
+    {
+      "conflict_id": "081b898aeeec77a7b7df",
+      "isin": "INE234A01025",
+      "listing_key": "NSE_IN::NOVARTIND",
+      "ticker": "NOVARTIND",
+      "exchange": "NSE_IN",
+      "name": "Novartis India Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE234A01025"
     },
     {
       "conflict_id": "8b659ab6bbc625ba7bc6",
@@ -72607,7 +72672,7 @@
       "retained_isin": "US33739Q3092"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "FSX::FIV",
       "ticker": "FIV",
@@ -72620,7 +72685,7 @@
       "retained_isin": "US3377381088"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "LSE::0IP9",
       "ticker": "0IP9",
@@ -72633,7 +72698,7 @@
       "retained_isin": "US3377381088"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "Munich::FIV",
       "ticker": "FIV",
@@ -72646,7 +72711,7 @@
       "retained_isin": "US3377381088"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "NASDAQ::FISV",
       "ticker": "FISV",
@@ -72659,20 +72724,7 @@
       "retained_isin": "US3377381088"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
-      "isin": "US3377381088",
-      "listing_key": "TSX::FI",
-      "ticker": "FI",
-      "exchange": "TSX",
-      "name": "Fiserv CDR (CAD Hedged)",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "US3377381088"
-    },
-    {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "XDUS::FIV",
       "ticker": "FIV",
@@ -72685,7 +72737,7 @@
       "retained_isin": "US3377381088"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "XETRA::FIV",
       "ticker": "FIV",
@@ -72698,7 +72750,7 @@
       "retained_isin": "US3377381088"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "XHAN::FIV",
       "ticker": "FIV",
@@ -72711,7 +72763,7 @@
       "retained_isin": "US3377381088"
     },
     {
-      "conflict_id": "8bf022320a1a866e29fb",
+      "conflict_id": "396dbeabf42e634e8d06",
       "isin": "US3377381088",
       "listing_key": "XSTU::FIV",
       "ticker": "FIV",

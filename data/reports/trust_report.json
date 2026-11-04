@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-04T08:11:46Z",
+    "generated_at": "2026-11-04T14:55:41Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,53 +26,53 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63645,
-    "joined_listings": 63645,
-    "scope_rows": 63645
+    "rows": 63654,
+    "joined_listings": 63654,
+    "scope_rows": 63654
   },
   "completeness": {
     "isin": {
-      "n": 63645,
-      "filled": 63018,
-      "missing": 627,
-      "pct": 99.01,
+      "n": 63654,
+      "filled": 63029,
+      "missing": 625,
+      "pct": 99.02,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "country": {
-      "n": 63645,
-      "filled": 63598,
-      "missing": 47,
+      "n": 63654,
+      "filled": 63609,
+      "missing": 45,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63645,
-      "filled": 62880,
-      "missing": 765,
-      "pct": 98.8,
-      "fills_needed_for_99": 129,
+      "n": 63654,
+      "filled": 62883,
+      "missing": 771,
+      "pct": 98.79,
+      "fills_needed_for_99": 135,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "ASX": 98,
       "TSX": 89,
       "NYSE ARCA": 73,
-      "NASDAQ": 70,
+      "NASDAQ": 69,
       "TSXV": 61,
       "BATS": 40,
-      "NEO": 39,
+      "NEO": 38,
       "SSE": 34,
       "NYSE": 25,
       "SSE_CL": 22,
-      "BMV": 16,
+      "BMV": 15,
       "SZSE": 11
     },
     "missing_sector_by_exchange": {
       "FSX": 251,
       "XSTU": 46,
-      "NSE_IN": 36,
+      "NSE_IN": 43,
       "HNX": 29,
       "BVB": 28,
       "PSE": 24,
@@ -89,23 +89,23 @@
       "AMS": 18,
       "TSX": 11,
       "TSE": 7,
-      "NASDAQ": 4,
+      "NASDAQ": 5,
       "BATS": 1,
       "Euronext": 1
     }
   },
   "identity": {
     "official_isin_mismatch": 8,
-    "official_name_mismatch": 4,
-    "open_collision_groups": 4,
-    "quarantine_unresolved": 1254,
+    "official_name_mismatch": 5,
+    "open_collision_groups": 6,
+    "quarantine_unresolved": 1256,
     "quarantine_proposed_clear": 289,
     "quarantine_kept": 568
   },
   "entry_quality_status": {
-    "pass": 59683,
-    "source_gap": 3941,
-    "warn": 13,
+    "pass": 59688,
+    "source_gap": 3944,
+    "warn": 14,
     "notice": 8
   },
   "checks": [
@@ -116,12 +116,14 @@
         "official_isin_mismatch": 8,
         "official_isin_mismatch_unexpected": 0,
         "official_isin_mismatch_reviewed_holds": 8,
-        "open_collision_groups": 4,
+        "open_collision_groups": 6,
         "sample_mismatch": [],
         "sample_collision_isins": [
           "AU000000CRB1",
           "CA41752L1076",
           "CA5910881096",
+          "INE234A01025",
+          "IL0011313900",
           "INE534A01028"
         ]
       }
@@ -130,10 +132,10 @@
       "name": "core_isin_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63645,
-        "filled": 63018,
-        "missing": 627,
-        "pct": 99.01,
+        "n": 63654,
+        "filled": 63029,
+        "missing": 625,
+        "pct": 99.02,
         "fills_needed_for_99": 0,
         "pass": true
       }
@@ -142,11 +144,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63645,
-        "filled": 62880,
-        "missing": 765,
-        "pct": 98.8,
-        "fills_needed_for_99": 129,
+        "n": 63654,
+        "filled": 62883,
+        "missing": 771,
+        "pct": 98.79,
+        "fills_needed_for_99": 135,
         "pass": false
       }
     },
@@ -154,9 +156,9 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63645,
-        "filled": 63598,
-        "missing": 47,
+        "n": 63654,
+        "filled": 63609,
+        "missing": 45,
         "pct": 99.93,
         "fills_needed_for_99": 0,
         "pass": true
@@ -166,12 +168,13 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 4,
+        "official_name_mismatch": 5,
         "sample": [
           "NASDAQ::ASBP",
           "TSXV::AXO",
           "NASDAQ::BNC",
-          "TSXV::MKT"
+          "TSXV::MKT",
+          "TSXV::WED"
         ]
       }
     },

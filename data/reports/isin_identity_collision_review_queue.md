@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-04T08:11:45Z`
+Generated: `2026-11-04T14:55:40Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,10 +8,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 127 |
-| Listings involved | 370 |
+| Collision groups | 129 |
+| Listings involved | 375 |
 | Ticker-collision groups | 35 |
-| Open groups | 4 |
+| Open groups | 6 |
 | Closed same-issuer reviewed | 123 |
 | Direct identifier apply allowed rows | 0 |
 
@@ -19,7 +19,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 92 |
+| isin_shared_by_distinct_issuers | 94 |
 | ticker_collision_isin_misassignment_suspected | 35 |
 
 ## Next Review Batches
@@ -44,13 +44,13 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | Mexico | 3 |
 | isin_shared_by_distinct_issuers | Belgium | 2 |
 | isin_shared_by_distinct_issuers | Bermuda | 2 |
+| isin_shared_by_distinct_issuers | India | 2 |
+| isin_shared_by_distinct_issuers | Israel | 2 |
 | isin_shared_by_distinct_issuers | Japan | 2 |
 | isin_shared_by_distinct_issuers | Netherlands | 2 |
 | ticker_collision_isin_misassignment_suspected | Canada | 2 |
 | ticker_collision_isin_misassignment_suspected | United Kingdom | 2 |
 | isin_shared_by_distinct_issuers | Austria | 1 |
-| isin_shared_by_distinct_issuers | Denmark | 1 |
-| isin_shared_by_distinct_issuers | India | 1 |
 
 ## Highest-Risk Groups
 
@@ -59,6 +59,8 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | AU000000CRB1 | Australia | 2 | CRB | Carbine Resources Ltd \| Lyxor Commodities Refinitiv/CoreCommodity CRB TR UCITS ETF - Acc-EUR |
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
+| INE234A01025 | India | 3 | - | Evonile Pharma Limited \| Novartis India Ltd |
+| IL0011313900 | Israel | 2 | - | Eocene Ltd. - Ordinary Shares \| Galmed Pharmaceuticals Ltd |
 | INE534A01028 | India | 2 | - | Grand Foundry Ltd \| Tikona Communication Limited |
 
 ## Gate
