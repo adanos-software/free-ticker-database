@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-11-04T17:59:15Z",
-    "rows": 8185,
+    "generated_at": "2026-11-04T18:41:45Z",
+    "rows": 8180,
     "field_totals": {
       "missing_etf_category": 98,
-      "missing_isin_primary": 626,
-      "missing_sector_stock": 634,
+      "missing_isin_primary": 622,
+      "missing_sector_stock": 633,
       "official_reference_gap": 6827
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 32,
+      "adr_cdr_or_depositary_identifier_gap": 31,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 31,
       "commodity_etf_category_gap": 6,
@@ -22,7 +22,7 @@
       "fundlike_stock_sector_gap": 18,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 158,
+      "official_identifier_not_exposed_source_gap": 155,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 461,
@@ -31,7 +31,7 @@
       "official_reference_symbol_collision_gap": 1181,
       "official_reference_unmatched_source_gap": 5646,
       "otc_sector_source_gap": 92,
-      "shell_or_cpc_sector_gap": 7
+      "shell_or_cpc_sector_gap": 6
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 6,
@@ -40,13 +40,13 @@
       "missing_etf_category:fixed_income_etf_category_gap": 2,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 1,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 75,
-      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 32,
+      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 31,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
       "missing_isin_primary:fund_or_trust_identifier_gap": 279,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 158,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 155,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -54,7 +54,7 @@
       "missing_sector_stock:fundlike_stock_sector_gap": 18,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 461,
       "missing_sector_stock:otc_sector_source_gap": 92,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 7,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 6,
       "official_reference_gap:official_reference_symbol_collision_gap": 1181,
       "official_reference_gap:official_reference_unmatched_source_gap": 5646
     },
@@ -112,7 +112,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 68
+          "rows": 66
         },
         {
           "exchange": "TSXV",
@@ -124,7 +124,7 @@
         },
         {
           "exchange": "NEO",
-          "rows": 37
+          "rows": 36
         },
         {
           "exchange": "SSE",
@@ -136,7 +136,7 @@
         },
         {
           "exchange": "SSE_CL",
-          "rows": 22
+          "rows": 21
         }
       ],
       "missing_sector_stock": [
@@ -6022,23 +6022,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::PAXG",
-      "ticker": "PAXG",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Pine Tree Acquisition Corp. - Class A Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::PAXG;exchange=NASDAQ;ticker=PAXG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::QVC",
       "ticker": "QVC",
       "exchange": "NASDAQ",
@@ -6118,23 +6101,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::RTSN;exchange=NASDAQ;ticker=RTSN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::SCAT",
-      "ticker": "SCAT",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Southern Cross Acquisition II Corp. - Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::SCAT;exchange=NASDAQ;ticker=SCAT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -6696,23 +6662,6 @@
       "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
       "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
       "source_gap_context": "listing_key=NEO::SAPG;exchange=NEO;ticker=SAPG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NEO::SFTB",
-      "ticker": "SFTB",
-      "exchange": "NEO",
-      "asset_type": "Stock",
-      "name": "SOFTBANK GROUP CORP CDR (CAD Hedged)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Do not infer ISIN from the underlying issuer; require the depositary/CDR program ISIN from an official listing, prospectus, depository, or reviewed identifier feed.",
-      "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
-      "source_gap_context": "listing_key=NEO::SFTB;exchange=NEO;ticker=SFTB;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
     },
@@ -9841,23 +9790,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=SSE_CL::AAISA;exchange=SSE_CL;ticker=AAISA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SSE_CL::CEMARGOSCL",
-      "ticker": "CEMARGOSCL",
-      "exchange": "SSE_CL",
-      "asset_type": "Stock",
-      "name": "Cementos Argos S.A.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=SSE_CL::CEMARGOSCL;exchange=SSE_CL;ticker=CEMARGOSCL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -19499,23 +19431,6 @@
       "source_gap_context": "listing_key=NASDAQ::QVC;exchange=NASDAQ;ticker=QVC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NASDAQ::SCAT",
-      "ticker": "SCAT",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Southern Cross Acquisition II Corp. - Ordinary Shares",
-      "gap_class": "shell_or_cpc_sector_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence.",
-      "source_gap_context": "listing_key=NASDAQ::SCAT;exchange=NASDAQ;ticker=SCAT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
     },
     {
       "field": "missing_sector_stock",
