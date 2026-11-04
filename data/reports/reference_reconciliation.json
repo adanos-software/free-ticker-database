@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3399,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12553,
-      "exact_match": 100215,
+      "exact_identity_conflict": 12552,
+      "exact_match": 100216,
       "missing_from_database": 44535,
       "normalization_candidate": 1856,
       "out_of_scope": 8143
     },
-    "coverage_credited_keys": 100215,
+    "coverage_credited_keys": 100216,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44535,
-    "identity_conflict_rows": 12553,
+    "identity_conflict_rows": 12552,
     "mapping_candidate_rows": 1856
   },
   "rows": [
@@ -1844781,10 +1844781,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::BTDPY",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::BTEAF",
