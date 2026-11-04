@@ -1,28 +1,36 @@
 {
   "summary": {
-    "generated_at": "2026-11-03T14:07:15Z",
+    "generated_at": "2026-11-04T14:28:25Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 385,
+    "blocked_rows": 386,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 4,
       "blocked_new_symbol_not_active_in_official_master": 3,
-      "blocked_old_symbol_not_unique_in_us_scope": 306,
+      "blocked_old_symbol_not_unique_in_us_scope": 305,
       "blocked_sec_cik_mismatch": 1,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
-      "manual_non_us_or_unscoped_source": 48,
+      "manual_non_us_or_unscoped_source": 49,
       "manual_successor_isin_mismatch": 4,
-      "manual_ticker_reuse_name_mismatch": 3,
+      "manual_ticker_reuse_name_mismatch": 4,
       "manual_transition_or_shell_name": 7
     }
   },
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "66ea82bfc3f1ab21",
+      "effective_date": "2026-11-02",
+      "old_symbol": "MGPI",
+      "new_symbol": "CASK",
+      "new_company_name": "Sempreon Inc",
+      "status": "blocked_sec_cik_mismatch"
+    },
     {
       "change_id": "be05c148de410364",
       "effective_date": "2026-10-29",
@@ -77,7 +85,7 @@
       "old_symbol": "ATII",
       "new_symbol": "NANO",
       "new_company_name": "Forge Nano Holdings Inc",
-      "status": "blocked_sec_cik_mismatch"
+      "status": "manual_ticker_reuse_name_mismatch"
     },
     {
       "change_id": "bb105fb5ed3031f6",
@@ -701,7 +709,7 @@
       "old_symbol": "TBH",
       "new_symbol": "HODO",
       "new_company_name": "House Of Doge Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "c3f86caefb5218b8",
