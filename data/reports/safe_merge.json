@@ -6,25 +6,54 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97790,
-    "after_rows": 97801,
+    "before_rows": 97801,
+    "after_rows": 97804,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
+    "generated_official_change_evidence_rows": 1,
     "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NYSE MKT::GCDT"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "OTC::BTDPY",
+      "field_name": "name",
+      "old_value": "Barratt Developments PLC",
+      "new_value": "Barratt Redrow PLC"
+    }
+  ],
+  "generated_official_change_evidence": [
+    {
+      "listing_key": "NYSE MKT::GCDT",
+      "ticker": "GCDT",
+      "exchange": "NYSE MKT",
+      "event_type": "venue_reconciled",
+      "field_name": "exchange",
+      "old_value": "NYSE MKT",
+      "new_value": "NYSE",
+      "before_row_sha256": "b63d597c0b0db18ebeba1d40dfb8fbabf52156eb0a78e600e1452b14f55a65c4",
+      "effective_at": "",
+      "observed_at": "2026-11-04T17:58:42Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "e01956b44c6736b174f66c3f",
+      "evidence_status": "official"
+    }
+  ],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
@@ -75,7 +104,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1409,
-      "after_rows": 1409,
+      "after_rows": 1410,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -407,7 +436,7 @@
     },
     {
       "exchange": "MSX",
-      "before_rows": 93,
+      "before_rows": 94,
       "after_rows": 94,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -425,7 +454,7 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4821,
+      "before_rows": 4822,
       "after_rows": 4822,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -461,7 +490,7 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3523,
+      "before_rows": 3531,
       "after_rows": 3531,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -480,7 +509,7 @@
     {
       "exchange": "NYSE",
       "before_rows": 2032,
-      "after_rows": 2032,
+      "after_rows": 2033,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -489,7 +518,7 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2778,
-      "after_rows": 2778,
+      "after_rows": 2780,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -498,15 +527,15 @@
     {
       "exchange": "NYSE MKT",
       "before_rows": 232,
-      "after_rows": 232,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 231,
+      "shrink_pct": 0.431034,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
     {
       "exchange": "NZX",
-      "before_rows": 84,
+      "before_rows": 85,
       "after_rows": 85,
       "shrink_pct": 0.0,
       "removed_rows": 0,
