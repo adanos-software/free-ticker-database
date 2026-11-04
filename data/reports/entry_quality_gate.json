@@ -1,12 +1,12 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-11-04T15:50:17Z",
+    "generated_at": "2026-11-04T16:59:44Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
   "allowed_warn_count": 35,
-  "passed": true,
+  "passed": false,
   "quarantine_count": 0,
   "quarantined": [],
   "stale_allowlist": [
@@ -14,7 +14,25 @@
     "NEO::HELP"
   ],
   "stale_allowlist_count": 2,
-  "unexpected_warn_count": 0,
-  "unexpected_warns": [],
-  "warn_count": 33
+  "unexpected_warn_count": 3,
+  "unexpected_warning_subjects": [
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::ADIL"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NASDAQ::INDV"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::BTDPY"
+    }
+  ],
+  "unexpected_warns": [
+    "NASDAQ::ADIL",
+    "NASDAQ::INDV",
+    "OTC::BTDPY"
+  ],
+  "warn_count": 36
 }
