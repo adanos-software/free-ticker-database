@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-05T17:25:10Z`
+Generated: `2026-11-05T18:21:28Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,18 +8,18 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 129 |
-| Listings involved | 375 |
+| Collision groups | 128 |
+| Listings involved | 372 |
 | Ticker-collision groups | 35 |
 | Open groups | 6 |
-| Closed same-issuer reviewed | 123 |
+| Closed same-issuer reviewed | 122 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 94 |
+| isin_shared_by_distinct_issuers | 93 |
 | ticker_collision_isin_misassignment_suspected | 35 |
 
 ## Next Review Batches
@@ -39,11 +39,11 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | Switzerland | 4 |
 | isin_shared_by_distinct_issuers | Australia | 3 |
 | isin_shared_by_distinct_issuers | China | 3 |
-| isin_shared_by_distinct_issuers | Finland | 3 |
 | isin_shared_by_distinct_issuers | Italy | 3 |
 | isin_shared_by_distinct_issuers | Mexico | 3 |
 | isin_shared_by_distinct_issuers | Belgium | 2 |
 | isin_shared_by_distinct_issuers | Bermuda | 2 |
+| isin_shared_by_distinct_issuers | Finland | 2 |
 | isin_shared_by_distinct_issuers | India | 2 |
 | isin_shared_by_distinct_issuers | Israel | 2 |
 | isin_shared_by_distinct_issuers | Japan | 2 |
