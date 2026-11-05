@@ -5,17 +5,17 @@
     "classification_counts": {
       "alternate_listing_line": 3399,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12552,
-      "exact_match": 100216,
-      "missing_from_database": 44535,
-      "normalization_candidate": 1856,
+      "exact_identity_conflict": 12562,
+      "exact_match": 100187,
+      "missing_from_database": 44556,
+      "normalization_candidate": 1854,
       "out_of_scope": 8143
     },
-    "coverage_credited_keys": 100216,
+    "coverage_credited_keys": 100187,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44535,
-    "identity_conflict_rows": 12552,
-    "mapping_candidate_rows": 1856
+    "in_scope_missing_rows": 44556,
+    "identity_conflict_rows": 12562,
+    "mapping_candidate_rows": 1854
   },
   "rows": [
     {
@@ -16077,10 +16077,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::CDO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::CDP",
@@ -18589,10 +18589,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::DN1",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::DNL",
@@ -21725,10 +21725,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::GCI",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::GCM",
@@ -22173,10 +22173,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::GLS",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::GMD",
@@ -22717,10 +22717,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::GVF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::GW1",
@@ -25277,10 +25277,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::KKC",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::KKO",
@@ -26077,10 +26077,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::LGF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::LGI",
@@ -27053,10 +27053,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::MA1",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::MA2",
@@ -33357,10 +33357,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::QRI",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::QUB",
@@ -33917,10 +33917,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::REV",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::REZ",
@@ -33965,10 +33965,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::RFF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::RFG",
@@ -225629,10 +225629,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "NEO::FGX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "cboe_canada_listing_directory::NEO::FID",
@@ -934301,10 +934301,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::3249",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::324A",
@@ -936221,10 +936221,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::3462",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::3463",
@@ -980029,10 +980029,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::8951",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::8952",
@@ -980061,10 +980061,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::8953",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::8954",
@@ -980173,10 +980173,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::8961",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::8963",
@@ -980237,10 +980237,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::8967",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::8968",
@@ -982669,10 +982669,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::9284",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::9285",
@@ -1002989,10 +1002989,10 @@
       "isins": "JP3046500009",
       "reference_scopes": "security_identifier_registry_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::3249",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "jpx_tse_stock_detail::TSE::324A",
@@ -1004749,10 +1004749,10 @@
       "isins": "JP3048110005",
       "reference_scopes": "security_identifier_registry_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::3462",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "jpx_tse_stock_detail::TSE::3463",
@@ -1044781,10 +1044781,10 @@
       "isins": "JP3027670003",
       "reference_scopes": "security_identifier_registry_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::8951",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "jpx_tse_stock_detail::TSE::8952",
@@ -1044813,10 +1044813,10 @@
       "isins": "JP3039710003",
       "reference_scopes": "security_identifier_registry_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::8953",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "jpx_tse_stock_detail::TSE::8954",
@@ -1044925,10 +1044925,10 @@
       "isins": "JP3046170001",
       "reference_scopes": "security_identifier_registry_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::8961",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "jpx_tse_stock_detail::TSE::8963",
@@ -1044973,10 +1044973,10 @@
       "isins": "JP3046230003",
       "reference_scopes": "security_identifier_registry_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::8967",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "jpx_tse_stock_detail::TSE::8968",
@@ -1047373,10 +1047373,10 @@
       "isins": "JP3048590008",
       "reference_scopes": "security_identifier_registry_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::9284",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "jpx_tse_stock_detail::TSE::9285",
@@ -1541165,10 +1541165,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NASDAQ::HERZ",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::HFBL",
@@ -1694797,10 +1694797,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::BMN",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::BMNP",
@@ -1695213,10 +1695213,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::BPRE",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::BR",
@@ -1696621,10 +1696621,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::CCIF",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::CCJ",
@@ -1696989,10 +1696989,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::CFND",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::CFR",
@@ -1705229,10 +1705229,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::FSSL",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::FT",
@@ -1718429,10 +1718429,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::NXG",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::NXP",
@@ -1723293,10 +1723293,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::RFMZ",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::RGA",
@@ -1723693,10 +1723693,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::RLTY",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::RLX",
@@ -1811101,10 +1811101,10 @@
       "isins": "US35087R3003",
       "reference_scopes": "security_lookup_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::FLES",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_security_profile::OTC::FLQAF",
@@ -1861709,10 +1861709,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::CUYTF",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::CUYTY",
@@ -1861728,7 +1861728,7 @@
       "classification": "exact_identity_conflict",
       "coverage_credit": "false",
       "matched_listing_keys": "OTC::CUYTY",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::CVALF",
@@ -1998032,7 +1998032,7 @@
       "classification": "exact_identity_conflict",
       "coverage_credit": "false",
       "matched_listing_keys": "OTC::VCVOF",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::VDASF",
@@ -2000333,10 +2000333,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::VNMHF",
-      "evidence": "asset type conflict: official=Stock, current=ETF"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::VNNVF",
@@ -2074621,10 +2074621,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::HERZ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::HFBL",
@@ -2122541,10 +2122541,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::BMN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::BMNP",
@@ -2123005,10 +2123005,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::BPRE",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::BQ",
@@ -2124637,10 +2124637,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NYSE::CCIF",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::CCIF",
@@ -2124653,10 +2124653,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::CCIF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::CCJ",
@@ -2125085,10 +2125085,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::CFND",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::CFR",
@@ -2134525,10 +2134525,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::FSSL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::FT",
@@ -2149629,10 +2149629,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::NXG",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::NXP",
@@ -2155181,10 +2155181,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::RFMZ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::RGA",
@@ -2155613,10 +2155613,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::RLTY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::RLX",
@@ -2597197,10 +2597197,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::BGI",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::BGIE",
@@ -2597853,10 +2597853,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::BPF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::BPO",
@@ -2598061,10 +2598061,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::BTB",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::BTCC",
@@ -2602429,10 +2602429,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::DIR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::DIS",
@@ -2603885,10 +2603885,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::EIT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::ELD",
@@ -2604157,10 +2604157,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "TSX::ENI-UN",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::ENS",
@@ -2604829,10 +2604829,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::FAP",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::FAR",
@@ -2605133,10 +2605133,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::FCR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::FCRC",
@@ -2612077,10 +2612077,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "TSX::MDS",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::MEDX",
@@ -2616029,10 +2616029,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::PMZ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::PNC",
@@ -2620013,10 +2620013,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::SRU",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::SRV",
@@ -2649629,10 +2649629,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSXV::TBIX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "asset type conflict: official=ETF, current=Stock"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSXV::TBK",

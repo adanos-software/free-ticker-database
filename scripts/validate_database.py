@@ -19,6 +19,7 @@ from scripts.alias_policy import is_common_single_word_alias, normalize_alias_te
 from scripts.build_entry_quality_report import build_confirmed_depositary_listing_tuples
 from scripts.check_entry_quality_gate import check_entry_quality_gate
 from scripts.lib.dataio import is_well_formed_metadata_update
+from scripts.lib.merge_evidence import OUT_OF_SCOPE_EVENT_TYPE, out_of_scope_transition_problems
 from scripts.rebuild_dataset import (
     COUNTRY_TO_ISO,
     MASTERFILE_REFERENCE_CSV,
@@ -45,6 +46,7 @@ DEFAULT_WARN_ALLOWLIST_CSV = REPORTS_DIR / "entry_quality_warn_allowlist.csv"
 DEFAULT_ADANOS_ALIAS_AUDIT_CSV = REPORTS_DIR / "adanos_alias_audit.csv"
 DEFAULT_REVIEW_REMOVE_ALIASES_CSV = DATA_DIR / "review_overrides" / "remove_aliases.csv"
 DEFAULT_REVIEW_METADATA_UPDATES_CSV = DATA_DIR / "review_overrides" / "metadata_updates.csv"
+DEFAULT_REVIEW_LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
 DEFAULT_FOREIGN_ISIN_REVIEWED_CSV = DATA_DIR / "review_overrides" / "foreign_isin_reviewed.csv"
 DEFAULT_MASTERFILE_REFERENCE_CSV = MASTERFILE_REFERENCE_CSV
 DEFAULT_COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
@@ -510,6 +512,25 @@ def malformed_metadata_update_rows(metadata_updates: list[dict[Any, Any]]) -> li
     return invalid
 
 
+def invalid_out_of_scope_transitions(
+    transitions: list[dict[str, str]],
+    listings: list[dict[str, str]],
+) -> list[str]:
+    """Flag malformed `out_of_scope` transitions and ones whose row was not dropped."""
+    listed = {listing_key(row) for row in listings}
+    invalid: list[str] = []
+    for index, row in enumerate(transitions, start=2):
+        if row.get("event_type", "").strip() != OUT_OF_SCOPE_EVENT_TYPE:
+            continue
+        old_key = row.get("old_listing_key", "").strip()
+        problems = out_of_scope_transition_problems(row)
+        if old_key in listed:
+            problems.append("still_listed")
+        if problems:
+            invalid.append(f"row {index}: {old_key} {','.join(problems)}")
+    return invalid
+
+
 def metadata_updates_with_typed_leakage(
     metadata_updates: list[dict[str, str]],
     rows: list[dict[str, str]],
@@ -852,6 +873,7 @@ def build_validation_report(
     cross_listings: list[dict[str, str]] | None = None,
     review_remove_aliases: list[dict[str, str]] | None = None,
     review_metadata_updates: list[dict[str, str]] | None = None,
+    review_listing_transitions: list[dict[str, str]] | None = None,
     masterfiles: list[dict[str, str]] | None = None,
     source_gap_classifications: list[dict[str, str]] | None = None,
     source_of_truth_decisions: list[dict[str, str]] | None = None,
@@ -945,6 +967,7 @@ def build_validation_report(
     )
     noncanonical_metadata_updates = metadata_updates_with_noncanonical_typed_values(review_metadata_updates)
     malformed_metadata_updates = malformed_metadata_update_rows(review_metadata_updates)
+    invalid_out_of_scope = invalid_out_of_scope_transitions(review_listing_transitions or [], listings)
     metadata_typed_leakage = metadata_updates_with_typed_leakage(review_metadata_updates, typed_rows)
     source_gap_invalid_rows = (
         invalid_source_gap_classification_rows(source_gap_classifications) if source_gap_classifications else []
@@ -1221,6 +1244,11 @@ def build_validation_report(
                 malformed_metadata_updates,
             ),
             fail_gate(
+                "listing_transitions_invalid_out_of_scope",
+                len(invalid_out_of_scope),
+                invalid_out_of_scope,
+            ),
+            fail_gate(
                 "metadata_updates_noncanonical_typed_values",
                 len(noncanonical_metadata_updates),
                 noncanonical_metadata_updates,
@@ -1488,6 +1516,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--adanos-alias-audit-csv", type=Path, default=DEFAULT_ADANOS_ALIAS_AUDIT_CSV)
     parser.add_argument("--review-remove-aliases-csv", type=Path, default=DEFAULT_REVIEW_REMOVE_ALIASES_CSV)
     parser.add_argument("--review-metadata-updates-csv", type=Path, default=DEFAULT_REVIEW_METADATA_UPDATES_CSV)
+    parser.add_argument(
+        "--review-listing-transitions-csv", type=Path, default=DEFAULT_REVIEW_LISTING_TRANSITIONS_CSV
+    )
     parser.add_argument("--masterfile-reference-csv", type=Path, default=DEFAULT_MASTERFILE_REFERENCE_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=DEFAULT_COVERAGE_REPORT_JSON)
     parser.add_argument("--source-gap-classification-csv", type=Path, default=DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV)
@@ -1558,6 +1589,9 @@ def main(argv: list[str] | None = None) -> int:
         ),
         review_metadata_updates=(
             load_csv(args.review_metadata_updates_csv) if args.review_metadata_updates_csv.exists() else []
+        ),
+        review_listing_transitions=(
+            load_csv(args.review_listing_transitions_csv) if args.review_listing_transitions_csv.exists() else []
         ),
         masterfiles=(load_csv(args.masterfile_reference_csv) if args.masterfile_reference_csv.exists() else []),
         source_gap_classifications=(

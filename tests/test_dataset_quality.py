@@ -579,7 +579,8 @@ def test_twse_non_common_lines_are_reclassified_or_removed():
     assert ticker_exchange_row("00941", "TWSE")["asset_type"] == "ETF"
     assert ticker_exchange_row("01002T", "TWSE")["asset_type"] == "ETF"
     assert ticker_exchange_row("01009T", "TWSE")["asset_type"] == "ETF"
-    assert ticker_exchange_row("FGX", "NEO")["asset_type"] == "ETF"
+    # NEO::FGX (Faircourt Gold Income Corp) is a closed-end fund: kept as Stock like other non-US closed-end vehicles.
+    assert ticker_exchange_row("FGX", "NEO")["asset_type"] == "Stock"
     assert ticker_exchange_row("2883B", "TWSE") is None
     assert ticker_exchange_row("6781", "TWSE")["name"] == "AES Holding Co., Ltd."
 
