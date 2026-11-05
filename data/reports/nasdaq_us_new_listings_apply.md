@@ -1,8 +1,8 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-04T16:51:05Z`
-- New supported rows: `4`
-- Accepted rows: `3`
+- Generated at: `2026-11-05T14:36:34Z`
+- New supported rows: `5`
+- Accepted rows: `4`
 - Skipped rows: `1`
 - Supported asset types: `ETF, Stock`
 
@@ -10,9 +10,10 @@
 
 | Ticker | Exchange | Name | Asset type | Target | Source |
 |---|---|---|---|---|---|
-| SIX | BATS | Global X Magnificent Six ETF | ETF | coverage_expansion | nasdaq_other_listed |
-| RECD | NYSE ARCA | Columbia RECS Laddered Deep Buffer ETF | ETF | supplement | nasdaq_other_listed |
-| RECM | NYSE ARCA | Columbia RECS Laddered Moderate Buffer ETF | ETF | supplement | nasdaq_other_listed |
+| DFIT | BATS | Davidson Intermediate Taxable ETF | ETF | supplement | nasdaq_other_listed |
+| DLAY | BATS | Tuttle Capital AI Bottleneck ETF | ETF | supplement | nasdaq_other_listed |
+| BBLX | NYSE ARCA | BondBloxx Core Plus ETF | ETF | supplement | nasdaq_other_listed |
+| FMIG | NYSE ARCA | FMI Global Equity ETF | ETF | supplement | nasdaq_other_listed |
 
 ## Skipped
 

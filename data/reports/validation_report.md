@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-11-05T09:00:14Z`
+Generated at: `2026-11-05T14:49:54Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 65,685 |
-| listing_rows | 97,792 |
-| adanos_reference_rows | 65,685 |
-| entry_quality_rows | 97,792 |
+| ticker_rows | 65,689 |
+| listing_rows | 97,798 |
+| adanos_reference_rows | 65,689 |
+| entry_quality_rows | 97,798 |
 | error_gates | 88 |
-| failed_error_gates | 0 |
+| failed_error_gates | 2 |
 | info_gates | 5 |
 
 ## Gates
@@ -59,7 +59,7 @@ Status: `PASS`
 | invalid_country_code_rows | error | PASS | 0 | 0 |
 | country_code_mismatch_rows | error | PASS | 0 | 0 |
 | rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
-| country_isin_prefix_mismatch_without_review | error | PASS | 0 | 0 |
+| country_isin_prefix_mismatch_without_review | error | FAIL | 3 | 0 |
 | rows_with_mojibake_names | error | PASS | 0 | 0 |
 | listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
@@ -89,15 +89,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 1 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 618 |  |
-| missing_stock_sector | info | PASS | 674 |  |
-| missing_etf_category | info | PASS | 107 |  |
-| source_gap_rows | info | PASS | 11194 |  |
+| expected_missing_primary_isin | info | PASS | 615 |  |
+| missing_stock_sector | info | PASS | 672 |  |
+| missing_etf_category | info | PASS | 109 |  |
+| source_gap_rows | info | PASS | 11202 |  |
 | allowed_warn_rows | info | PASS | 35 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -116,4 +116,15 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### country_isin_prefix_mismatch_without_review
+
+- Actual: `3`
+- `NYSE::CDLR`
+- `NYSE::CDLR`
+- `NYSE::CDLR`
+
+### entry_quality_unexpected_warn_count
+
+- Actual: `1`
+- `NYSE::CDLR`
+

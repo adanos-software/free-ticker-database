@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-11-04T16:51:05Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-11-05T14:36:34Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,17 +11,16 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 4,
-    "accepted_rows": 3,
+    "new_supported_rows": 5,
+    "accepted_rows": 4,
     "skipped_rows": 1,
     "detected_symbol_changes": 0,
     "accepted_by_exchange": {
-      "BATS": 1,
+      "BATS": 2,
       "NYSE ARCA": 2
     },
     "accepted_by_target": {
-      "coverage_expansion": 1,
-      "supplement": 2
+      "supplement": 4
     },
     "skipped_by_reason": {
       "excluded_non_common_stock": 1
@@ -29,24 +28,38 @@
   },
   "accepted": [
     {
-      "listing_key": "BATS::SIX",
-      "ticker": "SIX",
+      "ticker": "DFIT",
+      "name": "Davidson Intermediate Taxable ETF",
       "exchange": "BATS",
-      "name": "Global X Magnificent Six ETF",
       "asset_type": "ETF",
-      "stock_sector": "",
-      "etf_category": "",
+      "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
       "source_key": "nasdaq_other_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "apply_target": "coverage_expansion"
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
     },
     {
-      "ticker": "RECD",
-      "name": "Columbia RECS Laddered Deep Buffer ETF",
+      "ticker": "DLAY",
+      "name": "Tuttle Capital AI Bottleneck ETF",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "BBLX",
+      "name": "BondBloxx Core Plus ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -60,8 +73,8 @@
       "apply_target": "supplement"
     },
     {
-      "ticker": "RECM",
-      "name": "Columbia RECS Laddered Moderate Buffer ETF",
+      "ticker": "FMIG",
+      "name": "FMI Global Equity ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -77,9 +90,9 @@
   ],
   "skipped": [
     {
-      "ticker": "NMZ.R",
+      "ticker": "BFH$C",
       "exchange": "NYSE",
-      "name": "Nuveen Municipal High Income Opportunity Fund Rights (expiring December 2, 2026) Rights",
+      "name": "Bread Financial Holdings, Inc. Depositary Shares, each representing a 1/40th interest in a share of its 9.375% Fixed Rate Reset Non-Cumulative Perpetual Preferred Stock, Series C",
       "asset_type": "Stock",
       "source_key": "nasdaq_other_listed",
       "skip_reason": "excluded_non_common_stock"
