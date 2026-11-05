@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-05T12:43:56Z",
-    "rows": 97792,
+    "generated_at": "2026-11-05T14:58:34Z",
+    "rows": 97800,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,32 +15,32 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86559,
-      "source_gap": 11188,
-      "warn": 35
+      "pass": 86557,
+      "source_gap": 11196,
+      "warn": 37
     },
     "evidence_level_counts": {
       "identifier_enriched": 4657,
-      "official_reference": 87661,
+      "official_reference": 87669,
       "scoped_source_gap": 280,
       "valid_isin": 5194
     },
     "severity_counts": {
-      "high": 12,
+      "high": 13,
       "low": 10,
-      "medium": 24,
-      "source_gap": 11523
+      "medium": 25,
+      "source_gap": 11539
     },
     "issue_counts": {
       "official_reference_gap": 6844,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 670,
-      "expected_missing_primary_isin": 615,
-      "missing_etf_category": 107,
-      "official_name_mismatch": 24,
+      "missing_stock_sector": 672,
+      "expected_missing_primary_isin": 623,
+      "missing_etf_category": 113,
+      "official_name_mismatch": 25,
       "official_isin_mismatch": 11,
       "low_company_name_overlap": 10,
-      "country_isin_mismatch": 1
+      "country_isin_mismatch": 2
     },
     "top_flagged_exchanges": [
       {
@@ -66,9 +66,9 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 299,
-        "pass": 4513,
-        "warn": 5,
+        "source_gap": 303,
+        "pass": 4512,
+        "warn": 6,
         "notice": 4
       },
       {
@@ -79,7 +79,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2537,
-        "source_gap": 241,
+        "source_gap": 243,
         "warn": 1
       },
       {
@@ -131,7 +131,7 @@
       {
         "exchange": "BATS",
         "pass": 1283,
-        "source_gap": 127
+        "source_gap": 129
       },
       {
         "exchange": "Euronext",

@@ -1,20 +1,20 @@
 {
   "summary": {
-    "active_official_reference_rows": 170895,
-    "source_specific_reference_keys": 170895,
+    "active_official_reference_rows": 170901,
+    "source_specific_reference_keys": 170901,
     "classification_counts": {
       "alternate_listing_line": 3399,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12562,
-      "exact_match": 100187,
-      "missing_from_database": 44556,
+      "exact_identity_conflict": 12561,
+      "exact_match": 100194,
+      "missing_from_database": 44555,
       "normalization_candidate": 1854,
-      "out_of_scope": 8143
+      "out_of_scope": 8144
     },
-    "coverage_credited_keys": 100187,
+    "coverage_credited_keys": 100194,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44556,
-    "identity_conflict_rows": 12562,
+    "in_scope_missing_rows": 44555,
+    "identity_conflict_rows": 12561,
     "mapping_candidate_rows": 1854
   },
   "rows": [
@@ -1285373,10 +1285373,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "LSE::RTW",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "lse_company_reports::LSE::RTWO",
@@ -1505331,6 +1505331,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::ACEM",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::ACEM",
+      "exchange": "NASDAQ",
+      "ticker": "ACEM",
+      "asset_types": "ETF",
+      "names": "American Century Emerging Markets Insights ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::ACEM",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::ACEP",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::ACEP",
@@ -1507025,6 +1507041,38 @@
       "coverage_credit": "false",
       "matched_listing_keys": "NASDAQ::AGIX",
       "evidence": "official and current names do not form one conservative identity family"
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::AGLT",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::AGLT",
+      "exchange": "NASDAQ",
+      "ticker": "AGLT",
+      "asset_types": "Stock",
+      "names": "Agility Robotics, Inc. - Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::AGLT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::AGLTW",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::AGLTW",
+      "exchange": "NASDAQ",
+      "ticker": "AGLTW",
+      "asset_types": "Stock",
+      "names": "Agility Robotics, Inc. - Warrants",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::AGMB",
@@ -1520307,54 +1520355,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::CCXI",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::CCXI",
-      "exchange": "NASDAQ",
-      "ticker": "CCXI",
-      "asset_types": "Stock",
-      "names": "Churchill Capital Corp XI - Class A Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::CCXI",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::CCXIU",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::CCXIU",
-      "exchange": "NASDAQ",
-      "ticker": "CCXIU",
-      "asset_types": "Stock",
-      "names": "Churchill Capital Corp XI - Units",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::CCXIW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::CCXIW",
-      "exchange": "NASDAQ",
-      "ticker": "CCXIW",
-      "asset_types": "Stock",
-      "names": "Churchill Capital Corp XI - Warrants",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrants"
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::CD",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::CD",
@@ -1531113,7 +1531113,7 @@
       "exchange": "NASDAQ",
       "ticker": "EUDA",
       "asset_types": "Stock",
-      "names": "Euda Health Holdings Limited - Ordinary Shares",
+      "names": "Euda Health Holdings Limited - Class A Ordinary Shares",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1541555,6 +1541555,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::HLT",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::HLT",
+      "exchange": "NASDAQ",
+      "ticker": "HLT",
+      "asset_types": "Stock",
+      "names": "Hilton Worldwide Holdings Inc. - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::HLT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::HLTH",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::HLTH",
@@ -1545376,6 +1545392,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::INIO",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::INJC",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::INJC",
+      "exchange": "NASDAQ",
+      "ticker": "INJC",
+      "asset_types": "ETF",
+      "names": "Canary Staked INJ ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::INJC",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1592665,14 +1592697,14 @@
       "exchange": "NASDAQ",
       "ticker": "XTER",
       "asset_types": "Stock",
-      "names": "Karman Line Acquisition Corp. - Class A Ordinary Shares",
+      "names": "Xterax Corporation II - Class A Ordinary Shares",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "NASDAQ::XTER",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::XTERU",
@@ -1592681,7 +1592713,7 @@
       "exchange": "NASDAQ",
       "ticker": "XTERU",
       "asset_types": "Stock",
-      "names": "Karman Line Acquisition Corp. - Units",
+      "names": "Xterax Corporation II - Units",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1592697,7 +1592729,7 @@
       "exchange": "NASDAQ",
       "ticker": "XTERW",
       "asset_types": "Stock",
-      "names": "Karman Line Acquisition Corp. - Warrants",
+      "names": "Xterax Corporation II - Warrants",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1618691,6 +1618723,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::BATS::DFIT",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "BATS::DFIT",
+      "exchange": "BATS",
+      "ticker": "DFIT",
+      "asset_types": "ETF",
+      "names": "Davidson Intermediate Taxable ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::DFIT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::BATS::DFNL",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::DFNL",
@@ -1618976,6 +1619024,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "BATS::DLAG",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::BATS::DLAY",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "BATS::DLAY",
+      "exchange": "BATS",
+      "ticker": "DLAY",
+      "asset_types": "ETF",
+      "names": "Tuttle Capital AI Bottleneck ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::DLAY",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1641971,6 +1642035,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::BBLX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::BBLX",
+      "exchange": "NYSE ARCA",
+      "ticker": "BBLX",
+      "asset_types": "ETF",
+      "names": "BondBloxx Core Plus ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::BBLX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::BBP",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::BBP",
@@ -1653473,6 +1653553,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: futures"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::FMIG",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::FMIG",
+      "exchange": "NYSE ARCA",
+      "ticker": "FMIG",
+      "asset_types": "ETF",
+      "names": "FMI Global Equity ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::FMIG",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::FMKT",
@@ -1693763,6 +1693859,22 @@
       "evidence": "name indicates non-target instrument: preferred"
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::BFH$C",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::BFH$C",
+      "exchange": "NYSE",
+      "ticker": "BFH$C",
+      "asset_types": "Stock",
+      "names": "Bread Financial Holdings, Inc. Depositary Shares, each representing a 1/40th interest in a share of its 9.375% Fixed Rate Reset Non-Cumulative Perpetual Preferred Stock, Series C",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: preferred"
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::BFLY",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::BFLY",
@@ -1696761,14 +1696873,14 @@
       "exchange": "NYSE",
       "ticker": "CDLR",
       "asset_types": "Stock",
-      "names": "Cadeler A/S American Depositary Share (each representing four (4) Ordinary Shares)",
+      "names": "Cadeler plc Ordinary Shares",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE::CDLR",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::CDP",
@@ -1708433,22 +1708545,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "NYSE::HLN",
       "evidence": "official and current names do not form one conservative identity family"
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::HLT",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::HLT",
-      "exchange": "NYSE",
-      "ticker": "HLT",
-      "asset_types": "Stock",
-      "names": "Hilton Worldwide Holdings Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::HLT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::HMC",
