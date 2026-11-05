@@ -7,33 +7,22 @@
   },
   "summary": {
     "before_rows": 97804,
-    "after_rows": 97773,
-    "overall_shrink_pct": 0.031696,
-    "removed_rows": 31,
-    "evidenced_removed_rows": 31,
+    "after_rows": 97792,
+    "overall_shrink_pct": 0.012269,
+    "removed_rows": 12,
+    "evidenced_removed_rows": 12,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 43,
+    "critical_field_changes": 84,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 31
+    "generated_reviewed_transition_evidence_rows": 12
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [
-    "ASX::CDO",
-    "ASX::DN1",
-    "ASX::GCI",
-    "ASX::GLS",
-    "ASX::GVF",
-    "ASX::KKC",
-    "ASX::LGF",
-    "ASX::MA1",
-    "ASX::QRI",
-    "ASX::REV",
     "NASDAQ::HERZ",
-    "NEO::FGX",
     "NYSE ARCA::MSGR",
     "NYSE::BMN",
     "NYSE::BPRE",
@@ -44,19 +33,137 @@
     "NYSE::PTA",
     "NYSE::RFMZ",
     "NYSE::RLTY",
-    "OTC::VCVOF",
-    "OTC::VNMHF",
-    "TSX::BGI",
-    "TSX::BTB",
-    "TSX::EIT",
-    "TSX::ENI-UN",
-    "TSX::FAP",
-    "TSX::MDS",
-    "TSXV::TBIX"
+    "TSX::MDS"
   ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
+      "listing_key": "ASX::CDO",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::CDO",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "ASX::CDO",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::DN1",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::DN1",
+      "field_name": "etf_category",
+      "old_value": "Fixed Income",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::GCI",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::GCI",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::GLS",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::GLS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::GVF",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::GVF",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::KKC",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::KKC",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::LGF",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::LGF",
+      "field_name": "etf_category",
+      "old_value": "Commodity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::MA1",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::MA1",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::QRI",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::QRI",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "ASX::REV",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "ASX::REV",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
       "listing_key": "ASX::RFF",
       "field_name": "asset_type",
       "old_value": "ETF",
@@ -72,6 +179,18 @@
       "listing_key": "ASX::RFF",
       "field_name": "etf_category",
       "old_value": "Real Estate",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NEO::FGX",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "NEO::FGX",
+      "field_name": "etf_category",
+      "old_value": "Equity",
       "new_value": ""
     },
     {
@@ -106,6 +225,30 @@
     },
     {
       "listing_key": "OTC::CUYTY",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::VCVOF",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "OTC::VCVOF",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::VNMHF",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "OTC::VNMHF",
       "field_name": "etf_category",
       "old_value": "Equity",
       "new_value": ""
@@ -229,6 +372,12 @@
       "field_name": "etf_category",
       "old_value": "Equity",
       "new_value": ""
+    },
+    {
+      "listing_key": "TSX::BGI",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
     },
     {
       "listing_key": "TSX::BPF",
@@ -243,6 +392,24 @@
       "new_value": ""
     },
     {
+      "listing_key": "TSX::BTB",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "TSX::BTB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "TSX::BTB",
+      "field_name": "etf_category",
+      "old_value": "Real Estate",
+      "new_value": ""
+    },
+    {
       "listing_key": "TSX::DIR",
       "field_name": "asset_type",
       "old_value": "ETF",
@@ -258,6 +425,48 @@
       "listing_key": "TSX::DIR",
       "field_name": "etf_category",
       "old_value": "Real Estate",
+      "new_value": ""
+    },
+    {
+      "listing_key": "TSX::EIT",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "TSX::EIT",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "TSX::EIT",
+      "field_name": "etf_category",
+      "old_value": "Fixed Income",
+      "new_value": ""
+    },
+    {
+      "listing_key": "TSX::ENI-UN",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "TSX::ENI-UN",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": ""
+    },
+    {
+      "listing_key": "TSX::FAP",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "TSX::FAP",
+      "field_name": "etf_category",
+      "old_value": "Equity",
       "new_value": ""
     },
     {
@@ -312,6 +521,24 @@
       "listing_key": "TSX::SRU",
       "field_name": "etf_category",
       "old_value": "Real Estate",
+      "new_value": ""
+    },
+    {
+      "listing_key": "TSXV::TBIX",
+      "field_name": "asset_type",
+      "old_value": "ETF",
+      "new_value": "Stock"
+    },
+    {
+      "listing_key": "TSXV::TBIX",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "TSXV::TBIX",
+      "field_name": "etf_category",
+      "old_value": "Equity",
       "new_value": ""
     }
   ],
@@ -327,7 +554,7 @@
       "new_value": "",
       "before_row_sha256": "6b52eb4224811dbbb30707b433c2ed140f61dfa4ecee57ef6d3226ae46d6eaa7",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1832871/000119312526093583/0001193125-26-093583-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -344,7 +571,7 @@
       "new_value": "",
       "before_row_sha256": "bb4fec4cbaed176bbee9c8ae3e820aa002c20d8bc057e7b8d626e5ed4c5acf60",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1551047/000139834425022118/0001398344-25-022118-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -361,7 +588,7 @@
       "new_value": "",
       "before_row_sha256": "ae2b5207d494307ad72d7499bda28853b6f554f09f1ad1b3e0a4ce5c6b686f7e",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1517767/000151776725000080/0001517767-25-000080-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -378,7 +605,7 @@
       "new_value": "",
       "before_row_sha256": "68b209e33c0fac8809a6db96a571f7410430bd2d9509bef3d3b9d22e1ee561e0",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/2044327/000110465926060344/0001104659-26-060344-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -395,7 +622,7 @@
       "new_value": "",
       "before_row_sha256": "af4167b694d64ec9b30175f8755cc18f696458a6190be2532dfe5cabc517e946",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/2065812/000162828026013180/0001628280-26-013180-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -412,7 +639,7 @@
       "new_value": "",
       "before_row_sha256": "ec756c815f5bdca2690675ac4642c61955611730cd3e3e20ace0794512a480fa",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/880406/000139834426016681/0001398344-26-016681-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -429,7 +656,7 @@
       "new_value": "",
       "before_row_sha256": "0814a24cc5a392c51553e14fc2cec5c410d2f57b0f044ff823b704523beacd86",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1506488/000139834426002459/0001398344-26-002459-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -446,7 +673,7 @@
       "new_value": "",
       "before_row_sha256": "a0f1ec1fde2f8f873d793b4772d8f826c57724052703eba6c93aca3981f8a6cf",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1793882/000119312525334473/0001193125-25-334473-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -463,7 +690,7 @@
       "new_value": "",
       "before_row_sha256": "30008c0350b59a69273d73a83f3d9d59e950fb23a0aef48c854ce368876ef8f8",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1817159/000139834426016683/0001398344-26-016683-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -480,96 +707,11 @@
       "new_value": "",
       "before_row_sha256": "8e8a3dc8c712786b135c75834ffaaf83e605f6e8e0af9c5a79cadf13eb8f5080",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "sec_edgar_submissions",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1866874/000119312526096914/0001193125-26-096914-index.htm",
       "source_report": "data/review_overrides/listing_transitions.csv",
       "observation_id": "db08147c5581bea829d66a20",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "OTC::VCVOF",
-      "ticker": "VCVOF",
-      "exchange": "OTC",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "Vinacapital Vietnam",
-      "new_value": "",
-      "before_row_sha256": "ec0c728a52d79fe9590f41ada0cb1978b054692e33e632c2140c415ac45ff66a",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_and_regulator",
-      "source_url": "https://vof.vinacapital.com/faq/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "37e8d59612ec303ef040d413",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "OTC::VNMHF",
-      "ticker": "VNMHF",
-      "exchange": "OTC",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "VietNam Holding Limited",
-      "new_value": "",
-      "before_row_sha256": "84da37c1d50da61caa3109898253d572e73f282827472a1c2bd862bef4698f3e",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_and_regulator",
-      "source_url": "https://www.vietnamholding.com/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "650ec25949d0340cac66935b",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::EIT",
-      "ticker": "EIT",
-      "exchange": "TSX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "Canoe EIT Income Fund",
-      "new_value": "",
-      "before_row_sha256": "d762897da7509b1ac7cdf436235327f61ea55dc211e356a60a30c72fbf1c2b02",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "stockanalysis_company_profile",
-      "source_url": "https://stockanalysis.com/quote/tsx/EIT.UN/company/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "6774ac1f30d31d4f6df2efba",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::BGI",
-      "ticker": "BGI",
-      "exchange": "TSX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "Brookfield Global Infrastructure Securities Income Fund",
-      "new_value": "",
-      "before_row_sha256": "9b7eca1b0dd5f6dfc7b6d5985ee257f18fbef89f9caf7f1e739037247e12f5b4",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_fund_page",
-      "source_url": "https://privatewealth.brookfield.com/fund/brookfield-global-infrastructure-securities-income-fund?r=psg",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "300368ed2a8627c5ef26c536",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::FAP",
-      "ticker": "FAP",
-      "exchange": "TSX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "abrdn Asia-Pacific Income Fund VCC",
-      "new_value": "",
-      "before_row_sha256": "0aa5b7796564d6c0145e40f0fdbada64c182e463ac175a8147118238de425ce7",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_fund_page",
-      "source_url": "https://www.aberdeeninvestments.com/en-ca/investor/funds/view-all-funds/abrdn-asia-pacific-income-fund-vcc-sgxz44536704",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "0dab4903b34e069510a1632a",
       "evidence_status": "reviewed"
     },
     {
@@ -582,249 +724,11 @@
       "new_value": "",
       "before_row_sha256": "70f75ba578df0fa6b4c8d17966504f3ed130d27ea40ca51e7ba564188824ae0a",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_fund_page",
-      "source_url": "https://www.ldic.ca/investment-funds/ldic-healthcare-special-opportunities-fund/",
+      "observed_at": "2026-11-05T08:56:26Z",
+      "source_key": "issuer_delisting_notice",
+      "source_url": "https://www.newsfilecorp.com/release/316978/Healthcare-Special-Opportunities-Fund-Announces-Final-Distribution",
       "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "421ccb04708c59c47623de2a",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::ENI-UN",
-      "ticker": "ENI-UN",
-      "exchange": "TSX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "Energy Income Fund",
-      "new_value": "",
-      "before_row_sha256": "80f209606e70cd19070fba2bea6ef3eb6f99e2a737b3e4971d493a9b0f6896cf",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_report",
-      "source_url": "https://artemisfunds.ca/wp-content/uploads/2026/08/ENI-SEMI-ANNUAL-REPORT-2026.pdf",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "721020b58001cb367d96f408",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NEO::FGX",
-      "ticker": "FGX",
-      "exchange": "NEO",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "Faircourt Gold Income Corp",
-      "new_value": "",
-      "before_row_sha256": "0520081a2e02b3281ff364201c57b21cb6d96b3ed12216a9ab15780c7f395d09",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_fund_page",
-      "source_url": "https://faircourtassetmgt.com/products/closed-end-funds/faircourt-gold-income-corp/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "a99c4e2786691da15ea2ffa1",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::DN1",
-      "ticker": "DN1",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "DOMINION INCOME TRUST 1",
-      "new_value": "",
-      "before_row_sha256": "cab969664063fe1bc289f707054d38cbb93a058726ff0bb4acac192831c652ce",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "stockanalysis_quote",
-      "source_url": "https://stockanalysis.com/quote/asx/DN1/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "f7c1401b7e6f9f006ab72a1a",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::GLS",
-      "ticker": "GLS",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "L1 GLOBAL LONG SHORT FUND LIMITED",
-      "new_value": "",
-      "before_row_sha256": "d325f4aad38577cb7e4a255da62a9d53ef7319318a4fe2f4cd37e3b4dee6a4b8",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "stockanalysis_quote_and_issuer",
-      "source_url": "https://stockanalysis.com/quote/asx/GLS/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "c6783d9f4ec7b8ef4869c048",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::REV",
-      "ticker": "REV",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "REVOLUTION PRIVATE CREDIT INCOME TRUST",
-      "new_value": "",
-      "before_row_sha256": "7da9d61e5605d733317073566b648bc2c6dc5ded684f0d433b4333818b798778",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "stockanalysis_quote",
-      "source_url": "https://stockanalysis.com/quote/asx/REV/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "95583562f4c94e4b6e64a1b9",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::MA1",
-      "ticker": "MA1",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "MA CREDIT INCOME TRUST",
-      "new_value": "",
-      "before_row_sha256": "0225e903964e73ffe73ffbe6c6259b8375818a14920773247af81c20ba0ce7ca",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_fund_documents",
-      "source_url": "https://mafinancial.com/invest/private-credit/ma-credit-income-trust/performance-report.pdf",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "dc15244c605304d02de7dbc9",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::GCI",
-      "ticker": "GCI",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "GRYPHON CAPITAL INCOME TRUST",
-      "new_value": "",
-      "before_row_sha256": "af577c8e79463138815485037bad487463ede1d8af7cb57d9dd0b799b9088a13",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_fund_page",
-      "source_url": "https://gcapinvest.com/frequently-asked-questions/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "a408600219a9cc79c4c99ca8",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::KKC",
-      "ticker": "KKC",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "KKR CREDIT INCOME FUND",
-      "new_value": "",
-      "before_row_sha256": "4b740a2ba8ba34f36a0a2b41e62f7d7a6849b8cc41f1e20acf9affbc672fbf07",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_research_reports",
-      "source_url": "https://www.kkcaustralia.com.au/site/PDF/e09609f9-93a6-4778-9384-bc6beea7ac19/BondAdviserreport",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "153a8d6de32ecf0e44152852",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::QRI",
-      "ticker": "QRI",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "QUALITAS REAL ESTATE INCOME FUND",
-      "new_value": "",
-      "before_row_sha256": "bebea92a90a6e6b409357d9458641a9eb6ef6ce206f8595ec8e5ef125ee012a4",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_pds",
-      "source_url": "https://qualitas.com/wp-content/uploads/2026/05/QRI_PDS.pdf",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "3465588623d30c29a16d0409",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::CDO",
-      "ticker": "CDO",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "CADENCE OPPORTUNITIES FUND LIMITED.",
-      "new_value": "",
-      "before_row_sha256": "f71269aa693bd5a31b6ade583ff1ce27cd111d004870b1947d5765d0c4a522b4",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_fund_page",
-      "source_url": "https://www.cadencecapital.com.au/our-funds/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "60be25584d674f9e97e43af2",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::LGF",
-      "ticker": "LGF",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "L1 GOLD FUND LIMITED",
-      "new_value": "",
-      "before_row_sha256": "2c2dc534bbb0301e448533109529a18550161099ebcd4db8acb9b7def1e4472f",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_prospectus",
-      "source_url": "https://reporting.l1.com.au/wp-content/uploads/2026/03/L1-Gold-Fund-Limited-Prospectus.pdf",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "4fe83edbc86a8156cf3e8dcf",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "ASX::GVF",
-      "ticker": "GVF",
-      "exchange": "ASX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "STAUDE CAPITAL GLOBAL VALUE FUND LIMITED",
-      "new_value": "",
-      "before_row_sha256": "807de10685f46b9ebe9da4d3fddf01349b6d7dd80fd4ad342698006e94dd37da",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "issuer_company_summary",
-      "source_url": "https://www.globalvaluefund.com.au/company-summary",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "7d29d82176e6779c114298cf",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSXV::TBIX",
-      "ticker": "TBIX",
-      "exchange": "TSXV",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "TrustBIX Inc.",
-      "new_value": "",
-      "before_row_sha256": "13e5530622c174e7ec298c50b3cfd2efd3094ba9dc931a939ff64338e703a4e2",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "stockanalysis_company_profile",
-      "source_url": "https://stockanalysis.com/quote/tsxv/TBIX/company/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "96f71d4c8567eb8b785b1269",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::BTB",
-      "ticker": "BTB",
-      "exchange": "TSX",
-      "event_type": "out_of_scope",
-      "field_name": "",
-      "old_value": "BTB Real Estate Investment Trust",
-      "new_value": "",
-      "before_row_sha256": "fd0e91022be6027c9e2507a2ecc4d6cfecd0ba2850a8e9ee78639d2baa2bebc3",
-      "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
-      "source_key": "stockanalysis_company_profile",
-      "source_url": "https://stockanalysis.com/quote/tsx/BTB.UN/company/",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "496a70d845e32f7a9379a1ab",
+      "observation_id": "1184c58469d5685369df6e6a",
       "evidence_status": "reviewed"
     },
     {
@@ -837,7 +741,7 @@
       "new_value": "",
       "before_row_sha256": "f9a7113c791e113637807d0d29c2ffeba64c195cfe0abb1e0c485ffbded46d40",
       "effective_at": "",
-      "observed_at": "2026-11-05T08:22:28Z",
+      "observed_at": "2026-11-05T08:56:26Z",
       "source_key": "direxion_closure_notice",
       "source_url": "https://www.direxion.com/uploads/Direxion-Closing-Eight-ETFs.pdf",
       "source_report": "data/review_overrides/listing_transitions.csv",
@@ -867,9 +771,9 @@
     {
       "exchange": "ASX",
       "before_rows": 2259,
-      "after_rows": 2249,
-      "shrink_pct": 0.442674,
-      "removed_rows": 10,
+      "after_rows": 2259,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -1254,9 +1158,9 @@
     {
       "exchange": "NEO",
       "before_rows": 247,
-      "after_rows": 246,
-      "shrink_pct": 0.404858,
-      "removed_rows": 1,
+      "after_rows": 247,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -1344,9 +1248,9 @@
     {
       "exchange": "OTC",
       "before_rows": 11752,
-      "after_rows": 11750,
-      "shrink_pct": 0.017018,
-      "removed_rows": 2,
+      "after_rows": 11752,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -1506,18 +1410,18 @@
     {
       "exchange": "TSX",
       "before_rows": 2442,
-      "after_rows": 2436,
-      "shrink_pct": 0.2457,
-      "removed_rows": 6,
+      "after_rows": 2441,
+      "shrink_pct": 0.04095,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
     {
       "exchange": "TSXV",
       "before_rows": 1422,
-      "after_rows": 1421,
-      "shrink_pct": 0.070323,
-      "removed_rows": 1,
+      "after_rows": 1422,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },

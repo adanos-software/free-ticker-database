@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-05T08:23:49Z`
+Generated at: `2026-11-05T08:57:44Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -53,7 +53,7 @@ Generated at: `2026-11-05T08:23:49Z`
 | MSX | official_full | muscat_securities_companies |  | 109 | 86.24 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5622 | 81.55 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
-| NEO | official_full | cboe_canada_listing_directory |  | 449 | 46.1 |  | maintain | not_applicable |
+| NEO | official_full | cboe_canada_listing_directory |  | 449 | 46.33 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_company_profile_directory|ngx_equities_price_list | refresh_unavailable | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
 | NSE_IN | official_full | nse_india_securities_available |  | 3565 | 97.95 |  | maintain | not_applicable |
@@ -63,7 +63,7 @@ Generated at: `2026-11-05T08:23:49Z`
 | NYSE MKT | official_full | nasdaq_other_listed | ETF | 309 | 73.14 |  | maintain | not_applicable |
 | NZX | official_full | nzx_instruments |  | 172 | 49.42 |  | maintain | not_applicable |
 | OSL | official_full | euronext_equities|euronext_etfs |  | 293 | 97.61 | euronext_etfs | refresh_required | not_applicable |
-| OTC | official_full | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange |  | 11925 | 69.31 | otc_markets_security_profile|otc_markets_stock_screener | refresh_unavailable | not_applicable |
+| OTC | official_full | otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange |  | 11925 | 69.32 | otc_markets_security_profile|otc_markets_stock_screener | refresh_unavailable | not_applicable |
 | PSE | official_full | pse_listed_company_directory |  | 384 | 44.01 |  | maintain | not_applicable |
 | PSE_CZ | official_partial | pse_cz_shares_directory |  | 0 |  | pse_cz_shares_directory | denominator_missing | blocked_nonfresh_source |
 | PSX | official_full | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily |  | 724 | 53.87 | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily | refresh_unavailable | not_applicable |
