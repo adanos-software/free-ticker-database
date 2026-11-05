@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-05T17:48:06Z",
+    "generated_at": "2026-11-05T18:21:28Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -3476,53 +3476,6 @@
       "_members": [
         {
           "asset_type": "Stock",
-          "country": "Finland",
-          "country_code": "FI",
-          "exchange": "HEL",
-          "listing_key": "HEL::LUMO",
-          "name": "LUMO KODIT OYJ",
-          "ticker": "LUMO"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Finland",
-          "country_code": "FI",
-          "exchange": "LSE",
-          "listing_key": "LSE::0A0E",
-          "name": "Kojamo Oyj",
-          "ticker": "0A0E"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Finland",
-          "country_code": "FI",
-          "exchange": "OTC",
-          "listing_key": "OTC::KOJAF",
-          "name": "Lumo Kodit Oyj",
-          "ticker": "KOJAF"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "FI4000312251",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "HEL::LUMO|LSE::0A0E|OTC::KOJAF",
-      "member_exchanges": "HEL | LSE | OTC",
-      "member_names": "Kojamo Oyj | Lumo Kodit Oyj",
-      "member_tickers": "0A0E | KOJAF | LUMO",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Finland",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
           "country": "France",
           "country_code": "FR",
           "exchange": "Euronext",
@@ -5968,18 +5921,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 129,
+      "review_required_groups": 128,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 123,
-    "collision_groups": 129,
+    "closed_groups": 122,
+    "collision_groups": 128,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 94,
+      "isin_shared_by_distinct_issuers": 93,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-05T17:48:06Z",
-    "listings_involved": 375,
+    "generated_at": "2026-11-05T18:21:28Z",
+    "listings_involved": 372,
     "next_review_batches": [
       {
         "collision_groups": 26,
@@ -6049,11 +6002,6 @@
       {
         "collision_groups": 3,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Finland"
-      },
-      {
-        "collision_groups": 3,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Italy"
       },
       {
@@ -6070,6 +6018,11 @@
         "collision_groups": 2,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Bermuda"
+      },
+      {
+        "collision_groups": 2,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Finland"
       },
       {
         "collision_groups": 2,
@@ -6153,7 +6106,7 @@
       "Cayman Islands": 5,
       "China": 3,
       "Denmark": 1,
-      "Finland": 3,
+      "Finland": 2,
       "France": 5,
       "Germany": 13,
       "India": 7,

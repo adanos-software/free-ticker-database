@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-05T17:42:10Z",
+  "generated_at": "2026-11-05T18:18:34Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2129,
-  "decision_rows": 7023,
+  "conflict_count": 2128,
+  "decision_rows": 7021,
   "action_counts": {
     "kept_listing_keyed_identifier": 1375,
     "proposed_clear_conflicting_identifier": 1101,
-    "quarantined_unresolved_identifier": 4547
+    "quarantined_unresolved_identifier": 4545
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1101,
-  "quarantined_rows": 4547,
+  "quarantined_rows": 4545,
   "retained_rows": 1375,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -20880,45 +20880,6 @@
       "retained_isin": "FI4000306733"
     },
     {
-      "conflict_id": "0e62f654c844737c4836",
-      "isin": "FI4000312251",
-      "listing_key": "HEL::LUMO",
-      "ticker": "LUMO",
-      "exchange": "HEL",
-      "name": "LUMO KODIT OYJ",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FI4000312251"
-    },
-    {
-      "conflict_id": "0e62f654c844737c4836",
-      "isin": "FI4000312251",
-      "listing_key": "LSE::0A0E",
-      "ticker": "0A0E",
-      "exchange": "LSE",
-      "name": "Kojamo Oyj",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FI4000312251"
-    },
-    {
-      "conflict_id": "0e62f654c844737c4836",
-      "isin": "FI4000312251",
-      "listing_key": "OTC::KOJAF",
-      "ticker": "KOJAF",
-      "exchange": "OTC",
-      "name": "Lumo Kodit Oyj",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FI4000312251"
-    },
-    {
       "conflict_id": "e07e37502f57d499b250",
       "isin": "FI4000513593",
       "listing_key": "FSX::D9C",
@@ -27185,7 +27146,20 @@
       "retained_isin": "GB00BSZBP530"
     },
     {
-      "conflict_id": "1ffbe55b662ac76153ee",
+      "conflict_id": "929392721a4609ec411c",
+      "isin": "GB00BTQGS779",
+      "listing_key": "ATHEX::MTLN",
+      "ticker": "MTLN",
+      "exchange": "ATHEX",
+      "name": "Metlen Energy & Metals Plc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "GB00BTQGS779"
+    },
+    {
+      "conflict_id": "929392721a4609ec411c",
       "isin": "GB00BTQGS779",
       "listing_key": "LSE::MTLN",
       "ticker": "MTLN",
@@ -27198,7 +27172,7 @@
       "retained_isin": "GB00BTQGS779"
     },
     {
-      "conflict_id": "1ffbe55b662ac76153ee",
+      "conflict_id": "929392721a4609ec411c",
       "isin": "GB00BTQGS779",
       "listing_key": "XETRA::X4Z",
       "ticker": "X4Z",

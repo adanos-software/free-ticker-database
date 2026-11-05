@@ -1,18 +1,18 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-11-04T14:51:04Z`
+- Generated at: `2026-11-05T14:36:30Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `920`
-- Rotation vanished rows: `16`
-- Backlog rows: `904`
-- Still in database: `919`
+- Vanished reference rows: `958`
+- Rotation vanished rows: `39`
+- Backlog rows: `919`
+- Still in database: `932`
 - Applied drops: `0`
 
 ## Classifier counts
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 919 |
-| not_in_database | 1 |
+| manual_rename_vs_delisting_required | 932 |
+| not_in_database | 26 |
 
 ## Rows still in the database
 
@@ -258,6 +258,7 @@
 | BVB | VAC | bvb_shares_directory | manual_rename_vs_delisting_required | backlog |
 | BVB | VITK | bvb_shares_directory | manual_rename_vs_delisting_required | backlog |
 | Borsa Italiana | MNL | euronext_equities | manual_rename_vs_delisting_required | backlog |
+| Borsa Italiana | RWY | euronext_equities | manual_rename_vs_delisting_required | rotation |
 | Bursa | 1368 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 1503 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
 | Bursa | 7130 | bursa_equity_isin | manual_rename_vs_delisting_required | backlog |
@@ -269,6 +270,7 @@
 | Euronext | HAMO | euronext_etfs | manual_rename_vs_delisting_required | backlog |
 | Euronext | LHYFE | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | MLAIG | euronext_equities | manual_rename_vs_delisting_required | backlog |
+| Euronext | MLIFC | euronext_equities | manual_rename_vs_delisting_required | rotation |
 | Euronext | MLOKP | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | MOP | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | PERR | euronext_equities | manual_rename_vs_delisting_required | backlog |
@@ -317,6 +319,7 @@
 | FSX | 6V6 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 6Z4 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 7111 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | 73GN | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | 77I | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 7RBA | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 7S50 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -324,6 +327,7 @@
 | FSX | 7UP | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 7V60 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 7YS0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | 7ZG | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | 81U | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 82A2 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 862 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -376,6 +380,7 @@
 | FSX | GSZ | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | HQE1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | IJA2 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | IR0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | J3KA | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | J4D | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | J5A | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -389,6 +394,7 @@
 | FSX | L7G | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | LP1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | LT1B | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | LT7 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | LUR | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | LVO0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | M130 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -396,10 +402,12 @@
 | FSX | MKN2 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | MPCK | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | MT1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | MWG | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | NF0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | NFA | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | NI9 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | NK6 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | NNA | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
 | FSX | NNJ | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | ONK | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | OYM1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -461,11 +469,14 @@
 | HKEX | 02932 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02933 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02937 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 02938 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 02944 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 02945 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 02950 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 03011 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 03038 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 03427 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 04621 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 06878 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 08039 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 08567 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
@@ -496,6 +507,7 @@
 | KOSDAQ | 269620 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 471050 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KOSDAQ | 472220 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
+| KRX | 0040S0 | krx_etf_finder | manual_rename_vs_delisting_required | rotation |
 | KRX | 082640 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | KRX | 261920 | krx_etf_finder | manual_rename_vs_delisting_required | backlog |
 | KRX | 279060 | krx_listed_companies | manual_rename_vs_delisting_required | backlog |
@@ -548,7 +560,7 @@
 | NASDAQ | GEMG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | GFGF | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | GLGG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | GNTA | nasdaq_listed | manual_rename_vs_delisting_required | rotation |
+| NASDAQ | GNTA | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | IBOC | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | ICMO | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | KBAB | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
@@ -591,31 +603,31 @@
 | NSE_IN | ABCOTS | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | ALPHAGEO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | ARIES | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | BGLOBAL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | BGLOBAL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | CALSOFT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | CEREBRAINT | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | CLCIND | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | CMICABLES | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | CEREBRAINT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | CLCIND | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | CMICABLES | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | CTE | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | DTIL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | EDUCOMP | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | EDUCOMP | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | GFSTEELS | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | GVPTECH | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | HFCL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | ICICIPRULI | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | IMPEXFERRO | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | IMPEXFERRO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | INDIAGLYCO | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | KALYANIFRG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | KAYA | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | KOTARISUG | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | LASA | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | LASA | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | MANAKSTEEL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | NAGAFERT | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | NAGAFERT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | NATCAPSUQ | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | NOVARTIND | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
-| NSE_IN | ORTEL | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | NOVARTIND | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
+| NSE_IN | ORTEL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | PAR | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | RAJVIR | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | RAJVIR | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SBIBPB | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SBIETFCON | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SBIETFIT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
@@ -623,7 +635,7 @@
 | NSE_IN | SBIETFQLTY | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SBINEQWETF | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SBINMID150 | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | SELMC | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | SELMC | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SETF10GILT | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SETFGOLD | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SETFNIF50 | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
@@ -633,10 +645,10 @@
 | NSE_IN | SIGIND | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SIGMAADV | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SONAMLTD | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | SPELS | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | SPELS | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | SWARAJ | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | UCAL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
-| NSE_IN | UNIVAFOODS | nse_india_securities_available | manual_rename_vs_delisting_required | rotation |
+| NSE_IN | UNIVAFOODS | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NSE_IN | VCL | nse_india_securities_available | manual_rename_vs_delisting_required | backlog |
 | NYSE | ACA | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE | ACVA | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
@@ -644,6 +656,7 @@
 | NYSE | CCO | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE | ELME | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE | GBTG | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
+| NYSE | HLT | nasdaq_other_listed | manual_rename_vs_delisting_required | rotation |
 | NYSE | LCIV | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE | LYNX | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE | OBK | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
@@ -941,6 +954,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 16; still-in-database backlog carried: 904.
-- Still in database: 919; not in database: 1.
+- Rotation vanished rows: 39; still-in-database backlog carried: 919.
+- Still in database: 932; not in database: 26.
 - Applied drops from this classifier: 0.
