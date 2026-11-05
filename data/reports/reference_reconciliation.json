@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3399,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12561,
-      "exact_match": 100194,
+      "exact_identity_conflict": 12559,
+      "exact_match": 100196,
       "missing_from_database": 44555,
       "normalization_candidate": 1854,
       "out_of_scope": 8144
     },
-    "coverage_credited_keys": 100194,
+    "coverage_credited_keys": 100196,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44555,
-    "identity_conflict_rows": 12561,
+    "identity_conflict_rows": 12559,
     "mapping_candidate_rows": 1854
   },
   "rows": [
@@ -1592701,10 +1592701,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::XTER",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::XTERU",
@@ -2114445,10 +2114445,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::XTER",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::XTERU",

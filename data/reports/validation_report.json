@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-05T15:01:26Z",
+    "generated_at": "2026-11-05T17:19:21Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": false,
+  "passed": true,
   "summary": {
-    "ticker_rows": 65691,
+    "ticker_rows": 65692,
     "listing_rows": 97800,
-    "adanos_reference_rows": 65691,
+    "adanos_reference_rows": 65692,
     "entry_quality_rows": 97800,
     "error_gates": 88,
-    "failed_error_gates": 2,
+    "failed_error_gates": 0,
     "info_gates": 5
   },
   "gates": [
@@ -308,22 +308,9 @@
     {
       "name": "country_isin_prefix_mismatch_without_review",
       "severity": "error",
-      "passed": false,
-      "actual": 3,
-      "limit": 0,
-      "details": [
-        "NYSE::CDLR",
-        "NYSE::CDLR",
-        "NYSE::CDLR"
-      ],
-      "review_policy": "entry_quality_warning",
-      "review_subjects": [
-        {
-          "listing_key": "NYSE::CDLR",
-          "issue_type": "country_isin_mismatch"
-        }
-      ],
-      "review_subjects_complete": true
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "rows_with_mojibake_names",
@@ -531,13 +518,9 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": false,
-      "actual": 2,
-      "limit": 0,
-      "details": [
-        "NASDAQ::XTER",
-        "NYSE::CDLR"
-      ]
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "adanos_alias_findings",

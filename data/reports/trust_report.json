@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-05T14:57:26Z",
+    "generated_at": "2026-11-05T17:17:30Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,30 +26,30 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63653,
-    "joined_listings": 63653,
-    "scope_rows": 63653
+    "rows": 63654,
+    "joined_listings": 63654,
+    "scope_rows": 63654
   },
   "completeness": {
     "isin": {
-      "n": 63653,
-      "filled": 63030,
+      "n": 63654,
+      "filled": 63031,
       "missing": 623,
       "pct": 99.02,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "country": {
-      "n": 63653,
-      "filled": 63610,
+      "n": 63654,
+      "filled": 63611,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63653,
-      "filled": 62868,
+      "n": 63654,
+      "filled": 62869,
       "missing": 785,
       "pct": 98.77,
       "fills_needed_for_99": 149,
@@ -96,16 +96,16 @@
   },
   "identity": {
     "official_isin_mismatch": 9,
-    "official_name_mismatch": 9,
+    "official_name_mismatch": 8,
     "open_collision_groups": 6,
     "quarantine_unresolved": 1252,
     "quarantine_proposed_clear": 289,
     "quarantine_kept": 562
   },
   "entry_quality_status": {
-    "pass": 59670,
+    "pass": 59673,
     "source_gap": 3955,
-    "warn": 20,
+    "warn": 18,
     "notice": 8
   },
   "checks": [
@@ -132,8 +132,8 @@
       "name": "core_isin_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63653,
-        "filled": 63030,
+        "n": 63654,
+        "filled": 63031,
         "missing": 623,
         "pct": 99.02,
         "fills_needed_for_99": 0,
@@ -144,8 +144,8 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63653,
-        "filled": 62868,
+        "n": 63654,
+        "filled": 62869,
         "missing": 785,
         "pct": 98.77,
         "fills_needed_for_99": 149,
@@ -156,8 +156,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63653,
-        "filled": 63610,
+        "n": 63654,
+        "filled": 63611,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
@@ -168,7 +168,7 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 9,
+        "official_name_mismatch": 8,
         "sample": [
           "NASDAQ::ADIL",
           "NASDAQ::ASBP",
@@ -177,8 +177,7 @@
           "NASDAQ::INDV",
           "TSXV::MKT",
           "QSE::NLCS",
-          "TSXV::WED",
-          "NASDAQ::XTER"
+          "TSXV::WED"
         ]
       }
     },

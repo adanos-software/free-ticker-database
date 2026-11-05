@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-11-05T15:01:26Z`
+Generated at: `2026-11-05T17:19:21Z`
 
-Status: `FAIL`
+Status: `PASS`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 65,691 |
+| ticker_rows | 65,692 |
 | listing_rows | 97,800 |
-| adanos_reference_rows | 65,691 |
+| adanos_reference_rows | 65,692 |
 | entry_quality_rows | 97,800 |
 | error_gates | 88 |
-| failed_error_gates | 2 |
+| failed_error_gates | 0 |
 | info_gates | 5 |
 
 ## Gates
@@ -59,7 +59,7 @@ Status: `FAIL`
 | invalid_country_code_rows | error | PASS | 0 | 0 |
 | country_code_mismatch_rows | error | PASS | 0 | 0 |
 | rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
-| country_isin_prefix_mismatch_without_review | error | FAIL | 3 | 0 |
+| country_isin_prefix_mismatch_without_review | error | PASS | 0 | 0 |
 | rows_with_mojibake_names | error | PASS | 0 | 0 |
 | listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
@@ -89,7 +89,7 @@ Status: `FAIL`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | FAIL | 2 | 0 |
+| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
@@ -116,16 +116,4 @@ Status: `FAIL`
 
 ## Failed Gate Details
 
-### country_isin_prefix_mismatch_without_review
-
-- Actual: `3`
-- `NYSE::CDLR`
-- `NYSE::CDLR`
-- `NYSE::CDLR`
-
-### entry_quality_unexpected_warn_count
-
-- Actual: `2`
-- `NASDAQ::XTER`
-- `NYSE::CDLR`
-
+_No failed error gates._
