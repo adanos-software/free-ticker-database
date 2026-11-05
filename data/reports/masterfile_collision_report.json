@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100353,
-    "matched": 70305,
-    "collisions": 11738,
-    "missing": 18310
+    "official_symbols": 100343,
+    "matched": 70299,
+    "collisions": 11743,
+    "missing": 18301
   },
   "exchanges": [
     {
@@ -287,10 +287,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1673,
+      "official_symbols": 1675,
       "matched": 1322,
       "collisions": 58,
-      "missing": 293,
+      "missing": 295,
       "collision_examples": [
         {
           "ticker": "ALA",
@@ -722,10 +722,10 @@
     },
     {
       "exchange": "BME",
-      "official_symbols": 285,
+      "official_symbols": 268,
       "matched": 243,
       "collisions": 0,
-      "missing": 42,
+      "missing": 25,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -774,8 +774,8 @@
           "exchange": "BME"
         },
         {
-          "ticker": "S0127",
-          "name": "ALLOCATION",
+          "ticker": "S0203",
+          "name": "1948 INVERSIONS",
           "exchange": "BME"
         }
       ]
@@ -1042,8 +1042,8 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2963,
-      "matched": 247,
+      "official_symbols": 2962,
+      "matched": 246,
       "collisions": 1927,
       "missing": 789,
       "collision_examples": [
@@ -1411,10 +1411,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2038,
-      "matched": 1331,
+      "official_symbols": 2036,
+      "matched": 1330,
       "collisions": 375,
-      "missing": 332,
+      "missing": 331,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1554,9 +1554,9 @@
     {
       "exchange": "FSX",
       "official_symbols": 18170,
-      "matched": 7843,
-      "collisions": 4436,
-      "missing": 5891,
+      "matched": 7837,
+      "collisions": 4438,
+      "missing": 5895,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -1694,8 +1694,8 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3236,
-      "matched": 3167,
+      "official_symbols": 3235,
+      "matched": 3166,
       "collisions": 68,
       "missing": 1,
       "collision_examples": [
@@ -2200,8 +2200,8 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2123,
-      "matched": 1946,
+      "official_symbols": 2122,
+      "matched": 1945,
       "collisions": 14,
       "missing": 163,
       "collision_examples": [
@@ -2889,8 +2889,8 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 3565,
-      "matched": 3492,
+      "official_symbols": 3567,
+      "matched": 3494,
       "collisions": 73,
       "missing": 0,
       "collision_examples": [
@@ -3084,10 +3084,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3841,
+      "official_symbols": 3842,
       "matched": 1965,
       "collisions": 567,
-      "missing": 1309,
+      "missing": 1310,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3233,10 +3233,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2751,
+      "official_symbols": 2753,
       "matched": 2619,
       "collisions": 30,
-      "missing": 102,
+      "missing": 104,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -3652,9 +3652,9 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 293,
+      "official_symbols": 294,
       "matched": 286,
-      "collisions": 6,
+      "collisions": 7,
       "missing": 1,
       "collision_examples": [
         {
@@ -3672,6 +3672,14 @@
           "existing_exchanges": [
             "NASDAQ",
             "TSXV"
+          ]
+        },
+        {
+          "ticker": "CDLR",
+          "name": "CADELER",
+          "target_exchange": "OSL",
+          "existing_exchanges": [
+            "NYSE"
           ]
         },
         {
@@ -5280,9 +5288,9 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5544,
-      "matched": 5306,
-      "collisions": 236,
+      "official_symbols": 5548,
+      "matched": 5308,
+      "collisions": 238,
       "missing": 2,
       "collision_examples": [
         {

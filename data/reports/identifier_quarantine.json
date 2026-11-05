@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-05T08:56:26Z",
+  "generated_at": "2026-11-05T17:21:59Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2130,
-  "decision_rows": 7030,
+  "conflict_count": 2129,
+  "decision_rows": 7023,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1374,
-    "proposed_clear_conflicting_identifier": 1100,
-    "quarantined_unresolved_identifier": 4556
+    "kept_listing_keyed_identifier": 1375,
+    "proposed_clear_conflicting_identifier": 1101,
+    "quarantined_unresolved_identifier": 4547
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1100,
-  "quarantined_rows": 4556,
-  "retained_rows": 1374,
+  "proposed_clear_rows": 1101,
+  "quarantined_rows": 4547,
+  "retained_rows": 1375,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -24442,71 +24442,6 @@
       "retained_isin": "FR0013269123"
     },
     {
-      "conflict_id": "0eef00cbae6170d71dc9",
-      "isin": "FR0013326246",
-      "listing_key": "Euronext::URW",
-      "ticker": "URW",
-      "exchange": "Euronext",
-      "name": "Unibail-Rodamco-Westfield",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013326246"
-    },
-    {
-      "conflict_id": "0eef00cbae6170d71dc9",
-      "isin": "FR0013326246",
-      "listing_key": "LSE::0YO9",
-      "ticker": "0YO9",
-      "exchange": "LSE",
-      "name": "WFD Unibail Rodamco NV",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013326246"
-    },
-    {
-      "conflict_id": "0eef00cbae6170d71dc9",
-      "isin": "FR0013326246",
-      "listing_key": "OTC::UNBLF",
-      "ticker": "UNBLF",
-      "exchange": "OTC",
-      "name": "WFD Unibail Rodamco NV",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013326246"
-    },
-    {
-      "conflict_id": "0eef00cbae6170d71dc9",
-      "isin": "FR0013326246",
-      "listing_key": "XETRA::1BR1",
-      "ticker": "1BR1",
-      "exchange": "XETRA",
-      "name": "URW (STAPLED SHS)  EO-,05",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013326246"
-    },
-    {
-      "conflict_id": "0eef00cbae6170d71dc9",
-      "isin": "FR0013326246",
-      "listing_key": "XSTU::1BR1",
-      "ticker": "1BR1",
-      "exchange": "XSTU",
-      "name": "Unibail-Rodamco-Westfield",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0013326246"
-    },
-    {
       "conflict_id": "06dd5682e4e09dbb8597",
       "isin": "FR0013447729",
       "listing_key": "Euronext::VRLA",
@@ -27677,6 +27612,32 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "GG00BD95V148"
+    },
+    {
+      "conflict_id": "775dd8684ca7aebaec97",
+      "isin": "GG00BKTRRM22",
+      "listing_key": "LSE::RTW",
+      "ticker": "RTW",
+      "exchange": "LSE",
+      "name": "RTW Biotech Opportunities Ltd",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "GG00BKTRRM22"
+    },
+    {
+      "conflict_id": "775dd8684ca7aebaec97",
+      "isin": "GG00BKTRRM22",
+      "listing_key": "OTC::RTWFF",
+      "ticker": "RTWFF",
+      "exchange": "OTC",
+      "name": "RTW Venture Fund Limited",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "GG00BKTRRM22"
     },
     {
       "conflict_id": "c38f88aea9cdde7dba50",
@@ -35698,58 +35659,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IE00BD4TXV59"
-    },
-    {
-      "conflict_id": "25f1f37eb96138963dff",
-      "isin": "IE00BD5B1Y92",
-      "listing_key": "ATHEX::BOCHGR",
-      "ticker": "BOCHGR",
-      "exchange": "ATHEX",
-      "name": "BOCHGR",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IE00BD5B1Y92"
-    },
-    {
-      "conflict_id": "25f1f37eb96138963dff",
-      "isin": "IE00BD5B1Y92",
-      "listing_key": "FSX::318",
-      "ticker": "318",
-      "exchange": "FSX",
-      "name": "Bank of Cyprus Holdings PLC",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IE00BD5B1Y92"
-    },
-    {
-      "conflict_id": "25f1f37eb96138963dff",
-      "isin": "IE00BD5B1Y92",
-      "listing_key": "OTC::BKCYF",
-      "ticker": "BKCYF",
-      "exchange": "OTC",
-      "name": "Bank Of Cyprus Holdings PCL",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IE00BD5B1Y92"
-    },
-    {
-      "conflict_id": "25f1f37eb96138963dff",
-      "isin": "IE00BD5B1Y92",
-      "listing_key": "XSTU::318",
-      "ticker": "318",
-      "exchange": "XSTU",
-      "name": "Bank of Cyprus Holdings PLC",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "IE00BD5B1Y92"
     },
     {
       "conflict_id": "4397577bcca5fc91e4b1",
