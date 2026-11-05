@@ -7483,8 +7483,8 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 3245,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 3246,TSE,stock_sector,update,Real Estate,0.74,"Official JPX listed-issues file maps TSE code 3246 to JPX 33-industry '不動産業', which was normalized to a canonical stock sector."
 3248,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
-3249,TSE,asset_type,update,ETF,0.9,"JPX listed-issues flipped TSE::3249 from ETF to Stock in this rotation while the still-active jpx_tse_stock_detail row remains ETF; two official sources disagree, so the listing keeps ETF until a unique official product-class adjudication exists."
-3249,TSE,etf_category,update,Equity,0.9,Retain the pre-rotation ETF category for TSE::3249 because the JPX listed-issues vs stock-detail product-class conflict blocked the ETF-to-Stock flip.
+3249,TSE,asset_type,update,Stock,0.95,"JPX lists this security as a J-REIT (listed REIT issues page); repo convention classifies J-REITs as Stock (138 TSE REIT rows are Stock), not ETF. Source: https://www.jpx.co.jp/english/equities/products/reits/issues/index.html"
+3249,TSE,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSE::3249 to Stock.
 324A,TSE,stock_sector,update,Consumer Discretionary,high,JP/KR sector sweep 2026-06-17: GICS verified from business (TSE: JPX official 33-industry + agent; KR: agent)
 325A,TSE,stock_sector,update,Consumer Discretionary,0.74,"Official JPX listed-issues file maps TSE code 325A to JPX 33-industry '繊維製品', which was normalized to a canonical stock sector."
 3261,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
@@ -7628,8 +7628,8 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 3457,TSE,stock_sector,update,Real Estate,0.74,"Official JPX listed-issues file maps TSE code 3457 to JPX 33-industry '不動産業', which was normalized to a canonical stock sector."
 3459,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 3461,TSE,stock_sector,update,Real Estate,high,JP/KR sector sweep 2026-06-17: GICS verified from business (TSE: JPX official 33-industry + agent; KR: agent)
-3462,TSE,asset_type,update,ETF,0.9,"JPX listed-issues flipped TSE::3462 from ETF to Stock in this rotation while the still-active jpx_tse_stock_detail row remains ETF; two official sources disagree, so the listing keeps ETF until a unique official product-class adjudication exists."
-3462,TSE,etf_category,update,Real Estate,0.9,Retain the pre-rotation ETF category for TSE::3462 because the JPX listed-issues vs stock-detail product-class conflict blocked the ETF-to-Stock flip.
+3462,TSE,asset_type,update,Stock,0.95,"JPX lists this security as a J-REIT (listed REIT issues page); repo convention classifies J-REITs as Stock (138 TSE REIT rows are Stock), not ETF. Source: https://www.jpx.co.jp/english/equities/products/reits/issues/index.html"
+3462,TSE,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSE::3462 to Stock.
 3463,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 3468,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 3469,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
@@ -13195,11 +13195,11 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 8944,TSE,stock_sector,update,Real Estate,0.74,"Official JPX listed-issues file maps TSE code 8944 to JPX 33-industry '不動産業', which was normalized to a canonical stock sector."
 8945,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 8946,TSE,stock_sector,update,Real Estate,0.74,"Official JPX listed-issues file maps TSE code 8946 to JPX 33-industry '不動産業', which was normalized to a canonical stock sector."
-8951,TSE,asset_type,update,ETF,0.9,"JPX listed-issues flipped TSE::8951 from ETF to Stock in this rotation while the still-active jpx_tse_stock_detail row remains ETF; two official sources disagree, so the listing keeps ETF until a unique official product-class adjudication exists."
-8951,TSE,etf_category,update,Real Estate,0.9,Retain the pre-rotation ETF category for TSE::8951 because the JPX listed-issues vs stock-detail product-class conflict blocked the ETF-to-Stock flip.
+8951,TSE,asset_type,update,Stock,0.95,"JPX lists this security as a J-REIT (listed REIT issues page); repo convention classifies J-REITs as Stock (138 TSE REIT rows are Stock), not ETF. Source: https://www.jpx.co.jp/english/equities/products/reits/issues/index.html"
+8951,TSE,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSE::8951 to Stock.
 8952,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
-8953,TSE,asset_type,update,ETF,0.9,"JPX listed-issues flipped TSE::8953 from ETF to Stock in this rotation while the still-active jpx_tse_stock_detail row remains ETF; two official sources disagree, so the listing keeps ETF until a unique official product-class adjudication exists."
-8953,TSE,etf_category,update,Real Estate,0.9,Retain the pre-rotation ETF category for TSE::8953 because the JPX listed-issues vs stock-detail product-class conflict blocked the ETF-to-Stock flip.
+8953,TSE,asset_type,update,Stock,0.95,"JPX lists this security as a J-REIT (listed REIT issues page); repo convention classifies J-REITs as Stock (138 TSE REIT rows are Stock), not ETF. Source: https://www.jpx.co.jp/english/equities/products/reits/issues/index.html"
+8953,TSE,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSE::8953 to Stock.
 8954,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 8955,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 8956,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
@@ -13207,14 +13207,14 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 8958,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 896,FSX,stock_sector,update,Financials,0.88,Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset non-OTC peer sectors to normalize to one value.
 8960,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
-8961,TSE,asset_type,update,ETF,0.9,"JPX listed-issues flipped TSE::8961 from ETF to Stock in this rotation while the still-active jpx_tse_stock_detail row remains ETF; two official sources disagree, so the listing keeps ETF until a unique official product-class adjudication exists."
-8961,TSE,etf_category,update,Real Estate,0.9,Retain the pre-rotation ETF category for TSE::8961 because the JPX listed-issues vs stock-detail product-class conflict blocked the ETF-to-Stock flip.
+8961,TSE,asset_type,update,Stock,0.95,"JPX lists this security as a J-REIT (listed REIT issues page); repo convention classifies J-REITs as Stock (138 TSE REIT rows are Stock), not ETF. Source: https://www.jpx.co.jp/english/equities/products/reits/issues/index.html"
+8961,TSE,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSE::8961 to Stock.
 89618,HKEX,stock_sector,update,Consumer Discretionary,0.88,Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset non-OTC peer sectors to normalize to one value.
 8963,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 8964,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 8966,Bursa,name,update,Techbase Industries Berhad,0.90,"Validated rename (multi-source web): KLSE/MarketScreener: Prolexus Berhad renamed Techbase Industries Berhad, trading under new name eff. 9 Feb 2024, code 8966, ticker TECHBASE"
-8967,TSE,asset_type,update,ETF,0.9,"JPX listed-issues flipped TSE::8967 from ETF to Stock in this rotation while the still-active jpx_tse_stock_detail row remains ETF; two official sources disagree, so the listing keeps ETF until a unique official product-class adjudication exists."
-8967,TSE,etf_category,update,Real Estate,0.9,Retain the pre-rotation ETF category for TSE::8967 because the JPX listed-issues vs stock-detail product-class conflict blocked the ETF-to-Stock flip.
+8967,TSE,asset_type,update,Stock,0.95,"JPX lists this security as a J-REIT (listed REIT issues page); repo convention classifies J-REITs as Stock (138 TSE REIT rows are Stock), not ETF. Source: https://www.jpx.co.jp/english/equities/products/reits/issues/index.html"
+8967,TSE,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSE::8967 to Stock.
 8968,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 8972,TSE,stock_sector,update,Real Estate,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 8975,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
@@ -13603,8 +13603,8 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 9278,TSE,stock_sector,update,Consumer Discretionary,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
 9279,TSE,stock_sector,update,Consumer Discretionary,0.74,"Official JPX listed-issues file maps TSE code 9279 to JPX 33-industry '小売業', which was normalized to a canonical stock sector."
 9282,TSE,stock_sector,update,Real Estate,0.78,"FinanceDatabase supplied a normalized sector/category for a row without sector; accepted only after ticker, mapped exchange code, asset type, and issuer/product-name gates matched."
-9284,TSE,asset_type,update,ETF,0.9,"JPX listed-issues flipped TSE::9284 from ETF to Stock in this rotation while the still-active jpx_tse_stock_detail row remains ETF; two official sources disagree, so the listing keeps ETF until a unique official product-class adjudication exists."
-9284,TSE,etf_category,update,Equity,0.9,Retain the pre-rotation ETF category for TSE::9284 because the JPX listed-issues vs stock-detail product-class conflict blocked the ETF-to-Stock flip.
+9284,TSE,asset_type,update,Stock,0.95,"JPX lists Canadian Solar Infrastructure Fund as a listed infrastructure fund (J-REIT-style investment corporation), JPX listed issues type Stock; not an ETF. Source: https://www.jpx.co.jp/english/equities/products/infrastructure/issues/index.html"
+9284,TSE,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSE::9284 to Stock.
 9285,TSE,stock_sector,update,Utilities,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 9286,TSE,stock_sector,update,Utilities,0.85,Sector fill 2026-06 (multi-agent): GICS sector determined from the issuer's actual business via authoritative web/exchange sources for a row that was missing stock_sector.
 92IP,LSE,stock_sector,update,Consumer Discretionary,0.72,"TradingView free scanner supplied a stock sector mapped to canonical GICS; accepted only after exact scanner exchange, symbol, stock asset type, issuer-name, and canonical-sector gates matched."
@@ -51961,3 +51961,32 @@ KBX,XSTU,stock_sector,update,Industrials,0.9,Validation 2026-11-05-07 (two indep
 0KBI,LSE,stock_sector,update,Industrials,0.9,Validation 2026-11-05-07 (two independent sources agree): Same-ISIN peer of XHAN::KBX: Knorr-Bremse AG is GICS Industrials / Construction Machinery & Heavy Transportation Equipment (ChartMill KBX.DE; Deutsche Boerse listed-companies workbook Industrial / Machinery); primary XETRA::KBX already carries Industrials. Source: https://www.chartmill.com/stock/quote/KBX.DE/profile Source: https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx
 AS4,FSX,stock_sector,update,Materials,0.9,Validation 2026-11-05-07 (two independent sources agree): Same-ISIN peer of XSTU::AS4: Corticeira Amorim is a Materials company (Yahoo COR.LS Basic Materials; TradingView EURONEXT:COR Process Industries). Consumer Staples came from same-ISIN peer propagation. Source: https://finance.yahoo.com/quote/COR.LS/profile/ Source: https://www.tradingview.com/symbols/EURONEXT-COR/
 0O7J,LSE,stock_sector,update,Materials,0.9,Validation 2026-11-05-07 (two independent sources agree): Same-ISIN peer of XSTU::AS4: Corticeira Amorim is a Materials company (Yahoo COR.LS Basic Materials; TradingView EURONEXT:COR Process Industries). Consumer Staples came from same-ISIN peer propagation. Source: https://finance.yahoo.com/quote/COR.LS/profile/ Source: https://www.tradingview.com/symbols/EURONEXT-COR/
+CUYTF,OTC,asset_type,update,Stock,0.95,"Official OTC Markets stock screener lists CUYTF (Colruyt Group N.V.) as a stock; operating supermarket company, not an ETF. Source: https://www.otcmarkets.com/research/stock-screener/api/downloadCSV?greyAccess=false&expertAccess=false"
+CUYTF,OTC,etf_category,clear,,0.95,Clear ETF taxonomy after recoding OTC::CUYTF to Stock.
+CUYTF,OTC,stock_sector,update,Consumer Staples,0.95,Sector for reclassified OTC::CUYTF: Consumer Staples (otc_markets_stock_screener).
+CUYTY,OTC,asset_type,update,Stock,0.95,"Official OTC Markets stock screener lists CUYTY (Colruyt ADR) as a stock; operating company ADR, not an ETF. Source: https://www.otcmarkets.com/research/stock-screener/api/downloadCSV?greyAccess=false&expertAccess=false"
+CUYTY,OTC,etf_category,clear,,0.95,Clear ETF taxonomy after recoding OTC::CUYTY to Stock.
+CUYTY,OTC,stock_sector,update,Consumer Staples,0.95,Sector for reclassified OTC::CUYTY: Consumer Staples (otc_markets_stock_screener).
+3249,TSE,stock_sector,update,Real Estate,0.95,Sector for reclassified TSE::3249: Real Estate (jpx_reit_issues).
+3462,TSE,stock_sector,update,Real Estate,0.95,Sector for reclassified TSE::3462: Real Estate (jpx_reit_issues).
+8951,TSE,stock_sector,update,Real Estate,0.95,Sector for reclassified TSE::8951: Real Estate (jpx_reit_issues).
+8953,TSE,stock_sector,update,Real Estate,0.95,Sector for reclassified TSE::8953: Real Estate (jpx_reit_issues).
+8961,TSE,stock_sector,update,Real Estate,0.95,Sector for reclassified TSE::8961: Real Estate (jpx_reit_issues).
+8967,TSE,stock_sector,update,Real Estate,0.95,Sector for reclassified TSE::8967: Real Estate (jpx_reit_issues).
+DIR,TSX,asset_type,update,Stock,0.95,"Dream Industrial REIT is a large operating real estate investment trust, not an ETF; reclassified (kept) per big-REIT rule. Source: https://stockanalysis.com/quote/tsx/DIR.UN/company/"
+DIR,TSX,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSX::DIR to Stock.
+DIR,TSX,stock_sector,update,Real Estate,0.95,Sector for reclassified TSX::DIR: Real Estate (stockanalysis_company_profile).
+FCR,TSX,asset_type,update,Stock,0.95,"First Capital REIT is a large operating real estate investment trust, not an ETF; reclassified (kept) per big-REIT rule. Source: https://stockanalysis.com/quote/tsx/FCR.UN/company/"
+FCR,TSX,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSX::FCR to Stock.
+FCR,TSX,stock_sector,update,Real Estate,0.95,Sector for reclassified TSX::FCR: Real Estate (stockanalysis_company_profile).
+SRU,TSX,asset_type,update,Stock,0.95,"SmartCentres REIT is a large operating real estate investment trust, not an ETF; reclassified (kept) per big-REIT rule. Source: https://stockanalysis.com/quote/tsx/SRU.UN/company/"
+SRU,TSX,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSX::SRU to Stock.
+SRU,TSX,stock_sector,update,Real Estate,0.95,Sector for reclassified TSX::SRU: Real Estate (stockanalysis_company_profile).
+PMZ,TSX,asset_type,update,Stock,0.95,"Primaris REIT is a large operating real estate investment trust, not an ETF; reclassified (kept) per big-REIT rule. Source: https://stockanalysis.com/quote/tsx/PMZ.UN/company/"
+PMZ,TSX,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSX::PMZ to Stock.
+PMZ,TSX,stock_sector,update,Real Estate,0.95,Sector for reclassified TSX::PMZ: Real Estate (stockanalysis_company_profile).
+BPF,TSX,asset_type,update,Stock,0.95,"Boston Pizza Royalties Income Fund is an operating royalty income trust, not an ETF; reclassified (kept). Source: https://stockanalysis.com/quote/tsx/BPF.UN/company/"
+BPF,TSX,etf_category,clear,,0.95,Clear ETF taxonomy after recoding TSX::BPF to Stock.
+RFF,ASX,asset_type,update,Stock,0.95,"Rural Funds Group is an ASX-listed agricultural REIT (stapled security), not an ETF; reclassified (kept) per big-REIT rule. Source: https://www.ruralfunds.com.au/investments/rural-funds-group"
+RFF,ASX,etf_category,clear,,0.95,Clear ETF taxonomy after recoding ASX::RFF to Stock.
+RFF,ASX,stock_sector,update,Real Estate,0.95,Sector for reclassified ASX::RFF: Real Estate (issuer_fund_page).

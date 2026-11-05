@@ -13,18 +13,18 @@ from typing import Any
 
 try:
     from scripts.lib.merge_evidence import (
-        CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
-        canonical_row_payload, event_has_provenance, event_timestamp_is_valid,
-        listing_key, row_fingerprint,
+        CRITICAL_FIELDS, FIELD_EVENT_TYPES, OUT_OF_SCOPE_ASSET_TYPES, OUT_OF_SCOPE_EVENT_TYPE,
+        REMOVAL_EVENT_TYPES, canonical_row_payload, event_has_provenance, event_timestamp_is_valid,
+        listing_key, out_of_scope_transition_problems, row_fingerprint,
     )
     from scripts.lib.official_change_evidence import build_official_change_evidence
     from scripts.lib.official_change_evidence import is_valid_isin
     from scripts.lib.us_exchange_directory import load_sec_exchange_payload
 except ModuleNotFoundError:  # pragma: no cover
     from lib.merge_evidence import (
-        CRITICAL_FIELDS, FIELD_EVENT_TYPES, REMOVAL_EVENT_TYPES,
-        canonical_row_payload, event_has_provenance, event_timestamp_is_valid,
-        listing_key, row_fingerprint,
+        CRITICAL_FIELDS, FIELD_EVENT_TYPES, OUT_OF_SCOPE_ASSET_TYPES, OUT_OF_SCOPE_EVENT_TYPE,
+        REMOVAL_EVENT_TYPES, canonical_row_payload, event_has_provenance, event_timestamp_is_valid,
+        listing_key, out_of_scope_transition_problems, row_fingerprint,
     )
     from lib.official_change_evidence import build_official_change_evidence
     from lib.official_change_evidence import is_valid_isin
@@ -142,6 +142,12 @@ def build_reviewed_transition_evidence(
         if event_type == "delisted":
             shape_is_valid = not new_key
             field_name, old_value, new_value = "", old_row.get("name", ""), ""
+        elif event_type == OUT_OF_SCOPE_EVENT_TYPE:
+            shape_is_valid = (
+                not out_of_scope_transition_problems(transition)
+                and old_row.get("asset_type", "") in OUT_OF_SCOPE_ASSET_TYPES
+            )
+            field_name, old_value, new_value = "", old_row.get("name", ""), ""
         elif not new_row:
             continue
         elif event_type == "venue_changed":
@@ -161,11 +167,13 @@ def build_reviewed_transition_evidence(
             continue
         identity_type = transition.get("identity_type", "").strip()
         identity_value = transition.get("identity_value", "").strip().upper()
-        if event_type == "delisted" and identity_type == "exact_isin":
+        if event_type in {"delisted", OUT_OF_SCOPE_EVENT_TYPE} and identity_type == "exact_isin":
             identity_is_valid = bool(
                 is_valid_isin(identity_value)
                 and old_row.get("isin", "").strip().upper() == identity_value
             )
+        elif event_type == OUT_OF_SCOPE_EVENT_TYPE and identity_type == "exact_listing":
+            identity_is_valid = identity_value == old_key.upper()
         elif identity_type == "same_isin" and new_row:
             identity_is_valid = bool(
                 is_valid_isin(identity_value)

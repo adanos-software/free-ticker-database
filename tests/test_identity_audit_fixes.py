@@ -11,6 +11,13 @@ TRANSITIONS = ROOT / "data/review_overrides/listing_transitions.csv"
 DROPS = ROOT / "data/review_overrides/drop_entries.csv"
 ALLOWLIST = ROOT / "data/reports/entry_quality_warn_allowlist.csv"
 LISTINGS = ROOT / "data/listings.csv"
+# Rows later removed by a reviewed out_of_scope transition (e.g. closed-end funds) keep their
+# metadata override rows but no longer appear in listings.csv.
+OUT_OF_SCOPE_REMOVED = {
+    row["old_listing_key"]
+    for row in load_csv(ROOT / "data/review_overrides/listing_transitions.csv")
+    if row["event_type"] == "out_of_scope"
+}
 COVERAGE = ROOT / "data/coverage_expansion_listings.csv"
 
 ISSUE449_ISIN_CLEARS = {
@@ -347,9 +354,13 @@ def test_lse_rea_official_directory_isin_fill() -> None:
 def test_cleared_stolen_isins_leave_identiv_and_venue_countries() -> None:
     listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
     for (ticker, exchange), stolen in STOLEN_ISIN_CLEARS.items():
+        if f"{exchange}::{ticker}" in OUT_OF_SCOPE_REMOVED:
+            continue
         row = listings[f"{exchange}::{ticker}"]
         assert row["isin"] == "", (exchange, ticker, stolen, row["isin"])
     for ticker, exchange in COUNTRY_CLEARS:
+        if f"{exchange}::{ticker}" in OUT_OF_SCOPE_REMOVED:
+            continue
         row = listings[f"{exchange}::{ticker}"]
         assert row["country"] == "", (exchange, ticker, row["country"])
         assert row["country_code"] == "", (exchange, ticker, row["country_code"])
@@ -424,6 +435,8 @@ def test_asx_official_isins_replace_cleared_stolen_values() -> None:
         assert row["proposed_value"] == official
         assert stolen in row["reason"]
         assert official != stolen
+        if f"{exchange}::{ticker}" in OUT_OF_SCOPE_REMOVED:
+            continue
         listing = listings[f"{exchange}::{ticker}"]
         assert listing["isin"] == official
         assert stolen not in listing["isin"]
