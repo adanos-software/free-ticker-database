@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-05T17:21:59Z",
+  "generated_at": "2026-11-05T18:18:34Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1980,
+  "reconciled_rows": 1979,
   "applied_rows": 0,
-  "proposed_rows": 1980,
+  "proposed_rows": 1979,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -17734,21 +17734,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
       "observation_id": "3f0d6d1464ce6ee6b1c8c01f",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "LSE::0A0E",
-      "action": "proposed",
-      "ticker": "0A0E",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "isin": "FI4000312251",
-      "old_name": "Kojamo Oyj",
-      "new_name": "LUMO KODIT OYJ",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "96990fcb69ec7c1b5a3806ac",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

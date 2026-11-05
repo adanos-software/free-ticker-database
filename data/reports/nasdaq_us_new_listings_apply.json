@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-11-05T14:36:34Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-11-05T14:55:35Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,19 +11,21 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 5,
-    "accepted_rows": 4,
-    "skipped_rows": 1,
+    "new_supported_rows": 10,
+    "accepted_rows": 8,
+    "skipped_rows": 2,
     "detected_symbol_changes": 0,
     "accepted_by_exchange": {
       "BATS": 2,
+      "NASDAQ": 4,
       "NYSE ARCA": 2
     },
     "accepted_by_target": {
-      "supplement": 4
+      "coverage_expansion": 1,
+      "supplement": 7
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 1
+      "excluded_non_common_stock": 2
     }
   },
   "accepted": [
@@ -54,6 +56,67 @@
       "aliases": "",
       "source_key": "nasdaq_other_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "ACEM",
+      "name": "American Century Emerging Markets Insights ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "AGLT",
+      "name": "Agility Robotics, Inc. - Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "",
+      "country_code": "",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "listing_key": "NASDAQ::HLT",
+      "ticker": "HLT",
+      "exchange": "NASDAQ",
+      "name": "Hilton Worldwide Holdings Inc. - Common Stock",
+      "asset_type": "Stock",
+      "stock_sector": "",
+      "etf_category": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "apply_target": "coverage_expansion"
+    },
+    {
+      "ticker": "INJC",
+      "name": "Canary Staked INJ ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
       "reference_scope": "exchange_directory",
       "apply_target": "supplement"
     },
@@ -89,6 +152,14 @@
     }
   ],
   "skipped": [
+    {
+      "ticker": "AGLTW",
+      "exchange": "NASDAQ",
+      "name": "Agility Robotics, Inc. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
     {
       "ticker": "BFH$C",
       "exchange": "NYSE",
