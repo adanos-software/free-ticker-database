@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 100353,
-    "matched": 70315,
-    "collisions": 11736,
-    "missing": 18302
+    "matched": 70302,
+    "collisions": 11734,
+    "missing": 18317
   },
   "exchanges": [
     {
@@ -2584,9 +2584,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5622,
-      "matched": 4586,
+      "matched": 4585,
       "collisions": 60,
-      "missing": 976,
+      "missing": 977,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -2727,9 +2727,9 @@
     {
       "exchange": "NEO",
       "official_symbols": 449,
-      "matched": 208,
+      "matched": 207,
       "collisions": 69,
-      "missing": 172,
+      "missing": 173,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -3085,9 +3085,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3841,
-      "matched": 1974,
-      "collisions": 565,
-      "missing": 1302,
+      "matched": 1965,
+      "collisions": 567,
+      "missing": 1309,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3719,9 +3719,9 @@
     {
       "exchange": "OTC",
       "official_symbols": 11925,
-      "matched": 8267,
+      "matched": 8265,
       "collisions": 25,
-      "missing": 3633,
+      "missing": 3635,
       "collision_examples": [
         {
           "ticker": "BCOW",
@@ -4352,8 +4352,8 @@
       "exchange": "SGX",
       "official_symbols": 765,
       "matched": 635,
-      "collisions": 130,
-      "missing": 0,
+      "collisions": 129,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4445,7 +4445,13 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "GLS",
+          "name": "Lion SG Phy Gold S$",
+          "exchange": "SGX"
+        }
+      ]
     },
     {
       "exchange": "SSE_CL",
@@ -5123,8 +5129,8 @@
       "exchange": "UPCOM",
       "official_symbols": 818,
       "matched": 2,
-      "collisions": 523,
-      "missing": 293,
+      "collisions": 520,
+      "missing": 296,
       "collision_examples": [
         {
           "ticker": "AAH",
