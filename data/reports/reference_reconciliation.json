@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 170925,
-    "source_specific_reference_keys": 170925,
+    "active_official_reference_rows": 170921,
+    "source_specific_reference_keys": 170921,
     "classification_counts": {
       "alternate_listing_line": 3399,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12558,
-      "exact_match": 100192,
-      "missing_from_database": 44583,
+      "exact_match": 100189,
+      "missing_from_database": 44582,
       "normalization_candidate": 1854,
       "out_of_scope": 8145
     },
-    "coverage_credited_keys": 100192,
+    "coverage_credited_keys": 100189,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44583,
+    "in_scope_missing_rows": 44582,
     "identity_conflict_rows": 12558,
     "mapping_candidate_rows": 1854
   },
@@ -1550845,10 +1550845,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::LEDR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::LEDRU",
@@ -1633891,38 +1633891,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::BATS::SKHA",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::SKHA",
-      "exchange": "BATS",
-      "ticker": "SKHA",
-      "asset_types": "ETF",
-      "names": "Tradr 2X Long SK hynix Daily ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::SKHA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::BATS::SKHN",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::SKHN",
-      "exchange": "BATS",
-      "ticker": "SKHN",
-      "asset_types": "ETF",
-      "names": "Tradr 2X Short SK hynix Daily ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::SKHN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::BATS::SKHQ",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::SKHQ",
@@ -1679571,22 +1679539,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::USE",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::USE",
-      "exchange": "NYSE ARCA",
-      "ticker": "USE",
-      "asset_types": "ETF",
-      "names": "USCF Energy Commodity Strategy Absolute Return Fund",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::USE",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::USFE",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::USFE",
@@ -1681680,22 +1681632,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::WSMD",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::WTIB",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::WTIB",
-      "exchange": "NYSE ARCA",
-      "ticker": "WTIB",
-      "asset_types": "ETF",
-      "names": "USCF Oil Plus Bitcoin Strategy Fund",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::WTIB",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
