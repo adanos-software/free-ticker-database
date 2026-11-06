@@ -1523,7 +1523,7 @@
       "expected_format": "sgx_securities_prices_json",
       "implementation_status": "implemented",
       "missing_isin": 0,
-      "missing_sector_or_category": 18,
+      "missing_sector_or_category": 19,
       "notes": "The official api.sgx.com securities endpoint exposes SGX code, name, market board, instrument type, and trading metadata. The official api.sgx.com/marketmetadata/v2 endpoint maps SGX stockCode to valid ISINs and IBM codes. Parser keeps stocks, REITs, business trusts, ADRs, and ETFs, excluding warrants, certificates, and bonds.",
       "official_full_upgrade_plan": "complete_official_exchange_directory_present",
       "official_source_count": 1,
@@ -1536,7 +1536,7 @@
       "source_mode": "network",
       "source_refresh_queue": "fresh_no_refresh_needed",
       "source_url": "https://www.sgx.com/securities/securities-prices",
-      "tickers": 644,
+      "tickers": 645,
       "unresolved_findings": 2,
       "venue_name": "Singapore Exchange"
     },
@@ -2090,7 +2090,7 @@
       "official_full": 35,
       "official_partial": 33
     },
-    "generated_at": "2026-11-06T14:38:17Z",
+    "generated_at": "2026-11-06T14:21:34Z",
     "global_expansion_candidates": 0,
     "high_priority_rows": 28,
     "official_full_upgrade_plan_counts": {

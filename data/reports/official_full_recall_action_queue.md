@@ -23,10 +23,10 @@ Rows: `23`
 | 14 | B3 | 90.76 | 125 | 0 | collision_free_supplement |
 | 15 | NYSE ARCA | 96.25 | 102 | 30 | not_in_supplement_allowlist |
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
-| 17 | NYSE MKT | 82.18 | 49 | 34 | not_in_supplement_allowlist |
-| 18 | SET | 95.3 | 38 | 135 | not_in_supplement_allowlist |
-| 19 | BSE_IN | 99.35 | 33 | 121 | collision_free_supplement |
-| 20 | BME | 90.67 | 25 | 0 | not_in_supplement_allowlist |
+| 17 | BME | 79.93 | 61 | 2 | not_in_supplement_allowlist |
+| 18 | NYSE MKT | 82.18 | 49 | 34 | not_in_supplement_allowlist |
+| 19 | SET | 95.3 | 38 | 135 | not_in_supplement_allowlist |
+| 20 | BSE_IN | 99.35 | 33 | 121 | collision_free_supplement |
 | 21 | IDX | 97.67 | 18 | 188 | not_in_supplement_allowlist |
 | 22 | TXSE | 0.0 | 8 | 14 | not_in_supplement_allowlist |
 | 23 | CSE_LK | 99.07 | 3 | 0 | collision_free_supplement |

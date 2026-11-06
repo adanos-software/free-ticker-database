@@ -63,7 +63,7 @@
       "etf_missing_count": 28,
       "exchange": "NASDAQ",
       "field": "missing_isin_primary",
-      "missing_count": 69,
+      "missing_count": 68,
       "notes": "Residual US gaps are mostly ETF tails; keep in small batches.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -72,7 +72,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-      "stock_missing_count": 41,
+      "stock_missing_count": 40,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -728,7 +728,7 @@
       "etf_missing_count": 0,
       "exchange": "NASDAQ",
       "field": "missing_sector_stock",
-      "missing_count": 13,
+      "missing_count": 12,
       "notes": "Source research needed before applying.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -737,7 +737,7 @@
       "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 13,
+      "stock_missing_count": 12,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -1339,10 +1339,10 @@
     },
     "field_totals": {
       "missing_etf_category": 104,
-      "missing_isin_primary": 620,
-      "missing_sector_stock": 646
+      "missing_isin_primary": 619,
+      "missing_sector_stock": 645
     },
-    "generated_at": "2026-11-06T14:38:22Z",
+    "generated_at": "2026-11-06T14:21:39Z",
     "legacy_primary_ticker_collision_rows": 4857,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1508,13 +1508,13 @@
         "etf_missing_count": 28,
         "exchange": "NASDAQ",
         "field": "missing_isin_primary",
-        "missing_count": 69,
+        "missing_count": 68,
         "official_source_count": 3,
         "recommended_source": "Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals.",
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-        "stock_missing_count": 41,
+        "stock_missing_count": 40,
         "target_field": "isin",
         "venue_status": "official_full",
         "why_next": "highest remaining missing-count workflow"
@@ -1621,7 +1621,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 11743,
+    "official_masterfile_collisions": 11744,
     "rows": 70
   }
 }

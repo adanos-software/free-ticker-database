@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-11-06T14:38:22Z`
+Generated at: `2026-11-06T14:21:39Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `620`
-- Missing stock sectors: `646`
+- Missing primary ISIN rows: `619`
+- Missing stock sectors: `645`
 - Missing ETF categories: `104`
-- Official symbol collisions tracked in exchange references: `11743`
+- Official symbol collisions tracked in exchange references: `11744`
 - Core rows hidden only by the legacy global-ticker compatibility export: `4857`
 
 ## Next Safe Batches
@@ -20,7 +20,7 @@ Generated at: `2026-11-06T14:38:22Z`
 | 4 | OTC | missing_sector_stock | 92 | candidate_for_official_followup | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | yes |
 | 5 | TSX | missing_isin_primary | 87 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 6 | NYSE ARCA | missing_isin_primary | 77 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
-| 7 | NASDAQ | missing_isin_primary | 69 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 7 | NASDAQ | missing_isin_primary | 68 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 8 | TSXV | missing_isin_primary | 61 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 9 | XETRA | missing_etf_category | 44 | candidate_for_official_followup | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 10 | BATS | missing_isin_primary | 43 | candidate_for_official_followup | Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, prospectus, or another reviewed identifier source. | yes |
@@ -36,7 +36,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 1 | ASX | All | 98 | official_partial | Official ASX ISIN workbook. | no |
 | 2 | TSX | All | 87 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 3 | NYSE ARCA | All | 77 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
-| 4 | NASDAQ | All | 69 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 4 | NASDAQ | All | 68 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 5 | TSXV | All | 61 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 6 | BATS | All | 43 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 7 | SSE | All | 34 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
@@ -92,7 +92,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 8 | HKEX | 23 | 23 | 0 | official_full |
 | 9 | AMS | 19 | 1 | 18 | official_full |
 | 10 | BIST | 19 | 19 | 0 | official_full |
-| 11 | NASDAQ | 19 | 13 | 6 | official_full |
+| 11 | NASDAQ | 18 | 12 | 6 | official_full |
 | 12 | BSE_IN | 17 | 17 | 0 | official_full |
 
 ## Model Migration Prep
