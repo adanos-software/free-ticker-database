@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-06T06:51:25Z",
-    "rows": 8225,
+    "generated_at": "2026-11-06T09:56:26Z",
+    "rows": 8224,
     "field_totals": {
       "missing_etf_category": 104,
       "missing_isin_primary": 619,
-      "missing_sector_stock": 646,
+      "missing_sector_stock": 645,
       "official_reference_gap": 6856
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 155,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 460,
+      "official_industry_taxonomy_unavailable_gap": 459,
       "official_product_taxonomy_unavailable_gap": 80,
       "official_reference_symbol_collision_gap": 1188,
       "official_reference_unmatched_source_gap": 5668,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 50,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 460,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 459,
       "missing_sector_stock:otc_sector_source_gap": 92,
       "missing_sector_stock:shell_or_cpc_sector_gap": 6,
       "official_reference_gap:official_reference_symbol_collision_gap": 1188,
@@ -160,7 +160,7 @@
         },
         {
           "exchange": "HNX",
-          "rows": 29
+          "rows": 28
         },
         {
           "exchange": "BVB",
@@ -19040,23 +19040,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HNX::VCC;exchange=HNX;ticker=VCC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HNX::VDL",
-      "ticker": "VDL",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "CTCP Thực phẩm Lâm Đồng",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::VDL;exchange=HNX;ticker=VDL;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
