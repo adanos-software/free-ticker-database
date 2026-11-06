@@ -1,10 +1,10 @@
 # Completion Backlog
 
-Generated at: `2026-11-06T14:21:39Z`
+Generated at: `2026-11-06T23:30:17Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `619`
+- Missing primary ISIN rows: `618`
 - Missing stock sectors: `645`
 - Missing ETF categories: `104`
 - Official symbol collisions tracked in exchange references: `11744`
@@ -43,7 +43,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 8 | NEO | All | 33 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 9 | NYSE | All | 23 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 10 | SSE_CL | All | 21 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 11 | BMV | All | 14 | official_partial | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 11 | BMV | All | 13 | official_partial | Official exchange masterfile or reviewed secondary identifier source. | yes |
 | 12 | SZSE | All | 11 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
 
 ## Top Missing Stock Sectors
@@ -54,8 +54,8 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 2 | OTC | Stock | 92 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 3 | NSE_IN | Stock | 43 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 4 | XSTU | Stock | 35 | missing | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 5 | HNX | Stock | 28 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 6 | BVB | Stock | 27 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 5 | BVB | Stock | 27 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 6 | HNX | Stock | 27 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 7 | HKEX | Stock | 23 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 8 | BIST | Stock | 19 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 9 | XETRA | Stock | 18 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
@@ -87,12 +87,12 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 3 | XETRA | 62 | 18 | 44 | official_full |
 | 4 | NSE_IN | 43 | 43 | 0 | official_full |
 | 5 | XSTU | 35 | 35 | 0 | missing |
-| 6 | HNX | 28 | 28 | 0 | official_full |
-| 7 | BVB | 27 | 27 | 0 | official_full |
+| 6 | BVB | 27 | 27 | 0 | official_full |
+| 7 | HNX | 27 | 27 | 0 | official_full |
 | 8 | HKEX | 23 | 23 | 0 | official_full |
 | 9 | AMS | 19 | 1 | 18 | official_full |
 | 10 | BIST | 19 | 19 | 0 | official_full |
-| 11 | NASDAQ | 18 | 12 | 6 | official_full |
+| 11 | NASDAQ | 19 | 13 | 6 | official_full |
 | 12 | BSE_IN | 17 | 17 | 0 | official_full |
 
 ## Model Migration Prep
