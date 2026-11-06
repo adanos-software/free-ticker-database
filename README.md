@@ -10,14 +10,14 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Metric | Value | Meaning |
 |---|---:|---|
 | Core listings | 63,658 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 65,695 | Rows in `data/tickers.csv`; one primary row per security. |
+| Primary tickers | 65,694 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 97,809 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 48,831 | Primary ticker rows where `asset_type=Stock`. |
+| Stocks | 48,830 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 16,864 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 93 | Distinct non-empty `country` values in `data/tickers.csv`. |
 | Aliases | 129,156 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 64,463 (98.1%) | Primary ticker rows with a non-empty `isin`. |
+| ISIN coverage | 64,462 (98.1%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 65,050 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
 | Sector/category coverage | 64,945 (98.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 48,185 | Primary ticker rows with a non-empty `stock_sector`. |
@@ -201,7 +201,7 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 6,894 |
+| OTC | 6,893 |
 | NASDAQ | 4,657 |
 | LSE | 3,544 |
 | TSE | 3,258 |
