@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-06T09:56:26Z",
-    "rows": 8224,
+    "generated_at": "2026-11-06T14:38:21Z",
+    "rows": 8230,
     "field_totals": {
       "missing_etf_category": 104,
-      "missing_isin_primary": 619,
-      "missing_sector_stock": 645,
-      "official_reference_gap": 6856
+      "missing_isin_primary": 620,
+      "missing_sector_stock": 646,
+      "official_reference_gap": 6860
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 28,
@@ -22,15 +22,15 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 155,
+      "official_identifier_not_exposed_source_gap": 156,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 459,
       "official_product_taxonomy_unavailable_gap": 80,
-      "official_reference_symbol_collision_gap": 1188,
-      "official_reference_unmatched_source_gap": 5668,
+      "official_reference_symbol_collision_gap": 1189,
+      "official_reference_unmatched_source_gap": 5671,
       "otc_sector_source_gap": 92,
-      "shell_or_cpc_sector_gap": 6
+      "shell_or_cpc_sector_gap": 7
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 6,
@@ -44,7 +44,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 278,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 155,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 156,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -52,9 +52,9 @@
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 459,
       "missing_sector_stock:otc_sector_source_gap": 92,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 6,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1188,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5668
+      "missing_sector_stock:shell_or_cpc_sector_gap": 7,
+      "official_reference_gap:official_reference_symbol_collision_gap": 1189,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5671
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -114,7 +114,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 68
+          "rows": 69
         },
         {
           "exchange": "TSXV",
@@ -209,12 +209,12 @@
           "rows": 192
         },
         {
-          "exchange": "AMS",
-          "rows": 175
+          "exchange": "NYSE ARCA",
+          "rows": 176
         },
         {
-          "exchange": "NYSE ARCA",
-          "rows": 174
+          "exchange": "AMS",
+          "rows": 175
         },
         {
           "exchange": "XETRA",
@@ -303,7 +303,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NYSE ARCA",
-        "rows": 121,
+        "rows": 122,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -367,7 +367,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "BATS",
-        "rows": 79,
+        "rows": 81,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -6052,6 +6052,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::ITG;exchange=NASDAQ;ticker=ITG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::LEDR",
+      "ticker": "LEDR",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Leader's Advantage Acquisition Corp. - Class A Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::LEDR;exchange=NASDAQ;ticker=LEDR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -19552,6 +19569,23 @@
       "source_gap_context": "listing_key=NASDAQ::HEPA;exchange=NASDAQ;ticker=HEPA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::LEDR",
+      "ticker": "LEDR",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Leader's Advantage Acquisition Corp. - Class A Ordinary Shares",
+      "gap_class": "shell_or_cpc_sector_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Current issuer business description or official industry classification.",
+      "source_gate": "Canonical sector requires active operating-business evidence.",
+      "source_gap_context": "listing_key=NASDAQ::LEDR;exchange=NASDAQ;ticker=LEDR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -35309,6 +35343,40 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=BATS::SFIG;exchange=BATS;ticker=SFIG;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "BATS::SKHA",
+      "ticker": "SKHA",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Long SK hynix Daily ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BATS::SKHA;exchange=BATS;ticker=SKHA;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "BATS::SKHN",
+      "ticker": "SKHN",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Tradr 2X Short SK hynix Daily ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=BATS::SKHN;exchange=BATS;ticker=SKHN;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -71508,6 +71576,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NYSE ARCA::USE",
+      "ticker": "USE",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "USCF Energy Commodity Strategy Absolute Return Fund",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NYSE ARCA::USE;exchange=NYSE ARCA;ticker=USE;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NYSE ARCA::USML",
       "ticker": "USML",
       "exchange": "NYSE ARCA",
@@ -71589,6 +71674,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::WISD;exchange=NYSE ARCA;ticker=WISD;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE ARCA::WTIB",
+      "ticker": "WTIB",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "USCF Oil Plus Bitcoin Strategy Fund",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::WTIB;exchange=NYSE ARCA;ticker=WTIB;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",

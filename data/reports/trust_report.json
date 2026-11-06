@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-05T18:21:29Z",
+    "generated_at": "2026-11-06T14:36:29Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -33,9 +33,9 @@
   "completeness": {
     "isin": {
       "n": 63658,
-      "filled": 63036,
-      "missing": 622,
-      "pct": 99.02,
+      "filled": 63038,
+      "missing": 620,
+      "pct": 99.03,
       "fills_needed_for_99": 0,
       "pass": true
     },
@@ -49,10 +49,10 @@
     },
     "taxonomy": {
       "n": 63658,
-      "filled": 62869,
-      "missing": 789,
-      "pct": 98.76,
-      "fills_needed_for_99": 153,
+      "filled": 62872,
+      "missing": 786,
+      "pct": 98.77,
+      "fills_needed_for_99": 150,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -62,8 +62,8 @@
       "NASDAQ": 69,
       "TSXV": 61,
       "BATS": 43,
-      "NEO": 34,
       "SSE": 34,
+      "NEO": 33,
       "NYSE": 23,
       "SSE_CL": 21,
       "BMV": 14,
@@ -73,12 +73,12 @@
       "FSX": 251,
       "XSTU": 46,
       "NSE_IN": 45,
-      "HNX": 29,
       "BVB": 28,
+      "HNX": 28,
       "HKEX": 23,
-      "PSE": 23,
+      "PSE": 22,
+      "NASDAQ": 20,
       "BIST": 19,
-      "NASDAQ": 19,
       "XETRA": 19,
       "BSE_IN": 17,
       "SGX": 17
@@ -103,8 +103,8 @@
     "quarantine_kept": 562
   },
   "entry_quality_status": {
-    "pass": 59671,
-    "source_gap": 3961,
+    "pass": 59672,
+    "source_gap": 3960,
     "warn": 18,
     "notice": 8
   },
@@ -133,9 +133,9 @@
       "status": "pass",
       "details": {
         "n": 63658,
-        "filled": 63036,
-        "missing": 622,
-        "pct": 99.02,
+        "filled": 63038,
+        "missing": 620,
+        "pct": 99.03,
         "fills_needed_for_99": 0,
         "pass": true
       }
@@ -145,10 +145,10 @@
       "status": "fail",
       "details": {
         "n": 63658,
-        "filled": 62869,
-        "missing": 789,
-        "pct": 98.76,
-        "fills_needed_for_99": 153,
+        "filled": 62872,
+        "missing": 786,
+        "pct": 98.77,
+        "fills_needed_for_99": 150,
         "pass": false
       }
     },

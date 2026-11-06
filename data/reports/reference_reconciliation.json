@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 170886,
-    "source_specific_reference_keys": 170886,
+    "active_official_reference_rows": 170881,
+    "source_specific_reference_keys": 170881,
     "classification_counts": {
       "alternate_listing_line": 3399,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12558,
-      "exact_match": 100191,
-      "missing_from_database": 44545,
+      "exact_match": 100187,
+      "missing_from_database": 44544,
       "normalization_candidate": 1855,
       "out_of_scope": 8144
     },
-    "coverage_credited_keys": 100191,
+    "coverage_credited_keys": 100187,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44545,
+    "in_scope_missing_rows": 44544,
     "identity_conflict_rows": 12558,
     "mapping_candidate_rows": 1855
   },
@@ -1507907,54 +1507907,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::ALDF",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::ALDF",
-      "exchange": "NASDAQ",
-      "ticker": "ALDF",
-      "asset_types": "Stock",
-      "names": "Aldel Financial II Inc. - Class A Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::ALDF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::ALDFU",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::ALDFU",
-      "exchange": "NASDAQ",
-      "ticker": "ALDFU",
-      "asset_types": "Stock",
-      "names": "Aldel Financial II Inc. - Units",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::ALDFW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::ALDFW",
-      "exchange": "NASDAQ",
-      "ticker": "ALDFW",
-      "asset_types": "Stock",
-      "names": "Aldel Financial II Inc. - Warrants",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrants"
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::ALDX",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::ALDX",
@@ -1550259,6 +1550211,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::LEDR",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::LEDR",
+      "exchange": "NASDAQ",
+      "ticker": "LEDR",
+      "asset_types": "Stock",
+      "names": "Leader's Advantage Acquisition Corp. - Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::LEDR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::LEDRU",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::LEDRU",
@@ -1550273,6 +1550241,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::LEDRW",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::LEDRW",
+      "exchange": "NASDAQ",
+      "ticker": "LEDRW",
+      "asset_types": "Stock",
+      "names": "Leader's Advantage Acquisition Corp. - Warrants",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::LEDS",
@@ -1633283,38 +1633267,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::BATS::SKHA",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::SKHA",
-      "exchange": "BATS",
-      "ticker": "SKHA",
-      "asset_types": "ETF",
-      "names": "Tradr 2X Long SK hynix Daily ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::SKHA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::BATS::SKHN",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::SKHN",
-      "exchange": "BATS",
-      "ticker": "SKHN",
-      "asset_types": "ETF",
-      "names": "Tradr 2X Short SK hynix Daily ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::SKHN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::BATS::SKHQ",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::SKHQ",
@@ -1678963,22 +1678915,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::USE",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::USE",
-      "exchange": "NYSE ARCA",
-      "ticker": "USE",
-      "asset_types": "ETF",
-      "names": "USCF Energy Commodity Strategy Absolute Return Fund",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::USE",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::USFE",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::USFE",
@@ -1681072,22 +1681008,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::WSMD",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::WTIB",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::WTIB",
-      "exchange": "NYSE ARCA",
-      "ticker": "WTIB",
-      "asset_types": "ETF",
-      "names": "USCF Oil Plus Bitcoin Strategy Fund",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::WTIB",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
