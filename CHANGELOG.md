@@ -23,7 +23,7 @@
 - Masterfile rotations reviewed and applied with last-committed rows preserved on fetch failures (typical **5–7** broken fetches per batch): #509, #514 (four TPEX mainboard ISIN recodes vs emerging-board ISINs plus stale `TSXV::MKA` allowlist removal), #531, #538, #546, #558, #568 (2 critical masterfile field changes), #576.
 - Daily symbol-change review/apply artifacts refreshed (#508, #520, #543, #555).
 - Weekly reports: drift & freshness (#526), delisting candidates (#525), OpenFIGI ISIN validation (#527).
-- Approximately **75** scheduled data-validation batches merged (#505–#579, skipping release #501), applying dual-source metadata fixes (sectors, names, ISINs, countries) across many venues; examples from titles include `TSXV::FUU` ISIN alignment, `NASDAQ::LEDR` country KY, and Malaysian banking sector lines (**CIMB**, **Oriental**, **TOT**). The series is continuous automation rather than one-off edits.
+- **29** scheduled data-validation batches merged (#505–#579, skipping release #501), applying dual-source metadata fixes (sectors, names, ISINs, countries) across many venues; examples from titles include `TSXV::FUU` ISIN alignment, `NASDAQ::LEDR` country KY, and Malaysian banking sector lines (**CIMB**, **Oriental**, **TOT**). The series is continuous automation rather than one-off edits.
 
 ### Fixed
 
