@@ -2,14 +2,36 @@
 
 ## [Unreleased]
 
+
+## [3.43.3] - 2026-11-06
+
 ### Added
 
-- Completed the full OpenFIGI `ID_ISIN`+`micCode` remap audit (#446) from a pinned 94,275-response cache (tarball SHA-256 `a374409bdd317d455560fe59c792dfe089a4c944d96524156f04c58a27b0e012`, fetched 2026-10-31 UTC on main `55c95a41`). Committed `openfigi_isin_mic_remap.{json,md,csv}` with FIGI-level agreement counts, per-exchange and per-MIC status breakdowns, and cache provenance; added `openfigi_isin_mic_remap_probe.manifest.json` for the full universe while keeping the 200-request probe for offline CI replay.
-- Added report-only `openfigi_stolen_isin_review_queue.{csv,json,md}` sorted by name-mismatch confidence with `apply_allowed=0` on every row.
+- Completed the full OpenFIGI `ID_ISIN`+`micCode` remap audit (#446) from a pinned 94,275-response cache (tarball SHA-256 `a374409bdd317d455560fe59c792dfe089a4c944d96524156f04c58a27b0e012`, fetched 2026-10-31 UTC on main `55c95a41`). Committed `openfigi_isin_mic_remap.{json,md,csv}` with FIGI-level agreement counts, per-exchange and per-MIC status breakdowns, and cache provenance; added `openfigi_isin_mic_remap_probe.manifest.json` for the full universe while keeping the 200-request probe for offline CI replay (#504).
+- Added report-only `openfigi_stolen_isin_review_queue.{csv,json,md}` sorted by name-mismatch confidence with `apply_allowed=0` on every row (#504).
+- FIRDS listing-compare reports now emit `mic_not_in_snapshot`, exclude unscorable (provider, MIC) pairs from pooled headline percentages, split `firds_only_review` by CFI class, and report pooled metrics globally, per provider, and per MIC; regenerated `firds_listing_compare.{csv,json,md}` from the same pinned ESMA/FCA inputs (#503).
+- Release workflow Hugging Face publish uses `hf upload` with `huggingface_hub>=2.0,<3` after hub 2.x dropped the `huggingface-cli` entrypoint (#502).
+- Reviewed `out_of_scope` removal transitions for ETF rows that are listed closed-end funds or otherwise outside ETF scope, plus Stock reclassifications where cited; 31 non-ETF rows removed and 15 reclassified to Stock with evidence (#565).
 
 ### Changed
 
-- Tightened shared `names_match` normalization (corporate suffixes, share-class noise, OpenFIGI abbreviations/truncations, meaningful token overlap) so stolen-ISIN review candidates drop from 21,961 to 20,625 on the full cache replay without adopting OpenFIGI names or writing identifiers.
+- Tightened shared `names_match` normalization (corporate suffixes, share-class noise, OpenFIGI abbreviations/truncations, meaningful token overlap) so stolen-ISIN review candidates drop from 21,961 to 20,625 on the full cache replay without adopting OpenFIGI names or writing identifiers (#504).
+- Resolved 14 of 18 open `open_needs_official_identifier_evidence` ISIN identity collision groups from #449 via reviewed clears and same-issuer closures in `metadata_updates.csv` / `isin_identity_same_issuer.csv`, with `review_metadata_updates` listing history so strict safe-merge accepts critical ISIN changes (#506).
+- StockAnalysis weekly backfill: `merge_metadata_updates` no longer replaces reviewed `decision=clear` rows by default; backfills skip fields blocked by reviewed clears; ISIN proposals require `isin_matches_listing_country()` so OTC ADR lines do not pick up US ISINs against foreign issuer-country metadata (#532, #534); applied Monday cadence backfill through reviewed `metadata_updates.csv` (#535); fixed rebuild fixed point so same-exchange share-class siblings (e.g. `TSX::ROSY` vs `TSX::ROSY.U`) do not inherit ISIN from unique-name fallbacks without listing-keyed evidence (#536).
+- ETF curation: filled **112** blank `etf_category` rows from the deterministic name classifier (Equity 68, Fixed Income 29, Alternative 11, Commodity 3, Money Market 1) (#516); added reviewed `decision=overwrite` for wrong non-blank categories and fixed **85** rows (e.g. gold/physical commodity and UCITS bond lines mis-tagged as Equity) (#540); reclassified **143** covered-call / option-income names from Equity to Alternative (#552).
+- US names and Nasdaq supplements: applied `NASDAQ::SLMT` rename to Solmate Infrastructure PLC with former-name aliases (#528); landed collision-free Nasdaq US new listing supplements on cadence (#530, #549, #557, #569, #577), including **LEDR** as supplement with **LEDRW** skipped as non-common; entry-quality follow-ups for ADIL/INDV/BTDPY/HELP (#560), BTDPY US country and aliases (#561, #562), CDLR/XTER (#571, #572).
+- Masterfile rotations reviewed and applied with last-committed rows preserved on fetch failures (typical **5–7** broken fetches per batch): #509, #514 (four TPEX mainboard ISIN recodes vs emerging-board ISINs plus stale `TSXV::MKA` allowlist removal), #531, #538, #546, #558, #568 (2 critical masterfile field changes), #576.
+- Daily symbol-change review/apply artifacts refreshed (#508, #520, #543, #555).
+- Weekly reports: drift & freshness (#526), delisting candidates (#525), OpenFIGI ISIN validation (#527).
+- Approximately **75** scheduled data-validation batches merged (#505–#579, skipping release #501), applying dual-source metadata fixes (sectors, names, ISINs, countries) across many venues; examples from titles include `TSXV::FUU` ISIN alignment, `NASDAQ::LEDR` country KY, and Malaysian banking sector lines (**CIMB**, **Oriental**, **TOT**). The series is continuous automation rather than one-off edits.
+
+### Fixed
+
+- Preserved reviewed ISIN clears and country consistency through StockAnalysis merge and backfill logic (#532, #534, #536).
+
+### Scope
+
+- This remains a `merge` claim, not `stable` or `complete`. Source licensing, `official_reference_gap` recall, and missing identifiers stay explicit. Snapshot after rebuild: 65,694 primary tickers, 97,809 listing rows, 64,464 primary ISINs (98.1%), 64,945 sector/category values (98.9%), 35 entry-quality warnings, and 11,205 source-gap rows.
 
 ## [3.43.2] - 2026-10-30
 
