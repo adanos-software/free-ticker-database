@@ -1,17 +1,17 @@
 {
   "global": {
-    "official_symbols": 100348,
-    "matched": 70307,
-    "collisions": 11743,
-    "missing": 18298
+    "official_symbols": 100390,
+    "matched": 70309,
+    "collisions": 11744,
+    "missing": 18337
   },
   "exchanges": [
     {
       "exchange": "ADX",
-      "official_symbols": 125,
+      "official_symbols": 126,
       "matched": 94,
       "collisions": 30,
-      "missing": 1,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -107,6 +107,11 @@
         {
           "ticker": "ADIBRI26",
           "name": "ADIB Rights Issue 2026",
+          "exchange": "ADX"
+        },
+        {
+          "ticker": "FIDELITYUNITEDRI26",
+          "name": "FIDELITYUNITED Rights Issue 2026",
           "exchange": "ADX"
         }
       ]
@@ -722,15 +727,39 @@
     },
     {
       "exchange": "BME",
-      "official_symbols": 268,
+      "official_symbols": 306,
       "matched": 243,
-      "collisions": 0,
-      "missing": 25,
-      "collision_examples": [],
+      "collisions": 2,
+      "missing": 61,
+      "collision_examples": [
+        {
+          "ticker": "GAM",
+          "name": "GENERAL DE ALQUILER DE MAQUINARIA",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "Euronext",
+            "SIX"
+          ]
+        },
+        {
+          "ticker": "XGGB",
+          "name": "GERDAU PREF.",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "LSE",
+            "NEO"
+          ]
+        }
+      ],
       "missing_examples": [
         {
           "ticker": "AKL",
           "name": "AKILES",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0002",
+          "name": "GESPRISA INVERSIONES",
           "exchange": "BME"
         },
         {
@@ -771,11 +800,6 @@
         {
           "ticker": "S0084",
           "name": "ALAVA INVERSIONES",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S0203",
-          "name": "1948 INVERSIONS",
           "exchange": "BME"
         }
       ]
@@ -2583,10 +2607,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5627,
+      "official_symbols": 5629,
       "matched": 4589,
       "collisions": 60,
-      "missing": 978,
+      "missing": 980,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3653,8 +3677,8 @@
     {
       "exchange": "OSL",
       "official_symbols": 294,
-      "matched": 286,
-      "collisions": 7,
+      "matched": 287,
+      "collisions": 6,
       "missing": 1,
       "collision_examples": [
         {
@@ -3672,14 +3696,6 @@
           "existing_exchanges": [
             "NASDAQ",
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "CDLR",
-          "name": "CADELER",
-          "target_exchange": "OSL",
-          "existing_exchanges": [
-            "NYSE"
           ]
         },
         {
@@ -4358,8 +4374,8 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 765,
-      "matched": 635,
+      "official_symbols": 766,
+      "matched": 636,
       "collisions": 130,
       "missing": 0,
       "collision_examples": [

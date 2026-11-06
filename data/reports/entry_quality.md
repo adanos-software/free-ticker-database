@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-11-06T09:56:23Z`
+Generated at: `2026-11-06T14:21:27Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,558 |
+| pass | 86,560 |
 | source_gap | 11,203 |
 | warn | 35 |
 

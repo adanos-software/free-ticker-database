@@ -11,21 +11,21 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 |---|---:|---|
 | Core listings | 63,657 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
 | Primary tickers | 65,694 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 97,806 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Full listing rows | 97,808 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
 | Stocks | 48,830 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 16,864 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 93 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 129,156 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| Aliases | 129,155 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 64,463 (98.1%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 65,052 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| FIGI coverage | 65,050 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
 | Sector/category coverage | 64,945 (98.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 48,185 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,760 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 63,657 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 63,038 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 619 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 34,149 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Extended listing-scope rows | 34,151 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 50 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 5 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
