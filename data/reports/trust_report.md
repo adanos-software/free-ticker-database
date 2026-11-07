@@ -1,20 +1,20 @@
 # Core trust report
 
-Generated at: `2026-11-06T23:29:11Z`
+Generated at: `2026-11-07T08:16:18Z`
 
 Trust is measured on instrument_scope=core only. accepted_source_gap does not count as filled. Known identity bugs must be zero; 99% completeness is a fill rate, not a correctness claim. This report does not authorize inferred identifiers, sectors, categories, names, or symbol changes. A failing trust report is not a merge blocker.
 
 Status: **FAIL**. Public 99% claim allowed: **no**.
 
-Universe: `instrument_scope=core` — 63,658 rows.
+Universe: `instrument_scope=core` — 63,629 rows.
 
 ## Completeness
 
 | Field | Filled | n | Pct | Missing | Fills to 99% | Pass |
 |---|---:|---:|---:|---:|---:|---|
-| isin | 63,040 | 63,658 | 99.03% | 618 | 0 | true |
-| country | 63,616 | 63,658 | 99.93% | 42 | 0 | true |
-| taxonomy | 62,875 | 63,658 | 98.77% | 783 | 147 | false |
+| isin | 63,013 | 63,629 | 99.03% | 616 | 0 | true |
+| country | 63,587 | 63,629 | 99.93% | 42 | 0 | true |
+| taxonomy | 62,850 | 63,629 | 98.78% | 779 | 143 | false |
 
 ## Identity
 
@@ -22,7 +22,7 @@ Universe: `instrument_scope=core` — 63,658 rows.
 |---|---:|
 | official_isin_mismatch | 9 |
 | official_name_mismatch | 8 |
-| open_collision_groups | 6 |
+| open_collision_groups | 7 |
 | quarantine_unresolved | 1,251 |
 | quarantine_proposed_clear | 289 |
 

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-06T23:30:26Z",
+    "generated_at": "2026-11-07T08:16:17Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -3523,6 +3523,53 @@
       "_members": [
         {
           "asset_type": "Stock",
+          "country": "Greece",
+          "country_code": "GR",
+          "exchange": "ATHEX",
+          "listing_key": "ATHEX::ELPE",
+          "name": "HELLENiQ ENERGY Holdings S.A.",
+          "ticker": "ELPE"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Greece",
+          "country_code": "GR",
+          "exchange": "LSE",
+          "listing_key": "LSE::0K9U",
+          "name": "Hellenic Petroleum Holdings S.A.",
+          "ticker": "0K9U"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Greece",
+          "country_code": "GR",
+          "exchange": "OTC",
+          "listing_key": "OTC::HLPMF",
+          "name": "Hellenic Petroleum S.A",
+          "ticker": "HLPMF"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "GRS298343005",
+      "isin_valid": "true",
+      "listing_count": "3",
+      "listing_keys": "ATHEX::ELPE|LSE::0K9U|OTC::HLPMF",
+      "member_exchanges": "ATHEX | LSE | OTC",
+      "member_names": "HELLENiQ ENERGY Holdings S.A. | Hellenic Petroleum Holdings S.A.",
+      "member_tickers": "0K9U | ELPE | HLPMF",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Greece",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
           "country": "Israel",
           "country_code": "IL",
           "exchange": "FSX",
@@ -5540,44 +5587,6 @@
       "_members": [
         {
           "asset_type": "Stock",
-          "country": "United Kingdom",
-          "country_code": "GB",
-          "exchange": "BMV",
-          "listing_key": "BMV::GSKN",
-          "name": "GlaxoSmithKline plc",
-          "ticker": "GSKN"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United Kingdom",
-          "country_code": "GB",
-          "exchange": "NYSE",
-          "listing_key": "NYSE::GSK",
-          "name": "GSK plc",
-          "ticker": "GSK"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "US37733W2044",
-      "isin_valid": "true",
-      "listing_count": "2",
-      "listing_keys": "BMV::GSKN|NYSE::GSK",
-      "member_exchanges": "BMV | NYSE",
-      "member_names": "GSK plc | GlaxoSmithKline plc",
-      "member_tickers": "GSK | GSKN",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "United States",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
           "country": "United States",
           "country_code": "US",
           "exchange": "LSE",
@@ -5924,18 +5933,18 @@
       "review_required_groups": 128,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 122,
+    "closed_groups": 121,
     "collision_groups": 128,
     "decision_candidate_totals": {
       "isin_shared_by_distinct_issuers": 93,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-06T23:30:26Z",
-    "listings_involved": 372,
+    "generated_at": "2026-11-07T08:16:17Z",
+    "listings_involved": 373,
     "next_review_batches": [
       {
-        "collision_groups": 26,
+        "collision_groups": 25,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "United States"
       },
@@ -6067,6 +6076,11 @@
       {
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Greece"
+      },
+      {
+        "collision_groups": 1,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Ireland"
       },
       {
@@ -6095,7 +6109,7 @@
         "registered_country": "Switzerland"
       }
     ],
-    "open_groups": 6,
+    "open_groups": 7,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 4,
@@ -6109,6 +6123,7 @@
       "Finland": 2,
       "France": 5,
       "Germany": 13,
+      "Greece": 1,
       "India": 7,
       "Ireland": 1,
       "Israel": 2,
@@ -6122,7 +6137,7 @@
       "Sweden": 6,
       "Switzerland": 5,
       "United Kingdom": 2,
-      "United States": 40
+      "United States": 39
     },
     "ticker_collision_groups": 35
   }
