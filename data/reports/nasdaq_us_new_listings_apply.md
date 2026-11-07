@@ -1,19 +1,15 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-06T14:33:42Z`
-- New supported rows: `2`
-- Accepted rows: `1`
-- Skipped rows: `1`
+- Generated at: `2026-11-07T13:14:34Z`
+- New supported rows: `0`
+- Accepted rows: `0`
+- Skipped rows: `0`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-| Ticker | Exchange | Name | Asset type | Target | Source |
-|---|---|---|---|---|---|
-| LEDR | NASDAQ | Leader's Advantage Acquisition Corp. - Class A Ordinary Shares | Stock | supplement | nasdaq_listed |
+No new listings were accepted.
 
 ## Skipped
 
-| Reason | Rows |
-|---|---:|
-| excluded_non_common_stock | 1 |
+No supported new rows were skipped.
