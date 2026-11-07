@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-10-20T10:16:37Z",
-    "rows": 29,
+    "generated_at": "2026-11-07T00:07:17Z",
+    "rows": 30,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,14 +13,14 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 29,
-    "candidate_rows": 29,
+    "rows": 30,
+    "candidate_rows": 30,
     "applied_rows": 0,
-    "blocked_rows": 9,
+    "blocked_rows": 10,
     "manual_review_rows": 20,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
-      "blocked_non_common_stock": 9,
+      "blocked_non_common_stock": 10,
       "manual_review_ambiguous_stock_classification": 20
     }
   },
@@ -176,6 +176,25 @@
       "recommended_next_source": "Official exchange product segment, issuer security page, CFI code, or OpenFIGI securityType.",
       "source_gate": "Queue for manual classification; name shape alone does not authorize a Stock or ETF change.",
       "recommended_action": "queue_for_classification_review"
+    },
+    {
+      "campaign": "C5_non_equity_leakage_guard",
+      "listing_key": "TSX::ENI-UN",
+      "ticker": "ENI-UN",
+      "exchange": "TSX",
+      "asset_type": "Stock",
+      "name": "Energy Income Fund",
+      "isin": "CA29270B2066",
+      "guard_decision": "blocked_non_common_stock",
+      "leakage_class": "unit_ticker_pattern",
+      "confidence": "deterministic",
+      "evidence_source": "ticker",
+      "evidence_value": "ENI-UN",
+      "review_strategy": "exclude_or_reclassify_only_after_listing_keyed_official_evidence",
+      "verification_evidence_required": "official_security_type_cfi_openfigi_or_exchange_listing_evidence",
+      "recommended_next_source": "OpenFIGI securityType, official CFI code, exchange listing directory, or issuer security description for the exact listing.",
+      "source_gate": "Block Stock ingestion until official security-type, CFI, exchange, issuer, or OpenFIGI evidence proves the row is common stock or an allowed depositary receipt.",
+      "recommended_action": "do_not_ingest_as_stock"
     },
     {
       "campaign": "C5_non_equity_leakage_guard",

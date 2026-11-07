@@ -200,6 +200,10 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     )
     assert RELEASE_SOURCE_REPORTS["isin_validation_report"] == "data/reports/isin_validation_report.json"
     assert (
+        RELEASE_SOURCE_REPORTS["openfigi_stolen_isin_review_queue"]
+        == "data/reports/openfigi_stolen_isin_review_queue.json"
+    )
+    assert (
         RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
         == "data/reports/isin_identity_collision_review_queue.json"
     )

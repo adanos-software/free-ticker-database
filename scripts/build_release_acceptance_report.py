@@ -65,6 +65,7 @@ RELEASE_SOURCE_REPORTS = {
     "gleif_isin_lei_compare": "data/reports/gleif_isin_lei_compare.json",
     "firds_listing_compare": "data/reports/firds_listing_compare.json",
     "openfigi_isin_mic_remap": "data/reports/openfigi_isin_mic_remap.json",
+    "openfigi_stolen_isin_review_queue": "data/reports/openfigi_stolen_isin_review_queue.json",
     "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
     "finance_database_isin_coverage_review": "data/reports/finance_database_isin_coverage_review.json",
     "otc_scope_review": "data/reports/otc_scope_review.json",
