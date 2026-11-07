@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-07T06:21:53Z",
-    "rows": 8224,
+    "generated_at": "2026-11-07T06:55:58Z",
+    "rows": 8223,
     "outcome_totals": {
       "accepted_source_gap": 5112,
-      "core_exclusion_candidate": 490,
+      "core_exclusion_candidate": 489,
       "official_fill_required": 2622
     },
     "class_totals": {
@@ -17,7 +17,7 @@
       "equity_etf_category_gap": 14,
       "exchange_industry_source_gap": 50,
       "fixed_income_etf_category_gap": 3,
-      "fund_or_trust_identifier_gap": 278,
+      "fund_or_trust_identifier_gap": 277,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -34,7 +34,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 104,
       "missing_isin_primary:accepted_source_gap": 171,
-      "missing_isin_primary:core_exclusion_candidate": 445,
+      "missing_isin_primary:core_exclusion_candidate": 444,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 548,
       "missing_sector_stock:core_exclusion_candidate": 45,
@@ -92668,23 +92668,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::BPF",
-      "ticker": "BPF",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "Boston Pizza Royalties Income Fund",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::BTB",
       "ticker": "BTB",
       "exchange": "TSX",
@@ -96939,7 +96922,7 @@
       "ticker": "ELPE",
       "exchange": "ATHEX",
       "asset_type": "Stock",
-      "name": "Hellenic Petroleum S.A",
+      "name": "HELLENiQ ENERGY Holdings S.A.",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
