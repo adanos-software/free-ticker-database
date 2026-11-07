@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-11-07T08:16:21Z",
-    "rows": 8195,
+    "generated_at": "2026-11-07T09:29:46Z",
+    "rows": 8191,
     "field_totals": {
       "missing_etf_category": 104,
-      "missing_isin_primary": 616,
-      "missing_sector_stock": 643,
+      "missing_isin_primary": 614,
+      "missing_sector_stock": 641,
       "official_reference_gap": 6832
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 27,
+      "adr_cdr_or_depositary_identifier_gap": 26,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 31,
       "commodity_etf_category_gap": 6,
@@ -22,10 +22,10 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 154,
+      "official_identifier_not_exposed_source_gap": 153,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 456,
+      "official_industry_taxonomy_unavailable_gap": 454,
       "official_product_taxonomy_unavailable_gap": 80,
       "official_reference_symbol_collision_gap": 1185,
       "official_reference_unmatched_source_gap": 5647,
@@ -38,19 +38,19 @@
       "missing_etf_category:equity_etf_category_gap": 14,
       "missing_etf_category:fixed_income_etf_category_gap": 3,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 80,
-      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 27,
+      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 26,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 92,
       "missing_isin_primary:fund_or_trust_identifier_gap": 277,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 154,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 153,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 50,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 456,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 454,
       "missing_sector_stock:otc_sector_source_gap": 92,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1185,
@@ -130,7 +130,7 @@
         },
         {
           "exchange": "NEO",
-          "rows": 32
+          "rows": 31
         },
         {
           "exchange": "NYSE",
@@ -144,7 +144,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 233
+          "rows": 232
         },
         {
           "exchange": "OTC",
@@ -164,7 +164,7 @@
         },
         {
           "exchange": "HNX",
-          "rows": 26
+          "rows": 25
         },
         {
           "exchange": "HKEX",
@@ -255,7 +255,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 228,
+        "rows": 227,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -5174,23 +5174,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "MSX::OCCI",
-      "ticker": "OCCI",
-      "exchange": "MSX",
-      "asset_type": "Stock",
-      "name": "OMAN CHROMITE",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=MSX::OCCI;exchange=MSX;ticker=OCCI;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "MSX::OMIF",
       "ticker": "OMIF",
       "exchange": "MSX",
@@ -6715,23 +6698,6 @@
       "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
       "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
       "source_gap_context": "listing_key=NEO::MTSU;exchange=NEO;ticker=MTSU;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NEO::NVON",
-      "ticker": "NVON",
-      "exchange": "NEO",
-      "asset_type": "Stock",
-      "name": "NOVO NORDISK A/S CDR (CAD Hedged)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Do not infer ISIN from the underlying issuer; require the depositary/CDR program ISIN from an official listing, prospectus, depository, or reviewed identifier feed.",
-      "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
-      "source_gap_context": "listing_key=NEO::NVON;exchange=NEO;ticker=NVON;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
     },
@@ -14269,23 +14235,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::0KE",
-      "ticker": "0KE",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Kernel Holding SA",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::0KE;exchange=FSX;ticker=0KE;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::0PL",
       "ticker": "0PL",
       "exchange": "FSX",
@@ -18836,23 +18785,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HNX::PPT;exchange=HNX;ticker=PPT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HNX::S55",
-      "ticker": "S55",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "Công ty cổ phần Sông Đà 505",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::S55;exchange=HNX;ticker=S55;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
