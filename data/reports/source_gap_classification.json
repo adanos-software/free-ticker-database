@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-07T06:21:52Z",
-    "rows": 8224,
+    "generated_at": "2026-11-07T06:55:57Z",
+    "rows": 8223,
     "field_totals": {
       "missing_etf_category": 104,
-      "missing_isin_primary": 617,
+      "missing_isin_primary": 616,
       "missing_sector_stock": 643,
       "official_reference_gap": 6860
     },
@@ -18,7 +18,7 @@
       "equity_etf_category_gap": 14,
       "exchange_industry_source_gap": 50,
       "fixed_income_etf_category_gap": 3,
-      "fund_or_trust_identifier_gap": 278,
+      "fund_or_trust_identifier_gap": 277,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -41,7 +41,7 @@
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 27,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 92,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 278,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 277,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 154,
@@ -106,7 +106,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 87
+          "rows": 86
         },
         {
           "exchange": "NYSE ARCA",
@@ -10948,23 +10948,6 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=TSX::BGI;exchange=TSX;ticker=BGI;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::BPF",
-      "ticker": "BPF",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "Boston Pizza Royalties Income Fund",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::BPF;exchange=TSX;ticker=BPF;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -27873,7 +27856,7 @@
       "ticker": "ELPE",
       "exchange": "ATHEX",
       "asset_type": "Stock",
-      "name": "Hellenic Petroleum S.A",
+      "name": "HELLENiQ ENERGY Holdings S.A.",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
