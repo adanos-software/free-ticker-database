@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-06T21:05:47Z",
+  "generated_at": "2026-11-07T08:09:42Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1978,
+  "reconciled_rows": 1977,
   "applied_rows": 0,
-  "proposed_rows": 1978,
+  "proposed_rows": 1977,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -319,21 +319,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
       "observation_id": "1992a1e230c376dcc3080c04",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "BMV::GSKN",
-      "action": "proposed",
-      "ticker": "GSKN",
-      "exchange": "BMV",
-      "asset_type": "Stock",
-      "isin": "US37733W2044",
-      "old_name": "GlaxoSmithKline plc",
-      "new_name": "GSK PLC",
-      "source_key": "bmv_issuer_directory",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
-      "observation_id": "7b93903bc50936cf4828edf2",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

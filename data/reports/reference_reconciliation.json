@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3399,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12558,
-      "exact_match": 100189,
+      "exact_identity_conflict": 12557,
+      "exact_match": 100190,
       "missing_from_database": 44582,
       "normalization_candidate": 1854,
       "out_of_scope": 8145
     },
-    "coverage_credited_keys": 100189,
+    "coverage_credited_keys": 100190,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44582,
-    "identity_conflict_rows": 12558,
+    "identity_conflict_rows": 12557,
     "mapping_candidate_rows": 1854
   },
   "rows": [
@@ -2637885,10 +2637885,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSXV::GLD",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSXV::GLDC",
