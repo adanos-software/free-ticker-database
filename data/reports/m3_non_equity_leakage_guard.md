@@ -1,19 +1,19 @@
 # M3 Non Equity Leakage Guard
 
-Generated at: `2026-10-20T10:16:37Z`
+Generated at: `2026-11-07T00:07:17Z`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `rows` | `29` |
-| `candidate_rows` | `29` |
+| `rows` | `30` |
+| `candidate_rows` | `30` |
 | `applied_rows` | `0` |
-| `blocked_rows` | `9` |
+| `blocked_rows` | `10` |
 | `manual_review_rows` | `20` |
 | `metadata_override_pending_rows` | `0` |
-| `decision_totals` | `{"blocked_non_common_stock": 9, "manual_review_ambiguous_stock_classification": 20}` |
+| `decision_totals` | `{"blocked_non_common_stock": 10, "manual_review_ambiguous_stock_classification": 20}` |
 
 ## Rows
 
-Rows: `29`
+Rows: `30`
