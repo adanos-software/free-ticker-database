@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-11-07T18:42:03Z",
-    "rows": 8203,
+    "generated_at": "2026-11-08T06:35:07Z",
+    "rows": 8201,
     "field_totals": {
       "missing_etf_category": 105,
-      "missing_isin_primary": 611,
+      "missing_isin_primary": 609,
       "missing_sector_stock": 643,
       "official_reference_gap": 6844
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 24,
+      "adr_cdr_or_depositary_identifier_gap": 23,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 31,
       "commodity_etf_category_gap": 6,
@@ -22,7 +22,7 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 152,
+      "official_identifier_not_exposed_source_gap": 151,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 456,
@@ -38,13 +38,13 @@
       "missing_etf_category:equity_etf_category_gap": 14,
       "missing_etf_category:fixed_income_etf_category_gap": 3,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 81,
-      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 24,
+      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 23,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 92,
       "missing_isin_primary:fund_or_trust_identifier_gap": 277,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 152,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 151,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -130,7 +130,7 @@
         },
         {
           "exchange": "NEO",
-          "rows": 29
+          "rows": 28
         },
         {
           "exchange": "NYSE",
@@ -4834,23 +4834,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "BMV::ESENTIAII",
-      "ticker": "ESENTIAII",
-      "exchange": "BMV",
-      "asset_type": "Stock",
-      "name": "Esentia Energy Development SA",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=BMV::ESENTIAII;exchange=BMV;ticker=ESENTIAII;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "BMV::FIBRAUP18",
       "ticker": "FIBRAUP18",
       "exchange": "BMV",
@@ -6749,23 +6732,6 @@
       "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
       "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
       "source_gap_context": "listing_key=NEO::ZBA;exchange=NEO;ticker=ZBA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NEO::ZINT",
-      "ticker": "ZINT",
-      "exchange": "NEO",
-      "asset_type": "Stock",
-      "name": "INTEL (INTC) BMO CDR (CAD HEDGED)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Do not infer ISIN from the underlying issuer; require the depositary/CDR program ISIN from an official listing, prospectus, depository, or reviewed identifier feed.",
-      "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
-      "source_gap_context": "listing_key=NEO::ZINT;exchange=NEO;ticker=ZINT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
     },
@@ -29216,7 +29182,7 @@
       "ticker": "ADMF3",
       "exchange": "B3",
       "asset_type": "Stock",
-      "name": "CIABRASF CIA BRASILEIRA DE SERVIÇOS FINANCEIROS SA",
+      "name": "B100 S.A.",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
