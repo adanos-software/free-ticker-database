@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T13:20:48Z",
+  "generated_at": "2026-11-08T13:26:26Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -162,16 +162,6 @@
       "rank": 16
     },
     {
-      "exchange": "BME",
-      "collision_adjusted_recall_pct": 79.93,
-      "true_missing_excluding_collisions": 61,
-      "collision_hidden_missing": 2,
-      "official_recall_pct": 79.41,
-      "supplement_lane": "not_in_supplement_allowlist",
-      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 17
-    },
-    {
       "exchange": "NYSE MKT",
       "collision_adjusted_recall_pct": 82.18,
       "true_missing_excluding_collisions": 49,
@@ -179,7 +169,7 @@
       "official_recall_pct": 73.14,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 18
+      "rank": 17
     },
     {
       "exchange": "SET",
@@ -189,7 +179,7 @@
       "official_recall_pct": 81.65,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 19
+      "rank": 18
     },
     {
       "exchange": "BSE_IN",
@@ -198,6 +188,16 @@
       "collision_hidden_missing": 121,
       "official_recall_pct": 97.02,
       "supplement_lane": "collision_free_supplement",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 19
+    },
+    {
+      "exchange": "BME",
+      "collision_adjusted_recall_pct": 90.67,
+      "true_missing_excluding_collisions": 25,
+      "collision_hidden_missing": 0,
+      "official_recall_pct": 90.67,
+      "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 20
     },

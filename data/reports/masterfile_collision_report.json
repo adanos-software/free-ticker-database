@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100334,
+    "official_symbols": 100296,
     "matched": 70265,
-    "collisions": 11726,
-    "missing": 18343
+    "collisions": 11724,
+    "missing": 18307
   },
   "exchanges": [
     {
@@ -727,39 +727,15 @@
     },
     {
       "exchange": "BME",
-      "official_symbols": 306,
+      "official_symbols": 268,
       "matched": 243,
-      "collisions": 2,
-      "missing": 61,
-      "collision_examples": [
-        {
-          "ticker": "GAM",
-          "name": "GENERAL DE ALQUILER DE MAQUINARIA",
-          "target_exchange": "BME",
-          "existing_exchanges": [
-            "Euronext",
-            "SIX"
-          ]
-        },
-        {
-          "ticker": "XGGB",
-          "name": "GERDAU PREF.",
-          "target_exchange": "BME",
-          "existing_exchanges": [
-            "LSE",
-            "NEO"
-          ]
-        }
-      ],
+      "collisions": 0,
+      "missing": 25,
+      "collision_examples": [],
       "missing_examples": [
         {
           "ticker": "AKL",
           "name": "AKILES",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S0002",
-          "name": "GESPRISA INVERSIONES",
           "exchange": "BME"
         },
         {
@@ -800,6 +776,11 @@
         {
           "ticker": "S0084",
           "name": "ALAVA INVERSIONES",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0129",
+          "name": "ALMABENI FINANCIERA",
           "exchange": "BME"
         }
       ]
