@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-11-08T15:35:24Z",
-    "rows": 8206,
+    "generated_at": "2026-11-08T18:44:38Z",
+    "rows": 8204,
     "outcome_totals": {
-      "accepted_source_gap": 5101,
-      "core_exclusion_candidate": 483,
+      "accepted_source_gap": 5100,
+      "core_exclusion_candidate": 482,
       "official_fill_required": 2622
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 21,
+      "adr_cdr_or_depositary_identifier_gap": 20,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 31,
       "commodity_etf_category_gap": 6,
@@ -24,7 +24,7 @@
       "official_identifier_not_exposed_source_gap": 150,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 454,
+      "official_industry_taxonomy_unavailable_gap": 453,
       "official_product_taxonomy_unavailable_gap": 81,
       "official_reference_symbol_collision_gap": 1183,
       "official_reference_unmatched_source_gap": 5671,
@@ -34,9 +34,9 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 105,
       "missing_isin_primary:accepted_source_gap": 167,
-      "missing_isin_primary:core_exclusion_candidate": 438,
+      "missing_isin_primary:core_exclusion_candidate": 437,
       "missing_isin_primary:official_fill_required": 1,
-      "missing_sector_stock:accepted_source_gap": 546,
+      "missing_sector_stock:accepted_source_gap": 545,
       "missing_sector_stock:core_exclusion_candidate": 45,
       "missing_sector_stock:official_fill_required": 50,
       "official_reference_gap:accepted_source_gap": 4283,
@@ -5072,23 +5072,6 @@
       "exchange": "BSE_IN",
       "asset_type": "Stock",
       "name": "HEG Advanced Materials Ltd",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "BVB::2P",
-      "ticker": "2P",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "name": "2PERFORMANT NETWORK SA",
       "gap_class": "official_industry_taxonomy_unavailable_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -90182,23 +90165,6 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NEO::ZVST",
-      "ticker": "ZVST",
-      "exchange": "NEO",
-      "asset_type": "Stock",
-      "name": "VISTRA (VST) BMO CDR (CAD HEDGED)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum."
     },
     {
       "field": "missing_isin_primary",
