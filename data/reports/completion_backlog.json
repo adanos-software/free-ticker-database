@@ -41,10 +41,10 @@
     {
       "asset_type": "All",
       "confidence_policy": "Broker/API candidates must write audit reports and pass venue, type, name, expected US prefix, numeric-token, and checksum gates before reviewed apply.",
-      "etf_missing_count": 77,
+      "etf_missing_count": 84,
       "exchange": "NYSE ARCA",
       "field": "missing_isin_primary",
-      "missing_count": 77,
+      "missing_count": 84,
       "notes": "Residual US gaps are mostly ETF tails; keep in small batches.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -1105,16 +1105,16 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 18,
-      "exchange": "AMS",
+      "etf_missing_count": 21,
+      "exchange": "NYSE ARCA",
       "field": "missing_etf_category",
-      "missing_count": 18,
+      "missing_count": 21,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 2,
       "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
-      "reference_scopes": "exchange_directory",
+      "reference_scopes": "corporate_action_daily_list|exchange_directory",
       "review_needed": true,
       "script": "scripts/backfill_sector_from_isin_peers.py; scripts/backfill_etf_categories_from_names.py",
       "stock_missing_count": 0,
@@ -1124,16 +1124,16 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 14,
-      "exchange": "NYSE ARCA",
+      "etf_missing_count": 18,
+      "exchange": "AMS",
       "field": "missing_etf_category",
-      "missing_count": 14,
+      "missing_count": 18,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 3,
       "recommended_source": "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
-      "reference_scopes": "corporate_action_daily_list|exchange_directory",
+      "reference_scopes": "exchange_directory",
       "review_needed": true,
       "script": "scripts/backfill_sector_from_isin_peers.py; scripts/backfill_etf_categories_from_names.py",
       "stock_missing_count": 0,
@@ -1281,11 +1281,11 @@
       "missing_sector_stock": 31
     },
     "field_totals": {
-      "missing_etf_category": 105,
-      "missing_isin_primary": 602,
+      "missing_etf_category": 112,
+      "missing_isin_primary": 609,
       "missing_sector_stock": 635
     },
-    "generated_at": "2026-11-09T19:07:44Z",
+    "generated_at": "2026-11-09T20:15:36Z",
     "legacy_primary_ticker_collision_rows": 4847,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1424,10 +1424,10 @@
       {
         "action_rank": 6,
         "confidence_policy": "Exact fund/trust symbol and product name with checksum.",
-        "etf_missing_count": 77,
+        "etf_missing_count": 84,
         "exchange": "NYSE ARCA",
         "field": "missing_isin_primary",
-        "missing_count": 77,
+        "missing_count": 84,
         "official_source_count": 2,
         "openfigi_probe_accepted_isin_updates": 0,
         "openfigi_probe_candidates": 46,
@@ -1442,7 +1442,7 @@
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
         "source_gap_class": "fund_or_trust_identifier_gap",
-        "source_gap_rows": 70,
+        "source_gap_rows": 77,
         "stock_missing_count": 0,
         "target_field": "isin",
         "venue_status": "official_full",
@@ -1567,7 +1567,7 @@
         "why_next": "highest remaining missing-count workflow"
       }
     ],
-    "official_masterfile_collisions": 11724,
+    "official_masterfile_collisions": 11723,
     "rows": 67
   }
 }

@@ -4,7 +4,7 @@ AMS,official_full,exchange_directory,126,620,113,501,,euronext_equities|euronext
 ASX,official_partial,listed_companies_subset,1738,521,1843,615,,asx_investment_products|asx_listed_companies,asx_listed_companies,asx_investment_products|asx_listed_companies,empty_refresh|stale_artifact,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 ATHEX,official_partial,listed_companies_subset,161,1,126,0,ETF,athex_sector_classification,,athex_sector_classification,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 B3,official_full,exchange_directory|listed_companies_subset,695,894,425,1478,,b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs,b3_instruments_equities,b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs,empty_refresh|stale_artifact,1353,1228,0,125,90.76,90.76,available,refresh_unavailable,not_applicable
-BATS,official_full,exchange_directory,1,1385,4,1669,,nasdaq_other_listed,,nasdaq_other_listed,stale_artifact,1673,1322,58,293,79.02,81.86,available,refresh_required,not_applicable
+BATS,official_full,exchange_directory,1,1385,4,1668,,nasdaq_other_listed,,,,1672,1321,58,293,79.01,81.85,available,maintain,not_applicable
 BCBA,official_partial,security_lookup_subset,92,0,92,0,,byma_equity_details,,byma_equity_details,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 BHB,official_full,exchange_directory,31,0,41,0,,bahrain_bourse_listed_companies,,,,41,31,9,1,75.61,96.88,available,maintain,not_applicable
 BIST,official_full,exchange_directory,607,36,627,36,,bist_kap_mkk_listed_securities,,,,663,641,22,0,96.68,100.0,available,maintain,not_applicable
@@ -49,9 +49,9 @@ NGX,official_full,exchange_directory|listed_companies_subset,133,12,258,0,ETF,ng
 NMFQS,official_partial,security_lookup_subset,0,6,0,6,,nasdaq_mutual_fund_quotes,,nasdaq_mutual_fund_quotes,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 NSE_IN,official_full,exchange_directory,3164,371,3210,359,,nse_india_securities_available,,nse_india_securities_available,stale_artifact,3569,3496,73,0,97.95,100.0,available,refresh_required,not_applicable
 NSE_KE,official_full,exchange_directory,76,3,66,2,,nse_ke_listed_companies,,nse_ke_listed_companies,stale_artifact,68,44,24,0,64.71,100.0,available,refresh_required,not_applicable
-NYSE,official_full,exchange_directory,1940,82,5495,650,,nasdaq_other_listed|sec_company_tickers_exchange,,nasdaq_other_listed,stale_artifact,3837,1960,567,1310,51.08,59.94,available,refresh_required,not_applicable
-NYSE ARCA,official_full,corporate_action_daily_list|exchange_directory,0,2742,17,2736,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,stale_artifact,2751,2619,30,102,95.2,96.25,available,refresh_required,not_applicable
-NYSE MKT,official_full,exchange_directory,229,2,309,0,ETF,nasdaq_other_listed,,nasdaq_other_listed,stale_artifact,309,226,34,49,73.14,82.18,available,refresh_required,not_applicable
+NYSE,official_full,exchange_directory,1940,82,5496,650,,nasdaq_other_listed|sec_company_tickers_exchange,,,,3839,1960,567,1312,51.05,59.9,available,maintain,not_applicable
+NYSE ARCA,official_full,corporate_action_daily_list|exchange_directory,0,2749,17,2743,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,,nasdaq_trading_system_adds_deletes,stale_artifact,2758,2626,30,102,95.21,96.26,available,refresh_required,not_applicable
+NYSE MKT,official_full,exchange_directory,229,2,309,0,ETF,nasdaq_other_listed,,,,309,226,34,49,73.14,82.18,available,maintain,not_applicable
 NZX,official_full,exchange_directory,62,23,128,44,,nzx_instruments,,,,172,85,86,1,49.42,98.84,available,maintain,not_applicable
 OSL,official_full,exchange_directory,314,2,291,2,,euronext_equities|euronext_etfs,,euronext_etfs,stale_artifact,293,286,6,1,97.61,99.65,available,refresh_required,not_applicable
 OTC,official_full,exchange_directory|listed_companies_subset|security_lookup_subset,11525,227,14890,436,,otc_markets_security_profile|otc_markets_stock_screener|sec_company_tickers_exchange,otc_markets_stock_screener,otc_markets_security_profile|otc_markets_stock_screener,empty_refresh|stale_artifact,11925,8267,25,3633,69.32,69.47,available,refresh_unavailable,not_applicable
@@ -75,7 +75,7 @@ TSE,official_full,exchange_directory|security_identifier_registry_subset,3763,37
 TSX,official_full,exchange_directory|interlisted_subset|listed_companies_subset,666,1777,992,3159,,tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers,,tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers,stale_artifact,785,590,189,6,75.16,98.99,available,refresh_required,not_applicable
 TSXV,official_full,exchange_directory|interlisted_subset|listed_companies_subset,1420,2,1572,13,,tmx_interlisted_companies|tmx_listed_issuers,,tmx_interlisted_companies|tmx_listed_issuers,stale_artifact,1518,1322,193,3,87.09,99.77,available,refresh_required,not_applicable
 TWSE,official_full,exchange_directory|listed_companies_subset,1064,222,1099,275,,twse_etf_list|twse_listed_companies,,twse_etf_list|twse_listed_companies,stale_artifact,1099,1061,38,0,96.54,100.0,available,refresh_required,not_applicable
-TXSE,official_full,exchange_directory,0,0,12,10,,nasdaq_other_listed,,nasdaq_other_listed,stale_artifact,22,0,14,8,0.0,0.0,available,refresh_required,not_applicable
+TXSE,official_full,exchange_directory,0,0,12,10,,nasdaq_other_listed,,,,22,0,13,9,0.0,0.0,available,maintain,not_applicable
 UPCOM,official_full,exchange_directory,2,0,818,0,,upcom_registered_securities,upcom_registered_securities,upcom_registered_securities,empty_refresh,818,2,523,293,0.24,0.68,available,refresh_unavailable,not_applicable
 USE_UG,official_partial,listed_companies_subset,7,0,7,0,,use_ug_listed_companies,,use_ug_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 VSE,official_partial,listed_companies_subset,83,5,66,0,ETF,vienna_listed_companies,,vienna_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
