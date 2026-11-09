@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-08T13:22:33Z",
+  "generated_at": "2026-11-09T08:01:16Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2128,
-  "decision_rows": 7022,
+  "conflict_count": 2127,
+  "decision_rows": 7019,
   "action_counts": {
     "kept_listing_keyed_identifier": 1376,
     "proposed_clear_conflicting_identifier": 1101,
-    "quarantined_unresolved_identifier": 4545
+    "quarantined_unresolved_identifier": 4542
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1101,
-  "quarantined_rows": 4545,
+  "quarantined_rows": 4542,
   "retained_rows": 1376,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -22126,45 +22126,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "FR0000120321"
-    },
-    {
-      "conflict_id": "1bc2db2583222807fcf8",
-      "isin": "FR0000120669",
-      "listing_key": "Euronext::NAE",
-      "ticker": "NAE",
-      "exchange": "Euronext",
-      "name": "North Atlantic Energies",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0000120669"
-    },
-    {
-      "conflict_id": "1bc2db2583222807fcf8",
-      "isin": "FR0000120669",
-      "listing_key": "LSE::0N9V",
-      "ticker": "0N9V",
-      "exchange": "LSE",
-      "name": "Esso Societe Anonyme Francaise SA",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0000120669"
-    },
-    {
-      "conflict_id": "1bc2db2583222807fcf8",
-      "isin": "FR0000120669",
-      "listing_key": "XETRA::EH8",
-      "ticker": "EH8",
-      "exchange": "XETRA",
-      "name": "NORTH ATLANTIC E. EO 7,65",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FR0000120669"
     },
     {
       "conflict_id": "6010f80f392ac2c1164c",
