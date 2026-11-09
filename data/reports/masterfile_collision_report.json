@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100296,
-    "matched": 70264,
+    "official_symbols": 100287,
+    "matched": 70256,
     "collisions": 11724,
-    "missing": 18308
+    "missing": 18307
   },
   "exchanges": [
     {
@@ -118,8 +118,8 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 615,
-      "matched": 572,
+      "official_symbols": 614,
+      "matched": 571,
       "collisions": 39,
       "missing": 4,
       "collision_examples": [
@@ -2588,10 +2588,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5629,
-      "matched": 4590,
+      "official_symbols": 5626,
+      "matched": 4588,
       "collisions": 60,
-      "missing": 979,
+      "missing": 978,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -2635,6 +2635,14 @@
           ]
         },
         {
+          "ticker": "ANEB",
+          "name": "Anebulo Pharmaceuticals, Inc.",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "OTC"
+          ]
+        },
+        {
           "ticker": "ANV",
           "name": "GraniteShares Autocallable NVDA ETF",
           "target_exchange": "NASDAQ",
@@ -2665,14 +2673,6 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "LSE"
-          ]
-        },
-        {
-          "ticker": "BID",
-          "name": "Tribeca Strategic Acquisition Corp. - Class A Ordinary Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "HOSE"
           ]
         }
       ],
@@ -3089,9 +3089,9 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3842,
-      "matched": 1964,
-      "collisions": 568,
+      "official_symbols": 3837,
+      "matched": 1960,
+      "collisions": 567,
       "missing": 1310,
       "collision_examples": [
         {
@@ -3657,8 +3657,8 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 294,
-      "matched": 287,
+      "official_symbols": 293,
+      "matched": 286,
       "collisions": 6,
       "missing": 1,
       "collision_examples": [
@@ -4463,9 +4463,9 @@
     },
     {
       "exchange": "TADAWUL",
-      "official_symbols": 413,
+      "official_symbols": 414,
       "matched": 203,
-      "collisions": 210,
+      "collisions": 211,
       "missing": 0,
       "collision_examples": [
         {
