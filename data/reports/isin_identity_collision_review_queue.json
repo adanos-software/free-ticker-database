@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-08T13:26:39Z",
+    "generated_at": "2026-11-09T08:01:46Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -4564,44 +4564,6 @@
           "country": "France",
           "country_code": "FR",
           "exchange": "Euronext",
-          "listing_key": "Euronext::NAE",
-          "name": "North Atlantic Energies",
-          "ticker": "NAE"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "France",
-          "country_code": "FR",
-          "exchange": "LSE",
-          "listing_key": "LSE::0N9V",
-          "name": "Esso Societe Anonyme Francaise SA",
-          "ticker": "0N9V"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "FR0000120669",
-      "isin_valid": "true",
-      "listing_count": "2",
-      "listing_keys": "Euronext::NAE|LSE::0N9V",
-      "member_exchanges": "Euronext | LSE",
-      "member_names": "Esso Societe Anonyme Francaise SA | North Atlantic Energies",
-      "member_tickers": "0N9V | NAE",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "France",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "France",
-          "country_code": "FR",
-          "exchange": "Euronext",
           "listing_key": "Euronext::EMEIS",
           "name": "EMEIS SA",
           "ticker": "EMEIS"
@@ -5930,18 +5892,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 128,
+      "review_required_groups": 127,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 121,
-    "collision_groups": 128,
+    "closed_groups": 120,
+    "collision_groups": 127,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 93,
+      "isin_shared_by_distinct_issuers": 92,
       "ticker_collision_isin_misassignment_suspected": 35
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-08T13:26:39Z",
-    "listings_involved": 373,
+    "generated_at": "2026-11-09T08:01:46Z",
+    "listings_involved": 371,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5975,11 +5937,6 @@
       },
       {
         "collision_groups": 5,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "France"
-      },
-      {
-        "collision_groups": 5,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "India"
       },
@@ -5987,6 +5944,11 @@
         "collision_groups": 4,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Canada"
+      },
+      {
+        "collision_groups": 4,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "France"
       },
       {
         "collision_groups": 4,
@@ -6121,7 +6083,7 @@
       "China": 3,
       "Denmark": 1,
       "Finland": 2,
-      "France": 5,
+      "France": 4,
       "Germany": 13,
       "Greece": 1,
       "India": 7,

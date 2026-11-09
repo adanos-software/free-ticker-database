@@ -2,8 +2,8 @@
   "global": {
     "official_symbols": 100296,
     "matched": 70265,
-    "collisions": 11724,
-    "missing": 18307
+    "collisions": 11723,
+    "missing": 18308
   },
   "exchanges": [
     {
@@ -1908,8 +1908,8 @@
       "exchange": "IDX",
       "official_symbols": 962,
       "matched": 756,
-      "collisions": 188,
-      "missing": 18,
+      "collisions": 187,
+      "missing": 19,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -1997,6 +1997,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "AREA",
+          "name": "PT Dunia Virtual Online Tbk",
+          "exchange": "IDX"
+        },
+        {
           "ticker": "BACH",
           "name": "PT Bach Multi Global Tbk",
           "exchange": "IDX"
@@ -2039,11 +2044,6 @@
         {
           "ticker": "JELI",
           "name": "PT Niramas Utama Tbk",
-          "exchange": "IDX"
-        },
-        {
-          "ticker": "KBRI",
-          "name": "Kertas Basuki Rachmat Indonesia Tbk",
           "exchange": "IDX"
         }
       ]

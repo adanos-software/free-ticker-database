@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12556,
-      "exact_match": 100141,
+      "exact_identity_conflict": 12555,
+      "exact_match": 100142,
       "missing_from_database": 44727,
       "normalization_candidate": 1858,
       "out_of_scope": 8169
     },
-    "coverage_credited_keys": 100141,
+    "coverage_credited_keys": 100142,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44727,
-    "identity_conflict_rows": 12556,
+    "identity_conflict_rows": 12555,
     "mapping_candidate_rows": 1858
   },
   "rows": [
@@ -200861,10 +200861,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "Bursa::9776",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "bursa_closing_prices::Bursa::9792",
@@ -1163789,10 +1163789,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "LSE::0N9V",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "lse_company_reports::LSE::0N9W",
@@ -1684925,10 +1684925,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE MKT::MCRP",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE MKT::MGLD",
