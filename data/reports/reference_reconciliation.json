@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12555,
-      "exact_match": 100142,
-      "missing_from_database": 44727,
+      "exact_identity_conflict": 12551,
+      "exact_match": 100145,
+      "missing_from_database": 44728,
       "normalization_candidate": 1858,
       "out_of_scope": 8169
     },
-    "coverage_credited_keys": 100142,
+    "coverage_credited_keys": 100145,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44727,
-    "identity_conflict_rows": 12555,
+    "in_scope_missing_rows": 44728,
+    "identity_conflict_rows": 12551,
     "mapping_candidate_rows": 1858
   },
   "rows": [
@@ -469773,10 +469773,10 @@
       "isins": "DE000A254294",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "FSX::IPOK",
-      "evidence": "ISIN conflict: official=DE000A254294, current=DE0005250005"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::IPRE",
@@ -506301,10 +506301,10 @@
       "isins": "ZAE000351946",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "FSX::NNW",
-      "evidence": "ISIN conflict: official=ZAE000351946, current=ZAE000015889"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::NNWN",
@@ -894861,10 +894861,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "IDX::OLIV",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "idx_company_profiles::IDX::OMED",
@@ -910253,10 +910253,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "IDX::OLIV",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "idx_listed_companies::IDX::OMED",
@@ -2137293,10 +2137293,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::HLT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::HMC",
