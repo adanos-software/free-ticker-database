@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T20:15:31Z",
+  "generated_at": "2026-11-09T20:53:16Z",
   "summary": {
     "venues": 88,
     "venue_status_counts": {
@@ -9,13 +9,13 @@
     },
     "audit_outcome_counts": {
       "denominator_missing": 20,
-      "maintain": 18,
+      "maintain": 20,
       "official_source_required": 5,
       "refresh_required": 16,
-      "refresh_unavailable": 29
+      "refresh_unavailable": 27
     },
-    "unavailable_venues": 29,
-    "nonfresh_venues": 64,
+    "unavailable_venues": 27,
+    "nonfresh_venues": 62,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
   },
@@ -509,13 +509,13 @@
       "reference_scopes": "exchange_directory",
       "current_stock_rows": 321,
       "current_etf_rows": 0,
-      "official_active_stock_rows": 637,
+      "official_active_stock_rows": 641,
       "official_active_etf_rows": 0,
       "missing_product_classes": "",
       "official_source_keys": "cse_lk_all_security_code|cse_lk_company_info_summary",
-      "unavailable_source_keys": "cse_lk_all_security_code",
-      "nonfresh_source_keys": "cse_lk_all_security_code",
-      "source_blocker_classes": "empty_refresh",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 322,
       "official_matches": 319,
       "official_collisions": 0,
@@ -523,7 +523,7 @@
       "official_recall_pct": 99.07,
       "collision_adjusted_recall_pct": 99.07,
       "denominator_status": "available",
-      "audit_outcome": "refresh_unavailable",
+      "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
     },
     {
@@ -1456,9 +1456,9 @@
       "official_active_etf_rows": 32,
       "missing_product_classes": "",
       "official_source_keys": "set_dr_search|set_etf_search|set_listed_companies|set_stock_search",
-      "unavailable_source_keys": "set_stock_search",
-      "nonfresh_source_keys": "set_stock_search",
-      "source_blocker_classes": "empty_refresh",
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "",
+      "source_blocker_classes": "",
       "official_denominator": 943,
       "official_matches": 770,
       "official_collisions": 135,
@@ -1466,7 +1466,7 @@
       "official_recall_pct": 81.65,
       "collision_adjusted_recall_pct": 95.3,
       "denominator_status": "available",
-      "audit_outcome": "refresh_unavailable",
+      "audit_outcome": "maintain",
       "promotion_readiness": "not_applicable"
     },
     {
