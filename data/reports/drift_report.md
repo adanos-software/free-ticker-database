@@ -1,7 +1,7 @@
 # Drift / freshness report
 
-Generated: 2026-11-02T16:50:06Z
-Dataset built_at: 2026-11-02T08:16:01Z (0.4 days ago; threshold 45.0)
+Generated: 2026-11-09T17:41:40Z
+Dataset built_at: 2026-11-09T17:08:46Z (0.0 days ago; threshold 45.0)
 **drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
@@ -27,42 +27,26 @@ Dataset built_at: 2026-11-02T08:16:01Z (0.4 days ago; threshold 45.0)
 - WW -> WGHTQ (Ww International Inc, 2025-05-15): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 
 ## Quality indicators (release-gate info counts)
-- allowed_warn_rows: 32
-- expected_missing_primary_isin: 701
-- missing_etf_category: 121
-- missing_stock_sector: 691
-- source_gap_rows: 11260
+- allowed_warn_rows: 35
+- expected_missing_primary_isin: 605
+- missing_etf_category: 118
+- missing_stock_sector: 644
+- source_gap_rows: 11123
 
-## Quality regressions: 3
-- source_gap_rows: 11081 -> 11260 (+179)
-- expected_missing_primary_isin: 664 -> 701 (+37)
-- missing_stock_sector: 668 -> 691 (+23)
+## Quality regressions: 0
 
-## Official recall regressions: 25
-- BATS official_recall_missing: 339 -> 353 (+14)
-- BATS collision_adjusted_recall_missing: 281 -> 295 (+14)
-- Euronext official_recall_missing: 707 -> 708 (+1)
-- Euronext collision_adjusted_recall_missing: 330 -> 333 (+3)
-- FSX official_recall_missing: 10151 -> 10321 (+170)
-- FSX collision_adjusted_recall_missing: 5861 -> 5888 (+27)
-- KRX official_recall_missing: 161 -> 175 (+14)
-- KRX collision_adjusted_recall_missing: 147 -> 161 (+14)
-- LSE collision_adjusted_recall_missing: 3500 -> 3501 (+1)
-- NASDAQ official_recall_missing: 1043 -> 1045 (+2)
-- NASDAQ collision_adjusted_recall_missing: 984 -> 985 (+1)
-- NEO official_recall_missing: 234 -> 241 (+7)
-- NEO collision_adjusted_recall_missing: 166 -> 172 (+6)
-- NSE_IN official_recall_missing: 72 -> 73 (+1)
-- NYSE ARCA official_recall_missing: 120 -> 132 (+12)
-- NYSE ARCA collision_adjusted_recall_missing: 89 -> 102 (+13)
-- NYSE MKT official_recall_missing: 80 -> 83 (+3)
-- NYSE MKT collision_adjusted_recall_missing: 47 -> 49 (+2)
-- PSE official_recall_missing: 214 -> 215 (+1)
-- SET official_recall_missing: 172 -> 173 (+1)
-- SGX official_recall_missing: 127 -> 130 (+3)
-- TWSE official_recall_missing: 35 -> 38 (+3)
-- TXSE official_recall_missing: 16 -> 22 (+6)
-- TXSE collision_adjusted_recall_missing: 7 -> 8 (+1)
-- XETRA official_recall_missing: 179 -> 238 (+59)
+## Official recall regressions: 12
+- ADX official_recall_missing: 30 -> 32 (+2)
+- ADX collision_adjusted_recall_missing: 0 -> 2 (+2)
+- FSX official_recall_missing: 10321 -> 10322 (+1)
+- FSX collision_adjusted_recall_missing: 5888 -> 5901 (+13)
+- IDX collision_adjusted_recall_missing: 18 -> 19 (+1)
+- KRX official_recall_missing: 175 -> 177 (+2)
+- KRX collision_adjusted_recall_missing: 161 -> 163 (+2)
+- LSE collision_adjusted_recall_missing: 3501 -> 3502 (+1)
+- NYSE official_recall_missing: 1869 -> 1877 (+8)
+- NYSE collision_adjusted_recall_missing: 1302 -> 1310 (+8)
+- TADAWUL official_recall_missing: 210 -> 211 (+1)
+- XETRA official_recall_missing: 238 -> 241 (+3)
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._
