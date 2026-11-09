@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-09T08:01:46Z`
+Generated: `2026-11-09T16:43:29Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,10 +8,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 127 |
-| Listings involved | 371 |
+| Collision groups | 128 |
+| Listings involved | 374 |
 | Ticker-collision groups | 35 |
-| Open groups | 7 |
+| Open groups | 8 |
 | Closed same-issuer reviewed | 120 |
 | Direct identifier apply allowed rows | 0 |
 
@@ -19,7 +19,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 92 |
+| isin_shared_by_distinct_issuers | 93 |
 | ticker_collision_isin_misassignment_suspected | 35 |
 
 ## Next Review Batches
@@ -60,6 +60,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
 | GRS298343005 | Greece | 3 | - | HELLENiQ ENERGY Holdings S.A. \| Hellenic Petroleum Holdings S.A. |
+| HK1097008929 | Hong Kong | 3 | - | CTF Media & Entertainment Limited \| i-CABLE Communications Limited |
 | INE234A01025 | India | 3 | - | Evonile Pharma Limited \| Novartis India Ltd |
 | IL0011313900 | Israel | 2 | - | Eocene Ltd. - Ordinary Shares \| Galmed Pharmaceuticals Ltd |
 | INE534A01028 | India | 2 | - | Grand Foundry Ltd \| Tikona Communication Limited |
