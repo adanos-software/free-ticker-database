@@ -1,24 +1,24 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-11-02T16:51:35Z
+Generated: 2026-11-09T17:57:11Z
 
 **isin_issues_detected: True**
 
-ISINs validated: 64349 | match=62480 mismatch=132 no_data=1737
+ISINs validated: 64411 | match=62587 mismatch=133 no_data=1691
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `132` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1737` (provider coverage gap)
+- Mismatch residuals: `133` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1691` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
 
 | Exchange | Rows |
 |---|---:|
-| NSE_IN | 30 |
+| NSE_IN | 31 |
 | OTC | 27 |
 | BSE_IN | 14 |
 | NASDAQ | 9 |
@@ -41,9 +41,9 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | ASX | 1 |
 | ATHEX | 1 |
 | BIST | 1 |
+| BMV | 1 |
 | CSE_MA | 1 |
 | JSE | 1 |
-| OSL | 1 |
 | SET | 1 |
 
 ### OpenFIGI no-data residuals by exchange
@@ -52,30 +52,30 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 |---|---:|
 | OTC | 595 |
 | B3 | 222 |
-| TPEX | 192 |
-| NYSE ARCA | 122 |
-| NASDAQ | 99 |
-| TSX | 93 |
-| TSXV | 70 |
-| BATS | 69 |
+| TPEX | 191 |
+| NYSE ARCA | 102 |
+| NASDAQ | 92 |
+| TSX | 92 |
+| TSXV | 69 |
+| BATS | 58 |
 | ASX | 39 |
 | EGX | 28 |
 | BSE_IN | 26 |
 | FSX | 22 |
 | SET | 17 |
 | NYSE | 16 |
-| JSE | 15 |
+| JSE | 12 |
 | HKEX | 9 |
 | NGX | 9 |
-| CSE_LK | 7 |
+| CSE_LK | 8 |
+| LSE | 6 |
 | SZSE | 6 |
-| CSE_MA | 5 |
-| LSE | 5 |
 | SGX | 4 |
 | SSE_CL | 4 |
 | STO | 4 |
 | ATHEX | 3 |
 | BCBA | 3 |
+| CSE_MA | 3 |
 | KRX | 3 |
 | NEO | 3 |
 | NSE_KE | 3 |
@@ -126,6 +126,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INE644K01016 | BMBMUMG | BMB Music & Magnetics Ltd | BOKA | BOKADIA FILMS LTD | review_required_openfigi_resolves_different_security |
 | INE902G01016 | KGPETRO | KG Petrochem Ltd | KGP | KG PETROLEUM CHEM LTD | review_required_openfigi_resolves_different_security |
 | INF0R8F01257 | NXT100CASE | ZERODHAAMC - NXT100CASE | ZERDNDG | ZERODHA NIFTY NXT 100 ETF DG | review_required_openfigi_resolves_different_security |
+| INF0R8F01265 | BANKCASE | ZERODHAAMC - BANKCASE | ZBTBEDG | ZERODHA BSE TOP 10 BANKS ETF | review_required_openfigi_resolves_different_security |
 | INF109K1A153 | EVIETF | ICICI Prudential Nifty EV & Ne | ICPNERG | ICIC PRU NI EV NE AG ETF-RG | review_required_openfigi_resolves_different_security |
 | INF109K1A344 | TOP15IETF | ICICI Prudential Nifty Top 15  | ICPNTRG | ICIC PRU NI TP 15 EQ ETF-RG | review_required_openfigi_resolves_different_security |
 | INF109K1A716 | PHARMAIETF | ICICIPRAMC - PHARMAIETF | ICPNPRG | ICICI PRUD NIFTY PHAR ETF RG | review_required_openfigi_resolves_different_security |
@@ -168,6 +169,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | LK0113N00007 | LOLC.N0000 | L O L C HOLDINGS PLC | LOLC | LOLC HOLDINGS LTD | review_required_openfigi_resolves_different_security |
 | LK0451N00001 | BPPL.N0000 | B P P L HOLDINGS PLC | BPPL | BPPL HOLDINGS LTD | review_required_openfigi_resolves_different_security |
 | MA0000012247 | COSUMAR | Cosumar SA | CSR | COMPAGNIE SUCRERIE MAR RAFFI | review_required_openfigi_resolves_different_security |
+| MXCFFI1H0008 | FIBRAHD15 | Fideicomiso Irrevocable No. F/ | FIBRHD15 | FIBRA HD SERVICIOS SC | review_required_openfigi_resolves_different_security |
 | MYL2828OO001 | 2828 | CI Holdings Bhd | CIH | C.I. HOLDINGS BERHAD | review_required_openfigi_resolves_different_security |
 | MYL4251OO004 | 4251 | I-Berhad | IBHD | I-BHD | review_required_openfigi_resolves_different_security |
 | MYL5235SS008 | 5235SS | KLCC Property Holdings Bhd | KLCCSS | KLCCP STAPLED GROUP | review_required_openfigi_resolves_different_security |
@@ -176,7 +178,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | MYQ0327OO005 | 0327 | OB Holdings Berhad | OBHB | OB HOLDINGS BHD | review_required_openfigi_resolves_different_security |
 | NL0015000DX5 | ATAI | AtaiBeckley Inc. | ATAI1EUR,ATAI1GBP,ATAI1USD | ATAI LIFE SCIENCES NV | review_required_openfigi_resolves_different_security |
 | NL0015000H56 | BNJW | BANIJAY GROUP WARR | FLEW | FL ENTERTAINMENT N.V.-CW24 | review_required_openfigi_resolves_different_security |
-| NO0013711721 | KMCP | KMC PROPERTIES | 0N0L,5FM0,BINT | BEVEST ASA | review_required_openfigi_resolves_different_security |
 | PLDRD2400010 | DRF | Dr.Finance SA | D24,D241PLN,D24PLN | DORADCY24 SA | review_required_openfigi_resolves_different_security |
 | PLPZUGD00010 | ETFPZUGOLD | ETFPZUGOLD | ETFP2PLN,ETFPZUG | PZU ETF GOLD PORTFELOWY FIZ | review_required_openfigi_resolves_different_security |
 | SA000A0B89Q3 | 2250 | SIIG | SIIG,SIIGSAR | SAUDI IND INVESTMENT GROUP | review_required_openfigi_resolves_different_security |
