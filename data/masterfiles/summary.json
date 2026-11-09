@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-09T16:59:33Z",
-  "rows": 171158,
+  "generated_at": "2026-11-09T20:10:43Z",
+  "rows": 171165,
   "exchanges": [
     "ADX",
     "AMS",
@@ -98,7 +98,7 @@
     "b3_listed_etfs": 229,
     "b3_bdr_etfs": 321,
     "b3_instruments_equities": 1353,
-    "nasdaq_other_listed": 7666,
+    "nasdaq_other_listed": 7673,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
     "bist_kap_mkk_listed_securities": 663,
@@ -226,15 +226,15 @@
       "official": true,
       "mode": "network",
       "rows": 5606,
-      "generated_at": "2026-11-09T16:59:33Z"
+      "generated_at": "2026-11-09T20:10:43Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7666,
-      "generated_at": "2026-11-07T13:12:31Z"
+      "rows": 7673,
+      "generated_at": "2026-11-09T20:10:43Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1345,7 +1345,7 @@
       "official": true,
       "mode": "network",
       "rows": 10197,
-      "generated_at": "2026-11-09T16:59:33Z"
+      "generated_at": "2026-11-09T20:10:43Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1668,50 +1668,16 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-11-09T16:59:33Z",
+    "generated_at": "2026-11-09T20:10:43Z",
     "selected_source_keys": [
-      "adx_market_watch",
-      "bahrain_bourse_listed_companies",
-      "bolsa_santiago_instruments",
-      "cboe_canada_listing_directory",
-      "cse_lk_company_info_summary",
-      "cse_ma_listed_companies",
-      "deutsche_boerse_frankfurt_all_tradable_equities",
-      "deutsche_boerse_xetra_all_tradable_equities",
-      "dfm_listed_securities",
-      "euronext_equities",
-      "jpx_listed_issues",
       "nasdaq_listed",
-      "nzx_instruments",
-      "otc_markets_stock_screener",
-      "pse_listed_company_directory",
-      "qse_market_watch",
-      "sec_company_tickers_exchange",
-      "sgx_securities_prices",
-      "tadawul_main_market_watch",
-      "upcom_registered_securities"
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "adx_market_watch": "network",
-      "bahrain_bourse_listed_companies": "network",
-      "bolsa_santiago_instruments": "unavailable",
-      "cboe_canada_listing_directory": "network",
-      "cse_lk_company_info_summary": "network",
-      "cse_ma_listed_companies": "unavailable",
-      "deutsche_boerse_frankfurt_all_tradable_equities": "network",
-      "deutsche_boerse_xetra_all_tradable_equities": "network",
-      "dfm_listed_securities": "network",
-      "euronext_equities": "network",
-      "jpx_listed_issues": "unavailable",
       "nasdaq_listed": "network",
-      "nzx_instruments": "network",
-      "otc_markets_stock_screener": "unavailable",
-      "pse_listed_company_directory": "network",
-      "qse_market_watch": "network",
-      "sec_company_tickers_exchange": "network",
-      "sgx_securities_prices": "network",
-      "tadawul_main_market_watch": "network",
-      "upcom_registered_securities": "unavailable"
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }

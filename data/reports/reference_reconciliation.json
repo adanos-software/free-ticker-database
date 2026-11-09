@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 171036,
-    "source_specific_reference_keys": 171036,
+    "active_official_reference_rows": 171043,
+    "source_specific_reference_keys": 171043,
     "classification_counts": {
       "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12553,
-      "exact_match": 100143,
-      "missing_from_database": 44721,
+      "exact_match": 100148,
+      "missing_from_database": 44722,
       "normalization_candidate": 1860,
-      "out_of_scope": 8168
+      "out_of_scope": 8169
     },
-    "coverage_credited_keys": 100143,
+    "coverage_credited_keys": 100148,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44721,
+    "in_scope_missing_rows": 44722,
     "identity_conflict_rows": 12553,
     "mapping_candidate_rows": 1860
   },
@@ -1633939,22 +1633939,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::BATS::TLDR",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::TLDR",
-      "exchange": "BATS",
-      "ticker": "TLDR",
-      "asset_types": "ETF",
-      "names": "The Laddered T-Bill ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::TLDR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::BATS::TLTI",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::TLTI",
@@ -1656499,6 +1656483,22 @@
       "evidence": "name indicates non-target instrument: futures"
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::HYB",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::HYB",
+      "exchange": "NYSE ARCA",
+      "ticker": "HYB",
+      "asset_types": "ETF",
+      "names": "Lazard US High Yield ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::HYB",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::HYBB",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::HYBB",
@@ -1656560,6 +1656560,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::HYFI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::HYFY",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::HYFY",
+      "exchange": "NYSE ARCA",
+      "ticker": "HYFY",
+      "asset_types": "ETF",
+      "names": "Lazard Hybrid Financial Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::HYFY",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1662915,6 +1662931,38 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::LYR",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::LYR",
+      "exchange": "NYSE ARCA",
+      "ticker": "LYR",
+      "asset_types": "ETF",
+      "names": "Lyrical U.S. Value Equity ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::LYR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::LYRI",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::LYRI",
+      "exchange": "NYSE ARCA",
+      "ticker": "LYRI",
+      "asset_types": "ETF",
+      "names": "Lyrical International Value Equity ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::LYRI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::MADE",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::MADE",
@@ -1663312,6 +1663360,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::MFEM",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::MFIX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::MFIX",
+      "exchange": "NYSE ARCA",
+      "ticker": "MFIX",
+      "asset_types": "ETF",
+      "names": "Nomura Strategic Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::MFIX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1672979,6 +1673043,22 @@
       "evidence": "name indicates non-target instrument: option"
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SMDC",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::SMDC",
+      "exchange": "NYSE ARCA",
+      "ticker": "SMDC",
+      "asset_types": "ETF",
+      "names": "Nomura Small and Mid Cap ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::SMDC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SMDD",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::SMDD",
@@ -1680336,6 +1680416,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::XCOR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::XDLR",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::XDLR",
+      "exchange": "NYSE ARCA",
+      "ticker": "XDLR",
+      "asset_types": "ETF",
+      "names": "Lazard Non-Dollar Active Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::XDLR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1690177,22 +1690273,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: preferred"
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::ARI",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::ARI",
-      "exchange": "NYSE",
-      "ticker": "ARI",
-      "asset_types": "Stock",
-      "names": "Apollo Commercial Real Estate Finance, Inc",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::ARI",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::ARIS",
@@ -1707907,6 +1707987,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::HYAC",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::HYAC",
+      "exchange": "NYSE",
+      "ticker": "HYAC",
+      "asset_types": "Stock",
+      "names": "Haymaker Acquisition Corp V Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::HYAC.U",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::HYAC.U",
@@ -1707921,6 +1708017,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: warrant"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::HYAC.W",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::HYAC.W",
+      "exchange": "NYSE",
+      "ticker": "HYAC.W",
+      "asset_types": "Stock",
+      "names": "Haymaker Acquisition Corp V Redeemable warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::HYBX",
@@ -1733475,38 +1733587,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::TXSE::TCBI",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "TXSE::TCBI",
-      "exchange": "TXSE",
-      "ticker": "TCBI",
-      "asset_types": "Stock",
-      "names": "Texas Capital Bancshares, Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::TXSE::TCBI$B",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "TXSE::TCBI$B",
-      "exchange": "TXSE",
-      "ticker": "TCBI$B",
-      "asset_types": "Stock",
-      "names": "Texas Capital Bancshares, Inc. Depositary Shares 5.75% Fixed Rate Non-Cumulative Perpetual Preferred Stock Series B",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: preferred"
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::TXSE::THRU",
       "source_key": "nasdaq_other_listed",
       "reference_key": "TXSE::THRU",
@@ -1733521,6 +1733601,38 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::TXSE::TXCP",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "TXSE::TXCP",
+      "exchange": "TXSE",
+      "ticker": "TXCP",
+      "asset_types": "Stock",
+      "names": "Texas Capital Bancshares, Inc. Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::TXSE::TXCP$B",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "TXSE::TXCP$B",
+      "exchange": "TXSE",
+      "ticker": "TXCP$B",
+      "asset_types": "Stock",
+      "names": "Texas Capital Bancshares, Inc. Depositary Shares 5.75% Fixed Rate Non-Cumulative Perpetual Preferred Stock Series B",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: preferred"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::TXSE::TXS",
