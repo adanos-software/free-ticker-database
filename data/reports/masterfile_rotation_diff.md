@@ -1,36 +1,29 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-11-08T13:20:57Z`
-- New rows: `249`
-- Vanished rows: `76`
-- Changed rows: `42`
+- Generated at: `2026-11-09T17:01:47Z`
+- New rows: `19`
+- Vanished rows: `25`
+- Changed rows: `8`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| isin_change | 1 |
-| name_change | 41 |
+| name_change | 8 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| set_dr_search | 30 |
-| set_listed_companies | 1 |
-| six_etf_products | 192 |
-| six_etp_products | 15 |
-| spotlight_companies_directory | 7 |
-| sse_etf_list | 4 |
+| nasdaq_listed | 1 |
+| sec_company_tickers_exchange | 17 |
+| tadawul_main_market_watch | 1 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| bme_security_prices_directory | 38 |
-| set_listed_companies | 1 |
-| six_etf_products | 26 |
-| spotlight_companies_directory | 8 |
-| sse_a_share_list | 2 |
-| sse_etf_list | 1 |
+| euronext_equities | 5 |
+| nasdaq_listed | 5 |
+| sec_company_tickers_exchange | 15 |
