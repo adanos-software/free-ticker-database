@@ -1861,10 +1861,49 @@ def is_vietnam_official_exchange_correction(
     )
 
 
+US_VENUE_DIRECTORY_SOURCES = frozenset({"nasdaq_listed", "nasdaq_other_listed"})
+SEC_COMPANY_TICKERS_SOURCE = "sec_company_tickers_exchange"
+
+
+def without_unconfirmed_sec_us_venue_tags(
+    row: dict[str, str],
+    candidates: tuple[dict[str, str], ...],
+) -> tuple[dict[str, str], ...]:
+    """Drop a stale SEC venue tag when it would relocate an OTC listing.
+
+    ``company_tickers_exchange.json`` keeps the pre-delisting exchange after a
+    voluntary Nasdaq exit. ANEB is still tagged Nasdaq there, and the OTC Markets
+    screener name is abbreviated, so a unique name match would move OTC::ANEB
+    onto NASDAQ. The reviewed drop of that stale Nasdaq line then deletes the
+    listing. A Nasdaq Trader directory row for the same venue still confirms it.
+    """
+
+    if row.get("exchange") not in OTC_EXCHANGES:
+        return candidates
+    confirmed_exchanges = {
+        candidate.get("exchange")
+        for candidate in candidates
+        if candidate.get("source_key") in US_VENUE_DIRECTORY_SOURCES
+        and candidate.get("exchange") in US_EXCHANGES
+    }
+    return tuple(
+        candidate
+        for candidate in candidates
+        if not (
+            candidate.get("source_key") == SEC_COMPANY_TICKERS_SOURCE
+            and candidate.get("exchange") in US_EXCHANGES
+            and candidate.get("exchange") not in confirmed_exchanges
+        )
+    )
+
+
 def choose_official_exchange_correction_candidate(
     row: dict[str, str],
     candidates: tuple[dict[str, str], ...],
 ) -> dict[str, str] | None:
+    candidates = without_unconfirmed_sec_us_venue_tags(row, candidates)
+    if not candidates:
+        return None
     target_exchanges = {candidate["exchange"] for candidate in candidates}
     current_isin = row.get("isin", "").strip().upper()
 

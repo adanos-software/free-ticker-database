@@ -595,6 +595,7 @@ HGAS,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather
 HGD,TSX,0.99,Official issuer references resolve this old TSX ETF symbol to a current ticker that collides with a distinct active US ticker in the current core universe; the stale TSX line should be removed from core.
 HGU,TSX,0.99,Official issuer references resolve this old TSX ETF symbol to a current ticker that collides with a distinct active US ticker in the current core universe; the stale TSX line should be removed from core.
 HIYS,BATS,0.99,"ETF curation 2026-10-29: renamed to GTOH (same ISIN US46090A7542, symbol_changed transition); HIYS is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
+HLT,NYSE,0.99,Reviewed issuer venue transition NYSE::HLT to NASDAQ::HLT; exact evidence is recorded in listing_transitions.csv.
 HLTHQ,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 HLX,NYSE,0.99,Helix Energy Solutions completed its all-stock combination with Hornbeck on 2026-09-01; HLX ceased NYSE trading at the close of 2026-09-01. Exact delisting evidence is recorded in listing_transitions.csv. The existing NYSE::HOS row is not rewritten here.
 HMKIY,NYSE,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."

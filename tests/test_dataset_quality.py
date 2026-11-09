@@ -1780,6 +1780,102 @@ def test_apply_official_exchange_corrections_drops_stale_row_when_official_listi
     assert corrected == [official_row]
 
 
+def test_apply_official_exchange_corrections_keeps_otc_when_sec_nasdaq_tag_is_unconfirmed(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "ANEB",
+        "name": "Anebulo Pharmaceuticals Inc",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "country": "United States",
+        "country_code": "US",
+        "sector": "Health Care",
+        "isin": "US0345691036",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("ANEB", "Stock"): (
+                {
+                    "ticker": "ANEB",
+                    "exchange": "OTC",
+                    "asset_type": "Stock",
+                    "name": "ANEBULO PHARMAC INC",
+                    "source_key": "otc_markets_stock_screener",
+                    "reference_scope": "exchange_directory",
+                    "isin": "",
+                },
+                {
+                    "ticker": "ANEB",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "name": "Anebulo Pharmaceuticals, Inc.",
+                    "source_key": "sec_company_tickers_exchange",
+                    "reference_scope": "exchange_directory",
+                    "isin": "",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert len(corrected) == 1
+    assert corrected[0]["exchange"] == "OTC"
+    assert corrected[0]["isin"] == "US0345691036"
+
+
+def test_apply_official_exchange_corrections_moves_otc_when_nasdaq_directory_confirms_sec(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "QNBC",
+        "name": "QNB Corp",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "country": "United States",
+        "country_code": "US",
+        "sector": "Financials",
+        "isin": "US74726N1072",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("QNBC", "Stock"): (
+                {
+                    "ticker": "QNBC",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "name": "QNB Corp",
+                    "source_key": "sec_company_tickers_exchange",
+                    "reference_scope": "exchange_directory",
+                    "isin": "",
+                },
+                {
+                    "ticker": "QNBC",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "name": "QNB Corp - Common Stock",
+                    "source_key": "nasdaq_listed",
+                    "reference_scope": "exchange_directory",
+                    "isin": "",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "NASDAQ"
+
+
 def test_apply_official_exchange_corrections_replaces_contaminated_hose_isin_from_hnx(monkeypatch):
     from scripts import rebuild_dataset
 
