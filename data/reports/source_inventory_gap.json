@@ -1840,9 +1840,9 @@
       "provider": "SET",
       "reference_scopes": "exchange_directory|listed_companies_subset",
       "review_needed": false,
-      "source_last_error": "Empty refresh result; preserved 943 existing rows",
-      "source_mode": "unavailable",
-      "source_refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+      "source_last_error": "",
+      "source_mode": "network",
+      "source_refresh_queue": "fresh_no_refresh_needed",
       "source_url": "https://www.set.or.th/api/set/stock/list",
       "tickers": 779,
       "unresolved_findings": 0,
@@ -2090,7 +2090,7 @@
       "official_full": 35,
       "official_partial": 33
     },
-    "generated_at": "2026-11-09T20:15:31Z",
+    "generated_at": "2026-11-09T20:53:16Z",
     "global_expansion_candidates": 0,
     "high_priority_rows": 28,
     "official_full_upgrade_plan_counts": {

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-09T20:10:43Z",
-  "rows": 171165,
+  "generated_at": "2026-11-09T20:42:49Z",
+  "rows": 171169,
   "exchanges": [
     "ADX",
     "AMS",
@@ -122,7 +122,7 @@
     "bursa_equity_isin": 1142,
     "nasdaq_nordic_copenhagen_shares": 144,
     "nasdaq_nordic_copenhagen_etfs": 1,
-    "cse_lk_all_security_code": 315,
+    "cse_lk_all_security_code": 319,
     "cse_lk_company_info_summary": 322,
     "cse_ma_listed_companies": 82,
     "dfm_listed_securities": 71,
@@ -316,10 +316,9 @@
       "provider": "SET",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
+      "mode": "network",
       "rows": 943,
-      "generated_at": "2026-11-02T21:05:34Z",
-      "last_error": "Empty refresh result; preserved 943 existing rows"
+      "generated_at": "2026-11-09T20:42:49Z"
     },
     "set_etf_search": {
       "provider": "SET",
@@ -623,10 +622,9 @@
       "provider": "CSE Sri Lanka",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 315,
-      "generated_at": "2026-10-08T15:08:41Z",
-      "last_error": "Empty refresh result; preserved 315 existing rows"
+      "mode": "network",
+      "rows": 319,
+      "generated_at": "2026-11-09T20:42:49Z"
     },
     "cse_lk_company_info_summary": {
       "provider": "CSE Sri Lanka",
@@ -1376,7 +1374,7 @@
     "cboe_canada_listing_directory": "network",
     "asx_investment_products": "network",
     "set_listed_companies": "network",
-    "set_stock_search": "unavailable",
+    "set_stock_search": "network",
     "set_etf_search": "network",
     "set_dr_search": "network",
     "tmx_listed_issuers": "network",
@@ -1412,7 +1410,7 @@
     "egx_listed_stocks": "network",
     "bvl_issuers_directory": "network",
     "cse_ma_listed_companies": "unavailable",
-    "cse_lk_all_security_code": "unavailable",
+    "cse_lk_all_security_code": "network",
     "cse_lk_company_info_summary": "network",
     "dse_tz_listed_companies": "network",
     "bvc_colombia_issuers": "unavailable",
@@ -1555,10 +1553,6 @@
       "error": "Empty refresh result; preserved 3 existing rows"
     },
     {
-      "source_key": "cse_lk_all_security_code",
-      "error": "Empty refresh result; preserved 315 existing rows"
-    },
-    {
       "source_key": "cse_ma_listed_companies",
       "error": "Empty refresh result; preserved 82 existing rows"
     },
@@ -1631,10 +1625,6 @@
       "error": "Empty refresh result; preserved 47 existing rows"
     },
     {
-      "source_key": "set_stock_search",
-      "error": "Empty refresh result; preserved 943 existing rows"
-    },
-    {
       "source_key": "six_shares_explorer_full",
       "error": "Empty refresh result; preserved 1 existing rows"
     },
@@ -1668,16 +1658,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-11-09T20:10:43Z",
+    "generated_at": "2026-11-09T20:42:49Z",
     "selected_source_keys": [
-      "nasdaq_listed",
-      "nasdaq_other_listed",
-      "sec_company_tickers_exchange"
+      "b3_instruments_equities",
+      "bme_listed_values",
+      "bolsa_santiago_instruments",
+      "bse_india_scrips",
+      "cse_lk_all_security_code",
+      "cse_ma_listed_companies",
+      "hnx_listed_securities",
+      "jpx_listed_issues",
+      "jse_instrument_search",
+      "krx_listed_companies",
+      "lse_company_reports",
+      "lse_instrument_directory",
+      "lse_price_explorer",
+      "ngm_market_data_equities",
+      "ngx_company_profile_directory",
+      "otc_markets_stock_screener",
+      "psx_dps_symbols",
+      "sem_isin",
+      "set_stock_search",
+      "upcom_registered_securities"
     ],
     "source_modes": {
-      "nasdaq_listed": "network",
-      "nasdaq_other_listed": "network",
-      "sec_company_tickers_exchange": "network"
+      "b3_instruments_equities": "unavailable",
+      "bme_listed_values": "unavailable",
+      "bolsa_santiago_instruments": "unavailable",
+      "bse_india_scrips": "unavailable",
+      "cse_lk_all_security_code": "network",
+      "cse_ma_listed_companies": "unavailable",
+      "hnx_listed_securities": "unavailable",
+      "jpx_listed_issues": "unavailable",
+      "jse_instrument_search": "cache",
+      "krx_listed_companies": "unavailable",
+      "lse_company_reports": "unavailable",
+      "lse_instrument_directory": "unavailable",
+      "lse_price_explorer": "unavailable",
+      "ngm_market_data_equities": "unavailable",
+      "ngx_company_profile_directory": "unavailable",
+      "otc_markets_stock_screener": "unavailable",
+      "psx_dps_symbols": "unavailable",
+      "sem_isin": "unavailable",
+      "set_stock_search": "network",
+      "upcom_registered_securities": "unavailable"
     }
   }
 }
