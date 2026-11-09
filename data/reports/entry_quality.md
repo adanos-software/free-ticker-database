@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-11-09T18:30:33Z`
+Generated at: `2026-11-09T19:07:33Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,574 |
-| source_gap | 11,121 |
+| pass | 86,582 |
+| source_gap | 11,113 |
 | warn | 35 |
 
 ## Issue Counts
@@ -17,9 +17,9 @@ Generated at: `2026-11-09T18:30:33Z`
 |---|---:|
 | official_reference_gap | 6,811 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 642 |
-| expected_missing_primary_isin | 605 |
-| missing_etf_category | 118 |
+| missing_stock_sector | 637 |
+| expected_missing_primary_isin | 602 |
+| missing_etf_category | 116 |
 | official_name_mismatch | 24 |
 | official_isin_mismatch | 11 |
 | low_company_name_overlap | 10 |
@@ -41,7 +41,7 @@ Generated at: `2026-11-09T18:30:33Z`
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | AMS | 552 | 0 | 194 | 0 | 0 |
 | BVB | 55 | 0 | 192 | 0 | 0 |
-| TSX | 2,253 | 0 | 190 | 0 | 0 |
+| TSX | 2,256 | 0 | 187 | 0 | 0 |
 | ASX | 2,101 | 2 | 156 | 0 | 0 |
 | TSXV | 1,272 | 0 | 147 | 3 | 0 |
 | LSE | 6,879 | 0 | 145 | 2 | 0 |
