@@ -1,13 +1,13 @@
 # Delisting-candidate report
 
-Generated: 2026-11-02T16:50:17Z
+Generated: 2026-11-09T17:49:09Z
 
 **delisting_detected: True**
 
 Markets checked: US, ASX, NSE_IN, US_NASDAQ_DELETES
 Markets skipped: TSE (fetch failed: XLRDError); BSE_IN (fetch failed: JSONDecodeError: Expecting value: line 1 column 1 (char 0))
 
-Candidates: 234 (delisted=4, suspended=0, master_absent=230)
+Candidates: 247 (delisted=4, suspended=0, master_absent=243)
 
 Detection only — verify each (delisting vs rename vs SME/suspended) and apply via the override/verify pipeline. BSE ListofScripData Delisted rows are drop-ready; Nasdaq Trader Delete rows require manual corporate-action review; `master_absent` need rename-vs-delisting verification; `suspended` are kept by policy (can resume).
 
@@ -67,6 +67,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | AFBI | master_absent | Affinity Bancshares Inc | US00832E1038 |
 | NASDAQ | AIXC | master_absent | AIxCrypto Holdings, Inc. | US74754R3012 |
 | NASDAQ | ALCY | master_absent | Alchemy Investments Acquisition Corp 1 C | KYG0232F1090 |
+| NASDAQ | ALDF | master_absent | Aldel Financial II Inc. Class A Ordinary | KYG015581088 |
 | NASDAQ | ALOT | master_absent | AstroNova Inc | US04638F1084 |
 | NASDAQ | ANSC | master_absent | Agriculture & Natural Solutions Acquisit | KYG0131Y1008 |
 | NASDAQ | AREB | master_absent | American Rebel Holdings Inc | US02919L8853 |
@@ -80,8 +81,10 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | BNBX | master_absent | BNB Plus Corp. | US03815U6073 |
 | NASDAQ | BOCN | master_absent | Blue Ocean Acquisition Corp | KYG1330L1059 |
 | NASDAQ | BRNS | master_absent | Barinthus Biotherapeutics plc | US91864C1071 |
+| NASDAQ | BWMN | delisted | Bowman Consulting Group Ltd | US1030021018 |
 | NASDAQ | CCIX | master_absent | Churchill Capital Corp IX | KYG213011094 |
 | NASDAQ | CCRN | master_absent | Cross Country Healthcare Inc | US2274831047 |
+| NASDAQ | CCXI | master_absent | Churchill Capital Corp XI | KYG2131A1085 |
 | NASDAQ | CEPT | master_absent | Cantor Equity Partners II, Inc. | KYG1827K1076 |
 | NASDAQ | CIMG | master_absent | CIMG Inc | US67073S3076 |
 | NASDAQ | CIZN | master_absent | Citizens Holding Company | US1747151025 |
@@ -111,10 +114,14 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | GBNY | master_absent | Generations Bancorp NY Inc | US37149G1085 |
 | NASDAQ | GCTK | master_absent | GlucoTrack Inc | US45824Q8042 |
 | NASDAQ | GLBZ | master_absent | Glen Burnie Bancorp | US3774071019 |
+| NASDAQ | GNTA | master_absent | Genenta Science S.p.A. | US36870W1009 |
 | NASDAQ | GOCO | master_absent | GoHealth Inc. | US38046W2044 |
 | NASDAQ | GV | master_absent | Visionary Education Technology Holdings  | CA92838F2008 |
 | NASDAQ | HEPA | master_absent | Hepion Pharmaceuticals Inc | US4268971045 |
+| NASDAQ | HODO | master_absent | House of Doge Inc. - Common Stock | US1048133086 |
 | NASDAQ | HWH | master_absent | HWH International Inc | US44852G1013 |
+| NASDAQ | INDV | master_absent | Indivior PLC Ordinary Shares | GB00BN4HT335 |
+| NASDAQ | INM | master_absent | InMed Pharmaceuticals Inc | CA4576377002 |
 | NASDAQ | ITRM | master_absent | Iterum Therapeutics PLC | IE000TTOOBX0 |
 | NASDAQ | KVAC | master_absent | Keen Vision Acquisition Corporation Ordi | VGG524431191 |
 | NASDAQ | LBRDA | master_absent | Liberty Broadband Srs A | US5303071071 |
@@ -126,9 +133,11 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | MAMK | master_absent | MaxsMaking Inc. Class A Ordinary Shares | VGG6053R1064 |
 | NASDAQ | MAPS | master_absent | WM Technology Inc | US92971A1097 |
 | NASDAQ | MAXN | master_absent | Maxeon Solar Technologies Ltd | SGXZ57724486 |
+| NASDAQ | MCTA | delisted | Charming Medical Limited Class A Ordinar | VGG205281089 |
 | NASDAQ | MEHA | master_absent | Functional Brands, Inc. Common Stock | US3609481037 |
 | NASDAQ | MGPI | master_absent | MGP Ingredients Inc | US55303J1060 |
 | NASDAQ | MLAC | master_absent | Mountain Lake Acquisition Corp. Class A  |  |
+| NASDAQ | MLEC | master_absent | Moolec Science SA Ordinary Shares | KYG6223S1259 |
 | NASDAQ | MRAI | master_absent | Marpai Inc | US5713542083 |
 | NASDAQ | NATH | master_absent | Nathans Famous Inc | US6323471002 |
 | NASDAQ | NCSM | master_absent | NCS Multistage Holdings Inc | US6288772014 |
@@ -155,6 +164,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | QVCAQ | master_absent | QVC Group Inc | US74915M6057 |
 | NASDAQ | REE | master_absent | Ree Automotive Holding Inc | IL0011786154 |
 | NASDAQ | RITR | master_absent | Reitar Logtech Holdings Limited Ordinary | KYG7486B1068 |
+| NASDAQ | ROKU | delisted | Roku Inc | US77543R1023 |
 | NASDAQ | RVPH | master_absent | Reviva Pharmaceuticals Holdings Inc. | US76152G2093 |
 | NASDAQ | SDM | master_absent | Smart Digital Group Limited Ordinary Sha | KYG5006S1049 |
 | NASDAQ | SDST | master_absent | Stardust Power Inc. | US8549362007 |
@@ -170,6 +180,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NASDAQ | TALK | master_absent | Talkspace Inc | US87427V1035 |
 | NASDAQ | TBPH | master_absent | Theravance Biopharma Inc | KYG8807B1068 |
 | NASDAQ | TBRG | master_absent | TruBridge Inc. | US2053061030 |
+| NASDAQ | TCBI | master_absent | Texas Capital Bancshares Inc | US88224Q1076 |
 | NASDAQ | TIRX | master_absent | Tian Ruixiang Holdings Ltd | KYG8884K1444 |
 | NASDAQ | TWNP | master_absent | Twin Hospitality Group Inc. | US9016431069 |
 | NASDAQ | UHGWW | master_absent | United Homes Group Inc. | US91060H1086 |
@@ -192,6 +203,7 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NYSE | ACA | master_absent | Arcosa Inc | US0396531008 |
 | NYSE | ACVA | master_absent | ACV Auctions Inc. | US00091G1040 |
 | NYSE | AMZE | master_absent | Amaze Holdings Inc | US35804X2009 |
+| NYSE | ARI | delisted | Apollo Commercial Real Estate Finance In | US03762U1051 |
 | NYSE | AVB | master_absent | AvalonBay Communities Inc | US0534841012 |
 | NYSE | AVNS | master_absent | Avanos Medical Inc | US05350V1061 |
 | NYSE | AXIA | master_absent | AXIA Energia | US15234Q2075 |
@@ -199,18 +211,6 @@ Detection only — verify each (delisting vs rename vs SME/suspended) and apply 
 | NYSE | BBU | master_absent | Brookfield Business Partners LP | BMG162341090 |
 | NYSE | BLD | master_absent | Topbuild Corp | US89055F1030 |
 | NYSE | BZH | master_absent | Beazer Homes USA Inc | US07556Q8814 |
-| NYSE | CBZ | delisted | CBIZ Inc | US1248051021 |
+| NYSE | CBZ | master_absent | CBIZ Inc | US1248051021 |
 | NYSE | CCO | master_absent | Clear Channel Outdoor Holdings Inc | US18453H1068 |
-| NYSE | CWAN | master_absent | Clearwater Analytics Holdings Inc | US1851231068 |
-| NYSE | CWEN-A | master_absent | Clearway Energy Inc | US18539C1053 |
-| NYSE | DBRG | master_absent | Digitalbridge Group Inc | US25401T6038 |
-| NYSE | EEX | master_absent | Emerald Expositions Events Inc | US29103W1045 |
-| NYSE | ELME | master_absent | Elme Communities | US9396531017 |
-| NYSE | GBTG | master_absent | Global Business Travel Group Inc | US37890B1008 |
-| NYSE | GETY | master_absent | Getty Images Holdings Inc. | US3742751056 |
-| NYSE | GTLS | master_absent | Chart Industries Inc | US16115Q3083 |
-| NYSE | GWH | master_absent | ESS Tech Inc | US26916J2050 |
-| NYSE | HCWC | master_absent | Healthy Choice Wellness Corp. | US42227T1051 |
-| NYSE | JHG | master_absent | Janus Henderson Group PLC | JE00BYPZJM29 |
-| NYSE | KORE | master_absent | KORE Group Holdings Inc | US50066V3050 |
-| … | … | … | (+34 more) | |
+| … | … | … | (+47 more) | |
