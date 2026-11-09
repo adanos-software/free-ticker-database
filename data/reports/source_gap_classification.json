@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-09T17:08:56Z",
-    "rows": 8162,
+    "generated_at": "2026-11-09T19:07:44Z",
+    "rows": 8153,
     "field_totals": {
-      "missing_etf_category": 107,
-      "missing_isin_primary": 605,
-      "missing_sector_stock": 639,
+      "missing_etf_category": 105,
+      "missing_isin_primary": 602,
+      "missing_sector_stock": 635,
       "official_reference_gap": 6811
     },
     "class_totals": {
@@ -13,20 +13,20 @@
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 31,
       "commodity_etf_category_gap": 6,
-      "debt_or_securitized_identifier_gap": 92,
+      "debt_or_securitized_identifier_gap": 91,
       "digital_asset_etf_category_gap": 1,
-      "equity_etf_category_gap": 15,
+      "equity_etf_category_gap": 14,
       "exchange_industry_source_gap": 50,
       "fixed_income_etf_category_gap": 3,
-      "fund_or_trust_identifier_gap": 279,
+      "fund_or_trust_identifier_gap": 277,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 148,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 452,
-      "official_product_taxonomy_unavailable_gap": 82,
+      "official_industry_taxonomy_unavailable_gap": 448,
+      "official_product_taxonomy_unavailable_gap": 81,
       "official_reference_symbol_collision_gap": 1176,
       "official_reference_unmatched_source_gap": 5635,
       "otc_sector_source_gap": 92,
@@ -35,13 +35,13 @@
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 6,
       "missing_etf_category:digital_asset_etf_category_gap": 1,
-      "missing_etf_category:equity_etf_category_gap": 15,
+      "missing_etf_category:equity_etf_category_gap": 14,
       "missing_etf_category:fixed_income_etf_category_gap": 3,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 82,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 81,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 20,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
-      "missing_isin_primary:debt_or_securitized_identifier_gap": 92,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 279,
+      "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 277,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 148,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 50,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 452,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 448,
       "missing_sector_stock:otc_sector_source_gap": 92,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1176,
@@ -72,7 +72,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 12
+          "rows": 10
         },
         {
           "exchange": "TSE",
@@ -106,7 +106,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 88
+          "rows": 85
         },
         {
           "exchange": "NYSE ARCA",
@@ -152,7 +152,7 @@
         },
         {
           "exchange": "NSE_IN",
-          "rows": 45
+          "rows": 42
         },
         {
           "exchange": "XSTU",
@@ -172,7 +172,7 @@
         },
         {
           "exchange": "BIST",
-          "rows": 19
+          "rows": 18
         },
         {
           "exchange": "XETRA",
@@ -1230,23 +1230,6 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
-      "listing_key": "TSX::BCHI",
-      "ticker": "BCHI",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Ninepoint BCE HighShares ETF",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=TSX::BCHI;exchange=TSX;ticker=BCHI;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
       "listing_key": "TSX::CCAF.U",
       "ticker": "CCAF.U",
       "exchange": "TSX",
@@ -1396,23 +1379,6 @@
       "source_gap_context": "listing_key=TSX::ROSY.U;exchange=TSX;ticker=ROSY.U;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "TSX::SSPX",
-      "ticker": "SSPX",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "BetaPro -3x S&P 500 Daily Leveraged Bear Alternative ETF",
-      "gap_class": "equity_etf_category_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
-      "recommended_next_source": "Official fund asset class or reviewed product profile.",
-      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
-      "source_gap_context": "listing_key=TSX::SSPX;exchange=TSX;ticker=SSPX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -9934,23 +9900,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::BCHI",
-      "ticker": "BCHI",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Ninepoint BCE HighShares ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::BCHI;exchange=TSX;ticker=BCHI;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::CCAF.U",
       "ticker": "CCAF.U",
       "exchange": "TSX",
@@ -10597,23 +10546,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::SSPX",
-      "ticker": "SSPX",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "BetaPro -3x S&P 500 Daily Leveraged Bear Alternative ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::SSPX;exchange=TSX;ticker=SSPX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::TGEX",
       "ticker": "TGEX",
       "exchange": "TSX",
@@ -10710,23 +10642,6 @@
       "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
       "source_gap_context": "listing_key=TSX::ZCRB;exchange=TSX;ticker=ZCRB;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::ZEMB",
-      "ticker": "ZEMB",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "BMO Emerging Markets Bond Fund",
-      "gap_class": "debt_or_securitized_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
-      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
-      "source_gap_context": "listing_key=TSX::ZEMB;exchange=TSX;ticker=ZEMB;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
     },
@@ -12699,23 +12614,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=B3::RJSA3;exchange=B3;ticker=RJSA3;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "BIST::BETAE",
-      "ticker": "BETAE",
-      "exchange": "BIST",
-      "asset_type": "Stock",
-      "name": "BETA ENERJİ VE TEKNOLOJİ A.Ş.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BIST::BETAE;exchange=BIST;ticker=BETAE;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -19352,23 +19250,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "NSE_IN::ABCIND",
-      "ticker": "ABCIND",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "name": "ABC Industries India Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NSE_IN::ABCIND;exchange=NSE_IN;ticker=ABCIND;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "NSE_IN::AONESTEELS",
       "ticker": "AONESTEELS",
       "exchange": "NSE_IN",
@@ -19380,23 +19261,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NSE_IN::AONESTEELS;exchange=NSE_IN;ticker=AONESTEELS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NSE_IN::ARMEE",
-      "ticker": "ARMEE",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "name": "ArMee Infotech Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NSE_IN::ARMEE;exchange=NSE_IN;ticker=ARMEE;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -19448,23 +19312,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NSE_IN::BMISL;exchange=NSE_IN;ticker=BMISL;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NSE_IN::BONFIG",
-      "ticker": "BONFIG",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "name": "Bonfiglioli Transmissions Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NSE_IN::BONFIG;exchange=NSE_IN;ticker=BONFIG;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
