@@ -1,10 +1,10 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-11-09T20:45:22Z`
+- Generated at: `2026-11-10T15:06:59Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `1006`
-- Rotation vanished rows: `0`
+- Vanished reference rows: `1052`
+- Rotation vanished rows: `46`
 - Backlog rows: `1006`
-- Still in database: `1006`
+- Still in database: `1008`
 - Applied drops: `0`
 
 ## Classifier counts
@@ -12,7 +12,8 @@
 | Action | Rows |
 |---|---:|
 | manual_nasdaq_delete_review_required | 3 |
-| manual_rename_vs_delisting_required | 1003 |
+| manual_rename_vs_delisting_required | 1005 |
+| not_in_database | 44 |
 
 ## Rows still in the database
 
@@ -23,6 +24,7 @@
 | AMS | AVTRI | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | AMS | FER | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | AMS | INPST | euronext_equities | manual_rename_vs_delisting_required | backlog |
+| AMS | LVO | euronext_etfs | manual_rename_vs_delisting_required | rotation |
 | AMS | ONSW | euronext_etfs | manual_rename_vs_delisting_required | backlog |
 | B3 | BIPD11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | BIPE11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
@@ -33,6 +35,7 @@
 | B3 | FICT3 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | LPLP11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | LTEL3B | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
+| B3 | META11 | b3_listed_etfs | manual_rename_vs_delisting_required | rotation |
 | B3 | OXRL11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | RELG11 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
 | B3 | SHOW3 | b3_instruments_equities | manual_rename_vs_delisting_required | backlog |
@@ -267,13 +270,31 @@
 | CSE_LK | AMF.N0000 | cse_lk_all_security_code | manual_rename_vs_delisting_required | backlog |
 | CSE_LK | AMF.N0000 | cse_lk_company_info_summary | manual_rename_vs_delisting_required | backlog |
 | Euronext | ALARF | euronext_equities | manual_rename_vs_delisting_required | backlog |
+| Euronext | AUEM | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | BTPS | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | BYBU | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | C50U | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | C53D | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | CC1U | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | CI2U | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | CSWC | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | CW8U | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | DSB | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | FTSE | euronext_etfs | manual_rename_vs_delisting_required | rotation |
 | Euronext | HAMO | euronext_etfs | manual_rename_vs_delisting_required | backlog |
+| Euronext | JPHC | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | JPHG | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | JPHU | euronext_etfs | manual_rename_vs_delisting_required | rotation |
 | Euronext | LHYFE | euronext_equities | manual_rename_vs_delisting_required | backlog |
+| Euronext | LUXU | euronext_etfs | manual_rename_vs_delisting_required | rotation |
 | Euronext | MLAIG | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | MLIFC | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | MLOKP | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | MOP | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | Euronext | PERR | euronext_equities | manual_rename_vs_delisting_required | backlog |
+| Euronext | TPHC | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | TPHG | euronext_etfs | manual_rename_vs_delisting_required | rotation |
+| Euronext | TPHU | euronext_etfs | manual_rename_vs_delisting_required | rotation |
 | FSX | 008 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 0PD0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 0TB | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -567,7 +588,6 @@
 | NASDAQ | CRNX | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | DIME | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | DYNC | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | EMSC | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | FCXG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | FEED | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | GCTK | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
@@ -596,8 +616,6 @@
 | NASDAQ | NVNI | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | OPEG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | PBRG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | PSET | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | QCLR | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | QETA | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | QQQ | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | RFDI | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
@@ -608,7 +626,6 @@
 | NASDAQ | SDST | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | SNYR | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | SOBR | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | UCYB | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | UECG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | ULTI | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | VALG | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
@@ -689,44 +706,28 @@
 | NYSE ARCA | AELV | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | AHBM | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | AMOM | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | ANEW | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | BTRN | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | CDEI | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | CLIX | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | CTEX | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | DAT | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | EASG | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | HELS | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | IBIC | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | ILS | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | IRVH | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | IWDL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | IWFL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | IWML | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | KAIT | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | KCAI | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | KHYB | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | LUNC | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | MAKX | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | MID | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | MTUL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | MUSQ | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | NRR | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | OILT | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | OND | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | QULL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | ROBX | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | SCDL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | SUPL | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | TINT | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | TOT | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | TXS | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | USML | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | VERS | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | XCLR | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | XQBT | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | XWNG | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | ZSB | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | OSL | AKBM | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | OSL | ASA | euronext_equities | manual_rename_vs_delisting_required | backlog |
 | OSL | ASAS | euronext_equities | manual_rename_vs_delisting_required | backlog |
@@ -810,6 +811,8 @@
 | STO | TESSIN | spotlight_companies_directory | manual_rename_vs_delisting_required | backlog |
 | STO | VIVA | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
 | STO | ZAPLOX | nasdaq_nordic_stockholm_shares | manual_rename_vs_delisting_required | backlog |
+| SZSE | 200016 | szse_b_share_list | manual_rename_vs_delisting_required | rotation |
+| SZSE | 200706 | szse_b_share_list | manual_rename_vs_delisting_required | rotation |
 | TADAWUL | 9590 | tadawul_main_market_watch | manual_rename_vs_delisting_required | backlog |
 | TASE | GIBUI | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
 | TASE | GIX | tase_securities_marketdata | manual_rename_vs_delisting_required | backlog |
@@ -1028,6 +1031,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 0; still-in-database backlog carried: 1006.
-- Still in database: 1006; not in database: 0.
+- Rotation vanished rows: 46; still-in-database backlog carried: 1006.
+- Still in database: 1008; not in database: 44.
 - Applied drops from this classifier: 0.
