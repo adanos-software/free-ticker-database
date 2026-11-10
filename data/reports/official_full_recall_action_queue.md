@@ -25,7 +25,7 @@ Rows: `23`
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
 | 17 | NYSE MKT | 82.18 | 49 | 34 | not_in_supplement_allowlist |
 | 18 | SET | 95.3 | 38 | 135 | not_in_supplement_allowlist |
-| 19 | BSE_IN | 99.35 | 33 | 121 | collision_free_supplement |
+| 19 | BSE_IN | 99.33 | 34 | 120 | collision_free_supplement |
 | 20 | BME | 90.67 | 25 | 0 | not_in_supplement_allowlist |
 | 21 | IDX | 97.55 | 19 | 187 | not_in_supplement_allowlist |
 | 22 | TXSE | 0.0 | 9 | 13 | not_in_supplement_allowlist |
