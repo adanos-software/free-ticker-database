@@ -1,19 +1,19 @@
 # Database Validation Report
 
-Generated at: `2026-11-10T08:15:35Z`
+Generated at: `2026-11-10T15:18:58Z`
 
-Status: `PASS`
+Status: `FAIL`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 65,610 |
-| listing_rows | 97,714 |
-| adanos_reference_rows | 65,610 |
-| entry_quality_rows | 97,714 |
+| ticker_rows | 65,614 |
+| listing_rows | 97,719 |
+| adanos_reference_rows | 65,614 |
+| entry_quality_rows | 97,719 |
 | error_gates | 88 |
-| failed_error_gates | 0 |
+| failed_error_gates | 1 |
 | info_gates | 5 |
 
 ## Gates
@@ -89,15 +89,15 @@ Status: `PASS`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
+| entry_quality_unexpected_warn_count | error | FAIL | 2 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 609 |  |
-| missing_stock_sector | info | PASS | 634 |  |
-| missing_etf_category | info | PASS | 123 |  |
-| source_gap_rows | info | PASS | 11085 |  |
+| expected_missing_primary_isin | info | PASS | 613 |  |
+| missing_stock_sector | info | PASS | 632 |  |
+| missing_etf_category | info | PASS | 127 |  |
+| source_gap_rows | info | PASS | 11092 |  |
 | allowed_warn_rows | info | PASS | 35 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
@@ -116,4 +116,9 @@ Status: `PASS`
 
 ## Failed Gate Details
 
-_No failed error gates._
+### entry_quality_unexpected_warn_count
+
+- Actual: `2`
+- `NASDAQ::CCXI`
+- `NASDAQ::MGPI`
+

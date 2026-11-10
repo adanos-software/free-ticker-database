@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-10T08:12:02Z",
+    "generated_at": "2026-11-10T15:14:01Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,46 +26,46 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63557,
-    "joined_listings": 63557,
-    "scope_rows": 63557
+    "rows": 63562,
+    "joined_listings": 63562,
+    "scope_rows": 63562
   },
   "completeness": {
     "isin": {
-      "n": 63557,
-      "filled": 62948,
-      "missing": 609,
+      "n": 63562,
+      "filled": 62949,
+      "missing": 613,
       "pct": 99.04,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "country": {
-      "n": 63557,
-      "filled": 63515,
-      "missing": 42,
+      "n": 63562,
+      "filled": 63519,
+      "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63557,
-      "filled": 62800,
-      "missing": 757,
+      "n": 63562,
+      "filled": 62803,
+      "missing": 759,
       "pct": 98.81,
-      "fills_needed_for_99": 122,
+      "fills_needed_for_99": 124,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "ASX": 98,
+      "NYSE ARCA": 85,
       "TSX": 85,
-      "NYSE ARCA": 84,
-      "NASDAQ": 67,
+      "NASDAQ": 68,
       "TSXV": 61,
-      "BATS": 43,
+      "BATS": 45,
       "SSE": 34,
       "NEO": 25,
-      "NYSE": 23,
-      "SSE_CL": 21,
+      "NYSE": 24,
+      "SSE_CL": 20,
       "SZSE": 11,
       "B3": 10
     },
@@ -73,10 +73,10 @@
       "FSX": 246,
       "XSTU": 46,
       "NSE_IN": 43,
-      "BVB": 26,
       "HKEX": 26,
-      "HNX": 24,
-      "NASDAQ": 20,
+      "BVB": 25,
+      "HNX": 23,
+      "NASDAQ": 21,
       "PSE": 20,
       "XETRA": 19,
       "BIST": 18,
@@ -85,27 +85,27 @@
     },
     "missing_category_by_exchange": {
       "XETRA": 45,
-      "NYSE ARCA": 29,
+      "NYSE ARCA": 30,
       "AMS": 18,
       "TSX": 10,
       "NASDAQ": 7,
       "TSE": 7,
-      "BATS": 4,
-      "Euronext": 1
+      "BATS": 6,
+      "NYSE": 2
     }
   },
   "identity": {
     "official_isin_mismatch": 9,
-    "official_name_mismatch": 8,
+    "official_name_mismatch": 9,
     "open_collision_groups": 8,
     "quarantine_unresolved": 1250,
     "quarantine_proposed_clear": 289,
     "quarantine_kept": 562
   },
   "entry_quality_status": {
-    "pass": 59699,
-    "source_gap": 3832,
-    "warn": 18,
+    "pass": 59697,
+    "source_gap": 3838,
+    "warn": 19,
     "notice": 8
   },
   "checks": [
@@ -134,9 +134,9 @@
       "name": "core_isin_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63557,
-        "filled": 62948,
-        "missing": 609,
+        "n": 63562,
+        "filled": 62949,
+        "missing": 613,
         "pct": 99.04,
         "fills_needed_for_99": 0,
         "pass": true
@@ -146,11 +146,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63557,
-        "filled": 62800,
-        "missing": 757,
+        "n": 63562,
+        "filled": 62803,
+        "missing": 759,
         "pct": 98.81,
-        "fills_needed_for_99": 122,
+        "fills_needed_for_99": 124,
         "pass": false
       }
     },
@@ -158,9 +158,9 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63557,
-        "filled": 63515,
-        "missing": 42,
+        "n": 63562,
+        "filled": 63519,
+        "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
         "pass": true
@@ -170,13 +170,14 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 8,
+        "official_name_mismatch": 9,
         "sample": [
-          "NASDAQ::ADIL",
           "NASDAQ::ASBP",
           "TSXV::AXO",
           "NASDAQ::BNC",
+          "NASDAQ::CCXI",
           "NASDAQ::INDV",
+          "NASDAQ::MGPI",
           "TSXV::MKT",
           "QSE::NLCS",
           "TSXV::WED"
