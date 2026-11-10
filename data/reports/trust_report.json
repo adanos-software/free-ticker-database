@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-10T16:33:49Z",
+    "generated_at": "2026-11-10T17:19:52Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,40 +26,40 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63563,
-    "joined_listings": 63563,
-    "scope_rows": 63563
+    "rows": 63560,
+    "joined_listings": 63560,
+    "scope_rows": 63560
   },
   "completeness": {
     "isin": {
-      "n": 63563,
-      "filled": 62950,
-      "missing": 613,
+      "n": 63560,
+      "filled": 62948,
+      "missing": 612,
       "pct": 99.04,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "country": {
-      "n": 63563,
-      "filled": 63520,
+      "n": 63560,
+      "filled": 63517,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63563,
-      "filled": 62805,
-      "missing": 758,
+      "n": 63560,
+      "filled": 62803,
+      "missing": 757,
       "pct": 98.81,
-      "fills_needed_for_99": 123,
+      "fills_needed_for_99": 122,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "ASX": 98,
       "NYSE ARCA": 85,
       "TSX": 85,
-      "NASDAQ": 68,
+      "NASDAQ": 67,
       "TSXV": 61,
       "BATS": 45,
       "SSE": 34,
@@ -76,7 +76,7 @@
       "HKEX": 26,
       "BVB": 25,
       "HNX": 23,
-      "NASDAQ": 21,
+      "NASDAQ": 20,
       "PSE": 20,
       "XETRA": 19,
       "BIST": 18,
@@ -96,16 +96,16 @@
   },
   "identity": {
     "official_isin_mismatch": 9,
-    "official_name_mismatch": 9,
+    "official_name_mismatch": 7,
     "open_collision_groups": 8,
     "quarantine_unresolved": 1250,
     "quarantine_proposed_clear": 289,
     "quarantine_kept": 562
   },
   "entry_quality_status": {
-    "pass": 59692,
-    "source_gap": 3844,
-    "warn": 19,
+    "pass": 59693,
+    "source_gap": 3842,
+    "warn": 17,
     "notice": 8
   },
   "checks": [
@@ -134,9 +134,9 @@
       "name": "core_isin_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63563,
-        "filled": 62950,
-        "missing": 613,
+        "n": 63560,
+        "filled": 62948,
+        "missing": 612,
         "pct": 99.04,
         "fills_needed_for_99": 0,
         "pass": true
@@ -146,11 +146,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63563,
-        "filled": 62805,
-        "missing": 758,
+        "n": 63560,
+        "filled": 62803,
+        "missing": 757,
         "pct": 98.81,
-        "fills_needed_for_99": 123,
+        "fills_needed_for_99": 122,
         "pass": false
       }
     },
@@ -158,8 +158,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63563,
-        "filled": 63520,
+        "n": 63560,
+        "filled": 63517,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
@@ -170,14 +170,12 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 9,
+        "official_name_mismatch": 7,
         "sample": [
           "NASDAQ::ASBP",
           "TSXV::AXO",
           "NASDAQ::BNC",
-          "NASDAQ::CCXI",
           "NASDAQ::INDV",
-          "NASDAQ::MGPI",
           "TSXV::MKT",
           "QSE::NLCS",
           "TSXV::WED"
@@ -189,7 +187,7 @@
       "status": "fail",
       "details": {
         "status": "blocked_wrong_denominator",
-        "collision_adjusted_recall_pct": 79.32,
+        "collision_adjusted_recall_pct": 79.31,
         "reason": "Official recall still uses all-tradable directories, not common-stock+ETF."
       }
     },

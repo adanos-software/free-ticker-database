@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12549,
+      "exact_identity_conflict": 12547,
       "exact_match": 100130,
-      "missing_from_database": 44763,
+      "missing_from_database": 44765,
       "normalization_candidate": 1876,
       "out_of_scope": 8164
     },
     "coverage_credited_keys": 100130,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44763,
-    "identity_conflict_rows": 12549,
+    "in_scope_missing_rows": 44765,
+    "identity_conflict_rows": 12547,
     "mapping_candidate_rows": 1876
   },
   "rows": [
@@ -2057453,10 +2057453,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NASDAQ::CCXI",
-      "evidence": "official and current names do not form one conservative identity family"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::CCXIU",
@@ -2084733,10 +2084733,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "NASDAQ::MGPI",
-      "evidence": "official and current names do not form one conservative identity family"
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::MGRC",

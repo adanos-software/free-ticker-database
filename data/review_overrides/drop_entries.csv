@@ -60,6 +60,7 @@ ADC-PA,NASDAQ,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the c
 ADDV-A,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do not return an active exact Stockholm share while the current NGM company directory exposes no active primary symbol for this ticker; the remaining STO core row is stale.
 ADFI,BATS,0.98,Reviewed delisted transition: US ETF delisting: Anfield SEC Form 497 liquidates ADFI; Cboe Form 25-NSE voluntary delisting. Row ISIN US90214Q7253 matches exact_isin identity. Ticker absent from live Nasdaq Trader nasdaqlisted/otherlisted/nasdaqtraded. Evidence: anfield_sec_497_and_cboe. Secondary: https://www.sec.gov/Archives/edgar/data/1417835/000141783526000244/0001417835-26-000244-index.htm
 ADGL,OTC,high,"OpenFIGI ISIN-validation symbol-reconciliation 2026-06-22: Renamed + retickered to Compliance Advocates Corp (OTC:CODV, 2026-05); old symbol ADGL defunct."
+ADIL,NASDAQ,0.99,"Reviewed predecessor drop NASDAQ::ADIL after the ADIL to AZR name, symbol, and CUSIP change; exact evidence is recorded in listing_transitions.csv."
 ADNWW,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 ADUR,OTC,0.96,"Yahoo Finance resolves this symbol to NasdaqCM rather than the current exchange, indicating the current listing is stale."
 AEAE,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCPK rather than the current exchange, indicating the current listing is stale."
@@ -267,6 +268,7 @@ CCID,OTC,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the curren
 CCIF,NYSE,0.97,"Reviewed out_of_scope transition: Closed-end fund, not an ETF: SEC EDGAR CIK 1517767 (Carlyle Credit Income Fund) registers under Form N-2 and files N-CSR (latest 2025-11-18); no N-1A open-end/ETF registration."
 CCMG,NYSE ARCA,0.99,"ETF curation 2026-10-29: renamed to SFGV (same ISIN US02072L2768, symbol_changed transition); CCMG is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 CCNEP,NASDAQ,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+CCXI,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::CCXI after successor NASDAQ::AGLT; exact evidence is recorded in listing_transitions.csv.
 CDG,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::CDG to BSE_IN::JUJHARLOGI; exact evidence is recorded in listing_transitions.csv.
 CDTTW,NASDAQ,0.98,"Official listing name indicates this symbol is an excluded security line, not common equity: CDT Equity Inc. - Warrant"
 CELG-RI,NYSE,0.95,OpenFIGI securityType=Right; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
@@ -897,6 +899,7 @@ MFM,NYSE,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/righ
 MFMLF,OTC,0.97,"Conservative OTC stale/symbol-reuse cleanup April 2026: issuer-by-issuer review found the prior canonical row unsupported by current OTC/issuer evidence, so the row is removed rather than renamed."
 MFR-UN,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX unit line as active.
 MGAM,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCID rather than the current exchange, indicating the current listing is stale."
+MGPI,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::MGPI after successor NASDAQ::CASK; exact evidence is recorded in listing_transitions.csv.
 MGR,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 MGRB,NYSE,0.95,OpenFIGI securityType=Preferred Stock; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 MHIFD,OTC,0.97,"DTCC OTC daily list records a 2011 symbol change from MHIFD to MHIFF for Mineral Hill Industries Ltd ordinary shares, and the MHIFF successor row is already excluded by reviewed OTC stale cleanup; drop stale predecessor symbol."

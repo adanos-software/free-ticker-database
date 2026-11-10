@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-10T16:35:44Z",
-    "rows": 8165,
+    "generated_at": "2026-11-10T17:19:54Z",
+    "rows": 8162,
     "field_totals": {
       "missing_etf_category": 116,
-      "missing_isin_primary": 613,
-      "missing_sector_stock": 631,
-      "official_reference_gap": 6805
+      "missing_isin_primary": 612,
+      "missing_sector_stock": 630,
+      "official_reference_gap": 6804
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -22,13 +22,13 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 148,
+      "official_identifier_not_exposed_source_gap": 147,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 445,
+      "official_industry_taxonomy_unavailable_gap": 444,
       "official_product_taxonomy_unavailable_gap": 89,
       "official_reference_symbol_collision_gap": 1184,
-      "official_reference_unmatched_source_gap": 5621,
+      "official_reference_unmatched_source_gap": 5620,
       "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 8
     },
@@ -44,17 +44,17 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 288,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 148,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 147,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 49,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 445,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 444,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1184,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5621
+      "official_reference_gap:official_reference_unmatched_source_gap": 5620
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -114,7 +114,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 68
+          "rows": 67
         },
         {
           "exchange": "TSXV",
@@ -202,7 +202,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 224
+          "rows": 223
         },
         {
           "exchange": "BVB",
@@ -287,7 +287,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "NASDAQ",
-        "rows": 156,
+        "rows": 155,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -5986,23 +5986,6 @@
       "source_gap_context": "listing_key=NASDAQ::BRKRP;exchange=NASDAQ;ticker=BRKRP;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::CASK",
-      "ticker": "CASK",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Sempreon, Inc. - Common Stock",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::CASK;exchange=NASDAQ;ticker=CASK;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -19380,23 +19363,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NASDAQ::BBTX;exchange=NASDAQ;ticker=BBTX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NASDAQ::CASK",
-      "ticker": "CASK",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Sempreon, Inc. - Common Stock",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NASDAQ::CASK;exchange=NASDAQ;ticker=CASK;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -63121,23 +63087,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=NASDAQ::ABVE;exchange=NASDAQ;ticker=ABVE;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NASDAQ::ADIL",
-      "ticker": "ADIL",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Adial Pharmaceuticals Inc",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=NASDAQ::ADIL;exchange=NASDAQ;ticker=ADIL;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
