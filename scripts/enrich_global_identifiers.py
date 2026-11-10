@@ -239,6 +239,20 @@ def apply_reviewed_transition_extended_identifiers(
     return merged
 
 
+def extended_identifiers_match_listing_isin(listing_isin: str, extended_isin: str) -> bool:
+    """Return whether preserved extended identifiers still belong to this listing ISIN.
+
+    FIGI, WKN, CIK, and LEI on identifiers_extended were enriched for extended_isin.
+    A different non-empty listing ISIN means those values belong to the previous
+    security and must not be copied onto the new one. An empty listing ISIN is not
+    a change, so the preserved values stay put.
+    """
+
+    if listing_isin and extended_isin and extended_isin != listing_isin:
+        return False
+    return True
+
+
 def build_base_identifier_rows() -> list[dict[str, str]]:
     listings = load_csv(LISTINGS_CSV)
     existing_extended: dict[str, dict[str, str]] = {}
@@ -259,7 +273,7 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         # Stale-guard: if the core listing's ISIN changed since enrichment, the
         # preserved extended identifiers (figi/wkn/cik/lei) belong to the old
         # ISIN and must be dropped, not carried onto the new security.
-        if isin and existing_isin and existing_isin != isin:
+        if not extended_identifiers_match_listing_isin(isin, existing_isin):
             existing_row = {}
         existing_row = apply_reviewed_transition_extended_identifiers(
             existing_row,
