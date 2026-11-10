@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-10T08:12:05Z",
-    "rows": 8133,
+    "generated_at": "2026-11-10T09:44:09Z",
+    "rows": 8132,
     "field_totals": {
       "missing_etf_category": 112,
-      "missing_isin_primary": 609,
+      "missing_isin_primary": 608,
       "missing_sector_stock": 633,
       "official_reference_gap": 6779
     },
@@ -22,7 +22,7 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 148,
+      "official_identifier_not_exposed_source_gap": 147,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 447,
@@ -44,7 +44,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 284,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 148,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 147,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -138,7 +138,7 @@
         },
         {
           "exchange": "SSE_CL",
-          "rows": 21
+          "rows": 20
         }
       ],
       "missing_sector_stock": [
@@ -9862,23 +9862,6 @@
       "source_gap_context": "listing_key=SSE_CL::IYWCL;exchange=SSE_CL;ticker=IYWCL;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SSE_CL::AAISA",
-      "ticker": "AAISA",
-      "exchange": "SSE_CL",
-      "asset_type": "Stock",
-      "name": "Administradora Americana de Inversiones S.A.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=SSE_CL::AAISA;exchange=SSE_CL;ticker=AAISA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -60241,7 +60224,7 @@
       "ticker": "IKIV",
       "exchange": "LSE",
       "asset_type": "Stock",
-      "name": "Ikigai Ventures Ltd",
+      "name": "Dotlines Global Ltd",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
