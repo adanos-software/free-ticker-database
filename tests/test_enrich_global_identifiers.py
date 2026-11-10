@@ -11,6 +11,7 @@ from scripts.enrich_global_identifiers import (
     clear_cross_isin_figi_collisions,
     build_figi_matches,
     build_base_identifier_rows,
+    extended_identifiers_match_listing_isin,
     build_sec_cik_index,
     filter_lei_candidates,
     fetch_openfigi_by_isin,
@@ -274,6 +275,13 @@ def test_build_base_identifier_rows_does_not_preserve_stale_isin(tmp_path, monke
     assert rows[0]["figi_source"] == ""
     assert rows[0]["lei"] == ""
     assert rows[0]["lei_source"] == ""
+
+
+def test_extended_identifiers_match_listing_isin_rejects_only_a_real_isin_change():
+    assert extended_identifiers_match_listing_isin("US73933H3093", "US73933H3093")
+    assert extended_identifiers_match_listing_isin("US73933H3093", "")
+    assert extended_identifiers_match_listing_isin("", "US73933H1014")
+    assert not extended_identifiers_match_listing_isin("US73933H3093", "US73933H1014")
 
 
 def test_build_base_identifier_rows_drops_extended_values_when_core_isin_changes(
