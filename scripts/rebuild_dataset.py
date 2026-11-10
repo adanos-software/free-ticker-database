@@ -23,6 +23,7 @@ try:
         normalize_alias_text,
         should_drop_from_ticker_alias_column,
     )
+    from scripts.enrich_global_identifiers import extended_identifiers_match_listing_isin
     from scripts.listing_keys import row_listing_key
     from scripts.lib.dataio import should_apply_metadata_field_override
     from scripts.lib.non_equity_guard import is_blocked_non_common_stock
@@ -33,6 +34,7 @@ except ModuleNotFoundError:  # pragma: no cover - script execution path
         normalize_alias_text,
         should_drop_from_ticker_alias_column,
     )
+    from enrich_global_identifiers import extended_identifiers_match_listing_isin
     from listing_keys import row_listing_key
     from lib.dataio import should_apply_metadata_field_override
     from lib.non_equity_guard import is_blocked_non_common_stock
@@ -2865,6 +2867,27 @@ def merge_reviewed_metadata_aliases(
     return merged
 
 
+def apply_listing_wkn_from_extended_identifier(
+    row: dict[str, str],
+    identifier: dict[str, str] | None,
+) -> dict[str, str]:
+    """Copy a WKN onto a listing only when it still belongs to that listing's ISIN.
+
+    Compatibility exports read identifiers_extended before enrich_global_identifiers
+    applies its stale-ISIN guard. Copying the WKN unconditionally leaves it in
+    identifiers.csv and the alias files for one rebuild after the listing ISIN
+    changes. The next rebuild, reading the cleared extended row, then deletes it.
+    """
+
+    identifier = identifier or {}
+    wkn = identifier.get("wkn", "")
+    if wkn and not extended_identifiers_match_listing_isin(row.get("isin", ""), identifier.get("isin", "")):
+        row["aliases"] = [alias for alias in row.get("aliases", []) if alias != wkn]
+        wkn = ""
+    row["wkn"] = wkn
+    return row
+
+
 def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
@@ -3017,6 +3040,7 @@ def cleaned_rows():
         output_aliases = merge_reviewed_metadata_aliases(output_aliases, metadata_overrides)
         output_aliases = apply_review_alias_removals(output_aliases, review_alias_removals.get(row_key, set()))
         output_row["aliases"] = output_aliases
+        output_row = apply_listing_wkn_from_extended_identifier(output_row, identifier)
         output_rows.append(
             with_sector_model_fields(
                 output_row
