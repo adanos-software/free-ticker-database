@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-11-10T15:14:21Z`
+Generated at: `2026-11-10T16:35:39Z`
 
 ## Summary
 
@@ -18,7 +18,7 @@ Generated at: `2026-11-10T15:14:21Z`
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
 | 1 | XSTU | missing | 2773 | 0 | 251 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
-| 2 | Munich | missing | 223 | 0 | 20 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
+| 2 | Munich | missing | 223 | 0 | 19 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 3 | XDUS | missing | 199 | 0 | 13 | duesseldorf_stock_exchange_directory | Boerse Duesseldorf |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 4 | XHAM | missing | 12 | 0 | 5 | hamburg_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 5 | XHAN | missing | 80 | 0 | 1 | hanover_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |

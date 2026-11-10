@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T15:04:29Z",
-  "rows": 171203,
+  "generated_at": "2026-11-10T16:30:50Z",
+  "rows": 171194,
   "exchanges": [
     "ADX",
     "AMS",
@@ -98,7 +98,7 @@
     "b3_listed_etfs": 236,
     "b3_bdr_etfs": 321,
     "b3_instruments_equities": 1353,
-    "nasdaq_other_listed": 7673,
+    "nasdaq_other_listed": 7674,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
     "bist_kap_mkk_listed_securities": 663,
@@ -150,8 +150,8 @@
     "luse_listed_companies": 15,
     "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 109,
-    "nasdaq_listed": 5606,
-    "sec_company_tickers_exchange": 10197,
+    "nasdaq_listed": 5607,
+    "sec_company_tickers_exchange": 10186,
     "nasdaq_trading_system_adds_deletes": 6,
     "cboe_canada_listing_directory": 449,
     "ngx_company_profile_directory": 130,
@@ -225,16 +225,16 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5606,
-      "generated_at": "2026-11-09T20:10:43Z"
+      "rows": 5607,
+      "generated_at": "2026-11-10T16:30:50Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7673,
-      "generated_at": "2026-11-09T20:10:43Z"
+      "rows": 7674,
+      "generated_at": "2026-11-10T16:30:50Z"
     },
     "nasdaq_trading_system_adds_deletes": {
       "provider": "Nasdaq Trader",
@@ -1343,8 +1343,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 10197,
-      "generated_at": "2026-11-09T20:10:43Z"
+      "rows": 10186,
+      "generated_at": "2026-11-10T16:30:50Z"
     },
     "otc_markets_security_profile": {
       "provider": "OTC Markets",
@@ -1663,50 +1663,16 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-11-10T15:04:29Z",
+    "generated_at": "2026-11-10T16:30:50Z",
     "selected_source_keys": [
-      "b3_bdr_etfs",
-      "b3_listed_etfs",
-      "cse_ma_listed_companies",
-      "dse_tz_listed_companies",
-      "egx_listed_stocks",
-      "euronext_etfs",
-      "gse_listed_companies",
-      "hose_etf_list",
-      "hose_fund_certificate_list",
-      "hose_listed_stocks",
-      "idx_listed_companies",
-      "lse_instrument_search",
-      "nasdaq_mutual_fund_quotes",
-      "nasdaq_nordic_copenhagen_etf_search",
-      "nasdaq_nordic_copenhagen_etfs",
-      "nasdaq_nordic_copenhagen_shares",
-      "otc_markets_stock_screener",
-      "szse_b_share_list",
-      "szse_etf_list",
-      "tase_etf_marketdata"
+      "nasdaq_listed",
+      "nasdaq_other_listed",
+      "sec_company_tickers_exchange"
     ],
     "source_modes": {
-      "b3_bdr_etfs": "network",
-      "b3_listed_etfs": "network",
-      "cse_ma_listed_companies": "unavailable",
-      "dse_tz_listed_companies": "network",
-      "egx_listed_stocks": "network",
-      "euronext_etfs": "network",
-      "gse_listed_companies": "network",
-      "hose_etf_list": "network",
-      "hose_fund_certificate_list": "network",
-      "hose_listed_stocks": "network",
-      "idx_listed_companies": "network",
-      "lse_instrument_search": "unavailable",
-      "nasdaq_mutual_fund_quotes": "network",
-      "nasdaq_nordic_copenhagen_etf_search": "network",
-      "nasdaq_nordic_copenhagen_etfs": "network",
-      "nasdaq_nordic_copenhagen_shares": "network",
-      "otc_markets_stock_screener": "unavailable",
-      "szse_b_share_list": "network",
-      "szse_etf_list": "network",
-      "tase_etf_marketdata": "network"
+      "nasdaq_listed": "network",
+      "nasdaq_other_listed": "network",
+      "sec_company_tickers_exchange": "network"
     }
   }
 }
