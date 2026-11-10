@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-11-09T20:53:21Z",
-    "rows": 8168,
+    "generated_at": "2026-11-10T06:33:58Z",
+    "rows": 8166,
     "outcome_totals": {
-      "accepted_source_gap": 5091,
+      "accepted_source_gap": 5089,
       "core_exclusion_candidate": 488,
       "official_fill_required": 2589
     },
@@ -24,11 +24,11 @@
       "official_identifier_not_exposed_source_gap": 148,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 448,
+      "official_industry_taxonomy_unavailable_gap": 447,
       "official_product_taxonomy_unavailable_gap": 86,
       "official_reference_symbol_collision_gap": 1175,
       "official_reference_unmatched_source_gap": 5637,
-      "otc_sector_source_gap": 92,
+      "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 7
     },
     "field_outcomes": {
@@ -36,7 +36,7 @@
       "missing_isin_primary:accepted_source_gap": 165,
       "missing_isin_primary:core_exclusion_candidate": 443,
       "missing_isin_primary:official_fill_required": 1,
-      "missing_sector_stock:accepted_source_gap": 540,
+      "missing_sector_stock:accepted_source_gap": 538,
       "missing_sector_stock:core_exclusion_candidate": 45,
       "missing_sector_stock:official_fill_required": 50,
       "official_reference_gap:accepted_source_gap": 4274,
@@ -12122,23 +12122,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "OTC::FKSHF",
-      "ticker": "FKSHF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "FUKUSHIMA GALILEI CO LTD",
-      "gap_class": "otc_sector_source_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "OTC::FSUGY",
       "ticker": "FSUGY",
       "exchange": "OTC",
@@ -13606,23 +13589,6 @@
       "exchange": "TWSE",
       "asset_type": "Stock",
       "name": "和運租車股份有限公司",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "TWSE::8488",
-      "ticker": "8488",
-      "exchange": "TWSE",
-      "asset_type": "Stock",
-      "name": "吉源控股股份有限公司(JYPKG)",
       "gap_class": "official_industry_taxonomy_unavailable_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
