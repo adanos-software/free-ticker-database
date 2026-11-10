@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-10T09:44:09Z",
-    "rows": 8132,
+    "generated_at": "2026-11-10T12:24:20Z",
+    "rows": 8130,
     "field_totals": {
       "missing_etf_category": 112,
       "missing_isin_primary": 608,
-      "missing_sector_stock": 633,
+      "missing_sector_stock": 631,
       "official_reference_gap": 6779
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 147,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 447,
+      "official_industry_taxonomy_unavailable_gap": 445,
       "official_product_taxonomy_unavailable_gap": 86,
       "official_reference_symbol_collision_gap": 1166,
       "official_reference_unmatched_source_gap": 5613,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 50,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 447,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 445,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1166,
@@ -164,11 +164,11 @@
         },
         {
           "exchange": "BVB",
-          "rows": 25
+          "rows": 24
         },
         {
           "exchange": "HNX",
-          "rows": 24
+          "rows": 23
         },
         {
           "exchange": "BIST",
@@ -13572,23 +13572,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "BVB::COMY",
-      "ticker": "COMY",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "name": "COMAT SA GIURGIU",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BVB::COMY;exchange=BVB;ticker=COMY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "BVB::CONK",
       "ticker": "CONK",
       "exchange": "BVB",
@@ -18836,23 +18819,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HNX::TJC;exchange=HNX;ticker=TJC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HNX::VCC",
-      "ticker": "VCC",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "CTCP Vinaconex 25",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::VCC;exchange=HNX;ticker=VCC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
