@@ -12,8 +12,8 @@ Rows: `23`
 | 3 | LSE | 66.05 | 3502 | 869 | not_in_supplement_allowlist |
 | 4 | NYSE | 59.9 | 1312 | 567 | not_in_supplement_allowlist |
 | 5 | NASDAQ | 82.43 | 978 | 60 | not_in_supplement_allowlist |
-| 6 | Borsa Italiana | 23.77 | 789 | 1927 | not_in_supplement_allowlist |
-| 7 | Euronext | 80.07 | 331 | 374 | not_in_supplement_allowlist |
+| 6 | Borsa Italiana | 23.63 | 795 | 1935 | not_in_supplement_allowlist |
+| 7 | Euronext | 79.52 | 338 | 371 | not_in_supplement_allowlist |
 | 8 | BATS | 81.85 | 293 | 58 | not_in_supplement_allowlist |
 | 9 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |
 | 10 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
@@ -25,7 +25,7 @@ Rows: `23`
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
 | 17 | NYSE MKT | 82.18 | 49 | 34 | not_in_supplement_allowlist |
 | 18 | SET | 95.3 | 38 | 135 | not_in_supplement_allowlist |
-| 19 | BSE_IN | 99.33 | 34 | 120 | collision_free_supplement |
+| 19 | BSE_IN | 99.35 | 33 | 120 | collision_free_supplement |
 | 20 | BME | 90.67 | 25 | 0 | not_in_supplement_allowlist |
 | 21 | IDX | 97.55 | 19 | 187 | not_in_supplement_allowlist |
 | 22 | TXSE | 0.0 | 9 | 13 | not_in_supplement_allowlist |
