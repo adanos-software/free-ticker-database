@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T15:12:39Z",
+  "generated_at": "2026-11-10T17:19:39Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -33,20 +33,20 @@
     },
     {
       "exchange": "NYSE",
-      "collision_adjusted_recall_pct": 59.9,
-      "true_missing_excluding_collisions": 1312,
+      "collision_adjusted_recall_pct": 59.95,
+      "true_missing_excluding_collisions": 1310,
       "collision_hidden_missing": 567,
-      "official_recall_pct": 51.05,
+      "official_recall_pct": 51.09,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 4
     },
     {
       "exchange": "NASDAQ",
-      "collision_adjusted_recall_pct": 82.43,
-      "true_missing_excluding_collisions": 978,
+      "collision_adjusted_recall_pct": 82.4,
+      "true_missing_excluding_collisions": 979,
       "collision_hidden_missing": 60,
-      "official_recall_pct": 81.55,
+      "official_recall_pct": 81.52,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 5
@@ -73,10 +73,10 @@
     },
     {
       "exchange": "BATS",
-      "collision_adjusted_recall_pct": 81.85,
+      "collision_adjusted_recall_pct": 81.86,
       "true_missing_excluding_collisions": 293,
       "collision_hidden_missing": 58,
-      "official_recall_pct": 79.01,
+      "official_recall_pct": 79.02,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 8
@@ -146,7 +146,7 @@
       "collision_adjusted_recall_pct": 96.26,
       "true_missing_excluding_collisions": 102,
       "collision_hidden_missing": 30,
-      "official_recall_pct": 95.21,
+      "official_recall_pct": 95.22,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 15
