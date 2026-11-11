@@ -5,6 +5,7 @@
 ### Fixed
 
 - Daily symbol-change apply no longer carries a predecessor ISIN onto a successor whose official exchange-directory name is a different issuer. `INM` -> `MTRI` is a change of control and Nevada redomestication (new CUSIP `587157108`, ISIN `US5871571080`), not a same-ISIN rename of the Canadian `CA4576377002` line. Verified same-issuer renames now rekey ticker-keyed `review_overrides` rows, including `foreign_isin_reviewed.csv`, onto the new ticker.
+- Daily masterfile rotation retries Playwright Chromium's apt dependency install when the GitHub-hosted runner cannot resolve `azure.archive.ubuntu.com`, then refreshes indexes and continues from `archive.ubuntu.com`, so a transient mirror DNS failure does not skip the day's batch.
 
 ## [3.43.3] - 2026-11-06
 
