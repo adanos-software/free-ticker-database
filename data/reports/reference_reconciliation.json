@@ -6,16 +6,16 @@
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12546,
-      "exact_match": 100131,
+      "exact_match": 100132,
       "missing_from_database": 44765,
-      "normalization_candidate": 1876,
+      "normalization_candidate": 1875,
       "out_of_scope": 8164
     },
-    "coverage_credited_keys": 100131,
+    "coverage_credited_keys": 100132,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44765,
     "identity_conflict_rows": 12546,
-    "mapping_candidate_rows": 1876
+    "mapping_candidate_rows": 1875
   },
   "rows": [
     {
@@ -1573549,10 +1573549,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::SAEN",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::SAFT",
@@ -2071661,10 +2071661,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::GNTA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::GNTX",
@@ -2100093,10 +2100093,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
-      "matched_listing_keys": "NASDAQ::GNTA",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::SAEN",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::SAFT",
