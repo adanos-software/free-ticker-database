@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-11T08:22:44Z",
-    "rows": 8160,
+    "generated_at": "2026-11-11T09:55:45Z",
+    "rows": 8159,
     "outcome_totals": {
       "accepted_source_gap": 5094,
       "core_exclusion_candidate": 495,
-      "official_fill_required": 2571
+      "official_fill_required": 2570
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -15,7 +15,7 @@
       "debt_or_securitized_identifier_gap": 91,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 17,
-      "exchange_industry_source_gap": 49,
+      "exchange_industry_source_gap": 48,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 290,
       "fundlike_stock_sector_gap": 33,
@@ -38,7 +38,7 @@
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 533,
       "missing_sector_stock:core_exclusion_candidate": 46,
-      "missing_sector_stock:official_fill_required": 49,
+      "missing_sector_stock:official_fill_required": 48,
       "official_reference_gap:accepted_source_gap": 4283,
       "official_reference_gap:official_fill_required": 2521
     },
@@ -95252,23 +95252,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "XDUS::RLV",
-      "ticker": "RLV",
-      "exchange": "XDUS",
-      "asset_type": "Stock",
-      "name": "RheinLand Holding AG",
-      "gap_class": "exchange_industry_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "XHAM::GBQ",
       "ticker": "GBQ",
       "exchange": "XHAM",
@@ -97007,7 +96990,7 @@
       "ticker": "TRESTATES",
       "exchange": "ATHEX",
       "asset_type": "Stock",
-      "name": "TRESTATES",
+      "name": "Trade Estates REIC",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
