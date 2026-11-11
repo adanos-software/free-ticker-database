@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12547,
-      "exact_match": 100130,
+      "exact_identity_conflict": 12546,
+      "exact_match": 100131,
       "missing_from_database": 44765,
       "normalization_candidate": 1876,
       "out_of_scope": 8164
     },
-    "coverage_credited_keys": 100130,
+    "coverage_credited_keys": 100131,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44765,
-    "identity_conflict_rows": 12547,
+    "identity_conflict_rows": 12546,
     "mapping_candidate_rows": 1876
   },
   "rows": [
@@ -1132621,10 +1132621,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "LSE::0GB7",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "lse_company_reports::LSE::0GB8",

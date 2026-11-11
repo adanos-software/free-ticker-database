@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-11T06:33:15Z",
-    "rows": 8158,
+    "generated_at": "2026-11-11T08:22:44Z",
+    "rows": 8160,
     "outcome_totals": {
       "accepted_source_gap": 5094,
-      "core_exclusion_candidate": 493,
+      "core_exclusion_candidate": 495,
       "official_fill_required": 2571
     },
     "class_totals": {
@@ -17,7 +17,7 @@
       "equity_etf_category_gap": 17,
       "exchange_industry_source_gap": 49,
       "fixed_income_etf_category_gap": 3,
-      "fund_or_trust_identifier_gap": 288,
+      "fund_or_trust_identifier_gap": 290,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -34,7 +34,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 116,
       "missing_isin_primary:accepted_source_gap": 162,
-      "missing_isin_primary:core_exclusion_candidate": 447,
+      "missing_isin_primary:core_exclusion_candidate": 449,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 533,
       "missing_sector_stock:core_exclusion_candidate": 46,
@@ -88253,6 +88253,40 @@
       "exchange": "B3",
       "asset_type": "ETF",
       "name": "ÁQUILLA FDO INV IMOB - FII",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "B3::BIAU39",
+      "ticker": "BIAU39",
+      "exchange": "B3",
+      "asset_type": "ETF",
+      "name": "Ishares Gold Trust",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "B3::BSLV39",
+      "ticker": "BSLV39",
+      "exchange": "B3",
+      "asset_type": "ETF",
+      "name": "Ishares Silver Trust",
       "gap_class": "fund_or_trust_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",

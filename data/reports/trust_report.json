@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-10T17:19:52Z",
+    "generated_at": "2026-11-11T08:22:40Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,48 +26,48 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63560,
-    "joined_listings": 63560,
-    "scope_rows": 63560
+    "rows": 63561,
+    "joined_listings": 63561,
+    "scope_rows": 63561
   },
   "completeness": {
     "isin": {
-      "n": 63560,
-      "filled": 62948,
+      "n": 63561,
+      "filled": 62949,
       "missing": 612,
       "pct": 99.04,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "country": {
-      "n": 63560,
-      "filled": 63517,
+      "n": 63561,
+      "filled": 63518,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63560,
-      "filled": 62803,
-      "missing": 757,
-      "pct": 98.81,
-      "fills_needed_for_99": 122,
+      "n": 63561,
+      "filled": 62808,
+      "missing": 753,
+      "pct": 98.82,
+      "fills_needed_for_99": 118,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "ASX": 98,
       "NYSE ARCA": 85,
-      "TSX": 85,
+      "TSX": 84,
       "NASDAQ": 67,
       "TSXV": 61,
       "BATS": 45,
       "SSE": 34,
       "NEO": 25,
       "NYSE": 24,
-      "SSE_CL": 20,
-      "SZSE": 11,
-      "B3": 10
+      "SSE_CL": 19,
+      "B3": 12,
+      "SZSE": 11
     },
     "missing_sector_by_exchange": {
       "FSX": 245,
@@ -75,12 +75,12 @@
       "NSE_IN": 43,
       "HKEX": 26,
       "BVB": 25,
-      "HNX": 23,
+      "HNX": 22,
       "NASDAQ": 20,
-      "PSE": 20,
       "XETRA": 19,
       "BIST": 18,
       "BSE_IN": 18,
+      "PSE": 18,
       "SGX": 17
     },
     "missing_category_by_exchange": {
@@ -98,13 +98,13 @@
     "official_isin_mismatch": 9,
     "official_name_mismatch": 7,
     "open_collision_groups": 8,
-    "quarantine_unresolved": 1250,
+    "quarantine_unresolved": 1248,
     "quarantine_proposed_clear": 289,
-    "quarantine_kept": 562
+    "quarantine_kept": 561
   },
   "entry_quality_status": {
-    "pass": 59693,
-    "source_gap": 3842,
+    "pass": 59698,
+    "source_gap": 3838,
     "warn": 17,
     "notice": 8
   },
@@ -134,8 +134,8 @@
       "name": "core_isin_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63560,
-        "filled": 62948,
+        "n": 63561,
+        "filled": 62949,
         "missing": 612,
         "pct": 99.04,
         "fills_needed_for_99": 0,
@@ -146,11 +146,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63560,
-        "filled": 62803,
-        "missing": 757,
-        "pct": 98.81,
-        "fills_needed_for_99": 122,
+        "n": 63561,
+        "filled": 62808,
+        "missing": 753,
+        "pct": 98.82,
+        "fills_needed_for_99": 118,
         "pass": false
       }
     },
@@ -158,8 +158,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63560,
-        "filled": 63517,
+        "n": 63561,
+        "filled": 63518,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
