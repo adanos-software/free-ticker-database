@@ -1,4 +1,4 @@
-"""Prove the Playwright apt install retries a failing stub and fails over the Azure mirror."""
+"""Prove Playwright install uses a no-apt fast path and still retries the apt fallback."""
 
 from __future__ import annotations
 
@@ -32,6 +32,8 @@ def _run(
     mirror_mode: int = 0o644,
     update_exit: int = 0,
     sudo_log: Path | None = None,
+    nodeps_exit: int | None = None,
+    smoke_exit: int | None = None,
 ) -> subprocess.CompletedProcess[str]:
     count_file = tmp_path / "install-count"
     update_log = tmp_path / "update-log"
@@ -63,6 +65,18 @@ def _run(
     )
     bin_dir = tmp_path / "bin"
     bin_dir.mkdir()
+    unexpected_log = tmp_path / "unexpected-log"
+    for command in ("python", "apt-get"):
+        _write(
+            bin_dir / command,
+            textwrap.dedent(
+                f"""\
+                #!/bin/sh
+                printf '%s\\n' "{command} $*" >> "{unexpected_log}"
+                exit 97
+                """
+            ),
+        )
     sudo_body = "#!/bin/sh\necho \"unexpected sudo: $*\" >&2\nexit 99\n"
     if sudo_log is not None:
         sudo_body = textwrap.dedent(
@@ -96,6 +110,33 @@ def _run(
         mirror_file.write_text(mirror_text, encoding="utf-8")
         mirror_file.chmod(mirror_mode)
 
+    if nodeps_exit is not None:
+        nodeps_stub = tmp_path / "nodeps-stub.sh"
+        _write(
+            nodeps_stub,
+            textwrap.dedent(
+                f"""\
+                #!/bin/bash
+                echo nodeps >> "{tmp_path / "nodeps-log"}"
+                exit {nodeps_exit}
+                """
+            ),
+        )
+        env["PLAYWRIGHT_INSTALL_NO_DEPS_CMD"] = str(nodeps_stub)
+    if smoke_exit is not None:
+        smoke_stub = tmp_path / "smoke-stub.sh"
+        _write(
+            smoke_stub,
+            textwrap.dedent(
+                f"""\
+                #!/bin/bash
+                echo smoke >> "{tmp_path / "smoke-log"}"
+                exit {smoke_exit}
+                """
+            ),
+        )
+        env["PLAYWRIGHT_SMOKE_CMD"] = str(smoke_stub)
+
     return subprocess.run(
         ["bash", str(SCRIPT)],
         cwd=tmp_path,
@@ -111,10 +152,18 @@ def _install_count(tmp_path: Path) -> int:
 
 
 def _update_count(tmp_path: Path) -> int:
-    log = tmp_path / "update-log"
-    if not log.exists():
+    return _line_count(tmp_path / "update-log")
+
+
+def _line_count(path: Path) -> int:
+    if not path.exists():
         return 0
-    return len(log.read_text(encoding="utf-8").splitlines())
+    return len(path.read_text(encoding="utf-8").splitlines())
+
+
+def _assert_real_commands_not_used(tmp_path: Path) -> None:
+    unexpected = tmp_path / "unexpected-log"
+    assert not unexpected.exists(), unexpected.read_text(encoding="utf-8")
 
 
 def test_first_attempt_success_leaves_the_azure_mirror_alone(tmp_path: Path) -> None:
@@ -124,6 +173,50 @@ def test_first_attempt_success_leaves_the_azure_mirror_alone(tmp_path: Path) -> 
     assert _update_count(tmp_path) == 0
     assert (tmp_path / "apt-mirrors.txt").read_text(encoding="utf-8") == AZURE + ARCHIVE + SECURITY
     assert "failed" not in result.stderr
+    assert _line_count(tmp_path / "nodeps-log") == 0
+    assert _line_count(tmp_path / "smoke-log") == 0
+    _assert_real_commands_not_used(tmp_path)
+
+
+def test_fast_path_skips_apt_when_launch_succeeds(tmp_path: Path) -> None:
+    result = _run(tmp_path, failures=9, nodeps_exit=0, smoke_exit=0)
+    assert result.returncode == 0, result.stderr
+    assert "Playwright Chromium launched headless without apt packages" in result.stdout
+    assert "Smoke-testing headless Chromium" in result.stdout
+    assert _line_count(tmp_path / "nodeps-log") == 1
+    assert _line_count(tmp_path / "smoke-log") == 1
+    assert not (tmp_path / "install-count").exists()
+    assert _update_count(tmp_path) == 0
+    assert (tmp_path / "apt-mirrors.txt").read_text(encoding="utf-8") == AZURE + ARCHIVE + SECURITY
+    assert "failed" not in result.stderr
+    assert "with-deps" not in result.stderr
+    _assert_real_commands_not_used(tmp_path)
+
+
+def test_smoke_failure_falls_back_to_with_deps_retry(tmp_path: Path) -> None:
+    result = _run(tmp_path, failures=1, attempts="4", delay="0", nodeps_exit=0, smoke_exit=1)
+    assert result.returncode == 0, result.stderr
+    assert _line_count(tmp_path / "nodeps-log") == 1
+    assert _line_count(tmp_path / "smoke-log") == 1
+    assert "Headless Chromium launch failed; falling back" in result.stderr
+    assert _install_count(tmp_path) == 2
+    assert _update_count(tmp_path) == 1
+    assert (tmp_path / "apt-mirrors.txt").read_text(encoding="utf-8") == ARCHIVE + SECURITY
+    assert "attempt 1/4, exit 100" in result.stderr
+    _assert_real_commands_not_used(tmp_path)
+
+
+def test_nodeps_install_failure_skips_smoke_and_falls_back(tmp_path: Path) -> None:
+    result = _run(tmp_path, failures=0, nodeps_exit=1, smoke_exit=99)
+    assert result.returncode == 0, result.stderr
+    assert _line_count(tmp_path / "nodeps-log") == 1
+    assert _line_count(tmp_path / "smoke-log") == 0
+    assert "playwright install chromium (no --with-deps) failed (exit 1)" in result.stderr
+    assert _install_count(tmp_path) == 1
+    assert _update_count(tmp_path) == 0
+    assert (tmp_path / "apt-mirrors.txt").read_text(encoding="utf-8") == AZURE + ARCHIVE + SECURITY
+    assert "failed" not in result.stdout
+    _assert_real_commands_not_used(tmp_path)
 
 
 def test_retry_refreshes_apt_and_drops_the_azure_mirror(tmp_path: Path) -> None:
@@ -135,6 +228,7 @@ def test_retry_refreshes_apt_and_drops_the_azure_mirror(tmp_path: Path) -> None:
     assert "attempt 1/4, exit 100" in result.stderr
     assert "Dropping azure.archive.ubuntu.com" in result.stderr
     assert "Refreshing apt indexes, then retrying in 0s" in result.stderr
+    _assert_real_commands_not_used(tmp_path)
 
 
 def test_exhausted_retries_keep_the_stub_exit_code(tmp_path: Path) -> None:
@@ -148,6 +242,7 @@ def test_exhausted_retries_keep_the_stub_exit_code(tmp_path: Path) -> None:
     # Backoff is 1s then 2s between the three attempts.
     assert elapsed >= 3.0
     assert (tmp_path / "apt-mirrors.txt").read_text(encoding="utf-8") == ARCHIVE + SECURITY
+    _assert_real_commands_not_used(tmp_path)
 
 
 def test_azure_only_mirror_list_is_rewritten_not_emptied(tmp_path: Path) -> None:
@@ -157,6 +252,7 @@ def test_azure_only_mirror_list_is_rewritten_not_emptied(tmp_path: Path) -> None
     assert rewritten == "https://archive.ubuntu.com/ubuntu/\tpriority:1\n"
     assert "azure.archive.ubuntu.com" not in rewritten
     assert "Replacing azure.archive.ubuntu.com" in result.stderr
+    _assert_real_commands_not_used(tmp_path)
 
 
 def test_missing_mirror_file_still_retries(tmp_path: Path) -> None:
@@ -165,6 +261,7 @@ def test_missing_mirror_file_still_retries(tmp_path: Path) -> None:
     assert _install_count(tmp_path) == 2
     assert _update_count(tmp_path) == 1
     assert not (tmp_path / "missing-mirrors.txt").exists()
+    _assert_real_commands_not_used(tmp_path)
 
 
 def test_apt_update_failure_does_not_block_the_next_attempt(tmp_path: Path) -> None:
@@ -172,6 +269,7 @@ def test_apt_update_failure_does_not_block_the_next_attempt(tmp_path: Path) -> N
     assert result.returncode == 0, result.stderr
     assert _install_count(tmp_path) == 2
     assert "apt-get update failed; continuing to retry the install" in result.stderr
+    _assert_real_commands_not_used(tmp_path)
 
 
 def test_unwritable_mirror_file_is_replaced_via_sudo(tmp_path: Path) -> None:
@@ -189,6 +287,7 @@ def test_unwritable_mirror_file_is_replaced_via_sudo(tmp_path: Path) -> None:
     sudo_line = sudo_log.read_text(encoding="utf-8").strip()
     assert sudo_line.startswith("-n cp ")
     assert sudo_line.endswith(f" {mirror}")
+    _assert_real_commands_not_used(tmp_path)
 
 
 def test_rejects_a_non_positive_attempt_count(tmp_path: Path) -> None:
@@ -196,3 +295,4 @@ def test_rejects_a_non_positive_attempt_count(tmp_path: Path) -> None:
     assert result.returncode == 2
     assert "PLAYWRIGHT_INSTALL_ATTEMPTS" in result.stderr
     assert not (tmp_path / "install-count").exists()
+    _assert_real_commands_not_used(tmp_path)
