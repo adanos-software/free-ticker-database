@@ -7,12 +7,12 @@
   },
   "summary": {
     "before_rows": 97719,
-    "after_rows": 97719,
+    "after_rows": 97733,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,14 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "HKEX::01842",
+      "field_name": "isin",
+      "old_value": "KYG4147A1067",
+      "new_value": "KYG4147A1141"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -300,7 +307,7 @@
     {
       "exchange": "HKEX",
       "before_rows": 3245,
-      "after_rows": 3245,
+      "after_rows": 3255,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -408,7 +415,7 @@
     {
       "exchange": "MSX",
       "before_rows": 94,
-      "after_rows": 94,
+      "after_rows": 95,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -462,7 +469,7 @@
     {
       "exchange": "NSE_IN",
       "before_rows": 3535,
-      "after_rows": 3535,
+      "after_rows": 3538,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

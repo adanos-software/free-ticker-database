@@ -1,27 +1,27 @@
 # Entry Quality Report
 
-Generated at: `2026-11-11T15:36:49Z`
+Generated at: `2026-11-11T17:08:29Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,570 |
-| source_gap | 11,105 |
-| warn | 34 |
+| pass | 86,572 |
+| source_gap | 11,118 |
+| warn | 33 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,804 |
+| official_reference_gap | 6,806 |
 | venue_missing_official_source | 3,287 |
-| missing_stock_sector | 623 |
-| expected_missing_primary_isin | 612 |
+| missing_stock_sector | 633 |
+| expected_missing_primary_isin | 613 |
 | missing_etf_category | 127 |
 | official_name_mismatch | 23 |
-| official_isin_mismatch | 11 |
+| official_isin_mismatch | 10 |
 | low_company_name_overlap | 10 |
 | country_isin_mismatch | 1 |
 
@@ -47,7 +47,7 @@ Generated at: `2026-11-11T15:36:49Z`
 | LSE | 6,879 | 0 | 145 | 2 | 0 |
 | Euronext | 1,335 | 0 | 141 | 1 | 0 |
 | BATS | 1,279 | 0 | 109 | 0 | 0 |
-| HKEX | 3,150 | 0 | 92 | 3 | 0 |
+| HKEX | 3,148 | 0 | 105 | 2 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 
 ## Notes

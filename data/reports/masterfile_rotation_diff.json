@@ -1,2662 +1,925 @@
 {
   "summary": {
-    "generated_at": "2026-11-10T15:06:56Z",
+    "generated_at": "2026-11-11T17:01:12Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 79,
-    "vanished_rows": 46,
-    "changed_rows": 54,
+    "new_rows": 24,
+    "vanished_rows": 25,
+    "changed_rows": 11,
     "new_by_source": {
-      "b3_listed_etfs": 8,
-      "euronext_etfs": 43,
-      "hose_listed_stocks": 2,
-      "szse_etf_list": 22,
-      "tase_etf_marketdata": 4
+      "bme_security_prices_directory": 2,
+      "hkex_securities_list": 10,
+      "krx_etf_finder": 6,
+      "muscat_securities_companies": 1,
+      "nse_india_securities_available": 5
     },
     "vanished_by_source": {
-      "b3_listed_etfs": 1,
-      "euronext_etfs": 43,
-      "szse_b_share_list": 2
+      "bme_security_prices_directory": 3,
+      "hkex_securities_list": 4,
+      "idx_company_profiles": 18
     },
     "changed_by_type": {
       "isin_change": 1,
-      "name_change": 53
+      "name_change": 11
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "FBOV11",
-      "name": "GALAPAGOS B3 IBOVESPA & TEVA ITBR TESOURO SELIC IPCA+ 20/80 FUNDO DE ÍNDICE",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Commodity"
-    },
-    {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "FDIV11",
-      "name": "GALAPAGOS B3 IDIV & TEVA ITBR TESOURO SELIC IPCA+ 20/80 FUNDO DE ÍNDICE",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Commodity"
-    },
-    {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "FMUN11",
-      "name": "GALAPAGOS FTSE GLOBAL EQUITY ALL CAP & TEVA ITBR TESOURO SELIC IPCA+ 20/80 FUNDO DE ÍNDICE",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Commodity"
-    },
-    {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "FSPY11",
-      "name": "GALAPAGOS S&P 500 & TEVA ITBR TESOURO SELIC IPCA+ 20/80 FUNDO DE ÍNDICE",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Commodity"
-    },
-    {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "GPRE11",
-      "name": "CLASSE DE COTAS DO GRÃO TEVA ITBR TESOURO PRÉ 2 ANOS FUNDO DE ÍNDICE - RESPONSABILIDADE LIMITADA",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Commodity"
-    },
-    {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "POWR11",
-      "name": "INVESTO B3 ENERGIA ELÉTRICA FUNDO DE ÍNDICE",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "TRJR11",
-      "name": "BTG PACTUAL TEVA ITBR TESOURO IPCA TOTAL FUNDO DE ÍNDICE",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Commodity"
-    },
-    {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "XF3511",
-      "name": "TREND ETF PREFIXADO DI 2035 CLASSE DE ÍNDICE -  RESPONSABILIDADE LIMITADA",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FTAE",
-      "name": "iShares FTSE All World UCITS ETF USD (Acc)",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE00097WZHZ9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FTAS",
-      "name": "iShares FTSE All World UCITS ETF USD (Dist)",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000OL3XN92",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "DEMM",
-      "name": "L&G Emerging Markets Quality Dividends UCITS ETF - USD Dist (M) ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000BP0WGL6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "EBCA",
-      "name": "iShares € Investment Grade Corp Bond Active UCITS ETF EUR (Acc)",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000N66MWZ0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "EYBA",
-      "name": "iShares European High Yield Corp Bond Active UCITS ETF EUR (Acc)",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000BC7K6I4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FAMAMJ",
-      "name": "Fineco AM MSCI World Metals And Mining UCITS ETF J Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000KXZPFM8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FAMMAJ",
-      "name": "Fineco AM MSCI ACWI IMI Cyber Security UCITS ETF J Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0000WGENQ0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FAMMWJ",
-      "name": "Fineco AM MSCI World Semiconductors And Semiconductor Equipment 20% Capped UCITS ETF J Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000QM6RZM7",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FAMTEJ",
-      "name": "Fineco AM MSCI World Information Technology Sustainable Selection P-Series 20% Capped UCITS ETF J Ac",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000WHEEOU0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FAMWCJ",
-      "name": "Fineco AM MSCI World Consumer Staples Sustainable Selection P-Series UCITS ETF J Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000RPOEHQ4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FAMWFJ",
-      "name": "Fineco AM MSCI World Financials Sustainable Selection P-Series UCITS ETF J Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000KJHE9V9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FGLB",
-      "name": "Fidelity Global Equity Dynamic Buffer UCITS ETF - Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0001Y8K1A5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FOCUS",
-      "name": "Franklin Putnam Focused US Research UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000JKWOG61",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FUSB",
-      "name": "Fidelity US Equity Dynamic Buffer UCITS ETF - Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000W2FBY21",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "IVES",
-      "name": "Dan IVES Wedbush AI Revolution UCITS ETF - Accumulating",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE00035K8IR6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "J5E1",
-      "name": "JANUS HENDERSON US LARGE CAP EQUITY CORE UCITS FUND USD Acc ETF - EUR Trading Line",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0005ZIBSW1",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "LGGM",
-      "name": "L&G Global Equity UCITS ETF USD Dist",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000GT6BRH3",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "MAGZ",
-      "name": "Defiance Mag7 UCITS ETF - Accumulating",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000NFL4BX4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "MATE",
-      "name": "Man Active Trend Enhanced UCITS ETF Class I H EUR",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000BS31R00",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "MGIN",
-      "name": "Man Active Global Infrastructure UCITS ETF Class I C USD",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000IX21FH5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "PQEM",
-      "name": "Pictet AI Enhanced Emerging Equity UCITS ETF - Class USD Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000XLNXKI4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "SGHY",
-      "name": "State Street Global High Yield Bond Screened Index Fund - UCITS ETF Class",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3357226557",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "SMHC",
-      "name": "VanEck China Semiconductor UCITS ETF",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000TS4B6Y3",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "TIGE",
-      "name": "T.Rowe Price Integrated Global Equity UCITS ETF - USD Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000EZK03S4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "TUSE",
-      "name": "T.Rowe Price Integrated US Equity Enhanced Index UCITS ETF - USD Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000XY8XBU2",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "VRME",
-      "name": "Vanguard Russell U.S. Mid-Cap UCITS ETF - USD (Acc)",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000650M1V4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "ACDC",
-      "name": "Amundi Global Electrification Infrastructure UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0004LE6CM5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "BHYP",
-      "name": "Bitwise Hyperliquid Staking ETP",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "DE000A4ARTJ5",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CMWL",
-      "name": "CM-AM MSCI World UCITS ETF C EUR",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "FR0014018UE6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CR1T",
-      "name": "Amundi Global Critical Metals & Rare Earths UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000UV2SV13",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "DFEU",
-      "name": "iShares Europe Defence UCITS ETF EUR (Acc)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000IAXNM41",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "DSEC",
-      "name": "iShares Global Defence & Security Active UCITS ETF USD (Acc)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000VXXM2N0",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "HEAL",
-      "name": "iShares Healthcare Innovation UCITS ETF USD (Acc)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE00BYZK4776",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "HOLD",
-      "name": "HSBC WORLD UCITS ETF USD (Acc)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000P2V15V8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "HROB",
-      "name": "HSBC MSCI CHINA ROBOTICS UCITS ETF USD (Acc)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000TMA3NX9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "ICOM",
-      "name": "iShares Diversified Commodity Swap UCITS ETF USD (Acc)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE00BDFL4P12",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "LIQD",
-      "name": "CoinShares Hyperliquid Staking ETP",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "GB00BVBJQ593",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "MAGZ",
-      "name": "Defiance Mag7 UCITS ETF - Accumulating",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000NFL4BX4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "SP4C",
-      "name": "Amundi Global Space Technologies UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000RUMHLK6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "UCBE",
-      "name": "iShares $ Corp Bond Enhanced Active UCITS ETF USD (Dist)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0003PTZOD2",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "UCRPH",
-      "name": "Amundi USD Corporate Bond ESG UCITS ETF EUR Hedged Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU3520602916",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "UHED",
-      "name": "iShares $ High Yield Corp Bond Enhanced Active UCITS ETF USD (Dist)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000IC983K4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "ZCSH",
-      "name": "CoinShares Zcash ETP",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "GB00BNRRG954",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "hose_listed_stocks",
-      "provider": "HOSE",
-      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
-      "ticker": "DSH",
-      "name": "Dong Son Holdings Joint Stock Company",
-      "exchange": "HOSE",
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "SCALF",
+      "name": "ALFIL PATRIMONIAL",
+      "exchange": "BME",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "VN000000DSH5",
+      "isin": "ES0105757019",
       "cfi": "",
-      "sector": ""
+      "sector": "Real Estate"
     },
     {
-      "source_key": "hose_listed_stocks",
-      "provider": "HOSE",
-      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
-      "ticker": "DVV",
-      "name": "DatViet VAC Group Holdings Corporation",
-      "exchange": "HOSE",
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "SL028",
+      "name": "ALL YOU NEED",
+      "exchange": "BME",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "VN000000DVV0",
+      "isin": "ES0108162001",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02065",
+      "name": "AMICRO",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "CNE100008133",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158036",
-      "name": "卫星ETF华夏",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02206",
+      "name": "NEAUTUS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "CNE1000081J1",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158037",
-      "name": "机器人ETF博时",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02681",
+      "name": "HOSIN ELEC",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "CNE1000081L7",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158040",
-      "name": "科创创业人工智能ETF国联安",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02949",
+      "name": "GREEN POWER RTS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "KYG0073U1242",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158043",
-      "name": "价值ETF南方",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02981",
+      "name": "GRAND OCEAN RTS",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "KYG4064U1278",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158046",
-      "name": "卫星ETF南方",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02982",
+      "name": "GRAND OCEAN-4K",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "KYG4064U1351",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158047",
-      "name": "粮食ETF永赢",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02984",
+      "name": "NEW RAY MED-8K",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "BMG647462024",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158051",
-      "name": "金融科技ETF国联安",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "07672",
+      "name": "XINDE SEMI",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "CNE1000081K9",
       "cfi": "",
-      "sector": "Equity"
+      "sector": ""
     },
     {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158052",
-      "name": "创业板金融科技ETF景顺",
-      "exchange": "SZSE",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "07772",
+      "name": "XLQCSOPKIOXIA",
+      "exchange": "HKEX",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158055",
-      "name": "创业板算力ETF国泰",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158058",
-      "name": "创业板金融科技ETF华泰柏瑞",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158062",
-      "name": "创业板金融科技ETF建信",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158065",
-      "name": "粮食ETF招商",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158066",
-      "name": "大数据ETF前海开源",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158067",
-      "name": "创业板金融科技ETF万家",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158072",
-      "name": "创业板软件ETF南方",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158076",
-      "name": "红利低波ETF广发",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158078",
-      "name": "创业板电池ETF华宝",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158079",
-      "name": "创业板电池ETF华安",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158081",
-      "name": "创业板电池ETF永赢",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "158082",
-      "name": "创业板电池ETF银华",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "159047",
-      "name": "港股信息技术ETF银华",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "szse_etf_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
-      "ticker": "159089",
-      "name": "港股通互联网ETF国联",
-      "exchange": "SZSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "tase_etf_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/marketdata/etfs",
-      "ticker": "HRL-F242",
-      "name": "Harel Sal (6A) 3 Time Leverage TA-35 Monthly IL",
-      "exchange": "TASE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IL0012459686",
+      "isin": "HK0001374161",
       "cfi": "",
       "sector": "Leveraged/Inverse"
     },
     {
-      "source_key": "tase_etf_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/marketdata/etfs",
-      "ticker": "MTF-F139",
-      "name": "MTF SAL (4A) Index Israeli Infrastructure IL",
-      "exchange": "TASE",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "09917",
+      "name": "DENGLIN TECH-P",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "CNE100008125",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0256E0",
+      "name": "HANARO 삼성전기고정AI핵심기판",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IL0012407123",
+      "isin": "KR70256E0009",
       "cfi": "",
       "sector": "Equity"
     },
     {
-      "source_key": "tase_etf_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/marketdata/etfs",
-      "ticker": "MTF-F142",
-      "name": "MTF SAL (4A) S&P North American Expanded Technology Software Currency-Hedged",
-      "exchange": "TASE",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0258N0",
+      "name": "MIDAS 중기채권(AA-이상)액티브",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IL0012477332",
-      "cfi": "",
-      "sector": "Equity"
-    },
-    {
-      "source_key": "tase_etf_marketdata",
-      "provider": "TASE",
-      "source_url": "https://api.tase.co.il/api/marketdata/etfs",
-      "ticker": "TCH-F186",
-      "name": "Tachlit Sal (0A) Index US Gov 10Y Fixed Duration Currency-Hedged",
-      "exchange": "TASE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "IL0012476342",
+      "isin": "KR70258N0006",
       "cfi": "",
       "sector": "Fixed Income"
-    }
-  ],
-  "vanished": [
+    },
     {
-      "source_key": "b3_listed_etfs",
-      "provider": "B3",
-      "source_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
-      "ticker": "META11",
-      "name": "HASHDEX CRYPTO METAVERSE FUNDO DE ÍNDICE - RESPONSABILIDADE LIMITADA",
-      "exchange": "B3",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0260F0",
+      "name": "IBK 현대차로보틱스채권혼합50",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "KR70260F0002",
+      "cfi": "",
+      "sector": "Fixed Income"
+    },
+    {
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0261H0",
+      "name": "KODEX 미국나스닥100미국채혼합50",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR70261H0009",
+      "cfi": "",
+      "sector": "Fixed Income"
+    },
+    {
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0262B0",
+      "name": "TIGER 200커버드콜액티브",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KR70262B0004",
       "cfi": "",
       "sector": "Alternative"
     },
     {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "LVO",
-      "name": "Amundi S&P 500 VIX Futures Enhanced Roll  UCITS ETF Acc",
-      "exchange": "AMS",
+      "source_key": "krx_etf_finder",
+      "provider": "KRX",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "ticker": "0262Y0",
+      "name": "SOL 200커버드콜액티브",
+      "exchange": "KRX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "LU0832435464",
+      "isin": "KR70262Y0007",
       "cfi": "",
-      "sector": ""
+      "sector": "Alternative"
     },
     {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CIB",
-      "name": "UBS J.P. Morgan CNY China Gov 1-10 UCITS ETF USD acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2095995895",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CMUSRI",
-      "name": "Amundi MSCI EMU SRI Climate Paris Aligned - UCITS ETF DR (C)",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2109787635",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "DAXESG",
-      "name": "Amundi MSCI EMU Screened UCITS ETF Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2240851688",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "GEB",
-      "name": "UBS J.P. Morgan EMU Gov ESG Liquid Bond UCITS ETF EUR acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2194286006",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "GGB",
-      "name": "UBS Global Green Bond ESG 1-10 UCITS ETF USD acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2484583138",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "GGE",
-      "name": "UBS Global Green Bond ESG 1-10 UCITS ETF hEUR acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2484583302",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "PEX",
-      "name": "UBS MSCI Pacific ex Japan IMI Socially Responsible UCITS ETF USD acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000BKMMHF9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "PEXE",
-      "name": "UBS MSCI Pacific ex Japan IMI Socially Responsible UCITS ETF hEUR acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000BAF6X29",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "PLAN",
-      "name": "Amundi Corporate Proceeds Bond UCITS ETF Acc",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2370241684",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "USIH",
-      "name": "Amundi USD Corporate Bond Climate Paris Aligned UCITS ETF EUR Hedged Dist",
-      "exchange": "Borsa Italiana",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1285960032",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "500U",
-      "name": "Amundi S&P 500 Swap UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681049018",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "AASU",
-      "name": "AMUNDI MSCI EM ASIA UCITS ETF - USD",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681044563",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "ALAU",
-      "name": "AMUNDI MSCI EM LATIN AMERICA UCITS ETF - USD",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681045297",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "ANXU",
-      "name": "Amundi Nasdaq-100 Swap UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681038326",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "AUEM",
-      "name": "Amundi MSCI Emerging Markets Swap UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681045453",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "BTPS",
-      "name": "Amundi Italy BTP Daily (-2x) Inverse UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "FR0011023621",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "BYBU",
-      "name": "AMUNDI S&P 500 BUYBACK UCITS ETF - USD",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681048556",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "C50U",
-      "name": "Amundi Core EURO STOXX 50 UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681047400",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "C53D",
-      "name": "Amundi Euro Government Bond 5-7Y UCITS ETF Dist",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2090062865",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CC1U",
-      "name": "Amundi MSCI China Tech UCITS ETF USD",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681044050",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CI2U",
-      "name": "Amundi MSCI India Swap II UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681043169",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CP9U",
-      "name": "Amundi MSCI Pacific Ex Japan SRI Climate Paris Aligned - UCITS ETF DR - USD (C)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1602145036",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CSWC",
-      "name": "AMUNDI MSCI SWITZERLAND UCITS ETF - CHF",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681044993",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CW8U",
-      "name": "Amundi MSCI World Swap UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681043672",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "CWEU",
-      "name": "Amundi Global Bioenergy UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681046188",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "DSB",
-      "name": "Amundi German Bund Daily (-2x) Inverse UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "FR0010869578",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "ELLE",
-      "name": "Amundi Global Gender Equality",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1691909508",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "FTSE",
-      "name": "Amundi MSCI UK IMI SRI Climate Paris Aligned - UCITS ETF DR - GBP (C)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1437025296",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "GAGU",
-      "name": "Amundi Core Global Aggregate Bond UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1437024729",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "GGOU",
-      "name": "Amundi Core Global Government Bond UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1437016204",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "JPHC",
-      "name": "AMUNDI JPX-NIKKEI 400 UCITS ETF - DAILY HEDGED CHF",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681047665",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "JPHG",
-      "name": "AMUNDI JPX-NIKKEI 400 UCITS ETF - DAILY HEDGED GBP",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681039308",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "JPHU",
-      "name": "AMUNDI JPX-NIKKEI 400 UCITS ETF - DAILY HEDGED USD",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681039217",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "LESE",
-      "name": "Amundi MSCI EMU SRI Climate Paris Aligned - UCITS ETF DR (C)",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU2109787635",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "LUXU",
-      "name": "Amundi Global Luxury UCITS ETF USD Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681048713",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "PR1R",
-      "name": "Amundi Prime Euro Government Bond UCITS ETF Dist",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1931975152",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "RS2U",
-      "name": "AMUNDI RUSSELL 2000 UCITS ETF - USD",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681038839",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "TPHC",
-      "name": "AMUNDI JAPAN TOPIX UCITS ETF - DAILY HEDGED CHF",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681038169",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "TPHG",
-      "name": "AMUNDI JAPAN TOPIX UCITS ETF - DAILY HEDGED GBP",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681038086",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "TPHU",
-      "name": "AMUNDI JAPAN TOPIX UCITS ETF - DAILY HEDGED USD",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1681037948",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "US10",
-      "name": "Amundi US Treasury Bond Long Dated UCITS ETF Dist",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "LU1407890620",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "euronext_etfs",
-      "provider": "Euronext",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "ticker": "WRDU",
-      "name": "Amundi Core MSCI World UCITS ETF Acc",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000BI8OT95",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "szse_b_share_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/stock/list/index.html",
-      "ticker": "200016",
-      "name": "康佳集团股份有限公司",
-      "exchange": "SZSE",
+      "source_key": "muscat_securities_companies",
+      "provider": "MSX",
+      "source_url": "https://www.msx.om/companies.aspx",
+      "ticker": "RCRI",
+      "name": "Raysut Cement RI",
+      "exchange": "MSX",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "ORTEL",
+      "name": "Ortel Communications Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE849L01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/eq_etfseclist.csv",
+      "ticker": "POWERIETF",
+      "name": "ICICIPRAMC - POWERIETF",
+      "exchange": "NSE_IN",
+      "asset_type": "ETF",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INF109K1A724",
+      "cfi": "",
+      "sector": "Equity"
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SPELS",
+      "name": "SPEL Semiconductor Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE252A01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "VEEFIN",
+      "name": "Veefin Solutions Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE0Q0M01015",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv",
+      "ticker": "VPFL",
+      "name": "Vedant Poly Fabs Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE2RWX01016",
+      "cfi": "",
+      "sector": ""
+    }
+  ],
+  "vanished": [
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S0129",
+      "name": "ALMABENI FINANCIERA",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0108397037",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S3129",
+      "name": "ALKARIKA",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0169092030",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "TRG",
+      "name": "TUBOS REUNIDOS",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0180850416",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02934",
+      "name": "CHINA SANDI-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG2118U1273",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02936",
+      "name": "SG GROUP H-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG8061B1234",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08448",
+      "name": "UNI PRINTSHOP",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "KYG9370R1552",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "08585",
+      "name": "CAPITAL FIN-OLD",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "BMG1941S1769",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "COWL",
+      "name": "COWELL DEVELOPMENT Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "DUCK",
+      "name": "PT Jaya Bersama Indo Tbk.",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "ENVY",
+      "name": "PT Envy Technologies Indonesia Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Information Technology"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "GOLL",
+      "name": "PT Golden Plantation Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Staples"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "LCGP",
+      "name": "PT Eureka Prima Jakarta Tbk.",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "LMAS",
+      "name": "Limas Indonesia Makmur Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Information Technology"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "MABA",
+      "name": "PT Marga Abhinaya Abadi Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "MTRA",
+      "name": "PT Mitra Pemuda Tbk.",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
       "official": "true",
       "isin": "",
       "cfi": "",
       "sector": "Industrials"
     },
     {
-      "source_key": "szse_b_share_list",
-      "provider": "SZSE",
-      "source_url": "https://www.szse.cn/market/product/stock/list/index.html",
-      "ticker": "200706",
-      "name": "瓦房店轴承股份有限公司",
-      "exchange": "SZSE",
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "PLAS",
+      "name": "Polaris Investama Tbk",
+      "exchange": "IDX",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "SBAT",
+      "name": "PT Sejahtera Bintang Abadi Textile Tbk.",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "SKYB",
+      "name": "PT Northcliff Citranusa Indonesia Tbk.",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Information Technology"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "SRIL",
+      "name": "PT Sri Rejeki Isman Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "SUGI",
+      "name": "Sugih Energy Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Energy"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "TDPM",
+      "name": "PT Tianrong Chemicals Industry Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Materials"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "TELE",
+      "name": "PT Omni Inovasi Indonesia Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "TOYS",
+      "name": "PT Sunindo Adipersada Tbk.",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "TRIL",
+      "name": "Triwira Insanlestari Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
       "official": "true",
       "isin": "",
       "cfi": "",
       "sector": "Industrials"
+    },
+    {
+      "source_key": "idx_company_profiles",
+      "provider": "IDX",
+      "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+      "ticker": "UNIT",
+      "name": "Nusantara Inti Corpora Tbk",
+      "exchange": "IDX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "",
+      "cfi": "",
+      "sector": "Consumer Discretionary"
     }
   ],
   "changed": [
     {
-      "source_key": "b3_bdr_etfs",
-      "exchange": "B3",
-      "ticker": "BCRP39",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00065",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "PIMCO INVESTMENT GRADE CORP BOND INDEX EXCH-TF",
-          "after": "PIMCO INVESTMENT GRADE CORP BOND  EXCH-TF"
+          "before": "GRAND OCEAN AR",
+          "after": "GRAND OCEAN-5K"
         }
       }
     },
     {
-      "source_key": "b3_bdr_etfs",
-      "exchange": "B3",
-      "ticker": "BHYS39",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00910",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "PIMCO 0-5 YEAR HIGH YIELD CORP BOND INDEX EXCH-TF",
-          "after": "PIMCO 0-5 YEAR HIGH YIELD CORP BOND  EXCH-TF"
+          "before": "CHINA SANDI-NEW",
+          "after": "CHINA SANDI"
         }
       }
     },
     {
-      "source_key": "euronext_etfs",
-      "exchange": "AMS",
-      "ticker": "GSCE",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01657",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "BNP Paribas Easy S&P GSCI Energy&Metals Capped Component 35/20 UCITS ETF EUR Capitalisation",
-          "after": "BNP Paribas Easy Energy & Metals Enhanced Roll UCITS ETF"
+          "before": "SG GROUP H-NEW",
+          "after": "SG GROUP HLDGS"
         }
       }
     },
     {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "ASRD",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "01842",
       "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMBI Global Diversified Composite UCITS ETF",
-          "after": "BNP Paribas Easy JPM Screened EMBI Global Diversified Composite UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "C3M",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Amundi Euro Government Bond 0-6 M UCITS ETF Acc",
-          "after": "Amundi Euro Government Bond 0-6M UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "CG1",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "AMUNDI ETF DAX UCITS ETF DR",
-          "after": "Amundi Dax UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "EEA",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNPP EASY FTSE EPRA EUROZONE UCITS ETF",
-          "after": "BNP Paribas Easy FTSE EPRA/Nareit Eurozone Capped UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "EGEHE",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNPP EASY ECPI GL ESG HYDROGEN UCITS ETF",
-          "after": "BNP Paribas Easy ECPI Global ESG Hydrogen Economy UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "EJEGSS",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG Green Social & Sustainability IG EUR Bond UCITS ETF",
-          "after": "BNP Paribas Easy JPM Screened Green Social & Sustainability IG EUR Bond UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "GEMU",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 3-5Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 3-5Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "GEU3C",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 1-3Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 1-3Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "GEU3D",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 1-3Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 1-3Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "GEU7C",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 5-7Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 5-7Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "GOV10",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 10Y+ UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 10Y+ UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "GREAL",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNPP EASY FTSE EPRA EU CTB UCITS ETF",
-          "after": "BNP Paribas Easy FTSE EPRA Nareit Developed Europe Green CTB UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "GSCE",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNPP ENERG&METAL ENH ROLL UCITS ETF EUR",
-          "after": "BNP Paribas Easy Energy & Metals Enhanced Roll UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "HYEP",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "iShares € High Yield Corp Bond ESG Paris-Aligned Climate UCITS ETF D",
-          "after": "iShares € High Yield Corp Bond Select UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "JBEM",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "MILL",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Amundi MSCI Millennials UCITS ETF Acc",
-          "after": "Amundi Global Sport and eSport UCITS ETF Acc"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "OCEAN",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNPP ECPI GLB ESG BLUE ECONOMY UCITS ETF",
-          "after": "BNP Paribas Easy ECPI Global ESG Blue Economy UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "PAACE",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy MSCI ACWI SRI PAB UCITS ETF",
-          "after": "BNP Paribas Easy MSCI ACWI Min TE UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "REUSE",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNPP ECPI CIRCULAR ECON LEAD UCITS ETF",
-          "after": "BNP Paribas Easy ECPI Circular Economy Leaders UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Borsa Italiana",
-      "ticker": "USCBC",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNPP Easy USD Corp Bond SRI C UCITS ETF",
-          "after": "BNP Paribas Easy USD Corp Bond SRI Fossil Free UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "BLUE",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP PARIBAS EASY ECPI GLOBAL ESG BLUE ECONOMY UCITS ETF",
-          "after": "BNP Paribas Easy ECPI Global ESG Blue Economy UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "C3M",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Amundi Euro Government Bond 0-6 M UCITS ETF Acc",
-          "after": "Amundi Euro Government Bond 0-6M UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "CG1",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "AMUNDI ETF DAX UCITS ETF DR",
-          "after": "Amundi Dax UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "EDIV",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Amundi S&P Eurozone Dividend Aristocrat Screened UCITS ETF Acc",
-          "after": "Amundi S&P Europe High Dividend Yield UCITS ETF Acc"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "EEA",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy FTSE EPRA/NAREIT Eurozone Capped  UCITS ETF Capitalisation",
-          "after": "BNP Paribas Easy FTSE EPRA/Nareit Eurozone Capped UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "EMBH",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMBI Global Diversified Composite UCITS ETF",
-          "after": "BNP Paribas Easy JPM Screened EMBI Global Diversified Composite UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "EMBI",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMBI Global Diversified Composite UCITS ETF",
-          "after": "BNP Paribas Easy JPM Screened EMBI Global Diversified Composite UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "EUDIV",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Amundi S&P Eurozone Dividend Aristocrat Screened UCITS ETF Dist",
-          "after": "Amundi S&P Europe High Dividend Yield UCITS ETF Dist"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GE110",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 1-10Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 1-10Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GE710",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 7-10Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 7-10Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GEMU",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 3-5Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 3-5Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GEU3C",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 1-3Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 1-3Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GEU3D",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 1-3Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 1-3Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GEU7C",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 5-7Y UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 5-7Y UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GOD10",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 10Y+ UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 10Y+ UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GOV10",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG 10Y+ UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG 10Y+ UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GREAL",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP PARIBAS EASY FTSE EPRA NAREIT DEVELOPED EUROPE GREEN CTB UCITS ETF",
-          "after": "BNP Paribas Easy FTSE EPRA Nareit Developed Europe Green CTB UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GSSBD",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG Green Social & Sustainability IG EUR Bond UCITS ETF",
-          "after": "BNP Paribas Easy JPM Screened Green Social & Sustainability IG EUR Bond UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "GSSBO",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG Green Social & Sustainability IG EUR Bond UCITS ETF",
-          "after": "BNP Paribas Easy JPM Screened Green Social & Sustainability IG EUR Bond UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "HYDRO",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy ECPI Global ESG Hydrogen Economy UCITS ETF cap",
-          "after": "BNP Paribas Easy ECPI Global ESG Hydrogen Economy UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "JBEM",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy JPM ESG EMU Government Bond IG UCITS ETF",
-          "after": "BNP Paribas Easy JPM Tilted EMU Government Bond IG UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "MILL",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Amundi MSCI Millennials UCITS ETF Acc",
-          "after": "Amundi Global Sport and eSport UCITS ETF Acc"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "PAACE",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy MSCI ACWI SRI PAB UCITS ETF",
-          "after": "BNP Paribas Easy MSCI ACWI Min TE UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "PAACU",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy MSCI ACWI SRI PAB UCITS ETF",
-          "after": "BNP Paribas Easy MSCI ACWI Min TE UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "REUSE",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP PARIBAS EASY ECPI CIRCULAR ECONOMY LEADERS",
-          "after": "BNP Paribas Easy ECPI Circular Economy Leaders UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "USCBC",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy USD Corp Bond SRI Fossil Free",
-          "after": "BNP Paribas Easy USD Corp Bond SRI Fossil Free UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "euronext_etfs",
-      "exchange": "Euronext",
-      "ticker": "WEMTH",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "BNP Paribas Easy MSCI World ESG Filtered Min TE UCITS ETF",
-          "after": "BNP Paribas Easy MSCI World Min TE UCITS ETF"
-        }
-      }
-    },
-    {
-      "source_key": "gse_listed_companies",
-      "exchange": "GSE",
-      "ticker": "ACCESS",
-      "change_types": [
+        "name_change",
         "isin_change"
       ],
       "changes": {
+        "name": {
+          "before": "GROWN UP GROUP",
+          "after": "GROWN UP GP-NEW"
+        },
         "isin": {
-          "before": "",
-          "after": "GHEABG043772"
+          "before": "KYG4147A1067",
+          "after": "KYG4147A1141"
         }
       }
     },
     {
-      "source_key": "hose_listed_stocks",
-      "exchange": "HOSE",
-      "ticker": "FIR",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02952",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Công ty Cổ phần Địa ốc First Real",
-          "after": "First Real Joint Stock Company"
+          "before": "GROWN UP GROUP",
+          "after": "GROWN UP GP-OLD"
         }
       }
     },
     {
-      "source_key": "hose_listed_stocks",
-      "exchange": "HOSE",
-      "ticker": "GEE",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "03412",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "Gelex Electricity Joint Stock Company",
-          "after": "Gelex Industries Joint Stock Company"
+          "before": "A DOO PAYMENTS",
+          "after": "A VGROWTH DP"
         }
       }
     },
     {
-      "source_key": "hose_listed_stocks",
-      "exchange": "HOSE",
-      "ticker": "TN1",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "03413",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "ROX Key Holdings Joint Stock Company",
-          "after": "Rox Key Holdings Joint Stock Company"
+          "before": "A DOO AI",
+          "after": "A VGROWTH AI"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "03426",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "A DOO WEB3",
+          "after": "A VGROWTH WEB3"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "06108",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "NEW RAY MEDIC",
+          "after": "NEW RAY MED-10K"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "08059",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "GLORY FLAME-NEW",
+          "after": "GLORY FLAME"
+        }
+      }
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "08239",
+      "change_types": [
+        "name_change"
+      ],
+      "changes": {
+        "name": {
+          "before": "CAPITAL FIN-NEW",
+          "after": "CAPITAL FIN"
         }
       }
     }

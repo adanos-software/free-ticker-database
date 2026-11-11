@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-11T14:59:19Z",
+    "generated_at": "2026-11-11T17:07:10Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -220,62 +220,6 @@
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": "PBB"
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Germany",
-          "country_code": "DE",
-          "exchange": "FSX",
-          "listing_key": "FSX::ICP",
-          "name": "Panamax AG",
-          "ticker": "ICP"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Germany",
-          "country_code": "DE",
-          "exchange": "XDUS",
-          "listing_key": "XDUS::ICP",
-          "name": "Panamax AG",
-          "ticker": "ICP"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Germany",
-          "country_code": "DE",
-          "exchange": "XETRA",
-          "listing_key": "XETRA::ICP",
-          "name": "United Eco Solutions AG",
-          "ticker": "ICP"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Germany",
-          "country_code": "DE",
-          "exchange": "XSTU",
-          "listing_key": "XSTU::ICP",
-          "name": "Panamax AG",
-          "ticker": "ICP"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
-      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-      "isin": "DE000A1R1C81",
-      "isin_valid": "true",
-      "listing_count": "4",
-      "listing_keys": "FSX::ICP|XDUS::ICP|XETRA::ICP|XSTU::ICP",
-      "member_exchanges": "FSX | XDUS | XETRA | XSTU",
-      "member_names": "Panamax AG | United Eco Solutions AG",
-      "member_tickers": "ICP",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Germany",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": "ICP"
     },
     {
       "_members": [
@@ -5892,18 +5836,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 127,
+      "review_required_groups": 126,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 119,
-    "collision_groups": 127,
+    "closed_groups": 118,
+    "collision_groups": 126,
     "decision_candidate_totals": {
       "isin_shared_by_distinct_issuers": 93,
-      "ticker_collision_isin_misassignment_suspected": 34
+      "ticker_collision_isin_misassignment_suspected": 33
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-11T14:59:19Z",
-    "listings_involved": 371,
+    "generated_at": "2026-11-11T17:07:10Z",
+    "listings_involved": 367,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5916,14 +5860,14 @@
         "registered_country": "United States"
       },
       {
-        "collision_groups": 9,
-        "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-        "registered_country": "Germany"
-      },
-      {
         "collision_groups": 8,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Singapore"
+      },
+      {
+        "collision_groups": 8,
+        "decision_candidate": "ticker_collision_isin_misassignment_suspected",
+        "registered_country": "Germany"
       },
       {
         "collision_groups": 6,
@@ -6084,7 +6028,7 @@
       "Denmark": 1,
       "Finland": 2,
       "France": 4,
-      "Germany": 13,
+      "Germany": 12,
       "Greece": 1,
       "Hong Kong": 1,
       "India": 7,
@@ -6102,6 +6046,6 @@
       "United Kingdom": 2,
       "United States": 39
     },
-    "ticker_collision_groups": 34
+    "ticker_collision_groups": 33
   }
 }

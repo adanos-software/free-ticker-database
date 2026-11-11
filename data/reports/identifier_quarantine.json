@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-11T14:58:38Z",
+  "generated_at": "2026-11-11T17:02:51Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2124,
-  "decision_rows": 6956,
+  "conflict_count": 2123,
+  "decision_rows": 6952,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1375,
-    "proposed_clear_conflicting_identifier": 1099,
+    "kept_listing_keyed_identifier": 1374,
+    "proposed_clear_conflicting_identifier": 1096,
     "quarantined_unresolved_identifier": 4482
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1099,
+  "proposed_clear_rows": 1096,
   "quarantined_rows": 4482,
-  "retained_rows": 1375,
+  "retained_rows": 1374,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -16198,58 +16198,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "DE000A1K0235"
-    },
-    {
-      "conflict_id": "386cef3877f3afc090c1",
-      "isin": "DE000A1R1C81",
-      "listing_key": "FSX::ICP",
-      "ticker": "ICP",
-      "exchange": "FSX",
-      "name": "Panamax AG",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "DE000A1R1C81"
-    },
-    {
-      "conflict_id": "386cef3877f3afc090c1",
-      "isin": "DE000A1R1C81",
-      "listing_key": "XDUS::ICP",
-      "ticker": "ICP",
-      "exchange": "XDUS",
-      "name": "Panamax AG",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "DE000A1R1C81"
-    },
-    {
-      "conflict_id": "386cef3877f3afc090c1",
-      "isin": "DE000A1R1C81",
-      "listing_key": "XETRA::ICP",
-      "ticker": "ICP",
-      "exchange": "XETRA",
-      "name": "United Eco Solutions AG",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "DE000A1R1C81"
-    },
-    {
-      "conflict_id": "386cef3877f3afc090c1",
-      "isin": "DE000A1R1C81",
-      "listing_key": "XSTU::ICP",
-      "ticker": "ICP",
-      "exchange": "XSTU",
-      "name": "Panamax AG",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "DE000A1R1C81"
     },
     {
       "conflict_id": "767e07ea3a070bc012ff",
