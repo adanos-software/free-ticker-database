@@ -1,11 +1,11 @@
 {
   "version": "4.0.0",
-  "generated_at": "2026-11-10T17:19:20Z",
-  "git_commit": "9f869bed91072ded625e5d6264634b0f09aea8e7",
-  "source_dataset_sha256": "060750373b96b6faa285a647f7316e3b99eddaefe19b044e92425a70bfc75866",
+  "generated_at": "2026-11-11T08:22:04Z",
+  "git_commit": "f5e924d0c6c1cd73b8a6e4270ef3b00ebcf0d8d4",
+  "source_dataset_sha256": "ad2ed9737e735d5637bff152df9868fc65d4d2e50f040293d4b2224455f35337",
   "schema_contract_sha256": "fb37be89eeb2468747b935424ddefbc0b0dec5229de25459bac27b8d380daf34",
   "schema_sql_sha256": "4502f51da85227c10d0a29b651ef804a37fa4c1ab0f46d45a73168aacd5495f4",
-  "aggregate_sha256": "dbb44d4d08e610e5be09611a9664f9b8f71431ef7deac9dc7aebea40613fb3e7",
+  "aggregate_sha256": "788c20dbe8dfcf23dbf760c8e53b8fff789f78444189d9141748341899593580",
   "files": [
     {
       "path": "sources.csv",
@@ -14,8 +14,8 @@
     },
     {
       "path": "source_observations.csv",
-      "sha256": "437fab933c6c0bd559f8f6d53cb487cdbcab78ec3928518d3460d8f0dd69f9bb",
-      "rows": 186220
+      "sha256": "24df635626047d74695b7c11e76f5aeb56967d7e53dc54c1b2354a19c1efccd2",
+      "rows": 186248
     },
     {
       "path": "venues.csv",
@@ -24,60 +24,60 @@
     },
     {
       "path": "issuers.csv",
-      "sha256": "4632536a9abd3680c1d5d1782916c53dc8a1ae5ff44cd69c3bd44a489614c85b",
-      "rows": 75340
+      "sha256": "be115698d2cee6087ccd2577ee1b200cf35b2192fa306ebcc3a2e17fcaaa4622",
+      "rows": 75329
     },
     {
       "path": "instruments.csv",
-      "sha256": "9c774e95bc9d8313d07c327116f47a3a1007a7fe0846abd99759b689998fd5b8",
-      "rows": 75340
+      "sha256": "ee89b12e5fa5ec6da6033ebbea70920095a36ae372f5810dba988d2301eb4784",
+      "rows": 75329
     },
     {
       "path": "listings.csv",
-      "sha256": "30046bc76a073daf32f1f8ef1bdcce763e0a3b2afaae3752b6afde3091431c8c",
+      "sha256": "631f324c14e75bbcc75a4e50b965a996c59ef9e7fc6b0c58743e392f5bb43b53",
       "rows": 97726
     },
     {
       "path": "identifier_assertions.csv",
-      "sha256": "bde8c6f513c108dc1087f2e3aaf287a3368a30c0060120b0b1b0ae5d62581acb",
-      "rows": 168898
+      "sha256": "2faef0071ea21cd01d91a81b3a0f33272edbcf400cc9652cc84d9b5caabda3dd",
+      "rows": 168787
     },
     {
       "path": "field_assertions.csv",
-      "sha256": "3ad1ba69d2ce25e536cf364a12670efaf6300d4d6296079f77723ba73a5b74fc",
-      "rows": 221711
+      "sha256": "81d6525237ef7a56c7fb40d8425937573d6d61df975faee0696c07f52440aa3c",
+      "rows": 221722
     },
     {
       "path": "provenance_gaps.csv",
-      "sha256": "e2763457c156de47c0137981e3707f9a8745fc07b92cb063a8c23953e03d932c",
-      "rows": 294612
+      "sha256": "b3bab09a4b3f5bba7c216a5b68f2e09dc1a33a4aed745f9d0f95552538a46ac9",
+      "rows": 294557
     },
     {
       "path": "listing_events.csv",
-      "sha256": "b7bc1598d4ecb54304159da21766db93fcac07af3dbefaa082508741356bc723",
-      "rows": 91243
+      "sha256": "cae66c635fdc5034201e1b44efa3f3629cac76f80666397daf474b223c77b864",
+      "rows": 91323
     },
     {
       "path": "coverage_contracts.csv",
-      "sha256": "c51d0ab703bf901901e06dfd91da905d45ba1986de913ea23839478f56997edc",
+      "sha256": "26c0e68060f2cf7ca30802de382d36376337c8b3185faa2dbe23977ca09ba770",
       "rows": 136
     }
   ],
   "counts": {
     "sources": 147,
-    "source_observations": 186220,
+    "source_observations": 186248,
     "venues": 87,
-    "issuers": 75340,
-    "instruments": 75340,
+    "issuers": 75329,
+    "instruments": 75329,
     "listings": 97726,
-    "identifier_assertions": 168898,
-    "field_assertions": 221711,
-    "provenance_gaps": 294612,
-    "listing_events": 91243,
+    "identifier_assertions": 168787,
+    "field_assertions": 221722,
+    "provenance_gaps": 294557,
+    "listing_events": 91323,
     "coverage_contracts": 136
   },
   "identity_quarantine": {
-    "conflict_groups": 2090,
-    "listing_rows": 6940
+    "conflict_groups": 2087,
+    "listing_rows": 6877
   }
 }

@@ -6,177 +6,327 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97717,
+    "before_rows": 97719,
     "after_rows": 97719,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 5,
-    "evidenced_removed_rows": 5,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 4,
+    "critical_field_changes": 50,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 7
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::ACHV",
-    "NASDAQ::ADIL",
-    "NASDAQ::CCXI",
-    "NASDAQ::EZRA",
-    "NASDAQ::MGPI"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "FSX::M1I",
-      "field_name": "name",
-      "old_value": "MGP Ingredients Inc",
-      "new_value": "Sempreon, Inc."
-    },
-    {
-      "listing_key": "NASDAQ::CASK",
+      "listing_key": "B3::BIAU39",
       "field_name": "isin",
-      "old_value": "",
-      "new_value": "US55303J1060"
+      "old_value": "IE00B53QG562",
+      "new_value": ""
     },
     {
-      "listing_key": "NASDAQ::CASK",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Consumer Staples"
+      "listing_key": "B3::BSLV39",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
     },
     {
-      "listing_key": "XSTU::M1I",
-      "field_name": "name",
-      "old_value": "MGP Ingredients Inc",
-      "new_value": "Sempreon, Inc."
+      "listing_key": "OTC::CSTNL",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IAACF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IHHFF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IHPCF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IHREF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IHSRF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IHSZF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IHVPF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IIREF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IISGF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IMATF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IMBXF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IMSCF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IMSEF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IQSHF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IREMF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IRESF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IRRRF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISAPF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISCBF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISCXF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISFLF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISGPF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISHBF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISHFF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISHOF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISHPF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISHUF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISJMF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISJPF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISMCF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISMJF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISRCF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISRHF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISRIF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISRNF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISRUF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISRWF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISRZF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISSHF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISUDF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISUPF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISVFF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISVIF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISVVF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ITBFF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IVBUF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::IZIZF",
+      "field_name": "isin",
+      "old_value": "IE00B53QG562",
+      "new_value": ""
     }
   ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NASDAQ::ACHV",
-      "ticker": "ACHV",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "ACHV",
-      "new_value": "QUIT",
-      "before_row_sha256": "a57456afc37cae5a133c2a96d1e338fe5609cce359f4a6e81f6191dd193eb6ec",
-      "effective_at": "",
-      "observed_at": "2026-11-10T17:19:20Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "18249a01afeecd55ad1ee834",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::ADIL",
-      "ticker": "ADIL",
-      "exchange": "NASDAQ",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "Adial Pharmaceuticals Inc",
-      "new_value": "",
-      "before_row_sha256": "0b47c8e74304b8a70f15d726fc4573efd09c9d5ab55623e1ef488238cb8d12ae",
-      "effective_at": "",
-      "observed_at": "2026-11-10T17:19:20Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1513525/000121390026117201/ea0311208-8k_azora.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "bebbccfa0a1dcf056560cfbf",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::CCXI",
-      "ticker": "CCXI",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "CCXI",
-      "new_value": "AGLT",
-      "before_row_sha256": "408939904268b08048eaca207ff2973ac95bd3967109f2ab7c2776c71b16e71e",
-      "effective_at": "",
-      "observed_at": "2026-11-10T17:19:20Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2074973/000121390026116898/ea0311204-8k_churchill11.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "0345ed9bf3ad5fc2f00a99a9",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::EZRA",
-      "ticker": "EZRA",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "EZRA",
-      "new_value": "XGPU",
-      "before_row_sha256": "8c9275df3c71a4ad663fe7f9b723d1fc8095ed9c0659633d9405cd4c0b839995",
-      "effective_at": "",
-      "observed_at": "2026-11-10T17:19:20Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "de5bcd7458c2cafc46c699db",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::MGPI",
-      "ticker": "MGPI",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "MGPI",
-      "new_value": "CASK",
-      "before_row_sha256": "d5daf63e56c9295c8e46f6612ea876cd012aa04128b0fdcce960785c2d66a41c",
-      "effective_at": "",
-      "observed_at": "2026-11-10T17:19:20Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/835011/000083501126000115/mgpi-20261014.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "fdd5328024f7ce7a31263f23",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::CASK",
-      "ticker": "CASK",
-      "exchange": "NASDAQ",
-      "event_type": "identifier_changed",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "US55303J1060",
-      "before_row_sha256": "a7bd888939b4222853cfd2fece14a599f9632ab7bb0c423f0407e8d713b85b44",
-      "effective_at": "",
-      "observed_at": "2026-11-10T17:19:20Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/835011/000083501126000115/mgpi-20261014.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "bdb9c5ae3ea99c6e568d6495",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "NASDAQ::CASK",
-      "ticker": "CASK",
-      "exchange": "NASDAQ",
-      "event_type": "taxonomy_changed",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Consumer Staples",
-      "before_row_sha256": "a7bd888939b4222853cfd2fece14a599f9632ab7bb0c423f0407e8d713b85b44",
-      "effective_at": "",
-      "observed_at": "2026-11-10T17:19:20Z",
-      "source_key": "sec_8k_name_symbol_change",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/835011/000083501126000115/mgpi-20261014.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "89ab1071c4e247ddf2fa7392",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -225,7 +375,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1386,
+      "before_rows": 1388,
       "after_rows": 1388,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -576,10 +726,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4808,
+      "before_rows": 4806,
       "after_rows": 4806,
-      "shrink_pct": 0.041597,
-      "removed_rows": 5,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -630,7 +780,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2021,
+      "before_rows": 2022,
       "after_rows": 2022,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -639,7 +789,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2723,
+      "before_rows": 2724,
       "after_rows": 2724,
       "shrink_pct": 0.0,
       "removed_rows": 0,

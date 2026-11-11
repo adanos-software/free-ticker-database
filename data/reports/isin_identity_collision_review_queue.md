@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-10T17:19:50Z`
+Generated: `2026-11-11T08:22:38Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,11 +8,11 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 128 |
-| Listings involved | 374 |
-| Ticker-collision groups | 35 |
+| Collision groups | 127 |
+| Listings involved | 371 |
+| Ticker-collision groups | 34 |
 | Open groups | 8 |
-| Closed same-issuer reviewed | 120 |
+| Closed same-issuer reviewed | 119 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
@@ -20,7 +20,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | Decision candidate | Groups |
 | --- | ---: |
 | isin_shared_by_distinct_issuers | 93 |
-| ticker_collision_isin_misassignment_suspected | 35 |
+| ticker_collision_isin_misassignment_suspected | 34 |
 
 ## Next Review Batches
 
