@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-11T08:22:43Z",
-    "rows": 8160,
+    "generated_at": "2026-11-11T09:55:45Z",
+    "rows": 8159,
     "field_totals": {
       "missing_etf_category": 116,
       "missing_isin_primary": 612,
-      "missing_sector_stock": 628,
+      "missing_sector_stock": 627,
       "official_reference_gap": 6804
     },
     "class_totals": {
@@ -16,7 +16,7 @@
       "debt_or_securitized_identifier_gap": 91,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 17,
-      "exchange_industry_source_gap": 49,
+      "exchange_industry_source_gap": 48,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 290,
       "fundlike_stock_sector_gap": 33,
@@ -48,7 +48,7 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
-      "missing_sector_stock:exchange_industry_source_gap": 49,
+      "missing_sector_stock:exchange_industry_source_gap": 48,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 442,
       "missing_sector_stock:otc_sector_source_gap": 91,
@@ -22480,23 +22480,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "XDUS::RLV",
-      "ticker": "RLV",
-      "exchange": "XDUS",
-      "asset_type": "Stock",
-      "name": "RheinLand Holding AG",
-      "gap_class": "exchange_industry_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
-      "source_gap_context": "listing_key=XDUS::RLV;exchange=XDUS;ticker=RLV;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "XETRA::1XJ",
       "ticker": "1XJ",
       "exchange": "XETRA",
@@ -28111,7 +28094,7 @@
       "ticker": "TRESTATES",
       "exchange": "ATHEX",
       "asset_type": "Stock",
-      "name": "TRESTATES",
+      "name": "Trade Estates REIC",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
