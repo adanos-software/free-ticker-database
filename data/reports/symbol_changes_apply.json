@@ -1,27 +1,73 @@
 {
   "summary": {
-    "generated_at": "2026-11-10T14:50:10Z",
+    "generated_at": "2026-11-11T14:57:11Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
-    "accepted_rows": 0,
+    "accepted_rows": 1,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 388,
+    "blocked_rows": 390,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 4,
-      "blocked_new_symbol_not_active_in_official_master": 3,
-      "blocked_old_symbol_not_unique_in_us_scope": 304,
+      "blocked_new_symbol_not_active_in_official_master": 4,
+      "blocked_old_symbol_not_unique_in_us_scope": 305,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
-      "manual_non_us_or_unscoped_source": 50,
+      "manual_non_us_or_unscoped_source": 51,
+      "manual_official_successor_name_mismatch": 1,
       "manual_successor_isin_mismatch": 7,
-      "manual_ticker_reuse_name_mismatch": 4,
+      "manual_ticker_reuse_name_mismatch": 2,
       "manual_transition_or_shell_name": 7
-    }
+    },
+    "review_override_files_rekeyed": []
   },
-  "accepted": [],
+  "accepted": [
+    {
+      "change_id": "e6c886f7206136a4",
+      "effective_date": "2026-11-04",
+      "old_symbol": "GNTA",
+      "new_symbol": "SAEN",
+      "new_company_name": "Genenta Science SpA",
+      "status": "apply",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::GNTA",
+      "new_listing_key": "NASDAQ::SAEN",
+      "isin": "US36870W1009",
+      "identity_type": "same_isin",
+      "identity_value": "US36870W1009",
+      "transition_event_type": "symbol_changed",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "new_official_name": "Genenta Science S.p.A. - American Depositary Shares",
+      "evidence": "live_official_directory_old_inactive_new_active_same_issuer",
+      "feed_source_key": "stockanalysis_symbol_changes",
+      "feed_source_url": "https://stockanalysis.com/actions/changes/"
+    }
+  ],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "770acf3dba286651",
+      "effective_date": "2026-11-09",
+      "old_symbol": "TCBI",
+      "new_symbol": "TXCP",
+      "new_company_name": "Texas Capital Bancshares Inc",
+      "status": "blocked_new_symbol_not_active_in_official_master"
+    },
+    {
+      "change_id": "1a8fb89667ecf224",
+      "effective_date": "2026-11-09",
+      "old_symbol": "INM",
+      "new_symbol": "MTRI",
+      "new_company_name": "Mentari Therapeutics Inc",
+      "status": "manual_official_successor_name_mismatch",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::INM",
+      "new_listing_key": "NASDAQ::MTRI",
+      "isin": "CA4576377002",
+      "official_name": "Mentari Therapeutics, Inc. - Common Stock",
+      "evidence": "official_successor_name_is_different_issuer"
+    },
     {
       "change_id": "b2676a1ae16e3f05",
       "effective_date": "2026-11-03",
@@ -36,7 +82,7 @@
       "old_symbol": "MGPI",
       "new_symbol": "CASK",
       "new_company_name": "Sempreon Inc",
-      "status": "manual_ticker_reuse_name_mismatch"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "be05c148de410364",
@@ -44,7 +90,7 @@
       "old_symbol": "ADIL",
       "new_symbol": "AZR",
       "new_company_name": "Azora Therapeutics Inc",
-      "status": "manual_ticker_reuse_name_mismatch"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "601dc5566bf1d3b1",
@@ -156,7 +202,14 @@
       "old_symbol": "PSKY",
       "new_symbol": "SKYD",
       "new_company_name": "Skydance Corp",
-      "status": "manual_cross_venue_ticker_reuse"
+      "status": "manual_cross_venue_ticker_reuse",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::PSKY",
+      "new_listing_key": "NYSE::SKYD",
+      "isin": "US69932A2042",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "new_symbol_already_listed_on_another_us_venue"
     },
     {
       "change_id": "1e0a7da4af42c930",
@@ -180,7 +233,14 @@
       "old_symbol": "VTAK",
       "new_symbol": "VJET",
       "new_company_name": "Flyte Aviation Inc",
-      "status": "manual_cross_venue_ticker_reuse"
+      "status": "manual_cross_venue_ticker_reuse",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::VTAK",
+      "new_listing_key": "NYSE MKT::VJET",
+      "isin": "US74933X6094",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "new_symbol_already_listed_on_another_us_venue"
     },
     {
       "change_id": "356c304b127d5b96",
@@ -276,7 +336,14 @@
       "old_symbol": "HCWC",
       "new_symbol": "HOST",
       "new_company_name": "Host Digital Inc",
-      "status": "manual_cross_venue_ticker_reuse"
+      "status": "manual_cross_venue_ticker_reuse",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::HCWC",
+      "new_listing_key": "NYSE MKT::HOST",
+      "isin": "US42227T1051",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "new_symbol_already_listed_on_another_us_venue"
     },
     {
       "change_id": "37ae0256fe9b9bab",
@@ -292,7 +359,7 @@
       "old_symbol": "PHGE",
       "new_symbol": "HLSQ",
       "new_company_name": "Tessera Defense & Homeland Security Inc",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "aae72e7b293ba54e",
@@ -708,7 +775,14 @@
       "old_symbol": "CEPT",
       "new_symbol": "SECZ",
       "new_company_name": "Securitize Corp",
-      "status": "manual_cross_venue_ticker_reuse"
+      "status": "manual_cross_venue_ticker_reuse",
+      "exchange": "NASDAQ",
+      "old_listing_key": "NASDAQ::CEPT",
+      "new_listing_key": "NYSE::SECZ",
+      "isin": "KYG1827K1076",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "new_symbol_already_listed_on_another_us_venue"
     },
     {
       "change_id": "74b5c71353c87547",
@@ -836,7 +910,14 @@
       "old_symbol": "LEGT",
       "new_symbol": "ENRD",
       "new_company_name": "Einride Ab",
-      "status": "manual_cross_venue_ticker_reuse"
+      "status": "manual_cross_venue_ticker_reuse",
+      "exchange": "NYSE",
+      "old_listing_key": "NYSE::LEGT",
+      "new_listing_key": "NASDAQ::ENRD",
+      "isin": "KYG5451A1031",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "new_symbol_already_listed_on_another_us_venue"
     },
     {
       "change_id": "a7ce50da95ca0854",
@@ -2780,7 +2861,14 @@
       "old_symbol": "SNPX",
       "new_symbol": "TAOX",
       "new_company_name": "Tao Synergies Inc",
-      "status": "manual_cross_venue_ticker_reuse"
+      "status": "manual_cross_venue_ticker_reuse",
+      "exchange": "BATS",
+      "old_listing_key": "BATS::SNPX",
+      "new_listing_key": "NASDAQ::TAOX",
+      "isin": "US46092D3439",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "new_symbol_already_listed_on_another_us_venue"
     },
     {
       "change_id": "982df8bf01778926",
@@ -2916,7 +3004,14 @@
       "old_symbol": "TOPW",
       "new_symbol": "SORA",
       "new_company_name": "Asiastrategy",
-      "status": "manual_cross_venue_ticker_reuse"
+      "status": "manual_cross_venue_ticker_reuse",
+      "exchange": "BATS",
+      "old_listing_key": "BATS::TOPW",
+      "new_listing_key": "NASDAQ::SORA",
+      "isin": "",
+      "source_key": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "evidence": "new_symbol_already_listed_on_another_us_venue"
     },
     {
       "change_id": "cda3d5e1291f7297",
