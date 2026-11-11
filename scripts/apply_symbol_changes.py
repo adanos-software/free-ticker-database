@@ -46,8 +46,11 @@ LISTING_INDEX_CSV = DATA_DIR / "listing_index.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 MASTERFILE_SUPPLEMENTAL_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
-LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
-DROP_ENTRIES_CSV = DATA_DIR / "review_overrides" / "drop_entries.csv"
+REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
+LISTING_TRANSITIONS_CSV = REVIEW_OVERRIDES_DIR / "listing_transitions.csv"
+DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
+# Predecessor drops and transition history name the old symbol on purpose.
+REVIEW_FILES_EXCLUDED_FROM_REKEY = {"drop_entries.csv", "listing_transitions.csv"}
 SYMBOL_CHANGES_CSV = DATA_DIR / "corporate_actions" / "symbol_changes.csv"
 REPORT_JSON = DATA_DIR / "reports" / "symbol_changes_apply.json"
 REPORT_MD = DATA_DIR / "reports" / "symbol_changes_apply.md"
@@ -275,6 +278,29 @@ def classify_rename_candidate(
     if block:
         return block, {}
 
+    # A valid predecessor ISIN is not evidence that the successor security is unchanged.
+    # Continuing CIKs survive redomestication and change-of-control events that issue a
+    # new CUSIP/ISIN. Carry the old ISIN only when the exchange directory still names
+    # the same issuer. A different official name stays manual.
+    directory_row = official_directory_row(reference_rows, exchange, new_symbol)
+    official_name = (directory_row or {}).get("name", "").strip()
+    asset_type = old_listing.get("asset_type", "")
+    if (
+        old_isin
+        and official_name
+        and not names_refer_to_same_identity(old_listing.get("name", ""), official_name, asset_type)
+    ):
+        return "manual_official_successor_name_mismatch", {
+            "exchange": exchange,
+            "old_symbol": old_symbol,
+            "new_symbol": new_symbol,
+            "old_listing_key": old_key,
+            "new_listing_key": new_key,
+            "isin": old_isin.strip().upper(),
+            "official_name": official_name,
+            "evidence": "official_successor_name_is_different_issuer",
+        }
+
     return "apply", build_verified_rename_evidence(
         exchange=exchange,
         old_symbol=old_symbol,
@@ -416,6 +442,93 @@ def persist_dropped_predecessors(
         write_csv(drop_entries_csv, DROP_FIELDS, existing_drops)
 
 
+def _row_identity(row: dict[str, str]) -> tuple[str, ...]:
+    return tuple(row.get(field, "") for field in row)
+
+
+def rekey_review_rows(
+    rows: list[dict[str, str]],
+    *,
+    by_exchange_symbol: dict[tuple[str, str], dict[str, str]],
+    by_old_key: dict[str, str],
+) -> tuple[list[dict[str, str]], bool]:
+    """Move ticker-keyed and listing-keyed review rows onto an accepted successor."""
+
+    unchanged_identities: set[tuple[str, ...]] = set()
+    staged: list[tuple[bool, dict[str, str]]] = []
+    changed = False
+    for row in rows:
+        next_row = dict(row)
+        row_changed = False
+        exchange = next_row.get("exchange", "")
+        ticker = normalize_symbol(next_row.get("ticker", ""))
+        rename = by_exchange_symbol.get((exchange, ticker))
+        if rename is not None:
+            next_row["ticker"] = rename["new_symbol"]
+            row_changed = True
+        listing_key_value = next_row.get("listing_key", "")
+        if listing_key_value in by_old_key:
+            next_row["listing_key"] = by_old_key[listing_key_value]
+            row_changed = True
+        listing_keys = next_row.get("listing_keys", "")
+        if listing_keys:
+            parts = listing_keys.split("|")
+            mapped = [by_old_key.get(part.strip(), part) for part in parts]
+            if mapped != parts:
+                next_row["listing_keys"] = "|".join(mapped)
+                row_changed = True
+        if row_changed:
+            changed = True
+            staged.append((True, next_row))
+        else:
+            unchanged_identities.add(_row_identity(next_row))
+            staged.append((False, next_row))
+    if not changed:
+        return rows, False
+
+    emitted = set(unchanged_identities)
+    updated: list[dict[str, str]] = []
+    for was_rekeyed, row in staged:
+        identity = _row_identity(row)
+        if was_rekeyed and identity in emitted:
+            continue
+        updated.append(row)
+        emitted.add(identity)
+    return updated, True
+
+
+def migrate_ticker_keyed_review_overrides(
+    accepted: list[dict[str, str]],
+    review_dir: Path,
+) -> list[str]:
+    """Rekey review allowlists onto the new ticker after a verified same-issuer rename."""
+
+    if not accepted or not review_dir.is_dir():
+        return []
+    by_exchange_symbol = {
+        (row["exchange"], normalize_symbol(row["old_symbol"])): row
+        for row in accepted
+    }
+    by_old_key = {row["old_listing_key"]: row["new_listing_key"] for row in accepted}
+    written: list[str] = []
+    for path in sorted(review_dir.glob("*.csv")):
+        if path.name in REVIEW_FILES_EXCLUDED_FROM_REKEY:
+            continue
+        rows = load_csv(path)
+        if not rows:
+            continue
+        updated, changed = rekey_review_rows(
+            rows,
+            by_exchange_symbol=by_exchange_symbol,
+            by_old_key=by_old_key,
+        )
+        if not changed:
+            continue
+        write_csv(path, list(rows[0].keys()), updated)
+        written.append(path.name)
+    return written
+
+
 def add_alias(value: str, alias: str) -> str:
     alias = alias.strip()
     if not alias:
@@ -437,6 +550,7 @@ def apply_symbol_changes(
     reference_csv: Path = MASTERFILE_REFERENCE_CSV,
     listing_transitions_csv: Path = LISTING_TRANSITIONS_CSV,
     drop_entries_csv: Path = DROP_ENTRIES_CSV,
+    review_overrides_dir: Path = REVIEW_OVERRIDES_DIR,
     report_json: Path = REPORT_JSON,
     report_md: Path = REPORT_MD,
     dry_run: bool = False,
@@ -492,12 +606,17 @@ def apply_symbol_changes(
             else:
                 dropped_predecessors.append({**row, **evidence})
         else:
-            blocked.append(row)
+            blocked.append({**row, **evidence} if evidence else row)
 
+    rekeyed_reviews: list[str] = []
     if accepted and not dry_run:
         persist_applied_symbol_renames(
             accepted,
             listing_transitions_csv=listing_transitions_csv,
+        )
+        rekeyed_reviews = migrate_ticker_keyed_review_overrides(
+            accepted,
+            review_overrides_dir,
         )
     if accepted and not dry_run:
         for path in [listings_csv, listing_index_csv, identifiers_extended_csv, supplemental_csv]:
@@ -521,6 +640,7 @@ def apply_symbol_changes(
         "dropped_predecessor_rows": len(dropped_predecessors),
         "blocked_rows": len(blocked),
         "blocked_by_status": dict(sorted(Counter(row["status"] for row in blocked).items())),
+        "review_override_files_rekeyed": rekeyed_reviews,
     }
     report = {
         "summary": summary,

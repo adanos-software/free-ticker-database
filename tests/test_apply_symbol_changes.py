@@ -157,6 +157,7 @@ def test_apply_symbol_changes_rekeys_required_csvs(tmp_path: Path) -> None:
         live_reference_rows=live_reference,
         sec_exchange_payload={},
         fetch_live_us_directory=False,
+        review_overrides_dir=tmp_path / "review_overrides",
     )
 
     assert report["summary"]["accepted_rows"] == 1
@@ -378,6 +379,7 @@ def test_apply_symbol_changes_uses_same_cik_when_isin_missing(tmp_path: Path) ->
         live_reference_rows=read_rows(reference_csv),
         sec_exchange_payload=sec_payload,
         fetch_live_us_directory=False,
+        review_overrides_dir=tmp_path / "review_overrides",
         **paths,
     )
 
@@ -478,3 +480,233 @@ def test_apply_symbol_changes_blocks_same_exchange_name_mismatch_reuse(tmp_path:
     assert report["summary"]["blocked_by_status"] == {"manual_ticker_reuse_name_mismatch": 1}
     assert read_rows(listings)[0]["ticker"] == "HCWC"
     assert read_rows(paths["drop_entries_csv"]) == []
+
+
+def test_apply_symbol_changes_blocks_isin_carry_when_official_name_changes(tmp_path: Path) -> None:
+    """INM -> MTRI kept CIK 0001728328 but Nasdaq renamed the security to Mentari and replaced the CUSIP.
+
+    A valid predecessor ISIN must not be copied onto that successor, and the INM foreign-ISIN
+    review must stay on INM.
+    """
+
+    changes = tmp_path / "symbol_changes.csv"
+    listings = tmp_path / "listings.csv"
+    reference_csv = tmp_path / "reference.csv"
+    review_dir = tmp_path / "review_overrides"
+    paths = _empty_symbol_change_paths(tmp_path)
+    reviewed = review_dir / "foreign_isin_reviewed.csv"
+    metadata = review_dir / "metadata_updates.csv"
+
+    rename = change(old="INM", new="MTRI")
+    rename["new_company_name"] = "Mentari Therapeutics Inc"
+    rename["effective_date"] = "2026-11-09"
+    write_rows(changes, CHANGE_FIELDS, [rename])
+    write_rows(
+        listings,
+        LISTING_FIELDS,
+        [{
+            **listing("INM", isin="CA4576377002"),
+            "name": "InMed Pharmaceuticals Inc",
+            "country": "Canada",
+            "country_code": "CA",
+        }],
+    )
+    write_rows(paths["listing_index_csv"], INDEX_FIELDS, [])
+    write_rows(paths["identifiers_extended_csv"], IDENTIFIER_FIELDS, [])
+    write_rows(paths["supplemental_csv"], SUPPLEMENT_FIELDS, [])
+    write_rows(
+        reference_csv,
+        REFERENCE_FIELDS,
+        [{
+            **reference(ticker="MTRI", isin=""),
+            "name": "Mentari Therapeutics, Inc. - Common Stock",
+        }],
+    )
+    write_rows(
+        reviewed,
+        ["ticker", "exchange", "isin", "note"],
+        [{
+            "ticker": "INM",
+            "exchange": "NASDAQ",
+            "isin": "CA4576375022",
+            "note": "reviewed legit foreign-incorporated / cross-listing",
+        }],
+    )
+    write_rows(
+        metadata,
+        ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"],
+        [{
+            "ticker": "INM",
+            "exchange": "NASDAQ",
+            "field": "isin",
+            "decision": "update",
+            "proposed_value": "CA4576377002",
+            "confidence": "high",
+            "reason": "reviewed Canadian ISIN",
+        }],
+    )
+    sec_payload = {
+        "fields": ["cik", "name", "ticker", "exchange"],
+        "data": [
+            [1728328, "InMed Pharmaceuticals Inc.", "INM", "Nasdaq"],
+            [1728328, "InMed Pharmaceuticals Inc.", "MTRI", "Nasdaq"],
+        ],
+    }
+
+    report = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        reference_csv=reference_csv,
+        review_overrides_dir=review_dir,
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload=sec_payload,
+        fetch_live_us_directory=False,
+        **paths,
+    )
+
+    assert report["accepted"] == []
+    assert report["summary"]["blocked_by_status"] == {"manual_official_successor_name_mismatch": 1}
+    assert report["summary"]["review_override_files_rekeyed"] == []
+    blocked = report["blocked"][0]
+    assert blocked["official_name"] == "Mentari Therapeutics, Inc. - Common Stock"
+    assert blocked["isin"] == "CA4576377002"
+    assert read_rows(listings)[0]["ticker"] == "INM"
+    assert read_rows(listings)[0]["isin"] == "CA4576377002"
+    assert read_rows(reviewed)[0]["ticker"] == "INM"
+    assert read_rows(metadata)[0]["ticker"] == "INM"
+
+
+def test_apply_symbol_changes_rekeys_ticker_keyed_review_overrides(tmp_path: Path) -> None:
+    """A same-issuer rename must move ticker-keyed reviews onto the new symbol."""
+
+    changes = tmp_path / "symbol_changes.csv"
+    listings = tmp_path / "listings.csv"
+    reference_csv = tmp_path / "reference.csv"
+    review_dir = tmp_path / "review_overrides"
+    paths = _empty_symbol_change_paths(tmp_path)
+    reviewed = review_dir / "foreign_isin_reviewed.csv"
+    metadata = review_dir / "metadata_updates.csv"
+    drops = review_dir / "drop_entries.csv"
+    adjudications = review_dir / "identifier_adjudications.csv"
+    same_issuer = review_dir / "isin_identity_same_issuer.csv"
+
+    write_rows(changes, CHANGE_FIELDS, [change()])
+    write_rows(listings, LISTING_FIELDS, [listing(isin="CA0084741085")])
+    write_rows(paths["listing_index_csv"], INDEX_FIELDS, [])
+    write_rows(paths["identifiers_extended_csv"], IDENTIFIER_FIELDS, [])
+    write_rows(paths["supplemental_csv"], SUPPLEMENT_FIELDS, [])
+    write_rows(
+        reference_csv,
+        REFERENCE_FIELDS,
+        [{**reference(isin=""), "name": "Renamed Inc - Common Stock"}],
+    )
+    write_rows(
+        reviewed,
+        ["ticker", "exchange", "isin", "note"],
+        [
+            {"ticker": "OLD", "exchange": "NASDAQ", "isin": "CA0084741085", "note": "reviewed Canadian issuer"},
+            {"ticker": "KEEP", "exchange": "NASDAQ", "isin": "CA0000000000", "note": "unrelated"},
+        ],
+    )
+    write_rows(
+        metadata,
+        ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"],
+        [
+            {
+                "ticker": "OLD",
+                "exchange": "NASDAQ",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "CA0084741085",
+                "confidence": "high",
+                "reason": "reviewed ISIN",
+            },
+            {
+                "ticker": "OLD",
+                "exchange": "NASDAQ",
+                "field": "stock_sector",
+                "decision": "update",
+                "proposed_value": "Health Care",
+                "confidence": "high",
+                "reason": "reviewed sector",
+            },
+            {
+                "ticker": "OLD",
+                "exchange": "TSX",
+                "field": "name",
+                "decision": "update",
+                "proposed_value": "Other listing",
+                "confidence": "high",
+                "reason": "different venue",
+            },
+        ],
+    )
+    write_rows(
+        drops,
+        ["ticker", "exchange", "confidence", "reason"],
+        [{"ticker": "OLD", "exchange": "NASDAQ", "confidence": "0.99", "reason": "do not move a drop onto the successor"}],
+    )
+    write_rows(
+        adjudications,
+        ["isin", "listing_key", "decision", "reason"],
+        [{"isin": "CA0084741085", "listing_key": "NASDAQ::OLD", "decision": "keep", "reason": "reviewed"}],
+    )
+    write_rows(
+        same_issuer,
+        ["isin", "listing_keys", "reason"],
+        [{"isin": "CA0084741085", "listing_keys": "NASDAQ::OLD|TSX::OLD", "reason": "same issuer"}],
+    )
+    write_rows(
+        paths["listing_transitions_csv"],
+        ["old_listing_key", "new_listing_key", "event_type", "identity_type", "identity_value", "confidence", "source_key", "source_url", "reason"],
+        [],
+    )
+
+    dry_run = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        reference_csv=reference_csv,
+        review_overrides_dir=review_dir,
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload={},
+        fetch_live_us_directory=False,
+        dry_run=True,
+        **paths,
+    )
+    assert dry_run["summary"]["accepted_rows"] == 1
+    assert dry_run["summary"]["review_override_files_rekeyed"] == []
+    assert read_rows(reviewed)[0]["ticker"] == "OLD"
+
+    report = apply_symbol_changes(
+        changes_csv=changes,
+        listings_csv=listings,
+        reference_csv=reference_csv,
+        review_overrides_dir=review_dir,
+        live_reference_rows=read_rows(reference_csv),
+        sec_exchange_payload={},
+        fetch_live_us_directory=False,
+        **paths,
+    )
+
+    assert report["summary"]["accepted_rows"] == 1
+    assert read_rows(listings)[0]["ticker"] == "NEW"
+    assert read_rows(listings)[0]["isin"] == "CA0084741085"
+    assert report["summary"]["review_override_files_rekeyed"] == [
+        "foreign_isin_reviewed.csv",
+        "identifier_adjudications.csv",
+        "isin_identity_same_issuer.csv",
+        "metadata_updates.csv",
+    ]
+    reviewed_rows = read_rows(reviewed)
+    assert reviewed_rows[0]["ticker"] == "NEW"
+    assert reviewed_rows[0]["isin"] == "CA0084741085"
+    assert reviewed_rows[1]["ticker"] == "KEEP"
+    metadata_rows = read_rows(metadata)
+    assert [(row["ticker"], row["exchange"], row["field"]) for row in metadata_rows] == [
+        ("NEW", "NASDAQ", "isin"),
+        ("NEW", "NASDAQ", "stock_sector"),
+        ("OLD", "TSX", "name"),
+    ]
+    assert read_rows(drops)[0]["ticker"] == "OLD"
+    assert read_rows(adjudications)[0]["listing_key"] == "NASDAQ::NEW"
+    assert read_rows(same_issuer)[0]["listing_keys"] == "NASDAQ::NEW|TSX::OLD"

@@ -114,8 +114,12 @@ jobs:
             - data/reports/symbol_changes_apply.json / .md
 
             High-confidence renames are applied only when the official masterfile
-            proves old inactive, new active, same exchange, unchanged ISIN, and
-            no ticker/listing-key collision. Ambiguous rows remain manual.
+            proves old inactive, new active, same exchange, same issuer, unchanged
+            ISIN, and no ticker/listing-key collision. A successor whose official
+            directory name is a different issuer stays manual, so a CUSIP or ISIN
+            change is not applied as a same-ISIN rename. Accepted renames rekey
+            ticker-keyed review overrides onto the new symbol. Ambiguous rows
+            remain manual.
 
       - name: Dispatch CI for automation pull request
         if: steps.cpr.outputs.pull-request-number != ''
