@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-11T08:22:04Z",
+  "generated_at": "2026-11-11T14:58:38Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1971,
+  "reconciled_rows": 1970,
   "applied_rows": 0,
-  "proposed_rows": 1971,
+  "proposed_rows": 1970,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -15469,21 +15469,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
       "observation_id": "b003ba5be68029f90b04e56d",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "HOSE::DHM",
-      "action": "proposed",
-      "ticker": "DHM",
-      "exchange": "HOSE",
-      "asset_type": "Stock",
-      "isin": "VN000000DHM8",
-      "old_name": "Duong Hieu Trading and Mining JSC",
-      "new_name": "DHM Investment and Trading Joint Stock Company",
-      "source_key": "hose_listed_stocks",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
-      "observation_id": "79d5f1edef20086762b48fcd",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

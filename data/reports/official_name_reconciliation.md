@@ -1,11 +1,11 @@
 # Official name reconciliation
 
-Generated: `2026-11-11T08:22:04Z`
+Generated: `2026-11-11T14:58:38Z`
 
 Names are changed only when active official evidence matches the exact listing key, asset type and current valid ISIN, and all official names form one coherent identity.
 
-- Official name decisions: **1,971**
+- Official name decisions: **1,970**
 - Applied: **0**
-- Proposed only: **1,971**
+- Proposed only: **1,970**
 
 The complete evidence ledger is `data/reports/official_name_reconciliation.csv`.
