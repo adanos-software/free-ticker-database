@@ -81,7 +81,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install Playwright Chromium
-        run: python -m playwright install --with-deps chromium
+        run: bash scripts/install_playwright_chromium.sh
 
       - name: Snapshot current masterfile reference
         run: cp data/masterfiles/reference.csv /tmp/reference-before-masterfile-rotation.csv

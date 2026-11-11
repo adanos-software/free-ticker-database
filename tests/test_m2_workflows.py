@@ -79,6 +79,12 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     )[0]
     assert "steps.release.outputs.review_required != 'true'" in dispatch_block
     assert "AUTOMATION_PR_TOKEN" not in workflow
+    install_step = workflow.split("- name: Install Playwright Chromium", 1)[1].split(
+        "- name: Snapshot current masterfile reference", 1
+    )[0]
+    assert "bash scripts/install_playwright_chromium.sh" in install_step
+    assert "playwright install --with-deps" not in install_step
+    assert "continue-on-error" not in install_step
 
 
 def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> None:
