@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-10T18:31:23Z",
-    "rows": 8162,
+    "generated_at": "2026-11-11T06:33:15Z",
+    "rows": 8158,
     "field_totals": {
       "missing_etf_category": 116,
-      "missing_isin_primary": 612,
-      "missing_sector_stock": 630,
+      "missing_isin_primary": 610,
+      "missing_sector_stock": 628,
       "official_reference_gap": 6804
     },
     "class_totals": {
@@ -22,10 +22,10 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 147,
+      "official_identifier_not_exposed_source_gap": 145,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 444,
+      "official_industry_taxonomy_unavailable_gap": 442,
       "official_product_taxonomy_unavailable_gap": 89,
       "official_reference_symbol_collision_gap": 1184,
       "official_reference_unmatched_source_gap": 5620,
@@ -44,13 +44,13 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 288,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 147,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 145,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 49,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 444,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 442,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1184,
@@ -110,7 +110,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 85
+          "rows": 84
         },
         {
           "exchange": "NASDAQ",
@@ -138,7 +138,7 @@
         },
         {
           "exchange": "SSE_CL",
-          "rows": 20
+          "rows": 19
         }
       ],
       "missing_sector_stock": [
@@ -168,7 +168,7 @@
         },
         {
           "exchange": "HNX",
-          "rows": 23
+          "rows": 22
         },
         {
           "exchange": "BIST",
@@ -10036,23 +10036,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "SSE_CL::NTGCLGAS",
-      "ticker": "NTGCLGAS",
-      "exchange": "SSE_CL",
-      "asset_type": "Stock",
-      "name": "Naturgy Chile Gas Natural S.A.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=SSE_CL::NTGCLGAS;exchange=SSE_CL;ticker=NTGCLGAS;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "SSE_CL::PLANVITAL",
       "ticker": "PLANVITAL",
       "exchange": "SSE_CL",
@@ -11203,23 +11186,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=TSX::DAY;exchange=TSX;ticker=DAY;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::DNTL",
-      "ticker": "DNTL",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "dentalcorp Holdings Ltd.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=TSX::DNTL;exchange=TSX;ticker=DNTL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -18944,23 +18910,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "HNX::TJC",
-      "ticker": "TJC",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "CTCP Dịch vụ Vận tải và Thương mại",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::TJC;exchange=HNX;ticker=TJC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "HNX::VE3",
       "ticker": "VE3",
       "exchange": "HNX",
@@ -22287,23 +22236,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=SGX::WYO;exchange=SGX;ticker=WYO;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "TADAWUL::2250",
-      "ticker": "2250",
-      "exchange": "TADAWUL",
-      "asset_type": "Stock",
-      "name": "SIIG",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=TADAWUL::2250;exchange=TADAWUL;ticker=2250;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -44822,7 +44754,7 @@
       "ticker": "CFM",
       "exchange": "Borsa Italiana",
       "asset_type": "Stock",
-      "name": "CrowdFundMe S.p.A.",
+      "name": "Entera S.p.A.",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-10T18:31:16Z",
+    "generated_at": "2026-11-11T06:33:09Z",
     "rows": 97719,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86565,
-      "source_gap": 11110,
+      "pass": 86570,
+      "source_gap": 11105,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11459
+      "source_gap": 11454
     },
     "issue_counts": {
       "official_reference_gap": 6804,
       "venue_missing_official_source": 3287,
-      "missing_stock_sector": 629,
-      "expected_missing_primary_isin": 612,
+      "missing_stock_sector": 626,
+      "expected_missing_primary_isin": 610,
       "missing_etf_category": 127,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
@@ -107,8 +107,8 @@
       },
       {
         "exchange": "TSX",
-        "pass": 2256,
-        "source_gap": 187
+        "pass": 2257,
+        "source_gap": 186
       },
       {
         "exchange": "ASX",
@@ -8021,24 +8021,6 @@
           "field": "exchange",
           "value": "TSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TADAWUL::2250",
-      "ticker": "2250",
-      "exchange": "TADAWUL",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -18457,6 +18439,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "Munich",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XSTU::7A2",
+      "ticker": "7A2",
+      "exchange": "XSTU",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
