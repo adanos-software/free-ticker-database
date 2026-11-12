@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-11T17:08:38Z`
+Generated at: `2026-11-12T08:17:42Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -70,7 +70,7 @@ Generated at: `2026-11-11T17:08:38Z`
 | QSE | official_full | qse_market_watch |  | 57 | 96.49 | qse_market_watch | refresh_required | not_applicable |
 | RSE | official_partial | rse_listed_companies |  | 0 |  | rse_listed_companies | denominator_missing | blocked_nonfresh_source |
 | SEM | official_full | sem_isin |  | 47 | 100.0 | sem_isin | refresh_unavailable | not_applicable |
-| SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 943 | 81.65 | set_dr_search|set_etf_search|set_listed_companies | refresh_required | not_applicable |
+| SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 943 | 81.65 | set_dr_search|set_etf_search|set_listed_companies|set_stock_search | refresh_required | not_applicable |
 | SGX | official_full | sgx_securities_prices |  | 766 | 83.03 | sgx_securities_prices | refresh_required | not_applicable |
 | SIX | official_partial | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full |  | 0 |  | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full | refresh_unavailable | blocked_source_unavailable |
 | SSE | official_partial | sse_a_share_list|sse_etf_list |  | 0 |  | sse_a_share_list|sse_etf_list | denominator_missing | blocked_nonfresh_source |

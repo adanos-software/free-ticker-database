@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-11T17:02:51Z",
+  "generated_at": "2026-11-12T08:08:13Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1967,
+  "reconciled_rows": 1960,
   "applied_rows": 0,
-  "proposed_rows": 1967,
+  "proposed_rows": 1960,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -8734,21 +8734,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
       "observation_id": "8b57381202cd5f39f87e18f3",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "FSX::IUSU",
-      "action": "proposed",
-      "ticker": "IUSU",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "isin": "IE00B14X4S71",
-      "old_name": "iShares Public Limited Company - iShares $ Treasury Bond 1-3yr UCITS ETF",
-      "new_name": "IS DL T.BD1-3YR U.ETF DLD",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "observation_id": "ed060bea09b3c0a693f70c7d",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -19867,36 +19852,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::CLMA",
-      "action": "proposed",
-      "ticker": "CLMA",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "IE00BNC1F287",
-      "old_name": "iClima Global Decarbonisation Enablers UCITS ETF Acc",
-      "new_name": "HANETF ICAV GUINNESS SUST ENERGY UCITS ETF ACC USD",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "649de3a4d60fd4b166eb903f",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "LSE::CLMP",
-      "action": "proposed",
-      "ticker": "CLMP",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "IE00BNC1F287",
-      "old_name": "iClima Global Decarbonisation Enablers UCITS ETF Acc GBP",
-      "new_name": "HANETF ICAV GUINNESS SUST ENERGY UCITS ETF ACC GBX",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "192da24c9f47c9e64b405e55",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::CMBG",
       "action": "proposed",
       "ticker": "CMBG",
@@ -23452,21 +23407,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::WELP",
-      "action": "proposed",
-      "ticker": "WELP",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "IE00BJQTJ848",
-      "old_name": "HAN-GINS Indxx Healthcare Megatrend Equal Weight UCITS ETF - Accumulating GBP",
-      "new_name": "HANETF ICAV HARBOR HEALTH CARE UCITS ETF ACC GBX",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "d5a4ac8b5aaecb9fb48c7c0d",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::WETP",
       "action": "proposed",
       "ticker": "WETP",
@@ -23794,21 +23734,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
       "observation_id": "d6c8010c5bd830ac8d3218b4",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "LSE::XRMU",
-      "action": "proposed",
-      "ticker": "XRMU",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "IE00BJZ2DC62",
-      "old_name": "Xtrackers MSCI USA ESG Screened UCITS ETF 1C",
-      "new_name": "XTRACKERS (IE) PLC X RUSSELL MIDCAP",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "7546beb818a935df75f754ca",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -27817,21 +27742,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "XETRA::ECLM",
-      "action": "proposed",
-      "ticker": "ECLM",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "isin": "IE00BNC1F287",
-      "old_name": "iClima Global Decarbonisation Enablers UCITS ETF Acc",
-      "new_name": "Guinness Sustainable Energy UCITS ETF - Accumulating",
-      "source_key": "deutsche_boerse_etfs_etps",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "observation_id": "61f936a4aa78fb0a2ae8980f",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "XETRA::ECMD",
       "action": "proposed",
       "ticker": "ECMD",
@@ -29119,21 +29029,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
       "observation_id": "2c2e26cea61c4153588c8bab",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "XETRA::W311",
-      "action": "proposed",
-      "ticker": "W311",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "isin": "IE00BJQTJ848",
-      "old_name": "HAN-GINS Indxx Healthcare Megatrend Equal Weight UCITS ETF - Accumulating",
-      "new_name": "Harbor Health Care UCITS ETF - Accumulating",
-      "source_key": "deutsche_boerse_etfs_etps",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "observation_id": "e370acc24d0399e2fcd9e750",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
