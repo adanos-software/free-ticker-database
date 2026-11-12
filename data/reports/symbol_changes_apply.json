@@ -1,19 +1,19 @@
 {
   "summary": {
-    "generated_at": "2026-11-11T14:57:11Z",
+    "generated_at": "2026-11-12T15:08:05Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
-    "accepted_rows": 1,
+    "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 390,
+    "blocked_rows": 394,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 4,
       "blocked_new_symbol_not_active_in_official_master": 4,
-      "blocked_old_symbol_not_unique_in_us_scope": 305,
+      "blocked_old_symbol_not_unique_in_us_scope": 308,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
-      "manual_non_us_or_unscoped_source": 51,
+      "manual_non_us_or_unscoped_source": 52,
       "manual_official_successor_name_mismatch": 1,
       "manual_successor_isin_mismatch": 7,
       "manual_ticker_reuse_name_mismatch": 2,
@@ -21,31 +21,25 @@
     },
     "review_override_files_rekeyed": []
   },
-  "accepted": [
-    {
-      "change_id": "e6c886f7206136a4",
-      "effective_date": "2026-11-04",
-      "old_symbol": "GNTA",
-      "new_symbol": "SAEN",
-      "new_company_name": "Genenta Science SpA",
-      "status": "apply",
-      "exchange": "NASDAQ",
-      "old_listing_key": "NASDAQ::GNTA",
-      "new_listing_key": "NASDAQ::SAEN",
-      "isin": "US36870W1009",
-      "identity_type": "same_isin",
-      "identity_value": "US36870W1009",
-      "transition_event_type": "symbol_changed",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "new_official_name": "Genenta Science S.p.A. - American Depositary Shares",
-      "evidence": "live_official_directory_old_inactive_new_active_same_issuer",
-      "feed_source_key": "stockanalysis_symbol_changes",
-      "feed_source_url": "https://stockanalysis.com/actions/changes/"
-    }
-  ],
+  "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "d9304bb333842e98",
+      "effective_date": "2026-11-10",
+      "old_symbol": "EZRA",
+      "new_symbol": "XGPU",
+      "new_company_name": "Reliance Global Group Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "a78dc0fa9f1651ea",
+      "effective_date": "2026-11-10",
+      "old_symbol": "ACHV",
+      "new_symbol": "QUIT",
+      "new_company_name": "Achieve Life Sciences Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
     {
       "change_id": "770acf3dba286651",
       "effective_date": "2026-11-09",
@@ -67,6 +61,14 @@
       "isin": "CA4576377002",
       "official_name": "Mentari Therapeutics, Inc. - Common Stock",
       "evidence": "official_successor_name_is_different_issuer"
+    },
+    {
+      "change_id": "e6c886f7206136a4",
+      "effective_date": "2026-11-04",
+      "old_symbol": "GNTA",
+      "new_symbol": "SAEN",
+      "new_company_name": "Genenta Science SpA",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "b2676a1ae16e3f05",
@@ -862,7 +864,7 @@
       "old_symbol": "SKBL",
       "new_symbol": "KAZR",
       "new_company_name": "Skyline Builders Group Holding Ltd.",
-      "status": "blocked_old_symbol_not_unique_in_us_scope"
+      "status": "manual_non_us_or_unscoped_source"
     },
     {
       "change_id": "3273d2c0366bca0c",
@@ -1629,6 +1631,14 @@
       "old_symbol": "BBCQU",
       "new_symbol": "PSQL",
       "new_company_name": "Pasqal Holding SA",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "cc4d87681353a8b1",
+      "effective_date": "2026-01-26",
+      "old_symbol": "RELI",
+      "new_symbol": "XGPU",
+      "new_company_name": "Reliance Global Group Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
