@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-12T15:12:18Z",
+    "generated_at": "2026-11-12T17:14:56Z",
     "rows": 97745,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,9 +15,9 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86550,
-      "source_gap": 11151,
-      "warn": 34
+      "pass": 86555,
+      "source_gap": 11147,
+      "warn": 33
     },
     "evidence_level_counts": {
       "identifier_enriched": 4607,
@@ -28,16 +28,16 @@
     "severity_counts": {
       "high": 11,
       "low": 10,
-      "medium": 24,
-      "source_gap": 11498
+      "medium": 23,
+      "source_gap": 11494
     },
     "issue_counts": {
       "official_reference_gap": 6828,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 624,
-      "missing_stock_sector": 623,
+      "expected_missing_primary_isin": 622,
+      "missing_stock_sector": 621,
       "missing_etf_category": 136,
-      "official_name_mismatch": 24,
+      "official_name_mismatch": 23,
       "official_isin_mismatch": 10,
       "low_company_name_overlap": 10,
       "country_isin_mismatch": 1
@@ -45,9 +45,9 @@
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 8484,
+        "pass": 8485,
         "source_gap": 3251,
-        "warn": 15,
+        "warn": 14,
         "notice": 2
       },
       {
@@ -73,8 +73,8 @@
       },
       {
         "exchange": "BMV",
-        "pass": 86,
-        "source_gap": 258
+        "pass": 87,
+        "source_gap": 257
       },
       {
         "exchange": "XETRA",
@@ -17138,24 +17138,6 @@
       ]
     },
     {
-      "listing_key": "SSE::688603",
-      "ticker": "688603",
-      "exchange": "SSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
       "listing_key": "SSE::688610",
       "ticker": "688610",
       "exchange": "SSE",
@@ -18450,6 +18432,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "XETRA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "TSE::7317",
+      "ticker": "7317",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "TSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]

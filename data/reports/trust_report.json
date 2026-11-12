@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-12T15:11:03Z",
+    "generated_at": "2026-11-12T17:14:59Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -33,8 +33,8 @@
   "completeness": {
     "isin": {
       "n": 63596,
-      "filled": 62972,
-      "missing": 624,
+      "filled": 62974,
+      "missing": 622,
       "pct": 99.02,
       "fills_needed_for_99": 0,
       "pass": true
@@ -49,10 +49,10 @@
     },
     "taxonomy": {
       "n": 63596,
-      "filled": 62837,
-      "missing": 759,
+      "filled": 62839,
+      "missing": 757,
       "pct": 98.81,
-      "fills_needed_for_99": 124,
+      "fills_needed_for_99": 122,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -62,7 +62,7 @@
       "NASDAQ": 68,
       "TSXV": 60,
       "BATS": 46,
-      "SSE": 34,
+      "SSE": 33,
       "NEO": 25,
       "NYSE": 24,
       "SSE_CL": 19,
@@ -80,8 +80,8 @@
       "BIST": 18,
       "BSE_IN": 18,
       "HNX": 17,
-      "PSE": 17,
-      "SGX": 17
+      "SGX": 17,
+      "PSE": 16
     },
     "missing_category_by_exchange": {
       "XETRA": 52,
@@ -103,8 +103,8 @@
     "quarantine_kept": 559
   },
   "entry_quality_status": {
-    "pass": 59696,
-    "source_gap": 3876,
+    "pass": 59700,
+    "source_gap": 3872,
     "warn": 16,
     "notice": 8
   },
@@ -135,8 +135,8 @@
       "status": "pass",
       "details": {
         "n": 63596,
-        "filled": 62972,
-        "missing": 624,
+        "filled": 62974,
+        "missing": 622,
         "pct": 99.02,
         "fills_needed_for_99": 0,
         "pass": true
@@ -147,10 +147,10 @@
       "status": "fail",
       "details": {
         "n": 63596,
-        "filled": 62837,
-        "missing": 759,
+        "filled": 62839,
+        "missing": 757,
         "pct": 98.81,
-        "fills_needed_for_99": 124,
+        "fills_needed_for_99": 122,
         "pass": false
       }
     },
