@@ -6,101 +6,46 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97733,
-    "after_rows": 97745,
+    "before_rows": 97745,
+    "after_rows": 97753,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 3,
-    "evidenced_removed_rows": 3,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 2,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 3,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_official_change_evidence_rows": 0,
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [
-    "NYSE MKT::ATCH",
-    "NYSE MKT::HLSQ",
-    "NYSE MKT::KNRX"
+    "NASDAQ::KAZR"
   ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "Euronext::ALALO",
-      "field_name": "isin",
-      "old_value": "FR0014011O84",
-      "new_value": "FR001401B5X2"
-    },
-    {
-      "listing_key": "OTC::TSPH",
-      "field_name": "name",
-      "old_value": "Tusimple Holdings Inc",
-      "new_value": "CreateAI Holdings Inc"
+      "listing_key": "NASDAQ::KAZR",
+      "ticker": "KAZR",
+      "exchange": "NASDAQ",
+      "event_type": "symbol_changed",
+      "field_name": "ticker",
+      "old_value": "KAZR",
+      "new_value": "CRMN",
+      "before_row_sha256": "d2c481a891c0bb52cee6e68206d8646096e225e91b02d1cd9e977233413fdf82",
+      "effective_at": "",
+      "observed_at": "2026-11-12T18:05:00Z",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "02ae8b16f7309976bc625d34",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_official_change_evidence": [
-    {
-      "listing_key": "NYSE MKT::ATCH",
-      "ticker": "ATCH",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "7126c94d47eaf1a48ff78621464779793843eac7dc2ca01a6521e7274f967094",
-      "effective_at": "",
-      "observed_at": "2026-11-12T17:06:56Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "b86deb08ce9f53c8056e2fcb",
-      "evidence_status": "official"
-    },
-    {
-      "listing_key": "NYSE MKT::HLSQ",
-      "ticker": "HLSQ",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "baade838e0e762a2e9fa5736a4fe0d961396872f25b23a1a853f5c120438b929",
-      "effective_at": "",
-      "observed_at": "2026-11-12T17:06:56Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "53cda426111fb965c6e81262",
-      "evidence_status": "official"
-    },
-    {
-      "listing_key": "NYSE MKT::KNRX",
-      "ticker": "KNRX",
-      "exchange": "NYSE MKT",
-      "event_type": "venue_reconciled",
-      "field_name": "exchange",
-      "old_value": "NYSE MKT",
-      "new_value": "NYSE",
-      "before_row_sha256": "ba9b91c5c6a86ed7eadf81ea20cfca6954a9fa87374c5fe75d3b22c58ec51682",
-      "effective_at": "",
-      "observed_at": "2026-11-12T17:06:56Z",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "source_report": "data/masterfiles/reference.csv",
-      "previous_source_key": "nasdaq_other_listed",
-      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "observation_id": "9e13151cf26e3417a1b921d3",
-      "evidence_status": "official"
-    }
-  ],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -149,8 +94,8 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1388,
-      "after_rows": 1389,
+      "before_rows": 1389,
+      "after_rows": 1391,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -503,7 +448,7 @@
       "before_rows": 4806,
       "after_rows": 4806,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -554,7 +499,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2022,
+      "before_rows": 2025,
       "after_rows": 2025,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -563,8 +508,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2724,
-      "after_rows": 2725,
+      "before_rows": 2725,
+      "after_rows": 2731,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -572,10 +517,10 @@
     },
     {
       "exchange": "NYSE MKT",
-      "before_rows": 231,
+      "before_rows": 228,
       "after_rows": 228,
-      "shrink_pct": 1.298701,
-      "removed_rows": 3,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -833,7 +778,7 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5553,
+      "before_rows": 5563,
       "after_rows": 5563,
       "shrink_pct": 0.0,
       "removed_rows": 0,
