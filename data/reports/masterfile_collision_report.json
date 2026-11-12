@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100300,
-    "matched": 70253,
-    "collisions": 11721,
-    "missing": 18326
+    "official_symbols": 100318,
+    "matched": 70241,
+    "collisions": 11736,
+    "missing": 18341
   },
   "exchanges": [
     {
@@ -1315,9 +1315,9 @@
     },
     {
       "exchange": "DFM",
-      "official_symbols": 71,
+      "official_symbols": 72,
       "matched": 54,
-      "collisions": 16,
+      "collisions": 17,
       "missing": 1,
       "collision_examples": [
         {
@@ -1372,6 +1372,15 @@
           ]
         },
         {
+          "ticker": "DIP",
+          "name": "DIP Holding PLC",
+          "target_exchange": "DFM",
+          "existing_exchanges": [
+            "FSX",
+            "XSTU"
+          ]
+        },
+        {
           "ticker": "DRC",
           "name": "Dubai Refreshment Company PJSC",
           "target_exchange": "DFM",
@@ -1396,14 +1405,6 @@
             "FSX",
             "JSE"
           ]
-        },
-        {
-          "ticker": "EIB",
-          "name": "Emirates Islamic Bank PJSC",
-          "target_exchange": "DFM",
-          "existing_exchanges": [
-            "HOSE"
-          ]
         }
       ],
       "missing_examples": [
@@ -1417,9 +1418,9 @@
     {
       "exchange": "Euronext",
       "official_symbols": 2021,
-      "matched": 1312,
+      "matched": 1310,
       "collisions": 371,
-      "missing": 338,
+      "missing": 340,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1558,10 +1559,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18151,
-      "matched": 7829,
-      "collisions": 4421,
-      "missing": 5901,
+      "official_symbols": 18168,
+      "matched": 7823,
+      "collisions": 4430,
+      "missing": 5915,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -2348,8 +2349,8 @@
       "exchange": "LSE",
       "official_symbols": 11184,
       "matched": 6813,
-      "collisions": 869,
-      "missing": 3502,
+      "collisions": 870,
+      "missing": 3501,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2588,10 +2589,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5624,
-      "matched": 4584,
+      "official_symbols": 5620,
+      "matched": 4581,
       "collisions": 60,
-      "missing": 980,
+      "missing": 979,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3089,10 +3090,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3837,
+      "official_symbols": 3838,
       "matched": 1964,
       "collisions": 564,
-      "missing": 1309,
+      "missing": 1310,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3657,8 +3658,8 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 293,
-      "matched": 286,
+      "official_symbols": 292,
+      "matched": 285,
       "collisions": 6,
       "missing": 1,
       "collision_examples": [
@@ -4355,9 +4356,9 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 766,
+      "official_symbols": 768,
       "matched": 636,
-      "collisions": 130,
+      "collisions": 132,
       "missing": 0,
       "collision_examples": [
         {
@@ -5294,9 +5295,9 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5515,
+      "official_symbols": 5517,
       "matched": 5274,
-      "collisions": 239,
+      "collisions": 241,
       "missing": 2,
       "collision_examples": [
         {
