@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-12T09:35:49Z",
-    "rows": 8174,
+    "generated_at": "2026-11-12T12:41:27Z",
+    "rows": 8172,
     "outcome_totals": {
-      "accepted_source_gap": 5095,
+      "accepted_source_gap": 5094,
       "core_exclusion_candidate": 506,
-      "official_fill_required": 2573
+      "official_fill_required": 2572
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -15,13 +15,13 @@
       "debt_or_securitized_identifier_gap": 91,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 17,
-      "exchange_industry_source_gap": 47,
+      "exchange_industry_source_gap": 46,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 301,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 145,
+      "official_identifier_not_exposed_source_gap": 144,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 445,
@@ -33,12 +33,12 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 116,
-      "missing_isin_primary:accepted_source_gap": 162,
+      "missing_isin_primary:accepted_source_gap": 161,
       "missing_isin_primary:core_exclusion_candidate": 460,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 536,
       "missing_sector_stock:core_exclusion_candidate": 46,
-      "missing_sector_stock:official_fill_required": 47,
+      "missing_sector_stock:official_fill_required": 46,
       "official_reference_gap:accepted_source_gap": 4281,
       "official_reference_gap:official_fill_required": 2525
     },
@@ -2173,23 +2173,6 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "BMV::AGUILASCPO",
-      "ticker": "AGUILASCPO",
-      "exchange": "BMV",
-      "asset_type": "Stock",
-      "name": "OLLAMANI SAB",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
@@ -95325,23 +95308,6 @@
       "exchange": "Munich",
       "asset_type": "Stock",
       "name": "Endor AG",
-      "gap_class": "exchange_industry_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "Munich::EFS",
-      "ticker": "EFS",
-      "exchange": "Munich",
-      "asset_type": "Stock",
-      "name": "EFFECTEN-SPIEGEL",
       "gap_class": "exchange_industry_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
