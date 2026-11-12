@@ -1,19 +1,27 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-11-12T12:41:22Z",
+    "generated_at": "2026-11-12T15:16:07Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
   "allowed_warn_count": 34,
-  "passed": true,
+  "passed": false,
   "quarantine_count": 0,
   "quarantined": [],
   "stale_allowlist": [
     "HKEX::02934"
   ],
   "stale_allowlist_count": 1,
-  "unexpected_warn_count": 0,
-  "unexpected_warns": [],
-  "warn_count": 33
+  "unexpected_warn_count": 1,
+  "unexpected_warning_subjects": [
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "OTC::TSPH"
+    }
+  ],
+  "unexpected_warns": [
+    "OTC::TSPH"
+  ],
+  "warn_count": 34
 }

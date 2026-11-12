@@ -7,199 +7,93 @@
   },
   "summary": {
     "before_rows": 97733,
-    "after_rows": 97733,
+    "after_rows": 97745,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "removed_rows": 3,
+    "evidenced_removed_rows": 3,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 29,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
+    "generated_official_change_evidence_rows": 3,
     "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NYSE MKT::ATCH",
+    "NYSE MKT::HLSQ",
+    "NYSE MKT::KNRX"
+  ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "AMS::ISFE",
-      "field_name": "name",
-      "old_value": "iShares VII PLC - iShares Core FTSE 100 ETF GBP Acc EUR",
-      "new_value": "iShares MSCI AC Far East ex-Japan Small Cap UCITS ETF"
-    },
-    {
-      "listing_key": "Euronext::WELL",
-      "field_name": "etf_category",
-      "old_value": "Real Estate",
-      "new_value": "Equity"
-    },
-    {
-      "listing_key": "LSE::CLMA",
-      "field_name": "name",
-      "old_value": "iClima Global Decarbonisation Enablers UCITS ETF Acc",
-      "new_value": "Guinness Sustainable Energy UCITS ETF Accumulating"
-    },
-    {
-      "listing_key": "LSE::CLMP",
-      "field_name": "name",
-      "old_value": "iClima Global Decarbonisation Enablers UCITS ETF Acc GBP",
-      "new_value": "Guinness Sustainable Energy UCITS ETF Accumulating"
-    },
-    {
-      "listing_key": "LSE::EUGD",
-      "field_name": "name",
-      "old_value": "HANetf ICAV - European Green Deal UCITS ETF",
-      "new_value": "HANetf Making Europe Great Again UCITS ETF Acc"
-    },
-    {
-      "listing_key": "LSE::LDGG",
-      "field_name": "name",
-      "old_value": "LEGAL & GENERAL UCITS ETF",
-      "new_value": "L&G Global Quality Dividends UCITS ETF USD Dist"
-    },
-    {
-      "listing_key": "LSE::TINF",
+      "listing_key": "Euronext::ALALO",
       "field_name": "isin",
-      "old_value": "CA87242G1090",
-      "new_value": ""
-    },
-    {
-      "listing_key": "LSE::TRYP",
-      "field_name": "name",
-      "old_value": "HANetf ICAV - The Travel UCITS ETF",
-      "new_value": "US Global Investors Travel UCITS ETF Accumulating"
-    },
-    {
-      "listing_key": "LSE::WELP",
-      "field_name": "name",
-      "old_value": "HAN-GINS Indxx Healthcare Megatrend Equal Weight UCITS ETF - Accumulating GBP",
-      "new_value": "Harbor Health Care UCITS ETF Accumulating"
-    },
-    {
-      "listing_key": "LSE::WELP",
-      "field_name": "etf_category",
-      "old_value": "Real Estate",
-      "new_value": "Equity"
-    },
-    {
-      "listing_key": "LSE::XRSS",
-      "field_name": "name",
-      "old_value": "Xtrackers (IE) Public Limited Company - Xtrackers Russell Midcap UCITS ETF",
-      "new_value": "Xtrackers MSCI USA Screened UCITS ETF 1C"
-    },
-    {
-      "listing_key": "NASDAQ::FDIV",
-      "field_name": "isin",
-      "old_value": "US33739Q3092",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::CVNY",
-      "field_name": "isin",
-      "old_value": "US88636J8080",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::EFAA",
-      "field_name": "isin",
-      "old_value": "US46090A6973",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::ELCV",
-      "field_name": "isin",
-      "old_value": "US86280R7952",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::FIAT",
-      "field_name": "isin",
-      "old_value": "US88636J8080",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::HOOY",
-      "field_name": "isin",
-      "old_value": "US88636J8080",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::IQSZ",
-      "field_name": "isin",
-      "old_value": "US46090A6973",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::LLYX",
-      "field_name": "isin",
-      "old_value": "US88636J8080",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::PLTY",
-      "field_name": "isin",
-      "old_value": "US88636J8080",
-      "new_value": ""
-    },
-    {
-      "listing_key": "NYSE ARCA::RSMC",
-      "field_name": "isin",
-      "old_value": "US45259A4647",
-      "new_value": ""
-    },
-    {
-      "listing_key": "OTC::ISSZF",
-      "field_name": "isin",
-      "old_value": "IE00B14X4S71",
-      "new_value": ""
-    },
-    {
-      "listing_key": "OTC::SMWFF",
-      "field_name": "isin",
-      "old_value": "IE00BSPLC413",
-      "new_value": ""
-    },
-    {
-      "listing_key": "XETRA::7RIP",
-      "field_name": "name",
-      "old_value": "HANetf ICAV - Airlines Hotels Cruise Lines UCITS ETF",
-      "new_value": "US Global Investors Travel UCITS ETF Accumulating"
-    },
-    {
-      "listing_key": "XETRA::AMEE",
-      "field_name": "name",
-      "old_value": "Amundi ETF MSCI Europe Energy UCITS ETF",
-      "new_value": "Amundi Global Hydrogen UCITS ETF Acc"
-    },
-    {
-      "listing_key": "XETRA::ECLM",
-      "field_name": "name",
-      "old_value": "iClima Global Decarbonisation Enablers UCITS ETF Acc",
-      "new_value": "Guinness Sustainable Energy UCITS ETF Accumulating"
-    },
-    {
-      "listing_key": "XETRA::VDXX",
-      "field_name": "name",
-      "old_value": "Vanguard Funds Public Limited Company - Vanguard Dax UCITS ETF",
-      "new_value": "Vanguard Germany All Cap UCITS ETF (EUR) Distributing"
-    },
-    {
-      "listing_key": "XETRA::W311",
-      "field_name": "name",
-      "old_value": "HAN-GINS Indxx Healthcare Megatrend Equal Weight UCITS ETF - Accumulating",
-      "new_value": "Harbor Health Care UCITS ETF Accumulating"
-    },
-    {
-      "listing_key": "XETRA::W311",
-      "field_name": "etf_category",
-      "old_value": "Real Estate",
-      "new_value": "Equity"
+      "old_value": "FR0014011O84",
+      "new_value": "FR001401B5X2"
     }
   ],
-  "generated_official_change_evidence": [],
+  "generated_official_change_evidence": [
+    {
+      "listing_key": "NYSE MKT::ATCH",
+      "ticker": "ATCH",
+      "exchange": "NYSE MKT",
+      "event_type": "venue_reconciled",
+      "field_name": "exchange",
+      "old_value": "NYSE MKT",
+      "new_value": "NYSE",
+      "before_row_sha256": "7126c94d47eaf1a48ff78621464779793843eac7dc2ca01a6521e7274f967094",
+      "effective_at": "",
+      "observed_at": "2026-11-12T15:06:48Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "b86deb08ce9f53c8056e2fcb",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "NYSE MKT::HLSQ",
+      "ticker": "HLSQ",
+      "exchange": "NYSE MKT",
+      "event_type": "venue_reconciled",
+      "field_name": "exchange",
+      "old_value": "NYSE MKT",
+      "new_value": "NYSE",
+      "before_row_sha256": "baade838e0e762a2e9fa5736a4fe0d961396872f25b23a1a853f5c120438b929",
+      "effective_at": "",
+      "observed_at": "2026-11-12T15:06:48Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "53cda426111fb965c6e81262",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "NYSE MKT::KNRX",
+      "ticker": "KNRX",
+      "exchange": "NYSE MKT",
+      "event_type": "venue_reconciled",
+      "field_name": "exchange",
+      "old_value": "NYSE MKT",
+      "new_value": "NYSE",
+      "before_row_sha256": "ba9b91c5c6a86ed7eadf81ea20cfca6954a9fa87374c5fe75d3b22c58ec51682",
+      "effective_at": "",
+      "observed_at": "2026-11-12T15:06:48Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "9e13151cf26e3417a1b921d3",
+      "evidence_status": "official"
+    }
+  ],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
@@ -250,7 +144,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1388,
-      "after_rows": 1388,
+      "after_rows": 1389,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -655,7 +549,7 @@
     {
       "exchange": "NYSE",
       "before_rows": 2022,
-      "after_rows": 2022,
+      "after_rows": 2025,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -664,7 +558,7 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2724,
-      "after_rows": 2724,
+      "after_rows": 2725,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -673,9 +567,9 @@
     {
       "exchange": "NYSE MKT",
       "before_rows": 231,
-      "after_rows": 231,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 228,
+      "shrink_pct": 1.298701,
+      "removed_rows": 3,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -934,7 +828,7 @@
     {
       "exchange": "XETRA",
       "before_rows": 5553,
-      "after_rows": 5553,
+      "after_rows": 5563,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

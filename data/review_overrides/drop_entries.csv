@@ -766,6 +766,7 @@ K-W,NYSE,0.98,Official US exchange directory does not list this stale non-common
 KALV,NASDAQ,0.95,"US delisting-staleness audit 2026-06-19: acquired (absent from current NASDAQ Trader master, web+adversarial verified)"
 KASHYAP,BSE_IN,0.96,"Delisted from BSE (official BSE status=Delisted, ListofScripData 2026-06-19): Kashyap Tele-Medicines Ltd"
 KAVL,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
+KAZR,NASDAQ,0.99,Detected official Nasdaq directory ticker change NASDAQ::KAZR to NASDAQ::CRMN; exact evidence is recorded in listing_transitions.csv.
 KCHVU,NASDAQ,0.95,OpenFIGI securityType=Unit; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
 KDEV,STO,0.99,Official Nasdaq Nordic Stockholm directory lists ISIN SE0002190926 under the active ticker KDV-B; the remaining KDEV row is a stale pre-rename ticker.
 KEUA,NYSE ARCA,0.98,"Reviewed delisted transition: US ETF delisting: NYSE ARCA Form 25-NSE (filed 2026-03-20, 17 CFR 240.12d2-2(a)(3)) removes 'KraneShares European Carbon Allowance Strategy ETF; KraneShares Global Luxury Index ETF' issued by Krane Shares Trust from listing. FrenzyCap ETF closures lists the fund as closed on 2026-03-16. Row ISIN US5007675615 matches exact_isin identity. Ticker absent from live Nasdaq Trader nasdaqlisted/otherlisted/nasdaqtraded. Evidence: exchange_form25. Secondary: https://www.frenzycap.com/etf-closures"

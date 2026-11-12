@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100293,
-    "matched": 70245,
-    "collisions": 11723,
-    "missing": 18325
+    "official_symbols": 100318,
+    "matched": 70233,
+    "collisions": 11736,
+    "missing": 18349
   },
   "exchanges": [
     {
@@ -292,10 +292,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1673,
+      "official_symbols": 1675,
       "matched": 1322,
       "collisions": 58,
-      "missing": 293,
+      "missing": 295,
       "collision_examples": [
         {
           "ticker": "ALA",
@@ -1315,9 +1315,9 @@
     },
     {
       "exchange": "DFM",
-      "official_symbols": 71,
+      "official_symbols": 72,
       "matched": 54,
-      "collisions": 16,
+      "collisions": 17,
       "missing": 1,
       "collision_examples": [
         {
@@ -1372,6 +1372,15 @@
           ]
         },
         {
+          "ticker": "DIP",
+          "name": "DIP Holding PLC",
+          "target_exchange": "DFM",
+          "existing_exchanges": [
+            "FSX",
+            "XSTU"
+          ]
+        },
+        {
           "ticker": "DRC",
           "name": "Dubai Refreshment Company PJSC",
           "target_exchange": "DFM",
@@ -1396,14 +1405,6 @@
             "FSX",
             "JSE"
           ]
-        },
-        {
-          "ticker": "EIB",
-          "name": "Emirates Islamic Bank PJSC",
-          "target_exchange": "DFM",
-          "existing_exchanges": [
-            "HOSE"
-          ]
         }
       ],
       "missing_examples": [
@@ -1417,9 +1418,9 @@
     {
       "exchange": "Euronext",
       "official_symbols": 2021,
-      "matched": 1312,
+      "matched": 1310,
       "collisions": 371,
-      "missing": 338,
+      "missing": 340,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1558,10 +1559,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18151,
-      "matched": 7829,
-      "collisions": 4421,
-      "missing": 5901,
+      "official_symbols": 18168,
+      "matched": 7823,
+      "collisions": 4430,
+      "missing": 5915,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -2348,8 +2349,8 @@
       "exchange": "LSE",
       "official_symbols": 11184,
       "matched": 6813,
-      "collisions": 869,
-      "missing": 3502,
+      "collisions": 870,
+      "missing": 3501,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2588,8 +2589,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5623,
-      "matched": 4584,
+      "official_symbols": 5620,
+      "matched": 4581,
       "collisions": 60,
       "missing": 979,
       "collision_examples": [
@@ -3090,8 +3091,8 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3838,
-      "matched": 1961,
-      "collisions": 567,
+      "matched": 1964,
+      "collisions": 564,
       "missing": 1310,
       "collision_examples": [
         {
@@ -3238,10 +3239,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2759,
+      "official_symbols": 2765,
       "matched": 2627,
       "collisions": 30,
-      "missing": 102,
+      "missing": 108,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -3386,8 +3387,8 @@
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 309,
-      "matched": 226,
+      "official_symbols": 306,
+      "matched": 223,
       "collisions": 34,
       "missing": 49,
       "collision_examples": [
@@ -3657,8 +3658,8 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 293,
-      "matched": 286,
+      "official_symbols": 292,
+      "matched": 285,
       "collisions": 6,
       "missing": 1,
       "collision_examples": [
@@ -4355,9 +4356,9 @@
     },
     {
       "exchange": "SGX",
-      "official_symbols": 766,
+      "official_symbols": 768,
       "matched": 636,
-      "collisions": 130,
+      "collisions": 132,
       "missing": 0,
       "collision_examples": [
         {
@@ -4988,10 +4989,10 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 22,
+      "official_symbols": 24,
       "matched": 0,
-      "collisions": 13,
-      "missing": 9,
+      "collisions": 14,
+      "missing": 10,
       "collision_examples": [
         {
           "ticker": "CECO",
@@ -4999,6 +5000,15 @@
           "target_exchange": "TXSE",
           "existing_exchanges": [
             "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "CFR",
+          "name": "Cullen/Frost Bankers, Inc. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NYSE",
+            "SIX"
           ]
         },
         {
@@ -5069,19 +5079,14 @@
           "existing_exchanges": [
             "NYSE ARCA"
           ]
-        },
-        {
-          "ticker": "SUN",
-          "name": "Sunoco LP Common Units representing limited partner interests",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "ASX",
-            "LSE",
-            "SIX"
-          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "CFR$B",
+          "name": "Cullen/Frost Bankers, Inc. Depositary Shares, each representing a 1/40th ownership interest in a share of 4.450% non-cumulative perpetual preferred stock, Series B",
+          "exchange": "TXSE"
+        },
         {
           "ticker": "CTAG",
           "name": "Calamos Timpani Active SMID Growth ETF",
@@ -5290,9 +5295,9 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5515,
+      "official_symbols": 5517,
       "matched": 5274,
-      "collisions": 239,
+      "collisions": 241,
       "missing": 2,
       "collision_examples": [
         {

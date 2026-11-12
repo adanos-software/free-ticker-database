@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-12T08:08:13Z",
+  "generated_at": "2026-11-12T15:06:48Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2107,
-  "decision_rows": 6898,
+  "conflict_count": 2108,
+  "decision_rows": 6904,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1360,
-    "proposed_clear_conflicting_identifier": 1092,
-    "quarantined_unresolved_identifier": 4446
+    "kept_listing_keyed_identifier": 1368,
+    "proposed_clear_conflicting_identifier": 1094,
+    "quarantined_unresolved_identifier": 4442
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1092,
-  "quarantined_rows": 4446,
-  "retained_rows": 1360,
+  "proposed_clear_rows": 1094,
+  "quarantined_rows": 4442,
+  "retained_rows": 1368,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -6331,6 +6331,84 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA77544C1041"
+    },
+    {
+      "conflict_id": "ad3191e6293a72f66080",
+      "isin": "CA82509L1076",
+      "listing_key": "FSX::307",
+      "ticker": "307",
+      "exchange": "FSX",
+      "name": "Shopify Inc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "CA82509L1076"
+    },
+    {
+      "conflict_id": "ad3191e6293a72f66080",
+      "isin": "CA82509L1076",
+      "listing_key": "LSE::0VHA",
+      "ticker": "0VHA",
+      "exchange": "LSE",
+      "name": "Shopify Inc. Cl A",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "CA82509L1076"
+    },
+    {
+      "conflict_id": "ad3191e6293a72f66080",
+      "isin": "CA82509L1076",
+      "listing_key": "NASDAQ::SHOP",
+      "ticker": "SHOP",
+      "exchange": "NASDAQ",
+      "name": "Shopify Inc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "CA82509L1076"
+    },
+    {
+      "conflict_id": "ad3191e6293a72f66080",
+      "isin": "CA82509L1076",
+      "listing_key": "TSX::SHOP",
+      "ticker": "SHOP",
+      "exchange": "TSX",
+      "name": "Shopify Inc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "CA82509L1076"
+    },
+    {
+      "conflict_id": "ad3191e6293a72f66080",
+      "isin": "CA82509L1076",
+      "listing_key": "XETRA::307",
+      "ticker": "307",
+      "exchange": "XETRA",
+      "name": "SHOPIFY A SUB.VTG",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "CA82509L1076"
+    },
+    {
+      "conflict_id": "ad3191e6293a72f66080",
+      "isin": "CA82509L1076",
+      "listing_key": "XSTU::307",
+      "ticker": "307",
+      "exchange": "XSTU",
+      "name": "Shopify Inc",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "CA82509L1076"
     },
     {
       "conflict_id": "f10b0f5d1cc6e82bf2b6",
@@ -82585,9 +82663,9 @@
       "exchange": "FSX",
       "name": "Roku Inc",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US77543R1023"
     },
     {
@@ -82598,9 +82676,9 @@
       "exchange": "LSE",
       "name": "Roku, Inc.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US77543R1023"
     },
     {
@@ -82611,9 +82689,9 @@
       "exchange": "NASDAQ",
       "name": "Roku Inc",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US77543R1023"
     },
     {
@@ -82624,9 +82702,9 @@
       "exchange": "XETRA",
       "name": "ROKU INC   CL. A DL-,0001",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US77543R1023"
     },
     {
@@ -82637,9 +82715,9 @@
       "exchange": "XSTU",
       "name": "Roku Inc",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US77543R1023"
     },
     {
@@ -84301,9 +84379,9 @@
       "exchange": "FSX",
       "name": "Southwest Airlines Co",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US8447411088"
     },
     {
@@ -84314,9 +84392,9 @@
       "exchange": "LSE",
       "name": "Southwest Airlines Co.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US8447411088"
     },
     {
@@ -84327,9 +84405,9 @@
       "exchange": "NYSE",
       "name": "Southwest Airlines Company",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US8447411088"
     },
     {
@@ -84340,9 +84418,9 @@
       "exchange": "XETRA",
       "name": "SOUTHW. AIRL. CO.    DL 1",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US8447411088"
     },
     {
@@ -84353,9 +84431,9 @@
       "exchange": "XSTU",
       "name": "SOUTHWEST AIRLINES (SWN.SG)",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "US8447411088"
     },
     {
