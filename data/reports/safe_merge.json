@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97719,
+    "before_rows": 97733,
     "after_rows": 97733,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 1,
+    "critical_field_changes": 29,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,10 +25,178 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "HKEX::01842",
+      "listing_key": "AMS::ISFE",
+      "field_name": "name",
+      "old_value": "iShares VII PLC - iShares Core FTSE 100 ETF GBP Acc EUR",
+      "new_value": "iShares MSCI AC Far East ex-Japan Small Cap UCITS ETF"
+    },
+    {
+      "listing_key": "Euronext::WELL",
+      "field_name": "etf_category",
+      "old_value": "Real Estate",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "LSE::CLMA",
+      "field_name": "name",
+      "old_value": "iClima Global Decarbonisation Enablers UCITS ETF Acc",
+      "new_value": "Guinness Sustainable Energy UCITS ETF Accumulating"
+    },
+    {
+      "listing_key": "LSE::CLMP",
+      "field_name": "name",
+      "old_value": "iClima Global Decarbonisation Enablers UCITS ETF Acc GBP",
+      "new_value": "Guinness Sustainable Energy UCITS ETF Accumulating"
+    },
+    {
+      "listing_key": "LSE::EUGD",
+      "field_name": "name",
+      "old_value": "HANetf ICAV - European Green Deal UCITS ETF",
+      "new_value": "HANetf Making Europe Great Again UCITS ETF Acc"
+    },
+    {
+      "listing_key": "LSE::LDGG",
+      "field_name": "name",
+      "old_value": "LEGAL & GENERAL UCITS ETF",
+      "new_value": "L&G Global Quality Dividends UCITS ETF USD Dist"
+    },
+    {
+      "listing_key": "LSE::TINF",
       "field_name": "isin",
-      "old_value": "KYG4147A1067",
-      "new_value": "KYG4147A1141"
+      "old_value": "CA87242G1090",
+      "new_value": ""
+    },
+    {
+      "listing_key": "LSE::TRYP",
+      "field_name": "name",
+      "old_value": "HANetf ICAV - The Travel UCITS ETF",
+      "new_value": "US Global Investors Travel UCITS ETF Accumulating"
+    },
+    {
+      "listing_key": "LSE::WELP",
+      "field_name": "name",
+      "old_value": "HAN-GINS Indxx Healthcare Megatrend Equal Weight UCITS ETF - Accumulating GBP",
+      "new_value": "Harbor Health Care UCITS ETF Accumulating"
+    },
+    {
+      "listing_key": "LSE::WELP",
+      "field_name": "etf_category",
+      "old_value": "Real Estate",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "LSE::XRSS",
+      "field_name": "name",
+      "old_value": "Xtrackers (IE) Public Limited Company - Xtrackers Russell Midcap UCITS ETF",
+      "new_value": "Xtrackers MSCI USA Screened UCITS ETF 1C"
+    },
+    {
+      "listing_key": "NASDAQ::FDIV",
+      "field_name": "isin",
+      "old_value": "US33739Q3092",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::CVNY",
+      "field_name": "isin",
+      "old_value": "US88636J8080",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::EFAA",
+      "field_name": "isin",
+      "old_value": "US46090A6973",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::ELCV",
+      "field_name": "isin",
+      "old_value": "US86280R7952",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::FIAT",
+      "field_name": "isin",
+      "old_value": "US88636J8080",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::HOOY",
+      "field_name": "isin",
+      "old_value": "US88636J8080",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::IQSZ",
+      "field_name": "isin",
+      "old_value": "US46090A6973",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::LLYX",
+      "field_name": "isin",
+      "old_value": "US88636J8080",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::PLTY",
+      "field_name": "isin",
+      "old_value": "US88636J8080",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::RSMC",
+      "field_name": "isin",
+      "old_value": "US45259A4647",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::ISSZF",
+      "field_name": "isin",
+      "old_value": "IE00B14X4S71",
+      "new_value": ""
+    },
+    {
+      "listing_key": "OTC::SMWFF",
+      "field_name": "isin",
+      "old_value": "IE00BSPLC413",
+      "new_value": ""
+    },
+    {
+      "listing_key": "XETRA::7RIP",
+      "field_name": "name",
+      "old_value": "HANetf ICAV - Airlines Hotels Cruise Lines UCITS ETF",
+      "new_value": "US Global Investors Travel UCITS ETF Accumulating"
+    },
+    {
+      "listing_key": "XETRA::AMEE",
+      "field_name": "name",
+      "old_value": "Amundi ETF MSCI Europe Energy UCITS ETF",
+      "new_value": "Amundi Global Hydrogen UCITS ETF Acc"
+    },
+    {
+      "listing_key": "XETRA::ECLM",
+      "field_name": "name",
+      "old_value": "iClima Global Decarbonisation Enablers UCITS ETF Acc",
+      "new_value": "Guinness Sustainable Energy UCITS ETF Accumulating"
+    },
+    {
+      "listing_key": "XETRA::VDXX",
+      "field_name": "name",
+      "old_value": "Vanguard Funds Public Limited Company - Vanguard Dax UCITS ETF",
+      "new_value": "Vanguard Germany All Cap UCITS ETF (EUR) Distributing"
+    },
+    {
+      "listing_key": "XETRA::W311",
+      "field_name": "name",
+      "old_value": "HAN-GINS Indxx Healthcare Megatrend Equal Weight UCITS ETF - Accumulating",
+      "new_value": "Harbor Health Care UCITS ETF Accumulating"
+    },
+    {
+      "listing_key": "XETRA::W311",
+      "field_name": "etf_category",
+      "old_value": "Real Estate",
+      "new_value": "Equity"
     }
   ],
   "generated_official_change_evidence": [],
@@ -306,7 +474,7 @@
     },
     {
       "exchange": "HKEX",
-      "before_rows": 3245,
+      "before_rows": 3255,
       "after_rows": 3255,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -414,7 +582,7 @@
     },
     {
       "exchange": "MSX",
-      "before_rows": 94,
+      "before_rows": 95,
       "after_rows": 95,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -468,7 +636,7 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3535,
+      "before_rows": 3538,
       "after_rows": 3538,
       "shrink_pct": 0.0,
       "removed_rows": 0,
