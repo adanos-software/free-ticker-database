@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 171071,
-    "source_specific_reference_keys": 171070,
+    "active_official_reference_rows": 171074,
+    "source_specific_reference_keys": 171073,
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12541,
-      "exact_match": 100137,
-      "missing_from_database": 44763,
+      "exact_match": 100140,
+      "missing_from_database": 44762,
       "normalization_candidate": 1876,
-      "out_of_scope": 8164
+      "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100137,
+    "coverage_credited_keys": 100140,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44763,
+    "in_scope_missing_rows": 44762,
     "identity_conflict_rows": 12541,
     "mapping_candidate_rows": 1876
   },
@@ -1523299,6 +1523299,22 @@
       "evidence": "name indicates non-target instrument: warrants"
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::CRMN",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::CRMN",
+      "exchange": "NASDAQ",
+      "ticker": "CRMN",
+      "asset_types": "Stock",
+      "names": "Skyline Builders Group Holding Limited - Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::CRMN",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::CRMT",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::CRMT",
@@ -1547171,22 +1547187,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::KAZR",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::KAZR",
-      "exchange": "NASDAQ",
-      "ticker": "KAZR",
-      "asset_types": "Stock",
-      "names": "Skyline Builders Group Holding Limited - Class A Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::KAZR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::KBON",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::KBON",
@@ -1548144,22 +1548144,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::KPRX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::KPTI",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::KPTI",
-      "exchange": "NASDAQ",
-      "ticker": "KPTI",
-      "asset_types": "Stock",
-      "names": "Karyopharm Therapeutics Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::KPTI",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1560384,22 +1560368,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::NXTT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::NXXT",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::NXXT",
-      "exchange": "NASDAQ",
-      "ticker": "NXXT",
-      "asset_types": "Stock",
-      "names": "NextNRG, Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::NXXT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1622211,6 +1622179,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::BATS::IBLY",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "BATS::IBLY",
+      "exchange": "BATS",
+      "ticker": "IBLY",
+      "asset_types": "ETF",
+      "names": "FT Vest Equity Target Income Plus 0-3 Month Treasury ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::IBLY",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::BATS::IBMO",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::IBMO",
@@ -1625443,6 +1625427,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::BATS::MAGP",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "BATS::MAGP",
+      "exchange": "BATS",
+      "ticker": "MAGP",
+      "asset_types": "ETF",
+      "names": "Roundhill Magnificent Seven Plus ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::MAGP",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::BATS::MAGS",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::MAGS",
@@ -1625968,22 +1625968,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "BATS::MEIB",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::BATS::MEMY",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::MEMY",
-      "exchange": "BATS",
-      "ticker": "MEMY",
-      "asset_types": "ETF",
-      "names": "Tuttle Capital Meme Stock Income Blast ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::MEMY",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1635761,6 +1635745,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::BATS::VEMB",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "BATS::VEMB",
+      "exchange": "BATS",
+      "ticker": "VEMB",
+      "asset_types": "ETF",
+      "names": "Vanguard Emerging Markets Bond Active ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: bond"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::BATS::VFMF",
@@ -1654627,6 +1654627,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::GLLD",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::GLLD",
+      "exchange": "NYSE ARCA",
+      "ticker": "GLLD",
+      "asset_types": "ETF",
+      "names": "MicroSectors Gold 3X Leveraged ETNs due January 29, 2043",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::GLLD",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::GLNK",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::GLNK",
@@ -1658851,6 +1658867,70 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::IQEE",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::IQEE",
+      "exchange": "NYSE ARCA",
+      "ticker": "IQEE",
+      "asset_types": "ETF",
+      "names": "Invesco Emerging Markets Enhanced ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::IQEE",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::IQEI",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::IQEI",
+      "exchange": "NYSE ARCA",
+      "ticker": "IQEI",
+      "asset_types": "ETF",
+      "names": "Invesco International Developed Enhanced ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::IQEI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::IQEL",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::IQEL",
+      "exchange": "NYSE ARCA",
+      "ticker": "IQEL",
+      "asset_types": "ETF",
+      "names": "Invesco U.S. Large Cap Enhanced ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::IQEL",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::IQES",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::IQES",
+      "exchange": "NYSE ARCA",
+      "ticker": "IQES",
+      "asset_types": "ETF",
+      "names": "Invesco U.S. Small Cap Enhanced ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::IQES",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::IQHI",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::IQHI",
@@ -1661440,6 +1661520,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::KBFR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::KBTY",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::KBTY",
+      "exchange": "NYSE ARCA",
+      "ticker": "KBTY",
+      "asset_types": "ETF",
+      "names": "Guinness Atkinson K-Beauty ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::KBTY",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1665488,6 +1665584,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::NJNK",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::NJPN",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::NJPN",
+      "exchange": "NYSE ARCA",
+      "ticker": "NJPN",
+      "asset_types": "ETF",
+      "names": "Nomura Japan Equity ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::NJPN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1672577,22 +1672689,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SHNY",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::SHNY",
-      "exchange": "NYSE ARCA",
-      "ticker": "SHNY",
-      "asset_types": "ETF",
-      "names": "MicroSectors Gold 3X Leveraged ETNs due January 29, 2043",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::SHNY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SHPP",
@@ -1682659,22 +1682755,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::ATCH",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE MKT::ATCH",
-      "exchange": "NYSE MKT",
-      "ticker": "ATCH",
-      "asset_types": "Stock",
-      "names": "AtlasClear Holdings, Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE MKT::ATCH",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE MKT::ATNM",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE MKT::ATNM",
@@ -1684387,22 +1684467,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::HLSQ",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE MKT::HLSQ",
-      "exchange": "NYSE MKT",
-      "ticker": "HLSQ",
-      "asset_types": "Stock",
-      "names": "Tessera Defense and Homeland Security Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE MKT::HLSQ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE MKT::HOST",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE MKT::HOST",
@@ -1684800,22 +1684864,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE MKT::KAPA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::KNRX",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE MKT::KNRX",
-      "exchange": "NYSE MKT",
-      "ticker": "KNRX",
-      "asset_types": "Stock",
-      "names": "KNOREX LTD. Class A Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE MKT::KNRX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1696001,38 +1696049,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::CFR",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::CFR",
-      "exchange": "NYSE",
-      "ticker": "CFR",
-      "asset_types": "Stock",
-      "names": "Cullen/Frost Bankers, Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::CFR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::CFR$B",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::CFR$B",
-      "exchange": "NYSE",
-      "ticker": "CFR$B",
-      "asset_types": "Stock",
-      "names": "Cullen/Frost Bankers, Inc. Depositary Shares, each representing a 1/40th ownership interest in a share of 4.450% non-cumulative perpetual preferred stock, Series B",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: preferred"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::CFTR$A",
@@ -1733505,6 +1733521,38 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::TXSE::CFR",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "TXSE::CFR",
+      "exchange": "TXSE",
+      "ticker": "CFR",
+      "asset_types": "Stock",
+      "names": "Cullen/Frost Bankers, Inc. Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::TXSE::CFR$B",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "TXSE::CFR$B",
+      "exchange": "TXSE",
+      "ticker": "CFR$B",
+      "asset_types": "Stock",
+      "names": "Cullen/Frost Bankers, Inc. Depositary Shares, each representing a 1/40th ownership interest in a share of 4.450% non-cumulative perpetual preferred stock, Series B",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: preferred"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::TXSE::CTAG",
@@ -2079069,10 +2079117,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::KAZR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::KBON",
@@ -2118365,10 +2118413,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::ATCH",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::ATEN",
@@ -2137405,10 +2137453,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::HLSQ",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::HMC",
@@ -2141245,10 +2141293,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::KNRX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::KNSL",

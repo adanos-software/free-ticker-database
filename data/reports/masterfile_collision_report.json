@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100293,
-    "matched": 70245,
-    "collisions": 11723,
-    "missing": 18325
+    "official_symbols": 100300,
+    "matched": 70253,
+    "collisions": 11721,
+    "missing": 18326
   },
   "exchanges": [
     {
@@ -292,8 +292,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1673,
-      "matched": 1322,
+      "official_symbols": 1675,
+      "matched": 1324,
       "collisions": 58,
       "missing": 293,
       "collision_examples": [
@@ -2588,10 +2588,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5623,
+      "official_symbols": 5624,
       "matched": 4584,
       "collisions": 60,
-      "missing": 979,
+      "missing": 980,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3089,10 +3089,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3838,
-      "matched": 1961,
-      "collisions": 567,
-      "missing": 1310,
+      "official_symbols": 3837,
+      "matched": 1964,
+      "collisions": 564,
+      "missing": 1309,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3238,8 +3238,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2759,
-      "matched": 2627,
+      "official_symbols": 2765,
+      "matched": 2633,
       "collisions": 30,
       "missing": 102,
       "collision_examples": [
@@ -3386,8 +3386,8 @@
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 309,
-      "matched": 226,
+      "official_symbols": 306,
+      "matched": 223,
       "collisions": 34,
       "missing": 49,
       "collision_examples": [
@@ -4988,10 +4988,10 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 22,
+      "official_symbols": 24,
       "matched": 0,
-      "collisions": 13,
-      "missing": 9,
+      "collisions": 14,
+      "missing": 10,
       "collision_examples": [
         {
           "ticker": "CECO",
@@ -4999,6 +4999,15 @@
           "target_exchange": "TXSE",
           "existing_exchanges": [
             "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "CFR",
+          "name": "Cullen/Frost Bankers, Inc. Common Stock",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NYSE",
+            "SIX"
           ]
         },
         {
@@ -5069,19 +5078,14 @@
           "existing_exchanges": [
             "NYSE ARCA"
           ]
-        },
-        {
-          "ticker": "SUN",
-          "name": "Sunoco LP Common Units representing limited partner interests",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "ASX",
-            "LSE",
-            "SIX"
-          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "CFR$B",
+          "name": "Cullen/Frost Bankers, Inc. Depositary Shares, each representing a 1/40th ownership interest in a share of 4.450% non-cumulative perpetual preferred stock, Series B",
+          "exchange": "TXSE"
+        },
         {
           "ticker": "CTAG",
           "name": "Calamos Timpani Active SMID Growth ETF",
