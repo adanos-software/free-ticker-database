@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-11T18:37:13Z",
-    "rows": 8170,
+    "generated_at": "2026-11-12T06:35:33Z",
+    "rows": 8166,
     "field_totals": {
       "missing_etf_category": 116,
-      "missing_isin_primary": 613,
-      "missing_sector_stock": 635,
+      "missing_isin_primary": 612,
+      "missing_sector_stock": 632,
       "official_reference_gap": 6806
     },
     "class_totals": {
@@ -16,16 +16,16 @@
       "debt_or_securitized_identifier_gap": 91,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 17,
-      "exchange_industry_source_gap": 48,
+      "exchange_industry_source_gap": 47,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 290,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 146,
+      "official_identifier_not_exposed_source_gap": 145,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 450,
+      "official_industry_taxonomy_unavailable_gap": 448,
       "official_product_taxonomy_unavailable_gap": 89,
       "official_reference_symbol_collision_gap": 1182,
       "official_reference_unmatched_source_gap": 5624,
@@ -44,13 +44,13 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 290,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 146,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 145,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
-      "missing_sector_stock:exchange_industry_source_gap": 48,
+      "missing_sector_stock:exchange_industry_source_gap": 47,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 450,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 448,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1182,
@@ -118,7 +118,7 @@
         },
         {
           "exchange": "TSXV",
-          "rows": 61
+          "rows": 60
         },
         {
           "exchange": "BATS",
@@ -167,15 +167,15 @@
           "rows": 24
         },
         {
-          "exchange": "HNX",
-          "rows": 20
-        },
-        {
           "exchange": "BIST",
           "rows": 18
         },
         {
           "exchange": "BSE_IN",
+          "rows": 18
+        },
+        {
+          "exchange": "HNX",
           "rows": 18
         },
         {
@@ -12637,23 +12637,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSXV::TRBR",
-      "ticker": "TRBR",
-      "exchange": "TSXV",
-      "asset_type": "Stock",
-      "name": "Trubar Inc.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=TSXV::TRBR;exchange=TSXV;ticker=TRBR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSXV::TUP.P",
       "ticker": "TUP.P",
       "exchange": "TSXV",
@@ -18910,23 +18893,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "HNX::HDA",
-      "ticker": "HDA",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "Công ty cổ phần Hãng sơn Đông Á",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::HDA;exchange=HNX;ticker=HDA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "HNX::HEV",
       "ticker": "HEV",
       "exchange": "HNX",
@@ -19040,23 +19006,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HNX::SDU;exchange=HNX;ticker=SDU;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HNX::TD6",
-      "ticker": "TD6",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "CTCP Than Đèo Nai - Cọc Sáu - TKV",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::TD6;exchange=HNX;ticker=TD6;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -19397,23 +19346,6 @@
       "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
       "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
       "source_gap_context": "listing_key=Munich::MTP;exchange=Munich;ticker=MTP;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "Munich::XCX",
-      "ticker": "XCX",
-      "exchange": "Munich",
-      "asset_type": "Stock",
-      "name": "coinIX GmbH & Co. KGaA",
-      "gap_class": "exchange_industry_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
-      "source_gap_context": "listing_key=Munich::XCX;exchange=Munich;ticker=XCX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
     },
