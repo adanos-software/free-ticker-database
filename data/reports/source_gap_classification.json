@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-12T08:16:29Z",
-    "rows": 8177,
+    "generated_at": "2026-11-12T09:35:49Z",
+    "rows": 8174,
     "field_totals": {
       "missing_etf_category": 116,
       "missing_isin_primary": 623,
-      "missing_sector_stock": 632,
+      "missing_sector_stock": 629,
       "official_reference_gap": 6806
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 145,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 448,
+      "official_industry_taxonomy_unavailable_gap": 445,
       "official_product_taxonomy_unavailable_gap": 89,
       "official_reference_symbol_collision_gap": 1182,
       "official_reference_unmatched_source_gap": 5624,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 47,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 448,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 445,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1182,
@@ -152,7 +152,7 @@
         },
         {
           "exchange": "NSE_IN",
-          "rows": 43
+          "rows": 42
         },
         {
           "exchange": "HKEX",
@@ -164,7 +164,7 @@
         },
         {
           "exchange": "BVB",
-          "rows": 24
+          "rows": 23
         },
         {
           "exchange": "BIST",
@@ -175,12 +175,12 @@
           "rows": 18
         },
         {
-          "exchange": "HNX",
+          "exchange": "XETRA",
           "rows": 18
         },
         {
-          "exchange": "XETRA",
-          "rows": 18
+          "exchange": "HNX",
+          "rows": 17
         }
       ],
       "official_reference_gap": [
@@ -14065,23 +14065,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "BVB::PVBS",
-      "ticker": "PVBS",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "name": "PERSEUS FINTECH S.A. BUCURESTI",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BVB::PVBS;exchange=BVB;ticker=PVBS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "BVB::RRD",
       "ticker": "RRD",
       "exchange": "BVB",
@@ -19131,23 +19114,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "HNX::LCD",
-      "ticker": "LCD",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "ctcp Lắp máy - Thí nghiệm cơ điện",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::LCD;exchange=HNX;ticker=LCD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "HNX::PPT",
       "ticker": "PPT",
       "exchange": "HNX",
@@ -20315,23 +20281,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NSE_IN::POOJALOGIS;exchange=NSE_IN;ticker=POOJALOGIS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NSE_IN::RAVITA",
-      "ticker": "RAVITA",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "name": "Ravita Engineering Services Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NSE_IN::RAVITA;exchange=NSE_IN;ticker=RAVITA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -136401,7 +136350,7 @@
       "ticker": "DGN",
       "exchange": "WSE",
       "asset_type": "Stock",
-      "name": "DG-Net S.A.",
+      "name": "FIBO S.A.",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
