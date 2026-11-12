@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-12T18:20:22Z",
-    "rows": 8216,
+    "generated_at": "2026-11-12T19:13:06Z",
+    "rows": 8214,
     "field_totals": {
       "missing_etf_category": 131,
       "missing_isin_primary": 630,
-      "missing_sector_stock": 627,
+      "missing_sector_stock": 625,
       "official_reference_gap": 6828
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 142,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 444,
+      "official_industry_taxonomy_unavailable_gap": 442,
       "official_product_taxonomy_unavailable_gap": 100,
       "official_reference_symbol_collision_gap": 1191,
       "official_reference_unmatched_source_gap": 5637,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 46,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 444,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 442,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1191,
@@ -144,7 +144,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 229
+          "rows": 228
         },
         {
           "exchange": "OTC",
@@ -152,7 +152,7 @@
         },
         {
           "exchange": "NSE_IN",
-          "rows": 42
+          "rows": 41
         },
         {
           "exchange": "HKEX",
@@ -255,7 +255,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 224,
+        "rows": 223,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -17006,23 +17006,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::EB9",
-      "ticker": "EB9",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "African Rainbow Minerals Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::EB9;exchange=FSX;ticker=EB9;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::ERV2",
       "ticker": "ERV2",
       "exchange": "FSX",
@@ -20621,23 +20604,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NSE_IN::PARASHLTH;exchange=NSE_IN;ticker=PARASHLTH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NSE_IN::POOJALOGIS",
-      "ticker": "POOJALOGIS",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "name": "Pooja Logistics Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NSE_IN::POOJALOGIS;exchange=NSE_IN;ticker=POOJALOGIS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
