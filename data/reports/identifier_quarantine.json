@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-12T19:12:34Z",
+  "generated_at": "2026-11-13T08:11:14Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2108,
-  "decision_rows": 6904,
+  "conflict_count": 2104,
+  "decision_rows": 6893,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1368,
-    "proposed_clear_conflicting_identifier": 1094,
-    "quarantined_unresolved_identifier": 4442
+    "kept_listing_keyed_identifier": 1365,
+    "proposed_clear_conflicting_identifier": 1088,
+    "quarantined_unresolved_identifier": 4440
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1094,
-  "quarantined_rows": 4442,
-  "retained_rows": 1368,
+  "proposed_clear_rows": 1088,
+  "quarantined_rows": 4440,
+  "retained_rows": 1365,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -5733,32 +5733,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA44049N1006"
-    },
-    {
-      "conflict_id": "e76ff34e63de5f930adf",
-      "isin": "CA44049W1005",
-      "listing_key": "TSX::HEA",
-      "ticker": "HEA",
-      "exchange": "TSX",
-      "name": "Global X Enhanced Income US Equity (USD) ETF Common",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA44049W1005"
-    },
-    {
-      "conflict_id": "e76ff34e63de5f930adf",
-      "isin": "CA44049W1005",
-      "listing_key": "TSX::USCC",
-      "ticker": "USCC",
-      "exchange": "TSX",
-      "name": "Global X S&P 500 Covered Call ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA44049W1005"
     },
     {
       "conflict_id": "c7480984985e013ac5e2",
@@ -27471,32 +27445,6 @@
       "retained_isin": "GG00BD95V148"
     },
     {
-      "conflict_id": "775dd8684ca7aebaec97",
-      "isin": "GG00BKTRRM22",
-      "listing_key": "LSE::RTW",
-      "ticker": "RTW",
-      "exchange": "LSE",
-      "name": "RTW Biotech Opportunities Ltd",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GG00BKTRRM22"
-    },
-    {
-      "conflict_id": "775dd8684ca7aebaec97",
-      "isin": "GG00BKTRRM22",
-      "listing_key": "OTC::RTWFF",
-      "ticker": "RTWFF",
-      "exchange": "OTC",
-      "name": "RTW Venture Fund Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GG00BKTRRM22"
-    },
-    {
       "conflict_id": "c38f88aea9cdde7dba50",
       "isin": "GG00BMB5XZ39",
       "listing_key": "AMS::CABLE",
@@ -32461,71 +32409,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "IE000JXFRNI0"
-    },
-    {
-      "conflict_id": "870a45f4e1cc4763f0aa",
-      "isin": "IE000KDY10O3",
-      "listing_key": "LSE::METP",
-      "ticker": "METP",
-      "exchange": "LSE",
-      "name": "ETC Group Global Metaverse UCITS ETF USD Accumulation GBP",
-      "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000KDY10O3"
-    },
-    {
-      "conflict_id": "870a45f4e1cc4763f0aa",
-      "isin": "IE000KDY10O3",
-      "listing_key": "LSE::WEBP",
-      "ticker": "WEBP",
-      "exchange": "LSE",
-      "name": "HANETF ICAV ETC GROUP WEB 3.0 UCITS ETF ACC GBX",
-      "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000KDY10O3"
-    },
-    {
-      "conflict_id": "870a45f4e1cc4763f0aa",
-      "isin": "IE000KDY10O3",
-      "listing_key": "XETRA::GIJ0",
-      "ticker": "GIJ0",
-      "exchange": "XETRA",
-      "name": "Future of US Defence UCITS ETF - Accumulating",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000KDY10O3"
-    },
-    {
-      "conflict_id": "870a45f4e1cc4763f0aa",
-      "isin": "IE000KDY10O3",
-      "listing_key": "XETRA::M37R",
-      "ticker": "M37R",
-      "exchange": "XETRA",
-      "name": "ETC Group Global Metaverse UCITS ETF USD Accumulation EUR",
-      "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000KDY10O3"
-    },
-    {
-      "conflict_id": "870a45f4e1cc4763f0aa",
-      "isin": "IE000KDY10O3",
-      "listing_key": "XETRA::W3B3",
-      "ticker": "W3B3",
-      "exchange": "XETRA",
-      "name": "ETC Group Web 3.0 UCITS ETF",
-      "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000KDY10O3"
     },
     {
       "conflict_id": "3c74a7aa8d367becb074",
@@ -49777,32 +49660,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "LU0838782315"
-    },
-    {
-      "conflict_id": "43de66331affb0007136",
-      "isin": "LU0959210278",
-      "listing_key": "Euronext::EUDIV",
-      "ticker": "EUDIV",
-      "exchange": "Euronext",
-      "name": "Lyxor S&P Eurozone ESG Dividend Aristocrats (DR) UCITS ETF EUR Dis",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU0959210278"
-    },
-    {
-      "conflict_id": "43de66331affb0007136",
-      "isin": "LU0959210278",
-      "listing_key": "Euronext::SGQE",
-      "ticker": "SGQE",
-      "exchange": "Euronext",
-      "name": "Lyxor SG European Quality Income NTR UCITS D",
-      "asset_type": "ETF",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "LU0959210278"
     },
     {
       "conflict_id": "956b86b10b03710c52cd",

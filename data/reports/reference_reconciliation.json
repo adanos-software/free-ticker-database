@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12541,
-      "exact_match": 100128,
-      "missing_from_database": 44794,
+      "exact_identity_conflict": 12542,
+      "exact_match": 100126,
+      "missing_from_database": 44795,
       "normalization_candidate": 1876,
       "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100128,
+    "coverage_credited_keys": 100126,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44794,
-    "identity_conflict_rows": 12541,
+    "in_scope_missing_rows": 44795,
+    "identity_conflict_rows": 12542,
     "mapping_candidate_rows": 1876
   },
   "rows": [
@@ -1303773,10 +1303773,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "LSE::WEBP",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "lse_company_reports::LSE::WEEC",
@@ -1963101,10 +1963101,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "OTC::RTWFF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::RUBLF",

@@ -7,13 +7,13 @@ Rows: `23`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
-| 1 | FSX | 56.94 | 5915 | 4430 | refresh_only |
+| 1 | FSX | 56.94 | 5916 | 4429 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
-| 3 | LSE | 66.06 | 3501 | 870 | not_in_supplement_allowlist |
+| 3 | LSE | 66.07 | 3500 | 870 | not_in_supplement_allowlist |
 | 4 | NYSE | 59.99 | 1310 | 564 | not_in_supplement_allowlist |
 | 5 | NASDAQ | 82.39 | 979 | 60 | not_in_supplement_allowlist |
-| 6 | Borsa Italiana | 23.63 | 795 | 1935 | not_in_supplement_allowlist |
-| 7 | Euronext | 79.39 | 340 | 371 | not_in_supplement_allowlist |
+| 6 | Borsa Italiana | 23.65 | 794 | 1936 | not_in_supplement_allowlist |
+| 7 | Euronext | 79.44 | 339 | 372 | not_in_supplement_allowlist |
 | 8 | BATS | 81.88 | 293 | 58 | not_in_supplement_allowlist |
 | 9 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |
 | 10 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |

@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-13T06:35:34Z",
-    "rows": 8212,
+    "generated_at": "2026-11-13T08:18:38Z",
+    "rows": 8206,
     "field_totals": {
       "missing_etf_category": 131,
-      "missing_isin_primary": 630,
+      "missing_isin_primary": 629,
       "missing_sector_stock": 623,
-      "official_reference_gap": 6828
+      "official_reference_gap": 6823
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -18,7 +18,7 @@
       "equity_etf_category_gap": 18,
       "exchange_industry_source_gap": 46,
       "fixed_income_etf_category_gap": 5,
-      "fund_or_trust_identifier_gap": 310,
+      "fund_or_trust_identifier_gap": 309,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -28,7 +28,7 @@
       "official_industry_taxonomy_unavailable_gap": 440,
       "official_product_taxonomy_unavailable_gap": 100,
       "official_reference_symbol_collision_gap": 1191,
-      "official_reference_unmatched_source_gap": 5637,
+      "official_reference_unmatched_source_gap": 5632,
       "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 8
     },
@@ -41,7 +41,7 @@
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 20,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 92,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 310,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 309,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 142,
@@ -54,7 +54,7 @@
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1191,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5637
+      "official_reference_gap:official_reference_unmatched_source_gap": 5632
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -214,15 +214,15 @@
         },
         {
           "exchange": "XETRA",
-          "rows": 164
+          "rows": 162
         },
         {
           "exchange": "Euronext",
-          "rows": 142
+          "rows": 141
         },
         {
           "exchange": "LSE",
-          "rows": 136
+          "rows": 135
         }
       ]
     },
@@ -303,7 +303,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "XETRA",
-        "rows": 111,
+        "rows": 109,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -311,7 +311,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "TSX",
-        "rows": 101,
+        "rows": 100,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -335,7 +335,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "Euronext",
-        "rows": 88,
+        "rows": 87,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -359,7 +359,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "LSE",
-        "rows": 82,
+        "rows": 81,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -5593,23 +5593,6 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=LSE::METR;exchange=LSE;ticker=METR;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "LSE::TINF",
-      "ticker": "TINF",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "Tabula US Enhanced Infla UCITS ETF USD",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=LSE::TINF;exchange=LSE;ticker=TINF;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -48439,23 +48422,6 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "Euronext::SGQE",
-      "ticker": "SGQE",
-      "exchange": "Euronext",
-      "asset_type": "ETF",
-      "name": "Lyxor SG European Quality Income NTR UCITS D",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=Euronext::SGQE;exchange=Euronext;ticker=SGQE;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
       "listing_key": "Euronext::TPHC",
       "ticker": "TPHC",
       "exchange": "Euronext",
@@ -60027,23 +59993,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=LSE::LCRP;exchange=LSE;ticker=LCRP;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "LSE::METP",
-      "ticker": "METP",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "ETC Group Global Metaverse UCITS ETF USD Accumulation GBP",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=LSE::METP;exchange=LSE;ticker=METP;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
@@ -132793,23 +132742,6 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "TSX::HEA",
-      "ticker": "HEA",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Global X Enhanced Income US Equity (USD) ETF Common",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=TSX::HEA;exchange=TSX;ticker=HEA;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
       "listing_key": "TSX::HED",
       "ticker": "HED",
       "exchange": "TSX",
@@ -138301,23 +138233,6 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "XETRA::M37R",
-      "ticker": "M37R",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "name": "ETC Group Global Metaverse UCITS ETF USD Accumulation EUR",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=XETRA::M37R;exchange=XETRA;ticker=M37R;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
       "listing_key": "XETRA::OP8E",
       "ticker": "OP8E",
       "exchange": "XETRA",
@@ -138414,23 +138329,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=XETRA::VDXX;exchange=XETRA;ticker=VDXX;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "XETRA::W3B3",
-      "ticker": "W3B3",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "name": "ETC Group Web 3.0 UCITS ETF",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=XETRA::W3B3;exchange=XETRA;ticker=W3B3;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
