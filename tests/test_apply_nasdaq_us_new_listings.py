@@ -516,8 +516,11 @@ def test_apply_new_listings_detects_official_directory_ticker_change(tmp_path):
     listings = tmp_path / "listings.csv"
     supplements = tmp_path / "supplements.csv"
     coverage = tmp_path / "coverage.csv"
-    transitions = tmp_path / "listing_transitions.csv"
-    drops = tmp_path / "drop_entries.csv"
+    review_dir = tmp_path / "review_overrides"
+    transitions = review_dir / "listing_transitions.csv"
+    drops = review_dir / "drop_entries.csv"
+    reviewed = review_dir / "foreign_isin_reviewed.csv"
+    metadata = review_dir / "metadata_updates.csv"
 
     write_rows(
         previous_reference,
@@ -546,6 +549,30 @@ def test_apply_new_listings_detects_official_directory_ticker_change(tmp_path):
     write_rows(coverage, LISTING_FIELDS, [])
     write_rows(transitions, TRANSITION_FIELDS, [])
     write_rows(drops, ["ticker", "exchange", "confidence", "reason"], [])
+    write_rows(
+        reviewed,
+        ["ticker", "exchange", "isin", "note"],
+        [
+            {"ticker": "BTOG", "exchange": "NASDAQ", "isin": "KYG216211345", "note": "reviewed predecessor"},
+            {"ticker": "BTOG", "exchange": "TSX", "isin": "KYG216211345", "note": "different venue"},
+            {"ticker": "KEEP", "exchange": "NASDAQ", "isin": "IL0000000000", "note": "unrelated"},
+        ],
+    )
+    write_rows(
+        metadata,
+        ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"],
+        [
+            {
+                "ticker": "BTOG",
+                "exchange": "NASDAQ",
+                "field": "stock_sector",
+                "decision": "update",
+                "proposed_value": "Financials",
+                "confidence": "high",
+                "reason": "reviewed sector",
+            }
+        ],
+    )
 
     report = apply_new_listings(
         previous_reference_csv=previous_reference,
@@ -555,11 +582,16 @@ def test_apply_new_listings_detects_official_directory_ticker_change(tmp_path):
         coverage_expansion_csv=coverage,
         listing_transitions_csv=transitions,
         drop_entries_csv=drops,
+        review_overrides_dir=review_dir,
         report_json=tmp_path / "report.json",
         report_md=tmp_path / "report.md",
     )
 
     assert report["summary"]["detected_symbol_changes"] == 1
+    assert report["summary"]["review_override_files_rekeyed"] == [
+        "foreign_isin_reviewed.csv",
+        "metadata_updates.csv",
+    ]
     with supplements.open(newline="", encoding="utf-8") as handle:
         row = next(csv.DictReader(handle))
     assert row["ticker"] == "SGRX"
@@ -573,6 +605,73 @@ def test_apply_new_listings_detects_official_directory_ticker_change(tmp_path):
         drop = next(csv.DictReader(handle))
     assert drop["ticker"] == "BTOG"
     assert drop["exchange"] == "NASDAQ"
+    with reviewed.open(newline="", encoding="utf-8") as handle:
+        reviewed_rows = list(csv.DictReader(handle))
+    assert [(row["ticker"], row["exchange"], row["isin"]) for row in reviewed_rows] == [
+        ("SGRX", "NASDAQ", "KYG216211345"),
+        ("BTOG", "TSX", "KYG216211345"),
+        ("KEEP", "NASDAQ", "IL0000000000"),
+    ]
+    with metadata.open(newline="", encoding="utf-8") as handle:
+        metadata_rows = list(csv.DictReader(handle))
+    assert [(row["ticker"], row["exchange"], row["field"]) for row in metadata_rows] == [
+        ("SGRX", "NASDAQ", "stock_sector"),
+    ]
+
+
+def test_apply_new_listings_does_not_rekey_reviews_for_unrelated_new_listing(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    review_dir = tmp_path / "review_overrides"
+    reviewed = review_dir / "foreign_isin_reviewed.csv"
+
+    write_rows(previous_reference, REFERENCE_FIELDS, [])
+    write_rows(
+        current_reference,
+        REFERENCE_FIELDS,
+        [reference_row("NEW", "Brand New Inc. - Common Stock", "NASDAQ", source_key="nasdaq_listed")],
+    )
+    write_rows(listings, LISTING_FIELDS, [])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(
+        review_dir / "listing_transitions.csv",
+        TRANSITION_FIELDS,
+        [],
+    )
+    write_rows(review_dir / "drop_entries.csv", ["ticker", "exchange", "confidence", "reason"], [])
+    write_rows(
+        reviewed,
+        ["ticker", "exchange", "isin", "note"],
+        [{"ticker": "OLD", "exchange": "NASDAQ", "isin": "IL0004960188", "note": "unrelated reviewed issuer"}],
+    )
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=review_dir / "listing_transitions.csv",
+        drop_entries_csv=review_dir / "drop_entries.csv",
+        review_overrides_dir=review_dir,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["detected_symbol_changes"] == 0
+    assert report["summary"]["review_override_files_rekeyed"] == []
+    with reviewed.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["ticker"] == "OLD"
+    assert row["isin"] == "IL0004960188"
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        supplement = next(csv.DictReader(handle))
+    assert supplement["ticker"] == "NEW"
+    assert supplement["isin"] == ""
 
 
 def test_apply_new_listings_preserves_identity_for_reviewed_venue_change(tmp_path):
