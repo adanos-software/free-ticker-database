@@ -7,166 +7,170 @@
   },
   "summary": {
     "before_rows": 97753,
-    "after_rows": 97748,
-    "overall_shrink_pct": 0.005115,
-    "removed_rows": 6,
-    "evidenced_removed_rows": 6,
+    "after_rows": 97753,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 5,
+    "critical_field_changes": 24,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 6
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "Euronext::SGQE",
-    "LSE::METP",
-    "LSE::WEBP",
-    "TSX::HEA",
-    "XETRA::M37R",
-    "XETRA::W3B3"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "Euronext::EUDIV",
-      "field_name": "name",
-      "old_value": "Lyxor S&P Eurozone ESG Dividend Aristocrats (DR) UCITS ETF EUR Dis",
-      "new_value": "Amundi S&P Europe High Dividend Yield UCITS ETF Dist"
-    },
-    {
-      "listing_key": "LSE::TINF",
-      "field_name": "country",
-      "old_value": "Canada",
-      "new_value": "Ireland"
-    },
-    {
-      "listing_key": "LSE::TINF",
-      "field_name": "country_code",
-      "old_value": "CA",
-      "new_value": "IE"
-    },
-    {
-      "listing_key": "LSE::TINF",
-      "field_name": "isin",
+      "listing_key": "BIST::METEN",
+      "field_name": "stock_sector",
       "old_value": "",
-      "new_value": "IE00BMDWWS85"
+      "new_value": "Utilities"
     },
     {
-      "listing_key": "TSX::TINF",
-      "field_name": "etf_category",
-      "old_value": "Fixed Income",
-      "new_value": "Equity"
+      "listing_key": "BME::FCC",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "CSE_LK::JXG.N0000",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "Euronext::NYR",
+      "field_name": "stock_sector",
+      "old_value": "Health Care",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "FSX::3NY1",
+      "field_name": "stock_sector",
+      "old_value": "Health Care",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "FSX::FCC",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "FSX::LDZA",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "FSX::S3I",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "LSE::0HAA",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "LSE::0RH8",
+      "field_name": "stock_sector",
+      "old_value": "Health Care",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "NSE_IN::DDEVPLSTIK",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "NYSE MKT::YCBD",
+      "field_name": "isin",
+      "old_value": "US12482W1018",
+      "new_value": "US12482W4087"
+    },
+    {
+      "listing_key": "OTC::FMOCF",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "OTC::SIUAF",
+      "field_name": "name",
+      "old_value": "Stabilus S.A",
+      "new_value": "Stabilus SE"
+    },
+    {
+      "listing_key": "OTC::SIUAF",
+      "field_name": "country",
+      "old_value": "Luxembourg",
+      "new_value": "Germany"
+    },
+    {
+      "listing_key": "OTC::SIUAF",
+      "field_name": "country_code",
+      "old_value": "LU",
+      "new_value": "DE"
+    },
+    {
+      "listing_key": "OTC::SIUAF",
+      "field_name": "isin",
+      "old_value": "LU1066226637",
+      "new_value": "DE000STAB1L8"
+    },
+    {
+      "listing_key": "SZSE::300161",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "TSXV::ASTR",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "TSXV::HAM",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Energy"
+    },
+    {
+      "listing_key": "XDUS::SSS",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "XETRA::CENB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "XETRA::S4M",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "XSTU::LDZA",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Health Care"
     }
   ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "XETRA::M37R",
-      "ticker": "M37R",
-      "exchange": "XETRA",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "M37R",
-      "new_value": "GIJ0",
-      "before_row_sha256": "8d6a198c586c1ff79c03c905991e466fd4e3872427f62a9927bff62dba248e14",
-      "effective_at": "",
-      "observed_at": "2026-11-13T08:11:14Z",
-      "source_key": "hanetf_lse_rns",
-      "source_url": "https://www.londonstockexchange.com/en/news/article/important-notice-to-shareholders/17679039",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "a2d413f0dea66aeeddd81248",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "XETRA::W3B3",
-      "ticker": "W3B3",
-      "exchange": "XETRA",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "W3B3",
-      "new_value": "GIJ0",
-      "before_row_sha256": "e4d4753e76b0c848a5d20a3a09c7df611c3115bd387c95d235b2443ebfe17ffb",
-      "effective_at": "",
-      "observed_at": "2026-11-13T08:11:14Z",
-      "source_key": "hanetf_lse_rns",
-      "source_url": "https://www.londonstockexchange.com/en/news/article/important-notice-to-shareholders/17679039",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "8fd68b496d2de30156d12b1e",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "LSE::METP",
-      "ticker": "METP",
-      "exchange": "LSE",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "METP",
-      "new_value": "GIJO",
-      "before_row_sha256": "6760928b9325051c0cbc5c5f0c01b5f8dabd9eed6354f39748f57861bccdc9ab",
-      "effective_at": "",
-      "observed_at": "2026-11-13T08:11:14Z",
-      "source_key": "hanetf_lse_rns",
-      "source_url": "https://www.londonstockexchange.com/en/news/article/important-notice-to-shareholders/17679039",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "f0921078a0b7abeb6f497ed9",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "LSE::WEBP",
-      "ticker": "WEBP",
-      "exchange": "LSE",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "WEBP",
-      "new_value": "GIJO",
-      "before_row_sha256": "ef62d8a1d32a662047591452f045fcc4aede6cacbc16b569d9e9db149154ff49",
-      "effective_at": "",
-      "observed_at": "2026-11-13T08:11:14Z",
-      "source_key": "hanetf_lse_rns",
-      "source_url": "https://www.londonstockexchange.com/en/news/article/important-notice-to-shareholders/17679039",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "929c59f2b328cc61f535d37b",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::HEA",
-      "ticker": "HEA",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HEA",
-      "new_value": "USCC",
-      "before_row_sha256": "70966caf967e9dd32c536f542a5f2e0098ec4519e753116919036e8eaa2bd363",
-      "effective_at": "",
-      "observed_at": "2026-11-13T08:11:14Z",
-      "source_key": "globalx_press_release",
-      "source_url": "https://www.globalx.ca/news/press-releases/horizons-etfs-announces-july-2022-distributions-for-its-covered-call-etfs",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "5e057186f14e817dace28f3b",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "Euronext::SGQE",
-      "ticker": "SGQE",
-      "exchange": "Euronext",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "SGQE",
-      "new_value": "EUDIV",
-      "before_row_sha256": "2c5de8d218185f553d2a54a0b2976927e2c8b833676102410575d1d3ce9e3ee6",
-      "effective_at": "",
-      "observed_at": "2026-11-13T08:11:14Z",
-      "source_key": "bloomberg_ticker_change",
-      "source_url": "https://www.bloomberg.com/quote/SGQE:FP",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "9548105bac42f8b2abccb78b",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -404,10 +408,10 @@
     },
     {
       "exchange": "Euronext",
-      "before_rows": 1477,
+      "before_rows": 1476,
       "after_rows": 1476,
-      "shrink_pct": 0.067705,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -521,10 +525,10 @@
     },
     {
       "exchange": "LSE",
-      "before_rows": 7026,
+      "before_rows": 7025,
       "after_rows": 7025,
-      "shrink_pct": 0.014233,
-      "removed_rows": 2,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -566,8 +570,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4806,
-      "after_rows": 4806,
+      "before_rows": 4808,
+      "after_rows": 4808,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -620,8 +624,8 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2025,
-      "after_rows": 2025,
+      "before_rows": 2026,
+      "after_rows": 2026,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -629,8 +633,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2731,
-      "after_rows": 2731,
+      "before_rows": 2732,
+      "after_rows": 2732,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -638,8 +642,8 @@
     },
     {
       "exchange": "NYSE MKT",
-      "before_rows": 228,
-      "after_rows": 228,
+      "before_rows": 229,
+      "after_rows": 229,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -827,10 +831,10 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2443,
+      "before_rows": 2442,
       "after_rows": 2442,
-      "shrink_pct": 0.040933,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -899,10 +903,10 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5563,
+      "before_rows": 5561,
       "after_rows": 5561,
-      "shrink_pct": 0.035952,
-      "removed_rows": 2,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
