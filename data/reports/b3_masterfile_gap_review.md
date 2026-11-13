@@ -1,6 +1,6 @@
 # B3 Masterfile Gap Review
 
-Generated at: `2026-10-20T10:15:07Z`
+Generated at: `2026-11-13T21:16:07Z`
 
 This report tracks B3 listings absent from the active B3 exchange-directory source. It does not fill or delete data.
 
@@ -14,7 +14,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 |---|---:|
 | dataset_rows | 1589 |
 | active_exchange_directory_rows | 1353 |
-| all_b3_masterfile_rows | 1903 |
+| all_b3_masterfile_rows | 1910 |
 | active_directory_matched_dataset_rows | 1228 |
 | active_directory_missing_dataset_rows | 361 |
 | active_directory_match_rate | 77.28 |
@@ -253,7 +253,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::AALR12 | P3 | local_share_line |  |  | no_official_candidate_category |  | ALLIANÇA SAÚDE E PARTICIPAÇÕES S.A. |
 | B3::AALR13 | P3 | local_share_line |  |  | no_official_candidate_category |  | ALLIANÇA SAÚDE E PARTICIPAÇÕES S.A. |
 | B3::ABCB3 | P3 | local_share_line |  |  | no_official_candidate_category |  | BCO ABC BRASIL S.A. |
-| B3::ADMF3 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIABRASF CIA BRASILEIRA DE SERVIÇOS FINANCEIROS SA |
+| B3::ADMF3 | P3 | local_share_line |  |  | no_official_candidate_category |  | B100 S.A. |
 | B3::AESO3 | P3 | local_share_line |  |  | no_official_candidate_category |  | AUREN OPERAÇÕES S.A. |
 | B3::AGBK4 | P3 | local_share_line |  |  | no_official_candidate_category |  | BANCO AGIBANK S.A. |
 | B3::AGRA4 | P3 | local_share_line |  |  | no_official_candidate_category |  | AGRALE S/A |

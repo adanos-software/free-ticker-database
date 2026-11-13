@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3393,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12544,
-      "exact_match": 100125,
+      "exact_identity_conflict": 12545,
+      "exact_match": 100124,
       "missing_from_database": 44797,
       "normalization_candidate": 1875,
       "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100125,
+    "coverage_credited_keys": 100124,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44797,
-    "identity_conflict_rows": 12544,
+    "identity_conflict_rows": 12545,
     "mapping_candidate_rows": 1875
   },
   "rows": [
@@ -180765,10 +180765,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "Bursa::0008",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "bursa_closing_prices::Bursa::0010",
