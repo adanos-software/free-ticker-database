@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-13T15:13:23Z",
+  "generated_at": "2026-11-13T16:00:48Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2104,
-  "decision_rows": 6893,
+  "decision_rows": 6894,
   "action_counts": {
     "kept_listing_keyed_identifier": 1365,
     "proposed_clear_conflicting_identifier": 1088,
-    "quarantined_unresolved_identifier": 4440
+    "quarantined_unresolved_identifier": 4441
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1088,
-  "quarantined_rows": 4440,
+  "quarantined_rows": 4441,
   "retained_rows": 1365,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -17279,7 +17279,7 @@
       "retained_isin": "DE000SHL1006"
     },
     {
-      "conflict_id": "33d5a232b822bfb94147",
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
       "isin": "DE000STAB1L8",
       "listing_key": "FSX::STM",
       "ticker": "STM",
@@ -17292,7 +17292,7 @@
       "retained_isin": "DE000STAB1L8"
     },
     {
-      "conflict_id": "33d5a232b822bfb94147",
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
       "isin": "DE000STAB1L8",
       "listing_key": "LSE::0QUL",
       "ticker": "0QUL",
@@ -17305,7 +17305,7 @@
       "retained_isin": "DE000STAB1L8"
     },
     {
-      "conflict_id": "33d5a232b822bfb94147",
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
       "isin": "DE000STAB1L8",
       "listing_key": "Munich::STM",
       "ticker": "STM",
@@ -17318,7 +17318,20 @@
       "retained_isin": "DE000STAB1L8"
     },
     {
-      "conflict_id": "33d5a232b822bfb94147",
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
+      "isin": "DE000STAB1L8",
+      "listing_key": "OTC::SIUAF",
+      "ticker": "SIUAF",
+      "exchange": "OTC",
+      "name": "Stabilus SE",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "DE000STAB1L8"
+    },
+    {
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
       "isin": "DE000STAB1L8",
       "listing_key": "XDUS::STM",
       "ticker": "STM",
@@ -17331,7 +17344,7 @@
       "retained_isin": "DE000STAB1L8"
     },
     {
-      "conflict_id": "33d5a232b822bfb94147",
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
       "isin": "DE000STAB1L8",
       "listing_key": "XETRA::STM",
       "ticker": "STM",
@@ -17344,7 +17357,7 @@
       "retained_isin": "DE000STAB1L8"
     },
     {
-      "conflict_id": "33d5a232b822bfb94147",
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
       "isin": "DE000STAB1L8",
       "listing_key": "XHAN::STM",
       "ticker": "STM",
@@ -17357,7 +17370,7 @@
       "retained_isin": "DE000STAB1L8"
     },
     {
-      "conflict_id": "33d5a232b822bfb94147",
+      "conflict_id": "1d1bb27cfa87bdb7aec9",
       "isin": "DE000STAB1L8",
       "listing_key": "XSTU::STM",
       "ticker": "STM",
