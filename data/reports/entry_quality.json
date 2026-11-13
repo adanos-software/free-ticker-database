@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-13T08:19:40Z",
+    "generated_at": "2026-11-13T09:29:50Z",
     "rows": 97748,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -29,13 +29,13 @@
       "high": 11,
       "low": 10,
       "medium": 23,
-      "source_gap": 11498
+      "source_gap": 11497
     },
     "issue_counts": {
       "official_reference_gap": 6823,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 629,
-      "missing_stock_sector": 615,
+      "missing_stock_sector": 614,
       "missing_etf_category": 144,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 10,
@@ -886,16 +886,9 @@
       "exchange": "KRX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 80,
+      "quality_score": 90,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        },
         {
           "issue_type": "official_reference_gap",
           "severity": "source_gap",
