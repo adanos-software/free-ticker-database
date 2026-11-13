@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-12T19:12:52Z`
+Generated at: `2026-11-13T08:19:30Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -47,7 +47,7 @@ Generated at: `2026-11-12T19:12:52Z`
 | JSE | official_partial | jse_etf_list|jse_etn_list | Stock | 0 |  | jse_etf_list|jse_etn_list | refresh_unavailable | blocked_source_unavailable |
 | KOSDAQ | official_full | krx_listed_companies |  | 1820 | 87.2 | krx_listed_companies | refresh_unavailable | not_applicable |
 | KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2128 | 91.4 | krx_listed_companies | refresh_unavailable | not_applicable |
-| LSE | official_full | lse_company_reports|lse_instrument_directory|lse_price_explorer |  | 11184 | 60.92 | lse_company_reports|lse_instrument_directory|lse_price_explorer | refresh_unavailable | not_applicable |
+| LSE | official_full | lse_company_reports|lse_instrument_directory|lse_price_explorer |  | 11184 | 60.93 | lse_company_reports|lse_instrument_directory|lse_price_explorer | refresh_unavailable | not_applicable |
 | LUSE | official_partial | luse_listed_companies |  | 0 |  | luse_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSX | official_full | muscat_securities_companies |  | 110 | 86.36 |  | maintain | not_applicable |

@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "31b9fd9e20c0e5b6048c11ae4c4b79d4744f75322219ceda3825dab4729fe8c1",
+  "dataset_sha256": "a3b1dd25dfc7cd3e5f49e077027635cdb8704d138e05de29010b9afca5b12ff5",
   "source_manifest_sha256": "b7d6982094a0f74f09e405315f28a78adb24a71e59491cc18ba6ced8d9c81fda",
-  "git_commit": "e24922bc31eff085237b00a5c4f35cc3499bfbf5",
+  "git_commit": "ad96202befc2995be633841c266e42d3f4729cad",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -21,10 +21,10 @@
       "status": "pass",
       "details": {
         "summary": {
-          "ticker_rows": 65685,
-          "listing_rows": 97733,
-          "adanos_reference_rows": 65685,
-          "entry_quality_rows": 97733,
+          "ticker_rows": 65701,
+          "listing_rows": 97748,
+          "adanos_reference_rows": 65701,
+          "entry_quality_rows": 97748,
           "error_gates": 88,
           "failed_error_gates": 0,
           "info_gates": 5
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 147,
-          "source_observations": 186350,
+          "source_observations": 186448,
           "venues": 87,
-          "issuers": 75313,
-          "instruments": 75313,
-          "listings": 97740,
-          "identifier_assertions": 168744,
-          "field_assertions": 221777,
-          "provenance_gaps": 294547,
-          "listing_events": 91439,
+          "issuers": 75329,
+          "instruments": 75329,
+          "listings": 97755,
+          "identifier_assertions": 168740,
+          "field_assertions": 221785,
+          "provenance_gaps": 294601,
+          "listing_events": 91551,
           "coverage_contracts": 136
         }
       }
@@ -68,18 +68,18 @@
       "details": {
         "status": "pass",
         "summary": {
-          "before_rows": 97733,
-          "after_rows": 97733,
-          "overall_shrink_pct": 0.0,
-          "removed_rows": 0,
-          "evidenced_removed_rows": 0,
+          "before_rows": 97753,
+          "after_rows": 97748,
+          "overall_shrink_pct": 0.005115,
+          "removed_rows": 6,
+          "evidenced_removed_rows": 6,
           "unevidenced_removed_rows": 0,
-          "critical_field_changes": 29,
+          "critical_field_changes": 5,
           "unevidenced_critical_field_changes": 0,
           "before_duplicate_listing_keys": 0,
           "after_duplicate_listing_keys": 0,
           "generated_official_change_evidence_rows": 0,
-          "generated_reviewed_transition_evidence_rows": 0
+          "generated_reviewed_transition_evidence_rows": 6
         }
       }
     },
@@ -88,8 +88,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "listings": 97733,
-        "snapshot": 97733,
+        "listings": 97748,
+        "snapshot": 97748,
         "missing": 0,
         "extra": 0,
         "duplicate_listing_keys": 0,
@@ -101,8 +101,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "decisions": 6898,
-        "current_conflict_groups": 2107,
+        "decisions": 6893,
+        "current_conflict_groups": 2104,
         "failure_count": 0,
         "sample": []
       }
@@ -112,7 +112,7 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "rows": 171070,
+        "rows": 171093,
         "unclassified": 0
       }
     },
@@ -131,7 +131,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "conflict_groups": 2107,
+        "conflict_groups": 2104,
         "sample": [
           "AEE000401019",
           "AN8068571086",
@@ -191,7 +191,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "proposed_rows": 1960,
+        "proposed_rows": 1958,
         "sample": [
           "ADX::GRMNY",
           "ADX::JPANI",
@@ -523,7 +523,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 294547
+        "gap_rows": 294601
       }
     },
     {
@@ -540,7 +540,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1327
+        "missing_rows": 1333
       }
     },
     {
@@ -556,7 +556,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1677
+        "missing_rows": 1658
       }
     },
     {
@@ -564,7 +564,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 164
+        "missing_rows": 181
       }
     },
     {
@@ -572,7 +572,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 44763
+        "missing_rows": 44795
       }
     },
     {

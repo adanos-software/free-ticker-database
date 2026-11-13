@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 100318,
-    "matched": 70241,
+    "matched": 70242,
     "collisions": 11736,
-    "missing": 18341
+    "missing": 18340
   },
   "exchanges": [
     {
@@ -1049,8 +1049,8 @@
       "exchange": "Borsa Italiana",
       "official_symbols": 2976,
       "matched": 246,
-      "collisions": 1935,
-      "missing": 795,
+      "collisions": 1936,
+      "missing": 794,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1419,8 +1419,8 @@
       "exchange": "Euronext",
       "official_symbols": 2021,
       "matched": 1310,
-      "collisions": 371,
-      "missing": 340,
+      "collisions": 372,
+      "missing": 339,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1561,8 +1561,8 @@
       "exchange": "FSX",
       "official_symbols": 18168,
       "matched": 7823,
-      "collisions": 4430,
-      "missing": 5915,
+      "collisions": 4429,
+      "missing": 5916,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -2348,9 +2348,9 @@
     {
       "exchange": "LSE",
       "official_symbols": 11184,
-      "matched": 6813,
+      "matched": 6814,
       "collisions": 870,
-      "missing": 3501,
+      "missing": 3500,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -5297,8 +5297,8 @@
       "exchange": "XETRA",
       "official_symbols": 5517,
       "matched": 5274,
-      "collisions": 241,
-      "missing": 2,
+      "collisions": 240,
+      "missing": 3,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5395,6 +5395,11 @@
         {
           "ticker": "PO1",
           "name": "POB AG NA O.N.",
+          "exchange": "XETRA"
+        },
+        {
+          "ticker": "WEBP",
+          "name": "AM-S+P500 CL.PAR.AL.DLD",
           "exchange": "XETRA"
         }
       ]
