@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-13T14:41:00Z",
-    "rows": 97753,
+    "generated_at": "2026-11-13T16:04:58Z",
+    "rows": 97758,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,28 +15,28 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86561,
-      "source_gap": 11148,
+      "pass": 86556,
+      "source_gap": 11158,
       "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4606,
+      "identifier_enriched": 4610,
       "official_reference": 87638,
       "scoped_source_gap": 294,
-      "valid_isin": 5215
+      "valid_isin": 5216
     },
     "severity_counts": {
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11502
+      "source_gap": 11517
     },
     "issue_counts": {
-      "official_reference_gap": 6828,
+      "official_reference_gap": 6833,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 627,
-      "missing_stock_sector": 616,
-      "missing_etf_category": 144,
+      "expected_missing_primary_isin": 632,
+      "missing_stock_sector": 620,
+      "missing_etf_category": 145,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
       "low_company_name_overlap": 10,
@@ -66,8 +66,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 294,
-        "pass": 4504,
+        "source_gap": 300,
+        "pass": 4500,
         "warn": 4,
         "notice": 4
       },
@@ -88,7 +88,7 @@
       {
         "exchange": "NYSE ARCA",
         "pass": 2525,
-        "source_gap": 205,
+        "source_gap": 206,
         "warn": 1
       },
       {
@@ -135,15 +135,15 @@
         "warn": 1
       },
       {
+        "exchange": "BATS",
+        "pass": 1277,
+        "source_gap": 114
+      },
+      {
         "exchange": "HKEX",
         "pass": 3146,
         "source_gap": 110,
         "warn": 3
-      },
-      {
-        "exchange": "BATS",
-        "pass": 1278,
-        "source_gap": 113
       },
       {
         "exchange": "JSE",

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-13T14:45:37Z",
+    "generated_at": "2026-11-13T16:10:36Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": false,
+  "passed": true,
   "summary": {
-    "ticker_rows": 65705,
-    "listing_rows": 97753,
-    "adanos_reference_rows": 65705,
-    "entry_quality_rows": 97753,
+    "ticker_rows": 65708,
+    "listing_rows": 97758,
+    "adanos_reference_rows": 65708,
+    "entry_quality_rows": 97758,
     "error_gates": 88,
-    "failed_error_gates": 1,
+    "failed_error_gates": 0,
     "info_gates": 5
   },
   "gates": [
@@ -518,12 +518,9 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": false,
-      "actual": 1,
-      "limit": 0,
-      "details": [
-        "HKEX::01351"
-      ]
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "adanos_alias_findings",
@@ -557,35 +554,35 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 627,
+      "actual": 632,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 616,
+      "actual": 620,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 144,
+      "actual": 145,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11148,
+      "actual": 11158,
       "limit": null
     },
     {
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 33,
+      "actual": 34,
       "limit": null
     },
     {

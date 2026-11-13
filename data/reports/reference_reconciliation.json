@@ -1,21 +1,21 @@
 {
   "summary": {
-    "active_official_reference_rows": 171093,
-    "source_specific_reference_keys": 171092,
+    "active_official_reference_rows": 171094,
+    "source_specific_reference_keys": 171093,
     "classification_counts": {
       "alternate_listing_line": 3393,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12544,
-      "exact_match": 100127,
-      "missing_from_database": 44795,
-      "normalization_candidate": 1876,
-      "out_of_scope": 8163
+      "exact_match": 100125,
+      "missing_from_database": 44797,
+      "normalization_candidate": 1875,
+      "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100127,
+    "coverage_credited_keys": 100125,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44795,
+    "in_scope_missing_rows": 44797,
     "identity_conflict_rows": 12544,
-    "mapping_candidate_rows": 1876
+    "mapping_candidate_rows": 1875
   },
   "rows": [
     {
@@ -1521443,22 +1521443,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::CLGN",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::CLGN",
-      "exchange": "NASDAQ",
-      "ticker": "CLGN",
-      "asset_types": "Stock",
-      "names": "CollPlant Biotechnologies Ltd. - Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::CLGN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::CLIK",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::CLIK",
@@ -1531827,38 +1531811,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::FDFF",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::FDFF",
-      "exchange": "NASDAQ",
-      "ticker": "FDFF",
-      "asset_types": "ETF",
-      "names": "Fidelity Disruptive Finance ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::FDFF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::FDIF",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::FDIF",
-      "exchange": "NASDAQ",
-      "ticker": "FDIF",
-      "asset_types": "ETF",
-      "names": "Fidelity Disruptors ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::FDIF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::FDIG",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::FDIG",
@@ -1533568,38 +1533520,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::FMBH",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::FMED",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::FMED",
-      "exchange": "NASDAQ",
-      "ticker": "FMED",
-      "asset_types": "ETF",
-      "names": "Fidelity Disruptive Medicine ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::FMED",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::FMET",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::FMET",
-      "exchange": "NASDAQ",
-      "ticker": "FMET",
-      "asset_types": "ETF",
-      "names": "Fidelity Metaverse ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::FMET",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1551075,6 +1550995,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::LOVI",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::LOVI",
+      "exchange": "NASDAQ",
+      "ticker": "LOVI",
+      "asset_types": "Stock",
+      "names": "Live Oak Acquisition Corp. VI - Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::LOVI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::LOVIU",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::LOVIU",
@@ -1551089,6 +1551025,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::LOVIW",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::LOVIW",
+      "exchange": "NASDAQ",
+      "ticker": "LOVIW",
+      "asset_types": "Stock",
+      "names": "Live Oak Acquisition Corp. VI - Warrants",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::LPAA",
@@ -1561705,14 +1561657,14 @@
       "exchange": "NASDAQ",
       "ticker": "OLMA",
       "asset_types": "Stock",
-      "names": "Olema Pharmaceuticals, Inc. - Common Stock",
+      "names": "Olema Oncology, Inc. - Common Stock",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "NASDAQ::OLMA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::OLOX",
@@ -1562305,6 +1562257,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: warrants"
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::OPHI",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::OPHI",
+      "exchange": "NASDAQ",
+      "ticker": "OPHI",
+      "asset_types": "Stock",
+      "names": "CollPlant Biotechnologies Ltd. - Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::OPHI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::OPI",
@@ -1568049,22 +1568017,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::PTIR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::PTLE",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::PTLE",
-      "exchange": "NASDAQ",
-      "ticker": "PTLE",
-      "asset_types": "Stock",
-      "names": "PTL LTD - Class A Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
-      "matched_listing_keys": "NASDAQ::PTLE",
-      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::PTLO",
@@ -1589513,7 +1589465,7 @@
       "exchange": "NASDAQ",
       "ticker": "WFRD",
       "asset_types": "Stock",
-      "names": "Weatherford International plc - Ordinary shares",
+      "names": "Weatherford International Corp - Common Stock",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1590688,6 +1590640,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::WW",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::WWB",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::WWB",
+      "exchange": "NASDAQ",
+      "ticker": "WWB",
+      "asset_types": "Stock",
+      "names": "Windward Bio Group AG - Common shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::WWB",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1593200,6 +1593168,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::ZYME",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::ZYN",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::ZYN",
+      "exchange": "NASDAQ",
+      "ticker": "ZYN",
+      "asset_types": "Stock",
+      "names": "PTL LTD - Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::ZYN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1620563,22 +1620547,6 @@
       "evidence": "name indicates non-target instrument: preferred"
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::BATS::FPRO",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::FPRO",
-      "exchange": "BATS",
-      "ticker": "FPRO",
-      "asset_types": "ETF",
-      "names": "Fidelity Real Estate Investment ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::FPRO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::BATS::FPSX",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::FPSX",
@@ -1643088,6 +1643056,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::BWET",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::BWLB",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::BWLB",
+      "exchange": "NYSE ARCA",
+      "ticker": "BWLB",
+      "asset_types": "ETF",
+      "names": "Brandywine Large Cap ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::BWLB",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1678579,22 +1678563,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::USG",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::USG",
-      "exchange": "NYSE ARCA",
-      "ticker": "USG",
-      "asset_types": "ETF",
-      "names": "USCF Gold Strategy Plus Income Fund",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
-      "matched_listing_keys": "NYSE ARCA::GLDX",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::USL",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::USL",
@@ -1685376,6 +1685344,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE MKT::MCRP",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::MDRN",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE MKT::MDRN",
+      "exchange": "NYSE MKT",
+      "ticker": "MDRN",
+      "asset_types": "Stock",
+      "names": "Modern Mining Technology Corp. Common Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE MKT::MDRN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1712339,6 +1712323,22 @@
       "evidence": "name indicates non-target instrument: preferred"
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::LOB$B",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::LOB$B",
+      "exchange": "NYSE",
+      "ticker": "LOB$B",
+      "asset_types": "Stock",
+      "names": "Live Oak Bancshares, Inc. Depositary Shares, Each Representing a 1/40th Interest in a Share of 8.750% Fixed Rate Series B Non-Cumulative Perpetual Preferred Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: preferred"
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::LOCL",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::LOCL",
@@ -1731632,6 +1731632,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::VVV",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::VVVV",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::VVVV",
+      "exchange": "NYSE",
+      "ticker": "VVVV",
+      "asset_types": "Stock",
+      "names": "vVARDIS Holding AG Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::VVVV",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2059549,10 +2059565,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::CLGN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::CLIK",
@@ -2096413,10 +2096429,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::PTLE",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::PTLO",
