@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-13T08:19:30Z`
+Generated at: `2026-11-13T14:41:09Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -38,7 +38,7 @@ Generated at: `2026-11-13T08:19:30Z`
 | FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18168 | 43.06 |  | maintain | not_applicable |
 | GSE | official_partial | gse_listed_companies |  | 0 |  | gse_listed_companies | denominator_missing | blocked_nonfresh_source |
 | HEL | official_partial | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares |  | 0 |  | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares | denominator_missing | blocked_nonfresh_source |
-| HKEX | official_full | hkex_securities_list |  | 3240 | 97.87 |  | maintain | not_applicable |
+| HKEX | official_full | hkex_securities_list |  | 3242 | 97.87 |  | maintain | not_applicable |
 | HNX | official_full | hnx_listed_securities |  | 299 | 45.48 | hnx_listed_securities | refresh_unavailable | not_applicable |
 | HOSE | official_partial | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks |  | 0 |  | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks | denominator_missing | blocked_nonfresh_source |
 | ICE_IS | official_partial | nasdaq_nordic_iceland_shares |  | 0 |  | nasdaq_nordic_iceland_shares | denominator_missing | blocked_nonfresh_source |
@@ -46,11 +46,11 @@ Generated at: `2026-11-13T08:19:30Z`
 | ISE | official_full | euronext_equities |  | 16 | 56.25 |  | maintain | not_applicable |
 | JSE | official_partial | jse_etf_list|jse_etn_list | Stock | 0 |  | jse_etf_list|jse_etn_list | refresh_unavailable | blocked_source_unavailable |
 | KOSDAQ | official_full | krx_listed_companies |  | 1820 | 87.2 | krx_listed_companies | refresh_unavailable | not_applicable |
-| KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2128 | 91.4 | krx_listed_companies | refresh_unavailable | not_applicable |
+| KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2126 | 91.39 | krx_listed_companies | refresh_unavailable | not_applicable |
 | LSE | official_full | lse_company_reports|lse_instrument_directory|lse_price_explorer |  | 11184 | 60.93 | lse_company_reports|lse_instrument_directory|lse_price_explorer | refresh_unavailable | not_applicable |
 | LUSE | official_partial | luse_listed_companies |  | 0 |  | luse_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
-| MSX | official_full | muscat_securities_companies |  | 110 | 86.36 |  | maintain | not_applicable |
+| MSX | official_full | muscat_securities_companies |  | 109 | 86.24 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5620 | 81.51 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NEO | official_full | cboe_canada_listing_directory |  | 449 | 46.33 |  | maintain | not_applicable |
@@ -90,7 +90,7 @@ Generated at: `2026-11-13T08:19:30Z`
 | VSE | official_partial | vienna_listed_companies | ETF | 0 |  | vienna_listed_companies | denominator_missing | blocked_nonfresh_source |
 | WSE | official_partial | newconnect_listed_companies|wse_etf_list|wse_listed_companies |  | 0 |  | newconnect_listed_companies|wse_etf_list|wse_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | XDUS | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| XETRA | official_full | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities |  | 5517 | 95.6 | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies | refresh_required | not_applicable |
+| XETRA | official_full | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies|deutsche_boerse_xetra_all_tradable_equities |  | 5517 | 95.61 | deutsche_boerse_etfs_etps|deutsche_boerse_listed_companies | refresh_required | not_applicable |
 | XHAM | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XHAN | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | XSTU | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |

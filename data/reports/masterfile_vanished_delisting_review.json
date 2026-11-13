@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-12T15:05:11Z",
+  "generated_at": "2026-11-13T14:32:11Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 1066,
-  "rotation_vanished_rows": 46,
-  "backlog_rows": 1020,
-  "still_in_database": 1053,
+  "vanished_reference_rows": 1060,
+  "rotation_vanished_rows": 7,
+  "backlog_rows": 1053,
+  "still_in_database": 1054,
   "classifier_counts": {
     "manual_nasdaq_delete_review_required": 4,
-    "manual_rename_vs_delisting_required": 1049,
-    "not_in_database": 13
+    "manual_rename_vs_delisting_required": 1050,
+    "not_in_database": 6
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 46; still-in-database backlog carried: 1020.",
-    "Still in database: 1053; not in database: 13.",
+    "Rotation vanished rows: 7; still-in-database backlog carried: 1053.",
+    "Still in database: 1054; not in database: 6.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -537,7 +537,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PCOV",
@@ -738,6 +738,46 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "SCALD",
+      "exchange": "BME",
+      "name": "ALDICER",
+      "isin": "ES0105976007",
+      "classification": "master_absent",
+      "source_key": "bme_security_prices_directory",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ALDICER",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "SL028",
+      "exchange": "BME",
+      "name": "ALL YOU NEED",
+      "isin": "ES0108162001",
+      "classification": "master_absent",
+      "source_key": "bme_security_prices_directory",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ALL YOU NEED",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "TRG",
@@ -5097,7 +5137,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AUEM",
@@ -5557,7 +5597,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TPHC",
@@ -5757,7 +5797,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "1JD",
@@ -6060,26 +6100,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "2WM0",
-      "exchange": "FSX",
-      "name": "FLUENT CORP. O.N.",
-      "isin": "CA34380L1022",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "FLUENT CORP. O.N.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "2ZT1",
       "exchange": "FSX",
       "name": "ACHETER-LOUER  EO -,0002",
@@ -6097,7 +6117,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "37T",
@@ -6337,7 +6357,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "4RO",
@@ -6418,26 +6438,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "5X5",
-      "exchange": "FSX",
-      "name": "INSTALLUX SA INH.   EO 16",
-      "isin": "FR0000060451",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "INSTALLUX SA INH.   EO 16",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "646",
@@ -6577,7 +6577,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "6R3",
@@ -6858,26 +6858,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "81Y",
-      "exchange": "FSX",
-      "name": "ZALARIS ASA A     NK -,10",
-      "isin": "NO0010708910",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ZALARIS ASA A     NK -,10",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "82A2",
@@ -7220,26 +7200,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "AVNB",
-      "exchange": "FSX",
-      "name": "BITWISE EURO O.END ETP",
-      "isin": "DE000A4APQX6",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "BITWISE EURO O.END ETP",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "B3H",
       "exchange": "FSX",
       "name": "BORALEX INC. A",
@@ -7420,26 +7380,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "CECV",
-      "exchange": "FSX",
-      "name": "CECONOMY AG ON Z.VERK.",
-      "isin": "DE000A40ZVV0",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "CECONOMY AG ON Z.VERK.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "CRS1",
       "exchange": "FSX",
       "name": "ERCROS SA INH.    EO 0,30",
@@ -7597,7 +7537,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "DT8A",
@@ -8160,26 +8100,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "K19",
-      "exchange": "FSX",
-      "name": "ZODIAC GOLD INC. O.N.",
-      "isin": "CA98980T1049",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "ZODIAC GOLD INC. O.N.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "K2I0",
       "exchange": "FSX",
       "name": "REEXPLORATION INC.",
@@ -8380,26 +8300,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "LV30",
-      "exchange": "FSX",
-      "name": "SHEN.X.T.UNSP.ADRS/2 HD 1",
-      "isin": "US82322V1008",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SHEN.X.T.UNSP.ADRS/2 HD 1",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "LVO0",
       "exchange": "FSX",
       "name": "LIVEPERSON INC. O.N.",
@@ -8558,26 +8458,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "MWG0",
-      "exchange": "FSX",
-      "name": "INMED PHARMACEUT.INC.NEW",
-      "isin": "CA4576378091",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "INMED PHARMACEUT.INC.NEW",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "NF0",
@@ -8800,26 +8680,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "R2I",
-      "exchange": "FSX",
-      "name": "XAI O.F.R.A.I.T NEWDLD",
-      "isin": "US98400T3041",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "XAI O.F.R.A.I.T NEWDLD",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "R35",
       "exchange": "FSX",
       "name": "ROKU INC   CL. A DL-,0001",
@@ -8837,7 +8697,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "R7E",
@@ -9198,26 +9058,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "WDL1",
-      "exchange": "FSX",
-      "name": "NAKIKI SE INH O.N.",
-      "isin": "DE000WNDL300",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "NAKIKI SE INH O.N.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "WED",
@@ -10180,6 +10020,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "02949",
+      "exchange": "HKEX",
+      "name": "GREEN POWER RTS",
+      "isin": "KYG0073U1242",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "GREEN POWER RTS",
+      "listing_name": "GREEN POWER RTS",
+      "listing_isin": "KYG0073U1242",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "02950",
       "exchange": "HKEX",
       "name": "ALPHA PRO H RTS",
@@ -10338,6 +10198,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "08475",
+      "exchange": "HKEX",
+      "name": "E-STATION GTECH",
+      "isin": "KYG525891191",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "E-STATION GTECH",
+      "listing_name": "E-STATION GTECH",
+      "listing_isin": "KYG525891191",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "08567",
@@ -11180,6 +11060,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "244660",
+      "exchange": "KRX",
+      "name": "KODEX 퀄리티Plus",
+      "isin": "KR7244660007",
+      "classification": "master_absent",
+      "source_key": "krx_etf_finder",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "KODEX 퀄리티Plus",
+      "listing_name": "KODEX Quality Plus",
+      "listing_isin": "KR7244660007",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "261920",
       "exchange": "KRX",
       "name": "ACE MSCI필리핀(합성)",
@@ -11238,6 +11138,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "321410",
+      "exchange": "KRX",
+      "name": "KODEX 멀티에셋하이인컴(H)",
+      "isin": "KR7321410003",
+      "classification": "master_absent",
+      "source_key": "krx_etf_finder",
+      "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "KODEX 멀티에셋하이인컴(H)",
+      "listing_name": "Samsung KODEX Morningstar Multi-Asset High Income Etf(H)",
+      "listing_isin": "KR7321410003",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "397420",
@@ -11800,6 +11720,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "RIUH",
+      "exchange": "MSX",
+      "name": "UBAR RI",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "muscat_securities_companies",
+      "source_url": "https://www.msx.om/companies.aspx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "UBAR RI",
+      "listing_name": "UBAR RI",
+      "listing_isin": "",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "ALBG",
       "exchange": "NASDAQ",
       "name": "Leverage Shares 2X Long ALB Daily ETF",
@@ -12097,7 +12037,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "FCXG",
@@ -12292,12 +12232,12 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "Skyline Builders Group Holding Limited - Class A Ordinary Shares",
-      "listing_name": "Skyline Builders Group Holding Limited",
-      "listing_isin": "KYG8193D1043",
-      "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KBAB",
@@ -12417,7 +12357,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KSMH",
@@ -12477,7 +12417,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MAMK",
@@ -12537,7 +12477,7 @@
       "still_in_database": true,
       "classifier_action": "manual_nasdaq_delete_review_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MUY",
@@ -12697,7 +12637,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "OPEG",
@@ -12998,26 +12938,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "YHNA",
-      "exchange": "NASDAQ",
-      "name": "YHN Acquisition I Ltd",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "YHN Acquisition I Ltd",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "ZTEK",
@@ -14237,27 +14157,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "CFR$B",
-      "exchange": "NYSE",
-      "name": "Cullen/Frost Bankers, Inc. Depositary Shares, each representing a 1/40th ownership interest in a share of 4.450% non-cumulative perpetual preferred stock, Series B",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Cullen/Frost Bankers, Inc. Depositary Shares, each representing a 1/40th ownership interest in a share of 4.450% non-cumulative perpetual preferred stock, Series B",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ELME",
@@ -14917,7 +14817,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "TOT",
@@ -15032,12 +14932,12 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "AtlasClear Holdings, Inc. Common Stock",
-      "listing_name": "AtlasClear Holdings, Inc.",
-      "listing_isin": "US1287452056",
-      "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "HLSQ",
@@ -15052,12 +14952,12 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "Tessera Defense and Homeland Security Inc. Common Stock",
-      "listing_name": "Tessera Defense and Homeland Security Inc. Common Stock",
-      "listing_isin": "US09090D6085",
-      "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "KNRX",
@@ -15072,12 +14972,12 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "KNOREX LTD. Class A Ordinary Shares",
-      "listing_name": "KNOREX LTD.",
-      "listing_isin": "KYG5304A1022",
-      "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AKBM",
@@ -15277,7 +15177,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ANEB",
@@ -15720,26 +15620,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "SELXF",
-      "exchange": "OTC",
-      "name": "Semilux International Ltd.",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "sec_company_tickers_exchange",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "Semilux International Ltd.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "SITKF",
       "exchange": "OTC",
       "name": "Sitka Gold Corp.",
@@ -15772,12 +15652,12 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "TuSimple Holdings Inc.",
-      "listing_name": "Tusimple Holdings Inc",
+      "listing_name": "CreateAI Holdings Inc",
       "listing_isin": "US90089L1089",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "USREF",
@@ -19497,7 +19377,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2OY",
@@ -19797,7 +19677,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "AVNC",
@@ -19817,7 +19697,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "B72",
@@ -19877,7 +19757,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BCFC",
@@ -19937,7 +19817,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BCFG",
@@ -19977,7 +19857,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "BCIX",
@@ -20037,7 +19917,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CHSA",
@@ -20077,7 +19957,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CLWD",
@@ -20977,7 +20857,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RPL",
@@ -21017,7 +20897,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "UAL1",
@@ -21097,7 +20977,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "WDNR",
