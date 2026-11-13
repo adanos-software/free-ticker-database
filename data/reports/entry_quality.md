@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-11-13T16:04:58Z`
+Generated at: `2026-11-13T16:36:21Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,556 |
-| source_gap | 11,158 |
+| pass | 86,558 |
+| source_gap | 11,156 |
 | warn | 34 |
 
 ## Issue Counts
@@ -18,7 +18,7 @@ Generated at: `2026-11-13T16:04:58Z`
 | official_reference_gap | 6,833 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 632 |
-| missing_stock_sector | 620 |
+| missing_stock_sector | 617 |
 | missing_etf_category | 145 |
 | official_name_mismatch | 23 |
 | official_isin_mismatch | 11 |
