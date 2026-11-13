@@ -7,7 +7,7 @@ Rows: `23`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
-| 1 | FSX | 56.94 | 5916 | 4429 | refresh_only |
+| 1 | FSX | 56.94 | 5915 | 4430 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.07 | 3500 | 870 | not_in_supplement_allowlist |
 | 4 | NYSE | 59.98 | 1311 | 564 | not_in_supplement_allowlist |
@@ -19,7 +19,7 @@ Rows: `23`
 | 10 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
 | 11 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
 | 12 | NEO | 54.74 | 172 | 69 | not_in_supplement_allowlist |
-| 13 | KRX | 92.01 | 169 | 14 | not_in_supplement_allowlist |
+| 13 | KRX | 92.0 | 169 | 14 | not_in_supplement_allowlist |
 | 14 | B3 | 90.76 | 125 | 0 | collision_free_supplement |
 | 15 | NYSE ARCA | 96.27 | 102 | 29 | not_in_supplement_allowlist |
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |

@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-11-13T15:09:01Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-11-13T14:32:14Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,153 +11,14 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 9,
-    "accepted_rows": 7,
-    "skipped_rows": 2,
-    "detected_symbol_changes": 2,
-    "review_override_files_rekeyed": [
-      "foreign_isin_reviewed.csv",
-      "metadata_updates.csv"
-    ],
-    "accepted_by_exchange": {
-      "NASDAQ": 4,
-      "NYSE": 1,
-      "NYSE ARCA": 1,
-      "NYSE MKT": 1
-    },
-    "accepted_by_target": {
-      "coverage_expansion": 2,
-      "supplement": 5
-    },
-    "skipped_by_reason": {
-      "excluded_non_common_stock": 2
-    }
+    "new_supported_rows": 0,
+    "accepted_rows": 0,
+    "skipped_rows": 0,
+    "detected_symbol_changes": 0,
+    "accepted_by_exchange": {},
+    "accepted_by_target": {},
+    "skipped_by_reason": {}
   },
-  "accepted": [
-    {
-      "listing_key": "NASDAQ::LOVI",
-      "ticker": "LOVI",
-      "exchange": "NASDAQ",
-      "name": "Live Oak Acquisition Corp. VI - Class A Ordinary Shares",
-      "asset_type": "Stock",
-      "stock_sector": "",
-      "etf_category": "",
-      "country": "",
-      "country_code": "",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "apply_target": "coverage_expansion"
-    },
-    {
-      "ticker": "OPHI",
-      "name": "CollPlant Biotechnologies Ltd. - Ordinary Shares",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "Health Care",
-      "country": "Israel",
-      "country_code": "IL",
-      "isin": "IL0004960188",
-      "aliases": "collplant biotechnologies",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "WWB",
-      "name": "Windward Bio Group AG - Common shares",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "",
-      "country_code": "",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "ZYN",
-      "name": "PTL LTD - Class A Ordinary Shares",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "Energy",
-      "country": "British Virgin Islands",
-      "country_code": "VG",
-      "isin": "VGG7377S1276",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "VVVV",
-      "name": "vVARDIS Holding AG Class A Ordinary Shares",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "",
-      "country_code": "",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "BWLB",
-      "name": "Brandywine Large Cap ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "listing_key": "NYSE MKT::MDRN",
-      "ticker": "MDRN",
-      "exchange": "NYSE MKT",
-      "name": "Modern Mining Technology Corp. Common Shares",
-      "asset_type": "Stock",
-      "stock_sector": "",
-      "etf_category": "",
-      "country": "",
-      "country_code": "",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "apply_target": "coverage_expansion"
-    }
-  ],
-  "skipped": [
-    {
-      "ticker": "LOVIW",
-      "exchange": "NASDAQ",
-      "name": "Live Oak Acquisition Corp. VI - Warrants",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "LOB$B",
-      "exchange": "NYSE",
-      "name": "Live Oak Bancshares, Inc. Depositary Shares, Each Representing a 1/40th Interest in a Share of 8.750% Fixed Rate Series B Non-Cumulative Perpetual Preferred Stock",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
-    }
-  ]
+  "accepted": [],
+  "skipped": []
 }
