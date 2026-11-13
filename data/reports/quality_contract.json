@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "a3b1dd25dfc7cd3e5f49e077027635cdb8704d138e05de29010b9afca5b12ff5",
+  "dataset_sha256": "b72e34df13e47517c4412ced29a6ed885cfbc2929d4596d0ebacec67a19fc736",
   "source_manifest_sha256": "b7d6982094a0f74f09e405315f28a78adb24a71e59491cc18ba6ced8d9c81fda",
-  "git_commit": "ad96202befc2995be633841c266e42d3f4729cad",
+  "git_commit": "d86ae62a3f5b95da41afc52e0cca71d9c5b33009",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -21,10 +21,10 @@
       "status": "pass",
       "details": {
         "summary": {
-          "ticker_rows": 65701,
-          "listing_rows": 97748,
-          "adanos_reference_rows": 65701,
-          "entry_quality_rows": 97748,
+          "ticker_rows": 65707,
+          "listing_rows": 97758,
+          "adanos_reference_rows": 65707,
+          "entry_quality_rows": 97758,
           "error_gates": 88,
           "failed_error_gates": 0,
           "info_gates": 5
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 147,
-          "source_observations": 186448,
+          "source_observations": 186519,
           "venues": 87,
-          "issuers": 75329,
-          "instruments": 75329,
-          "listings": 97755,
-          "identifier_assertions": 168740,
-          "field_assertions": 221785,
-          "provenance_gaps": 294601,
-          "listing_events": 91551,
+          "issuers": 75338,
+          "instruments": 75338,
+          "listings": 97765,
+          "identifier_assertions": 168744,
+          "field_assertions": 221773,
+          "provenance_gaps": 294666,
+          "listing_events": 91628,
           "coverage_contracts": 136
         }
       }
@@ -68,18 +68,18 @@
       "details": {
         "status": "pass",
         "summary": {
-          "before_rows": 97753,
-          "after_rows": 97748,
-          "overall_shrink_pct": 0.005115,
-          "removed_rows": 6,
-          "evidenced_removed_rows": 6,
+          "before_rows": 97758,
+          "after_rows": 97758,
+          "overall_shrink_pct": 0.0,
+          "removed_rows": 0,
+          "evidenced_removed_rows": 0,
           "unevidenced_removed_rows": 0,
-          "critical_field_changes": 5,
+          "critical_field_changes": 0,
           "unevidenced_critical_field_changes": 0,
           "before_duplicate_listing_keys": 0,
           "after_duplicate_listing_keys": 0,
           "generated_official_change_evidence_rows": 0,
-          "generated_reviewed_transition_evidence_rows": 6
+          "generated_reviewed_transition_evidence_rows": 0
         }
       }
     },
@@ -88,8 +88,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "listings": 97748,
-        "snapshot": 97748,
+        "listings": 97758,
+        "snapshot": 97758,
         "missing": 0,
         "extra": 0,
         "duplicate_listing_keys": 0,
@@ -101,7 +101,7 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "decisions": 6893,
+        "decisions": 6894,
         "current_conflict_groups": 2104,
         "failure_count": 0,
         "sample": []
@@ -523,7 +523,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 294601
+        "gap_rows": 294666
       }
     },
     {
@@ -540,7 +540,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1333
+        "missing_rows": 1332
       }
     },
     {
@@ -556,7 +556,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1658
+        "missing_rows": 1646
       }
     },
     {
@@ -564,7 +564,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 181
+        "missing_rows": 183
       }
     },
     {
@@ -572,7 +572,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 44795
+        "missing_rows": 44797
       }
     },
     {

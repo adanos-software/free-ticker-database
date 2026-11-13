@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-11-13T14:41:09Z`
+Generated at: `2026-11-13T21:10:27Z`
 
 ## Summary
 
@@ -17,9 +17,9 @@ Generated at: `2026-11-13T14:41:09Z`
 
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
-| 1 | XSTU | missing | 2773 | 0 | 245 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
-| 2 | Munich | missing | 223 | 0 | 16 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
-| 3 | XDUS | missing | 199 | 0 | 11 | duesseldorf_stock_exchange_directory | Boerse Duesseldorf |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
+| 1 | XSTU | missing | 2773 | 0 | 244 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
+| 2 | Munich | missing | 223 | 0 | 15 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
+| 3 | XDUS | missing | 199 | 0 | 10 | duesseldorf_stock_exchange_directory | Boerse Duesseldorf |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 4 | XHAM | missing | 12 | 0 | 5 | hamburg_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 5 | XHAN | missing | 80 | 0 | 1 | hanover_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 
