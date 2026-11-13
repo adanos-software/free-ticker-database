@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- Nasdaq US new-listing apply now rekeys ticker-keyed review overrides, including `foreign_isin_reviewed.csv`, when it records a same-ISIN directory symbol change. A reviewed foreign issuer that changes ticker no longer comes back as an unreviewed US-primary foreign ISIN. `NASDAQ::CLGN` -> `NASDAQ::OPHI` keeps CollPlant Biotechnologies Ltd. and ISIN `IL0004960188`.
 - Daily symbol-change apply no longer carries a predecessor ISIN onto a successor whose official exchange-directory name is a different issuer. `INM` -> `MTRI` is a change of control and Nevada redomestication (new CUSIP `587157108`, ISIN `US5871571080`), not a same-ISIN rename of the Canadian `CA4576377002` line. Verified same-issuer renames now rekey ticker-keyed `review_overrides` rows, including `foreign_isin_reviewed.csv`, onto the new ticker.
 - Daily masterfile rotation installs Playwright Chromium without apt. `playwright install --with-deps` only needed extra fonts, and GitHub-hosted runners could not resolve `azure.archive.ubuntu.com`, `archive.ubuntu.com`, or `security.ubuntu.com`. The browser comes from Playwright's CDN. The install script launches headless Chromium after the no-deps install and uses the apt retry loop only when that launch fails. The fetchers read DOM HTML, in-page `fetch` JSON, cookies, headers, or PDF bytes, so the missing apt fonts do not change scraped fields.
 

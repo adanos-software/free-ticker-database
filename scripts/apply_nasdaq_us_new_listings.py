@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 try:
+    from scripts.apply_symbol_changes import migrate_ticker_keyed_review_overrides
     from scripts.lib.non_equity_guard import is_blocked_non_common_stock
     from scripts.rebuild_dataset import (
         COUNTRY_TO_ISO,
@@ -20,6 +21,7 @@ try:
         should_exclude_stock_row,
     )
 except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from apply_symbol_changes import migrate_ticker_keyed_review_overrides
     from lib.non_equity_guard import is_blocked_non_common_stock
     from rebuild_dataset import COUNTRY_TO_ISO, alias_matches_company, normalized_compact, should_exclude_stock_row
 
@@ -30,8 +32,9 @@ LISTINGS_CSV = DATA_DIR / "listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 COVERAGE_EXPANSION_CSV = DATA_DIR / "coverage_expansion_listings.csv"
-LISTING_TRANSITIONS_CSV = DATA_DIR / "review_overrides" / "listing_transitions.csv"
-DROP_ENTRIES_CSV = DATA_DIR / "review_overrides" / "drop_entries.csv"
+REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
+LISTING_TRANSITIONS_CSV = REVIEW_OVERRIDES_DIR / "listing_transitions.csv"
+DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
 TRANSITION_FIELDNAMES = [
     "old_listing_key",
     "new_listing_key",
@@ -127,7 +130,7 @@ def load_csv(path: Path) -> list[dict[str, str]]:
 def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in fieldnames})
@@ -342,6 +345,46 @@ def upsert_csv_rows(
         }
     rows = sorted(keyed.values(), key=lambda row: tuple(row.get(field, "") for field in key_fields))
     write_csv(path, fieldnames, rows)
+
+
+def review_rekey_rows_for_detected_symbol_changes(
+    detected: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Shape same-ISIN directory renames for ticker-keyed review rekey.
+
+    The foreign-ISIN allowlist is keyed by (ticker, exchange). A verified rename
+    keeps the ISIN, so the review has to follow the new symbol. Rows that are not
+    a same-ISIN symbol change are left alone, which keeps a genuine ticker-collision
+    ISIN unreviewed.
+    """
+
+    rows: list[dict[str, str]] = []
+    for row in detected:
+        if row.get("event_type") != "symbol_changed" or row.get("identity_type") != "same_isin":
+            continue
+        if not row.get("identity_value", "").strip():
+            continue
+        old_exchange, separator, old_ticker = row.get("old_listing_key", "").partition("::")
+        new_exchange, new_separator, new_ticker = row.get("new_listing_key", "").partition("::")
+        if not (
+            separator
+            and new_separator
+            and old_exchange
+            and old_exchange == new_exchange
+            and old_ticker
+            and new_ticker
+        ):
+            continue
+        rows.append(
+            {
+                "exchange": old_exchange,
+                "old_symbol": old_ticker,
+                "new_symbol": new_ticker,
+                "old_listing_key": row["old_listing_key"],
+                "new_listing_key": row["new_listing_key"],
+            }
+        )
+    return rows
 
 
 def persist_detected_symbol_changes(
@@ -596,6 +639,7 @@ def apply_new_listings(
     coverage_expansion_csv: Path = COVERAGE_EXPANSION_CSV,
     listing_transitions_csv: Path = LISTING_TRANSITIONS_CSV,
     drop_entries_csv: Path = DROP_ENTRIES_CSV,
+    review_overrides_dir: Path | None = None,
     report_json: Path = REPORT_JSON,
     report_md: Path = REPORT_MD,
     asset_types: set[str] | None = None,
@@ -750,6 +794,12 @@ def apply_new_listings(
         listing_transitions_csv=listing_transitions_csv,
         drop_entries_csv=drop_entries_csv,
     )
+    rekeyed_reviews: list[str] = []
+    if review_overrides_dir is not None:
+        rekeyed_reviews = migrate_ticker_keyed_review_overrides(
+            review_rekey_rows_for_detected_symbol_changes(unique_detected_symbol_changes),
+            review_overrides_dir,
+        )
 
     supplement_rows = dedupe_supplement_rows([*existing_supplements, *accepted_supplements])
     write_csv(supplement_csv, SUPPLEMENT_FIELDNAMES, supplement_rows)
@@ -772,6 +822,7 @@ def apply_new_listings(
         "accepted_rows": len(accepted),
         "skipped_rows": len(skipped),
         "detected_symbol_changes": len(unique_detected_symbol_changes),
+        "review_override_files_rekeyed": rekeyed_reviews,
         "accepted_by_exchange": dict(sorted(Counter(row["exchange"] for row in accepted).items())),
         "accepted_by_target": dict(sorted(Counter(row["apply_target"] for row in accepted).items())),
         "skipped_by_reason": dict(sorted(Counter(row["skip_reason"] for row in skipped).items())),
@@ -869,6 +920,7 @@ def main(argv: list[str] | None = None) -> int:
         supplement_csv=args.supplement_csv,
         coverage_expansion_csv=args.coverage_expansion_csv,
         listing_transitions_csv=args.listing_transitions_csv,
+        review_overrides_dir=REVIEW_OVERRIDES_DIR,
         report_json=args.report_json,
         report_md=args.report_md,
         asset_types=normalize_asset_types(args.asset_types),
