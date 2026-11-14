@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-14T08:12:25Z",
+    "generated_at": "2026-11-14T09:30:44Z",
     "rows": 97755,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86561,
-      "source_gap": 11151,
+      "pass": 86563,
+      "source_gap": 11149,
       "warn": 33
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 22,
-      "source_gap": 11503
+      "source_gap": 11499
     },
     "issue_counts": {
       "official_reference_gap": 6831,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 628,
-      "missing_stock_sector": 612,
+      "expected_missing_primary_isin": 627,
+      "missing_stock_sector": 609,
       "missing_etf_category": 145,
       "official_name_mismatch": 22,
       "official_isin_mismatch": 11,
@@ -73,8 +73,8 @@
       },
       {
         "exchange": "BMV",
-        "pass": 88,
-        "source_gap": 256
+        "pass": 89,
+        "source_gap": 255
       },
       {
         "exchange": "XETRA",
