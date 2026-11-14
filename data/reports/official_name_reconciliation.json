@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-14T08:11:57Z",
+  "generated_at": "2026-11-14T13:34:12Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1953,
+  "reconciled_rows": 1952,
   "applied_rows": 0,
-  "proposed_rows": 1953,
+  "proposed_rows": 1952,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -15409,21 +15409,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.hsx.vn/l/api/v1/2/securities/etf",
       "observation_id": "87d91604d2129abe2fcadd7f",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "HOSE::HSG",
-      "action": "proposed",
-      "ticker": "HSG",
-      "exchange": "HOSE",
-      "asset_type": "Stock",
-      "isin": "VN000000HSG8",
-      "old_name": "Hoasen Group",
-      "new_name": "Hoa Sen Group",
-      "source_key": "hose_listed_stocks",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
-      "observation_id": "79bfd07e9f348a880e214cc0",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

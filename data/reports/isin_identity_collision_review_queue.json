@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-14T08:12:26Z",
+    "generated_at": "2026-11-14T13:37:22Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -1333,44 +1333,6 @@
           "asset_type": "Stock",
           "country": "Germany",
           "country_code": "DE",
-          "exchange": "XDUS",
-          "listing_key": "XDUS::ABO",
-          "name": "Clearwise AG",
-          "ticker": "ABO"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Germany",
-          "country_code": "DE",
-          "exchange": "XETRA",
-          "listing_key": "XETRA::ABO",
-          "name": "clearvise AG",
-          "ticker": "ABO"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
-      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-      "isin": "DE000A1EWXA4",
-      "isin_valid": "true",
-      "listing_count": "2",
-      "listing_keys": "XDUS::ABO|XETRA::ABO",
-      "member_exchanges": "XDUS | XETRA",
-      "member_names": "Clearwise AG | clearvise AG",
-      "member_tickers": "ABO",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Germany",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": "ABO"
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Germany",
-          "country_code": "DE",
           "exchange": "FSX",
           "listing_key": "FSX::LEH",
           "name": "LEHNER INVESTMENTS AG",
@@ -1755,6 +1717,71 @@
       "member_exchanges": "FSX | LSE | OTC | XETRA | XSTU",
       "member_names": "Heidelberg Materials AG | Heidelbergcement AG O.N.",
       "member_tickers": "0MG2 | HEI | HLBZF",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Germany",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "Munich",
+          "listing_key": "Munich::UMD",
+          "name": "UMT United Mobility Technology AG",
+          "ticker": "UMD"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XDUS",
+          "listing_key": "XDUS::UMD",
+          "name": "UMT United Mobility Technology AG",
+          "ticker": "UMD"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::UMD",
+          "name": "UMT UTD MOB.TECHN.AG",
+          "ticker": "UMD"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::WAI",
+          "name": "WAYDEAR AG",
+          "ticker": "WAI"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Germany",
+          "country_code": "DE",
+          "exchange": "XSTU",
+          "listing_key": "XSTU::UMD",
+          "name": "UMT United Mobility Technology AG",
+          "ticker": "UMD"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "DE000A40ZVU2",
+      "isin_valid": "true",
+      "listing_count": "5",
+      "listing_keys": "Munich::UMD|XDUS::UMD|XETRA::UMD|XETRA::WAI|XSTU::UMD",
+      "member_exchanges": "Munich | XDUS | XETRA | XSTU",
+      "member_names": "UMT UTD MOB.TECHN.AG | WAYDEAR AG",
+      "member_tickers": "UMD | WAI",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Germany",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
@@ -5839,15 +5866,15 @@
       "review_required_groups": 126,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 118,
+    "closed_groups": 117,
     "collision_groups": 126,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 93,
-      "ticker_collision_isin_misassignment_suspected": 33
+      "isin_shared_by_distinct_issuers": 94,
+      "ticker_collision_isin_misassignment_suspected": 32
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-14T08:12:26Z",
-    "listings_involved": 367,
+    "generated_at": "2026-11-14T13:37:22Z",
+    "listings_involved": 370,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5865,7 +5892,7 @@
         "registered_country": "Singapore"
       },
       {
-        "collision_groups": 8,
+        "collision_groups": 7,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "Germany"
       },
@@ -5881,6 +5908,11 @@
       },
       {
         "collision_groups": 5,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Germany"
+      },
+      {
+        "collision_groups": 5,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "India"
       },
@@ -5893,11 +5925,6 @@
         "collision_groups": 4,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "France"
-      },
-      {
-        "collision_groups": 4,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Germany"
       },
       {
         "collision_groups": 4,
@@ -6015,7 +6042,7 @@
         "registered_country": "Italy"
       }
     ],
-    "open_groups": 8,
+    "open_groups": 9,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 4,
@@ -6046,6 +6073,6 @@
       "United Kingdom": 2,
       "United States": 39
     },
-    "ticker_collision_groups": 33
+    "ticker_collision_groups": 32
   }
 }

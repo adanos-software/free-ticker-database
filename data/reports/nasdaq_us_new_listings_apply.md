@@ -1,6 +1,6 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-13T14:32:14Z`
+- Generated at: `2026-11-14T13:33:04Z`
 - New supported rows: `0`
 - Accepted rows: `0`
 - Skipped rows: `0`
