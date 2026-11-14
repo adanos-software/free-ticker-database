@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-11-12T15:08:05Z",
+    "generated_at": "2026-11-14T13:28:07Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 394,
+    "blocked_rows": 396,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 4,
       "blocked_new_symbol_not_active_in_official_master": 4,
-      "blocked_old_symbol_not_unique_in_us_scope": 308,
+      "blocked_old_symbol_not_unique_in_us_scope": 310,
       "manual_cross_venue_ticker_reuse": 7,
       "manual_missing_identity_evidence": 2,
       "manual_non_us_or_unscoped_source": 52,
@@ -24,6 +24,14 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "b968c31b6261b663",
+      "effective_date": "2026-11-12",
+      "old_symbol": "KAZR",
+      "new_symbol": "CRMN",
+      "new_company_name": "Skyline Builders Group Holding Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
     {
       "change_id": "d9304bb333842e98",
       "effective_date": "2026-11-10",
@@ -865,6 +873,14 @@
       "new_symbol": "KAZR",
       "new_company_name": "Skyline Builders Group Holding Ltd.",
       "status": "manual_non_us_or_unscoped_source"
+    },
+    {
+      "change_id": "92647fb011a826f7",
+      "effective_date": "2026-06-17",
+      "old_symbol": "SKBL",
+      "new_symbol": "CRMN",
+      "new_company_name": "Skyline Builders Group Holding Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "3273d2c0366bca0c",
