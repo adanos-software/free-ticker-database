@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-14T08:12:15Z`
+Generated at: `2026-11-14T13:38:29Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -29,13 +29,13 @@ Generated at: `2026-11-14T08:12:15Z`
 | Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2976 | 8.27 | euronext_etfs | refresh_required | not_applicable |
 | Bursa | official_partial | bursa_closing_prices|bursa_equity_isin |  | 0 |  | bursa_closing_prices|bursa_equity_isin | refresh_unavailable | blocked_source_unavailable |
 | CPH | official_partial | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares |  | 0 |  | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares | denominator_missing | blocked_nonfresh_source |
-| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 322 | 99.07 |  | maintain | not_applicable |
+| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 323 | 99.07 |  | maintain | not_applicable |
 | CSE_MA | official_full | cse_ma_listed_companies |  | 82 | 21.95 | cse_ma_listed_companies | refresh_unavailable | not_applicable |
 | DFM | official_full | dfm_listed_securities |  | 72 | 75.0 |  | maintain | not_applicable |
 | DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  | dse_tz_listed_companies | denominator_missing | blocked_nonfresh_source |
 | EGX | official_partial | egx_listed_stocks |  | 0 |  | egx_listed_stocks | denominator_missing | blocked_nonfresh_source |
 | Euronext | official_full | euronext_equities|euronext_etfs |  | 2021 | 64.82 | euronext_etfs | refresh_required | not_applicable |
-| FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18168 | 43.06 |  | maintain | not_applicable |
+| FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18171 | 43.02 |  | maintain | not_applicable |
 | GSE | official_partial | gse_listed_companies |  | 0 |  | gse_listed_companies | denominator_missing | blocked_nonfresh_source |
 | HEL | official_partial | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares |  | 0 |  | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares | denominator_missing | blocked_nonfresh_source |
 | HKEX | official_full | hkex_securities_list |  | 3242 | 97.87 |  | maintain | not_applicable |

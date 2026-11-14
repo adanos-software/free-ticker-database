@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-14T08:12:26Z`
+Generated: `2026-11-14T13:37:22Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -9,18 +9,18 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | Metric | Value |
 | --- | ---: |
 | Collision groups | 126 |
-| Listings involved | 367 |
-| Ticker-collision groups | 33 |
-| Open groups | 8 |
-| Closed same-issuer reviewed | 118 |
+| Listings involved | 370 |
+| Ticker-collision groups | 32 |
+| Open groups | 9 |
+| Closed same-issuer reviewed | 117 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 93 |
-| ticker_collision_isin_misassignment_suspected | 33 |
+| isin_shared_by_distinct_issuers | 94 |
+| ticker_collision_isin_misassignment_suspected | 32 |
 
 ## Next Review Batches
 
@@ -29,13 +29,13 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | United States | 25 |
 | ticker_collision_isin_misassignment_suspected | United States | 14 |
 | isin_shared_by_distinct_issuers | Singapore | 8 |
-| ticker_collision_isin_misassignment_suspected | Germany | 8 |
+| ticker_collision_isin_misassignment_suspected | Germany | 7 |
 | isin_shared_by_distinct_issuers | Sweden | 6 |
 | isin_shared_by_distinct_issuers | Cayman Islands | 5 |
+| isin_shared_by_distinct_issuers | Germany | 5 |
 | ticker_collision_isin_misassignment_suspected | India | 5 |
 | isin_shared_by_distinct_issuers | Canada | 4 |
 | isin_shared_by_distinct_issuers | France | 4 |
-| isin_shared_by_distinct_issuers | Germany | 4 |
 | isin_shared_by_distinct_issuers | Switzerland | 4 |
 | isin_shared_by_distinct_issuers | Australia | 3 |
 | isin_shared_by_distinct_issuers | China | 3 |
@@ -59,6 +59,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | AU000000CRB1 | Australia | 2 | CRB | Carbine Resources Ltd \| Lyxor Commodities Refinitiv/CoreCommodity CRB TR UCITS ETF - Acc-EUR |
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
+| DE000A40ZVU2 | Germany | 5 | - | UMT UTD MOB.TECHN.AG \| WAYDEAR AG |
 | GRS298343005 | Greece | 3 | - | HELLENiQ ENERGY Holdings S.A. \| Hellenic Petroleum Holdings S.A. |
 | HK1097008929 | Hong Kong | 3 | - | CTF Media & Entertainment Limited \| i-CABLE Communications Limited |
 | INE234A01025 | India | 3 | - | Evonile Pharma Limited \| Novartis India Ltd |
