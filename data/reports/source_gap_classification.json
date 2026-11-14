@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-14T09:30:49Z",
-    "rows": 8207,
+    "generated_at": "2026-11-14T12:34:56Z",
+    "rows": 8206,
     "field_totals": {
       "missing_etf_category": 132,
       "missing_isin_primary": 627,
-      "missing_sector_stock": 617,
+      "missing_sector_stock": 616,
       "official_reference_gap": 6831
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 139,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 437,
+      "official_industry_taxonomy_unavailable_gap": 436,
       "official_product_taxonomy_unavailable_gap": 101,
       "official_reference_symbol_collision_gap": 1191,
       "official_reference_unmatched_source_gap": 5640,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 43,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 437,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 436,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1191,
@@ -22357,23 +22357,6 @@
       "source_gap_context": "listing_key=PSE::JOH;exchange=PSE;ticker=JOH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "PSE::REDC",
-      "ticker": "REDC",
-      "exchange": "PSE",
-      "asset_type": "Stock",
-      "name": "Repower Energy Development Corporation",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=PSE::REDC;exchange=PSE;ticker=REDC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
