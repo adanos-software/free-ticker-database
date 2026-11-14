@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-13T21:10:29Z",
-    "rows": 8214,
+    "generated_at": "2026-11-14T06:26:31Z",
+    "rows": 8213,
     "field_totals": {
       "missing_etf_category": 132,
       "missing_isin_primary": 628,
-      "missing_sector_stock": 621,
+      "missing_sector_stock": 620,
       "official_reference_gap": 6833
     },
     "class_totals": {
@@ -16,7 +16,7 @@
       "debt_or_securitized_identifier_gap": 92,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 18,
-      "exchange_industry_source_gap": 45,
+      "exchange_industry_source_gap": 44,
       "fixed_income_etf_category_gap": 5,
       "fund_or_trust_identifier_gap": 310,
       "fundlike_stock_sector_gap": 33,
@@ -48,7 +48,7 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
-      "missing_sector_stock:exchange_industry_source_gap": 45,
+      "missing_sector_stock:exchange_industry_source_gap": 44,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 439,
       "missing_sector_stock:otc_sector_source_gap": 91,
@@ -160,7 +160,7 @@
         },
         {
           "exchange": "XSTU",
-          "rows": 35
+          "rows": 34
         },
         {
           "exchange": "BVB",
@@ -23664,23 +23664,6 @@
       "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
       "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
       "source_gap_context": "listing_key=XSTU::MHN2;exchange=XSTU;ticker=MHN2;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XSTU::NH7",
-      "ticker": "NH7",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "name": "Netcare Limited",
-      "gap_class": "exchange_industry_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
-      "source_gap_context": "listing_key=XSTU::NH7;exchange=XSTU;ticker=NH7;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
     },

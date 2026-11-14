@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-13T21:10:30Z",
-    "rows": 8214,
+    "generated_at": "2026-11-14T06:26:31Z",
+    "rows": 8213,
     "outcome_totals": {
       "accepted_source_gap": 5110,
       "core_exclusion_candidate": 516,
-      "official_fill_required": 2588
+      "official_fill_required": 2587
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -15,7 +15,7 @@
       "debt_or_securitized_identifier_gap": 92,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 18,
-      "exchange_industry_source_gap": 45,
+      "exchange_industry_source_gap": 44,
       "fixed_income_etf_category_gap": 5,
       "fund_or_trust_identifier_gap": 310,
       "fundlike_stock_sector_gap": 33,
@@ -38,7 +38,7 @@
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 530,
       "missing_sector_stock:core_exclusion_candidate": 46,
-      "missing_sector_stock:official_fill_required": 45,
+      "missing_sector_stock:official_fill_required": 44,
       "official_reference_gap:accepted_source_gap": 4291,
       "official_reference_gap:official_fill_required": 2542
     },
@@ -96260,23 +96260,6 @@
       "exchange": "XSTU",
       "asset_type": "Stock",
       "name": "Reliq Health Technologies Inc",
-      "gap_class": "exchange_industry_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XSTU::NH7",
-      "ticker": "NH7",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "name": "Netcare Limited",
       "gap_class": "exchange_industry_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
