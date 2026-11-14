@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-14T06:26:25Z",
-    "rows": 97758,
+    "generated_at": "2026-11-14T08:12:25Z",
+    "rows": 97755,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,24 +15,24 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86562,
-      "source_gap": 11153,
+      "pass": 86561,
+      "source_gap": 11151,
       "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4610,
-      "official_reference": 87638,
+      "identifier_enriched": 4609,
+      "official_reference": 87637,
       "scoped_source_gap": 294,
-      "valid_isin": 5216
+      "valid_isin": 5215
     },
     "severity_counts": {
       "high": 12,
       "low": 10,
       "medium": 22,
-      "source_gap": 11505
+      "source_gap": 11503
     },
     "issue_counts": {
-      "official_reference_gap": 6833,
+      "official_reference_gap": 6831,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 628,
       "missing_stock_sector": 612,
@@ -107,8 +107,8 @@
       },
       {
         "exchange": "TSX",
-        "pass": 2258,
-        "source_gap": 184
+        "pass": 2257,
+        "source_gap": 183
       },
       {
         "exchange": "ASX",
@@ -125,7 +125,7 @@
       {
         "exchange": "LSE",
         "pass": 6879,
-        "source_gap": 144,
+        "source_gap": 143,
         "warn": 2
       },
       {

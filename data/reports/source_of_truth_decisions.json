@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-14T06:26:31Z",
-    "rows": 8213,
+    "generated_at": "2026-11-14T08:12:31Z",
+    "rows": 8211,
     "outcome_totals": {
-      "accepted_source_gap": 5110,
+      "accepted_source_gap": 5109,
       "core_exclusion_candidate": 516,
-      "official_fill_required": 2587
+      "official_fill_required": 2586
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -26,8 +26,8 @@
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 439,
       "official_product_taxonomy_unavailable_gap": 101,
-      "official_reference_symbol_collision_gap": 1192,
-      "official_reference_unmatched_source_gap": 5641,
+      "official_reference_symbol_collision_gap": 1191,
+      "official_reference_unmatched_source_gap": 5640,
       "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 8
     },
@@ -39,8 +39,8 @@
       "missing_sector_stock:accepted_source_gap": 530,
       "missing_sector_stock:core_exclusion_candidate": 46,
       "missing_sector_stock:official_fill_required": 44,
-      "official_reference_gap:accepted_source_gap": 4291,
-      "official_reference_gap:official_fill_required": 2542
+      "official_reference_gap:accepted_source_gap": 4290,
+      "official_reference_gap:official_fill_required": 2541
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -15152,7 +15152,7 @@
       "ticker": "INRA",
       "exchange": "AMS",
       "asset_type": "ETF",
-      "name": "iShares Global Clean Energy UCITS ETF USD (Acc)",
+      "name": "iShares Global Clean Energy Transition UCITS ETF USD (Acc)",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -24945,23 +24945,6 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Becket Invest Plc",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "LSE::TINF",
-      "ticker": "TINF",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "Tabula US Enhanced Infla UCITS ETF USD",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -134867,23 +134850,6 @@
       "exchange": "TSX",
       "asset_type": "ETF",
       "name": "Guardian Directed Equity Path ETF",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "TSX::GDPY-B",
-      "ticker": "GDPY-B",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Guardian Directed Premium Yield ETF",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",

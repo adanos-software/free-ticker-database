@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-13T21:08:53Z",
+  "generated_at": "2026-11-14T08:11:57Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1958,
+  "reconciled_rows": 1953,
   "applied_rows": 0,
-  "proposed_rows": 1958,
+  "proposed_rows": 1953,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -169,21 +169,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
       "observation_id": "fca45f171567f15f40041406",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "AMS::SSAC",
-      "action": "proposed",
-      "ticker": "SSAC",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "isin": "IE00B6R52259",
-      "old_name": "iShares MSCI ACWI UCITS ETF USD (Acc) EUR",
-      "new_name": "iShares MSCI All Country World UCITS ETF",
-      "source_key": "euronext_etfs",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
-      "observation_id": "ff0f4b185b7dcbe9ada230a3",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -14992,21 +14977,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "HNX::PVC",
-      "action": "proposed",
-      "ticker": "PVC",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "isin": "VN000000PVC4",
-      "old_name": "Petrovietnam Drilling Mud JSC",
-      "new_name": "Tổng Công ty Hóa chất và Dịch vụ Dầu khí - CTCP (PVChem)",
-      "source_key": "hnx_listed_securities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-ny.html",
-      "observation_id": "625521c321c2c3e71e8cd569",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "HNX::PVG",
       "action": "proposed",
       "ticker": "PVG",
@@ -21532,21 +21502,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::INRG",
-      "action": "proposed",
-      "ticker": "INRG",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "isin": "IE00B1XNHC34",
-      "old_name": "iShares Global Clean Energy UCITS",
-      "new_name": "ISHARES II PLC ISHRS GLOBAL C ENERGY TRA ETF USD (DIST)",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "9e5ef28195430a982f4c02a7",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::IS15",
       "action": "proposed",
       "ticker": "IS15",
@@ -26557,21 +26512,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "WSE::CPI",
-      "action": "proposed",
-      "ticker": "CPI",
-      "exchange": "WSE",
-      "asset_type": "Stock",
-      "isin": "AT0000A21KS2",
-      "old_name": "CPIEUROPE",
-      "new_name": "CPI EUROPE AG",
-      "source_key": "wse_listed_companies",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.gpw.pl/spolka?isin=AT0000A21KS2",
-      "observation_id": "a15197015ce0849c1ae04e25",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "WSE::DTR",
       "action": "proposed",
       "ticker": "DTR",
@@ -28069,21 +28009,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
       "observation_id": "07321a58b9499d92a525f56e",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "XETRA::IQQH",
-      "action": "proposed",
-      "ticker": "IQQH",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "isin": "IE00B1XNHC34",
-      "old_name": "iShares Global Clean Energy UCITS",
-      "new_name": "iShares Global Clean Energy Transition UCITS ETF USD (Dist)",
-      "source_key": "deutsche_boerse_etfs_etps",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "observation_id": "11caaa2f6b8e7ce12d0abc04",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

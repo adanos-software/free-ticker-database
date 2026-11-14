@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-14T06:26:31Z",
-    "rows": 8213,
+    "generated_at": "2026-11-14T08:12:30Z",
+    "rows": 8211,
     "field_totals": {
       "missing_etf_category": 132,
       "missing_isin_primary": 628,
       "missing_sector_stock": 620,
-      "official_reference_gap": 6833
+      "official_reference_gap": 6831
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -27,8 +27,8 @@
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 439,
       "official_product_taxonomy_unavailable_gap": 101,
-      "official_reference_symbol_collision_gap": 1192,
-      "official_reference_unmatched_source_gap": 5641,
+      "official_reference_symbol_collision_gap": 1191,
+      "official_reference_unmatched_source_gap": 5640,
       "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 8
     },
@@ -53,8 +53,8 @@
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 439,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1192,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5641
+      "official_reference_gap:official_reference_symbol_collision_gap": 1191,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5640
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -222,7 +222,7 @@
         },
         {
           "exchange": "LSE",
-          "rows": 135
+          "rows": 134
         }
       ]
     },
@@ -311,7 +311,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "TSX",
-        "rows": 100,
+        "rows": 99,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -24864,7 +24864,7 @@
       "ticker": "INRA",
       "exchange": "AMS",
       "asset_type": "ETF",
-      "name": "iShares Global Clean Energy UCITS ETF USD (Acc)",
+      "name": "iShares Global Clean Energy Transition UCITS ETF USD (Acc)",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
@@ -60114,23 +60114,6 @@
       "source_gap_context": "listing_key=LSE::SDG7;exchange=LSE;ticker=SDG7;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "LSE::TINF",
-      "ticker": "TINF",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "Tabula US Enhanced Infla UCITS ETF USD",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "review_needed": "true",
-      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
-      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
-      "source_gap_context": "listing_key=LSE::TINF;exchange=LSE;ticker=TINF;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",
@@ -132770,23 +132753,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=TSX::GDEP-B;exchange=TSX;ticker=GDEP-B;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "TSX::GDPY-B",
-      "ticker": "GDPY-B",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Guardian Directed Premium Yield ETF",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=TSX::GDPY-B;exchange=TSX;ticker=GDPY-B;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

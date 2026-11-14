@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3393,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12545,
-      "exact_match": 100124,
-      "missing_from_database": 44797,
+      "exact_identity_conflict": 12542,
+      "exact_match": 100126,
+      "missing_from_database": 44798,
       "normalization_candidate": 1875,
       "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100124,
+    "coverage_credited_keys": 100126,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44797,
-    "identity_conflict_rows": 12545,
+    "in_scope_missing_rows": 44798,
+    "identity_conflict_rows": 12542,
     "mapping_candidate_rows": 1875
   },
   "rows": [
@@ -1258269,10 +1258269,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "LSE::INRG",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "lse_company_reports::LSE::INRL",
@@ -1819101,10 +1819101,10 @@
       "isins": "US28584P1093",
       "reference_scopes": "security_lookup_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::XESP",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_security_profile::OTC::XETRF",
@@ -2207213,10 +2207213,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::XESP",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::XIACF",
@@ -2609981,10 +2609981,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "TSX::GDPY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::GDV",
