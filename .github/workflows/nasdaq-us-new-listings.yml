@@ -224,3 +224,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash
+
+      - name: Resolve held bot pull request CI runs
+        if: steps.cpr.outputs.pull-request-number != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash scripts/resolve_held_bot_pr_runs.sh automation/nasdaq-us-new-listings
