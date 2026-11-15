@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97707,
-    "after_rows": 97708,
+    "before_rows": 97661,
+    "after_rows": 97661,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 7,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,50 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "BMV::EDUCA18",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "MXCFED090004"
+    },
+    {
+      "listing_key": "Bursa::5166",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "PSE::MER",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "SSE::688819",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "TPEX::8092",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "TSX::TSK",
+      "field_name": "isin",
+      "old_value": "CA87425A1012",
+      "new_value": "CA87425A8876"
+    },
+    {
+      "listing_key": "XETRA::7MP",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -74,8 +117,8 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1366,
-      "after_rows": 1366,
+      "before_rows": 1351,
+      "after_rows": 1351,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -425,8 +468,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4793,
-      "after_rows": 4793,
+      "before_rows": 4773,
+      "after_rows": 4773,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -479,8 +522,8 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2026,
-      "after_rows": 2026,
+      "before_rows": 2025,
+      "after_rows": 2025,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -488,8 +531,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2722,
-      "after_rows": 2722,
+      "before_rows": 2711,
+      "after_rows": 2711,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -686,7 +729,7 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2440,
+      "before_rows": 2441,
       "after_rows": 2441,
       "shrink_pct": 0.0,
       "removed_rows": 0,

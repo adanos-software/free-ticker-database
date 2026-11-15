@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-15T16:48:30Z",
+    "generated_at": "2026-11-15T18:10:45Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,33 +26,33 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63561,
-    "joined_listings": 63561,
-    "scope_rows": 63561
+    "rows": 63516,
+    "joined_listings": 63516,
+    "scope_rows": 63516
   },
   "completeness": {
     "isin": {
-      "n": 63561,
-      "filled": 62935,
-      "missing": 626,
+      "n": 63516,
+      "filled": 62891,
+      "missing": 625,
       "pct": 99.02,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "country": {
-      "n": 63561,
-      "filled": 63518,
+      "n": 63516,
+      "filled": 63473,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63561,
-      "filled": 62813,
-      "missing": 748,
+      "n": 63516,
+      "filled": 62769,
+      "missing": 747,
       "pct": 98.82,
-      "fills_needed_for_99": 113,
+      "fills_needed_for_99": 112,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -103,8 +103,8 @@
     "quarantine_kept": 554
   },
   "entry_quality_status": {
-    "pass": 59708,
-    "source_gap": 3828,
+    "pass": 59710,
+    "source_gap": 3781,
     "warn": 17,
     "notice": 8
   },
@@ -135,9 +135,9 @@
       "name": "core_isin_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63561,
-        "filled": 62935,
-        "missing": 626,
+        "n": 63516,
+        "filled": 62891,
+        "missing": 625,
         "pct": 99.02,
         "fills_needed_for_99": 0,
         "pass": true
@@ -147,11 +147,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63561,
-        "filled": 62813,
-        "missing": 748,
+        "n": 63516,
+        "filled": 62769,
+        "missing": 747,
         "pct": 98.82,
-        "fills_needed_for_99": 113,
+        "fills_needed_for_99": 112,
         "pass": false
       }
     },
@@ -159,8 +159,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63561,
-        "filled": 63518,
+        "n": 63516,
+        "filled": 63473,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
