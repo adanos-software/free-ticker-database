@@ -1,10 +1,10 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-11-14T13:33:02Z`
+- Generated at: `2026-11-15T16:43:51Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `1067`
-- Rotation vanished rows: `13`
-- Backlog rows: `1054`
-- Still in database: `1061`
+- Vanished reference rows: `1078`
+- Rotation vanished rows: `17`
+- Backlog rows: `1061`
+- Still in database: `1065`
 - Applied drops: `0`
 
 ## Classifier counts
@@ -12,8 +12,8 @@
 | Action | Rows |
 |---|---:|
 | manual_nasdaq_delete_review_required | 4 |
-| manual_rename_vs_delisting_required | 1057 |
-| not_in_database | 6 |
+| manual_rename_vs_delisting_required | 1061 |
+| not_in_database | 13 |
 
 ## Rows still in the database
 
@@ -46,7 +46,6 @@
 | BATS | FLEL | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | BATS | MEMY | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | BATS | PCOV | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
-| BATS | PONX | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | BATS | STMX | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | BATS | XVAP | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | BATS | XVNV | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
@@ -300,7 +299,7 @@
 | Euronext | TPHG | euronext_etfs | manual_rename_vs_delisting_required | backlog |
 | Euronext | TPHU | euronext_etfs | manual_rename_vs_delisting_required | backlog |
 | FSX | 008 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| FSX | 0I10 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| FSX | 0I10 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 0PD0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 0TB | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 0VU0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -363,7 +362,7 @@
 | FSX | 82A2 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 862 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 87M | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| FSX | 8FD | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| FSX | 8FD | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 8G7 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 8J4 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 8L8 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -372,7 +371,7 @@
 | FSX | 8XG0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 927 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 98H0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| FSX | 9A1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| FSX | 9A1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 9CO | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | 9PZ | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | ACT | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -415,7 +414,7 @@
 | FSX | GPH | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | GSZ | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | HQE1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| FSX | IFS | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| FSX | IFS | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | IJA2 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | IR0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | J1A | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -470,8 +469,8 @@
 | FSX | TEV | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | TQ4 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | UER0 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| FSX | UK6A | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
-| FSX | UMD | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| FSX | UK6A | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
+| FSX | UMD | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | W2U1 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | WC7 | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | FSX | WCE | deutsche_boerse_frankfurt_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -727,16 +726,21 @@
 | NYSE | ACA | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NYSE | ACVA | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE | BZH | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
+| NYSE | CBZ | sec_company_tickers_exchange | manual_rename_vs_delisting_required | rotation |
 | NYSE | CCO | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE | CFR | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
+| NYSE | CFR | sec_company_tickers_exchange | manual_rename_vs_delisting_required | rotation |
 | NYSE | ELME | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE | ELME | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NYSE | GBTG | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
+| NYSE | KVUE | sec_company_tickers_exchange | manual_rename_vs_delisting_required | rotation |
 | NYSE | LCIV | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
+| NYSE | LXP | sec_company_tickers_exchange | manual_rename_vs_delisting_required | rotation |
 | NYSE | LYNX | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE | OBK | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE | PAPL | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NYSE | PERF | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
+| NYSE | RAMP | sec_company_tickers_exchange | manual_rename_vs_delisting_required | rotation |
 | NYSE | SE | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NYSE | TWO | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NYSE | WEAV | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
@@ -747,7 +751,6 @@
 | NYSE ARCA | CDEI | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | CTEX | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | EASG | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | HELS | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | IBIC | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | ILS | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | IRVH | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
@@ -757,7 +760,6 @@
 | NYSE ARCA | LUNC | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | MAKX | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | MID | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
-| NYSE ARCA | MUSQ | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | NRR | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | OILT | nasdaq_other_listed | manual_rename_vs_delisting_required | backlog |
 | NYSE ARCA | ROBX | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
@@ -793,6 +795,7 @@
 | OTC | NRDE | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | NULGF | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | PEVM | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
+| OTC | PLTYF | sec_company_tickers_exchange | manual_rename_vs_delisting_required | rotation |
 | OTC | PNXP | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | PTCO | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | PTFRF | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
@@ -800,6 +803,7 @@
 | OTC | PUIGF | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | RSMIY | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | SITKF | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
+| OTC | STAI | sec_company_tickers_exchange | manual_rename_vs_delisting_required | rotation |
 | OTC | TSPH | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | USREF | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | OTC | VYRE | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
@@ -1065,7 +1069,7 @@
 | XETRA | SWN | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | UAL1 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | UCT2 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
-| XETRA | UMD | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | rotation |
+| XETRA | UMD | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | VEZ | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | WDL1 | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
 | XETRA | WDNR | deutsche_boerse_xetra_all_tradable_equities | manual_rename_vs_delisting_required | backlog |
@@ -1084,6 +1088,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 13; still-in-database backlog carried: 1054.
-- Still in database: 1061; not in database: 6.
+- Rotation vanished rows: 17; still-in-database backlog carried: 1061.
+- Still in database: 1065; not in database: 13.
 - Applied drops from this classifier: 0.

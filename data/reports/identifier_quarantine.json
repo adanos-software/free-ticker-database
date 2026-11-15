@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-15T08:30:14Z",
+  "generated_at": "2026-11-15T16:45:05Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2098,
-  "decision_rows": 6872,
+  "conflict_count": 2097,
+  "decision_rows": 6870,
   "action_counts": {
     "kept_listing_keyed_identifier": 1357,
     "proposed_clear_conflicting_identifier": 1085,
-    "quarantined_unresolved_identifier": 4430
+    "quarantined_unresolved_identifier": 4428
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1085,
-  "quarantined_rows": 4430,
+  "quarantined_rows": 4428,
   "retained_rows": 1357,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -468,45 +468,6 @@
       "reason": "The conflicting family lacks a full identity name, so destructive action is not justified.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "AT0000922554"
-    },
-    {
-      "conflict_id": "5c76bc74a16f8b12199a",
-      "isin": "AT0000946652",
-      "listing_key": "LSE::0O05",
-      "ticker": "0O05",
-      "exchange": "LSE",
-      "name": "SBO AG",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "AT0000946652"
-    },
-    {
-      "conflict_id": "5c76bc74a16f8b12199a",
-      "isin": "AT0000946652",
-      "listing_key": "OTC::SBOEF",
-      "ticker": "SBOEF",
-      "exchange": "OTC",
-      "name": "SBO AG",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "AT0000946652"
-    },
-    {
-      "conflict_id": "5c76bc74a16f8b12199a",
-      "isin": "AT0000946652",
-      "listing_key": "XETRA::SLL",
-      "ticker": "SLL",
-      "exchange": "XETRA",
-      "name": "Schoeller-Bleckmann Oilfield Equipment Aktiengesellschaft",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "AT0000946652"
     },
     {
       "conflict_id": "2d334d9d114d730c9c6d",
@@ -9453,7 +9414,7 @@
       "retained_isin": "CH1262055788"
     },
     {
-      "conflict_id": "58166890f8c34c30d08a",
+      "conflict_id": "0ee098270de47cd4e05c",
       "isin": "CH1300646267",
       "listing_key": "FSX::Q23",
       "ticker": "Q23",
@@ -9466,7 +9427,7 @@
       "retained_isin": "CH1300646267"
     },
     {
-      "conflict_id": "58166890f8c34c30d08a",
+      "conflict_id": "0ee098270de47cd4e05c",
       "isin": "CH1300646267",
       "listing_key": "LSE::0ADJ",
       "ticker": "0ADJ",
@@ -9479,7 +9440,20 @@
       "retained_isin": "CH1300646267"
     },
     {
-      "conflict_id": "58166890f8c34c30d08a",
+      "conflict_id": "0ee098270de47cd4e05c",
+      "isin": "CH1300646267",
+      "listing_key": "NYSE::BG",
+      "ticker": "BG",
+      "exchange": "NYSE",
+      "name": "Bunge Global S.A.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "CH1300646267"
+    },
+    {
+      "conflict_id": "0ee098270de47cd4e05c",
       "isin": "CH1300646267",
       "listing_key": "XETRA::Q23",
       "ticker": "Q23",
