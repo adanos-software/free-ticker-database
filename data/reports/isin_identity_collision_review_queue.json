@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-15T08:30:49Z",
+    "generated_at": "2026-11-15T14:01:24Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -2866,53 +2866,6 @@
       "member_tickers": "0K9J | 11N | DNOW",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "United States",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Austria",
-          "country_code": "AT",
-          "exchange": "LSE",
-          "listing_key": "LSE::0O05",
-          "name": "SBO AG",
-          "ticker": "0O05"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Austria",
-          "country_code": "AT",
-          "exchange": "OTC",
-          "listing_key": "OTC::SBOEF",
-          "name": "SBO AG",
-          "ticker": "SBOEF"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Austria",
-          "country_code": "AT",
-          "exchange": "XETRA",
-          "listing_key": "XETRA::SLL",
-          "name": "Schoeller-Bleckmann Oilfield Equipment Aktiengesellschaft",
-          "ticker": "SLL"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "AT0000946652",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "LSE::0O05|OTC::SBOEF|XETRA::SLL",
-      "member_exchanges": "LSE | OTC | XETRA",
-      "member_names": "SBO AG | Schoeller-Bleckmann Oilfield Equipment Aktiengesellschaft",
-      "member_tickers": "0O05 | SBOEF | SLL",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Austria",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5807,18 +5760,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 125,
+      "review_required_groups": 124,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 116,
-    "collision_groups": 125,
+    "closed_groups": 115,
+    "collision_groups": 124,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 93,
+      "isin_shared_by_distinct_issuers": 92,
       "ticker_collision_isin_misassignment_suspected": 32
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-15T08:30:49Z",
-    "listings_involved": 366,
+    "generated_at": "2026-11-15T14:01:24Z",
+    "listings_involved": 363,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5938,11 +5891,6 @@
       {
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Austria"
-      },
-      {
-        "collision_groups": 1,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Belgium"
       },
       {
@@ -5990,7 +5938,6 @@
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 4,
-      "Austria": 1,
       "Belgium": 1,
       "Bermuda": 2,
       "Canada": 6,

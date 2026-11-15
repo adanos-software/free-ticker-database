@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-15T08:30:51Z",
+    "generated_at": "2026-11-15T14:01:26Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -33,9 +33,9 @@
   "completeness": {
     "isin": {
       "n": 63561,
-      "filled": 62935,
-      "missing": 626,
-      "pct": 99.02,
+      "filled": 62934,
+      "missing": 627,
+      "pct": 99.01,
       "fills_needed_for_99": 0,
       "pass": true
     },
@@ -49,16 +49,16 @@
     },
     "taxonomy": {
       "n": 63561,
-      "filled": 62814,
-      "missing": 747,
+      "filled": 62813,
+      "missing": 748,
       "pct": 98.82,
-      "fills_needed_for_99": 112,
+      "fills_needed_for_99": 113,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "NYSE ARCA": 102,
       "ASX": 98,
-      "TSX": 83,
+      "TSX": 84,
       "NASDAQ": 68,
       "TSXV": 59,
       "BATS": 48,
@@ -87,7 +87,7 @@
       "XETRA": 52,
       "NYSE ARCA": 38,
       "AMS": 18,
-      "TSX": 10,
+      "TSX": 11,
       "BATS": 9,
       "NASDAQ": 7,
       "TSE": 7,
@@ -96,16 +96,16 @@
   },
   "identity": {
     "official_isin_mismatch": 9,
-    "official_name_mismatch": 7,
+    "official_name_mismatch": 8,
     "open_collision_groups": 9,
-    "quarantine_unresolved": 1232,
+    "quarantine_unresolved": 1231,
     "quarantine_proposed_clear": 287,
     "quarantine_kept": 554
   },
   "entry_quality_status": {
-    "pass": 59713,
-    "source_gap": 3823,
-    "warn": 17,
+    "pass": 59706,
+    "source_gap": 3829,
+    "warn": 18,
     "notice": 8
   },
   "checks": [
@@ -136,9 +136,9 @@
       "status": "pass",
       "details": {
         "n": 63561,
-        "filled": 62935,
-        "missing": 626,
-        "pct": 99.02,
+        "filled": 62934,
+        "missing": 627,
+        "pct": 99.01,
         "fills_needed_for_99": 0,
         "pass": true
       }
@@ -148,10 +148,10 @@
       "status": "fail",
       "details": {
         "n": 63561,
-        "filled": 62814,
-        "missing": 747,
+        "filled": 62813,
+        "missing": 748,
         "pct": 98.82,
-        "fills_needed_for_99": 112,
+        "fills_needed_for_99": 113,
         "pass": false
       }
     },
@@ -171,7 +171,7 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 7,
+        "official_name_mismatch": 8,
         "sample": [
           "NASDAQ::ASBP",
           "TSXV::AXO",
@@ -179,6 +179,7 @@
           "NASDAQ::INDV",
           "TSXV::MKT",
           "QSE::NLCS",
+          "NASDAQ::OLMA",
           "TSXV::WED"
         ]
       }
