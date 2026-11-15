@@ -7,25 +7,100 @@
   },
   "summary": {
     "before_rows": 97645,
-    "after_rows": 97645,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "after_rows": 97643,
+    "overall_shrink_pct": 0.002048,
+    "removed_rows": 2,
+    "evidenced_removed_rows": 2,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 6,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 2
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NASDAQ::CUSD",
+    "NASDAQ::SPC"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "BATS::JANH",
+      "field_name": "name",
+      "old_value": "Innovator U.S. Equity Premium Income 20 Barrier ETF - January",
+      "new_value": "Innovator Premium Income 20 Barrier ETF - January"
+    },
+    {
+      "listing_key": "BATS::JANH",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NASDAQ::BOED",
+      "field_name": "isin",
+      "old_value": "US25460E8690",
+      "new_value": ""
+    },
+    {
+      "listing_key": "NASDAQ::QQQY",
+      "field_name": "name",
+      "old_value": "Defiance Nasdaq 100 Enhanced Options Income ETF",
+      "new_value": "Defiance Nasdaq 100 Weekly Distribution ETF"
+    },
+    {
+      "listing_key": "NASDAQ::QQQY",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::YLDW",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    }
+  ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NASDAQ::CUSD",
+      "ticker": "CUSD",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "CrossingBridge Ultra-Short Duration ETF",
+      "new_value": "",
+      "before_row_sha256": "7901f77fb90fedda4d19dfc4a4e4bd64c2c8396020a2e29d7dee4ec88352f5b4",
+      "effective_at": "",
+      "observed_at": "2026-11-15T19:18:32Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1141819/000089418926019839/cusd497eliquidation.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "5732432893c8df4a58e27a52",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::SPC",
+      "ticker": "SPC",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "CrossingBridge Pre-Merger SPAC ETF",
+      "new_value": "",
+      "before_row_sha256": "da31f0bde0f6e4f008fdca8debdb3f56815ca9fc2b91ba72b27d46115bb1a9b7",
+      "effective_at": "",
+      "observed_at": "2026-11-15T19:18:32Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1141819/000089418926019839/cusd497eliquidation.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "38f31c90bf99c1978a7b54b1",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -426,9 +501,9 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4761,
-      "after_rows": 4761,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 4759,
+      "shrink_pct": 0.042008,
+      "removed_rows": 2,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },

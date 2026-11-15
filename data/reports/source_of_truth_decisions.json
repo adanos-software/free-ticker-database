@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-15T18:36:02Z",
-    "rows": 8099,
+    "generated_at": "2026-11-15T19:19:12Z",
+    "rows": 8098,
     "outcome_totals": {
-      "accepted_source_gap": 5095,
-      "core_exclusion_candidate": 516,
+      "accepted_source_gap": 5093,
+      "core_exclusion_candidate": 517,
       "official_fill_required": 2488
     },
     "class_totals": {
@@ -17,7 +17,7 @@
       "equity_etf_category_gap": 18,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 5,
-      "fund_or_trust_identifier_gap": 311,
+      "fund_or_trust_identifier_gap": 312,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -26,7 +26,7 @@
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 434,
       "official_product_taxonomy_unavailable_gap": 102,
-      "official_reference_symbol_collision_gap": 1184,
+      "official_reference_symbol_collision_gap": 1182,
       "official_reference_unmatched_source_gap": 5545,
       "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 7
@@ -34,12 +34,12 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 133,
       "missing_isin_primary:accepted_source_gap": 154,
-      "missing_isin_primary:core_exclusion_candidate": 471,
+      "missing_isin_primary:core_exclusion_candidate": 472,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 525,
       "missing_sector_stock:core_exclusion_candidate": 45,
       "missing_sector_stock:official_fill_required": 41,
-      "official_reference_gap:accepted_source_gap": 4283,
+      "official_reference_gap:accepted_source_gap": 4281,
       "official_reference_gap:official_fill_required": 2446
     },
     "policy": {
@@ -25263,23 +25263,6 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
-      "listing_key": "NASDAQ::CUSD",
-      "ticker": "CUSD",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "name": "CrossingBridge Ultra-Short Duration ETF",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
       "listing_key": "NASDAQ::DRCT",
       "ticker": "DRCT",
       "exchange": "NASDAQ",
@@ -25948,23 +25931,6 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Sobr Safe Inc",
-      "gap_class": "official_reference_symbol_collision_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "NASDAQ::SPC",
-      "ticker": "SPC",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "name": "CrossingBridge Pre-Merger SPAC ETF",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -89366,6 +89332,23 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::BOED",
+      "ticker": "BOED",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "Direxion Daily BA Bear 1X ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum."
     },
     {
       "field": "missing_isin_primary",
