@@ -11,6 +11,7 @@ AUTOMATION_BRANCHES = {
     "isin-validation.yml": "automation/isin-validation",
     "masterfile-rotation.yml": "automation/masterfile-rotation",
     "nasdaq-us-new-listings.yml": "automation/nasdaq-us-new-listings",
+    "stockanalysis-backfill.yml": "automation/stockanalysis-backfill",
     "symbol-changes.yml": "automation/symbol-changes",
 }
 REPORT_REBUILD_WORKFLOWS = (
@@ -79,6 +80,34 @@ def test_automation_workflows_use_scoped_token_and_dispatch_real_ci() -> None:
         assert "GH_TOKEN: ${{ github.token }}" in workflow
         assert f"gh workflow run ci.yml --ref {branch}" in workflow
         assert "AUTOMATION_PR_TOKEN" not in workflow
+
+
+def test_ci_keeps_pull_request_for_human_updates_on_automation_branches() -> None:
+    workflow = (WORKFLOW_DIR / "ci.yml").read_text(encoding="utf-8")
+    trigger = workflow.split("jobs:", 1)[0]
+
+    assert "\n  pull_request:\n" in trigger
+    assert "branches-ignore:" not in trigger
+
+
+def test_automation_workflows_resolve_held_bot_pull_request_runs() -> None:
+    for filename, branch in AUTOMATION_BRANCHES.items():
+        workflow = (WORKFLOW_DIR / filename).read_text(encoding="utf-8")
+        dispatch = workflow.index(f"gh workflow run ci.yml --ref {branch}")
+        automerge = workflow.index(
+            'gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash'
+        )
+        resolve = workflow.index(f"bash scripts/resolve_held_bot_pr_runs.sh {branch}")
+        assert dispatch < automerge < resolve
+
+        resolve_step = workflow.split("- name: Resolve held bot pull request CI runs", 1)[1]
+        resolve_header = resolve_step.split("run:", 1)[0]
+        assert "steps.cpr.outputs.pull-request-number != ''" in resolve_header
+        assert "continue-on-error: true" in resolve_header
+        assert "review_required" not in resolve_step
+        assert "coverage_expansion_rows" not in resolve_step
+        assert "GH_TOKEN: ${{ github.token }}" in resolve_step
+        assert "actions: write" in workflow
 
 
 def test_masterfile_html_parser_dependencies_are_declared() -> None:
