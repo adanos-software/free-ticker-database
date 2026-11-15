@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-11-15T18:35:30Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2097,
-  "decision_rows": 6870,
+  "conflict_count": 2096,
+  "decision_rows": 6868,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1357,
-    "proposed_clear_conflicting_identifier": 1085,
+    "kept_listing_keyed_identifier": 1356,
+    "proposed_clear_conflicting_identifier": 1084,
     "quarantined_unresolved_identifier": 4428
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1085,
+  "proposed_clear_rows": 1084,
   "quarantined_rows": 4428,
-  "retained_rows": 1357,
+  "retained_rows": 1356,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -7982,32 +7982,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "CH0019107025"
-    },
-    {
-      "conflict_id": "e0e770f0636309eeecf1",
-      "isin": "CH0024666528",
-      "listing_key": "LSE::0QQI",
-      "ticker": "0QQI",
-      "exchange": "LSE",
-      "name": "HT5 AG",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH0024666528"
-    },
-    {
-      "conflict_id": "e0e770f0636309eeecf1",
-      "isin": "CH0024666528",
-      "listing_key": "SIX::HT5",
-      "ticker": "HT5",
-      "exchange": "SIX",
-      "name": "HT5 N LTD",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "CH0024666528"
     },
     {
       "conflict_id": "cf3b6d4c1d0aed2a1b8d",
