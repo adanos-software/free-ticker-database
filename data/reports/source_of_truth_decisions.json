@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-11-15T16:49:43Z",
-    "rows": 8162,
+    "generated_at": "2026-11-15T17:34:58Z",
+    "rows": 8161,
     "outcome_totals": {
-      "accepted_source_gap": 5103,
+      "accepted_source_gap": 5102,
       "core_exclusion_candidate": 516,
       "official_fill_required": 2543
     },
@@ -21,7 +21,7 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 137,
+      "official_identifier_not_exposed_source_gap": 136,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 434,
@@ -33,7 +33,7 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 133,
-      "missing_isin_primary:accepted_source_gap": 154,
+      "missing_isin_primary:accepted_source_gap": 153,
       "missing_isin_primary:core_exclusion_candidate": 471,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 525,
@@ -2462,23 +2462,6 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Do not fill ISIN unless the listing reappears in a current official directory or has direct registry evidence."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "BMV::EDUCA18",
-      "ticker": "EDUCA18",
-      "exchange": "BMV",
-      "asset_type": "Stock",
-      "name": "Fideicomiso Irrevocable No. F/3277 en Banco Invex, S. A. Institución de Banca Múltiple, INVEX Grupo",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
     },
     {
       "field": "missing_isin_primary",
