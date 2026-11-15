@@ -293,3 +293,30 @@ def test_cross_exchange_contaminated_aliases_are_removed():
     _, aliases = clean_aliases(row, ["dalaroo metals", "delta air lines", "delta airlines"], set())
 
     assert aliases == ["delta air lines", "delta airlines"]
+
+
+def test_etf_public_company_shell_prefix_alias_is_dropped():
+    # "<umbrella> Public Limited Company - <fund>" names used to yield junk aliases such as
+    # "vii public - ishares core s&p 500"; the fund part is not promoted because other
+    # listings of the same fund already carry the fund alias.
+    cspx = {
+        "ticker": "CSPX",
+        "name": "iShares VII Public Limited Company - iShares Core S&P 500 UCITS ETF",
+        "exchange": "LSE",
+        "asset_type": "ETF",
+        "country": "Ireland",
+        "isin": "IE00B5BMR087",
+    }
+    spyd = {
+        "ticker": "SPYD",
+        "name": "SSgA SPDR ETFs Europe I Public Limited Company - SPDR S&P US Dividend Aristocrats UCITS ETF",
+        "exchange": "XETRA",
+        "asset_type": "ETF",
+        "country": "Ireland",
+        "isin": "IE00B6YX5D40",
+    }
+
+    assert clean_aliases(cspx, ["ishares vii public limited company - ishares core s&p 500 ucits etf"], set())[1] == []
+    assert clean_aliases(
+        spyd, ["ssga spdr etfs europe i public limited company - spdr s&p us dividend aristocrats ucits etf"], set()
+    )[1] == []
