@@ -8088,16 +8088,13 @@ def adx_get_json(session: requests.Session, url: str) -> dict[str, Any]:
     response = session.get(url, headers=adx_request_headers(), timeout=REQUEST_TIMEOUT)
     if response.status_code == 403:
         try:
-            from curl_cffi import requests as curl_requests  # type: ignore[import-not-found]
+            response = chrome_impersonated_get(url, headers=adx_request_headers())
         except ImportError:
-            response.raise_for_status()
-        response = curl_requests.get(
-            url,
-            headers=adx_request_headers(),
-            impersonate="chrome120",
-            timeout=REQUEST_TIMEOUT,
-        )
-    response.raise_for_status()
+            pass
+    # curl_cffi raises its own HTTPError and transport errors. Those are not
+    # requests.RequestException, so they skip load_adx_market_watch_rows and abort
+    # the whole rotation. Translate them onto the shared unavailable-source path.
+    raise_requests_status(response)
     payload = response.json()
     if not isinstance(payload, dict):
         raise ValueError("Unexpected ADX API payload")
