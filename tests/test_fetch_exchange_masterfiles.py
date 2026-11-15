@@ -18510,6 +18510,189 @@ def test_adx_market_watch_source_is_modeled_as_official_exchange_directory() -> 
     assert source.format == "adx_market_watch_json"
 
 
+def test_main_preserves_adx_rows_when_impersonated_fetch_returns_403(tmp_path, monkeypatch) -> None:
+    """curl_cffi HTTPError is not a requests.RequestException and must not abort the batch."""
+    from curl_cffi.requests.exceptions import HTTPError as CurlCffiHTTPError
+
+    assert not issubclass(CurlCffiHTTPError, requests.RequestException)
+
+    class RequestsForbidden:
+        status_code = 403
+
+        def raise_for_status(self):
+            raise requests.HTTPError("403 Client Error: Forbidden")
+
+        def json(self):
+            raise AssertionError("forbidden requests body should not be parsed")
+
+    class CurlForbidden:
+        status_code = 403
+
+        def raise_for_status(self):
+            raise CurlCffiHTTPError("HTTP Error 403")
+
+        def json(self):
+            raise AssertionError("forbidden curl body should not be parsed")
+
+    reference_path = tmp_path / "reference.csv"
+    summary_path = tmp_path / "summary.json"
+    existing_rows = [
+        {
+            "source_key": "adx_market_watch",
+            "provider": "ADX",
+            "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+            "ticker": "ALDAR",
+            "name": "Aldar Properties PJSC",
+            "exchange": "ADX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "AEA002001013",
+        },
+        {
+            "source_key": "qse_market_watch",
+            "provider": "QSE",
+            "source_url": "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+            "ticker": "QNBK",
+            "name": "QNB",
+            "exchange": "QSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "muscat_securities_companies",
+            "provider": "MSX",
+            "source_url": "https://www.msx.om/companies.aspx",
+            "ticker": "OQGN",
+            "name": "OQ Gas Networks",
+            "exchange": "MSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+    fetch_exchange_masterfiles.write_csv(
+        reference_path,
+        fetch_exchange_masterfiles.MASTERFILE_FIELDNAMES,
+        existing_rows,
+    )
+    summary_path.write_text(
+        json.dumps(
+            {
+                "source_modes": {
+                    "adx_market_watch": "network",
+                    "qse_market_watch": "network",
+                },
+                "source_details": {
+                    "adx_market_watch": {
+                        "mode": "network",
+                        "generated_at": "2026-11-13T06:07:00Z",
+                    },
+                    "qse_market_watch": {
+                        "mode": "network",
+                        "generated_at": "2026-11-13T06:07:00Z",
+                    },
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_REFERENCE_CSV", reference_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MASTERFILE_SUMMARY_JSON", summary_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ROOT", tmp_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "persist_source_metadata", lambda: None)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "ADX_MARKET_WATCH_CACHE", tmp_path / "missing-adx.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_ADX_MARKET_WATCH_CACHE",
+        tmp_path / "missing-legacy-adx.json",
+    )
+
+    requested_urls: list[str] = []
+    impersonated_urls: list[str] = []
+
+    def blocked_get(self, url, *args, **kwargs):
+        requested_urls.append(url)
+        if not str(url).startswith(fetch_exchange_masterfiles.ADX_API_BASE_URL):
+            raise AssertionError(url)
+        return RequestsForbidden()
+
+    def blocked_impersonation(url, **kwargs):
+        impersonated_urls.append(url)
+        return CurlForbidden()
+
+    monkeypatch.setattr(requests.Session, "get", blocked_get)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "chrome_impersonated_get", blocked_impersonation)
+
+    real_fetch = fetch_exchange_masterfiles.fetch_source_rows_with_mode
+
+    def fetch_source_rows_with_mode(source, session=None):
+        if source.key == "adx_market_watch":
+            return real_fetch(source, session=session)
+        if source.key == "qse_market_watch":
+            return (
+                [
+                    {
+                        "source_key": source.key,
+                        "provider": source.provider,
+                        "source_url": source.source_url,
+                        "ticker": "QNBK",
+                        "name": "Qatar National Bank",
+                        "exchange": "QSE",
+                        "asset_type": "Stock",
+                        "listing_status": "active",
+                        "reference_scope": source.reference_scope,
+                        "official": "true",
+                    }
+                ],
+                "network",
+            )
+        raise AssertionError(source.key)
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_source_rows_with_mode",
+        fetch_source_rows_with_mode,
+    )
+
+    fetch_exchange_masterfiles.main(
+        ["--source", "adx_market_watch", "--source", "qse_market_watch", "--no-manual"]
+    )
+
+    preserved = fetch_exchange_masterfiles.load_csv(reference_path)
+    by_identity = {(row["source_key"], row["ticker"]): row for row in preserved}
+    assert by_identity[("adx_market_watch", "ALDAR")]["name"] == "Aldar Properties PJSC"
+    assert by_identity[("qse_market_watch", "QNBK")]["name"] == "Qatar National Bank"
+    assert by_identity[("muscat_securities_companies", "OQGN")]["name"] == "OQ Gas Networks"
+    assert len(preserved) == 3
+    assert requested_urls == [fetch_exchange_masterfiles.ADX_ISSUERS_API_URL]
+    assert impersonated_urls == [fetch_exchange_masterfiles.ADX_ISSUERS_API_URL]
+
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["source_modes"]["adx_market_watch"] == "unavailable"
+    assert summary["source_modes"]["qse_market_watch"] == "network"
+    assert summary["errors"] == [
+        {
+            "source_key": "adx_market_watch",
+            "error": "Empty refresh result; preserved 1 existing rows",
+        }
+    ]
+    assert summary["source_details"]["adx_market_watch"]["rows"] == 1
+    assert summary["source_details"]["adx_market_watch"]["last_error"] == (
+        "Empty refresh result; preserved 1 existing rows"
+    )
+    assert summary["source_details"]["adx_market_watch"]["generated_at"] == "2026-11-13T06:07:00Z"
+    assert summary["source_details"]["qse_market_watch"]["generated_at"] != "2026-11-13T06:07:00Z"
+    assert summary["last_refresh"]["source_modes"] == {
+        "adx_market_watch": "unavailable",
+        "qse_market_watch": "network",
+    }
+
+
 def test_parse_qse_market_watch_payload_keeps_stocks_and_etfs_only() -> None:
     source = MasterfileSource(
         key="qse_market_watch",
