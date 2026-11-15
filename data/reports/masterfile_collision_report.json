@@ -2,8 +2,8 @@
   "global": {
     "official_symbols": 100313,
     "matched": 70232,
-    "collisions": 11738,
-    "missing": 18343
+    "collisions": 11737,
+    "missing": 18344
   },
   "exchanges": [
     {
@@ -4358,8 +4358,8 @@
       "exchange": "SGX",
       "official_symbols": 768,
       "matched": 636,
-      "collisions": 132,
-      "missing": 0,
+      "collisions": 131,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4451,7 +4451,13 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "BTF",
+          "name": "Debao Property",
+          "exchange": "SGX"
+        }
+      ]
     },
     {
       "exchange": "SSE_CL",
