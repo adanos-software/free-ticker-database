@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-14T13:37:22Z",
+    "generated_at": "2026-11-15T08:30:49Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -1970,62 +1970,6 @@
       "member_tickers": "PILBF | PLR | PLS",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Australia",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Belgium",
-          "country_code": "BE",
-          "exchange": "Euronext",
-          "listing_key": "Euronext::WEHB",
-          "name": "Wereldhav B-Sicafi",
-          "ticker": "WEHB"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Belgium",
-          "country_code": "BE",
-          "exchange": "FSX",
-          "listing_key": "FSX::WPU",
-          "name": "Wereldhave Belgium Naamloze vennootschap",
-          "ticker": "WPU"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Belgium",
-          "country_code": "BE",
-          "exchange": "LSE",
-          "listing_key": "LSE::0N2C",
-          "name": "Wereldhave Belgium",
-          "ticker": "0N2C"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Belgium",
-          "country_code": "BE",
-          "exchange": "XSTU",
-          "listing_key": "XSTU::WPU",
-          "name": "Wereldhave Belgium",
-          "ticker": "WPU"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "BE0003724383",
-      "isin_valid": "true",
-      "listing_count": "4",
-      "listing_keys": "Euronext::WEHB|FSX::WPU|LSE::0N2C|XSTU::WPU",
-      "member_exchanges": "Euronext | FSX | LSE | XSTU",
-      "member_names": "Wereldhav B-Sicafi | Wereldhave Belgium",
-      "member_tickers": "0N2C | WEHB | WPU",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Belgium",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5863,18 +5807,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 126,
+      "review_required_groups": 125,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 117,
-    "collision_groups": 126,
+    "closed_groups": 116,
+    "collision_groups": 125,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 94,
+      "isin_shared_by_distinct_issuers": 93,
       "ticker_collision_isin_misassignment_suspected": 32
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-14T13:37:22Z",
-    "listings_involved": 370,
+    "generated_at": "2026-11-15T08:30:49Z",
+    "listings_involved": 366,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5954,11 +5898,6 @@
       {
         "collision_groups": 2,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Belgium"
-      },
-      {
-        "collision_groups": 2,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Bermuda"
       },
       {
@@ -6000,6 +5939,11 @@
         "collision_groups": 1,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Austria"
+      },
+      {
+        "collision_groups": 1,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Belgium"
       },
       {
         "collision_groups": 1,
@@ -6047,7 +5991,7 @@
     "registered_country_totals": {
       "Australia": 4,
       "Austria": 1,
-      "Belgium": 2,
+      "Belgium": 1,
       "Bermuda": 2,
       "Canada": 6,
       "Cayman Islands": 5,

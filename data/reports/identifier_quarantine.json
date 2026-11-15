@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-14T13:34:12Z",
+  "generated_at": "2026-11-15T08:30:14Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2101,
-  "decision_rows": 6882,
+  "conflict_count": 2098,
+  "decision_rows": 6872,
   "action_counts": {
     "kept_listing_keyed_identifier": 1357,
     "proposed_clear_conflicting_identifier": 1085,
-    "quarantined_unresolved_identifier": 4440
+    "quarantined_unresolved_identifier": 4430
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1085,
-  "quarantined_rows": 4440,
+  "quarantined_rows": 4430,
   "retained_rows": 1357,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -2106,58 +2106,6 @@
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "BE0003696102"
-    },
-    {
-      "conflict_id": "5b3a37a4026da15450d4",
-      "isin": "BE0003724383",
-      "listing_key": "Euronext::WEHB",
-      "ticker": "WEHB",
-      "exchange": "Euronext",
-      "name": "Wereldhav B-Sicafi",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "BE0003724383"
-    },
-    {
-      "conflict_id": "5b3a37a4026da15450d4",
-      "isin": "BE0003724383",
-      "listing_key": "FSX::WPU",
-      "ticker": "WPU",
-      "exchange": "FSX",
-      "name": "Wereldhave Belgium Naamloze vennootschap",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "BE0003724383"
-    },
-    {
-      "conflict_id": "5b3a37a4026da15450d4",
-      "isin": "BE0003724383",
-      "listing_key": "LSE::0N2C",
-      "ticker": "0N2C",
-      "exchange": "LSE",
-      "name": "Wereldhave Belgium",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "BE0003724383"
-    },
-    {
-      "conflict_id": "5b3a37a4026da15450d4",
-      "isin": "BE0003724383",
-      "listing_key": "XSTU::WPU",
-      "ticker": "WPU",
-      "exchange": "XSTU",
-      "name": "Wereldhave Belgium",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "BE0003724383"
     },
     {
       "conflict_id": "3b00fb8c1487c13a1e29",
@@ -57155,7 +57103,7 @@
       "listing_key": "STO::CMOTEC-B",
       "ticker": "CMOTEC-B",
       "exchange": "STO",
-      "name": "Scandinavian ChemoTech AB Series B",
+      "name": "Neem's Hill AB Series B",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -89260,45 +89208,6 @@
       "retained_isin": "XS3467854462"
     },
     {
-      "conflict_id": "ba00c4d67b476058a204",
-      "isin": "ZAE000004875",
-      "listing_key": "FSX::NCO",
-      "ticker": "NCO",
-      "exchange": "FSX",
-      "name": "Nedbank Group Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000004875"
-    },
-    {
-      "conflict_id": "ba00c4d67b476058a204",
-      "isin": "ZAE000004875",
-      "listing_key": "OTC::NDBKF",
-      "ticker": "NDBKF",
-      "exchange": "OTC",
-      "name": "Nedbank Group Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000004875"
-    },
-    {
-      "conflict_id": "ba00c4d67b476058a204",
-      "isin": "ZAE000004875",
-      "listing_key": "XSTU::NCO",
-      "ticker": "NCO",
-      "exchange": "XSTU",
-      "name": "NEDBANK GROUP (NCO.SG)",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000004875"
-    },
-    {
       "conflict_id": "5155c2ccada563424add",
       "isin": "ZAE000060067",
       "listing_key": "BSE_BW::NEWG-ETF",
@@ -89323,45 +89232,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "ZAE000060067"
-    },
-    {
-      "conflict_id": "3e5fafff688d6de25af5",
-      "isin": "ZAE000066304",
-      "listing_key": "FSX::FSRA",
-      "ticker": "FSRA",
-      "exchange": "FSX",
-      "name": "FirstRand Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000066304"
-    },
-    {
-      "conflict_id": "3e5fafff688d6de25af5",
-      "isin": "ZAE000066304",
-      "listing_key": "OTC::FANDF",
-      "ticker": "FANDF",
-      "exchange": "OTC",
-      "name": "FIRSTRAND LTD",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000066304"
-    },
-    {
-      "conflict_id": "3e5fafff688d6de25af5",
-      "isin": "ZAE000066304",
-      "listing_key": "XSTU::FSRA",
-      "ticker": "FSRA",
-      "exchange": "XSTU",
-      "name": "FIRSTRAND (FSRA.SG)",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "ZAE000066304"
     },
     {
       "conflict_id": "9ce224d93f97d9b26837",

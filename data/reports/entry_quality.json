@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-15T06:32:35Z",
-    "rows": 97757,
+    "generated_at": "2026-11-15T08:31:59Z",
+    "rows": 97707,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -16,23 +16,23 @@
     "status_counts": {
       "notice": 10,
       "pass": 86565,
-      "source_gap": 11149,
+      "source_gap": 11099,
       "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4609,
+      "identifier_enriched": 4575,
       "official_reference": 87633,
       "scoped_source_gap": 294,
-      "valid_isin": 5221
+      "valid_isin": 5205
     },
     "severity_counts": {
       "high": 12,
       "low": 10,
       "medium": 22,
-      "source_gap": 11497
+      "source_gap": 11447
     },
     "issue_counts": {
-      "official_reference_gap": 6837,
+      "official_reference_gap": 6787,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 626,
       "missing_stock_sector": 602,
@@ -66,7 +66,7 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 298,
+        "source_gap": 283,
         "pass": 4502,
         "warn": 4,
         "notice": 4
@@ -86,14 +86,14 @@
         "source_gap": 223
       },
       {
-        "exchange": "NYSE ARCA",
-        "pass": 2525,
-        "source_gap": 206,
-        "warn": 1
-      },
-      {
         "exchange": "XDUS",
         "source_gap": 199
+      },
+      {
+        "exchange": "NYSE ARCA",
+        "pass": 2525,
+        "source_gap": 196,
+        "warn": 1
       },
       {
         "exchange": "AMS",
@@ -135,11 +135,6 @@
         "warn": 1
       },
       {
-        "exchange": "BATS",
-        "pass": 1277,
-        "source_gap": 114
-      },
-      {
         "exchange": "HKEX",
         "pass": 3146,
         "source_gap": 110,
@@ -149,6 +144,11 @@
         "exchange": "JSE",
         "source_gap": 89,
         "pass": 123
+      },
+      {
+        "exchange": "BATS",
+        "pass": 1277,
+        "source_gap": 89
       }
     ]
   },

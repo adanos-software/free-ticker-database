@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3393,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12541,
-      "exact_match": 100122,
+      "exact_identity_conflict": 12540,
+      "exact_match": 100123,
       "missing_from_database": 44806,
       "normalization_candidate": 1874,
       "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100122,
+    "coverage_credited_keys": 100123,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44806,
-    "identity_conflict_rows": 12541,
+    "identity_conflict_rows": 12540,
     "mapping_candidate_rows": 1874
   },
   "rows": [
@@ -193357,10 +193357,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "Bursa::5283",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "bursa_closing_prices::Bursa::5284",
@@ -421837,10 +421837,10 @@
       "isins": "JE00BTDN8H13",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "FSX::D7A",
-      "evidence": "ISIN conflict: official=JE00BTDN8H13, current=JE00B783TY65"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::D7C",
@@ -2652253,10 +2652253,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSXV::SRQ",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSXV::SRR",
