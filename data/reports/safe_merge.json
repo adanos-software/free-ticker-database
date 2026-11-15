@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 7,
+    "critical_field_changes": 17,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,46 +25,106 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "BMV::EDUCA18",
-      "field_name": "isin",
-      "old_value": "",
-      "new_value": "MXCFED090004"
+      "listing_key": "ATHEX::AAAK",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Materials"
     },
     {
-      "listing_key": "Bursa::5166",
+      "listing_key": "BME::YHTI",
+      "field_name": "name",
+      "old_value": "Umbrella Global Energy, S.A.",
+      "new_value": "Hotei Properties Group SOCIMI, S.A."
+    },
+    {
+      "listing_key": "BME::YHTI",
+      "field_name": "stock_sector",
+      "old_value": "Utilities",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "BMV::NUTRISAA",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "MX01NU070004"
+    },
+    {
+      "listing_key": "BVB::ADISS",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "Bursa::5142",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Energy"
+    },
+    {
+      "listing_key": "Euronext::AURE",
+      "field_name": "stock_sector",
+      "old_value": "Utilities",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "HEL::ROBIT",
+      "field_name": "stock_sector",
+      "old_value": "Energy",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "HNX::THB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "IDX::GEMA",
       "field_name": "stock_sector",
       "old_value": "Industrials",
       "new_value": "Consumer Discretionary"
     },
     {
-      "listing_key": "PSE::MER",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Utilities"
-    },
-    {
-      "listing_key": "SSE::688819",
-      "field_name": "stock_sector",
-      "old_value": "Consumer Discretionary",
-      "new_value": "Industrials"
-    },
-    {
-      "listing_key": "TPEX::8092",
+      "listing_key": "KRX::005870",
       "field_name": "stock_sector",
       "old_value": "Industrials",
       "new_value": "Information Technology"
     },
     {
-      "listing_key": "TSX::TSK",
-      "field_name": "isin",
-      "old_value": "CA87425A1012",
-      "new_value": "CA87425A8876"
+      "listing_key": "LSE::0QNQ",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "XETRA::7MP",
+      "listing_key": "OTC::KDCXF",
       "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Financials"
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "SIX::KUD",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "TPEX::4549",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "WSE::ABE",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "WSE::PPS",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Consumer Staples"
     }
   ],
   "generated_official_change_evidence": [],

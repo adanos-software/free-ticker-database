@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-15T19:21:06Z",
-    "rows": 8095,
+    "generated_at": "2026-11-15T20:42:48Z",
+    "rows": 8092,
     "field_totals": {
       "missing_etf_category": 133,
-      "missing_isin_primary": 625,
-      "missing_sector_stock": 608,
+      "missing_isin_primary": 624,
+      "missing_sector_stock": 606,
       "official_reference_gap": 6729
     },
     "class_totals": {
@@ -22,10 +22,10 @@
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 136,
+      "official_identifier_not_exposed_source_gap": 135,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 431,
+      "official_industry_taxonomy_unavailable_gap": 429,
       "official_product_taxonomy_unavailable_gap": 102,
       "official_reference_symbol_collision_gap": 1184,
       "official_reference_unmatched_source_gap": 5545,
@@ -44,13 +44,13 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 311,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 136,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 135,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 431,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 429,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1184,
@@ -164,7 +164,7 @@
         },
         {
           "exchange": "BVB",
-          "rows": 20
+          "rows": 19
         },
         {
           "exchange": "BSE_IN",
@@ -5391,23 +5391,6 @@
       "source_gap_context": "listing_key=BMV::GENIUS21;exchange=BMV;ticker=GENIUS21;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "BMV::NUTRISAA",
-      "ticker": "NUTRISAA",
-      "exchange": "BMV",
-      "asset_type": "Stock",
-      "name": "Grupo Nutrisa, S.A.B. de C.V.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=BMV::NUTRISAA;exchange=BMV;ticker=NUTRISAA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -14065,23 +14048,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "BVB::ADISS",
-      "ticker": "ADISS",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "name": "ADISS",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BVB::ADISS;exchange=BVB;ticker=ADISS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "BVB::AGCM",
       "ticker": "AGCM",
       "exchange": "BVB",
@@ -19312,23 +19278,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HNX::SDU;exchange=HNX;ticker=SDU;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HNX::THB",
-      "ticker": "THB",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "CTCP Bia Hà Nội - Thanh Hoá",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::THB;exchange=HNX;ticker=THB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -126184,7 +126133,7 @@
       "ticker": "HT5",
       "exchange": "SIX",
       "asset_type": "Stock",
-      "name": "HT5 N LTD",
+      "name": "Centiel AG",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
