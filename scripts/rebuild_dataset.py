@@ -347,6 +347,7 @@ ETF_SHELL_PREFIX_RE = re.compile(
     r"^(?:multi[- ]units\s+luxembourg|j\.?p\.?\s+morgan\s+exchange[- ]traded\s+fund\s+trust|(?:the\s+)?\d{4}\s+etf\s+series\s+trust(?:\s+ii)?|ea\s+series\s+trust|ishares\s+(?:i|ii|iii|iv|v|vi|vii|viii|ix|x)\s+plc)\s*[-:]\s*",
     re.IGNORECASE,
 )
+ETF_PUBLIC_COMPANY_SHELL_RE = re.compile(r"\bpublic\s*$", re.IGNORECASE)
 BRAND_QUALIFIER_TOKENS = {
     "biotherapeutics",
     "biosciences",
@@ -946,6 +947,11 @@ def etf_alias_candidate(alias: str) -> str:
     cleaned = ETF_SHELL_PREFIX_RE.sub("", cleaned)
     if " - " in cleaned:
         left, right = cleaned.split(" - ", 1)
+        if ETF_PUBLIC_COMPANY_SHELL_RE.search(left):
+            # "<umbrella> Public Limited Company - <fund>": the umbrella prefix makes a junk alias
+            # ("vii public - ishares core s&p 500"); drop it instead of promoting the fund part,
+            # which other listings of the same fund already carry.
+            return ""
         if is_generic_wrapper_alias(left) or re.search(r"\b(?:trust|fund|plc|multi[- ]units|series)\b", left, re.IGNORECASE):
             cleaned = right
     previous = ""
