@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-15T17:33:40Z",
+    "generated_at": "2026-11-15T17:22:14Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,30 +26,30 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63501,
-    "joined_listings": 63501,
-    "scope_rows": 63501
+    "rows": 63516,
+    "joined_listings": 63516,
+    "scope_rows": 63516
   },
   "completeness": {
     "isin": {
-      "n": 63501,
-      "filled": 62875,
+      "n": 63516,
+      "filled": 62890,
       "missing": 626,
       "pct": 99.01,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "country": {
-      "n": 63501,
-      "filled": 63458,
+      "n": 63516,
+      "filled": 63473,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63501,
-      "filled": 62753,
+      "n": 63516,
+      "filled": 62768,
       "missing": 748,
       "pct": 98.82,
       "fills_needed_for_99": 113,
@@ -104,7 +104,7 @@
   },
   "entry_quality_status": {
     "pass": 59708,
-    "source_gap": 3768,
+    "source_gap": 3783,
     "warn": 17,
     "notice": 8
   },
@@ -135,8 +135,8 @@
       "name": "core_isin_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63501,
-        "filled": 62875,
+        "n": 63516,
+        "filled": 62890,
         "missing": 626,
         "pct": 99.01,
         "fills_needed_for_99": 0,
@@ -147,8 +147,8 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63501,
-        "filled": 62753,
+        "n": 63516,
+        "filled": 62768,
         "missing": 748,
         "pct": 98.82,
         "fills_needed_for_99": 113,
@@ -159,8 +159,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63501,
-        "filled": 63458,
+        "n": 63516,
+        "filled": 63473,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
