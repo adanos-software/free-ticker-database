@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 14,
+    "critical_field_changes": 17,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,87 +25,105 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "FSX::NESR",
+      "listing_key": "ATHEX::AAAK",
       "field_name": "stock_sector",
-      "old_value": "Real Estate",
-      "new_value": "Consumer Staples"
+      "old_value": "Consumer Discretionary",
+      "new_value": "Materials"
     },
     {
-      "listing_key": "HEL::HONBS",
-      "field_name": "stock_sector",
-      "old_value": "Industrials",
-      "new_value": "Consumer Discretionary"
+      "listing_key": "BME::YHTI",
+      "field_name": "name",
+      "old_value": "Umbrella Global Energy, S.A.",
+      "new_value": "Hotei Properties Group SOCIMI, S.A."
     },
     {
-      "listing_key": "HNX::VE3",
+      "listing_key": "BME::YHTI",
+      "field_name": "stock_sector",
+      "old_value": "Utilities",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "BMV::NUTRISAA",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "MX01NU070004"
+    },
+    {
+      "listing_key": "BVB::ADISS",
       "field_name": "stock_sector",
       "old_value": "",
       "new_value": "Industrials"
     },
     {
-      "listing_key": "KRX::020120",
+      "listing_key": "Bursa::5142",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Energy"
+    },
+    {
+      "listing_key": "Euronext::AURE",
+      "field_name": "stock_sector",
+      "old_value": "Utilities",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "HEL::ROBIT",
+      "field_name": "stock_sector",
+      "old_value": "Energy",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "HNX::THB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "IDX::GEMA",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "KRX::005870",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "LSE::0QNQ",
       "field_name": "stock_sector",
       "old_value": "Communication Services",
       "new_value": "Information Technology"
     },
     {
-      "listing_key": "LSE::0QR4",
+      "listing_key": "OTC::KDCXF",
       "field_name": "stock_sector",
-      "old_value": "Real Estate",
-      "new_value": "Consumer Staples"
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "NASDAQ::SMX",
-      "field_name": "isin",
-      "old_value": "IE000CNLGHH1",
-      "new_value": "IE000YMEYEO8"
-    },
-    {
-      "listing_key": "NYSE MKT::PMI",
-      "field_name": "isin",
-      "old_value": "US71953R1086",
-      "new_value": "US71953R2076"
-    },
-    {
-      "listing_key": "NYSE::BEPJ",
+      "listing_key": "SIX::KUD",
       "field_name": "stock_sector",
-      "old_value": "Financials",
-      "new_value": "Utilities"
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "OTC::NSRGF",
+      "listing_key": "TPEX::4549",
       "field_name": "stock_sector",
-      "old_value": "Real Estate",
-      "new_value": "Consumer Staples"
-    },
-    {
-      "listing_key": "SGX::CHJ",
-      "field_name": "stock_sector",
-      "old_value": "Financials",
+      "old_value": "Information Technology",
       "new_value": "Industrials"
     },
     {
-      "listing_key": "SIX::NESN",
+      "listing_key": "WSE::ABE",
       "field_name": "stock_sector",
-      "old_value": "Real Estate",
-      "new_value": "Consumer Staples"
+      "old_value": "Financials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "TADAWUL::4250",
+      "listing_key": "WSE::PPS",
       "field_name": "stock_sector",
-      "old_value": "Real Estate",
-      "new_value": "Consumer Discretionary"
-    },
-    {
-      "listing_key": "WSE::ZRX",
-      "field_name": "stock_sector",
-      "old_value": "Industrials",
-      "new_value": "Health Care"
-    },
-    {
-      "listing_key": "XETRA::NESR",
-      "field_name": "stock_sector",
-      "old_value": "Real Estate",
+      "old_value": "Financials",
       "new_value": "Consumer Staples"
     }
   ],
