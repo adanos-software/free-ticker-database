@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "86906e5dc8a2f219250d8df038355e18adc1029c7dec8dce5e9d50ad53f38df2",
+  "dataset_sha256": "d253eb4d54cde384cb6f1a16a83583493537f8179814b1c8c17c926be37d32d9",
   "source_manifest_sha256": "b7d6982094a0f74f09e405315f28a78adb24a71e59491cc18ba6ced8d9c81fda",
-  "git_commit": "481ff3443e15f3859088e9207b4f9917ec5156b8",
+  "git_commit": "908ba8cdb16c7dd1ee4dea303c12711498ed5806",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -21,10 +21,10 @@
       "status": "pass",
       "details": {
         "summary": {
-          "ticker_rows": 65619,
-          "listing_rows": 97661,
-          "adanos_reference_rows": 65619,
-          "entry_quality_rows": 97661,
+          "ticker_rows": 65604,
+          "listing_rows": 97645,
+          "adanos_reference_rows": 65604,
+          "entry_quality_rows": 97645,
           "error_gates": 88,
           "failed_error_gates": 0,
           "info_gates": 5
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 147,
-          "source_observations": 186548,
+          "source_observations": 186530,
           "venues": 87,
-          "issuers": 75223,
-          "instruments": 75223,
-          "listings": 97668,
-          "identifier_assertions": 168531,
+          "issuers": 75208,
+          "instruments": 75208,
+          "listings": 97652,
+          "identifier_assertions": 168502,
           "field_assertions": 221806,
-          "provenance_gaps": 294178,
-          "listing_events": 91758,
+          "provenance_gaps": 294098,
+          "listing_events": 91754,
           "coverage_contracts": 136
         }
       }
@@ -68,8 +68,8 @@
       "details": {
         "status": "pass",
         "summary": {
-          "before_rows": 97661,
-          "after_rows": 97661,
+          "before_rows": 97645,
+          "after_rows": 97645,
           "overall_shrink_pct": 0.0,
           "removed_rows": 0,
           "evidenced_removed_rows": 0,
@@ -88,8 +88,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "listings": 97661,
-        "snapshot": 97661,
+        "listings": 97645,
+        "snapshot": 97645,
         "missing": 0,
         "extra": 0,
         "duplicate_listing_keys": 0,
@@ -523,7 +523,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 294178
+        "gap_rows": 294098
       }
     },
     {
