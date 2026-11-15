@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 7,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,50 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "BMV::EDUCA18",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "MXCFED090004"
+    },
+    {
+      "listing_key": "Bursa::5166",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "PSE::MER",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "SSE::688819",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "TPEX::8092",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "TSX::TSK",
+      "field_name": "isin",
+      "old_value": "CA87425A1012",
+      "new_value": "CA87425A8876"
+    },
+    {
+      "listing_key": "XETRA::7MP",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
