@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-14T13:34:12Z",
+  "generated_at": "2026-11-15T08:30:14Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1952,
+  "reconciled_rows": 1953,
   "applied_rows": 0,
-  "proposed_rows": 1952,
+  "proposed_rows": 1953,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -6364,6 +6364,21 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
       "observation_id": "7dda5f250e454df6798dd3f1",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
+      "listing_key": "FSX::D7A",
+      "action": "proposed",
+      "ticker": "D7A",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "isin": "JE00BTDN8H13",
+      "old_name": "Aptiv PLC",
+      "new_name": "APTIV PLC         DL -,01",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "observation_id": "fa407251ad38c2802839c60c",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
