@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-14T18:32:30Z",
-    "rows": 8211,
+    "generated_at": "2026-11-15T06:32:40Z",
+    "rows": 8206,
     "field_totals": {
       "missing_etf_category": 132,
-      "missing_isin_primary": 627,
-      "missing_sector_stock": 615,
+      "missing_isin_primary": 626,
+      "missing_sector_stock": 611,
       "official_reference_gap": 6837
     },
     "class_totals": {
@@ -16,21 +16,21 @@
       "debt_or_securitized_identifier_gap": 92,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 18,
-      "exchange_industry_source_gap": 43,
+      "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 5,
       "fund_or_trust_identifier_gap": 310,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 139,
+      "official_identifier_not_exposed_source_gap": 138,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 435,
+      "official_industry_taxonomy_unavailable_gap": 434,
       "official_product_taxonomy_unavailable_gap": 101,
       "official_reference_symbol_collision_gap": 1194,
       "official_reference_unmatched_source_gap": 5643,
       "otc_sector_source_gap": 91,
-      "shell_or_cpc_sector_gap": 8
+      "shell_or_cpc_sector_gap": 7
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 7,
@@ -44,15 +44,15 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 310,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 139,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
-      "missing_sector_stock:exchange_industry_source_gap": 43,
+      "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 435,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 434,
       "missing_sector_stock:otc_sector_source_gap": 91,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 8,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1194,
       "official_reference_gap:official_reference_unmatched_source_gap": 5643
     },
@@ -118,7 +118,7 @@
         },
         {
           "exchange": "TSXV",
-          "rows": 60
+          "rows": 59
         },
         {
           "exchange": "BATS",
@@ -160,7 +160,7 @@
         },
         {
           "exchange": "XSTU",
-          "rows": 34
+          "rows": 33
         },
         {
           "exchange": "BVB",
@@ -13096,23 +13096,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSXV::SRQ",
-      "ticker": "SRQ",
-      "exchange": "TSXV",
-      "asset_type": "Stock",
-      "name": "Sonoma Resources Inc.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=TSXV::SRQ;exchange=TSXV;ticker=SRQ;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSXV::SSS.P",
       "ticker": "SSS.P",
       "exchange": "TSXV",
@@ -19352,23 +19335,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "HNX::PPT",
-      "ticker": "PPT",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "CTCP Petro Times",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::PPT;exchange=HNX;ticker=PPT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "HNX::SDN",
       "ticker": "SDN",
       "exchange": "HNX",
@@ -19652,23 +19618,6 @@
       "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
       "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
       "source_gap_context": "listing_key=Munich::EM6;exchange=Munich;ticker=EM6;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "Munich::KUB1",
-      "ticker": "KUB1",
-      "exchange": "Munich",
-      "asset_type": "Stock",
-      "name": "Konsortium AG",
-      "gap_class": "exchange_industry_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
-      "source_gap_context": "listing_key=Munich::KUB1;exchange=Munich;ticker=KUB1;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
     },
@@ -22327,23 +22276,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "PSE::JOH",
-      "ticker": "JOH",
-      "exchange": "PSE",
-      "asset_type": "Stock",
-      "name": "Jolliville Holdings Corporation",
-      "gap_class": "shell_or_cpc_sector_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence.",
-      "source_gap_context": "listing_key=PSE::JOH;exchange=PSE;ticker=JOH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "SGX::9PQ",
       "ticker": "9PQ",
       "exchange": "SGX",
@@ -23324,23 +23256,6 @@
       "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
       "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
       "source_gap_context": "listing_key=XSTU::9RV;exchange=XSTU;ticker=9RV;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XSTU::A9U",
-      "ticker": "A9U",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "name": "Astral Foods Limited",
-      "gap_class": "exchange_industry_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector.",
-      "source_gap_context": "listing_key=XSTU::A9U;exchange=XSTU;ticker=A9U;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=exchange_industry_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=exchange_industry_source_gap"
     },
@@ -128938,7 +128853,7 @@
       "ticker": "CMOTEC-B",
       "exchange": "STO",
       "asset_type": "Stock",
-      "name": "Scandinavian ChemoTech AB Series B",
+      "name": "Neem's Hill AB Series B",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
