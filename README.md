@@ -9,27 +9,27 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 63,560 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 65,659 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 97,707 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Core listings | 63,561 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 65,660 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 97,708 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
 | Stocks | 48,851 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 16,808 | Primary ticker rows where `asset_type=ETF`. |
+| ETFs | 16,809 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 95 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 129,048 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| Aliases | 129,049 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 64,376 (98.0%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 64,831 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
 | Sector/category coverage | 64,916 (98.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 48,240 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,676 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 63,560 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core listing-scope rows | 63,561 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 62,935 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 625 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Core primary rows missing ISIN | 626 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 34,147 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 50 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 5 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 11,099 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality source-gap rows | 11,104 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
 | Entry quality warn rows | 33 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
@@ -214,7 +214,7 @@ Top exchanges by primary ticker count:
 | XETRA | 2,553 |
 | NYSE | 1,886 |
 | KRX | 1,990 |
-| TSX | 1,819 |
+| TSX | 1,820 |
 | KOSDAQ | 1,603 |
 | B3 | 1,588 |
 | ASX | 1,390 |
