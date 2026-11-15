@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-14T18:32:25Z",
+    "generated_at": "2026-11-15T06:32:35Z",
     "rows": 97757,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86562,
-      "source_gap": 11152,
+      "pass": 86565,
+      "source_gap": 11149,
       "warn": 33
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 22,
-      "source_gap": 11502
+      "source_gap": 11497
     },
     "issue_counts": {
       "official_reference_gap": 6837,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 627,
-      "missing_stock_sector": 606,
+      "expected_missing_primary_isin": 626,
+      "missing_stock_sector": 602,
       "missing_etf_category": 145,
       "official_name_mismatch": 22,
       "official_isin_mismatch": 11,
@@ -118,8 +118,8 @@
       },
       {
         "exchange": "TSXV",
-        "pass": 1274,
-        "source_gap": 145,
+        "pass": 1275,
+        "source_gap": 144,
         "warn": 3
       },
       {
