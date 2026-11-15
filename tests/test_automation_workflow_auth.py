@@ -101,7 +101,9 @@ def test_automation_workflows_resolve_held_bot_pull_request_runs() -> None:
         assert dispatch < automerge < resolve
 
         resolve_step = workflow.split("- name: Resolve held bot pull request CI runs", 1)[1]
-        assert "steps.cpr.outputs.pull-request-number != ''" in resolve_step
+        resolve_header = resolve_step.split("run:", 1)[0]
+        assert "steps.cpr.outputs.pull-request-number != ''" in resolve_header
+        assert "continue-on-error: true" in resolve_header
         assert "review_required" not in resolve_step
         assert "coverage_expansion_rows" not in resolve_step
         assert "GH_TOKEN: ${{ github.token }}" in resolve_step

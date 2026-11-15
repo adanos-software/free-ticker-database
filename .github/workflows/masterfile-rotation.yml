@@ -331,6 +331,7 @@ jobs:
 
       - name: Resolve held bot pull request CI runs
         if: steps.cpr.outputs.pull-request-number != ''
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: bash scripts/resolve_held_bot_pr_runs.sh automation/masterfile-rotation
