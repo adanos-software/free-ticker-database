@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T18:35:30Z",
+  "generated_at": "2026-11-16T00:50:24Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1952,
+  "reconciled_rows": 1946,
   "applied_rows": 0,
-  "proposed_rows": 1952,
+  "proposed_rows": 1946,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -619,21 +619,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://www.bursamalaysia.com/sites/5d809dcf39fba22790cad230/assets/6a997dd4e6414a96464b13ac/isinequity_as_of__31_August_2026.pdf",
       "observation_id": "793ded9fead83ff3834d329a",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "Bursa::0257",
-      "action": "proposed",
-      "ticker": "0257",
-      "exchange": "Bursa",
-      "asset_type": "Stock",
-      "isin": "MYQ0257OO004",
-      "old_name": "UNIQUE",
-      "new_name": "UNIQUE FIRE HOLDINGS BERHAD",
-      "source_key": "bursa_equity_isin",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.bursamalaysia.com/sites/5d809dcf39fba22790cad230/assets/6a997dd4e6414a96464b13ac/isinequity_as_of__31_August_2026.pdf",
-      "observation_id": "691d07c5b69c0aff186d5cdb",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -1294,36 +1279,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://api2.dfm.ae/web/widgets/v1/data",
       "observation_id": "1fa8254fedcb7b3073d6d5f3",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "EGX::ANFI",
-      "action": "proposed",
-      "ticker": "ANFI",
-      "exchange": "EGX",
-      "asset_type": "Stock",
-      "isin": "EGS67331C016",
-      "old_name": "Alexandria National Company for Financial Investment",
-      "new_name": "Tycoon Holding Company For Financial Investments",
-      "source_key": "egx_listed_stocks",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
-      "observation_id": "495fa8f462b5c0bab0492743",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "EGX::ARVA",
-      "action": "proposed",
-      "ticker": "ARVA",
-      "exchange": "EGX",
-      "asset_type": "Stock",
-      "isin": "EGS3E1E1C013",
-      "old_name": "Arab Valves Company",
-      "new_name": "Arabian Metal Industries And Industrial Investments",
-      "source_key": "egx_listed_stocks",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
-      "observation_id": "74d8f5b69952126deeb2f00b",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -14137,6 +14092,21 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
+      "listing_key": "FSX::Z6J",
+      "action": "proposed",
+      "ticker": "Z6J",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "isin": "NL0000686509",
+      "old_name": "Astarta Holding PLC",
+      "new_name": "ASTARTA HOLDING   EO -,01",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_scope": "exchange_directory",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
+      "observation_id": "4f5e95a0186c8f1b12f196cb",
+      "evidence_status": "active_official_exact_listing_isin_name"
+    },
+    {
       "listing_key": "FSX::Z9D",
       "action": "proposed",
       "ticker": "Z9D",
@@ -14314,21 +14284,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
       "observation_id": "5301614cb5a1f126d1a6a479",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "HEL::SRV1V",
-      "action": "proposed",
-      "ticker": "SRV1V",
-      "exchange": "HEL",
-      "asset_type": "Stock",
-      "isin": "FI4000523675",
-      "old_name": "SRV Group plc",
-      "new_name": "SRV Yhtiöt Oyj",
-      "source_key": "nasdaq_nordic_helsinki_shares",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "c985fac2813c526c903cae5b",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -16714,21 +16669,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
       "observation_id": "7a8075c7599d6796d495cbde",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "KRX::009310",
-      "action": "proposed",
-      "ticker": "009310",
-      "exchange": "KRX",
-      "asset_type": "Stock",
-      "isin": "KR7009310004",
-      "old_name": "Charm Engine",
-      "new_name": "Charm Engineering",
-      "source_key": "krx_listed_companies",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "observation_id": "3e9aa34157a0a17f9b6d5b00",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -22402,21 +22342,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "LSE::SEPL",
-      "action": "proposed",
-      "ticker": "SEPL",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "isin": "NGSEPLAT0008",
-      "old_name": "Seplat Petroleum Development Company PLC",
-      "new_name": "SEPLAT ENERGY PLC",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "19cbce9790749a7193dd88dc",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "LSE::SGSU",
       "action": "proposed",
       "ticker": "SGSU",
@@ -26044,21 +25969,6 @@
       "reference_scope": "security_identifier_registry_subset",
       "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=3491",
       "observation_id": "4cb85c34cbcac71e615fecf1",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "TSE::3750",
-      "action": "proposed",
-      "ticker": "3750",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "isin": "JP3426500009",
-      "old_name": "ADR120S,Inc.",
-      "new_name": "ADR BIOMEDICAL HOLDINGS INC.",
-      "source_key": "jpx_tse_stock_detail",
-      "reference_scope": "security_identifier_registry_subset",
-      "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=3750",
-      "observation_id": "b4ab63f6090d2e01f23bfa15",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3393,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12540,
-      "exact_match": 100128,
+      "exact_identity_conflict": 12536,
+      "exact_match": 100132,
       "missing_from_database": 44805,
       "normalization_candidate": 1868,
       "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100128,
+    "coverage_credited_keys": 100132,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44805,
-    "identity_conflict_rows": 12540,
+    "identity_conflict_rows": 12536,
     "mapping_candidate_rows": 1868
   },
   "rows": [
@@ -181085,10 +181085,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "Bursa::0032",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "bursa_closing_prices::Bursa::0034",
@@ -185101,10 +185101,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "Bursa::0257",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "bursa_closing_prices::Bursa::0257WA",
@@ -938093,10 +938093,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSE::3750",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::3753",
@@ -1895677,10 +1895677,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::HLVTY",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::HLXFF",
