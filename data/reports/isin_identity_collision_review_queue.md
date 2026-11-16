@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-15T18:45:04Z`
+Generated: `2026-11-16T01:20:18Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,11 +8,11 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 124 |
-| Listings involved | 363 |
-| Ticker-collision groups | 32 |
+| Collision groups | 123 |
+| Listings involved | 355 |
+| Ticker-collision groups | 31 |
 | Open groups | 9 |
-| Closed same-issuer reviewed | 115 |
+| Closed same-issuer reviewed | 114 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
@@ -20,14 +20,14 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | Decision candidate | Groups |
 | --- | ---: |
 | isin_shared_by_distinct_issuers | 92 |
-| ticker_collision_isin_misassignment_suspected | 32 |
+| ticker_collision_isin_misassignment_suspected | 31 |
 
 ## Next Review Batches
 
 | Decision candidate | Registered country | Groups |
 | --- | --- | ---: |
 | isin_shared_by_distinct_issuers | United States | 25 |
-| ticker_collision_isin_misassignment_suspected | United States | 14 |
+| ticker_collision_isin_misassignment_suspected | United States | 13 |
 | isin_shared_by_distinct_issuers | Singapore | 8 |
 | ticker_collision_isin_misassignment_suspected | Germany | 7 |
 | isin_shared_by_distinct_issuers | Sweden | 6 |

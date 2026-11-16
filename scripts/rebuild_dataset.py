@@ -347,6 +347,7 @@ ETF_SHELL_PREFIX_RE = re.compile(
     r"^(?:multi[- ]units\s+luxembourg|j\.?p\.?\s+morgan\s+exchange[- ]traded\s+fund\s+trust|(?:the\s+)?\d{4}\s+etf\s+series\s+trust(?:\s+ii)?|ea\s+series\s+trust|ishares\s+(?:i|ii|iii|iv|v|vi|vii|viii|ix|x)\s+plc)\s*[-:]\s*",
     re.IGNORECASE,
 )
+ETF_PUBLIC_COMPANY_SHELL_RE = re.compile(r"\bpublic\s*$", re.IGNORECASE)
 BRAND_QUALIFIER_TOKENS = {
     "biotherapeutics",
     "biosciences",
@@ -946,6 +947,11 @@ def etf_alias_candidate(alias: str) -> str:
     cleaned = ETF_SHELL_PREFIX_RE.sub("", cleaned)
     if " - " in cleaned:
         left, right = cleaned.split(" - ", 1)
+        if ETF_PUBLIC_COMPANY_SHELL_RE.search(left):
+            # "<umbrella> Public Limited Company - <fund>": the umbrella prefix makes a junk alias
+            # ("vii public - ishares core s&p 500"); drop it instead of promoting the fund part,
+            # which other listings of the same fund already carry.
+            return ""
         if is_generic_wrapper_alias(left) or re.search(r"\b(?:trust|fund|plc|multi[- ]units|series)\b", left, re.IGNORECASE):
             cleaned = right
     previous = ""
@@ -3098,18 +3104,33 @@ def duplicate_alias_owner_score(row: dict[str, str], alias: str) -> int:
 
 
 def allowed_duplicate_alias_rows(entries: list[tuple[int, dict[str, str]]], alias: str) -> set[int]:
-    entity_keys = {
-        f"isin:{row['isin']}" if row.get("isin") else f"ticker:{row['ticker']}"
-        for _, row in entries
-    }
+    def entity_key(row: dict[str, str]) -> str:
+        return f"isin:{row['isin']}" if row.get("isin") else f"ticker:{row['ticker']}"
+
+    entity_keys = {entity_key(row) for _, row in entries}
     if len(entity_keys) <= 1:
         return {index for index, _ in entries}
 
-    scored = [(duplicate_alias_owner_score(row, alias), index) for index, row in entries]
-    scored.sort(reverse=True)
-    if len(scored) < 2 or scored[0][0] <= scored[1][0]:
+    # Keep the legacy path for stocks and mixed ETF/stock aliases. Those require a separate
+    # Validator-reviewed change; this curation workstream owns ETF rows only.
+    if any(row.get("asset_type") != "ETF" for _, row in entries):
+        scored_rows = [(duplicate_alias_owner_score(row, alias), index) for index, row in entries]
+        scored_rows.sort(reverse=True)
+        if len(scored_rows) < 2 or scored_rows[0][0] <= scored_rows[1][0]:
+            return set()
+        return {scored_rows[0][1]}
+
+    # ETF entities compete, not rows: two listings of the same fund (same ISIN) with equal
+    # scores must not tie each other out when no other entity scores as high.
+    scored = [(duplicate_alias_owner_score(row, alias), index, entity_key(row)) for index, row in entries]
+    best_by_entity: dict[str, int] = {}
+    for score, _, entity in scored:
+        best_by_entity[entity] = max(score, best_by_entity.get(entity, score))
+    ranked = sorted(best_by_entity.values(), reverse=True)
+    if ranked[0] <= ranked[1]:
         return set()
-    return {scored[0][1]}
+    top = ranked[0]
+    return {index for score, index, _ in scored if score == top}
 
 
 def drop_duplicate_ticker_aliases(rows: list[dict[str, str]]) -> list[dict[str, str]]:

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-15T18:46:15Z",
+    "generated_at": "2026-11-16T01:20:17Z",
     "rows": 97630,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,27 +15,27 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86560,
-      "source_gap": 11027,
+      "pass": 86573,
+      "source_gap": 11014,
       "warn": 33
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4525,
+      "identifier_enriched": 4524,
       "official_reference": 87627,
       "scoped_source_gap": 294,
-      "valid_isin": 5184
+      "valid_isin": 5185
     },
     "severity_counts": {
       "high": 12,
       "low": 10,
       "medium": 22,
-      "source_gap": 11376
+      "source_gap": 11362
     },
     "issue_counts": {
       "official_reference_gap": 6716,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 625,
-      "missing_stock_sector": 602,
+      "expected_missing_primary_isin": 622,
+      "missing_stock_sector": 591,
       "missing_etf_category": 146,
       "official_name_mismatch": 22,
       "official_isin_mismatch": 11,
@@ -56,8 +56,8 @@
       },
       {
         "exchange": "FSX",
-        "source_gap": 519,
-        "pass": 7624
+        "source_gap": 515,
+        "pass": 7628
       },
       {
         "exchange": "B3",
@@ -65,16 +65,16 @@
         "pass": 1247
       },
       {
-        "exchange": "BMV",
-        "pass": 89,
-        "source_gap": 255
-      },
-      {
         "exchange": "NASDAQ",
         "source_gap": 251,
         "pass": 4502,
         "warn": 4,
         "notice": 4
+      },
+      {
+        "exchange": "BMV",
+        "pass": 91,
+        "source_gap": 253
       },
       {
         "exchange": "XETRA",
@@ -101,8 +101,8 @@
       },
       {
         "exchange": "TSX",
-        "pass": 2257,
-        "source_gap": 184
+        "pass": 2258,
+        "source_gap": 183
       },
       {
         "exchange": "NYSE ARCA",
@@ -117,16 +117,16 @@
         "notice": 2
       },
       {
-        "exchange": "TSXV",
-        "pass": 1276,
-        "source_gap": 143,
-        "warn": 3
-      },
-      {
         "exchange": "LSE",
         "pass": 6879,
         "source_gap": 143,
         "warn": 2
+      },
+      {
+        "exchange": "TSXV",
+        "pass": 1277,
+        "source_gap": 142,
+        "warn": 3
       },
       {
         "exchange": "Euronext",
