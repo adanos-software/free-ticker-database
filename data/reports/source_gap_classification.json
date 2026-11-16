@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-16T16:40:23Z",
-    "rows": 8065,
+    "generated_at": "2026-11-16T18:34:17Z",
+    "rows": 8072,
     "field_totals": {
-      "missing_etf_category": 135,
-      "missing_isin_primary": 625,
-      "missing_sector_stock": 601,
-      "official_reference_gap": 6704
+      "missing_etf_category": 136,
+      "missing_isin_primary": 629,
+      "missing_sector_stock": 602,
+      "official_reference_gap": 6705
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -17,34 +17,34 @@
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 18,
       "exchange_industry_source_gap": 41,
-      "fixed_income_etf_category_gap": 6,
-      "fund_or_trust_identifier_gap": 314,
+      "fixed_income_etf_category_gap": 7,
+      "fund_or_trust_identifier_gap": 315,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 135,
+      "official_identifier_not_exposed_source_gap": 138,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 424,
       "official_product_taxonomy_unavailable_gap": 103,
-      "official_reference_symbol_collision_gap": 1159,
+      "official_reference_symbol_collision_gap": 1160,
       "official_reference_unmatched_source_gap": 5545,
       "otc_sector_source_gap": 91,
-      "shell_or_cpc_sector_gap": 7
+      "shell_or_cpc_sector_gap": 8
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 7,
       "missing_etf_category:digital_asset_etf_category_gap": 1,
       "missing_etf_category:equity_etf_category_gap": 18,
-      "missing_etf_category:fixed_income_etf_category_gap": 6,
+      "missing_etf_category:fixed_income_etf_category_gap": 7,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 103,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 20,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 314,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 315,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 135,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -52,8 +52,8 @@
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 424,
       "missing_sector_stock:otc_sector_source_gap": 91,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 7,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1159,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 8,
+      "official_reference_gap:official_reference_symbol_collision_gap": 1160,
       "official_reference_gap:official_reference_unmatched_source_gap": 5545
     },
     "top_exchanges_by_field": {
@@ -75,15 +75,15 @@
           "rows": 13
         },
         {
+          "exchange": "NASDAQ",
+          "rows": 7
+        },
+        {
           "exchange": "TSE",
           "rows": 7
         },
         {
           "exchange": "BATS",
-          "rows": 6
-        },
-        {
-          "exchange": "NASDAQ",
           "rows": 6
         },
         {
@@ -114,7 +114,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 69
+          "rows": 71
         },
         {
           "exchange": "TSXV",
@@ -129,12 +129,12 @@
           "rows": 33
         },
         {
-          "exchange": "NEO",
-          "rows": 25
+          "exchange": "NYSE",
+          "rows": 26
         },
         {
-          "exchange": "NYSE",
-          "rows": 24
+          "exchange": "NEO",
+          "rows": 25
         },
         {
           "exchange": "SSE_CL",
@@ -852,6 +852,23 @@
       "source_gap_context": "listing_key=NASDAQ::FBEQ;exchange=NASDAQ;ticker=FBEQ;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=digital_asset_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=digital_asset_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "NASDAQ::HCOP",
+      "ticker": "HCOP",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "Hartford Hybrid and Credit Opportunities ETF",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=NASDAQ::HCOP;exchange=NASDAQ;ticker=HCOP;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -5922,6 +5939,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::HCOP",
+      "ticker": "HCOP",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "Hartford Hybrid and Credit Opportunities ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=NASDAQ::HCOP;exchange=NASDAQ;ticker=HCOP;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::INJC",
       "ticker": "INJC",
       "exchange": "NASDAQ",
@@ -6326,6 +6360,23 @@
       "source_gap_context": "listing_key=NASDAQ::BRKRP;exchange=NASDAQ;ticker=BRKRP;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::BRRK",
+      "ticker": "BRRK",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Bluerock Acquisition Corp. II - Class A Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::BRRK;exchange=NASDAQ;ticker=BRRK;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -7520,6 +7571,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NYSE::HZN",
+      "ticker": "HZN",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "name": "Bright Horizon Energy Corporation Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NYSE::HZN;exchange=NYSE;ticker=HZN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NYSE::MDA",
       "ticker": "MDA",
       "exchange": "NYSE",
@@ -7582,6 +7650,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::PHXE-P;exchange=NYSE;ticker=PHXE-P;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NYSE::PORT",
+      "ticker": "PORT",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "name": "Southport Acquisition Corp. II Class A Ordinary Shares",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NYSE::PORT;exchange=NYSE;ticker=PORT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -19569,6 +19654,23 @@
       "source_gap_context": "listing_key=NASDAQ::BBTX;exchange=NASDAQ;ticker=BBTX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::BRRK",
+      "ticker": "BRRK",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Bluerock Acquisition Corp. II - Class A Ordinary Shares",
+      "gap_class": "shell_or_cpc_sector_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Current issuer business description or official industry classification.",
+      "source_gate": "Canonical sector requires active operating-business evidence.",
+      "source_gap_context": "listing_key=NASDAQ::BRRK;exchange=NASDAQ;ticker=BRRK;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -68223,6 +68325,23 @@
       "source_gap_context": "listing_key=NYSE ARCA::MARB;exchange=NYSE ARCA;ticker=MARB;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NYSE ARCA::MBSX",
+      "ticker": "MBSX",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Regan Fixed Rate MBS ETF",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NYSE ARCA::MBSX;exchange=NYSE ARCA;ticker=MBSX;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
     {
       "field": "official_reference_gap",

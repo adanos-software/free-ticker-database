@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100329,
-    "matched": 70243,
-    "collisions": 11740,
-    "missing": 18346
+    "official_symbols": 100334,
+    "matched": 70246,
+    "collisions": 11741,
+    "missing": 18347
   },
   "exchanges": [
     {
@@ -2589,10 +2589,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5617,
-      "matched": 4579,
+      "official_symbols": 5620,
+      "matched": 4581,
       "collisions": 61,
-      "missing": 977,
+      "missing": 978,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -3090,8 +3090,8 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3833,
-      "matched": 1958,
+      "official_symbols": 3835,
+      "matched": 1960,
       "collisions": 566,
       "missing": 1309,
       "collision_examples": [
@@ -3239,8 +3239,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2765,
-      "matched": 2634,
+      "official_symbols": 2764,
+      "matched": 2633,
       "collisions": 29,
       "missing": 102,
       "collision_examples": [
@@ -4989,9 +4989,9 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 24,
+      "official_symbols": 25,
       "matched": 0,
-      "collisions": 14,
+      "collisions": 15,
       "missing": 10,
       "collision_examples": [
         {
@@ -5062,6 +5062,14 @@
           ]
         },
         {
+          "ticker": "MBSX",
+          "name": "Regan Fixed Rate MBS ETF",
+          "target_exchange": "TXSE",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
           "ticker": "OBK",
           "name": "Origin Bancorp, Inc. Common Stock",
           "target_exchange": "TXSE",
@@ -5070,14 +5078,6 @@
             "Munich",
             "NYSE",
             "XSTU"
-          ]
-        },
-        {
-          "ticker": "OILT",
-          "name": "Texas Capital Texas Oil Index ETF",
-          "target_exchange": "TXSE",
-          "existing_exchanges": [
-            "NYSE ARCA"
           ]
         }
       ],
