@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-16T18:39:34Z",
+    "generated_at": "2026-11-16T19:20:09Z",
     "rows": 97637,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86586,
-      "source_gap": 11007,
+      "pass": 86588,
+      "source_gap": 11005,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11359
+      "source_gap": 11357
     },
     "issue_counts": {
       "official_reference_gap": 6705,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 626,
-      "missing_stock_sector": 594,
+      "missing_stock_sector": 592,
       "missing_etf_category": 147,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
@@ -12794,24 +12794,6 @@
       ]
     },
     {
-      "listing_key": "TADAWUL::4328",
-      "ticker": "4328",
-      "exchange": "TADAWUL",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "TSE::4367",
       "ticker": "4367",
       "exchange": "TSE",
@@ -18432,6 +18414,24 @@
     {
       "listing_key": "FSX::6V6",
       "ticker": "6V6",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6W1",
+      "ticker": "6W1",
       "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
