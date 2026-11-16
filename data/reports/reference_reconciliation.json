@@ -1,17 +1,17 @@
 {
   "summary": {
-    "active_official_reference_rows": 171110,
-    "source_specific_reference_keys": 171109,
+    "active_official_reference_rows": 171107,
+    "source_specific_reference_keys": 171106,
     "classification_counts": {
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12536,
-      "exact_match": 100146,
+      "exact_match": 100145,
       "missing_from_database": 44809,
       "normalization_candidate": 1865,
-      "out_of_scope": 8165
+      "out_of_scope": 8163
     },
-    "coverage_credited_keys": 100146,
+    "coverage_credited_keys": 100145,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44809,
     "identity_conflict_rows": 12536,
@@ -1513571,22 +1513571,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::BEATW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::BEATW",
-      "exchange": "NASDAQ",
-      "ticker": "BEATW",
-      "asset_types": "Stock",
-      "names": "Heartbeam, Inc. - Warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrant"
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::BEDY",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::BEDY",
@@ -1516467,6 +1516451,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::BRRK",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::BRRK",
+      "exchange": "NASDAQ",
+      "ticker": "BRRK",
+      "asset_types": "Stock",
+      "names": "Bluerock Acquisition Corp. II - Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::BRRK",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::BRRKU",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::BRRKU",
@@ -1516481,6 +1516481,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::BRRKW",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::BRRKW",
+      "exchange": "NASDAQ",
+      "ticker": "BRRKW",
+      "asset_types": "Stock",
+      "names": "Bluerock Acquisition Corp. II - Warrants",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::BRRR",
@@ -1517409,22 +1517425,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::BTBD",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::BTBDW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::BTBDW",
-      "exchange": "NASDAQ",
-      "ticker": "BTBDW",
-      "asset_types": "Stock",
-      "names": "BT Brands, Inc. - Warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrant"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::BTBT",
@@ -1533945,7 +1533945,7 @@
       "exchange": "NASDAQ",
       "ticker": "FOFO",
       "asset_types": "Stock",
-      "names": "Hang Feng Technology Innovation Co., Ltd. - Ordinary Shares",
+      "names": "Hang Feng Technology Innovation Co., Ltd. - Class A Ordinary Shares",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1540033,6 +1540033,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: warrants"
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::HCOP",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::HCOP",
+      "exchange": "NASDAQ",
+      "ticker": "HCOP",
+      "asset_types": "ETF",
+      "names": "Hartford Hybrid and Credit Opportunities ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::HCOP",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::HCOW",
@@ -1560355,22 +1560371,6 @@
       "evidence": "name indicates non-target instrument: warrants"
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::NWE",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::NWE",
-      "exchange": "NASDAQ",
-      "ticker": "NWE",
-      "asset_types": "Stock",
-      "names": "NorthWestern Energy Group, Inc.  - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::NWE",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::NWFL",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::NWFL",
@@ -1565936,22 +1565936,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::PLBY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::PLCE",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::PLCE",
-      "exchange": "NASDAQ",
-      "ticker": "PLCE",
-      "asset_types": "Stock",
-      "names": "Children's Place, Inc. (The) - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::PLCE",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1579249,22 +1579233,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::STLN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::STLNW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::STLNW",
-      "exchange": "NASDAQ",
-      "ticker": "STLNW",
-      "asset_types": "Stock",
-      "names": "Starling Oncology, Inc. - Warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrant"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::STNC",
@@ -1663763,22 +1663731,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::MBSX",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::MBSX",
-      "exchange": "NYSE ARCA",
-      "ticker": "MBSX",
-      "asset_types": "ETF",
-      "names": "Regan Fixed Rate MBS ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::MBSX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::MCH",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::MCH",
@@ -1693891,22 +1693843,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::BKH",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::BKH",
-      "exchange": "NYSE",
-      "ticker": "BKH",
-      "asset_types": "Stock",
-      "names": "Black Hills Corporation Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::BKH",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::BKKT",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::BKKT",
@@ -1708659,6 +1708595,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::HZN",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::HZN",
+      "exchange": "NYSE",
+      "ticker": "HZN",
+      "asset_types": "Stock",
+      "names": "Bright Horizon Energy Corporation Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::HZN",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::HZO",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::HZO",
@@ -1709648,22 +1709600,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::IT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::ITGR",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::ITGR",
-      "exchange": "NYSE",
-      "ticker": "ITGR",
-      "asset_types": "Stock",
-      "names": "Integer Holdings Corporation Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::ITGR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1711667,22 +1711603,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::KTF",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::KTF",
-      "exchange": "NYSE",
-      "ticker": "KTF",
-      "asset_types": "Stock",
-      "names": "DWS Municipal Income Trust",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::KTH",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::KTH",
@@ -1712737,22 +1712657,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::LVWR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::LVWR.W",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::LVWR.W",
-      "exchange": "NYSE",
-      "ticker": "LVWR.W",
-      "asset_types": "Stock",
-      "names": "LiveWire Group, Inc. Warrants, each exercisable for one share of Common Stock at an exercise price of $11.50 per share",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::LW",
@@ -1720931,6 +1720835,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::PORT",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::PORT",
+      "exchange": "NYSE",
+      "ticker": "PORT",
+      "asset_types": "Stock",
+      "names": "Southport Acquisition Corp. II Class A Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::PORT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::PORT.U",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::PORT.U",
@@ -1720945,6 +1720865,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: warrant"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::PORT.W",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::PORT.W",
+      "exchange": "NYSE",
+      "ticker": "PORT.W",
+      "asset_types": "Stock",
+      "names": "Southport Acquisition Corp. II Redeemable warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::POST",
@@ -1734113,6 +1734049,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::TXSE::MBSX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "TXSE::MBSX",
+      "exchange": "TXSE",
+      "ticker": "MBSX",
+      "asset_types": "ETF",
+      "names": "Regan Fixed Rate MBS ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::TXSE::OBK",
