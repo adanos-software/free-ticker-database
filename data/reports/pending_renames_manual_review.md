@@ -1,11 +1,13 @@
 # Pending Renames Manual Review
 
-Generated: 2026-11-09T17:41:40Z
+Generated: 2026-11-16T17:12:08Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 
 | Old | New | Effective | Queue | Apply status | Blocker |
 |---|---|---|---|---|---|
+| TCBI | TXCP | 2026-11-09 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
+| INM | MTRI | 2026-11-09 | review_verified_rename_or_delisting | manual_official_successor_name_mismatch | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
 | PAPL | PTIV | 2026-10-26 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
 | GWH | GWHT | 2026-10-06 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::GWH |
 | BGI | BGICF | 2026-08-27 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: TSX::BGI |

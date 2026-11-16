@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-16T16:40:18Z",
-    "rows": 97633,
+    "generated_at": "2026-11-16T18:31:28Z",
+    "rows": 97637,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,13 +15,13 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86586,
-      "source_gap": 11003,
+      "pass": 86585,
+      "source_gap": 11008,
       "warn": 34
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4521,
-      "official_reference": 87642,
+      "identifier_enriched": 4522,
+      "official_reference": 87645,
       "scoped_source_gap": 295,
       "valid_isin": 5175
     },
@@ -29,14 +29,14 @@
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11353
+      "source_gap": 11362
     },
     "issue_counts": {
-      "official_reference_gap": 6704,
+      "official_reference_gap": 6705,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 625,
-      "missing_stock_sector": 589,
-      "missing_etf_category": 148,
+      "expected_missing_primary_isin": 629,
+      "missing_stock_sector": 592,
+      "missing_etf_category": 149,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
       "low_company_name_overlap": 10,
@@ -65,16 +65,16 @@
         "pass": 1247
       },
       {
-        "exchange": "BMV",
-        "pass": 91,
-        "source_gap": 253
-      },
-      {
         "exchange": "NASDAQ",
-        "source_gap": 249,
+        "source_gap": 251,
         "pass": 4502,
         "warn": 4,
         "notice": 4
+      },
+      {
+        "exchange": "BMV",
+        "pass": 91,
+        "source_gap": 253
       },
       {
         "exchange": "XETRA",
@@ -106,8 +106,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2525,
-        "source_gap": 169,
+        "pass": 2524,
+        "source_gap": 170,
         "warn": 1
       },
       {
@@ -143,7 +143,7 @@
       {
         "exchange": "NYSE",
         "pass": 1931,
-        "source_gap": 92
+        "source_gap": 94
       },
       {
         "exchange": "JSE",

@@ -10,8 +10,8 @@ Rows: `23`
 | 1 | FSX | 56.9 | 5922 | 4432 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.06 | 3501 | 869 | not_in_supplement_allowlist |
-| 4 | NYSE | 59.93 | 1309 | 566 | not_in_supplement_allowlist |
-| 5 | NASDAQ | 82.42 | 977 | 61 | not_in_supplement_allowlist |
+| 4 | NYSE | 59.96 | 1309 | 566 | not_in_supplement_allowlist |
+| 5 | NASDAQ | 82.41 | 978 | 61 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.61 | 796 | 1936 | not_in_supplement_allowlist |
 | 7 | Euronext | 79.39 | 340 | 372 | not_in_supplement_allowlist |
 | 8 | BATS | 81.87 | 293 | 58 | not_in_supplement_allowlist |
@@ -28,5 +28,5 @@ Rows: `23`
 | 19 | BSE_IN | 99.35 | 33 | 120 | collision_free_supplement |
 | 20 | BME | 90.64 | 25 | 0 | not_in_supplement_allowlist |
 | 21 | IDX | 97.9 | 16 | 183 | not_in_supplement_allowlist |
-| 22 | TXSE | 0.0 | 10 | 14 | not_in_supplement_allowlist |
+| 22 | TXSE | 0.0 | 10 | 15 | not_in_supplement_allowlist |
 | 23 | CSE_LK | 99.07 | 3 | 0 | collision_free_supplement |

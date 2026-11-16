@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T16:40:09Z",
+  "generated_at": "2026-11-16T16:22:39Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -33,20 +33,20 @@
     },
     {
       "exchange": "NYSE",
-      "collision_adjusted_recall_pct": 59.93,
+      "collision_adjusted_recall_pct": 59.96,
       "true_missing_excluding_collisions": 1309,
       "collision_hidden_missing": 566,
-      "official_recall_pct": 51.08,
+      "official_recall_pct": 51.11,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 4
     },
     {
       "exchange": "NASDAQ",
-      "collision_adjusted_recall_pct": 82.42,
-      "true_missing_excluding_collisions": 977,
+      "collision_adjusted_recall_pct": 82.41,
+      "true_missing_excluding_collisions": 978,
       "collision_hidden_missing": 61,
-      "official_recall_pct": 81.52,
+      "official_recall_pct": 81.51,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 5
@@ -215,7 +215,7 @@
       "exchange": "TXSE",
       "collision_adjusted_recall_pct": 0.0,
       "true_missing_excluding_collisions": 10,
-      "collision_hidden_missing": 14,
+      "collision_hidden_missing": 15,
       "official_recall_pct": 0.0,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
