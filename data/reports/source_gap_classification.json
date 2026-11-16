@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-16T19:20:14Z",
-    "rows": 8067,
+    "generated_at": "2026-11-16T20:38:57Z",
+    "rows": 8066,
     "field_totals": {
       "missing_etf_category": 134,
       "missing_isin_primary": 626,
       "missing_sector_stock": 602,
-      "official_reference_gap": 6705
+      "official_reference_gap": 6704
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
@@ -28,7 +28,7 @@
       "official_industry_taxonomy_unavailable_gap": 424,
       "official_product_taxonomy_unavailable_gap": 101,
       "official_reference_symbol_collision_gap": 1160,
-      "official_reference_unmatched_source_gap": 5545,
+      "official_reference_unmatched_source_gap": 5544,
       "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 8
     },
@@ -54,7 +54,7 @@
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1160,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5545
+      "official_reference_gap:official_reference_unmatched_source_gap": 5544
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -125003,23 +125003,6 @@
       "source_gap_context": "listing_key=SEM::GOLI;exchange=SEM;ticker=GOLI;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "SEM::LAVA",
-      "ticker": "LAVA",
-      "exchange": "SEM",
-      "asset_type": "Stock",
-      "name": "LAVASTONE LTD",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=SEM::LAVA;exchange=SEM;ticker=LAVA;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },
     {
       "field": "official_reference_gap",

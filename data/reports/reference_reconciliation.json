@@ -1,17 +1,17 @@
 {
   "summary": {
-    "active_official_reference_rows": 171107,
-    "source_specific_reference_keys": 171106,
+    "active_official_reference_rows": 171108,
+    "source_specific_reference_keys": 171107,
     "classification_counts": {
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12536,
-      "exact_match": 100145,
+      "exact_match": 100146,
       "missing_from_database": 44809,
       "normalization_candidate": 1865,
       "out_of_scope": 8163
     },
-    "coverage_credited_keys": 100145,
+    "coverage_credited_keys": 100146,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44809,
     "identity_conflict_rows": 12536,
@@ -2208704,6 +2208704,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "SEM::KLOS",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sem_isin::SEM::LAVA",
+      "source_key": "sem_isin",
+      "reference_key": "SEM::LAVA",
+      "exchange": "SEM",
+      "ticker": "LAVA",
+      "asset_types": "Stock",
+      "names": "LAVASTONE LTD",
+      "isins": "MU0622I00004",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "SEM::LAVA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {

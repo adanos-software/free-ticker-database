@@ -1,9 +1,9 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-11-16T15:39:17Z`
+- Generated at: `2026-11-16T20:30:06Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `1057`
-- Rotation vanished rows: `3`
-- Backlog rows: `1054`
+- Vanished reference rows: `1025`
+- Rotation vanished rows: `0`
+- Backlog rows: `1025`
 - Still in database: `1025`
 - Applied drops: `0`
 
@@ -11,9 +11,7 @@
 
 | Action | Rows |
 |---|---:|
-| manual_nasdaq_delete_review_required | 4 |
-| manual_rename_vs_delisting_required | 1021 |
-| not_in_database | 32 |
+| manual_rename_vs_delisting_required | 1025 |
 
 ## Rows still in the database
 
@@ -613,7 +611,7 @@
 | NASDAQ | ATAI | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | ATII | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | BRNS | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | BWMN | nasdaq_listed | manual_nasdaq_delete_review_required | backlog |
+| NASDAQ | BWMN | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | CECO | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | CRNX | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | DYNC | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
@@ -628,8 +626,8 @@
 | NASDAQ | LNAI | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | LNAI | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | MAMK | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | MCTA | nasdaq_listed | manual_nasdaq_delete_review_required | backlog |
-| NASDAQ | MCTA | sec_company_tickers_exchange | manual_nasdaq_delete_review_required | backlog |
+| NASDAQ | MCTA | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
+| NASDAQ | MCTA | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | MUY | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | NATH | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | NATH | sec_company_tickers_exchange | manual_rename_vs_delisting_required | backlog |
@@ -641,7 +639,7 @@
 | NASDAQ | RFDI | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | RFEM | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | RITR | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
-| NASDAQ | ROKU | nasdaq_listed | manual_nasdaq_delete_review_required | backlog |
+| NASDAQ | ROKU | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | RZAI | nasdaq_trading_system_adds_deletes | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | SDST | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
 | NASDAQ | SNYR | nasdaq_listed | manual_rename_vs_delisting_required | backlog |
@@ -771,7 +769,7 @@
 | PSE | BCB | pse_listed_company_directory | manual_rename_vs_delisting_required | backlog |
 | PSE | FMETF | pse_listed_company_directory | manual_rename_vs_delisting_required | backlog |
 | PSE | RRHI | pse_listed_company_directory | manual_rename_vs_delisting_required | backlog |
-| PSE | SPNEC | pse_listed_company_directory | manual_rename_vs_delisting_required | rotation |
+| PSE | SPNEC | pse_listed_company_directory | manual_rename_vs_delisting_required | backlog |
 | PSX | SGPL | psx_listed_companies | manual_rename_vs_delisting_required | backlog |
 | SET | AKS | set_listed_companies | manual_rename_vs_delisting_required | backlog |
 | SET | AKS | set_stock_search | manual_rename_vs_delisting_required | backlog |
@@ -1048,6 +1046,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 3; still-in-database backlog carried: 1054.
-- Still in database: 1025; not in database: 32.
+- Rotation vanished rows: 0; still-in-database backlog carried: 1025.
+- Still in database: 1025; not in database: 0.
 - Applied drops from this classifier: 0.
