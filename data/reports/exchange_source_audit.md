@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-16T19:20:00Z`
+Generated at: `2026-11-16T20:38:53Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 20, "maintain": 22, "official_source_required": 5, "refresh_required": 13, "refresh_unavailable": 28}`
+- Audit outcomes: `{"denominator_missing": 20, "maintain": 23, "official_source_required": 5, "refresh_required": 13, "refresh_unavailable": 27}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -69,7 +69,7 @@ Generated at: `2026-11-16T19:20:00Z`
 | PSX | official_full | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily |  | 724 | 53.87 | psx_dps_symbols|psx_listed_companies|psx_symbol_name_daily | refresh_unavailable | not_applicable |
 | QSE | official_full | qse_market_watch |  | 57 | 96.49 |  | maintain | not_applicable |
 | RSE | official_partial | rse_listed_companies |  | 0 |  | rse_listed_companies | denominator_missing | blocked_nonfresh_source |
-| SEM | official_full | sem_isin |  | 47 | 100.0 | sem_isin | refresh_unavailable | not_applicable |
+| SEM | official_full | sem_isin |  | 48 | 100.0 |  | maintain | not_applicable |
 | SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 943 | 81.65 | set_dr_search|set_etf_search|set_listed_companies|set_stock_search | refresh_unavailable | not_applicable |
 | SGX | official_full | sgx_securities_prices |  | 768 | 82.94 |  | maintain | not_applicable |
 | SIX | official_partial | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full |  | 0 |  | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full | refresh_unavailable | blocked_source_unavailable |

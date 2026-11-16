@@ -1,21 +1,21 @@
 # Entry Quality Report
 
-Generated at: `2026-11-16T19:20:09Z`
+Generated at: `2026-11-16T20:38:44Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,588 |
-| source_gap | 11,005 |
+| pass | 86,589 |
+| source_gap | 11,004 |
 | warn | 34 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,705 |
+| official_reference_gap | 6,704 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 626 |
 | missing_stock_sector | 592 |
