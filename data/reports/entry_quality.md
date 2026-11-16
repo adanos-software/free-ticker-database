@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-11-15T23:44:47Z`
+Generated at: `2026-11-16T00:08:24Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,572 |
-| source_gap | 11,030 |
+| pass | 86,574 |
+| source_gap | 11,028 |
 | warn | 33 |
 
 ## Issue Counts
@@ -17,8 +17,8 @@ Generated at: `2026-11-15T23:44:47Z`
 |---|---:|
 | official_reference_gap | 6,729 |
 | venue_missing_official_source | 3,287 |
-| expected_missing_primary_isin | 624 |
-| missing_stock_sector | 592 |
+| expected_missing_primary_isin | 623 |
+| missing_stock_sector | 591 |
 | missing_etf_category | 146 |
 | official_name_mismatch | 22 |
 | official_isin_mismatch | 11 |
@@ -43,8 +43,8 @@ Generated at: `2026-11-15T23:44:47Z`
 | NYSE ARCA | 2,525 | 0 | 182 | 1 | 0 |
 | TSX | 2,258 | 0 | 183 | 0 | 0 |
 | ASX | 2,101 | 2 | 156 | 0 | 0 |
-| TSXV | 1,276 | 0 | 143 | 3 | 0 |
 | LSE | 6,879 | 0 | 143 | 2 | 0 |
+| TSXV | 1,277 | 0 | 142 | 3 | 0 |
 | Euronext | 1,333 | 0 | 142 | 1 | 0 |
 | HKEX | 3,146 | 0 | 110 | 3 | 0 |
 | NYSE | 1,933 | 0 | 92 | 0 | 0 |

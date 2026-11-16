@@ -1,17 +1,17 @@
 {
   "summary": {
-    "generated_at": "2026-11-15T23:44:24Z",
-    "rows": 8089,
+    "generated_at": "2026-11-16T00:08:04Z",
+    "rows": 8088,
     "field_totals": {
       "missing_etf_category": 133,
-      "missing_isin_primary": 624,
+      "missing_isin_primary": 623,
       "missing_sector_stock": 603,
       "official_reference_gap": 6729
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
       "adr_cdr_or_depositary_sector_gap": 5,
-      "capital_pool_or_halted_identifier_gap": 31,
+      "capital_pool_or_halted_identifier_gap": 30,
       "commodity_etf_category_gap": 7,
       "debt_or_securitized_identifier_gap": 92,
       "digital_asset_etf_category_gap": 1,
@@ -39,7 +39,7 @@
       "missing_etf_category:fixed_income_etf_category_gap": 5,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 102,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 20,
-      "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
+      "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 92,
       "missing_isin_primary:fund_or_trust_identifier_gap": 311,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
@@ -118,7 +118,7 @@
         },
         {
           "exchange": "TSXV",
-          "rows": 58
+          "rows": 57
         },
         {
           "exchange": "BATS",
@@ -13005,23 +13005,6 @@
       "recommended_next_source": "Current exchange issuer/status file or CPC/shell prospectus.",
       "source_gate": "Exact halted/CPC symbol and direct current identifier evidence.",
       "source_gap_context": "listing_key=TSXV::RVC.P;exchange=TSXV;ticker=RVC.P;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=capital_pool_or_halted_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=capital_pool_or_halted_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSXV::SBEL.P",
-      "ticker": "SBEL.P",
-      "exchange": "TSXV",
-      "asset_type": "Stock",
-      "name": "Sanibel Ventures Corp.",
-      "gap_class": "capital_pool_or_halted_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require current exchange status and a direct identifier source; keep unresolved if the symbol is halted, suspended, or a capital-pool shell without a current ISIN source.",
-      "recommended_next_source": "Current exchange issuer/status file or CPC/shell prospectus.",
-      "source_gate": "Exact halted/CPC symbol and direct current identifier evidence.",
-      "source_gap_context": "listing_key=TSXV::SBEL.P;exchange=TSXV;ticker=SBEL.P;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=capital_pool_or_halted_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=capital_pool_or_halted_identifier_gap"
     },
