@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97633,
+    "before_rows": 97637,
     "after_rows": 97637,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 6,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,44 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "NSE_IN::DAMCAPITAL",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "TSX::NUCC",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "CA62882B1085"
+    },
+    {
+      "listing_key": "TSX::SHPD",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "CA54315B5247"
+    },
+    {
+      "listing_key": "TSX::SHPD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "TSX::SOLX",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "CA12574G3035"
+    },
+    {
+      "listing_key": "TSX::SOLX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Currency"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -425,7 +462,7 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4759,
+      "before_rows": 4761,
       "after_rows": 4761,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -479,7 +516,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2023,
+      "before_rows": 2025,
       "after_rows": 2025,
       "shrink_pct": 0.0,
       "removed_rows": 0,
