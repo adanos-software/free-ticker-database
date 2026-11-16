@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-16T08:49:45Z`
+Generated at: `2026-11-16T16:40:09Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -26,15 +26,15 @@ Generated at: `2026-11-16T08:49:45Z`
 | BVB | official_full | bvb_fund_units_directory|bvb_shares_directory |  | 89 | 56.18 | bvb_fund_units_directory | refresh_required | not_applicable |
 | BVC | official_partial | bvc_colombia_issuers |  | 0 |  | bvc_colombia_issuers | refresh_unavailable | blocked_source_unavailable |
 | BVL | official_partial | bvl_issuers_directory |  | 0 |  | bvl_issuers_directory | denominator_missing | blocked_nonfresh_source |
-| Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2976 | 8.27 | euronext_etfs | refresh_required | not_applicable |
+| Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2978 | 8.26 | euronext_etfs | refresh_required | not_applicable |
 | Bursa | official_partial | bursa_closing_prices|bursa_equity_isin |  | 0 |  | bursa_closing_prices|bursa_equity_isin | refresh_unavailable | blocked_source_unavailable |
 | CPH | official_partial | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares |  | 0 |  | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares | denominator_missing | blocked_nonfresh_source |
-| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 323 | 99.07 |  | maintain | not_applicable |
+| CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 324 | 99.07 |  | maintain | not_applicable |
 | CSE_MA | official_full | cse_ma_listed_companies |  | 82 | 21.95 | cse_ma_listed_companies | refresh_unavailable | not_applicable |
 | DFM | official_full | dfm_listed_securities |  | 72 | 75.0 |  | maintain | not_applicable |
 | DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  | dse_tz_listed_companies | denominator_missing | blocked_nonfresh_source |
 | EGX | official_partial | egx_listed_stocks |  | 0 |  | egx_listed_stocks | denominator_missing | blocked_nonfresh_source |
-| Euronext | official_full | euronext_equities|euronext_etfs |  | 2021 | 64.82 | euronext_etfs | refresh_required | not_applicable |
+| Euronext | official_full | euronext_equities|euronext_etfs |  | 2022 | 64.79 | euronext_etfs | refresh_required | not_applicable |
 | FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18171 | 43.02 |  | maintain | not_applicable |
 | GSE | official_partial | gse_listed_companies |  | 0 |  | gse_listed_companies | denominator_missing | blocked_nonfresh_source |
 | HEL | official_partial | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares |  | 0 |  | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares | denominator_missing | blocked_nonfresh_source |
@@ -56,7 +56,7 @@ Generated at: `2026-11-16T08:49:45Z`
 | NEO | official_full | cboe_canada_listing_directory |  | 449 | 46.33 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_company_profile_directory|ngx_equities_price_list | refresh_unavailable | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
-| NSE_IN | official_full | nse_india_securities_available |  | 3574 | 97.96 |  | maintain | not_applicable |
+| NSE_IN | official_full | nse_india_securities_available |  | 3586 | 97.94 |  | maintain | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 68 | 64.71 |  | maintain | not_applicable |
 | NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3833 | 51.08 |  | maintain | not_applicable |
 | NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2765 | 95.26 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
@@ -71,7 +71,7 @@ Generated at: `2026-11-16T08:49:45Z`
 | RSE | official_partial | rse_listed_companies |  | 0 |  | rse_listed_companies | denominator_missing | blocked_nonfresh_source |
 | SEM | official_full | sem_isin |  | 47 | 100.0 | sem_isin | refresh_unavailable | not_applicable |
 | SET | official_full | set_dr_search|set_etf_search|set_listed_companies|set_stock_search |  | 943 | 81.65 | set_dr_search|set_etf_search|set_listed_companies|set_stock_search | refresh_unavailable | not_applicable |
-| SGX | official_full | sgx_securities_prices |  | 768 | 82.81 |  | maintain | not_applicable |
+| SGX | official_full | sgx_securities_prices |  | 768 | 82.94 |  | maintain | not_applicable |
 | SIX | official_partial | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full |  | 0 |  | six_equity_issuers|six_etf_products|six_etp_products|six_shares_explorer_full | refresh_unavailable | blocked_source_unavailable |
 | SSE | official_partial | sse_a_share_list|sse_etf_list |  | 0 |  | sse_a_share_list|sse_etf_list | denominator_missing | blocked_nonfresh_source |
 | SSE_CL | official_full | bolsa_santiago_instruments |  | 122 | 100.0 | bolsa_santiago_instruments | refresh_unavailable | not_applicable |

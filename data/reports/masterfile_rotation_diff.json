@@ -1,791 +1,387 @@
 {
   "summary": {
-    "generated_at": "2026-11-15T16:43:49Z",
+    "generated_at": "2026-11-16T15:39:15Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 15,
-    "vanished_rows": 17,
-    "changed_rows": 20,
+    "new_rows": 19,
+    "vanished_rows": 3,
+    "changed_rows": 2,
     "new_by_source": {
-      "cse_lk_all_security_code": 1,
-      "sec_company_tickers_exchange": 14
+      "bme_security_prices_directory": 2,
+      "cse_lk_company_info_summary": 1,
+      "euronext_equities": 3,
+      "nse_india_securities_available": 12,
+      "pse_listed_company_directory": 1
     },
     "vanished_by_source": {
-      "sec_company_tickers_exchange": 17
+      "bme_security_prices_directory": 2,
+      "pse_listed_company_directory": 1
     },
     "changed_by_type": {
-      "field_change": 1,
-      "name_change": 20
+      "isin_change": 2
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "cse_lk_all_security_code",
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S3129",
+      "name": "ALKARIKA",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0169092030",
+      "cfi": "",
+      "sector": "Financials"
+    },
+    {
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "SCASM",
+      "name": "ASAM",
+      "exchange": "BME",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "ES0105765004",
+      "cfi": "",
+      "sector": "Real Estate"
+    },
+    {
+      "source_key": "cse_lk_company_info_summary",
       "provider": "CSE Sri Lanka",
-      "source_url": "https://www.cse.lk/api/allSecurityCode",
-      "ticker": "LWL.R0000",
-      "name": "LANKA WALLTILES PLC",
+      "source_url": "https://www.cse.lk/api/companyInfoSummery",
+      "ticker": "FVH.N0000",
+      "name": "FALCON VALLEY HYDRO LIMITED",
       "exchange": "CSE_LK",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "LK0219R00003",
+      "isin": "LK0514N00006",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "CRMN",
-      "name": "Skyline Builders Group Holding Ltd",
-      "exchange": "NASDAQ",
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "JUVEAA",
+      "name": "JUVENTUS FC AA",
+      "exchange": "Borsa Italiana",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "IT0005745069",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "LOVI",
-      "name": "Live Oak Acquisition Corp. VI",
-      "exchange": "NASDAQ",
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "YOLOAA",
+      "name": "YOLO GROUP AA",
+      "exchange": "Borsa Italiana",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "IT0005745093",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "LOVIW",
-      "name": "Live Oak Acquisition Corp. VI",
-      "exchange": "NASDAQ",
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "ERADS",
+      "name": "ERAMET DS",
+      "exchange": "Euronext",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "FR001401C5C5",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "OPHI",
-      "name": "CollPlant Biotechnologies Ltd",
-      "exchange": "NASDAQ",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "BGLOBAL",
+      "name": "Bharatiya Global Infomedia Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE224M01013",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "QUIT",
-      "name": "ACHIEVE LIFE SCIENCES, INC.",
-      "exchange": "NASDAQ",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CEREBRAINT",
+      "name": "Cerebra Integrated Technologies Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE345B01019",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "STAI",
-      "name": "ScanTech AI Systems Inc.",
-      "exchange": "NASDAQ",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CLCIND",
+      "name": "CLC Industries Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE376C01038",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "WWB",
-      "name": "WINDWARD BIO GROUP AG",
-      "exchange": "NASDAQ",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "CMICABLES",
+      "name": "CMI Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE981B01011",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "XGPU",
-      "name": "Reliance Global Group, Inc.",
-      "exchange": "NASDAQ",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "EDUCOMP",
+      "name": "Educomp Solutions Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE216H01027",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "ZYN",
-      "name": "PTL Ltd",
-      "exchange": "NASDAQ",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "IMPEXFERRO",
+      "name": "Impex Ferro Tech Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE691G01015",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "GLLD",
-      "name": "BANK OF MONTREAL /CAN/",
-      "exchange": "NYSE",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "LASA",
+      "name": "Lasa Supergenerics Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE670X01014",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "LOB-PB",
-      "name": "Live Oak Bancshares, Inc.",
-      "exchange": "NYSE",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "NAGAFERT",
+      "name": "Nagarjuna Fertilizers and Chemicals Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE454M01024",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "VVVV",
-      "name": "vVARDIS Holding AG",
-      "exchange": "NYSE",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "RAJVIR",
+      "name": "Rajvir Industries Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE011H01014",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "SELXF",
-      "name": "Semilux International Ltd.",
-      "exchange": "OTC",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SELMC",
+      "name": "SEL Manufacturing Company Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE105I01020",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "TORXF",
-      "name": "Torex Resources Inc.",
-      "exchange": "OTC",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SKIL",
+      "name": "SKIL Infrastructure Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
+      "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "INE429F01012",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "UNIVAFOODS",
+      "name": "Univa Foods Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE275F01019",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "pse_listed_company_directory",
+      "provider": "PSE",
+      "source_url": "https://frames.pse.com.ph/listedCompany",
+      "ticker": "MGENR",
+      "name": "MGEN Renewables Inc.",
+      "exchange": "PSE",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "PH0000063307",
       "cfi": "",
       "sector": ""
     }
   ],
   "vanished": [
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "AUROW",
-      "name": "Aurora Innovation, Inc.",
-      "exchange": "NASDAQ",
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "S4024",
+      "name": "ALCLANO DE LA LUZ",
+      "exchange": "BME",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "ES0108003007",
       "cfi": "",
-      "sector": ""
+      "sector": "Financials"
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "BFRIW",
-      "name": "Biofrontera Inc.",
-      "exchange": "NASDAQ",
+      "source_key": "bme_security_prices_directory",
+      "provider": "BME",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "ticker": "SCALF",
+      "name": "ALFIL PATRIMONIAL",
+      "exchange": "BME",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
+      "isin": "ES0105757019",
       "cfi": "",
-      "sector": ""
+      "sector": "Real Estate"
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "MGPI",
-      "name": "SEMPREON, INC",
-      "exchange": "NASDAQ",
+      "source_key": "pse_listed_company_directory",
+      "provider": "PSE",
+      "source_url": "https://frames.pse.com.ph/listedCompany",
+      "ticker": "SPNEC",
+      "name": "SP New Energy Corporation",
+      "exchange": "PSE",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "MLECW",
-      "name": "Moolec Science SA",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "SWKHL",
-      "name": "SWK Holdings Corp",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "CBZ",
-      "name": "CBIZ, Inc.",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "CFR",
-      "name": "CULLEN/FROST BANKERS, INC.",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "CFR-PB",
-      "name": "CULLEN/FROST BANKERS, INC.",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "KVUE",
-      "name": "Kenvue Inc.",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "LXP",
-      "name": "LXP Industrial Trust",
-      "exchange": "NYSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "LXP-PC",
-      "name": "LXP Industrial Trust",
-      "exchange": "NYSE",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "PSQH-WT",
-      "name": "PSQ Holdings, Inc.",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "RAMP",
-      "name": "LiveRamp Holdings, Inc.",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "SHNY",
-      "name": "BANK OF MONTREAL /CAN/",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "PLTYF",
-      "name": "Plastec Technologies, Ltd.",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "STAI",
-      "name": "ScanTech AI Systems Inc.",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "provider": "SEC",
-      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
-      "ticker": "TLSSD",
-      "name": "Transportation & Logistics Systems, Inc.",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "listed_companies_subset",
-      "official": "true",
-      "isin": "",
+      "isin": "PHY8080C1028",
       "cfi": "",
       "sector": ""
     }
   ],
   "changed": [
     {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "ATLQ",
+      "source_key": "euronext_equities",
+      "exchange": "Euronext",
+      "ticker": "1WFRD",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "JAB Acquisition Corp I",
-          "after": "Atlantic Acquisition Corp I"
+        "isin": {
+          "before": "IE00BLNN3691",
+          "after": "US94708K1034"
         }
       }
     },
     {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "ATLQR",
+      "source_key": "nse_india_securities_available",
+      "exchange": "NSE_IN",
+      "ticker": "BNAGROCHEM",
       "change_types": [
-        "name_change"
+        "isin_change"
       ],
       "changes": {
-        "name": {
-          "before": "JAB Acquisition Corp I",
-          "after": "Atlantic Acquisition Corp I"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "ATLQU",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "JAB Acquisition Corp I",
-          "after": "Atlantic Acquisition Corp I"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "ATLQW",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "JAB Acquisition Corp I",
-          "after": "Atlantic Acquisition Corp I"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "EOCN",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Galmed Pharmaceuticals Ltd.",
-          "after": "EoCene Ltd."
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "KOYN",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "CSLM Digital Asset Acquisition Corp III, Ltd",
-          "after": "First Digital Acquisition Corp Ltd."
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "KOYNU",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "CSLM Digital Asset Acquisition Corp III, Ltd",
-          "after": "First Digital Acquisition Corp Ltd."
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "KOYNW",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "CSLM Digital Asset Acquisition Corp III, Ltd",
-          "after": "First Digital Acquisition Corp Ltd."
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "OLMA",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Olema Pharmaceuticals, Inc.",
-          "after": "Olema Oncology, Inc."
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NASDAQ",
-      "ticker": "VRDN",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Viridian Therapeutics, Inc.DE",
-          "after": "Viridian Therapeutics, Inc.\\DE"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "ARI",
-      "change_types": [
-        "name_change",
-        "field_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Apollo Commercial Real Estate Finance, Inc.",
-          "after": "Apollo Commercial Real Estate Finance Liquidating Trust"
-        },
-        "asset_type": {
-          "before": "Stock",
-          "after": "ETF"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "USB",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "US BANCORP DE",
-          "after": "US BANCORP \\DE\\"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "USB-PA",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "US BANCORP DE",
-          "after": "US BANCORP \\DE\\"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "USB-PH",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "US BANCORP DE",
-          "after": "US BANCORP \\DE\\"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "USB-PP",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "US BANCORP DE",
-          "after": "US BANCORP \\DE\\"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "USB-PQ",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "US BANCORP DE",
-          "after": "US BANCORP \\DE\\"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "USB-PR",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "US BANCORP DE",
-          "after": "US BANCORP \\DE\\"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "NYSE",
-      "ticker": "USB-PS",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "US BANCORP DE",
-          "after": "US BANCORP \\DE\\"
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "OTC",
-      "ticker": "BHLL",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Bunker Hill Mining Corp.",
-          "after": "Bunker Hill Silver Corp."
-        }
-      }
-    },
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "exchange": "OTC",
-      "ticker": "UKSK",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "Marvion Inc.",
-          "after": "United KSK Corp"
+        "isin": {
+          "before": "INE00HZ01011",
+          "after": "INE00HZ01029"
         }
       }
     }

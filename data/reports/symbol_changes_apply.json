@@ -1,17 +1,17 @@
 {
   "summary": {
-    "generated_at": "2026-11-14T13:28:07Z",
+    "generated_at": "2026-11-16T15:38:44Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 396,
+    "blocked_rows": 398,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 4,
       "blocked_new_symbol_not_active_in_official_master": 4,
-      "blocked_old_symbol_not_unique_in_us_scope": 310,
-      "manual_cross_venue_ticker_reuse": 7,
+      "blocked_old_symbol_not_unique_in_us_scope": 313,
+      "manual_cross_venue_ticker_reuse": 6,
       "manual_missing_identity_evidence": 2,
       "manual_non_us_or_unscoped_source": 52,
       "manual_official_successor_name_mismatch": 1,
@@ -24,6 +24,22 @@
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "b3f754f96bd38c74",
+      "effective_date": "2026-11-13",
+      "old_symbol": "PTLE",
+      "new_symbol": "ZYN",
+      "new_company_name": "Ptl Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "6c1abbd125a0e9fb",
+      "effective_date": "2026-11-13",
+      "old_symbol": "CLGN",
+      "new_symbol": "OPHI",
+      "new_company_name": "Collplant Biotechnologies Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
     {
       "change_id": "b968c31b6261b663",
       "effective_date": "2026-11-12",
@@ -2887,14 +2903,7 @@
       "old_symbol": "SNPX",
       "new_symbol": "TAOX",
       "new_company_name": "Tao Synergies Inc",
-      "status": "manual_cross_venue_ticker_reuse",
-      "exchange": "BATS",
-      "old_listing_key": "BATS::SNPX",
-      "new_listing_key": "NASDAQ::TAOX",
-      "isin": "US46092D3439",
-      "source_key": "stockanalysis_symbol_changes",
-      "source_url": "https://stockanalysis.com/actions/changes/",
-      "evidence": "new_symbol_already_listed_on_another_us_venue"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "982df8bf01778926",
