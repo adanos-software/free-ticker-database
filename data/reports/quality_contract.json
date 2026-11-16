@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "b1a8c6a1caf7718dea343192bf603f872def24835a8e01e5b3d09ea91a67d778",
+  "dataset_sha256": "6a4dc03991621d43f195ca7496a16f7e10f4b88ce09a05116be455c32b788521",
   "source_manifest_sha256": "b7d6982094a0f74f09e405315f28a78adb24a71e59491cc18ba6ced8d9c81fda",
-  "git_commit": "e4324a34034d814dfeb5498caa61ff4b6e99b8ed",
+  "git_commit": "c1b7fe0c87f8dc4a804882e111665af9a9d73ed5",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -21,10 +21,10 @@
       "status": "pass",
       "details": {
         "summary": {
-          "ticker_rows": 65604,
-          "listing_rows": 97643,
-          "adanos_reference_rows": 65604,
-          "entry_quality_rows": 97643,
+          "ticker_rows": 65600,
+          "listing_rows": 97645,
+          "adanos_reference_rows": 65600,
+          "entry_quality_rows": 97645,
           "error_gates": 88,
           "failed_error_gates": 0,
           "info_gates": 5
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 147,
-          "source_observations": 186533,
+          "source_observations": 186693,
           "venues": 87,
-          "issuers": 75207,
-          "instruments": 75207,
-          "listings": 97650,
-          "identifier_assertions": 168498,
-          "field_assertions": 221808,
-          "provenance_gaps": 294085,
-          "listing_events": 91759,
+          "issuers": 75190,
+          "instruments": 75190,
+          "listings": 97652,
+          "identifier_assertions": 168471,
+          "field_assertions": 221868,
+          "provenance_gaps": 294080,
+          "listing_events": 91934,
           "coverage_contracts": 136
         }
       }
@@ -69,17 +69,17 @@
         "status": "pass",
         "summary": {
           "before_rows": 97645,
-          "after_rows": 97643,
-          "overall_shrink_pct": 0.002048,
-          "removed_rows": 2,
-          "evidenced_removed_rows": 2,
+          "after_rows": 97645,
+          "overall_shrink_pct": 0.0,
+          "removed_rows": 0,
+          "evidenced_removed_rows": 0,
           "unevidenced_removed_rows": 0,
-          "critical_field_changes": 6,
+          "critical_field_changes": 180,
           "unevidenced_critical_field_changes": 0,
           "before_duplicate_listing_keys": 0,
           "after_duplicate_listing_keys": 0,
-          "generated_official_change_evidence_rows": 0,
-          "generated_reviewed_transition_evidence_rows": 2
+          "generated_official_change_evidence_rows": 3,
+          "generated_reviewed_transition_evidence_rows": 0
         }
       }
     },
@@ -88,8 +88,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "listings": 97643,
-        "snapshot": 97643,
+        "listings": 97645,
+        "snapshot": 97645,
         "missing": 0,
         "extra": 0,
         "duplicate_listing_keys": 0,
@@ -101,8 +101,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "decisions": 6868,
-        "current_conflict_groups": 2096,
+        "decisions": 6854,
+        "current_conflict_groups": 2093,
         "failure_count": 0,
         "sample": []
       }
@@ -131,7 +131,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "conflict_groups": 2096,
+        "conflict_groups": 2093,
         "sample": [
           "AEE000401019",
           "AN8068571086",
@@ -191,7 +191,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "proposed_rows": 1952,
+        "proposed_rows": 1946,
         "sample": [
           "ADX::GRMNY",
           "ADX::JPANI",
@@ -234,7 +234,6 @@
           "Bursa::0222",
           "Bursa::0228",
           "Bursa::0230",
-          "Bursa::0257",
           "Bursa::0297",
           "Bursa::0303",
           "Bursa::0306",
@@ -242,7 +241,8 @@
           "Bursa::0385",
           "Bursa::1198",
           "Bursa::2054",
-          "Bursa::2828"
+          "Bursa::2828",
+          "Bursa::3565"
         ]
       }
     },
@@ -523,7 +523,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 294085
+        "gap_rows": 294080
       }
     },
     {
@@ -540,7 +540,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1330
+        "missing_rows": 1325
       }
     },
     {
@@ -556,7 +556,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1627
+        "missing_rows": 1598
       }
     },
     {
