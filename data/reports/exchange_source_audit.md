@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-16T15:45:19Z`
+Generated at: `2026-11-16T16:24:29Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -52,14 +52,14 @@ Generated at: `2026-11-16T15:45:19Z`
 | MSE_MW | official_partial | mse_mw_listed_companies |  | 0 |  | mse_mw_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | MSX | official_full | muscat_securities_companies |  | 109 | 86.24 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
-| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5617 | 81.52 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
+| NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5620 | 81.51 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NEO | official_full | cboe_canada_listing_directory |  | 449 | 46.33 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_company_profile_directory|ngx_equities_price_list | refresh_unavailable | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
 | NSE_IN | official_full | nse_india_securities_available |  | 3586 | 97.94 |  | maintain | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 68 | 64.71 |  | maintain | not_applicable |
-| NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3833 | 51.08 |  | maintain | not_applicable |
-| NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2765 | 95.26 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
+| NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3835 | 51.11 |  | maintain | not_applicable |
+| NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2764 | 95.26 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NYSE MKT | official_full | nasdaq_other_listed | ETF | 307 | 72.96 |  | maintain | not_applicable |
 | NZX | official_full | nzx_instruments |  | 172 | 49.42 |  | maintain | not_applicable |
 | OSL | official_full | euronext_equities|euronext_etfs |  | 292 | 97.6 | euronext_etfs | refresh_required | not_applicable |
@@ -84,7 +84,7 @@ Generated at: `2026-11-16T15:45:19Z`
 | TSX | official_full | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers |  | 785 | 75.16 | tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
 | TSXV | official_full | tmx_interlisted_companies|tmx_listed_issuers |  | 1518 | 87.09 | tmx_interlisted_companies|tmx_listed_issuers | refresh_required | not_applicable |
 | TWSE | official_full | twse_etf_list|twse_listed_companies |  | 1099 | 96.54 | twse_etf_list | refresh_required | not_applicable |
-| TXSE | official_full | nasdaq_other_listed |  | 24 | 0.0 |  | maintain | not_applicable |
+| TXSE | official_full | nasdaq_other_listed |  | 25 | 0.0 |  | maintain | not_applicable |
 | UPCOM | official_full | upcom_registered_securities |  | 818 | 0.24 | upcom_registered_securities | refresh_unavailable | not_applicable |
 | USE_UG | official_partial | use_ug_listed_companies |  | 0 |  | use_ug_listed_companies | denominator_missing | blocked_nonfresh_source |
 | VSE | official_partial | vienna_listed_companies | ETF | 0 |  | vienna_listed_companies | denominator_missing | blocked_nonfresh_source |
