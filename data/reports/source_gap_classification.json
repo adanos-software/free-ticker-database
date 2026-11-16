@@ -1,17 +1,17 @@
 {
   "summary": {
-    "generated_at": "2026-11-15T21:26:12Z",
-    "rows": 8091,
+    "generated_at": "2026-11-15T23:44:24Z",
+    "rows": 8089,
     "field_totals": {
       "missing_etf_category": 133,
-      "missing_isin_primary": 623,
-      "missing_sector_stock": 606,
+      "missing_isin_primary": 624,
+      "missing_sector_stock": 603,
       "official_reference_gap": 6729
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 20,
       "adr_cdr_or_depositary_sector_gap": 5,
-      "capital_pool_or_halted_identifier_gap": 30,
+      "capital_pool_or_halted_identifier_gap": 31,
       "commodity_etf_category_gap": 7,
       "debt_or_securitized_identifier_gap": 92,
       "digital_asset_etf_category_gap": 1,
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 135,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 429,
+      "official_industry_taxonomy_unavailable_gap": 426,
       "official_product_taxonomy_unavailable_gap": 102,
       "official_reference_symbol_collision_gap": 1184,
       "official_reference_unmatched_source_gap": 5545,
@@ -39,7 +39,7 @@
       "missing_etf_category:fixed_income_etf_category_gap": 5,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 102,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 20,
-      "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
+      "missing_isin_primary:capital_pool_or_halted_identifier_gap": 31,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 92,
       "missing_isin_primary:fund_or_trust_identifier_gap": 311,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 429,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 426,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1184,
@@ -118,7 +118,7 @@
         },
         {
           "exchange": "TSXV",
-          "rows": 57
+          "rows": 58
         },
         {
           "exchange": "BATS",
@@ -144,7 +144,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 224
+          "rows": 223
         },
         {
           "exchange": "OTC",
@@ -255,7 +255,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 219,
+        "rows": 218,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -13011,6 +13011,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "TSXV::SBEL.P",
+      "ticker": "SBEL.P",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "name": "Sanibel Ventures Corp.",
+      "gap_class": "capital_pool_or_halted_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require current exchange status and a direct identifier source; keep unresolved if the symbol is halted, suspended, or a capital-pool shell without a current ISIN source.",
+      "recommended_next_source": "Current exchange issuer/status file or CPC/shell prospectus.",
+      "source_gate": "Exact halted/CPC symbol and direct current identifier evidence.",
+      "source_gap_context": "listing_key=TSXV::SBEL.P;exchange=TSXV;ticker=SBEL.P;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=capital_pool_or_halted_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=capital_pool_or_halted_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "TSXV::SCAI",
       "ticker": "SCAI",
       "exchange": "TSXV",
@@ -17023,23 +17040,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::H6D",
-      "ticker": "H6D",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Haleon PLC",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::H6D;exchange=FSX;ticker=H6D;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::HA9",
       "ticker": "HA9",
       "exchange": "FSX",
@@ -19182,23 +19182,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "HNX::HEV",
-      "ticker": "HEV",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "Công ty cổ phần Sách Đại học - Dạy nghề",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::HEV;exchange=HNX;ticker=HEV;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "HNX::HKT",
       "ticker": "HKT",
       "exchange": "HNX",
@@ -19261,23 +19244,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HNX::SDU;exchange=HNX;ticker=SDU;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HNX::VE3",
-      "ticker": "VE3",
-      "exchange": "HNX",
-      "asset_type": "Stock",
-      "name": "CTCP Xây dựng điện VNECO3",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HNX::VE3;exchange=HNX;ticker=VE3;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -26275,7 +26241,7 @@
       "ticker": "AST",
       "exchange": "AMS",
       "asset_type": "Stock",
-      "name": "Astarta Holding Nv",
+      "name": "Astarta Holding PLC",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
@@ -38447,7 +38413,7 @@
       "ticker": "GE",
       "exchange": "BMV",
       "asset_type": "Stock",
-      "name": "General Electric Company",
+      "name": "GE Aerospace",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
