@@ -12,8 +12,8 @@ Rows: `23`
 | 3 | LSE | 66.06 | 3501 | 869 | not_in_supplement_allowlist |
 | 4 | NYSE | 59.93 | 1309 | 566 | not_in_supplement_allowlist |
 | 5 | NASDAQ | 82.42 | 977 | 61 | not_in_supplement_allowlist |
-| 6 | Borsa Italiana | 23.65 | 794 | 1936 | not_in_supplement_allowlist |
-| 7 | Euronext | 79.44 | 339 | 372 | not_in_supplement_allowlist |
+| 6 | Borsa Italiana | 23.61 | 796 | 1936 | not_in_supplement_allowlist |
+| 7 | Euronext | 79.39 | 340 | 372 | not_in_supplement_allowlist |
 | 8 | BATS | 81.87 | 293 | 58 | not_in_supplement_allowlist |
 | 9 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |
 | 10 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |

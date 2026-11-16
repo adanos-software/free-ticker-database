@@ -1,27 +1,30 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-11-15T16:43:49Z`
-- New rows: `15`
-- Vanished rows: `17`
-- Changed rows: `20`
+- Generated at: `2026-11-16T15:39:15Z`
+- New rows: `19`
+- Vanished rows: `3`
+- Changed rows: `2`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 1 |
-| name_change | 20 |
+| isin_change | 2 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| cse_lk_all_security_code | 1 |
-| sec_company_tickers_exchange | 14 |
+| bme_security_prices_directory | 2 |
+| cse_lk_company_info_summary | 1 |
+| euronext_equities | 3 |
+| nse_india_securities_available | 12 |
+| pse_listed_company_directory | 1 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| sec_company_tickers_exchange | 17 |
+| bme_security_prices_directory | 2 |
+| pse_listed_company_directory | 1 |

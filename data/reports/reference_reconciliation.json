@@ -1,21 +1,21 @@
 {
   "summary": {
-    "active_official_reference_rows": 171094,
-    "source_specific_reference_keys": 171093,
+    "active_official_reference_rows": 171110,
+    "source_specific_reference_keys": 171109,
     "classification_counts": {
-      "alternate_listing_line": 3393,
+      "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12535,
-      "exact_match": 100131,
-      "missing_from_database": 44807,
-      "normalization_candidate": 1868,
+      "exact_identity_conflict": 12536,
+      "exact_match": 100146,
+      "missing_from_database": 44809,
+      "normalization_candidate": 1865,
       "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100131,
+    "coverage_credited_keys": 100146,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44807,
-    "identity_conflict_rows": 12535,
-    "mapping_candidate_rows": 1868
+    "in_scope_missing_rows": 44809,
+    "identity_conflict_rows": 12536,
+    "mapping_candidate_rows": 1865
   },
   "rows": [
     {
@@ -89875,6 +89875,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "bme_security_prices_directory::BME::S3129",
+      "source_key": "bme_security_prices_directory",
+      "reference_key": "BME::S3129",
+      "exchange": "BME",
+      "ticker": "S3129",
+      "asset_types": "Stock",
+      "names": "ALKARIKA",
+      "isins": "ES0169092030",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "bme_security_prices_directory::BME::S3185",
       "source_key": "bme_security_prices_directory",
       "reference_key": "BME::S3185",
@@ -89931,22 +89947,6 @@
       "asset_types": "Stock",
       "names": "ALGEBRA 64 AUREA",
       "isins": "ES0175472002",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "bme_security_prices_directory::BME::S4024",
-      "source_key": "bme_security_prices_directory",
-      "reference_key": "BME::S4024",
-      "exchange": "BME",
-      "ticker": "S4024",
-      "asset_types": "Stock",
-      "names": "ALCLANO DE LA LUZ",
-      "isins": "ES0108003007",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -90051,14 +90051,14 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "bme_security_prices_directory::BME::SCALF",
+      "reconciliation_key": "bme_security_prices_directory::BME::SCASM",
       "source_key": "bme_security_prices_directory",
-      "reference_key": "BME::SCALF",
+      "reference_key": "BME::SCASM",
       "exchange": "BME",
-      "ticker": "SCALF",
+      "ticker": "SCASM",
       "asset_types": "Stock",
-      "names": "ALFIL PATRIMONIAL",
-      "isins": "ES0105757019",
+      "names": "ASAM",
+      "isins": "ES0105765004",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -237344,6 +237344,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "CSE_LK::FCT.N0000",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "cse_lk_company_info_summary::CSE_LK::FVH.N0000",
+      "source_key": "cse_lk_company_info_summary",
+      "reference_key": "CSE_LK::FVH.N0000",
+      "exchange": "CSE_LK",
+      "ticker": "FVH.N0000",
+      "asset_types": "Stock",
+      "names": "FALCON VALLEY HYDRO LIMITED",
+      "isins": "LK0514N00006",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "CSE_LK::FVH.N0000",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -533869,10 +533885,10 @@
       "isins": "US6748706057",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "alternate_listing_line",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "FSX::RUOC",
+      "evidence": "Same venue and ISIN identify one compatible alternate line, but a different venue symbol cannot satisfy this reference without an explicit reviewed mapping."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::RUZ",
@@ -698499,6 +698515,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "euronext_equities::Borsa Italiana::JUVEAA",
+      "source_key": "euronext_equities",
+      "reference_key": "Borsa Italiana::JUVEAA",
+      "exchange": "Borsa Italiana",
+      "ticker": "JUVEAA",
+      "asset_types": "Stock",
+      "names": "JUVENTUS FC AA",
+      "isins": "IT0005745069",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "euronext_equities::Borsa Italiana::KK",
       "source_key": "euronext_equities",
       "reference_key": "Borsa Italiana::KK",
@@ -701825,6 +701857,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "Borsa Italiana::YOLO",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "euronext_equities::Borsa Italiana::YOLOAA",
+      "source_key": "euronext_equities",
+      "reference_key": "Borsa Italiana::YOLOAA",
+      "exchange": "Borsa Italiana",
+      "ticker": "YOLOAA",
+      "asset_types": "Stock",
+      "names": "YOLO GROUP AA",
+      "isins": "IT0005745093",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "euronext_equities::Borsa Italiana::YRM",
@@ -717482,7 +717530,7 @@
       "ticker": "1WFRD",
       "asset_types": "Stock",
       "names": "WEATHERFORD INTERN",
-      "isins": "IE00BLNN3691",
+      "isins": "US94708K1034",
       "reference_scopes": "secondary_listing_subset",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -741553,6 +741601,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "Euronext::ERA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "euronext_equities::Euronext::ERADS",
+      "source_key": "euronext_equities",
+      "reference_key": "Euronext::ERADS",
+      "exchange": "Euronext",
+      "ticker": "ERADS",
+      "asset_types": "Stock",
+      "names": "ERAMET DS",
+      "isins": "FR001401C5C5",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "euronext_equities::Euronext::ERF",
@@ -1174205,10 +1174269,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "LSE::0Q4G",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "lse_company_reports::LSE::0Q4U",
@@ -1752547,6 +1752611,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::BGLOBAL",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::BGLOBAL",
+      "exchange": "NSE_IN",
+      "ticker": "BGLOBAL",
+      "asset_types": "Stock",
+      "names": "Bharatiya Global Infomedia Limited",
+      "isins": "INE224M01013",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::BGLOBAL",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::BGRENERGY",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::BGRENERGY",
@@ -1753466,7 +1753546,7 @@
       "ticker": "BNAGROCHEM",
       "asset_types": "Stock",
       "names": "BN Agrochem Limited",
-      "isins": "INE00HZ01011",
+      "isins": "INE00HZ01029",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "exact_match",
@@ -1754915,6 +1754995,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::CEREBRAINT",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::CEREBRAINT",
+      "exchange": "NSE_IN",
+      "ticker": "CEREBRAINT",
+      "asset_types": "Stock",
+      "names": "Cerebra Integrated Technologies Limited",
+      "isins": "INE345B01019",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::CEREBRAINT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::CESC",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::CESC",
@@ -1755459,6 +1755555,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::CLCIND",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::CLCIND",
+      "exchange": "NSE_IN",
+      "ticker": "CLCIND",
+      "asset_types": "Stock",
+      "names": "CLC Industries Limited",
+      "isins": "INE376C01038",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::CLCIND",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::CLEAN",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::CLEAN",
@@ -1755536,6 +1755648,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::CLSL",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::CMICABLES",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::CMICABLES",
+      "exchange": "NSE_IN",
+      "ticker": "CMICABLES",
+      "asset_types": "Stock",
+      "names": "CMI Limited",
+      "isins": "INE981B01011",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::CMICABLES",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1759264,6 +1759392,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::EDELWEISS",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::EDUCOMP",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::EDUCOMP",
+      "exchange": "NSE_IN",
+      "ticker": "EDUCOMP",
+      "asset_types": "Stock",
+      "names": "Educomp Solutions Limited",
+      "isins": "INE216H01027",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::EDUCOMP",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1768003,6 +1768147,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::IMPEXFERRO",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::IMPEXFERRO",
+      "exchange": "NSE_IN",
+      "ticker": "IMPEXFERRO",
+      "asset_types": "Stock",
+      "names": "Impex Ferro Tech Limited",
+      "isins": "INE691G01015",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::IMPEXFERRO",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::INA",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::INA",
@@ -1773536,6 +1773696,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::LARGEMID50",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::LASA",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::LASA",
+      "exchange": "NSE_IN",
+      "ticker": "LASA",
+      "asset_types": "Stock",
+      "names": "Lasa Supergenerics Limited",
+      "isins": "INE670X01014",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::LASA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1779376,6 +1779552,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::NACLIND",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::NAGAFERT",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::NAGAFERT",
+      "exchange": "NSE_IN",
+      "ticker": "NAGAFERT",
+      "asset_types": "Stock",
+      "names": "Nagarjuna Fertilizers and Chemicals Limited",
+      "isins": "INE454M01024",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::NAGAFERT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1786275,6 +1786467,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::RAJVIR",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::RAJVIR",
+      "exchange": "NSE_IN",
+      "ticker": "RAJVIR",
+      "asset_types": "Stock",
+      "names": "Rajvir Industries Limited",
+      "isins": "INE011H01014",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::RAJVIR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::RALLIS",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::RALLIS",
@@ -1790227,6 +1790435,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::SELMC",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::SELMC",
+      "exchange": "NSE_IN",
+      "ticker": "SELMC",
+      "asset_types": "Stock",
+      "names": "SEL Manufacturing Company Limited",
+      "isins": "INE105I01020",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::SELMC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::SEMAC",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::SEMAC",
@@ -1792609,6 +1792833,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::SKFINDUS",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::SKIL",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::SKIL",
+      "exchange": "NSE_IN",
+      "ticker": "SKIL",
+      "asset_types": "Stock",
+      "names": "SKIL Infrastructure Limited",
+      "isins": "INE429F01012",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::SKIPPER",
@@ -1798816,6 +1799056,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::UNITEDTEA",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::UNIVAFOODS",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::UNIVAFOODS",
+      "exchange": "NSE_IN",
+      "ticker": "UNIVAFOODS",
+      "asset_types": "Stock",
+      "names": "Univa Foods Limited",
+      "isins": "INE275F01019",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::UNIVAFOODS",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2014803,6 +2015059,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "pse_listed_company_directory::PSE::MGENR",
+      "source_key": "pse_listed_company_directory",
+      "reference_key": "PSE::MGENR",
+      "exchange": "PSE",
+      "ticker": "MGENR",
+      "asset_types": "Stock",
+      "names": "MGEN Renewables Inc.",
+      "isins": "PH0000063307",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "PSE::MGENR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "pse_listed_company_directory::PSE::MGH",
       "source_key": "pse_listed_company_directory",
       "reference_key": "PSE::MGH",
@@ -2016849,22 +2017121,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "pse_listed_company_directory::PSE::SPNEC",
-      "source_key": "pse_listed_company_directory",
-      "reference_key": "PSE::SPNEC",
-      "exchange": "PSE",
-      "ticker": "SPNEC",
-      "asset_types": "Stock",
-      "names": "SP New Energy Corporation",
-      "isins": "PHY8080C1028",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "PSE::SPNEC",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "pse_listed_company_directory::PSE::SRDC",
@@ -2253149,10 +2253405,10 @@
       "isins": "SG1CH6000001",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "SGX::BTF",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sgx_securities_prices::SGX::BTG",
@@ -2584845,10 +2585101,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
-      "matched_listing_keys": "TSX::SOLX.B|TSX::SOLX.U",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "TSX::SOLX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::SOLX.B",
@@ -2604877,10 +2605133,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
-      "matched_listing_keys": "TSX::CUSD.U",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "TSX::CUSD",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::CUTL",
@@ -2622893,10 +2623149,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
-      "matched_listing_keys": "TSX::SOLX.B|TSX::SOLX.U",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "TSX::SOLX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::SOXD",
