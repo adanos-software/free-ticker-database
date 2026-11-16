@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-16T16:24:33Z",
-    "rows": 8074,
+    "generated_at": "2026-11-16T18:39:45Z",
+    "rows": 8069,
     "field_totals": {
-      "missing_etf_category": 136,
-      "missing_isin_primary": 629,
+      "missing_etf_category": 134,
+      "missing_isin_primary": 626,
       "missing_sector_stock": 604,
       "official_reference_gap": 6705
     },
@@ -18,7 +18,7 @@
       "equity_etf_category_gap": 18,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 7,
-      "fund_or_trust_identifier_gap": 315,
+      "fund_or_trust_identifier_gap": 312,
       "fundlike_stock_sector_gap": 33,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -26,7 +26,7 @@
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 426,
-      "official_product_taxonomy_unavailable_gap": 103,
+      "official_product_taxonomy_unavailable_gap": 101,
       "official_reference_symbol_collision_gap": 1160,
       "official_reference_unmatched_source_gap": 5545,
       "otc_sector_source_gap": 91,
@@ -37,11 +37,11 @@
       "missing_etf_category:digital_asset_etf_category_gap": 1,
       "missing_etf_category:equity_etf_category_gap": 18,
       "missing_etf_category:fixed_income_etf_category_gap": 7,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 103,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 101,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 20,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 315,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 312,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
@@ -72,7 +72,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 13
+          "rows": 11
         },
         {
           "exchange": "NASDAQ",
@@ -110,7 +110,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 86
+          "rows": 83
         },
         {
           "exchange": "NASDAQ",
@@ -1751,40 +1751,6 @@
       "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
       "source_gap_context": "listing_key=TSX::ROSY.U;exchange=TSX;ticker=ROSY.U;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "TSX::SHPD",
-      "ticker": "SHPD",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "SavvyShort (-2X) Shopify ETF",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=TSX::SHPD;exchange=TSX;ticker=SHPD;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "TSX::SOLX",
-      "ticker": "SOLX",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "CI Galaxy Solana ETF",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=TSX::SOLX;exchange=TSX;ticker=SOLX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
     },
@@ -11447,23 +11413,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::NUCC",
-      "ticker": "NUCC",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "NBI SmartData U.S. Equity Covered Call Fund",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::NUCC;exchange=TSX;ticker=NUCC;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::PHYS-U",
       "ticker": "PHYS-U",
       "exchange": "TSX",
@@ -11583,23 +11532,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::SHPD",
-      "ticker": "SHPD",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "SavvyShort (-2X) Shopify ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::SHPD;exchange=TSX;ticker=SHPD;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::SIH",
       "ticker": "SIH",
       "exchange": "TSX",
@@ -11611,23 +11543,6 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=TSX::SIH;exchange=TSX;ticker=SIH;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::SOLX",
-      "ticker": "SOLX",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "CI Galaxy Solana ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::SOLX;exchange=TSX;ticker=SOLX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
