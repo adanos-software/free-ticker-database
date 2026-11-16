@@ -6,14 +6,14 @@
       "alternate_listing_line": 3393,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12536,
-      "exact_match": 100132,
-      "missing_from_database": 44805,
+      "exact_match": 100130,
+      "missing_from_database": 44807,
       "normalization_candidate": 1868,
       "out_of_scope": 8165
     },
-    "coverage_credited_keys": 100132,
+    "coverage_credited_keys": 100130,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44805,
+    "in_scope_missing_rows": 44807,
     "identity_conflict_rows": 12536,
     "mapping_candidate_rows": 1868
   },
@@ -2119949,10 +2119949,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::BAR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::BARK",
@@ -2127325,10 +2127325,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::CTWO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::CUBB",
