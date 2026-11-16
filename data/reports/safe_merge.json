@@ -12,11 +12,11 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 17,
+    "critical_field_changes": 180,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
+    "generated_official_change_evidence_rows": 3,
     "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
@@ -25,10 +25,22 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
+      "listing_key": "AMS::AST",
+      "field_name": "name",
+      "old_value": "Astarta Holding Nv",
+      "new_value": "Astarta Holding PLC"
+    },
+    {
       "listing_key": "ATHEX::AAAK",
       "field_name": "stock_sector",
       "old_value": "Consumer Discretionary",
       "new_value": "Materials"
+    },
+    {
+      "listing_key": "ATHEX::ELBE",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Consumer Discretionary"
     },
     {
       "listing_key": "BME::YHTI",
@@ -43,6 +55,24 @@
       "new_value": "Real Estate"
     },
     {
+      "listing_key": "BMV::EDUCA18",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "MXCFED090004"
+    },
+    {
+      "listing_key": "BMV::GE",
+      "field_name": "name",
+      "old_value": "General Electric Company",
+      "new_value": "GE Aerospace"
+    },
+    {
+      "listing_key": "BMV::NOKN",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
       "listing_key": "BMV::NUTRISAA",
       "field_name": "isin",
       "old_value": "",
@@ -55,10 +85,100 @@
       "new_value": "Industrials"
     },
     {
+      "listing_key": "BVB::RMAH",
+      "field_name": "name",
+      "old_value": "Farmaceutica R",
+      "new_value": "Farmaceutica Remedia S.A."
+    },
+    {
+      "listing_key": "Bursa::0032",
+      "field_name": "name",
+      "old_value": "Redtone International Bhd",
+      "new_value": "REDtone Digital Berhad"
+    },
+    {
+      "listing_key": "Bursa::0032",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "Bursa::0227",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "Bursa::0257",
+      "field_name": "name",
+      "old_value": "UNIQUE",
+      "new_value": "Unique Fire Holdings Berhad"
+    },
+    {
+      "listing_key": "Bursa::3689",
+      "field_name": "name",
+      "old_value": "Fraser Neave Holdings Bhd",
+      "new_value": "Fraser & Neave Holdings Bhd"
+    },
+    {
+      "listing_key": "Bursa::3689",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "Bursa::5000",
+      "field_name": "name",
+      "old_value": "Hume Industries Berhad",
+      "new_value": "Hume Cement Industries Berhad"
+    },
+    {
+      "listing_key": "Bursa::5000",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Materials"
+    },
+    {
       "listing_key": "Bursa::5142",
       "field_name": "stock_sector",
       "old_value": "Consumer Discretionary",
       "new_value": "Energy"
+    },
+    {
+      "listing_key": "Bursa::5166",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "Bursa::8176",
+      "field_name": "name",
+      "old_value": "ATA IMS Bhd",
+      "new_value": "WaveFront Berhad"
+    },
+    {
+      "listing_key": "CPH::BETCO-DKK",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "CPH::CHEMM",
+      "field_name": "stock_sector",
+      "old_value": "Energy",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "EGX::ANFI",
+      "field_name": "name",
+      "old_value": "Alexandria National Company for Financial Investment",
+      "new_value": "Tycoon Holding Company For Financial Investments"
+    },
+    {
+      "listing_key": "EGX::ARVA",
+      "field_name": "name",
+      "old_value": "Arab Valves Company",
+      "new_value": "Arabian Metal Industries and Industrial Investments"
     },
     {
       "listing_key": "Euronext::AURE",
@@ -67,10 +187,106 @@
       "new_value": "Industrials"
     },
     {
+      "listing_key": "FSX::ADB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "FSX::B7P",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "FSX::CHY",
+      "field_name": "stock_sector",
+      "old_value": "Energy",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "FSX::F1WA",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "FSX::GCP",
+      "field_name": "name",
+      "old_value": "General Electric Company",
+      "new_value": "GE Aerospace"
+    },
+    {
+      "listing_key": "FSX::H6D",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "FSX::M1B",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "FSX::NESR",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "FSX::TA1",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "FSX::TK9",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "HEL::HONBS",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
       "listing_key": "HEL::ROBIT",
       "field_name": "stock_sector",
       "old_value": "Energy",
       "new_value": "Industrials"
+    },
+    {
+      "listing_key": "HEL::SRV1V",
+      "field_name": "name",
+      "old_value": "SRV Group plc",
+      "new_value": "SRV Yhtiöt Oyj"
+    },
+    {
+      "listing_key": "HEL::TOKMAN",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "HKEX::00648",
+      "field_name": "name",
+      "old_value": "SOFTMEDX",
+      "new_value": "SoftMedX Healthcare Limited"
+    },
+    {
+      "listing_key": "HKEX::08079",
+      "field_name": "name",
+      "old_value": "WISDOMCOME GP",
+      "new_value": "LIT Life Holdings Limited"
+    },
+    {
+      "listing_key": "HNX::HEV",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Communication Services"
     },
     {
       "listing_key": "HNX::THB",
@@ -79,10 +295,82 @@
       "new_value": "Consumer Staples"
     },
     {
+      "listing_key": "HNX::VE3",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "IDX::ACRO",
+      "field_name": "name",
+      "old_value": "PT Samcro Hyosung Adilestari T",
+      "new_value": "PT Samcro Hyosung Adilestari Tbk"
+    },
+    {
+      "listing_key": "IDX::ACRO",
+      "field_name": "country",
+      "old_value": "Egypt",
+      "new_value": "Indonesia"
+    },
+    {
+      "listing_key": "IDX::ACRO",
+      "field_name": "country_code",
+      "old_value": "EG",
+      "new_value": "ID"
+    },
+    {
+      "listing_key": "IDX::ACRO",
+      "field_name": "isin",
+      "old_value": "EGS3E071C013",
+      "new_value": "ID1000201007"
+    },
+    {
+      "listing_key": "IDX::DYAN",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Industrials"
+    },
+    {
       "listing_key": "IDX::GEMA",
       "field_name": "stock_sector",
       "old_value": "Industrials",
       "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "IDX::PNGO",
+      "field_name": "name",
+      "old_value": "Pinago Utama Tbk Pt",
+      "new_value": "PT AEP Pinago Plantations Tbk"
+    },
+    {
+      "listing_key": "KOSDAQ::053050",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "KOSDAQ::086040",
+      "field_name": "stock_sector",
+      "old_value": "Health Care",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "KOSDAQ::101730",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "KOSDAQ::136540",
+      "field_name": "name",
+      "old_value": "WINS Co. Ltd",
+      "new_value": "WINS Technet Co., Ltd."
+    },
+    {
+      "listing_key": "KRX::003830",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Materials"
     },
     {
       "listing_key": "KRX::005870",
@@ -91,10 +379,292 @@
       "new_value": "Information Technology"
     },
     {
+      "listing_key": "KRX::009310",
+      "field_name": "name",
+      "old_value": "Charm Engine",
+      "new_value": "Charm Engineering Co., Ltd."
+    },
+    {
+      "listing_key": "KRX::020120",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "LSE::0AA8",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "LSE::0ACB",
+      "field_name": "name",
+      "old_value": "Helvetia Holding AG",
+      "new_value": "Helvetia Baloise Holding AG"
+    },
+    {
+      "listing_key": "LSE::0DZ0",
+      "field_name": "stock_sector",
+      "old_value": "Energy",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "LSE::0K8D",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "LSE::0NKL",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Communication Services"
+    },
+    {
       "listing_key": "LSE::0QNQ",
       "field_name": "stock_sector",
       "old_value": "Communication Services",
       "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "LSE::0QQI",
+      "field_name": "name",
+      "old_value": "HT5 AG",
+      "new_value": "Centiel AG"
+    },
+    {
+      "listing_key": "LSE::0QQI",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "LSE::0QR4",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "LSE::0RG2",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "LSE::GCP",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "LSE::SEPL",
+      "field_name": "name",
+      "old_value": "Seplat Petroleum Development Company PLC",
+      "new_value": "Seplat Energy Plc"
+    },
+    {
+      "listing_key": "Munich::ADB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "Munich::GCP",
+      "field_name": "name",
+      "old_value": "General Electric Company",
+      "new_value": "GE Aerospace"
+    },
+    {
+      "listing_key": "Munich::H6D",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "Munich::KIN2",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "NASDAQ::AEHL",
+      "field_name": "isin",
+      "old_value": "VGG041JN1487",
+      "new_value": "VGG041JN1552"
+    },
+    {
+      "listing_key": "NASDAQ::EZGO",
+      "field_name": "isin",
+      "old_value": "VGG5279F3007",
+      "new_value": "VGG5279F1282"
+    },
+    {
+      "listing_key": "NASDAQ::FGL",
+      "field_name": "isin",
+      "old_value": "VGG3662E1218",
+      "new_value": "VGG3662E1473"
+    },
+    {
+      "listing_key": "NASDAQ::LBTYA",
+      "field_name": "name",
+      "old_value": "Liberty Global PLC",
+      "new_value": "Liberty Global Ltd."
+    },
+    {
+      "listing_key": "NASDAQ::LBTYB",
+      "field_name": "name",
+      "old_value": "Liberty Global PLC Class B",
+      "new_value": "Liberty Global Ltd. Class B"
+    },
+    {
+      "listing_key": "NASDAQ::LBTYK",
+      "field_name": "name",
+      "old_value": "Liberty Global PLC Class C",
+      "new_value": "Liberty Global Ltd. Class C"
+    },
+    {
+      "listing_key": "NASDAQ::LBTYK",
+      "field_name": "country",
+      "old_value": "United Kingdom",
+      "new_value": "Bermuda"
+    },
+    {
+      "listing_key": "NASDAQ::LBTYK",
+      "field_name": "country_code",
+      "old_value": "GB",
+      "new_value": "BM"
+    },
+    {
+      "listing_key": "NASDAQ::LBTYK",
+      "field_name": "isin",
+      "old_value": "GB00B8W67B19",
+      "new_value": "BMG611881274"
+    },
+    {
+      "listing_key": "NASDAQ::RDZN",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "NASDAQ::SMX",
+      "field_name": "isin",
+      "old_value": "IE000CNLGHH1",
+      "new_value": "IE000YMEYEO8"
+    },
+    {
+      "listing_key": "NYSE MKT::EQX",
+      "field_name": "isin",
+      "old_value": "CA29446Y3041",
+      "new_value": "CA29446Y5020"
+    },
+    {
+      "listing_key": "NYSE MKT::NTIP",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "NYSE MKT::PMI",
+      "field_name": "isin",
+      "old_value": "US71953R1086",
+      "new_value": "US71953R2076"
+    },
+    {
+      "listing_key": "NYSE MKT::SLI",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "NYSE MKT::TPET",
+      "field_name": "isin",
+      "old_value": "US89669L2079",
+      "new_value": "US89669L3069"
+    },
+    {
+      "listing_key": "NYSE MKT::USAS",
+      "field_name": "name",
+      "old_value": "Americas Silver Corp",
+      "new_value": "Americas Gold and Silver Corporation"
+    },
+    {
+      "listing_key": "NYSE MKT::USAS",
+      "field_name": "isin",
+      "old_value": "CA03062D1006",
+      "new_value": "CA03062D8035"
+    },
+    {
+      "listing_key": "NYSE::BEPJ",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "NYSE::KGC",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "NYSE::VTMX",
+      "field_name": "country",
+      "old_value": "Mexico",
+      "new_value": "United States"
+    },
+    {
+      "listing_key": "NYSE::VTMX",
+      "field_name": "country_code",
+      "old_value": "MX",
+      "new_value": "US"
+    },
+    {
+      "listing_key": "OSL::KID",
+      "field_name": "name",
+      "old_value": "KID",
+      "new_value": "Kid ASA"
+    },
+    {
+      "listing_key": "OSL::MPCES",
+      "field_name": "stock_sector",
+      "old_value": "Energy",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "OTC::BTRCF",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "OTC::ESGH",
+      "field_name": "country",
+      "old_value": "Luxembourg",
+      "new_value": "United States"
+    },
+    {
+      "listing_key": "OTC::ESGH",
+      "field_name": "country_code",
+      "old_value": "LU",
+      "new_value": "US"
+    },
+    {
+      "listing_key": "OTC::ESGH",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US72754U1007"
+    },
+    {
+      "listing_key": "OTC::HELNF",
+      "field_name": "name",
+      "old_value": "Helvetia Holding AG",
+      "new_value": "Helvetia Baloise Holding AG"
+    },
+    {
+      "listing_key": "OTC::HLVTY",
+      "field_name": "name",
+      "old_value": "Helvetia Holding AG",
+      "new_value": "Helvetia Baloise Holding AG"
     },
     {
       "listing_key": "OTC::KDCXF",
@@ -103,10 +673,208 @@
       "new_value": "Information Technology"
     },
     {
+      "listing_key": "OTC::NSRGF",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "OTC::STHRF",
+      "field_name": "isin",
+      "old_value": "CA8629521086",
+      "new_value": "CA8629522076"
+    },
+    {
+      "listing_key": "OTC::UPDC",
+      "field_name": "country",
+      "old_value": "Nigeria",
+      "new_value": "United States"
+    },
+    {
+      "listing_key": "OTC::UPDC",
+      "field_name": "country_code",
+      "old_value": "NG",
+      "new_value": "US"
+    },
+    {
+      "listing_key": "OTC::UPDC",
+      "field_name": "isin",
+      "old_value": "NGUACPROP006",
+      "new_value": "US90321C1062"
+    },
+    {
+      "listing_key": "PSE::BCOR",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "PSE::CREC",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "PSE::FDC",
+      "field_name": "name",
+      "old_value": "Filinvest Development Coproration",
+      "new_value": "Filinvest Development Corporation"
+    },
+    {
+      "listing_key": "PSE::MER",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "PSX::MWMP",
+      "field_name": "name",
+      "old_value": "Mandviwala Mausar Plastic Industries Ltd",
+      "new_value": "Mandviwala Mauser Plastic Industries Ltd"
+    },
+    {
+      "listing_key": "SET::UBA",
+      "field_name": "country",
+      "old_value": "Nigeria",
+      "new_value": "Thailand"
+    },
+    {
+      "listing_key": "SET::UBA",
+      "field_name": "country_code",
+      "old_value": "NG",
+      "new_value": "TH"
+    },
+    {
+      "listing_key": "SET::UBA",
+      "field_name": "isin",
+      "old_value": "NGUBA0000001",
+      "new_value": "THB044010007"
+    },
+    {
+      "listing_key": "SGX::CHJ",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "SIX::HBAN",
+      "field_name": "name",
+      "old_value": "Helvetia Holding AG",
+      "new_value": "Helvetia Baloise Holding AG"
+    },
+    {
+      "listing_key": "SIX::HT5",
+      "field_name": "name",
+      "old_value": "HT5 N LTD",
+      "new_value": "Centiel AG"
+    },
+    {
+      "listing_key": "SIX::HT5",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Industrials"
+    },
+    {
       "listing_key": "SIX::KUD",
       "field_name": "stock_sector",
       "old_value": "Communication Services",
       "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "SIX::NESN",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "SSE::603121",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "SSE::688819",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "SSE_CL::GE",
+      "field_name": "name",
+      "old_value": "General Electric Company",
+      "new_value": "GE Aerospace"
+    },
+    {
+      "listing_key": "STO::BETCO",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "SZSE::002627",
+      "field_name": "name",
+      "old_value": "Hubeiyichang Transportation Group Co Ltd",
+      "new_value": "Hubei Three Gorges Tourism Group Co., Ltd."
+    },
+    {
+      "listing_key": "SZSE::300375",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "TADAWUL::1182",
+      "field_name": "name",
+      "old_value": "AMLAK",
+      "new_value": "Amlak International Finance Company"
+    },
+    {
+      "listing_key": "TADAWUL::1182",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "TADAWUL::4250",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "TADAWUL::8313",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "TASE::FVT",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "TASE::MSAH",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "TASE::MSBI",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "TASE::SLCL",
+      "field_name": "name",
+      "old_value": "Silver Castle Holdings Ltd",
+      "new_value": "IBI Silver Castle Ltd"
+    },
+    {
+      "listing_key": "TPEX::2643",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
     },
     {
       "listing_key": "TPEX::4549",
@@ -115,19 +883,281 @@
       "new_value": "Industrials"
     },
     {
+      "listing_key": "TPEX::6170",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "TPEX::8092",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "TSE::3750",
+      "field_name": "name",
+      "old_value": "ADR120S,Inc.",
+      "new_value": "ADR Biomedical Holdings Inc."
+    },
+    {
+      "listing_key": "TSX::LLY",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "TSX::SCR",
+      "field_name": "isin",
+      "old_value": "CA8629521086",
+      "new_value": "CA8629522076"
+    },
+    {
+      "listing_key": "TSX::SDE",
+      "field_name": "isin",
+      "old_value": "CA84678A1021",
+      "new_value": "CA84678A5089"
+    },
+    {
+      "listing_key": "TSX::TSK",
+      "field_name": "isin",
+      "old_value": "CA87425A1012",
+      "new_value": "CA87425A8876"
+    },
+    {
+      "listing_key": "TSX::USA",
+      "field_name": "name",
+      "old_value": "Americas Silver Corp",
+      "new_value": "Americas Gold and Silver Corporation"
+    },
+    {
+      "listing_key": "TSXV::SBEL.P",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "CA80101U1030"
+    },
+    {
       "listing_key": "WSE::ABE",
       "field_name": "stock_sector",
       "old_value": "Financials",
       "new_value": "Information Technology"
     },
     {
+      "listing_key": "WSE::AST",
+      "field_name": "name",
+      "old_value": "Astarta Holding N.V.",
+      "new_value": "Astarta Holding PLC"
+    },
+    {
+      "listing_key": "WSE::BOS",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "WSE::PCO",
+      "field_name": "name",
+      "old_value": "Pepco Group B.V.",
+      "new_value": "Pepco Group N.V."
+    },
+    {
       "listing_key": "WSE::PPS",
       "field_name": "stock_sector",
       "old_value": "Financials",
       "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "WSE::ZRX",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "XDUS::ADB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "XDUS::GCP",
+      "field_name": "name",
+      "old_value": "General Electric Company",
+      "new_value": "GE Aerospace"
+    },
+    {
+      "listing_key": "XDUS::H6D",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "XDUS::KIN2",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "XDUS::RIT1",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "XETRA::1FC",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "XETRA::44B",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "XETRA::7MP",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "XETRA::ADB",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "XETRA::DQW",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "XETRA::GCP",
+      "field_name": "name",
+      "old_value": "General Electric Company",
+      "new_value": "GE Aerospace"
+    },
+    {
+      "listing_key": "XETRA::KIN2",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "XETRA::NESR",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "XETRA::TA1",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "XETRA::WSV2",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "XHAN::GCP",
+      "field_name": "name",
+      "old_value": "General Electric Company",
+      "new_value": "GE Aerospace"
+    },
+    {
+      "listing_key": "XSTU::ADB",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "XSTU::H6D",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "XSTU::KIN2",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "XSTU::S5L",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "XSTU::TA1",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "XSTU::TK9",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Consumer Discretionary"
     }
   ],
-  "generated_official_change_evidence": [],
+  "generated_official_change_evidence": [
+    {
+      "listing_key": "OTC::ESGH",
+      "ticker": "ESGH",
+      "exchange": "OTC",
+      "event_type": "identifier_changed",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US72754U1007",
+      "before_row_sha256": "fb86c1bb1336dcaa6a2dd482913266814e80f968f153791f37c6b4e2e7ea279c",
+      "effective_at": "",
+      "observed_at": "2026-11-16T00:50:24Z",
+      "source_key": "otc_markets_security_profile",
+      "source_url": "https://www.otcmarkets.com/stock/ESGH/security",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "a5e176dcc3a90158f6eb9dd3",
+      "evidence_status": "official"
+    },
+    {
+      "listing_key": "OTC::ESGH",
+      "ticker": "ESGH",
+      "exchange": "OTC",
+      "event_type": "country_changed",
+      "field_name": "country",
+      "old_value": "Luxembourg",
+      "new_value": "United States",
+      "before_row_sha256": "fb86c1bb1336dcaa6a2dd482913266814e80f968f153791f37c6b4e2e7ea279c",
+      "effective_at": "",
+      "observed_at": "2026-11-16T00:50:24Z",
+      "source_key": "otc_markets_security_profile",
+      "source_url": "https://www.otcmarkets.com/stock/ESGH/security",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "7a9bc3f6fbde108cc3577c1d",
+      "evidence_status": "verified"
+    },
+    {
+      "listing_key": "OTC::ESGH",
+      "ticker": "ESGH",
+      "exchange": "OTC",
+      "event_type": "country_changed",
+      "field_name": "country_code",
+      "old_value": "LU",
+      "new_value": "US",
+      "before_row_sha256": "fb86c1bb1336dcaa6a2dd482913266814e80f968f153791f37c6b4e2e7ea279c",
+      "effective_at": "",
+      "observed_at": "2026-11-16T00:50:24Z",
+      "source_key": "otc_markets_security_profile",
+      "source_url": "https://www.otcmarkets.com/stock/ESGH/security",
+      "source_report": "data/masterfiles/reference.csv",
+      "observation_id": "b0964fd13173cc8ba58f9615",
+      "evidence_status": "verified"
+    }
+  ],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {

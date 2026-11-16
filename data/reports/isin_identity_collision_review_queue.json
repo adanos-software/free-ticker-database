@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-15T20:42:43Z",
+    "generated_at": "2026-11-16T00:50:57Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -8,98 +8,6 @@
     }
   },
   "items": [
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "BMV",
-          "listing_key": "BMV::GE",
-          "name": "General Electric Company",
-          "ticker": "GE"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "FSX",
-          "listing_key": "FSX::GCP",
-          "name": "General Electric Company",
-          "ticker": "GCP"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "Munich",
-          "listing_key": "Munich::GCP",
-          "name": "General Electric Company",
-          "ticker": "GCP"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "NYSE",
-          "listing_key": "NYSE::GE",
-          "name": "GE Aerospace",
-          "ticker": "GE"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "SSE_CL",
-          "listing_key": "SSE_CL::GE",
-          "name": "General Electric Company",
-          "ticker": "GE"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "XDUS",
-          "listing_key": "XDUS::GCP",
-          "name": "General Electric Company",
-          "ticker": "GCP"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "XETRA",
-          "listing_key": "XETRA::GCP",
-          "name": "General Electric Company",
-          "ticker": "GCP"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "XHAN",
-          "listing_key": "XHAN::GCP",
-          "name": "General Electric Company",
-          "ticker": "GCP"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;ticker_collision;registered_country_known",
-      "decision_candidate": "ticker_collision_isin_misassignment_suspected",
-      "isin": "US3696043013",
-      "isin_valid": "true",
-      "listing_count": "8",
-      "listing_keys": "BMV::GE|FSX::GCP|Munich::GCP|NYSE::GE|SSE_CL::GE|XDUS::GCP|XETRA::GCP|XHAN::GCP",
-      "member_exchanges": "BMV | FSX | Munich | NYSE | SSE_CL | XDUS | XETRA | XHAN",
-      "member_names": "GE Aerospace | General Electric Company",
-      "member_tickers": "GCP | GE",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "United States",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": "GE"
-    },
     {
       "_members": [
         {
@@ -5760,18 +5668,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 124,
+      "review_required_groups": 123,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 115,
-    "collision_groups": 124,
+    "closed_groups": 114,
+    "collision_groups": 123,
     "decision_candidate_totals": {
       "isin_shared_by_distinct_issuers": 92,
-      "ticker_collision_isin_misassignment_suspected": 32
+      "ticker_collision_isin_misassignment_suspected": 31
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-15T20:42:43Z",
-    "listings_involved": 363,
+    "generated_at": "2026-11-16T00:50:57Z",
+    "listings_involved": 355,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5779,7 +5687,7 @@
         "registered_country": "United States"
       },
       {
-        "collision_groups": 14,
+        "collision_groups": 13,
         "decision_candidate": "ticker_collision_isin_misassignment_suspected",
         "registered_country": "United States"
       },
@@ -5962,8 +5870,8 @@
       "Sweden": 6,
       "Switzerland": 4,
       "United Kingdom": 2,
-      "United States": 39
+      "United States": 38
     },
-    "ticker_collision_groups": 32
+    "ticker_collision_groups": 31
   }
 }
