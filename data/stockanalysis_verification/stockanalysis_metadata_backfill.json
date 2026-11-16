@@ -1,12 +1,12 @@
 {
-  "targets": 1164,
-  "results": 48,
-  "updates": 28,
+  "targets": 1139,
+  "results": 21,
+  "updates": 1,
   "applied": true,
   "decision_counts": {
-    "no_update": 15,
-    "name_mismatch": 4,
-    "accept": 28,
+    "name_mismatch": 8,
+    "no_update": 11,
+    "accept": 1,
     "isin_country_mismatch": 1
   },
   "errors": [
@@ -96,6 +96,11 @@
       "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2948/company/"
     },
     {
+      "ticker": "02949",
+      "exchange": "HKEX",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2949/company/"
+    },
+    {
       "ticker": "02950",
       "exchange": "HKEX",
       "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2950/company/"
@@ -106,9 +111,34 @@
       "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2952/company/"
     },
     {
+      "ticker": "02953",
+      "exchange": "HKEX",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2953/company/"
+    },
+    {
       "ticker": "02956",
       "exchange": "HKEX",
       "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2956/company/"
+    },
+    {
+      "ticker": "02959",
+      "exchange": "HKEX",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2959/company/"
+    },
+    {
+      "ticker": "02981",
+      "exchange": "HKEX",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2981/company/"
+    },
+    {
+      "ticker": "02982",
+      "exchange": "HKEX",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2982/company/"
+    },
+    {
+      "ticker": "02984",
+      "exchange": "HKEX",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/2984/company/"
     },
     {
       "ticker": "02996",
@@ -129,6 +159,11 @@
       "ticker": "08557",
       "exchange": "HKEX",
       "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/8557/company/"
+    },
+    {
+      "ticker": "08561",
+      "exchange": "HKEX",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/hkg/8561/company/"
     },
     {
       "ticker": "08581",
@@ -348,132 +383,147 @@
     {
       "ticker": "AQCP",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AQCP/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AQCP/company/"
     },
     {
       "ticker": "AQIMD",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AQIMD/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AQIMD/company/"
     },
     {
       "ticker": "ARBB",
       "exchange": "LSE",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/lon/ARBB/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/lon/ARBB/company/"
+    },
+    {
+      "ticker": "ARCIL",
+      "exchange": "NSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/ARCIL/company/"
     },
     {
       "ticker": "ARCUD",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ARCUD/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ARCUD/company/"
     },
     {
       "ticker": "ARDDF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ARDDF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ARDDF/company/"
     },
     {
       "ticker": "ARDGS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ARDGS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ARDGS/company/"
     },
     {
       "ticker": "ARPQS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ARPQS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ARPQS/company/"
     },
     {
       "ticker": "ARPRF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ARPRF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ARPRF/company/"
     },
     {
       "ticker": "ARSIFHDAD",
       "exchange": "BSE_IN",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/nse/ARSIFHDAD/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/ARSIFHDAD/company/"
     },
     {
       "ticker": "ARVVS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ARVVS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ARVVS/company/"
     },
     {
       "ticker": "ARVWS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ARVWS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ARVWS/company/"
     },
     {
       "ticker": "ASDRS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ASDRS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ASDRS/company/"
     },
     {
       "ticker": "ASEKF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ASEKF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ASEKF/company/"
+    },
+    {
+      "ticker": "ASHIKAG",
+      "exchange": "NSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/ASHIKAG/company/"
     },
     {
       "ticker": "ASHTF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ASHTF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ASHTF/company/"
     },
     {
       "ticker": "ASMMF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ASMMF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ASMMF/company/"
     },
     {
       "ticker": "ASMVY",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ASMVY/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ASMVY/company/"
     },
     {
       "ticker": "ASNFF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ASNFF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ASNFF/company/"
     },
     {
       "ticker": "ASULS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ASULS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ASULS/company/"
     },
     {
       "ticker": "ATDRY",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ATDRY/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ATDRY/company/"
     },
     {
       "ticker": "ATMTF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/ATMTF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ATMTF/company/"
+    },
+    {
+      "ticker": "ATVKD",
+      "exchange": "OTC",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ATVKD/company/"
     },
     {
       "ticker": "AUHYF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AUHYF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AUHYF/company/"
     },
     {
       "ticker": "AULSF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AULSF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AULSF/company/"
     },
     {
       "ticker": "AUXXD",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AUXXD/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AUXXD/company/"
     },
     {
       "ticker": "AVDNS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AVDNS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AVDNS/company/"
     },
     {
       "ticker": "AVHNY",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AVHNY/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AVHNY/company/"
     },
     {
       "ticker": "AVMPF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AVMPF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AVMPF/company/"
     },
     {
       "ticker": "AWDSS",
@@ -483,77 +533,92 @@
     {
       "ticker": "AWDVS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AWDVS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AWDVS/company/"
     },
     {
       "ticker": "AWPWS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AWPWS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AWPWS/company/"
     },
     {
       "ticker": "AXDDF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AXDDF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AXDDF/company/"
     },
     {
       "ticker": "AXNLF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/AXNLF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/AXNLF/company/"
     },
     {
       "ticker": "BARKWS",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BARKWS/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BARKWS/company/"
     },
     {
       "ticker": "BATMF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BATMF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BATMF/company/"
     },
     {
       "ticker": "BBII",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BBII/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BBII/company/"
     },
     {
       "ticker": "BCDRF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BCDRF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BCDRF/company/"
     },
     {
       "ticker": "BCHTD",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BCHTD/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BCHTD/company/"
     },
     {
       "ticker": "BCHXF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BCHXF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BCHXF/company/"
     },
     {
       "ticker": "BCKMF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BCKMF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BCKMF/company/"
+    },
+    {
+      "ticker": "BCSSL",
+      "exchange": "NSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/BCSSL/company/"
     },
     {
       "ticker": "BCWG",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BCWG/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BCWG/company/"
+    },
+    {
+      "ticker": "BDPTD",
+      "exchange": "OTC",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BDPTD/company/"
     },
     {
       "ticker": "BDUUF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BDUUF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BDUUF/company/"
+    },
+    {
+      "ticker": "BELDING",
+      "exchange": "NSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/BELDING/company/"
     },
     {
       "ticker": "BFGFD",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BFGFD/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BFGFD/company/"
     },
     {
       "ticker": "BGADF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BGADF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BGADF/company/"
     },
     {
       "ticker": "BIGG",
@@ -613,17 +678,27 @@
     {
       "ticker": "BLRZD",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BLRZD/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BLRZD/company/"
+    },
+    {
+      "ticker": "BLSPOLY",
+      "exchange": "NSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/BLSPOLY/company/"
+    },
+    {
+      "ticker": "BMISL",
+      "exchange": "NSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/BMISL/company/"
     },
     {
       "ticker": "BMTHF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BMTHF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BMTHF/company/"
     },
     {
       "ticker": "BOPFF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/BOPFF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BOPFF/company/"
     },
     {
       "ticker": "BOROSCI",
@@ -669,6 +744,11 @@
       "ticker": "BSPDY",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/BSPDY/company/"
+    },
+    {
+      "ticker": "BTF",
+      "exchange": "SGX",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/sgx/BTF/company/"
     },
     {
       "ticker": "BUILDPRO",
@@ -1081,11 +1161,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/CYRD/company/"
     },
     {
-      "ticker": "DAMCAPITAL",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/DAMCAPITAL/company/"
-    },
-    {
       "ticker": "DAVANGERE",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/DAVANGERE/company/"
@@ -1126,11 +1201,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/DCYHY/company/"
     },
     {
-      "ticker": "DDEVPLSTIK",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/DDEVPLSTIK/company/"
-    },
-    {
       "ticker": "DEEDEV",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/DEEDEV/company/"
@@ -1156,9 +1226,14 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/DEVX/company/"
     },
     {
+      "ticker": "DGQTF",
+      "exchange": "OTC",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/DGQTF/company/"
+    },
+    {
       "ticker": "DHAWF",
       "exchange": "OTC",
-      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/DHAWF/company/"
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/DHAWF/company/"
     },
     {
       "ticker": "DHOOTTRANS",
@@ -1321,19 +1396,9 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/EDELALTS/company/"
     },
     {
-      "ticker": "EDEMY",
-      "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/EDEMY/company/"
-    },
-    {
       "ticker": "EELFF",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/EELFF/company/"
-    },
-    {
-      "ticker": "EFCIL",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/EFCIL/company/"
     },
     {
       "ticker": "EGIL",
@@ -1444,11 +1509,6 @@
       "ticker": "ESDS",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/ESDS/company/"
-    },
-    {
-      "ticker": "ESGH",
-      "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ESGH/company/"
     },
     {
       "ticker": "ESGOF",
@@ -2201,11 +2261,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/lon/III/company/"
     },
     {
-      "ticker": "IIRM",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/IIRM/company/"
-    },
-    {
       "ticker": "IKIO",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/IKIO/company/"
@@ -2651,11 +2706,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/LAXMIDENTL/company/"
     },
     {
-      "ticker": "LAXMIINDIA",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/LAXMIINDIA/company/"
-    },
-    {
       "ticker": "LCCPROJECT",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/LCCPROJECT/company/"
@@ -2708,7 +2758,7 @@
     {
       "ticker": "LLOBF",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/LLOBF/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/LLOBF/company/"
     },
     {
       "ticker": "LOANFRONT",
@@ -2894,11 +2944,6 @@
       "ticker": "MERVF",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/MERVF/company/"
-    },
-    {
-      "ticker": "METEN",
-      "exchange": "BIST",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/ist/METEN/company/"
     },
     {
       "ticker": "MFGCF",
@@ -3303,7 +3348,7 @@
     {
       "ticker": "NPTLF",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/NPTLF/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/NPTLF/company/"
     },
     {
       "ticker": "NSKFD",
@@ -3328,12 +3373,12 @@
     {
       "ticker": "NUHRF",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/NUHRF/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/NUHRF/company/"
     },
     {
       "ticker": "NULGD",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/NULGD/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/NULGD/company/"
     },
     {
       "ticker": "NVLIF",
@@ -3646,11 +3691,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/POLWQ/company/"
     },
     {
-      "ticker": "POOJALOGIS",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/POOJALOGIS/company/"
-    },
-    {
       "ticker": "POPMF",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/POPMF/company/"
@@ -3861,11 +3901,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/RATNAVEER/company/"
     },
     {
-      "ticker": "RAVITA",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/RAVITA/company/"
-    },
-    {
       "ticker": "RAYMONDREL",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/RAYMONDREL/company/"
@@ -4026,11 +4061,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ROVMF/company/"
     },
     {
-      "ticker": "ROYL",
-      "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ROYL/company/"
-    },
-    {
       "ticker": "ROYMY",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/ROYMY/company/"
@@ -4161,6 +4191,11 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/SBIFUNDS/company/"
     },
     {
+      "ticker": "SCDL",
+      "exchange": "BSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/SCDL/company/"
+    },
+    {
       "ticker": "SCODATUBES",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/SCODATUBES/company/"
@@ -4288,22 +4323,17 @@
     {
       "ticker": "SHGXY",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/SHGXY/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/SHGXY/company/"
     },
     {
       "ticker": "SHHPF",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/SHHPF/company/"
-    },
-    {
-      "ticker": "SHIFF",
-      "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/SHIFF/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/SHHPF/company/"
     },
     {
       "ticker": "SHIHF",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/SHIHF/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/SHIHF/company/"
     },
     {
       "ticker": "SHIPROCKET",
@@ -4483,7 +4513,7 @@
     {
       "ticker": "SORT",
       "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/SORT/company/"
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/otc/SORT/company/"
     },
     {
       "ticker": "SPANDANA",
@@ -4686,11 +4716,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/SVEXF/company/"
     },
     {
-      "ticker": "SVGYO",
-      "exchange": "BIST",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/ist/SVGYO/company/"
-    },
-    {
       "ticker": "SVNWF",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/SVNWF/company/"
@@ -4774,11 +4799,6 @@
       "ticker": "TDHOY",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/TDHOY/company/"
-    },
-    {
-      "ticker": "TECHNOCRAF",
-      "exchange": "NSE_IN",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/TECHNOCRAF/company/"
     },
     {
       "ticker": "TECILCHEM",
@@ -5081,11 +5101,6 @@
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/UNIPARTS/company/"
     },
     {
-      "ticker": "UNXD",
-      "exchange": "SGX",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/sgx/UNXD/company/"
-    },
-    {
       "ticker": "UOLGY",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/UOLGY/company/"
@@ -5149,11 +5164,6 @@
       "ticker": "VARMORA",
       "exchange": "NSE_IN",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/VARMORA/company/"
-    },
-    {
-      "ticker": "VCVOF",
-      "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/VCVOF/company/"
     },
     {
       "ticker": "VDASF",
@@ -5279,6 +5289,11 @@
       "ticker": "VOYRF",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/VOYRF/company/"
+    },
+    {
+      "ticker": "VPFL",
+      "exchange": "NSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/VPFL/company/"
     },
     {
       "ticker": "VPRPL",
@@ -5464,11 +5479,6 @@
       "ticker": "XDWDF",
       "exchange": "OTC",
       "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/XDWDF/company/"
-    },
-    {
-      "ticker": "XESP",
-      "exchange": "OTC",
-      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/otc/XESP/company/"
     },
     {
       "ticker": "XNAQF",
