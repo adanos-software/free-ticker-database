@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-16T01:19:51Z",
+  "generated_at": "2026-11-16T02:15:07Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2093,
-  "decision_rows": 6854,
+  "conflict_count": 2092,
+  "decision_rows": 6852,
   "action_counts": {
     "kept_listing_keyed_identifier": 1349,
     "proposed_clear_conflicting_identifier": 1083,
-    "quarantined_unresolved_identifier": 4422
+    "quarantined_unresolved_identifier": 4420
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1083,
-  "quarantined_rows": 4422,
+  "quarantined_rows": 4420,
   "retained_rows": 1349,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -85748,32 +85748,6 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US89832Q1094"
-    },
-    {
-      "conflict_id": "9fbde2f14dccbceb468b",
-      "isin": "US89834G7786",
-      "listing_key": "NASDAQ::CUSD",
-      "ticker": "CUSD",
-      "exchange": "NASDAQ",
-      "name": "CrossingBridge Ultra-Short Duration ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US89834G7786"
-    },
-    {
-      "conflict_id": "9fbde2f14dccbceb468b",
-      "isin": "US89834G7786",
-      "listing_key": "NASDAQ::SPC",
-      "ticker": "SPC",
-      "exchange": "NASDAQ",
-      "name": "CrossingBridge Pre-Merger SPAC ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US89834G7786"
     },
     {
       "conflict_id": "0bedd7ee62c0735da1a7",
