@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-16T02:18:11Z",
-    "rows": 8073,
+    "generated_at": "2026-11-16T06:39:59Z",
+    "rows": 8071,
     "field_totals": {
       "missing_etf_category": 133,
       "missing_isin_primary": 623,
-      "missing_sector_stock": 603,
+      "missing_sector_stock": 601,
       "official_reference_gap": 6714
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 135,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 426,
+      "official_industry_taxonomy_unavailable_gap": 424,
       "official_product_taxonomy_unavailable_gap": 102,
       "official_reference_symbol_collision_gap": 1170,
       "official_reference_unmatched_source_gap": 5544,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 33,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 426,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 424,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1170,
@@ -163,11 +163,11 @@
           "rows": 33
         },
         {
-          "exchange": "BVB",
-          "rows": 19
+          "exchange": "BSE_IN",
+          "rows": 18
         },
         {
-          "exchange": "BSE_IN",
+          "exchange": "BVB",
           "rows": 18
         },
         {
@@ -175,11 +175,11 @@
           "rows": 18
         },
         {
-          "exchange": "SGX",
-          "rows": 17
+          "exchange": "BIST",
+          "rows": 16
         },
         {
-          "exchange": "BIST",
+          "exchange": "SGX",
           "rows": 16
         }
       ],
@@ -14218,23 +14218,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "BVB::IPRO",
-      "ticker": "IPRO",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "name": "IPROLAM SA BUCURESTI",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BVB::IPRO;exchange=BVB;ticker=IPRO;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "BVB::NAXY",
       "ticker": "NAXY",
       "exchange": "BVB",
@@ -22304,23 +22287,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=SGX::UGS;exchange=SGX;ticker=UGS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "SGX::UNXD",
-      "ticker": "UNXD",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "name": "SK Hynix US SDR 100to1",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=SGX::UNXD;exchange=SGX;ticker=UNXD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
