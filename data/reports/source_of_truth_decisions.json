@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-11-17T09:35:56Z",
-    "rows": 8058,
+    "generated_at": "2026-11-17T12:42:51Z",
+    "rows": 8056,
     "outcome_totals": {
       "accepted_source_gap": 5058,
-      "core_exclusion_candidate": 513,
+      "core_exclusion_candidate": 511,
       "official_fill_required": 2487
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 19,
+      "adr_cdr_or_depositary_identifier_gap": 18,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 30,
       "commodity_etf_category_gap": 7,
@@ -18,7 +18,7 @@
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 7,
       "fund_or_trust_identifier_gap": 312,
-      "fundlike_stock_sector_gap": 32,
+      "fundlike_stock_sector_gap": 31,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 136,
@@ -34,10 +34,10 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 134,
       "missing_isin_primary:accepted_source_gap": 153,
-      "missing_isin_primary:core_exclusion_candidate": 469,
+      "missing_isin_primary:core_exclusion_candidate": 468,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 512,
-      "missing_sector_stock:core_exclusion_candidate": 44,
+      "missing_sector_stock:core_exclusion_candidate": 43,
       "missing_sector_stock:official_fill_required": 41,
       "official_reference_gap:accepted_source_gap": 4259,
       "official_reference_gap:official_fill_required": 2445
@@ -93212,23 +93212,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::TTES",
-      "ticker": "TTES",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "TotalEnergies CDR (CAD Hedged)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::UBSS",
       "ticker": "UBSS",
       "exchange": "TSX",
@@ -94033,23 +94016,6 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "L1 GLOBAL LONG SHORT FUND LIMITED",
-      "gap_class": "fundlike_stock_sector_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Canonical stock sector only with issuer-level classification evidence."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "ASX::GVF",
-      "ticker": "GVF",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "name": "STAUDE CAPITAL GLOBAL VALUE FUND LIMITED",
       "gap_class": "fundlike_stock_sector_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
