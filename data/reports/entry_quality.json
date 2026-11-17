@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-17T17:10:24Z",
-    "rows": 97637,
+    "generated_at": "2026-11-17T17:43:17Z",
+    "rows": 97639,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,27 +15,27 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86595,
-      "source_gap": 10998,
+      "pass": 86596,
+      "source_gap": 10999,
       "warn": 34
     },
     "evidence_level_counts": {
       "identifier_enriched": 4522,
       "official_reference": 87646,
       "scoped_source_gap": 295,
-      "valid_isin": 5174
+      "valid_isin": 5176
     },
     "severity_counts": {
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11345
+      "source_gap": 11348
     },
     "issue_counts": {
-      "official_reference_gap": 6704,
+      "official_reference_gap": 6706,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 622,
-      "missing_stock_sector": 585,
+      "missing_stock_sector": 586,
       "missing_etf_category": 147,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
@@ -1992,7 +1992,7 @@
       "exchange": "HKEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 90,
+      "quality_score": 80,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
         {
@@ -2001,6 +2001,13 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -2737,7 +2744,7 @@
       "exchange": "HKEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 90,
+      "quality_score": 80,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
         {
@@ -2746,6 +2753,13 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "HKEX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },

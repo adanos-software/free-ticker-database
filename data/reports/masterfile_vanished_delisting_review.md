@@ -1,17 +1,18 @@
 # Masterfile Vanished Delisting Review
-- Generated at: `2026-11-16T20:30:06Z`
+- Generated at: `2026-11-17T15:58:19Z`
 - Policy: `feed_delisting_classifier_not_direct_deletion`
-- Vanished reference rows: `1025`
-- Rotation vanished rows: `0`
+- Vanished reference rows: `1030`
+- Rotation vanished rows: `5`
 - Backlog rows: `1025`
-- Still in database: `1025`
+- Still in database: `1027`
 - Applied drops: `0`
 
 ## Classifier counts
 
 | Action | Rows |
 |---|---:|
-| manual_rename_vs_delisting_required | 1025 |
+| manual_rename_vs_delisting_required | 1027 |
+| not_in_database | 3 |
 
 ## Rows still in the database
 
@@ -522,6 +523,7 @@
 | HKEX | 02945 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02949 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 02950 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 02996 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 03011 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 03038 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 03427 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
@@ -530,6 +532,7 @@
 | HKEX | 08039 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 08448 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 08475 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
+| HKEX | 08556 | hkex_securities_list | manual_rename_vs_delisting_required | rotation |
 | HKEX | 08567 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 08582 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
 | HKEX | 08585 | hkex_securities_list | manual_rename_vs_delisting_required | backlog |
@@ -1046,6 +1049,6 @@
 ## Notes
 
 - Vanished official-reference rows are classified; listings are not dropped from this report.
-- Rotation vanished rows: 0; still-in-database backlog carried: 1025.
-- Still in database: 1025; not in database: 0.
+- Rotation vanished rows: 5; still-in-database backlog carried: 1025.
+- Still in database: 1027; not in database: 3.
 - Applied drops from this classifier: 0.

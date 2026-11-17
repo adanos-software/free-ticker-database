@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-11-16T20:38:53Z`
+Generated at: `2026-11-17T16:05:18Z`
 
 ## Summary
 
@@ -28,7 +28,7 @@ Generated at: `2026-11-16T20:38:53Z`
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
 | 6 | EGX | official_partial | 223 | 0 | 0 | egx_listed_securities | EGX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 7 | ASX | official_partial | 2259 | 98 | 11 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 7 | ASX | official_partial | 2259 | 98 | 9 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 8 | ATHEX | official_partial | 162 | 0 | 0 | athex_sector_classification | ATHEX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 9 | SZSE | official_partial | 3150 | 11 | 0 | szse_industry_classification | SZSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SZSE report-list industry fields |
 | 10 | SSE | official_partial | 2795 | 33 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |
@@ -67,7 +67,7 @@ _No rows._
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
 | 6 | EGX | official_partial | 223 | 0 | 0 | egx_listed_securities | EGX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 7 | ASX | official_partial | 2259 | 98 | 11 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 7 | ASX | official_partial | 2259 | 98 | 9 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 8 | ATHEX | official_partial | 162 | 0 | 0 | athex_sector_classification | ATHEX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 9 | SZSE | official_partial | 3150 | 11 | 0 | szse_industry_classification | SZSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SZSE report-list industry fields |
 | 10 | SSE | official_partial | 2795 | 33 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |

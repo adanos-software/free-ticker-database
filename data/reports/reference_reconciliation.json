@@ -1,21 +1,21 @@
 {
   "summary": {
-    "active_official_reference_rows": 171108,
-    "source_specific_reference_keys": 171107,
+    "active_official_reference_rows": 171111,
+    "source_specific_reference_keys": 171110,
     "classification_counts": {
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12536,
-      "exact_match": 100145,
-      "missing_from_database": 44811,
-      "normalization_candidate": 1864,
-      "out_of_scope": 8163
+      "exact_match": 100146,
+      "missing_from_database": 44813,
+      "normalization_candidate": 1865,
+      "out_of_scope": 8162
     },
-    "coverage_credited_keys": 100145,
+    "coverage_credited_keys": 100146,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44811,
+    "in_scope_missing_rows": 44813,
     "identity_conflict_rows": 12536,
-    "mapping_candidate_rows": 1864
+    "mapping_candidate_rows": 1865
   },
   "rows": [
     {
@@ -97,22 +97,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "adx_market_watch::ADX::ADIBRI26",
-      "source_key": "adx_market_watch",
-      "reference_key": "ADX::ADIBRI26",
-      "exchange": "ADX",
-      "ticker": "ADIBRI26",
-      "asset_types": "Stock",
-      "names": "ADIB Rights Issue 2026",
-      "isins": "AER02084A267",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: rights"
     },
     {
       "reconciliation_key": "adx_market_watch::ADX::ADID",
@@ -1008,6 +992,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "ADX::GMPC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "adx_market_watch::ADX::GQGU",
+      "source_key": "adx_market_watch",
+      "reference_key": "ADX::GQGU",
+      "exchange": "ADX",
+      "ticker": "GQGU",
+      "asset_types": "ETF",
+      "names": "GQG US EQUITY ETF",
+      "isins": "US00775Y2569",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "ADX::GQGU",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -89875,22 +89875,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "bme_security_prices_directory::BME::S3129",
-      "source_key": "bme_security_prices_directory",
-      "reference_key": "BME::S3129",
-      "exchange": "BME",
-      "ticker": "S3129",
-      "asset_types": "Stock",
-      "names": "ALKARIKA",
-      "isins": "ES0169092030",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "bme_security_prices_directory::BME::S3185",
       "source_key": "bme_security_prices_directory",
       "reference_key": "BME::S3185",
@@ -89947,6 +89931,22 @@
       "asset_types": "Stock",
       "names": "ALGEBRA 64 AUREA",
       "isins": "ES0175472002",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "bme_security_prices_directory::BME::S4024",
+      "source_key": "bme_security_prices_directory",
+      "reference_key": "BME::S4024",
+      "exchange": "BME",
+      "ticker": "S4024",
+      "asset_types": "Stock",
+      "names": "ALCLANO DE LA LUZ",
+      "isins": "ES0108003007",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -90043,6 +90043,22 @@
       "asset_types": "Stock",
       "names": "ALDICER",
       "isins": "ES0105976007",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "bme_security_prices_directory::BME::SCALF",
+      "source_key": "bme_security_prices_directory",
+      "reference_key": "BME::SCALF",
+      "exchange": "BME",
+      "ticker": "SCALF",
+      "asset_types": "Stock",
+      "names": "ALFIL PATRIMONIAL",
+      "isins": "ES0105757019",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -90209,22 +90225,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "BME::SEC",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "bme_security_prices_directory::BME::SL088",
-      "source_key": "bme_security_prices_directory",
-      "reference_key": "BME::SL088",
-      "exchange": "BME",
-      "ticker": "SL088",
-      "asset_types": "Stock",
-      "names": "ALGENID INVERSIONES",
-      "isins": "ES0108015035",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "bme_security_prices_directory::BME::SLR",
@@ -232176,6 +232176,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "CSE_LK::FCT.N0000",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "cse_lk_all_security_code::CSE_LK::FVH.N0000",
+      "source_key": "cse_lk_all_security_code",
+      "reference_key": "CSE_LK::FVH.N0000",
+      "exchange": "CSE_LK",
+      "ticker": "FVH.N0000",
+      "asset_types": "Stock",
+      "names": "FALCON VALLEY HYDRO LIMITED",
+      "isins": "LK0514N00006",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "CSE_LK::FVH.N0000",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -738394,7 +738410,7 @@
       "ticker": "ALTOO",
       "asset_types": "Stock",
       "names": "TOOSLA",
-      "isins": "FR00140062B9",
+      "isins": "FR001401B9V8",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "exact_match",
@@ -750561,6 +750577,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OSL::CRNA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "euronext_equities::OSL::CTUS",
+      "source_key": "euronext_equities",
+      "reference_key": "OSL::CTUS",
+      "exchange": "OSL",
+      "ticker": "CTUS",
+      "asset_types": "Stock",
+      "names": "CETUS MARITIME",
+      "isins": "KYG203121077",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "euronext_equities::OSL::CYVIZ",
@@ -853939,22 +853971,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "hkex_securities_list::HKEX::02996",
-      "source_key": "hkex_securities_list",
-      "reference_key": "HKEX::02996",
-      "exchange": "HKEX",
-      "ticker": "02996",
-      "asset_types": "Stock",
-      "names": "GOLDENPOWER RTS",
-      "isins": "KYG3959Y1605",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "HKEX::02996",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "hkex_securities_list::HKEX::03001",
       "source_key": "hkex_securities_list",
       "reference_key": "HKEX::03001",
@@ -858297,7 +858313,7 @@
       "exchange": "HKEX",
       "ticker": "03636",
       "asset_types": "Stock",
-      "names": "JINXUN RES-500",
+      "names": "JINXUN RESOURCE",
       "isins": "CNE100007DK3",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -865369,7 +865385,7 @@
       "exchange": "HKEX",
       "ticker": "08206",
       "asset_types": "Stock",
-      "names": "S ROBOT EDU-NEW",
+      "names": "S ROBOT EDU",
       "isins": "KYG8117F1283",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -868000,22 +868016,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "HKEX::08552",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "hkex_securities_list::HKEX::08556",
-      "source_key": "hkex_securities_list",
-      "reference_key": "HKEX::08556",
-      "exchange": "HKEX",
-      "ticker": "08556",
-      "asset_types": "Stock",
-      "names": "S ROBOT EDU-OLD",
-      "isins": "KYG8117F1101",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "HKEX::08556",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -885353,14 +885353,14 @@
       "exchange": "IDX",
       "ticker": "AGII",
       "asset_types": "Stock",
-      "names": "PT Samator Indo Gas Tbk",
+      "names": "PT Aneka Gas Industri Tbk.",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "IDX::AGII",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "idx_company_profiles::IDX::AGRO",
@@ -894297,14 +894297,14 @@
       "exchange": "IDX",
       "ticker": "MKNT",
       "asset_types": "Stock",
-      "names": "PT Mitra Komunikasi Nusantara Tbk.",
+      "names": "PT Remitra Global International Tbk",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "IDX::MKNT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "idx_company_profiles::IDX::MKPI",
@@ -1060577,6 +1060577,38 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "krx_etf_finder::KRX::0269M0",
+      "source_key": "krx_etf_finder",
+      "reference_key": "KRX::0269M0",
+      "exchange": "KRX",
+      "ticker": "0269M0",
+      "asset_types": "ETF",
+      "names": "RISE 27-11 회사채(AA-이상)액티브",
+      "isins": "KR70269M0004",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "krx_etf_finder::KRX::0269N0",
+      "source_key": "krx_etf_finder",
+      "reference_key": "KRX::0269N0",
+      "exchange": "KRX",
+      "ticker": "0269N0",
+      "asset_types": "ETF",
+      "names": "RISE 미국초대형주TOP10",
+      "isins": "KR70269N0003",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "normalization_candidate",
+      "coverage_credit": "false",
+      "matched_listing_keys": "KRX::0000Z0|KRX::0013P0|KRX::475350",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "krx_etf_finder::KRX::069500",
@@ -1803505,6 +1803537,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "NSE_KE::EAPORTLAND",
       "evidence": "Same venue and ISIN identify one compatible alternate line, but a different venue symbol cannot satisfy this reference without an explicit reviewed mapping."
+    },
+    {
+      "reconciliation_key": "nse_ke_listed_companies::NSE_KE::QMRT",
+      "source_key": "nse_ke_listed_companies",
+      "reference_key": "NSE_KE::QMRT",
+      "exchange": "NSE_KE",
+      "ticker": "QMRT",
+      "asset_types": "Stock",
+      "names": "QuickMart Plc",
+      "isins": "KE9940001986",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_KE::QMRT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nse_ke_listed_companies::NSE_KE::SASN",
