@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-17T08:59:50Z",
+    "generated_at": "2026-11-17T17:10:27Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -33,8 +33,8 @@
   "completeness": {
     "isin": {
       "n": 63504,
-      "filled": 62880,
-      "missing": 624,
+      "filled": 62882,
+      "missing": 622,
       "pct": 99.02,
       "fills_needed_for_99": 0,
       "pass": true
@@ -49,16 +49,16 @@
     },
     "taxonomy": {
       "n": 63504,
-      "filled": 62770,
-      "missing": 734,
-      "pct": 98.84,
-      "fills_needed_for_99": 99,
+      "filled": 62772,
+      "missing": 732,
+      "pct": 98.85,
+      "fills_needed_for_99": 97,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "NYSE ARCA": 102,
       "ASX": 98,
-      "TSX": 83,
+      "TSX": 81,
       "NASDAQ": 70,
       "TSXV": 57,
       "BATS": 47,
@@ -103,8 +103,8 @@
     "quarantine_kept": 554
   },
   "entry_quality_status": {
-    "pass": 59731,
-    "source_gap": 3746,
+    "pass": 59733,
+    "source_gap": 3744,
     "warn": 19,
     "notice": 8
   },
@@ -136,8 +136,8 @@
       "status": "pass",
       "details": {
         "n": 63504,
-        "filled": 62880,
-        "missing": 624,
+        "filled": 62882,
+        "missing": 622,
         "pct": 99.02,
         "fills_needed_for_99": 0,
         "pass": true
@@ -148,10 +148,10 @@
       "status": "fail",
       "details": {
         "n": 63504,
-        "filled": 62770,
-        "missing": 734,
-        "pct": 98.84,
-        "fills_needed_for_99": 99,
+        "filled": 62772,
+        "missing": 732,
+        "pct": 98.85,
+        "fills_needed_for_99": 97,
         "pass": false
       }
     },

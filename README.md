@@ -202,7 +202,7 @@ Top exchanges by primary ticker count:
 | Exchange | Tickers |
 |---|---:|
 | OTC | 6,935 |
-| NASDAQ | 4,593 |
+| NASDAQ | 4,594 |
 | LSE | 3,547 |
 | TSE | 3,258 |
 | SZSE | 3,111 |
@@ -212,7 +212,7 @@ Top exchanges by primary ticker count:
 | NYSE ARCA | 2,654 |
 | NSE_IN | 877 |
 | XETRA | 2,553 |
-| NYSE | 1,883 |
+| NYSE | 1,882 |
 | KRX | 1,990 |
 | TSX | 1,825 |
 | KOSDAQ | 1,603 |

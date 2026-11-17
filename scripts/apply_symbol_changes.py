@@ -465,6 +465,9 @@ def rekey_review_rows(
         rename = by_exchange_symbol.get((exchange, ticker))
         if rename is not None:
             next_row["ticker"] = rename["new_symbol"]
+            new_exchange = rename.get("new_exchange", "")
+            if new_exchange and next_row.get("exchange", "") != new_exchange:
+                next_row["exchange"] = new_exchange
             row_changed = True
         listing_key_value = next_row.get("listing_key", "")
         if listing_key_value in by_old_key:

@@ -1,14 +1,18 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-16T20:30:09Z`
-- New supported rows: `0`
-- Accepted rows: `0`
+- Generated at: `2026-11-17T16:54:49Z`
+- New supported rows: `1`
+- Accepted rows: `1`
 - Skipped rows: `0`
+- Detected symbol changes: `0`
+- Detected venue changes: `1`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-No new listings were accepted.
+| Ticker | Exchange | Name | Asset type | Target | Source |
+|---|---|---|---|---|---|
+| GM | NASDAQ | General Motors Company - Common Stock | Stock | supplement | nasdaq_listed |
 
 ## Skipped
 

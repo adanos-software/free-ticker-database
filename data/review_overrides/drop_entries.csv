@@ -600,6 +600,7 @@ GLMD,NASDAQ,0.99,Reviewed predecessor drop NASDAQ::GLMD after successor NASDAQ::
 GLOBOFFS,BSE_IN,0.99,Reviewed issuer ticker transition BSE_IN::GLOBOFFS to BSE_IN::GARWAOFFS; exact evidence is recorded in listing_transitions.csv.
 GLTO,NASDAQ,0.96,"Renamed/re-tickered to DMRA (same-issuer, web+CIK verified 2026-06-19); stale old symbol"
 GLU,NYSE MKT,0.95,OpenFIGI securityType=Mutual Fund; not common stock (CEF/unit/right/preferred/baby-bond) -> out of Stock scope
+GM,NYSE,0.99,Reviewed issuer venue transition NYSE::GM to NASDAQ::GM; exact evidence is recorded in listing_transitions.csv.
 GMERC-B,STO,0.98,Official Nasdaq Nordic Stockholm search and Spotlight search do not return an active exact Stockholm share while the current NGM company directory exposes the GreenMerc company profile without an active primary symbol for this ticker; the remaining STO core row is stale.
 GMET,NYSE ARCA,0.99,"ETF curation 2026-10-29: renamed to EMET (same ISIN US92189Y2046, symbol_changed transition); GMET is absent from the official Nasdaq Trader directory, SEC ticker files and OpenFIGI."
 GMGT,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.

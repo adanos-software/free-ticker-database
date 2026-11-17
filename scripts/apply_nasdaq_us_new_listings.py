@@ -327,6 +327,72 @@ def official_symbol_change_identity_peers(
     return matches if len(matches) == 1 else []
 
 
+def directory_names_match(left: str, right: str) -> bool:
+    left = left.strip()
+    right = right.strip()
+    return bool(
+        left
+        and right
+        and (alias_matches_company(left, right) or alias_matches_company(right, left))
+    )
+
+
+def official_directory_venue_change_identity_peers(
+    row: dict[str, str],
+    listings: Iterable[dict[str, str]],
+    previous_reference_rows: Iterable[dict[str, str]],
+    current_reference_rows: Iterable[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Match a new Nasdaq directory row to one vanished other-venue listing.
+
+    A same-ticker transfer (for example NYSE -> Nasdaq) is the same security when
+    the old venue/ticker disappears from the Nasdaq Trader directory in this
+    refresh, the new venue/ticker appears, and the predecessor listing name or a
+    still-published official name for that old key matches the new directory
+    name. The predecessor must already carry an ISIN.
+
+    A lagging SEC venue row does not keep the old directory key alive and must
+    not block the match. The old key has to disappear in this same run; a new
+    Nasdaq row while the previous venue is still directory-active is a distinct
+    same-ticker security. Ambiguous matches stay unmatched.
+    """
+
+    previous_keys = nasdaq_directory_keys(previous_reference_rows)
+    current_keys = nasdaq_directory_keys(current_reference_rows)
+    vanished = previous_keys - current_keys
+    new_key = (row.get("exchange", ""), row.get("ticker", ""))
+    if not vanished or new_key not in current_keys:
+        return []
+
+    current_rows = list(current_reference_rows)
+    matches: list[dict[str, str]] = []
+    for listing in listings:
+        listing_key_tuple = (listing.get("exchange", ""), listing.get("ticker", ""))
+        if listing_key_tuple not in vanished:
+            continue
+        if listing.get("exchange") == row.get("exchange"):
+            continue
+        if listing.get("ticker") != row.get("ticker"):
+            continue
+        if listing.get("asset_type") != row.get("asset_type"):
+            continue
+        if not listing.get("isin", "").strip():
+            continue
+        official_names = [listing.get("name", "")]
+        official_names.extend(
+            candidate.get("name", "")
+            for candidate in current_rows
+            if candidate.get("ticker") == listing.get("ticker")
+            and candidate.get("exchange") == listing.get("exchange")
+            and candidate.get("listing_status") == "active"
+            and normalize_bool(candidate.get("official", ""))
+            and candidate.get("name", "").strip()
+        )
+        if any(directory_names_match(name, row.get("name", "")) for name in official_names):
+            matches.append(listing)
+    return matches if len(matches) == 1 else []
+
+
 def upsert_csv_rows(
     path: Path,
     fieldnames: list[str],
@@ -350,40 +416,40 @@ def upsert_csv_rows(
 def review_rekey_rows_for_detected_symbol_changes(
     detected: list[dict[str, str]],
 ) -> list[dict[str, str]]:
-    """Shape same-ISIN directory renames for ticker-keyed review rekey.
+    """Shape same-ISIN directory renames and venue moves for review rekey.
 
     The foreign-ISIN allowlist is keyed by (ticker, exchange). A verified rename
-    keeps the ISIN, so the review has to follow the new symbol. Rows that are not
-    a same-ISIN symbol change are left alone, which keeps a genuine ticker-collision
-    ISIN unreviewed.
+    keeps the ISIN, so the review has to follow the new symbol. A verified venue
+    move keeps the ticker and ISIN, so the review has to follow the new exchange.
+    Rows that are not a same-ISIN symbol change or venue move are left alone,
+    which keeps a genuine ticker-collision ISIN unreviewed.
     """
 
     rows: list[dict[str, str]] = []
     for row in detected:
-        if row.get("event_type") != "symbol_changed" or row.get("identity_type") != "same_isin":
+        event_type = row.get("event_type")
+        if event_type not in {"symbol_changed", "venue_changed"} or row.get("identity_type") != "same_isin":
             continue
         if not row.get("identity_value", "").strip():
             continue
         old_exchange, separator, old_ticker = row.get("old_listing_key", "").partition("::")
         new_exchange, new_separator, new_ticker = row.get("new_listing_key", "").partition("::")
-        if not (
-            separator
-            and new_separator
-            and old_exchange
-            and old_exchange == new_exchange
-            and old_ticker
-            and new_ticker
-        ):
+        if not (separator and new_separator and old_exchange and new_exchange and old_ticker and new_ticker):
             continue
-        rows.append(
-            {
-                "exchange": old_exchange,
-                "old_symbol": old_ticker,
-                "new_symbol": new_ticker,
-                "old_listing_key": row["old_listing_key"],
-                "new_listing_key": row["new_listing_key"],
-            }
-        )
+        if event_type == "symbol_changed" and not (old_exchange == new_exchange and old_ticker != new_ticker):
+            continue
+        if event_type == "venue_changed" and not (old_ticker == new_ticker and old_exchange != new_exchange):
+            continue
+        rekey_row = {
+            "exchange": old_exchange,
+            "old_symbol": old_ticker,
+            "new_symbol": new_ticker,
+            "old_listing_key": row["old_listing_key"],
+            "new_listing_key": row["new_listing_key"],
+        }
+        if event_type == "venue_changed":
+            rekey_row["new_exchange"] = new_exchange
+        rows.append(rekey_row)
     return rows
 
 
@@ -409,16 +475,43 @@ def persist_detected_symbol_changes(
                 "ticker": row["old_listing_key"].split("::", 1)[1],
                 "exchange": row["old_listing_key"].split("::", 1)[0],
                 "confidence": "0.99",
-                "reason": (
-                    "Detected official Nasdaq directory ticker change "
-                    f"{row['old_listing_key']} to {row['new_listing_key']}; "
-                    "exact evidence is recorded in listing_transitions.csv."
-                ),
+                "reason": drop_reason_for_detected_transition(row),
             }
             for row in detected
         ],
         ("ticker", "exchange"),
     )
+
+
+def drop_reason_for_detected_transition(row: dict[str, str]) -> str:
+    if row.get("event_type") == "venue_changed":
+        return (
+            "Detected official Nasdaq directory venue change "
+            f"{row['old_listing_key']} to {row['new_listing_key']}; "
+            "exact evidence is recorded in listing_transitions.csv."
+        )
+    return (
+        "Detected official Nasdaq directory ticker change "
+        f"{row['old_listing_key']} to {row['new_listing_key']}; "
+        "exact evidence is recorded in listing_transitions.csv."
+    )
+
+
+def unrecorded_transitions(
+    detected: list[dict[str, str]],
+    listing_transitions_csv: Path,
+) -> list[dict[str, str]]:
+    """Keep a reviewed transition when this run rediscovers the same move."""
+
+    existing = {
+        (row.get("old_listing_key", ""), row.get("new_listing_key", ""))
+        for row in load_csv(listing_transitions_csv)
+    }
+    return [
+        row
+        for row in detected
+        if (row.get("old_listing_key", ""), row.get("new_listing_key", "")) not in existing
+    ]
 
 
 def reviewed_transition_identity_peers(
@@ -690,6 +783,7 @@ def apply_new_listings(
     accepted_coverage: list[dict[str, str]] = []
     skipped: list[dict[str, str]] = []
     detected_symbol_changes: list[dict[str, str]] = []
+    detected_venue_changes: list[dict[str, str]] = []
     for row in new_supported_rows:
         reason = reason_for_skip(
             row,
@@ -757,6 +851,34 @@ def apply_new_listings(
                     ),
                 }
             )
+        directory_venue_peers = official_directory_venue_change_identity_peers(
+            row, listings, previous_rows, current_rows
+        )
+        security_identity_peers.extend(
+            peer for peer in directory_venue_peers if peer not in security_identity_peers
+        )
+        if len(directory_venue_peers) == 1 and directory_venue_peers[0].get("isin", "").strip():
+            old_listing = directory_venue_peers[0]
+            detected_venue_changes.append(
+                {
+                    "old_listing_key": f"{old_listing['exchange']}::{old_listing['ticker']}",
+                    "new_listing_key": f"{row['exchange']}::{row['ticker']}",
+                    "event_type": "venue_changed",
+                    "identity_type": "same_isin",
+                    "identity_value": old_listing["isin"].strip().upper(),
+                    "confidence": "0.99",
+                    "source_key": row.get("source_key", "") or "nasdaq_directory_venue_change",
+                    "source_url": row.get("source_url", ""),
+                    "reason": (
+                        "Official Nasdaq Trader directory dropped "
+                        f"{old_listing['exchange']}::{old_listing['ticker']} and listed "
+                        f"{row['exchange']}::{row['ticker']}; the predecessor name matches the "
+                        "new directory name, and the predecessor ISIN "
+                        f"{old_listing['isin'].strip().upper()} is retained. A lagging official "
+                        "venue assignment does not keep the old listing."
+                    ),
+                }
+            )
         identity_peers.extend(peer for peer in security_identity_peers if peer not in identity_peers)
         ticker_occupant_matches = any(peer.get("ticker") == row["ticker"] for peer in security_identity_peers)
         if row["ticker"] in existing_tickers and not ticker_occupant_matches:
@@ -776,28 +898,37 @@ def apply_new_listings(
             accepted.append({**supplement, "apply_target": "supplement"})
             existing_supplement_keys.add((supplement["ticker"], supplement["exchange"]))
 
-    unique_detected_symbol_changes = []
-    seen_old_keys: set[str] = set()
-    seen_new_keys: set[str] = set()
-    for row in detected_symbol_changes:
-        old_key = row["old_listing_key"]
-        new_key = row["new_listing_key"]
-        if old_key in seen_old_keys or new_key in seen_new_keys:
-            continue
-        if not str(row.get("source_url", "")).startswith("https://"):
-            continue
-        seen_old_keys.add(old_key)
-        seen_new_keys.add(new_key)
-        unique_detected_symbol_changes.append(row)
+    def unique_detected_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+        unique_rows: list[dict[str, str]] = []
+        seen_old_keys: set[str] = set()
+        seen_new_keys: set[str] = set()
+        for detected_row in rows:
+            old_key = detected_row["old_listing_key"]
+            new_key = detected_row["new_listing_key"]
+            if old_key in seen_old_keys or new_key in seen_new_keys:
+                continue
+            if not str(detected_row.get("source_url", "")).startswith("https://"):
+                continue
+            seen_old_keys.add(old_key)
+            seen_new_keys.add(new_key)
+            unique_rows.append(detected_row)
+        return unique_rows
+
+    unique_detected_symbol_changes = unique_detected_rows(detected_symbol_changes)
+    unique_detected_venue_changes = unique_detected_rows(detected_venue_changes)
+    detected_listing_changes = [
+        *unique_detected_symbol_changes,
+        *unique_detected_venue_changes,
+    ]
     persist_detected_symbol_changes(
-        unique_detected_symbol_changes,
+        unrecorded_transitions(detected_listing_changes, listing_transitions_csv),
         listing_transitions_csv=listing_transitions_csv,
         drop_entries_csv=drop_entries_csv,
     )
     rekeyed_reviews: list[str] = []
     if review_overrides_dir is not None:
         rekeyed_reviews = migrate_ticker_keyed_review_overrides(
-            review_rekey_rows_for_detected_symbol_changes(unique_detected_symbol_changes),
+            review_rekey_rows_for_detected_symbol_changes(detected_listing_changes),
             review_overrides_dir,
         )
 
@@ -822,6 +953,7 @@ def apply_new_listings(
         "accepted_rows": len(accepted),
         "skipped_rows": len(skipped),
         "detected_symbol_changes": len(unique_detected_symbol_changes),
+        "detected_venue_changes": len(unique_detected_venue_changes),
         "review_override_files_rekeyed": rekeyed_reviews,
         "accepted_by_exchange": dict(sorted(Counter(row["exchange"] for row in accepted).items())),
         "accepted_by_target": dict(sorted(Counter(row["apply_target"] for row in accepted).items())),
@@ -847,6 +979,8 @@ def write_markdown(path: Path, report: dict[str, Any]) -> None:
         f"- New supported rows: `{summary['new_supported_rows']}`",
         f"- Accepted rows: `{summary['accepted_rows']}`",
         f"- Skipped rows: `{summary['skipped_rows']}`",
+        f"- Detected symbol changes: `{summary.get('detected_symbol_changes', 0)}`",
+        f"- Detected venue changes: `{summary.get('detected_venue_changes', 0)}`",
         f"- Supported asset types: `{', '.join(summary['supported_asset_types'])}`",
         "",
         "## Accepted",
