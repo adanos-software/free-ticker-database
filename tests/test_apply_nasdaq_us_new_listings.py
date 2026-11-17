@@ -983,3 +983,287 @@ def test_apply_new_listings_skips_canonical_drop_for_nyse_mkt_source_row(tmp_pat
 
     assert report["accepted"] == []
     assert report["summary"]["skipped_by_reason"] == {"reviewed_drop_entry": 1}
+
+
+def _gm_predecessor() -> dict[str, str]:
+    predecessor = listing_row("GM", exchange="NYSE")
+    predecessor.update(
+        {
+            "name": "General Motors Company",
+            "stock_sector": "Consumer Discretionary",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "US37045V1008",
+            "aliases": "general motors",
+        }
+    )
+    return predecessor
+
+
+def test_apply_new_listings_detects_same_ticker_venue_move_when_sec_venue_lags(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    review_dir = tmp_path / "review_overrides"
+    transitions = review_dir / "listing_transitions.csv"
+    drops = review_dir / "drop_entries.csv"
+    removals = review_dir / "remove_aliases.csv"
+
+    previous_directory = reference_row("GM", "General Motors Company Common Stock", "NYSE")
+    lagging_sec = reference_row(
+        "GM",
+        "General Motors Co",
+        "NYSE",
+        source_key="sec_company_tickers_exchange",
+    )
+    current_directory = reference_row(
+        "GM",
+        "General Motors Company - Common Stock",
+        "NASDAQ",
+        source_key="nasdaq_listed",
+    )
+    write_rows(previous_reference, REFERENCE_FIELDS, [previous_directory, lagging_sec])
+    write_rows(current_reference, REFERENCE_FIELDS, [current_directory, lagging_sec])
+    peer = listing_row("0R0E", exchange="LSE")
+    peer.update({"name": "General Motors Co.", "isin": "US37045V1008", "aliases": "general motors"})
+    write_rows(listings, LISTING_FIELDS, [_gm_predecessor(), peer])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(transitions, TRANSITION_FIELDS, [])
+    write_rows(drops, ["ticker", "exchange", "confidence", "reason"], [])
+    write_rows(
+        removals,
+        ["ticker", "exchange", "alias", "reason", "confidence"],
+        [
+            {
+                "ticker": "GM",
+                "exchange": "NYSE",
+                "alias": "chevy",
+                "reason": "brand nickname",
+                "confidence": "0.9",
+            }
+        ],
+    )
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        drop_entries_csv=drops,
+        review_overrides_dir=review_dir,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["accepted_by_target"] == {"supplement": 1}
+    assert report["summary"]["detected_venue_changes"] == 1
+    assert report["summary"]["detected_symbol_changes"] == 0
+    assert report["summary"]["review_override_files_rekeyed"] == ["remove_aliases.csv"]
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["ticker"] == "GM"
+    assert row["exchange"] == "NASDAQ"
+    assert row["sector"] == "Consumer Discretionary"
+    assert row["country_code"] == "US"
+    assert row["isin"] == "US37045V1008"
+    assert row["aliases"] == "general motors"
+    assert list(csv.DictReader(coverage.open(newline="", encoding="utf-8"))) == []
+    with transitions.open(newline="", encoding="utf-8") as handle:
+        transition = next(csv.DictReader(handle))
+    assert transition["old_listing_key"] == "NYSE::GM"
+    assert transition["new_listing_key"] == "NASDAQ::GM"
+    assert transition["event_type"] == "venue_changed"
+    assert transition["identity_type"] == "same_isin"
+    assert transition["identity_value"] == "US37045V1008"
+    with drops.open(newline="", encoding="utf-8") as handle:
+        drop = next(csv.DictReader(handle))
+    assert drop["ticker"] == "GM"
+    assert drop["exchange"] == "NYSE"
+    assert "NASDAQ::GM" in drop["reason"]
+    with removals.open(newline="", encoding="utf-8") as handle:
+        removal = next(csv.DictReader(handle))
+    assert removal["ticker"] == "GM"
+    assert removal["exchange"] == "NASDAQ"
+    assert removal["alias"] == "chevy"
+
+
+def test_apply_new_listings_keeps_distinct_security_while_old_venue_stays_listed(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+    drops = tmp_path / "drop_entries.csv"
+
+    previous_directory = reference_row("GM", "General Motors Company Common Stock", "NYSE")
+    current_directory = reference_row(
+        "GM",
+        "General Motors Company - Common Stock",
+        "NASDAQ",
+        source_key="nasdaq_listed",
+    )
+    write_rows(previous_reference, REFERENCE_FIELDS, [previous_directory])
+    write_rows(current_reference, REFERENCE_FIELDS, [previous_directory, current_directory])
+    write_rows(listings, LISTING_FIELDS, [_gm_predecessor()])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(transitions, TRANSITION_FIELDS, [])
+    write_rows(drops, ["ticker", "exchange", "confidence", "reason"], [])
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["accepted_by_target"] == {"coverage_expansion": 1}
+    assert report["summary"]["detected_venue_changes"] == 0
+    with coverage.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["listing_key"] == "NASDAQ::GM"
+    assert row["isin"] == ""
+    assert list(csv.DictReader(transitions.open(newline="", encoding="utf-8"))) == []
+    assert list(csv.DictReader(drops.open(newline="", encoding="utf-8"))) == []
+
+
+def test_apply_new_listings_does_not_inherit_vanished_ticker_when_name_differs(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+
+    write_rows(
+        previous_reference,
+        REFERENCE_FIELDS,
+        [reference_row("GM", "Totally Different Corp Common Stock", "NYSE")],
+    )
+    write_rows(
+        current_reference,
+        REFERENCE_FIELDS,
+        [
+            reference_row(
+                "GM",
+                "General Motors Company - Common Stock",
+                "NASDAQ",
+                source_key="nasdaq_listed",
+            )
+        ],
+    )
+    predecessor = listing_row("GM", exchange="NYSE")
+    predecessor.update({"name": "Totally Different Corp", "isin": "US0000000001"})
+    write_rows(listings, LISTING_FIELDS, [predecessor])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(transitions, TRANSITION_FIELDS, [])
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["accepted_by_target"] == {"coverage_expansion": 1}
+    assert report["summary"]["detected_venue_changes"] == 0
+    with coverage.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["isin"] == ""
+    assert list(csv.DictReader(transitions.open(newline="", encoding="utf-8"))) == []
+
+
+def test_apply_new_listings_does_not_overwrite_reviewed_venue_transition(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+    coverage = tmp_path / "coverage.csv"
+    transitions = tmp_path / "listing_transitions.csv"
+    drops = tmp_path / "drop_entries.csv"
+    reviewed_reason = "Reviewed SEC Form 8-A12B and DTN2026-27 transfer."
+
+    previous_directory = reference_row("GM", "General Motors Company Common Stock", "NYSE")
+    current_directory = reference_row(
+        "GM",
+        "General Motors Company - Common Stock",
+        "NASDAQ",
+        source_key="nasdaq_listed",
+    )
+    write_rows(previous_reference, REFERENCE_FIELDS, [previous_directory])
+    write_rows(current_reference, REFERENCE_FIELDS, [current_directory])
+    write_rows(listings, LISTING_FIELDS, [_gm_predecessor()])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+    write_rows(coverage, LISTING_FIELDS, [])
+    write_rows(
+        transitions,
+        TRANSITION_FIELDS,
+        [
+            {
+                "old_listing_key": "NYSE::GM",
+                "new_listing_key": "NASDAQ::GM",
+                "event_type": "venue_changed",
+                "identity_type": "same_isin",
+                "identity_value": "US37045V1008",
+                "confidence": "0.99",
+                "source_key": "sec_8a12b_listing_transfer",
+                "source_url": "https://www.sec.gov/Archives/edgar/data/1467858/000119312526463457/d159065d8a12b.htm",
+                "reason": reviewed_reason,
+            }
+        ],
+    )
+    write_rows(
+        drops,
+        ["ticker", "exchange", "confidence", "reason"],
+        [
+            {
+                "ticker": "GM",
+                "exchange": "NYSE",
+                "confidence": "0.99",
+                "reason": "Reviewed issuer venue transition NYSE::GM to NASDAQ::GM.",
+            }
+        ],
+    )
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        coverage_expansion_csv=coverage,
+        listing_transitions_csv=transitions,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["detected_venue_changes"] == 1
+    assert report["summary"]["accepted_by_target"] == {"supplement": 1}
+    with supplements.open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["isin"] == "US37045V1008"
+    assert row["aliases"] == "general motors"
+    with transitions.open(newline="", encoding="utf-8") as handle:
+        stored = list(csv.DictReader(handle))
+    assert len(stored) == 1
+    assert stored[0]["reason"] == reviewed_reason
+    assert stored[0]["source_key"] == "sec_8a12b_listing_transfer"
+    with drops.open(newline="", encoding="utf-8") as handle:
+        drop = next(csv.DictReader(handle))
+    assert drop["reason"] == "Reviewed issuer venue transition NYSE::GM to NASDAQ::GM."

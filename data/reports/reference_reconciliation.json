@@ -6,14 +6,14 @@
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12536,
-      "exact_match": 100147,
-      "missing_from_database": 44812,
+      "exact_match": 100146,
+      "missing_from_database": 44813,
       "normalization_candidate": 1865,
       "out_of_scope": 8162
     },
-    "coverage_credited_keys": 100147,
+    "coverage_credited_keys": 100146,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44812,
+    "in_scope_missing_rows": 44813,
     "identity_conflict_rows": 12536,
     "mapping_candidate_rows": 1865
   },
@@ -1537619,6 +1537619,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::GM",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::GM",
+      "exchange": "NASDAQ",
+      "ticker": "GM",
+      "asset_types": "Stock",
+      "names": "General Motors Company - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::GM",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::GMAB",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::GMAB",
@@ -1706048,22 +1706064,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::GLW",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::GM",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::GM",
-      "exchange": "NYSE",
-      "ticker": "GM",
-      "asset_types": "Stock",
-      "names": "General Motors Company Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::GM",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2136189,10 +2136189,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::GM",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::GME",

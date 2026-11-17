@@ -6,37 +6,50 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97637,
+    "before_rows": 97639,
     "after_rows": 97639,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 1,
+    "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 1
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NYSE::GM"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [
+  "critical_field_changes": [],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [
     {
-      "listing_key": "Euronext::ALTOO",
-      "field_name": "isin",
-      "old_value": "FR00140062B9",
-      "new_value": "FR001401B9V8"
+      "listing_key": "NYSE::GM",
+      "ticker": "GM",
+      "exchange": "NYSE",
+      "event_type": "venue_changed",
+      "field_name": "exchange",
+      "old_value": "NYSE",
+      "new_value": "NASDAQ",
+      "before_row_sha256": "7d86d021d3629afd1629284c02453304a6e767b5181e0aeafa9788e1d5662910",
+      "effective_at": "",
+      "observed_at": "2026-11-17T17:38:04Z",
+      "source_key": "sec_8a12b_listing_transfer",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1467858/000119312526463457/d159065d8a12b.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "fa90da8276fcc239176fa9b6",
+      "evidence_status": "reviewed"
     }
   ],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
-      "before_rows": 96,
+      "before_rows": 97,
       "after_rows": 97,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -433,7 +446,7 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4761,
-      "after_rows": 4761,
+      "after_rows": 4762,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -477,7 +490,7 @@
     },
     {
       "exchange": "NSE_KE",
-      "before_rows": 79,
+      "before_rows": 80,
       "after_rows": 80,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -487,9 +500,9 @@
     {
       "exchange": "NYSE",
       "before_rows": 2025,
-      "after_rows": 2025,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 2024,
+      "shrink_pct": 0.049383,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
