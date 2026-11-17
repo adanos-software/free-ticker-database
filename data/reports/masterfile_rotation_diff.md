@@ -1,6 +1,6 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-11-17T15:58:16Z`
+- Generated at: `2026-11-17T16:25:46Z`
 - New rows: `8`
 - Vanished rows: `5`
 - Changed rows: `5`
@@ -10,7 +10,6 @@
 
 | Type | Rows |
 |---|---:|
-| field_change | 1 |
 | isin_change | 1 |
 | name_change | 4 |
 

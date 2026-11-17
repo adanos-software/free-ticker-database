@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-17T16:05:10Z",
+    "generated_at": "2026-11-17T16:43:51Z",
     "rows": 97639,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,9 +15,9 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86595,
+      "pass": 86596,
       "source_gap": 10999,
-      "warn": 35
+      "warn": 34
     },
     "evidence_level_counts": {
       "identifier_enriched": 4522,
@@ -26,7 +26,7 @@
       "valid_isin": 5176
     },
     "severity_counts": {
-      "high": 13,
+      "high": 12,
       "low": 10,
       "medium": 23,
       "source_gap": 11348
@@ -40,7 +40,7 @@
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
       "low_company_name_overlap": 10,
-      "country_isin_mismatch": 2
+      "country_isin_mismatch": 1
     },
     "top_flagged_exchanges": [
       {

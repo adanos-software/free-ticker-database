@@ -12772,6 +12772,12 @@ def test_parse_idx_company_profiles_payload_maps_idx_sectors() -> None:
                 "Sektor": "Barang Konsumen Primer",
                 "SubSektor": "Makanan & Minuman",
             },
+            {
+                "KodeEmiten": "AGII",
+                "NamaEmiten": "PT Aneka Gas Industri Tbk.",
+                "Sektor": "BASIC INDUSTRY AND CHEMICALS",
+                "SubSektor": "CHEMICALS",
+            },
         ],
     }
 
@@ -12781,6 +12787,7 @@ def test_parse_idx_company_profiles_payload_maps_idx_sectors() -> None:
         ("AALI", "Consumer Staples"),
         ("TLKM", "Communication Services"),
         ("JSMR", "Industrials"),
+        ("AGII", "Materials"),
     ]
     assert all(row["official"] == "true" for row in rows)
 

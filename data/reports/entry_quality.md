@@ -1,15 +1,15 @@
 # Entry Quality Report
 
-Generated at: `2026-11-17T16:05:10Z`
+Generated at: `2026-11-17T16:43:51Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,595 |
+| pass | 86,596 |
 | source_gap | 10,999 |
-| warn | 35 |
+| warn | 34 |
 
 ## Issue Counts
 
@@ -23,7 +23,7 @@ Generated at: `2026-11-17T16:05:10Z`
 | official_name_mismatch | 23 |
 | official_isin_mismatch | 11 |
 | low_company_name_overlap | 10 |
-| country_isin_mismatch | 2 |
+| country_isin_mismatch | 1 |
 
 ## Top Flagged Exchanges
 

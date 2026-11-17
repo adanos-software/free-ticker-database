@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-11-17T15:58:16Z",
+    "generated_at": "2026-11-17T16:25:46Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "new_rows": 8,
@@ -20,7 +20,6 @@
       "hkex_securities_list": 2
     },
     "changed_by_type": {
-      "field_change": 1,
       "isin_change": 1,
       "name_change": 4
     },
@@ -273,17 +272,12 @@
       "exchange": "IDX",
       "ticker": "AGII",
       "change_types": [
-        "name_change",
-        "field_change"
+        "name_change"
       ],
       "changes": {
         "name": {
           "before": "PT Samator Indo Gas Tbk",
           "after": "PT Aneka Gas Industri Tbk."
-        },
-        "sector": {
-          "before": "Materials",
-          "after": ""
         }
       }
     },

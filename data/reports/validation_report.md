@@ -1,8 +1,8 @@
 # Database Validation Report
 
-Generated at: `2026-11-17T16:08:57Z`
+Generated at: `2026-11-17T16:46:09Z`
 
-Status: `FAIL`
+Status: `PASS`
 
 ## Summary
 
@@ -13,7 +13,7 @@ Status: `FAIL`
 | adanos_reference_rows | 65,607 |
 | entry_quality_rows | 97,639 |
 | error_gates | 88 |
-| failed_error_gates | 2 |
+| failed_error_gates | 0 |
 | info_gates | 5 |
 
 ## Gates
@@ -59,7 +59,7 @@ Status: `FAIL`
 | invalid_country_code_rows | error | PASS | 0 | 0 |
 | country_code_mismatch_rows | error | PASS | 0 | 0 |
 | rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
-| country_isin_prefix_mismatch_without_review | error | FAIL | 1 | 0 |
+| country_isin_prefix_mismatch_without_review | error | PASS | 0 | 0 |
 | rows_with_mojibake_names | error | PASS | 0 | 0 |
 | listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
@@ -89,7 +89,7 @@ Status: `FAIL`
 | source_of_truth_decision_class_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
-| entry_quality_unexpected_warn_count | error | FAIL | 1 | 0 |
+| entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
@@ -98,7 +98,7 @@ Status: `FAIL`
 | missing_stock_sector | info | PASS | 586 |  |
 | missing_etf_category | info | PASS | 147 |  |
 | source_gap_rows | info | PASS | 10999 |  |
-| allowed_warn_rows | info | PASS | 35 |  |
+| allowed_warn_rows | info | PASS | 34 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |
@@ -116,13 +116,4 @@ Status: `FAIL`
 
 ## Failed Gate Details
 
-### country_isin_prefix_mismatch_without_review
-
-- Actual: `1`
-- `ADX::GQGU`
-
-### entry_quality_unexpected_warn_count
-
-- Actual: `1`
-- `ADX::GQGU`
-
+_No failed error gates._
