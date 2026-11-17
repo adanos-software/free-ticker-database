@@ -1,6 +1,6 @@
 # Entry Quality Report
 
-Generated at: `2026-11-17T06:09:14Z`
+Generated at: `2026-11-17T08:25:17Z`
 
 ## Status Counts
 
@@ -18,7 +18,7 @@ Generated at: `2026-11-17T06:09:14Z`
 | official_reference_gap | 6,704 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 624 |
-| missing_stock_sector | 588 |
+| missing_stock_sector | 587 |
 | missing_etf_category | 147 |
 | official_name_mismatch | 23 |
 | official_isin_mismatch | 11 |
