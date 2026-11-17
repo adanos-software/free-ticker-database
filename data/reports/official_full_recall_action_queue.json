@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T17:43:08Z",
+  "generated_at": "2026-11-17T18:20:54Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -33,20 +33,20 @@
     },
     {
       "exchange": "NYSE",
-      "collision_adjusted_recall_pct": 59.94,
+      "collision_adjusted_recall_pct": 59.91,
       "true_missing_excluding_collisions": 1309,
-      "collision_hidden_missing": 567,
-      "official_recall_pct": 51.08,
+      "collision_hidden_missing": 568,
+      "official_recall_pct": 51.03,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 4
     },
     {
       "exchange": "NASDAQ",
-      "collision_adjusted_recall_pct": 82.41,
-      "true_missing_excluding_collisions": 978,
-      "collision_hidden_missing": 61,
-      "official_recall_pct": 81.52,
+      "collision_adjusted_recall_pct": 82.5,
+      "true_missing_excluding_collisions": 973,
+      "collision_hidden_missing": 59,
+      "official_recall_pct": 81.63,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 5
@@ -72,21 +72,21 @@
       "rank": 7
     },
     {
-      "exchange": "BATS",
-      "collision_adjusted_recall_pct": 81.87,
-      "true_missing_excluding_collisions": 293,
-      "collision_hidden_missing": 58,
-      "official_recall_pct": 79.03,
-      "supplement_lane": "not_in_supplement_allowlist",
-      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
-      "rank": 8
-    },
-    {
       "exchange": "UPCOM",
       "collision_adjusted_recall_pct": 0.68,
       "true_missing_excluding_collisions": 293,
       "collision_hidden_missing": 523,
       "official_recall_pct": 0.24,
+      "supplement_lane": "not_in_supplement_allowlist",
+      "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+      "rank": 8
+    },
+    {
+      "exchange": "BATS",
+      "collision_adjusted_recall_pct": 81.92,
+      "true_missing_excluding_collisions": 292,
+      "collision_hidden_missing": 58,
+      "official_recall_pct": 79.08,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 9
