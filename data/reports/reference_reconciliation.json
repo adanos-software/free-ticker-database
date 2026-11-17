@@ -1,21 +1,21 @@
 {
   "summary": {
-    "active_official_reference_rows": 171111,
-    "source_specific_reference_keys": 171110,
+    "active_official_reference_rows": 171113,
+    "source_specific_reference_keys": 171112,
     "classification_counts": {
       "alternate_listing_line": 3394,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12536,
-      "exact_match": 100146,
-      "missing_from_database": 44813,
-      "normalization_candidate": 1865,
+      "exact_match": 100145,
+      "missing_from_database": 44819,
+      "normalization_candidate": 1862,
       "out_of_scope": 8162
     },
-    "coverage_credited_keys": 100146,
+    "coverage_credited_keys": 100145,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44813,
+    "in_scope_missing_rows": 44819,
     "identity_conflict_rows": 12536,
-    "mapping_candidate_rows": 1865
+    "mapping_candidate_rows": 1862
   },
   "rows": [
     {
@@ -1524963,6 +1524963,38 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::CWPD",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::CWPD",
+      "exchange": "NASDAQ",
+      "ticker": "CWPD",
+      "asset_types": "ETF",
+      "names": "CWP Premium Dividend ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::CWPD",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::CWPG",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::CWPG",
+      "exchange": "NASDAQ",
+      "ticker": "CWPG",
+      "asset_types": "ETF",
+      "names": "CWP Premium Growth ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::CWPG",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::CWST",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::CWST",
@@ -1525488,6 +1525520,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::DASH",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::DAU",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::DAU",
+      "exchange": "NASDAQ",
+      "ticker": "DAU",
+      "asset_types": "ETF",
+      "names": "GraniteShares Autocallable AMD ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::DAU",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1526963,6 +1527011,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::DRAC",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::DRAC",
+      "exchange": "NASDAQ",
+      "ticker": "DRAC",
+      "asset_types": "ETF",
+      "names": "GraniteShares Autocallable DRAM ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::DRAC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::DRDB",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::DRDB",
@@ -1527664,22 +1527728,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::DVGR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::DVLT",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::DVLT",
-      "exchange": "NASDAQ",
-      "ticker": "DVLT",
-      "asset_types": "Stock",
-      "names": "Datavault AI Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::DVLT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1553379,6 +1553427,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::MEA",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::MEA",
+      "exchange": "NASDAQ",
+      "ticker": "MEA",
+      "asset_types": "ETF",
+      "names": "GraniteShares Autocallable META ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::MEA",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::MEDP",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::MEDP",
@@ -1559651,6 +1559715,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::NTCR",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::NTCR",
+      "exchange": "NASDAQ",
+      "ticker": "NTCR",
+      "asset_types": "ETF",
+      "names": "Nuveen Technology & Infrastructure Credit ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::NTCR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::NTCT",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::NTCT",
@@ -1564579,6 +1564659,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::PCHX",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::PCHX",
+      "exchange": "NASDAQ",
+      "ticker": "PCHX",
+      "asset_types": "ETF",
+      "names": "State Street SPDR Nasdaq MyPaycheck ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::PCHX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::PCLA",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::PCLA",
@@ -1565824,6 +1565920,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::PIO",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::PIVT",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::PIVT",
+      "exchange": "NASDAQ",
+      "ticker": "PIVT",
+      "asset_types": "ETF",
+      "names": "VanEck Pivotal Trends ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::PIVT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1572112,22 +1572224,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::RKLX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::RKLZ",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::RKLZ",
-      "exchange": "NASDAQ",
-      "ticker": "RKLZ",
-      "asset_types": "ETF",
-      "names": "Defiance Daily Target 2x Short RKLB ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::RKLZ",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1586915,22 +1587011,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::VBNK",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::VBNK",
-      "exchange": "NASDAQ",
-      "ticker": "VBNK",
-      "asset_types": "Stock",
-      "names": "VersaBank - Common Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::VBNK",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::VC",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::VC",
@@ -1588432,6 +1588512,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::VRRM",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::VRSA",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::VRSA",
+      "exchange": "NASDAQ",
+      "ticker": "VRSA",
+      "asset_types": "Stock",
+      "names": "Versa Bancorp - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::VRSA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1613466,22 +1613562,6 @@
       "ticker": "ASTG",
       "asset_types": "ETF",
       "names": "Leverage Shares 2X Long ASTS Daily ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::BATS::ASTN",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::ASTN",
-      "exchange": "BATS",
-      "ticker": "ASTN",
-      "asset_types": "ETF",
-      "names": "Defiance Daily Target 2X Short ASTS ETF",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1673251,6 +1673331,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SIMI",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::SIMI",
+      "exchange": "NYSE ARCA",
+      "ticker": "SIMI",
+      "asset_types": "ETF",
+      "names": "American Beacon SiM High Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::SIMI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SIMS",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::SIMS",
@@ -1675408,22 +1675504,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::STRN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::STSM",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::STSM",
-      "exchange": "NYSE ARCA",
-      "ticker": "STSM",
-      "asset_types": "ETF",
-      "names": "Defiance Daily Target 2X Short TSM ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::STSM",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1682771,6 +1682851,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::ZDAY",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::ZDAY",
+      "exchange": "NYSE ARCA",
+      "ticker": "ZDAY",
+      "asset_types": "ETF",
+      "names": "Bitwise AI Cyber Defense ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::ZDAY",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::ZDIS",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::ZDIS",
@@ -1688208,22 +1688304,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::ACEL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::ACH",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::ACH",
-      "exchange": "NYSE",
-      "ticker": "ACH",
-      "asset_types": "Stock",
-      "names": "Accendra Health, Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::ACH",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1714457,14 +1714537,14 @@
       "exchange": "NYSE",
       "ticker": "MOD",
       "asset_types": "Stock",
-      "names": "Modine Manufacturing Company Common Stock",
+      "names": "Modexus Solutions, Inc. Common Stock",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "NYSE::MOD",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::MOG.A",
@@ -1729697,6 +1729777,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::TXR",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::TXR",
+      "exchange": "NYSE",
+      "ticker": "TXR",
+      "asset_types": "Stock",
+      "names": "Torex Resources Inc. Common Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::TXR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::TXT",
@@ -2048483,38 +2048579,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::ALDF",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::ALDF",
-      "exchange": "NASDAQ",
-      "ticker": "ALDF",
-      "asset_types": "Stock",
-      "names": "Aldel Financial II Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::ALDF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::ALDFW",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::ALDFW",
-      "exchange": "NASDAQ",
-      "ticker": "ALDFW",
-      "asset_types": "Stock",
-      "names": "Aldel Financial II Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::ALDX",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NASDAQ::ALDX",
@@ -2049713,22 +2049777,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::ANDE",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::ANEB",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::ANEB",
-      "exchange": "NASDAQ",
-      "ticker": "ANEB",
-      "asset_types": "Stock",
-      "names": "Anebulo Pharmaceuticals, Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::ANGH",
@@ -2053081,7 +2053129,7 @@
       "exchange": "NASDAQ",
       "ticker": "BCAL",
       "asset_types": "Stock",
-      "names": "California BanCorp CA",
+      "names": "California BanCorp \\ CA",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2055859,11 +2055907,43 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::BRRK",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "NASDAQ::BRRK",
+      "exchange": "NASDAQ",
+      "ticker": "BRRK",
+      "asset_types": "Stock",
+      "names": "Bluerock Acquisition Corp. II",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::BRRK",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::BRRKU",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NASDAQ::BRRKU",
       "exchange": "NASDAQ",
       "ticker": "BRRKU",
+      "asset_types": "Stock",
+      "names": "Bluerock Acquisition Corp. II",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::BRRKW",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "NASDAQ::BRRKW",
+      "exchange": "NASDAQ",
+      "ticker": "BRRKW",
       "asset_types": "Stock",
       "names": "Bluerock Acquisition Corp. II",
       "isins": "",
@@ -2058049,54 +2058129,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::CCTG",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::CCXI",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::CCXI",
-      "exchange": "NASDAQ",
-      "ticker": "CCXI",
-      "asset_types": "Stock",
-      "names": "Agility Robotics, Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::CCXIU",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::CCXIU",
-      "exchange": "NASDAQ",
-      "ticker": "CCXIU",
-      "asset_types": "Stock",
-      "names": "Agility Robotics, Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::CCXIW",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::CCXIW",
-      "exchange": "NASDAQ",
-      "ticker": "CCXIW",
-      "asset_types": "Stock",
-      "names": "Agility Robotics, Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::CD",
@@ -2072259,22 +2072291,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::GNTA",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::GNTA",
-      "exchange": "NASDAQ",
-      "ticker": "GNTA",
-      "asset_types": "Stock",
-      "names": "Genenta Science S.p.A.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::GNTX",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NASDAQ::GNTX",
@@ -2073952,6 +2073968,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::HBNC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::HBR",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "NASDAQ::HBR",
+      "exchange": "NASDAQ",
+      "ticker": "HBR",
+      "asset_types": "ETF",
+      "names": "Canary HBAR ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::HBR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2077345,22 +2077377,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::INDP",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::INDV",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::INDV",
-      "exchange": "NASDAQ",
-      "ticker": "INDV",
-      "asset_types": "Stock",
-      "names": "Supernus, Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
-      "matched_listing_keys": "NASDAQ::INDV",
-      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::INEO",
@@ -2080905,7 +2080921,7 @@
       "exchange": "NASDAQ",
       "ticker": "KVHI",
       "asset_types": "Stock",
-      "names": "KVH INDUSTRIES INC DE",
+      "names": "KVH INDUSTRIES INC \\DE\\",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2085827,22 +2085843,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::MLEC",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::MLEC",
-      "exchange": "NASDAQ",
-      "ticker": "MLEC",
-      "asset_types": "Stock",
-      "names": "Moolec Science SA",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::MLEC",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::MLGO",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NASDAQ::MLGO",
@@ -2090704,22 +2090704,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::NXTT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::NXXT",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::NXXT",
-      "exchange": "NASDAQ",
-      "ticker": "NXXT",
-      "asset_types": "Stock",
-      "names": "NEXTNRG, INC.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::NXXT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2104867,22 +2104851,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::STAI",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NASDAQ::STAI",
-      "exchange": "NASDAQ",
-      "ticker": "STAI",
-      "asset_types": "Stock",
-      "names": "ScanTech AI Systems Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::STAK",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NASDAQ::STAK",
@@ -2112377,7 +2112345,7 @@
       "exchange": "NASDAQ",
       "ticker": "WFRD",
       "asset_types": "Stock",
-      "names": "Weatherford International plc",
+      "names": "Weatherford International Corp",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2117555,22 +2117523,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::NYSE::ALUR",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NYSE::ALUR",
-      "exchange": "NYSE",
-      "ticker": "ALUR",
-      "asset_types": "Stock",
-      "names": "ALLURION TECHNOLOGIES, INC.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::ALV",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NYSE::ALV",
@@ -2119056,22 +2119008,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::ASX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NYSE::ATCH",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NYSE::ATCH",
-      "exchange": "NYSE",
-      "ticker": "ATCH",
-      "asset_types": "Stock",
-      "names": "AtlasClear Holdings, Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::ATCH",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2134915,22 +2134851,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::NYSE::GCDT",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NYSE::GCDT",
-      "exchange": "NYSE",
-      "ticker": "GCDT",
-      "asset_types": "Stock",
-      "names": "Green Circle Decarbonize Technology Ltd",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::GCDT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::GCO",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NYSE::GCO",
@@ -2138083,22 +2138003,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::NYSE::HLSQ",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NYSE::HLSQ",
-      "exchange": "NYSE",
-      "ticker": "HLSQ",
-      "asset_types": "Stock",
-      "names": "Tessera Defense & Homeland Security Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::HLSQ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::HMC",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NYSE::HMC",
@@ -2138929,6 +2138833,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::NYSE::HZN",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "NYSE::HZN",
+      "exchange": "NYSE",
+      "ticker": "HZN",
+      "asset_types": "Stock",
+      "names": "BLACK HILLS CORP /SD/",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
+      "matched_listing_keys": "NYSE::HZN",
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::HZO",
@@ -2144241,6 +2144161,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::MDA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::NYSE::MDRN",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "NYSE::MDRN",
+      "exchange": "NYSE",
+      "ticker": "MDRN",
+      "asset_types": "Stock",
+      "names": "Modern Mining Technology Corp.",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::MDT",
@@ -2152867,11 +2152803,43 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::NYSE::PORT",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "NYSE::PORT",
+      "exchange": "NYSE",
+      "ticker": "PORT",
+      "asset_types": "Stock",
+      "names": "Southport Acquisition Corp. II",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::PORT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::PORT-UN",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "NYSE::PORT-UN",
       "exchange": "NYSE",
       "ticker": "PORT-UN",
+      "asset_types": "Stock",
+      "names": "Southport Acquisition Corp. II",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::NYSE::PORT-WT",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "NYSE::PORT-WT",
+      "exchange": "NYSE",
+      "ticker": "PORT-WT",
       "asset_types": "Stock",
       "names": "Southport Acquisition Corp. II",
       "isins": "",
@@ -2153648,22 +2153616,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::PSO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::NYSE::PSQH",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "NYSE::PSQH",
-      "exchange": "NYSE",
-      "ticker": "PSQH",
-      "asset_types": "Stock",
-      "names": "PSQ Holdings, Inc.",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::PSQH",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2163385,7 +2163337,7 @@
       "exchange": "NYSE",
       "ticker": "USB",
       "asset_types": "Stock",
-      "names": "US BANCORP \\DE\\",
+      "names": "US BANCORP DE",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2163401,7 +2163353,7 @@
       "exchange": "NYSE",
       "ticker": "USB-PA",
       "asset_types": "Stock",
-      "names": "US BANCORP \\DE\\",
+      "names": "US BANCORP DE",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2163417,7 +2163369,7 @@
       "exchange": "NYSE",
       "ticker": "USB-PH",
       "asset_types": "Stock",
-      "names": "US BANCORP \\DE\\",
+      "names": "US BANCORP DE",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2163433,7 +2163385,7 @@
       "exchange": "NYSE",
       "ticker": "USB-PP",
       "asset_types": "Stock",
-      "names": "US BANCORP \\DE\\",
+      "names": "US BANCORP DE",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2163449,7 +2163401,7 @@
       "exchange": "NYSE",
       "ticker": "USB-PQ",
       "asset_types": "Stock",
-      "names": "US BANCORP \\DE\\",
+      "names": "US BANCORP DE",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2163465,7 +2163417,7 @@
       "exchange": "NYSE",
       "ticker": "USB-PR",
       "asset_types": "Stock",
-      "names": "US BANCORP \\DE\\",
+      "names": "US BANCORP DE",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2163481,7 +2163433,7 @@
       "exchange": "NYSE",
       "ticker": "USB-PS",
       "asset_types": "Stock",
-      "names": "US BANCORP \\DE\\",
+      "names": "US BANCORP DE",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -2169107,22 +2169059,6 @@
       "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::ALPE",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::ALPE",
-      "exchange": "OTC",
-      "ticker": "ALPE",
-      "asset_types": "Stock",
-      "names": "alpha-En Corp",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::ALPE",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::ALPIB",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::ALPIB",
@@ -2169715,6 +2169651,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::APLR",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::APLR",
+      "exchange": "OTC",
+      "ticker": "APLR",
+      "asset_types": "Stock",
+      "names": "Amplara Corp",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::APMCF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::APMCF",
@@ -2170195,6 +2170147,22 @@
       "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::ATCH",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::ATCH",
+      "exchange": "OTC",
+      "ticker": "ATCH",
+      "asset_types": "Stock",
+      "names": "AtlasClear Holdings, Inc.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::ATCHW",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::ATCHW",
@@ -2170528,6 +2170496,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::AVAI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::AVCRF",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::AVCRF",
+      "exchange": "OTC",
+      "ticker": "AVCRF",
+      "asset_types": "Stock",
+      "names": "Avricore Health Inc.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "OTC::AVCRF",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2171475,22 +2171459,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::BCOW",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::BCOW",
-      "exchange": "OTC",
-      "ticker": "BCOW",
-      "asset_types": "Stock",
-      "names": "1895 Bancorp of Wisconsin, Inc. /MD/",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::BCPPF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::BCPPF",
@@ -2172177,6 +2172145,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::BJGPY",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::BKAIF",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::BKAIF",
+      "exchange": "OTC",
+      "ticker": "BKAIF",
+      "asset_types": "Stock",
+      "names": "BioKey (Cayman), Inc.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::BKAMF",
@@ -2173955,6 +2173939,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::CCCP",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::CCCP",
+      "exchange": "OTC",
+      "ticker": "CCCP",
+      "asset_types": "Stock",
+      "names": "Crona Corp.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "OTC::CCCP",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::CCEYF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::CCEYF",
@@ -2174451,6 +2174451,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::CHRHF",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::CHRHF",
+      "exchange": "OTC",
+      "ticker": "CHRHF",
+      "asset_types": "Stock",
+      "names": "Chervon Holdings Ltd/ADR",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "OTC::CHRHF",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::CHUC",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::CHUC",
@@ -2174497,38 +2174513,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::CILFY",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::CILFY",
-      "exchange": "OTC",
-      "ticker": "CILFY",
-      "asset_types": "Stock",
-      "names": "CHINA LIFE INSURANCE CO LTD",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
-      "matched_listing_keys": "OTC::CILJF",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::CILJF",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::CILJF",
-      "exchange": "OTC",
-      "ticker": "CILJF",
-      "asset_types": "Stock",
-      "names": "CHINA LIFE INSURANCE CO LTD",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::CILJF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::CIMG",
@@ -2175491,22 +2175475,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::CNTMF",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::CNTMF",
-      "exchange": "OTC",
-      "ticker": "CNTMF",
-      "asset_types": "Stock",
-      "names": "Fluent Corp.",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::CNTMF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::CNYGF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::CNYGF",
@@ -2176209,6 +2176177,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::CRUCF",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::CRVNY",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::CRVNY",
+      "exchange": "OTC",
+      "ticker": "CRVNY",
+      "asset_types": "Stock",
+      "names": "Chervon Holdings Ltd/ADR",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::CRVW",
@@ -2178803,22 +2178787,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::EESH",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::EESH",
-      "exchange": "OTC",
-      "ticker": "EESH",
-      "asset_types": "Stock",
-      "names": "EESTech, Inc.",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::EESH",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::EGLXF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::EGLXF",
@@ -2179760,22 +2179728,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::EUBG",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::EULIF",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::EULIF",
-      "exchange": "OTC",
-      "ticker": "EULIF",
-      "asset_types": "Stock",
-      "names": "EUROPEAN LITHIUM LTD/ADR",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::EULIF",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2181987,6 +2181939,38 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::FUTAY",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::FUTAY",
+      "exchange": "OTC",
+      "ticker": "FUTAY",
+      "asset_types": "Stock",
+      "names": "Futian Holdings Limited/ADR",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::FUTIF",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::FUTIF",
+      "exchange": "OTC",
+      "ticker": "FUTIF",
+      "asset_types": "Stock",
+      "names": "Futian Holdings Limited/ADR",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::FUUFF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::FUUFF",
@@ -2182723,20 +2182707,20 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::GGLXD",
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::GGLXF",
       "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::GGLXD",
+      "reference_key": "OTC::GGLXF",
       "exchange": "OTC",
-      "ticker": "GGLXD",
+      "ticker": "GGLXF",
       "asset_types": "Stock",
       "names": "GGL RESOURCES CORP.",
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::GGLXF",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::GGOXF",
@@ -2184849,6 +2184833,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::HLRTF",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::HLSQ",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::HLSQ",
+      "exchange": "OTC",
+      "ticker": "HLSQ",
+      "asset_types": "Stock",
+      "names": "Tessera Defense & Homeland Security Inc.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::HLYK",
@@ -2187955,6 +2187955,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::KNRXF",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::KNRXF",
+      "exchange": "OTC",
+      "ticker": "KNRXF",
+      "asset_types": "Stock",
+      "names": "KNOREX LTD.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::KNWAY",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::KNWAY",
@@ -2188058,6 +2188074,22 @@
       "ticker": "KPHMW",
       "asset_types": "Stock",
       "names": "KIORA PHARMACEUTICALS INC",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::KPTIQ",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::KPTIQ",
+      "exchange": "OTC",
+      "ticker": "KPTIQ",
+      "asset_types": "Stock",
+      "names": "Karyopharm Therapeutics Inc.",
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
@@ -2188755,22 +2188787,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::LIANY",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::LIANY",
-      "exchange": "OTC",
-      "ticker": "LIANY",
-      "asset_types": "Stock",
-      "names": "LianBio",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::LIANY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::LIFD",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::LIFD",
@@ -2189153,22 +2189169,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::LNXSY",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::LOBKV",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::LOBKV",
-      "exchange": "OTC",
-      "ticker": "LOBKV",
-      "asset_types": "Stock",
-      "names": "Live Oak Bancshares, Inc.",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::LOCLW",
@@ -2189715,22 +2189715,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::MACT",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::MACT",
-      "exchange": "OTC",
-      "ticker": "MACT",
-      "asset_types": "Stock",
-      "names": "MachTen, Inc.",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::MACT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::MAGE",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::MAGE",
@@ -2190169,7 +2190153,7 @@
       "exchange": "OTC",
       "ticker": "MDTK",
       "asset_types": "Stock",
-      "names": "Bryn Inc.",
+      "names": "MEDO Technologies, Inc.",
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
@@ -2191203,22 +2191187,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::MNZO",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::MNZO",
-      "exchange": "OTC",
-      "ticker": "MNZO",
-      "asset_types": "Stock",
-      "names": "Exxsun Corp",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
-      "matched_listing_keys": "OTC::MNZO",
-      "evidence": "official and current names do not form one conservative identity family"
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::MOBQ",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::MOBQ",
@@ -2191984,6 +2191952,38 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::MZHOF",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::MZRHY",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::MZRHY",
+      "exchange": "OTC",
+      "ticker": "MZRHY",
+      "asset_types": "Stock",
+      "names": "Mizrahi Tefahot Bank Ltd/ADR",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::MZTFF",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::MZTFF",
+      "exchange": "OTC",
+      "ticker": "MZTFF",
+      "asset_types": "Stock",
+      "names": "Mizrahi Tefahot Bank Ltd/ADR",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "OTC::MZTFF",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2194001,6 +2194001,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::NXTN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::NXXT",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::NXXT",
+      "exchange": "OTC",
+      "ticker": "NXXT",
+      "asset_types": "Stock",
+      "names": "NEXTNRG, INC.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::NYMXF",
@@ -2196147,6 +2196163,38 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::PRLEQ",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::PRLEQ",
+      "exchange": "OTC",
+      "ticker": "PRLEQ",
+      "asset_types": "Stock",
+      "names": "PILLARSTONE CAPITAL REIT",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::PRLPQ",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::PRLPQ",
+      "exchange": "OTC",
+      "ticker": "PRLPQ",
+      "asset_types": "Stock",
+      "names": "PILLARSTONE CAPITAL REIT",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::PRNAF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::PRNAF",
@@ -2196387,6 +2196435,38 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::PSQH",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::PSQH",
+      "exchange": "OTC",
+      "ticker": "PSQH",
+      "asset_types": "Stock",
+      "names": "PSQ Holdings, Inc.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::PSQHW",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::PSQHW",
+      "exchange": "OTC",
+      "ticker": "PSQHW",
+      "asset_types": "Stock",
+      "names": "PSQ Holdings, Inc.",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::PSRHF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::PSRHF",
@@ -2196433,22 +2196513,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::PSYCF",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::PTAXY",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::PTAXY",
-      "exchange": "OTC",
-      "ticker": "PTAXY",
-      "asset_types": "Stock",
-      "names": "Paltac Corporation/ADR",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "normalization_candidate",
-      "coverage_credit": "false",
-      "matched_listing_keys": "OTC::PCCOF",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::PTBS",
@@ -2196737,22 +2196801,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::PYRGF",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::PYRGF",
-      "exchange": "OTC",
-      "ticker": "PYRGF",
-      "asset_types": "Stock",
-      "names": "PyroGenesis Canada Inc.",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "OTC::PYRGF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::PYYX",
@@ -2197841,6 +2197889,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::RITE",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::RITRD",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::RITRD",
+      "exchange": "OTC",
+      "ticker": "RITRD",
+      "asset_types": "Stock",
+      "names": "Reitar Logtech Holdings Ltd",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::RITRF",
@@ -2200003,6 +2200067,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::SHGSY",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::SHGSY",
+      "exchange": "OTC",
+      "ticker": "SHGSY",
+      "asset_types": "Stock",
+      "names": "Shanghai Sunmi Technology Co., Ltd./ADR",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::SHILY",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::SHILY",
@@ -2201187,22 +2201267,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::SNYRQ",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::SNYRQ",
-      "exchange": "OTC",
-      "ticker": "SNYRQ",
-      "asset_types": "Stock",
-      "names": "Synergy CHC Corp.",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::SOAGY",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::SOAGY",
@@ -2201393,38 +2201457,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::SPFX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::SPGDF",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::SPGDF",
-      "exchange": "OTC",
-      "ticker": "SPGDF",
-      "asset_types": "Stock",
-      "names": "Springer Nature AG & Co. KGaA/ADR",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::SPGNY",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::SPGNY",
-      "exchange": "OTC",
-      "ticker": "SPGNY",
-      "asset_types": "Stock",
-      "names": "Springer Nature AG & Co. KGaA/ADR",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::SPHIF",
@@ -2206387,22 +2206419,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "sec_company_tickers_exchange::OTC::VSTD",
-      "source_key": "sec_company_tickers_exchange",
-      "reference_key": "OTC::VSTD",
-      "exchange": "OTC",
-      "ticker": "VSTD",
-      "asset_types": "Stock",
-      "names": "Vestand Inc.",
-      "isins": "",
-      "reference_scopes": "listed_companies_subset",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::VTNMF",
       "source_key": "sec_company_tickers_exchange",
       "reference_key": "OTC::VTNMF",
@@ -2207521,6 +2207537,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "OTC::XPNGF",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "sec_company_tickers_exchange::OTC::XSUN",
+      "source_key": "sec_company_tickers_exchange",
+      "reference_key": "OTC::XSUN",
+      "exchange": "OTC",
+      "ticker": "XSUN",
+      "asset_types": "Stock",
+      "names": "Exxsun Corp",
+      "isins": "",
+      "reference_scopes": "listed_companies_subset",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::XTGRF",
