@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100335,
-    "matched": 70247,
-    "collisions": 11741,
-    "missing": 18347
+    "official_symbols": 100331,
+    "matched": 70250,
+    "collisions": 11740,
+    "missing": 18341
   },
   "exchanges": [
     {
@@ -292,10 +292,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1674,
+      "official_symbols": 1673,
       "matched": 1323,
       "collisions": 58,
-      "missing": 293,
+      "missing": 292,
       "collision_examples": [
         {
           "ticker": "ALA",
@@ -2589,10 +2589,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5620,
-      "matched": 4581,
-      "collisions": 61,
-      "missing": 978,
+      "official_symbols": 5618,
+      "matched": 4586,
+      "collisions": 59,
+      "missing": 973,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -2636,14 +2636,6 @@
           ]
         },
         {
-          "ticker": "ANEB",
-          "name": "Anebulo Pharmaceuticals, Inc.",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "OTC"
-          ]
-        },
-        {
           "ticker": "ANV",
           "name": "GraniteShares Autocallable NVDA ETF",
           "target_exchange": "NASDAQ",
@@ -2674,6 +2666,14 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "BID",
+          "name": "Tribeca Strategic Acquisition Corp. - Class A Ordinary Shares",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "HOSE"
           ]
         }
       ],
@@ -3090,9 +3090,9 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3835,
-      "matched": 1960,
-      "collisions": 566,
+      "official_symbols": 3833,
+      "matched": 1957,
+      "collisions": 567,
       "missing": 1309,
       "collision_examples": [
         {
@@ -3239,8 +3239,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2764,
-      "matched": 2633,
+      "official_symbols": 2765,
+      "matched": 2634,
       "collisions": 29,
       "missing": 102,
       "collision_examples": [

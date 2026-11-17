@@ -1,14 +1,28 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-16T20:30:09Z`
-- New supported rows: `0`
-- Accepted rows: `0`
+- Generated at: `2026-11-17T16:25:48Z`
+- New supported rows: `13`
+- Accepted rows: `13`
 - Skipped rows: `0`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-No new listings were accepted.
+| Ticker | Exchange | Name | Asset type | Target | Source |
+|---|---|---|---|---|---|
+| CWPD | NASDAQ | CWP Premium Dividend ETF | ETF | supplement | nasdaq_listed |
+| CWPG | NASDAQ | CWP Premium Growth ETF | ETF | supplement | nasdaq_listed |
+| DAU | NASDAQ | GraniteShares Autocallable AMD ETF | ETF | coverage_expansion | nasdaq_listed |
+| DRAC | NASDAQ | GraniteShares Autocallable DRAM ETF | ETF | supplement | nasdaq_listed |
+| GM | NASDAQ | General Motors Company - Common Stock | Stock | coverage_expansion | nasdaq_listed |
+| MEA | NASDAQ | GraniteShares Autocallable META ETF | ETF | coverage_expansion | nasdaq_listed |
+| NTCR | NASDAQ | Nuveen Technology & Infrastructure Credit ETF | ETF | supplement | nasdaq_listed |
+| PCHX | NASDAQ | State Street SPDR Nasdaq MyPaycheck ETF | ETF | supplement | nasdaq_listed |
+| PIVT | NASDAQ | VanEck Pivotal Trends ETF | ETF | supplement | nasdaq_listed |
+| VRSA | NASDAQ | Versa Bancorp - Common Stock | Stock | coverage_expansion | nasdaq_listed |
+| TXR | NYSE | Torex Resources Inc. Common Shares | Stock | coverage_expansion | nasdaq_other_listed |
+| SIMI | NYSE ARCA | American Beacon SiM High Income ETF | ETF | supplement | nasdaq_other_listed |
+| ZDAY | NYSE ARCA | Bitwise AI Cyber Defense ETF | ETF | supplement | nasdaq_other_listed |
 
 ## Skipped
 
