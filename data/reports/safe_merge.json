@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 12,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,80 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "NASDAQ::DECO",
+      "field_name": "name",
+      "old_value": "SPDR Galaxy Digital Asset Ecosystem ETF",
+      "new_value": "State Street Galaxy Digital Asset Ecosystem ETF"
+    },
+    {
+      "listing_key": "NASDAQ::HECO",
+      "field_name": "name",
+      "old_value": "SPDR Galaxy Hedged Digital Asset Ecosystem ETF",
+      "new_value": "State Street Galaxy Hedged Digital Asset Ecosystem ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::EBND",
+      "field_name": "name",
+      "old_value": "SPDR® Bloomberg Emerging Markets Local Bond ETF",
+      "new_value": "State Street SPDR Bloomberg Emerging Markets Local Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::EFIV",
+      "field_name": "name",
+      "old_value": "SPDR® S&P 500® ESG ETF",
+      "new_value": "State Street SPDR S&P 500 Scored and Screened ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::FEZ",
+      "field_name": "name",
+      "old_value": "SPDR® EURO STOXX 50 ETF",
+      "new_value": "State Street SPDR EURO STOXX 50 ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::HAIL",
+      "field_name": "name",
+      "old_value": "SPDR S&P Kensho Smart Mobility",
+      "new_value": "State Street SPDR S&P Kensho Smart Mobility ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::RWO",
+      "field_name": "name",
+      "old_value": "SPDR® Dow Jones Global Real Estate ETF",
+      "new_value": "State Street SPDR Dow Jones Global Real Estate ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPAB",
+      "field_name": "name",
+      "old_value": "SPDR® Portfolio Aggregate Bond ETF",
+      "new_value": "State Street SPDR Portfolio Aggregate Bond Index ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPBO",
+      "field_name": "name",
+      "old_value": "SPDR Portfolio Corporate Bond",
+      "new_value": "State Street SPDR Portfolio Corporate Bond Index ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPEU",
+      "field_name": "name",
+      "old_value": "SPDR Portfolio Europe",
+      "new_value": "State Street SPDR Portfolio Europe ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPHY",
+      "field_name": "name",
+      "old_value": "SPDR Portfolio High Yield Bond",
+      "new_value": "State Street SPDR Portfolio High Yield Bond Index ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPIP",
+      "field_name": "name",
+      "old_value": "SPDR Portfolio TIPS",
+      "new_value": "State Street SPDR Portfolio TIPS Index ETF"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
