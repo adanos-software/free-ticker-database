@@ -7,15 +7,15 @@
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12536,
       "exact_match": 100146,
-      "missing_from_database": 44809,
-      "normalization_candidate": 1865,
+      "missing_from_database": 44810,
+      "normalization_candidate": 1864,
       "out_of_scope": 8163
     },
     "coverage_credited_keys": 100146,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44809,
+    "in_scope_missing_rows": 44810,
     "identity_conflict_rows": 12536,
-    "mapping_candidate_rows": 1865
+    "mapping_candidate_rows": 1864
   },
   "rows": [
     {
@@ -1648845,10 +1648845,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::EFIV",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::EFO",
@@ -2177197,10 +2177197,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "OTC::DCCPF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::DCCPY",
@@ -2177213,10 +2177213,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "OTC::DCCPF",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::DCFBS",
