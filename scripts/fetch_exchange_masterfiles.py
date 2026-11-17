@@ -1563,6 +1563,9 @@ CHINA_CSRC_SECTOR_MAP = {
     "S": "Industrials",
 }
 IDX_SECTOR_MAP = {
+    # Pre-IDX-IC English label still returned for AGII (subsector CHEMICALS).
+    # The live IDX-IC equivalent is Barang Baku.
+    "basic industry and chemicals": "Materials",
     "barang baku": "Materials",
     "barang konsumen non-primer": "Consumer Discretionary",
     "barang konsumen primer": "Consumer Staples",

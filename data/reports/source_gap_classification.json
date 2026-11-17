@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-17T12:42:50Z",
-    "rows": 8056,
+    "generated_at": "2026-11-17T16:43:56Z",
+    "rows": 8059,
     "field_totals": {
       "missing_etf_category": 134,
       "missing_isin_primary": 622,
-      "missing_sector_stock": 596,
-      "official_reference_gap": 6704
+      "missing_sector_stock": 597,
+      "official_reference_gap": 6706
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 18,
@@ -25,10 +25,10 @@
       "official_identifier_not_exposed_source_gap": 136,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 421,
+      "official_industry_taxonomy_unavailable_gap": 422,
       "official_product_taxonomy_unavailable_gap": 101,
       "official_reference_symbol_collision_gap": 1160,
-      "official_reference_unmatched_source_gap": 5544,
+      "official_reference_unmatched_source_gap": 5546,
       "otc_sector_source_gap": 91,
       "shell_or_cpc_sector_gap": 7
     },
@@ -50,11 +50,11 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 421,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 422,
       "missing_sector_stock:otc_sector_source_gap": 91,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1160,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5544
+      "official_reference_gap:official_reference_unmatched_source_gap": 5546
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -359,7 +359,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "HKEX",
-        "rows": 82,
+        "rows": 84,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
@@ -20315,6 +20315,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NSE_IN::ZETWERK;exchange=NSE_IN;ticker=ZETWERK;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NSE_KE::QMRT",
+      "ticker": "QMRT",
+      "exchange": "NSE_KE",
+      "asset_type": "Stock",
+      "name": "QuickMart Plc",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NSE_KE::QMRT;exchange=NSE_KE;ticker=QMRT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -55800,6 +55817,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "HKEX::02996",
+      "ticker": "02996",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "GOLDENPOWER RTS",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=HKEX::02996;exchange=HKEX;ticker=02996;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "HKEX::04621",
       "ticker": "04621",
       "exchange": "HKEX",
@@ -55964,6 +55998,23 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=HKEX::08475;exchange=HKEX;ticker=08475;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "HKEX::08556",
+      "ticker": "08556",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "S ROBOT EDU",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=HKEX::08556;exchange=HKEX;ticker=08556;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

@@ -1,17 +1,17 @@
 {
   "global": {
-    "official_symbols": 100335,
+    "official_symbols": 100337,
     "matched": 70247,
-    "collisions": 11741,
-    "missing": 18347
+    "collisions": 11742,
+    "missing": 18348
   },
   "exchanges": [
     {
       "exchange": "ADX",
       "official_symbols": 126,
-      "matched": 94,
+      "matched": 95,
       "collisions": 30,
-      "missing": 2,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -104,11 +104,6 @@
         }
       ],
       "missing_examples": [
-        {
-          "ticker": "ADIBRI26",
-          "name": "ADIB Rights Issue 2026",
-          "exchange": "ADX"
-        },
         {
           "ticker": "FIDELITYUNITEDRI26",
           "name": "FIDELITYUNITED Rights Issue 2026",
@@ -1700,8 +1695,8 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3242,
-      "matched": 3173,
+      "official_symbols": 3240,
+      "matched": 3171,
       "collisions": 68,
       "missing": 1,
       "collision_examples": [
@@ -2206,10 +2201,10 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2126,
+      "official_symbols": 2128,
       "matched": 1943,
       "collisions": 14,
-      "missing": 169,
+      "missing": 171,
       "collision_examples": [
         {
           "ticker": "000850",
@@ -2992,8 +2987,8 @@
     },
     {
       "exchange": "NSE_KE",
-      "official_symbols": 68,
-      "matched": 44,
+      "official_symbols": 69,
+      "matched": 45,
       "collisions": 24,
       "missing": 0,
       "collision_examples": [
@@ -3658,9 +3653,9 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 292,
+      "official_symbols": 293,
       "matched": 285,
-      "collisions": 6,
+      "collisions": 7,
       "missing": 1,
       "collision_examples": [
         {
@@ -3678,6 +3673,14 @@
           "existing_exchanges": [
             "NASDAQ",
             "TSXV"
+          ]
+        },
+        {
+          "ticker": "CTUS",
+          "name": "CETUS MARITIME",
+          "target_exchange": "OSL",
+          "existing_exchanges": [
+            "XETRA"
           ]
         },
         {

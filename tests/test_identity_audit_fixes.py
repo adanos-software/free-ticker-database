@@ -567,6 +567,22 @@ def test_dazsf_stale_allowlist_row_removed() -> None:
     assert rows == []
 
 
+def test_xesp_stale_allowlist_row_removed() -> None:
+    rows = [row for row in load_csv(ALLOWLIST) if row.get("listing_key") == "OTC::XESP"]
+    assert rows == []
+
+
+def test_adx_gqgu_country_follows_us_primary() -> None:
+    country = _metadata("GQGU", "ADX", "country")
+    country_code = _metadata("GQGU", "ADX", "country_code")
+    isin = _metadata("GQGU", "ADX", "isin")
+    assert country["decision"] == "update"
+    assert country["proposed_value"] == "United States"
+    assert country_code["proposed_value"] == "US"
+    assert isin["proposed_value"] == "US00775Y2569"
+    assert "NYSE ARCA::GQGU" in country["reason"]
+
+
 def test_issc_successor_seeded_with_same_isin() -> None:
     listings = {row["listing_key"]: row for row in load_csv(LISTINGS)}
     ia = listings["NASDAQ::IA"]

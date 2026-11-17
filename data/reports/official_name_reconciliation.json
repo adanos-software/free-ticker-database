@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-17T08:53:27Z",
+  "generated_at": "2026-11-17T16:27:16Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1944,
+  "reconciled_rows": 1943,
   "applied_rows": 0,
-  "proposed_rows": 1944,
+  "proposed_rows": 1943,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -15829,21 +15829,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
       "observation_id": "87d840c8724700560d384846",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "KOSDAQ::048770",
-      "action": "proposed",
-      "ticker": "048770",
-      "exchange": "KOSDAQ",
-      "asset_type": "Stock",
-      "isin": "KR7048770002",
-      "old_name": "TPC Mechatronics Corporation",
-      "new_name": "TPC Robotics",
-      "source_key": "krx_listed_companies",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "observation_id": "5c6a4ae60f7c3d26c784e00a",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
