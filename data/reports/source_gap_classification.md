@@ -1,14 +1,14 @@
 # Source Gap Classification
 
-Generated at: `2026-11-16T20:38:57Z`
+Generated at: `2026-11-17T06:09:19Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
 - Official reference-gap rows classified: `6704`
-- Missing primary ISIN rows classified: `626`
-- Missing stock-sector rows classified: `602`
+- Missing primary ISIN rows classified: `624`
+- Missing stock-sector rows classified: `599`
 - Missing ETF-category rows classified: `134`
 
 ## Top Classes
@@ -17,9 +17,9 @@ This report classifies residual metadata gaps after official and reviewed free-s
 |---|---:|
 | official_reference_unmatched_source_gap | 5544 |
 | official_reference_symbol_collision_gap | 1160 |
-| official_industry_taxonomy_unavailable_gap | 424 |
+| official_industry_taxonomy_unavailable_gap | 422 |
 | fund_or_trust_identifier_gap | 312 |
-| official_identifier_not_exposed_source_gap | 138 |
+| official_identifier_not_exposed_source_gap | 136 |
 | official_product_taxonomy_unavailable_gap | 101 |
 | debt_or_securitized_identifier_gap | 91 |
 | otc_sector_source_gap | 91 |
@@ -30,9 +30,9 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | equity_etf_category_gap | 18 |
 | inactive_or_legacy_identifier_gap | 17 |
 | official_identifier_reference_unmatched_gap | 15 |
-| shell_or_cpc_sector_gap | 8 |
 | commodity_etf_category_gap | 7 |
 | fixed_income_etf_category_gap | 7 |
+| shell_or_cpc_sector_gap | 7 |
 | adr_cdr_or_depositary_sector_gap | 5 |
 | official_current_directory_absent_identifier_gap | 2 |
 
@@ -43,7 +43,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_gap | official_reference_unmatched_source_gap | OTC | 3099 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | B3 | 339 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | FSX | 284 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| missing_sector_stock | official_industry_taxonomy_unavailable_gap | FSX | 217 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
+| missing_sector_stock | official_industry_taxonomy_unavailable_gap | FSX | 216 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | official_reference_gap | official_reference_symbol_collision_gap | AMS | 170 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_symbol_collision_gap | BMV | 165 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_unmatched_source_gap | BVB | 165 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
