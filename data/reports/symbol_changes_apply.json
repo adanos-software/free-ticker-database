@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-11-17T15:56:53Z",
+    "generated_at": "2026-11-18T15:35:42Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 398,
+    "blocked_rows": 401,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 5,
       "blocked_new_symbol_not_active_in_official_master": 4,
-      "blocked_old_symbol_not_unique_in_us_scope": 311,
+      "blocked_old_symbol_not_unique_in_us_scope": 314,
       "manual_cross_venue_ticker_reuse": 6,
       "manual_missing_identity_evidence": 2,
       "manual_non_us_or_unscoped_source": 53,
@@ -1170,6 +1170,14 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
+      "change_id": "2432eba33918f10d",
+      "effective_date": "2026-05-08",
+      "old_symbol": "APAD",
+      "new_symbol": "ENHA",
+      "new_company_name": "Enhanced Group Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
       "change_id": "b335085e737a9f61",
       "effective_date": "2026-05-05",
       "old_symbol": "EKSO",
@@ -1498,6 +1506,14 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
+      "change_id": "59768c20334acce3",
+      "effective_date": "2026-03-02",
+      "old_symbol": "AHH",
+      "new_symbol": "AHRT",
+      "new_company_name": "Ah Realty Trust Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
       "change_id": "7b7083551b3aa67f",
       "effective_date": "2026-02-26",
       "old_symbol": "NITO",
@@ -1639,6 +1655,14 @@
       "old_symbol": "LDWY",
       "new_symbol": "TULP",
       "new_company_name": "Bloomia Holdings Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "510a817d227d1c1a",
+      "effective_date": "2026-01-30",
+      "old_symbol": "MPW",
+      "new_symbol": "MPT",
+      "new_company_name": "Medical Properties Trust Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
