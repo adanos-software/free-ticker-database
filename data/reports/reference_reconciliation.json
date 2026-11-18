@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 171117,
-    "source_specific_reference_keys": 171116,
+    "active_official_reference_rows": 171124,
+    "source_specific_reference_keys": 171123,
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12534,
-      "exact_match": 100135,
-      "missing_from_database": 44834,
+      "exact_match": 100143,
+      "missing_from_database": 44832,
       "normalization_candidate": 1863,
-      "out_of_scope": 8161
+      "out_of_scope": 8162
     },
-    "coverage_credited_keys": 100135,
+    "coverage_credited_keys": 100143,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44834,
+    "in_scope_missing_rows": 44832,
     "identity_conflict_rows": 12534,
     "mapping_candidate_rows": 1863
   },
@@ -1636867,6 +1636867,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::BATS::VVPL",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "BATS::VVPL",
+      "exchange": "BATS",
+      "ticker": "VVPL",
+      "asset_types": "ETF",
+      "names": "Vulcan Value Partners ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::VVPL",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::BATS::VXX",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::VXX",
@@ -1637265,22 +1637281,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::BATS::WZRD",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::WZRD",
-      "exchange": "BATS",
-      "ticker": "WZRD",
-      "asset_types": "ETF",
-      "names": "Opportunistic Trader ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::WZRD",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::BATS::XA",
@@ -1640403,6 +1640403,22 @@
       "evidence": "name indicates non-target instrument: bond"
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APFS",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::APFS",
+      "exchange": "NYSE ARCA",
+      "ticker": "APFS",
+      "asset_types": "ETF",
+      "names": "Artisan Focus Fund: ETF Class Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::APFS",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APIE",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::APIE",
@@ -1640465,6 +1640481,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APNX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::APNX",
+      "exchange": "NYSE ARCA",
+      "ticker": "APNX",
+      "asset_types": "ETF",
+      "names": "Artisan Select Equity Fund: ETF Class Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::APNX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APUE",
@@ -1655505,6 +1655537,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::GMIX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::GMIX",
+      "exchange": "NYSE ARCA",
+      "ticker": "GMIX",
+      "asset_types": "ETF",
+      "names": "iShares Macro AlphaBeta Active ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::GMIX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::GMMA",
@@ -1673379,6 +1673427,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SHLA",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::SHLA",
+      "exchange": "NYSE ARCA",
+      "ticker": "SHLA",
+      "asset_types": "ETF",
+      "names": "Global X Asia Defense Tech ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::SHLA",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SHLD",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::SHLD",
@@ -1677715,6 +1677779,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TRLL",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::TRLL",
+      "exchange": "NYSE ARCA",
+      "ticker": "TRLL",
+      "asset_types": "ETF",
+      "names": "Direxion Trillions ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::TRLL",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TRND",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::TRND",
@@ -1678209,22 +1678289,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::TYO",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TYYY",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::TYYY",
-      "exchange": "NYSE ARCA",
-      "ticker": "TYYY",
-      "asset_types": "ETF",
-      "names": "xETFs TSLA Daily Income ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TZA",
@@ -1679633,6 +1679697,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::VEN",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::VEN",
+      "exchange": "NYSE ARCA",
+      "ticker": "VEN",
+      "asset_types": "ETF",
+      "names": "Teucrium Venezuela Future Opportunities ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: future"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::VETZ",
@@ -1682707,6 +1682787,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YASX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::YASX",
+      "exchange": "NYSE ARCA",
+      "ticker": "YASX",
+      "asset_types": "ETF",
+      "names": "Yorkville America Space Index ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::YASX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YBIT",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::YBIT",
@@ -1682913,6 +1683009,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: option"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YO",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::YO",
+      "exchange": "NYSE ARCA",
+      "ticker": "YO",
+      "asset_types": "ETF",
+      "names": "Amplify S&P 500 Buffered Autocallable Yield Opportunity ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::YO",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YOLO",
@@ -1685281,22 +1685393,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: warrants"
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::IBO",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE MKT::IBO",
-      "exchange": "NYSE MKT",
-      "ticker": "IBO",
-      "asset_types": "Stock",
-      "names": "Impact BioMedical, Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE MKT::IBO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE MKT::IDR",
@@ -1688144,6 +1688240,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE MKT::ZDGE",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::ZOAR",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE MKT::ZOAR",
+      "exchange": "NYSE MKT",
+      "ticker": "ZOAR",
+      "asset_types": "Stock",
+      "names": "Zoar Limited Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE MKT::ZOAR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2139069,10 +2139181,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::IBO",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::IBP",
