@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-17T18:23:08Z",
-    "rows": 8093,
+    "generated_at": "2026-11-18T06:33:09Z",
+    "rows": 8088,
     "field_totals": {
       "missing_etf_category": 143,
-      "missing_isin_primary": 634,
-      "missing_sector_stock": 598,
+      "missing_isin_primary": 633,
+      "missing_sector_stock": 594,
       "official_reference_gap": 6718
     },
     "class_totals": {
@@ -22,14 +22,14 @@
       "fundlike_stock_sector_gap": 31,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 138,
+      "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 423,
+      "official_industry_taxonomy_unavailable_gap": 420,
       "official_product_taxonomy_unavailable_gap": 109,
       "official_reference_symbol_collision_gap": 1164,
       "official_reference_unmatched_source_gap": 5554,
-      "otc_sector_source_gap": 91,
+      "otc_sector_source_gap": 90,
       "shell_or_cpc_sector_gap": 7
     },
     "class_by_field": {
@@ -44,14 +44,14 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 322,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 423,
-      "missing_sector_stock:otc_sector_source_gap": 91,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 420,
+      "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1164,
       "official_reference_gap:official_reference_unmatched_source_gap": 5554
@@ -129,11 +129,11 @@
           "rows": 33
         },
         {
-          "exchange": "NYSE",
-          "rows": 26
+          "exchange": "NEO",
+          "rows": 25
         },
         {
-          "exchange": "NEO",
+          "exchange": "NYSE",
           "rows": 25
         },
         {
@@ -144,11 +144,11 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 221
+          "rows": 220
         },
         {
           "exchange": "OTC",
-          "rows": 91
+          "rows": 90
         },
         {
           "exchange": "NSE_IN",
@@ -176,7 +176,7 @@
         },
         {
           "exchange": "BIST",
-          "rows": 16
+          "rows": 15
         },
         {
           "exchange": "CSE_LK",
@@ -255,7 +255,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 216,
+        "rows": 215,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -327,7 +327,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 91,
+        "rows": 90,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -8013,23 +8013,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::TXR",
-      "ticker": "TXR",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Torex Resources Inc. Common Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::TXR;exchange=NYSE;ticker=TXR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::VMRK",
       "ticker": "VMRK",
       "exchange": "NYSE",
@@ -13895,23 +13878,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "BIST::MASFN",
-      "ticker": "MASFN",
-      "exchange": "BIST",
-      "asset_type": "Stock",
-      "name": "MASFEN ENERJİ A.Ş.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BIST::MASFN;exchange=BIST;ticker=MASFN;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "BIST::NETGL",
       "ticker": "NETGL",
       "exchange": "BIST",
@@ -18128,23 +18094,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::PKF1",
-      "ticker": "PKF1",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "PORT OF TAURANGA",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::PKF1;exchange=FSX;ticker=PKF1;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::PLO",
       "ticker": "PLO",
       "exchange": "FSX",
@@ -20695,23 +20644,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "NSE_KE::QMRT",
-      "ticker": "QMRT",
-      "exchange": "NSE_KE",
-      "asset_type": "Stock",
-      "name": "QuickMart Plc",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NSE_KE::QMRT;exchange=NSE_KE;ticker=QMRT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "NYSE::ASBH",
       "ticker": "ASBH",
       "exchange": "NYSE",
@@ -20961,23 +20893,6 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::BDUUF;exchange=OTC;ticker=BDUUF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OTC::BFGFD",
-      "ticker": "BFGFD",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "Copper One Resources Corp.",
-      "gap_class": "otc_sector_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
-      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
-      "source_gap_context": "listing_key=OTC::BFGFD;exchange=OTC;ticker=BFGFD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },
