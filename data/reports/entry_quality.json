@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-18T07:29:31Z",
-    "rows": 97651,
+    "generated_at": "2026-11-18T08:18:43Z",
+    "rows": 97644,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,28 +15,28 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86591,
-      "source_gap": 11018,
+      "pass": 86593,
+      "source_gap": 11009,
       "warn": 32
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4533,
+      "identifier_enriched": 4532,
       "official_reference": 87646,
       "scoped_source_gap": 295,
-      "valid_isin": 5177
+      "valid_isin": 5171
     },
     "severity_counts": {
       "high": 12,
       "low": 10,
       "medium": 21,
-      "source_gap": 11378
+      "source_gap": 11364
     },
     "issue_counts": {
-      "official_reference_gap": 6718,
+      "official_reference_gap": 6711,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 633,
+      "expected_missing_primary_isin": 634,
       "missing_stock_sector": 583,
-      "missing_etf_category": 157,
+      "missing_etf_category": 149,
       "official_name_mismatch": 21,
       "official_isin_mismatch": 11,
       "low_company_name_overlap": 10,
@@ -100,15 +100,15 @@
         "pass": 55
       },
       {
-        "exchange": "TSX",
-        "pass": 2263,
-        "source_gap": 180
-      },
-      {
         "exchange": "NYSE ARCA",
         "pass": 2523,
         "source_gap": 173,
         "warn": 1
+      },
+      {
+        "exchange": "TSX",
+        "pass": 2265,
+        "source_gap": 172
       },
       {
         "exchange": "ASX",
