@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-17T18:21:12Z",
+    "generated_at": "2026-11-18T15:38:21Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -1757,6 +1757,71 @@
       "member_tickers": "UBUT | UC99 | UQLTD-USD",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Ireland",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "BMV",
+          "listing_key": "BMV::LH",
+          "name": "Labcorp Holdings Inc.",
+          "ticker": "LH"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "FSX",
+          "listing_key": "FSX::N6B",
+          "name": "Labcorp Holdings Inc.",
+          "ticker": "N6B"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "LSE",
+          "listing_key": "LSE::0JSY",
+          "name": "Laboratory Corp. of America Holdings",
+          "ticker": "0JSY"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "NYSE",
+          "listing_key": "NYSE::LH",
+          "name": "Labcorp Holdings Inc.",
+          "ticker": "LH"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "United States",
+          "country_code": "US",
+          "exchange": "XETRA",
+          "listing_key": "XETRA::N6B",
+          "name": "LABCORP HLDGS INC. O.N.",
+          "ticker": "N6B"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "US5049221055",
+      "isin_valid": "true",
+      "listing_count": "5",
+      "listing_keys": "BMV::LH|FSX::N6B|LSE::0JSY|NYSE::LH|XETRA::N6B",
+      "member_exchanges": "BMV | FSX | LSE | NYSE | XETRA",
+      "member_names": "Labcorp Holdings Inc. | Laboratory Corp. of America Holdings",
+      "member_tickers": "0JSY | LH | N6B",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "United States",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -3865,53 +3930,6 @@
           "asset_type": "Stock",
           "country": "United States",
           "country_code": "US",
-          "exchange": "FSX",
-          "listing_key": "FSX::N6B",
-          "name": "Labcorp Holdings Inc.",
-          "ticker": "N6B"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "LSE",
-          "listing_key": "LSE::0JSY",
-          "name": "Laboratory Corp. of America Holdings",
-          "ticker": "0JSY"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
-          "exchange": "XETRA",
-          "listing_key": "XETRA::N6B",
-          "name": "LABCORP HLDGS INC. O.N.",
-          "ticker": "N6B"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "US5049221055",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "FSX::N6B|LSE::0JSY|XETRA::N6B",
-      "member_exchanges": "FSX | LSE | XETRA",
-      "member_names": "Labcorp Holdings Inc. | Laboratory Corp. of America Holdings",
-      "member_tickers": "0JSY | N6B",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "United States",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "United States",
-          "country_code": "US",
           "exchange": "LSE",
           "listing_key": "LSE::0K76",
           "name": "New Residential Investment Corp.",
@@ -5671,15 +5689,15 @@
       "review_required_groups": 123,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 114,
+    "closed_groups": 113,
     "collision_groups": 123,
     "decision_candidate_totals": {
       "isin_shared_by_distinct_issuers": 92,
       "ticker_collision_isin_misassignment_suspected": 31
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-17T18:21:12Z",
-    "listings_involved": 355,
+    "generated_at": "2026-11-18T15:38:21Z",
+    "listings_involved": 357,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5842,7 +5860,7 @@
         "registered_country": "Italy"
       }
     ],
-    "open_groups": 9,
+    "open_groups": 10,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 4,
