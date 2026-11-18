@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-18T12:29:44Z",
-    "rows": 8086,
+    "generated_at": "2026-11-18T13:43:19Z",
+    "rows": 8084,
     "field_totals": {
       "missing_etf_category": 143,
       "missing_isin_primary": 633,
-      "missing_sector_stock": 592,
+      "missing_sector_stock": 590,
       "official_reference_gap": 6718
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 418,
+      "official_industry_taxonomy_unavailable_gap": 416,
       "official_product_taxonomy_unavailable_gap": 109,
       "official_reference_symbol_collision_gap": 1164,
       "official_reference_unmatched_source_gap": 5554,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 418,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 416,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1164,
@@ -144,7 +144,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 218
+          "rows": 217
         },
         {
           "exchange": "OTC",
@@ -255,7 +255,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 213,
+        "rows": 212,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -17720,23 +17720,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::LL6",
-      "ticker": "LL6",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "MTN Group Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::LL6;exchange=FSX;ticker=LL6;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::LS4",
       "ticker": "LS4",
       "exchange": "FSX",
@@ -22338,23 +22321,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=SGX::9SY;exchange=SGX;ticker=9SY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "SGX::EGX",
-      "ticker": "EGX",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "name": "EGP ENERGY CORP",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=SGX::EGX;exchange=SGX;ticker=EGX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
