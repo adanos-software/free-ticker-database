@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-17T18:20:23Z",
+  "generated_at": "2026-11-18T15:35:02Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1943,
+  "reconciled_rows": 1940,
   "applied_rows": 0,
-  "proposed_rows": 1943,
+  "proposed_rows": 1940,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -24097,21 +24097,6 @@
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
-      "listing_key": "SGX::9VW",
-      "action": "proposed",
-      "ticker": "9VW",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "isin": "SGXE13591867",
-      "old_name": "Spackman Entmt",
-      "new_name": "Polaris E&M",
-      "source_key": "sgx_securities_prices",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://api.sgx.com/securities/v1.1",
-      "observation_id": "0110922f7a55268da2a650c9",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
       "listing_key": "SGX::BS6",
       "action": "proposed",
       "ticker": "BS6",
@@ -24319,21 +24304,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
       "observation_id": "65fecbc9d511652a3074e2d1",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "SIX::DOKA",
-      "action": "proposed",
-      "ticker": "DOKA",
-      "exchange": "SIX",
-      "asset_type": "Stock",
-      "isin": "CH1486524122",
-      "old_name": "Dorma Kaba Holding AG",
-      "new_name": "dormakaba Holding AG",
-      "source_key": "six_equity_issuers",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json",
-      "observation_id": "405a21db57749f2c79dc8013",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
@@ -27919,21 +27889,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
       "observation_id": "5dd47e53f5587ccc9b839df7",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "XETRA::J5E1",
-      "action": "proposed",
-      "ticker": "J5E1",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "isin": "IE0005ZIBSW1",
-      "old_name": "JHI-JHULCECUE ETFSKA",
-      "new_name": "Janus Henderson US large Cap Equity Core UCITS Fund ETF USD Accumulating",
-      "source_key": "deutsche_boerse_etfs_etps",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
-      "observation_id": "020d863c457c1f28b3ed806f",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
