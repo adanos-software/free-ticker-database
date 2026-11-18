@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97639,
-    "after_rows": 97651,
+    "before_rows": 97667,
+    "after_rows": 97667,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 23,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,146 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "Borsa Italiana::GPI",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "Borsa Italiana::INDB",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "Bursa::0220",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Energy"
+    },
+    {
+      "listing_key": "FSX::2I6",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "FSX::LL6",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "KOSDAQ::335870",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "LSE::0QNM",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "NYSE MKT::DCM",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "OSL::NAPA",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Staples",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "OTC::FGOVF",
+      "field_name": "name",
+      "old_value": "Freegold Ventures Limited",
+      "new_value": "Freegold Limited"
+    },
+    {
+      "listing_key": "OTC::FGOVF",
+      "field_name": "isin",
+      "old_value": "CA3564552048",
+      "new_value": "CA3564541082"
+    },
+    {
+      "listing_key": "OTC::MNGGF",
+      "field_name": "isin",
+      "old_value": "CA60936L1067",
+      "new_value": "CA60936L2057"
+    },
+    {
+      "listing_key": "SGX::9QX",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "SGX::EGX",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "SIX::ADEN",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "TSX::FVL",
+      "field_name": "name",
+      "old_value": "Freegold Ventures Limited",
+      "new_value": "Freegold Limited"
+    },
+    {
+      "listing_key": "TSX::FVL",
+      "field_name": "isin",
+      "old_value": "CA3564552048",
+      "new_value": "CA3564541082"
+    },
+    {
+      "listing_key": "TSXV::YAK-H",
+      "field_name": "isin",
+      "old_value": "CA60936L1067",
+      "new_value": "CA60936L2057"
+    },
+    {
+      "listing_key": "WSE::4MB",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "WSE::PLM",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "XETRA::64K",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "XETRA::ADI1",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "XSTU::2I6",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -425,8 +564,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4762,
-      "after_rows": 4771,
+      "before_rows": 4774,
+      "after_rows": 4774,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -461,8 +600,8 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3538,
-      "after_rows": 3538,
+      "before_rows": 3540,
+      "after_rows": 3540,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -479,7 +618,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2024,
+      "before_rows": 2025,
       "after_rows": 2025,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -488,7 +627,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2695,
+      "before_rows": 2697,
       "after_rows": 2697,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -758,8 +897,8 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5563,
-      "after_rows": 5563,
+      "before_rows": 5574,
+      "after_rows": 5574,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
