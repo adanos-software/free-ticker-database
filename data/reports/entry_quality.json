@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-18T12:29:39Z",
+    "generated_at": "2026-11-18T14:29:15Z",
     "rows": 97651,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86592,
-      "source_gap": 11017,
+      "pass": 86594,
+      "source_gap": 11015,
       "warn": 32
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 21,
-      "source_gap": 11377
+      "source_gap": 11375
     },
     "issue_counts": {
       "official_reference_gap": 6718,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 633,
-      "missing_stock_sector": 582,
+      "missing_stock_sector": 580,
       "missing_etf_category": 157,
       "official_name_mismatch": 21,
       "official_isin_mismatch": 11,
@@ -117,16 +117,16 @@
         "notice": 2
       },
       {
-        "exchange": "LSE",
-        "pass": 6879,
-        "source_gap": 143,
-        "warn": 2
-      },
-      {
         "exchange": "TSXV",
         "pass": 1277,
         "source_gap": 142,
         "warn": 3
+      },
+      {
+        "exchange": "LSE",
+        "pass": 6880,
+        "source_gap": 142,
+        "warn": 2
       },
       {
         "exchange": "Euronext",
@@ -4009,24 +4009,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0P14",
-      "ticker": "0P14",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -18446,6 +18428,24 @@
     {
       "listing_key": "FSX::6W1",
       "ticker": "6W1",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6Z4",
+      "ticker": "6Z4",
       "exchange": "FSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
