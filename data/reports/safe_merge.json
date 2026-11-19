@@ -6,803 +6,33 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97677,
-    "after_rows": 97670,
-    "overall_shrink_pct": 0.007166,
-    "removed_rows": 7,
-    "evidenced_removed_rows": 7,
+    "before_rows": 97670,
+    "after_rows": 97678,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 108,
+    "critical_field_changes": 1,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 7
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "BATS::MEMY",
-    "TSX::HBD",
-    "TSX::HBU",
-    "TSX::HSU",
-    "TSX::HXU",
-    "TSX::HZD",
-    "TSX::HZU"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "BMV::FEZ",
-      "field_name": "name",
-      "old_value": "SPDR Index Shares Funds - SPDR Euro Stoxx 50 ETF",
-      "new_value": "State Street SPDR EURO STOXX 50 ETF"
-    },
-    {
-      "listing_key": "TSX::CBNK",
-      "field_name": "name",
-      "old_value": "Mulvihill Canadian Bank Enhanced Y ETF",
-      "new_value": "Mulvihill Canadian Bank Enhanced Yield ETF"
-    },
-    {
-      "listing_key": "TSX::CCAF.U",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Alternative"
-    },
-    {
-      "listing_key": "TSX::CEMI",
-      "field_name": "name",
-      "old_value": "CIBC Emerging Markets Equity Index ETF",
-      "new_value": "CIBC MSCI Emerging Markets Equity Index ETF"
-    },
-    {
-      "listing_key": "TSX::CINV",
-      "field_name": "name",
-      "old_value": "CI Global Alpha Innovation ETF",
-      "new_value": "CI Global Alpha Innovators ETF"
-    },
-    {
-      "listing_key": "TSX::CINV.U",
-      "field_name": "name",
-      "old_value": "CI Global Alpha Innovation ETF",
-      "new_value": "CI Global Alpha Innovators ETF"
-    },
-    {
-      "listing_key": "TSX::CLML",
-      "field_name": "name",
-      "old_value": "CI Global Climate Leaders Fund",
-      "new_value": "CI Munro Global Energy Transition Fund"
-    },
-    {
-      "listing_key": "TSX::CLML.U",
-      "field_name": "name",
-      "old_value": "CI Global Climate Leaders Fund",
-      "new_value": "CI Munro Global Energy Transition Fund"
-    },
-    {
-      "listing_key": "TSX::CLSF",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Alternative"
-    },
-    {
-      "listing_key": "TSX::CLSF.U",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Alternative"
-    },
-    {
-      "listing_key": "TSX::COIU",
-      "field_name": "name",
-      "old_value": "LFG Daily (2X) COIN Long ETF",
-      "new_value": "SavvyLong (2X) COIN ETF"
-    },
-    {
-      "listing_key": "TSX::DRFC",
-      "field_name": "name",
-      "old_value": "Desjardins RI Canada Multifactor - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI Multifactor Canadian Equity ETF"
-    },
-    {
-      "listing_key": "TSX::DRFD",
-      "field_name": "name",
-      "old_value": "Desjardins RI Developed ex-USA ex-Canada Multifactor - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI Multifactor International Equity ETF"
-    },
-    {
-      "listing_key": "TSX::DRFE",
-      "field_name": "name",
-      "old_value": "Desjardins RI Emerging Markets Multifactor - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI Multifactor Emerging Markets Equity ETF"
-    },
-    {
-      "listing_key": "TSX::DRFU",
-      "field_name": "name",
-      "old_value": "Desjardins RI USA Multifactor - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI Multifactor American Equity ETF"
-    },
-    {
-      "listing_key": "TSX::DRMC",
-      "field_name": "name",
-      "old_value": "Desjardins RI Canada - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI Canadian Equity ETF"
-    },
-    {
-      "listing_key": "TSX::DRMD",
-      "field_name": "name",
-      "old_value": "Desjardins RI Developed ex-USA ex-Canada - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI International Equity ETF"
-    },
-    {
-      "listing_key": "TSX::DRME",
-      "field_name": "name",
-      "old_value": "Desjardins RI Emerging Markets - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI Emerging Markets Equity ETF"
-    },
-    {
-      "listing_key": "TSX::DRMU",
-      "field_name": "name",
-      "old_value": "Desjardins RI USA - Net-Zero Emissions Pathway ETF",
-      "new_value": "Desjardins RI American Equity ETF"
-    },
-    {
-      "listing_key": "TSX::EQL",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 Equal Weight Index ETF CAD Units",
-      "new_value": "CI Invesco S&P 500 Equal Weight Index ETF"
-    },
-    {
-      "listing_key": "TSX::EQL.F",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 Equal Weight Index ETF",
-      "new_value": "CI Invesco S&P 500 Equal Weight Index ETF"
-    },
-    {
-      "listing_key": "TSX::EQL.U",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 Equal Weight Index ETF",
-      "new_value": "CI Invesco S&P 500 Equal Weight Index ETF"
-    },
-    {
-      "listing_key": "TSX::ESG",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 ESG Index ETF",
-      "new_value": "CI S&P 500 ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::ESG.F",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 ESG Index ETF",
-      "new_value": "CI S&P 500 ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::ESGC",
-      "field_name": "name",
-      "old_value": "Invesco S&P/TSX Composite ESG Index ETF",
-      "new_value": "CI S&P/TSX Composite ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::GLDD",
-      "field_name": "name",
-      "old_value": "Global X Gold Producer Equity Daily Bear ETF",
-      "new_value": "BetaPro Gold Bullion -2x Daily Bear ETF"
-    },
-    {
-      "listing_key": "TSX::GLDU",
-      "field_name": "name",
-      "old_value": "Global X Gold Producer Equity Daily Bull ETF",
-      "new_value": "BetaPro Gold Bullion 2x Daily Bull ETF"
-    },
-    {
-      "listing_key": "TSX::HBF",
-      "field_name": "name",
-      "old_value": "Harvest Brand Leaders Plus Income ETF",
-      "new_value": "Harvest US Equity Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::HBF.B",
-      "field_name": "name",
-      "old_value": "Harvest Brand Leaders Plus Income ETF",
-      "new_value": "Harvest US Equity Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::HBF.U",
-      "field_name": "name",
-      "old_value": "Harvest Brand Leaders Plus Income ETF",
-      "new_value": "Harvest US Equity Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::HEB",
-      "field_name": "name",
-      "old_value": "Hamilton Canadian Bank Equal-Weight Index ETF",
-      "new_value": "HAMILTON CHAMPIONS™ Canadian Bank Equal-Weight Index ETF"
-    },
-    {
-      "listing_key": "TSX::HFN",
-      "field_name": "name",
-      "old_value": "Hamilton Canadian Financials Index ETF",
-      "new_value": "HAMILTON CHAMPIONS™ Canadian Financials Index ETF"
-    },
-    {
-      "listing_key": "TSX::HLIF",
-      "field_name": "name",
-      "old_value": "Harvest Canadian Equity Income Leaders ETF",
-      "new_value": "Harvest Canadian Dividend Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::HTA",
-      "field_name": "name",
-      "old_value": "Harvest Tech Achievers Growth & Income ETF",
-      "new_value": "Harvest Tech Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::HTA.B",
-      "field_name": "name",
-      "old_value": "Harvest Tech Achievers Growth & Income ETF",
-      "new_value": "Harvest Tech Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::HTA.U",
-      "field_name": "name",
-      "old_value": "Harvest Tech Achievers Growth & Income ETF",
-      "new_value": "Harvest Tech Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::HUTL",
-      "field_name": "name",
-      "old_value": "Harvest Equal Weight Global Utilities Income ETF",
-      "new_value": "Harvest Utilities Leaders Income ETF"
-    },
-    {
-      "listing_key": "TSX::ICAE",
-      "field_name": "name",
-      "old_value": "Invesco S&P/TSX Canadian Dividend Aristocrats ESG Index ETF",
-      "new_value": "CI S&P/TSX Canadian Dividend Aristocrats ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::IGET.F",
-      "field_name": "name",
-      "old_value": "Invesco Morningstar Global Energy Transition Index ETF",
-      "new_value": "CI Morningstar Global Energy Transition Index ETF"
-    },
-    {
-      "listing_key": "TSX::IIAE",
-      "field_name": "name",
-      "old_value": "Invesco S&P International Developed Dividend Aristocrats ESG Index ETF",
-      "new_value": "CI S&P International Developed Dividend Aristocrats ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::IIAE.F",
-      "field_name": "name",
-      "old_value": "Invesco S&P International Developed Dividend Aristocrats ESG Index ETF",
-      "new_value": "CI S&P International Developed Dividend Aristocrats ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::IICE",
-      "field_name": "name",
-      "old_value": "Invesco S&P International Developed ESG Index ETF",
-      "new_value": "CI S&P International Developed ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::IICE.F",
-      "field_name": "name",
-      "old_value": "Invesco S&P International Developed ESG Index ETF",
-      "new_value": "CI S&P International Developed ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::IIMF",
-      "field_name": "name",
-      "old_value": "Invesco International Developed Dynamic-Multifactor Index ETF",
-      "new_value": "CI Invesco International Developed Multifactor Index ETF"
-    },
-    {
-      "listing_key": "TSX::IIMF.F",
-      "field_name": "name",
-      "old_value": "Invesco International Developed Dynamic-Multifactor Index ETF",
-      "new_value": "CI Invesco International Developed Multifactor Index ETF"
-    },
-    {
-      "listing_key": "TSX::INAI",
-      "field_name": "name",
-      "old_value": "Invesco Morningstar Global Next Gen AI Index ETF",
-      "new_value": "CI Morningstar Global Next Gen AI Index ETF"
-    },
-    {
-      "listing_key": "TSX::INAI.F",
-      "field_name": "name",
-      "old_value": "Invesco Morningstar Global Next Gen AI Index ETF",
-      "new_value": "CI Morningstar Global Next Gen AI Index ETF"
-    },
-    {
-      "listing_key": "TSX::IUAE",
-      "field_name": "name",
-      "old_value": "Invesco S&P US Dividend Aristocrats ESG Index ETF",
-      "new_value": "CI S&P US Dividend Aristocrats ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::IUAE.F",
-      "field_name": "name",
-      "old_value": "Invesco S&P US Dividend Aristocrats ESG Index ETF",
-      "new_value": "CI S&P US Dividend Aristocrats ESG Index ETF"
-    },
-    {
-      "listing_key": "TSX::IUFR.U",
-      "field_name": "name",
-      "old_value": "Invesco US Treasury Floating Rate Note Index ETF (USD)",
-      "new_value": "CI US Treasury Floating Rate Note Index ETF (USD)"
-    },
-    {
-      "listing_key": "TSX::IUMF.F",
-      "field_name": "name",
-      "old_value": "Invesco Russell 1000 Dynamic-Multifactor Index ETF",
-      "new_value": "CI Invesco Russell 1000 Multifactor Index ETF"
-    },
-    {
-      "listing_key": "TSX::MGEG",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Alternative"
-    },
-    {
-      "listing_key": "TSX::MGFI",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Fixed Income"
-    },
-    {
-      "listing_key": "TSX::MNS",
-      "field_name": "name",
-      "old_value": "Royal Canadian Mint - Canadian Silver Reserves",
-      "new_value": "Royal Canadian Mint - Canadian Silver Reserves Exchange-Traded Receipts"
-    },
-    {
-      "listing_key": "TSX::MNT",
-      "field_name": "name",
-      "old_value": "Royal Canadian Mint - Canadian Gold Reserves",
-      "new_value": "Royal Canadian Mint - Canadian Gold Reserves Exchange-Traded Receipts"
-    },
-    {
-      "listing_key": "TSX::MSTE",
-      "field_name": "name",
-      "old_value": "Harvest MicroStrategy Enhanced High Income Shares ETF",
-      "new_value": "Harvest Strategy Inc. Enhanced High Income Shares ETF"
-    },
-    {
-      "listing_key": "TSX::NEBP",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::NECP",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::ONEQ",
-      "field_name": "name",
-      "old_value": "CI ONE Global Equity ETF",
-      "new_value": "CI Global Core Plus Equity ETF"
-    },
-    {
-      "listing_key": "TSX::PBY",
-      "field_name": "name",
-      "old_value": "Canso Credit Income Fund",
-      "new_value": "Lysander-Canso Credit Income ActivETF"
-    },
-    {
-      "listing_key": "TSX::PDC",
-      "field_name": "name",
-      "old_value": "Invesco Canadian Dividend Index ETF",
-      "new_value": "CI Canadian Dividend Index ETF"
-    },
-    {
-      "listing_key": "TSX::PFAE",
-      "field_name": "name",
-      "old_value": "Picton Mahoney Fortified Active Extension Alternative Fund ETF",
-      "new_value": "PICTON Long Short Equity (130/30) Alternative Fund"
-    },
-    {
-      "listing_key": "TSX::PFL",
-      "field_name": "name",
-      "old_value": "Invesco Canadian Government Floating Rate Index ETF",
-      "new_value": "CI Canadian Government Floating Rate Index ETF"
-    },
-    {
-      "listing_key": "TSX::PSB",
-      "field_name": "name",
-      "old_value": "Invesco 1-5 Year Laddered Investment Grade Corporate Bond Index ETF",
-      "new_value": "CI 1-5 Year Laddered Investment Grade Corporate Bond Index ETF"
-    },
-    {
-      "listing_key": "TSX::PXC",
-      "field_name": "name",
-      "old_value": "Invesco RAFI Canadian Index ETF",
-      "new_value": "CI RAFI Canadian Index ETF"
-    },
-    {
-      "listing_key": "TSX::PXS.U",
-      "field_name": "name",
-      "old_value": "Invesco RAFI U.S. Index ETF II",
-      "new_value": "CI Invesco RAFI U.S. Index ETF II"
-    },
-    {
-      "listing_key": "TSX::PXU.F",
-      "field_name": "name",
-      "old_value": "Invesco RAFI U.S. Index ETF",
-      "new_value": "CI Invesco RAFI U.S. Index ETF"
-    },
-    {
-      "listing_key": "TSX::PZW",
-      "field_name": "name",
-      "old_value": "Invesco RAFI Global Small-Mid ETF",
-      "new_value": "CI Invesco RAFI Global Small-Mid ETF"
-    },
-    {
-      "listing_key": "TSX::PZW.F",
-      "field_name": "name",
-      "old_value": "Invesco RAFI Global Small-Mid ETF",
-      "new_value": "CI Invesco RAFI Global Small-Mid ETF"
-    },
-    {
-      "listing_key": "TSX::PZW.U",
-      "field_name": "name",
-      "old_value": "Invesco RAFI Global Small-Mid ETF",
-      "new_value": "CI Invesco RAFI Global Small-Mid ETF"
-    },
-    {
-      "listing_key": "TSX::QQC",
-      "field_name": "name",
-      "old_value": "Invesco NASDAQ 100 Index ETF",
-      "new_value": "CI Invesco NASDAQ 100 Index ETF"
-    },
-    {
-      "listing_key": "TSX::QQC.F",
-      "field_name": "name",
-      "old_value": "Invesco NASDAQ 100 Index ETF",
-      "new_value": "CI Invesco NASDAQ 100 Index ETF"
-    },
-    {
-      "listing_key": "TSX::QQCE",
-      "field_name": "name",
-      "old_value": "Invesco ESG NASDAQ 100 Index ETF",
-      "new_value": "CI ESG NASDAQ 100 Index ETF"
-    },
-    {
-      "listing_key": "TSX::QQCE.F",
-      "field_name": "name",
-      "old_value": "Invesco ESG NASDAQ 100 Index ETF",
-      "new_value": "CI ESG NASDAQ 100 Index ETF"
-    },
-    {
-      "listing_key": "TSX::QQEQ",
-      "field_name": "name",
-      "old_value": "Invesco NASDAQ 100 Equal Weight Index ETF",
-      "new_value": "CI NASDAQ 100 Equal Weight Index ETF"
-    },
-    {
-      "listing_key": "TSX::QQEQ.F",
-      "field_name": "name",
-      "old_value": "Invesco NASDAQ 100 Equal Weight Index ETF",
-      "new_value": "CI NASDAQ 100 Equal Weight Index ETF"
-    },
-    {
-      "listing_key": "TSX::QQJR",
-      "field_name": "name",
-      "old_value": "Invesco NASDAQ Next Gen 100 Index ETF",
-      "new_value": "CI Invesco NASDAQ Next Gen 100 Index ETF"
-    },
-    {
-      "listing_key": "TSX::QQJR.F",
-      "field_name": "name",
-      "old_value": "Invesco NASDAQ Next Gen 100 Index ETF",
-      "new_value": "CI Invesco NASDAQ Next Gen 100 Index ETF"
-    },
-    {
-      "listing_key": "TSX::QXM",
-      "field_name": "name",
-      "old_value": "First Asset Morningstar National Bank Quebec Common Class",
-      "new_value": "CI Morningstar National Bank Quebec Index ETF"
-    },
-    {
-      "listing_key": "TSX::RBO",
-      "field_name": "name",
-      "old_value": "RBC 1-5 Year Laddered Corporate Bond",
-      "new_value": "RBC 1-5 Year Laddered Canadian Corporate Bond ETF"
-    },
-    {
-      "listing_key": "TSX::RYHE",
-      "field_name": "name",
-      "old_value": "Harvest Royal Bank Enhanced High Income Shares ETF",
-      "new_value": "Harvest Enhanced High Income RY-Linked Shares ETF"
-    },
-    {
-      "listing_key": "TSX::RYHI",
-      "field_name": "name",
-      "old_value": "Ninepoint Royal Bank HighShares ETF",
-      "new_value": "Ninepoint RY-Linked HighShares ETF"
-    },
-    {
-      "listing_key": "TSX::TDHE",
-      "field_name": "name",
-      "old_value": "Harvest TD Bank Enhanced High Income Shares ETF",
-      "new_value": "Harvest Enhanced High Income TD-Linked Shares ETF"
-    },
-    {
-      "listing_key": "TSX::TDHI",
-      "field_name": "name",
-      "old_value": "Ninepoint TD HighShares ETF",
-      "new_value": "Ninepoint TD-Linked HighShares ETF"
-    },
-    {
-      "listing_key": "TSX::TLV",
-      "field_name": "name",
-      "old_value": "Invesco S&P/TSX Composite Low Volatility Index ETF",
-      "new_value": "CI S&P/TSX Composite Low Volatility Index ETF"
-    },
-    {
-      "listing_key": "TSX::ULV",
-      "field_name": "country",
-      "old_value": "Ireland",
-      "new_value": "Canada"
-    },
-    {
-      "listing_key": "TSX::ULV",
-      "field_name": "country_code",
-      "old_value": "IE",
-      "new_value": "CA"
-    },
-    {
-      "listing_key": "TSX::ULV",
+      "listing_key": "HKEX::08366",
       "field_name": "isin",
-      "old_value": "IE00BKW9SX35",
-      "new_value": ""
-    },
-    {
-      "listing_key": "TSX::ULV.C",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 Low Volatility Index ETF",
-      "new_value": "CI Invesco S&P 500 Low Volatility Index ETF"
-    },
-    {
-      "listing_key": "TSX::ULV.C",
-      "field_name": "country",
-      "old_value": "Ireland",
-      "new_value": "Canada"
-    },
-    {
-      "listing_key": "TSX::ULV.C",
-      "field_name": "country_code",
-      "old_value": "IE",
-      "new_value": "CA"
-    },
-    {
-      "listing_key": "TSX::ULV.C",
-      "field_name": "isin",
-      "old_value": "IE00BKW9SX35",
-      "new_value": "CA46139X1042"
-    },
-    {
-      "listing_key": "TSX::ULV.F",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 Low Volatility Index ETF",
-      "new_value": "CI Invesco S&P 500 Low Volatility Index ETF"
-    },
-    {
-      "listing_key": "TSX::ULV.F",
-      "field_name": "country",
-      "old_value": "Ireland",
-      "new_value": "Canada"
-    },
-    {
-      "listing_key": "TSX::ULV.F",
-      "field_name": "country_code",
-      "old_value": "IE",
-      "new_value": "CA"
-    },
-    {
-      "listing_key": "TSX::ULV.F",
-      "field_name": "isin",
-      "old_value": "IE00BKW9SX35",
-      "new_value": "CA46139X1208"
-    },
-    {
-      "listing_key": "TSX::ULV.U",
-      "field_name": "name",
-      "old_value": "Invesco S&P 500 Low Volatility Index ETF",
-      "new_value": "CI Invesco S&P 500 Low Volatility Index ETF"
-    },
-    {
-      "listing_key": "TSX::ULV.U",
-      "field_name": "country",
-      "old_value": "Ireland",
-      "new_value": "Canada"
-    },
-    {
-      "listing_key": "TSX::ULV.U",
-      "field_name": "country_code",
-      "old_value": "IE",
-      "new_value": "CA"
-    },
-    {
-      "listing_key": "TSX::ULV.U",
-      "field_name": "isin",
-      "old_value": "IE00BKW9SX35",
-      "new_value": "CA46139X1125"
-    },
-    {
-      "listing_key": "TSX::UTIL",
-      "field_name": "name",
-      "old_value": "Global X Canadian Utility Services High Dividend Index ETF",
-      "new_value": "Global X Equal Weight Canadian Utilities Index ETF"
-    },
-    {
-      "listing_key": "TSX::VUN",
-      "field_name": "name",
-      "old_value": "Vanguard U.S. Total Market Index ETF",
-      "new_value": "Vanguard Morningstar U.S. Total Market Index ETF"
-    },
-    {
-      "listing_key": "TSX::VUS",
-      "field_name": "name",
-      "old_value": "Vanguard US Total Market (CAD Hedged)",
-      "new_value": "Vanguard Morningstar U.S. Total Market Index ETF (CAD-hedged)"
-    },
-    {
-      "listing_key": "TSX::XBB",
-      "field_name": "name",
-      "old_value": "iShares Canadian Universe Bond",
-      "new_value": "iShares Core Canadian Universe Bond Index ETF"
-    },
-    {
-      "listing_key": "TSX::XSMB",
-      "field_name": "name",
-      "old_value": "iShares Core Canadian Short-Mid Term Universe Bond Index ETF",
-      "new_value": "iShares Core Canadian 1-10 Year Bond Index ETF"
-    },
-    {
-      "listing_key": "TSX::ZABS.U",
-      "field_name": "etf_category",
-      "old_value": "",
-      "new_value": "Fixed Income"
-    },
-    {
-      "listing_key": "TSX::ZMT",
-      "field_name": "name",
-      "old_value": "BMO S&P/TSX Equal Weight Global Base Metals (CAD Hedged)",
-      "new_value": "BMO Equal Weight Global Base Metals Hedged to CAD Index ETF"
-    },
-    {
-      "listing_key": "TSX::ZUE",
-      "field_name": "name",
-      "old_value": "BMO S&P 500 (CAD Hedged)",
-      "new_value": "BMO S&P 500 Hedged to CAD Index ETF"
+      "old_value": "KYG9897T1067",
+      "new_value": "KYG9897T1141"
     }
   ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "BATS::MEMY",
-      "ticker": "MEMY",
-      "exchange": "BATS",
-      "event_type": "delisted",
-      "field_name": "",
-      "old_value": "Tuttle Capital Meme Stock Income Blast ETF",
-      "new_value": "",
-      "before_row_sha256": "6b47546a39f094657da4258b9bea9376cfbc9025f636c1ee38f042a796e45c13",
-      "effective_at": "",
-      "observed_at": "2026-11-19T08:09:35Z",
-      "source_key": "sec_497_liquidation_supplement",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1771146/000177114626002186/etfof-supplementxtuttlecap.htm",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "cca98832cfc73bdbb79028d2",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::HSU",
-      "ticker": "HSU",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HSU",
-      "new_value": "SPXU",
-      "before_row_sha256": "d350ed9d187b2ef4c9670c888335610c5e4271ddbe93a37a4cf2bf19de5aaa06",
-      "effective_at": "",
-      "observed_at": "2026-11-19T08:09:35Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "d966dcaa2ea24bec21d6e80c",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::HXU",
-      "ticker": "HXU",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HXU",
-      "new_value": "CNDU",
-      "before_row_sha256": "98e85f2633f574e31356c0292230054da6a3cb413007a5f98bd06fbbe0c85845",
-      "effective_at": "",
-      "observed_at": "2026-11-19T08:09:35Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "687a1fca119e754f0dc544c8",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::HBU",
-      "ticker": "HBU",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HBU",
-      "new_value": "GLDU",
-      "before_row_sha256": "35088f06c7ab6ef5501fe53d31f30d1ab34f2bd8ef236a04a57d87d4d0b249f5",
-      "effective_at": "",
-      "observed_at": "2026-11-19T08:09:35Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "3f88906465ad41273db4b4ab",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::HBD",
-      "ticker": "HBD",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HBD",
-      "new_value": "GLDD",
-      "before_row_sha256": "4f847e3f2a07eb12896e4264a9660c361868baf3eee0223c10d86efbf833f5d1",
-      "effective_at": "",
-      "observed_at": "2026-11-19T08:09:35Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "1d0ed7c795d53bf9606f8878",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::HZU",
-      "ticker": "HZU",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HZU",
-      "new_value": "SLVU",
-      "before_row_sha256": "542de1b37ddf407c31929d675078ea7d07e9da0edd0d725e2c0992454e7abc73",
-      "effective_at": "",
-      "observed_at": "2026-11-19T08:09:35Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "67551ac522fbfbbd1d9569ba",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::HZD",
-      "ticker": "HZD",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "HZD",
-      "new_value": "SLVD",
-      "before_row_sha256": "add8d7ae7978cfb5f831e130db2ff9a40413919e1b12b9562e9fe171495bf107",
-      "effective_at": "",
-      "observed_at": "2026-11-19T08:09:35Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "6262ced6ebec778256e6e6f1",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -851,10 +81,10 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1351,
+      "before_rows": 1350,
       "after_rows": 1350,
-      "shrink_pct": 0.074019,
-      "removed_rows": 1,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -1077,7 +307,7 @@
     {
       "exchange": "HKEX",
       "before_rows": 3259,
-      "after_rows": 3259,
+      "after_rows": 3263,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -1239,7 +469,7 @@
     {
       "exchange": "NSE_IN",
       "before_rows": 3540,
-      "after_rows": 3540,
+      "after_rows": 3541,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -1266,7 +496,7 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2705,
-      "after_rows": 2705,
+      "after_rows": 2706,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -1275,7 +505,7 @@
     {
       "exchange": "NYSE MKT",
       "before_rows": 229,
-      "after_rows": 229,
+      "after_rows": 230,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -1463,10 +693,10 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2443,
+      "before_rows": 2437,
       "after_rows": 2437,
-      "shrink_pct": 0.2456,
-      "removed_rows": 6,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -1482,7 +712,7 @@
     {
       "exchange": "TWSE",
       "before_rows": 1286,
-      "after_rows": 1286,
+      "after_rows": 1287,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
