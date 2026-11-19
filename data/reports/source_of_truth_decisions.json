@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-11-19T08:10:10Z",
-    "rows": 8123,
+    "generated_at": "2026-11-19T08:45:59Z",
+    "rows": 8122,
     "outcome_totals": {
       "accepted_source_gap": 5091,
-      "core_exclusion_candidate": 532,
+      "core_exclusion_candidate": 531,
       "official_fill_required": 2500
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 18,
+      "adr_cdr_or_depositary_identifier_gap": 17,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 30,
       "commodity_etf_category_gap": 6,
@@ -34,7 +34,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 154,
       "missing_isin_primary:accepted_source_gap": 155,
-      "missing_isin_primary:core_exclusion_candidate": 489,
+      "missing_isin_primary:core_exclusion_candidate": 488,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 503,
       "missing_sector_stock:core_exclusion_candidate": 43,
@@ -94228,23 +94228,6 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::ZYNS",
-      "ticker": "ZYNS",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "Philip Morris CDR (CAD Hedged)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum."
     },
     {
       "field": "missing_isin_primary",
