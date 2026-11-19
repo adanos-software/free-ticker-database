@@ -8077,6 +8077,7 @@ BATS::APLZ,APLZ,BATS,investment managers ii - tradr 2x short apld,name
 BATS::APOC,APOC,BATS,US45784N8829,isin
 BATS::APOC,APOC,BATS,innovator equity defined protection - 6 mo apr/oct,name
 BATS::APRB,APRB,BATS,US2689618773,isin
+BATS::APRB,APRB,BATS,aptus april buffer,name
 BATS::APRH,APRH,BATS,US45783Y6243,isin
 BATS::APRJ,APRJ,BATS,US45783Y6169,isin
 BATS::APRP,APRP,BATS,US69420N7003,isin
@@ -8235,6 +8236,7 @@ BATS::BEX,BEX,BATS,tradr 2x long be,name
 BATS::BEX,BEX,BATS,investment managers ii - tradr 2x long be,name
 BATS::BFEB,BFEB,BATS,US45782C4336,isin
 BATS::BFLB,BFLB,BATS,US02072Q3415,isin
+BATS::BFLB,BFLB,BATS,bufferlabs us equity dynamic buffer,name
 BATS::BGFI,BGFI,BATS,US05613H8869,isin
 BATS::BGFI,BGFI,BATS,bny mellon global fixed income,name
 BATS::BGLD,BGLD,BATS,US33733E8497,isin
@@ -8701,6 +8703,7 @@ BATS::FFEM,FFEM,BATS,fidelity fundamental emerging markets,name
 BATS::FFF,FFF,BATS,US3509331076,isin
 BATS::FFF,FFF,BATS,founders 100,name
 BATS::FFGX,FFGX,BATS,US31609A8751,isin
+BATS::FFGX,FFGX,BATS,fidelity fundamental global ex-us,name
 BATS::FFLC,FFLC,BATS,US3160923609,isin
 BATS::FFLC,FFLC,BATS,fidelity fundamental large cap core,name
 BATS::FFLG,FFLG,BATS,US3160923377,isin
@@ -9092,6 +9095,7 @@ BATS::IZRL,IZRL,BATS,ark israel innovative technology,name
 BATS::JAJL,JAJL,BATS,US45783Y2440,isin
 BATS::JAJL,JAJL,BATS,innovator equity defined protection - 6 mo jan/jul,name
 BATS::JANB,JANB,BATS,US2689618856,isin
+BATS::JANB,JANB,BATS,aptus january buffer,name
 BATS::JANH,JANH,BATS,US45783Y6573,isin
 BATS::JANH,JANH,BATS,innovator u.s. equity premium income 20 barrier,name
 BATS::JANI,JANI,BATS,US00888H4222,isin
@@ -9124,6 +9128,7 @@ BATS::JPNU,JPNU,BATS,3x long japan etns,name
 BATS::JUCY,JUCY,BATS,US26922B6424,isin
 BATS::JUCY,JUCY,BATS,aptus enhanced yield,name
 BATS::JULB,JULB,BATS,US2689618690,isin
+BATS::JULB,JULB,BATS,aptus july buffer,name
 BATS::JULH,JULH,BATS,US45783Y5823,isin
 BATS::JULJ,JULJ,BATS,US45783Y5666,isin
 BATS::JULM,JULM,BATS,US33740U5700,isin
@@ -9326,8 +9331,6 @@ BATS::MEGX,MEGX,BATS,US21874W4050,isin
 BATS::MEGX,MEGX,BATS,corgi u.s. mega-cap growth 2x,name
 BATS::MEIB,MEIB,BATS,US25461H3903,isin
 BATS::MEIB,MEIB,BATS,direxion meta defined income boost,name
-BATS::MEMY,MEMY,BATS,US26923W8275,isin
-BATS::MEMY,MEMY,BATS,tuttle capital meme stock income blast,name
 BATS::METQ,METQ,BATS,US46152N7286,isin
 BATS::METQ,METQ,BATS,tradr 2x short meta,name
 BATS::METW,METW,BATS,US77926X7425,isin
@@ -9398,6 +9401,7 @@ BATS::MSST,MSST,BATS,yieldmax mstr performance and distribution target 25,name
 BATS::MSTB,MSTB,BATS,US26922B1052,isin
 BATS::MSTB,MSTB,BATS,lha market state tactical beta,name
 BATS::MSTQ,MSTQ,BATS,US26922B7331,isin
+BATS::MSTQ,MSTQ,BATS,lha market state tactical q,name
 BATS::MSTU,MSTU,BATS,US26923N4622,isin
 BATS::MSTU,MSTU,BATS,t-rex 2x long mstr target,name
 BATS::MSTW,MSTW,BATS,US77926X5932,isin
@@ -9531,6 +9535,7 @@ BATS::OBND,OBND,BATS,ssga active - spdr loomis sayles opportunistic bond,name
 BATS::OCNL,OCNL,BATS,US26923V3327,isin
 BATS::OCNL,OCNL,BATS,t-rex 2x long docn target,name
 BATS::OCTB,OCTB,BATS,US2689618518,isin
+BATS::OCTB,OCTB,BATS,aptus october buffer,name
 BATS::OCTH,OCTH,BATS,US45783Y5252,isin
 BATS::OCTI,OCTI,BATS,US00888H3802,isin
 BATS::OCTI,OCTI,BATS,allianzim international equity buffer15 uncapped oct,name
@@ -53255,6 +53260,7 @@ LSE::SPEC,SPEC,LSE,inspecs group,name
 LSE::SPED,SPED,LSE,IE00BM8QRY62,isin
 LSE::SPEH,SPEH,LSE,IE00BFMM8Y81,isin
 LSE::SPEP,SPEP,LSE,IE00BKS7L097,isin
+LSE::SPEP,SPEP,LSE,invesco s&p 500 esg,name
 LSE::SPEQ,SPEQ,LSE,IE00BNGJJT35,isin
 LSE::SPI,SPI,LSE,GB00BNLPYF73,isin
 LSE::SPI,SPI,LSE,spire healthcare group,name
@@ -55588,6 +55594,7 @@ NASDAQ::ALTO,ALTO,NASDAQ,US0215131063,isin
 NASDAQ::ALTO,ALTO,NASDAQ,A2QMJY,wkn
 NASDAQ::ALTO,ALTO,NASDAQ,alto ingredients,name
 NASDAQ::ALTY,ALTY,NASDAQ,US37954Y8066,isin
+NASDAQ::ALTY,ALTY,NASDAQ,global x alternative income,name
 NASDAQ::ALVO,ALVO,NASDAQ,LU2458332611,isin
 NASDAQ::ALVO,ALVO,NASDAQ,A3DK8U,wkn
 NASDAQ::ALVO,ALVO,NASDAQ,alvotech,name
@@ -57015,6 +57022,8 @@ NASDAQ::CDZI,CDZI,NASDAQ,cadiz,name
 NASDAQ::CECO,CECO,NASDAQ,US1251411013,isin
 NASDAQ::CECO,CECO,NASDAQ,ceco environmental,name
 NASDAQ::CEFA,CEFA,NASDAQ,US37954Y3687,isin
+NASDAQ::CEFA,CEFA,NASDAQ,s&p catholic values developed ex-us,name
+NASDAQ::CEFA,CEFA,NASDAQ,global x s&p catholic values developed ex-us,name
 NASDAQ::CEG,CEG,NASDAQ,US21037T1097,isin
 NASDAQ::CEG,CEG,NASDAQ,A3DCXB,wkn
 NASDAQ::CEG,CEG,NASDAQ,constellation energy,name
@@ -57317,6 +57326,7 @@ NASDAQ::CNOB,CNOB,NASDAQ,US20786W1071,isin
 NASDAQ::CNOB,CNOB,NASDAQ,20786W,wkn
 NASDAQ::CNOB,CNOB,NASDAQ,connectone bancorp,name
 NASDAQ::CNQQ,CNQQ,NASDAQ,US7546401008,isin
+NASDAQ::CNQQ,CNQQ,NASDAQ,rayliant-chinaamc transformative china tech,name
 NASDAQ::CNSP,CNSP,NASDAQ,US18978H5081,isin
 NASDAQ::CNSP,CNSP,NASDAQ,cns pharmaceuticals,name
 NASDAQ::CNSY,CNSY,NASDAQ,US72941H8060,isin
@@ -58519,6 +58529,7 @@ NASDAQ::EYE,EYE,NASDAQ,US63845R1077,isin
 NASDAQ::EYE,EYE,NASDAQ,national vision holdings,name
 NASDAQ::EYE,EYE,NASDAQ,national vision,name
 NASDAQ::EYEG,EYEG,NASDAQ,US49721T1016,isin
+NASDAQ::EYEG,EYEG,NASDAQ,ab corporate bond,name
 NASDAQ::EYPT,EYPT,NASDAQ,US30233G2093,isin
 NASDAQ::EYPT,EYPT,NASDAQ,30233G,wkn
 NASDAQ::EYPT,EYPT,NASDAQ,eyepoint pharmaceuticals,name
@@ -58653,6 +58664,7 @@ NASDAQ::FDMM,FDMM,NASDAQ,freedom metals acquisition,name
 NASDAQ::FDMT,FDMT,NASDAQ,US35104E1001,isin
 NASDAQ::FDMT,FDMT,NASDAQ,4d molecular therapeutics,name
 NASDAQ::FDNI,FDNI,NASDAQ,US33734X7701,isin
+NASDAQ::FDNI,FDNI,NASDAQ,first trust dow jones international internet,name
 NASDAQ::FDRS,FDRS,NASDAQ,US2189461013,isin
 NASDAQ::FDRS,FDRS,NASDAQ,founder-led,name
 NASDAQ::FDRX,FDRX,NASDAQ,US2189462003,isin
@@ -58793,6 +58805,7 @@ NASDAQ::FJP,FJP,NASDAQ,US33737J1584,isin
 NASDAQ::FJP,FJP,NASDAQ,japan alphadex,name
 NASDAQ::FJP,FJP,NASDAQ,first japan alphadex,name
 NASDAQ::FKU,FKU,NASDAQ,US33737J2244,isin
+NASDAQ::FKU,FKU,NASDAQ,first trust united kingdom alphadex,name
 NASDAQ::FKWL,FKWL,NASDAQ,US3551841022,isin
 NASDAQ::FKWL,FKWL,NASDAQ,franklin wireless,name
 NASDAQ::FLD,FLD,NASDAQ,fold holdings,name
@@ -60453,6 +60466,7 @@ NASDAQ::ISRL,ISRL,NASDAQ,israel acquisitions,name
 NASDAQ::ISTB,ISTB,NASDAQ,US46432F8591,isin
 NASDAQ::ISTB,ISTB,NASDAQ,core 1-5 year bond,name
 NASDAQ::ISTM,ISTM,NASDAQ,US46431W5159,isin
+NASDAQ::ISTM,ISTM,NASDAQ,ishares strategic metals,name
 NASDAQ::ISTR,ISTR,NASDAQ,US46134L1052,isin
 NASDAQ::ISTR,ISTR,NASDAQ,A117KV,wkn
 NASDAQ::ISTR,ISTR,NASDAQ,investar holding,name
@@ -70419,6 +70433,7 @@ NYSE ARCA::EMLP,EMLP,NYSE ARCA,US33738D1019,isin
 NYSE ARCA::EMLP,EMLP,NYSE ARCA,north american energy infrastructure,name
 NYSE ARCA::EMLP,EMLP,NYSE ARCA,first north american energy infrastructure,name
 NYSE ARCA::EMM,EMM,NYSE ARCA,US37960A6367,isin
+NYSE ARCA::EMM,EMM,NYSE ARCA,global x emerging markets ex-china,name
 NYSE ARCA::EMMF,EMMF,NYSE ARCA,US97717Y7821,isin
 NYSE ARCA::EMMF,EMMF,NYSE ARCA,emerging markets multifactor,name
 NYSE ARCA::EMNT,EMNT,NYSE ARCA,US72201R6430,isin
@@ -71243,6 +71258,7 @@ NYSE ARCA::GUMI,GUMI,NYSE ARCA,goldman sachs ultra short municipal income,name
 NYSE ARCA::GUNR,GUNR,NYSE ARCA,US33939L4077,isin
 NYSE ARCA::GUNR,GUNR,NYSE ARCA,morningstar global upstream natural resources,name
 NYSE ARCA::GURU,GURU,NYSE ARCA,US37950E3412,isin
+NYSE ARCA::GURU,GURU,NYSE ARCA,global x guru index,name
 NYSE ARCA::GUSA,GUSA,NYSE ARCA,US38150W1071,isin
 NYSE ARCA::GUSA,GUSA,NYSE ARCA,goldman sachs marketbeta u.s. 1000 equity,name
 NYSE ARCA::GUSH,GUSH,NYSE ARCA,US25460G5009,isin
@@ -72475,6 +72491,7 @@ NYSE ARCA::NMBL,NMBL,NYSE ARCA,novatide flexible allocation,name
 NYSE ARCA::NOEQ,NOEQ,NYSE ARCA,US66516K3014,isin
 NYSE ARCA::NOEQ,NOEQ,NYSE ARCA,northern us equity,name
 NYSE ARCA::NORW,NORW,NYSE ARCA,US37950E7470,isin
+NYSE ARCA::NORW,NORW,NYSE ARCA,global x msci norway,name
 NYSE ARCA::NQLT,NQLT,NYSE ARCA,US64135A7963,isin
 NYSE ARCA::NQLT,NQLT,NYSE ARCA,neuberger quality select,name
 NYSE ARCA::NRAM,NRAM,NYSE ARCA,US89844T8779,isin
@@ -72831,6 +72848,7 @@ NYSE ARCA::PWZ,PWZ,NYSE ARCA,invesco california amt-free municipal bond,name
 NYSE ARCA::PXE,PXE,NYSE ARCA,US46137V7617,isin
 NYSE ARCA::PXE,PXE,NYSE ARCA,invesco dynamic energy exploration & production,name
 NYSE ARCA::PXF,PXF,NYSE ARCA,US46138E7435,isin
+NYSE ARCA::PXF,PXF,NYSE ARCA,invesco rafi developed markets ex-us,name
 NYSE ARCA::PXH,PXH,NYSE ARCA,US46138E7278,isin
 NYSE ARCA::PXH,PXH,NYSE ARCA,invesco rafi emerging markets,name
 NYSE ARCA::PXJ,PXJ,NYSE ARCA,US46137V6700,isin
@@ -72938,6 +72956,7 @@ NYSE ARCA::RAAX,RAAX,NYSE ARCA,vaneck inflation allocation,name
 NYSE ARCA::RAAY,RAAY,NYSE ARCA,US00777X4622,isin
 NYSE ARCA::RAAY,RAAY,NYSE ARCA,reckoner yield enhanced aaa clo annual,name
 NYSE ARCA::RAFE,RAFE,NYSE ARCA,US72201T3427,isin
+NYSE ARCA::RAFE,RAFE,NYSE ARCA,pimco rafi esg us,name
 NYSE ARCA::RAVI,RAVI,NYSE ARCA,US33939L8862,isin
 NYSE ARCA::RAVI,RAVI,NYSE ARCA,northern ultra-short fixed income,name
 NYSE ARCA::RAYD,RAYD,NYSE ARCA,US00775Y7287,isin
@@ -73528,6 +73547,7 @@ NYSE ARCA::SPXE,SPXE,NYSE ARCA,s&p 500 ex-energy,name
 NYSE ARCA::SPXL,SPXL,NYSE ARCA,US25459W8626,isin
 NYSE ARCA::SPXL,SPXL,NYSE ARCA,direxion s&p500 bull 3x,name
 NYSE ARCA::SPXN,SPXN,NYSE ARCA,US74347B5738,isin
+NYSE ARCA::SPXN,SPXN,NYSE ARCA,proshares s&p 500 ex-financials,name
 NYSE ARCA::SPXP,SPXP,NYSE ARCA,direxion u.s. 500 plus,name
 NYSE ARCA::SPXS,SPXS,NYSE ARCA,US25460E1901,isin
 NYSE ARCA::SPXS,SPXS,NYSE ARCA,direxion s&p 500 bear 3x,name
@@ -73804,6 +73824,7 @@ NYSE ARCA::TOK,TOK,NYSE ARCA,msci kokusai,name
 NYSE ARCA::TOLZ,TOLZ,NYSE ARCA,US74347B5084,isin
 NYSE ARCA::TOLZ,TOLZ,NYSE ARCA,dj brookfield global infrastructure,name
 NYSE ARCA::TOPC,TOPC,NYSE ARCA,US46438G3496,isin
+NYSE ARCA::TOPC,TOPC,NYSE ARCA,ishares s&p 500 3% capped,name
 NYSE ARCA::TOPT,TOPT,NYSE ARCA,US46438G5707,isin
 NYSE ARCA::TOPT,TOPT,NYSE ARCA,top 20 u.s. stocks,name
 NYSE ARCA::TOTL,TOTL,NYSE ARCA,US78467V8485,isin
@@ -74257,6 +74278,7 @@ NYSE ARCA::XBFR,XBFR,NYSE ARCA,innovator equity managed 10 buffer,name
 NYSE ARCA::XBI,XBI,NYSE ARCA,US78464A8707,isin
 NYSE ARCA::XBI,XBI,NYSE ARCA,s&p biotech,name
 NYSE ARCA::XC,XC,NYSE ARCA,US97717Y5353,isin
+NYSE ARCA::XC,XC,NYSE ARCA,wisdomtree true emerging markets,name
 NYSE ARCA::XCCC,XCCC,NYSE ARCA,US09789C8872,isin
 NYSE ARCA::XCEM,XCEM,NYSE ARCA,US19762B2025,isin
 NYSE ARCA::XCEM,XCEM,NYSE ARCA,columbia em core ex-china,name
@@ -111953,6 +111975,7 @@ TSX::CBLN,CBLN,TSX,cibc balanced,name
 TSX::CBND,CBND,TSX,CA56502X1024,isin
 TSX::CBND,CBND,TSX,manulife smart corporate bond,name
 TSX::CBNK,CBNK,TSX,CA62580L1013,isin
+TSX::CBNK,CBNK,TSX,mulvihill canadian bank enhanced yield,name
 TSX::CBNK,CBNK,TSX,mulvihill canadian bank enhanced yield mutual,name
 TSX::CBO,CBO,TSX,CA46433Q1028,isin
 TSX::CBO,CBO,TSX,1-5 year laddered corporate bond,name
@@ -112021,6 +112044,7 @@ TSX::CEF-U,CEF-U,TSX,CA85208R1010,isin
 TSX::CEF-U,CEF-U,TSX,sprott physical gold and silver trust,name
 TSX::CEGS,CEGS,TSX,CA2099571093,isin
 TSX::CEMI,CEMI,TSX,CA17165A2011,isin
+TSX::CEMI,CEMI,TSX,cibc msci emerging markets equity,name
 TSX::CEMI,CEMI,TSX,cibc emerging markets equity,name
 TSX::CEQP,CEQP,TSX,CA12576D1006,isin
 TSX::CEQP,CEQP,TSX,ci equity+ asset allocation,name
@@ -112128,6 +112152,7 @@ TSX::CINF,CINF,TSX,ci global infrastructure private pool,name
 TSX::CINT,CINT,TSX,CA12547M1068,isin
 TSX::CINT,CINT,TSX,cibc international equity,name
 TSX::CINV,CINV,TSX,CA12567C1032,isin
+TSX::CINV,CINV,TSX,ci global alpha innovators,name
 TSX::CINV,CINV,TSX,ci global alpha innovation,name
 TSX::CJ,CJ,TSX,CA14150G4007,isin
 TSX::CJ,CJ,TSX,cardinal energy,name
@@ -112145,6 +112170,7 @@ TSX::CLF,CLF,TSX,1-5 year laddered government bond,name
 TSX::CLG,CLG,TSX,CA46431U1057,isin
 TSX::CLG,CLG,TSX,1-10 year laddered government bond,name
 TSX::CLML,CLML,TSX,CA17164Y1016,isin
+TSX::CLML,CLML,TSX,ci munro global energy transition,name
 TSX::CLML,CLML,TSX,ci global climate leaders,name
 TSX::CLS,CLS,TSX,CA15101Q2071,isin
 TSX::CLS,CLS,TSX,celestica,name
@@ -112215,6 +112241,7 @@ TSX::COID,COID,TSX,savvyshort -2x coin,name
 TSX::COIL,COIL,TSX,CA0169161084,isin
 TSX::COIL,COIL,TSX,all-canadian oil & gas,name
 TSX::COIU,COIU,TSX,CA54315B4414,isin
+TSX::COIU,COIU,TSX,savvylong 2x coin,name
 TSX::COIU,COIU,TSX,lfg 2x coin long,name
 TSX::COMM,COMM,TSX,CA05585R1029,isin
 TSX::COMM,COMM,TSX,global communications,name
@@ -112442,25 +112469,33 @@ TSX::DR,DR,TSX,medical facilities,name
 TSX::DRCU,DRCU,TSX,CA25059Q1090,isin
 TSX::DRCU,DRCU,TSX,desjardins ri active canadian bond - net-zero emissions pathway,name
 TSX::DRFC,DRFC,TSX,CA25059K1021,isin
+TSX::DRFC,DRFC,TSX,desjardins ri multifactor canadian equity,name
 TSX::DRFC,DRFC,TSX,desjardins ri canada multifactor - net-zero emissions pathway,name
 TSX::DRFD,DRFD,TSX,CA25059J1057,isin
+TSX::DRFD,DRFD,TSX,desjardins ri multifactor international equity,name
 TSX::DRFD,DRFD,TSX,desjardins ri developed ex-usa ex-canada multifactor - net-zero emissions pathway,name
 TSX::DRFE,DRFE,TSX,CA25060F1009,isin
+TSX::DRFE,DRFE,TSX,desjardins ri multifactor emerging markets equity,name
 TSX::DRFE,DRFE,TSX,desjardins ri emerging markets multifactor - net-zero emissions pathway,name
 TSX::DRFG,DRFG,TSX,CA25061T1093,isin
 TSX::DRFG,DRFG,TSX,desjardins ri global multifactor - fossil fuel reserves free,name
 TSX::DRFU,DRFU,TSX,CA25061M1041,isin
+TSX::DRFU,DRFU,TSX,desjardins ri multifactor american equity,name
 TSX::DRFU,DRFU,TSX,desjardins ri usa multifactor - net-zero emissions pathway,name
 TSX::DRM,DRM,TSX,CA26153M5072,isin
 TSX::DRM,DRM,TSX,dream unlimited,name
 TSX::DRM,DRM,TSX,dream un,name
 TSX::DRMC,DRMC,TSX,CA25060H1064,isin
+TSX::DRMC,DRMC,TSX,desjardins ri canadian equity,name
 TSX::DRMC,DRMC,TSX,desjardins ri canada - net-zero emissions pathway,name
 TSX::DRMD,DRMD,TSX,CA25060L1076,isin
+TSX::DRMD,DRMD,TSX,desjardins ri international equity,name
 TSX::DRMD,DRMD,TSX,desjardins ri developed ex-usa ex-canada - net-zero emissions pathway,name
 TSX::DRME,DRME,TSX,CA25060K1093,isin
+TSX::DRME,DRME,TSX,desjardins ri emerging markets equity,name
 TSX::DRME,DRME,TSX,desjardins ri emerging markets - net-zero emissions pathway,name
 TSX::DRMU,DRMU,TSX,CA25060W1032,isin
+TSX::DRMU,DRMU,TSX,desjardins ri american equity,name
 TSX::DRMU,DRMU,TSX,desjardins ri usa - net-zero emissions pathway,name
 TSX::DRT,DRT,TSX,CA25490H1064,isin
 TSX::DRT,DRT,TSX,dirtt environmental solutions,name
@@ -112646,6 +112681,7 @@ TSX::ESGA,ESGA,TSX,CA05587Y1051,isin
 TSX::ESGA,ESGA,TSX,msci canada selection equity,name
 TSX::ESGB,ESGB,TSX,CA05600D1042,isin
 TSX::ESGC,ESGC,TSX,CA46143X1087,isin
+TSX::ESGC,ESGC,TSX,ci s&p/tsx composite esg,name
 TSX::ESGC,ESGC,TSX,invesco s&p/tsx composite esg,name
 TSX::ESGY,ESGY,TSX,CA05600C2058,isin
 TSX::ESGY,ESGY,TSX,msci usa selection equity,name
@@ -112991,9 +113027,8 @@ TSX::GLCC,GLCC,TSX,gold producer equity covered call,name
 TSX::GLCL,GLCL,TSX,CA37965R1055,isin
 TSX::GLCL,GLCL,TSX,enhanced gold producer equity covered call,name
 TSX::GLDD,GLDD,TSX,CA08663T1075,isin
-TSX::GLDD,GLDD,TSX,gold producer equity bear,name
+TSX::GLDD,GLDD,TSX,betapro gold bullion -2x bear,name
 TSX::GLDU,GLDU,TSX,CA08660T1003,isin
-TSX::GLDU,GLDU,TSX,gold producer equity bull,name
 TSX::GLO,GLO,TSX,CA37957M1068,isin
 TSX::GLO,GLO,TSX,global atomic,name
 TSX::GMIN,GMIN,TSX,CA36261G1028,isin
@@ -113066,6 +113101,7 @@ TSX::HBB,HBB,TSX,canada select universe,name
 TSX::HBDV,HBDV,TSX,CA44540B1004,isin
 TSX::HBDV,HBDV,TSX,humilis north american dividend growth,name
 TSX::HBF,HBF,TSX,CA41753L1067,isin
+TSX::HBF,HBF,TSX,harvest us equity leaders income,name
 TSX::HBF,HBF,TSX,harvest brand leaders plus income,name
 TSX::HBGD,HBGD,TSX,CA44054U1066,isin
 TSX::HBGD,HBGD,TSX,big data & hardware,name
@@ -113108,6 +113144,7 @@ TSX::HDIF,HDIF,TSX,harvest diversified monthly income,name
 TSX::HDIV,HDIV,TSX,CA4073621027,isin
 TSX::HDIV,HDIV,TSX,hamilton enhanced canadian covered call,name
 TSX::HEB,HEB,TSX,CA40704N1042,isin
+TSX::HEB,HEB,TSX,hamilton champions canadian bank equal-weight,name
 TSX::HEB,HEB,TSX,hamilton canadian bank equal-weight,name
 TSX::HED,HED,TSX,CA08661A1003,isin
 TSX::HED,HED,TSX,betapro s&p/tsx capped energy -2x bear,name
@@ -113141,6 +113178,7 @@ TSX::HFG,HFG,TSX,hamilton global financials,name
 TSX::HFIN,HFIN,TSX,CA4073641082,isin
 TSX::HFIN,HFIN,TSX,hamilton enhanced canadian financials,name
 TSX::HFN,HFN,TSX,CA4069101091,isin
+TSX::HFN,HFN,TSX,hamilton champions canadian financials,name
 TSX::HFN,HFN,TSX,hamilton canadian financials,name
 TSX::HFPC,HFPC,TSX,CA42328X1042,isin
 TSX::HFPC,HFPC,TSX,helios fairfax partners,name
@@ -113176,6 +113214,7 @@ TSX::HISU.U,HISU.U,TSX,CA91737A1066,isin
 TSX::HLF,HLF,TSX,CA4296951094,isin
 TSX::HLF,HLF,TSX,high liner foods,name
 TSX::HLIF,HLIF,TSX,CA41756V1013,isin
+TSX::HLIF,HLIF,TSX,harvest canadian dividend leaders income,name
 TSX::HLIF,HLIF,TSX,harvest canadian equity income leaders,name
 TSX::HLPR,HLPR,TSX,CA44055R1029,isin
 TSX::HLPR,HLPR,TSX,laddered canadian preferred corporate,name
@@ -113233,10 +113272,9 @@ TSX::HSAV,HSAV,TSX,CA43990D1033,isin
 TSX::HSD,HSD,TSX,CA08664D1015,isin
 TSX::HSD,HSD,TSX,betapro s&p 500 -2x bear,name
 TSX::HSH,HSH,TSX,CA44055D1033,isin
-TSX::HSU,HSU,TSX,CA08663L1040,isin
-TSX::HSU,HSU,TSX,betapro s&p 500 2x bull,name
 TSX::HSUV,HSUV,TSX,CA43466T1030,isin
 TSX::HTA,HTA,TSX,CA41755D1024,isin
+TSX::HTA,HTA,TSX,harvest tech leaders income,name
 TSX::HTA,HTA,TSX,harvest tech achievers growth & income,name
 TSX::HTAE,HTAE,TSX,CA41754B1076,isin
 TSX::HTAE,HTAE,TSX,harvest tech leaders enhanced income,name
@@ -113263,6 +113301,7 @@ TSX::HUTE,HUTE,TSX,CA41754D1033,isin
 TSX::HUTE,HUTE,TSX,harvest utilities leaders enhanced income,name
 TSX::HUTE,HUTE,TSX,harvest equal weight global utilities enhanced income,name
 TSX::HUTL,HUTL,TSX,CA41754C1059,isin
+TSX::HUTL,HUTL,TSX,harvest utilities leaders income,name
 TSX::HUTL,HUTL,TSX,harvest equal weight global utilities income,name
 TSX::HUTS,HUTS,TSX,CA40737J1049,isin
 TSX::HUTS,HUTS,TSX,hamilton enhanced utilities,name
@@ -113303,16 +113342,12 @@ TSX::HYBR,HYBR,TSX,CA44052A2011,isin
 TSX::HYBR,HYBR,TSX,active hybrid bond and preferred,name
 TSX::HYLD,HYLD,TSX,CA40736Q1090,isin
 TSX::HYLD.U,HYLD.U,TSX,CA40736Q2080,isin
-TSX::HZD,HZD,TSX,CA08662X1096,isin
-TSX::HZD,HZD,TSX,betapro silver 2x bear,name
-TSX::HZD,HZD,TSX,betapro silver -2x bear,name
-TSX::HZU,HZU,TSX,CA08662T1084,isin
-TSX::HZU,HZU,TSX,betapro silver 2x bull,name
 TSX::IAG,IAG,TSX,CA45075E1043,isin
 TSX::IAG,IAG,TSX,ia financial,name
 TSX::IBQT,IBQT,TSX,CA46438X1024,isin
 TSX::IBQT,IBQT,TSX,equity + bitcoin,name
 TSX::ICAE,ICAE,TSX,CA46147Y1025,isin
+TSX::ICAE,ICAE,TSX,ci s&p/tsx canadian dividend aristocrats esg,name
 TSX::ICAE,ICAE,TSX,invesco s&p/tsx canadian dividend aristocrats esg,name
 TSX::ICBB,ICBB,TSX,invesco global bond,name
 TSX::ICCB,ICCB,TSX,CA46149E1043,isin
@@ -113344,12 +113379,15 @@ TSX::IGCF,IGCF,TSX,pimco investment grade credit,name
 TSX::IGEO,IGEO,TSX,CA44934G1037,isin
 TSX::IGEO,IGEO,TSX,ia clarington loomis global equity opportunities,name
 TSX::IGET.F,IGET.F,TSX,CA4612922035,isin
+TSX::IGET.F,IGET.F,TSX,ci morningstar global energy transition,name
 TSX::IGET.F,IGET.F,TSX,invesco morningstar global energy transition,name
 TSX::IGM,IGM,TSX,CA4495861060,isin
 TSX::IGM,IGM,TSX,igm financial,name
 TSX::IIAE,IIAE,TSX,CA46146T1049,isin
+TSX::IIAE,IIAE,TSX,ci s&p international developed dividend aristocrats esg,name
 TSX::IIAE,IIAE,TSX,invesco s&p international developed dividend aristocrats esg,name
 TSX::IICE,IICE,TSX,CA46146U1012,isin
+TSX::IICE,IICE,TSX,ci s&p international developed esg,name
 TSX::IICE,IICE,TSX,invesco s&p international developed esg,name
 TSX::III,III,TSX,CA4528921022,isin
 TSX::III,III,TSX,imperial metals,name
@@ -113372,6 +113410,7 @@ TSX::IMP,IMP,TSX,CA4589774021,isin
 TSX::IMP,IMP,TSX,intermap technologies,name
 TSX::IMP,IMP,TSX,intermap,name
 TSX::INAI,INAI,TSX,CA4613041074,isin
+TSX::INAI,INAI,TSX,ci morningstar global next gen ai,name
 TSX::INAI,INAI,TSX,invesco morningstar global next gen ai,name
 TSX::INCM.B,INCM.B,TSX,CA00436Y2087,isin
 TSX::INCM.U,INCM.U,TSX,CA00436Y1097,isin
@@ -113403,6 +113442,7 @@ TSX::IUAE.F,IUAE.F,TSX,CA46147H2081,isin
 TSX::IUFR,IUFR,TSX,CA46149D1069,isin
 TSX::IUFR,IUFR,TSX,invesco us treasury floating rate note,name
 TSX::IUMF.F,IUMF.F,TSX,CA46147A2039,isin
+TSX::IUMF.F,IUMF.F,TSX,ci invesco russell 1000 multifactor,name
 TSX::IUMF.F,IUMF.F,TSX,invesco russell 1000 dynamic-multifactor,name
 TSX::IVN,IVN,TSX,CA46579R1047,isin
 TSX::IVN,IVN,TSX,ivanhoe mines,name
@@ -113689,9 +113729,11 @@ TSX::MMEM,MMEM,TSX,mackenzie modus emerging markets equity,name
 TSX::MMGL,MMGL,TSX,CA55455W1032,isin
 TSX::MMGL,MMGL,TSX,mackenzie modus global equity,name
 TSX::MNS,MNS,TSX,CA7799211130,isin
+TSX::MNS,MNS,TSX,royal canadian mint - canadian silver reserves exchange-traded receipts,name
 TSX::MNS,MNS,TSX,royal canadian mint - canadian silver reserves,name
 TSX::MNS,MNS,TSX,royal canadian mint silver,name
 TSX::MNT,MNT,TSX,CA7799211056,isin
+TSX::MNT,MNT,TSX,royal canadian mint - canadian gold reserves exchange-traded receipts,name
 TSX::MNT,MNT,TSX,royal canadian mint - canadian gold reserves,name
 TSX::MNU,MNU,TSX,CA74642X1069,isin
 TSX::MNU,MNU,TSX,purpose cash management,name
@@ -113725,6 +113767,7 @@ TSX::MSFH,MSFH,TSX,harvest microsoft high income,name
 TSX::MSHE,MSHE,TSX,CA41754L1058,isin
 TSX::MSHE,MSHE,TSX,harvest microsoft enhanced high income,name
 TSX::MSTE,MSTE,TSX,CA4175561071,isin
+TSX::MSTE,MSTE,TSX,harvest strategy enhanced high income,name
 TSX::MSTE,MSTE,TSX,harvest microstrategy enhanced high income,name
 TSX::MSV,MSV,TSX,CA60254C1005,isin
 TSX::MSV,MSV,TSX,minco silver,name
@@ -113953,6 +113996,7 @@ TSX::ONEB,ONEB,TSX,ci north american core plus bond,name
 TSX::ONEC,ONEC,TSX,CA00440A1057,isin
 TSX::ONEC,ONEC,TSX,accelerate onechoice alternative multi-asset,name
 TSX::ONEQ,ONEQ,TSX,CA68236D1042,isin
+TSX::ONEQ,ONEQ,TSX,ci global core plus equity,name
 TSX::ONEQ,ONEQ,TSX,ci one global equity,name
 TSX::ONEX,ONEX,TSX,CA68272K1030,isin
 TSX::OR,OR,TSX,CA68390D1069,isin
@@ -114004,6 +114048,7 @@ TSX::PBI.B,PBI.B,TSX,CA74640J2083,isin
 TSX::PBL,PBL,TSX,CA73150R1055,isin
 TSX::PBL,PBL,TSX,pollard banknote,name
 TSX::PBY,PBY,TSX,CA55236J1084,isin
+TSX::PBY,PBY,TSX,lysander-canso credit income activetf,name
 TSX::PBY,PBY,TSX,canso credit income,name
 TSX::PCON,PCON,TSX,CA72203P1080,isin
 TSX::PCON,PCON,TSX,pimco managed conservative bond pool,name
@@ -114012,6 +114057,7 @@ TSX::PCOR,PCOR,TSX,pimco managed core bond pool,name
 TSX::PD,PD,TSX,CA74022D4075,isin
 TSX::PD,PD,TSX,precision drilling,name
 TSX::PDC,PDC,TSX,CA46141H1055,isin
+TSX::PDC,PDC,TSX,ci canadian dividend,name
 TSX::PDC,PDC,TSX,invesco canadian dividend,name
 TSX::PDF,PDF,TSX,CA74639Y1097,isin
 TSX::PDF,PDF,TSX,purpose core dividend,name
@@ -114027,6 +114073,7 @@ TSX::PEY,PEY,TSX,peyto exploration & development,name
 TSX::PFAA,PFAA,TSX,CA72001R1082,isin
 TSX::PFAA,PFAA,TSX,picton multi-strategy alpha alternative,name
 TSX::PFAE,PFAE,TSX,CA72000M1005,isin
+TSX::PFAE,PFAE,TSX,picton long short equity 130/30 alternative,name
 TSX::PFAE,PFAE,TSX,picton mahoney fortified active extension alternative,name
 TSX::PFCB,PFCB,TSX,CA72001D1096,isin
 TSX::PFCB,PFCB,TSX,picton core bond,name
@@ -114037,6 +114084,7 @@ TSX::PFIA,PFIA,TSX,picton long short income alternative,name
 TSX::PFIN,PFIN,TSX,CA7199151001,isin
 TSX::PFIN,PFIN,TSX,picton income,name
 TSX::PFL,PFL,TSX,CA46140U1075,isin
+TSX::PFL,PFL,TSX,ci canadian government floating rate,name
 TSX::PFL,PFL,TSX,invesco canadian government floating rate,name
 TSX::PFLS,PFLS,TSX,CA72001B1031,isin
 TSX::PFLS,PFLS,TSX,picton long short equity alternative,name
@@ -114129,6 +114177,7 @@ TSX::PRQ,PRQ,TSX,petrus resources,name
 TSX::PSA,PSA,TSX,CA74640A1084,isin
 TSX::PSA,PSA,TSX,purpose high interest savings,name
 TSX::PSB,PSB,TSX,CA46138N1078,isin
+TSX::PSB,PSB,TSX,ci 1-5 year laddered investment grade corporate bond,name
 TSX::PSB,PSB,TSX,invesco 1-5 year laddered investment grade corporate bond,name
 TSX::PSD,PSD,TSX,CA74586Q1090,isin
 TSX::PSD,PSD,TSX,pulse seismic,name
@@ -114148,9 +114197,11 @@ TSX::PWF,PWF,TSX,power financial,name
 TSX::PWI,PWI,TSX,CA86934R1001,isin
 TSX::PWI,PWI,TSX,sustainable power & infrastructure split,name
 TSX::PXC,PXC,TSX,CA46140K1093,isin
+TSX::PXC,PXC,TSX,ci rafi canadian,name
 TSX::PXC,PXC,TSX,invesco rafi canadian,name
 TSX::PXC,PXC,TSX,invesco ftse rafi canadian,name
 TSX::PXS.U,PXS.U,TSX,CA46141V2030,isin
+TSX::PXS.U,PXS.U,TSX,ci invesco rafi u.s. ii,name
 TSX::PXS.U,PXS.U,TSX,invesco rafi u.s. ii,name
 TSX::PXT,PXT,TSX,CA69946Q1046,isin
 TSX::PXT,PXT,TSX,parex resources,name
@@ -114208,6 +114259,7 @@ TSX::QQC,QQC,TSX,CA46090T2092,isin
 TSX::QQC,QQC,TSX,invesco nasdaq 100 index etf,name
 TSX::QQCC.U,QQCC.U,TSX,CA37962P1027,isin
 TSX::QQCE,QQCE,TSX,CA46090M2040,isin
+TSX::QQCE,QQCE,TSX,ci esg nasdaq 100,name
 TSX::QQCI,QQCI,TSX,CA46149H1073,isin
 TSX::QQCI,QQCI,TSX,invesco nasdaq 100 income advantage,name
 TSX::QQCL,QQCL,TSX,CA37962X1050,isin
@@ -114215,10 +114267,12 @@ TSX::QQCL,QQCL,TSX,enhanced nasdaq-100 covered call,name
 TSX::QQD,QQD,TSX,CA08662N4084,isin
 TSX::QQD,QQD,TSX,betapro nasdaq-100 -2x bear,name
 TSX::QQEQ,QQEQ,TSX,CA4614781090,isin
+TSX::QQEQ,QQEQ,TSX,ci nasdaq 100 equal weight,name
 TSX::QQEQ,QQEQ,TSX,invesco nasdaq 100 equal weight,name
 TSX::QQI,QQI,TSX,CA37966E1034,isin
 TSX::QQI,QQI,TSX,betapro nasdaq-100 inverse,name
 TSX::QQJR,QQJR,TSX,CA46143Y2050,isin
+TSX::QQJR,QQJR,TSX,ci invesco nasdaq next gen 100,name
 TSX::QQQL,QQQL,TSX,CA3799341027,isin
 TSX::QQQL,QQQL,TSX,enhanced nasdaq-100,name
 TSX::QQQQ,QQQQ,TSX,CA5545351044,isin
@@ -114252,6 +114306,7 @@ TSX::QUIG,QUIG,TSX,CA55455H1064,isin
 TSX::QUIG,QUIG,TSX,mackenzie us investment grade corporate bond,name
 TSX::QUU,QUU,TSX,CA55454T1012,isin
 TSX::QXM,QXM,TSX,CA1255021042,isin
+TSX::QXM,QXM,TSX,ci morningstar national bank quebec,name
 TSX::QXM,QXM,TSX,first asset morningstar national bank quebec common class,name
 TSX::RATE,RATE,TSX,CA04273V1031,isin
 TSX::RATE,RATE,TSX,arrow ec income advantage alternative,name
@@ -114270,6 +114325,7 @@ TSX::RBNK,RBNK,TSX,rbc canadian bank yield,name
 TSX::RBNU,RBNU,TSX,CA54315B4331,isin
 TSX::RBNU,RBNU,TSX,savvylong 2x hood,name
 TSX::RBO,RBO,TSX,CA74932K1030,isin
+TSX::RBO,RBO,TSX,rbc 1-5 year laddered canadian corporate bond,name
 TSX::RBO,RBO,TSX,rbc 1-5 year laddered corporate bond,name
 TSX::RBOT,RBOT,TSX,CA44053Q1063,isin
 TSX::RBOT,RBOT,TSX,robotics & ai,name
@@ -114412,8 +114468,10 @@ TSX::RVX,RVX,TSX,resverlogix,name
 TSX::RY,RY,TSX,CA7800871021,isin
 TSX::RY,RY,TSX,royal bank of canada,name
 TSX::RYHE,RYHE,TSX,CA4179167073,isin
+TSX::RYHE,RYHE,TSX,harvest enhanced high income ry-linked,name
 TSX::RYHE,RYHE,TSX,harvest royal bank enhanced high income,name
 TSX::RYHI,RYHI,TSX,CA6539447020,isin
+TSX::RYHI,RYHI,TSX,ninepoint ry-linked highshares,name
 TSX::RYHI,RYHI,TSX,ninepoint royal bank highshares,name
 TSX::S,S,TSX,CA8239011031,isin
 TSX::S,S,TSX,sherritt international,name
@@ -114487,6 +114545,11 @@ TSX::SLSC,SLSC,TSX,CA86679C1023,isin
 TSX::SLSC,SLSC,TSX,sun life crescent specialty credit private pool,name
 TSX::SLT,SLT,TSX,CA7959271023,isin
 TSX::SLT,SLT,TSX,saltire capital,name
+TSX::SLVD,SLVD,TSX,CA08662X1096,isin
+TSX::SLVD,SLVD,TSX,betapro silver -2x bear,name
+TSX::SLVD,SLVD,TSX,betapro silver 2x bear,name
+TSX::SLVU,SLVU,TSX,CA08662T1084,isin
+TSX::SLVU,SLVU,TSX,betapro silver 2x bull,name
 TSX::SMAX,SMAX,TSX,CA4079161051,isin
 TSX::SMAX,SMAX,TSX,hamilton u.s. equity yield maximizer,name
 TSX::SMAX.U,SMAX.U,TSX,CA4079162042,isin
@@ -114529,6 +114592,9 @@ TSX::SPPP-U,SPPP-U,TSX,CA85207Q1046,isin
 TSX::SPPP-U,SPPP-U,TSX,sprott physical platinum & palladium tr,name
 TSX::SPXI,SPXI,TSX,CA08660P1080,isin
 TSX::SPXI,SPXI,TSX,betapro s&p 500 inverse,name
+TSX::SPXU,SPXU,TSX,CA08663L1040,isin
+TSX::SPXU,SPXU,TSX,betapro s&p 500 2x bull issued by global x investments canada also marketed as global x s&p 500 2x bull formerly hsu,name
+TSX::SPXU,SPXU,TSX,s&p 500 bull,name
 TSX::SRSL,SRSL,TSX,CA0869051064,isin
 TSX::SRSL,SRSL,TSX,betapro -3x russell 2000 leveraged bear alternative,name
 TSX::SRU,SRU,TSX,smartcentres real estate investment trust,name
@@ -114633,8 +114699,10 @@ TSX::TD,TD,TSX,the toronto-dominion bank,name
 TSX::TDB,TDB,TSX,CA87818P1036,isin
 TSX::TDB,TDB,TSX,td canadian aggregate bond,name
 TSX::TDHE,TDHE,TSX,CA4179168717,isin
+TSX::TDHE,TDHE,TSX,harvest enhanced high income td-linked,name
 TSX::TDHE,TDHE,TSX,harvest td bank enhanced high income,name
 TSX::TDHI,TDHI,TSX,CA6539448762,isin
+TSX::TDHI,TDHI,TSX,ninepoint td-linked highshares,name
 TSX::TDHI,TDHI,TSX,ninepoint td highshares,name
 TSX::TDNA,TDNA,TSX,CA8779141016,isin
 TSX::TDNA,TDNA,TSX,td north american dividend,name
@@ -114700,6 +114768,7 @@ TSX::TLTU,TLTU,TSX,megalong 3x 20+ year us treasury leveraged alternative,name
 TSX::TLTX.F,TLTX.F,TSX,CA37966J2011,isin
 TSX::TLTX.U,TLTX.U,TSX,CA37966J3001,isin
 TSX::TLV,TLV,TSX,CA46139Y1025,isin
+TSX::TLV,TLV,TSX,ci s&p/tsx composite low volatility,name
 TSX::TLV,TLV,TSX,invesco s&p/tsx composite low volatility,name
 TSX::TMQ,TMQ,TSX,CA89621C1059,isin
 TSX::TMQ,TMQ,TSX,trilogy metals,name
@@ -114819,6 +114888,9 @@ TSX::UDEF,UDEF,TSX,CA56503J1021,isin
 TSX::UDEF,UDEF,TSX,manulife smart u.s. defensive equity,name
 TSX::UDIV,UDIV,TSX,CA56503P1163,isin
 TSX::UDIV.B,UDIV.B,TSX,CA56503P1080,isin
+TSX::ULV.C,ULV.C,TSX,CA46139X1042,isin
+TSX::ULV.F,ULV.F,TSX,CA46139X1208,isin
+TSX::ULV.U,ULV.U,TSX,CA46139X1125,isin
 TSX::UMAX,UMAX,TSX,CA4081251023,isin
 TSX::UMAX,UMAX,TSX,hamilton utilities yield maximizer,name
 TSX::UMI,UMI,TSX,CA12559H1029,isin
@@ -114854,8 +114926,7 @@ TSX::USSL,USSL,TSX,CA3799361074,isin
 TSX::USSL,USSL,TSX,enhanced s&p 500,name
 TSX::USSX,USSX,TSX,CA37962A1057,isin
 TSX::UTIL,UTIL,TSX,CA44057B1058,isin
-TSX::UTIL,UTIL,TSX,canadian utility services high dividend,name
-TSX::UTIL,UTIL,TSX,canada utility sector high dividend,name
+TSX::UTIL,UTIL,TSX,equal weight canadian utilities,name
 TSX::VA,VA,TSX,CA92206N1087,isin
 TSX::VA,VA,TSX,vanguard ftse developed asia pacific all cap,name
 TSX::VAB,VAB,TSX,CA92203E1016,isin
@@ -115190,6 +115261,7 @@ TSX::XSHU,XSHU,TSX,CA45033M1077,isin
 TSX::XSI,XSI,TSX,CA46435B1031,isin
 TSX::XSI,XSI,TSX,short term strategic fixed income,name
 TSX::XSMB,XSMB,TSX,CA4639211065,isin
+TSX::XSMB,XSMB,TSX,core canadian 1-10 year bond,name
 TSX::XSMB,XSMB,TSX,core canadian short-mid term universe bond,name
 TSX::XSMC,XSMC,TSX,CA46437K1012,isin
 TSX::XSMC,XSMC,TSX,s&p u.s. small cap,name

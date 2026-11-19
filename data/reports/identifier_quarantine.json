@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-18T16:43:01Z",
+  "generated_at": "2026-11-19T08:09:35Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2092,
-  "decision_rows": 6854,
+  "conflict_count": 2091,
+  "decision_rows": 6852,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1348,
-    "proposed_clear_conflicting_identifier": 1082,
+    "kept_listing_keyed_identifier": 1347,
+    "proposed_clear_conflicting_identifier": 1081,
     "quarantined_unresolved_identifier": 4424
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1082,
+  "proposed_clear_rows": 1081,
   "quarantined_rows": 4424,
-  "retained_rows": 1348,
+  "retained_rows": 1347,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -4713,7 +4713,7 @@
       "listing_key": "TSX::ESG.F",
       "ticker": "ESG.F",
       "exchange": "TSX",
-      "name": "Invesco S&P 500 ESG Index ETF",
+      "name": "CI S&P 500 ESG Index ETF",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -32630,32 +32630,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "IE000XGNMWE1"
-    },
-    {
-      "conflict_id": "1dc26a05e58c803912e1",
-      "isin": "IE000XYBMEH0",
-      "listing_key": "LSE::HSMS",
-      "ticker": "HSMS",
-      "exchange": "LSE",
-      "name": "HSBC EM SUS EQUITY UCITS ETF USD (DIST)",
-      "asset_type": "ETF",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000XYBMEH0"
-    },
-    {
-      "conflict_id": "1dc26a05e58c803912e1",
-      "isin": "IE000XYBMEH0",
-      "listing_key": "OTC::HSMD",
-      "ticker": "HSMD",
-      "exchange": "OTC",
-      "name": "Healthcare Solutions Management Group Inc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "IE000XYBMEH0"
     },
     {
       "conflict_id": "91c88118562d76175cf9",
