@@ -1,12 +1,12 @@
 {
   "_meta": {
     "entry_quality_csv": "data/reports/entry_quality.csv",
-    "generated_at": "2026-11-19T16:27:12Z",
+    "generated_at": "2026-11-19T17:01:06Z",
     "policy": "Command evidence for the entry-quality release gate. New warn rows or quarantine rows fail the gate.",
     "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv"
   },
   "allowed_warn_count": 35,
-  "passed": true,
+  "passed": false,
   "quarantine_count": 0,
   "quarantined": [],
   "stale_allowlist": [
@@ -14,7 +14,20 @@
     "OTC::MNZO"
   ],
   "stale_allowlist_count": 2,
-  "unexpected_warn_count": 0,
-  "unexpected_warns": [],
-  "warn_count": 33
+  "unexpected_warn_count": 2,
+  "unexpected_warning_subjects": [
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NYSE::BKH"
+    },
+    {
+      "issue_type": "official_name_mismatch",
+      "listing_key": "NYSE::MOD"
+    }
+  ],
+  "unexpected_warns": [
+    "NYSE::BKH",
+    "NYSE::MOD"
+  ],
+  "warn_count": 35
 }

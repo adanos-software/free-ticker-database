@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-19T16:27:16Z",
-    "rows": 8132,
+    "generated_at": "2026-11-19T16:56:48Z",
+    "rows": 8134,
     "field_totals": {
       "missing_etf_category": 154,
-      "missing_isin_primary": 645,
-      "missing_sector_stock": 588,
+      "missing_isin_primary": 646,
+      "missing_sector_stock": 589,
       "official_reference_gap": 6745
     },
     "class_totals": {
@@ -22,10 +22,10 @@
       "fundlike_stock_sector_gap": 31,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 139,
+      "official_identifier_not_exposed_source_gap": 140,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 414,
+      "official_industry_taxonomy_unavailable_gap": 415,
       "official_product_taxonomy_unavailable_gap": 118,
       "official_reference_symbol_collision_gap": 1179,
       "official_reference_unmatched_source_gap": 5566,
@@ -44,13 +44,13 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 334,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 139,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 140,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 414,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 415,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1179,
@@ -110,7 +110,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 82
+          "rows": 83
         },
         {
           "exchange": "TSX",
@@ -175,11 +175,11 @@
           "rows": 16
         },
         {
-          "exchange": "BIST",
-          "rows": 15
+          "exchange": "NASDAQ",
+          "rows": 16
         },
         {
-          "exchange": "CSE_LK",
+          "exchange": "BIST",
           "rows": 15
         }
       ],
@@ -6766,6 +6766,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::ALPS;exchange=NASDAQ;ticker=ALPS;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::ANT",
+      "ticker": "ANT",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Anthropic, PBC - Class A Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::ANT;exchange=NASDAQ;ticker=ANT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -19975,6 +19992,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NASDAQ::AGLT;exchange=NASDAQ;ticker=AGLT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::ANT",
+      "ticker": "ANT",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Anthropic, PBC - Class A Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::ANT;exchange=NASDAQ;ticker=ANT;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
