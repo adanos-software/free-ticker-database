@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-19T08:09:35Z",
+  "generated_at": "2026-11-19T10:57:53Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2091,
-  "decision_rows": 6852,
+  "conflict_count": 2090,
+  "decision_rows": 6849,
   "action_counts": {
     "kept_listing_keyed_identifier": 1347,
     "proposed_clear_conflicting_identifier": 1081,
-    "quarantined_unresolved_identifier": 4424
+    "quarantined_unresolved_identifier": 4421
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1081,
-  "quarantined_rows": 4424,
+  "quarantined_rows": 4421,
   "retained_rows": 1347,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -5304,45 +5304,6 @@
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "CA28103Q2080"
-    },
-    {
-      "conflict_id": "cf9731f5d32c03184e37",
-      "isin": "CA29408C1005",
-      "listing_key": "FSX::YGK",
-      "ticker": "YGK",
-      "exchange": "FSX",
-      "name": "EnviroGold Global Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA29408C1005"
-    },
-    {
-      "conflict_id": "cf9731f5d32c03184e37",
-      "isin": "CA29408C1005",
-      "listing_key": "OTC::ESGLF",
-      "ticker": "ESGLF",
-      "exchange": "OTC",
-      "name": "NVRO Metals Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA29408C1005"
-    },
-    {
-      "conflict_id": "cf9731f5d32c03184e37",
-      "isin": "CA29408C1005",
-      "listing_key": "TSXV::NVRO",
-      "ticker": "NVRO",
-      "exchange": "TSXV",
-      "name": "NVRO MetaNVRO",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "CA29408C1005"
     },
     {
       "conflict_id": "344a40c7e6df2fea2538",
