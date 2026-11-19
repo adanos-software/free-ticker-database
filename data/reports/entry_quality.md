@@ -1,15 +1,15 @@
 # Entry Quality Report
 
-Generated at: `2026-11-19T16:27:11Z`
+Generated at: `2026-11-19T17:18:26Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,582 |
-| source_gap | 11,053 |
-| warn | 33 |
+| pass | 86,581 |
+| source_gap | 11,054 |
+| warn | 34 |
 
 ## Issue Counts
 
@@ -17,10 +17,10 @@ Generated at: `2026-11-19T16:27:11Z`
 |---|---:|
 | official_reference_gap | 6,745 |
 | venue_missing_official_source | 3,287 |
-| expected_missing_primary_isin | 645 |
-| missing_stock_sector | 577 |
+| expected_missing_primary_isin | 646 |
+| missing_stock_sector | 578 |
 | missing_etf_category | 171 |
-| official_name_mismatch | 22 |
+| official_name_mismatch | 23 |
 | official_isin_mismatch | 11 |
 | low_company_name_overlap | 10 |
 | country_isin_mismatch | 1 |
@@ -33,7 +33,7 @@ Generated at: `2026-11-19T16:27:11Z`
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,627 | 0 | 516 | 0 | 0 |
 | B3 | 1,247 | 0 | 342 | 0 | 0 |
-| NASDAQ | 4,500 | 4 | 267 | 3 | 0 |
+| NASDAQ | 4,500 | 4 | 268 | 3 | 0 |
 | BMV | 91 | 0 | 253 | 0 | 0 |
 | XETRA | 5,332 | 0 | 242 | 0 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
@@ -47,7 +47,7 @@ Generated at: `2026-11-19T16:27:11Z`
 | TSXV | 1,278 | 0 | 141 | 3 | 0 |
 | Euronext | 1,333 | 0 | 142 | 1 | 0 |
 | HKEX | 3,146 | 0 | 114 | 3 | 0 |
-| NYSE | 1,929 | 0 | 97 | 0 | 0 |
+| NYSE | 1,928 | 0 | 97 | 1 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 
 ## Notes

@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-11-19T15:43:38Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-11-19T16:52:15Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,130 +11,78 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 7,
-    "accepted_rows": 7,
-    "skipped_rows": 0,
-    "detected_symbol_changes": 0,
+    "new_supported_rows": 5,
+    "accepted_rows": 2,
+    "skipped_rows": 3,
+    "detected_symbol_changes": 1,
     "detected_venue_changes": 0,
     "review_override_files_rekeyed": [],
     "accepted_by_exchange": {
-      "NYSE ARCA": 6,
-      "NYSE MKT": 1
+      "NASDAQ": 2
     },
     "accepted_by_target": {
-      "coverage_expansion": 2,
-      "supplement": 5
+      "supplement": 2
     },
-    "skipped_by_reason": {}
+    "skipped_by_reason": {
+      "excluded_non_common_stock": 3
+    }
   },
   "accepted": [
     {
-      "listing_key": "NYSE ARCA::CGBI",
-      "ticker": "CGBI",
-      "exchange": "NYSE ARCA",
-      "name": "Capital Group Multi-Asset Income Builder ETF",
-      "asset_type": "ETF",
-      "stock_sector": "",
-      "etf_category": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "apply_target": "coverage_expansion"
-    },
-    {
-      "ticker": "CGMI",
-      "name": "Capital Group Multi-Asset Income ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "GQGG",
-      "name": "GQG Global Equity ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "GSCZ",
-      "name": "Goldman Sachs Securitized Income ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "JALL",
-      "name": "JPMorgan All Country Research Enhanced Equity ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "ticker": "TFIX",
-      "name": "T. Rowe Price Capital Appreciation Fixed Income ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory",
-      "apply_target": "supplement"
-    },
-    {
-      "listing_key": "NYSE MKT::FMBM",
-      "ticker": "FMBM",
-      "exchange": "NYSE MKT",
-      "name": "F&M Bank Corp. Common Stock",
+      "ticker": "ANT",
+      "name": "Anthropic, PBC - Class A Common Stock",
+      "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "stock_sector": "",
-      "etf_category": "",
+      "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "apply_target": "coverage_expansion"
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "FDGX",
+      "name": "First Digital Acquisition Corp Ltd. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "Financials",
+      "country": "Cayman Islands",
+      "country_code": "KY",
+      "isin": "KYG2584S1012",
+      "aliases": "cslm digital asset acquisition iii",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
     }
   ],
-  "skipped": []
+  "skipped": [
+    {
+      "ticker": "ENVXW",
+      "exchange": "NASDAQ",
+      "name": "Enovix Corporation - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "FDGXU",
+      "exchange": "NASDAQ",
+      "name": "First Digital Acquisition Corp Ltd. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "FDGXW",
+      "exchange": "NASDAQ",
+      "name": "First Digital Acquisition Corp Ltd. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    }
+  ]
 }
