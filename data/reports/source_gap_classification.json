@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-19T06:19:22Z",
-    "rows": 8142,
+    "generated_at": "2026-11-19T06:47:55Z",
+    "rows": 8137,
     "field_totals": {
       "missing_etf_category": 162,
-      "missing_isin_primary": 646,
-      "missing_sector_stock": 590,
+      "missing_isin_primary": 644,
+      "missing_sector_stock": 587,
       "official_reference_gap": 6744
     },
     "class_totals": {
@@ -18,14 +18,14 @@
       "equity_etf_category_gap": 22,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 8,
-      "fund_or_trust_identifier_gap": 333,
+      "fund_or_trust_identifier_gap": 332,
       "fundlike_stock_sector_gap": 31,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 139,
+      "official_identifier_not_exposed_source_gap": 138,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 416,
+      "official_industry_taxonomy_unavailable_gap": 413,
       "official_product_taxonomy_unavailable_gap": 124,
       "official_reference_symbol_collision_gap": 1179,
       "official_reference_unmatched_source_gap": 5565,
@@ -41,16 +41,16 @@
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 18,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 333,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 332,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 139,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 416,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 413,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1179,
@@ -114,7 +114,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 81
+          "rows": 80
         },
         {
           "exchange": "TSXV",
@@ -144,7 +144,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 217
+          "rows": 216
         },
         {
           "exchange": "OTC",
@@ -172,7 +172,7 @@
         },
         {
           "exchange": "BVB",
-          "rows": 17
+          "rows": 16
         },
         {
           "exchange": "BIST",
@@ -255,7 +255,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 212,
+        "rows": 211,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -10376,23 +10376,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE MKT::ZOAR",
-      "ticker": "ZOAR",
-      "exchange": "NYSE MKT",
-      "asset_type": "Stock",
-      "name": "Zoar Limited Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE MKT::ZOAR;exchange=NYSE MKT;ticker=ZOAR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "PSX::DHPL",
       "ticker": "DHPL",
       "exchange": "PSX",
@@ -12599,23 +12582,6 @@
       "source_gap_context": "listing_key=TSX::BPO;exchange=TSX;ticker=BPO;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::BTB",
-      "ticker": "BTB",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "BTB Real Estate Investment Trust",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::BTB;exchange=TSX;ticker=BTB;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -15011,23 +14977,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=BVB::GROB;exchange=BVB;ticker=GROB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "BVB::INMA",
-      "ticker": "INMA",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "name": "INDUSTRIE MICA SA PLOIESTI",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BVB::INMA;exchange=BVB;ticker=INMA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -18689,23 +18638,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::S05",
-      "ticker": "S05",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Scales Corporation Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::S05;exchange=FSX;ticker=S05;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::S1O",
       "ticker": "S1O",
       "exchange": "FSX",
@@ -21252,23 +21184,6 @@
       "source_gap_context": "listing_key=NYSE MKT::NSTR;exchange=NYSE MKT;ticker=NSTR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "NYSE MKT::ZOAR",
-      "ticker": "ZOAR",
-      "exchange": "NYSE MKT",
-      "asset_type": "Stock",
-      "name": "Zoar Limited Ordinary Shares",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NYSE MKT::ZOAR;exchange=NYSE MKT;ticker=ZOAR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
