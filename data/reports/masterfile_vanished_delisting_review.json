@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-18T15:33:42Z",
+  "generated_at": "2026-11-19T15:43:33Z",
   "policy": "feed_delisting_classifier_not_direct_deletion",
   "rotation_diff_json": "data/reports/masterfile_rotation_diff.json",
-  "vanished_reference_rows": 1065,
-  "rotation_vanished_rows": 38,
-  "backlog_rows": 1027,
-  "still_in_database": 1055,
+  "vanished_reference_rows": 1070,
+  "rotation_vanished_rows": 15,
+  "backlog_rows": 1055,
+  "still_in_database": 1064,
   "classifier_counts": {
-    "manual_rename_vs_delisting_required": 1055,
-    "not_in_database": 10
+    "manual_rename_vs_delisting_required": 1064,
+    "not_in_database": 6
   },
   "applied_drops": 0,
   "notes": [
     "Vanished official-reference rows are classified; listings are not dropped from this report.",
-    "Rotation vanished rows: 38; still-in-database backlog carried: 1027.",
-    "Still in database: 1055; not in database: 10.",
+    "Rotation vanished rows: 15; still-in-database backlog carried: 1055.",
+    "Still in database: 1064; not in database: 6.",
     "Applied drops from this classifier: 0."
   ],
   "rows": [
@@ -531,10 +531,10 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "Tuttle Capital Meme Stock Income Blast ETF",
-      "listing_name": "Tuttle Capital Meme Stock Income Blast ETF",
-      "listing_isin": "US26923W8275",
-      "still_in_database": true,
-      "classifier_action": "manual_rename_vs_delisting_required",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
       "would_apply_drop": false,
       "origin": "backlog"
     },
@@ -717,6 +717,66 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "S0083",
+      "exchange": "BME",
+      "name": "ALAR 2.000",
+      "isin": "ES0107601033",
+      "classification": "master_absent",
+      "source_key": "bme_security_prices_directory",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ALAR 2.000",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "S3122",
+      "exchange": "BME",
+      "name": "ALCESTIS INVESTMEN",
+      "isin": "ES0108002033",
+      "classification": "master_absent",
+      "source_key": "bme_security_prices_directory",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ALCESTIS INVESTMEN",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "SCASM",
+      "exchange": "BME",
+      "name": "ASAM",
+      "isin": "ES0105765004",
+      "classification": "master_absent",
+      "source_key": "bme_security_prices_directory",
+      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "ASAM",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "TRG",
@@ -1497,6 +1557,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "BIO",
+      "exchange": "BVB",
+      "name": "BIOFARM S.A.",
+      "isin": "ROBIOFACNOR9",
+      "classification": "master_absent",
+      "source_key": "bvb_shares_directory",
+      "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=BIO",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "BIOFARM S.A.",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "BIOW",
@@ -4879,6 +4959,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "PLC",
+      "exchange": "Borsa Italiana",
+      "name": "PLC",
+      "isin": "IT0005339160",
+      "classification": "master_absent",
+      "source_key": "euronext_equities",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "PLC",
+      "listing_name": "Plc S.p.A.",
+      "listing_isin": "IT0005339160",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "RWY",
       "exchange": "Borsa Italiana",
       "name": "REWAY GROUP",
@@ -5317,6 +5417,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "HBPDS",
+      "exchange": "Euronext",
+      "name": "HOTELES BEST DS",
+      "isin": "ES0605664905",
+      "classification": "master_absent",
+      "source_key": "euronext_equities",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "HOTELES BEST DS",
+      "listing_name": "",
+      "listing_isin": "",
+      "still_in_database": false,
+      "classifier_action": "not_in_database",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "JPHC",
@@ -5899,26 +6019,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "25K0",
-      "exchange": "FSX",
-      "name": "KARYOPHARM TH.NEW.DL-0001",
-      "isin": "US48576U2050",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "KARYOPHARM TH.NEW.DL-0001",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "27G0",
       "exchange": "FSX",
       "name": "CLARITY METALS CORP.",
@@ -6096,7 +6196,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "2ZT1",
@@ -6157,26 +6257,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "3NJ",
-      "exchange": "FSX",
-      "name": "DIANOMI PLC   LS -,002",
-      "isin": "GB00BLH32M40",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "DIANOMI PLC   LS -,002",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "471A",
@@ -6476,7 +6556,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "646",
@@ -6596,7 +6676,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "6JG",
@@ -6657,26 +6737,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "6SJA",
-      "exchange": "FSX",
-      "name": "SELECTQUOTE INC.  DL -,01",
-      "isin": "US8163073005",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SELECTQUOTE INC.  DL -,01",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "6V6",
@@ -6757,26 +6817,6 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
-    },
-    {
-      "ticker": "76Y",
-      "exchange": "FSX",
-      "name": "NET ZERO INFRASTR. LS-,01",
-      "isin": "GB00BNK8T635",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "NET ZERO INFRASTR. LS-,01",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
     },
     {
       "ticker": "77I",
@@ -7196,7 +7236,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "98H0",
@@ -7296,7 +7336,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ACT",
@@ -7576,7 +7616,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CRS1",
@@ -7799,26 +7839,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "E8D0",
-      "exchange": "FSX",
-      "name": "FENDX TECHNOLOGIES NEW.",
-      "isin": "CA3144602057",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "FENDX TECHNOLOGIES NEW.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "E8X",
       "exchange": "FSX",
       "name": "ELEXXION AG",
@@ -7996,7 +8016,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "F5H",
@@ -8839,26 +8859,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "NWZA",
-      "exchange": "FSX",
-      "name": "NORTHWEST.ENER.GRP.DL-,01",
-      "isin": "US6680743050",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "NORTHWEST.ENER.GRP.DL-,01",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "ONK",
       "exchange": "FSX",
       "name": "ONEOK INC. (NEW)   DL-,01",
@@ -8919,26 +8919,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "PSAA",
-      "exchange": "FSX",
-      "name": "PSI SOFTWARE SE NA Z.VK.",
-      "isin": "DE000A41YG88",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "PSI SOFTWARE SE NA Z.VK.",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "PSAN",
       "exchange": "FSX",
       "name": "PSI SOFTWARE SE NA O.N.",
@@ -8956,7 +8936,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "QR20",
@@ -9116,7 +9096,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "RPL",
@@ -9399,26 +9379,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "W6Q",
-      "exchange": "FSX",
-      "name": "TOOSLA SA    EO-,00027",
-      "isin": "FR00140062B9",
-      "classification": "master_absent",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "TOOSLA SA    EO-,00027",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "WC7",
       "exchange": "FSX",
       "name": "WALLBRIDGE MINING CO.",
@@ -9496,7 +9456,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "WPI",
@@ -10059,6 +10019,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "01657",
+      "exchange": "HKEX",
+      "name": "SG GROUP HLDGS",
+      "isin": "KYG8061B1150",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "SG GROUP HLDGS",
+      "listing_name": "SG GROUP HLDGS",
+      "listing_isin": "KYG8061B1150",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "01849",
       "exchange": "HKEX",
       "name": "AM GROUP",
@@ -10399,6 +10379,46 @@
       "origin": "backlog"
     },
     {
+      "ticker": "02942",
+      "exchange": "HKEX",
+      "name": "STAR GROUP-OLD",
+      "isin": "KYG8508A1269",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "STAR GROUP-OLD",
+      "listing_name": "STAR GROUP ASIA",
+      "listing_isin": "KYG8508A1269",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
+      "ticker": "02943",
+      "exchange": "HKEX",
+      "name": "BILLION IND-OLD",
+      "isin": "KYG110431254",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "BILLION IND-OLD",
+      "listing_name": "BILLION IND",
+      "listing_isin": "KYG110431254",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "02944",
       "exchange": "HKEX",
       "name": "UNI HEALTH RTS",
@@ -10477,6 +10497,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "02981",
+      "exchange": "HKEX",
+      "name": "GRAND OCEAN RTS",
+      "isin": "KYG4064U1278",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "GRAND OCEAN RTS",
+      "listing_name": "GRAND OCEAN RTS",
+      "listing_isin": "KYG4064U1278",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "02996",
@@ -10657,6 +10697,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "08552",
+      "exchange": "HKEX",
+      "name": "CU VENTURE-OLD",
+      "isin": "BMG394081282",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "CU VENTURE-OLD",
+      "listing_name": "CU VENTURE INV",
+      "listing_isin": "BMG394081282",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "08556",
@@ -10977,6 +11037,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "09893",
+      "exchange": "HKEX",
+      "name": "PIZU GROUP",
+      "isin": "KYG7112V1041",
+      "classification": "master_absent",
+      "source_key": "hkex_securities_list",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "PIZU GROUP",
+      "listing_name": "PIZU GROUP",
+      "listing_isin": "KYG7112V1041",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "83038",
@@ -12232,7 +12312,7 @@
       "evidence_observed_at": "",
       "official_name": "AtaiBeckley Inc. - Common Stock",
       "listing_name": "AtaiBeckley Inc.",
-      "listing_isin": "NL0015000DX5",
+      "listing_isin": "US04650F1012",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
@@ -12252,7 +12332,7 @@
       "evidence_observed_at": "",
       "official_name": "AtaiBeckley Inc.",
       "listing_name": "AtaiBeckley Inc.",
-      "listing_isin": "NL0015000DX5",
+      "listing_isin": "US04650F1012",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
@@ -12776,7 +12856,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "QETA",
@@ -12956,27 +13036,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
-      "ticker": "SHFSW",
-      "exchange": "NASDAQ",
-      "name": "SHF Holdings, Inc. - Warrants",
-      "isin": "",
-      "classification": "master_absent",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SHF Holdings, Inc. - Warrants",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SNYR",
@@ -13236,7 +13296,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CALSOFT",
@@ -13276,7 +13336,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CLCIND",
@@ -13296,7 +13356,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CMICABLES",
@@ -13316,7 +13376,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CTE",
@@ -13356,7 +13416,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "DTIL",
@@ -13396,7 +13456,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "ELPROINTL",
@@ -13416,7 +13476,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "GFSTEELS",
@@ -13516,7 +13576,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "INDIAGLYCO",
@@ -13616,7 +13676,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "MANAKSTEEL",
@@ -13656,7 +13716,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "NATCAPSUQ",
@@ -13736,7 +13796,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SBIBPB",
@@ -13896,7 +13956,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "SETF10GILT",
@@ -14059,26 +14119,6 @@
       "origin": "backlog"
     },
     {
-      "ticker": "SKIL",
-      "exchange": "NSE_IN",
-      "name": "SKIL Infrastructure Limited",
-      "isin": "INE429F01012",
-      "classification": "master_absent",
-      "source_key": "nse_india_securities_available",
-      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
-      "evidence_source_key": "",
-      "evidence_source_url": "",
-      "evidence_observation_id": "",
-      "evidence_observed_at": "",
-      "official_name": "SKIL Infrastructure Limited",
-      "listing_name": "",
-      "listing_isin": "",
-      "still_in_database": false,
-      "classifier_action": "not_in_database",
-      "would_apply_drop": false,
-      "origin": "rotation"
-    },
-    {
       "ticker": "SONAMLTD",
       "exchange": "NSE_IN",
       "name": "SONAM LIMITED",
@@ -14156,7 +14196,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "VCL",
@@ -14177,6 +14217,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "VIRAT",
+      "exchange": "NSE_IN",
+      "name": "Virat Industries Limited",
+      "isin": "INE467D01017",
+      "classification": "master_absent",
+      "source_key": "nse_india_securities_available",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Virat Industries Limited",
+      "listing_name": "Virat Industries Limited",
+      "listing_isin": "INE467D01017",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "ACA",
@@ -14439,6 +14499,26 @@
       "origin": "backlog"
     },
     {
+      "ticker": "LXFR",
+      "exchange": "NYSE",
+      "name": "Luxfer Holdings PLC Ordinary Shares",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "Luxfer Holdings PLC Ordinary Shares",
+      "listing_name": "Luxfer Holdings PLC",
+      "listing_isin": "GB00BNK03D49",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
+    },
+    {
       "ticker": "LXP",
       "exchange": "NYSE",
       "name": "LXP Industrial Trust",
@@ -14697,6 +14777,26 @@
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
       "origin": "backlog"
+    },
+    {
+      "ticker": "GMMA",
+      "exchange": "NYSE ARCA",
+      "name": "GammaRoad Market Navigation ETF",
+      "isin": "",
+      "classification": "master_absent",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "evidence_source_key": "",
+      "evidence_source_url": "",
+      "evidence_observation_id": "",
+      "evidence_observed_at": "",
+      "official_name": "GammaRoad Market Navigation ETF",
+      "listing_name": "Gammaroad Market Navigation ETF",
+      "listing_isin": "US45259A7046",
+      "still_in_database": true,
+      "classifier_action": "manual_rename_vs_delisting_required",
+      "would_apply_drop": false,
+      "origin": "rotation"
     },
     {
       "ticker": "ILS",
@@ -18551,8 +18651,8 @@
       "evidence_observation_id": "",
       "evidence_observed_at": "",
       "official_name": "NVRO Metals Limited",
-      "listing_name": "NVRO MetaNVRO",
-      "listing_isin": "CA29408C1005",
+      "listing_name": "NVRO Metals Limited",
+      "listing_isin": "CA62958A1093",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
@@ -19232,7 +19332,7 @@
       "evidence_observed_at": "",
       "official_name": "Mongolia Growth Group Ltd.",
       "listing_name": "Mongolia Growth Group Ltd.",
-      "listing_isin": "CA60936L1067",
+      "listing_isin": "CA60936L2057",
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
@@ -19956,7 +20056,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "CHSA",
@@ -20896,7 +20996,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "PSAN",
@@ -20916,7 +21016,7 @@
       "still_in_database": true,
       "classifier_action": "manual_rename_vs_delisting_required",
       "would_apply_drop": false,
-      "origin": "rotation"
+      "origin": "backlog"
     },
     {
       "ticker": "R35",
