@@ -1,9 +1,9 @@
 # Symbol Changes Apply
 
-- Generated at: `2026-11-18T15:35:42Z`
+- Generated at: `2026-11-19T15:41:26Z`
 - Dry run: `false`
 - Accepted rows: `0`
-- Blocked/manual rows: `401`
+- Blocked/manual rows: `402`
 
 ## Accepted
 
@@ -22,4 +22,4 @@ No rename rows satisfied the official-evidence apply gate.
 | manual_official_successor_name_mismatch | 1 |
 | manual_successor_isin_mismatch | 7 |
 | manual_ticker_reuse_name_mismatch | 2 |
-| manual_transition_or_shell_name | 7 |
+| manual_transition_or_shell_name | 8 |

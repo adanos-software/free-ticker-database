@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-18T15:35:29Z",
+    "generated_at": "2026-11-19T15:41:16Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -11,12 +11,12 @@
   },
   "summary": {
     "fetched_rows": 243,
-    "merged_history_rows": 401,
-    "review_rows": 401,
+    "merged_history_rows": 402,
+    "review_rows": 402,
     "match_status_counts": {
       "new_symbol_present_old_symbol_missing": 319,
       "no_matching_listing": 16,
-      "old_and_new_symbols_present": 30,
+      "old_and_new_symbols_present": 31,
       "old_symbol_present_new_symbol_missing": 8,
       "symbol_present_only_outside_source_scope": 28
     },
@@ -25,25 +25,25 @@
       "blocked_missing_source_scope_mapping": 14,
       "blocked_out_of_scope_symbol_collision": 29,
       "document_no_dataset_match": 12,
-      "review_duplicate_or_cross_listing": 25,
+      "review_duplicate_or_cross_listing": 26,
       "review_verified_rename_or_delisting": 4
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 401,
+      "rows": 402,
       "verified_rename_or_delisting_review_rows": 4,
-      "duplicate_or_cross_listing_review_rows": 25,
+      "duplicate_or_cross_listing_review_rows": 26,
       "already_reflected_audit_rows": 317,
       "out_of_scope_collision_blocked_rows": 29,
       "missing_source_scope_mapping_rows": 14,
       "no_dataset_match_documentation_rows": 12,
-      "time_sensitive_review_rows": 16,
+      "time_sensitive_review_rows": 17,
       "direct_symbol_change_apply_allowed_rows": 0,
       "secondary_feed_apply_authorized": false,
       "source_gate": "Symbol-change feed rows are review signals only; ticker, name, listing, or alias changes require listing-keyed official venue or issuer evidence for old/new symbols and issuer identity."
     },
     "review_bucket_counts": {
-      "action_required_duplicate_or_cross_listing": 25,
+      "action_required_duplicate_or_cross_listing": 26,
       "action_required_possible_rename_or_delisting": 4,
       "already_reflected_in_scope_with_global_symbol_collision": 73,
       "already_reflected_in_source_scope": 244,
@@ -53,7 +53,7 @@
       "no_dataset_match_for_source_scope": 12
     },
     "review_priority_counts": {
-      "P1": 29,
+      "P1": 30,
       "P2": 43,
       "P3": 12,
       "P4": 317
@@ -70,13 +70,13 @@
     },
     "recency_bucket_counts": {
       "older_than_90d": 234,
-      "recent_30d": 41,
+      "recent_30d": 42,
       "recent_7d": 75,
       "recent_90d": 51
     },
     "review_priority_recency_counts": {
       "P1:older_than_90d": 8,
-      "P1:recent_30d": 6,
+      "P1:recent_30d": 7,
       "P1:recent_7d": 10,
       "P1:recent_90d": 5,
       "P2:older_than_90d": 28,
@@ -109,9 +109,10 @@
       "document_no_dataset_match:recent_90d": 2,
       "review_duplicate_or_cross_listing:older_than_90d": 8,
       "review_duplicate_or_cross_listing:recent_30d": 6,
-      "review_duplicate_or_cross_listing:recent_7d": 7,
+      "review_duplicate_or_cross_listing:recent_7d": 8,
       "review_duplicate_or_cross_listing:recent_90d": 4,
-      "review_verified_rename_or_delisting:recent_7d": 3,
+      "review_verified_rename_or_delisting:recent_30d": 1,
+      "review_verified_rename_or_delisting:recent_7d": 2,
       "review_verified_rename_or_delisting:recent_90d": 1
     },
     "workflow_queue_priority_counts": {
@@ -119,7 +120,7 @@
       "blocked_missing_source_scope_mapping:P2": 14,
       "blocked_out_of_scope_symbol_collision:P2": 29,
       "document_no_dataset_match:P3": 12,
-      "review_duplicate_or_cross_listing:P1": 25,
+      "review_duplicate_or_cross_listing:P1": 26,
       "review_verified_rename_or_delisting:P1": 4
     },
     "workflow_queue_scope_counts": {
@@ -128,7 +129,7 @@
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 14,
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 29,
       "document_no_dataset_match:matches_within_source_scope": 12,
-      "review_duplicate_or_cross_listing:matches_within_source_scope": 25,
+      "review_duplicate_or_cross_listing:matches_within_source_scope": 26,
       "review_verified_rename_or_delisting:matches_within_source_scope": 4
     },
     "workflow_queue_match_status_counts": {
@@ -140,7 +141,7 @@
       "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 1,
       "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 28,
       "document_no_dataset_match:no_matching_listing": 12,
-      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 25,
+      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 26,
       "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 4
     },
     "workflow_queue_source_hint_counts": {
@@ -160,7 +161,7 @@
         "US_LISTED": 7
       },
       "review_duplicate_or_cross_listing": {
-        "US_LISTED": 25
+        "US_LISTED": 26
       },
       "review_verified_rename_or_delisting": {
         "US_LISTED": 4
@@ -180,7 +181,7 @@
         "secondary_review": 12
       },
       "review_duplicate_or_cross_listing": {
-        "secondary_review": 25
+        "secondary_review": 26
       },
       "review_verified_rename_or_delisting": {
         "secondary_review": 4
@@ -208,11 +209,10 @@
       "review_duplicate_or_cross_listing": {
         "feed_name_differs_from_scoped_listing_name": 1,
         "feed_name_exactly_matches_scoped_listing_name": 6,
-        "feed_name_partially_overlaps_scoped_listing_name": 18
+        "feed_name_partially_overlaps_scoped_listing_name": 19
       },
       "review_verified_rename_or_delisting": {
-        "feed_name_differs_from_scoped_listing_name": 1,
-        "feed_name_exactly_matches_scoped_listing_name": 2,
+        "feed_name_exactly_matches_scoped_listing_name": 3,
         "feed_name_partially_overlaps_scoped_listing_name": 1
       }
     },
@@ -234,7 +234,7 @@
         "no_scoped_listing_key_match": 12
       },
       "review_duplicate_or_cross_listing": {
-        "old_and_new_scoped_listing_keys_present": 25
+        "old_and_new_scoped_listing_keys_present": 26
       },
       "review_verified_rename_or_delisting": {
         "old_scoped_listing_key_only": 4
@@ -254,7 +254,7 @@
         "document_no_dataset_match_without_canonical_action": 12
       },
       "review_duplicate_or_cross_listing": {
-        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 25
+        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 26
       },
       "review_verified_rename_or_delisting": {
         "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 4
@@ -266,7 +266,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 7,
+        "rows": 8,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -277,7 +277,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 3,
+        "rows": 2,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -293,6 +293,17 @@
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
         "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key."
+      },
+      {
+        "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+        "review_priority": "P1",
+        "recency_bucket": "recent_30d",
+        "exchange_scope_status": "matches_within_source_scope",
+        "rows": 1,
+        "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
+        "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
+        "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
+        "source_gate": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer."
       },
       {
         "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
@@ -524,50 +535,39 @@
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
         "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
         "source_gate": "Audit only; no ticker, listing, or name change is authorized."
-      },
-      {
-        "symbol_change_workflow_queue": "audit_already_reflected",
-        "review_priority": "P4",
-        "recency_bucket": "older_than_90d",
-        "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-        "rows": 46,
-        "review_strategy": "audit_already_reflected_no_canonical_change",
-        "evidence_required": "audit_only_confirm_no_canonical_change_needed",
-        "recommended_next_source": "Audit-only comparison against official scoped exchange evidence; no canonical change.",
-        "source_gate": "Audit only; no ticker, listing, or name change is authorized."
       }
     ],
     "apply_eligibility_counts": {
       "audit_only_no_apply": 317,
       "blocked_until_exchange_scope_resolved": 43,
       "no_dataset_action_without_scope_mapping": 12,
-      "requires_official_venue_confirmation": 29
+      "requires_official_venue_confirmation": 30
     },
     "symbol_change_apply_readiness_counts": {
       "audit_only_no_canonical_change": 317,
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 29,
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 30,
       "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 43,
       "document_or_ignore_until_scoped_official_dataset_match": 12
     },
     "verification_evidence_required_counts": {
       "audit_only_confirm_no_canonical_change_needed": 317,
-      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 25,
+      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 26,
       "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 4,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 29,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 12,
       "source_exchange_mapping_before_any_symbol_change_review": 14
     },
-    "time_sensitive_review_rows": 16,
+    "time_sensitive_review_rows": 17,
     "time_sensitive_workflow_queue_counts": {
-      "review_duplicate_or_cross_listing": 13,
+      "review_duplicate_or_cross_listing": 14,
       "review_verified_rename_or_delisting": 3
     },
     "time_sensitive_recency_counts": {
-      "recent_30d": 6,
+      "recent_30d": 7,
       "recent_7d": 10
     },
     "time_sensitive_apply_readiness_counts": {
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 16
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 17
     },
     "top_time_sensitive_symbol_change_batches": [
       {
@@ -576,7 +576,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_and_new_symbols_present",
         "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
-        "rows": 7,
+        "rows": 8,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -588,7 +588,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_symbol_present_new_symbol_missing",
         "listing_key_review_status": "old_scoped_listing_key_only",
-        "rows": 3,
+        "rows": 2,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -605,22 +605,75 @@
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
         "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key."
+      },
+      {
+        "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+        "recency_bucket": "recent_30d",
+        "exchange_scope_status": "matches_within_source_scope",
+        "match_status": "old_symbol_present_new_symbol_missing",
+        "listing_key_review_status": "old_scoped_listing_key_only",
+        "rows": 1,
+        "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
+        "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
+        "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
+        "source_gate": "Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer."
       }
     ],
     "recommended_action_counts": {
       "already_reflected_or_new_symbol_added_in_source_scope": 319,
       "do_not_apply_from_symbol_match_review_exchange_scope_first": 28,
       "ignore_or_map_exchange_scope_before_applying": 16,
-      "review_duplicate_or_cross_listing_state_in_source_scope": 30,
+      "review_duplicate_or_cross_listing_state_in_source_scope": 31,
       "review_possible_rename_or_delisting_in_source_scope": 8
     },
     "exchange_scope_status_counts": {
       "global_symbol_collision_outside_source_scope": 102,
-      "matches_within_source_scope": 285,
+      "matches_within_source_scope": 286,
       "unscoped_source_hint": 14
     }
   },
   "review_items": [
+    {
+      "change_id": "b487b648ed8d6d4b",
+      "effective_date": "2026-11-16",
+      "old_symbol": "BKH",
+      "new_symbol": "HZN",
+      "new_company_name": "Bright Horizon Energy Corp",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/hzn/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-11-19T15:41:16Z",
+      "match_status": "old_and_new_symbols_present",
+      "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
+      "review_bucket": "action_required_duplicate_or_cross_listing",
+      "review_priority": "P1",
+      "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
+      "effective_age_days": 3,
+      "recency_bucket": "recent_7d",
+      "apply_eligibility": "requires_official_venue_confirmation",
+      "verification_evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
+      "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key.",
+      "recommended_action": "review_duplicate_or_cross_listing_state_in_source_scope",
+      "exchange_scope_status": "matches_within_source_scope",
+      "old_listing_keys": "NYSE::BKH",
+      "new_listing_keys": "ASX::HZN|NYSE::HZN",
+      "old_scoped_listing_keys": "NYSE::BKH",
+      "new_scoped_listing_keys": "NYSE::HZN",
+      "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
+      "scoped_listing_names": "Black Hills Corporation|Bright Horizon Energy Corporation Common Stock",
+      "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=1;new_match_count=2;old_scoped_match_count=1;new_scoped_match_count=1;old_scoped_listing_keys=NYSE::BKH;new_scoped_listing_keys=NYSE::HZN",
+      "workflow_review_context": "workflow_queue=review_duplicate_or_cross_listing;review_bucket=action_required_duplicate_or_cross_listing;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "old_match_count": 1,
+      "new_match_count": 2,
+      "old_scoped_match_count": 1,
+      "new_scoped_match_count": 1
+    },
     {
       "change_id": "b3f754f96bd38c74",
       "effective_date": "2026-11-13",
@@ -872,21 +925,21 @@
       "effective_date": "2026-11-09",
       "old_symbol": "INM",
       "new_symbol": "MTRI",
-      "new_company_name": "Mentari Therapeutics Inc",
+      "new_company_name": "Inmed Pharmaceuticals Inc",
       "source": "stockanalysis_symbol_changes",
       "source_url": "https://stockanalysis.com/actions/changes/",
       "new_symbol_url": "/stocks/mtri/",
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-11-11T14:56:55Z",
+      "observed_at": "2026-11-19T15:41:16Z",
       "match_status": "old_symbol_present_new_symbol_missing",
       "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
       "review_bucket": "action_required_possible_rename_or_delisting",
       "review_priority": "P1",
       "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
-      "effective_age_days": 2,
-      "recency_bucket": "recent_7d",
+      "effective_age_days": 10,
+      "recency_bucket": "recent_30d",
       "apply_eligibility": "requires_official_venue_confirmation",
       "verification_evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
       "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -899,7 +952,7 @@
       "new_scoped_listing_keys": "",
       "listing_key_review_status": "old_scoped_listing_key_only",
       "scoped_listing_names": "InMed Pharmaceuticals Inc",
-      "issuer_name_review_status": "feed_name_differs_from_scoped_listing_name",
+      "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
       "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=1;new_match_count=0;old_scoped_match_count=1;new_scoped_match_count=0;old_scoped_listing_keys=NASDAQ::INM;new_scoped_listing_keys=none",
       "workflow_review_context": "workflow_queue=review_verified_rename_or_delisting;review_bucket=action_required_possible_rename_or_delisting;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
