@@ -1,6 +1,6 @@
 # Core trust report
 
-Generated at: `2026-11-19T16:54:58Z`
+Generated at: `2026-11-19T17:18:29Z`
 
 Trust is measured on instrument_scope=core only. accepted_source_gap does not count as filled. Known identity bugs must be zero; 99% completeness is a fill rate, not a correctness claim. This report does not authorize inferred identifiers, sectors, categories, names, or symbol changes. A failing trust report is not a merge blocker.
 
@@ -21,7 +21,7 @@ Universe: `instrument_scope=core` — 63,547 rows.
 | Metric | Count |
 |---|---:|
 | official_isin_mismatch | 9 |
-| official_name_mismatch | 11 |
+| official_name_mismatch | 10 |
 | open_collision_groups | 10 |
 | quarantine_unresolved | 1,230 |
 | quarantine_proposed_clear | 286 |

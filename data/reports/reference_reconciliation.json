@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12534,
-      "exact_match": 100145,
+      "exact_identity_conflict": 12532,
+      "exact_match": 100147,
       "missing_from_database": 44838,
       "normalization_candidate": 1860,
       "out_of_scope": 8163
     },
-    "coverage_credited_keys": 100145,
+    "coverage_credited_keys": 100147,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44838,
-    "identity_conflict_rows": 12534,
+    "identity_conflict_rows": 12532,
     "mapping_candidate_rows": 1860
   },
   "rows": [
@@ -1714957,10 +1714957,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE::MOD",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::MOG.A",
@@ -2145613,10 +2145613,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE::MOD",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::MOG-A",

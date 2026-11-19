@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-19T16:54:58Z",
+    "generated_at": "2026-11-19T17:18:29Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -97,16 +97,16 @@
   },
   "identity": {
     "official_isin_mismatch": 9,
-    "official_name_mismatch": 11,
+    "official_name_mismatch": 10,
     "open_collision_groups": 10,
     "quarantine_unresolved": 1230,
     "quarantine_proposed_clear": 286,
     "quarantine_kept": 551
   },
   "entry_quality_status": {
-    "pass": 59737,
+    "pass": 59738,
     "source_gap": 3781,
-    "warn": 21,
+    "warn": 20,
     "notice": 8
   },
   "checks": [
@@ -173,7 +173,7 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 11,
+        "official_name_mismatch": 10,
         "sample": [
           "NASDAQ::ASBP",
           "TSXV::AXO",
@@ -182,9 +182,9 @@
           "NYSE ARCA::CTWO",
           "TSX::E",
           "TSXV::MKT",
-          "NYSE::MOD",
           "QSE::NLCS",
-          "PSX::TPLI"
+          "PSX::TPLI",
+          "TSXV::WED"
         ]
       }
     },
