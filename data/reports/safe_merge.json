@@ -6,25 +6,47 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97639,
-    "after_rows": 97651,
+    "before_rows": 97667,
+    "after_rows": 97677,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "removed_rows": 1,
+    "evidenced_removed_rows": 1,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
-    "generated_official_change_evidence_rows": 0,
+    "generated_official_change_evidence_rows": 1,
     "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "NYSE MKT::IBO"
+  ],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
-  "generated_official_change_evidence": [],
+  "generated_official_change_evidence": [
+    {
+      "listing_key": "NYSE MKT::IBO",
+      "ticker": "IBO",
+      "exchange": "NYSE MKT",
+      "event_type": "venue_reconciled",
+      "field_name": "exchange",
+      "old_value": "NYSE MKT",
+      "new_value": "NYSE",
+      "before_row_sha256": "44fed0c9490a85be7ac64ef238f2bb052fca040851d87ed0e1b98dd773526028",
+      "effective_at": "",
+      "observed_at": "2026-11-18T16:43:01Z",
+      "source_key": "sec_company_tickers_exchange",
+      "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+      "source_report": "data/masterfiles/reference.csv",
+      "previous_source_key": "nasdaq_other_listed",
+      "previous_source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "observation_id": "7ec09936eaec8ef6c901ffde",
+      "evidence_status": "official"
+    }
+  ],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
@@ -75,7 +97,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1350,
-      "after_rows": 1350,
+      "after_rows": 1351,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -425,8 +447,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4762,
-      "after_rows": 4771,
+      "before_rows": 4774,
+      "after_rows": 4774,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -461,8 +483,8 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3538,
-      "after_rows": 3538,
+      "before_rows": 3540,
+      "after_rows": 3540,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -479,8 +501,8 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2024,
-      "after_rows": 2025,
+      "before_rows": 2025,
+      "after_rows": 2026,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -488,8 +510,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2695,
-      "after_rows": 2697,
+      "before_rows": 2697,
+      "after_rows": 2705,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -500,7 +522,7 @@
       "before_rows": 229,
       "after_rows": 229,
       "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -758,8 +780,8 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5563,
-      "after_rows": 5563,
+      "before_rows": 5574,
+      "after_rows": 5574,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

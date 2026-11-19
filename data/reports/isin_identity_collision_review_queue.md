@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-17T18:21:12Z`
+Generated: `2026-11-18T16:43:43Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -9,10 +9,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | Metric | Value |
 | --- | ---: |
 | Collision groups | 123 |
-| Listings involved | 355 |
+| Listings involved | 357 |
 | Ticker-collision groups | 31 |
-| Open groups | 9 |
-| Closed same-issuer reviewed | 114 |
+| Open groups | 10 |
+| Closed same-issuer reviewed | 113 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
@@ -60,6 +60,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | CA41752L1076 | Canada | 2 | HBIE | Hai Jia International Limited Company \| Harvest Balanced Income & Growth Enhanced ETF Class A |
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
 | DE000A40ZVU2 | Germany | 5 | - | UMT UTD MOB.TECHN.AG \| WAYDEAR AG |
+| US5049221055 | United States | 5 | - | Labcorp Holdings Inc. \| Laboratory Corp. of America Holdings |
 | GRS298343005 | Greece | 3 | - | HELLENiQ ENERGY Holdings S.A. \| Hellenic Petroleum Holdings S.A. |
 | HK1097008929 | Hong Kong | 3 | - | CTF Media & Entertainment Limited \| i-CABLE Communications Limited |
 | INE234A01025 | India | 3 | - | Evonile Pharma Limited \| Novartis India Ltd |
