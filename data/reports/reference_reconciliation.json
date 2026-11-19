@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12530,
-      "exact_match": 100147,
+      "exact_identity_conflict": 12532,
+      "exact_match": 100145,
       "missing_from_database": 44832,
       "normalization_candidate": 1863,
       "out_of_scope": 8162
     },
-    "coverage_credited_keys": 100147,
+    "coverage_credited_keys": 100145,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44832,
-    "identity_conflict_rows": 12530,
+    "identity_conflict_rows": 12532,
     "mapping_candidate_rows": 1863
   },
   "rows": [
@@ -1875469,10 +1875469,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "OTC::ETOLF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::ETRUF",
@@ -2607197,10 +2607197,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::E",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::EAGR",
