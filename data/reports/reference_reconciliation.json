@@ -1,21 +1,21 @@
 {
   "summary": {
-    "active_official_reference_rows": 171113,
-    "source_specific_reference_keys": 171112,
+    "active_official_reference_rows": 171124,
+    "source_specific_reference_keys": 171123,
     "classification_counts": {
-      "alternate_listing_line": 3394,
+      "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12532,
-      "exact_match": 100149,
-      "missing_from_database": 44819,
-      "normalization_candidate": 1862,
+      "exact_identity_conflict": 12534,
+      "exact_match": 100143,
+      "missing_from_database": 44832,
+      "normalization_candidate": 1863,
       "out_of_scope": 8162
     },
-    "coverage_credited_keys": 100149,
+    "coverage_credited_keys": 100143,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44819,
-    "identity_conflict_rows": 12532,
-    "mapping_candidate_rows": 1862
+    "in_scope_missing_rows": 44832,
+    "identity_conflict_rows": 12534,
+    "mapping_candidate_rows": 1863
   },
   "rows": [
     {
@@ -196893,10 +196893,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "Bursa::7131",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "bursa_closing_prices::Bursa::7132",
@@ -309849,7 +309849,7 @@
       "exchange": "FSX",
       "ticker": "10D0",
       "asset_types": "Stock",
-      "names": "NAVIENT CORP.SEN.UNS.NTS",
+      "names": "NAVIENT LLC SEN.UNS.NT",
       "isins": "US63938C4050",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -311633,6 +311633,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::19H",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::19I",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::19I",
+      "exchange": "FSX",
+      "ticker": "19I",
+      "asset_types": "Stock",
+      "names": "JENKINS TOPCO   LS-,00005",
+      "isins": "JE00C08DXT95",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::19KA",
@@ -317267,6 +317283,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::1SB0",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::1SB0",
+      "exchange": "FSX",
+      "ticker": "1SB0",
+      "asset_types": "Stock",
+      "names": "RIO2 LTD ADR /5",
+      "isins": "US7672177067",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::1SD",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::1SD",
@@ -321067,22 +321099,6 @@
       "asset_types": "Stock",
       "names": "IMMUPHARMA PLC     LS-,01",
       "isins": "GB0033711010",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::25K0",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::25K0",
-      "exchange": "FSX",
-      "ticker": "25K0",
-      "asset_types": "Stock",
-      "names": "KARYOPHARM TH.NEW.DL-0001",
-      "isins": "US48576U2050",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -328099,20 +328115,20 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::2XM0",
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::2XM1",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::2XM0",
+      "reference_key": "FSX::2XM1",
       "exchange": "FSX",
-      "ticker": "2XM0",
+      "ticker": "2XM1",
       "asset_types": "Stock",
-      "names": "NGEX MINERALS LTD NEW",
-      "isins": "CA62930A1021",
+      "names": "NGEX MINL LDT. O.N.",
+      "isins": "CA62930A2011",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::2XM0",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::2XT",
@@ -330817,6 +330833,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::37P",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::37R",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::37R",
+      "exchange": "FSX",
+      "ticker": "37R",
+      "asset_types": "Stock",
+      "names": "PIONEER MINERALS LTD.",
+      "isins": "AU0000439135",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::37S",
@@ -334827,22 +334859,6 @@
       "asset_types": "Stock",
       "names": "INFOTEL S.A. INH. EO 0,40",
       "isins": "FR0000071797",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::3NJ",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::3NJ",
-      "exchange": "FSX",
-      "ticker": "3NJ",
-      "asset_types": "Stock",
-      "names": "DIANOMI PLC   LS -,002",
-      "isins": "GB00BLH32M40",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -343053,10 +343069,10 @@
       "isins": "US36165A5083",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "alternate_listing_line",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "FSX::4LU",
+      "evidence": "Same venue and ISIN identify one compatible alternate line, but a different venue symbol cannot satisfy this reference without an explicit reviewed mapping."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::4LX",
@@ -348513,6 +348529,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::5CT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::5CW",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::5CW",
+      "exchange": "FSX",
+      "ticker": "5CW",
+      "asset_types": "Stock",
+      "names": "OTOFARMA S.P.A. O.N.",
+      "isins": "IT0005663361",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::5CX",
@@ -354499,20 +354531,20 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::62U2",
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::62U1",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::62U2",
+      "reference_key": "FSX::62U1",
       "exchange": "FSX",
-      "ticker": "62U2",
+      "ticker": "62U1",
       "asset_types": "Stock",
       "names": "DEFSEC TECHNOLOGIES INC.",
-      "isins": "CA2447781063",
+      "isins": "CA2447782053",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "normalization_candidate",
+      "coverage_credit": "false",
       "matched_listing_keys": "FSX::62U2",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::62XA",
@@ -357907,22 +357939,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::6HM",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::6HM",
-      "exchange": "FSX",
-      "ticker": "6HM",
-      "asset_types": "Stock",
-      "names": "HAMMER METALS",
-      "isins": "AU000000HMX5",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::6HM",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::6HN",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::6HN",
@@ -360435,14 +360451,14 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::6SJA",
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::6SJ0",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::6SJA",
+      "reference_key": "FSX::6SJ0",
       "exchange": "FSX",
-      "ticker": "6SJA",
+      "ticker": "6SJ0",
       "asset_types": "Stock",
       "names": "SELECTQUOTE INC.  DL -,01",
-      "isins": "US8163073005",
+      "isins": "US8163074094",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -363763,14 +363779,14 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::76Y",
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::76Y0",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::76Y",
+      "reference_key": "FSX::76Y0",
       "exchange": "FSX",
-      "ticker": "76Y",
+      "ticker": "76Y0",
       "asset_types": "Stock",
-      "names": "NET ZERO INFRASTR. LS-,01",
-      "isins": "GB00BNK8T635",
+      "names": "NET ZERO INFR. LS-,0001",
+      "isins": "GB00C095B788",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -365723,6 +365739,22 @@
       "asset_types": "Stock",
       "names": "REV EXPL. CORP. O.N.",
       "isins": "CA7613251098",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::7FG",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::7FG",
+      "exchange": "FSX",
+      "ticker": "7FG",
+      "asset_types": "Stock",
+      "names": "EUROSNACK SA      ZY 1",
+      "isins": "PLERSNK00016",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -378851,22 +378883,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::93Z",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::93Z",
-      "exchange": "FSX",
-      "ticker": "93Z",
-      "asset_types": "Stock",
-      "names": "MARINOMED BIOTECH AG INH.",
-      "isins": "ATMARINOMED6",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::93Z",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::940",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::940",
@@ -382371,6 +382387,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::9K5",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::9K5",
+      "exchange": "FSX",
+      "ticker": "9K5",
+      "asset_types": "Stock",
+      "names": "PLAYBOY INC.",
+      "isins": "US72814P1093",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::9KA",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::9KA",
@@ -384928,22 +384960,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::9VI",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::9VK",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::9VK",
-      "exchange": "FSX",
-      "ticker": "9VK",
-      "asset_types": "Stock",
-      "names": "RIVALRY CORP.",
-      "isins": "CA76803P1036",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::9VK",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -396553,7 +396569,7 @@
       "exchange": "FSX",
       "ticker": "AWL",
       "asset_types": "Stock",
-      "names": "REABOLD RESOURCES LS 1",
+      "names": "REABOLD RESOURCES LS -,01",
       "isins": "GB00BVK55Z16",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -402633,7 +402649,7 @@
       "exchange": "FSX",
       "ticker": "BHI",
       "asset_types": "Stock",
-      "names": "BLACK HILLS CORP.    DL 1",
+      "names": "BRIGHT HORIZON ENGY. DL 1",
       "isins": "US0921131092",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -407003,6 +407019,22 @@
       "asset_types": "Stock",
       "names": "THISTLE RES INC. NEW O.N.",
       "isins": "CA88433P1062",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::BUD",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::BUD",
+      "exchange": "FSX",
+      "ticker": "BUD",
+      "asset_types": "Stock",
+      "names": "BURU ENERGY LTD.",
+      "isins": "AU000000BRU3",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -413729,22 +413761,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::CFZ",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::CFZ",
-      "exchange": "FSX",
-      "ticker": "CFZ",
-      "asset_types": "Stock",
-      "names": "CULLEN/FROST BANKE.DL-,01",
-      "isins": "US2298991090",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::CFZ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::CFZ0",
@@ -420595,6 +420611,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::D1ST",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::D1ST",
+      "exchange": "FSX",
+      "ticker": "D1ST",
+      "asset_types": "ETF",
+      "names": "DWS STR.BALANCE U.ETF CEO",
+      "isins": "LU3382696337",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::D1U",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::D1U",
@@ -423507,6 +423539,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::DDEF",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::DDEF",
+      "exchange": "FSX",
+      "ticker": "DDEF",
+      "asset_types": "ETF",
+      "names": "DWS STR.DEF. U.ETF CEOA",
+      "isins": "LU3382696501",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::DDI",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::DDI",
@@ -423649,6 +423697,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::DDU",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::DDYN",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::DDYN",
+      "exchange": "FSX",
+      "ticker": "DDYN",
+      "asset_types": "ETF",
+      "names": "DWS STR.DYN. U.ETF CEOA",
+      "isins": "LU3382696410",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::DEAM",
@@ -430115,14 +430179,14 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::E8D0",
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::E8D1",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::E8D0",
+      "reference_key": "FSX::E8D1",
       "exchange": "FSX",
-      "ticker": "E8D0",
+      "ticker": "E8D1",
       "asset_types": "Stock",
-      "names": "FENDX TECHNOLOGIES NEW.",
-      "isins": "CA3144602057",
+      "names": "MARLIN HEALTH INC.",
+      "isins": "CA5709141017",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -436531,6 +436595,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::EQAM",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::EQAM",
+      "exchange": "FSX",
+      "ticker": "EQAM",
+      "asset_types": "ETF",
+      "names": "AM.ETF2 EMEQ DLA",
+      "isins": "IE000VMTCAJ6",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::EQAW",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::EQAW",
@@ -437131,6 +437211,22 @@
       "asset_types": "ETF",
       "names": "BNP.EASY-MS.US U.ETFEOA",
       "isins": "IE000M46QA27",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::ESAS",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::ESAS",
+      "exchange": "FSX",
+      "ticker": "ESAS",
+      "asset_types": "ETF",
+      "names": "B.E.I.M.W.E. U.ETF HEOA",
+      "isins": "IE000TY2UEX5",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -439201,22 +439297,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::EVY",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::EVY",
-      "exchange": "FSX",
-      "ticker": "EVY",
-      "asset_types": "Stock",
-      "names": "EVERYMAN MEDIA GR. LS-,10",
-      "isins": "GB00BFH55S51",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::EVY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::EW1",
@@ -474409,7 +474489,7 @@
       "exchange": "FSX",
       "ticker": "J5E1",
       "asset_types": "ETF",
-      "names": "JHI-JHULCECUE ETFSKA",
+      "names": "JHI US LAR.C.EQ.ETF DLA",
       "isins": "IE0005ZIBSW1",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -480113,6 +480193,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::K3E",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::K3H",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::K3H",
+      "exchange": "FSX",
+      "ticker": "K3H",
+      "asset_types": "Stock",
+      "names": "TERRESTRIAL ENERGY A O.N.",
+      "isins": "US8814541020",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::K3I",
@@ -497065,7 +497161,7 @@
       "exchange": "FSX",
       "ticker": "MGIN",
       "asset_types": "ETF",
-      "names": "MAE-MA TR.EN.UE I CDLA",
+      "names": "MAN A.G.I.UE I CDLA",
       "isins": "IE000IX21FH5",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -498195,6 +498291,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::MKIT",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::MKIT",
+      "exchange": "FSX",
+      "ticker": "MKIT",
+      "asset_types": "ETF",
+      "names": "M.S.E.-A.T.D.E. DLA",
+      "isins": "IE000HIVDLU1",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::MKK1",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::MKK1",
@@ -498633,7 +498745,7 @@
       "exchange": "FSX",
       "ticker": "MMF",
       "asset_types": "Stock",
-      "names": "MODINE MFG       DL -,625",
+      "names": "MODEXUS SOLUTI.  DL -,625",
       "isins": "US6078281002",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -498907,6 +499019,22 @@
       "asset_types": "Stock",
       "names": "MOLTIPLY GROUP",
       "isins": "IT0004195308",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::MNRG",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::MNRG",
+      "exchange": "FSX",
+      "ticker": "MNRG",
+      "asset_types": "ETF",
+      "names": "M.S.E.-FU.EN.E. DLA",
+      "isins": "IE000J4HQ8L0",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -500193,6 +500321,38 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::MSK",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::MSLP",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::MSLP",
+      "exchange": "FSX",
+      "ticker": "MSLP",
+      "asset_types": "ETF",
+      "names": "M.S.E.-E.T.P.E. EOA",
+      "isins": "IE000R6NWCI1",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::MSMW",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::MSMW",
+      "exchange": "FSX",
+      "ticker": "MSMW",
+      "asset_types": "ETF",
+      "names": "M.S.E.-M.P.W.E. DLA",
+      "isins": "IE000M404MN7",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::MSN",
@@ -509249,22 +509409,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::NWX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::NWZA",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::NWZA",
-      "exchange": "FSX",
-      "ticker": "NWZA",
-      "asset_types": "Stock",
-      "names": "NORTHWEST.ENER.GRP.DL-,01",
-      "isins": "US6680743050",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::NX5",
@@ -522483,38 +522627,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::PSAA",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::PSAA",
-      "exchange": "FSX",
-      "ticker": "PSAA",
-      "asset_types": "Stock",
-      "names": "PSI SOFTWARE SE NA Z.VK.",
-      "isins": "DE000A41YG88",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::PSAN",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::PSAN",
-      "exchange": "FSX",
-      "ticker": "PSAN",
-      "asset_types": "Stock",
-      "names": "PSI SOFTWARE SE NA O.N.",
-      "isins": "DE000A0Z1JH9",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::PSAN",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::PSDN",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
       "reference_key": "FSX::PSDN",
@@ -531776,22 +531888,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::RKB",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::RKM0",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::RKM0",
-      "exchange": "FSX",
-      "ticker": "RKM0",
-      "asset_types": "Stock",
-      "names": "VAULT MINERALS LTD.",
-      "isins": "AU0000355588",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::RKM0",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -569827,14 +569923,14 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::W6Q",
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::W6Q0",
       "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::W6Q",
+      "reference_key": "FSX::W6Q0",
       "exchange": "FSX",
-      "ticker": "W6Q",
+      "ticker": "W6Q0",
       "asset_types": "Stock",
-      "names": "TOOSLA SA    EO-,00027",
-      "isins": "FR00140062B9",
+      "names": "TOOSLA SA RGPT26 O.N.",
+      "isins": "FR001401B9V8",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "missing_from_database",
@@ -572305,22 +572401,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::WGB",
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "reference_key": "FSX::WGB",
-      "exchange": "FSX",
-      "ticker": "WGB",
-      "asset_types": "Stock",
-      "names": "INTEGER HLDGS     DL-,001",
-      "isins": "US45826H1095",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "FSX::WGB",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::WGDP",
@@ -575409,6 +575489,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "FSX::WWG",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::WWLD",
+      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
+      "reference_key": "FSX::WWLD",
+      "exchange": "FSX",
+      "ticker": "WWLD",
+      "asset_types": "ETF",
+      "names": "ISHS-MSCI W.IMI DLA",
+      "isins": "IE000AOK2013",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_frankfurt_all_tradable_equities::FSX::WWR",
@@ -622051,22 +622147,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::CFZ",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "reference_key": "XETRA::CFZ",
-      "exchange": "XETRA",
-      "ticker": "CFZ",
-      "asset_types": "Stock",
-      "names": "CULLEN/FROST BANKE.DL-,01",
-      "isins": "US2298991090",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "XETRA::CFZ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::CG1G",
       "source_key": "deutsche_boerse_xetra_all_tradable_equities",
       "reference_key": "XETRA::CG1G",
@@ -624323,6 +624403,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::D1ST",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::D1ST",
+      "exchange": "XETRA",
+      "ticker": "D1ST",
+      "asset_types": "ETF",
+      "names": "DWS STR.BALANCE U.ETF CEO",
+      "isins": "LU3382696337",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::D1ST",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::D26A",
       "source_key": "deutsche_boerse_xetra_all_tradable_equities",
       "reference_key": "XETRA::D26A",
@@ -625331,6 +625427,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::DDEF",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::DDEF",
+      "exchange": "XETRA",
+      "ticker": "DDEF",
+      "asset_types": "ETF",
+      "names": "DWS STR.DEF. U.ETF CEOA",
+      "isins": "LU3382696501",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::DDEF",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::DDN",
       "source_key": "deutsche_boerse_xetra_all_tradable_equities",
       "reference_key": "XETRA::DDN",
@@ -625360,6 +625472,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "XETRA::DDOC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::DDYN",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::DDYN",
+      "exchange": "XETRA",
+      "ticker": "DDYN",
+      "asset_types": "ETF",
+      "names": "DWS STR.DYN. U.ETF CEOA",
+      "isins": "LU3382696410",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::DDYN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -631459,6 +631587,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::EQAM",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::EQAM",
+      "exchange": "XETRA",
+      "ticker": "EQAM",
+      "asset_types": "ETF",
+      "names": "AM.ETF2 EMEQ DLA",
+      "isins": "IE000VMTCAJ6",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::EQAM",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::EQAW",
       "source_key": "deutsche_boerse_xetra_all_tradable_equities",
       "reference_key": "XETRA::EQAW",
@@ -632016,6 +632160,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "XETRA::ESAR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::ESAS",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::ESAS",
+      "exchange": "XETRA",
+      "ticker": "ESAS",
+      "asset_types": "ETF",
+      "names": "B.E.I.M.W.E. U.ETF HEOA",
+      "isins": "IE000TY2UEX5",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::ESAS",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -639859,6 +640019,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::GQJJ",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::GQJJ",
+      "exchange": "XETRA",
+      "ticker": "GQJJ",
+      "asset_types": "ETF",
+      "names": "GSAENH JP EQ.AC YNA",
+      "isins": "IE000ZUTO1I5",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::GQJJ",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::GQJY",
       "source_key": "deutsche_boerse_xetra_all_tradable_equities",
       "reference_key": "XETRA::GQJY",
@@ -646521,7 +646697,7 @@
       "exchange": "XETRA",
       "ticker": "J5E1",
       "asset_types": "ETF",
-      "names": "JHI-JHULCECUE ETFSKA",
+      "names": "JHI US LAR.C.EQ.ETF DLA",
       "isins": "IE0005ZIBSW1",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -653817,7 +653993,7 @@
       "exchange": "XETRA",
       "ticker": "MGIN",
       "asset_types": "ETF",
-      "names": "MAE-MA TR.EN.UE I CDLA",
+      "names": "MAN A.G.I.UE I CDLA",
       "isins": "IE000IX21FH5",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -654003,6 +654179,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::MKIT",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::MKIT",
+      "exchange": "XETRA",
+      "ticker": "MKIT",
+      "asset_types": "ETF",
+      "names": "M.S.E.-A.T.D.E. DLA",
+      "isins": "IE000HIVDLU1",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::MKIT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::MKK1",
       "source_key": "deutsche_boerse_xetra_all_tradable_equities",
       "reference_key": "XETRA::MKK1",
@@ -654137,7 +654329,7 @@
       "exchange": "XETRA",
       "ticker": "MMF",
       "asset_types": "Stock",
-      "names": "MODINE MFG       DL -,625",
+      "names": "MODEXUS SOLUTI.  DL -,625",
       "isins": "US6078281002",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -654177,6 +654369,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "XETRA::MMX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::MNRG",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::MNRG",
+      "exchange": "XETRA",
+      "ticker": "MNRG",
+      "asset_types": "ETF",
+      "names": "M.S.E.-FU.EN.E. DLA",
+      "isins": "IE000J4HQ8L0",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::MNTE",
@@ -654544,6 +654752,38 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "XETRA::MSF",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::MSLP",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::MSLP",
+      "exchange": "XETRA",
+      "ticker": "MSLP",
+      "asset_types": "ETF",
+      "names": "M.S.E.-E.T.P.E. EOA",
+      "isins": "IE000R6NWCI1",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::MSLP",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::MSMW",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::MSMW",
+      "exchange": "XETRA",
+      "ticker": "MSMW",
+      "asset_types": "ETF",
+      "names": "M.S.E.-M.P.W.E. DLA",
+      "isins": "IE000M404MN7",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::MSMW",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -655584,6 +655824,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "XETRA::MZL0",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::MZLU",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::MZLU",
+      "exchange": "XETRA",
+      "ticker": "MZLU",
+      "asset_types": "ETF",
+      "names": "WEI-MACE HEDGEDLA",
+      "isins": "IE000X792DP6",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::MZLU",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -660512,38 +660768,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "XETRA::PRU",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::PSAA",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "reference_key": "XETRA::PSAA",
-      "exchange": "XETRA",
-      "ticker": "PSAA",
-      "asset_types": "Stock",
-      "names": "PSI SOFTWARE SE NA Z.VK.",
-      "isins": "DE000A41YG88",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "XETRA::PSAA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::PSAN",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "reference_key": "XETRA::PSAN",
-      "exchange": "XETRA",
-      "ticker": "PSAN",
-      "asset_types": "Stock",
-      "names": "PSI SOFTWARE SE NA O.N.",
-      "isins": "DE000A0Z1JH9",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "XETRA::PSAN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -680640,6 +680864,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "XETRA::WW1",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "deutsche_boerse_xetra_all_tradable_equities::XETRA::WWLD",
+      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+      "reference_key": "XETRA::WWLD",
+      "exchange": "XETRA",
+      "ticker": "WWLD",
+      "asset_types": "ETF",
+      "names": "ISHS-MSCI W.IMI DLA",
+      "isins": "IE000AOK2013",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "XETRA::WWLD",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -895293,10 +895533,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "IDX::OASA",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "idx_company_profiles::IDX::OBAT",
@@ -910525,10 +910765,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "IDX::OASA",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "idx_listed_companies::IDX::OBAT",
@@ -1519411,6 +1519651,22 @@
       "evidence": "official and current names do not form one conservative identity family"
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::CCHP",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::CCHP",
+      "exchange": "NASDAQ",
+      "ticker": "CCHP",
+      "asset_types": "ETF",
+      "names": "Global X China Semiconductor ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::CCII",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::CCII",
@@ -1539331,6 +1539587,22 @@
       "evidence": "name indicates non-target instrument: warrants"
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::GUER",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::GUER",
+      "exchange": "NASDAQ",
+      "ticker": "GUER",
+      "asset_types": "Stock",
+      "names": "Guerrilla RF, Inc. - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::GUER",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::GURE",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::GURE",
@@ -1545680,6 +1545952,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::IQQ",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::IQQI",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::IQQI",
+      "exchange": "NASDAQ",
+      "ticker": "IQQI",
+      "asset_types": "ETF",
+      "names": "IncomeQ Nasdaq-100 Premium Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::IQQI",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1564723,22 +1565011,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::PCRX",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::PCRX",
-      "exchange": "NASDAQ",
-      "ticker": "PCRX",
-      "asset_types": "Stock",
-      "names": "Pacira BioSciences, Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::PCRX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::PCSA",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::PCSA",
@@ -1574915,6 +1575187,22 @@
       "evidence": "name indicates non-target instrument: warrant"
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::SDC",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::SDC",
+      "exchange": "NASDAQ",
+      "ticker": "SDC",
+      "asset_types": "ETF",
+      "names": "KICK Space Data Center & Infrastructure Index ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::SDC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::SDG",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::SDG",
@@ -1575809,38 +1576097,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::SHEN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::SHFS",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::SHFS",
-      "exchange": "NASDAQ",
-      "ticker": "SHFS",
-      "asset_types": "Stock",
-      "names": "SHF Holdings, Inc. - Class A Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
-      "matched_listing_keys": "NASDAQ::SHFS",
-      "evidence": "official and current names do not form one conservative identity family"
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::SHFSW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::SHFSW",
-      "exchange": "NASDAQ",
-      "ticker": "SHFSW",
-      "asset_types": "Stock",
-      "names": "SHF Holdings, Inc. - Warrants",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::SHIM",
@@ -1636611,6 +1636867,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::BATS::VVPL",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "BATS::VVPL",
+      "exchange": "BATS",
+      "ticker": "VVPL",
+      "asset_types": "ETF",
+      "names": "Vulcan Value Partners ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::VVPL",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::BATS::VXX",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::VXX",
@@ -1637009,22 +1637281,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::BATS::WZRD",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::WZRD",
-      "exchange": "BATS",
-      "ticker": "WZRD",
-      "asset_types": "ETF",
-      "names": "Opportunistic Trader ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "BATS::WZRD",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::BATS::XA",
@@ -1640147,6 +1640403,22 @@
       "evidence": "name indicates non-target instrument: bond"
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APFS",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::APFS",
+      "exchange": "NYSE ARCA",
+      "ticker": "APFS",
+      "asset_types": "ETF",
+      "names": "Artisan Focus Fund: ETF Class Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::APFS",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APIE",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::APIE",
@@ -1640209,6 +1640481,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APNX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::APNX",
+      "exchange": "NYSE ARCA",
+      "ticker": "APNX",
+      "asset_types": "ETF",
+      "names": "Artisan Select Equity Fund: ETF Class Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::APNX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::APUE",
@@ -1655249,6 +1655537,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::GMIX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::GMIX",
+      "exchange": "NYSE ARCA",
+      "ticker": "GMIX",
+      "asset_types": "ETF",
+      "names": "iShares Macro AlphaBeta Active ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::GMIX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::GMMA",
@@ -1673123,6 +1673427,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SHLA",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::SHLA",
+      "exchange": "NYSE ARCA",
+      "ticker": "SHLA",
+      "asset_types": "ETF",
+      "names": "Global X Asia Defense Tech ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::SHLA",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::SHLD",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::SHLD",
@@ -1677459,6 +1677779,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TRLL",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::TRLL",
+      "exchange": "NYSE ARCA",
+      "ticker": "TRLL",
+      "asset_types": "ETF",
+      "names": "Direxion Trillions ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::TRLL",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TRND",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::TRND",
@@ -1677953,22 +1678289,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::TYO",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TYYY",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::TYYY",
-      "exchange": "NYSE ARCA",
-      "ticker": "TYYY",
-      "asset_types": "ETF",
-      "names": "xETFs TSLA Daily Income ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::TZA",
@@ -1679377,6 +1679697,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::VEN",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::VEN",
+      "exchange": "NYSE ARCA",
+      "ticker": "VEN",
+      "asset_types": "ETF",
+      "names": "Teucrium Venezuela Future Opportunities ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: future"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::VETZ",
@@ -1682451,6 +1682787,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YASX",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::YASX",
+      "exchange": "NYSE ARCA",
+      "ticker": "YASX",
+      "asset_types": "ETF",
+      "names": "Yorkville America Space Index ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::YASX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YBIT",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::YBIT",
@@ -1682657,6 +1683009,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: option"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YO",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::YO",
+      "exchange": "NYSE ARCA",
+      "ticker": "YO",
+      "asset_types": "ETF",
+      "names": "Amplify S&P 500 Buffered Autocallable Yield Opportunity ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::YO",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YOLO",
@@ -1685025,22 +1685393,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: warrants"
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::IBO",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE MKT::IBO",
-      "exchange": "NYSE MKT",
-      "ticker": "IBO",
-      "asset_types": "Stock",
-      "names": "Impact BioMedical, Inc. Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE MKT::IBO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE MKT::IDR",
@@ -1687888,6 +1688240,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE MKT::ZDGE",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::ZOAR",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE MKT::ZOAR",
+      "exchange": "NYSE MKT",
+      "ticker": "ZOAR",
+      "asset_types": "Stock",
+      "names": "Zoar Limited Ordinary Shares",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE MKT::ZOAR",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1752691,22 +1753059,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::BGLOBAL",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::BGLOBAL",
-      "exchange": "NSE_IN",
-      "ticker": "BGLOBAL",
-      "asset_types": "Stock",
-      "names": "Bharatiya Global Infomedia Limited",
-      "isins": "INE224M01013",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::BGLOBAL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::BGRENERGY",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::BGRENERGY",
@@ -1755075,22 +1755427,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::CEREBRAINT",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::CEREBRAINT",
-      "exchange": "NSE_IN",
-      "ticker": "CEREBRAINT",
-      "asset_types": "Stock",
-      "names": "Cerebra Integrated Technologies Limited",
-      "isins": "INE345B01019",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::CEREBRAINT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::CESC",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::CESC",
@@ -1755635,22 +1755971,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::CLCIND",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::CLCIND",
-      "exchange": "NSE_IN",
-      "ticker": "CLCIND",
-      "asset_types": "Stock",
-      "names": "CLC Industries Limited",
-      "isins": "INE376C01038",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::CLCIND",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::CLEAN",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::CLEAN",
@@ -1755728,22 +1756048,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::CLSL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::CMICABLES",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::CMICABLES",
-      "exchange": "NSE_IN",
-      "ticker": "CMICABLES",
-      "asset_types": "Stock",
-      "names": "CMI Limited",
-      "isins": "INE981B01011",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::CMICABLES",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1758803,22 +1759107,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::DRAGARWQ",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::DRAGARWQ",
-      "exchange": "NSE_IN",
-      "ticker": "DRAGARWQ",
-      "asset_types": "Stock",
-      "names": "Dr Agarwals Eye Hospital Limited",
-      "isins": "INE934C01018",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::DRAGARWQ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::DRCSYSTEMS",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::DRCSYSTEMS",
@@ -1759475,22 +1759763,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::EDUCOMP",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::EDUCOMP",
-      "exchange": "NSE_IN",
-      "ticker": "EDUCOMP",
-      "asset_types": "Stock",
-      "names": "Educomp Solutions Limited",
-      "isins": "INE216H01027",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::EDUCOMP",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::EEPL",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::EEPL",
@@ -1759984,22 +1760256,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::ELMDIV",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::ELPROINTL",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::ELPROINTL",
-      "exchange": "NSE_IN",
-      "ticker": "ELPROINTL",
-      "asset_types": "Stock",
-      "names": "Elpro International Limited",
-      "isins": "INE579B01039",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::ELPROINTL",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1768227,22 +1768483,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::IMPEXFERRO",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::IMPEXFERRO",
-      "exchange": "NSE_IN",
-      "ticker": "IMPEXFERRO",
-      "asset_types": "Stock",
-      "names": "Impex Ferro Tech Limited",
-      "isins": "INE691G01015",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::IMPEXFERRO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::INA",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::INA",
@@ -1770019,6 +1770259,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::IVZSILVER",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::IVZSILVER",
+      "exchange": "NSE_IN",
+      "ticker": "IVZSILVER",
+      "asset_types": "ETF",
+      "names": "RELIGARAMC - IVZSILVER",
+      "isins": "INF205KA1CP9",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::IVZSILVER",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::IWARE",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::IWARE",
@@ -1770800,6 +1771056,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::JKPAPER",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::JKSHAH",
+      "source_key": "nse_india_securities_available",
+      "reference_key": "NSE_IN::JKSHAH",
+      "exchange": "NSE_IN",
+      "ticker": "JKSHAH",
+      "asset_types": "Stock",
+      "names": "J.K.Shah Commerce Education Limited",
+      "isins": "INE2OD001016",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NSE_IN::JKSHAH",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1773776,22 +1774048,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::LARGEMID50",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::LASA",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::LASA",
-      "exchange": "NSE_IN",
-      "ticker": "LASA",
-      "asset_types": "Stock",
-      "names": "Lasa Supergenerics Limited",
-      "isins": "INE670X01014",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::LASA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1779632,22 +1779888,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::NACLIND",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::NAGAFERT",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::NAGAFERT",
-      "exchange": "NSE_IN",
-      "ticker": "NAGAFERT",
-      "asset_types": "Stock",
-      "names": "Nagarjuna Fertilizers and Chemicals Limited",
-      "isins": "INE454M01024",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::NAGAFERT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1786547,22 +1786787,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::RAJVIR",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::RAJVIR",
-      "exchange": "NSE_IN",
-      "ticker": "RAJVIR",
-      "asset_types": "Stock",
-      "names": "Rajvir Industries Limited",
-      "isins": "INE011H01014",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::RAJVIR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::RALLIS",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::RALLIS",
@@ -1790515,22 +1790739,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::SELMC",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::SELMC",
-      "exchange": "NSE_IN",
-      "ticker": "SELMC",
-      "asset_types": "Stock",
-      "names": "SEL Manufacturing Company Limited",
-      "isins": "INE105I01020",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::SELMC",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::SEMAC",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::SEMAC",
@@ -1792913,22 +1793121,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::SKFINDUS",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::SKIL",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::SKIL",
-      "exchange": "NSE_IN",
-      "ticker": "SKIL",
-      "asset_types": "Stock",
-      "names": "SKIL Infrastructure Limited",
-      "isins": "INE429F01012",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::SKIPPER",
@@ -1799136,22 +1799328,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NSE_IN::UNITEDTEA",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::UNIVAFOODS",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::UNIVAFOODS",
-      "exchange": "NSE_IN",
-      "ticker": "UNIVAFOODS",
-      "asset_types": "Stock",
-      "names": "Univa Foods Limited",
-      "isins": "INE275F01019",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::UNIVAFOODS",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2139005,10 +2139181,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::IBO",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NYSE::IBP",
@@ -2568317,10 +2568493,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::CLML",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::CLML.U",
@@ -2568333,10 +2568509,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::CLML.U",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::CLSA",
@@ -2571693,10 +2571869,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::ESG",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::ESG.F",
@@ -2571709,10 +2571885,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::ESG.F",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::ESGA",
@@ -2576717,10 +2576893,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "TSX::IGET.F",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::IGET.F",
@@ -2577197,10 +2577373,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "TSX::IUMF.F",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::IUMF.F",
@@ -2582317,10 +2582493,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "TSX::PXS.U",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::PXS.U",
@@ -2587821,10 +2587997,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::UTIL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::VA",
@@ -2603725,10 +2603901,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::CLML",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::CLS",
@@ -2607853,10 +2608029,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::ESG",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::ESGA",
@@ -2613341,10 +2613517,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "TSX::IGET.F",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::IGM",
@@ -2613853,10 +2614029,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "TSX::IUMF.F",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::IVN",
@@ -2620029,10 +2620205,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "TSX::PXS.U",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::PXT",
@@ -2626349,10 +2626525,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::UTIL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::VA",

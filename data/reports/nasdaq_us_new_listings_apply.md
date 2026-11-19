@@ -1,8 +1,8 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-17T18:18:26Z`
-- New supported rows: `12`
-- Accepted rows: `12`
+- Generated at: `2026-11-18T16:41:22Z`
+- New supported rows: `10`
+- Accepted rows: `10`
 - Skipped rows: `0`
 - Detected symbol changes: `0`
 - Detected venue changes: `0`
@@ -12,18 +12,16 @@
 
 | Ticker | Exchange | Name | Asset type | Target | Source |
 |---|---|---|---|---|---|
-| CWPD | NASDAQ | CWP Premium Dividend ETF | ETF | supplement | nasdaq_listed |
-| CWPG | NASDAQ | CWP Premium Growth ETF | ETF | supplement | nasdaq_listed |
-| DAU | NASDAQ | GraniteShares Autocallable AMD ETF | ETF | coverage_expansion | nasdaq_listed |
-| DRAC | NASDAQ | GraniteShares Autocallable DRAM ETF | ETF | supplement | nasdaq_listed |
-| MEA | NASDAQ | GraniteShares Autocallable META ETF | ETF | coverage_expansion | nasdaq_listed |
-| NTCR | NASDAQ | Nuveen Technology & Infrastructure Credit ETF | ETF | supplement | nasdaq_listed |
-| PCHX | NASDAQ | State Street SPDR Nasdaq MyPaycheck ETF | ETF | supplement | nasdaq_listed |
-| PIVT | NASDAQ | VanEck Pivotal Trends ETF | ETF | supplement | nasdaq_listed |
-| VRSA | NASDAQ | Versa Bancorp - Common Stock | Stock | coverage_expansion | nasdaq_listed |
-| TXR | NYSE | Torex Resources Inc. Common Shares | Stock | coverage_expansion | nasdaq_other_listed |
-| SIMI | NYSE ARCA | American Beacon SiM High Income ETF | ETF | supplement | nasdaq_other_listed |
-| ZDAY | NYSE ARCA | Bitwise AI Cyber Defense ETF | ETF | supplement | nasdaq_other_listed |
+| VVPL | BATS | Vulcan Value Partners ETF | ETF | supplement | nasdaq_other_listed |
+| APFS | NYSE ARCA | Artisan Focus Fund: ETF Class Shares | ETF | supplement | nasdaq_other_listed |
+| APNX | NYSE ARCA | Artisan Select Equity Fund: ETF Class Shares | ETF | supplement | nasdaq_other_listed |
+| GMIX | NYSE ARCA | iShares Macro AlphaBeta Active ETF | ETF | supplement | nasdaq_other_listed |
+| SHLA | NYSE ARCA | Global X Asia Defense Tech ETF | ETF | supplement | nasdaq_other_listed |
+| TRLL | NYSE ARCA | Direxion Trillions ETF | ETF | supplement | nasdaq_other_listed |
+| VEN | NYSE ARCA | Teucrium Venezuela Future Opportunities ETF | ETF | coverage_expansion | nasdaq_other_listed |
+| YASX | NYSE ARCA | Yorkville America Space Index ETF | ETF | supplement | nasdaq_other_listed |
+| YO | NYSE ARCA | Amplify S&P 500 Buffered Autocallable Yield Opportunity ETF | ETF | supplement | nasdaq_other_listed |
+| ZOAR | NYSE MKT | Zoar Limited Ordinary Shares | Stock | supplement | nasdaq_other_listed |
 
 ## Skipped
 

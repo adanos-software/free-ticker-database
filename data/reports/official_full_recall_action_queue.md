@@ -7,21 +7,21 @@ Rows: `23`
 
 | Rank | Exchange | Collision-adjusted recall | True missing | Collision-hidden | Supplement lane |
 |---|---|---:|---:|---:|---|
-| 1 | FSX | 56.9 | 5922 | 4432 | refresh_only |
+| 1 | FSX | 56.84 | 5928 | 4442 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.06 | 3501 | 869 | not_in_supplement_allowlist |
-| 4 | NYSE | 59.91 | 1309 | 568 | not_in_supplement_allowlist |
-| 5 | NASDAQ | 82.5 | 973 | 59 | not_in_supplement_allowlist |
+| 4 | NYSE | 59.92 | 1309 | 567 | not_in_supplement_allowlist |
+| 5 | NASDAQ | 82.49 | 974 | 59 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.61 | 796 | 1936 | not_in_supplement_allowlist |
 | 7 | Euronext | 79.39 | 340 | 372 | not_in_supplement_allowlist |
-| 8 | UPCOM | 0.68 | 294 | 522 | not_in_supplement_allowlist |
+| 8 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |
 | 9 | BATS | 81.92 | 292 | 58 | not_in_supplement_allowlist |
 | 10 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
 | 11 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
 | 12 | NEO | 54.74 | 172 | 69 | not_in_supplement_allowlist |
 | 13 | KRX | 91.91 | 171 | 14 | not_in_supplement_allowlist |
 | 14 | B3 | 90.76 | 125 | 0 | collision_free_supplement |
-| 15 | NYSE ARCA | 96.27 | 102 | 29 | not_in_supplement_allowlist |
+| 15 | NYSE ARCA | 96.32 | 101 | 29 | not_in_supplement_allowlist |
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
 | 17 | NYSE MKT | 82.05 | 49 | 34 | not_in_supplement_allowlist |
 | 18 | SET | 95.3 | 38 | 135 | not_in_supplement_allowlist |
