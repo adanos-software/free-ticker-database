@@ -1,6 +1,6 @@
 # Entry Quality Report
 
-Generated at: `2026-11-19T08:11:08Z`
+Generated at: `2026-11-19T08:45:53Z`
 
 ## Status Counts
 
@@ -8,8 +8,8 @@ Generated at: `2026-11-19T08:11:08Z`
 |---|---:|
 | notice | 10 |
 | pass | 86,579 |
-| source_gap | 11,049 |
-| warn | 32 |
+| source_gap | 11,048 |
+| warn | 33 |
 
 ## Issue Counts
 
@@ -17,10 +17,10 @@ Generated at: `2026-11-19T08:11:08Z`
 |---|---:|
 | official_reference_gap | 6,737 |
 | venue_missing_official_source | 3,287 |
-| expected_missing_primary_isin | 645 |
+| expected_missing_primary_isin | 644 |
 | missing_stock_sector | 576 |
 | missing_etf_category | 170 |
-| official_name_mismatch | 21 |
+| official_name_mismatch | 22 |
 | official_isin_mismatch | 11 |
 | low_company_name_overlap | 10 |
 | country_isin_mismatch | 1 |
@@ -41,7 +41,7 @@ Generated at: `2026-11-19T08:11:08Z`
 | AMS | 553 | 0 | 195 | 0 | 0 |
 | BVB | 55 | 0 | 192 | 0 | 0 |
 | NYSE ARCA | 2,523 | 0 | 181 | 1 | 0 |
-| TSX | 2,265 | 0 | 172 | 0 | 0 |
+| TSX | 2,265 | 0 | 171 | 1 | 0 |
 | ASX | 2,101 | 2 | 156 | 0 | 0 |
 | LSE | 6,880 | 0 | 142 | 2 | 0 |
 | TSXV | 1,278 | 0 | 141 | 3 | 0 |
