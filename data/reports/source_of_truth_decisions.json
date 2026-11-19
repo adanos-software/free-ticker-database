@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-11-19T09:39:09Z",
-    "rows": 8121,
+    "generated_at": "2026-11-19T10:28:27Z",
+    "rows": 8120,
     "outcome_totals": {
       "accepted_source_gap": 5090,
-      "core_exclusion_candidate": 531,
+      "core_exclusion_candidate": 530,
       "official_fill_required": 2500
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 17,
+      "adr_cdr_or_depositary_identifier_gap": 16,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 30,
       "commodity_etf_category_gap": 6,
@@ -34,7 +34,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 154,
       "missing_isin_primary:accepted_source_gap": 155,
-      "missing_isin_primary:core_exclusion_candidate": 488,
+      "missing_isin_primary:core_exclusion_candidate": 487,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 502,
       "missing_sector_stock:core_exclusion_candidate": 43,
@@ -85549,7 +85549,7 @@
       "ticker": "PUR",
       "exchange": "WSE",
       "asset_type": "Stock",
-      "name": "Pure Biologics Spólka Akcyjna",
+      "name": "MultiQure S.A.",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -93999,23 +93999,6 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Siemens CDR (CAD Hedged)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::SNY",
-      "ticker": "SNY",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "Sanofi CDR (CAD Hedged)",
       "gap_class": "adr_cdr_or_depositary_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
