@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12534,
-      "exact_match": 100143,
+      "exact_identity_conflict": 12530,
+      "exact_match": 100147,
       "missing_from_database": 44832,
       "normalization_candidate": 1863,
       "out_of_scope": 8162
     },
-    "coverage_credited_keys": 100143,
+    "coverage_credited_keys": 100147,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44832,
-    "identity_conflict_rows": 12534,
+    "identity_conflict_rows": 12530,
     "mapping_candidate_rows": 1863
   },
   "rows": [
@@ -2568493,10 +2568493,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::CLML",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::CLML.U",
@@ -2568509,10 +2568509,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::CLML.U",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::CLSA",
@@ -2571869,10 +2571869,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::ESG",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::ESG.F",
@@ -2571885,10 +2571885,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::ESG.F",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::ESGA",
@@ -2576893,10 +2576893,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "TSX::IGET.F",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::IGET.F",
@@ -2577373,10 +2577373,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "TSX::IUMF.F",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::IUMF.F",
@@ -2582493,10 +2582493,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "TSX::PXS.U",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::PXS.U",
@@ -2587997,10 +2587997,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::UTIL",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::VA",
@@ -2603901,10 +2603901,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::CLML",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::CLS",
@@ -2608029,10 +2608029,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSX::ESG",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::ESGA",
@@ -2613517,10 +2613517,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "TSX::IGET.F",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::IGM",
@@ -2614029,10 +2614029,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "TSX::IUMF.F",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::IVN",
@@ -2620205,10 +2620205,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "normalization_candidate",
+      "classification": "missing_from_database",
       "coverage_credit": "false",
-      "matched_listing_keys": "TSX::PXS.U",
-      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::PXT",
@@ -2626525,10 +2626525,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "TSX::UTIL",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::VA",
