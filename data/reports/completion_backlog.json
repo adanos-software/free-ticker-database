@@ -500,7 +500,7 @@
       "etf_missing_count": 0,
       "exchange": "FSX",
       "field": "missing_sector_stock",
-      "missing_count": 215,
+      "missing_count": 214,
       "notes": "Source research needed before applying.",
       "official_source_count": 1,
       "priority_bucket": "ranked_by_missing_count",
@@ -509,7 +509,7 @@
       "reference_scopes": "exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 215,
+      "stock_missing_count": 214,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -1283,9 +1283,9 @@
     "field_totals": {
       "missing_etf_category": 154,
       "missing_isin_primary": 645,
-      "missing_sector_stock": 589
+      "missing_sector_stock": 588
     },
-    "generated_at": "2026-11-19T15:52:28Z",
+    "generated_at": "2026-11-19T16:24:50Z",
     "legacy_primary_ticker_collision_rows": 4840,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1389,7 +1389,7 @@
         "etf_missing_count": 0,
         "exchange": "FSX",
         "field": "missing_sector_stock",
-        "missing_count": 215,
+        "missing_count": 214,
         "official_source_count": 1,
         "recommended_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "residual_gate": "source_gap_classification_blocks_direct_apply",
@@ -1397,8 +1397,8 @@
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
         "source_gap_class": "official_industry_taxonomy_unavailable_gap",
-        "source_gap_rows": 210,
-        "stock_missing_count": 215,
+        "source_gap_rows": 209,
+        "stock_missing_count": 214,
         "target_field": "stock_sector",
         "venue_status": "official_full",
         "why_next": "source-gap classification review-gated workflow"

@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-19T15:45:35Z",
+  "generated_at": "2026-11-19T16:22:28Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2090,
-  "decision_rows": 6846,
+  "conflict_count": 2091,
+  "decision_rows": 6849,
   "action_counts": {
     "kept_listing_keyed_identifier": 1346,
     "proposed_clear_conflicting_identifier": 1079,
-    "quarantined_unresolved_identifier": 4421
+    "quarantined_unresolved_identifier": 4424
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1079,
-  "quarantined_rows": 4421,
+  "quarantined_rows": 4424,
   "retained_rows": 1346,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -6838,6 +6838,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA9289451044"
+    },
+    {
+      "conflict_id": "6e86844ef1e736860679",
+      "isin": "CA9581596009",
+      "listing_key": "FSX::W1T",
+      "ticker": "W1T",
+      "exchange": "FSX",
+      "name": "WESTERN ENERGY SRV. NEW",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA9581596009"
+    },
+    {
+      "conflict_id": "6e86844ef1e736860679",
+      "isin": "CA9581596009",
+      "listing_key": "OTC::WEEEF",
+      "ticker": "WEEEF",
+      "exchange": "OTC",
+      "name": "Western Energy Services Corp",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA9581596009"
+    },
+    {
+      "conflict_id": "6e86844ef1e736860679",
+      "isin": "CA9581596009",
+      "listing_key": "TSX::WRG",
+      "ticker": "WRG",
+      "exchange": "TSX",
+      "name": "Western Energy Services Corp.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA9581596009"
     },
     {
       "conflict_id": "0a4848c9c7cc5f13e199",
