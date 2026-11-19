@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-19T08:45:59Z",
-    "rows": 8122,
+    "generated_at": "2026-11-19T09:39:08Z",
+    "rows": 8121,
     "field_totals": {
       "missing_etf_category": 154,
       "missing_isin_primary": 644,
-      "missing_sector_stock": 587,
+      "missing_sector_stock": 586,
       "official_reference_gap": 6737
     },
     "class_totals": {
@@ -25,7 +25,7 @@
       "official_identifier_not_exposed_source_gap": 138,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 413,
+      "official_industry_taxonomy_unavailable_gap": 412,
       "official_product_taxonomy_unavailable_gap": 118,
       "official_reference_symbol_collision_gap": 1178,
       "official_reference_unmatched_source_gap": 5559,
@@ -50,7 +50,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 413,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 412,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1178,
@@ -144,7 +144,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 216
+          "rows": 215
         },
         {
           "exchange": "OTC",
@@ -255,7 +255,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 211,
+        "rows": 210,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -18241,23 +18241,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=FSX::O0C;exchange=FSX;ticker=O0C;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "FSX::O5U",
-      "ticker": "O5U",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Goldmoney Inc.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::O5U;exchange=FSX;ticker=O5U;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -133902,7 +133885,7 @@
       "ticker": "NVRO",
       "exchange": "TSXV",
       "asset_type": "Stock",
-      "name": "NVRO MetaNVRO",
+      "name": "NVRO Metals Limited",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
