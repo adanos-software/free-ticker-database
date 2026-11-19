@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-19T14:39:30Z",
-    "rows": 97670,
+    "generated_at": "2026-11-19T16:03:33Z",
+    "rows": 97678,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,29 +15,29 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86582,
-      "source_gap": 11045,
-      "warn": 33
+      "pass": 86579,
+      "source_gap": 11054,
+      "warn": 35
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4529,
-      "official_reference": 87646,
+      "identifier_enriched": 4530,
+      "official_reference": 87653,
       "scoped_source_gap": 294,
       "valid_isin": 5201
     },
     "severity_counts": {
       "high": 12,
       "low": 10,
-      "medium": 22,
-      "source_gap": 11411
+      "medium": 24,
+      "source_gap": 11428
     },
     "issue_counts": {
-      "official_reference_gap": 6737,
+      "official_reference_gap": 6738,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 643,
-      "missing_stock_sector": 574,
-      "missing_etf_category": 170,
-      "official_name_mismatch": 22,
+      "expected_missing_primary_isin": 651,
+      "missing_stock_sector": 576,
+      "missing_etf_category": 176,
+      "official_name_mismatch": 24,
       "official_isin_mismatch": 11,
       "low_company_name_overlap": 10,
       "country_isin_mismatch": 1
@@ -66,7 +66,7 @@
       },
       {
         "exchange": "NASDAQ",
-        "source_gap": 267,
+        "source_gap": 268,
         "pass": 4500,
         "warn": 3,
         "notice": 4
@@ -101,8 +101,8 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2523,
-        "source_gap": 181,
+        "pass": 2522,
+        "source_gap": 188,
         "warn": 1
       },
       {
@@ -143,8 +143,9 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1929,
-        "source_gap": 97
+        "pass": 1927,
+        "source_gap": 97,
+        "warn": 2
       },
       {
         "exchange": "JSE",

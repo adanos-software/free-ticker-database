@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-19T10:58:23Z",
+    "generated_at": "2026-11-19T16:02:28Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,39 +27,39 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63544,
-    "joined_listings": 63544,
-    "scope_rows": 63544
+    "rows": 63550,
+    "joined_listings": 63550,
+    "scope_rows": 63550
   },
   "completeness": {
     "isin": {
-      "n": 63544,
-      "filled": 62901,
-      "missing": 643,
-      "pct": 98.99,
-      "fills_needed_for_99": 8,
+      "n": 63550,
+      "filled": 62899,
+      "missing": 651,
+      "pct": 98.98,
+      "fills_needed_for_99": 16,
       "pass": false
     },
     "country": {
-      "n": 63544,
-      "filled": 63501,
+      "n": 63550,
+      "filled": 63507,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63544,
-      "filled": 62799,
-      "missing": 745,
-      "pct": 98.83,
-      "fills_needed_for_99": 110,
+      "n": 63550,
+      "filled": 62798,
+      "missing": 752,
+      "pct": 98.82,
+      "fills_needed_for_99": 117,
       "pass": false
     },
     "missing_isin_by_exchange": {
-      "NYSE ARCA": 112,
+      "NYSE ARCA": 118,
       "ASX": 98,
-      "NASDAQ": 82,
+      "NASDAQ": 83,
       "TSX": 79,
       "TSXV": 57,
       "BATS": 48,
@@ -75,7 +75,7 @@
       "XSTU": 44,
       "NSE_IN": 43,
       "HKEX": 39,
-      "NASDAQ": 22,
+      "NASDAQ": 23,
       "XETRA": 19,
       "BSE_IN": 18,
       "BVB": 17,
@@ -86,7 +86,7 @@
     },
     "missing_category_by_exchange": {
       "XETRA": 62,
-      "NYSE ARCA": 48,
+      "NYSE ARCA": 54,
       "AMS": 18,
       "NASDAQ": 18,
       "BATS": 10,
@@ -97,16 +97,16 @@
   },
   "identity": {
     "official_isin_mismatch": 9,
-    "official_name_mismatch": 9,
+    "official_name_mismatch": 11,
     "open_collision_groups": 10,
-    "quarantine_unresolved": 1228,
-    "quarantine_proposed_clear": 285,
-    "quarantine_kept": 552
+    "quarantine_unresolved": 1227,
+    "quarantine_proposed_clear": 286,
+    "quarantine_kept": 551
   },
   "entry_quality_status": {
-    "pass": 59743,
-    "source_gap": 3774,
-    "warn": 19,
+    "pass": 59739,
+    "source_gap": 3782,
+    "warn": 21,
     "notice": 8
   },
   "checks": [
@@ -137,11 +137,11 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63544,
-        "filled": 62901,
-        "missing": 643,
-        "pct": 98.99,
-        "fills_needed_for_99": 8,
+        "n": 63550,
+        "filled": 62899,
+        "missing": 651,
+        "pct": 98.98,
+        "fills_needed_for_99": 16,
         "pass": false
       }
     },
@@ -149,11 +149,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63544,
-        "filled": 62799,
-        "missing": 745,
-        "pct": 98.83,
-        "fills_needed_for_99": 110,
+        "n": 63550,
+        "filled": 62798,
+        "missing": 752,
+        "pct": 98.82,
+        "fills_needed_for_99": 117,
         "pass": false
       }
     },
@@ -161,8 +161,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63544,
-        "filled": 63501,
+        "n": 63550,
+        "filled": 63507,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
@@ -173,17 +173,18 @@
       "name": "core_official_name_hard_mismatches_zero",
       "status": "fail",
       "details": {
-        "official_name_mismatch": 9,
+        "official_name_mismatch": 11,
         "sample": [
           "NASDAQ::ASBP",
           "TSXV::AXO",
+          "NYSE::BKH",
           "NASDAQ::BNC",
           "NYSE ARCA::CTWO",
           "TSX::E",
           "TSXV::MKT",
+          "NYSE::MOD",
           "QSE::NLCS",
-          "PSX::TPLI",
-          "TSXV::WED"
+          "PSX::TPLI"
         ]
       }
     },

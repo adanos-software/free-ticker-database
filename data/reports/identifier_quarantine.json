@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-19T10:57:53Z",
+  "generated_at": "2026-11-19T16:01:55Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2090,
-  "decision_rows": 6849,
+  "conflict_count": 2088,
+  "decision_rows": 6842,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1347,
-    "proposed_clear_conflicting_identifier": 1081,
-    "quarantined_unresolved_identifier": 4421
+    "kept_listing_keyed_identifier": 1346,
+    "proposed_clear_conflicting_identifier": 1079,
+    "quarantined_unresolved_identifier": 4417
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1081,
-  "quarantined_rows": 4421,
-  "retained_rows": 1347,
+  "proposed_clear_rows": 1079,
+  "quarantined_rows": 4417,
+  "retained_rows": 1346,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -5280,7 +5280,7 @@
       "retained_isin": "CA2482332079"
     },
     {
-      "conflict_id": "06e5383de35de9b76afd",
+      "conflict_id": "3dfbe15ca93f1c7629e6",
       "isin": "CA28103Q2080",
       "listing_key": "FSX::VV0",
       "ticker": "VV0",
@@ -5293,7 +5293,7 @@
       "retained_isin": "CA28103Q2080"
     },
     {
-      "conflict_id": "06e5383de35de9b76afd",
+      "conflict_id": "3dfbe15ca93f1c7629e6",
       "isin": "CA28103Q2080",
       "listing_key": "OTC::EDDYF",
       "ticker": "EDDYF",
@@ -5302,6 +5302,19 @@
       "asset_type": "Stock",
       "action": "kept_listing_keyed_identifier",
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "CA28103Q2080"
+    },
+    {
+      "conflict_id": "3dfbe15ca93f1c7629e6",
+      "isin": "CA28103Q2080",
+      "listing_key": "TSXV::EDDY",
+      "ticker": "EDDY",
+      "exchange": "TSXV",
+      "name": "Edison Lithium Corp.",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "CA28103Q2080"
     },
@@ -20048,58 +20061,6 @@
       "retained_isin": "FI0009000251"
     },
     {
-      "conflict_id": "776671024054beaec7e1",
-      "isin": "FI0009000277",
-      "listing_key": "FSX::TTEB",
-      "ticker": "TTEB",
-      "exchange": "FSX",
-      "name": "TietoEVRY Oyj",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FI0009000277"
-    },
-    {
-      "conflict_id": "776671024054beaec7e1",
-      "isin": "FI0009000277",
-      "listing_key": "HEL::TIETO",
-      "ticker": "TIETO",
-      "exchange": "HEL",
-      "name": "Tieto Oyj",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FI0009000277"
-    },
-    {
-      "conflict_id": "776671024054beaec7e1",
-      "isin": "FI0009000277",
-      "listing_key": "LSE::0KG0",
-      "ticker": "0KG0",
-      "exchange": "LSE",
-      "name": "TietoEVRY Corp",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FI0009000277"
-    },
-    {
-      "conflict_id": "776671024054beaec7e1",
-      "isin": "FI0009000277",
-      "listing_key": "STO::TIETOS",
-      "ticker": "TIETOS",
-      "exchange": "STO",
-      "name": "TietoEVRY Corp",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "FI0009000277"
-    },
-    {
       "conflict_id": "f8456e6836ccffdf3724",
       "isin": "FI0009000459",
       "listing_key": "FSX::HUKI",
@@ -26923,58 +26884,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "GB00BVMN1558"
-    },
-    {
-      "conflict_id": "241ad930e1d47bd5d79f",
-      "isin": "GB00BVYVFW23",
-      "listing_key": "FSX::2UA",
-      "ticker": "2UA",
-      "exchange": "FSX",
-      "name": "Auto Trader Group Plc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GB00BVYVFW23"
-    },
-    {
-      "conflict_id": "241ad930e1d47bd5d79f",
-      "isin": "GB00BVYVFW23",
-      "listing_key": "LSE::AUTO",
-      "ticker": "AUTO",
-      "exchange": "LSE",
-      "name": "Autotrader Group plc",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GB00BVYVFW23"
-    },
-    {
-      "conflict_id": "241ad930e1d47bd5d79f",
-      "isin": "GB00BVYVFW23",
-      "listing_key": "OTC::ATDRF",
-      "ticker": "ATDRF",
-      "exchange": "OTC",
-      "name": "Auto Trader Group plc",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GB00BVYVFW23"
-    },
-    {
-      "conflict_id": "241ad930e1d47bd5d79f",
-      "isin": "GB00BVYVFW23",
-      "listing_key": "XSTU::2UA",
-      "ticker": "2UA",
-      "exchange": "XSTU",
-      "name": "Auto Trader Group PLC",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "GB00BVYVFW23"
     },
     {
       "conflict_id": "7f6424656636aefe25f3",
