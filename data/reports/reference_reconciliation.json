@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 171166,
-    "source_specific_reference_keys": 171165,
+    "active_official_reference_rows": 171164,
+    "source_specific_reference_keys": 171163,
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12533,
       "exact_match": 100155,
-      "missing_from_database": 44865,
+      "missing_from_database": 44866,
       "normalization_candidate": 1860,
-      "out_of_scope": 8163
+      "out_of_scope": 8160
     },
     "coverage_credited_keys": 100155,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44865,
+    "in_scope_missing_rows": 44866,
     "identity_conflict_rows": 12533,
     "mapping_candidate_rows": 1860
   },
@@ -1504995,6 +1504995,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::AAUD",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::AAUD",
+      "exchange": "NASDAQ",
+      "ticker": "AAUD",
+      "asset_types": "ETF",
+      "names": "Alpha Architect US Equity 5 ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::AAUD",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::AAUS",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::AAUS",
@@ -1509441,22 +1509457,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::AMPG",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::AMPGZ",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::AMPGZ",
-      "exchange": "NASDAQ",
-      "ticker": "AMPGZ",
-      "asset_types": "Stock",
-      "names": "Amplitech Group, Inc. - Series B Right",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: right"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::AMPH",
@@ -1526128,6 +1526128,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::CZWI",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::CZZL",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::CZZL",
+      "exchange": "NASDAQ",
+      "ticker": "CZZL",
+      "asset_types": "Stock",
+      "names": "Cizzle Brands Corporation - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::CZZL",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1546883,6 +1546899,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::ISMH",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::ISMH",
+      "exchange": "NASDAQ",
+      "ticker": "ISMH",
+      "asset_types": "ETF",
+      "names": "xETFs International Semiconductor ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::ISMH",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::ISNR",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::ISNR",
@@ -1554448,22 +1554480,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::MEOH",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::MERC",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::MERC",
-      "exchange": "NASDAQ",
-      "ticker": "MERC",
-      "asset_types": "Stock",
-      "names": "Mercer International Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::MERC",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1563313,54 +1563329,6 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::OPEN",
       "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::OPENL",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::OPENL",
-      "exchange": "NASDAQ",
-      "ticker": "OPENL",
-      "asset_types": "Stock",
-      "names": "Opendoor Technologies Inc  - Series A Warrants, each whole warrant exercisable to purchase one share of Common Stock at an exercise price of $13.00 per warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrants"
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::OPENW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::OPENW",
-      "exchange": "NASDAQ",
-      "ticker": "OPENW",
-      "asset_types": "Stock",
-      "names": "Opendoor Technologies Inc  - Series K Warrants, each whole warrant exercisable to purchase one share of Common Stock at an exercise price of $9.00 per warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrants"
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::OPENZ",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::OPENZ",
-      "exchange": "NASDAQ",
-      "ticker": "OPENZ",
-      "asset_types": "Stock",
-      "names": "Opendoor Technologies Inc  - Series Z Warrants, each whole warrant exercisable to purchase one share of Common Stock at an exercise price of $17.00 per warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::OPHI",
@@ -1662361,7 +1662329,7 @@
       "exchange": "NYSE ARCA",
       "ticker": "JOET",
       "asset_types": "ETF",
-      "names": "Virtus Terranova U.S. Quality Momentum ETF",
+      "names": "Virtus NYSE Terranova U.S. Quality Momentum ETF",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1683585,6 +1683553,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::YLD",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YLDS",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::YLDS",
+      "exchange": "NYSE ARCA",
+      "ticker": "YLDS",
+      "asset_types": "ETF",
+      "names": "Harbor Arena Structured Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: structured"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YLDW",
@@ -1719539,22 +1719523,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::OPAY",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::OPAY",
-      "exchange": "NYSE",
-      "ticker": "OPAY",
-      "asset_types": "Stock",
-      "names": "OPay Limited American Depositary Shares, each representing ten Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::OPAY",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::OPFI",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::OPFI",
@@ -1727171,6 +1727139,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::SONN",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::SONN",
+      "exchange": "NYSE",
+      "ticker": "SONN",
+      "asset_types": "Stock",
+      "names": "Southern Company (The) 2026 Series A Corporate Units",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE::SONY",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE::SONY",
@@ -1731616,22 +1731600,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE::UTL",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_other_listed::NYSE::UTZ",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE::UTZ",
-      "exchange": "NYSE",
-      "ticker": "UTZ",
-      "asset_types": "Stock",
-      "names": "Utz Brands Inc Class A Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE::UTZ",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
