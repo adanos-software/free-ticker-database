@@ -6,46 +6,81 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97678,
+    "before_rows": 97679,
     "after_rows": 97679,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 9,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::KOYN"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
+  "critical_field_changes": [
     {
-      "listing_key": "NASDAQ::KOYN",
-      "ticker": "KOYN",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "KOYN",
-      "new_value": "FDGX",
-      "before_row_sha256": "98bbd7ad7b46dae9951b37c07feae48068ead785dab11c1b139cdc95f663e7f1",
-      "effective_at": "",
-      "observed_at": "2026-11-19T16:54:09Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "d317fc8120919658696b7b77",
-      "evidence_status": "reviewed"
+      "listing_key": "Bursa::7240",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "FSX::4GJ",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "FSX::EVN",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "FSX::MUF",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "LSE::0EEI",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Utilities"
+    },
+    {
+      "listing_key": "LSE::0Z1Q",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "NASDAQ::LCFY",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "NYSE::MANU",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "SET::HTC",
+      "field_name": "isin",
+      "old_value": "TH0140010Z04",
+      "new_value": "TH0140B10Z03"
     }
   ],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -445,10 +480,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4774,
+      "before_rows": 4775,
       "after_rows": 4775,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
