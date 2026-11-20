@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-19T17:01:10Z",
+    "generated_at": "2026-11-20T15:49:48Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,14 +21,14 @@
       "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
-  "passed": false,
+  "passed": true,
   "summary": {
-    "ticker_rows": 65638,
-    "listing_rows": 97679,
-    "adanos_reference_rows": 65638,
-    "entry_quality_rows": 97679,
+    "ticker_rows": 65636,
+    "listing_rows": 97683,
+    "adanos_reference_rows": 65636,
+    "entry_quality_rows": 97683,
     "error_gates": 88,
-    "failed_error_gates": 1,
+    "failed_error_gates": 0,
     "info_gates": 5
   },
   "gates": [
@@ -518,13 +518,9 @@
     {
       "name": "entry_quality_unexpected_warn_count",
       "severity": "error",
-      "passed": false,
-      "actual": 2,
-      "limit": 0,
-      "details": [
-        "NYSE::BKH",
-        "NYSE::MOD"
-      ]
+      "passed": true,
+      "actual": 0,
+      "limit": 0
     },
     {
       "name": "adanos_alias_findings",
@@ -558,35 +554,35 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 646,
+      "actual": 647,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 578,
+      "actual": 573,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 171,
+      "actual": 174,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11054,
+      "actual": 11052,
       "limit": null
     },
     {
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 35,
+      "actual": 34,
       "limit": null
     },
     {

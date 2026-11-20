@@ -6,46 +6,26 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97678,
-    "after_rows": 97679,
+    "before_rows": 97679,
+    "after_rows": 97683,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
     "critical_field_changes": 0,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::KOYN"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "NASDAQ::KOYN",
-      "ticker": "KOYN",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "KOYN",
-      "new_value": "FDGX",
-      "before_row_sha256": "98bbd7ad7b46dae9951b37c07feae48068ead785dab11c1b139cdc95f663e7f1",
-      "effective_at": "",
-      "observed_at": "2026-11-19T16:54:09Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "d317fc8120919658696b7b77",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -445,10 +425,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4774,
-      "after_rows": 4775,
+      "before_rows": 4775,
+      "after_rows": 4778,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -509,7 +489,7 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2706,
-      "after_rows": 2706,
+      "after_rows": 2707,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

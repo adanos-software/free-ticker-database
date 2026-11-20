@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-11-19T16:52:15Z",
+    "generated_at": "2026-11-20T15:43:52Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -12,27 +12,29 @@
       "Stock"
     ],
     "new_supported_rows": 5,
-    "accepted_rows": 2,
-    "skipped_rows": 3,
-    "detected_symbol_changes": 1,
+    "accepted_rows": 4,
+    "skipped_rows": 1,
+    "detected_symbol_changes": 0,
     "detected_venue_changes": 0,
     "review_override_files_rekeyed": [],
     "accepted_by_exchange": {
-      "NASDAQ": 2
+      "NASDAQ": 3,
+      "NYSE ARCA": 1
     },
     "accepted_by_target": {
-      "supplement": 2
+      "coverage_expansion": 1,
+      "supplement": 3
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 3
+      "excluded_non_common_stock": 1
     }
   },
   "accepted": [
     {
-      "ticker": "ANT",
-      "name": "Anthropic, PBC - Class A Common Stock",
+      "ticker": "AAUD",
+      "name": "Alpha Architect US Equity 5 ETF",
       "exchange": "NASDAQ",
-      "asset_type": "Stock",
+      "asset_type": "ETF",
       "sector": "",
       "country": "United States",
       "country_code": "US",
@@ -44,44 +46,59 @@
       "apply_target": "supplement"
     },
     {
-      "ticker": "FDGX",
-      "name": "First Digital Acquisition Corp Ltd. - Class A Ordinary Shares",
+      "listing_key": "NASDAQ::CZZL",
+      "ticker": "CZZL",
       "exchange": "NASDAQ",
+      "name": "Cizzle Brands Corporation - Common Stock",
       "asset_type": "Stock",
-      "sector": "Financials",
-      "country": "Cayman Islands",
-      "country_code": "KY",
-      "isin": "KYG2584S1012",
-      "aliases": "cslm digital asset acquisition iii",
+      "stock_sector": "",
+      "etf_category": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
       "source_key": "nasdaq_listed",
       "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "apply_target": "coverage_expansion"
+    },
+    {
+      "ticker": "ISMH",
+      "name": "xETFs International Semiconductor ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "YLDS",
+      "name": "Harbor Arena Structured Income ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory",
       "apply_target": "supplement"
     }
   ],
   "skipped": [
     {
-      "ticker": "ENVXW",
-      "exchange": "NASDAQ",
-      "name": "Enovix Corporation - Warrants",
+      "ticker": "SONN",
+      "exchange": "NYSE",
+      "name": "Southern Company (The) 2026 Series A Corporate Units",
       "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "FDGXU",
-      "exchange": "NASDAQ",
-      "name": "First Digital Acquisition Corp Ltd. - Units",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "FDGXW",
-      "exchange": "NASDAQ",
-      "name": "First Digital Acquisition Corp Ltd. - Warrants",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
+      "source_key": "nasdaq_other_listed",
       "skip_reason": "excluded_non_common_stock"
     }
   ]
