@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-20T08:43:54Z",
+    "generated_at": "2026-11-20T09:34:53Z",
     "rows": 97679,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86585,
-      "source_gap": 11050,
+      "pass": 86586,
+      "source_gap": 11049,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11421
+      "source_gap": 11419
     },
     "issue_counts": {
       "official_reference_gap": 6745,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 644,
-      "missing_stock_sector": 574,
+      "expected_missing_primary_isin": 643,
+      "missing_stock_sector": 573,
       "missing_etf_category": 171,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
@@ -124,16 +124,16 @@
         "warn": 2
       },
       {
-        "exchange": "TSXV",
-        "pass": 1278,
-        "source_gap": 141,
-        "warn": 3
-      },
-      {
         "exchange": "Euronext",
         "pass": 1333,
         "source_gap": 142,
         "warn": 1
+      },
+      {
+        "exchange": "TSXV",
+        "pass": 1279,
+        "source_gap": 140,
+        "warn": 3
       },
       {
         "exchange": "HKEX",

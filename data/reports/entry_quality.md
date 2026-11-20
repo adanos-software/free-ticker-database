@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-11-20T08:43:54Z`
+Generated at: `2026-11-20T09:34:53Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,585 |
-| source_gap | 11,050 |
+| pass | 86,586 |
+| source_gap | 11,049 |
 | warn | 34 |
 
 ## Issue Counts
@@ -17,8 +17,8 @@ Generated at: `2026-11-20T08:43:54Z`
 |---|---:|
 | official_reference_gap | 6,745 |
 | venue_missing_official_source | 3,287 |
-| expected_missing_primary_isin | 644 |
-| missing_stock_sector | 574 |
+| expected_missing_primary_isin | 643 |
+| missing_stock_sector | 573 |
 | missing_etf_category | 171 |
 | official_name_mismatch | 23 |
 | official_isin_mismatch | 11 |
@@ -44,8 +44,8 @@ Generated at: `2026-11-20T08:43:54Z`
 | TSX | 2,266 | 0 | 170 | 1 | 0 |
 | ASX | 2,101 | 2 | 156 | 0 | 0 |
 | LSE | 6,880 | 0 | 142 | 2 | 0 |
-| TSXV | 1,278 | 0 | 141 | 3 | 0 |
 | Euronext | 1,333 | 0 | 142 | 1 | 0 |
+| TSXV | 1,279 | 0 | 140 | 3 | 0 |
 | HKEX | 3,146 | 0 | 114 | 3 | 0 |
 | NYSE | 1,928 | 0 | 97 | 1 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
