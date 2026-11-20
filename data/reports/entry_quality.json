@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-20T12:33:19Z",
+    "generated_at": "2026-11-20T13:42:59Z",
     "rows": 97679,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86586,
-      "source_gap": 11049,
+      "pass": 86587,
+      "source_gap": 11048,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11419
+      "source_gap": 11418
     },
     "issue_counts": {
       "official_reference_gap": 6745,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 643,
-      "missing_stock_sector": 573,
+      "missing_stock_sector": 572,
       "missing_etf_category": 171,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
@@ -56,8 +56,8 @@
       },
       {
         "exchange": "FSX",
-        "source_gap": 515,
-        "pass": 7628
+        "source_gap": 514,
+        "pass": 7629
       },
       {
         "exchange": "B3",
@@ -14310,24 +14310,6 @@
       ]
     },
     {
-      "listing_key": "FSX::4GJ",
-      "ticker": "4GJ",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::4GNB",
       "ticker": "4GNB",
       "exchange": "XSTU",
@@ -18488,6 +18470,24 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "FSX::6SO",
+      "ticker": "6SO",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }
