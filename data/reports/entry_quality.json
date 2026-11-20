@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-20T15:34:43Z",
+    "generated_at": "2026-11-20T16:43:43Z",
     "rows": 97694,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86593,
-      "source_gap": 11057,
+      "pass": 86594,
+      "source_gap": 11056,
       "warn": 34
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 12,
       "low": 10,
       "medium": 23,
-      "source_gap": 11428
+      "source_gap": 11427
     },
     "issue_counts": {
       "official_reference_gap": 6751,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 643,
-      "missing_stock_sector": 574,
+      "missing_stock_sector": 573,
       "missing_etf_category": 173,
       "official_name_mismatch": 23,
       "official_isin_mismatch": 11,
@@ -56,8 +56,8 @@
       },
       {
         "exchange": "FSX",
-        "source_gap": 520,
-        "pass": 7623
+        "source_gap": 519,
+        "pass": 7624
       },
       {
         "exchange": "B3",
@@ -14346,24 +14346,6 @@
       ]
     },
     {
-      "listing_key": "FSX::4GJ",
-      "ticker": "4GJ",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "XSTU::4GNB",
       "ticker": "4GNB",
       "exchange": "XSTU",
@@ -18488,6 +18470,24 @@
           "field": "exchange",
           "value": "FSX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "XETRA::6R9",
+      "ticker": "6R9",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
         }
       ]
     }
