@@ -1,6 +1,6 @@
 # B3 Masterfile Gap Review
 
-Generated at: `2026-11-13T21:16:07Z`
+Generated at: `2026-11-20T21:13:15Z`
 
 This report tracks B3 listings absent from the active B3 exchange-directory source. It does not fill or delete data.
 
