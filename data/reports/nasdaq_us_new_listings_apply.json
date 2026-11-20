@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-11-20T15:27:40Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-11-20T17:10:39Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,16 +11,95 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
-    "skipped_rows": 0,
+    "new_supported_rows": 5,
+    "accepted_rows": 4,
+    "skipped_rows": 1,
     "detected_symbol_changes": 0,
     "detected_venue_changes": 0,
     "review_override_files_rekeyed": [],
-    "accepted_by_exchange": {},
-    "accepted_by_target": {},
-    "skipped_by_reason": {}
+    "accepted_by_exchange": {
+      "NASDAQ": 3,
+      "NYSE ARCA": 1
+    },
+    "accepted_by_target": {
+      "coverage_expansion": 1,
+      "supplement": 3
+    },
+    "skipped_by_reason": {
+      "excluded_non_common_stock": 1
+    }
   },
-  "accepted": [],
-  "skipped": []
+  "accepted": [
+    {
+      "ticker": "AAUD",
+      "name": "Alpha Architect US Equity 5 ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "listing_key": "NASDAQ::CZZL",
+      "ticker": "CZZL",
+      "exchange": "NASDAQ",
+      "name": "Cizzle Brands Corporation - Common Stock",
+      "asset_type": "Stock",
+      "stock_sector": "",
+      "etf_category": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "apply_target": "coverage_expansion"
+    },
+    {
+      "ticker": "ISMH",
+      "name": "xETFs International Semiconductor ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "YLDS",
+      "name": "Harbor Arena Structured Income ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "SONN",
+      "exchange": "NYSE",
+      "name": "Southern Company (The) 2026 Series A Corporate Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    }
+  ]
 }
