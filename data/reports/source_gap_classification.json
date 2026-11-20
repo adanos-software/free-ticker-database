@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-20T08:44:01Z",
-    "rows": 8129,
+    "generated_at": "2026-11-20T09:35:00Z",
+    "rows": 8127,
     "field_totals": {
       "missing_etf_category": 154,
-      "missing_isin_primary": 644,
-      "missing_sector_stock": 586,
+      "missing_isin_primary": 643,
+      "missing_sector_stock": 585,
       "official_reference_gap": 6745
     },
     "class_totals": {
@@ -22,10 +22,10 @@
       "fundlike_stock_sector_gap": 31,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 138,
+      "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 412,
+      "official_industry_taxonomy_unavailable_gap": 411,
       "official_product_taxonomy_unavailable_gap": 118,
       "official_reference_symbol_collision_gap": 1179,
       "official_reference_unmatched_source_gap": 5566,
@@ -44,13 +44,13 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 334,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 412,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 411,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1179,
@@ -118,7 +118,7 @@
         },
         {
           "exchange": "TSXV",
-          "rows": 57
+          "rows": 56
         },
         {
           "exchange": "BATS",
@@ -179,7 +179,7 @@
           "rows": 15
         },
         {
-          "exchange": "BVB",
+          "exchange": "CSE_LK",
           "rows": 15
         }
       ],
@@ -13402,23 +13402,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSXV::IZ",
-      "ticker": "IZ",
-      "exchange": "TSXV",
-      "asset_type": "Stock",
-      "name": "International Zeolite Corp.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=TSXV::IZ;exchange=TSXV;ticker=IZ;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSXV::KAC.P",
       "ticker": "KAC.P",
       "exchange": "TSXV",
@@ -14875,23 +14858,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=BVB::NCHI;exchange=BVB;ticker=NCHI;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "BVB::RRD",
-      "ticker": "RRD",
-      "exchange": "BVB",
-      "asset_type": "Stock",
-      "name": "ROMRADIATOARE S.A.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BVB::RRD;exchange=BVB;ticker=RRD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
