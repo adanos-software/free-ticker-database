@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 11,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,74 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "FSX::FNI",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "FSX::PY2",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "HKEX::00656",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "KRX::336370",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "OTC::FOSUF",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "SSE::688677",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "SZSE::300123",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "TSXV::LFST",
+      "field_name": "isin",
+      "old_value": "CA53228D1069",
+      "new_value": "CA53228D2059"
+    },
+    {
+      "listing_key": "WSE::GMV",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "XETRA::RSH",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "XSTU::FNI",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Industrials"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
