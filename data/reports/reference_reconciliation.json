@@ -5,17 +5,17 @@
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12532,
-      "exact_match": 100160,
-      "missing_from_database": 44866,
-      "normalization_candidate": 1856,
+      "exact_identity_conflict": 12530,
+      "exact_match": 100162,
+      "missing_from_database": 44865,
+      "normalization_candidate": 1857,
       "out_of_scope": 8160
     },
-    "coverage_credited_keys": 100160,
+    "coverage_credited_keys": 100162,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44866,
-    "identity_conflict_rows": 12532,
-    "mapping_candidate_rows": 1856
+    "in_scope_missing_rows": 44865,
+    "identity_conflict_rows": 12530,
+    "mapping_candidate_rows": 1857
   },
   "rows": [
     {
@@ -22061,10 +22061,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "ASX::GIB",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "asx_listed_companies::ASX::GL1",
@@ -1215341,10 +1215341,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "LSE::ACG",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "lse_company_reports::LSE::ACGW",
@@ -1322733,10 +1322733,10 @@
       "isins": "",
       "reference_scopes": "security_lookup_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "LSE::ACG",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "lse_instrument_directory::LSE::ACRM",
@@ -2038333,10 +2038333,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "PSX::STL",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "psx_listed_companies::PSX::STLR",
@@ -2050573,10 +2050573,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "NASDAQ::ANGH",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::NASDAQ::ANGI",

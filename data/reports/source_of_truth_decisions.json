@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-21T12:15:49Z",
-    "rows": 8030,
+    "generated_at": "2026-11-21T13:06:37Z",
+    "rows": 8028,
     "outcome_totals": {
       "accepted_source_gap": 4986,
-      "core_exclusion_candidate": 534,
+      "core_exclusion_candidate": 532,
       "official_fill_required": 2510
     },
     "class_totals": {
@@ -16,8 +16,8 @@
       "equity_etf_category_gap": 15,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 4,
-      "fund_or_trust_identifier_gap": 337,
-      "fundlike_stock_sector_gap": 31,
+      "fund_or_trust_identifier_gap": 336,
+      "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 137,
@@ -33,10 +33,10 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 62,
       "missing_isin_primary:accepted_source_gap": 154,
-      "missing_isin_primary:core_exclusion_candidate": 491,
+      "missing_isin_primary:core_exclusion_candidate": 490,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 495,
-      "missing_sector_stock:core_exclusion_candidate": 43,
+      "missing_sector_stock:core_exclusion_candidate": 42,
       "missing_sector_stock:official_fill_required": 41,
       "official_reference_gap:accepted_source_gap": 4275,
       "official_reference_gap:official_fill_required": 2468
@@ -91715,23 +91715,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::FCR",
-      "ticker": "FCR",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "First Capital Real Estate Investment Trust",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::FFI-UN",
       "ticker": "FFI-UN",
       "exchange": "TSX",
@@ -93182,23 +93165,6 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "L1 GLOBAL LONG SHORT FUND LIMITED",
-      "gap_class": "fundlike_stock_sector_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Canonical stock sector only with issuer-level classification evidence."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "ASX::KKC",
-      "ticker": "KKC",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "name": "KKR CREDIT INCOME FUND",
       "gap_class": "fundlike_stock_sector_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",

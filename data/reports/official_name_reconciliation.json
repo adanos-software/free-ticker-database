@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-21T08:53:46Z",
+  "generated_at": "2026-11-21T13:03:04Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1930,
+  "reconciled_rows": 1929,
   "applied_rows": 0,
-  "proposed_rows": 1930,
+  "proposed_rows": 1929,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -19279,21 +19279,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
       "observation_id": "22776247bafceb18dba93d32",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "LSE::ACG",
-      "action": "proposed",
-      "ticker": "ACG",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "isin": "VGG0056A1030",
-      "old_name": "ACG Acquisition Co. Ltd.",
-      "new_name": "ACG METALS LIMITED",
-      "source_key": "lse_price_explorer",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
-      "observation_id": "56dd6798d2d06ceb60d26ea5",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

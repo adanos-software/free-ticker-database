@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-21T08:53:46Z",
+  "generated_at": "2026-11-21T13:03:04Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2091,
-  "decision_rows": 6849,
+  "conflict_count": 2090,
+  "decision_rows": 6848,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1346,
+    "kept_listing_keyed_identifier": 1345,
     "proposed_clear_conflicting_identifier": 1079,
     "quarantined_unresolved_identifier": 4424
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1079,
   "quarantined_rows": 4424,
-  "retained_rows": 1346,
+  "retained_rows": 1345,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -2685,7 +2685,7 @@
       "listing_key": "FSX::CBW",
       "ticker": "CBW",
       "exchange": "FSX",
-      "name": "Alibaba Pictures Group Limited",
+      "name": "Damai Entertainment Holdings Limited",
       "asset_type": "Stock",
       "action": "proposed_clear_conflicting_identifier",
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
@@ -2711,7 +2711,7 @@
       "listing_key": "XSTU::CBW",
       "ticker": "CBW",
       "exchange": "XSTU",
-      "name": "Alibaba Pictures Group Ltd",
+      "name": "Damai Entertainment Holdings Limited",
       "asset_type": "Stock",
       "action": "proposed_clear_conflicting_identifier",
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
@@ -74388,7 +74388,7 @@
       "retained_isin": "US4859241048"
     },
     {
-      "conflict_id": "936a233d61b1bf664f3b",
+      "conflict_id": "937ef76b00660df33353",
       "isin": "US4869171078",
       "listing_key": "NASDAQ::KEEL",
       "ticker": "KEEL",
@@ -74401,7 +74401,20 @@
       "retained_isin": "US4869171078"
     },
     {
-      "conflict_id": "936a233d61b1bf664f3b",
+      "conflict_id": "937ef76b00660df33353",
+      "isin": "US4869171078",
+      "listing_key": "TSX::KEEL",
+      "ticker": "KEEL",
+      "exchange": "TSX",
+      "name": "Keel Infrastructure Corp",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "US4869171078"
+    },
+    {
+      "conflict_id": "937ef76b00660df33353",
       "isin": "US4869171078",
       "listing_key": "XETRA::9MK",
       "ticker": "9MK",
@@ -88647,32 +88660,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "US98980L1017"
-    },
-    {
-      "conflict_id": "1aaa75bbf9cb85ff633f",
-      "isin": "VGG0056A1030",
-      "listing_key": "LSE::ACG",
-      "ticker": "ACG",
-      "exchange": "LSE",
-      "name": "ACG Acquisition Co. Ltd.",
-      "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "VGG0056A1030"
-    },
-    {
-      "conflict_id": "1aaa75bbf9cb85ff633f",
-      "isin": "VGG0056A1030",
-      "listing_key": "OTC::ACGAF",
-      "ticker": "ACGAF",
-      "exchange": "OTC",
-      "name": "ACG Metals Limited",
-      "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
-      "evidence_status": "official_exact_listing_match",
-      "retained_isin": "VGG0056A1030"
     },
     {
       "conflict_id": "8c63969f5b1bbc3b886b",
