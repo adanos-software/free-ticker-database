@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-21T14:38:57Z",
+    "generated_at": "2026-11-21T16:27:31Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,10 +34,10 @@
   "completeness": {
     "isin": {
       "n": 63557,
-      "filled": 62911,
-      "missing": 646,
-      "pct": 98.98,
-      "fills_needed_for_99": 11,
+      "filled": 62912,
+      "missing": 645,
+      "pct": 98.99,
+      "fills_needed_for_99": 10,
       "pass": false
     },
     "country": {
@@ -50,17 +50,17 @@
     },
     "taxonomy": {
       "n": 63557,
-      "filled": 62919,
-      "missing": 638,
+      "filled": 62920,
+      "missing": 637,
       "pct": 99.0,
-      "fills_needed_for_99": 3,
+      "fills_needed_for_99": 2,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "NYSE ARCA": 114,
       "ASX": 98,
       "NASDAQ": 85,
-      "TSX": 79,
+      "TSX": 78,
       "TSXV": 56,
       "BATS": 48,
       "SSE": 33,
@@ -71,7 +71,7 @@
       "SZSE": 11
     },
     "missing_sector_by_exchange": {
-      "FSX": 223,
+      "FSX": 222,
       "NSE_IN": 45,
       "XSTU": 44,
       "HKEX": 42,
@@ -98,14 +98,14 @@
   "identity": {
     "official_isin_mismatch": 9,
     "official_name_mismatch": 11,
-    "open_collision_groups": 10,
+    "open_collision_groups": 11,
     "quarantine_unresolved": 1231,
     "quarantine_proposed_clear": 286,
     "quarantine_kept": 550
   },
   "entry_quality_status": {
-    "pass": 59806,
-    "source_gap": 3722,
+    "pass": 59807,
+    "source_gap": 3721,
     "warn": 21,
     "notice": 8
   },
@@ -117,7 +117,7 @@
         "official_isin_mismatch": 9,
         "official_isin_mismatch_unexpected": 0,
         "official_isin_mismatch_reviewed_holds": 9,
-        "open_collision_groups": 10,
+        "open_collision_groups": 11,
         "sample_mismatch": [],
         "sample_collision_isins": [
           "AU000000CRB1",
@@ -128,8 +128,8 @@
           "GRS298343005",
           "HK1097008929",
           "INE234A01025",
-          "IL0011313900",
-          "INE534A01028"
+          "DE000A12UPJ7",
+          "IL0011313900"
         ]
       }
     },
@@ -138,10 +138,10 @@
       "status": "fail",
       "details": {
         "n": 63557,
-        "filled": 62911,
-        "missing": 646,
-        "pct": 98.98,
-        "fills_needed_for_99": 11,
+        "filled": 62912,
+        "missing": 645,
+        "pct": 98.99,
+        "fills_needed_for_99": 10,
         "pass": false
       }
     },
@@ -150,10 +150,10 @@
       "status": "fail",
       "details": {
         "n": 63557,
-        "filled": 62919,
-        "missing": 638,
+        "filled": 62920,
+        "missing": 637,
         "pct": 99.0,
-        "fills_needed_for_99": 3,
+        "fills_needed_for_99": 2,
         "pass": false
       }
     },

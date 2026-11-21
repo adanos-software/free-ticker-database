@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-21T14:38:55Z`
+Generated: `2026-11-21T16:27:30Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,10 +8,10 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 121 |
-| Listings involved | 350 |
+| Collision groups | 122 |
+| Listings involved | 352 |
 | Ticker-collision groups | 31 |
-| Open groups | 10 |
+| Open groups | 11 |
 | Closed same-issuer reviewed | 111 |
 | Direct identifier apply allowed rows | 0 |
 
@@ -19,7 +19,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 90 |
+| isin_shared_by_distinct_issuers | 91 |
 | ticker_collision_isin_misassignment_suspected | 31 |
 
 ## Next Review Batches
@@ -30,9 +30,9 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | ticker_collision_isin_misassignment_suspected | United States | 13 |
 | isin_shared_by_distinct_issuers | Singapore | 8 |
 | ticker_collision_isin_misassignment_suspected | Germany | 7 |
+| isin_shared_by_distinct_issuers | Germany | 6 |
 | isin_shared_by_distinct_issuers | Sweden | 6 |
 | isin_shared_by_distinct_issuers | Cayman Islands | 5 |
-| isin_shared_by_distinct_issuers | Germany | 5 |
 | ticker_collision_isin_misassignment_suspected | India | 5 |
 | isin_shared_by_distinct_issuers | France | 4 |
 | isin_shared_by_distinct_issuers | Switzerland | 4 |
@@ -64,6 +64,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | GRS298343005 | Greece | 3 | - | HELLENiQ ENERGY Holdings S.A. \| Hellenic Petroleum Holdings S.A. |
 | HK1097008929 | Hong Kong | 3 | - | CTF Media & Entertainment Limited \| i-CABLE Communications Limited |
 | INE234A01025 | India | 3 | - | Evonile Pharma Limited \| Novartis India Ltd |
+| DE000A12UPJ7 | Germany | 2 | - | SCP Standard Capital Partners AG \| VANEA AG INH O.N. |
 | IL0011313900 | Israel | 2 | - | Eocene Ltd. - Ordinary Shares \| Galmed Pharmaceuticals Ltd |
 | INE534A01028 | India | 2 | - | Grand Foundry Ltd \| Tikona Communication Limited |
 
