@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-21T11:30:27Z",
-    "rows": 8030,
+    "generated_at": "2026-11-21T12:35:47Z",
+    "rows": 8028,
     "field_totals": {
       "missing_etf_category": 62,
-      "missing_isin_primary": 646,
-      "missing_sector_stock": 579,
+      "missing_isin_primary": 645,
+      "missing_sector_stock": 578,
       "official_reference_gap": 6743
     },
     "class_totals": {
@@ -17,8 +17,8 @@
       "equity_etf_category_gap": 15,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 4,
-      "fund_or_trust_identifier_gap": 337,
-      "fundlike_stock_sector_gap": 31,
+      "fund_or_trust_identifier_gap": 336,
+      "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 137,
@@ -39,7 +39,7 @@
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 16,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 337,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 336,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
@@ -47,7 +47,7 @@
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
-      "missing_sector_stock:fundlike_stock_sector_gap": 31,
+      "missing_sector_stock:fundlike_stock_sector_gap": 30,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 405,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
@@ -108,7 +108,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 79
+          "rows": 78
         },
         {
           "exchange": "TSXV",
@@ -11101,23 +11101,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::FCR",
-      "ticker": "FCR",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "First Capital Real Estate Investment Trust",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::FCR;exchange=TSX;ticker=FCR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::GCG",
       "ticker": "GCG",
       "exchange": "TSX",
@@ -12472,23 +12455,6 @@
       "recommended_next_source": "Issuer classification from official exchange or reviewed profile source.",
       "source_gate": "Canonical stock sector only with issuer-level classification evidence.",
       "source_gap_context": "listing_key=ASX::GLS;exchange=ASX;ticker=GLS;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=fundlike_stock_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=fundlike_stock_sector_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "ASX::KKC",
-      "ticker": "KKC",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "name": "KKR CREDIT INCOME FUND",
-      "gap_class": "fundlike_stock_sector_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
-      "recommended_next_source": "Issuer classification from official exchange or reviewed profile source.",
-      "source_gate": "Canonical stock sector only with issuer-level classification evidence.",
-      "source_gap_context": "listing_key=ASX::KKC;exchange=ASX;ticker=KKC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=fundlike_stock_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=fundlike_stock_sector_gap"
     },
