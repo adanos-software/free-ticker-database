@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-21T09:00:41Z`
+Generated at: `2026-11-21T14:40:19Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -34,11 +34,11 @@ Generated at: `2026-11-21T09:00:41Z`
 | DFM | official_full | dfm_listed_securities |  | 72 | 75.0 |  | maintain | not_applicable |
 | DSE_TZ | official_partial | dse_tz_listed_companies |  | 0 |  | dse_tz_listed_companies | denominator_missing | blocked_nonfresh_source |
 | EGX | official_partial | egx_listed_stocks |  | 0 |  | egx_listed_stocks | denominator_missing | blocked_nonfresh_source |
-| Euronext | official_full | euronext_equities|euronext_etfs |  | 2021 | 64.82 | euronext_etfs | refresh_required | not_applicable |
+| Euronext | official_full | euronext_equities|euronext_etfs |  | 2022 | 64.79 | euronext_etfs | refresh_required | not_applicable |
 | FSX | official_full | deutsche_boerse_frankfurt_all_tradable_equities |  | 18197 | 42.87 |  | maintain | not_applicable |
 | GSE | official_partial | gse_listed_companies |  | 0 |  | gse_listed_companies | denominator_missing | blocked_nonfresh_source |
 | HEL | official_partial | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares |  | 0 |  | nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares | denominator_missing | blocked_nonfresh_source |
-| HKEX | official_full | hkex_securities_list |  | 3238 | 97.87 |  | maintain | not_applicable |
+| HKEX | official_full | hkex_securities_list |  | 3241 | 97.87 |  | maintain | not_applicable |
 | HNX | official_full | hnx_listed_securities |  | 299 | 45.48 | hnx_listed_securities | refresh_unavailable | not_applicable |
 | HOSE | official_partial | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks |  | 0 |  | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks | denominator_missing | blocked_nonfresh_source |
 | ICE_IS | official_partial | nasdaq_nordic_iceland_shares |  | 0 |  | nasdaq_nordic_iceland_shares | denominator_missing | blocked_nonfresh_source |
@@ -53,10 +53,10 @@ Generated at: `2026-11-21T09:00:41Z`
 | MSX | official_full | muscat_securities_companies |  | 109 | 86.24 |  | maintain | not_applicable |
 | Munich | missing |  | ETF|Stock | 0 |  |  | official_source_required | not_applicable |
 | NASDAQ | official_full | nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange |  | 5630 | 81.58 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
-| NEO | official_full | cboe_canada_listing_directory |  | 449 | 46.33 |  | maintain | not_applicable |
+| NEO | official_full | cboe_canada_listing_directory |  | 451 | 45.9 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_company_profile_directory|ngx_equities_price_list | refresh_unavailable | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
-| NSE_IN | official_full | nse_india_securities_available |  | 3574 | 97.96 |  | maintain | not_applicable |
+| NSE_IN | official_full | nse_india_securities_available |  | 3573 | 97.96 |  | maintain | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 69 | 65.22 |  | maintain | not_applicable |
 | NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3831 | 51.06 |  | maintain | not_applicable |
 | NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2778 | 95.14 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
