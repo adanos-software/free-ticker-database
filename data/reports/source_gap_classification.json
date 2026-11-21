@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-21T09:41:31Z",
-    "rows": 8034,
+    "generated_at": "2026-11-21T10:21:42Z",
+    "rows": 8031,
     "field_totals": {
       "missing_etf_category": 62,
-      "missing_isin_primary": 647,
-      "missing_sector_stock": 582,
+      "missing_isin_primary": 646,
+      "missing_sector_stock": 580,
       "official_reference_gap": 6743
     },
     "class_totals": {
@@ -21,10 +21,10 @@
       "fundlike_stock_sector_gap": 31,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 138,
+      "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 408,
+      "official_industry_taxonomy_unavailable_gap": 406,
       "official_product_taxonomy_unavailable_gap": 38,
       "official_reference_symbol_collision_gap": 1174,
       "official_reference_unmatched_source_gap": 5569,
@@ -42,13 +42,13 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 337,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 31,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 408,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 406,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1174,
@@ -138,7 +138,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 210
+          "rows": 209
         },
         {
           "exchange": "OTC",
@@ -157,11 +157,11 @@
           "rows": 33
         },
         {
-          "exchange": "XETRA",
-          "rows": 19
+          "exchange": "BSE_IN",
+          "rows": 18
         },
         {
-          "exchange": "BSE_IN",
+          "exchange": "XETRA",
           "rows": 18
         },
         {
@@ -249,7 +249,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 205,
+        "rows": 204,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -8840,23 +8840,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "PSX::STL",
-      "ticker": "STL",
-      "exchange": "PSX",
-      "asset_type": "Stock",
-      "name": "Supernet Technologie",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=PSX::STL;exchange=PSX;ticker=STL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "PSX::TPLRF1",
       "ticker": "TPLRF1",
       "exchange": "PSX",
@@ -15385,23 +15368,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::AK4",
-      "ticker": "AK4",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "GCC S.A.B. DE C.V.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::AK4;exchange=FSX;ticker=AK4;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::ASJA",
       "ticker": "ASJA",
       "exchange": "FSX",
@@ -21431,23 +21397,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=XETRA::1XJ;exchange=XETRA;ticker=1XJ;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XETRA::6R9",
-      "ticker": "6R9",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "name": "VERISURE PLC EO -,001",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=XETRA::6R9;exchange=XETRA;ticker=6R9;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
