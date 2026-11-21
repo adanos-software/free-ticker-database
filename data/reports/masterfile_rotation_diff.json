@@ -1,78 +1,78 @@
 {
   "summary": {
-    "generated_at": "2026-11-20T15:27:35Z",
+    "generated_at": "2026-11-21T14:33:15Z",
     "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
-    "new_rows": 54,
-    "vanished_rows": 18,
-    "changed_rows": 25,
+    "new_rows": 10,
+    "vanished_rows": 4,
+    "changed_rows": 4,
     "new_by_source": {
-      "bme_security_prices_directory": 3,
-      "cse_lk_company_info_summary": 1,
-      "deutsche_boerse_frankfurt_all_tradable_equities": 34,
-      "deutsche_boerse_xetra_all_tradable_equities": 15,
-      "sgx_securities_prices": 1
+      "cboe_canada_listing_directory": 3,
+      "cse_lk_all_security_code": 1,
+      "euronext_equities": 1,
+      "hkex_securities_list": 4,
+      "nse_india_securities_available": 1
     },
     "vanished_by_source": {
-      "bme_security_prices_directory": 3,
-      "deutsche_boerse_frankfurt_all_tradable_equities": 14,
-      "twse_listed_companies": 1
+      "cboe_canada_listing_directory": 1,
+      "hkex_securities_list": 1,
+      "nse_india_securities_available": 2
     },
     "changed_by_type": {
-      "name_change": 25
+      "name_change": 4
     },
     "vanished_policy": "feed_delisting_classifier_not_direct_deletion"
   },
   "new": [
     {
-      "source_key": "bme_security_prices_directory",
-      "provider": "BME",
-      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
-      "ticker": "S0083",
-      "name": "ALAR 2.000",
-      "exchange": "BME",
-      "asset_type": "Stock",
+      "source_key": "cboe_canada_listing_directory",
+      "provider": "Cboe Canada",
+      "source_url": "https://www-api.cboe.com/ca/equities/listing-directory-data/",
+      "ticker": "ANTY",
+      "name": "PURPOSE ANTHROPIC (ANT) YIELD SHARES ETF",
+      "exchange": "NEO",
+      "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "ES0107601033",
+      "isin": "",
       "cfi": "",
-      "sector": "Financials"
+      "sector": ""
     },
     {
-      "source_key": "bme_security_prices_directory",
-      "provider": "BME",
-      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
-      "ticker": "S3122",
-      "name": "ALCESTIS INVESTMEN",
-      "exchange": "BME",
-      "asset_type": "Stock",
+      "source_key": "cboe_canada_listing_directory",
+      "provider": "Cboe Canada",
+      "source_url": "https://www-api.cboe.com/ca/equities/listing-directory-data/",
+      "ticker": "MUY",
+      "name": "PURPOSE MICRON (MU) YIELD SHARES ETF",
+      "exchange": "NEO",
+      "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "ES0108002033",
+      "isin": "",
       "cfi": "",
-      "sector": "Financials"
+      "sector": ""
     },
     {
-      "source_key": "bme_security_prices_directory",
-      "provider": "BME",
-      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
-      "ticker": "SCASM",
-      "name": "ASAM",
-      "exchange": "BME",
-      "asset_type": "Stock",
+      "source_key": "cboe_canada_listing_directory",
+      "provider": "Cboe Canada",
+      "source_url": "https://www-api.cboe.com/ca/equities/listing-directory-data/",
+      "ticker": "RYY",
+      "name": "PURPOSE YIELD SHARES RY-LINKED ETF",
+      "exchange": "NEO",
+      "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "ES0105765004",
+      "isin": "",
       "cfi": "",
-      "sector": "Real Estate"
+      "sector": ""
     },
     {
-      "source_key": "cse_lk_company_info_summary",
+      "source_key": "cse_lk_all_security_code",
       "provider": "CSE Sri Lanka",
-      "source_url": "https://www.cse.lk/api/companyInfoSummery",
+      "source_url": "https://www.cse.lk/api/allSecurityCode",
       "ticker": "UBC.R0000",
       "name": "UNION BANK OF COLOMBO PLC",
       "exchange": "CSE_LK",
@@ -85,1376 +85,212 @@
       "sector": ""
     },
     {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "1ANT",
-      "name": "ANTHROPIC PBC CL. A O.N.",
-      "exchange": "FSX",
+      "source_key": "euronext_equities",
+      "provider": "Euronext",
+      "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+      "ticker": "NFBSA",
+      "name": "NFLBIOSCIENC BSA A",
+      "exchange": "Euronext",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "US03703U1079",
+      "isin": "FR001401CC07",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "1EF",
-      "name": "SDS OPTIC S.A.  ZY 1",
-      "exchange": "FSX",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02963",
+      "name": "STAR SHINE HLDG",
+      "exchange": "HKEX",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "PLSDSOP00013",
+      "isin": "KYG2751J1168",
       "cfi": "",
       "sector": ""
     },
     {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "2F51",
-      "name": "SCINAI IMM.LTD.ADR/160000",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US09073Q5018",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "3XQ",
-      "name": "NEWBORN TOWN  DL-,0001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG6464H1011",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "4FD",
-      "name": "AXIES VENTURES -,001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "GB00BXN8HL19",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "4MA",
-      "name": "IMPACT THERAP. H HD 1",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CNE100007LG4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "5P8",
-      "name": "EMINENCE MINERALS LTD.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "AU0000439168",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "85W",
-      "name": "HYTN INNOV. O.N.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CA40443L2030",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "9OE",
-      "name": "KINETIKO ENERGY LTD",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "AU000000KKO2",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "9RK0",
-      "name": "ZHONGJI I.SDR/100 H HD 1",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "SGXE53050774",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "BCGA",
-      "name": "BEI-G.C.B.A.E. DLA",
-      "exchange": "FSX",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "03551",
+      "name": "CAM CNH BOND",
+      "exchange": "HKEX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IE000HQXNLP9",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "BECA",
-      "name": "BEI-E.C.B.A.E. EOA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000O91W7C7",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "BGGA",
-      "name": "BEI-G.A.B.A.E. DLA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000CZZKFP4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "BGHY",
-      "name": "BEI-GL.HY A.E. DLA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE00037LD484",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "BR6",
-      "name": "NAPOLEON RESS INC. O.N.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CA63071M1032",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "BUSH",
-      "name": "BEI-U.HY AC.E. DLA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0009EB8850",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "ETF1",
-      "name": "ALTERSVORSORGE ONE UCITS",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "DE000A423220",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "F9I0",
-      "name": "PRISTINE CAPITAL  LS -,01",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "GB00BVLCTC60",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "GBAE",
-      "name": "ISH2-EOG.BDACE EOD",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000Y72CV05",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "GEAB",
-      "name": "ISH2-EOG.BDACE EOA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0004DOXNW4",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "GURD",
-      "name": "AM-ST.WO.DE. DLA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000EKVG731",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "GV3",
-      "name": "HEAD ENGINEERING B O.N.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "SE0027691734",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "IBOT",
-      "name": "L.U.-B.V.H.R.U.E. DLA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000VK2UQF8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "II00",
-      "name": "FRONTIER ENERGY LTD.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "AU0000207912",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "JH5",
-      "name": "ROMA GREEN FIN LTD",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG7633Y1089",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "N6J",
-      "name": "SN ENTRTINMT T. HD -,0001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "KYG8191E1044",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "NU00",
-      "name": "COPPERCORP RES. O.N.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CA2176372068",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "O1E0",
-      "name": "OTTO ENERGY LTD. DEF.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "AU0000499998",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "VAEA",
-      "name": "VA-V.AC EUR CBE EOA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000Y090178",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "VAEC",
-      "name": "VA-V.AC EUR CBE EOD",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0008JY19B2",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "VUHA",
-      "name": "VA.ACDLHYCBE DLA",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0004NSES78",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "VUHD",
-      "name": "VA.ACDLHYCBE DLD",
-      "exchange": "FSX",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0001Z91FY3",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "W6W1",
-      "name": "AEM HOLDINGS LTD",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "SG1BA1000003",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "YH10",
-      "name": "AIR INDS GRP NEW DL-,001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US00912N5023",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "1ANT",
-      "name": "ANTHROPIC PBC CL. A O.N.",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US03703U1079",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "BCGA",
-      "name": "BEI-G.C.B.A.E. DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000HQXNLP9",
+      "isin": "HK0001374781",
       "cfi": "",
       "sector": "Fixed Income"
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "BECA",
-      "name": "BEI-E.C.B.A.E. EOA",
-      "exchange": "XETRA",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "41551",
+      "name": "CAM CNH BOND-U",
+      "exchange": "HKEX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IE000O91W7C7",
+      "isin": "HK0001374781",
       "cfi": "",
       "sector": "Fixed Income"
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "BGGA",
-      "name": "BEI-G.A.B.A.E. DLA",
-      "exchange": "XETRA",
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "83551",
+      "name": "CAM CNH BOND-R",
+      "exchange": "HKEX",
       "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "IE000CZZKFP4",
+      "isin": "HK0001374781",
       "cfi": "",
       "sector": "Fixed Income"
     },
     {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "BGHY",
-      "name": "BEI-GL.HY A.E. DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE00037LD484",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "BUSH",
-      "name": "BEI-U.HY AC.E. DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0009EB8850",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "ETF1",
-      "name": "ALTERSVORSORGE ONE UCITS",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "DE000A423220",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "GBAE",
-      "name": "ISH2-EOG.BDACE EOD",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000Y72CV05",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "GEAB",
-      "name": "ISH2-EOG.BDACE EOA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0004DOXNW4",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "GURD",
-      "name": "AM-ST.WO.DE. DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000EKVG731",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "IBOT",
-      "name": "L.U.-B.V.H.R.U.E. DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000VK2UQF8",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "VAEA",
-      "name": "VA-V.AC EUR CBE EOA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE000Y090178",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "VAEC",
-      "name": "VA-V.AC EUR CBE EOD",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0008JY19B2",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "VUHA",
-      "name": "VA.ACDLHYCBE DLA",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0004NSES78",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "ticker": "VUHD",
-      "name": "VA.ACDLHYCBE DLD",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE0001Z91FY3",
-      "cfi": "",
-      "sector": "Fixed Income"
-    },
-    {
-      "source_key": "sgx_securities_prices",
-      "provider": "SGX",
-      "source_url": "https://api.sgx.com/securities/v1.1",
-      "ticker": "IYM",
-      "name": "LHT 1",
-      "exchange": "SGX",
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SHUKRAMED",
+      "name": "Shukra Medtech Limited",
+      "exchange": "NSE_IN",
       "asset_type": "Stock",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
-      "isin": "SG1BG5000006",
+      "isin": "INE551C01044",
       "cfi": "",
       "sector": ""
     }
   ],
   "vanished": [
     {
-      "source_key": "bme_security_prices_directory",
-      "provider": "BME",
-      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
-      "ticker": "S0127",
-      "name": "ALLOCATION",
-      "exchange": "BME",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "ES0108381031",
-      "cfi": "",
-      "sector": "Financials"
-    },
-    {
-      "source_key": "bme_security_prices_directory",
-      "provider": "BME",
-      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
-      "ticker": "S3129",
-      "name": "ALKARIKA",
-      "exchange": "BME",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "ES0169092030",
-      "cfi": "",
-      "sector": "Financials"
-    },
-    {
-      "source_key": "bme_security_prices_directory",
-      "provider": "BME",
-      "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
-      "ticker": "S3832",
-      "name": "ALGEBRA 64 AUREA",
-      "exchange": "BME",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "ES0175472002",
-      "cfi": "",
-      "sector": "Financials"
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "0OH",
-      "name": "OOH MEDIA LTD",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "AU000000OML6",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "2F50",
-      "name": "SCINAI IMM.LTD. ADR/40000",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US09073Q4029",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "5V9",
-      "name": "UTZ BRANDS INC. A -,0001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US9180901012",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "82P",
-      "name": "PACIRA BIOSCIENC. DL-,001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US6951271005",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "85W0",
-      "name": "HYTN INNOVATIONS INC.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CA40443L1040",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "918",
-      "name": "SOUNDTHINKING INC.DL-,005",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US82536T1079",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "IR5B",
-      "name": "IRISH CONTINENTAL GRP UTS",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IE00BLP58571",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "LX4A",
-      "name": "LUXFER HLDGS PLC   LS-,50",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "GB00BNK03D49",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "NU0",
-      "name": "COPPERCORP RESOURCES INC.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CA2176371078",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "O29",
-      "name": "PLC SPA",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "IT0005339160",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "SNB1",
-      "name": "SOCKET MOBILE NEW DL-,001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US83368E2000",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "TLA",
-      "name": "MAVEN BRANDS INC.",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CA57768L1058",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "VEW",
-      "name": "VERSABANK",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "CA92512J1066",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "provider": "Deutsche Boerse",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/2289108/3a67eacf4ad3419344f37b88a755943f/data/t7-xfra-BF-allTradableInstruments.csv",
-      "ticker": "YH1",
-      "name": "AIR INDUSTRIES GR.DL-,001",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "listing_status": "active",
-      "reference_scope": "exchange_directory",
-      "official": "true",
-      "isin": "US00912N4034",
-      "cfi": "",
-      "sector": ""
-    },
-    {
-      "source_key": "twse_listed_companies",
-      "provider": "TWSE",
-      "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap03_L",
-      "ticker": "1589",
-      "name": "永冠能源科技集團有限公司",
-      "exchange": "TWSE",
-      "asset_type": "Stock",
+      "source_key": "cboe_canada_listing_directory",
+      "provider": "Cboe Canada",
+      "source_url": "https://www-api.cboe.com/ca/equities/listing-directory-data/",
+      "ticker": "RBCY",
+      "name": "PURPOSE RBC (RY) YIELD SHARES ETF",
+      "exchange": "NEO",
+      "asset_type": "ETF",
       "listing_status": "active",
       "reference_scope": "exchange_directory",
       "official": "true",
       "isin": "",
       "cfi": "",
-      "sector": "Industrials"
+      "sector": ""
+    },
+    {
+      "source_key": "hkex_securities_list",
+      "provider": "HKEX",
+      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+      "ticker": "02479",
+      "name": "TIANJUDIHE",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "CNE100006F65",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "COMPINFO",
+      "name": "Compuage Infocom Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE070C01037",
+      "cfi": "",
+      "sector": ""
+    },
+    {
+      "source_key": "nse_india_securities_available",
+      "provider": "NSE India",
+      "source_url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "ticker": "SHUKRAPHAR",
+      "name": "Shukra Pharmaceuticals Limited",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "listing_status": "active",
+      "reference_scope": "exchange_directory",
+      "official": "true",
+      "isin": "INE551C01044",
+      "cfi": "",
+      "sector": ""
     }
   ],
   "changed": [
     {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "0AH1",
+      "source_key": "cboe_canada_listing_directory",
+      "exchange": "NEO",
+      "ticker": "BNSY",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "AUTOHELLAS S.A.NA EO 1,08",
-          "after": "AUTOHELLAS T+T NA EO 1,08"
+          "before": "PURPOSE SCOTIABANK (BNS) YIELD SHARES ETF",
+          "after": "PURPOSE YIELD SHARES BNS-LINKED ETF"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "19I",
+      "source_key": "cboe_canada_listing_directory",
+      "exchange": "NEO",
+      "ticker": "TDY",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "JENKINS TOPCO   LS-,00005",
-          "after": "IG GROUP HLDGS. LS-,00005"
+          "before": "PURPOSE TD (TD) YIELD SHARES ETF",
+          "after": "PURPOSE YIELD SHARES TD-LINKED ETF"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "6TVM",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "00167",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "MULACSPP500 U DIS",
-          "after": "AMCORSP500SW D"
+          "before": "IDT INT'L",
+          "after": "IDT INT'L-500"
         }
       }
     },
     {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "C9DY",
+      "source_key": "hkex_securities_list",
+      "exchange": "HKEX",
+      "ticker": "02723",
       "change_types": [
         "name_change"
       ],
       "changes": {
         "name": {
-          "before": "UMWELTBANK ETF-G.SDG.PEOA",
-          "after": "UMWELTBK GL.SDG FO.U-EEOA"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "FJ7E",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UMWELTBA-GR.SO.BD EO PEOD",
-          "after": "UMWELTBA-GR.SO.BD U-EEOD"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "FJ7G",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UB-EUR.SDG FDS PEOA",
-          "after": "UB-EUR.SDG FDS U-EEOA"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "FJ7H",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UB-GR.S.C.B EO PEOD",
-          "after": "UB-GR.S.C.B EO U-EEOD"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "FJ7I",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UB-GR.S.G.B EO PEOD",
-          "after": "UB-GR.S.G.B EO U-EEOD"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "HELD",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "HSBC ETF- WORLD DLA",
-          "after": "HSBC WRLD UETF DLA"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "LYP2",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MULACSPP500 EH D",
-          "after": "AMCORSP500SW EH D"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "LYP5",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MULACSPP500 E ACC",
-          "after": "AMCORSP500SW A"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "LYPS",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MULACSPP500 E DIS",
-          "after": "AMCORSP500SW ED"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "MGIN",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MAN A.G.I.UE I CDLA",
-          "after": "MAE-M.A.GL.INFR.UE ICDLA"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_frankfurt_all_tradable_equities",
-      "exchange": "FSX",
-      "ticker": "SE0",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "GOLDEN MATR.GRP DL-,00001",
-          "after": "MERIDIAN HLDGS. DL-,00001"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "6TVM",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MULACSPP500 U DIS",
-          "after": "AMCORSP500SW D"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "C9DY",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UMWELTBANK ETF-G.SDG.PEOA",
-          "after": "UMWELTBK GL.SDG FO.U-EEOA"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "FJ7E",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UMWELTBA-GR.SO.BD EO PEOD",
-          "after": "UMWELTBA-GR.SO.BD U-EEOD"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "FJ7G",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UB-EUR.SDG FDS PEOA",
-          "after": "UB-EUR.SDG FDS U-EEOA"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "FJ7H",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UB-GR.S.C.B EO PEOD",
-          "after": "UB-GR.S.C.B EO U-EEOD"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "FJ7I",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "UB-GR.S.G.B EO PEOD",
-          "after": "UB-GR.S.G.B EO U-EEOD"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "HELD",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "HSBC ETF- WORLD DLA",
-          "after": "HSBC WRLD UETF DLA"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "LYP2",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MULACSPP500 EH D",
-          "after": "AMCORSP500SW EH D"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "LYP5",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MULACSPP500 E ACC",
-          "after": "AMCORSP500SW A"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "LYPS",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MULACSPP500 E DIS",
-          "after": "AMCORSP500SW ED"
-        }
-      }
-    },
-    {
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "exchange": "XETRA",
-      "ticker": "MGIN",
-      "change_types": [
-        "name_change"
-      ],
-      "changes": {
-        "name": {
-          "before": "MAN A.G.I.UE I CDLA",
-          "after": "MAE-M.A.GL.INFR.UE ICDLA"
+          "before": "DEEPZERO-NEW",
+          "after": "DEEPZERO"
         }
       }
     }

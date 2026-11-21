@@ -1,45 +1,45 @@
 {
   "summary": {
-    "generated_at": "2026-11-21T13:53:57Z",
-    "rows": 8027,
+    "generated_at": "2026-11-21T15:24:28Z",
+    "rows": 8035,
     "field_totals": {
-      "missing_etf_category": 62,
-      "missing_isin_primary": 644,
-      "missing_sector_stock": 578,
-      "official_reference_gap": 6743
+      "missing_etf_category": 63,
+      "missing_isin_primary": 645,
+      "missing_sector_stock": 580,
+      "official_reference_gap": 6747
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 30,
-      "commodity_etf_category_gap": 5,
+      "commodity_etf_category_gap": 6,
       "debt_or_securitized_identifier_gap": 91,
       "equity_etf_category_gap": 15,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 4,
-      "fund_or_trust_identifier_gap": 335,
+      "fund_or_trust_identifier_gap": 336,
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
       "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 405,
+      "official_industry_taxonomy_unavailable_gap": 407,
       "official_product_taxonomy_unavailable_gap": 38,
-      "official_reference_symbol_collision_gap": 1174,
-      "official_reference_unmatched_source_gap": 5569,
+      "official_reference_symbol_collision_gap": 1176,
+      "official_reference_unmatched_source_gap": 5571,
       "otc_sector_source_gap": 90,
       "shell_or_cpc_sector_gap": 7
     },
     "class_by_field": {
-      "missing_etf_category:commodity_etf_category_gap": 5,
+      "missing_etf_category:commodity_etf_category_gap": 6,
       "missing_etf_category:equity_etf_category_gap": 15,
       "missing_etf_category:fixed_income_etf_category_gap": 4,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 38,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 16,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 335,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 336,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
@@ -48,11 +48,11 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 30,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 405,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 407,
       "missing_sector_stock:otc_sector_source_gap": 90,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
-      "official_reference_gap:official_reference_symbol_collision_gap": 1174,
-      "official_reference_gap:official_reference_unmatched_source_gap": 5569
+      "official_reference_gap:official_reference_symbol_collision_gap": 1176,
+      "official_reference_gap:official_reference_unmatched_source_gap": 5571
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -81,11 +81,11 @@
           "rows": 2
         },
         {
-          "exchange": "Euronext",
-          "rows": 1
+          "exchange": "TSX",
+          "rows": 2
         },
         {
-          "exchange": "TSX",
+          "exchange": "Euronext",
           "rows": 1
         },
         {
@@ -108,7 +108,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 77
+          "rows": 78
         },
         {
           "exchange": "TSXV",
@@ -146,11 +146,11 @@
         },
         {
           "exchange": "NSE_IN",
-          "rows": 43
+          "rows": 44
         },
         {
           "exchange": "HKEX",
-          "rows": 41
+          "rows": 42
         },
         {
           "exchange": "XSTU",
@@ -318,20 +318,20 @@
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
+        "field": "official_reference_gap",
+        "gap_class": "official_reference_unmatched_source_gap",
+        "exchange": "HKEX",
+        "rows": 91,
+        "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+        "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+      },
+      {
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
         "rows": 90,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-      },
-      {
-        "field": "official_reference_gap",
-        "gap_class": "official_reference_unmatched_source_gap",
-        "exchange": "HKEX",
-        "rows": 90,
-        "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-        "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
         "field": "official_reference_gap",
@@ -1135,6 +1135,23 @@
       "source_gap_context": "listing_key=TSX::CUSD;exchange=TSX;ticker=CUSD;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "TSX::GLDX",
+      "ticker": "GLDX",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Global X Gold Producers Index ETF",
+      "gap_class": "commodity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic product evidence; commodity tokens alone need review if ambiguous.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic commodity exposure evidence.",
+      "source_gap_context": "listing_key=TSX::GLDX;exchange=TSX;ticker=GLDX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=commodity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=commodity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -10336,6 +10353,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "TSX::GLDX",
+      "ticker": "GLDX",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Global X Gold Producers Index ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=TSX::GLDX;exchange=TSX;ticker=GLDX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "TSX::HISU",
       "ticker": "HISU",
       "exchange": "TSX",
@@ -17680,6 +17714,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "HKEX::02963",
+      "ticker": "02963",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "STAR SHINE HLDG",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=HKEX::02963;exchange=HKEX;ticker=02963;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "HKEX::02981",
       "ticker": "02981",
       "exchange": "HKEX",
@@ -19119,6 +19170,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=NSE_IN::SHAHINVEST;exchange=NSE_IN;ticker=SHAHINVEST;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NSE_IN::SHUKRAMED",
+      "ticker": "SHUKRAMED",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "name": "Shukra Medtech Limited",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NSE_IN::SHUKRAMED;exchange=NSE_IN;ticker=SHUKRAMED;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -54502,6 +54570,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "HKEX::02479",
+      "ticker": "02479",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "name": "TIANJUDIHE",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=HKEX::02479;exchange=HKEX;ticker=02479;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "HKEX::02908",
       "ticker": "02908",
       "exchange": "HKEX",
@@ -63750,6 +63835,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NEO::RBCY",
+      "ticker": "RBCY",
+      "exchange": "NEO",
+      "asset_type": "ETF",
+      "name": "Purpose RBC (RY) Yield Shares ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+      "source_gap_context": "listing_key=NEO::RBCY;exchange=NEO;ticker=RBCY;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NEO::RPU",
       "ticker": "RPU",
       "exchange": "NEO",
@@ -64923,6 +65025,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NSE_IN::COMPINFO",
+      "ticker": "COMPINFO",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "name": "Compuage Infocom Limited",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NSE_IN::COMPINFO;exchange=NSE_IN;ticker=COMPINFO;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NSE_IN::DRAGARWQ",
       "ticker": "DRAGARWQ",
       "exchange": "NSE_IN",
@@ -65155,6 +65274,23 @@
       "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
       "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
       "source_gap_context": "listing_key=NSE_IN::SELMC;exchange=NSE_IN;ticker=SELMC;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
+      "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NSE_IN::SHUKRAPHAR",
+      "ticker": "SHUKRAPHAR",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "name": "Shukra Pharmaceuticals Limited",
+      "gap_class": "official_reference_symbol_collision_gap",
+      "review_needed": "true",
+      "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+      "recommended_next_source": "Official exchange directory plus listing-key review for the row's exchange/security.",
+      "source_gate": "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+      "source_gap_context": "listing_key=NSE_IN::SHUKRAPHAR;exchange=NSE_IN;ticker=SHUKRAPHAR;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_symbol_collision_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_symbol_collision_gap"
     },
