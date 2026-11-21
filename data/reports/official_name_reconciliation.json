@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-21T14:34:50Z",
+  "generated_at": "2026-11-21T16:26:59Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1929,
+  "reconciled_rows": 1928,
   "applied_rows": 0,
-  "proposed_rows": 1929,
+  "proposed_rows": 1928,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -28519,21 +28519,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls",
       "observation_id": "c8b11a12ca2cd648efde7f18",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "XETRA::VAD",
-      "action": "proposed",
-      "ticker": "VAD",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "isin": "DE000A12UPJ7",
-      "old_name": "SCP STAN.CAP.PART. INH ON",
-      "new_name": "VANEA AG INH O.N.",
-      "source_key": "deutsche_boerse_xetra_all_tradable_equities",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
-      "observation_id": "ca4e93da7bba3168094dfd60",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
