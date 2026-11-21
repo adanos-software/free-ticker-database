@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 171164,
-    "source_specific_reference_keys": 171163,
+    "active_official_reference_rows": 171170,
+    "source_specific_reference_keys": 171169,
     "classification_counts": {
       "alternate_listing_line": 3395,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12530,
-      "exact_match": 100162,
-      "missing_from_database": 44865,
+      "exact_match": 100163,
+      "missing_from_database": 44867,
       "normalization_candidate": 1857,
-      "out_of_scope": 8160
+      "out_of_scope": 8163
     },
-    "coverage_credited_keys": 100162,
+    "coverage_credited_keys": 100163,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44865,
+    "in_scope_missing_rows": 44867,
     "identity_conflict_rows": 12530,
     "mapping_candidate_rows": 1857
   },
@@ -223155,6 +223155,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "cboe_canada_listing_directory::NEO::ANTY",
+      "source_key": "cboe_canada_listing_directory",
+      "reference_key": "NEO::ANTY",
+      "exchange": "NEO",
+      "ticker": "ANTY",
+      "asset_types": "ETF",
+      "names": "PURPOSE ANTHROPIC (ANT) YIELD SHARES ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "cboe_canada_listing_directory::NEO::APLY",
       "source_key": "cboe_canada_listing_directory",
       "reference_key": "NEO::APLY",
@@ -223449,7 +223465,7 @@
       "exchange": "NEO",
       "ticker": "BNSY",
       "asset_types": "ETF",
-      "names": "PURPOSE SCOTIABANK (BNS) YIELD SHARES ETF",
+      "names": "PURPOSE YIELD SHARES BNS-LINKED ETF",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -226579,6 +226595,22 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
+      "reconciliation_key": "cboe_canada_listing_directory::NEO::MUY",
+      "source_key": "cboe_canada_listing_directory",
+      "reference_key": "NEO::MUY",
+      "exchange": "NEO",
+      "ticker": "MUY",
+      "asset_types": "ETF",
+      "names": "PURPOSE MICRON (MU) YIELD SHARES ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "cboe_canada_listing_directory::NEO::MWMN",
       "source_key": "cboe_canada_listing_directory",
       "reference_key": "NEO::MWMN",
@@ -226880,22 +226912,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NEO::QTIP",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "cboe_canada_listing_directory::NEO::RBCY",
-      "source_key": "cboe_canada_listing_directory",
-      "reference_key": "NEO::RBCY",
-      "exchange": "NEO",
-      "ticker": "RBCY",
-      "asset_types": "ETF",
-      "names": "PURPOSE RBC (RY) YIELD SHARES ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NEO::RBCY",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -227507,6 +227523,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "cboe_canada_listing_directory::NEO::RYY",
+      "source_key": "cboe_canada_listing_directory",
+      "reference_key": "NEO::RYY",
+      "exchange": "NEO",
+      "ticker": "RYY",
+      "asset_types": "ETF",
+      "names": "PURPOSE YIELD SHARES RY-LINKED ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "cboe_canada_listing_directory::NEO::SAN",
       "source_key": "cboe_canada_listing_directory",
       "reference_key": "NEO::SAN",
@@ -228105,7 +228137,7 @@
       "exchange": "NEO",
       "ticker": "TDY",
       "asset_types": "ETF",
-      "names": "PURPOSE TD (TD) YIELD SHARES ETF",
+      "names": "PURPOSE YIELD SHARES TD-LINKED ETF",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -235136,6 +235168,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "CSE_LK::UBC.N0000",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "cse_lk_all_security_code::CSE_LK::UBC.R0000",
+      "source_key": "cse_lk_all_security_code",
+      "reference_key": "CSE_LK::UBC.R0000",
+      "exchange": "CSE_LK",
+      "ticker": "UBC.R0000",
+      "asset_types": "Stock",
+      "names": "UNION BANK OF COLOMBO PLC",
+      "isins": "LK0306R00008",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "CSE_LK::UBC.R0000",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -747299,6 +747347,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "euronext_equities::Euronext::NFBSA",
+      "source_key": "euronext_equities",
+      "reference_key": "Euronext::NFBSA",
+      "exchange": "Euronext",
+      "ticker": "NFBSA",
+      "asset_types": "Stock",
+      "names": "NFLBIOSCIENC BSA A",
+      "isins": "FR001401CC07",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
       "reconciliation_key": "euronext_equities::Euronext::NK",
       "source_key": "euronext_equities",
       "reference_key": "Euronext::NK",
@@ -824601,7 +824665,7 @@
       "exchange": "HKEX",
       "ticker": "00167",
       "asset_types": "Stock",
-      "names": "IDT INT'L",
+      "names": "IDT INT'L-500",
       "isins": "BMG4705P1499",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -850659,22 +850723,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "hkex_securities_list::HKEX::02479",
-      "source_key": "hkex_securities_list",
-      "reference_key": "HKEX::02479",
-      "exchange": "HKEX",
-      "ticker": "02479",
-      "asset_types": "Stock",
-      "names": "TIANJUDIHE",
-      "isins": "CNE100006F65",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "HKEX::02479",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "hkex_securities_list::HKEX::02480",
       "source_key": "hkex_securities_list",
       "reference_key": "HKEX::02480",
@@ -853385,7 +853433,7 @@
       "exchange": "HKEX",
       "ticker": "02723",
       "asset_types": "Stock",
-      "names": "DEEPZERO-NEW",
+      "names": "DEEPZERO",
       "isins": "CNE100007LC3",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -854720,6 +854768,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "HKEX::02962",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "hkex_securities_list::HKEX::02963",
+      "source_key": "hkex_securities_list",
+      "reference_key": "HKEX::02963",
+      "exchange": "HKEX",
+      "ticker": "02963",
+      "asset_types": "Stock",
+      "names": "STAR SHINE HLDG",
+      "isins": "KYG2751J1168",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "HKEX::02963",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -858721,6 +858785,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "HKEX::03537",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "hkex_securities_list::HKEX::03551",
+      "source_key": "hkex_securities_list",
+      "reference_key": "HKEX::03551",
+      "exchange": "HKEX",
+      "ticker": "03551",
+      "asset_types": "ETF",
+      "names": "CAM CNH BOND",
+      "isins": "HK0001374781",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: bond"
     },
     {
       "reconciliation_key": "hkex_securities_list::HKEX::03555",
@@ -872515,6 +872595,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "hkex_securities_list::HKEX::41551",
+      "source_key": "hkex_securities_list",
+      "reference_key": "HKEX::41551",
+      "exchange": "HKEX",
+      "ticker": "41551",
+      "asset_types": "ETF",
+      "names": "CAM CNH BOND-U",
+      "isins": "HK0001374781",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: bond"
+    },
+    {
       "reconciliation_key": "hkex_securities_list::HKEX::41555",
       "source_key": "hkex_securities_list",
       "reference_key": "HKEX::41555",
@@ -873953,6 +874049,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "HKEX::83525",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "hkex_securities_list::HKEX::83551",
+      "source_key": "hkex_securities_list",
+      "reference_key": "HKEX::83551",
+      "exchange": "HKEX",
+      "ticker": "83551",
+      "asset_types": "ETF",
+      "names": "CAM CNH BOND-R",
+      "isins": "HK0001374781",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: bond"
     },
     {
       "reconciliation_key": "hkex_securities_list::HKEX::83555",
@@ -1756963,22 +1757075,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::COMPINFO",
-      "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::COMPINFO",
-      "exchange": "NSE_IN",
-      "ticker": "COMPINFO",
-      "asset_types": "Stock",
-      "names": "Compuage Infocom Limited",
-      "isins": "INE070C01037",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::COMPINFO",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nse_india_securities_available::NSE_IN::COMPUSOFT",
       "source_key": "nse_india_securities_available",
       "reference_key": "NSE_IN::COMPUSOFT",
@@ -1792851,19 +1792947,19 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nse_india_securities_available::NSE_IN::SHUKRAPHAR",
+      "reconciliation_key": "nse_india_securities_available::NSE_IN::SHUKRAMED",
       "source_key": "nse_india_securities_available",
-      "reference_key": "NSE_IN::SHUKRAPHAR",
+      "reference_key": "NSE_IN::SHUKRAMED",
       "exchange": "NSE_IN",
-      "ticker": "SHUKRAPHAR",
+      "ticker": "SHUKRAMED",
       "asset_types": "Stock",
-      "names": "Shukra Pharmaceuticals Limited",
+      "names": "Shukra Medtech Limited",
       "isins": "INE551C01044",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
       "classification": "exact_match",
       "coverage_credit": "true",
-      "matched_listing_keys": "NSE_IN::SHUKRAPHAR",
+      "matched_listing_keys": "NSE_IN::SHUKRAMED",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -2575149,10 +2575245,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "TSX::GLDX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_etf_screener::TSX::GOGY",
@@ -2611597,10 +2611693,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "TSX::GLDX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "tmx_listed_issuers::TSX::GLO",
