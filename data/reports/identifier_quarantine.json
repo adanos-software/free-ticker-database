@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-21T13:03:04Z",
+  "generated_at": "2026-11-21T14:34:50Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2090,
-  "decision_rows": 6848,
+  "conflict_count": 2091,
+  "decision_rows": 6851,
   "action_counts": {
     "kept_listing_keyed_identifier": 1345,
     "proposed_clear_conflicting_identifier": 1079,
-    "quarantined_unresolved_identifier": 4424
+    "quarantined_unresolved_identifier": 4427
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1079,
-  "quarantined_rows": 4424,
+  "quarantined_rows": 4427,
   "retained_rows": 1345,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -36192,6 +36192,45 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "INE534A01028"
+    },
+    {
+      "conflict_id": "7ce84ce10c920d158c12",
+      "isin": "INE551C01044",
+      "listing_key": "BSE_IN::SHUKRAPHAR",
+      "ticker": "SHUKRAPHAR",
+      "exchange": "BSE_IN",
+      "name": "Shukra Pharmaceuticals Ltd",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE551C01044"
+    },
+    {
+      "conflict_id": "7ce84ce10c920d158c12",
+      "isin": "INE551C01044",
+      "listing_key": "NSE_IN::SHUKRAMED",
+      "ticker": "SHUKRAMED",
+      "exchange": "NSE_IN",
+      "name": "Shukra Medtech Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE551C01044"
+    },
+    {
+      "conflict_id": "7ce84ce10c920d158c12",
+      "isin": "INE551C01044",
+      "listing_key": "NSE_IN::SHUKRAPHAR",
+      "ticker": "SHUKRAPHAR",
+      "exchange": "NSE_IN",
+      "name": "Shukra Pharmaceuticals Limited",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "INE551C01044"
     },
     {
       "conflict_id": "b106d8e34e6a9237c939",
