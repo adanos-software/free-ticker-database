@@ -1,6 +1,6 @@
 # M3 Non Equity Leakage Guard
 
-Generated at: `2026-11-13T21:21:15Z`
+Generated at: `2026-11-20T21:13:16Z`
 
 ## Summary
 
