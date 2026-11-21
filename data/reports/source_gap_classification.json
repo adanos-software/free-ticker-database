@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-21T13:06:36Z",
-    "rows": 8028,
+    "generated_at": "2026-11-21T13:53:57Z",
+    "rows": 8027,
     "field_totals": {
       "missing_etf_category": 62,
-      "missing_isin_primary": 645,
+      "missing_isin_primary": 644,
       "missing_sector_stock": 578,
       "official_reference_gap": 6743
     },
@@ -17,7 +17,7 @@
       "equity_etf_category_gap": 15,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 4,
-      "fund_or_trust_identifier_gap": 336,
+      "fund_or_trust_identifier_gap": 335,
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -39,7 +39,7 @@
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 16,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 336,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 335,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
@@ -108,7 +108,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 78
+          "rows": 77
         },
         {
           "exchange": "TSXV",
@@ -11063,23 +11063,6 @@
       "source_gap_context": "listing_key=TSX::DPM;exchange=TSX;ticker=DPM;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::EIT",
-      "ticker": "EIT",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "Canoe EIT Income Fund",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::EIT;exchange=TSX;ticker=EIT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
