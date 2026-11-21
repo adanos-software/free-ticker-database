@@ -7,25 +7,994 @@
   },
   "summary": {
     "before_rows": 97698,
-    "after_rows": 97698,
-    "overall_shrink_pct": 0.0,
-    "removed_rows": 0,
-    "evidenced_removed_rows": 0,
+    "after_rows": 97691,
+    "overall_shrink_pct": 0.007165,
+    "removed_rows": 9,
+    "evidenced_removed_rows": 9,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 134,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 0
+    "generated_reviewed_transition_evidence_rows": 9
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [],
+  "evidenced_removed_listing_keys": [
+    "BATS::FPRO",
+    "NASDAQ::FDFF",
+    "NASDAQ::FDIF",
+    "NASDAQ::FMED",
+    "NASDAQ::FMET",
+    "NYSE ARCA::GLDX",
+    "TSX::HED",
+    "TSX::HFD",
+    "TSX::HSD"
+  ],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "AMS::3AAP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::3AMD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::3BAB",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::3CON",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::3FB",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::3MSF",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::3TSL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::5QQQ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::BABY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::CETH",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "AMS::CPRY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::ECLU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "AMS::ECSH",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Money Market"
+    },
+    {
+      "listing_key": "AMS::FTAE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::FTAS",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::GLMY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::IASP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "AMS::IENC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "AMS::LBUL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Commodity"
+    },
+    {
+      "listing_key": "AMS::LSIL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Commodity"
+    },
+    {
+      "listing_key": "AMS::SBUL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Commodity"
+    },
+    {
+      "listing_key": "AMS::SLMY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::SPYY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "AMS::SSIL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Commodity"
+    },
+    {
+      "listing_key": "AMS::URNY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "BATS::BGRD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "BATS::DFIT",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "BATS::DLAY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "BATS::MAGP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "BATS::OVQ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "BATS::PGRW",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "BATS::SIX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "BATS::VEMB",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NASDAQ::ACEM",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::CWPG",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NASDAQ::DAU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NASDAQ::DRAC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NASDAQ::FBEQ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::HCOP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NASDAQ::PCHX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "NASDAQ::PIVT",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "NASDAQ::TCAN",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NASDAQ::THYP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NASDAQ::YSKH",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::ACJL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::AIBE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::APNX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::BBLX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::BWLB",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::EMDI",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::EMIL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::FMIG",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::GLLD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Commodity"
+    },
+    {
+      "listing_key": "NYSE ARCA::GMAC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::HFIX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::HYB",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::HYFY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::IQEE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::IQEI",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::IQEL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::IQES",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::KBTY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::LYR",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::LYRI",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::MFIX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::NJPN",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::NRR",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::OAKL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::RECD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::RECM",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::SEQ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SIMI",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::SMDC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SMTJ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPXP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "NYSE ARCA::UBIQ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::VTVX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::WINC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::XDLR",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::ZCSH",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::ZDAY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE::LTEQ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE::THCR",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ROSY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ROSY.U",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::0USU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::AELE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::ANSQ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::AWOR",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::BOTS",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::CN2A",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::CSMH",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::CSPS",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::DSCC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::EDMC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::EQAE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::EQAW",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::EQAZ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::ESAS",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::FGLB",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::FGLY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::FLDE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::FTUM",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::FUSY",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::GQJJ",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::HELD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::HNSC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::IQGU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::J5E1",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::JGLV",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::JGVA",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::JGVL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::LMEM",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::LMGE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::LQUS",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::MA9S",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::MSLP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::MSMW",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::PFUS",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::PQEM",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::SKEU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::SKUS",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::TCQU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::TCQW",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::TRPG",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::TRPU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::WEBP",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::WIDE",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::XGTI",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::XMAC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::XMIT",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::XMNG",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::XNA1",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::YLDU",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    }
+  ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [],
+  "generated_reviewed_transition_evidence": [
+    {
+      "listing_key": "NASDAQ::FDFF",
+      "ticker": "FDFF",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Fidelity Disruptive Finance ETF",
+      "new_value": "",
+      "before_row_sha256": "357b99ba7d81b87e6c38f48eadea65f33d2f26592b3af02f0ece5ff531b836e0",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/945908/000094590826000364/filing13611.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "8120fccc563e1e7c95216f50",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::FDIF",
+      "ticker": "FDIF",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Fidelity Disruptors ETF",
+      "new_value": "",
+      "before_row_sha256": "a842e2282f0f4df598ed26f1e9c823936a58e1c0c581fae1ca4e37c64f657f0d",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/945908/000094590826000366/filing13611.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "36e1fe8d3a120ee600dbdbd8",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::FMED",
+      "ticker": "FMED",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Fidelity Disruptive Medicine ETF",
+      "new_value": "",
+      "before_row_sha256": "d445394964b323fac319b54c089e6a8247d3297a05b457d323abdd661b83dd8e",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/945908/000094590826000365/filing13611.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "d594ab422220dabd244dd94f",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NASDAQ::FMET",
+      "ticker": "FMET",
+      "exchange": "NASDAQ",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Fidelity® Metaverse ETF",
+      "new_value": "",
+      "before_row_sha256": "770ef0194ff7b3f4b87ca401776bad6286ab3ea658f6f0cc1d0f0918eaf71782",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/945908/000094590826000439/filing13862.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "bde1451e5c49f821723b7778",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "BATS::FPRO",
+      "ticker": "FPRO",
+      "exchange": "BATS",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "Fidelity Real Estate Investment ETF",
+      "new_value": "",
+      "before_row_sha256": "9581dda4a3a170f514baf5754b8f2271a7fd3d47e32b4a2273cc184d95463f7b",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/945908/000094590826000368/filing13611.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "cbf96bfac0f3c580c8de5daa",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "NYSE ARCA::GLDX",
+      "ticker": "GLDX",
+      "exchange": "NYSE ARCA",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "USCF Gold Strategy Plus Income Fund",
+      "new_value": "",
+      "before_row_sha256": "56799dd24157a14e9941a4c4b580031e822043548aab57194058ef8a8c4a23dc",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "sec_497_liquidation_supplement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1597389/000207187626000235/i26408_etfusg-497.htm",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "43f79d56d41bdecd2c76d7d1",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "TSX::HSD",
+      "ticker": "HSD",
+      "exchange": "TSX",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "BetaPro S&P 500® -2x Daily Bear ETF",
+      "new_value": "",
+      "before_row_sha256": "e01812e3b61733407c47443ba058290901cf40e2c2a2d5850f2cd6ec1085b7b4",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "issuer_press_release",
+      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "6a0948a96451ad0613d313e6",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "TSX::HED",
+      "ticker": "HED",
+      "exchange": "TSX",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "BetaPro S&P/TSX Capped Energy -2x Daily Bear ETF",
+      "new_value": "",
+      "before_row_sha256": "a8d6f3ac2cfbd572d4da571ddb8c231abecb3a7eaa4b72451b5e5e8c576dfed4",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "issuer_press_release",
+      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "6ed720d1337bf91ff4b0626e",
+      "evidence_status": "reviewed"
+    },
+    {
+      "listing_key": "TSX::HFD",
+      "ticker": "HFD",
+      "exchange": "TSX",
+      "event_type": "delisted",
+      "field_name": "",
+      "old_value": "BetaPro S&P TSX Capped Financials 2x Daily Bear",
+      "new_value": "",
+      "before_row_sha256": "94f4a15fa114d1b57514d544e05c6dca0564abad53e108fd110113004c98e26e",
+      "effective_at": "",
+      "observed_at": "2026-11-21T08:08:06Z",
+      "source_key": "issuer_press_release",
+      "source_url": "https://www.globalx.ca/news/press-releases/global-x-announces-ticker-symbol-updates-for-certain-betapro-etfs",
+      "source_report": "data/review_overrides/listing_transitions.csv",
+      "observation_id": "88bde4d48cb36e5ede6367eb",
+      "evidence_status": "reviewed"
+    }
+  ],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -75,9 +1044,9 @@
     {
       "exchange": "BATS",
       "before_rows": 1350,
-      "after_rows": 1350,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 1349,
+      "shrink_pct": 0.074074,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -426,9 +1395,9 @@
     {
       "exchange": "NASDAQ",
       "before_rows": 4778,
-      "after_rows": 4778,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 4774,
+      "shrink_pct": 0.083717,
+      "removed_rows": 4,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -489,9 +1458,9 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2707,
-      "after_rows": 2707,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 2706,
+      "shrink_pct": 0.036941,
+      "removed_rows": 1,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -687,9 +1656,9 @@
     {
       "exchange": "TSX",
       "before_rows": 2437,
-      "after_rows": 2437,
-      "shrink_pct": 0.0,
-      "removed_rows": 0,
+      "after_rows": 2436,
+      "shrink_pct": 0.041034,
+      "removed_rows": 3,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
