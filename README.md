@@ -9,27 +9,27 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 63,557 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 65,645 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 97,697 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Core listings | 63,562 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 65,650 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 97,702 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
 | Stocks | 48,846 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 16,799 | Primary ticker rows where `asset_type=ETF`. |
+| ETFs | 16,804 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 96 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 129,164 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 64,349 (98.0%) | Primary ticker rows with a non-empty `isin`. |
+| Aliases | 129,174 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 64,354 (98.0%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 64,716 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
 | Sector/category coverage | 65,004 (99.0%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 48,268 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,736 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 63,557 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 62,912 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core listing-scope rows | 63,562 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 62,917 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 645 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 34,140 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 50 | Exchange codes backed by a complete official exchange directory. |
 | Official partial exchanges | 33 | Exchange codes backed by an official subset or security lookup, but not yet a proven complete directory. |
 | Missing current-scope exchanges | 5 | Exchange codes without official source coverage; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 10,998 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality source-gap rows | 11,009 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
 | Entry quality warn rows | 35 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
@@ -211,7 +211,7 @@ Top exchanges by primary ticker count:
 | BSE_IN | 4,886 |
 | NYSE ARCA | 2,663 |
 | NSE_IN | 881 |
-| XETRA | 2,576 |
+| XETRA | 2,581 |
 | NYSE | 1,883 |
 | KRX | 1,990 |
 | TSX | 1,829 |
