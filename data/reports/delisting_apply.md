@@ -1,12 +1,12 @@
 # Delisting Apply
 
-- Generated at: `2026-11-16T17:26:54Z`
+- Generated at: `2026-11-23T19:29:19Z`
 - Apply mode: `true`
 - Applied rows: `0`
 - Already-applied rows: `0`
 - Drafted rows: `0`
 - Blocked rows: `0`
-- Manual rows: `255`
+- Manual rows: `270`
 
 Only BSE ListofScripData Delisted rows with matching observation evidence are eligible for automatic drop overrides. Nasdaq Trader Delete rows require manual review for venue transfers and corporate actions. `master_absent` rows stay manual until rename-vs-delisting is classified.
 
@@ -14,5 +14,4 @@ Only BSE ListofScripData Delisted rows with matching observation evidence are el
 
 | Status | Rows |
 |---|---:|
-| manual_nasdaq_delete_review_required | 3 |
-| manual_rename_vs_delisting_required | 252 |
+| manual_rename_vs_delisting_required | 270 |
