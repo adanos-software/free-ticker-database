@@ -1,20 +1,20 @@
 # Core trust report
 
-Generated at: `2026-11-22T14:40:44Z`
+Generated at: `2026-11-23T10:22:14Z`
 
 Trust is measured on instrument_scope=core only. accepted_source_gap does not count as filled. Known identity bugs must be zero; 99% completeness is a fill rate, not a correctness claim. This report does not authorize inferred identifiers, sectors, categories, names, or symbol changes. A failing trust report is not a merge blocker.
 
 Status: **FAIL**. Public 99% claim allowed: **no**.
 
-Universe: `instrument_scope=core` — 63,562 rows.
+Universe: `instrument_scope=core` — 63,563 rows.
 
 ## Completeness
 
 | Field | Filled | n | Pct | Missing | Fills to 99% | Pass |
 |---|---:|---:|---:|---:|---:|---|
-| isin | 62,917 | 63,562 | 98.99% | 645 | 10 | false |
-| country | 63,519 | 63,562 | 99.93% | 43 | 0 | true |
-| taxonomy | 62,921 | 63,562 | 98.99% | 641 | 6 | false |
+| isin | 62,918 | 63,563 | 98.99% | 645 | 10 | false |
+| country | 63,520 | 63,563 | 99.93% | 43 | 0 | true |
+| taxonomy | 62,931 | 63,563 | 99.01% | 632 | 0 | true |
 
 ## Identity
 
@@ -32,7 +32,7 @@ Universe: `instrument_scope=core` — 63,562 rows.
 |---|---|
 | `core_identity_known_bugs_zero` | **fail** |
 | `core_isin_coverage_99` | **fail** |
-| `core_taxonomy_coverage_99` | **fail** |
+| `core_taxonomy_coverage_99` | **pass** |
 | `core_country_coverage_99` | **pass** |
 | `core_official_name_hard_mismatches_zero` | **fail** |
 | `core_equity_recall_99` | **fail** |
