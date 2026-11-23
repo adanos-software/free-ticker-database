@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-22T14:46:59Z",
+    "generated_at": "2026-11-23T08:28:49Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -23,9 +23,9 @@
   },
   "passed": true,
   "summary": {
-    "ticker_rows": 65650,
+    "ticker_rows": 65649,
     "listing_rows": 97702,
-    "adanos_reference_rows": 65650,
+    "adanos_reference_rows": 65649,
     "entry_quality_rows": 97702,
     "error_gates": 88,
     "failed_error_gates": 0,
@@ -568,14 +568,14 @@
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 74,
+      "actual": 66,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11009,
+      "actual": 11001,
       "limit": null
     },
     {
